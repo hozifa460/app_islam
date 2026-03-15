@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # appislam
 
 A new Flutter project.
@@ -80,3 +81,6 @@ final List<Map<String, dynamic>> channels = [
 hadith', 'pdfUrl': 'https://archive.org/download/20200924_20200924_0912/%D8%A7%D9%84%D8%A7%D8%B1%D8%A8%D8%B9%D9%88%D9%86%20%D8%A7%D9%84%D9%86%D9%88%D9%88%D9%8A%D8%A9%20%D9%84%D8%B5%D8%A7%D9%84%D8%AD%20%D8%A7%D9%84%20%D8%B4%D9%8A%D8%AE.pdf
 
 https://archive.org/download/20220903_20220903_1830/%D8%AA%D9%81%D8%B3%D9%8A%D8%B1%20%D8%A8%D9%86%20%D9%83%D8%AB%D9%8A%D8%B1.pdf
+=======
+# app_islam
+>>>>>>> 6e5b764a3b8ceece72b5cdff7ebe395d58841c56
