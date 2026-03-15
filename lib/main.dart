@@ -1,9 +1,9 @@
+import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:islamic_app/services/adhan_alarm_manager.dart';
 import 'package:islamic_app/services/radio_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/data/latest.dart' as tz_data;
@@ -23,30 +23,19 @@ void main() async {
     statusBarIconBrightness: Brightness.light,
   ));
 
-  await AdhanAlarmManager.init(); // ✅ النظام الجديد
+
+  await AndroidAlarmManager.initialize();
   await RadioService.initRadio();
+  await initializeDateFormatting('ar', null);
+  tz_data.initializeTimeZones();
+  final tzName = await FlutterTimezone.getLocalTimezone();
+  tz.setLocalLocation(tz.getLocation(tzName));
+
+  await AdahnNotification.instance.init();
+  await NotificationService.init();
 
   runApp(const MyApp());
 
-  // 4. تشغيل الخدمات الثقيلة في الخلفية بعد رسم الشاشة
-  _initServicesInBackground();
-}
-
-
-// دالة منفصلة لتهيئة الإشعارات والوقت بدون تجميد الشاشة
-Future<void> _initServicesInBackground() async {
-  try {
-    await initializeDateFormatting('ar', null);
-    tz_data.initializeTimeZones();
-    final tzName = await FlutterTimezone.getLocalTimezone();
-    tz.setLocalLocation(tz.getLocation(tzName));
-
-    await AdahnNotification.instance.init();
-    await NotificationService.init();
-    debugPrint('✅ تم تشغيل الخدمات بنجاح');
-  } catch (e) {
-    debugPrint('❌ خطأ في تشغيل الخدمات: $e');
-  }
 }
 
 class MyApp extends StatefulWidget {
@@ -113,6 +102,9 @@ class _MyAppState extends State<MyApp> {
             ),
           ),
         );
+      } else if (payload['type'] == 'reminder') {
+        // التنبيه القبلي لا يحتاج فتح مشغل الأذان
+        // يمكن لاحقاً فتح صفحة مواقيت الصلاة أو عدم فعل شيء
       }
     };
   }

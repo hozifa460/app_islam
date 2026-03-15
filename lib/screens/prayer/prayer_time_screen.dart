@@ -632,7 +632,6 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
   }
 
   Future<void> _scheduleAllAdhans() async {
-    // ids ثابتة لكل صلاة
     const ids = {
       'Fajr': 100,
       'Dhuhr': 101,
@@ -641,22 +640,25 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
       'Isha': 104,
     };
 
-    // امسح القديم ثم جدولة جديد (أضمن وأبسط)
+    final prefs = await SharedPreferences.getInstance();
+    final currentOffset = prefs.getInt('reminder_offset') ?? 0;
+
     await AdahnNotification.instance.cancelAll();
 
     final now = DateTime.now();
 
     for (final row in _rows) {
       if (row.noAdhan == true) continue;
-      final m = _effectiveForKey(row.key);
 
-      // local path if downloaded
+      final m = _effectiveForKey(row.key);
       final local = await AdhanAudioService.instance.getLocalPath(m.id);
 
-      // وقت اليوم أو غدًا لو فات
       var t = row.dateTime;
-      if (now.isAfter(t)) t = t.add(const Duration(days: 1));
+      if (now.isAfter(t)) {
+        t = t.add(const Duration(days: 1));
+      }
 
+      // ✅ الأذان نفسه
       await AdahnNotification.instance.schedulePrayerNotification(
         id: ids[row.key]!,
         dateTime: t,
@@ -669,9 +671,28 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
           'muezzinId': m.id,
           'muezzinName': m.name,
           'muezzinUrl': m.url,
-          'localPath': local, // قد تكون null
+          'localPath': local ?? '',
         },
       );
+
+      // ✅ التذكير القبلي
+      if (currentOffset > 0) {
+        final reminderTime = t.subtract(Duration(minutes: currentOffset));
+
+        if (reminderTime.isAfter(DateTime.now())) {
+          await AdahnNotification.instance.schedulePrayerNotification(
+            id: ids[row.key]! + 1000,
+            dateTime: reminderTime,
+            title: 'اقتربت صلاة ${row.name}',
+            body: 'متبقي $currentOffset دقائق على أذان ${row.name}',
+            payload: {
+              'type': 'reminder',
+              'prayerKey': row.key,
+              'prayerName': row.name,
+            },
+          );
+        }
+      }
     }
   }
 

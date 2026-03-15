@@ -15,10 +15,8 @@ import 'package:islamic_app/screens/quran/surah_deatil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:path_provider/path_provider.dart';
 
-import '../../../services/adahn_audio_services.dart';
-import '../../../services/muazzin_store.dart';
 import '../../../services/adahn_notification.dart';
-import '../../../services/notification_service.dart';
+import '../../../services/native_adhan_bridge.dart';
 
 import '../../prayer/adhan_player_screen.dart';
 import '../../books_screen.dart';
@@ -169,52 +167,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   }
 
-  Future<void> _testRealAdhanNow() async {
-    try {
-      // 1. طلب الصلاحيات الأساسية إذا لم تكن موجودة
-      await AdahnNotification.instance.requestPermissions();
-
-      // 2. إلغاء أي اختبار سابق
-      await AdahnNotification.instance.cancel(9999);
-
-      // 3. تحديد وقت الاختبار (بعد 15 ثانية من الآن ليكون لديك وقت لإغلاق الهاتف)
-      final testTime = DateTime.now().add(const Duration(seconds: 15));
-
-      // 4. جلب المؤذن الافتراضي الذي اخترته أنت من الإعدادات (لكي يكون الاختبار واقعياً)
-      final muezzin = await MuezzinStore.getEffectiveForPrayer('Asr');
-      final localPath = await AdhanAudioService.instance.getLocalPath(muezzin.id);
-
-      // 5. جدولة الإشعار
-      await AdahnNotification.instance.schedulePrayerNotification(
-        id: 9999, // ID مخصص للاختبار
-        dateTime: testTime,
-        title: 'حان وقت صلاة العصر (اختبار)',
-        body: 'الصلاة خير من النوم - ${muezzin.name}',
-        payload: {
-          'type': 'adhan',
-          'prayerKey': 'Asr',
-          'prayerName': 'العصر',
-          'muezzinId': muezzin.id,
-          'muezzinName': muezzin.name,
-          'muezzinUrl': muezzin.url,
-          'localPath': localPath ?? '',
-        },
-      );
-
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('⏳ سيؤذن الهاتف بعد 15 ثانية.. أغلق الشاشة الآن!', style: GoogleFonts.cairo()),
-            backgroundColor: Colors.blueAccent,
-            duration: const Duration(seconds: 5),
-          ),
-        );
-      }
-    } catch (e) {
-      debugPrint('❌ خطأ في جدولة الاختبار: $e');
-    }
-  }
-
 
   Future<void> _schedulePrayerNotifications() async {
     if (!mounted) return;
@@ -227,17 +179,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
     final prefs = await SharedPreferences.getInstance();
     final adhanEnabled = prefs.getBool('adhan_enabled') ?? false;
-
     if (!adhanEnabled) {
-      debugPrint('🔕 الأذان غير مفعل من الإعدادات');
+      debugPrint('🔕 الأذان غير مفعل');
       return;
     }
 
     _isSchedulingNotifications = true;
 
     try {
-      await AdahnNotification.instance.cancelAll();
-
       final prayers = [
         {'key': 'Fajr', 'name': 'الفجر', 'id': 100},
         {'key': 'Dhuhr', 'name': 'الظهر', 'id': 101},
@@ -246,42 +195,29 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         {'key': 'Isha', 'name': 'العشاء', 'id': 104},
       ];
 
-      for (var prayer in prayers) {
+      for (final prayer in prayers) {
+        await NativeAdhanBridge.cancelAdhan(prayer['id'] as int);
+      }
+
+      for (final prayer in prayers) {
         final timeStr = _prayerTimes[prayer['key']];
         if (timeStr == null || timeStr.isEmpty) continue;
 
-        final time = _parseTime(timeStr);
-        var scheduledTime = time;
-
+        DateTime scheduledTime = _parseTime(timeStr);
         if (scheduledTime.isBefore(DateTime.now())) {
           scheduledTime = scheduledTime.add(const Duration(days: 1));
         }
 
-        final muezzin =
-        await MuezzinStore.getEffectiveForPrayer(prayer['key'] as String);
-        final localPath =
-        await AdhanAudioService.instance.getLocalPath(muezzin.id);
-
-        await AdahnNotification.instance.schedulePrayerNotification(
-          id: prayer['id'] as int,
-          dateTime: scheduledTime,
-          title: 'حان وقت صلاة ${prayer['name']}',
-          body: 'المؤذن: ${muezzin.name}',
-          payload: {
-            'type': 'adhan',
-            'prayerKey': prayer['key'],
-            'prayerName': prayer['name'],
-            'muezzinId': muezzin.id,
-            'muezzinName': muezzin.name,
-            'muezzinUrl': muezzin.url,
-            'localPath': localPath ?? '',
-          },
+        await NativeAdhanBridge.scheduleAdhan(
+          time: scheduledTime,
+          prayerName: prayer['name'] as String,
+          requestCode: prayer['id'] as int,
         );
 
-        debugPrint('✅ تم جدولة ${prayer['name']} عند $scheduledTime');
+        debugPrint('✅ تم جدولة أذان ${prayer['name']} عند $scheduledTime');
       }
     } catch (e) {
-      debugPrint('❌ خطأ أثناء جدولة الأذان: $e');
+      debugPrint('❌ خطأ أثناء الجدولة الأصلية: $e');
     } finally {
       _isSchedulingNotifications = false;
     }

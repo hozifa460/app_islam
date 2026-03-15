@@ -28,15 +28,15 @@ class SimpleAdhanService {
         print('❌ Not found: assets/adahn/$muezzinId.mp3');
       }
 
-      // ✅ المحاولة 2: إذا كان ID = 'menshawy' والملف 'menshawy.wav'
+      // ✅ المحاولة 2: إذا كان ID = 'menshawy' والملف 'menshawy.mp3'
       if (muezzinId == 'menshawy') {
         try {
-          final byteData = await rootBundle.load('assets/adahn/menshawy.wav');
+          final byteData = await rootBundle.load('assets/adahn/menshawy.mp3');
           await localFile.writeAsBytes(byteData.buffer.asUint8List());
-          print('✅ Loaded: assets/adahn/menshawy.wav');
+          print('✅ Loaded: assets/adahn/menshawy.mp3');
           return localFile.path;
         } catch (e) {
-          print('❌ Not found: assets/adahn/menshawy.wav');
+          print('❌ Not found: assets/adahn/menshawy.mp3');
         }
       }
 
