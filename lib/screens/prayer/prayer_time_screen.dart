@@ -80,38 +80,62 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
     }
   }
 
+  Future<bool> _ensureSelectedMuezzinsDownloaded() async {
+    for (final row in _rows) {
+      if (row.noAdhan == true) continue;
+
+      final m = _effectiveForKey(row.key);
+      final local = await AdhanAudioService.instance.getLocalPath(m.id);
+
+      if (local == null || local.isEmpty) {
+        if (!mounted) return false;
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'يجب تحميل صوت المؤذن "${m.name}" أولًا لتفعيل الأذان التلقائي',
+              style: GoogleFonts.cairo(),
+            ),
+            backgroundColor: Colors.orange,
+            duration: const Duration(seconds: 4),
+          ),
+        );
+        return false;
+      }
+    }
+    return true;
+  }
+
   Future<void> _verifyPermissionsAfterReturn() async {
     final prefs = await SharedPreferences.getInstance();
 
-    // فحص الصلاحيات الأساسية التي يمكن فحصها برمجياً
     bool hasNotification = await Permission.notification.isGranted;
     bool hasExactAlarm = await Permission.scheduleExactAlarm.isGranted;
     bool ignoresBattery = await Permission.ignoreBatteryOptimizations.isGranted;
 
-    // إذا تم منح الصلاحيات الأساسية
-    if (hasNotification && ignoresBattery) {
+    final downloadedOk = await _ensureSelectedMuezzinsDownloaded();
+
+    if (hasNotification && hasExactAlarm && ignoresBattery && downloadedOk) {
       if (mounted) setState(() => _adhanEnabled = true);
       await prefs.setBool('adhan_enabled', true);
       await _scheduleAllAdhans();
 
-      // ✅ الرسالة أصبحت أكثر ذكاءً وصدقاً مع المستخدم
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              '✅ تم الجدولة. تأكد أنك فعلت "التشغيل التلقائي" يدوياً لضمان عمل الأذان.',
+              '✅ تم تفعيل الأذان بنجاح',
               style: GoogleFonts.cairo(fontSize: 13),
             ),
             backgroundColor: Colors.green.shade700,
-            duration: const Duration(seconds: 5), // مدة أطول ليقرأها
+            duration: const Duration(seconds: 4),
           ),
         );
       }
     } else {
-      // ❌ المستخدم رفض صلاحية البطارية أو الإشعارات الأساسية
       if (mounted) setState(() => _adhanEnabled = false);
       await prefs.setBool('adhan_enabled', false);
-      _showErrorSnackBar('لم تمنح الصلاحيات الأساسية! الأذان قد لا يعمل.');
+      _showErrorSnackBar('لم تكتمل الشروط اللازمة لتفعيل الأذان');
     }
   }
 
@@ -455,7 +479,10 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
   Future<void> _openCustomizeForPrayer(_PrayerRow row) async {
     if (row.noAdhan == true) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('الشروق ليس له أذان', style: GoogleFonts.cairo()), backgroundColor: Colors.orange),
+        SnackBar(
+          content: Text('الشروق ليس له أذان', style: GoogleFonts.cairo()),
+          backgroundColor: Colors.orange,
+        ),
       );
       return;
     }
@@ -474,10 +501,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
       ),
     );
 
-    if (!mounted) return;
-
-    // null => user closed
-    if (selected == null) return;
+    if (!mounted || selected == null) return;
 
     if (selected.id == '__DEFAULT__') {
       await MuezzinStore.clearCustomForPrayer(row.key);
@@ -485,13 +509,18 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
       await MuezzinStore.setCustomForPrayer(row.key, selected);
     }
 
-    // reload effective map + update UI
     await _loadDefaultAndEffective();
     setState(() {});
 
-    // if enabled -> reschedule (to match effective muezzin)
     if (_adhanEnabled) {
-      await AdhanManager.schedulePrayersForNextWeek();
+      final downloadedOk = await _ensureSelectedMuezzinsDownloaded();
+      if (downloadedOk) {
+        await _scheduleAllAdhans();
+      } else {
+        setState(() => _adhanEnabled = false);
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setBool('adhan_enabled', false);
+      }
     }
   }
 
@@ -503,13 +532,18 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
       ),
     );
 
-    // IMPORTANT: When user chooses new default from catalog list,
-    // our store uses resetAllCustom:true => it clears all custom prayer muezzins.
     await _loadDefaultAndEffective();
     setState(() {});
 
     if (_adhanEnabled) {
-      await _scheduleAllAdhans();
+      final downloadedOk = await _ensureSelectedMuezzinsDownloaded();
+      if (downloadedOk) {
+        await _scheduleAllAdhans();
+      } else {
+        setState(() => _adhanEnabled = false);
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setBool('adhan_enabled', false);
+      }
     }
   }
 
@@ -517,11 +551,18 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
     final prefs = await SharedPreferences.getInstance();
 
     if (value) {
+      // ✅ قبل أي شيء: هل المؤذن/المؤذنون محمّلون؟
+      final downloadedOk = await _ensureSelectedMuezzinsDownloaded();
+      if (!downloadedOk) {
+        if (mounted) setState(() => _adhanEnabled = false);
+        await prefs.setBool('adhan_enabled', false);
+        return;
+      }
+
       bool hasNotification = await Permission.notification.isGranted;
       bool hasExactAlarm = await Permission.scheduleExactAlarm.isGranted;
       bool ignoresBattery = await Permission.ignoreBatteryOptimizations.isGranted;
 
-      // إذا كانت كل الصلاحيات ممنوحة من قبل، فعل فوراً
       if (hasNotification && hasExactAlarm && ignoresBattery) {
         if (mounted) setState(() => _adhanEnabled = true);
         await prefs.setBool('adhan_enabled', true);
@@ -530,7 +571,6 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
         return;
       }
 
-      // إذا كان هناك صلاحية ناقصة، نظهر التنبيه
       if (mounted) {
         showDialog(
           context: context,
@@ -545,7 +585,14 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
               children: [
                 Icon(Icons.warning_amber_rounded, color: _gold),
                 const SizedBox(width: 10),
-                Text('صلاحيات ناقصة', style: GoogleFonts.cairo(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+                Text(
+                  'صلاحيات ناقصة',
+                  style: GoogleFonts.cairo(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ],
             ),
             content: SingleChildScrollView(
@@ -563,7 +610,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                   if (!hasNotification) _buildInstructionRow('3', 'السماح بالإشعارات'),
                   const SizedBox(height: 10),
                   Text(
-                    'ملاحظة: لشاومي وأوبو يجب أيضاً تفعيل (التشغيل التلقائي) و(الظهور فوق شاشة القفل).',
+                    'ملاحظة: لشاومي وأوبو يجب أيضاً تفعيل (التشغيل التلقائي) و(الظهور على شاشة القفل).',
                     style: GoogleFonts.cairo(color: Colors.orange, fontSize: 11),
                   ),
                 ],
@@ -571,10 +618,10 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
             ),
             actions: [
               TextButton(
-                onPressed: () {
+                onPressed: () async {
                   Navigator.pop(ctx);
                   if (mounted) setState(() => _adhanEnabled = false);
-                  prefs.setBool('adhan_enabled', false);
+                  await prefs.setBool('adhan_enabled', false);
                 },
                 child: Text('إلغاء', style: GoogleFonts.cairo(color: Colors.grey)),
               ),
@@ -583,27 +630,27 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                 onPressed: () async {
                   Navigator.pop(ctx);
 
-                  // ✅ نخبر التطبيق أننا ننتظر عودة المستخدم
                   _isWaitingForSettingsReturn = true;
 
-                  // طلب الصلاحيات التي قد تفتح نوافذ منبثقة أولاً
                   if (!hasNotification) await Permission.notification.request();
                   if (!hasExactAlarm) await Permission.scheduleExactAlarm.request();
                   if (!ignoresBattery) await Permission.ignoreBatteryOptimizations.request();
 
-                  // فتح الإعدادات ليقوم بتفعيل الباقي يدوياً
                   await openAppSettings();
-
-                  // 🛑 لا نجدول هنا! الجدولة ستحدث في didChangeAppLifecycleState عند عودته
                 },
-                child: Text('الذهاب للإعدادات', style: GoogleFonts.cairo(color: Colors.black, fontWeight: FontWeight.bold)),
+                child: Text(
+                  'الذهاب للإعدادات',
+                  style: GoogleFonts.cairo(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ],
           ),
         );
       }
     } else {
-      // حالة الإغلاق
       if (mounted) setState(() => _adhanEnabled = false);
       await prefs.setBool('adhan_enabled', false);
       await AdahnNotification.instance.cancelAll();
@@ -700,10 +747,12 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
     if (_nextIndex < 0) return;
     final row = _rows[_nextIndex];
 
-    // Sunrise has no adhan, if next is Sunrise => play next adhan after it (optional)
     if (row.noAdhan == true) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('الشروق ليس له أذان', style: GoogleFonts.cairo()), backgroundColor: Colors.orange),
+        SnackBar(
+          content: Text('الشروق ليس له أذان', style: GoogleFonts.cairo()),
+          backgroundColor: Colors.orange,
+        ),
       );
       return;
     }
@@ -720,7 +769,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
           prayerName: row.name,
           muezzinName: m.name,
           url: m.url,
-          localPath: local,
+          localPath: local, // لو موجود هيشتغل أوفلاين، لو لا هيشتغل أونلاين
         ),
       ),
     );
@@ -1174,6 +1223,7 @@ class _MuezzinPickerSheet extends StatelessWidget {
         url: '',
         description: 'إلغاء التخصيص لهذه الصلاة',
         imageUrl: '',
+        localSoundName: 'makkah',
       ),
     ));
 

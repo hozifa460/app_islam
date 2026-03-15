@@ -6,6 +6,7 @@ import android.content.Intent
 import android.media.MediaPlayer
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import java.io.File
 
 class AdhanReceiver : BroadcastReceiver() {
 
@@ -15,12 +16,29 @@ class AdhanReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         val prayerName = intent.getStringExtra("prayerName") ?: "الصلاة"
+        val soundName = intent.getStringExtra("soundName") ?: "makkah"
+        val localPath = intent.getStringExtra("localPath")
 
         try {
             mediaPlayer?.release()
-            mediaPlayer = MediaPlayer.create(context, R.raw.menshawy)
-            mediaPlayer?.isLooping = false
-            mediaPlayer?.start()
+
+            // ✅ إذا كان هناك ملف محلي محمّل استخدمه
+            if (!localPath.isNullOrEmpty() && File(localPath).exists()) {
+                mediaPlayer = MediaPlayer().apply {
+                    setDataSource(localPath)
+                    prepare()
+                    isLooping = false
+                    start()
+                }
+            } else {
+                // ✅ وإلا استخدم الملف الافتراضي من raw
+                val soundResId = context.resources.getIdentifier(soundName, "raw", context.packageName)
+                if (soundResId != 0) {
+                    mediaPlayer = MediaPlayer.create(context, soundResId)
+                    mediaPlayer?.isLooping = false
+                    mediaPlayer?.start()
+                }
+            }
         } catch (e: Exception) {
             e.printStackTrace()
         }

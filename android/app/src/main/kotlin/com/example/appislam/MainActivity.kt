@@ -22,12 +22,16 @@ class MainActivity : FlutterActivity() {
                     val triggerAt = call.argument<Long>("triggerAt") ?: 0L
                     val prayerName = call.argument<String>("prayerName") ?: "الصلاة"
                     val requestCode = call.argument<Int>("requestCode") ?: 999
+                    val soundName = call.argument<String>("soundName") ?: "makkah"
+                    val localPath = call.argument<String>("localPath")
 
                     AlarmScheduler.scheduleAdhan(
                         this,
                         triggerAt,
                         prayerName,
-                        requestCode
+                        requestCode,
+                        soundName,
+                        localPath
                     )
                     result.success(true)
                 }

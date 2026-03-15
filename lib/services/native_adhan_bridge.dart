@@ -7,11 +7,15 @@ class NativeAdhanBridge {
     required DateTime time,
     required String prayerName,
     required int requestCode,
+    required String soundName,
+    String? localPath,
   }) async {
     await _channel.invokeMethod('scheduleNativeAdhan', {
       'triggerAt': time.millisecondsSinceEpoch,
       'prayerName': prayerName,
       'requestCode': requestCode,
+      'soundName': soundName,
+      'localPath': localPath,
     });
   }
 

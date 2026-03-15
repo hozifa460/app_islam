@@ -11,10 +11,14 @@ object AlarmScheduler {
         context: Context,
         triggerAtMillis: Long,
         prayerName: String,
-        requestCode: Int
+        requestCode: Int,
+        soundName: String,
+        localPath: String?
     ) {
         val intent = Intent(context, AdhanReceiver::class.java).apply {
             putExtra("prayerName", prayerName)
+            putExtra("soundName", soundName)
+            putExtra("localPath", localPath)
         }
 
         val pendingIntent = PendingIntent.getBroadcast(

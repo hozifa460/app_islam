@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart';
 
 class AdhanAudioService {
@@ -16,9 +16,10 @@ class AdhanAudioService {
     return (await file.exists()) ? file.path : null;
   }
 
-  Future<bool> isDownloaded(String id) async => (await getLocalPath(id)) != null;
+  Future<bool> isDownloaded(String id) async {
+    return (await getLocalPath(id)) != null;
+  }
 
-  /// تحميل mp3 وتخزينه محليًا
   Future<String?> download({
     required String id,
     required String url,
@@ -26,29 +27,30 @@ class AdhanAudioService {
   }) async {
     try {
       final d = await _dir();
-      final file = File('${d.path}/${_fileName(id)}');
+      final filePath = '${d.path}/${_fileName(id)}';
 
-      final req = http.Request('GET', Uri.parse(url));
-      final res = await http.Client().send(req);
+      final dio = Dio();
+      await dio.download(
+        url,
+        filePath,
+        onReceiveProgress: (received, total) {
+          if (total > 0) {
+            onProgress?.call(received / total);
+          }
+        },
+      );
 
-      if (res.statusCode != 200) return null;
-
-      final total = res.contentLength ?? 0;
-      var received = 0;
-
-      final sink = file.openWrite();
-      await for (final chunk in res.stream) {
-        received += chunk.length;
-        sink.add(chunk);
-        if (total > 0) onProgress?.call(received / total);
-      }
-      await sink.flush();
-      await sink.close();
-
-      onProgress?.call(1.0);
-      return file.path;
+      return filePath;
     } catch (_) {
       return null;
+    }
+  }
+
+  Future<void> deleteDownloaded(String id) async {
+    final d = await _dir();
+    final file = File('${d.path}/${_fileName(id)}');
+    if (await file.exists()) {
+      await file.delete();
     }
   }
 }

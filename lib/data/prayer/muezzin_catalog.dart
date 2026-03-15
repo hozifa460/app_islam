@@ -5,7 +5,8 @@ class MuezzinInfo {
   final String name;
   final String url;           // Online by default
   final String description;
-  final String imageUrl;      // for cards
+  final String imageUrl;   // for cards
+  final String localSoundName;
 
   const MuezzinInfo({
     required this.id,
@@ -13,6 +14,7 @@ class MuezzinInfo {
     required this.url,
     required this.description,
     required this.imageUrl,
+    required this.localSoundName,
   });
 }
 
@@ -45,19 +47,39 @@ final muezzinCatalog = <MuezzinCategory>[
       MuezzinInfo(
         id: 'haramain_1',
         name: 'مكة المكرمة (افتراضي)',
-        url: 'https://ia600202.us.archive.org/11/items/AdhaN_M_up-by-muslem/019--1.mp3',
+        url: 'https://cdn.jsdelivr.net/gh/hozifa460/islamic-audios@main/makkah.mp3',
         description: 'أذان مكة',
         imageUrl: 'https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=900',
+        localSoundName: 'makkah',
       ),
       MuezzinInfo(
         id: 'haramain_2',
         name: 'المدينة المنورة',
-        url: 'https://example.com/madinah.mp3',
+        url: 'https://cdn.jsdelivr.net/gh/hozifa460/islamic-audios@main/madinha.mp3',
         description: 'أذان المدينة',
         imageUrl: 'https://images.unsplash.com/photo-1564769625905-50e93615e769?w=900',
+        localSoundName: 'madinha',
       ),
+      MuezzinInfo(
+        id: 'haramain_3',
+        name: 'اذان حمد الغريري',
+        url: 'https://cdn.jsdelivr.net/gh/hozifa460/islamic-audios@main/hamad_aldagrery.mp3',
+        description: 'أذان الحرم المكي',
+        imageUrl: 'https://images.unsplash.com/photo-1564769625905-50e93615e769?w=900',
+        localSoundName: 'hamad_aldagrery',
+      ),
+      MuezzinInfo(
+        id: 'haramain_4',
+        name: 'عبد المجيد السريحي',
+        url: 'https://cdn.jsdelivr.net/gh/hozifa460/islamic-audios@main/alsrehi.mp3',
+        description: 'أذان المدينة',
+        imageUrl: 'https://images.unsplash.com/photo-1564769625905-50e93615e769?w=900',
+        localSoundName: 'alsrehi',
+      ),
+
     ],
   ),
+
   MuezzinCategory(
     id: 'egypt',
     name: 'أذان مصر',
@@ -68,9 +90,18 @@ final muezzinCatalog = <MuezzinCategory>[
       MuezzinInfo(
         id: 'egypt_1',
         name: 'محمد صديق المنشاوي',
-        url: 'https://ia600202.us.archive.org/11/items/AdhaN_M_up-by-muslem/048-.mp3',
+        url: 'https://cdn.jsdelivr.net/gh/hozifa460/islamic-audios@main/menshawy.mp3',
         description: 'صوت مصري',
         imageUrl: 'https://images.unsplash.com/photo-1572949791660-6626e0e8e85e?w=900',
+        localSoundName: 'menshawy',
+      ),
+      MuezzinInfo(
+        id: 'egypt_2',
+        name: 'عبدالباسط عبد الصمد',
+        url: 'https://cdn.jsdelivr.net/gh/hozifa460/islamic-audios@main/abdalbaset.mp3',
+        description: 'صوت مصري',
+        imageUrl: '',
+        localSoundName: 'abdalbaset',
       ),
     ],
   ),
@@ -90,6 +121,7 @@ final muezzinCatalog = <MuezzinCategory>[
           url: s.url,
           description: s.description,
           imageUrl: s.imageUrl,
+          localSoundName: '',
         ),
     ],
   ),

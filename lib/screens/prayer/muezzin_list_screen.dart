@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:just_audio/just_audio.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../../data/prayer/muezzin_catalog.dart';
 import '../../services/adahn_audio_services.dart';
-import '../../services/adhan_manager.dart';
 import '../../services/muazzin_store.dart';
 import 'adhan_player_screen.dart';
 
@@ -25,75 +22,35 @@ class MuezzinListScreen extends StatefulWidget {
 }
 
 class _MuezzinListScreenState extends State<MuezzinListScreen> {
-  final _gold = const Color(0xFFE6B325);
-  final _bgDark = const Color(0xFF0A0E17);
-  final _bgCard = const Color(0xFF151B26);
+  final Color _gold = const Color(0xFFE6B325);
+  final Color _bgDark = const Color(0xFF0A0E17);
+  final Color _bgCard = const Color(0xFF151B26);
 
-  final _previewPlayer = AudioPlayer();
-  String? _playingId;
+  Map<String, bool> _isDownloading = {};
+  Map<String, bool> _isDownloaded = {};
 
-  final Map<String, bool> _downloading = {};
-  final Map<String, bool> _downloaded = {};
-
-  // جلب بيانات القسم الحالي (للحصول على الصورة والبيانات)
-  late MuezzinCategory _currentCategory;
-
-  List<MuezzinInfo> get _items => _currentCategory.items;
+  late MuezzinCategory _category;
 
   @override
   void initState() {
     super.initState();
-    _currentCategory = muezzinCatalog.firstWhere((c) => c.id == widget.categoryId);
-    _loadDownloaded();
+    _category = muezzinCatalog.firstWhere((c) => c.id == widget.categoryId);
+    _checkDownloads();
   }
 
-  Future<void> _loadDownloaded() async {
-    for (final m in _items) {
-      final ok = await AdhanAudioService.instance.isDownloaded(m.id);
-      if (!mounted) return;
-      setState(() => _downloaded[m.id] = ok);
+  Future<void> _checkDownloads() async {
+    for (final m in _category.items) {
+      final downloaded = await AdhanAudioService.instance.isDownloaded(m.id);
+      if (mounted) {
+        setState(() {
+          _isDownloaded[m.id] = downloaded;
+        });
+      }
     }
   }
 
-  @override
-  void dispose() {
-    _previewPlayer.dispose();
-    super.dispose();
-  }
-
-  // ================== المنطق (لم يتم تغييره) ==================
-
-  Future<void> _togglePreview(MuezzinInfo m) async {
-    try {
-      if (_playingId == m.id) {
-        await _previewPlayer.stop();
-        setState(() => _playingId = null);
-        return;
-      }
-
-      await _previewPlayer.stop();
-      setState(() => _playingId = m.id);
-
-      final local = await AdhanAudioService.instance.getLocalPath(m.id);
-      if (local != null) {
-        await _previewPlayer.setFilePath(local);
-      } else {
-        await _previewPlayer.setUrl(m.url);
-      }
-      await _previewPlayer.play();
-    } catch (_) {
-      if (!mounted) return;
-      setState(() => _playingId = null);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('فشل التشغيل: تأكد من أن الرابط مباشر mp3', style: GoogleFonts.cairo()), backgroundColor: Colors.red),
-      );
-    }
-  }
-
-  Future<void> _downloadOffline(MuezzinInfo m) async {
-    if (_downloading[m.id] == true) return;
-
-    setState(() => _downloading[m.id] = true);
+  Future<void> _downloadMuezzin(MuezzinInfo m) async {
+    setState(() => _isDownloading[m.id] = true);
 
     final path = await AdhanAudioService.instance.download(
       id: m.id,
@@ -104,48 +61,35 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
     if (!mounted) return;
 
     setState(() {
-      _downloading[m.id] = false;
-      _downloaded[m.id] = path != null;
+      _isDownloading[m.id] = false;
+      _isDownloaded[m.id] = path != null;
     });
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(path != null ? 'تم التحميل Offline' : 'فشل التحميل', style: GoogleFonts.cairo()),
+        content: Text(
+          path != null ? 'تم تحميل ${m.name} بنجاح' : 'فشل تحميل ${m.name}',
+          style: GoogleFonts.cairo(),
+        ),
         backgroundColor: path != null ? Colors.green : Colors.red,
       ),
     );
   }
 
-  // داخل MuezzinListScreen.dart
-
-  Future<void> _selectAsDefault(MuezzinInfo m) async {
-    // 1. حفظ المؤذن كافتراضي وإزالة تخصيصات الصلوات الفردية (كما كانت)
-    await MuezzinStore.setDefault(m, resetAllCustom: true);
-
-    // ✅ 2. الخطوة الجديدة: إعادة جدولة الأذان بالصوت الجديد
-    final prefs = await SharedPreferences.getInstance();
-    final adhanEnabled = prefs.getBool('adhan_enabled') ?? false;
-
-    if (adhanEnabled) {
-      // استدعاء العقل المدبر ليعيد ضبط التنبيهات بصوت المؤذن الجديد
-      await AdhanManager.schedulePrayersForNextWeek();
-    }
-
+  Future<void> _deleteMuezzin(MuezzinInfo m) async {
+    await AdhanAudioService.instance.deleteDownloaded(m.id);
     if (!mounted) return;
+    setState(() => _isDownloaded[m.id] = false);
 
-    // 3. عرض رسالة النجاح
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-          content: Text('تم اختيار ${m.name} كمؤذن افتراضي لكل الصلوات', style: GoogleFonts.cairo()),
-          backgroundColor: _gold // تأكد أن _gold معرفة عندك
+        content: Text('تم حذف ${m.name} من الهاتف', style: GoogleFonts.cairo()),
+        backgroundColor: Colors.orange,
       ),
     );
-
-    // 4. العودة للصفحة السابقة
-    Navigator.pop(context);
   }
 
-  void _openPlayer(MuezzinInfo m) async {
+  Future<void> _previewMuezzin(MuezzinInfo m) async {
     final local = await AdhanAudioService.instance.getLocalPath(m.id);
 
     if (!mounted) return;
@@ -163,307 +107,234 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
     );
   }
 
-  // ================== واجهة المستخدم الاحترافية ==================
+  Future<void> _selectAsDefault(MuezzinInfo m) async {
+    await MuezzinStore.setDefault(m, resetAllCustom: true);
+
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('تم اختيار ${m.name} كمؤذن افتراضي لكل الصلوات', style: GoogleFonts.cairo()),
+        backgroundColor: _gold,
+      ),
+    );
+
+    Navigator.pop(context, true);
+  }
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final bgColor = isDark ? _bgDark : const Color(0xFFF5F7FA);
+    final cardGradient = isDark
+        ? [Colors.white.withOpacity(0.08), Colors.white.withOpacity(0.02)]
+        : [Colors.white, Colors.white];
+    final textColorMain = isDark ? Colors.white : const Color(0xFF1A1A1A);
+    final textColorSub = isDark ? Colors.white70 : Colors.black54;
+    final borderColor = isDark ? Colors.white.withOpacity(0.1) : _gold.withOpacity(0.2);
+    final shadowColor = isDark ? Colors.black.withOpacity(0.3) : Colors.grey.withOpacity(0.1);
+
     return Scaffold(
-      backgroundColor: _bgDark,
-      body: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
-        slivers: [
-          // ✅ هيدر علوي احترافي يختفي عند النزول
-          SliverAppBar(
-            expandedHeight: 220.0,
-            floating: false,
-            pinned: true,
-            backgroundColor: _bgDark,
-            elevation: 0,
-            leading: Container(
-              margin: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.4),
-                shape: BoxShape.circle,
-              ),
-              child: IconButton(
-                icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white, size: 20),
-                onPressed: () => Navigator.pop(context),
-              ),
-            ),
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text(
-                widget.categoryName,
-                style: GoogleFonts.cairo(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  shadows: [Shadow(color: Colors.black.withOpacity(0.8), blurRadius: 10)],
+      backgroundColor: bgColor,
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+        title: Text(
+          widget.categoryName,
+          style: GoogleFonts.cairo(
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
+            color: textColorMain,
+          ),
+        ),
+        leading: Container(
+          margin: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: isDark ? Colors.white.withOpacity(0.1) : _gold.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: isDark ? Colors.white.withOpacity(0.1) : Colors.transparent),
+          ),
+          child: IconButton(
+            icon: Icon(Icons.arrow_back_ios_new, color: textColorMain),
+            onPressed: () => Navigator.pop(context),
+          ),
+        ),
+      ),
+      body: SafeArea(
+        child: ListView.builder(
+          padding: const EdgeInsets.all(20),
+          physics: const BouncingScrollPhysics(),
+          itemCount: _category.items.length,
+          itemBuilder: (context, index) {
+            final m = _category.items[index];
+            final downloading = _isDownloading[m.id] == true;
+            final downloaded = _isDownloaded[m.id] == true;
+
+            return TweenAnimationBuilder<double>(
+              tween: Tween(begin: 0.0, end: 1.0),
+              duration: Duration(milliseconds: 350 + (index * 100)),
+              curve: Curves.easeOutCubic,
+              builder: (context, value, child) {
+                return Opacity(
+                  opacity: value,
+                  child: Transform.translate(
+                    offset: Offset(0, 18 * (1 - value)),
+                    child: child,
+                  ),
+                );
+              },
+              child: Container(
+                margin: const EdgeInsets.only(bottom: 14),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: cardGradient),
+                  borderRadius: BorderRadius.circular(24),
+                  border: Border.all(color: borderColor),
+                  boxShadow: [
+                    BoxShadow(
+                      color: shadowColor,
+                      blurRadius: 14,
+                      offset: const Offset(0, 5),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    ClipRRect(
+                      borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+                      child: Stack(
+                        children: [
+                          Container(
+                            height: 140,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: NetworkImage(m.imageUrl),
+                                fit: BoxFit.cover,
+                                colorFilter: ColorFilter.mode(
+                                  Colors.black.withOpacity(0.35),
+                                  BlendMode.darken,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Positioned.fill(
+                            child: Center(
+                              child: Container(
+                                padding: const EdgeInsets.all(12),
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.15),
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: Colors.white.withOpacity(0.3)),
+                                ),
+                                child: Icon(Icons.graphic_eq_rounded, color: _gold, size: 30),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  m.name,
+                                  style: GoogleFonts.amiri(
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.bold,
+                                    color: textColorMain,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  m.description,
+                                  style: GoogleFonts.cairo(
+                                    fontSize: 13,
+                                    color: textColorSub,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                tooltip: 'معاينة',
+                                onPressed: () => _previewMuezzin(m),
+                                icon: Icon(Icons.play_circle_fill_rounded, color: _gold, size: 32),
+                              ),
+                              const SizedBox(width: 4),
+
+                              if (downloading)
+                                const SizedBox(
+                                  width: 28,
+                                  height: 28,
+                                  child: CircularProgressIndicator(strokeWidth: 2),
+                                )
+                              else if (downloaded)
+                                GestureDetector(
+                                  onTap: () => _deleteMuezzin(m),
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                                    decoration: BoxDecoration(
+                                      color: Colors.green.withOpacity(0.15),
+                                      borderRadius: BorderRadius.circular(12),
+                                      border: Border.all(color: Colors.green.withOpacity(0.4)),
+                                    ),
+                                    child: Text(
+                                      'Offline',
+                                      style: GoogleFonts.cairo(
+                                        color: Colors.green,
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              else
+                                IconButton(
+                                  tooltip: 'تحميل',
+                                  onPressed: () => _downloadMuezzin(m),
+                                  icon: Icon(Icons.download_rounded, color: textColorSub, size: 28),
+                                ),
+
+                              const SizedBox(width: 4),
+
+                              ElevatedButton(
+                                onPressed: () => _selectAsDefault(m),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: _gold.withOpacity(0.2),
+                                  foregroundColor: _gold,
+                                  elevation: 0,
+                                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                    side: BorderSide(color: _gold.withOpacity(0.3)),
+                                  ),
+                                ),
+                                child: Text(
+                                  'اختيار',
+                                  style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              centerTitle: true,
-              background: Stack(
-                fit: StackFit.expand,
-                children: [
-                  // صورة القسم في الخلفية
-                  Image.network(
-                    _currentCategory.imageUrl,
-                    fit: BoxFit.cover,
-                    errorBuilder: (c, e, s) => Container(color: _bgCard),
-                  ),
-                  // تدرج لوني داكن فوق الصورة للقراءة الواضحة
-                  DecoratedBox(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Colors.transparent,
-                          _bgDark.withOpacity(0.8),
-                          _bgDark,
-                        ],
-                        stops: const [0.4, 0.8, 1.0],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-
-          // ✅ قائمة المؤذنين
-          SliverPadding(
-            padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 40),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                    (context, index) {
-                  final m = _items[index];
-                  final isPlaying = _playingId == m.id;
-                  final isDownloaded = _downloaded[m.id] == true;
-                  final isDownloading = _downloading[m.id] == true;
-
-                  return TweenAnimationBuilder<double>(
-                    tween: Tween(begin: 0.0, end: 1.0),
-                    duration: Duration(milliseconds: 400 + (index * 100)),
-                    curve: Curves.easeOutCubic,
-                    builder: (context, value, child) {
-                      return Opacity(
-                        opacity: value,
-                        child: Transform.translate(
-                          offset: Offset(0, 20 * (1 - value)),
-                          child: child,
-                        ),
-                      );
-                    },
-                    child: _buildProfessionalCard(m, isPlaying, isDownloaded, isDownloading),
-                  );
-                },
-                childCount: _items.length,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  // ✅ تصميم البطاقة الاحترافي الجديد
-  Widget _buildProfessionalCard(MuezzinInfo m, bool isPlaying, bool isDownloaded, bool isDownloading) {
-    return GestureDetector(
-      onTap: () => _openPlayer(m),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 300),
-        margin: const EdgeInsets.only(bottom: 16),
-        decoration: BoxDecoration(
-          color: isPlaying ? _gold.withOpacity(0.08) : _bgCard,
-          borderRadius: BorderRadius.circular(24),
-          border: Border.all(
-            color: isPlaying ? _gold.withOpacity(0.5) : Colors.white.withOpacity(0.05),
-            width: isPlaying ? 2 : 1,
-          ),
-          boxShadow: [
-            if (isPlaying)
-              BoxShadow(
-                color: _gold.withOpacity(0.15),
-                blurRadius: 20,
-                spreadRadius: 2,
-              ),
-          ],
-        ),
-        child: Column(
-          children: [
-            // الجزء العلوي: المعلومات وزر التشغيل
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Row(
-                children: [
-                  // أيقونة المايكروفون/المؤذن
-                  Container(
-                    width: 56,
-                    height: 56,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: isPlaying
-                            ? [_gold, const Color(0xFFF4D03F)]
-                            : [Colors.white.withOpacity(0.1), Colors.white.withOpacity(0.05)],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: isPlaying ? [BoxShadow(color: _gold.withOpacity(0.4), blurRadius: 12)] : null,
-                    ),
-                    child: Icon(
-                      Icons.mic_external_on_rounded,
-                      color: isPlaying ? Colors.black : _gold,
-                      size: 28,
-                    ),
-                  ),
-                  const SizedBox(width: 16),
-
-                  // النصوص
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          m.name,
-                          style: GoogleFonts.amiri(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
-                            height: 1.2,
-                          ),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          m.description,
-                          style: GoogleFonts.cairo(
-                            color: Colors.white60,
-                            fontSize: 13,
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  // زر المعاينة (Play/Pause)
-                  GestureDetector(
-                    onTap: () => _togglePreview(m),
-                    child: Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: isPlaying ? Colors.red.withOpacity(0.2) : _gold.withOpacity(0.15),
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: isPlaying ? Colors.red.withOpacity(0.5) : _gold.withOpacity(0.5),
-                        ),
-                      ),
-                      child: Icon(
-                        isPlaying ? Icons.pause_rounded : Icons.play_arrow_rounded,
-                        color: isPlaying ? Colors.redAccent : _gold,
-                        size: 28,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            // خط فاصل شفاف
-            Divider(color: Colors.white.withOpacity(0.05), height: 1, indent: 16, endIndent: 16),
-
-            // الجزء السفلي: أزرار التحكم (تحميل & تعيين كافتراضي)
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-              child: Row(
-                children: [
-                  // زر التحميل / حالة التحميل
-                  Expanded(
-                    child: isDownloaded
-                        ? _buildActionButton(
-                      icon: Icons.offline_pin_rounded,
-                      label: 'متاح بدون إنترنت',
-                      color: Colors.green,
-                      bgColor: Colors.green.withOpacity(0.1),
-                      onTap: null, // لا شيء
-                    )
-                        : isDownloading
-                        ? _buildActionButton(
-                      icon: Icons.downloading,
-                      label: 'جاري التحميل...',
-                      color: _gold,
-                      bgColor: _gold.withOpacity(0.1),
-                      onTap: null,
-                      isSpinning: true,
-                    )
-                        : _buildActionButton(
-                      icon: Icons.cloud_download_rounded,
-                      label: 'تحميل للصلاة',
-                      color: Colors.white70,
-                      bgColor: Colors.white.withOpacity(0.05),
-                      onTap: () => _downloadOffline(m),
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  // زر التعيين كافتراضي
-                  Expanded(
-                    child: _buildActionButton(
-                      icon: Icons.check_circle_outline_rounded,
-                      label: 'تعيين للكل',
-                      color: _gold,
-                      bgColor: _gold.withOpacity(0.15),
-                      onTap: () => _selectAsDefault(m),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  // ✅ زر أنيق مبني خصيصاً للتصميم الجديد
-  Widget _buildActionButton({
-    required IconData icon,
-    required String label,
-    required Color color,
-    required Color bgColor,
-    required VoidCallback? onTap,
-    bool isSpinning = false,
-  }) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        decoration: BoxDecoration(
-          color: bgColor,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: color.withOpacity(0.3)),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (isSpinning)
-              SizedBox(
-                width: 16,
-                height: 16,
-                child: CircularProgressIndicator(color: color, strokeWidth: 2),
-              )
-            else
-              Icon(icon, color: color, size: 18),
-            const SizedBox(width: 6),
-            Text(
-              label,
-              style: GoogleFonts.cairo(
-                color: color,
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
+            );
+          },
         ),
       ),
     );

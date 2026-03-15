@@ -15,7 +15,9 @@ import 'package:islamic_app/screens/quran/surah_deatil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:path_provider/path_provider.dart';
 
+import '../../../services/adahn_audio_services.dart';
 import '../../../services/adahn_notification.dart';
+import '../../../services/muazzin_store.dart';
 import '../../../services/native_adhan_bridge.dart';
 
 import '../../prayer/adhan_player_screen.dart';
@@ -208,10 +210,15 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           scheduledTime = scheduledTime.add(const Duration(days: 1));
         }
 
+        final m = await MuezzinStore.getEffectiveForPrayer(prayer['key'] as String);
+        final localPath = await AdhanAudioService.instance.getLocalPath(m.id);
+
         await NativeAdhanBridge.scheduleAdhan(
           time: scheduledTime,
           prayerName: prayer['name'] as String,
           requestCode: prayer['id'] as int,
+          soundName: m.localSoundName,
+          localPath: localPath,
         );
 
         debugPrint('✅ تم جدولة أذان ${prayer['name']} عند $scheduledTime');
@@ -469,8 +476,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     } catch (_) {}
     return 'موقعي';
   }
-
-
 
   Future<void> _fetchPrayerTimesFromAPI(double lat, double long) async {
     try {
@@ -768,7 +773,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               IconButton(
                 icon: const Icon(Icons.settings_voice, color: Colors.white),
                 tooltip: 'المؤذن',
-                onPressed: () => _navigateToScreen(12),
+                onPressed: () => _navigateToScreen(11),
               ),
               IconButton(
                 icon: const Icon(Icons.settings, color: Colors.white),
@@ -1081,9 +1086,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         color: isDark ? primary.withOpacity(0.2) : Colors.white,
         boxShadow: [
           BoxShadow(
-            color: isDark ? Colors.black.withOpacity(0.9) : primary.withOpacity(0.9),
-            blurRadius: isDark ? 26 : 18,
-            offset: const Offset(0, 4),
+            color: isDark ? primary.withOpacity(0.5) : primary.withOpacity(0.9),
+            blurRadius: isDark ? 7 : 18,
+            offset: Offset(isDark ? 0 : 0, 4),
           )
         ],
       ),
@@ -1275,9 +1280,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: isDark ? Colors.black.withOpacity(0.9) : primary.withOpacity(0.7),
-            blurRadius: 20,
-            offset: const Offset(0, 2),
+            color: isDark ? primary.withOpacity(0.5) : primary.withOpacity(0.7),
+            blurRadius:isDark? 9 : 20,
+            offset: Offset(isDark ? 0 : 0, 2),
           )
         ],
       ),
@@ -1434,15 +1439,15 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         double curved = Curves.easeOutBack.transform(progress);
         return Transform.scale(scale: 0.5 + (0.5 * curved), child: Opacity(opacity: progress, child: child));
       },
-      child: _buildFeatureCard(index, primary),
+      child: _buildFeatureCard(index, primary, isDark),
     );
   }
 
-  Widget _buildFeatureCard(int index, Color primary) {
+  Widget _buildFeatureCard(int index, Color primary, bool isDark) {
     final feature = features[index];
     final hsl = HSLColor.fromColor(primary);
-    final color1 = hsl.withLightness((hsl.lightness - 0.05).clamp(0.0, 1.0)).toColor();
-    final color2 = hsl.withLightness((hsl.lightness + 0.15).clamp(0.0, 1.0)).toColor();
+    final color1 =isDark? hsl.withLightness((hsl.lightness - 0.24).clamp(0.0, 1.0)).toColor() :  hsl.withLightness((hsl.lightness - 0.05).clamp(0.0, 1.0)).toColor();
+    final color2 =isDark? hsl.withLightness((hsl.lightness + 0.03).clamp(0.0, 1.0)).toColor() : hsl.withLightness((hsl.lightness + 0.15).clamp(0.0, 1.0)).toColor();
 
     return GestureDetector(
       onTap: () => _navigateToScreen(index),
@@ -1450,7 +1455,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(22),
           gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [color1, color2]),
-          boxShadow: [BoxShadow(color: primary.withOpacity(0.25), blurRadius: 15, offset: const Offset(0, 8))],
+          boxShadow: [BoxShadow(
+              color:isDark? primary.withOpacity(0.3) : primary.withOpacity(0.25),
+              blurRadius: 15,
+              offset: const Offset(0, 8)
+          )],
         ),
         child: Stack(
           children: [
