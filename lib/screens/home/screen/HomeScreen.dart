@@ -169,22 +169,20 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   }
 
-
   Future<void> _schedulePrayerNotifications() async {
     if (!mounted) return;
     if (_isSchedulingNotifications) return;
 
     if (_prayerTimes.isEmpty) {
-      debugPrint('⚠️ لا يمكن جدولة الأذان لأن أوقات الصلاة فارغة');
+      debugPrint('⚠️ لا يمكن الجدولة لأن أوقات الصلاة فارغة');
       return;
     }
 
     final prefs = await SharedPreferences.getInstance();
+
     final adhanEnabled = prefs.getBool('adhan_enabled') ?? false;
-    if (!adhanEnabled) {
-      debugPrint('🔕 الأذان غير مفعل');
-      return;
-    }
+    final reminderEnabled = prefs.getBool('reminder_enabled') ?? false;
+    final reminderOffset = prefs.getInt('reminder_offset') ?? 10;
 
     _isSchedulingNotifications = true;
 
@@ -197,12 +195,18 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         {'key': 'Isha', 'name': 'العشاء', 'id': 104},
       ];
 
+      // إلغاء الأذان السابق + التنبيهات السابقة
       for (final prayer in prayers) {
         await NativeAdhanBridge.cancelAdhan(prayer['id'] as int);
+        await NativeAdhanBridge.cancelAdhan((prayer['id'] as int) + 1000);
       }
 
       for (final prayer in prayers) {
-        final timeStr = _prayerTimes[prayer['key']];
+        final key = prayer['key'] as String;
+        final prayerName = prayer['name'] as String;
+        final prayerId = prayer['id'] as int;
+
+        final timeStr = _prayerTimes[key];
         if (timeStr == null || timeStr.isEmpty) continue;
 
         DateTime scheduledTime = _parseTime(timeStr);
@@ -210,21 +214,55 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           scheduledTime = scheduledTime.add(const Duration(days: 1));
         }
 
-        final m = await MuezzinStore.getEffectiveForPrayer(prayer['key'] as String);
-        final localPath = await AdhanAudioService.instance.getLocalPath(m.id);
+        // 1) الأذان الحقيقي
+        if (adhanEnabled) {
+          final m = await MuezzinStore.getEffectiveForPrayer(key);
 
-        await NativeAdhanBridge.scheduleAdhan(
-          time: scheduledTime,
-          prayerName: prayer['name'] as String,
-          requestCode: prayer['id'] as int,
-          soundName: m.localSoundName,
-          localPath: localPath,
-        );
+          final localPath = m.isBuiltIn
+              ? null
+              : await AdhanAudioService.instance.getLocalPath(m.id);
 
-        debugPrint('✅ تم جدولة أذان ${prayer['name']} عند $scheduledTime');
+          final soundName =
+          m.localSoundName.isNotEmpty ? m.localSoundName : 'makkah';
+
+          await NativeAdhanBridge.scheduleAdhan(
+            time: scheduledTime,
+            prayerName: prayerName,
+            requestCode: prayerId,
+            soundName: soundName,
+            localPath: localPath,
+          );
+
+          debugPrint(
+            '✅ تم جدولة الأذان: $prayerName عند $scheduledTime | sound=$soundName | local=$localPath',
+          );
+        }
+
+        // 2) التنبيه قبل الصلاة
+        if (reminderEnabled && reminderOffset > 0) {
+          final reminderTime =
+          scheduledTime.subtract(Duration(minutes: reminderOffset));
+
+          if (reminderTime.isAfter(DateTime.now())) {
+            await NativeAdhanBridge.scheduleReminder(
+              time: reminderTime,
+              prayerName: prayerName,
+              requestCode: prayerId + 1000,
+              soundName: 'reminder_beep',
+            );
+
+            debugPrint(
+              '🔔 تم جدولة التنبيه القبلي: $prayerName عند $reminderTime',
+            );
+          } else {
+            debugPrint(
+              '⏭️ تم تخطي التنبيه القبلي لـ $prayerName لأن وقته مر',
+            );
+          }
+        }
       }
     } catch (e) {
-      debugPrint('❌ خطأ أثناء الجدولة الأصلية: $e');
+      debugPrint('❌ خطأ أثناء الجدولة: $e');
     } finally {
       _isSchedulingNotifications = false;
     }
@@ -418,7 +456,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     try {
       bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
       if (!serviceEnabled) {
-        if (savedCity == null) _initLocationAndPrayersSafe();
+        if (savedCity == null) {
+          _forceFallback('مكة المكرمة');
+        }
         return;
       }
 
@@ -449,7 +489,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
       await _fetchPrayerTimesFromAPI(position.latitude, position.longitude);
     } catch (e) {
-      if (savedCity == null) _initLocationAndPrayersSafe();
+      if (savedCity == null) {
+        _forceFallback('مكة المكرمة');
+      }
     }
   }
 
@@ -479,8 +521,29 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   Future<void> _fetchPrayerTimesFromAPI(double lat, double long) async {
     try {
+      final prefs = await SharedPreferences.getInstance();
+      final methodKey = prefs.getString('calc_method') ?? 'umm_al_qura';
+
+      int method = 4;
+
+      switch (methodKey) {
+        case 'umm_al_qura':
+          method = 4;
+          break;
+        case 'egyptian':
+          method = 5;
+          break;
+        case 'mwl':
+          method = 3;
+          break;
+        default:
+          method = 4;
+      }
+
       final date = DateFormat('dd-MM-yyyy').format(DateTime.now());
-      final url = Uri.parse('https://api.aladhan.com/v1/timings/$date?latitude=$lat&longitude=$long');
+      final url = Uri.parse(
+        'https://api.aladhan.com/v1/timings/$date?latitude=$lat&longitude=$long&method=$method',
+      );
 
       final response = await http.get(url).timeout(const Duration(seconds: 5));
 
@@ -488,8 +551,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         final data = json.decode(response.body);
         final timings = Map<String, String>.from(data['data']['timings']);
 
-        // ✅ حفظ المواقيت في SharedPreferences
-        final prefs = await SharedPreferences.getInstance();
         await prefs.setString('last_prayer_times', json.encode(timings));
 
         if (mounted) {
@@ -498,13 +559,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             _isPrayerLoading = false;
             _calculateNextPrayer();
           });
-          _schedulePrayerNotifications();
         }
+
+        await _schedulePrayerNotifications();
       } else {
-        _loadLastSavedTimes(); // جرب تحميل المحفوظ إذا فشل الـ API
+        await _loadLastSavedTimes();
       }
     } catch (e) {
-      _loadLastSavedTimes();
+      await _loadLastSavedTimes();
     }
   }
 
@@ -518,9 +580,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         _isPrayerLoading = false;
         _calculateNextPrayer();
       });
+
+      await _schedulePrayerNotifications();
     } else {
-      // إذا لم يوجد شيء، استخدم الافتراضي
-      _initLocationAndPrayersSafe();
+      _forceFallback('مكة المكرمة');
     }
   }
 
@@ -621,6 +684,46 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     }
   }
 
+  Future<Map<String, String>?> _applyCalculationMethod(String methodKey) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('calc_method', methodKey);
+
+      final savedLat = prefs.getDouble('last_lat');
+      final savedLong = prefs.getDouble('last_long');
+
+      if (savedLat != null && savedLong != null) {
+        await _fetchPrayerTimesFromAPI(savedLat, savedLong);
+        return _prayerTimes;
+      }
+
+      final position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.low,
+      ).timeout(const Duration(seconds: 5));
+
+      await prefs.setDouble('last_lat', position.latitude);
+      await prefs.setDouble('last_long', position.longitude);
+
+      await _fetchPrayerTimesFromAPI(position.latitude, position.longitude);
+      return _prayerTimes;
+    } catch (e) {
+      debugPrint('❌ apply calc method error: $e');
+      return null;
+    }
+  }
+
+  Future<void> _applyReminderOffset(int offset) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setInt('reminder_offset', offset);
+      await prefs.setBool('reminder_enabled', offset > 0);
+
+      await _schedulePrayerNotifications();
+    } catch (e) {
+      debugPrint('❌ apply reminder offset error: $e');
+    }
+  }
+
   @override
   void dispose() {
     _timer?.cancel();
@@ -645,7 +748,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           prayerTimes: _prayerTimes.isNotEmpty ? _prayerTimes : null,
           cityName: _cityName.isNotEmpty ? _cityName : null,
           onRefreshLocation: _refreshLocationAndPrayerTimes,
-        );;
+          onApplyCalculationMethod: _applyCalculationMethod,
+          onReminderOffsetChanged: _applyReminderOffset,
+        );
         break;
       case 2:
         screen = const AzkarScreen();
@@ -697,7 +802,59 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       );
 
       if (mounted && index == 12) {
-        _schedulePrayerNotifications();
+        await _refreshLocationAndPrayerTimes();
+      }
+    }
+  }
+
+  Future<void> applyCalculationMethodAndRefresh(String methodKey) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+
+      // حفظ طريقة الحساب الجديدة
+      await prefs.setString('calc_method', methodKey);
+
+      if (mounted) {
+        setState(() {
+          _isPrayerLoading = true;
+        });
+      }
+
+      // استخدام آخر موقع محفوظ إن وجد
+      final savedLat = prefs.getDouble('last_lat');
+      final savedLong = prefs.getDouble('last_long');
+
+      if (savedLat != null && savedLong != null) {
+        await _fetchPrayerTimesFromAPI(savedLat, savedLong);
+        return;
+      }
+
+      // لو لا يوجد موقع محفوظ نحاول جلب الموقع الحالي
+      final position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.low,
+      ).timeout(const Duration(seconds: 5));
+
+      await prefs.setDouble('last_lat', position.latitude);
+      await prefs.setDouble('last_long', position.longitude);
+
+      await _fetchPrayerTimesFromAPI(position.latitude, position.longitude);
+    } catch (e) {
+      debugPrint('❌ خطأ أثناء تطبيق طريقة الحساب: $e');
+
+      if (mounted) {
+        setState(() {
+          _isPrayerLoading = false;
+        });
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'تعذر تحديث المواقيت بطريقة الحساب الجديدة',
+              style: GoogleFonts.cairo(),
+            ),
+            backgroundColor: Colors.red,
+          ),
+        );
       }
     }
   }

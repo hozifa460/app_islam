@@ -16,7 +16,11 @@ class AdahnNotification {
 
   static const String _adhanChannelId = 'adhan_channel_v3001';
   static const String _adhanChannelName = 'أذان التطبيق';
-  static const String _adhanChannelDesc = 'تنبيهات الأذان الجدي';
+  static const String _adhanChannelDesc = 'تنبيهات الأذان';
+
+  static const String _reminderChannelId = 'reminder_channel_v3001';
+  static const String _reminderChannelName = 'تذكير قبل الصلاة';
+  static const String _reminderChannelDesc = 'تنبيهات قبل الصلاة';
 
   Future<void> init() async {
     tz_data.initializeTimeZones();
@@ -45,7 +49,6 @@ class AdahnNotification {
       },
     );
 
-    // ✅ إنشاء قناة الأذان بالصوت
     const AndroidNotificationChannel adhanChannel =
     AndroidNotificationChannel(
       _adhanChannelId,
@@ -54,13 +57,26 @@ class AdahnNotification {
       importance: Importance.max,
       playSound: true,
       enableVibration: true,
-      sound: RawResourceAndroidNotificationSound('menshawy'),
+      sound: RawResourceAndroidNotificationSound('makkah'),
     );
 
-    await _plugin
-        .resolvePlatformSpecificImplementation<
-        AndroidFlutterLocalNotificationsPlugin>()
-        ?.createNotificationChannel(adhanChannel);
+    const AndroidNotificationChannel reminderChannel =
+    AndroidNotificationChannel(
+      _reminderChannelId,
+      _reminderChannelName,
+      description: _reminderChannelDesc,
+      importance: Importance.high,
+      playSound: true,
+      enableVibration: true,
+      sound: RawResourceAndroidNotificationSound('reminder_beep'),
+    );
+
+    final androidPlugin =
+    _plugin.resolvePlatformSpecificImplementation<
+        AndroidFlutterLocalNotificationsPlugin>();
+
+    await androidPlugin?.createNotificationChannel(adhanChannel);
+    await androidPlugin?.createNotificationChannel(reminderChannel);
   }
 
   Future<void> schedulePrayerNotification({
@@ -72,27 +88,36 @@ class AdahnNotification {
   }) async {
     if (dateTime.isBefore(DateTime.now())) return;
 
+    final type = payload['type']?.toString() ?? 'adhan';
+    final isReminder = type == 'reminder';
+
     final details = NotificationDetails(
       android: AndroidNotificationDetails(
-        _adhanChannelId,
-        _adhanChannelName,
-        channelDescription: _adhanChannelDesc,
-        importance: Importance.max,
-        priority: Priority.max,
+        isReminder ? _reminderChannelId : _adhanChannelId,
+        isReminder ? _reminderChannelName : _adhanChannelName,
+        channelDescription:
+        isReminder ? _reminderChannelDesc : _adhanChannelDesc,
+        importance: isReminder ? Importance.high : Importance.max,
+        priority: isReminder ? Priority.high : Priority.max,
         playSound: true,
         enableVibration: true,
-        sound: const RawResourceAndroidNotificationSound('menshawy'),
-        category: AndroidNotificationCategory.alarm,
-        fullScreenIntent: false, // ✅ فقط إشعار وصوت، بدون فتح الشاشة
+        sound: RawResourceAndroidNotificationSound(
+          isReminder ? 'reminder_beep' : 'makkah',
+        ),
+        category: isReminder
+            ? AndroidNotificationCategory.reminder
+            : AndroidNotificationCategory.alarm,
+        fullScreenIntent: false,
         visibility: NotificationVisibility.public,
         autoCancel: true,
         ongoing: false,
         icon: '@mipmap/ic_launcher',
       ),
-      iOS: const DarwinNotificationDetails(
+      iOS: DarwinNotificationDetails(
         presentAlert: true,
         presentBadge: true,
         presentSound: true,
+        sound: isReminder ? 'reminder_beep.aiff' : null,
       ),
     );
 
@@ -129,7 +154,7 @@ class AdahnNotification {
         priority: Priority.max,
         playSound: true,
         enableVibration: true,
-        sound: RawResourceAndroidNotificationSound('menshawy'),
+        sound: RawResourceAndroidNotificationSound('makkah'),
         icon: '@mipmap/ic_launcher',
       ),
       iOS: DarwinNotificationDetails(
@@ -145,6 +170,35 @@ class AdahnNotification {
       'إذا سمعت الصوت فالقناة تعمل بشكل صحيح',
       details,
       payload: jsonEncode({'type': 'adhan'}),
+    );
+  }
+
+  Future<void> showInstantReminderTestNotification() async {
+    const details = NotificationDetails(
+      android: AndroidNotificationDetails(
+        _reminderChannelId,
+        _reminderChannelName,
+        channelDescription: _reminderChannelDesc,
+        importance: Importance.high,
+        priority: Priority.high,
+        playSound: true,
+        enableVibration: true,
+        sound: RawResourceAndroidNotificationSound('reminder_beep'),
+        icon: '@mipmap/ic_launcher',
+      ),
+      iOS: DarwinNotificationDetails(
+        presentAlert: true,
+        presentBadge: true,
+        presentSound: true,
+      ),
+    );
+
+    await _plugin.show(
+      5556,
+      'اختبار تنبيه قبل الصلاة',
+      'هذا تنبيه تجريبي بصوت قصير',
+      details,
+      payload: jsonEncode({'type': 'reminder'}),
     );
   }
 

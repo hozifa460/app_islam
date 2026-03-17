@@ -1,9 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:just_audio/just_audio.dart';
+
 import '../../data/prayer/muezzin_catalog.dart';
 import '../../services/adahn_audio_services.dart';
+import '../../services/adhan_image_cache_service.dart';
 import '../../services/muazzin_store.dart';
-import 'adhan_player_screen.dart';
+import '../../utils/offline_muezzin_image.dart';
 
 class MuezzinListScreen extends StatefulWidget {
   final String categoryId;
@@ -24,10 +30,13 @@ class MuezzinListScreen extends StatefulWidget {
 class _MuezzinListScreenState extends State<MuezzinListScreen> {
   final Color _gold = const Color(0xFFE6B325);
   final Color _bgDark = const Color(0xFF0A0E17);
-  final Color _bgCard = const Color(0xFF151B26);
 
-  Map<String, bool> _isDownloading = {};
-  Map<String, bool> _isDownloaded = {};
+  final AudioPlayer _previewPlayer = AudioPlayer();
+  String? _playingPreviewId;
+  bool _previewLoading = false;
+
+  final Map<String, bool> _isDownloading = {};
+  final Map<String, bool> _isDownloaded = {};
 
   late MuezzinCategory _category;
 
@@ -36,11 +45,36 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
     super.initState();
     _category = muezzinCatalog.firstWhere((c) => c.id == widget.categoryId);
     _checkDownloads();
+    _cacheCategoryImages();
+  }
+
+  @override
+  void dispose() {
+    _previewPlayer.dispose();
+    super.dispose();
+  }
+
+  Future<void> _cacheCategoryImages() async {
+    for (final m in _category.items) {
+      if (m.imageUrl.isNotEmpty) {
+        await AdhanImageCacheService.instance.getOrDownload(
+          id: m.id,
+          url: m.imageUrl,
+        );
+      }
+    }
+
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   Future<void> _checkDownloads() async {
     for (final m in _category.items) {
-      final downloaded = await AdhanAudioService.instance.isDownloaded(m.id);
+      final downloaded = m.isBuiltIn
+          ? true
+          : await AdhanAudioService.instance.isDownloaded(m.id);
+
       if (mounted) {
         setState(() {
           _isDownloaded[m.id] = downloaded;
@@ -50,6 +84,8 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
   }
 
   Future<void> _downloadMuezzin(MuezzinInfo m) async {
+    if (m.isBuiltIn) return;
+
     setState(() => _isDownloading[m.id] = true);
 
     final path = await AdhanAudioService.instance.download(
@@ -77,6 +113,8 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
   }
 
   Future<void> _deleteMuezzin(MuezzinInfo m) async {
+    if (m.isBuiltIn) return;
+
     await AdhanAudioService.instance.deleteDownloaded(m.id);
     if (!mounted) return;
     setState(() => _isDownloaded[m.id] = false);
@@ -90,30 +128,79 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
   }
 
   Future<void> _previewMuezzin(MuezzinInfo m) async {
-    final local = await AdhanAudioService.instance.getLocalPath(m.id);
+    try {
+      if (_playingPreviewId == m.id && _previewPlayer.playing) {
+        await _previewPlayer.stop();
+        if (mounted) {
+          setState(() {
+            _playingPreviewId = null;
+            _previewLoading = false;
+          });
+        }
+        return;
+      }
 
-    if (!mounted) return;
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) => AdhanPlayerScreen(
-          primaryColor: widget.primaryColor,
-          prayerName: 'معاينة',
-          muezzinName: m.name,
-          url: m.url,
-          localPath: local,
-        ),
-      ),
-    );
+      if (mounted) {
+        setState(() {
+          _playingPreviewId = m.id;
+          _previewLoading = true;
+        });
+      }
+
+      await _previewPlayer.stop();
+
+      if (m.isBuiltIn) {
+        await _previewPlayer.setAsset('assets/adahn/${m.localSoundName}.mp3');
+      } else {
+        final local = await AdhanAudioService.instance.getLocalPath(m.id);
+
+        if (local != null && local.isNotEmpty) {
+          await _previewPlayer.setFilePath(local);
+        } else {
+          await _previewPlayer.setUrl(m.url);
+        }
+      }
+
+      await _previewPlayer.play();
+
+      if (mounted) {
+        setState(() {
+          _previewLoading = false;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _playingPreviewId = null;
+          _previewLoading = false;
+        });
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('تعذر تشغيل المعاينة', style: GoogleFonts.cairo()),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
   }
 
   Future<void> _selectAsDefault(MuezzinInfo m) async {
     await MuezzinStore.setDefault(m, resetAllCustom: true);
 
+    if (m.imageUrl.isNotEmpty) {
+      await AdhanImageCacheService.instance.getOrDownload(
+        id: m.id,
+        url: m.imageUrl,
+      );
+    }
+
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('تم اختيار ${m.name} كمؤذن افتراضي لكل الصلوات', style: GoogleFonts.cairo()),
+        content: Text(
+          'تم اختيار ${m.name} كمؤذن افتراضي لكل الصلوات',
+          style: GoogleFonts.cairo(),
+        ),
         backgroundColor: _gold,
       ),
     );
@@ -130,8 +217,10 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
         : [Colors.white, Colors.white];
     final textColorMain = isDark ? Colors.white : const Color(0xFF1A1A1A);
     final textColorSub = isDark ? Colors.white70 : Colors.black54;
-    final borderColor = isDark ? Colors.white.withOpacity(0.1) : _gold.withOpacity(0.2);
-    final shadowColor = isDark ? Colors.black.withOpacity(0.3) : Colors.grey.withOpacity(0.1);
+    final borderColor =
+    isDark ? Colors.white.withOpacity(0.1) : _gold.withOpacity(0.2);
+    final shadowColor =
+    isDark ? Colors.black.withOpacity(0.4) : Colors.grey.withOpacity(0.4);
 
     return Scaffold(
       backgroundColor: bgColor,
@@ -153,7 +242,9 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
           decoration: BoxDecoration(
             color: isDark ? Colors.white.withOpacity(0.1) : _gold.withOpacity(0.1),
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: isDark ? Colors.white.withOpacity(0.1) : Colors.transparent),
+            border: Border.all(
+              color: isDark ? Colors.white.withOpacity(0.1) : Colors.transparent,
+            ),
           ),
           child: IconButton(
             icon: Icon(Icons.arrow_back_ios_new, color: textColorMain),
@@ -161,182 +252,386 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
           ),
         ),
       ),
-      body: SafeArea(
-        child: ListView.builder(
-          padding: const EdgeInsets.all(20),
-          physics: const BouncingScrollPhysics(),
-          itemCount: _category.items.length,
-          itemBuilder: (context, index) {
-            final m = _category.items[index];
-            final downloading = _isDownloading[m.id] == true;
-            final downloaded = _isDownloaded[m.id] == true;
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          final isSmall = constraints.maxWidth < 380;
+          final crossAxisCount = isSmall ? 1 : 2;
 
-            return TweenAnimationBuilder<double>(
-              tween: Tween(begin: 0.0, end: 1.0),
-              duration: Duration(milliseconds: 350 + (index * 100)),
-              curve: Curves.easeOutCubic,
-              builder: (context, value, child) {
-                return Opacity(
-                  opacity: value,
-                  child: Transform.translate(
-                    offset: Offset(0, 18 * (1 - value)),
-                    child: child,
+          return GridView.builder(
+            padding: const EdgeInsets.only(bottom: 15, left: 15, right: 15, top: 120),
+            physics: const BouncingScrollPhysics(),
+            itemCount: _category.items.length,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: crossAxisCount,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 16,
+              childAspectRatio: isSmall ? 2.2 : 0.65,
+            ),
+            itemBuilder: (context, index) {
+              final m = _category.items[index];
+              final downloading = _isDownloading[m.id] == true;
+              final downloaded = _isDownloaded[m.id] == true;
+              final isBuiltIn = m.isBuiltIn;
+              final isPlaying = _playingPreviewId == m.id;
+
+              return _buildMuezzinCard(
+                m,
+                downloading,
+                downloaded,
+                isBuiltIn,
+                isPlaying,
+                textColorMain,
+                textColorSub,
+                borderColor,
+                shadowColor,
+                cardGradient,
+                isSmall,
+              );
+            },
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildMuezzinCard(
+      MuezzinInfo m,
+      bool downloading,
+      bool downloaded,
+      bool isBuiltIn,
+      bool isPlaying,
+      Color textColorMain,
+      Color textColorSub,
+      Color borderColor,
+      Color shadowColor,
+      List<Color> cardGradient,
+      bool isSmall,
+      ) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: cardGradient,
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(
+          color: isPlaying ? _gold.withOpacity(0.5) : borderColor,
+          width: isPlaying ? 1.5 : 1,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: isPlaying ? _gold.withOpacity(0.2) : shadowColor,
+            blurRadius: 14,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
+      child: isSmall
+          ? _buildHorizontalCardContent(
+        m,
+        downloading,
+        downloaded,
+        isBuiltIn,
+        textColorMain,
+        textColorSub,
+      )
+          : _buildVerticalCardContent(
+        m,
+        downloading,
+        downloaded,
+        isBuiltIn,
+        textColorMain,
+        textColorSub,
+      ),
+    );
+  }
+
+  Widget _buildHorizontalCardContent(
+      MuezzinInfo m,
+      bool downloading,
+      bool downloaded,
+      bool isBuiltIn,
+      Color textColorMain,
+      Color textColorSub,
+      ) {
+    return Row(
+      children: [
+        ClipRRect(
+          borderRadius: const BorderRadius.horizontal(right: Radius.circular(24)),
+          child: SizedBox(
+            width: 110,
+            height: double.infinity,
+            child: _buildMuezzinImage(m),
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  m.name,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.cairo(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: textColorMain,
+                  ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  m.description,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.cairo(
+                    fontSize: 11,
+                    color: textColorSub,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 10),
+                _buildActionRow(m, downloading, downloaded, isBuiltIn, textColorSub),
+                const SizedBox(height: 8),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () => _selectAsDefault(m),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: _gold.withOpacity(0.2),
+                      foregroundColor: _gold,
+                      elevation: 0,
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: BorderSide(color: _gold.withOpacity(0.3)),
+                      ),
+                    ),
+                    child: Text(
+                      'اختيار',
+                      style: GoogleFonts.cairo(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildVerticalCardContent(
+      MuezzinInfo m,
+      bool downloading,
+      bool downloaded,
+      bool isBuiltIn,
+      Color textColorMain,
+      Color textColorSub,
+      ) {
+    return Column(
+      children: [
+        ClipRRect(
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+          child: SizedBox(
+            height: 108,
+            width: double.infinity,
+            child: _buildMuezzinImage(m),
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(10, 10, 10, 8),
+            child: Column(
+              children: [
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          m.name,
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.cairo(
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold,
+                            color: textColorMain,
+                            height: 1.2,
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.visible,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                    ],
+                  ),
+                ),
+                const Gap(0),
+                _buildActionRow(m, downloading, downloaded, isBuiltIn, textColorSub),
+                const SizedBox(height: 0),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () => _selectAsDefault(m),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: _gold.withOpacity(0.2),
+                      foregroundColor: _gold,
+                      elevation: 0,
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: BorderSide(color: _gold.withOpacity(0.3)),
+                      ),
+                    ),
+                    child: Text(
+                      'اختيار',
+                      style: GoogleFonts.cairo(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMuezzinImage(MuezzinInfo m) {
+    return FutureBuilder<String?>(
+      future: AdhanImageCacheService.instance.getLocalPath(m.id),
+      builder: (context, snapshot) {
+        final localPath = snapshot.data;
+
+        if (localPath != null && localPath.isNotEmpty) {
+          return Stack(
+            fit: StackFit.expand,
+            children: [
+              Image.file(
+                File(localPath),
+                fit: BoxFit.cover,
+              ),
+              Container(
+                color: Colors.black.withOpacity(0.25),
+              ),
+            ],
+          );
+        }
+
+        return Stack(
+          fit: StackFit.expand,
+          children: [
+            Image.network(
+              m.imageUrl,
+              fit: BoxFit.cover,
+              errorBuilder: (_, __, ___) {
+                return Container(
+                  color: Colors.black12,
+                  child: const Center(
+                    child: Icon(Icons.person, color: Colors.white54, size: 30),
                   ),
                 );
               },
+            ),
+            Container(
+              color: Colors.black.withOpacity(0.25),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _buildActionRow(
+      MuezzinInfo m,
+      bool downloading,
+      bool downloaded,
+      bool isBuiltIn,
+      Color textColorSub,
+      ) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        IconButton(
+          tooltip: 'معاينة',
+          onPressed: () => _previewMuezzin(m),
+          icon: _previewLoading && _playingPreviewId == m.id
+              ? SizedBox(
+            width: 18,
+            height: 18,
+            child: CircularProgressIndicator(
+              strokeWidth: 2,
+              color: _gold,
+            ),
+          )
+              : Icon(
+            _playingPreviewId == m.id
+                ? Icons.pause_circle_filled_rounded
+                : Icons.play_circle_fill_rounded,
+            color: _gold,
+            size: 28,
+          ),
+        ),
+        const SizedBox(width: 4),
+        if (isBuiltIn)
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            decoration: BoxDecoration(
+              color: _gold.withOpacity(0.15),
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: _gold.withOpacity(0.4)),
+            ),
+            child: Text(
+              'جاهز',
+              style: GoogleFonts.cairo(
+                color: _gold,
+                fontSize: 10,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          )
+        else if (downloading)
+          const SizedBox(
+            width: 18,
+            height: 18,
+            child: CircularProgressIndicator(strokeWidth: 2),
+          )
+        else if (downloaded)
+            GestureDetector(
+              onTap: () => _deleteMuezzin(m),
               child: Container(
-                margin: const EdgeInsets.only(bottom: 14),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: cardGradient),
-                  borderRadius: BorderRadius.circular(24),
-                  border: Border.all(color: borderColor),
-                  boxShadow: [
-                    BoxShadow(
-                      color: shadowColor,
-                      blurRadius: 14,
-                      offset: const Offset(0, 5),
-                    ),
-                  ],
+                  color: Colors.green.withOpacity(0.15),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: Colors.green.withOpacity(0.4)),
                 ),
-                child: Column(
-                  children: [
-                    ClipRRect(
-                      borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
-                      child: Stack(
-                        children: [
-                          Container(
-                            height: 140,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: NetworkImage(m.imageUrl),
-                                fit: BoxFit.cover,
-                                colorFilter: ColorFilter.mode(
-                                  Colors.black.withOpacity(0.35),
-                                  BlendMode.darken,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Positioned.fill(
-                            child: Center(
-                              child: Container(
-                                padding: const EdgeInsets.all(12),
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.15),
-                                  shape: BoxShape.circle,
-                                  border: Border.all(color: Colors.white.withOpacity(0.3)),
-                                ),
-                                child: Icon(Icons.graphic_eq_rounded, color: _gold, size: 30),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  m.name,
-                                  style: GoogleFonts.amiri(
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.bold,
-                                    color: textColorMain,
-                                  ),
-                                ),
-                                const SizedBox(height: 4),
-                                Text(
-                                  m.description,
-                                  style: GoogleFonts.cairo(
-                                    fontSize: 13,
-                                    color: textColorSub,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              IconButton(
-                                tooltip: 'معاينة',
-                                onPressed: () => _previewMuezzin(m),
-                                icon: Icon(Icons.play_circle_fill_rounded, color: _gold, size: 32),
-                              ),
-                              const SizedBox(width: 4),
-
-                              if (downloading)
-                                const SizedBox(
-                                  width: 28,
-                                  height: 28,
-                                  child: CircularProgressIndicator(strokeWidth: 2),
-                                )
-                              else if (downloaded)
-                                GestureDetector(
-                                  onTap: () => _deleteMuezzin(m),
-                                  child: Container(
-                                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                                    decoration: BoxDecoration(
-                                      color: Colors.green.withOpacity(0.15),
-                                      borderRadius: BorderRadius.circular(12),
-                                      border: Border.all(color: Colors.green.withOpacity(0.4)),
-                                    ),
-                                    child: Text(
-                                      'Offline',
-                                      style: GoogleFonts.cairo(
-                                        color: Colors.green,
-                                        fontSize: 11,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              else
-                                IconButton(
-                                  tooltip: 'تحميل',
-                                  onPressed: () => _downloadMuezzin(m),
-                                  icon: Icon(Icons.download_rounded, color: textColorSub, size: 28),
-                                ),
-
-                              const SizedBox(width: 4),
-
-                              ElevatedButton(
-                                onPressed: () => _selectAsDefault(m),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: _gold.withOpacity(0.2),
-                                  foregroundColor: _gold,
-                                  elevation: 0,
-                                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                    side: BorderSide(color: _gold.withOpacity(0.3)),
-                                  ),
-                                ),
-                                child: Text(
-                                  'اختيار',
-                                  style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                child: Text(
+                  'Offline',
+                  style: GoogleFonts.cairo(
+                    color: Colors.green,
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-            );
-          },
-        ),
-      ),
+            )
+          else
+            IconButton(
+              tooltip: 'تحميل',
+              onPressed: () => _downloadMuezzin(m),
+              icon: Icon(Icons.download_rounded, color: textColorSub, size: 22),
+            ),
+      ],
     );
   }
 }

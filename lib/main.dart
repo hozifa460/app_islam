@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:islamic_app/services/adhan_image_preload_service.dart';
 import 'package:islamic_app/services/radio_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/data/latest.dart' as tz_data;
@@ -34,9 +35,15 @@ void main() async {
   await AdahnNotification.instance.init();
   await NotificationService.init();
 
+  final prefs = await SharedPreferences.getInstance();
+  await prefs.remove('adhan_images_preloaded');
+
+
   runApp(const MyApp());
 
 }
+
+
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -83,7 +90,24 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     _loadPrefs();
     _setupNotificationListener();
+    _preloadImages();
   }
+
+  Future<void> _preloadImages() async {
+    final prefs = await SharedPreferences.getInstance();
+    final done = prefs.getBool('adhan_images_preloaded') ?? false;
+
+    if (done) return;
+
+    final success = await AdhanImagePreloadService.preloadAllImages();
+
+    if (success) {
+      await prefs.setBool('adhan_images_preloaded', true);
+    } else {
+      debugPrint('Some adhan images failed to preload. Will retry next launch.');
+    }
+  }
+
 
   void _setupNotificationListener() {
     AdahnNotification.instance.onNotificationTap = (payload) {

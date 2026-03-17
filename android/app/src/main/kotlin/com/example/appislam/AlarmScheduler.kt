@@ -13,12 +13,14 @@ object AlarmScheduler {
         prayerName: String,
         requestCode: Int,
         soundName: String,
-        localPath: String?
+        localPath: String?,
+        isReminder: Boolean
     ) {
         val intent = Intent(context, AdhanReceiver::class.java).apply {
             putExtra("prayerName", prayerName)
             putExtra("soundName", soundName)
             putExtra("localPath", localPath)
+            putExtra("isReminder", isReminder)
         }
 
         val pendingIntent = PendingIntent.getBroadcast(
