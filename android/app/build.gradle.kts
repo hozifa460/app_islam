@@ -51,3 +51,10 @@ dependencies {
     // ✅ 2. أضف هذه المكتبة في قسم dependencies
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
 }
+
+release {
+    signingConfig signingConfigs.release
+            minifyEnabled true
+    shrinkResources true
+    proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+}

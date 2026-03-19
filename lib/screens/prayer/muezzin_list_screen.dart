@@ -240,10 +240,14 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
         leading: Container(
           margin: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: isDark ? Colors.white.withOpacity(0.1) : _gold.withOpacity(0.1),
+            color: isDark
+                ? Colors.white.withOpacity(0.1)
+                : _gold.withOpacity(0.1),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: isDark ? Colors.white.withOpacity(0.1) : Colors.transparent,
+              color: isDark
+                  ? Colors.white.withOpacity(0.1)
+                  : Colors.transparent,
             ),
           ),
           child: IconButton(
@@ -254,18 +258,24 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
-          final isSmall = constraints.maxWidth < 380;
-          final crossAxisCount = isSmall ? 1 : 2;
+          final width = constraints.maxWidth;
+
+          final crossAxisCount = width < 360 ? 1 : 2;
 
           return GridView.builder(
-            padding: const EdgeInsets.only(bottom: 15, left: 15, right: 15, top: 120),
+            padding: const EdgeInsets.only(
+              bottom: 15,
+              left: 15,
+              right: 15,
+              top: 120,
+            ),
             physics: const BouncingScrollPhysics(),
             itemCount: _category.items.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: crossAxisCount,
               crossAxisSpacing: 12,
               mainAxisSpacing: 16,
-              childAspectRatio: isSmall ? 2.2 : 0.65,
+              childAspectRatio: crossAxisCount == 1 ? 0.95 : 0.64,
             ),
             itemBuilder: (context, index) {
               final m = _category.items[index];
@@ -285,11 +295,256 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
                 borderColor,
                 shadowColor,
                 cardGradient,
-                isSmall,
               );
             },
           );
         },
+      ),
+    );
+  }
+
+  Widget _buildFixedMuezzinCard(
+      MuezzinInfo m,
+      bool downloading,
+      bool downloaded,
+      bool isBuiltIn,
+      bool isPlaying,
+      Color textColorMain,
+      Color textColorSub,
+      Color borderColor,
+      Color shadowColor,
+      List<Color> cardGradient,
+      ) {
+    return Container(
+      height: 142,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: cardGradient,
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(
+          color: isPlaying ? _gold.withOpacity(0.5) : borderColor,
+          width: isPlaying ? 1.5 : 1,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: isPlaying ? _gold.withOpacity(0.2) : shadowColor,
+            blurRadius: 14,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          ClipRRect(
+            borderRadius: const BorderRadius.horizontal(
+              right: Radius.circular(24),
+            ),
+            child: SizedBox(
+              width: 108,
+              height: double.infinity,
+              child: _buildMuezzinImage(m),
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    m.name,
+                    style: GoogleFonts.cairo(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: textColorMain,
+                      height: 1.2,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: 4),
+                  if (m.description.trim().isNotEmpty)
+                    Text(
+                      m.description,
+                      style: GoogleFonts.cairo(
+                        fontSize: 11,
+                        color: textColorSub,
+                        height: 1.2,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  const Spacer(),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: SizedBox(
+                          height: 32,
+                          child: _buildActionRow(
+                            m,
+                            downloading,
+                            downloaded,
+                            isBuiltIn,
+                            textColorSub,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      SizedBox(
+                        width: 86,
+                        height: 32,
+                        child: ElevatedButton(
+                          onPressed: () => _selectAsDefault(m),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: _gold.withOpacity(0.2),
+                            foregroundColor: _gold,
+                            elevation: 0,
+                            padding: EdgeInsets.zero,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              side: BorderSide(color: _gold.withOpacity(0.3)),
+                            ),
+                          ),
+                          child: Text(
+                            'اختيار',
+                            style: GoogleFonts.cairo(
+                              fontSize: 11.5,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSheikhListCard(
+      MuezzinInfo m,
+      bool downloading,
+      bool downloaded,
+      bool isBuiltIn,
+      bool isPlaying,
+      Color textColorMain,
+      Color textColorSub,
+      Color borderColor,
+      Color shadowColor,
+      List<Color> cardGradient,
+      ) {
+    return Container(
+      height: 168,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: cardGradient,
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(22),
+        border: Border.all(
+          color: isPlaying ? _gold.withOpacity(0.5) : borderColor,
+          width: isPlaying ? 1.5 : 1,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: isPlaying ? _gold.withOpacity(0.2) : shadowColor,
+            blurRadius: 12,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          ClipRRect(
+            borderRadius: const BorderRadius.horizontal(
+              right: Radius.circular(22),
+            ),
+            child: SizedBox(
+              width: 108,
+              height: double.infinity,
+              child: _buildMuezzinImage(m),
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    m.name,
+                    style: GoogleFonts.cairo(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: textColorMain,
+                      height: 1.2,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: 6),
+                  if (m.description.trim().isNotEmpty)
+                    Text(
+                      m.description,
+                      style: GoogleFonts.cairo(
+                        fontSize: 11.5,
+                        color: textColorSub,
+                        height: 1.2,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    )
+                  else
+                    const SizedBox(height: 30),
+                  const Spacer(),
+                  SizedBox(
+                    height: 32,
+                    child: _buildActionRow(
+                      m,
+                      downloading,
+                      downloaded,
+                      isBuiltIn,
+                      textColorSub,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 36,
+                    child: ElevatedButton(
+                      onPressed: () => _selectAsDefault(m),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: _gold.withOpacity(0.2),
+                        foregroundColor: _gold,
+                        elevation: 0,
+                        padding: EdgeInsets.zero,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          side: BorderSide(color: _gold.withOpacity(0.3)),
+                        ),
+                      ),
+                      child: Text(
+                        'اختيار',
+                        style: GoogleFonts.cairo(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -305,7 +560,6 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
       Color borderColor,
       Color shadowColor,
       List<Color> cardGradient,
-      bool isSmall,
       ) {
     return Container(
       decoration: BoxDecoration(
@@ -327,16 +581,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
           ),
         ],
       ),
-      child: isSmall
-          ? _buildHorizontalCardContent(
-        m,
-        downloading,
-        downloaded,
-        isBuiltIn,
-        textColorMain,
-        textColorSub,
-      )
-          : _buildVerticalCardContent(
+      child: _buildVerticalCardContent(
         m,
         downloading,
         downloaded,
@@ -352,6 +597,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
       bool downloading,
       bool downloaded,
       bool isBuiltIn,
+      bool isPlaying,
       Color textColorMain,
       Color textColorSub,
       ) {
@@ -383,28 +629,39 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
                   overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 4),
-                Text(
-                  m.description,
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.cairo(
-                    fontSize: 11,
-                    color: textColorSub,
+                if (m.description.trim().isNotEmpty)
+                  Text(
+                    m.description,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.cairo(
+                      fontSize: 11,
+                      color: textColorSub,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
                 const SizedBox(height: 10),
-                _buildActionRow(m, downloading, downloaded, isBuiltIn, textColorSub),
+                SizedBox(
+                  height: 32,
+                  child: _buildActionRow(
+                    m,
+                    downloading,
+                    downloaded,
+                    isBuiltIn,
+                    textColorSub,
+                  ),
+                ),
                 const SizedBox(height: 8),
                 SizedBox(
                   width: double.infinity,
+                  height: 34,
                   child: ElevatedButton(
                     onPressed: () => _selectAsDefault(m),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: _gold.withOpacity(0.2),
                       foregroundColor: _gold,
                       elevation: 0,
-                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      padding: EdgeInsets.zero,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                         side: BorderSide(color: _gold.withOpacity(0.3)),
@@ -427,6 +684,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
     );
   }
 
+
   Widget _buildVerticalCardContent(
       MuezzinInfo m,
       bool downloading,
@@ -440,50 +698,73 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
         ClipRRect(
           borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
           child: SizedBox(
-            height: 108,
+            height: 96,
             width: double.infinity,
             child: _buildMuezzinImage(m),
           ),
         ),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(10, 10, 10, 8),
+            padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
             child: Column(
               children: [
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          m.name,
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.cairo(
-                            fontSize: 13,
-                            fontWeight: FontWeight.bold,
-                            color: textColorMain,
-                            height: 1.2,
-                          ),
-                          maxLines: 2,
-                          overflow: TextOverflow.visible,
-                        ),
+                SizedBox(
+                  height: 42,
+                  child: Center(
+                    child: Text(
+                      m.name,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.cairo(
+                        fontSize: 12.5,
+                        fontWeight: FontWeight.bold,
+                        color: textColorMain,
+                        height: 1.2,
                       ),
-                      const SizedBox(height: 10),
-                    ],
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                 ),
-                const Gap(0),
-                _buildActionRow(m, downloading, downloaded, isBuiltIn, textColorSub),
-                const SizedBox(height: 0),
+                const SizedBox(height: 4),
+                SizedBox(
+                  height: 16,
+                  child: m.description.trim().isNotEmpty
+                      ? Text(
+                    m.description,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.cairo(
+                      fontSize: 10.5,
+                      color: textColorSub,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  )
+                      : const SizedBox.shrink(),
+                ),
+                const Spacer(),
+                SizedBox(
+                  height: 30,
+                  child: Center(
+                    child: _buildActionRow(
+                      m,
+                      downloading,
+                      downloaded,
+                      isBuiltIn,
+                      textColorSub,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 6),
                 SizedBox(
                   width: double.infinity,
+                  height: 32,
                   child: ElevatedButton(
                     onPressed: () => _selectAsDefault(m),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: _gold.withOpacity(0.2),
                       foregroundColor: _gold,
                       elevation: 0,
-                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      padding: EdgeInsets.zero,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                         side: BorderSide(color: _gold.withOpacity(0.3)),
@@ -492,7 +773,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
                     child: Text(
                       'اختيار',
                       style: GoogleFonts.cairo(
-                        fontSize: 12,
+                        fontSize: 11.5,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -560,6 +841,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
       ) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
       children: [
         IconButton(
           tooltip: 'معاينة',

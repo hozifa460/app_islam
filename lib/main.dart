@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/data/latest.dart' as tz_data;
 import 'package:timezone/timezone.dart' as tz;
 
+import 'main_shell_screen.dart';
 import 'screens/home/screen/HomeScreen.dart';
 import 'screens/splash_screen.dart';
 import 'screens/prayer/adhan_player_screen.dart';
@@ -161,7 +162,7 @@ class _MyAppState extends State<MyApp> {
   void _goToHome() {
     navigatorKey.currentState?.pushReplacement(
       MaterialPageRoute(
-        builder: (_) => HomeScreen(
+        builder: (_) => MainShellScreen(
           onThemeChanged: _changeTheme,
           onColorChanged: _changeColor,
           isDarkMode: isDarkMode,
