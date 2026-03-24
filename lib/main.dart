@@ -6,10 +6,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:islamic_app/services/adhan_image_preload_service.dart';
 import 'package:islamic_app/services/radio_services.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/data/latest.dart' as tz_data;
 import 'package:timezone/timezone.dart' as tz;
 
+import 'controllers/prayer_times_controller.dart';
 import 'main_shell_screen.dart';
 import 'screens/home/screen/HomeScreen.dart';
 import 'screens/splash_screen.dart';
@@ -40,7 +42,12 @@ void main() async {
   await prefs.remove('adhan_images_preloaded');
 
 
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => PrayerTimesController()..initialize(),
+      child: const MyApp(),
+    ),
+  );
 
 }
 
@@ -56,7 +63,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-  bool isDarkMode = true;
+  bool isDarkMode = false;
   int selectedColorIndex = 0;
 
   static const List<Color> appColors = [
@@ -200,7 +207,7 @@ class _MyAppState extends State<MyApp> {
         textTheme: GoogleFonts.cairoTextTheme(ThemeData.dark().textTheme),
         useMaterial3: true,
       ),
-      home: SplashScreen(onFinish: _goToHome),
+      home: SplashScreen( onFinish: _goToHome,),
     );
   }
 }

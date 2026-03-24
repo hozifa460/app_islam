@@ -1,0 +1,454 @@
+{
+  "السيرة والتاريخ": [
+    {
+      "id": "raheeq",
+      "title": "الرحيق المختوم",
+      "calligraphy": "الرحيق\nالمختوم",
+      "row": 1,
+      "color": "#483D8B",
+      "bottomColor": "#352D66",
+      "type": "custom",
+      "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/alraheeq_almakhtoom.pdf",
+      "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/cover_alraheeq.jpg"
+    },
+    {
+      "id": "albedaya_w_alnehaya",
+      "title": "البداية والنهاية",
+      "calligraphy": "البداية\nوالنهاية",
+      "row": 1,
+      "color": "#6A5ACD",
+      "bottomColor": "#4C4199",
+      "type": "collection",
+      "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya.jpg",
+      "children": [
+        {
+          "id": "albedaya_w_alnehaya_1",
+          "title": "المجلد الأول",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_1.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_1.png"
+        },
+        {
+          "id": "albedaya_w_alnehaya_2",
+          "title": "المجلد الثاني",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_2.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_2.png"
+        },
+        {
+          "id": "albedaya_w_alnehaya_3",
+          "title": "المجلد الثالث",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_3.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_3.png"
+        },
+        {
+          "id": "albedaya_w_alnehaya_4",
+          "title": "المجلد الرابع",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_4.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_4.png"
+        },
+        {
+          "id": "albedaya_w_alnehaya_5",
+          "title": "المجلد الخامس",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_5.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_5.png"
+        },
+        {
+          "id": "albedaya_w_alnehaya_6",
+          "title": "المجلد السادس",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_6.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_6.png"
+        },
+        {
+          "id": "albedaya_w_alnehaya_7",
+          "title": "المجلد السابع",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_7.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_7.png"
+        },
+        {
+          "id": "albedaya_w_alnehaya_8",
+          "title": "المجلد الثامن",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_8.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_8.png"
+        },
+        {
+          "id": "albedaya_w_alnehaya_9",
+          "title": "المجلد التاسع",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_9.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_9.png"
+        },
+        {
+          "id": "albedaya_w_alnehaya_10",
+          "title": "المجلد العاشر",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_10.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_10.png"
+        },
+        {
+          "id": "albedaya_w_alnehaya_11",
+          "title": "المجلد الحادي عشر",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_11.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_11.png"
+        },
+        {
+          "id": "albedaya_w_alnehaya_12",
+          "title": "المجلد الثاني عشر",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_12.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_12.png"
+        },
+        {
+          "id": "albedaya_w_alnehaya_13",
+          "title": "المجلد الثالث عشر",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_13.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_13.png"
+        },
+        {
+          "id": "albedaya_w_alnehaya_14",
+          "title": "المجلد الرابع عشر",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_14.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_14.png"
+        },
+        {
+          "id": "albedaya_w_alnehaya_15",
+          "title": "المجلد الخامس عشر",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_15.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_15.png"
+        },
+        {
+          "id": "albedaya_w_alnehaya_16",
+          "title": "المجلد السادس عشر",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_16.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_16.png"
+        },
+        {
+          "id": "albedaya_w_alnehaya_17",
+          "title": "المجلد السابع عشر",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_17.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_17.png"
+        },
+        {
+          "id": "albedaya_w_alnehaya_18",
+          "title": "المجلد الثامن عشر",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_18.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_18.png"
+        },
+        {
+          "id": "albedaya_w_alnehaya_19",
+          "title": "المجلد التاسع عشر",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_19.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_19.png"
+        },
+        {
+          "id": "albedaya_w_alnehaya_20_21",
+          "title": "المجلد العشرون",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_20_21.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/albedaya_w_alnehaya_20_21.png"
+        }
+      ]
+    },
+    {
+      "id": "siyar",
+      "title": "سير أعلام النبلاء",
+      "calligraphy": "سير أعلام\nالنبلاء",
+      "row": 1,
+      "color": "#4B0082",
+      "bottomColor": "#36005E",
+      "type": "custom",
+      "pdfUrl": "https://archive.org/download/20230215_20230215_2008/%D8%B3%D9%8A%D8%B1%20%D8%A7%D8%B9%D9%84%D8%A7%D9%85%20%D8%A7%D9%84%D9%86%D8%A8%D9%84%D8%A7%D8%A1.pdf",
+      "imageUrl": "https://ia801605.us.archive.org/BookReader/BookReaderImages.php?zip=/13/items/20230215_20230215_2008/%D8%B3%D9%8A%D8%B1%20%D8%A7%D8%B9%D9%84%D8%A7%D9%85%20%D8%A7%D9%84%D9%86%D8%A8%D9%84%D8%A7%D8%A1_jp2.zip&file=%D8%B3%D9%8A%D8%B1%20%D8%A7%D8%B9%D9%84%D8%A7%D9%85%20%D8%A7%D9%84%D9%86%D8%A8%D9%84%D8%A7%D8%A1_jp2/%D8%B3%D9%8A%D8%B1%20%D8%A7%D8%B9%D9%84%D8%A7%D9%85%20%D8%A7%D9%84%D9%86%D8%A8%D9%84%D8%A7%D8%A1_0000.jp2&id=20230215_20230215_2008&scale=4&rotate=0"
+    },
+    {
+      "id": "great100",
+      "title": "مائة من عظماء الإسلام",
+      "calligraphy": "مائة من عظماء\nغيروا مجرى التاريخ",
+      "row": 2,
+      "color": "#4B0082",
+      "bottomColor": "#36005E",
+      "type": "custom",
+      "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/islamgraets.pdf",
+      "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/6223006070707.webp"
+    },
+    {
+      "id": "schoolofprophet",
+      "title": "مدرسة الرسول عليه الصلاة والسلام",
+      "calligraphy": "مدرسة الرسول عليه \nالصلاة والسلام",
+      "row": 2,
+      "color": "#4B0082",
+      "bottomColor": "#36005E",
+      "type": "custom",
+      "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/schoolofprophet.pdf",
+      "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/Prophet.jpg"
+    },
+    {
+      "id": "vandal_war",
+      "title": "حرب الفاندال",
+      "calligraphy": "حرب \nالفاندال",
+      "row": 2,
+      "color": "#4B0082",
+      "bottomColor": "#36005E",
+      "type": "custom",
+      "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/vandal_war.pdf",
+      "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/حرب-الفاندال.jpg"
+    }
+  ],
+  "الرد والتثبيت": [
+    {
+      "id": "",
+      "title": "كتاب بصائر",
+      "calligraphy": "بصائر",
+      "row": 1,
+      "color": "#5C4033",
+      "bottomColor": "#3D2B22",
+      "type": "custom",
+      "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/",
+      "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/"
+    }
+  ],
+  "تزكية النفس": [
+    {
+      "id": "",
+      "title": "الداء والدواء",
+      "calligraphy": "الداء والدواء",
+      "row": 1,
+      "color": "#5C4033",
+      "bottomColor": "#3D2B22",
+      "type": "custom",
+      "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/aldaawaldwaa.pdf",
+      "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/الداء والدواء.jpg"
+    }
+  ],
+  "مقارنة اديان": [
+    {
+      "id": "50000mistakes",
+      "title": "50000 خطا في الكتاب المقدس",
+      "calligraphy": "50000 خطا في الكتاب المقدس",
+      "row": 1,
+      "color": "#5C4033",
+      "bottomColor": "#3D2B22",
+      "type": "custom",
+      "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/mistakes.pdf",
+      "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/كتاب50000.png"
+    }
+  ],
+  "تنمية الزاد": [
+    {
+      "id": "zad",
+      "title": "زاد",
+      "calligraphy": "زاد",
+      "row": 1,
+      "color": "#5C4033",
+      "bottomColor": "#3D2B22",
+      "type": "custom",
+      "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/zad.pdf",
+      "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/1679790345.jpg"
+    }
+  ],
+  "الحديث النبوي": [
+    {
+      "id": "bukhari",
+      "title": "مختصر صحيح البخاري",
+      "calligraphy": "صحيح\nالبخاري",
+      "row": 1,
+      "color": "#287D6D",
+      "bottomColor": "#1F6B5C",
+      "type": "custom",
+      "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/muhtsr_sahih_buhri.pdf",
+      "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/sahihalbukhary.webp"
+    },
+    {
+      "id": "muslim",
+      "title": "مختصر صحيح مسلم",
+      "calligraphy": "صحيح\nمُسلِم",
+      "row": 1,
+      "color": "#4C75A3",
+      "bottomColor": "#3B5E87",
+      "type": "custom",
+      "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/sahihmuslim.pdf",
+      "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/32800.2020-03-03.1583236747.jpg"
+    },
+    {
+      "id": "abudawud",
+      "title": "سنن أبي داود",
+      "calligraphy": "سنن\nأبي داود",
+      "row": 1,
+      "color": "#6B7290",
+      "bottomColor": "#565C7A",
+      "type": "hadith",
+      "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.QTykxy8BqK1re_2srE3fagHaK7?w=976&h=1440&rs=1&pid=ImgDetMain&o=7&rm=3"
+    },
+    {
+      "id": "tirmidhi",
+      "title": "جامع الترمذي",
+      "calligraphy": "جامع\nالترمذي",
+      "row": 1,
+      "color": "#8E5961",
+      "bottomColor": "#75454C",
+      "type": "hadith",
+      "imageUrl": "https://ia801306.us.archive.org/BookReader/BookReaderImages.php?zip=/8/items/termizi-dar-alsalam/%D8%AC%D8%A7%D9%85%D8%B9%20%D8%A7%D9%84%D8%AA%D8%B1%D9%85%D8%B0%D9%8A%20-%20%D8%B7%20%D8%AF%D8%A7%D8%B1%20%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85_jp2.zip&file=%D8%AC%D8%A7%D9%85%D8%B9%20%D8%A7%D9%84%D8%AA%D8%B1%D9%85%D8%B0%D9%8A%20-%20%D8%B7%20%D8%AF%D8%A7%D8%B1%20%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85_jp2/%D8%AC%D8%A7%D9%85%D8%B9%20%D8%A7%D9%84%D8%AA%D8%B1%D9%85%D8%B0%D9%8A%20-%20%D8%B7%20%D8%AF%D8%A7%D8%B1%20%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85_0000.jp2&id=termizi-dar-alsalam&scale=8&rotate=0"
+    },
+    {
+      "id": "nasai",
+      "title": "سنن النسائي",
+      "calligraphy": "سنن\nالنسائي",
+      "row": 1,
+      "color": "#6F6E6F",
+      "bottomColor": "#5A595A",
+      "type": "hadith",
+      "imageUrl": "https://ia600308.us.archive.org/BookReader/BookReaderImages.php?zip=/10/items/sonan.al.nsaei.t.twiq_201908/sonan.al.nsaei.t.twiq_jp2.zip&file=sonan.al.nsaei.t.twiq_jp2/sonan.al.nsaei.t.twiq_0000.jp2&id=sonan.al.nsaei.t.twiq_201908&scale=4&rotate=0"
+    },
+    {
+      "id": "ibnmajah",
+      "title": "سنن ابن ماجه",
+      "calligraphy": "سنن\nابن ماجه",
+      "row": 1,
+      "color": "#865278",
+      "bottomColor": "#6D3F60",
+      "type": "hadith",
+      "imageUrl": "https://ia800504.us.archive.org/BookReader/BookReaderImages.php?zip=/33/items/sounnan-ibn-madjih_202309/Sounnan%20Ibn%20Madjih-%D8%B3%D9%86%D9%86%20%D8%A7%D8%A8%D9%86%20%D9%85%D8%A7%D8%AC%D9%87_jp2.zip&file=Sounnan%20Ibn%20Madjih-%D8%B3%D9%86%D9%86%20%D8%A7%D8%A8%D9%86%20%D9%85%D8%A7%D8%AC%D9%87_jp2/Sounnan%20Ibn%20Madjih-%D8%B3%D9%86%D9%86%20%D8%A7%D8%A8%D9%86%20%D9%85%D8%A7%D8%AC%D9%87_0000.jp2&id=sounnan-ibn-madjih_202309&scale=4&rotate=0"
+    },
+    {
+      "id": "riyad",
+      "title": "رياض الصالحين",
+      "calligraphy": "رياض\nالصالحين",
+      "row": 2,
+      "color": "#3F6C51",
+      "bottomColor": "#325740",
+      "type": "custom",
+      "pdfUrl": "https://archive.org/compress/20230705_20230705_1536/formats=TEXT%20PDF&file=/20230705_20230705_1536.zip",
+      "imageUrl": "https://ia600603.us.archive.org/BookReader/BookReaderImages.php?zip=/10/items/20230705_20230705_1536/%D8%B4%D8%B1%D8%AD%20%D8%B1%D9%8A%D8%A7%D8%B6%20%D8%A7%D9%84%D8%B5%D8%A7%D9%84%D8%AD%D9%8A%D9%86%D9%A1%20-%20%D8%A7%D8%A8%D9%86%20%D8%A8%D8%A7%D8%B2_jp2.zip&file=%D8%B4%D8%B1%D8%AD%20%D8%B1%D9%8A%D8%A7%D8%B6%20%D8%A7%D9%84%D8%B5%D8%A7%D9%84%D8%AD%D9%8A%D9%86%D9%A1%20-%20%D8%A7%D8%A8%D9%86%20%D8%A8%D8%A7%D8%B2_jp2/%D8%B4%D8%B1%D8%AD%20%D8%B1%D9%8A%D8%A7%D8%B6%20%D8%A7%D9%84%D8%B5%D8%A7%D9%84%D8%AD%D9%8A%D9%86%D9%A1%20-%20%D8%A7%D8%A8%D9%86%20%D8%A8%D8%A7%D8%B2_0000.jp2&id=20230705_20230705_1536&scale=4&rotate=0"
+    },
+    {
+      "id": "nawawi40",
+      "title": "الأربعون النووية",
+      "calligraphy": "الأربعون\nالنووية",
+      "row": 2,
+      "color": "#9E4E45",
+      "bottomColor": "#823D35",
+      "type": "custom",
+      "pdfUrl": "https://archive.org/download/20200924_20200924_0912/%D8%A7%D9%84%D8%A7%D8%B1%D8%A8%D8%B9%D9%88%D9%86%20%D8%A7%D9%84%D9%86%D9%88%D9%88%D9%8A%D8%A9%20%D9%84%D8%B5%D8%A7%D9%84%D8%AD%20%D8%A7%D9%84%20%D8%B4%D9%8A%D8%AE.pdf",
+      "imageUrl": "https://ia803203.us.archive.org/BookReader/BookReaderImages.php?zip=/27/items/20200924_20200924_0912/%D8%A7%D9%84%D8%A7%D8%B1%D8%A8%D8%B9%D9%88%D9%86%20%D8%A7%D9%84%D9%86%D9%88%D9%88%D9%8A%D8%A9%20%D9%84%D8%B5%D8%A7%D9%84%D8%AD%20%D8%A7%D9%84%20%D8%B4%D9%8A%D8%AE_jp2.zip&file=%D8%A7%D9%84%D8%A7%D8%B1%D8%A8%D8%B9%D9%88%D9%86%20%D8%A7%D9%84%D9%86%D9%88%D9%88%D9%8A%D8%A9%20%D9%84%D8%B5%D8%A7%D9%84%D8%AD%20%D8%A7%D9%84%20%D8%B4%D9%8A%D8%AE_jp2/%D8%A7%D9%84%D8%A7%D8%B1%D8%A8%D8%B9%D9%88%D9%86%20%D8%A7%D9%84%D9%86%D9%88%D9%88%D9%8A%D8%A9%20%D9%84%D8%B5%D8%A7%D9%84%D8%AD%20%D8%A7%D9%84%20%D8%B4%D9%8A%D8%AE_0000.jp2&id=20200924_20200924_0912&scale=4&rotate=0"
+    }
+  ],
+  "التفسير وعلوم القرآن": [
+    {
+      "id": "tafsir_saadi",
+      "title": "تفسير السعدي",
+      "calligraphy": "تفسير\nالسعدي",
+      "row": 2,
+      "color": "#6B4226",
+      "bottomColor": "#4A2E1A",
+      "type": "custom",
+      "pdfUrl": "https://archive.org/download/20220616_20220616_2004/%D8%AA%D9%81%D8%B3%D9%8A%D8%B1%20%D8%A7%D9%84%D8%B3%D8%B9%D8%AF%D9%8A.pdf",
+      "imageUrl": "https://ia800402.us.archive.org/BookReader/BookReaderImages.php?zip=/25/items/20220616_20220616_2004/%D8%AA%D9%81%D8%B3%D9%8A%D8%B1%20%D8%A7%D9%84%D8%B3%D8%B9%D8%AF%D9%8A_jp2.zip&file=%D8%AA%D9%81%D8%B3%D9%8A%D8%B1%20%D8%A7%D9%84%D8%B3%D8%B9%D8%AF%D9%8A_jp2/%D8%AA%D9%81%D8%B3%D9%8A%D8%B1%20%D8%A7%D9%84%D8%B3%D8%B9%D8%AF%D9%8A_0000.jp2&id=20220616_20220616_2004&scale=4&rotate=0"
+    },
+    {
+      "id": "tafsir_ibnkathir",
+      "title": "تفسير ابن كثير",
+      "calligraphy": "تفسير\nابن كثير",
+      "row": 1,
+      "color": "#8B5A2B",
+      "bottomColor": "#694320",
+      "type": "custom",
+      "pdfUrl": "https://archive.org/download/20220903_20220903_1830/%D8%AA%D9%81%D8%B3%D9%8A%D8%B1%20%D8%A8%D9%86%20%D9%83%D8%AB%D9%8A%D8%B1.pdf",
+      "imageUrl": "https://abjjadst.blob.core.windows.net/pub/9abd3fb6-d09e-499b-aee5-f4303c53c193.jpg"
+    },
+    {
+      "id": "atqan",
+      "title": "الإتقان في علوم القرآن",
+      "calligraphy": "الإتقان",
+      "row": 1,
+      "color": "#5C4033",
+      "bottomColor": "#3D2B22",
+      "type": "custom",
+      "pdfUrl": "https://archive.org/download/itkan_20160827/%D8%A7%D9%84%D8%A7%D8%AA%D9%82%D8%A7%D9%86%20%D9%81%D9%8A%20%D8%B9%D9%84%D9%88%D9%85%20%D8%A7%D9%84%D9%82%D8%B1%D8%A7%D9%86.pdf",
+      "imageUrl": "https://ia800504.us.archive.org/BookReader/BookReaderImages.php?zip=/22/items/itkan_20160827/%D8%A7%D9%84%D8%A7%D8%AA%D9%82%D8%A7%D9%86%20%D9%81%D9%8A%20%D8%B9%D9%84%D9%88%D9%85%20%D8%A7%D9%84%D9%82%D8%B1%D8%A7%D9%86_jp2.zip&file=%D8%A7%D9%84%D8%A7%D8%AA%D9%82%D8%A7%D9%86%20%D9%81%D9%8A%20%D8%B9%D9%84%D9%88%D9%85%20%D8%A7%D9%84%D9%82%D8%B1%D8%A7%D9%86_jp2/%D8%A7%D9%84%D8%A7%D8%AA%D9%82%D8%A7%D9%86%20%D9%81%D9%8A%20%D8%B9%D9%84%D9%88%D9%85%20%D8%A7%D9%84%D9%82%D8%B1%D8%A7%D9%86_0000.jp2&id=itkan_20160827&scale=8&rotate=0"
+    }
+  ],
+  "العقيدة والتزكية": [
+    {
+      "id": "tawheed",
+      "title": "كتاب التوحيد",
+      "calligraphy": "كتاب\nالتوحيد",
+      "row": 1,
+      "color": "#2F4F4F",
+      "bottomColor": "#1C2F2F",
+      "type": "custom",
+      "pdfUrl": "https://archive.org/download/01282-pdf/01282%20%D9%83%D8%AA%D8%A7%D8%A8%20%20%20%20%20pdf%20%20%D8%A7%D9%84%D8%B4%D9%8A%D8%AE%20%D9%85%D8%AD%D9%85%D8%AF%20%D8%A8%D9%86%20%D8%B9%D8%A8%D8%AF%20%D8%A7%D9%84%D9%88%D9%87%D8%A7%D8%A8%20%20%20%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A7%D9%84%D8%AA%D9%88%D8%AD%D9%8A%D8%AF.pdf",
+      "imageUrl": "https://ia801705.us.archive.org/BookReader/BookReaderImages.php?zip=/32/items/01282-pdf/01282%20%D9%83%D8%AA%D8%A7%D8%A8%20%20%20%20%20pdf%20%20%D8%A7%D9%84%D8%B4%D9%8A%D8%AE%20%D9%85%D8%AD%D9%85%D8%AF%20%D8%A8%D9%86%20%D8%B9%D8%A8%D8%AF%20%D8%A7%D9%84%D9%88%D9%87%D8%A7%D8%A8%20%20%20%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A7%D9%84%D8%AA%D9%88%D8%AD%D9%8A%D8%AF_jp2.zip&file=01282%20%D9%83%D8%AA%D8%A7%D8%A8%20%20%20%20%20pdf%20%20%D8%A7%D9%84%D8%B4%D9%8A%D8%AE%20%D9%85%D8%AD%D9%85%D8%AF%20%D8%A8%D9%86%20%D8%B9%D8%A8%D8%AF%20%D8%A7%D9%84%D9%88%D9%87%D8%A7%D8%A8%20%20%20%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A7%D9%84%D8%AA%D9%88%D8%AD%D9%8A%D8%AF_jp2/01282%20%D9%83%D8%AA%D8%A7%D8%A8%20%20%20%20%20pdf%20%20%D8%A7%D9%84%D8%B4%D9%8A%D8%AE%20%D9%85%D8%AD%D9%85%D8%AF%20%D8%A8%D9%86%20%D8%B9%D8%A8%D8%AF%20%D8%A7%D9%84%D9%88%D9%87%D8%A7%D8%A8%20%20%20%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A7%D9%84%D8%AA%D9%88%D8%AD%D9%8A%D8%AF_0000.jp2&id=01282-pdf&scale=8&rotate=0"
+    },
+    {
+      "id": "wasitiyyah",
+      "title": "العقيدة الواسطية",
+      "calligraphy": "العقيدة\nالواسطية",
+      "row": 1,
+      "color": "#4A708B",
+      "bottomColor": "#365266",
+      "type": "custom",
+      "pdfUrl": "https://archive.org/compress/ErhELAQIDETILWASITIJJETI01MuhammedB.SalihElUsejmin/formats=IMAGE%20CONTAINER%20PDF&file=/ErhELAQIDETILWASITIJJETI01MuhammedB.SalihElUsejmin.zip",
+      "imageUrl": "https://ia803400.us.archive.org/BookReader/BookReaderImages.php?zip=/2/items/ErhELAQIDETILWASITIJJETI01MuhammedB.SalihElUsejmin/%C5%A0erh%20EL-%27AQIDETI-L-WASITIJJETI%20%2001%20%20%20-%20%20%20Muhammed%20b.%20Salih%20el-%27Usejmin_jp2.zip&file=%C5%A0erh%20EL-%27AQIDETI-L-WASITIJJETI%20%2001%20%20%20-%20%20%20Muhammed%20b.%20Salih%20el-%27Usejmin_jp2/%C5%A0erh%20EL-%27AQIDETI-L-WASITIJJETI%20%2001%20%20%20-%20%20%20Muhammed%20b.%20Salih%20el-%27Usejmin_0000.jp2&id=ErhELAQIDETILWASITIJJETI01MuhammedB.SalihElUsejmin&scale=8&rotate=0"
+    },
+    {
+      "id": "madarij",
+      "title": "مدارج السالكين",
+      "calligraphy": "مدارج\nالسالكين",
+      "row": 1,
+      "color": "#556B2F",
+      "bottomColor": "#3E4E22",
+      "type": "custom",
+      "pdfUrl": "https://archive.org/compress/1_20240911_20240911/formats=IMAGE%20CONTAINER%20PDF&file=/1_20240911_20240911.zip",
+      "imageUrl": "https://ia600802.us.archive.org/BookReader/BookReaderImages.php?zip=/32/items/1_20240911_20240911/1_jp2.zip&file=1_jp2/1_0000.jp2&id=1_20240911_20240911&scale=4&rotate=0"
+    }
+  ],
+  "الفقه وأصوله": [
+    {
+      "id": "bulugh",
+      "title": "بلوغ المرام",
+      "calligraphy": "بلوغ\nالمرام",
+      "row": 1,
+      "color": "#8B4513",
+      "bottomColor": "#66330E",
+      "type": "custom",
+      "pdfUrl": "https://archive.org/download/145220/145220.pdf",
+      "imageUrl": "https://ia903208.us.archive.org/BookReader/BookReaderImages.php?zip=/31/items/145220/145220_jp2.zip&file=145220_jp2/145220_0000.jp2&id=145220&scale=8&rotate=0"
+    },
+    {
+      "id": "zad",
+      "title": "زاد المستقنع",
+      "calligraphy": "زاد\nالمستقنع",
+      "row": 1,
+      "color": "#A0522D",
+      "bottomColor": "#7A3E22",
+      "type": "custom",
+      "pdfUrl": "https://archive.org/download/20250611_20250611_1217/%D8%A7%D9%84%D8%B4%D8%B1%D8%AD%20%D8%A7%D9%84%D9%85%D9%85%D8%AA%D8%B9%20%D9%84%D8%A7%D8%A8%D9%86%20%D8%B9%D8%AB%D9%8A%D9%85%D9%8A%D9%86%20%D9%85%D9%81%D9%87%D8%B1%D8%B3.pdf",
+      "imageUrl": "https://ia801701.us.archive.org/BookReader/BookReaderImages.php?zip=/7/items/20240928_20240928_1138/%D8%A7%D9%84%D8%B4%D8%B1%D8%AD%20%D8%A7%D9%84%D9%85%D9%85%D8%AA%D8%B9%20%D8%B9%D9%84%D9%89%20%D8%B2%D8%A7%D8%AF%20%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%82%D9%86%D8%B9%D9%A1%20-%20%D8%A7%D8%A8%D9%86%20%D8%B9%D8%AB%D9%8A%D9%85%D9%8A%D9%86_jp2.zip&file=%D8%A7%D9%84%D8%B4%D8%B1%D8%AD%20%D8%A7%D9%84%D9%85%D9%85%D8%AA%D8%B9%20%D8%B9%D9%84%D9%89%20%D8%B2%D8%A7%D8%AF%20%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%82%D9%86%D8%B9%D9%A1%20-%20%D8%A7%D8%A8%D9%86%20%D8%B9%D8%AB%D9%8A%D9%85%D9%8A%D9%86_jp2/%D8%A7%D9%84%D8%B4%D8%B1%D8%AD%20%D8%A7%D9%84%D9%85%D9%85%D8%AA%D8%B9%20%D8%B9%D9%84%D9%89%20%D8%B2%D8%A7%D8%AF%20%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%82%D9%86%D8%B9%D9%A1%20-%20%D8%A7%D8%A8%D9%86%20%D8%B9%D8%AB%D9%8A%D9%85%D9%8A%D9%86_0000.jp2&id=20240928_20240928_1138&scale=8&rotate=0"
+    },
+    {
+      "id": "umdah",
+      "title": "عمدة الأحكام",
+      "calligraphy": "عمدة\nالأحكام",
+      "row": 1,
+      "color": "#CD853F",
+      "bottomColor": "#99632F",
+      "type": "custom",
+      "pdfUrl": "https://archive.org/download/01_20240926_202409/%D8%B4%D8%B1%D8%AD%20%D8%B9%D9%85%D8%AF%D8%A9%20%D8%A7%D9%84%D8%A7%D8%AD%D9%83%D8%A7%D9%85-01.pdf",
+      "imageUrl": "https://ia800601.us.archive.org/BookReader/BookReaderImages.php?zip=/11/items/01_20240926_202409/%D8%B4%D8%B1%D8%AD%20%D8%B9%D9%85%D8%AF%D8%A9%20%D8%A7%D9%84%D8%A7%D8%AD%D9%83%D8%A7%D9%85-01_jp2.zip&file=%D8%B4%D8%B1%D8%AD%20%D8%B9%D9%85%D8%AF%D8%A9%20%D8%A7%D9%84%D8%A7%D8%AD%D9%83%D8%A7%D9%85-01_jp2/%D8%B4%D8%B1%D8%AD%20%D8%B9%D9%85%D8%AF%D8%A9%20%D8%A7%D9%84%D8%A7%D8%AD%D9%83%D8%A7%D9%85-01_0000.jp2&id=01_20240926_202409&scale=2&rotate=0"
+    }
+  ]
+}

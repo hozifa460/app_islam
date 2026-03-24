@@ -68,7 +68,7 @@ class AdahnNotification {
       importance: Importance.high,
       playSound: true,
       enableVibration: true,
-      sound: RawResourceAndroidNotificationSound('reminder_beep'),
+      sound: RawResourceAndroidNotificationSound('hayalaaslah'),
     );
 
     final androidPlugin =
@@ -79,22 +79,94 @@ class AdahnNotification {
     await androidPlugin?.createNotificationChannel(reminderChannel);
   }
 
+  Future<void> showInstantCustomReminderTestNotification(String soundName) async {
+    final channelId = 'reminder_channel_$soundName';
+    final channelName = 'تذكير قبل الصلاة - $soundName';
+
+    final androidPlugin =
+    _plugin.resolvePlatformSpecificImplementation<
+        AndroidFlutterLocalNotificationsPlugin>();
+
+    final dynamicReminderChannel = AndroidNotificationChannel(
+      channelId,
+      channelName,
+      description: _reminderChannelDesc,
+      importance: Importance.high,
+      playSound: true,
+      enableVibration: true,
+      sound: RawResourceAndroidNotificationSound(soundName),
+    );
+
+    await androidPlugin?.createNotificationChannel(dynamicReminderChannel);
+
+    final details = NotificationDetails(
+      android: AndroidNotificationDetails(
+        channelId,
+        channelName,
+        channelDescription: _reminderChannelDesc,
+        importance: Importance.high,
+        priority: Priority.high,
+        playSound: true,
+        enableVibration: true,
+        sound: RawResourceAndroidNotificationSound(soundName),
+        icon: '@mipmap/ic_launcher',
+      ),
+      iOS: DarwinNotificationDetails(
+        presentAlert: true,
+        presentBadge: true,
+        presentSound: true,
+        sound: '$soundName.aiff',
+      ),
+    );
+
+    await _plugin.show(
+      5557,
+      'اختبار صوت التنبيه',
+      'هذه معاينة لصوت التنبيه المختار',
+      details,
+      payload: jsonEncode({'type': 'reminder', 'soundName': soundName}),
+    );
+  }
+
   Future<void> schedulePrayerNotification({
     required int id,
     required DateTime dateTime,
     required String title,
     required String body,
     required Map<String, dynamic> payload,
+    String? soundName,
   }) async {
     if (dateTime.isBefore(DateTime.now())) return;
 
     final type = payload['type']?.toString() ?? 'adhan';
     final isReminder = type == 'reminder';
 
+    final effectiveReminderSound = soundName ?? 'hayalaaslah';
+    final reminderChannelId = 'reminder_channel_$effectiveReminderSound';
+    final reminderChannelName = 'تذكير قبل الصلاة - $effectiveReminderSound';
+
+    if (isReminder) {
+      final androidPlugin =
+      _plugin.resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>();
+
+      final dynamicReminderChannel = AndroidNotificationChannel(
+        reminderChannelId,
+        reminderChannelName,
+        description: _reminderChannelDesc,
+        importance: Importance.high,
+        playSound: true,
+        enableVibration: true,
+        sound: RawResourceAndroidNotificationSound(effectiveReminderSound),
+      );
+
+      await androidPlugin?.createNotificationChannel(dynamicReminderChannel);
+    }
+
     final details = NotificationDetails(
       android: AndroidNotificationDetails(
-        isReminder ? _reminderChannelId : _adhanChannelId,
-        isReminder ? _reminderChannelName : _adhanChannelName,
+        isReminder ? reminderChannelId : _adhanChannelId,
+        isReminder ? reminderChannelName : _adhanChannelName,
         channelDescription:
         isReminder ? _reminderChannelDesc : _adhanChannelDesc,
         importance: isReminder ? Importance.high : Importance.max,
@@ -102,7 +174,7 @@ class AdahnNotification {
         playSound: true,
         enableVibration: true,
         sound: RawResourceAndroidNotificationSound(
-          isReminder ? 'reminder_beep' : 'makkah',
+          isReminder ? effectiveReminderSound : 'makkah',
         ),
         category: isReminder
             ? AndroidNotificationCategory.reminder
@@ -117,7 +189,7 @@ class AdahnNotification {
         presentAlert: true,
         presentBadge: true,
         presentSound: true,
-        sound: isReminder ? 'reminder_beep.aiff' : null,
+        sound: isReminder ? '$effectiveReminderSound.aiff' : null,
       ),
     );
 
@@ -183,7 +255,7 @@ class AdahnNotification {
         priority: Priority.high,
         playSound: true,
         enableVibration: true,
-        sound: RawResourceAndroidNotificationSound('reminder_beep'),
+        sound: RawResourceAndroidNotificationSound('hayalaaslah'),
         icon: '@mipmap/ic_launcher',
       ),
       iOS: DarwinNotificationDetails(

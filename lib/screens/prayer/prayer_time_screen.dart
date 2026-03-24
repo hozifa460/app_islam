@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,6 +14,8 @@ import '../../services/prayer_times_refresh_service.dart';
 import '../../utils/radio_widget.dart';
 import 'adhan_player_screen.dart';
 import 'muzzin_settings.dart';
+import 'package:provider/provider.dart';
+import '../../controllers/prayer_times_controller.dart';
 
 class PrayerTimesScreen extends StatefulWidget {
   final Color primaryColor;
@@ -43,10 +46,13 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
   final Color _bgCard = const Color(0xFF151B26);
   Map<String, String> _livePrayerTimes = {};
   late final Future<Map<String, String>?> Function(String methodKey)? onApplyCalculationMethod;
+  final Map<String, PrayerCustomization> _prayerCustomizations = {};
 
   bool _loading = true;
   bool _adhanEnabled = false;
   bool _isWaitingForSettingsReturn = false;
+  String _currentCalculationMethod = 'umm_al_qura';
+  final AudioPlayer _previewPlayer = AudioPlayer();
 
   MuezzinInfo? _defaultMuezzin;
   final Map<String, MuezzinInfo> _effective = {};
@@ -68,6 +74,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     _tick?.cancel();
+    _previewPlayer.dispose();
     super.dispose();
   }
 
@@ -81,19 +88,60 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
     }
   }
 
+  Future<void> _previewReminderSound(String soundName) async {
+    try {
+      final assetPath = 'assets/audio/$soundName.mp3';
+      debugPrint('Trying preview sound path: $assetPath');
+
+      await _previewPlayer.stop();
+      await _previewPlayer.setAsset(assetPath);
+      await _previewPlayer.play();
+    } catch (e) {
+      debugPrint('Preview sound error for $soundName: $e');
+    }
+  }
+
+  Color _getPrayerCardAccentColor({
+    required bool isDefaultMuezzin,
+    required bool isDark,
+  }) {
+    if (!isDefaultMuezzin) {
+      return _gold.withOpacity(isDark ? 0.16 : 0.9);
+    }
+    return Colors.transparent;
+  }
+
+  bool _isPrayerUsingDefaultMuezzin(String prayerKey) {
+    final effective = _effectiveForKey(prayerKey);
+    final defaultM = _defaultMuezzin ?? muezzinCatalog.first.items.first;
+
+    return effective.id == defaultM.id;
+  }
+
+  Future<void> _loadCalculationMethod() async {
+    final prefs = await SharedPreferences.getInstance();
+    _currentCalculationMethod =
+        prefs.getString('calc_method') ?? 'umm_al_qura';
+  }
+
   Future<void> _bootstrap() async {
+    await _loadCalculationMethod();
     await _loadDefaultAndEffective();
+    await _loadPrayerCustomizations();
+
+    final prayerController = context.read<PrayerTimesController>();
 
     _livePrayerTimes = Map<String, String>.from(
-      widget.prayerTimes ??
-          {
-            'Fajr': '05:30',
-            'Sunrise': '06:45',
-            'Dhuhr': '12:15',
-            'Asr': '15:45',
-            'Maghrib': '18:20',
-            'Isha': '19:45',
-          },
+      prayerController.prayerTimes.isNotEmpty
+          ? prayerController.prayerTimes
+          : {
+        'Fajr': '05:30',
+        'Sunrise': '06:45',
+        'Dhuhr': '12:15',
+        'Asr': '15:45',
+        'Maghrib': '18:20',
+        'Isha': '19:45',
+      },
     );
 
     _buildPrayerRows();
@@ -107,6 +155,23 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
     });
 
     setState(() => _loading = false);
+  }
+
+  Future<void> _fixReminderSoundPrefs() async {
+    final prefs = await SharedPreferences.getInstance();
+    const validSounds = ['hayalaaslah', 'prayfajr'];
+
+    for (final key in const ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha']) {
+      final saved = prefs.getString('prayer_${key}_reminder_sound');
+
+      if (saved == null || !validSounds.contains(saved)) {
+        await prefs.setString('prayer_${key}_reminder_sound', 'hayalaaslah');
+      }
+    }
+  }
+
+  PrayerCustomization _customizationFor(String key) {
+    return _prayerCustomizations[key] ?? PrayerCustomization.defaults();
   }
 
   Future<void> _loadAdhanEnabled() async {
@@ -170,6 +235,38 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
       await prefs.setBool('adhan_enabled', false);
       _showErrorSnackBar('لم تكتمل الشروط اللازمة لتفعيل الأذان');
     }
+  }
+
+  Future<void> _loadPrayerCustomizations() async {
+    await _fixReminderSoundPrefs();
+
+    final prefs = await SharedPreferences.getInstance();
+
+    for (final key in const ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha']) {
+      final adhanEnabled = prefs.getBool('prayer_${key}_adhan_enabled') ?? true;
+      final reminderEnabled = prefs.getBool('prayer_${key}_reminder_enabled') ?? true;
+      final reminderOffset = prefs.getInt('prayer_${key}_reminder_offset') ?? 10;
+      final reminderSound =
+          prefs.getString('prayer_${key}_reminder_sound') ?? 'hayalaaslah';
+
+      _prayerCustomizations[key] = PrayerCustomization(
+        adhanEnabled: adhanEnabled,
+        reminderEnabled: reminderEnabled,
+        reminderOffset: reminderOffset,
+        reminderSound: reminderSound,
+      );
+    }
+  }
+
+  Future<void> _savePrayerCustomization(String key, PrayerCustomization config) async {
+    final prefs = await SharedPreferences.getInstance();
+
+    await prefs.setBool('prayer_${key}_adhan_enabled', config.adhanEnabled);
+    await prefs.setBool('prayer_${key}_reminder_enabled', config.reminderEnabled);
+    await prefs.setInt('prayer_${key}_reminder_offset', config.reminderOffset);
+    await prefs.setString('prayer_${key}_reminder_sound', config.reminderSound);
+
+    _prayerCustomizations[key] = config;
   }
 
   void _buildPrayerRows() {
@@ -354,7 +451,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
 
   void _showAdhanSettings() async {
     final prefs = await SharedPreferences.getInstance();
-    String currentMethod = prefs.getString('calc_method') ?? 'umm_al_qura';
+    String currentMethod = _currentCalculationMethod;
     int currentOffset = prefs.getInt('reminder_offset') ?? 10;
 
     if (!mounted) return;
@@ -420,39 +517,38 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                         if (newValue != null) {
                           setModalState(() => currentMethod = newValue);
 
-                          if (widget.onApplyCalculationMethod != null) {
-                            final newTimes = await widget.onApplyCalculationMethod!(newValue);
+                          setState(() {
+                            _currentCalculationMethod = newValue;
+                          });
 
-                            if (newTimes != null && mounted) {
-                              setState(() {
-                                _livePrayerTimes = Map<String, String>.from(newTimes);
-                                _buildPrayerRows();
-                              });
+                          final newTimes =
+                          await context.read<PrayerTimesController>().applyCalculationMethod(newValue);
 
-                              if (_adhanEnabled) {
-                                await _scheduleAllAdhans();
-                              }
+                          if (newTimes != null && mounted) {
+                            setState(() {
+                              _livePrayerTimes = Map<String, String>.from(newTimes);
+                              _buildPrayerRows();
+                            });
 
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'تم تحديث المواقيت بطريقة الحساب الجديدة',
-                                    style: GoogleFonts.cairo(),
-                                  ),
-                                  backgroundColor: Colors.green,
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'تم تحديث المواقيت بطريقة الحساب الجديدة',
+                                  style: GoogleFonts.cairo(),
                                 ),
-                              );
-                            } else if (mounted) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'تعذر تحديث المواقيت',
-                                    style: GoogleFonts.cairo(),
-                                  ),
-                                  backgroundColor: Colors.red,
+                                backgroundColor: Colors.green,
+                              ),
+                            );
+                          } else if (mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'تعذر تحديث المواقيت',
+                                  style: GoogleFonts.cairo(),
                                 ),
-                              );
-                            }
+                                backgroundColor: Colors.red,
+                              ),
+                            );
                           }
                         }
                       },
@@ -550,41 +646,367 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
       return;
     }
 
-    final current = _effectiveForKey(row.key);
 
-    final selected = await showModalBottomSheet<MuezzinInfo?>(
+    PrayerCustomization config = _customizationFor(row.key);
+
+    if (!mounted) return;
+
+    await showModalBottomSheet(
       context: context,
-      backgroundColor: Colors.transparent,
       isScrollControlled: true,
-      builder: (ctx) => _MuezzinPickerSheet(
-        gold: _gold,
-        bg: _bgCard,
-        title: 'تخصيص مؤذن لصلاة ${row.name}',
-        currentId: current.id,
+      backgroundColor: Colors.transparent,
+      builder: (ctx) {
+        return StatefulBuilder(
+          builder: (context, setModalState) {
+            final currentMuezzin = _effectiveForKey(row.key);
+            final isDark = Theme.of(context).brightness == Brightness.dark;
+            final bg = isDark ? const Color(0xFF151B26) : Colors.white;
+            final textColor = isDark ? Colors.white : const Color(0xFF1A1A1A);
+            final subColor = isDark ? Colors.white60 : Colors.black54;
+
+            return Container(
+              margin: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: bg,
+                borderRadius: BorderRadius.circular(24),
+                border: Border.all(color: _gold.withOpacity(0.2)),
+              ),
+              child: SafeArea(
+                top: false,
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        width: 42,
+                        height: 4,
+                        decoration: BoxDecoration(
+                          color: Colors.grey.withOpacity(0.35),
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                      ),
+                      const SizedBox(height: 14),
+                      Text(
+                        'تخصيص صلاة ${row.name}',
+                        style: GoogleFonts.cairo(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: textColor,
+                        ),
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        row.time,
+                        style: GoogleFonts.cairo(
+                          fontSize: 13,
+                          color: subColor,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+
+                      _settingsSectionTitle('المؤذن الحالي', textColor),
+                      const SizedBox(height: 8),
+
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(14),
+                        decoration: BoxDecoration(
+                          color: _gold.withOpacity(0.08),
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(color: _gold.withOpacity(0.18)),
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(Icons.person_rounded, color: _gold),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: Text(
+                                currentMuezzin.name,
+                                style: GoogleFonts.cairo(
+                                  fontWeight: FontWeight.bold,
+                                  color: textColor,
+                                ),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () async {
+                                final selected = await showModalBottomSheet<MuezzinInfo?>(
+                                  context: context,
+                                  backgroundColor: Colors.transparent,
+                                  isScrollControlled: true,
+                                  builder: (ctx) => _MuezzinPickerSheet(
+                                    gold: _gold,
+                                    bg: isDark ? const Color(0xFF151B26) : Colors.white,
+                                    title: 'تخصيص مؤذن لصلاة ${row.name}',
+                                    currentId: currentMuezzin.id,
+                                  ),
+                                );
+
+                                if (selected == null) return;
+
+                                if (selected.id == '__DEFAULT__') {
+                                  await MuezzinStore.clearCustomForPrayer(row.key);
+                                } else {
+                                  await MuezzinStore.setCustomForPrayer(row.key, selected);
+                                }
+
+                                await _loadDefaultAndEffective();
+                                setModalState(() {});
+                                setState(() {});
+                              },
+                              child: Text(
+                                'تغيير',
+                                style: GoogleFonts.cairo(
+                                  color: _gold,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      const SizedBox(height: 18),
+                      _settingsSectionTitle('إعدادات الأذان', textColor),
+
+                      SwitchListTile(
+                        contentPadding: EdgeInsets.zero,
+                        value: config.adhanEnabled,
+                        activeColor: _gold,
+                        title: Text(
+                          'تفعيل الأذان لهذه الصلاة',
+                          style: GoogleFonts.cairo(color: textColor),
+                        ),
+                        onChanged: (val) {
+                          setModalState(() {
+                            config = config.copyWith(adhanEnabled: val);
+                          });
+                        },
+                      ),
+
+                      SwitchListTile(
+                        contentPadding: EdgeInsets.zero,
+                        value: config.reminderEnabled,
+                        activeColor: _gold,
+                        title: Text(
+                          'تفعيل التنبيه القبلي',
+                          style: GoogleFonts.cairo(color: textColor),
+                        ),
+                        onChanged: (val) async {
+                          setModalState(() {
+                            config = config.copyWith(reminderEnabled: val);
+                          });
+
+                          if (val) {
+                            await _previewReminderSound(config.reminderSound);
+                          }
+                        },
+                      ),
+
+                      const SizedBox(height: 10),
+
+                      if (config.reminderEnabled)
+                        Column(
+                          children: [
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                'عدد دقائق التنبيه',
+                                style: GoogleFonts.cairo(
+                                  color: textColor,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            DropdownButtonFormField<int>(
+                              value: config.reminderOffset,
+                              dropdownColor: bg,
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor: isDark
+                                    ? Colors.white.withOpacity(0.04)
+                                    : Colors.grey.shade50,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(14),
+                                  borderSide: BorderSide(color: _gold.withOpacity(0.15)),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(14),
+                                  borderSide: BorderSide(color: _gold.withOpacity(0.15)),
+                                ),
+                              ),
+                              items: const [
+                                DropdownMenuItem(value: 5, child: Text('5 دقائق')),
+                                DropdownMenuItem(value: 10, child: Text('10 دقائق')),
+                                DropdownMenuItem(value: 15, child: Text('15 دقيقة')),
+                                DropdownMenuItem(value: 20, child: Text('20 دقيقة')),
+                              ],
+                              onChanged: (val) {
+                                if (val != null) {
+                                  setModalState(() {
+                                    config = config.copyWith(reminderOffset: val);
+                                  });
+                                }
+                              },
+                            ),
+
+                            const SizedBox(height: 14),
+
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                'صوت التنبيه القبلي',
+                                style: GoogleFonts.cairo(
+                                  color: textColor,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            DropdownButtonFormField<String>(
+                              value: ['hayalaaslah', 'prayfajr'].contains(config.reminderSound)
+                                  ? config.reminderSound
+                                  : 'hayalaaslah',
+                              dropdownColor: bg,
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor: isDark
+                                    ? Colors.white.withOpacity(0.04)
+                                    : Colors.grey.shade50,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(14),
+                                  borderSide: BorderSide(color: _gold.withOpacity(0.15)),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(14),
+                                  borderSide: BorderSide(color: _gold.withOpacity(0.15)),
+                                ),
+                              ),
+                              items: const [
+                                DropdownMenuItem(
+                                  value: 'hayalaaslah',
+                                  child: Text('حي على الصلاة'),
+                                ),
+                                DropdownMenuItem(
+                                  value: 'prayfajr',
+                                  child: Text('الصلاة خير من النوم'),
+                                ),
+                              ],
+                              onChanged: (val) async {
+                                if (val != null) {
+                                  setModalState(() {
+                                    config = config.copyWith(reminderSound: val);
+                                  });
+
+                                  await _previewReminderSound(val);
+                                }
+                              },
+                            ),
+                          ],
+                        ),
+
+                      const SizedBox(height: 22),
+
+                      Row(
+                        children: [
+                          Expanded(
+                            child: OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                side: BorderSide(color: Colors.red.withOpacity(0.35)),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(14),
+                                ),
+                              ),
+                              onPressed: () async {
+                                final defaultConfig = PrayerCustomization.defaults();
+                                await _savePrayerCustomization(row.key, defaultConfig);
+                                await _previewPlayer.stop();
+
+                                setModalState(() {
+                                  config = defaultConfig;
+                                });
+                                setState(() {});
+                              },
+                              child: Text(
+                                'إعادة الافتراضي',
+                                style: GoogleFonts.cairo(
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: _gold,
+                                foregroundColor: Colors.black,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(14),
+                                ),
+                              ),
+                              onPressed: () async {
+                                await _savePrayerCustomization(row.key, config);
+
+                                if (_adhanEnabled) {
+                                  await _scheduleAllAdhans();
+                                }
+
+                                await _previewPlayer.stop();
+
+                                if (mounted) {
+                                  Navigator.pop(ctx);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'تم حفظ تخصيص صلاة ${row.name}',
+                                        style: GoogleFonts.cairo(),
+                                      ),
+                                      backgroundColor: Colors.green,
+                                    ),
+                                  );
+                                }
+
+                                setState(() {});
+                              },
+                              child: Text(
+                                'حفظ',
+                                style: GoogleFonts.cairo(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
+    await _previewPlayer.stop();
+  }
+
+  Widget _settingsSectionTitle(String title, Color textColor) {
+    return Align(
+      alignment: Alignment.centerRight,
+      child: Text(
+        title,
+        style: GoogleFonts.cairo(
+          fontSize: 14,
+          fontWeight: FontWeight.bold,
+          color: textColor,
+        ),
       ),
     );
-
-    if (!mounted || selected == null) return;
-
-    if (selected.id == '__DEFAULT__') {
-      await MuezzinStore.clearCustomForPrayer(row.key);
-    } else {
-      await MuezzinStore.setCustomForPrayer(row.key, selected);
-    }
-
-    await _loadDefaultAndEffective();
-    setState(() {});
-
-    if (_adhanEnabled) {
-      final downloadedOk = await _ensureSelectedMuezzinsDownloaded();
-      if (downloadedOk) {
-        await _scheduleAllAdhans();
-      } else {
-        setState(() => _adhanEnabled = false);
-        final prefs = await SharedPreferences.getInstance();
-        await prefs.setBool('adhan_enabled', false);
-      }
-    }
   }
 
   Future<void> _openDefaultMuezzinSettings() async {
@@ -768,13 +1190,9 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
       'Isha': 104,
     };
 
-    final prefs = await SharedPreferences.getInstance();
-    final currentOffset = prefs.getInt('reminder_offset') ?? 0;
-
-    await AdahnNotification.instance.cancelAll();
-
     for (final id in ids.values) {
       await NativeAdhanBridge.cancelAdhan(id);
+      await NativeAdhanBridge.cancelAdhan(id + 1000);
     }
 
     final now = DateTime.now();
@@ -782,48 +1200,58 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
     for (final row in _rows) {
       if (row.noAdhan == true) continue;
 
+      final config = _customizationFor(row.key);
+
+      debugPrint(
+        'CONFIG => ${row.name} | adhan=${config.adhanEnabled} | reminder=${config.reminderEnabled} | offset=${config.reminderOffset} | sound=${config.reminderSound}',
+      );
+
+      if (!config.adhanEnabled) continue;
+
       final m = _effectiveForKey(row.key);
 
       final local = m.isBuiltIn
           ? null
           : await AdhanAudioService.instance.getLocalPath(m.id);
 
-      var t = row.dateTime;
-      if (now.isAfter(t)) {
-        t = t.add(const Duration(days: 1));
+      var prayerTime = row.dateTime;
+      if (now.isAfter(prayerTime)) {
+        prayerTime = prayerTime.add(const Duration(days: 1));
       }
 
-      final soundName = m.localSoundName.isNotEmpty ? m.localSoundName : 'makkah';
+      final adhanSound =
+      m.localSoundName.isNotEmpty ? m.localSoundName : 'makkah';
 
       debugPrint(
-        'Scheduling NATIVE adhan => ${row.name} at $t | muezzin=${m.name} | local=$local | sound=$soundName',
+        'Scheduling adhan native => ${row.name} at $prayerTime | sound=$adhanSound | local=$local',
       );
 
       await NativeAdhanBridge.scheduleAdhan(
-        time: t,
+        time: prayerTime,
         prayerName: row.name,
         requestCode: ids[row.key]!,
-        soundName: soundName,
+        soundName: adhanSound,
         localPath: local,
       );
 
-      if (currentOffset > 0) {
-        final reminderTime = t.subtract(Duration(minutes: currentOffset));
+      if (config.reminderEnabled && config.reminderOffset > 0) {
+        final reminderTime =
+        prayerTime.subtract(Duration(minutes: config.reminderOffset));
 
         if (reminderTime.isAfter(now)) {
-          debugPrint('Scheduling REMINDER => ${row.name} at $reminderTime');
+          debugPrint(
+            'Scheduling reminder native => ${row.name} at $reminderTime | requestCode=${ids[row.key]! + 1000} | sound=${config.reminderSound}',
+          );
 
-          await AdahnNotification.instance.schedulePrayerNotification(
-            id: ids[row.key]! + 1000,
-            dateTime: reminderTime,
-            title: 'اقتربت صلاة ${row.name}',
-            body: 'متبقي $currentOffset دقائق على أذان ${row.name}',
-            payload: {
-              'type': 'reminder',
-              'prayerKey': row.key,
-              'prayerName': row.name,
-              'offset': currentOffset,
-            },
+          await NativeAdhanBridge.scheduleReminder(
+            time: reminderTime,
+            prayerName: row.name,
+            requestCode: ids[row.key]! + 1000,
+            soundName: config.reminderSound,
+          );
+        } else {
+          debugPrint(
+            'Skipping reminder for ${row.name}, reminder time already passed',
           );
         }
       }
@@ -899,7 +1327,9 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
         elevation: 0,
         centerTitle: true,
         title: Text(
-          widget.cityName ?? 'مواقيت الصلاة',
+          context.watch<PrayerTimesController>().cityName.isNotEmpty
+              ? context.watch<PrayerTimesController>().cityName
+              : 'مواقيت الصلاة',
           style: GoogleFonts.cairo(
             fontWeight: FontWeight.w700,
             fontSize: 20,
@@ -911,9 +1341,15 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
             icon: Icon(Icons.my_location, color: gold),
             tooltip: 'تحديث الموقع',
             onPressed: () async {
-              if (widget.onRefreshLocation != null) {
-                await widget.onRefreshLocation!();
-              }
+              await context.read<PrayerTimesController>().refreshLocationAndPrayerTimes();
+
+              if (!mounted) return;
+              setState(() {
+                _livePrayerTimes = Map<String, String>.from(
+                  context.read<PrayerTimesController>().prayerTimes,
+                );
+                _buildPrayerRows();
+              });
             },
           ),
           IconButton(
@@ -1121,6 +1557,8 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
               final isNext = row.isNext;
               final isPast = row.isPast;
               final m = _effectiveForKey(row.key);
+              final isDefaultMuezzin = _isPrayerUsingDefaultMuezzin(row.key);
+              final config = _customizationFor(row.key);
 
               return GestureDetector(
                 onTap: () => _openCustomizeForPrayer(row),
@@ -1135,140 +1573,262 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                           ? [gold.withOpacity(0.10), gold.withOpacity(0.03)]
                           : listCardGradient,
                     ),
+                    color: _getPrayerCardAccentColor(
+                      isDefaultMuezzin: isDefaultMuezzin,
+                      isDark: isDark,
+                    ),
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
                       color: isCurrent
                           ? gold.withOpacity(0.9)
+                          : !isDefaultMuezzin
+                          ? gold.withOpacity(0.45)
                           : isNext
                           ? gold.withOpacity(0.55)
                           : listCardBorder,
-                      width: isCurrent ? 2.0 : 1.0,
+                      width: isCurrent ? 2.0 : (!isDefaultMuezzin ? 1.4 : 1.0),
                     ),
                     boxShadow: isNext
-                        ? [BoxShadow(color: gold.withOpacity(0.25), blurRadius: 16, offset: const Offset(0, 8))]
+                        ? [
+                      BoxShadow(
+                        color: gold.withOpacity(0.25),
+                        blurRadius: 16,
+                        offset: const Offset(0, 8),
+                      )
+                    ]
                         : [
                       BoxShadow(
-                        color: isDark ? Colors.black.withOpacity(0.2) : Colors.grey.withOpacity(0.05),
+                        color: isDark
+                            ? Colors.black.withOpacity(0.2)
+                            : Colors.grey.withOpacity(0.05),
                         blurRadius: 5,
                         offset: const Offset(0, 2),
                       )
                     ],
                   ),
-                  child: Row(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: isPast ? Colors.grey.withOpacity(0.2) : gold.withOpacity(isCurrent || isNext ? 0.25 : 0.10),
-                          borderRadius: BorderRadius.circular(15),
-                          border: (isCurrent || isNext) ? Border.all(color: gold.withOpacity(0.8), width: 1.5) : null,
-                        ),
-                        child: Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            Icon(
-                              row.icon,
-                              color: isPast ? Colors.grey : (isCurrent || isNext ? gold : subTextColor),
-                              size: 24,
+                      // الصف العلوي
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 50,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: isPast
+                                  ? Colors.grey.withOpacity(0.2)
+                                  : gold.withOpacity(isCurrent || isNext ? 0.25 : 0.10),
+                              borderRadius: BorderRadius.circular(15),
+                              border: (isCurrent || isNext)
+                                  ? Border.all(color: gold.withOpacity(0.8), width: 1.5)
+                                  : null,
                             ),
-                            if (isNext)
-                              Positioned(
-                                top: 6,
-                                right: 6,
-                                child: Container(
-                                  width: 8,
-                                  height: 8,
-                                  decoration: BoxDecoration(
-                                    color: gold,
-                                    shape: BoxShape.circle,
-                                    boxShadow: [
-                                      BoxShadow(color: gold.withOpacity(0.8), blurRadius: 6, spreadRadius: 1),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
+                            child: Stack(
+                              alignment: Alignment.center,
                               children: [
-                                Text(
-                                  row.name,
-                                  style: GoogleFonts.amiri(
-                                    fontSize: 22,
-                                    color: isPast ? subTextColor.withOpacity(0.5) : textColor,
-                                    fontWeight: isCurrent ? FontWeight.bold : FontWeight.normal,
-                                  ),
+                                Icon(
+                                  row.icon,
+                                  color: isPast
+                                      ? Colors.grey
+                                      : (isCurrent || isNext ? gold : subTextColor),
+                                  size: 24,
                                 ),
-                                const SizedBox(width: 8),
-                                if (isCurrent) _badge('الآن', bg: gold, fg: Colors.black),
-                                if (isNext && !isCurrent)
-                                  _badge(
-                                    'التالية',
-                                    bg: gold.withOpacity(0.2),
-                                    fg: gold,
-                                    border: gold.withOpacity(0.5),
-                                  ),
-                              ],
-                            ),
-                            const SizedBox(height: 6),
-                            Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                              decoration: BoxDecoration(
-                                color: isDark ? Colors.white.withOpacity(0.05) : Colors.black.withOpacity(0.03),
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(
-                                  color: isDark ? Colors.white.withOpacity(0.08) : Colors.black.withOpacity(0.05),
-                                ),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Icon(Icons.person_outline, size: 14, color: gold.withOpacity(0.9)),
-                                  const SizedBox(width: 6),
-                                  Flexible(
-                                    child: Text(
-                                      m.name,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: GoogleFonts.cairo(
-                                        fontSize: 13,
-                                        color: gold.withOpacity(0.9),
-                                        fontWeight: FontWeight.bold,
+                                if (isNext)
+                                  Positioned(
+                                    top: 6,
+                                    right: 6,
+                                    child: Container(
+                                      width: 8,
+                                      height: 8,
+                                      decoration: BoxDecoration(
+                                        color: gold,
+                                        shape: BoxShape.circle,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: gold.withOpacity(0.8),
+                                            blurRadius: 6,
+                                            spreadRadius: 1,
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
-                                  const SizedBox(width: 6),
-                                  Icon(Icons.edit, size: 12, color: subTextColor.withOpacity(0.5)),
-                                ],
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: 12),
+
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Wrap(
+                                  spacing: 6,
+                                  runSpacing: 6,
+                                  crossAxisAlignment: WrapCrossAlignment.center,
+                                  children: [
+                                    Text(
+                                      row.name,
+                                      style: GoogleFonts.amiri(
+                                        fontSize: 22,
+                                        color: isPast
+                                            ? subTextColor.withOpacity(0.5)
+                                            : textColor,
+                                        fontWeight:
+                                        isCurrent ? FontWeight.bold : FontWeight.normal,
+                                      ),
+                                    ),
+                                    if (isCurrent)
+                                      _badge(
+                                        'الآن',
+                                        bg: gold,
+                                        fg: Colors.black,
+                                      ),
+                                    if (isNext && !isCurrent)
+                                      _badge(
+                                        'التالية',
+                                        bg: gold.withOpacity(0.2),
+                                        fg: gold,
+                                        border: gold.withOpacity(0.5),
+                                      ),
+                                  ],
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  row.noAdhan == true
+                                      ? 'هذه الصلاة لا تحتوي على أذان'
+                                      : 'اضغط لتخصيص الصلاة',
+                                  style: GoogleFonts.cairo(
+                                    fontSize: 11.5,
+                                    color: row.noAdhan == true
+                                        ? Colors.orange
+                                        : subTextColor.withOpacity(0.75),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          const SizedBox(width: 8),
+
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  row.time,
+                                  style: GoogleFonts.cairo(
+                                    fontSize: 18,
+                                    color: isPast
+                                        ? subTextColor.withOpacity(0.4)
+                                        : (isCurrent || isNext ? gold : textColor),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              if (row.noAdhan == true)
+                                Text(
+                                  'بدون أذان',
+                                  style: GoogleFonts.cairo(
+                                    fontSize: 11,
+                                    color: subTextColor.withOpacity(0.5),
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ],
+                      ),
+
+                      const SizedBox(height: 12),
+
+                      // المؤذن الحالي
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                        decoration: BoxDecoration(
+                          color: isDark
+                              ? Colors.white.withOpacity(0.05)
+                              : Colors.black.withOpacity(0.03),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: isDark
+                                ? Colors.white.withOpacity(0.06)
+                                : Colors.black.withOpacity(0.05),
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.edit_note_rounded,
+                              size: 18,
+                              color: row.noAdhan == true ? Colors.grey : _gold,
+                            ),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: Text(
+                                row.noAdhan == true
+                                    ? 'لا يمكن تخصيص الشروق'
+                                    : 'المؤذن الحالي: ${m.name}',
+                                overflow: TextOverflow.ellipsis,
+                                style: GoogleFonts.cairo(
+                                  fontSize: 13,
+                                  color: row.noAdhan == true
+                                      ? subTextColor.withOpacity(0.6)
+                                      : _gold.withOpacity(0.95),
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
+                            if (row.noAdhan != true)
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                  vertical: 5,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: _gold.withOpacity(0.12),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Text(
+                                  'تخصيص',
+                                  style: GoogleFonts.cairo(
+                                    fontSize: 11,
+                                    color: _gold,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
                           ],
                         ),
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            row.time,
-                            style: GoogleFonts.cairo(
-                              fontSize: 18,
-                              color: isPast ? subTextColor.withOpacity(0.4) : (isCurrent || isNext ? gold : textColor),
-                              fontWeight: FontWeight.bold,
+
+                      if (row.noAdhan != true) ...[
+                        const SizedBox(height: 10),
+
+                        // المؤشرات
+                        Wrap(
+                          spacing: 8,
+                          runSpacing: 8,
+                          children: [
+                            _muezzinTypeBadge(isDefault: isDefaultMuezzin),
+                            _statusMiniBadge(
+                              label: 'الأذان',
+                              color: config.adhanEnabled ? Colors.green : Colors.red,
+                              active: config.adhanEnabled,
                             ),
-                          ),
-                          if (row.noAdhan == true)
-                            Text(
-                              'بدون أذان',
-                              style: GoogleFonts.cairo(fontSize: 11, color: subTextColor.withOpacity(0.5)),
+                            _statusMiniBadge(
+                              label: config.reminderEnabled
+                                  ? 'تنبيه ${config.reminderOffset}د'
+                                  : 'التنبيه',
+                              color: config.reminderEnabled ? Colors.blue : Colors.grey,
+                              active: config.reminderEnabled,
                             ),
-                        ],
-                      ),
+                          ],
+                        ),
+                      ],
                     ],
                   ),
                 ),
@@ -1318,6 +1878,74 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
       ),
     );
   }
+
+  Widget _muezzinTypeBadge({
+    required bool isDefault,
+  }) {
+    if (isDefault) {
+      return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        decoration: BoxDecoration(
+          color: Colors.grey.withOpacity(0.12),
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: Colors.grey.withOpacity(0.25)),
+        ),
+        child: Text(
+          'افتراضي',
+          style: GoogleFonts.cairo(
+            fontSize: 10.5,
+            fontWeight: FontWeight.bold,
+            color: Colors.grey.shade700,
+          ),
+        ),
+      );
+    }
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: _gold.withOpacity(0.12),
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: _gold.withOpacity(0.30)),
+      ),
+      child: Text(
+        'مخصص',
+        style: GoogleFonts.cairo(
+          fontSize: 10.5,
+          fontWeight: FontWeight.bold,
+          color: _gold,
+        ),
+      ),
+    );
+  }
+
+  Widget _statusMiniBadge({
+    required String label,
+    required Color color,
+    required bool active,
+  }) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: active ? color.withOpacity(0.12) : Colors.grey.withOpacity(0.10),
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: active ? color.withOpacity(0.30) : Colors.grey.withOpacity(0.20),
+        ),
+      ),
+      child: Text(
+        label,
+        style: GoogleFonts.cairo(
+          fontSize: 10.5,
+          fontWeight: FontWeight.bold,
+          color: active ? color : Colors.grey,
+        ),
+      ),
+    );
+  }
+
+
+
 }
 
 class _PrayerRow {
@@ -1358,6 +1986,14 @@ class _MuezzinPickerSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final backgroundColor = isDark ? const Color(0xFF151B26) : Colors.white;
+    final cardColor = isDark ? Colors.white.withOpacity(0.05) : Colors.grey.shade50;
+    final borderColor =
+    isDark ? Colors.white.withOpacity(0.08) : Colors.black.withOpacity(0.06);
+    final titleColor = isDark ? Colors.white : const Color(0xFF1A1A1A);
+    final subColor = isDark ? Colors.white54 : Colors.black54;
+
     final all = <_PickItem>[];
 
     all.add(
@@ -1383,11 +2019,18 @@ class _MuezzinPickerSheet extends StatelessWidget {
     }
 
     return Container(
-      margin: const EdgeInsets.all(20),
+      margin: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: bg,
+        color: backgroundColor,
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: gold.withOpacity(0.25)),
+        border: Border.all(color: gold.withOpacity(0.22)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(isDark ? 0.25 : 0.08),
+            blurRadius: 18,
+            offset: const Offset(0, 8),
+          ),
+        ],
       ),
       child: SafeArea(
         top: false,
@@ -1395,41 +2038,77 @@ class _MuezzinPickerSheet extends StatelessWidget {
           children: [
             const SizedBox(height: 10),
             Container(
-              width: 40,
+              width: 42,
               height: 4,
               decoration: BoxDecoration(
-                color: Colors.white24,
-                borderRadius: BorderRadius.circular(2),
+                color: Colors.grey.withOpacity(0.35),
+                borderRadius: BorderRadius.circular(4),
               ),
             ),
             const SizedBox(height: 14),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                title,
-                style: GoogleFonts.cairo(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
+              padding: const EdgeInsets.symmetric(horizontal: 18),
+              child: Column(
+                children: [
+                  Icon(Icons.record_voice_over_rounded, color: gold, size: 26),
+                  const SizedBox(height: 8),
+                  Text(
+                    title,
+                    style: GoogleFonts.cairo(
+                      color: titleColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    'اختر مؤذنًا مختلفًا لهذه الصلاة',
+                    style: GoogleFonts.cairo(
+                      color: subColor,
+                      fontSize: 12,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 12),
-            const Divider(color: Colors.white24, height: 1),
+            Divider(
+              color: Colors.grey.withOpacity(0.15),
+              height: 1,
+            ),
             Expanded(
               child: ListView.builder(
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(12),
+                physics: const BouncingScrollPhysics(),
                 itemCount: all.length,
                 itemBuilder: (context, i) {
                   final it = all[i];
 
                   if (it.isHeader) {
                     return Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 14, 10, 8),
-                      child: Text(
-                        it.categoryName,
-                        style: GoogleFonts.cairo(color: gold, fontWeight: FontWeight.bold),
+                      padding: const EdgeInsets.fromLTRB(8, 14, 8, 8),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 4,
+                            height: 18,
+                            decoration: BoxDecoration(
+                              color: gold,
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            it.categoryName,
+                            style: GoogleFonts.cairo(
+                              color: gold,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 13,
+                            ),
+                          ),
+                        ],
                       ),
                     );
                   }
@@ -1439,39 +2118,66 @@ class _MuezzinPickerSheet extends StatelessWidget {
                   final isSel = (!isDefaultOption && m.id == currentId);
 
                   return Container(
-                    margin: const EdgeInsets.only(bottom: 8),
+                    margin: const EdgeInsets.only(bottom: 10),
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Colors.white.withOpacity(0.08), Colors.white.withOpacity(0.02)],
-                      ),
-                      borderRadius: BorderRadius.circular(16),
+                      color: cardColor,
+                      borderRadius: BorderRadius.circular(18),
                       border: Border.all(
-                        color: isSel ? gold.withOpacity(0.6) : Colors.white.withOpacity(0.1),
-                        width: isSel ? 2 : 1,
+                        color: isSel
+                            ? gold.withOpacity(0.6)
+                            : borderColor,
+                        width: isSel ? 1.8 : 1,
                       ),
+                      boxShadow: isSel
+                          ? [
+                        BoxShadow(
+                          color: gold.withOpacity(0.10),
+                          blurRadius: 12,
+                          offset: const Offset(0, 4),
+                        ),
+                      ]
+                          : [],
                     ),
                     child: ListTile(
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 4,
+                      ),
                       leading: Container(
-                        width: 44,
-                        height: 44,
+                        width: 46,
+                        height: 46,
                         decoration: BoxDecoration(
-                          color: gold.withOpacity(0.15),
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: gold.withOpacity(0.25)),
+                          color: gold.withOpacity(0.12),
+                          borderRadius: BorderRadius.circular(14),
+                          border: Border.all(color: gold.withOpacity(0.22)),
                         ),
-                        child: Icon(isDefaultOption ? Icons.restore : Icons.person, color: gold),
+                        child: Icon(
+                          isDefaultOption ? Icons.restore_rounded : Icons.person_rounded,
+                          color: gold,
+                        ),
                       ),
                       title: Text(
                         m.name,
-                        style: GoogleFonts.cairo(color: Colors.white, fontWeight: FontWeight.bold),
+                        style: GoogleFonts.cairo(
+                          color: titleColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        ),
                       ),
                       subtitle: Text(
-                        isDefaultOption ? m.description : '${it.categoryName} • ${m.description}',
-                        style: GoogleFonts.cairo(color: Colors.white54, fontSize: 12),
+                        isDefaultOption
+                            ? m.description
+                            : '${it.categoryName} • ${m.description}',
+                        style: GoogleFonts.cairo(
+                          color: subColor,
+                          fontSize: 12,
+                        ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      trailing: isSel ? Icon(Icons.check_circle, color: gold) : null,
+                      trailing: isSel
+                          ? Icon(Icons.check_circle_rounded, color: gold)
+                          : Icon(Icons.arrow_forward_ios, size: 14, color: subColor),
                       onTap: () => Navigator.pop(context, m),
                     ),
                   );
@@ -1495,4 +2201,41 @@ class _PickItem {
     required this.categoryName,
     required this.m,
   });
+}
+
+class PrayerCustomization {
+  final bool adhanEnabled;
+  final bool reminderEnabled;
+  final int reminderOffset;
+  final String reminderSound;
+
+  const PrayerCustomization({
+    required this.adhanEnabled,
+    required this.reminderEnabled,
+    required this.reminderOffset,
+    required this.reminderSound,
+  });
+
+  factory PrayerCustomization.defaults() {
+    return const PrayerCustomization(
+      adhanEnabled: true,
+      reminderEnabled: true,
+      reminderOffset: 10,
+      reminderSound: 'hayalaaslah',
+    );
+  }
+
+  PrayerCustomization copyWith({
+    bool? adhanEnabled,
+    bool? reminderEnabled,
+    int? reminderOffset,
+    String? reminderSound,
+  }) {
+    return PrayerCustomization(
+      adhanEnabled: adhanEnabled ?? this.adhanEnabled,
+      reminderEnabled: reminderEnabled ?? this.reminderEnabled,
+      reminderOffset: reminderOffset ?? this.reminderOffset,
+      reminderSound: reminderSound ?? this.reminderSound,
+    );
+  }
 }

@@ -5,22 +5,23 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:share_plus/share_plus.dart';
 
 class HadithBookScreen extends StatefulWidget {
   final String bookId;
   final String bookTitle;
   final Color primaryColor;
-
-  // ✅ يجب أن تكون المتغيرات اختيارية (علامة ؟) وليست (required)
-  final int? targetHadithNumber;
+  final dynamic initialHadithNumber;
   final String? searchQuery;
 
   const HadithBookScreen({
     super.key,
     required this.bookId,
     required this.bookTitle,
-    required this.primaryColor, this.targetHadithNumber, this.searchQuery,
+    required this.primaryColor,
+    this.searchQuery,
+    this.initialHadithNumber,
   });
 
   @override
@@ -37,26 +38,41 @@ class _HadithBookScreenState extends State<HadithBookScreen> {
   String _statusMessage = 'جاري التهيئة...';
 
   int _currentMax = 20;
-  final ScrollController _scrollController = ScrollController();
+  final ItemScrollController _itemScrollController = ItemScrollController();
   final TextEditingController _searchController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     _initOfflineBook();
-
-    _scrollController.addListener(() {
-      if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent - 500) {
-        _loadMore();
-      }
-    });
   }
 
   @override
   void dispose() {
-    _scrollController.dispose();
     _searchController.dispose();
     super.dispose();
+  }
+
+  void _jumpToInitialHadith() {
+    if (widget.initialHadithNumber == null) return;
+    if (_displayedHadiths.isEmpty) return;
+
+    final index = _displayedHadiths.indexWhere((h) {
+      final number = h['hadithnumber'] ?? h['number'] ?? h['id'];
+      return number.toString() == widget.initialHadithNumber.toString();
+    });
+
+    if (index == -1) return;
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!_itemScrollController.isAttached) return;
+
+      _itemScrollController.scrollTo(
+        index: index,
+        duration: const Duration(milliseconds: 700),
+        curve: Curves.easeOutCubic,
+      );
+    });
   }
 
   // ✅ دالة قوية لتنظيف النص للبحث
@@ -71,7 +87,6 @@ class _HadithBookScreenState extends State<HadithBookScreen> {
         .replaceAll(RegExp(r'<[^>]*>'), '')
         .trim();
   }
-
 
   // دالة لتلوين كلمة البحث داخل الحديث
   List<TextSpan> _buildHighlightedHadithText(String text, String? keyword, Color textColor) {
@@ -181,19 +196,16 @@ class _HadithBookScreenState extends State<HadithBookScreen> {
     if (mounted) {
       setState(() {
         _allHadiths = validList;
-
-        // ✅ إذا كنا قادمين من نتيجة بحث لحديث معين
-        if (widget.targetHadithNumber != null) {
-          _displayedHadiths = _allHadiths.where((h) => h['hadithnumber'] == widget.targetHadithNumber).toList();
-        } else {
-          _displayedHadiths = _allHadiths;
-        }
-
+        _displayedHadiths = _allHadiths;
+        _currentMax = _displayedHadiths.length;
         _isLoading = false;
         _isDownloading = false;
         _hasError = false;
       });
+
+      _jumpToInitialHadith();
     }
+
   }
 
   void _loadMore() {
@@ -208,7 +220,7 @@ class _HadithBookScreenState extends State<HadithBookScreen> {
     if (query.trim().isEmpty) {
       setState(() {
         _displayedHadiths = _allHadiths;
-        _currentMax = 20;
+        _currentMax = _displayedHadiths.length;
       });
       return;
     }
@@ -221,7 +233,7 @@ class _HadithBookScreenState extends State<HadithBookScreen> {
         final number = hadith['hadithnumber'].toString();
         return searchableText.contains(normalizedQuery) || number.contains(normalizedQuery);
       }).toList();
-      _currentMax = 20;
+      _currentMax = _displayedHadiths.length;
     });
   }
 
@@ -330,21 +342,33 @@ class _HadithBookScreenState extends State<HadithBookScreen> {
         // ================= 2. القائمة =================
         Expanded(
           child: _displayedHadiths.isEmpty
-              ? Center(child: Text('لا توجد نتائج مطابقة', style: GoogleFonts.cairo(color: Colors.grey, fontSize: 16)))
-              : ListView.builder(
-            controller: _scrollController,
+              ? Center(
+            child: Text(
+              'لا توجد نتائج مطابقة',
+              style: GoogleFonts.cairo(color: Colors.grey, fontSize: 16),
+            ),
+          )
+              : ScrollablePositionedList.builder(
+            itemScrollController: _itemScrollController,
             padding: const EdgeInsets.all(12),
-            itemCount: (_currentMax < _displayedHadiths.length) ? _currentMax + 1 : _displayedHadiths.length,
+            itemCount: (_currentMax < _displayedHadiths.length)
+                ? _currentMax + 1
+                : _displayedHadiths.length,
             itemBuilder: (context, index) {
-              if (index == _currentMax) {
+              if (_currentMax < _displayedHadiths.length && index == _currentMax) {
                 return Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Center(child: CircularProgressIndicator(color: widget.primaryColor, strokeWidth: 3)),
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: widget.primaryColor,
+                      strokeWidth: 3,
+                    ),
+                  ),
                 );
               }
 
               final hadith = _displayedHadiths[index];
-              return _buildHadithCard(hadith, isDark, cardColor, textColor); // ✅ تمرير الألوان للبطاقة
+              return _buildHadithCard(hadith, isDark, cardColor, textColor);
             },
           ),
         ),

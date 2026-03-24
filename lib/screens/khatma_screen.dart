@@ -39,6 +39,12 @@ class _KhatmaScreenState extends State<KhatmaScreen> with SingleTickerProviderSt
     _loadData();
   }
 
+  @override
+  void dispose() {
+    _animController.dispose();
+    super.dispose();
+  }
+
   Future<void> _loadData() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
@@ -234,7 +240,9 @@ class _KhatmaScreenState extends State<KhatmaScreen> with SingleTickerProviderSt
         appBar: AppBar(
           title: Text('رحلة الختمة', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
           backgroundColor: widget.primaryColor,
-          foregroundColor: Colors.white,
+          foregroundColor: Theme.of(context).brightness == Brightness.dark
+            ? const Color(0xFF1E1E2C)
+            : Colors.white,
           elevation: 0,
           actions: [
 
@@ -280,81 +288,234 @@ class _KhatmaScreenState extends State<KhatmaScreen> with SingleTickerProviderSt
   Widget _buildSetupScreen() {
     int daysToFinish = (_totalPages / _setupPages).ceil();
 
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(24),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const SizedBox(height: 20),
-          Icon(Icons.auto_stories_rounded, size: 80, color: widget.primaryColor.withOpacity(0.3)),
-          const SizedBox(height: 20),
-          Text('ابدأ رحلتك النورانية', style: GoogleFonts.cairo(fontSize: 24, fontWeight: FontWeight.bold)),
-          Text('حدد وردك اليومي، وسنقوم بتنظيمه لك', style: GoogleFonts.cairo(fontSize: 14, color: Colors.grey)),
-          const SizedBox(height: 40),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final width = constraints.maxWidth;
+        final small = width < 360;
 
-          Container(
-            padding: const EdgeInsets.all(24),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(24),
-              boxShadow: [BoxShadow(color: widget.primaryColor.withOpacity(0.05), blurRadius: 20, offset: const Offset(0, 10))],
-            ),
-            child: Column(
-              children: [
-                Text('مقدار الورد اليومي', style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 16)),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _circleBtn(Icons.remove, () { if (_setupPages > 1) setState(() => _setupPages--); }),
-                    Container(width: 100, alignment: Alignment.center, child: Text('$_setupPages', style: GoogleFonts.cairo(fontSize: 40, fontWeight: FontWeight.bold, color: widget.primaryColor))),
-                    _circleBtn(Icons.add, () { setState(() => _setupPages++); }),
+        return SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 10),
+              Container(
+                width: small ? 86 : 100,
+                height: small ? 86 : 100,
+                decoration: BoxDecoration(
+                  color: widget.primaryColor.withOpacity(0.08),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  Icons.auto_stories_rounded,
+                  size: small ? 48 : 56,
+                  color: widget.primaryColor.withOpacity(0.5),
+                ),
+              ),
+              const SizedBox(height: 18),
+              Text(
+                'ابدأ رحلتك النورانية',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.cairo(
+                  fontSize: small ? 21 : 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 6),
+              Text(
+                'حدد وردك اليومي، وسنقوم بتنظيمه لك',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.cairo(
+                  fontSize: small ? 13 : 14,
+                  color: Colors.grey,
+                ),
+              ),
+              const SizedBox(height: 28),
+
+              Container(
+                padding: EdgeInsets.all(small ? 18 : 24),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? const Color(0xFF1E1E2C)
+                      : Colors.white,
+                  borderRadius: BorderRadius.circular(24),
+                  boxShadow: [
+                    BoxShadow(
+                      color: widget.primaryColor.withOpacity(0.05),
+                      blurRadius: 20,
+                      offset: const Offset(0, 10),
+                    ),
                   ],
                 ),
-                Text('صفحات', style: GoogleFonts.cairo(color: Colors.grey)),
-                const SizedBox(height: 20),
-                Slider(
-                  value: _setupPages.toDouble(), min: 1, max: 40, activeColor: widget.primaryColor,
-                  onChanged: (val) => setState(() => _setupPages = val.toInt()),
+                child: Column(
+                  children: [
+                    Text(
+                      'مقدار الورد اليومي',
+                      style: GoogleFonts.cairo(
+                        fontWeight: FontWeight.bold,
+                        fontSize: small ? 15 : 16,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        _circleBtn(
+                          Icons.remove,
+                              () {
+                            if (_setupPages > 1) {
+                              setState(() => _setupPages--);
+                            }
+                          },
+                          small: small,
+                        ),
+                        SizedBox(
+                          width: small ? 90 : 100,
+                          child: Center(
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Text(
+                                '$_setupPages',
+                                style: GoogleFonts.cairo(
+                                  fontSize: small ? 34 : 40,
+                                  fontWeight: FontWeight.bold,
+                                  color: widget.primaryColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        _circleBtn(
+                          Icons.add,
+                              () {
+                            setState(() => _setupPages++);
+                          },
+                          small: small,
+                        ),
+                      ],
+                    ),
+
+                    const SizedBox(height: 8),
+
+                    Text(
+                      'صفحات',
+                      style: GoogleFonts.cairo(color: Colors.grey),
+                    ),
+
+                    const SizedBox(height: 16),
+
+                    SliderTheme(
+                      data: SliderTheme.of(context).copyWith(
+                        activeTrackColor: widget.primaryColor,
+                        inactiveTrackColor: widget.primaryColor.withOpacity(0.15),
+                        thumbColor: widget.primaryColor,
+                        overlayColor: widget.primaryColor.withOpacity(0.12),
+                        trackHeight: 5,
+                      ),
+                      child: Slider(
+                        value: _setupPages.toDouble(),
+                        min: 1,
+                        max: 40,
+                        onChanged: (val) {
+                          setState(() => _setupPages = val.toInt());
+                        },
+                      ),
+                    ),
+
+                    const SizedBox(height: 18),
+
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: widget.primaryColor.withOpacity(0.08),
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.timelapse,
+                            size: 18,
+                            color: widget.primaryColor,
+                          ),
+                          const SizedBox(width: 8),
+                          Flexible(
+                            child: Text(
+                              'ستختم القرآن خلال $daysToFinish يوماً',
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.cairo(
+                                color: widget.primaryColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: small ? 13 : 14,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                const Divider(height: 40),
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(color: widget.primaryColor.withOpacity(0.1), borderRadius: BorderRadius.circular(12)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.timelapse, size: 18, color: widget.primaryColor),
-                      const SizedBox(width: 8),
-                      Text('ستختم القرآن خلال $daysToFinish يوماً', style: GoogleFonts.cairo(color: widget.primaryColor, fontWeight: FontWeight.bold)),
-                    ],
+              ),
+
+              const SizedBox(height: 28),
+
+              SizedBox(
+                width: double.infinity,
+                height: 56,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: widget.primaryColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    elevation: 5,
+                  ),
+                  onPressed: () => _startKhatma(_setupPages, false),
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      'بدء الختمة',
+                      style: GoogleFonts.cairo(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? const Color(0xFF1E1E2C)
+                            : Colors.white,
+                      ),
+                    ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-
-          const SizedBox(height: 40),
-          SizedBox(
-            width: double.infinity, height: 56,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: widget.primaryColor, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)), elevation: 5),
-              onPressed: () => _startKhatma(_setupPages, false),
-              child: Text('بدء الختمة', style: GoogleFonts.cairo(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white)),
-            ),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 
-  Widget _circleBtn(IconData icon, VoidCallback onTap) {
+  Widget _circleBtn(
+      IconData icon,
+      VoidCallback onTap, {
+        bool small = false,
+      }) {
     return InkWell(
       onTap: onTap,
+      borderRadius: BorderRadius.circular(40),
       child: Container(
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(color: widget.primaryColor.withOpacity(0.1), shape: BoxShape.circle),
-        child: Icon(icon, color: widget.primaryColor, size: 28),
+        width: small ? 46 : 52,
+        height: small ? 46 : 52,
+        decoration: BoxDecoration(
+          color: widget.primaryColor.withOpacity(0.10),
+          shape: BoxShape.circle,
+        ),
+        child: Icon(
+          icon,
+          color: widget.primaryColor,
+          size: small ? 24 : 28,
+        ),
       ),
     );
   }
@@ -370,177 +531,472 @@ class _KhatmaScreenState extends State<KhatmaScreen> with SingleTickerProviderSt
     int currentSurahIdx = _getSurahIndexForPage(_currentPage);
     int endSurahIdx = _getSurahIndexForPage(endPage);
 
-    return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
-      child: Column(
-        children: [
-          // ================= الهيدر والدائرة =================
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.only(bottom: 40, top: 20),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft, end: Alignment.bottomRight,
-                colors: [widget.primaryColor, HSLColor.fromColor(widget.primaryColor).withLightness(0.3).toColor()],
-              ),
-              borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(40), bottomRight: Radius.circular(40)),
-            ),
-            child: Column(
-              children: [
-                TweenAnimationBuilder<double>(
-                  tween: Tween<double>(begin: 0, end: _progressAnim.value),
-                  duration: const Duration(milliseconds: 1500),
-                  curve: Curves.easeOutExpo,
-                  builder: (context, value, child) {
-                    return Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        SizedBox(width: 200, height: 200, child: CircularProgressIndicator(value: 1.0, color: Colors.white.withOpacity(0.1), strokeWidth: 12)),
-                        SizedBox(width: 200, height: 200, child: CircularProgressIndicator(value: value, color: Colors.amberAccent, strokeWidth: 12, strokeCap: StrokeCap.round)),
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
+    final bgCard = isDark ? const Color(0xFF1E1E2C) : Colors.white;
+    final textMain = isDark ? Colors.white : const Color(0xFF1A1A1A);
+
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final width = constraints.maxWidth;
+        final small = width < 360;
+
+        final circleSize = small ? 170.0 : 200.0;
+        final percentFont = small ? 38.0 : 48.0;
+
+        return SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              // ================= الهيدر والدائرة =================
+              Container(
+                width: double.infinity,
+                padding: EdgeInsets.only(
+                  bottom: small ? 28 : 40,
+                  top: small ? 18 : 20,
+                ),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      widget.primaryColor,
+                      HSLColor.fromColor(widget.primaryColor)
+                          .withLightness(0.3)
+                          .toColor(),
+                    ],
+                  ),
+                  borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(40),
+                    bottomRight: Radius.circular(40),
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    TweenAnimationBuilder<double>(
+                      tween: Tween<double>(begin: 0, end: _progressAnim.value),
+                      duration: const Duration(milliseconds: 1500),
+                      curve: Curves.easeOutExpo,
+                      builder: (context, value, child) {
+                        return Stack(
+                          alignment: Alignment.center,
                           children: [
-                            Text('${(value * 100).toInt()}%', style: GoogleFonts.cairo(fontSize: 48, fontWeight: FontWeight.bold, color: Colors.white, height: 1.0)),
-                            Text('نسبة الإنجاز', style: GoogleFonts.cairo(color: Colors.white70, fontSize: 14)),
+                            SizedBox(
+                              width: circleSize,
+                              height: circleSize,
+                              child: CircularProgressIndicator(
+                                value: 1.0,
+                                color: Theme.of(context).brightness == Brightness.dark
+                                    ? const Color(0xFF1E1E2C)
+                                    : Colors.white,
+                                strokeWidth: 12,
+                              ),
+                            ),
+                            SizedBox(
+                              width: circleSize,
+                              height: circleSize,
+                              child: CircularProgressIndicator(
+                                value: value,
+                                color: Colors.amberAccent,
+                                strokeWidth: 12,
+                                strokeCap: StrokeCap.round,
+                              ),
+                            ),
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  '${(value * 100).toInt()}%',
+                                  style: GoogleFonts.cairo(
+                                    fontSize: percentFont,
+                                    fontWeight: FontWeight.bold,
+                                    color: Theme.of(context).brightness == Brightness.dark
+                                        ? const Color(0xFF1E1E2C)
+                                        : Colors.white,
+                                    height: 1.0,
+                                  ),
+                                ),
+                                Text(
+                                  'نسبة الإنجاز',
+                                  style: GoogleFonts.cairo(
+                                    color: Theme.of(context).brightness == Brightness.dark
+                                        ? const Color(0xFF1E1E2C)
+                                        : Colors.white,
+                                    fontSize: small ? 12 : 14,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 24),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: IntrinsicHeight(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Expanded(
+                              child: _buildStatCol(
+                                'قرأت',
+                                '${_currentPage - 1}',
+                                'صفحة',
+                                small: small,
+                              ),
+                            ),
+                            Container(
+                              width: 1,
+                              height: 40,
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? const Color(0xFF1E1E2C)
+                                  : Colors.white,
+                            ),
+                            Expanded(
+                              child: _buildStatCol(
+                                'متبقي',
+                                '$remainingPages',
+                                'صفحة',
+                                small: small,
+                              ),
+                            ),
                           ],
                         ),
-                      ],
-                    );
-                  },
-                ),
-                const SizedBox(height: 30),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    _buildStatCol('قرأت', '${_currentPage - 1}', 'صفحة'),
-                    Container(width: 1, height: 40, color: Colors.white30),
-                    _buildStatCol('متبقي', '$remainingPages', 'صفحة'),
+                      ),
+                    ),
                   ],
                 ),
-              ],
-            ),
-          ),
-
-          const SizedBox(height: 30),
-
-          // ================= بطاقة الورد اليومي =================
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Container(
-              decoration: BoxDecoration(
-                color: isDark ? const Color(0xFF1E1E2C) : Colors.white,
-                borderRadius: BorderRadius.circular(25),
-                boxShadow: [BoxShadow(color: widget.primaryColor.withOpacity(0.1), blurRadius: 20, offset: const Offset(0, 10))],
               ),
-              child: Column(
-                children: [
-                  // رأس البطاقة
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                    decoration: BoxDecoration(
-                      color: widget.primaryColor.withOpacity(0.05),
-                      borderRadius: const BorderRadius.vertical(top: Radius.circular(25)),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
+
+              const SizedBox(height: 24),
+
+              // ================= بطاقة الورد القادم =================
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: bgCard,
+                    borderRadius: BorderRadius.circular(24),
+                    boxShadow: [
+                      BoxShadow(
+                        color: widget.primaryColor.withOpacity(0.08),
+                        blurRadius: 20,
+                        offset: const Offset(0, 8),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+                        decoration: BoxDecoration(
+                          color: widget.primaryColor.withOpacity(0.05),
+                          borderRadius: const BorderRadius.vertical(
+                            top: Radius.circular(24),
+                          ),
+                        ),
+                        child: Row(
                           children: [
-                            Icon(Icons.menu_book, color: widget.primaryColor),
+                            Expanded(
+                              child: Row(
+                                children: [
+                                  Icon(Icons.menu_book, color: widget.primaryColor, size: 20),
+                                  const SizedBox(width: 8),
+                                  Flexible(
+                                    child: Text(
+                                      'الورد القادم',
+                                      overflow: TextOverflow.ellipsis,
+                                      style: GoogleFonts.cairo(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        color: textMain,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                             const SizedBox(width: 8),
-                            Text('الورد القادم', style: GoogleFonts.cairo(fontSize: 16, fontWeight: FontWeight.bold)),
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                              decoration: BoxDecoration(
+                                color: widget.primaryColor.withOpacity(0.1),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  '$_dailyPages صفحات',
+                                  style: GoogleFonts.cairo(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    color: widget.primaryColor,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                          decoration: BoxDecoration(color: widget.primaryColor.withOpacity(0.1), borderRadius: BorderRadius.circular(10)),
-                          child: Text('$_dailyPages صفحات', style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.bold, color: widget.primaryColor)),
-                        ),
-                      ],
-                    ),
-                  ),
+                      ),
 
-                  // تفاصيل الورد
-                  Padding(
-                    padding: const EdgeInsets.all(24),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        _pageDetail('من', _toArabicNum(_currentPage), _surahNames[currentSurahIdx - 1], widget.primaryColor),
-                        Icon(Icons.arrow_forward_rounded, color: Colors.grey.shade300, size: 30),
-                        _pageDetail('إلى', _toArabicNum(endPage), _surahNames[endSurahIdx - 1], widget.primaryColor),
-                      ],
-                    ),
-                  ),
-
-                  // الأزرار
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          width: double.infinity, height: 55,
-                          child: ElevatedButton.icon(
-                            style: ElevatedButton.styleFrom(backgroundColor: widget.primaryColor, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)), elevation: 2),
-                            onPressed: _goToWird,
-                            icon: const Icon(Icons.chrome_reader_mode, color: Colors.white),
-                            label: Text('قراءة الورد من التطبيق', style: GoogleFonts.cairo(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
-                          ),
+                      Padding(
+                        padding: const EdgeInsets.all(18),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: _pageDetail(
+                                'من',
+                                _toArabicNum(_currentPage),
+                                _surahNames[currentSurahIdx - 1],
+                                widget.primaryColor,
+                                isDark,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 8),
+                              child: Icon(
+                                Icons.arrow_forward_rounded,
+                                color: Colors.grey.shade300,
+                                size: 28,
+                              ),
+                            ),
+                            Expanded(
+                              child: _pageDetail(
+                                'إلى',
+                                _toArabicNum(endPage),
+                                _surahNames[endSurahIdx - 1],
+                                widget.primaryColor,
+                                isDark,
+                              ),
+                            ),
+                          ],
                         ),
-                        const SizedBox(height: 12),
-                        SizedBox(
-                          width: double.infinity, height: 50,
-                          child: OutlinedButton.icon(
-                            style: OutlinedButton.styleFrom(side: BorderSide(color: Colors.green.shade500, width: 1.5), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))),
-                            onPressed: () => _advanceProgress(endPage + 1),
-                            icon: Icon(Icons.check_circle_outline, color: Colors.green.shade600),
-                            label: Text('قرأته من مصحف ورقي', style: GoogleFonts.cairo(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.green.shade700)),
-                          ),
-                        ),
+                      ),
 
-                        // ✅ زر التراجع (يظهر فقط إذا كان هناك تقدم سابق)
-                        if (_previousPage != null) ...[
-                          const SizedBox(height: 16),
-                          TextButton.icon(
-                            onPressed: _undoProgress,
-                            icon: const Icon(Icons.undo, color: Colors.orange, size: 18),
-                            label: Text('تراجع عن آخر ورد (أخطأت بالضغط)', style: GoogleFonts.cairo(color: Colors.orange, fontSize: 12, decoration: TextDecoration.underline)),
-                          )
-                        ]
-                      ],
-                    ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(18, 0, 18, 20),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              width: double.infinity,
+                              height: 54,
+                              child: ElevatedButton.icon(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: widget.primaryColor,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  elevation: 2,
+                                ),
+                                onPressed: _goToWird,
+                                icon: Icon(
+                                  Icons.chrome_reader_mode,
+                                  color: Theme.of(context).brightness == Brightness.dark
+                                      ? const Color(0xFF1E1E2C)
+                                      : Colors.white,
+                                ),
+                                label: FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Text(
+                                    'قراءة الورد من التطبيق',
+                                    style: GoogleFonts.cairo(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Theme.of(context).brightness == Brightness.dark
+                                          ? const Color(0xFF1E1E2C)
+                                          : Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 12),
+                            SizedBox(
+                              width: double.infinity,
+                              height: 50,
+                              child: OutlinedButton.icon(
+                                style: OutlinedButton.styleFrom(
+                                  side: BorderSide(
+                                    color: Colors.green.shade500,
+                                    width: 1.5,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                ),
+                                onPressed: () => _advanceProgress(endPage + 1),
+                                icon: Icon(
+                                  Icons.check_circle_outline,
+                                  color: Colors.green.shade600,
+                                ),
+                                label: FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Text(
+                                    'قرأته من مصحف ورقي',
+                                    style: GoogleFonts.cairo(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.green.shade700,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                            if (_previousPage != null) ...[
+                              const SizedBox(height: 14),
+                              Container(
+                                width: double.infinity,
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 10,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.orange.withOpacity(0.08),
+                                  borderRadius: BorderRadius.circular(14),
+                                  border: Border.all(
+                                    color: Colors.orange.withOpacity(0.25),
+                                  ),
+                                ),
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(12),
+                                  onTap: _undoProgress,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const Icon(
+                                        Icons.undo_rounded,
+                                        color: Colors.orange,
+                                        size: 18,
+                                      ),
+                                      const SizedBox(width: 8),
+                                      Flexible(
+                                        child: Text(
+                                          'تراجع عن آخر ورد (إذا ضغطت بالخطأ)',
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.cairo(
+                                            color: Colors.orange.shade800,
+                                            fontSize: 12.5,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
+
+              const SizedBox(height: 30),
+            ],
           ),
-          const SizedBox(height: 40),
-        ],
-      ),
+        );
+      },
     );
   }
 
-  Widget _buildStatCol(String label, String value, String sub) {
+  Widget _buildStatCol(
+      String label,
+      String value,
+      String sub, {
+        bool small = false,
+      }) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        Text(label, style: GoogleFonts.cairo(color: Colors.white70, fontSize: 12)),
-        Text(value, style: GoogleFonts.cairo(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold)),
-        Text(sub, style: GoogleFonts.cairo(color: Colors.white54, fontSize: 12)),
+        Text(
+          label,
+          textAlign: TextAlign.center,
+          style: GoogleFonts.cairo(
+            color: Theme.of(context).brightness == Brightness.dark
+                ? const Color(0xFF1E1E2C)
+                : Colors.white,
+            fontSize: small ? 11 : 12,
+          ),
+        ),
+        const SizedBox(height: 4),
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            value,
+            style: GoogleFonts.cairo(
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? const Color(0xFF1E1E2C)
+                  : Colors.white,
+              fontSize: small ? 22 : 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Text(
+          sub,
+          textAlign: TextAlign.center,
+          style: GoogleFonts.cairo(
+            color: Theme.of(context).brightness == Brightness.dark
+                ? const Color(0xFF1E1E2C)
+                : Colors.white,
+            fontSize: small ? 11 : 12,
+          ),
+        ),
       ],
     );
   }
 
-  Widget _pageDetail(String title, String page, String surah, Color primary) {
+  Widget _pageDetail(
+      String title,
+      String page,
+      String surah,
+      Color primary,
+      bool isDark,
+      ) {
+    final textMain = isDark ? Colors.white : const Color(0xFF1A1A1A);
+
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        Text(title, style: GoogleFonts.cairo(color: Colors.grey, fontSize: 12)),
+        Text(
+          title,
+          style: GoogleFonts.cairo(
+            color: Colors.grey,
+            fontSize: 12,
+          ),
+        ),
         const SizedBox(height: 4),
-        Text('ص $page', style: GoogleFonts.amiri(fontSize: 26, fontWeight: FontWeight.bold, color: Colors.black87)),
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            'ص $page',
+            style: GoogleFonts.amiri(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: textMain,
+            ),
+          ),
+        ),
+        const SizedBox(height: 4),
         Container(
-          margin: const EdgeInsets.only(top: 4),
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-          decoration: BoxDecoration(color: primary.withOpacity(0.1), borderRadius: BorderRadius.circular(6)),
-          child: Text(surah, style: GoogleFonts.cairo(color: primary, fontSize: 11, fontWeight: FontWeight.bold)),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+          decoration: BoxDecoration(
+            color: primary.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Text(
+            surah,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+            style: GoogleFonts.cairo(
+              color: primary,
+              fontSize: 11,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
       ],
     );
