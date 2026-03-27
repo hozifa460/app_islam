@@ -1,4 +1,3 @@
-import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
@@ -13,22 +12,23 @@ import 'package:timezone/timezone.dart' as tz;
 
 import 'controllers/prayer_times_controller.dart';
 import 'main_shell_screen.dart';
-import 'screens/home/screen/HomeScreen.dart';
 import 'screens/splash_screen.dart';
 import 'screens/prayer/adhan_player_screen.dart';
 import 'services/adahn_notification.dart';
-import 'services/notification_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.light,
+    statusBarBrightness: Brightness.dark,
+    systemNavigationBarColor: Colors.transparent,
+    systemNavigationBarDividerColor: Colors.transparent,
+    systemNavigationBarIconBrightness: Brightness.light,
   ));
 
-
-  await AndroidAlarmManager.initialize();
   await RadioService.initRadio();
   await initializeDateFormatting('ar', null);
   tz_data.initializeTimeZones();
@@ -36,11 +36,9 @@ void main() async {
   tz.setLocalLocation(tz.getLocation(tzName));
 
   await AdahnNotification.instance.init();
-  await NotificationService.init();
 
   final prefs = await SharedPreferences.getInstance();
   await prefs.remove('adhan_images_preloaded');
-
 
   runApp(
     ChangeNotifierProvider(
@@ -48,10 +46,9 @@ void main() async {
       child: const MyApp(),
     ),
   );
-
 }
 
-
+// ═══ باقي الكود بدون أي تعديل ═══
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -63,10 +60,13 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-  bool isDarkMode = false;
-  int selectedColorIndex = 0;
+  bool _isDarkMode = true;
+  bool _splashDone = false;
+  bool _prefsLoaded = false;
+  int _selectedColorIndex = 0;
 
   static const List<Color> appColors = [
+    Color(0xFF123C33),
     Color(0xFF1B5E20),
     Color(0xFF0D47A1),
     Color(0xFF4A148C),
@@ -77,21 +77,23 @@ class _MyAppState extends State<MyApp> {
     Color(0xFF3E2723),
     Color(0xFF263238),
     Color(0xFFB71C1C),
+    Color(0xFF00695C),
   ];
 
   static const List<String> colorNames = [
     'أخضر إسلامي',
+    'أخضر زمردي',
     'أزرق سماوي',
     'بنفسجي',
-    'وردي',
+    'وردي غامق',
     'تيل',
     'برتقالي',
     'نيلي',
     'بني',
-    'رمادي',
-    'أحمر'
+    'رمادي فحمي',
+    'أحمر',
+    'أخضر بحري',
   ];
-
 
   @override
   void initState() {
@@ -103,40 +105,25 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> _preloadImages() async {
     final prefs = await SharedPreferences.getInstance();
-    final done = prefs.getBool('adhan_images_preloaded') ?? false;
-
-    if (done) return;
-
+    if (prefs.getBool('adhan_images_preloaded') ?? false) return;
     final success = await AdhanImagePreloadService.preloadAllImages();
-
-    if (success) {
-      await prefs.setBool('adhan_images_preloaded', true);
-    } else {
-      debugPrint('Some adhan images failed to preload. Will retry next launch.');
-    }
+    if (success) await prefs.setBool('adhan_images_preloaded', true);
   }
-
 
   void _setupNotificationListener() {
     AdahnNotification.instance.onNotificationTap = (payload) {
       if (payload['type'] == 'adhan') {
-        navigatorKey.currentState?.push(
-          MaterialPageRoute(
-            builder: (_) => AdhanPlayerScreen(
-              primaryColor: appColors[selectedColorIndex],
-              prayerName: payload['prayerName'] ?? payload['prayer'] ?? 'الصلاة',
-              muezzinName: payload['muezzinName'] ?? 'مؤذن',
-              url: payload['muezzinUrl'] ?? '',
-              localPath: (payload['localPath'] != null &&
-                  payload['localPath'].toString().isNotEmpty)
-                  ? payload['localPath']
-                  : null,
-            ),
+        navigatorKey.currentState?.push(MaterialPageRoute(
+          builder: (_) => AdhanPlayerScreen(
+            primaryColor: appColors[_selectedColorIndex],
+            prayerName: payload['prayerName'] ?? payload['prayer'] ?? 'الصلاة',
+            muezzinName: payload['muezzinName'] ?? 'مؤذن',
+            url: payload['muezzinUrl'] ?? '',
+            localPath: (payload['localPath']?.toString().isNotEmpty ?? false)
+                ? payload['localPath']
+                : null,
           ),
-        );
-      } else if (payload['type'] == 'reminder') {
-        // التنبيه القبلي لا يحتاج فتح مشغل الأذان
-        // يمكن لاحقاً فتح صفحة مواقيت الصلاة أو عدم فعل شيء
+        ));
       }
     };
   }
@@ -145,69 +132,206 @@ class _MyAppState extends State<MyApp> {
     final prefs = await SharedPreferences.getInstance();
     if (!mounted) return;
     setState(() {
-      isDarkMode = prefs.getBool('isDarkMode') ?? true;
-      selectedColorIndex = prefs.getInt('colorIndex') ?? 0;
+      _isDarkMode = prefs.getBool('isDarkMode') ?? true;
+      _selectedColorIndex = (prefs.getInt('colorIndex') ?? 0)
+          .clamp(0, appColors.length - 1);
+      _prefsLoaded = true;
     });
   }
 
   Future<void> _savePrefs() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('isDarkMode', isDarkMode);
-    await prefs.setInt('colorIndex', selectedColorIndex);
+    await prefs.setBool('isDarkMode', _isDarkMode);
+    await prefs.setInt('colorIndex', _selectedColorIndex);
   }
 
   void _changeTheme(bool value) {
-    setState(() => isDarkMode = value);
+    setState(() => _isDarkMode = value);
     _savePrefs();
   }
 
   void _changeColor(int index) {
-    setState(() => selectedColorIndex = index);
+    setState(() => _selectedColorIndex = index);
     _savePrefs();
   }
 
   void _goToHome() {
-    navigatorKey.currentState?.pushReplacement(
-      MaterialPageRoute(
-        builder: (_) => MainShellScreen(
-          onThemeChanged: _changeTheme,
-          onColorChanged: _changeColor,
-          isDarkMode: isDarkMode,
-          selectedColorIndex: selectedColorIndex,
-          appColors: appColors,
-          colorNames: colorNames,
-        ),
-      ),
-    );
+    if (mounted) setState(() => _splashDone = true);
   }
 
   @override
   Widget build(BuildContext context) {
-    final primaryColor = appColors[selectedColorIndex];
+    const bgDark = Color(0xFF0A0E17);
+    const bgLight = Color(0xFFF0F4FF);
 
     return MaterialApp(
       navigatorKey: navigatorKey,
       title: 'طريق الإسلام',
       debugShowCheckedModeBanner: false,
-      themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
+      themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: primaryColor,
+          seedColor: appColors[_selectedColorIndex],
           brightness: Brightness.light,
         ),
+        scaffoldBackgroundColor: bgLight,
         textTheme: GoogleFonts.cairoTextTheme(),
         useMaterial3: true,
       ),
       darkTheme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: primaryColor,
+          seedColor: appColors[_selectedColorIndex],
           brightness: Brightness.dark,
         ),
-        scaffoldBackgroundColor: const Color(0xFF0A0E17),
+        scaffoldBackgroundColor: bgDark,
         textTheme: GoogleFonts.cairoTextTheme(ThemeData.dark().textTheme),
         useMaterial3: true,
       ),
-      home: SplashScreen( onFinish: _goToHome,),
+      home: !_prefsLoaded
+          ? Container(color: _isDarkMode ? bgDark : bgLight)
+          : _AppRoot(
+        splashDone: _splashDone,
+        isDark: _isDarkMode,
+        onFinish: _goToHome,
+        colorIndex: _selectedColorIndex,
+        onThemeChanged: _changeTheme,
+        onColorChanged: _changeColor,
+        appColors: appColors,
+        colorNames: colorNames,
+      ),
+    );
+  }
+}
+
+class _AppRoot extends StatefulWidget {
+  final bool splashDone;
+  final bool isDark;
+  final VoidCallback onFinish;
+  final int colorIndex;
+  final void Function(bool) onThemeChanged;
+  final void Function(int) onColorChanged;
+  final List<Color> appColors;
+  final List<String> colorNames;
+
+  const _AppRoot({
+    required this.splashDone,
+    required this.isDark,
+    required this.onFinish,
+    required this.colorIndex,
+    required this.onThemeChanged,
+    required this.onColorChanged,
+    required this.appColors,
+    required this.colorNames,
+  });
+
+  @override
+  State<_AppRoot> createState() => _AppRootState();
+}
+
+class _AppRootState extends State<_AppRoot>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _ctrl;
+  late Animation<double> _splashFade;
+  late Animation<double> _homeFade;
+
+  bool _homeReady = false;
+  bool _splashGone = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _ctrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 420),
+    );
+
+    _splashFade = Tween<double>(begin: 1.0, end: 0.0).animate(
+      CurvedAnimation(parent: _ctrl, curve: Curves.easeIn),
+    );
+
+    _homeFade = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _ctrl, curve: Curves.easeOut),
+    );
+
+    _ctrl.addStatusListener((status) {
+      if (status == AnimationStatus.completed && mounted) {
+        setState(() => _splashGone = true);
+      }
+    });
+  }
+
+  @override
+  void didUpdateWidget(_AppRoot old) {
+    super.didUpdateWidget(old);
+    if (widget.splashDone && !old.splashDone) {
+      _startTransition();
+    }
+  }
+
+  void _startTransition() {
+    setState(() => _homeReady = true);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted && !_ctrl.isAnimating) {
+        _ctrl.forward();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        ColoredBox(
+          color: widget.isDark
+              ? const Color(0xFF0A0E17)
+              : const Color(0xFFF0F4FF),
+        ),
+        if (_homeReady) ...[
+          if (!_splashGone)
+            AnimatedBuilder(
+              animation: _homeFade,
+              builder: (_, child) => Opacity(
+                opacity: _homeFade.value.clamp(0.0, 1.0),
+                child: child,
+              ),
+              child: _buildHome(),
+            )
+          else
+            _buildHome(),
+        ],
+        if (!_splashGone)
+          AnimatedBuilder(
+            animation: _splashFade,
+            builder: (_, child) => Opacity(
+              opacity: _splashFade.value.clamp(0.0, 1.0),
+              child: child,
+            ),
+            child: SplashScreen(
+              key: const ValueKey('splash'),
+              onFinish: widget.onFinish,
+            ),
+          ),
+      ],
+    );
+  }
+
+  Widget _buildHome() {
+    return MainShellScreen(
+      key: const ValueKey('home'),
+      onThemeChanged: widget.onThemeChanged,
+      onColorChanged: widget.onColorChanged,
+      isDarkMode: widget.isDark,
+      selectedColorIndex: widget.colorIndex,
+      appColors: widget.appColors,
+      colorNames: widget.colorNames,
     );
   }
 }

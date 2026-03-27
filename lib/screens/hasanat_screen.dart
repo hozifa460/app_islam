@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter/services.dart';
 
 class HasanatScreen extends StatefulWidget {
   const HasanatScreen({super.key});
@@ -10,26 +10,28 @@ class HasanatScreen extends StatefulWidget {
   State<HasanatScreen> createState() => _HasanatScreenState();
 }
 
-class _HasanatScreenState extends State<HasanatScreen> with TickerProviderStateMixin {
-  // ألوان الهوية البصرية המوحدة
+class _HasanatScreenState extends State<HasanatScreen>
+    with TickerProviderStateMixin {
   final Color _gold = const Color(0xFFE6B325);
   final Color _bgDark = const Color(0xFF0A0E17);
   final Color _bgCard = const Color(0xFF151B26);
 
-  // العدادات المكتملة
-  int palmTrees = 0; // نخلات
-  int palaces = 0; // قصور
-  int hasanat = 0; // حسنات
-  int jewels = 0; // كنوز
-  int lights = 0; // أنوار
-  int doors = 0; // أبواب
+  int palmTrees = 0;
+  int palaces = 0;
+  int hasanat = 0;
+  int jewels = 0;
+  int lights = 0;
+  int doors = 0;
+  int shields = 0;
+  int scales = 0;
 
-  // عدادات التقدم
   Map<String, int> progressCounters = {
     'palace': 0,
     'door': 0,
     'jewel': 0,
     'palm': 0,
+    'shield': 0,
+    'scale': 0,
   };
 
   late AnimationController _bounceController;
@@ -39,86 +41,187 @@ class _HasanatScreenState extends State<HasanatScreen> with TickerProviderStateM
   final List<Map<String, dynamic>> deeds = [
     {
       'title': 'سُبْحَانَ اللَّهِ وَبِحَمْدِهِ',
-      'reward': 'تُغرس نخلة في الجنة 🌴',
-      'hadith': 'من قال سبحان الله وبحمده غرست له نخلة في الجنة',
-      'source': 'رواه الترمذي',
+      'reward': 'تُغرس نخلة في الجنة',
+      'hadith': 'من قال سبحان الله وبحمده غُرست له نخلة في الجنة',
+      'source': 'رواه الترمذي وصححه الألباني',
       'type': 'palm',
       'icon': '🌴',
       'target': 1,
+      'color': 0xFF4CAF50,
     },
     {
       'title': 'سُبْحَانَ اللَّهِ العَظِيمِ وَبِحَمْدِهِ',
-      'reward': 'تُغرس نخلة في الجنة 🌴',
-      'hadith': 'كلمتان خفيفتان على اللسان ثقيلتان في الميزان حبيبتان إلى الرحمن',
+      'reward': 'ثقيلتان في الميزان',
+      'hadith':
+      'كلمتان خفيفتان على اللسان، ثقيلتان في الميزان، حبيبتان إلى الرحمن: سبحان الله وبحمده، سبحان الله العظيم',
       'source': 'رواه البخاري ومسلم',
-      'type': 'palm',
-      'icon': '🌴',
+      'type': 'scale',
+      'icon': '⚖️',
       'target': 1,
+      'color': 0xFF9C27B0,
     },
     {
-      'title': 'قِرَاءَةُ سُورَةِ الإِخْلَاصِ',
-      'reward': 'يُبنى لك قصر في الجنة 🏰',
-      'hadith': 'من قرأ قل هو الله أحد عشر مرات بنى الله له قصراً في الجنة',
-      'source': 'رواه أحمد',
+      'title': 'سُبْحَانَ اللَّهِ وَبِحَمْدِهِ (100 مرة)',
+      'reward': 'حط الخطايا وإن كانت كزبد البحر',
+      'hadith':
+      'من قال سبحان الله وبحمده في يوم مائة مرة حُطّت خطاياه وإن كانت مثل زبد البحر',
+      'source': 'رواه البخاري ومسلم',
+      'type': 'hasana',
+      'icon': '🌊',
+      'target': 100,
+      'hasanaValue': 1,
+      'color': 0xFF00BCD4,
+    },
+    {
+      'title': 'قِرَاءَةُ سُورَةِ الإِخْلَاصِ (10 مرات)',
+      'reward': 'يُبنى لك قصر في الجنة',
+      'hadith':
+      'من قرأ قل هو الله أحد عشر مرات بنى الله له قصرًا في الجنة',
+      'source': 'رواه أحمد وصححه الألباني',
       'type': 'palace',
       'icon': '🏰',
       'target': 10,
+      'color': 0xFFFF9800,
     },
     {
       'title': 'لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ',
-      'reward': 'كنز من كنوز الجنة 💎',
-      'hadith': 'ألا أدلك على كلمة هي كنز من كنوز الجنة: لا حول ولا قوة إلا بالله',
+      'reward': 'كنز من كنوز الجنة',
+      'hadith':
+      'ألا أدلك على كلمة هي كنز من كنوز الجنة؟ لا حول ولا قوة إلا بالله',
       'source': 'رواه البخاري ومسلم',
       'type': 'jewel',
       'icon': '💎',
       'target': 1,
+      'color': 0xFF2196F3,
     },
     {
-      'title': 'لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ',
-      'reward': '100 حسنة وحط 100 سيئة 📿',
-      'hadith': 'من قالها في يوم مائة مرة كانت له عدل عشر رقاب...',
-      'source': 'رواه البخاري',
+      'title':
+      'لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ',
+      'reward': '100 حسنة وحط 100 سيئة وحرز من الشيطان',
+      'hadith':
+      'من قالها في يوم مائة مرة كانت له عدل عشر رقاب، وكُتبت له مائة حسنة، ومُحيت عنه مائة سيئة، وكانت له حرزًا من الشيطان',
+      'source': 'رواه البخاري ومسلم',
       'type': 'hasana',
       'icon': '📿',
       'target': 1,
       'hasanaValue': 100,
+      'color': 0xFF009688,
     },
     {
       'title': 'الصَّلَاةُ عَلَى النَّبِيِّ ﷺ',
-      'reward': 'نور وعشر صلوات ✨',
-      'hadith': 'من صلى عليّ صلاة واحدة صلى الله عليه عشر صلوات',
-      'source': 'رواه مسلم',
+      'reward': '10 صلوات من الله وحط 10 سيئات ورفع 10 درجات',
+      'hadith':
+      'من صلّى عليّ صلاة واحدة صلّى الله عليه عشر صلوات، وحُطّت عنه عشر خطيئات، ورُفعت له عشر درجات',
+      'source': 'رواه مسلم والنسائي',
       'type': 'light',
       'icon': '✨',
       'target': 1,
+      'color': 0xFFFFC107,
     },
     {
-      'title': 'أَسْتَغْفِرُ اللَّهَ',
-      'reward': '10 حسنات 📿',
-      'hadith': 'من لزم الاستغفار جعل الله له من كل هم فرجاً',
-      'source': 'رواه أبو داود',
+      'title': 'أَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ',
+      'reward': 'فرج من كل ضيق ومخرج من كل هم',
+      'hadith':
+      'من لزم الاستغفار جعل الله له من كل همّ فرجًا، ومن كل ضيق مخرجًا، ورزقه من حيث لا يحتسب',
+      'source': 'رواه أبو داود وابن ماجه',
       'type': 'hasana',
-      'icon': '📿',
+      'icon': '🤲',
       'target': 1,
       'hasanaValue': 10,
+      'color': 0xFF8BC34A,
     },
     {
-      'title': 'قِرَاءَةُ آيَةِ الكُرْسِيِّ',
-      'reward': 'تفتح لك أبواب الجنة 🚪',
-      'hadith': 'من قرأ آية الكرسي دبر كل صلاة لم يمنعه من دخول الجنة إلا أن يموت',
-      'source': 'النسائي',
+      'title': 'قِرَاءَةُ آيَةِ الكُرْسِيِّ بعد كل صلاة',
+      'reward': 'لم يمنعه من دخول الجنة إلا أن يموت',
+      'hadith':
+      'من قرأ آية الكرسي دبر كل صلاة مكتوبة لم يمنعه من دخول الجنة إلا أن يموت',
+      'source': 'رواه النسائي وصححه الألباني',
       'type': 'door',
       'icon': '🚪',
       'target': 5,
+      'color': 0xFF795548,
+    },
+    {
+      'title':
+      'سُبْحَانَ اللَّهِ، وَالحَمْدُ لِلَّهِ، وَلَا إِلَهَ إِلَّا اللَّهُ، وَاللَّهُ أَكْبَرُ',
+      'reward': 'أحب الكلام إلى الله',
+      'hadith':
+      'أحب الكلام إلى الله أربع: سبحان الله، والحمد لله، ولا إله إلا الله، والله أكبر',
+      'source': 'رواه مسلم',
+      'type': 'scale',
+      'icon': '⚖️',
+      'target': 1,
+      'color': 0xFFE91E63,
+    },
+    {
+      'title':
+      'سُبْحَانَ اللَّهِ (33) وَالحَمْدُ لِلَّهِ (33) وَاللَّهُ أَكْبَرُ (34)',
+      'reward': 'تُغفر ذنوبه وإن كانت مثل زبد البحر',
+      'hadith':
+      'من سبّح الله في دبر كل صلاة ثلاثًا وثلاثين، وحمد الله ثلاثًا وثلاثين، وكبّر الله ثلاثًا وثلاثين',
+      'source': 'رواه مسلم',
+      'type': 'hasana',
+      'icon': '📿',
+      'target': 1,
+      'hasanaValue': 50,
+      'color': 0xFF3F51B5,
+    },
+    {
+      'title': 'لَا إِلَهَ إِلَّا اللَّهُ',
+      'reward': 'أفضل ما قاله النبيون',
+      'hadith':
+      'أفضل الذكر لا إله إلا الله، وأفضل الدعاء الحمد لله',
+      'source': 'رواه الترمذي وابن ماجه',
+      'type': 'light',
+      'icon': '🌟',
+      'target': 1,
+      'color': 0xFFFF5722,
+    },
+    {
+      'title': 'الحَمْدُ لِلَّهِ',
+      'reward': 'تملأ الميزان',
+      'hadith':
+      'الطهور شطر الإيمان، والحمد لله تملأ الميزان',
+      'source': 'رواه مسلم',
+      'type': 'scale',
+      'icon': '⚖️',
+      'target': 1,
+      'color': 0xFF607D8B,
+    },
+    {
+      'title':
+      'بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ العَلِيمُ (3 مرات)',
+      'reward': 'حفظ من كل شر',
+      'hadith':
+      'من قالها ثلاث مرات حين يُصبح وثلاث مرات حين يُمسي لم يضره شيء',
+      'source': 'رواه أبو داود والترمذي',
+      'type': 'shield',
+      'icon': '🛡️',
+      'target': 3,
+      'color': 0xFF00695C,
+    },
+    {
+      'title': 'أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ (3 مرات)',
+      'reward': 'حفظ من كل أذى',
+      'hadith':
+      'من قالها حين يُمسي ثلاث مرات لم تضره حُمة تلك الليلة',
+      'source': 'رواه مسلم',
+      'type': 'shield',
+      'icon': '🛡️',
+      'target': 3,
+      'color': 0xFF37474F,
     },
   ];
 
   @override
   void initState() {
     super.initState();
-    _bounceController = AnimationController(vsync: this, duration: const Duration(milliseconds: 300));
-    _bounceAnim = Tween<double>(begin: 1.0, end: 1.15).animate(
-        CurvedAnimation(parent: _bounceController, curve: Curves.elasticOut)
+    _bounceController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+    );
+    _bounceAnim = Tween<double>(begin: 1.0, end: 1.12).animate(
+      CurvedAnimation(parent: _bounceController, curve: Curves.elasticOut),
     );
     _loadData();
   }
@@ -132,9 +235,12 @@ class _HasanatScreenState extends State<HasanatScreen> with TickerProviderStateM
       jewels = prefs.getInt('jewels') ?? 0;
       lights = prefs.getInt('lights') ?? 0;
       doors = prefs.getInt('doors') ?? 0;
+      shields = prefs.getInt('shields') ?? 0;
+      scales = prefs.getInt('scales') ?? 0;
 
-      progressCounters['palace'] = prefs.getInt('prog_palace') ?? 0;
-      progressCounters['door'] = prefs.getInt('prog_door') ?? 0;
+      for (final key in progressCounters.keys) {
+        progressCounters[key] = prefs.getInt('prog_$key') ?? 0;
+      }
     });
   }
 
@@ -146,35 +252,47 @@ class _HasanatScreenState extends State<HasanatScreen> with TickerProviderStateM
     await prefs.setInt('jewels', jewels);
     await prefs.setInt('lights', lights);
     await prefs.setInt('doors', doors);
+    await prefs.setInt('shields', shields);
+    await prefs.setInt('scales', scales);
 
-    await prefs.setInt('prog_palace', progressCounters['palace']!);
-    await prefs.setInt('prog_door', progressCounters['door']!);
+    for (final entry in progressCounters.entries) {
+      await prefs.setInt('prog_${entry.key}', entry.value);
+    }
   }
 
   void _addDeed(int index) {
     HapticFeedback.mediumImpact();
     setState(() {
       _lastTappedIndex = index;
-      final type = deeds[index]['type'];
+      final type = deeds[index]['type'] as String;
       final target = deeds[index]['target'] as int;
 
       if (type == 'hasana') {
-        hasanat += (deeds[index]['hasanaValue'] as int? ?? 10);
+        final val = deeds[index]['hasanaValue'] as int? ?? 10;
+
+        if (target > 1) {
+          progressCounters[type] = (progressCounters[type] ?? 0) + 1;
+          hasanat += val;
+
+          if (progressCounters[type]! >= target) {
+            progressCounters[type] = 0;
+            _showCompletionSnackbar(deeds[index]['reward'] as String);
+          }
+        } else {
+          hasanat += val;
+          _showCompletionSnackbar(deeds[index]['reward'] as String);
+        }
       } else if (target > 1) {
         progressCounters[type] = (progressCounters[type] ?? 0) + 1;
 
         if (progressCounters[type]! >= target) {
           progressCounters[type] = 0;
-          _showCompletionSnackbar(deeds[index]['reward']);
-
-          if (type == 'palace') palaces++;
-          if (type == 'door') doors++;
+          _incrementType(type);
+          _showCompletionSnackbar(deeds[index]['reward'] as String);
         }
       } else {
-        _showCompletionSnackbar(deeds[index]['reward']);
-        if (type == 'palm') palmTrees++;
-        if (type == 'jewel') jewels++;
-        if (type == 'light') lights++;
+        _incrementType(type);
+        _showCompletionSnackbar(deeds[index]['reward'] as String);
       }
     });
 
@@ -182,15 +300,48 @@ class _HasanatScreenState extends State<HasanatScreen> with TickerProviderStateM
     _saveData();
   }
 
+  void _incrementType(String type) {
+    switch (type) {
+      case 'palm':
+        palmTrees++;
+        break;
+      case 'palace':
+        palaces++;
+        break;
+      case 'jewel':
+        jewels++;
+        break;
+      case 'light':
+        lights++;
+        break;
+      case 'door':
+        doors++;
+        break;
+      case 'shield':
+        shields++;
+        break;
+      case 'scale':
+        scales++;
+        break;
+    }
+  }
+
   void _showCompletionSnackbar(String message) {
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(message, style: GoogleFonts.cairo(fontWeight: FontWeight.bold, color: Colors.black)),
+        content: Text(
+          message,
+          style: GoogleFonts.cairo(
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
         backgroundColor: _gold,
         behavior: SnackBarBehavior.floating,
-        duration: const Duration(seconds: 1),
+        duration: const Duration(seconds: 2),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        margin: const EdgeInsets.all(16),
       ),
     );
   }
@@ -198,7 +349,7 @@ class _HasanatScreenState extends State<HasanatScreen> with TickerProviderStateM
   void _resetAll() {
     showDialog(
       context: context,
-      builder: (context) => Directionality(
+      builder: (ctx) => Directionality(
         textDirection: TextDirection.rtl,
         child: AlertDialog(
           backgroundColor: _bgCard,
@@ -206,23 +357,57 @@ class _HasanatScreenState extends State<HasanatScreen> with TickerProviderStateM
             borderRadius: BorderRadius.circular(20),
             side: BorderSide(color: _gold.withOpacity(0.3)),
           ),
-          title: Text('إعادة تعيين', style: GoogleFonts.cairo(fontWeight: FontWeight.bold, color: Colors.white), textAlign: TextAlign.center),
-          content: Text('هل تريد تصفير جميع حسناتك وقصورك؟', style: GoogleFonts.cairo(fontSize: 16, color: Colors.white70), textAlign: TextAlign.center),
+          title: Text(
+            'إعادة تعيين',
+            style: GoogleFonts.cairo(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          content: Text(
+            'هل تريد تصفير جميع العدادات؟',
+            style: GoogleFonts.cairo(fontSize: 15, color: Colors.white70),
+            textAlign: TextAlign.center,
+          ),
           actions: [
             TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text('إلغاء', style: GoogleFonts.cairo(color: Colors.grey))
+              onPressed: () => Navigator.pop(ctx),
+              child: Text(
+                'إلغاء',
+                style: GoogleFonts.cairo(color: Colors.grey),
+              ),
             ),
             TextButton(
               onPressed: () {
                 setState(() {
-                  palmTrees = 0; palaces = 0; hasanat = 0; jewels = 0; lights = 0; doors = 0;
-                  progressCounters = {'palace': 0, 'door': 0, 'jewel': 0, 'palm': 0};
+                  palmTrees = 0;
+                  palaces = 0;
+                  hasanat = 0;
+                  jewels = 0;
+                  lights = 0;
+                  doors = 0;
+                  shields = 0;
+                  scales = 0;
+                  progressCounters = {
+                    'palace': 0,
+                    'door': 0,
+                    'jewel': 0,
+                    'palm': 0,
+                    'shield': 0,
+                    'scale': 0,
+                  };
                 });
                 _saveData();
-                Navigator.pop(context);
+                Navigator.pop(ctx);
               },
-              child: Text('إعادة تعيين', style: GoogleFonts.cairo(color: Colors.redAccent, fontWeight: FontWeight.bold)),
+              child: Text(
+                'تصفير',
+                style: GoogleFonts.cairo(
+                  color: Colors.redAccent,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ],
         ),
@@ -236,14 +421,25 @@ class _HasanatScreenState extends State<HasanatScreen> with TickerProviderStateM
     super.dispose();
   }
 
+  String _getTypeFromTitle(String title) {
+    if (title.contains('نخل')) return 'palm';
+    if (title.contains('قصور')) return 'palace';
+    if (title.contains('كنوز')) return 'jewel';
+    if (title.contains('أنوار')) return 'light';
+    if (title.contains('أبواب')) return 'door';
+    if (title.contains('دروع')) return 'shield';
+    if (title.contains('موازين')) return 'scale';
+    return 'hasana';
+  }
+
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-
-    // الألوان المتكيفة مع الهوية
     final bgColor = isDark ? _bgDark : const Color(0xFFF5F7FA);
-    final textColorMain = isDark ? Colors.white : const Color(0xFF1A1A1A);
-    final textColorSub = isDark ? Colors.white70 : Colors.black54;
+    final textColor = isDark ? Colors.white : const Color(0xFF1A1A1A);
+    final subColor = isDark ? Colors.white70 : Colors.black54;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmall = screenWidth < 360;
 
     return Directionality(
       textDirection: TextDirection.rtl,
@@ -254,16 +450,28 @@ class _HasanatScreenState extends State<HasanatScreen> with TickerProviderStateM
           backgroundColor: Colors.transparent,
           elevation: 0,
           centerTitle: true,
-          title: Text('حصاد الحسنات', style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 24, color: textColorMain)),
+          title: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              'حصاد الحسنات',
+              style: GoogleFonts.cairo(
+                fontWeight: FontWeight.bold,
+                fontSize: 22,
+                color: textColor,
+              ),
+            ),
+          ),
           leading: Container(
             margin: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: isDark ? Colors.white.withOpacity(0.1) : _gold.withOpacity(0.1),
+              color: isDark
+                  ? Colors.white.withOpacity(0.1)
+                  : _gold.withOpacity(0.1),
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: isDark ? Colors.white.withOpacity(0.1) : Colors.transparent),
             ),
             child: IconButton(
-              icon: Icon(Icons.arrow_back_ios_new, color: textColorMain),
+              icon: Icon(Icons.arrow_back_ios_new,
+                  color: textColor, size: 20),
               onPressed: () => Navigator.pop(context),
             ),
           ),
@@ -273,12 +481,12 @@ class _HasanatScreenState extends State<HasanatScreen> with TickerProviderStateM
               decoration: BoxDecoration(
                 color: Colors.redAccent.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.redAccent.withOpacity(0.3)),
               ),
               child: IconButton(
-                icon: const Icon(Icons.refresh, color: Colors.redAccent),
+                icon: const Icon(Icons.refresh,
+                    color: Colors.redAccent, size: 20),
                 onPressed: _resetAll,
-                tooltip: 'تصفير العدادات',
+                tooltip: 'تصفير',
               ),
             ),
           ],
@@ -287,36 +495,70 @@ class _HasanatScreenState extends State<HasanatScreen> with TickerProviderStateM
           child: CustomScrollView(
             physics: const BouncingScrollPhysics(),
             slivers: [
-              // ✅ الإحصائيات (الزجاجية)
               SliverToBoxAdapter(
-                child: _buildStatsGrid(isDark, textColorMain),
+                child: _buildStatsSection(isDark, textColor, isSmall),
               ),
-
-              // العنوان
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
+                  padding: const EdgeInsets.fromLTRB(20, 16, 20, 10),
                   child: Row(
                     children: [
-                      Container(width: 4, height: 24, decoration: BoxDecoration(color: _gold, borderRadius: BorderRadius.circular(4))),
+                      Container(
+                        width: 4,
+                        height: 22,
+                        decoration: BoxDecoration(
+                          color: _gold,
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                      ),
                       const SizedBox(width: 10),
-                      Text('الأعمال والأجور', style: GoogleFonts.cairo(fontSize: 20, fontWeight: FontWeight.bold, color: textColorMain)),
+                      Expanded(
+                        child: Text(
+                          'الأعمال والأجور',
+                          style: GoogleFonts.cairo(
+                            fontSize: isSmall ? 18 : 20,
+                            fontWeight: FontWeight.bold,
+                            color: textColor,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: _gold.withOpacity(0.12),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Text(
+                          '${deeds.length} ذكر',
+                          style: GoogleFonts.cairo(
+                            fontSize: 11,
+                            color: _gold,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
               ),
-
-              // ✅ قائمة الأعمال
               SliverPadding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 sliver: SliverList(
                   delegate: SliverChildBuilderDelegate(
-                        (context, index) => _buildDeedCard(index, isDark, textColorMain, textColorSub),
+                        (context, index) => _buildDeedCard(
+                      index,
+                      isDark,
+                      textColor,
+                      subColor,
+                      isSmall,
+                    ),
                     childCount: deeds.length,
                   ),
                 ),
               ),
-
               const SliverToBoxAdapter(child: SizedBox(height: 30)),
             ],
           ),
@@ -325,48 +567,55 @@ class _HasanatScreenState extends State<HasanatScreen> with TickerProviderStateM
     );
   }
 
-  Widget _buildStatsGrid(bool isDark, Color textColorMain) {
+  Widget _buildStatsSection(bool isDark, Color textColor, bool isSmall) {
     final stats = [
-      {'title': 'نخلات', 'count': palmTrees, 'icon': '🌴', 'color': Colors.greenAccent},
+      {'title': 'نخلات', 'count': palmTrees, 'icon': '🌴', 'color': Colors.green},
       {'title': 'قصور', 'count': palaces, 'icon': '🏰', 'color': _gold},
-      {'title': 'كنوز', 'count': jewels, 'icon': '💎', 'color': Colors.blueAccent},
-      {'title': 'أنوار', 'count': lights, 'icon': '✨', 'color': Colors.orangeAccent},
-      {'title': 'أبواب', 'count': doors, 'icon': '🚪', 'color': Colors.brown.shade300},
-      {'title': 'حسنات', 'count': hasanat, 'icon': '📿', 'color': Colors.tealAccent},
+      {'title': 'كنوز', 'count': jewels, 'icon': '💎', 'color': Colors.blue},
+      {'title': 'أنوار', 'count': lights, 'icon': '✨', 'color': Colors.orange},
+      {'title': 'أبواب', 'count': doors, 'icon': '🚪', 'color': Colors.brown},
+      {'title': 'دروع', 'count': shields, 'icon': '🛡️', 'color': Colors.teal},
+      {'title': 'موازين', 'count': scales, 'icon': '⚖️', 'color': Colors.purple},
+      {'title': 'حسنات', 'count': hasanat, 'icon': '📿', 'color': Colors.cyan},
     ];
 
     final cardBg = isDark ? _bgCard : Colors.white;
-    final borderColor = isDark ? Colors.white.withOpacity(0.1) : _gold.withOpacity(0.2);
+    final borderColor =
+    isDark ? Colors.white.withOpacity(0.08) : _gold.withOpacity(0.15);
 
     return Container(
-      margin: const EdgeInsets.all(20),
-      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+      padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: cardBg,
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(22),
         border: Border.all(color: borderColor),
         boxShadow: [
           BoxShadow(
-            color: isDark ? Colors.black.withOpacity(0.3) : Colors.grey.withOpacity(0.1),
-            blurRadius: 15,
-            offset: const Offset(0, 5),
-          )
+            color: isDark
+                ? Colors.black.withOpacity(0.3)
+                : Colors.grey.withOpacity(0.08),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
+          ),
         ],
       ),
       child: LayoutBuilder(
         builder: (context, constraints) {
-          int crossAxisCount = constraints.maxWidth < 300 ? 2 : 3;
-          double spacing = 12.0;
-          double itemWidth = (constraints.maxWidth - (spacing * (crossAxisCount - 1))) / crossAxisCount;
+          final crossCount = constraints.maxWidth < 280 ? 3 : 4;
+          final spacing = isSmall ? 8.0 : 10.0;
+          final itemWidth =
+              (constraints.maxWidth - spacing * (crossCount - 1)) / crossCount;
 
           return Wrap(
             spacing: spacing,
             runSpacing: spacing,
             alignment: WrapAlignment.center,
             children: stats.map((stat) {
-              int index = stats.indexOf(stat);
+              final type = _getTypeFromTitle(stat['title'] as String);
               final isAnimating = _lastTappedIndex != -1 &&
-                  deeds[_lastTappedIndex]['type'] == _getTypeFromTitle(stat['title'] as String);
+                  _lastTappedIndex < deeds.length &&
+                  deeds[_lastTappedIndex]['type'] == type;
 
               return AnimatedBuilder(
                 animation: _bounceAnim,
@@ -374,44 +623,57 @@ class _HasanatScreenState extends State<HasanatScreen> with TickerProviderStateM
                   scale: isAnimating ? _bounceAnim.value : 1.0,
                   child: child,
                 ),
-                child: Container(
+                child: SizedBox(
                   width: itemWidth,
-                  height: itemWidth * 1.1,
-                  padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-                  decoration: BoxDecoration(
-                    color: (stat['color'] as Color).withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: (stat['color'] as Color).withOpacity(0.3)),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(stat['icon'] as String, style: const TextStyle(fontSize: 26)),
-                      const SizedBox(height: 6),
-                      Flexible(
-                        child: FittedBox(
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 4,
+                      vertical: isSmall ? 6 : 8,
+                    ),
+                    decoration: BoxDecoration(
+                      color:
+                      (stat['color'] as Color).withOpacity(isDark ? 0.1 : 0.06),
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(
+                        color: (stat['color'] as Color).withOpacity(0.25),
+                      ),
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            stat['icon'] as String,
+                            style: TextStyle(fontSize: isSmall ? 18 : 22),
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        FittedBox(
                           fit: BoxFit.scaleDown,
                           child: Text(
                             '${stat['count']}',
                             style: GoogleFonts.cairo(
-                              fontSize: 22,
+                              fontSize: isSmall ? 16 : 20,
                               fontWeight: FontWeight.bold,
                               color: stat['color'] as Color,
                             ),
                           ),
                         ),
-                      ),
-                      Text(
-                        stat['title'] as String,
-                        style: GoogleFonts.cairo(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                          color: textColorMain,
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            stat['title'] as String,
+                            style: GoogleFonts.cairo(
+                              fontSize: isSmall ? 10 : 11,
+                              fontWeight: FontWeight.w600,
+                              color: textColor,
+                            ),
+                            maxLines: 1,
+                          ),
                         ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               );
@@ -422,172 +684,267 @@ class _HasanatScreenState extends State<HasanatScreen> with TickerProviderStateM
     );
   }
 
-  String _getTypeFromTitle(String title) {
-    if (title.contains('نخل')) return 'palm';
-    if (title.contains('قصور')) return 'palace';
-    if (title.contains('كنوز')) return 'jewel';
-    if (title.contains('أنوار')) return 'light';
-    if (title.contains('أبواب')) return 'door';
-    return 'hasana';
-  }
-
-  Widget _buildDeedCard(int index, bool isDark, Color textColorMain, Color textColorSub) {
+  Widget _buildDeedCard(
+      int index,
+      bool isDark,
+      Color textColor,
+      Color subColor,
+      bool isSmall,
+      ) {
     final deed = deeds[index];
+    final type = deed['type'] as String;
     final target = deed['target'] as int;
-    final currentProgress = progressCounters[deed['type']] ?? 0;
-    double progressValue = target > 1 ? (currentProgress / target) : 1.0;
+    final currentProgress = progressCounters[type] ?? 0;
+    final progressValue = target > 1 ? (currentProgress / target) : 0.0;
+    final accentColor = Color(deed['color'] as int);
 
-    final cardGradient = isDark
-        ? [Colors.white.withOpacity(0.08), Colors.white.withOpacity(0.02)]
-        : [Colors.white, Colors.white];
-    final borderColor = isDark ? Colors.white.withOpacity(0.1) : _gold.withOpacity(0.2);
+    final cardBg = isDark ? _bgCard : Colors.white;
+    final borderColor =
+    isDark ? Colors.white.withOpacity(0.08) : accentColor.withOpacity(0.15);
 
-    return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: cardGradient,
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: borderColor),
-        boxShadow: [
-          BoxShadow(
-            color: isDark ? Colors.black.withOpacity(0.3) : Colors.grey.withOpacity(0.1),
-            blurRadius: 15,
-            offset: const Offset(0, 5),
-          )
-        ],
-      ),
-      child: Column(
-        children: [
-          // الجائزة
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            decoration: BoxDecoration(
-              color: _gold.withOpacity(isDark ? 0.15 : 0.1),
-              borderRadius: const BorderRadius.only(topLeft: Radius.circular(24), topRight: Radius.circular(24)),
-              border: Border(bottom: BorderSide(color: _gold.withOpacity(0.2))),
-            ),
-            child: Row(
-              children: [
-                Text(deed['icon'] as String, style: const TextStyle(fontSize: 22)),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Text(
-                    deed['reward'] as String,
-                    style: GoogleFonts.cairo(fontSize: 14, fontWeight: FontWeight.bold, color: _gold),
-                  ),
-                ),
-              ],
-            ),
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0.0, end: 1.0),
+      duration: Duration(milliseconds: 400 + (index * 60)),
+      curve: Curves.easeOutCubic,
+      builder: (context, value, child) {
+        return Opacity(
+          opacity: value,
+          child: Transform.translate(
+            offset: Offset(0, 20 * (1 - value)),
+            child: child,
           ),
-
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              children: [
-                // الذكر
-                Text(
-                  deed['title'] as String,
-                  style: GoogleFonts.amiri(
-                    fontSize: 24,
-                    height: 1.8,
-                    fontWeight: FontWeight.bold,
-                    color: textColorMain,
-                  ),
-                  textAlign: TextAlign.center,
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 14),
+        decoration: BoxDecoration(
+          color: cardBg,
+          borderRadius: BorderRadius.circular(22),
+          border: Border.all(color: borderColor),
+          boxShadow: [
+            BoxShadow(
+              color: isDark
+                  ? Colors.black.withOpacity(0.3)
+                  : Colors.grey.withOpacity(0.08),
+              blurRadius: 12,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // الجائزة
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(
+                horizontal: 14,
+                vertical: isSmall ? 8 : 10,
+              ),
+              decoration: BoxDecoration(
+                color: accentColor.withOpacity(isDark ? 0.12 : 0.06),
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(22),
+                  topRight: Radius.circular(22),
                 ),
-                const SizedBox(height: 16),
-
-                // الحديث (الدليل)
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: isDark ? Colors.white.withOpacity(0.05) : _gold.withOpacity(0.05),
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: isDark ? Colors.white.withOpacity(0.05) : Colors.transparent),
-                  ),
-                  child: Column(
-                    children: [
-                      Text(
-                        deed['hadith'] as String,
-                        style: GoogleFonts.cairo(fontSize: 13, color: textColorSub),
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(height: 6),
-                      Text(
-                        deed['source'] as String,
-                        style: GoogleFonts.cairo(fontSize: 11, color: _gold.withOpacity(0.8), fontWeight: FontWeight.bold),
-                      ),
-                    ],
+                border: Border(
+                  bottom: BorderSide(
+                    color: accentColor.withOpacity(0.15),
                   ),
                 ),
-
-                const SizedBox(height: 20),
-
-                // شريط التقدم وزر الإضافة
-                Row(
-                  children: [
-                    if (target > 1) ...[
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                                'التقدم للهدف:',
-                                style: GoogleFonts.cairo(fontSize: 11, color: textColorSub)
-                            ),
-                            const SizedBox(height: 4),
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: LinearProgressIndicator(
-                                value: progressValue,
-                                minHeight: 8,
-                                backgroundColor: isDark ? Colors.white12 : Colors.grey.shade300,
-                                valueColor: AlwaysStoppedAnimation(_gold),
-                              ),
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              '$currentProgress / $target',
-                              style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.bold, color: _gold),
-                            ),
-                          ],
-                        ),
+              ),
+              child: Row(
+                children: [
+                  FittedBox(
+                    child: Text(
+                      deed['icon'] as String,
+                      style: TextStyle(fontSize: isSmall ? 18 : 20),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      deed['reward'] as String,
+                      style: GoogleFonts.cairo(
+                        fontSize: isSmall ? 12 : 13,
+                        fontWeight: FontWeight.bold,
+                        color: accentColor,
                       ),
-                      const SizedBox(width: 16),
-                    ],
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
+              ),
+            ),
 
-                    // الزر
-                    GestureDetector(
-                      onTap: () => _addDeed(index),
-                      child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: target > 1 ? 20 : 30, vertical: 12),
-                        decoration: BoxDecoration(
-                          color: _gold.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(16),
-                          border: Border.all(color: _gold.withOpacity(0.5)),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(Icons.add_task, color: _gold, size: 20),
-                            if (target == 1) ...[
-                              const SizedBox(width: 8),
-                              Text('إضافة', style: GoogleFonts.cairo(color: _gold, fontWeight: FontWeight.bold)),
-                            ]
-                          ],
-                        ),
+            // المحتوى
+            Padding(
+              padding: EdgeInsets.all(isSmall ? 14 : 18),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // الذكر
+                  Text(
+                    deed['title'] as String,
+                    style: GoogleFonts.amiri(
+                      fontSize: isSmall ? 18 : 22,
+                      height: 1.8,
+                      fontWeight: FontWeight.bold,
+                      color: textColor,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 14),
+
+                  // الحديث
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: isDark
+                          ? Colors.white.withOpacity(0.04)
+                          : accentColor.withOpacity(0.04),
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(
+                        color: isDark
+                            ? Colors.white.withOpacity(0.06)
+                            : accentColor.withOpacity(0.1),
                       ),
                     ),
-                  ],
-                ),
-              ],
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          deed['hadith'] as String,
+                          style: GoogleFonts.cairo(
+                            fontSize: isSmall ? 11 : 12,
+                            color: subColor,
+                            height: 1.6,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 6),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.menu_book_rounded,
+                              size: 12,
+                              color: accentColor.withOpacity(0.7),
+                            ),
+                            const SizedBox(width: 4),
+                            Flexible(
+                              child: Text(
+                                deed['source'] as String,
+                                style: GoogleFonts.cairo(
+                                  fontSize: isSmall ? 10 : 11,
+                                  color: accentColor.withOpacity(0.8),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+
+                  // التقدم والزر
+                  Row(
+                    children: [
+                      if (target > 1) ...[
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'التقدم:',
+                                style: GoogleFonts.cairo(
+                                  fontSize: isSmall ? 10 : 11,
+                                  color: subColor,
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: LinearProgressIndicator(
+                                  value: progressValue,
+                                  minHeight: 7,
+                                  backgroundColor: isDark
+                                      ? Colors.white12
+                                      : Colors.grey.shade200,
+                                  valueColor:
+                                  AlwaysStoppedAnimation(accentColor),
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  '$currentProgress / $target',
+                                  style: GoogleFonts.cairo(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    color: accentColor,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                      ],
+                      GestureDetector(
+                        onTap: () => _addDeed(index),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: target > 1 ? 16 : 24,
+                            vertical: 10,
+                          ),
+                          decoration: BoxDecoration(
+                            color: accentColor.withOpacity(0.15),
+                            borderRadius: BorderRadius.circular(14),
+                            border: Border.all(
+                              color: accentColor.withOpacity(0.4),
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                Icons.add_circle_outline_rounded,
+                                color: accentColor,
+                                size: 20,
+                              ),
+                              if (target <= 1) ...[
+                                const SizedBox(width: 6),
+                                FittedBox(
+                                  child: Text(
+                                    'إضافة',
+                                    style: GoogleFonts.cairo(
+                                      color: accentColor,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: isSmall ? 12 : 13,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

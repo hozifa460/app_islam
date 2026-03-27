@@ -1,6 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- الأذونات الأساسية -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -9,24 +8,19 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
-    <!-- الموقع -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <!-- البلوتوث -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
 
-    <!-- التنبيهات الدقيقة -->
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
 
-    <!-- البوت -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
-    <!-- تحسينات إضافية -->
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
 
@@ -72,39 +66,45 @@
             </intent-filter>
         </activity>
 
-        <!-- خدمة android alarm manager -->
-        <service
-            android:name="dev.fluttercommunity.plus.androidalarmmanager.AlarmService"
-            android:permission="android.permission.BIND_JOB_SERVICE"
-            android:exported="false" />
-
-        <!-- مستقبل الأذان -->
+        <!-- الأذان -->
         <receiver
             android:name=".AdhanReceiver"
             android:exported="false" />
 
-        <!-- مستقبل إيقاف الأذان -->
         <receiver
             android:name=".StopAdhanReceiver"
             android:exported="false" />
 
-        <!-- مستقبل البوت الخاص بك -->
+        <!-- التنبيه القبلي -->
         <receiver
-            android:name=".BootReceiver"
-            android:enabled="true"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
-
-        <!-- android alarm manager receivers -->
-        <receiver
-            android:name="dev.fluttercommunity.plus.androidalarmmanager.AlarmBroadcastReceiver"
+            android:name=".ReminderReceiver"
             android:exported="false" />
 
         <receiver
-            android:name="dev.fluttercommunity.plus.androidalarmmanager.RebootBroadcastReceiver"
+            android:name=".StopReminderReceiver"
+            android:exported="false" />
+
+        <!-- الإقامة -->
+        <receiver
+            android:name=".IqamaReceiver"
+            android:exported="false" />
+
+        <receiver
+            android:name=".StopIqamaReceiver"
+            android:exported="false" />
+
+        <!-- الصلاة على النبي -->
+        <receiver
+            android:name=".SalawatReceiver"
+            android:exported="false" />
+
+        <receiver
+            android:name=".StopSalawatReceiver"
+            android:exported="false" />
+
+        <!-- إعادة الجدولة بعد إعادة تشغيل الجهاز -->
+        <receiver
+            android:name=".BootReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>

@@ -24,21 +24,25 @@ import 'package:islamic_app/screens/quran/surah_deatil.dart';
 
 import '../../../services/adahn_audio_services.dart';
 import '../../../services/adahn_notification.dart';
+import '../../../services/great_muslims_service.dart';
 import '../../../services/location_services.dart';
 import '../../../services/muazzin_store.dart';
 import '../../../services/native_adhan_bridge.dart';
 
-import '../../great_person_detail_screen.dart';
+import '../../../utils/current_sunnah_card.dart';
+import '../../GreatMuslim/great_muslims_screen.dart';
+import '../../GreatMuslim/great_person_detail_screen.dart';
 import '../../prayer/adhan_player_screen.dart';
 import '../../books/books_screen.dart';
 import '../../daily_challenges_screen.dart';
 import '../../hadith/hadith_book_screen.dart';
 import '../../quran/quran_screen.dart';
 import '../../Azkar/azkar_screen.dart';
+import '../../sunnah_tracker_screen.dart';
 import '../../tasbih_screen.dart';
 import '../../hadith/hadith_screen.dart';
 import '../../qibla_screen.dart';
-import '../../dua_screen.dart';
+import '../../dua/dua_screen.dart';
 import '../../settings_screen.dart';
 import '../../hasanat_screen.dart';
 import '../../khatma_screen.dart';
@@ -69,6 +73,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen>
     with TickerProviderStateMixin, WidgetsBindingObserver {
 
+  Color get _primary => widget.appColors[widget.selectedColorIndex];
+
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   late AnimationController _animController;
@@ -83,6 +89,8 @@ class _HomeScreenState extends State<HomeScreen>
   late Animation<double> _fadeAzkar;
   late Animation<double> _fadeGrid;
   late Animation<double> _fadeHadith;
+  late Animation<double> _fadeSunnah;
+  late Animation<Offset> _slideSunnah;
 
   late Animation<Offset> _slideHeader;
   late Animation<Offset> _slidePrayer;
@@ -133,6 +141,7 @@ class _HomeScreenState extends State<HomeScreen>
     {'title': 'المؤذن', 'subtitle': 'اختيار الصوت', 'icon': Icons.volume_up_rounded, 'badge': '🎙️'},
     {'title': 'اسماء الله الحسنى', 'subtitle': 'اسماء العظيم', 'icon': Icons.volume_up_rounded, 'badge': '📜'},
     {'title': 'المعجزات', 'subtitle': 'معجزات القران والسنة', 'icon': Icons.volume_up_rounded, 'badge': '📜'},
+    {'title': 'عظماء الإسلام', 'subtitle': 'شخصيات خالدة', 'icon': Icons.military_tech_rounded, 'badge': '🏛️'},
     {'title': 'الإعدادات', 'subtitle': 'تخصيص التطبيق', 'icon': Icons.settings_rounded, 'badge': '⚙️'},
   ];
 
@@ -161,110 +170,26 @@ class _HomeScreenState extends State<HomeScreen>
     {'text': '« خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ »', 'source': 'رواه البخاري'},
   ];
 
-  final List<Map<String, String>> _greatMuslims = const [
-    {
-      'name': 'صلاح الدين الأيوبي',
-      'title': 'قائد ومجاهد',
-      'desc': 'محرر القدس وأحد أعظم قادة الأمة الإسلامية',
-      'details':
-      'صلاح الدين الأيوبي من أعظم القادة في التاريخ الإسلامي، عُرف بالشجاعة والعدل والزهد، ووحّد الأمة بعد تفرق، وارتبط اسمه بتحرير القدس واستعادة هيبة المسلمين.',
-      'quote': 'القدس أمانة في أعناق المؤمنين',
-      'achievements':
-      '• توحيد المسلمين في مصر والشام\n• تحرير القدس\n• نشر العدل والإصلاح\n• قيادة الأمة في مرحلة فاصلة',
-      'image': 'assets/greats/salahaldninalaioby.jpeg',
-    },
-    {
-      'name': 'الإمام الشافعي',
-      'title': 'إمام الفقه',
-      'desc': 'أحد الأئمة الأربعة وصاحب مدرسة علمية عظيمة',
-      'details':
-      'الإمام الشافعي من كبار علماء الإسلام، جمع بين الفقه والحديث واللغة، وكان مثالًا في الذكاء والورع وحسن البيان، وأسس علم أصول الفقه بطريقة غيرت مسار العلوم الشرعية.',
-      'quote': 'كلما ازددت علمًا ازددت علمًا بجهلي',
-      'achievements':
-      '• تأسيس علم أصول الفقه\n• نشر العلم بين الأمصار\n• الجمع بين الحديث والفقه\n• ترك تراث علمي مؤثر',
-      'image': 'assets/greats/alshafeiy.jpg',
-    },
-    {
-      'name': 'الإمام البخاري',
-      'title': 'إمام الحديث',
-      'desc': 'صاحب أصح كتاب بعد كتاب الله تعالى',
-      'details':
-      'الإمام البخاري من أعظم أئمة الحديث، طاف البلاد في طلب العلم، وجمع الصحيح بعناية عظيمة حتى صار كتابه أصح كتاب بعد القرآن الكريم عند أهل السنة.',
-      'quote': 'ما أدخلت في كتابي الصحيح حديثًا إلا بعد استخارة',
-      'achievements':
-      '• جمع صحيح البخاري\n• خدمة السنة النبوية\n• التثبت الشديد في الرواية\n• الرحلة الطويلة في طلب العلم',
-      'image': 'assets/greats/albokhari.jpg',
-    },
-    {
-      'name': 'ابن الهيثم',
-      'title': 'رائد البصريات',
-      'desc': 'من أعظم علماء المسلمين في الرياضيات والفيزياء',
-      'details':
-      'ابن الهيثم عالم مسلم فذّ، كان له أثر بالغ في البصريات والمنهج العلمي، وأسهمت كتبه وأبحاثه في تأسيس كثير من مبادئ العلوم الحديثة.',
-      'quote': 'واجب الباحث أن يجعل نفسه خصمًا لكل ما يقرأه',
-      'achievements':
-      '',
-      'image': 'assets/greats/benelhaytham.jpeg',
-    },
-    {
-      'name': 'عمر بن عبدالعزيز',
-      'title': 'الخليفة الراشد',
-      'desc': 'نموذج خالد في العدل والزهد والإصلاح',
-      'details':
-      'عمر بن عبدالعزيز من أعظم الخلفاء عدلًا وإصلاحًا، أعاد للناس الثقة في الحكم الراشد، ونشر العدل، ورفع الظلم، وأحيا روح الزهد والمسؤولية في الأمة.',
-      'quote': 'إن الليل والنهار يعملان فيك فاعمل فيهما',
-      'achievements':
-      '',
-      'image': 'assets/greats/omarbenabdalziz.jpeg',
-    },
-    {
-      'name': 'محمد بن عبد الكريم الخطابي',
-      'title': ' قاضٍ ومجاهد مغربي وأمير',
-      'desc': 'ترك إرثًا عالميًا في فنون حرب العصابات',
-      'details':
-      'محمد بن عبد الكريم الخطابي هو قائد مغربي بارز ومؤسس جمهورية الريف، قاد مقاومة شرسة ضد الاستعمار الإسباني والفرنسي في شمال المغرب، وترك إرثًا عالميًا في فنون حرب العصابات.',
-      'quote': 'إن الليل والنهار يعملان فيك فاعمل فيهما',
-      'achievements':
-      '',
-      'image': 'assets/greats/moelkhataby.webp',
-    },
-    {
-      'name': 'يوسف بن تاشفين',
-      'title': 'قائد مسلم بارز',
-      'desc': 'أسس الدولة المرابطية ووحد المغرب والأندلس تحت سلطته',
-      'details':
-      'يوسف بن تاشفين هو قائد مسلم بارز أسس الدولة المرابطية ووحد المغرب والأندلس تحت سلطته، ويعتبر أحد أعظم القادة في التاريخ الإسلامي.',
-      'quote': '',
-      'achievements':
-      '',
-      'image': 'assets/greats/yousofbentashfin.jpeg',
-    },
-    {
-      'name': 'مالكوم اكس',
-      'title': 'الرجل الذي مات واقفًا',
-      'desc': 'الشخصية الأبرز في تاريخ الأمريكيين السود، بل في تاريخ النشطاء الحقوقيين في الولايات المتحدة الأمريكية بأسرها',
-      'details':
-      'مالكوم إكس.. الشخصية الأبرز في تاريخ الأمريكيين السود، بل في تاريخ النشطاء الحقوقيين في الولايات المتحدة الأمريكية بأسرها، من هو ذلك الرجل الذي كان له بالغ الأثر في تحرير الأمريكيين الأفارقة من ذل واستعباد وهيمنة الرجل الأبيض؟ وكيف تحول من الزيغ إلى الهدى، ومن الضلالة إلى الاستقامة، ومن وحل الإسفاف واللهو والمجون إلى ساحات النضال والكفاح، والدعوة إلى الله، وتصحيح مسار الدعوة الإسلامية في أمريكا؟!من هو ذلك الرجل المثير للدهشة، وما هي قصته؟ وما سر تسميته بهذا الاسم؟',
-      'quote': '',
-      'achievements':
-      '',
-      'image': 'assets/greats/malcomx.jpg',
-    },
-    {
-      'name': 'محمد الفاتح',
-      'title': 'محقق نبوءة الرسول',
-      'desc': 'فاتح القسطنطينية قاهر اوروبا اعظم سلطان عثماني',
-      'details':
-      'محمد الفاتح: سلطان الفتوحات محمد الفاتح، المعروف أيضًا باسم صاحب البشارة، هو سلاطين الدولة العثمانية وسلالة آل عثمان. وُلد في عام 1429، وعُرف عند المسلمين باسم "الفاتح" وأطلق عليه الأوروبيون لقب "السيد العظيم" بعد فتح مدينة القسطنطينية وقضاء على الدولة البيزنطية. حكم نحو 30 عامًا، وطد فيها السيادة العثمانية في أوروبا، وبدد أحلاف الصليبية، ودانت له فيها آسيا الصغرى وبلاد اليونان والقرم ومعظم شبه جزيرة البلقان. بلغت فتوحاته إيطاليا، وعزز القوات العسكرية البرية والبحرية، وأعاد تنظيم الجيش وتدريبه، واهتم بإصلاح النظام الداخلي والإداري وتطوير القضاء والتعليم، ودعم الازدهار العمراني، وشجع التجارة والصناعة، وأرسى قواعد الأمن والعدالة. وتوفي عام 1481.',
-      'quote': '',
-      'achievements':
-      '',
-      'image': 'assets/greats/moelfateh.jpeg',
-    },
-  ];
-
+  List<GreatMuslim> _greatMuslims = [];
+  bool _greatMuslimsLoaded = false;
   Map<String, String> currentVerseOfDay = {'verse': 'جاري التحميل...', 'surah': ''};
   Map<String, String> currentHadithOfDay = {'text': 'جاري التحميل...', 'source': ''};
+
+  Future<void> _loadGreatMuslims() async {
+    try {
+      GreatMuslimsService.clearCache(); // إعادة تحميل نظيفة
+      final data = await GreatMuslimsService.load();
+      debugPrint('✅ HomeScreen: تم تحميل ${data.length} شخصية');
+      if (mounted) {
+        setState(() {
+          _greatMuslims = data;
+          _greatMuslimsLoaded = true;
+        });
+      }
+    } catch (e) {
+      debugPrint('❌ HomeScreen خطأ: $e');
+    }
+  }
 
   @override
   void initState() {
@@ -284,13 +209,13 @@ class _HomeScreenState extends State<HomeScreen>
     );
 
     _heroTimer = Timer.periodic(const Duration(seconds: 5), (_) {
-      if (!mounted || _heroPageController == null || !_heroPageController!.hasClients) {
+      if (!mounted || !_heroPageController.hasClients || _greatMuslims.isEmpty) {
         return;
       }
 
       final nextPage = (_currentHeroIndex + 1) % _greatMuslims.length;
 
-      _heroPageController!.animateToPage(
+      _heroPageController.animateToPage(
         nextPage,
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeInOut,
@@ -339,6 +264,11 @@ class _HomeScreenState extends State<HomeScreen>
     _fadeHadith = CurvedAnimation(
       parent: _animController,
       curve: const Interval(0.60, 1.00, curve: Curves.easeOut),
+    );
+
+    _fadeSunnah = CurvedAnimation(
+      parent: _animController,
+      curve: const Interval(0.38, 0.65, curve: Curves.easeOut),
     );
 
     _slideHeader = Tween<Offset>(
@@ -401,10 +331,22 @@ class _HomeScreenState extends State<HomeScreen>
       ),
     );
 
+    _slideSunnah = Tween<Offset>(
+      begin: const Offset(0, 0.06),
+      end: Offset.zero,
+    ).animate(
+      CurvedAnimation(
+        parent: _animController,
+        curve: const Interval(0.38, 0.65, curve: Curves.easeOutCubic),
+      ),
+    );
+
     _checkRescheduleAfterBoot();
     _setDailyContent();
     _loadAzkarJson();
     _updateTime();
+    // أضف هذا في نهاية initState
+    _loadGreatMuslims();
 
     Future.microtask(() async {
       if (!mounted) return;
@@ -429,12 +371,6 @@ class _HomeScreenState extends State<HomeScreen>
         _calculateNextPrayer(_prayerTimes);
       });
     });
-
-    AdahnNotification.instance.onNotificationTap = (payload) {
-      if (payload['type'] == 'adhan') {
-        _showAdhanFromNotification(payload);
-      }
-    };
 
     _prayerPulseController = AnimationController(
       vsync: this,
@@ -630,7 +566,7 @@ class _HomeScreenState extends State<HomeScreen>
       context,
       MaterialPageRoute(
         builder: (_) => AdhanPlayerScreen(
-          primaryColor: widget.appColors[widget.selectedColorIndex],
+          primaryColor: _primary,
           prayerName: payload['prayerName'] ?? payload['prayer'] ?? 'الصلاة',
           muezzinName: payload['muezzinName'] ?? 'مؤذن',
           url: payload['muezzinUrl'] ?? '',
@@ -854,7 +790,8 @@ class _HomeScreenState extends State<HomeScreen>
   void _navigateToScreen(int index) async {
     if (!mounted) return;
 
-    final primaryColor = Theme.of(context).colorScheme.primary;
+    final primaryColor = _primary;
+
     Widget? screen;
 
     switch (index) {
@@ -908,6 +845,9 @@ class _HomeScreenState extends State<HomeScreen>
         screen = MiraclesScreen(primaryColor: primaryColor);
         break;
       case 14:
+        screen = GreatMuslimsScreen(primaryColor: primaryColor,);
+        break;
+      case 15:
         screen = SettingsScreen(
           onThemeChanged: widget.onThemeChanged,
           onColorChanged: widget.onColorChanged,
@@ -946,7 +886,8 @@ class _HomeScreenState extends State<HomeScreen>
     final bg = isDark ? const Color(0xFF0E1714) : const Color(0xFFF7F3EA);
     final cardColor = isDark ? const Color(0xFF13211D) : Colors.white;
     const gold = Color(0xFFC8A44D);
-    const deepGreen = Color(0xFF123C33);
+    // ★ استخدام اللون المختار بدلاً من الثابت ★
+    final deepGreen = _primary;
 
 
     return Scaffold(
@@ -984,6 +925,28 @@ class _HomeScreenState extends State<HomeScreen>
                   ),
                 ),
                 const SizedBox(height: 16),
+
+                _animatedSection(
+                  fade: _fadeSunnah,
+                  slide: _slideSunnah,
+                  child: CurrentSunnahCard(
+                    deepGreen: _primary,
+                    gold: gold,
+                    isDark: isDark,
+                    onNavigateToTracker: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => SunnahTrackerScreen(
+                            isDarkMode: isDark,
+                            onToggleTheme: () => widget.onThemeChanged(!widget.isDarkMode),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(height: 14),
 
                 _animatedSection(
                   fade: _fadeVerse,
@@ -1026,12 +989,17 @@ class _HomeScreenState extends State<HomeScreen>
         children: [
           Container(
             width: double.infinity,
-            padding: const EdgeInsets.only(top: 60, bottom: 30, right: 20, left: 20),
+            padding: const EdgeInsets.only(
+                top: 60, bottom: 30, right: 20, left: 20),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [primary, const Color(0xFF1D5B4F)],
+                // ★ gradient يتكيف مع اللون المختار ★
+                colors: [
+                  primary,
+                  Color.lerp(primary, Colors.black, 0.25)!,
+                ],
               ),
             ),
             child: Column(
@@ -1041,13 +1009,16 @@ class _HomeScreenState extends State<HomeScreen>
                   padding: const EdgeInsets.all(2),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
+                    // ★ اللون المختار ★
                     color: primary.withOpacity(0.99),
                   ),
                   child: Image.asset(
                     'assets/icon/icon.png',
                     width: 90,
-                    errorBuilder: (c, e, s) =>
-                    const Icon(Icons.mosque_rounded, size: 50, color: Colors.white),
+                    errorBuilder: (c, e, s) => const Icon(
+                        Icons.mosque_rounded,
+                        size: 50,
+                        color: Colors.white),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -1061,7 +1032,8 @@ class _HomeScreenState extends State<HomeScreen>
                 ),
                 Text(
                   'رفيقك اليومي',
-                  style: GoogleFonts.cairo(fontSize: 12, color: Colors.white70),
+                  style: GoogleFonts.cairo(
+                      fontSize: 12, color: Colors.white70),
                 ),
               ],
             ),
@@ -1074,12 +1046,15 @@ class _HomeScreenState extends State<HomeScreen>
               itemBuilder: (context, index) {
                 final feature = features[index];
                 return ListTile(
-                  leading: Icon(feature['icon'] as IconData, color: primary),
+                  // ★ أيقونة بلون التطبيق المختار ★
+                  leading: Icon(feature['icon'] as IconData,
+                      color: primary),
                   title: Text(
                     feature['title'] as String,
                     style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
                   ),
-                  trailing: const Icon(Icons.arrow_forward_ios, size: 14, color: Colors.grey),
+                  trailing: const Icon(Icons.arrow_forward_ios,
+                      size: 14, color: Colors.grey),
                   onTap: () {
                     Navigator.pop(context);
                     _navigateToScreen(index);
@@ -1094,6 +1069,31 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   Widget _buildScrollableHeader(Color deepGreen, Color gold) {
+    // حماية من القائمة الفارغة أثناء التحميل
+    if (!_greatMuslimsLoaded) {
+      return SizedBox(
+        height: 180,
+        child: Center(
+          child: CircularProgressIndicator(
+            color: gold,
+            strokeWidth: 2,
+          ),
+        ),
+      );
+    }
+
+    if (_greatMuslims.isEmpty) {
+      return SizedBox(
+        height: 120,
+        child: Center(
+          child: Text(
+            'لا توجد بيانات',
+            style: GoogleFonts.cairo(color: gold),
+          ),
+        ),
+      );
+    }
+
     return LayoutBuilder(
       builder: (context, constraints) {
         final width = constraints.maxWidth;
@@ -1118,7 +1118,7 @@ class _HomeScreenState extends State<HomeScreen>
                 },
                 itemBuilder: (context, index) {
                   final person = _greatMuslims[index];
-                  final heroTag = 'great_person_${person['name']}';
+                  final heroTag = 'great_person_${person.id}';
                   final bool isActive = index == _currentHeroIndex;
 
                   return AnimatedScale(
@@ -1137,7 +1137,7 @@ class _HomeScreenState extends State<HomeScreen>
                               return GreatPersonDetailScreen(
                                 person: person,
                                 allPersons: _greatMuslims,
-                                primaryColor: deepGreen,
+                                primaryColor: _primary,
                                 heroTag: heroTag,
                               );
                             },
@@ -1183,7 +1183,7 @@ class _HomeScreenState extends State<HomeScreen>
                               borderRadius: BorderRadius.circular(24),
                               boxShadow: [
                                 BoxShadow(
-                                  color: deepGreen.withOpacity(isActive ? 0.18 : 0.08),
+                                  color: _primary.withOpacity(isActive ? 0.18 : 0.08),
                                   blurRadius: isActive ? 16 : 10,
                                   offset: const Offset(0, 8),
                                 ),
@@ -1195,7 +1195,7 @@ class _HomeScreenState extends State<HomeScreen>
                                 fit: StackFit.expand,
                                 children: [
                                   Image.asset(
-                                    person['image']!,
+                                    person.image,
                                     fit: BoxFit.cover,
                                     errorBuilder: (context, error, stackTrace) {
                                       return Container(
@@ -1240,7 +1240,7 @@ class _HomeScreenState extends State<HomeScreen>
                                         borderRadius: BorderRadius.circular(14),
                                       ),
                                       child: Text(
-                                        'عظيم اليوم',
+                                        'عظيم الاسلام',
                                         style: GoogleFonts.cairo(
                                           color: Colors.white,
                                           fontSize: small ? 9.5 : 10.5,
@@ -1265,7 +1265,7 @@ class _HomeScreenState extends State<HomeScreen>
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Text(
-                                            person['name']!,
+                                            person.name,
                                             textAlign: TextAlign.right,
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
@@ -1277,7 +1277,7 @@ class _HomeScreenState extends State<HomeScreen>
                                           ),
                                           const SizedBox(height: 4),
                                           Text(
-                                            person['title']!,
+                                            person.title,
                                             textAlign: TextAlign.right,
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
@@ -1289,7 +1289,7 @@ class _HomeScreenState extends State<HomeScreen>
                                           ),
                                           const SizedBox(height: 6),
                                           Text(
-                                            person['desc']!,
+                                            person.desc,
                                             textAlign: TextAlign.right,
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
@@ -1339,7 +1339,6 @@ class _HomeScreenState extends State<HomeScreen>
       },
     );
   }
-
 
   Widget _buildResponsivePrayerCard(
       Color primary,
@@ -1432,12 +1431,16 @@ class _HomeScreenState extends State<HomeScreen>
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.location_on_outlined, color: primary, size: 15),
+                        Icon(
+                            Icons.location_on_outlined,
+                            color: isDark ? Colors.white70 : primary,
+                            size: 15
+                        ),
                         const SizedBox(width: 4),
                         Text(
                           cityName,
                           style: GoogleFonts.cairo(
-                            color: primary,
+                            color: isDark ? Colors.white70 : primary,
                             fontSize: subtitleFont,
                             fontWeight: FontWeight.bold,
                           ),
@@ -1451,7 +1454,7 @@ class _HomeScreenState extends State<HomeScreen>
                     style: GoogleFonts.cairo(
                       fontSize: titleFont,
                       fontWeight: FontWeight.bold,
-                      color: primary,
+                      color: isDark ? Colors.white70 : primary,
                     ),
                   ),
                 ],
@@ -1803,7 +1806,7 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   Widget _buildModernMorningAzkarCard(
-      Color deepGreen,
+      Color _primary,
       Color gold,
       Color cardColor,
       bool isDark,
@@ -1841,7 +1844,7 @@ class _HomeScreenState extends State<HomeScreen>
           },
           child: Container(
             padding: EdgeInsets.all(small ? 12 : 14),
-            decoration: _unifiedCardDecoration(isDark, deepGreen),
+            decoration: _unifiedCardDecoration(isDark, _primary),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -1849,7 +1852,7 @@ class _HomeScreenState extends State<HomeScreen>
                   children: [
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: deepGreen,
+                        backgroundColor: _primary,
                         foregroundColor: Colors.white,
                         elevation: 0,
                         shape: RoundedRectangleBorder(
@@ -1929,7 +1932,7 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   Widget _buildModernQuickGrid(
-      Color deepGreen,
+      Color _primary,
       Color gold,
       Color cardColor,
       bool isDark,
@@ -1971,7 +1974,7 @@ class _HomeScreenState extends State<HomeScreen>
               borderRadius: BorderRadius.circular(22),
               onTap: () => _navigateToScreen(item['index'] as int),
               child: Container(
-                decoration: _unifiedCardDecoration(isDark, deepGreen),
+                decoration: _unifiedCardDecoration(isDark, _primary),
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: small ? 6 : 8,
@@ -1984,12 +1987,12 @@ class _HomeScreenState extends State<HomeScreen>
                         width: small ? 44 : 52,
                         height: small ? 44 : 52,
                         decoration: BoxDecoration(
-                          color: deepGreen.withOpacity(0.08),
+                          color: _primary.withOpacity(0.08),
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Icon(
                           item['icon'] as IconData,
-                          color: deepGreen,
+                          color: isDark ? Colors.white70 : _primary,
                           size: small ? 24 : 28,
                         ),
                       ),
@@ -2003,7 +2006,7 @@ class _HomeScreenState extends State<HomeScreen>
                           style: GoogleFonts.cairo(
                             fontSize: small ? 11.5 : 13,
                             fontWeight: FontWeight.bold,
-                            color: deepGreen,
+                            color: isDark ? Colors.white70 : _primary,
                           ),
                         ),
                       ),
@@ -2032,7 +2035,7 @@ class _HomeScreenState extends State<HomeScreen>
               child: Icon(
                 Icons.format_quote_rounded,
                 size: 44,
-                color: primary.withOpacity(0.10),
+                color: isDark ? Colors.white70 : primary.withOpacity(0.10),
               ),
             ),
             Column(
@@ -2040,7 +2043,7 @@ class _HomeScreenState extends State<HomeScreen>
                 _sectionHeader(
                   icon: Icons.lightbulb_outline,
                   title: 'حديث اليوم',
-                  color: primary,
+                  color: isDark ? Colors.white70 : primary,
                 ),
                 const SizedBox(height: 14),
                 Container(
@@ -2053,7 +2056,7 @@ class _HomeScreenState extends State<HomeScreen>
                     'قال رسول الله ﷺ',
                     style: GoogleFonts.cairo(
                       fontSize: 13,
-                      color: primary,
+                      color: isDark ? Colors.white70 : primary,
                       fontWeight: FontWeight.w700,
                     ),
                   ),

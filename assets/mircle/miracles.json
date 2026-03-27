@@ -1,68 +1,2336 @@
 [
   {
+    "id": 1,
+    "title": "توسع الكون",
+    "subtitle": "الإعجاز الكوني في القرآن",
+    "category": "علم الفلك",
     "type": "quran",
-    "title": "معجزة حفظ القرآن",
-    "subtitle": "وعد الله بحفظ كتابه",
-    "source": "﴿ إِنَّا نَحْنُ نَزَّلْنَا الذِّكْرَ وَإِنَّا لَهُ لَحَافِظُونَ ﴾",
-    "reference": "سورة الحجر - 9",
-    "book": "تفسير ابن كثير",
-    "youtubeUrl": "https://www.youtube.com/watch?v=xxxxxxxx",
+    "source": "وَالسَّمَاءَ بَنَيْنَاهَا بِأَيْدٍ وَإِنَّا لَمُوسِعُونَ",
+    "reference": "سورة الذاريات - آية 47",
+    "book": "",
+    "description": "أثبت العلم الحديث أن الكون في توسع مستمر، وهو ما اكتشفه العالم إدوين هابل عام 1929م. القرآن أشار إلى هذه الحقيقة قبل أكثر من 1400 عام بلفظ 'لَمُوسِعُونَ' الذي يدل على الاستمرارية في التوسع.",
+    "scientificExplanation": "في عام 1929، اكتشف إدوين هابل أن المجرات البعيدة تتحرك مبتعدة عنا بسرعة تتناسب طردياً مع بُعدها. وفي عام 2011 حصل ثلاثة علماء على جائزة نوبل لاكتشافهم أن توسع الكون يتسارع.",
+    "discoveryYear": "1929",
+    "scientist": "إدوين هابل",
+    "sources": [
+      {
+        "name": "NASA - Expanding Universe",
+        "url": "https://science.nasa.gov/universe/overview/"
+      },
+      {
+        "name": "Nobel Prize 2011 - Accelerating Expansion",
+        "url": "https://www.nobelprize.org/prizes/physics/2011/summary/"
+      },
+      {
+        "name": "Hubble's Law - Britannica",
+        "url": "https://www.britannica.com/science/Hubbles-law"
+      }
+    ],
+    "youtubeUrl": "",
     "videoUrl": "",
-    "description": "من أعظم معجزات القرآن أن الله تكفل بحفظه من التحريف والتبديل، فبقي محفوظًا عبر القرون كما أُنزل."
+    "icon": "cosmos",
+    "rating": 5,
+    "isFavorite": false
   },
   {
-    "type": "quran",
+    "id": 2,
     "title": "مراحل تكوّن الجنين",
-    "subtitle": "إشارة قرآنية دقيقة",
-    "source": "﴿ ثُمَّ خَلَقْنَا النُّطْفَةَ عَلَقَةً... ﴾",
-    "reference": "سورة المؤمنون - 14",
-    "book": "تفسير ابن كثير",
-    "youtubeUrl": "https://www.youtube.com/watch?v=xxxxxxxx",
-    "videoUrl": "",
-    "description": "تحدث القرآن عن أطوار الجنين بدقة مدهشة، وهو ما أثبته العلم الحديث بعد قرون طويلة."
-  },
-  {
+    "subtitle": "الإعجاز في علم الأجنة",
+    "category": "علم الأجنة",
     "type": "quran",
-    "title": "اتساع الكون",
-    "subtitle": "سبق قرآني في وصف الكون",
-    "source": "﴿ وَالسَّمَاءَ بَنَيْنَاهَا بِأَيْدٍ وَإِنَّا لَمُوسِعُونَ ﴾",
-    "reference": "سورة الذاريات - 47",
-    "book": "تفسير ابن كثير",
-    "youtubeUrl": "https://www.youtube.com/watch?v=xxxxxxxx",
+    "source": "وَلَقَدْ خَلَقْنَا الْإِنسَانَ مِن سُلَالَةٍ مِّن طِينٍ ﴿12﴾ ثُمَّ جَعَلْنَاهُ نُطْفَةً فِي قَرَارٍ مَّكِينٍ ﴿13﴾ ثُمَّ خَلَقْنَا النُّطْفَةَ عَلَقَةً فَخَلَقْنَا الْعَلَقَةَ مُضْغَةً فَخَلَقْنَا الْمُضْغَةَ عِظَامًا فَكَسَوْنَا الْعِظَامَ لَحْمًا ثُمَّ أَنشَأْنَاهُ خَلْقًا آخَرَ",
+    "reference": "سورة المؤمنون - آيات 12-14",
+    "book": "",
+    "description": "وصف القرآن مراحل تطور الجنين بدقة مذهلة: النطفة، العلقة، المضغة، تكوين العظام، كساء العظام باللحم. هذا الترتيب يتطابق مع علم الأجنة الحديث.",
+    "scientificExplanation": "أكد البروفيسور كيث مور في كتابه The Developing Human أن الوصف القرآني لمراحل تطور الجنين يتطابق مع الاكتشافات العلمية الحديثة بدقة.",
+    "discoveryYear": "القرن العشرين",
+    "scientist": "كيث مور",
+    "sources": [
+      {
+        "name": "Keith Moore - The Developing Human (كتاب علمي)",
+        "url": "https://www.elsevier.com/books/the-developing-human/moore/978-0-323-61154-1"
+      },
+      {
+        "name": "NCBI - Stages of Human Embryonic Development",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK10008/"
+      },
+      {
+        "name": "Embryology in the Quran - PubMed",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/3577443/"
+      }
+    ],
+    "youtubeUrl": "",
     "videoUrl": "",
-    "description": "تشير الآية إلى اتساع السماء والكون، وهو ما ينسجم مع ما توصل إليه العلم في العصر الحديث."
+    "icon": "embryo",
+    "rating": 5,
+    "isFavorite": false
   },
   {
+    "id": 3,
+    "title": "الحاجز بين البحرين",
+    "subtitle": "الإعجاز البحري",
+    "category": "علم البحار",
+    "type": "quran",
+    "source": "مَرَجَ الْبَحْرَيْنِ يَلْتَقِيَانِ ﴿19﴾ بَيْنَهُمَا بَرْزَخٌ لَّا يَبْغِيَانِ",
+    "reference": "سورة الرحمن - آيات 19-20",
+    "book": "",
+    "description": "اكتشف العلماء حاجزاً مائياً غير مرئي يفصل بين البحار المختلفة عند نقاط التقائها، ناتج عن اختلاف الكثافة والملوحة ودرجة الحرارة.",
+    "scientificExplanation": "هذه الظاهرة تُعرف علمياً بـ Halocline وهي منطقة انتقالية بين مياه مختلفة الملوحة. اكتُشفت بالأقمار الصناعية والغواصات.",
+    "discoveryYear": "القرن العشرين",
+    "scientist": "علماء المحيطات",
+    "sources": [
+      {
+        "name": "NOAA - Ocean Layers & Halocline",
+        "url": "https://oceanservice.noaa.gov/facts/halocline.html"
+      },
+      {
+        "name": "National Geographic - Where Oceans Meet",
+        "url": "https://www.nationalgeographic.com/science/article/ocean-layers"
+      },
+      {
+        "name": "ScienceDirect - Thermohaline Circulation",
+        "url": "https://www.sciencedirect.com/topics/earth-and-planetary-sciences/halocline"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "water",
+    "rating": 5,
+    "isFavorite": false
+  },
+  {
+    "id": 4,
+    "title": "الجبال كالأوتاد",
+    "subtitle": "الإعجاز الجيولوجي",
+    "category": "علم الجيولوجيا",
+    "type": "quran",
+    "source": "أَلَمْ نَجْعَلِ الْأَرْضَ مِهَادًا ﴿6﴾ وَالْجِبَالَ أَوْتَادًا",
+    "reference": "سورة النبأ - آيات 6-7",
+    "book": "",
+    "description": "أثبت علم الجيولوجيا أن للجبال جذوراً عميقة تمتد في باطن الأرض كالوتد، وتعمل على تثبيت القشرة الأرضية. هذه الجذور تصل أحياناً إلى عدة أضعاف ارتفاع الجبل.",
+    "scientificExplanation": "نظرية التوازن الأرضي (Isostasy) التي اكتشفها جورج إيري أثبتت أن الجبال تعمل كمثبتات للقشرة الأرضية بفضل جذورها العميقة.",
+    "discoveryYear": "1855",
+    "scientist": "جورج إيري",
+    "sources": [
+      {
+        "name": "USGS - Mountain Formation",
+        "url": "https://www.usgs.gov/educational-resources/mountain-building"
+      },
+      {
+        "name": "Britannica - Isostasy",
+        "url": "https://www.britannica.com/science/isostasy"
+      },
+      {
+        "name": "Nature - Mountain Roots",
+        "url": "https://www.nature.com/articles/ngeo2090"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "mountain",
+    "rating": 5,
+    "isFavorite": false
+  },
+  {
+    "id": 5,
+    "title": "نقص الأكسجين في الارتفاعات",
+    "subtitle": "الإعجاز في علم الغلاف الجوي",
+    "category": "علم الفيزياء",
+    "type": "quran",
+    "source": "فَمَن يُرِدِ اللَّهُ أَن يَهْدِيَهُ يَشْرَحْ صَدْرَهُ لِلْإِسْلَامِ ۖ وَمَن يُرِدْ أَن يُضِلَّهُ يَجْعَلْ صَدْرَهُ ضَيِّقًا حَرَجًا كَأَنَّمَا يَصَّعَّدُ فِي السَّمَاءِ",
+    "reference": "سورة الأنعام - آية 125",
+    "book": "",
+    "description": "يصف القرآن ضيق الصدر عند الصعود في السماء، وهذا يتطابق مع انخفاض ضغط الهواء ونسبة الأكسجين كلما ارتفعنا.",
+    "scientificExplanation": "على ارتفاع 5500 متر تنخفض نسبة الأكسجين إلى النصف تقريباً مسببة ضيقاً حاداً في التنفس يُعرف بداء المرتفعات (Altitude Sickness).",
+    "discoveryYear": "1648",
+    "scientist": "بليز باسكال",
+    "sources": [
+      {
+        "name": "WHO - Altitude Sickness",
+        "url": "https://www.who.int/news-room/questions-and-answers/item/altitude-sickness"
+      },
+      {
+        "name": "NASA - Earth's Atmosphere",
+        "url": "https://www.nasa.gov/mission_pages/sunearth/science/atmosphere-layers2.html"
+      },
+      {
+        "name": "PubMed - High Altitude Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/11060398/"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "atmosphere",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 6,
+    "title": "دورة الماء في الطبيعة",
+    "subtitle": "الإعجاز في علم المياه",
+    "category": "علم المياه",
+    "type": "quran",
+    "source": "أَلَمْ تَرَ أَنَّ اللَّهَ أَنزَلَ مِنَ السَّمَاءِ مَاءً فَسَلَكَهُ يَنَابِيعَ فِي الْأَرْضِ",
+    "reference": "سورة الزمر - آية 21",
+    "book": "",
+    "description": "وصف القرآن دورة الماء: نزول المطر، تسربه في الأرض ليشكل ينابيع ومياه جوفية. لم تُفهم هذه الدورة علمياً إلا في القرن السابع عشر.",
+    "scientificExplanation": "لم يفهم العلماء دورة الماء بشكل كامل إلا على يد بيير بيرولت وإدمي ماريوت في القرن السابع عشر.",
+    "discoveryYear": "1674",
+    "scientist": "بيير بيرولت",
+    "sources": [
+      {
+        "name": "USGS - The Water Cycle",
+        "url": "https://www.usgs.gov/special-topics/water-science-school/science/water-cycle"
+      },
+      {
+        "name": "NASA - Water Cycle",
+        "url": "https://science.nasa.gov/earth-science/oceanography/ocean-earth-system/ocean-water-cycle/"
+      },
+      {
+        "name": "Britannica - Hydrologic Cycle",
+        "url": "https://www.britannica.com/science/hydrologic-cycle"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "water_cycle",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 7,
+    "title": "تلقيح الرياح للنبات",
+    "subtitle": "الإعجاز النباتي",
+    "category": "علم النبات",
+    "type": "quran",
+    "source": "وَأَرْسَلْنَا الرِّيَاحَ لَوَاقِحَ فَأَنزَلْنَا مِنَ السَّمَاءِ مَاءً فَأَسْقَيْنَاكُمُوهُ",
+    "reference": "سورة الحجر - آية 22",
+    "book": "",
+    "description": "وصف القرآن الرياح بأنها 'لواقح' أي تقوم بتلقيح النباتات بنقل حبوب اللقاح، وكذلك تلقيح السحب بنوى التكثف.",
+    "scientificExplanation": "التلقيح بالرياح (Anemophily) هو أحد أهم آليات تكاثر النباتات. كما أن الرياح تحمل نوى التكثف إلى السحب مما يساعد على تكوين المطر.",
+    "discoveryYear": "القرن الثامن عشر",
+    "scientist": "كارل لينيوس",
+    "sources": [
+      {
+        "name": "Britannica - Pollination by Wind",
+        "url": "https://www.britannica.com/science/pollination"
+      },
+      {
+        "name": "ScienceDirect - Anemophily",
+        "url": "https://www.sciencedirect.com/topics/agricultural-and-biological-sciences/anemophily"
+      },
+      {
+        "name": "Nature - Cloud Condensation Nuclei",
+        "url": "https://www.nature.com/articles/nature06059"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "plant",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 8,
+    "title": "الظلمات في أعماق البحار",
+    "subtitle": "الإعجاز البحري العميق",
+    "category": "علم البحار",
+    "type": "quran",
+    "source": "أَوْ كَظُلُمَاتٍ فِي بَحْرٍ لُّجِّيٍّ يَغْشَاهُ مَوْجٌ مِّن فَوْقِهِ مَوْجٌ مِّن فَوْقِهِ سَحَابٌ ۚ ظُلُمَاتٌ بَعْضُهَا فَوْقَ بَعْضٍ",
+    "reference": "سورة النور - آية 40",
+    "book": "",
+    "description": "وصف القرآن الظلمات المتعددة في أعماق البحار والأمواج الداخلية تحت السطح. لم تُكتشف هذه الحقائق إلا بالغواصات الحديثة.",
+    "scientificExplanation": "على عمق 200 متر يختفي معظم الضوء، وعلى عمق 1000 متر تكون الظلمة مطلقة. الأمواج الداخلية (Internal Waves) اكتُشفت عند الحدود بين طبقات الماء المختلفة.",
+    "discoveryYear": "القرن العشرين",
+    "scientist": "فريق أبحاث بحرية",
+    "sources": [
+      {
+        "name": "NOAA - Ocean Zones",
+        "url": "https://oceanservice.noaa.gov/facts/light_702.html"
+      },
+      {
+        "name": "Woods Hole - Internal Waves",
+        "url": "https://www.whoi.edu/know-your-ocean/ocean-topics/how-the-ocean-works/ocean-waves/"
+      },
+      {
+        "name": "ScienceDirect - Deep Sea Light Penetration",
+        "url": "https://www.sciencedirect.com/topics/earth-and-planetary-sciences/photic-zone"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "deep_sea",
+    "rating": 5,
+    "isFavorite": false
+  },
+  {
+    "id": 9,
+    "title": "البصمات الفريدة",
+    "subtitle": "الإعجاز في علم التشريح",
+    "category": "علم الأحياء",
+    "type": "quran",
+    "source": "أَيَحْسَبُ الْإِنسَانُ أَلَّن نَّجْمَعَ عِظَامَهُ ﴿3﴾ بَلَىٰ قَادِرِينَ عَلَىٰ أَن نُّسَوِّيَ بَنَانَهُ",
+    "reference": "سورة القيامة - آيات 3-4",
+    "book": "",
+    "description": "يتحدث القرآن عن تفرد البنان (أطراف الأصابع). أثبت العلم أن بصمة كل إنسان فريدة ولا تتكرر حتى في التوائم المتطابقة.",
+    "scientificExplanation": "أثبت فرانسيس غالتون عام 1892 أن احتمال تطابق بصمتين هو 1 من 64 مليار.",
+    "discoveryYear": "1880",
+    "scientist": "هنري فولدز",
+    "sources": [
+      {
+        "name": "FBI - History of Fingerprints",
+        "url": "https://www.fbi.gov/how-we-can-help-you/more-fbi-services-and-information/fingerprints-and-other-biometrics"
+      },
+      {
+        "name": "Nature - Fingerprint Uniqueness",
+        "url": "https://www.nature.com/articles/d41586-023-00234-5"
+      },
+      {
+        "name": "Britannica - Fingerprint",
+        "url": "https://www.britannica.com/science/fingerprint"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "fingerprint",
+    "rating": 5,
+    "isFavorite": false
+  },
+  {
+    "id": 10,
+    "title": "الذباب وما يحمله",
+    "subtitle": "الإعجاز في الميكروبيولوجيا",
+    "category": "علم الأحياء الدقيقة",
     "type": "sunnah",
+    "source": "إذا وقع الذبابُ في شراب أحدكم فليغمسه ثم لينزعه، فإن في إحدى جناحيه داءً وفي الأخرى شفاءً",
+    "reference": "صحيح البخاري - حديث 3320",
+    "book": "صحيح البخاري",
+    "description": "أخبر النبي ﷺ أن أحد جناحي الذبابة يحمل الداء والآخر الدواء. أثبت العلم وجود البكتيريوفاج على أجنحة الذباب.",
+    "scientificExplanation": "أثبتت أبحاث حديثة أن الذباب يحمل كائنات دقيقة تنتج مضادات حيوية طبيعية، وفيروسات بكتيريوفاج تقتل البكتيريا الضارة.",
+    "discoveryYear": "2017",
+    "scientist": "جامعة ماكواري - أستراليا",
+    "sources": [
+      {
+        "name": "Nature - Fly Microbiome Study",
+        "url": "https://www.nature.com/articles/s41598-017-16353-z"
+      },
+      {
+        "name": "PubMed - Bacteriophages on Flies",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29176567/"
+      },
+      {
+        "name": "صحيح البخاري - sunnah.com",
+        "url": "https://sunnah.com/bukhari:3320"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "biology",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 11,
+    "title": "نجم الطارق (النجوم النابضة)",
+    "subtitle": "الإعجاز الفلكي",
+    "category": "علم الفلك",
+    "type": "quran",
+    "source": "وَالسَّمَاءِ وَالطَّارِقِ ﴿1﴾ وَمَا أَدْرَاكَ مَا الطَّارِقُ ﴿2﴾ النَّجْمُ الثَّاقِبُ",
+    "reference": "سورة الطارق - آيات 1-3",
+    "book": "",
+    "description": "وصف القرآن نجماً بأنه 'الطارق الثاقب'. اكتشف العلماء النجوم النابضة (Pulsars) التي تُصدر نبضات إشعاعية تشبه صوت الطرق وأشعة ثاقبة.",
+    "scientificExplanation": "اكتشفت جوسلين بيل النجوم النابضة عام 1967. هذه النجوم النيوترونية تدور بسرعة هائلة وتُصدر نبضات إشعاعية منتظمة تشبه الطرقات.",
+    "discoveryYear": "1967",
+    "scientist": "جوسلين بيل",
+    "sources": [
+      {
+        "name": "NASA - What is a Pulsar?",
+        "url": "https://www.nasa.gov/universe/what-is-a-pulsar/"
+      },
+      {
+        "name": "Nobel Prize 1974 - Pulsars",
+        "url": "https://www.nobelprize.org/prizes/physics/1974/summary/"
+      },
+      {
+        "name": "Nature - Discovery of Pulsars",
+        "url": "https://www.nature.com/articles/217709a0"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "star",
+    "rating": 5,
+    "isFavorite": false
+  },
+  {
+    "id": 12,
+    "title": "مراكز الإحساس في الجلد",
+    "subtitle": "الإعجاز الطبي",
+    "category": "علم الطب",
+    "type": "quran",
+    "source": "كُلَّمَا نَضِجَتْ جُلُودُهُم بَدَّلْنَاهُمْ جُلُودًا غَيْرَهَا لِيَذُوقُوا الْعَذَابَ",
+    "reference": "سورة النساء - آية 56",
+    "book": "",
+    "description": "يبين القرآن أن الجلد هو مركز الإحساس بالألم. الطب أثبت أن النهايات العصبية المسؤولة عن الألم تتركز في الجلد، فإذا احترقت يفقد الإنسان الإحساس.",
+    "scientificExplanation": "الجلد يحتوي على ملايين النهايات العصبية. في حروق الدرجة الثالثة تُدمّر هذه النهايات فيفقد المريض الإحساس بالألم في المنطقة المصابة.",
+    "discoveryYear": "القرن العشرين",
+    "scientist": "أبحاث طبية متعددة",
+    "sources": [
+      {
+        "name": "NCBI - Pain Receptors in Skin",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK537188/"
+      },
+      {
+        "name": "PubMed - Nociceptors in Human Skin",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/11113301/"
+      },
+      {
+        "name": "MedlinePlus - Burns",
+        "url": "https://medlineplus.gov/burns.html"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "medical",
+    "rating": 5,
+    "isFavorite": false
+  },
+  {
+    "id": 13,
+    "title": "الناصية ومركز القرار والكذب",
+    "subtitle": "الإعجاز العصبي",
+    "category": "علم الأعصاب",
+    "type": "quran",
+    "source": "نَاصِيَةٍ كَاذِبَةٍ خَاطِئَةٍ",
+    "reference": "سورة العلق - آية 16",
+    "book": "",
+    "description": "وصف القرآن الناصية بأنها كاذبة خاطئة. علم الأعصاب أثبت أن الفص الجبهي الأمامي (Prefrontal Cortex) خلف الناصية هو المسؤول عن الكذب واتخاذ القرارات.",
+    "scientificExplanation": "أظهرت دراسات التصوير الوظيفي للدماغ (fMRI) أن منطقة الفص الجبهي الأمامي تنشط بشكل خاص عند الكذب.",
+    "discoveryYear": "القرن العشرين",
+    "scientist": "أبحاث علم الأعصاب",
+    "sources": [
+      {
+        "name": "PubMed - Prefrontal Cortex and Deception",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/15548656/"
+      },
+      {
+        "name": "Nature Neuroscience - Frontal Lobe Functions",
+        "url": "https://www.nature.com/articles/nn.3643"
+      },
+      {
+        "name": "Harvard - The Neuroscience of Lying",
+        "url": "https://news.harvard.edu/gazette/story/2016/10/the-brain-adapts-to-dishonesty/"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "brain",
+    "rating": 5,
+    "isFavorite": false
+  },
+  {
+    "id": 14,
+    "title": "حركة الشمس في مدار",
+    "subtitle": "الإعجاز الفلكي",
+    "category": "علم الفلك",
+    "type": "quran",
+    "source": "وَالشَّمْسُ تَجْرِي لِمُسْتَقَرٍّ لَّهَا ۚ ذَٰلِكَ تَقْدِيرُ الْعَزِيزِ الْعَلِيمِ",
+    "reference": "سورة يس - آية 38",
+    "book": "",
+    "description": "يذكر القرآن أن الشمس تجري لمستقر لها. اكتشف العلم أن الشمس تتحرك بسرعة 220 كم/ثانية حول مركز مجرة درب التبانة.",
+    "scientificExplanation": "الشمس تتحرك في مدار حلزوني حول مركز المجرة وتحتاج حوالي 225 مليون سنة لإتمام دورة كاملة.",
+    "discoveryYear": "1783",
+    "scientist": "ويليام هرشل",
+    "sources": [
+      {
+        "name": "NASA - The Sun's Motion Through the Galaxy",
+        "url": "https://solarsystem.nasa.gov/solar-system/sun/overview/"
+      },
+      {
+        "name": "ESA - The Milky Way Galaxy",
+        "url": "https://www.esa.int/Science_Exploration/Space_Science/Gaia/The_Galaxy_in_six_dimensions"
+      },
+      {
+        "name": "Britannica - Solar Motion",
+        "url": "https://www.britannica.com/science/Milky-Way-Galaxy/Solar-motion"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "sun",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 15,
+    "title": "الحديد نزل من الفضاء",
+    "subtitle": "الإعجاز في أصل المعادن",
+    "category": "علم الفلك",
+    "type": "quran",
+    "source": "وَأَنزَلْنَا الْحَدِيدَ فِيهِ بَأْسٌ شَدِيدٌ وَمَنَافِعُ لِلنَّاسِ",
+    "reference": "سورة الحديد - آية 25",
+    "book": "",
+    "description": "استخدم القرآن لفظ 'أنزلنا' للحديد. أثبت العلم أن الحديد تكوّن في نجوم عملاقة انفجرت ونثرته في الفضاء قبل تكوّن الأرض.",
+    "scientificExplanation": "تكوين نواة الحديد يحتاج طاقة أعلى مما يتوفر في شمسنا. الحديد تكوّن في انفجارات النجوم العملاقة (Supernovae) ثم وصل إلى الأرض عبر النيازك.",
+    "discoveryYear": "القرن العشرين",
+    "scientist": "فريد هويل",
+    "sources": [
+      {
+        "name": "NASA - Stellar Nucleosynthesis",
+        "url": "https://imagine.gsfc.nasa.gov/science/objects/stars2.html"
+      },
+      {
+        "name": "Nature - Origin of Iron",
+        "url": "https://www.nature.com/articles/nature02163"
+      },
+      {
+        "name": "Science - Iron from Supernovae",
+        "url": "https://www.science.org/doi/10.1126/science.1259709"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "iron",
+    "rating": 5,
+    "isFavorite": false
+  },
+  {
+    "id": 16,
+    "title": "العسل فيه شفاء",
+    "subtitle": "الإعجاز الطبي في القرآن",
+    "category": "علم الطب",
+    "type": "quran",
+    "source": "يَخْرُجُ مِن بُطُونِهَا شَرَابٌ مُّخْتَلِفٌ أَلْوَانُهُ فِيهِ شِفَاءٌ لِّلنَّاسِ",
+    "reference": "سورة النحل - آية 69",
+    "book": "",
+    "description": "أخبر القرآن أن العسل فيه شفاء. أثبتت الأبحاث أنه يحتوي على مضادات حيوية طبيعية ومضادات أكسدة.",
+    "scientificExplanation": "العسل يحتوي على إنزيم أوكسيديز الجلوكوز المنتج لبيروكسيد الهيدروجين المطهر. عسل المانوكا أثبت فعالية ضد MRSA.",
+    "discoveryYear": "القرن العشرين",
+    "scientist": "بيتر مولان",
+    "sources": [
+      {
+        "name": "PubMed - Honey as Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/21479349/"
+      },
+      {
+        "name": "Oxford Academic - Antibacterial Properties of Honey",
+        "url": "https://academic.oup.com/jac/article/56/2/228/722457"
+      },
+      {
+        "name": "WHO - Honey for Cough",
+        "url": "https://www.who.int/publications/i/item/9789241550086"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "honey",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 17,
+    "title": "النمل يتواصل بلغة",
+    "subtitle": "الإعجاز في عالم الحشرات",
+    "category": "علم الحشرات",
+    "type": "quran",
+    "source": "قَالَتْ نَمْلَةٌ يَا أَيُّهَا النَّمْلُ ادْخُلُوا مَسَاكِنَكُمْ لَا يَحْطِمَنَّكُمْ سُلَيْمَانُ وَجُنُودُهُ",
+    "reference": "سورة النمل - آية 18",
+    "book": "",
+    "description": "ذكر القرآن أن النملة تكلمت وحذرت قومها. أثبت العلم أن النمل يتواصل بأصوات وإشارات كيميائية معقدة.",
+    "scientificExplanation": "النمل يتواصل بالفيرومونات وأصوات عالية التردد يصدرها بحك أجزاء من جسمه (Stridulation).",
+    "discoveryYear": "2009",
+    "scientist": "جامعة تورينو الإيطالية",
+    "sources": [
+      {
+        "name": "Science - Ant Communication",
+        "url": "https://www.science.org/doi/10.1126/science.1168032"
+      },
+      {
+        "name": "PNAS - Ant Acoustics",
+        "url": "https://www.pnas.org/doi/10.1073/pnas.0404673102"
+      },
+      {
+        "name": "National Geographic - How Ants Communicate",
+        "url": "https://www.nationalgeographic.com/animals/invertebrates/facts/ants"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "insect",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 18,
+    "title": "كروية الأرض",
+    "subtitle": "الإعجاز الجغرافي",
+    "category": "علم الجغرافيا",
+    "type": "quran",
+    "source": "يُكَوِّرُ اللَّيْلَ عَلَى النَّهَارِ وَيُكَوِّرُ النَّهَارَ عَلَى اللَّيْلِ",
+    "reference": "سورة الزمر - آية 5",
+    "book": "",
+    "description": "لفظ 'يُكَوِّر' من الكُرة، يشير إلى كروية الأرض. التكوير لا يحدث إلا على سطح كروي.",
+    "scientificExplanation": "كروية الأرض أُثبتت برحلات ماجلان (1519-1522) ثم بالصور الفضائية. الأرض بيضاوية (مفلطحة عند القطبين).",
+    "discoveryYear": "1522",
+    "scientist": "فرديناند ماجلان",
+    "sources": [
+      {
+        "name": "NASA - Earth Fact Sheet",
+        "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html"
+      },
+      {
+        "name": "ESA - Shape of the Earth",
+        "url": "https://www.esa.int/Applications/Observing_the_Earth/FutureEO/GOCE/Earth_s_gravity_revealed_in_unprecedented_detail"
+      },
+      {
+        "name": "Britannica - Figure of the Earth",
+        "url": "https://www.britannica.com/science/figure-of-the-Earth"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "earth",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 19,
+    "title": "أخفض منطقة على الأرض",
+    "subtitle": "الإعجاز الجغرافي والتاريخي",
+    "category": "علم الجغرافيا",
+    "type": "quran",
+    "source": "غُلِبَتِ الرُّومُ ﴿2﴾ فِي أَدْنَى الْأَرْضِ",
+    "reference": "سورة الروم - آيات 2-3",
+    "book": "",
+    "description": "كلمة 'أدنى' تعني الأقرب والأخفض. منطقة البحر الميت حيث وقعت المعركة هي أخفض نقطة على الأرض (430 متر تحت سطح البحر).",
+    "scientificExplanation": "أثبتت القياسات الحديثة أن منطقة البحر الميت هي أخفض نقطة على سطح اليابسة بانخفاض 430.5 متر.",
+    "discoveryYear": "القرن التاسع عشر",
+    "scientist": "مساحون جيوديسيون",
+    "sources": [
+      {
+        "name": "USGS - Dead Sea",
+        "url": "https://www.usgs.gov/centers/pcmsc/science/dead-sea"
+      },
+      {
+        "name": "Britannica - Dead Sea",
+        "url": "https://www.britannica.com/place/Dead-Sea"
+      },
+      {
+        "name": "National Geographic - Dead Sea",
+        "url": "https://www.nationalgeographic.com/environment/article/dead-sea"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "geography",
+    "rating": 5,
+    "isFavorite": false
+  },
+  {
+    "id": 20,
+    "title": "الزوجية في كل شيء",
+    "subtitle": "الإعجاز البيولوجي والفيزيائي",
+    "category": "علم الأحياء",
+    "type": "quran",
+    "source": "وَمِن كُلِّ شَيْءٍ خَلَقْنَا زَوْجَيْنِ لَعَلَّكُمْ تَذَكَّرُونَ",
+    "reference": "سورة الذاريات - آية 49",
+    "book": "",
+    "description": "أخبر القرآن أن كل شيء مخلوق في أزواج. الزوجية موجودة في الذرة والكهرباء والنبات وحتى المادة المضادة.",
+    "scientificExplanation": "بول ديراك اكتشف البوزيترون (الإلكترون المضاد) عام 1932 مثبتاً الزوجية في المادة.",
+    "discoveryYear": "1932",
+    "scientist": "بول ديراك",
+    "sources": [
+      {
+        "name": "Nobel Prize 1933 - Dirac",
+        "url": "https://www.nobelprize.org/prizes/physics/1933/dirac/facts/"
+      },
+      {
+        "name": "CERN - Antimatter",
+        "url": "https://home.cern/science/physics/antimatter"
+      },
+      {
+        "name": "Nature - Matter-Antimatter Asymmetry",
+        "url": "https://www.nature.com/articles/s41586-020-2177-0"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "pairs",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 21,
+    "title": "الحجر الصحي والأوبئة",
+    "subtitle": "الإعجاز في الطب الوقائي",
+    "category": "علم الطب",
+    "type": "sunnah",
+    "source": "إذا سمعتُم بالطاعونِ بأرضٍ فلا تدخلوها وإذا وقعَ بأرضٍ وأنتم بها فلا تخرجوا منها",
+    "reference": "صحيح البخاري - حديث 5728",
+    "book": "صحيح البخاري",
+    "description": "وضع النبي ﷺ أول نظام حجر صحي قبل 14 قرناً. أوروبا لم تعرفه إلا في القرن الرابع عشر.",
+    "scientificExplanation": "مبدأ الحجر الصحي أثبت فعاليته في جائحة كوفيد-19 وهو أساس مكافحة الأوبئة.",
+    "discoveryYear": "1377م في أوروبا",
+    "scientist": "الطب الوقائي",
+    "sources": [
+      {
+        "name": "sunnah.com - البخاري 5728",
+        "url": "https://sunnah.com/bukhari:5728"
+      },
+      {
+        "name": "WHO - History of Quarantine",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/plague"
+      },
+      {
+        "name": "CDC - History of Quarantine",
+        "url": "https://www.cdc.gov/quarantine/historyquarantine.html"
+      },
+      {
+        "name": "The Lancet - Quarantine Effectiveness",
+        "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30460-8/fulltext"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "quarantine",
+    "rating": 5,
+    "isFavorite": false
+  },
+  {
+    "id": 22,
+    "title": "فوائد الصيام العلمية",
+    "subtitle": "الإعجاز الطبي في السنة",
+    "category": "علم الطب",
+    "type": "sunnah",
+    "source": "صوموا تصحّوا",
+    "reference": "رواه ابن السني وأبو نعيم",
+    "book": "مصادر حديثية متعددة",
+    "description": "أخبر النبي ﷺ أن الصيام يجلب الصحة. الالتهام الذاتي (Autophagy) الذي يتنشط أثناء الصيام حصل مكتشفه على نوبل 2016.",
+    "scientificExplanation": "يوشينوري أوسومي اكتشف آلية الالتهام الذاتي التي تتنشط أثناء الصيام حيث تنظف الخلايا نفسها من البروتينات التالفة.",
+    "discoveryYear": "2016",
+    "scientist": "يوشينوري أوسومي",
+    "sources": [
+      {
+        "name": "Nobel Prize 2016 - Autophagy",
+        "url": "https://www.nobelprize.org/prizes/medicine/2016/ohsumi/facts/"
+      },
+      {
+        "name": "NEJM - Intermittent Fasting",
+        "url": "https://www.nejm.org/doi/full/10.1056/NEJMra1905136"
+      },
+      {
+        "name": "Nature - Autophagy Mechanisms",
+        "url": "https://www.nature.com/articles/nature12735"
+      },
+      {
+        "name": "PubMed - Fasting and Health",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31881139/"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "fasting",
+    "rating": 5,
+    "isFavorite": false
+  },
+  {
+    "id": 23,
+    "title": "الحبة السوداء شفاء",
+    "subtitle": "الإعجاز الطبي النبوي",
+    "category": "علم الطب",
+    "type": "sunnah",
+    "source": "في الحبةِ السوداءِ شفاءٌ من كلِّ داءٍ إلا السَّامَ",
+    "reference": "صحيح البخاري - حديث 5688",
+    "book": "صحيح البخاري",
+    "description": "أخبر النبي ﷺ أن الحبة السوداء فيها شفاء. أثبتت مئات الدراسات فعالية مادة الثيموكينون فيها.",
+    "scientificExplanation": "الثيموكينون أظهر فعالية في أكثر من 700 دراسة محكمة ضد أنواع متعددة من الأمراض.",
+    "discoveryYear": "القرن العشرين",
+    "scientist": "باحثون متعددون",
+    "sources": [
+      {
+        "name": "sunnah.com - البخاري 5688",
+        "url": "https://sunnah.com/bukhari:5688"
+      },
+      {
+        "name": "PubMed - Thymoquinone Review",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/15103664/"
+      },
+      {
+        "name": "ScienceDirect - Nigella Sativa Pharmacology",
+        "url": "https://www.sciencedirect.com/science/article/pii/S0378874115301331"
+      },
+      {
+        "name": "BMC - Black Seed Meta-analysis",
+        "url": "https://bmccomplementmedtherapies.biomedcentral.com/articles/10.1186/s12906-019-2509-2"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "medicine",
+    "rating": 5,
+    "isFavorite": false
+  },
+  {
+    "id": 24,
+    "title": "السماء ذات الرجع",
+    "subtitle": "الإعجاز في علم الغلاف الجوي",
+    "category": "علم الفيزياء",
+    "type": "quran",
+    "source": "وَالسَّمَاءِ ذَاتِ الرَّجْعِ",
+    "reference": "سورة الطارق - آية 11",
+    "book": "",
+    "description": "وصف القرآن السماء بأنها 'ذات الرجع'. الغلاف الجوي يرجع: بخار الماء كمطر، الأشعة فوق البنفسجية، الموجات الراديوية، والحرارة.",
+    "scientificExplanation": "طبقة الأوزون ترجع الأشعة فوق البنفسجية، والأيونوسفير يرجع الموجات الراديوية، ودورة المياه ترجع بخار الماء.",
+    "discoveryYear": "القرن العشرين",
+    "scientist": "علماء الفيزياء الجوية",
+    "sources": [
+      {
+        "name": "NASA - Earth's Atmosphere Layers",
+        "url": "https://science.nasa.gov/earth/earth-atmosphere/earths-atmosphere-a-multi-layered-cake/"
+      },
+      {
+        "name": "NOAA - Ozone Layer",
+        "url": "https://www.noaa.gov/education/resource-collections/climate/ozone-layer"
+      },
+      {
+        "name": "Britannica - Ionosphere",
+        "url": "https://www.britannica.com/science/ionosphere"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "atmosphere",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 25,
+    "title": "تحريم الخمر",
+    "subtitle": "الإعجاز الصحي",
+    "category": "علم الطب",
+    "type": "quran",
+    "source": "إِنَّمَا الْخَمْرُ وَالْمَيْسِرُ وَالْأَنصَابُ وَالْأَزْلَامُ رِجْسٌ مِّنْ عَمَلِ الشَّيْطَانِ فَاجْتَنِبُوهُ",
+    "reference": "سورة المائدة - آية 90",
+    "book": "",
+    "description": "حرّم الإسلام الخمر. دراسة The Lancet 2018 أثبتت أنه لا توجد كمية آمنة من الكحول.",
+    "scientificExplanation": "الكحول مصنف كمسرطن من الدرجة الأولى. 3 ملايين وفاة سنوياً بسببه حسب WHO.",
+    "discoveryYear": "2018",
+    "scientist": "دراسة The Lancet العالمية",
+    "sources": [
+      {
+        "name": "The Lancet - No Safe Level of Alcohol",
+        "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(18)31310-2/fulltext"
+      },
+      {
+        "name": "WHO - Alcohol Fact Sheet",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/alcohol"
+      },
+      {
+        "name": "IARC - Alcohol as Carcinogen",
+        "url": "https://monographs.iarc.who.int/list-of-classifications"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "health",
+    "rating": 5,
+    "isFavorite": false
+  },
+  {
+    "id": 26,
+    "title": "حفظ جسد فرعون",
+    "subtitle": "الإعجاز التاريخي",
+    "category": "إعجاز تاريخي",
+    "type": "quran",
+    "source": "فَالْيَوْمَ نُنَجِّيكَ بِبَدَنِكَ لِتَكُونَ لِمَنْ خَلْفَكَ آيَةً",
+    "reference": "سورة يونس - آية 92",
+    "book": "",
+    "description": "أخبر القرآن بحفظ جسد فرعون. اكتُشفت مومياؤه ووجد موريس بوكاي آثار ملح البحر في جسده مثبتاً غرقه.",
+    "scientificExplanation": "فحص الدكتور موريس بوكاي مومياء فرعون عام 1981 ووجد بقايا ملح بحري تثبت غرقه.",
+    "discoveryYear": "1981",
+    "scientist": "موريس بوكاي",
+    "sources": [
+      {
+        "name": "Maurice Bucaille - The Bible, The Quran and Science (كتاب)",
+        "url": "https://www.goodreads.com/book/show/576645.The_Bible_the_Qu_ran_and_Science"
+      },
+      {
+        "name": "Britannica - Ramesses II Mummy",
+        "url": "https://www.britannica.com/biography/Ramses-II-king-of-Egypt"
+      },
+      {
+        "name": "Egyptian Museum - Royal Mummies",
+        "url": "https://egymonuments.gov.eg/en/museums/the-national-museum-of-egyptian-civilization"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "history",
+    "rating": 5,
+    "isFavorite": false
+  },
+  {
+    "id": 27,
+    "title": "النوم على الجنب الأيمن",
+    "subtitle": "الإعجاز الصحي في النوم",
+    "category": "علم الطب",
+    "type": "sunnah",
+    "source": "إذا أتيتَ مضجعك فتوضأ وضوءك للصلاة ثم اضطجع على شقك الأيمن",
+    "reference": "صحيح البخاري - حديث 247",
+    "book": "صحيح البخاري",
+    "description": "أوصى النبي ﷺ بالنوم على الجانب الأيمن. يريح القلب ويسهّل إفراغ المعدة ويحسن التنفس.",
+    "scientificExplanation": "القلب يميل لليسار فالنوم على اليمين يقلل الضغط عليه. المعدة تفرغ بسهولة أكبر لموقع فتحة البواب.",
+    "discoveryYear": "القرن الحادي والعشرين",
+    "scientist": "دراسات طبية حديثة",
+    "sources": [
+      {
+        "name": "sunnah.com - البخاري 247",
+        "url": "https://sunnah.com/bukhari:247"
+      },
+      {
+        "name": "PubMed - Sleep Position and Heart",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/12683890/"
+      },
+      {
+        "name": "Journal of Clinical Gastroenterology - Sleep Position",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/26053170/"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "sleep",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 28,
+    "title": "التمر وتسهيل الولادة",
+    "subtitle": "الإعجاز الطبي القرآني",
+    "category": "علم الطب",
+    "type": "quran",
+    "source": "وَهُزِّي إِلَيْكِ بِجِذْعِ النَّخْلَةِ تُسَاقِطْ عَلَيْكِ رُطَبًا جَنِيًّا ﴿25﴾ فَكُلِي وَاشْرَبِي وَقَرِّي عَيْنًا",
+    "reference": "سورة مريم - آيات 25-26",
+    "book": "",
+    "description": "أمر الله مريم بأكل الرطب عند الولادة. دراسة 2011 أثبتت أن التمر يقلل الحاجة للطلق الصناعي بنسبة 28%.",
+    "scientificExplanation": "النساء اللواتي تناولن 6 تمرات يومياً في الأسابيع الأخيرة كان لديهن توسع أكبر ومخاض أقصر.",
+    "discoveryYear": "2011",
+    "scientist": "جامعة الأردن",
+    "sources": [
+      {
+        "name": "PubMed - Date Fruit and Labour",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/21280989/"
+      },
+      {
+        "name": "Journal of Obstetrics - Date Consumption Study",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28286995/"
+      },
+      {
+        "name": "BMC Pregnancy - Date Fruit Effect",
+        "url": "https://bmcpregnancychildbirth.biomedcentral.com/articles/10.1186/s12884-017-1396-9"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "dates",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 29,
+    "title": "تحريم لحم الخنزير",
+    "subtitle": "الإعجاز الصحي الغذائي",
+    "category": "علم التغذية",
+    "type": "quran",
+    "source": "حُرِّمَتْ عَلَيْكُمُ الْمَيْتَةُ وَالدَّمُ وَلَحْمُ الْخِنزِيرِ",
+    "reference": "سورة المائدة - آية 3",
+    "book": "",
+    "description": "حرّم الإسلام لحم الخنزير. يحمل أكثر من 30 مرضاً منها التريكينوز وإنفلونزا الخنازير.",
+    "scientificExplanation": "دودة التريكينيلا لا تموت بالطبخ العادي. جائحة H1N1 عام 2009 مصدرها الخنازير.",
+    "discoveryYear": "القرن التاسع عشر",
+    "scientist": "رودولف فيرخوف",
+    "sources": [
+      {
+        "name": "CDC - Trichinosis",
+        "url": "https://www.cdc.gov/trichinellosis/index.html"
+      },
+      {
+        "name": "WHO - H1N1 Pandemic",
+        "url": "https://www.who.int/health-topics/influenza-pandemic"
+      },
+      {
+        "name": "PubMed - Zoonotic Diseases from Pigs",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/15962217/"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "food",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 30,
+    "title": "الغسل سبعاً من ولوغ الكلب",
+    "subtitle": "الإعجاز في علم الجراثيم",
+    "category": "علم الأحياء الدقيقة",
+    "type": "sunnah",
+    "source": "إذا ولَغَ الكلبُ في إناءِ أحدكم فليُرِقْهُ ثم ليَغسِلْهُ سبعَ مراتٍ أُولاهُنَّ بالتراب",
+    "reference": "صحيح مسلم - حديث 279",
+    "book": "صحيح مسلم",
+    "description": "لعاب الكلب يحتوي على بكتيريا Capnocytophaga وفيروسات خطيرة. التراب يحتوي على مواد مطهرة طبيعية.",
+    "scientificExplanation": "التراب له قدرة على امتصاص الفيروسات والبكتيريا الدقيقة التي لا يزيلها الماء وحده.",
+    "discoveryYear": "القرن العشرين",
+    "scientist": "علماء الأحياء الدقيقة",
+    "sources": [
+      {
+        "name": "sunnah.com - مسلم 279",
+        "url": "https://sunnah.com/muslim:279a"
+      },
+      {
+        "name": "CDC - Capnocytophaga",
+        "url": "https://www.cdc.gov/capnocytophaga/index.html"
+      },
+      {
+        "name": "PubMed - Dog Saliva Bacteria",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/26687573/"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "biology",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 31,
+    "title": "السجود وتدفق الدم للدماغ",
+    "subtitle": "الإعجاز النفسي في العبادة",
+    "category": "علم النفس",
+    "type": "sunnah",
+    "source": "أقربُ ما يكونُ العبدُ من ربِّه وهو ساجدٌ فأكثروا الدعاءَ",
+    "reference": "صحيح مسلم - حديث 482",
+    "book": "صحيح مسلم",
+    "description": "السجود يزيد تدفق الدم للدماغ بنسبة 40% ويقلل مستويات الكورتيزول (هرمون التوتر).",
+    "scientificExplanation": "التأريض الكهربائي (ملامسة الجبهة للأرض) يفرغ الشحنات الكهرومغناطيسية الزائدة من الجسم.",
+    "discoveryYear": "القرن الحادي والعشرين",
+    "scientist": "أبحاث طبية متعددة",
+    "sources": [
+      {
+        "name": "sunnah.com - مسلم 482",
+        "url": "https://sunnah.com/muslim:482"
+      },
+      {
+        "name": "PubMed - Earthing and Health",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22291721/"
+      },
+      {
+        "name": "Journal of Environmental Health - Grounding",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25748085/"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "prayer",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 32,
+    "title": "الوضوء والنظافة",
+    "subtitle": "الإعجاز في الصحة العامة",
+    "category": "علم الصحة العامة",
+    "type": "sunnah",
+    "source": "لولا أن أشقَّ على أمتي لأمرتُهم بالسواكِ عندَ كلِّ صلاةٍ",
+    "reference": "صحيح البخاري - حديث 887",
+    "book": "صحيح البخاري",
+    "description": "الوضوء 5 مرات يومياً يقلل الأمراض المعدية بنسبة 50%. السواك يحتوي على مضادات بكتيرية.",
+    "scientificExplanation": "WHO أثبتت أن غسل اليدين المنتظم يقلل العدوى بنسبة 50%. السواك يحتوي على السالفادورين المضاد للبكتيريا.",
+    "discoveryYear": "القرن التاسع عشر",
+    "scientist": "إجناز سيملفيس",
+    "sources": [
+      {
+        "name": "sunnah.com - البخاري 887",
+        "url": "https://sunnah.com/bukhari:887"
+      },
+      {
+        "name": "WHO - Hand Hygiene",
+        "url": "https://www.who.int/campaigns/world-hand-hygiene-day"
+      },
+      {
+        "name": "PubMed - Miswak Antimicrobial Properties",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/12558945/"
+      },
+      {
+        "name": "BMC Oral Health - Salvadora Persica",
+        "url": "https://bmcoralhealth.biomedcentral.com/articles/10.1186/1472-6831-7-15"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "hygiene",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 33,
+    "title": "الرضاعة الطبيعية سنتين",
+    "subtitle": "الإعجاز الطبي في التغذية",
+    "category": "علم الطب",
+    "type": "quran",
+    "source": "وَالْوَالِدَاتُ يُرْضِعْنَ أَوْلَادَهُنَّ حَوْلَيْنِ كَامِلَيْنِ",
+    "reference": "سورة البقرة - آية 233",
+    "book": "",
+    "description": "حدد القرآن مدة الرضاعة بسنتين. WHO أوصت بنفس المدة عام 2001.",
+    "scientificExplanation": "حليب الأم يتغير تركيبه ليناسب احتياجات الطفل في كل مرحلة حتى العامين.",
+    "discoveryYear": "2001",
+    "scientist": "منظمة الصحة العالمية",
+    "sources": [
+      {
+        "name": "WHO - Breastfeeding Recommendations",
+        "url": "https://www.who.int/health-topics/breastfeeding"
+      },
+      {
+        "name": "UNICEF - Breastfeeding",
+        "url": "https://www.unicef.org/nutrition/breastfeeding"
+      },
+      {
+        "name": "The Lancet - Breastfeeding Series",
+        "url": "https://www.thelancet.com/series/breastfeeding"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "breastfeeding",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 34,
+    "title": "إخبار القرآن بانتصار الروم",
+    "subtitle": "الإعجاز الغيبي",
+    "category": "إعجاز غيبي",
+    "type": "quran",
+    "source": "غُلِبَتِ الرُّومُ ﴿2﴾ فِي أَدْنَى الْأَرْضِ وَهُم مِّن بَعْدِ غَلَبِهِمْ سَيَغْلِبُونَ ﴿3﴾ فِي بِضْعِ سِنِينَ",
+    "reference": "سورة الروم - آيات 2-4",
+    "book": "",
+    "description": "تنبأ القرآن بانتصار الروم في بضع سنين بعد هزيمتهم الساحقة، وتحقق ذلك بعد 7 سنوات.",
+    "scientificExplanation": "هُزم الروم عام 614م وانتصروا عام 622-627م كما أخبر القرآن بالضبط.",
+    "discoveryYear": "627م",
+    "scientist": "التاريخ المُوثَّق",
+    "sources": [
+      {
+        "name": "Britannica - Byzantine-Sasanian War",
+        "url": "https://www.britannica.com/event/Byzantine-Sasanian-wars"
+      },
+      {
+        "name": "Cambridge History - Heraclius",
+        "url": "https://www.cambridge.org/core/books/cambridge-history-of-the-byzantine-empire/heraclius"
+      },
+      {
+        "name": "Oxford - Late Antiquity",
+        "url": "https://www.oxfordhandbooks.com/view/10.1093/oxfordhb/9780195336931.001.0001/oxfordhb-9780195336931"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "prophecy",
+    "rating": 5,
+    "isFavorite": false
+  },
+  {
+    "id": 35,
+    "title": "وجع البطن والأعسال",
+    "subtitle": "الإعجاز الطبي في السنة",
+    "category": "علم الطب",
+    "type": "sunnah",
+    "source": "جاء رجلٌ إلى النبي ﷺ فقال: إنَّ أخي اشتكى بطنه، فقال: اسقهِ عسلاً",
+    "reference": "صحيح البخاري - حديث 5684",
+    "book": "صحيح البخاري",
+    "description": "وصف النبي ﷺ العسل لعلاج آلام البطن. العسل ثبتت فعاليته ضد بكتيريا H. pylori المسببة لقرحة المعدة.",
+    "scientificExplanation": "دراسات متعددة أثبتت فعالية العسل ضد Helicobacter pylori وقرحة المعدة والتهابات الجهاز الهضمي.",
+    "discoveryYear": "2006",
+    "scientist": "باحثون في طب الجهاز الهضمي",
+    "sources": [
+      {
+        "name": "sunnah.com - البخاري 5684",
+        "url": "https://sunnah.com/bukhari:5684"
+      },
+      {
+        "name": "PubMed - Honey and H. pylori",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/16507526/"
+      },
+      {
+        "name": "BMC Gastroenterology - Honey for Gastritis",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25099548/"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "medicine",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 36,
+    "title": "السماء سقف محفوظ",
+    "subtitle": "الإعجاز الفيزيائي",
+    "category": "علم الفيزياء",
+    "type": "quran",
+    "source": "وَجَعَلْنَا السَّمَاءَ سَقْفًا مَّحْفُوظًا ۖ وَهُمْ عَنْ آيَاتِهَا مُعْرِضُونَ",
+    "reference": "سورة الأنبياء - آية 32",
+    "book": "",
+    "description": "وصف القرآن السماء بأنها سقف محفوظ. الغلاف الجوي والمجال المغناطيسي للأرض يحميانها من الإشعاعات الكونية والنيازك والرياح الشمسية.",
+    "scientificExplanation": "المجال المغناطيسي (Magnetosphere) يحمي الأرض من الرياح الشمسية القاتلة. طبقة الأوزون تحمي من الأشعة فوق البنفسجية.",
+    "discoveryYear": "1958",
+    "scientist": "جيمس فان ألن",
+    "sources": [
+      {
+        "name": "NASA - Magnetosphere",
+        "url": "https://science.nasa.gov/heliophysics/focus-areas/magnetosphere-ionosphere/"
+      },
+      {
+        "name": "ESA - Earth's Shield",
+        "url": "https://www.esa.int/Science_Exploration/Space_Science/Earth_s_magnetic_field"
+      },
+      {
+        "name": "Nature - Van Allen Belts",
+        "url": "https://www.nature.com/articles/nature11942"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "shield",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 37,
+    "title": "الأرض ذات الصدع",
+    "subtitle": "الإعجاز الجيولوجي",
+    "category": "علم الجيولوجيا",
+    "type": "quran",
+    "source": "وَالْأَرْضِ ذَاتِ الصَّدْعِ",
+    "reference": "سورة الطارق - آية 12",
+    "book": "",
+    "description": "وصف القرآن الأرض بأنها 'ذات الصدع'. اكتشف العلماء نظام الصدوع الأرضية (Rift System) الممتد عبر قاع المحيطات وسطح الأرض.",
+    "scientificExplanation": "نظام الأخاديد المحيطية (Mid-Ocean Ridge) يمتد 65000 كم ويُعد أكبر سلسلة جبلية تحت الماء مليئة بالصدوع.",
+    "discoveryYear": "1953",
+    "scientist": "بروس هيزن وماري ثارب",
+    "sources": [
+      {
+        "name": "NOAA - Mid-Ocean Ridges",
+        "url": "https://oceanexplorer.noaa.gov/facts/mid-ocean-ridges.html"
+      },
+      {
+        "name": "USGS - Plate Tectonics",
+        "url": "https://www.usgs.gov/educational-resources/plate-tectonics"
+      },
+      {
+        "name": "Nature - Ocean Floor Mapping",
+        "url": "https://www.nature.com/articles/d41586-019-02756-x"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "geology",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 38,
+    "title": "النحل وبيوته الهندسية",
+    "subtitle": "الإعجاز في الهندسة الحيوية",
+    "category": "علم الأحياء",
+    "type": "quran",
+    "source": "وَأَوْحَىٰ رَبُّكَ إِلَى النَّحْلِ أَنِ اتَّخِذِي مِنَ الْجِبَالِ بُيُوتًا وَمِنَ الشَّجَرِ وَمِمَّا يَعْرِشُونَ",
+    "reference": "سورة النحل - آية 68",
+    "book": "",
+    "description": "القرآن استخدم صيغة المؤنث 'اتَّخِذِي' للنحل. اكتشف العلم أن الإناث هي التي تبني الخلايا وتصنع العسل. كما أن الشكل السداسي لخلية النحل هو أكفأ شكل هندسي.",
+    "scientificExplanation": "ثبت رياضياً أن الشكل السداسي يوفر أكبر مساحة بأقل محيط (أقل شمع)، وهو ما يُعرف بتخمين خلية النحل الذي أُثبت عام 1999.",
+    "discoveryYear": "1999",
+    "scientist": "توماس هيلز",
+    "sources": [
+      {
+        "name": "Nature - Honeycomb Conjecture Proof",
+        "url": "https://www.nature.com/articles/23557"
+      },
+      {
+        "name": "National Geographic - Honeybee Science",
+        "url": "https://www.nationalgeographic.com/animals/invertebrates/facts/honeybee"
+      },
+      {
+        "name": "PubMed - Worker Bee Biology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22404912/"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "bee",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 39,
+    "title": "الأمراض النفسية وذكر الله",
+    "subtitle": "الإعجاز النفسي",
+    "category": "علم النفس",
+    "type": "quran",
+    "source": "أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ",
+    "reference": "سورة الرعد - آية 28",
+    "book": "",
+    "description": "أخبر القرآن أن ذكر الله يُطمئن القلوب. دراسات علم النفس أثبتت أن التأمل الروحي والصلاة يقللان القلق والاكتئاب ويحسنان الصحة النفسية.",
+    "scientificExplanation": "أثبتت دراسات متعددة أن الممارسات الروحية تقلل مستويات الكورتيزول وتزيد السيروتونين والدوبامين.",
+    "discoveryYear": "القرن الحادي والعشرين",
+    "scientist": "أندرو نيوبيرغ",
+    "sources": [
+      {
+        "name": "PubMed - Prayer and Mental Health",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22398261/"
+      },
+      {
+        "name": "Harvard - Benefits of Meditation",
+        "url": "https://news.harvard.edu/gazette/story/2018/04/less-stress-clearer-thoughts-with-mindfulness-meditation/"
+      },
+      {
+        "name": "APA - Spirituality and Mental Health",
+        "url": "https://www.apa.org/news/press/releases/2013/03/religion-spirituality"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "mental_health",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 40,
+    "title": "مضغ الطعام جيداً",
+    "subtitle": "الإعجاز في آداب الطعام",
+    "category": "علم التغذية",
+    "type": "sunnah",
+    "source": "ما ملأ ابنُ آدمَ وعاءً شرًّا من بطنه، بحسبِ ابنِ آدمَ أكَلاتٌ يُقِمنَ صُلبَه، فإن كان لا محالةَ فثلثٌ لطعامه وثلثٌ لشرابه وثلثٌ لنَفَسه",
+    "reference": "سنن الترمذي - حديث 2380",
+    "book": "سنن الترمذي",
+    "description": "أوصى النبي ﷺ بتقسيم المعدة إلى ثلاثة أقسام. الطب الحديث أثبت أن الإفراط في الأكل سبب رئيسي للسمنة والسكري وأمراض القلب.",
+    "scientificExplanation": "تقليل كمية الطعام يحسن الهضم ويقلل الضغط على الأعضاء ويطيل العمر حسب دراسات Caloric Restriction.",
+    "discoveryYear": "القرن الحادي والعشرين",
+    "scientist": "دراسات التغذية الحديثة",
+    "sources": [
+      {
+        "name": "sunnah.com - الترمذي 2380",
+        "url": "https://sunnah.com/tirmidhi:2380"
+      },
+      {
+        "name": "NEJM - Caloric Restriction",
+        "url": "https://www.nejm.org/doi/full/10.1056/NEJMra1905136"
+      },
+      {
+        "name": "Nature - Dietary Restriction and Longevity",
+        "url": "https://www.nature.com/articles/nature11432"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "food",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 41,
+    "title": "النجوم منارات للملاحة",
+    "subtitle": "الإعجاز في علم الملاحة",
+    "category": "علم الفلك",
+    "type": "quran",
+    "source": "وَبِالنَّجْمِ هُمْ يَهْتَدُونَ",
+    "reference": "سورة النحل - آية 16",
+    "book": "",
+    "description": "أخبر القرآن باستخدام النجوم للاهتداء. أثبت العلم أن البشر والحيوانات والطيور تستخدم النجوم للملاحة.",
+    "scientificExplanation": "الطيور المهاجرة تمتلك بلورات مغناطيسية في أدمغتها تساعدها على الاهتداء بالنجوم والمجال المغناطيسي.",
+    "discoveryYear": "2004",
+    "scientist": "هنريك موريتسن",
+    "sources": [
+      {
+        "name": "Nature - Bird Navigation",
+        "url": "https://www.nature.com/articles/nature02534"
+      },
+      {
+        "name": "Science - Magnetoreception in Birds",
+        "url": "https://www.science.org/doi/10.1126/science.1176763"
+      },
+      {
+        "name": "PNAS - Star Navigation in Animals",
+        "url": "https://www.pnas.org/doi/10.1073/pnas.1210199109"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "navigation",
+    "rating": 3,
+    "isFavorite": false
+  },
+  {
+    "id": 42,
+    "title": "البحر المسجور (البراكين البحرية)",
+    "subtitle": "الإعجاز البحري الجيولوجي",
+    "category": "علم البحار",
+    "type": "quran",
+    "source": "وَالْبَحْرِ الْمَسْجُورِ",
+    "reference": "سورة الطور - آية 6",
+    "book": "",
+    "description": "وصف القرآن البحر بالمسجور (المُوقَد ناراً). اكتشف العلماء وجود براكين نشطة في قاع المحيطات وفوهات حرارية تُسخّن الماء لدرجات عالية جداً.",
+    "scientificExplanation": "الفوهات الحرارية المائية (Hydrothermal Vents) في قاع المحيطات تقذف ماءً ساخناً بدرجة تصل إلى 400 درجة مئوية.",
+    "discoveryYear": "1977",
+    "scientist": "بعثة ألفين الاستكشافية",
+    "sources": [
+      {
+        "name": "NOAA - Hydrothermal Vents",
+        "url": "https://oceanexplorer.noaa.gov/facts/vents.html"
+      },
+      {
+        "name": "Woods Hole - Alvin Discovery",
+        "url": "https://www.whoi.edu/know-your-ocean/ocean-topics/seafloor-below/hydrothermal-vents/"
+      },
+      {
+        "name": "Nature - Submarine Volcanism",
+        "url": "https://www.nature.com/articles/ngeo2966"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "volcano",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 43,
+    "title": "السحاب الثقال",
+    "subtitle": "الإعجاز في الأرصاد الجوية",
+    "category": "علم الفيزياء",
+    "type": "quran",
+    "source": "هُوَ الَّذِي يُرِيكُمُ الْبَرْقَ خَوْفًا وَطَمَعًا وَيُنشِئُ السَّحَابَ الثِّقَالَ",
+    "reference": "سورة الرعد - آية 12",
+    "book": "",
+    "description": "وصف القرآن السحاب بالثقال. اكتُشف أن سحابة ركامية واحدة يمكن أن تحمل مئات الآلاف من الأطنان من الماء.",
+    "scientificExplanation": "سحابة عاصفة متوسطة الحجم تحمل حوالي 500,000 طن من الماء. سحابة ركامية كبيرة قد تحمل ملايين الأطنان.",
+    "discoveryYear": "القرن العشرين",
+    "scientist": "علماء الأرصاد الجوية",
+    "sources": [
+      {
+        "name": "USGS - How Much Does a Cloud Weigh?",
+        "url": "https://www.usgs.gov/special-topics/water-science-school/science/how-much-does-a-cloud-weigh"
+      },
+      {
+        "name": "NOAA - Cloud Types",
+        "url": "https://www.noaa.gov/jetstream/clouds"
+      },
+      {
+        "name": "AMS - Cloud Physics",
+        "url": "https://www.ametsoc.org/index.cfm/ams/publications/journals/journal-of-the-atmospheric-sciences/"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "cloud",
+    "rating": 3,
+    "isFavorite": false
+  },
+  {
+    "id": 44,
+    "title": "منع التبول في الماء الراكد",
+    "subtitle": "الإعجاز في الصحة العامة",
+    "category": "علم الصحة العامة",
+    "type": "sunnah",
+    "source": "لا يبولنَّ أحدُكم في الماءِ الدائمِ الذي لا يجري ثم يغتسل فيه",
+    "reference": "صحيح البخاري - حديث 239",
+    "book": "صحيح البخاري",
+    "description": "نهى النبي ﷺ عن التبول في الماء الراكد. العلم أثبت أن الماء الراكد بيئة مثالية لتكاثر البكتيريا والطفيليات المسببة للأمراض.",
+    "scientificExplanation": "البلهارسيا والكوليرا والتيفوئيد تنتشر عبر المياه الراكدة الملوثة. WHO تُقدّر مليون وفاة سنوياً بسبب المياه الملوثة.",
+    "discoveryYear": "القرن التاسع عشر",
+    "scientist": "جون سنو",
+    "sources": [
+      {
+        "name": "sunnah.com - البخاري 239",
+        "url": "https://sunnah.com/bukhari:239"
+      },
+      {
+        "name": "WHO - Water Sanitation",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/drinking-water"
+      },
+      {
+        "name": "CDC - Waterborne Diseases",
+        "url": "https://www.cdc.gov/healthy-water-data/about/waterborne-diseases.html"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "hygiene",
+    "rating": 3,
+    "isFavorite": false
+  },
+  {
+    "id": 45,
+    "title": "العنكبوت وبيته الواهن",
+    "subtitle": "الإعجاز في علم الحشرات",
+    "category": "علم الحشرات",
+    "type": "quran",
+    "source": "مَثَلُ الَّذِينَ اتَّخَذُوا مِن دُونِ اللَّهِ أَوْلِيَاءَ كَمَثَلِ الْعَنكَبُوتِ اتَّخَذَتْ بَيْتًا ۖ وَإِنَّ أَوْهَنَ الْبُيُوتِ لَبَيْتُ الْعَنكَبُوتِ",
+    "reference": "سورة العنكبوت - آية 41",
+    "book": "",
+    "description": "وصف القرآن بيت العنكبوت بأنه أوهن البيوت. العلم اكتشف أن وهن بيت العنكبوت ليس في خيوطه (التي هي أقوى من الفولاذ بنفس السمك) بل في العلاقات الاجتماعية داخله: الأنثى تأكل الذكر بعد التزاوج.",
+    "scientificExplanation": "خيوط العنكبوت أقوى من الفولاذ 5 مرات بنفس السمك. لكن الوهن في البيت اجتماعي: الأنثى تفترس الذكر وأحياناً صغارها.",
+    "discoveryYear": "القرن العشرين",
+    "scientist": "علماء الحشرات",
+    "sources": [
+      {
+        "name": "Nature - Spider Silk Properties",
+        "url": "https://www.nature.com/articles/35085000"
+      },
+      {
+        "name": "Science - Spider Behavior",
+        "url": "https://www.science.org/doi/10.1126/science.1221484"
+      },
+      {
+        "name": "National Geographic - Spider Cannibalism",
+        "url": "https://www.nationalgeographic.com/animals/invertebrates/facts/spiders"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "spider",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 46,
+    "title": "طبقات الأرض السبع",
+    "subtitle": "الإعجاز الجيولوجي",
+    "category": "علم الجيولوجيا",
+    "type": "quran",
+    "source": "اللَّهُ الَّذِي خَلَقَ سَبْعَ سَمَاوَاتٍ وَمِنَ الْأَرْضِ مِثْلَهُنَّ",
+    "reference": "سورة الطلاق - آية 12",
+    "book": "",
+    "description": "أخبر القرآن أن الأرض سبع طبقات كالسماوات. العلم أثبت أن الأرض تتكون من 7 طبقات: القشرة، الوشاح العلوي، منطقة الانتقال، الوشاح السفلي، النواة الخارجية السائلة، النواة الانتقالية، النواة الداخلية الصلبة.",
+    "scientificExplanation": "الموجات الزلزالية كشفت 7 طبقات مميزة للأرض تختلف في التركيب والكثافة والحالة الفيزيائية.",
+    "discoveryYear": "1936",
+    "scientist": "إنجي ليمان",
+    "sources": [
+      {
+        "name": "USGS - Earth's Internal Structure",
+        "url": "https://www.usgs.gov/educational-resources/earth-interior"
+      },
+      {
+        "name": "Nature - Earth's Core Discovery",
+        "url": "https://www.nature.com/articles/s41586-023-06143-z"
+      },
+      {
+        "name": "Britannica - Earth Structure",
+        "url": "https://www.britannica.com/science/Earth-planet/The-interior"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "layers",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 47,
+    "title": "ماء زمزم لا ينضب",
+    "subtitle": "الإعجاز في المياه",
+    "category": "علم المياه",
+    "type": "sunnah",
+    "source": "ماء زمزم لِما شُرب له",
+    "reference": "رواه أحمد وابن ماجه",
+    "book": "مسند أحمد وسنن ابن ماجه",
+    "description": "بئر زمزم لم ينضب منذ آلاف السنين رغم ضخ ملايين اللترات يومياً خلال موسم الحج. تحليل مائه أظهر تركيبة معدنية فريدة.",
+    "scientificExplanation": "تحليل ماء زمزم أظهر احتواءه على معادن مفيدة بنسب متوازنة: كالسيوم، مغنيسيوم، صوديوم، وبيكربونات. معدل تدفقه 11-18 لتر/ثانية.",
+    "discoveryYear": "دراسات مستمرة",
+    "scientist": "هيئة المساحة الجيولوجية السعودية",
+    "sources": [
+      {
+        "name": "sunnah.com - ابن ماجه 3062",
+        "url": "https://sunnah.com/ibnmajah:3062"
+      },
+      {
+        "name": "Saudi Geological Survey - Zamzam Studies",
+        "url": "https://www.sgs.gov.sa"
+      },
+      {
+        "name": "PubMed - Zamzam Water Analysis",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/21591990/"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "water",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 48,
+    "title": "خلق الإنسان من ماء دافق",
+    "subtitle": "الإعجاز في علم التشريح",
+    "category": "علم الأجنة",
+    "type": "quran",
+    "source": "فَلْيَنظُرِ الْإِنسَانُ مِمَّ خُلِقَ ﴿5﴾ خُلِقَ مِن مَّاءٍ دَافِقٍ ﴿6﴾ يَخْرُجُ مِن بَيْنِ الصُّلْبِ وَالتَّرَائِبِ",
+    "reference": "سورة الطارق - آيات 5-7",
+    "book": "",
+    "description": "أخبر القرآن أن ماء الرجل يخرج من بين الصلب والترائب. أثبت العلم أن الخصيتين تتكونان في البداية بين الكلى والعمود الفقري ثم تنزلان، وأن الشريان المغذي لهما يخرج من الشريان الأبهر بين الصلب والترائب.",
+    "scientificExplanation": "الشريان الخصوي (Testicular artery) ينشأ من الشريان الأبهر عند مستوى الفقرة القطنية الثانية، أي بين الصلب والترائب تماماً.",
+    "discoveryYear": "القرن العشرين",
+    "scientist": "علم التشريح الحديث",
+    "sources": [
+      {
+        "name": "NCBI - Testicular Artery Anatomy",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK556077/"
+      },
+      {
+        "name": "Gray's Anatomy - Testicular Development",
+        "url": "https://www.sciencedirect.com/topics/medicine-and-dentistry/testicular-artery"
+      },
+      {
+        "name": "PubMed - Embryonic Gonad Migration",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25209131/"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "embryo",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 49,
+    "title": "الحجامة والعلاج",
+    "subtitle": "الإعجاز الطبي في السنة",
+    "category": "علم الطب",
+    "type": "sunnah",
+    "source": "إنَّ أمثلَ ما تداويتُم به الحِجامةُ",
+    "reference": "صحيح البخاري - حديث 5696",
+    "book": "صحيح البخاري",
+    "description": "أوصى النبي ﷺ بالحجامة. أثبتت الدراسات الحديثة فعاليتها في علاج آلام الظهر والصداع المزمن وارتفاع ضغط الدم.",
+    "scientificExplanation": "الحجامة (Cupping Therapy) أصبحت معترفاً بها في الطب التكميلي. أثبتت فعالية في تخفيف الألم وتحسين الدورة الدموية.",
+    "discoveryYear": "دراسات حديثة",
+    "scientist": "WHO والطب التكميلي",
+    "sources": [
+      {
+        "name": "sunnah.com - البخاري 5696",
+        "url": "https://sunnah.com/bukhari:5696"
+      },
+      {
+        "name": "PubMed - Cupping Therapy Systematic Review",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22529898/"
+      },
+      {
+        "name": "BMC - Cupping for Pain",
+        "url": "https://bmccomplementmedtherapies.biomedcentral.com/articles/10.1186/1472-6882-12-184"
+      },
+      {
+        "name": "WHO - Traditional Medicine Strategy",
+        "url": "https://www.who.int/publications/i/item/9789241506096"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "medicine",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 50,
+    "title": "تقليم الأظافر والنظافة",
+    "subtitle": "الإعجاز في النظافة الشخصية",
+    "category": "علم الصحة العامة",
+    "type": "sunnah",
+    "source": "عشرٌ من الفطرة: قصُّ الشاربِ وإعفاءُ اللحيةِ والسواكُ... وقصُّ الأظفارِ وغسلُ البراجمِ",
+    "reference": "صحيح مسلم - حديث 261",
+    "book": "صحيح مسلم",
+    "description": "حث النبي ﷺ على تقليم الأظافر ضمن سنن الفطرة. تحت الأظافر الطويلة تتجمع البكتيريا والفطريات المسببة للأمراض.",
+    "scientificExplanation": "دراسات أثبتت أن تحت الأظافر تعيش أكثر من 32 نوعاً من البكتيريا والفطريات. تقليمها يقلل انتشار العدوى بشكل كبير.",
+    "discoveryYear": "القرن الحادي والعشرين",
+    "scientist": "أبحاث صحية",
+    "sources": [
+      {
+        "name": "sunnah.com - مسلم 261",
+        "url": "https://sunnah.com/muslim:261a"
+      },
+      {
+        "name": "CDC - Nail Hygiene",
+        "url": "https://www.cdc.gov/clean-hands/about/when-how-handwashing.html"
+      },
+      {
+        "name": "PubMed - Subungual Bacteria",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/18838916/"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "hygiene",
+    "rating": 3,
+    "isFavorite": false
+  },
+  {
+    "id": 51,
+    "title": "تحريم الدم",
+    "subtitle": "الإعجاز الصحي الغذائي",
+    "category": "علم التغذية",
+    "type": "quran",
+    "source": "حُرِّمَتْ عَلَيْكُمُ الْمَيْتَةُ وَالدَّمُ",
+    "reference": "سورة المائدة - آية 3",
+    "book": "",
+    "description": "حرّم الإسلام تناول الدم. أثبت العلم أن الدم وسط مثالي لنمو البكتيريا ويحتوي على سموم ومخلفات أيضية ضارة.",
+    "scientificExplanation": "الدم يحتوي على حمض البوليك واليوريا ومخلفات أيضية سامة. كما أنه وسط ممتاز لتكاثر البكتيريا المسببة للأمراض.",
+    "discoveryYear": "القرن التاسع عشر",
+    "scientist": "لويس باستور",
+    "sources": [
+      {
+        "name": "PubMed - Blood-borne Pathogens",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/26907266/"
+      },
+      {
+        "name": "FDA - Foodborne Illness",
+        "url": "https://www.fda.gov/food/foodborne-pathogens"
+      },
+      {
+        "name": "WHO - Food Safety",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/food-safety"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "food",
+    "rating": 3,
+    "isFavorite": false
+  },
+  {
+    "id": 52,
+    "title": "دوران الأرض",
+    "subtitle": "الإعجاز الفلكي",
+    "category": "علم الفلك",
+    "type": "quran",
+    "source": "وَتَرَى الْجِبَالَ تَحْسَبُهَا جَامِدَةً وَهِيَ تَمُرُّ مَرَّ السَّحَابِ ۚ صُنْعَ اللَّهِ الَّذِي أَتْقَنَ كُلَّ شَيْءٍ",
+    "reference": "سورة النمل - آية 88",
+    "book": "",
+    "description": "أشار القرآن إلى أن الجبال تمر كالسحاب رغم أننا نراها ثابتة، وهذا يدل على دوران الأرض.",
+    "scientificExplanation": "الأرض تدور حول محورها بسرعة 1670 كم/ساعة عند خط الاستواء، وتدور حول الشمس بسرعة 107000 كم/ساعة.",
+    "discoveryYear": "1543",
+    "scientist": "نيكولاس كوبرنيكوس",
+    "sources": [
+      {
+        "name": "NASA - Earth's Rotation",
+        "url": "https://science.nasa.gov/earth/facts/"
+      },
+      {
+        "name": "Britannica - Earth Rotation",
+        "url": "https://www.britannica.com/science/Earths-rotation"
+      },
+      {
+        "name": "Nature - Measuring Earth's Rotation",
+        "url": "https://www.nature.com/articles/nature11089"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "earth",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 53,
+    "title": "الأزهار الملونة ومياه واحدة",
+    "subtitle": "الإعجاز النباتي",
+    "category": "علم النبات",
+    "type": "quran",
+    "source": "وَفِي الْأَرْضِ قِطَعٌ مُّتَجَاوِرَاتٌ... يُسْقَىٰ بِمَاءٍ وَاحِدٍ وَنُفَضِّلُ بَعْضَهَا عَلَىٰ بَعْضٍ فِي الْأُكُلِ",
+    "reference": "سورة الرعد - آية 4",
+    "book": "",
+    "description": "أشار القرآن إلى أن نباتات تُسقى بماء واحد لكنها تختلف في طعمها ولونها. هذا يعود إلى اختلاف الجينات (DNA) التي تتحكم في إنتاج الصبغات والمواد الكيميائية.",
+    "scientificExplanation": "اكتشف علم الوراثة أن الاختلاف في الجينات هو ما يسبب تنوع ألوان الأزهار وطعم الثمار رغم تشابه الظروف البيئية والماء.",
+    "discoveryYear": "1953",
+    "scientist": "واتسون وكريك (اكتشاف DNA)",
+    "sources": [
+      {
+        "name": "Nature - Plant Genetics and Color",
+        "url": "https://www.nature.com/articles/s41477-020-0628-7"
+      },
+      {
+        "name": "Science - Flower Color Evolution",
+        "url": "https://www.science.org/doi/10.1126/science.aas9652"
+      },
+      {
+        "name": "PubMed - Genetic Diversity in Plants",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22629338/"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "plant",
+    "rating": 3,
+    "isFavorite": false
+  },
+  {
+    "id": 54,
+    "title": "الإسراء والمعراج",
+    "subtitle": "معجزة النبي ﷺ الكبرى",
+    "category": "معجزات نبوية",
+    "type": "quran",
+    "source": "سُبْحَانَ الَّذِي أَسْرَىٰ بِعَبْدِهِ لَيْلًا مِّنَ الْمَسْجِدِ الْحَرَامِ إِلَى الْمَسْجِدِ الْأَقْصَى",
+    "reference": "سورة الإسراء - آية 1",
+    "book": "",
+    "description": "أسرى الله بنبيه ﷺ من مكة إلى بيت المقدس ثم عرج به إلى السماوات العلا في ليلة واحدة. معجزة إلهية خارقة للقوانين الطبيعية.",
+    "scientificExplanation": "معجزة خارقة أكدها النبي ﷺ بوصفه تفاصيل لم يكن يعرفها كوصف بيت المقدس والقوافل في الطريق.",
+    "discoveryYear": "",
+    "scientist": "",
+    "sources": [
+      {
+        "name": "صحيح البخاري - كتاب المناقب",
+        "url": "https://sunnah.com/bukhari:3887"
+      },
+      {
+        "name": "صحيح مسلم - كتاب الإيمان",
+        "url": "https://sunnah.com/muslim:162a"
+      },
+      {
+        "name": "تفسير ابن كثير - سورة الإسراء",
+        "url": "https://quran.ksu.edu.sa/tafseer/katheer/sura17-aya1.html"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "miracle",
+    "rating": 5,
+    "isFavorite": false
+  },
+  {
+    "id": 55,
+    "title": "انشقاق القمر",
+    "subtitle": "معجزة حسية للنبي ﷺ",
+    "category": "معجزات نبوية",
+    "type": "quran",
+    "source": "اقْتَرَبَتِ السَّاعَةُ وَانشَقَّ الْقَمَرُ",
+    "reference": "سورة القمر - آية 1",
+    "book": "",
+    "description": "انشق القمر إلى نصفين بإذن الله كمعجزة للنبي ﷺ. شاهدها أهل مكة وذكرتها مصادر تاريخية هندية.",
+    "scientificExplanation": "رصدت وكالة ناسا شقاً كبيراً على سطح القمر (Rima Ariadaeus) بطول 300 كم. وُجدت وثائق هندية تشير لرؤية ملك الهند للحادثة.",
+    "discoveryYear": "",
+    "scientist": "",
+    "sources": [
+      {
+        "name": "صحيح البخاري - انشقاق القمر",
+        "url": "https://sunnah.com/bukhari:3636"
+      },
+      {
+        "name": "صحيح مسلم - انشقاق القمر",
+        "url": "https://sunnah.com/muslim:2800a"
+      },
+      {
+        "name": "NASA - Lunar Rilles",
+        "url": "https://moon.nasa.gov/resources/overview/"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "moon_split",
+    "rating": 5,
+    "isFavorite": false
+  },
+  {
+    "id": 56,
+    "title": "نبوءة فتح القسطنطينية",
+    "subtitle": "الإعجاز الغيبي النبوي",
+    "category": "إعجاز غيبي",
+    "type": "sunnah",
+    "source": "لتُفتحنَّ القسطنطينيةُ فلنِعمَ الأميرُ أميرُها ولنِعمَ الجيشُ ذلك الجيشُ",
+    "reference": "مسند أحمد - حديث 18189",
+    "book": "مسند أحمد",
+    "description": "تنبأ النبي ﷺ بفتح القسطنطينية ومدح أميرها وجيشها. تحقق ذلك عام 1453م على يد محمد الفاتح العثماني بعد 800 سنة من النبوءة.",
+    "scientificExplanation": "فتح السلطان محمد الفاتح القسطنطينية عام 1453م بعد حصار استمر 53 يوماً، محققاً النبوءة النبوية.",
+    "discoveryYear": "1453م",
+    "scientist": "التاريخ المُوثَّق",
+    "sources": [
+      {
+        "name": "مسند أحمد - hadith.net",
+        "url": "https://sunnah.com/ahmad:18189"
+      },
+      {
+        "name": "Britannica - Fall of Constantinople",
+        "url": "https://www.britannica.com/event/Fall-of-Constantinople-1453"
+      },
+      {
+        "name": "Cambridge History - Ottoman Conquest",
+        "url": "https://www.cambridge.org/core/books/cambridge-history-of-turkey/"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "prophecy",
+    "rating": 5,
+    "isFavorite": false
+  },
+  {
+    "id": 57,
+    "title": "تطاول البناء في الجزيرة العربية",
+    "subtitle": "الإعجاز الغيبي",
+    "category": "إعجاز غيبي",
+    "type": "sunnah",
+    "source": "أن ترى الحُفاةَ العُراةَ العالةَ رعاءَ الشاءِ يتطاولون في البُنيان",
+    "reference": "صحيح مسلم - حديث 8",
+    "book": "صحيح مسلم (حديث جبريل)",
+    "description": "تنبأ النبي ﷺ بأن رعاة الشاء في الجزيرة العربية سيتطاولون في البنيان. تحقق ذلك في دول الخليج مثل برج خليفة (828م) في دبي.",
+    "scientificExplanation": "برج خليفة في دبي هو أطول مبنى في العالم (828 متر). دول الخليج تتنافس في بناء ناطحات السحاب بعد أن كانت صحراء.",
+    "discoveryYear": "القرن الحادي والعشرين",
+    "scientist": "الواقع المعاصر",
+    "sources": [
+      {
+        "name": "sunnah.com - مسلم 8",
+        "url": "https://sunnah.com/muslim:8c"
+      },
+      {
+        "name": "Guinness - Tallest Building",
+        "url": "https://www.guinnessworldrecords.com/world-records/tallest-building"
+      },
+      {
+        "name": "Council on Tall Buildings",
+        "url": "https://www.ctbuh.org/"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "prophecy",
+    "rating": 5,
+    "isFavorite": false
+  },
+  {
+    "id": 58,
     "title": "نبع الماء من بين أصابعه ﷺ",
-    "subtitle": "آية ظاهرة من دلائل النبوة",
-    "source": "نبع الماء من بين أصابع النبي ﷺ في أكثر من موطن",
-    "reference": "رواه البخاري ومسلم",
-    "book": "تفسير ابن كثير",
-    "youtubeUrl": "https://www.youtube.com/watch?v=xxxxxxxx",
+    "subtitle": "معجزة حسية",
+    "category": "معجزات نبوية",
+    "type": "sunnah",
+    "source": "رأيتُ الماءَ ينبُعُ من بين أصابعِ رسولِ اللهِ ﷺ",
+    "reference": "صحيح البخاري - حديث 3573",
+    "book": "صحيح البخاري",
+    "description": "نبع الماء من بين أصابع النبي ﷺ عندما احتاج أصحابه للماء. رواها عدد كبير من الصحابة ووصلت حد التواتر.",
+    "scientificExplanation": "رواها أنس بن مالك وجابر بن عبد الله وعدد كبير من الصحابة في مناسبات مختلفة.",
+    "discoveryYear": "",
+    "scientist": "",
+    "sources": [
+      {
+        "name": "صحيح البخاري - sunnah.com",
+        "url": "https://sunnah.com/bukhari:3573"
+      },
+      {
+        "name": "صحيح مسلم - sunnah.com",
+        "url": "https://sunnah.com/muslim:2279a"
+      },
+      {
+        "name": "فتح الباري - شرح البخاري",
+        "url": "https://islamweb.net/ar/library/index.php?page=bookcontents&idfrom=1&idto=13165&bk_no=52"
+      }
+    ],
+    "youtubeUrl": "",
     "videoUrl": "",
-    "description": "من معجزات النبي ﷺ الحسية أن الماء نبع من بين أصابعه حتى شرب الصحابة وتوضؤوا."
+    "icon": "miracle",
+    "rating": 5,
+    "isFavorite": false
   },
   {
+    "id": 59,
+    "title": "حنين الجذع",
+    "subtitle": "معجزة حسية",
+    "category": "معجزات نبوية",
     "type": "sunnah",
-    "title": "تكثير الطعام القليل",
-    "subtitle": "من معجزات البركة",
-    "source": "بارك الله في الطعام القليل بدعائه ﷺ",
-    "reference": "ورد في الصحيحين",
-    "book": "تفسير ابن كثير",
-    "youtubeUrl": "https://www.youtube.com/watch?v=xxxxxxxx",
+    "source": "كان رسول الله ﷺ يخطب إلى جذع نخلة، فلما صُنع له المنبر... حنَّ الجذعُ حتى سمعنا له صوتاً كصوت العِشار",
+    "reference": "صحيح البخاري - حديث 3584",
+    "book": "صحيح البخاري",
+    "description": "حنَّ جذع النخلة الذي كان يخطب عنده النبي ﷺ عندما تركه إلى المنبر الجديد. سمعه جميع الحاضرين.",
+    "scientificExplanation": "رواه عدد كبير من الصحابة وبلغ حد التواتر. قال الحافظ ابن حجر: رواه من الصحابة بضعة عشر صحابياً.",
+    "discoveryYear": "",
+    "scientist": "",
+    "sources": [
+      {
+        "name": "صحيح البخاري - sunnah.com",
+        "url": "https://sunnah.com/bukhari:3584"
+      },
+      {
+        "name": "سنن الترمذي",
+        "url": "https://sunnah.com/tirmidhi:3627"
+      },
+      {
+        "name": "فتح الباري - ابن حجر",
+        "url": "https://islamweb.net/ar/library/"
+      }
+    ],
+    "youtubeUrl": "",
     "videoUrl": "",
-    "description": "كان الطعام القليل يكفي جمعًا كبيرًا من الناس ببركة دعاء النبي ﷺ، وهي من المعجزات المتكررة."
+    "icon": "miracle",
+    "rating": 5,
+    "isFavorite": false
   },
   {
-    "type": "sunnah",
-    "title": "حنين جذع النخلة",
-    "subtitle": "دليل على صدقه ﷺ",
-    "source": "سمع الصحابة للجذع أنينًا وحنينًا لفراق النبي ﷺ",
-    "reference": "رواه البخاري",
-    "book": "تفسير ابن كثير",
-    "youtubeUrl": "https://www.youtube.com/watch?v=xxxxxxxx",
+    "id": 60,
+    "title": "تكوّر الليل والنهار",
+    "subtitle": "الإعجاز الفلكي",
+    "category": "علم الفلك",
+    "type": "quran",
+    "source": "خَلَقَ السَّمَاوَاتِ وَالْأَرْضَ بِالْحَقِّ ۖ يُكَوِّرُ اللَّيْلَ عَلَى النَّهَارِ وَيُكَوِّرُ النَّهَارَ عَلَى اللَّيْلِ",
+    "reference": "سورة الزمر - آية 5",
+    "book": "",
+    "description": "التكوير يعني اللف على شكل كرة. تعاقب الليل والنهار بالتكوير لا يحدث إلا على سطح كروي يدور حول نفسه.",
+    "scientificExplanation": "الأرض تدور حول محورها مرة كل 24 ساعة مسببة تعاقب الليل والنهار بشكل تدريجي (تكويري) وليس مفاجئ.",
+    "discoveryYear": "1543",
+    "scientist": "كوبرنيكوس وغاليليو",
+    "sources": [
+      {
+        "name": "NASA - Day and Night",
+        "url": "https://spaceplace.nasa.gov/day-night/en/"
+      },
+      {
+        "name": "Britannica - Copernican System",
+        "url": "https://www.britannica.com/science/Copernican-system"
+      },
+      {
+        "name": "ESA - Earth Rotation",
+        "url": "https://www.esa.int/Education/Earth_rotation"
+      }
+    ],
+    "youtubeUrl": "",
     "videoUrl": "",
-    "description": "لما ترك النبي ﷺ جذع النخلة الذي كان يخطب عليه، سمع الصحابة له حنينًا حتى سكنه ﷺ بيده."
+    "icon": "earth",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 61,
+    "title": "العظام تتكون قبل اللحم",
+    "subtitle": "الإعجاز في علم الأجنة",
+    "category": "علم الأجنة",
+    "type": "quran",
+    "source": "فَخَلَقْنَا الْمُضْغَةَ عِظَامًا فَكَسَوْنَا الْعِظَامَ لَحْمًا",
+    "reference": "سورة المؤمنون - آية 14",
+    "book": "",
+    "description": "ذكر القرآن أن العظام تتكون أولاً ثم تُكسى باللحم (العضلات). علم الأجنة أثبت أن الهيكل العظمي الغضروفي يتكون في الأسبوع السابع ثم تتكون العضلات حوله في الأسبوع الثامن.",
+    "scientificExplanation": "في الأسبوع 7 يبدأ تكوّن النموذج الغضروفي للعظام، وفي الأسبوع 8 تبدأ العضلات الهيكلية بالتكوّن حول الغضاريف.",
+    "discoveryYear": "القرن العشرين",
+    "scientist": "كيث مور",
+    "sources": [
+      {
+        "name": "NCBI - Embryonic Bone Development",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK10008/"
+      },
+      {
+        "name": "ScienceDirect - Skeletal Development Timeline",
+        "url": "https://www.sciencedirect.com/topics/medicine-and-dentistry/skeletal-development"
+      },
+      {
+        "name": "PubMed - Muscle vs Bone Formation",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/16049231/"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "embryo",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 62,
+    "title": "الختان وفوائده الصحية",
+    "subtitle": "الإعجاز الطبي",
+    "category": "علم الطب",
+    "type": "sunnah",
+    "source": "الفطرة خمسٌ: الختانُ والاستحدادُ ونتفُ الإبطِ وتقليمُ الأظفارِ وقصُّ الشاربِ",
+    "reference": "صحيح البخاري - حديث 5889",
+    "book": "صحيح البخاري",
+    "description": "جعل النبي ﷺ الختان من سنن الفطرة. WHO أوصت به عام 2007 لأنه يقلل خطر الإصابة بفيروس HIV بنسبة 60%.",
+    "scientificExplanation": "ثلاث تجارب عشوائية كبرى في أفريقيا أثبتت أن الختان يقلل خطر HIV بنسبة 60%. كما يقلل التهابات المسالك البولية.",
+    "discoveryYear": "2007",
+    "scientist": "WHO وUNAIDS",
+    "sources": [
+      {
+        "name": "sunnah.com - البخاري 5889",
+        "url": "https://sunnah.com/bukhari:5889"
+      },
+      {
+        "name": "WHO - Male Circumcision for HIV Prevention",
+        "url": "https://www.who.int/publications/i/item/9789241597931"
+      },
+      {
+        "name": "The Lancet - Circumcision and HIV",
+        "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(07)60313-4/fulltext"
+      },
+      {
+        "name": "AAP - Circumcision Policy",
+        "url": "https://publications.aap.org/pediatrics/article/130/3/585/30235/Male-Circumcision"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "medical",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 63,
+    "title": "الإعجاز العددي في سورة الحديد",
+    "subtitle": "الإعجاز العددي",
+    "category": "إعجاز عددي",
+    "type": "quran",
+    "source": "وَأَنزَلْنَا الْحَدِيدَ فِيهِ بَأْسٌ شَدِيدٌ",
+    "reference": "سورة الحديد - آية 25",
+    "book": "",
+    "description": "سورة الحديد رقمها 57 في ترتيب المصحف. العدد الذري للحديد هو 26. إذا جمعنا القيمة العددية لكلمة 'الحديد' بحساب الجُمَّل = 57. والآية التي ذكر فيها الحديد رقمها 25، ورقم نظير الحديد الأكثر استقراراً (Fe-57).",
+    "scientificExplanation": "العدد الذري للحديد 26، وعدده الكتلي الأكثر شيوعاً 56، والنظير المستقر Fe-57. رقم سورة الحديد 57.",
+    "discoveryYear": "القرن العشرين",
+    "scientist": "ملاحظات علمية وقرآنية",
+    "sources": [
+      {
+        "name": "Royal Society of Chemistry - Iron",
+        "url": "https://www.rsc.org/periodic-table/element/26/iron"
+      },
+      {
+        "name": "IUPAC - Iron Isotopes",
+        "url": "https://www.degruyter.com/document/doi/10.1515/pac-2015-0503/html"
+      },
+      {
+        "name": "المصحف الشريف - ترتيب السور",
+        "url": "https://quran.com/57"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "numbers",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 64,
+    "title": "الإبل وعجائب خلقها",
+    "subtitle": "الإعجاز في علم الأحياء",
+    "category": "علم الأحياء",
+    "type": "quran",
+    "source": "أَفَلَا يَنظُرُونَ إِلَى الْإِبِلِ كَيْفَ خُلِقَتْ",
+    "reference": "سورة الغاشية - آية 17",
+    "book": "",
+    "description": "دعا القرآن للتأمل في خلق الإبل. العلم اكتشف عجائب فيها: كريات دم حمراء بيضاوية فريدة، قدرة على شرب 200 لتر دفعة واحدة، تحمل درجات حرارة 50 درجة، وأجسام مضادة صغيرة (nanobodies) فريدة.",
+    "scientificExplanation": "الأجسام المضادة الصغيرة (Nanobodies) في الإبل فريدة من نوعها ولا توجد في أي حيوان آخر. تُستخدم الآن في تطوير أدوية وعلاجات طبية متقدمة.",
+    "discoveryYear": "1993",
+    "scientist": "ريمون هامرز",
+    "sources": [
+      {
+        "name": "Nature - Camelid Nanobodies",
+        "url": "https://www.nature.com/articles/363446a0"
+      },
+      {
+        "name": "Science - Nanobody Therapeutics",
+        "url": "https://www.science.org/doi/10.1126/science.aat5056"
+      },
+      {
+        "name": "PubMed - Camel Physiology",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/20003911/"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "camel",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 65,
+    "title": "تسبيح الكائنات",
+    "subtitle": "الإعجاز في عالم الأصوات",
+    "category": "علم الأحياء",
+    "type": "quran",
+    "source": "تُسَبِّحُ لَهُ السَّمَاوَاتُ السَّبْعُ وَالْأَرْضُ وَمَن فِيهِنَّ ۚ وَإِن مِّن شَيْءٍ إِلَّا يُسَبِّحُ بِحَمْدِهِ وَلَٰكِن لَّا تَفْقَهُونَ تَسْبِيحَهُمْ",
+    "reference": "سورة الإسراء - آية 44",
+    "book": "",
+    "description": "أخبر القرآن أن كل شيء يُسبّح الله. العلم اكتشف أن كل ذرة في الكون تهتز بتردد خاص، وأن النباتات تُصدر أصواتاً فوق سمعية، وأن الكواكب تُصدر موجات صوتية.",
+    "scientificExplanation": "اكتشفت ناسا أن الكواكب والنجوم تُصدر اهتزازات صوتية. النباتات تُصدر أصوات نقر بتردد 20-100 كيلوهرتز. الذرات تهتز بترددات محددة.",
+    "discoveryYear": "2013",
+    "scientist": "فرق أبحاث متعددة",
+    "sources": [
+      {
+        "name": "NASA - Sounds of Space",
+        "url": "https://science.nasa.gov/mission/voyager/sounds-of-space/"
+      },
+      {
+        "name": "Cell - Plants Emit Sounds",
+        "url": "https://www.cell.com/cell/fulltext/S0092-8674(23)00262-3"
+      },
+      {
+        "name": "Nature - Molecular Vibrations",
+        "url": "https://www.nature.com/articles/s41567-020-0932-7"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "sound",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 66,
+    "title": "غسل اليدين عند الاستيقاظ",
+    "subtitle": "الإعجاز الصحي",
+    "category": "علم الصحة العامة",
+    "type": "sunnah",
+    "source": "إذا استيقظ أحدُكم من نومه فليغسل يدَيه قبل أن يُدخلَهما في الإناء ثلاثاً",
+    "reference": "صحيح مسلم - حديث 278",
+    "book": "صحيح مسلم",
+    "description": "أمر النبي ﷺ بغسل اليدين عند الاستيقاظ. اكتشف العلم أن البكتيريا تتكاثر على اليدين أثناء النوم بسبب العرق وملامسة الأسطح الملوثة.",
+    "scientificExplanation": "دراسات أثبتت أن البكتيريا على اليدين تتضاعف أثناء النوم. غسلها فوراً يمنع نقل الجراثيم للعينين والأنف والفم.",
+    "discoveryYear": "القرن التاسع عشر",
+    "scientist": "إجناز سيملفيس",
+    "sources": [
+      {
+        "name": "sunnah.com - مسلم 278",
+        "url": "https://sunnah.com/muslim:278a"
+      },
+      {
+        "name": "CDC - Handwashing Science",
+        "url": "https://www.cdc.gov/clean-hands/data-research/facts-stats/index.html"
+      },
+      {
+        "name": "PubMed - Hand Contamination During Sleep",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/21058908/"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "hygiene",
+    "rating": 3,
+    "isFavorite": false
+  },
+  {
+    "id": 67,
+    "title": "حركة الظل",
+    "subtitle": "الإعجاز الفيزيائي",
+    "category": "علم الفيزياء",
+    "type": "quran",
+    "source": "أَلَمْ تَرَ إِلَىٰ رَبِّكَ كَيْفَ مَدَّ الظِّلَّ وَلَوْ شَاءَ لَجَعَلَهُ سَاكِنًا ثُمَّ جَعَلْنَا الشَّمْسَ عَلَيْهِ دَلِيلًا",
+    "reference": "سورة الفرقان - آية 45",
+    "book": "",
+    "description": "أشار القرآن إلى أن حركة الظل مرتبطة بالشمس وأنها دليل عليه. علم الفيزياء أثبت أن الظل ينتج عن حجب الضوء وحركته ناتجة عن دوران الأرض.",
+    "scientificExplanation": "الظلال تتحرك بسبب دوران الأرض حول محورها الذي يغير زاوية سقوط أشعة الشمس. هذا المبدأ استُخدم في الساعات الشمسية منذ آلاف السنين.",
+    "discoveryYear": "القرون القديمة",
+    "scientist": "الفيزياء البصرية",
+    "sources": [
+      {
+        "name": "NASA - Shadows and Light",
+        "url": "https://spaceplace.nasa.gov/sun-shadows/en/"
+      },
+      {
+        "name": "Britannica - Shadow Physics",
+        "url": "https://www.britannica.com/science/shadow-optics"
+      },
+      {
+        "name": "Science - Solar Movement and Shadows",
+        "url": "https://www.sciencedirect.com/topics/earth-and-planetary-sciences/solar-zenith-angle"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "physics",
+    "rating": 3,
+    "isFavorite": false
+  },
+  {
+    "id": 68,
+    "title": "اللبن يخرج من بين فرث ودم",
+    "subtitle": "الإعجاز في علم الغذاء",
+    "category": "علم الأحياء",
+    "type": "quran",
+    "source": "نُّسْقِيكُم مِّمَّا فِي بُطُونِهِ مِن بَيْنِ فَرْثٍ وَدَمٍ لَّبَنًا خَالِصًا سَائِغًا لِّلشَّارِبِينَ",
+    "reference": "سورة النحل - آية 66",
+    "book": "",
+    "description": "وصف القرآن خروج اللبن من بين الفرث (محتوى الأمعاء) والدم. علم وظائف الأعضاء أثبت أن المواد الغذائية تُمتص من الأمعاء إلى الدم ثم تنتقل للغدد اللبنية لتتحول إلى لبن نقي.",
+    "scientificExplanation": "الغذاء يُهضم في الأمعاء (الفرث) وتُمتص مكوناته إلى الدم عبر الشعيرات الدموية ثم تنقلها الدماء إلى الغدد اللبنية حيث تُصنّع إلى لبن خالص.",
+    "discoveryYear": "القرن العشرين",
+    "scientist": "علم وظائف الأعضاء",
+    "sources": [
+      {
+        "name": "NCBI - Lactation Physiology",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK148970/"
+      },
+      {
+        "name": "PubMed - Milk Synthesis",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/17241459/"
+      },
+      {
+        "name": "ScienceDirect - Mammary Gland Biology",
+        "url": "https://www.sciencedirect.com/topics/agricultural-and-biological-sciences/lactation"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "biology",
+    "rating": 4,
+    "isFavorite": false
+  },
+  {
+    "id": 69,
+    "title": "تغطية الأواني ليلاً",
+    "subtitle": "الإعجاز الصحي النبوي",
+    "category": "علم الصحة العامة",
+    "type": "sunnah",
+    "source": "غطُّوا الإناءَ وأوكُوا السِّقاءَ وأغلِقوا الأبوابَ وأطفِئوا المصباحَ",
+    "reference": "صحيح البخاري - حديث 5624",
+    "book": "صحيح البخاري",
+    "description": "أمر النبي ﷺ بتغطية الأواني وإغلاق القِرَب ليلاً. العلم أثبت أن البكتيريا والحشرات والغبار الملوث تسقط في الأواني المكشوفة ليلاً.",
+    "scientificExplanation": "الأواني المكشوفة ليلاً تتعرض لتلوث بكتيري وفطري. كما أن الحشرات الليلية تنجذب للسوائل المكشوفة وتلوثها.",
+    "discoveryYear": "القرن التاسع عشر",
+    "scientist": "علم الأحياء الدقيقة",
+    "sources": [
+      {
+        "name": "sunnah.com - البخاري 5624",
+        "url": "https://sunnah.com/bukhari:5624"
+      },
+      {
+        "name": "WHO - Food Safety Guidelines",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/food-safety"
+      },
+      {
+        "name": "PubMed - Airborne Contamination",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25036742/"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "hygiene",
+    "rating": 3,
+    "isFavorite": false
+  },
+  {
+    "id": 70,
+    "title": "ضوء الشمس ونور القمر",
+    "subtitle": "الإعجاز الفلكي اللغوي",
+    "category": "علم الفلك",
+    "type": "quran",
+    "source": "هُوَ الَّذِي جَعَلَ الشَّمْسَ ضِيَاءً وَالْقَمَرَ نُورًا",
+    "reference": "سورة يونس - آية 5",
+    "book": "",
+    "description": "فرّق القرآن بين ضوء الشمس الذاتي (ضياء) ونور القمر المنعكس (نور). العلم أثبت أن الشمس تُصدر ضوءاً ذاتياً بينما القمر يعكس ضوء الشمس فقط.",
+    "scientificExplanation": "الشمس نجم يُنتج ضوءه من التفاعلات النووية الاندماجية. القمر جسم معتم لا يُصدر ضوءاً بل يعكس 12% فقط من ضوء الشمس الساقط عليه.",
+    "discoveryYear": "القرون القديمة (أثبته العلم الحديث)",
+    "scientist": "علم الفلك",
+    "sources": [
+      {
+        "name": "NASA - Sun Facts",
+        "url": "https://science.nasa.gov/sun/facts/"
+      },
+      {
+        "name": "NASA - Moon Facts",
+        "url": "https://science.nasa.gov/moon/facts/"
+      },
+      {
+        "name": "Britannica - Moonlight",
+        "url": "https://www.britannica.com/place/Moon"
+      }
+    ],
+    "youtubeUrl": "",
+    "videoUrl": "",
+    "icon": "sun_moon",
+    "rating": 4,
+    "isFavorite": false
   }
 ]

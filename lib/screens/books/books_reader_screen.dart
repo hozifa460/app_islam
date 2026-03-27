@@ -296,14 +296,6 @@ class _BookReaderScreenState extends State<BookReaderScreen> {
                   setState(() => _currentPage = page);
                   _saveProgress(page);
                   widget.onPageChangedCallback?.call(page);
-
-                  if (total != null && page >= total - 1) {
-                    Future.delayed(const Duration(milliseconds: 250), () {
-                      if (mounted) {
-                        Navigator.pop(context, 'end_of_volume');
-                      }
-                    });
-                  }
                 }
               },
             ),

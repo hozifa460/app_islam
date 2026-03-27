@@ -7,7 +7,6 @@ import 'package:path_provider/path_provider.dart';
 
 import 'books_reader_screen.dart';
 import '../hadith/hadith_book_screen.dart';
-import 'combined_book_reader_screen.dart';
 
 class BookVolumesScreen extends StatefulWidget {
   final String title;
@@ -659,43 +658,6 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
                                     ],
                                   ],
                                 ],
-                              ),
-                            ),
-
-                            const SizedBox(height: 12),
-
-                            SizedBox(
-                              width: double.infinity,
-                              child: ElevatedButton.icon(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: widget.primaryColor,
-                                  foregroundColor: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(14),
-                                  ),
-                                  padding: const EdgeInsets.symmetric(vertical: 14),
-                                ),
-                                onPressed: widget.volumes.isNotEmpty
-                                    ? () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (_) => CombinedBookReaderScreen(
-                                        title: widget.title,
-                                        volumes: widget.volumes,
-                                        primaryColor: widget.primaryColor,
-                                      ),
-                                    ),
-                                  );
-                                }
-                                    : null,
-                                icon: const Icon(Icons.auto_stories_rounded),
-                                label: Text(
-                                  'قراءة جميع المجلدات',
-                                  style: GoogleFonts.cairo(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
                               ),
                             ),
 

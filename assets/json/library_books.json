@@ -170,9 +170,220 @@
       "row": 1,
       "color": "#4B0082",
       "bottomColor": "#36005E",
-      "type": "custom",
-      "pdfUrl": "https://archive.org/download/20230215_20230215_2008/%D8%B3%D9%8A%D8%B1%20%D8%A7%D8%B9%D9%84%D8%A7%D9%85%20%D8%A7%D9%84%D9%86%D8%A8%D9%84%D8%A7%D8%A1.pdf",
-      "imageUrl": "https://ia801605.us.archive.org/BookReader/BookReaderImages.php?zip=/13/items/20230215_20230215_2008/%D8%B3%D9%8A%D8%B1%20%D8%A7%D8%B9%D9%84%D8%A7%D9%85%20%D8%A7%D9%84%D9%86%D8%A8%D9%84%D8%A7%D8%A1_jp2.zip&file=%D8%B3%D9%8A%D8%B1%20%D8%A7%D8%B9%D9%84%D8%A7%D9%85%20%D8%A7%D9%84%D9%86%D8%A8%D9%84%D8%A7%D8%A1_jp2/%D8%B3%D9%8A%D8%B1%20%D8%A7%D8%B9%D9%84%D8%A7%D9%85%20%D8%A7%D9%84%D9%86%D8%A8%D9%84%D8%A7%D8%A1_0000.jp2&id=20230215_20230215_2008&scale=4&rotate=0"
+      "type": "collection",
+      "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa.jpg",
+      "children": [
+        {
+          "id": "siar_aalam_anblaa_00p",
+          "title": "المقدمة",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_00p.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_00p.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_00se1",
+          "title": "السيرة النبوية 1",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_00se1.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_00se1.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_00se2",
+          "title": "السيرة النبوية 2",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_00se2.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_00se2.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_00skh",
+          "title": "الخلفاء الراشدون",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_00skh.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_00skh.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_01",
+          "title": "المجلد الاول",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_01.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_01.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_02",
+          "title": "المجلد الثاني",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_02.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_02.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_03",
+          "title": "المجلد الثالث",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_03.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_03.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_04",
+          "title": "المجلد الرابع",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_04.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_04.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_05",
+          "title": "المجلد الخامس",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_05.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_05.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_06",
+          "title": "المجلد السادس",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_06.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_06.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_07",
+          "title": "المجلد السابع",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_07.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_07.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_08",
+          "title": "المجلد الثامن",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_08.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_08.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_09",
+          "title": "المجلد التاسع",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_09.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_09.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_10",
+          "title": "المجلد العاشر",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_10.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_10.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_11",
+          "title": "المجلد الحادي عشر",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_11.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_11.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_12",
+          "title": "المجلد الثاني عشر",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_12.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_12.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_13",
+          "title": "المجلد الثالث عشر",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_13.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_13.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_14",
+          "title": "المجلد الرابع عشر",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_14.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_14.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_15",
+          "title": "المجلد الخامس عشر",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_15.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_15.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_16",
+          "title": "المجلد السادس عشر",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_16.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_16.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_17",
+          "title": "المجلد السابع عشر",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_17.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_17.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_18",
+          "title": "المجلد الثامن عشر",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_18.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_18.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_19",
+          "title": "المجلد التاسع عشر",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_19.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_19.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_20",
+          "title": "المجلد العشرون",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_20.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_20.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_21",
+          "title": "المجلد الحادي و العشرون",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_21.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_21.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_22",
+          "title": "المجلد الثاني و العشرون",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_22.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_22.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_23",
+          "title": "المجلد الثالث و العشرون",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_23.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_23.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_24in",
+          "title": "الفهرس 1",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_24in.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_24in.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_25in",
+          "title": "الفهرس 2",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_25in.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_25in.jpg"
+        },
+        {
+          "id": "siar_aalam_anblaa_jm",
+          "title": "الجزء المفقود 17",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/siar_aalam_anblaa_jm.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/siar_aalam_anblaa/cover/siar_aalam_anblaa_jm.jpg"
+        }
+      ]
     },
     {
       "id": "great100",
@@ -300,8 +511,46 @@
       "row": 1,
       "color": "#8E5961",
       "bottomColor": "#75454C",
-      "type": "hadith",
-      "imageUrl": "https://ia801306.us.archive.org/BookReader/BookReaderImages.php?zip=/8/items/termizi-dar-alsalam/%D8%AC%D8%A7%D9%85%D8%B9%20%D8%A7%D9%84%D8%AA%D8%B1%D9%85%D8%B0%D9%8A%20-%20%D8%B7%20%D8%AF%D8%A7%D8%B1%20%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85_jp2.zip&file=%D8%AC%D8%A7%D9%85%D8%B9%20%D8%A7%D9%84%D8%AA%D8%B1%D9%85%D8%B0%D9%8A%20-%20%D8%B7%20%D8%AF%D8%A7%D8%B1%20%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85_jp2/%D8%AC%D8%A7%D9%85%D8%B9%20%D8%A7%D9%84%D8%AA%D8%B1%D9%85%D8%B0%D9%8A%20-%20%D8%B7%20%D8%AF%D8%A7%D8%B1%20%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85_0000.jp2&id=termizi-dar-alsalam&scale=8&rotate=0"
+      "type": "collection",
+      "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/sunan-tirmizi-arabic/cover/sunan_tirmizi_arabic_vol.jpg",
+      "children": [
+        {
+          "id": "sunan_tirmizi_arabic_vol_1",
+          "title": "المجلد الاول",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/sunan-tirmizi-arabic/sunan_tirmizi_arabic_vol_1.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/sunan-tirmizi-arabic/cover/sunan_tirmizi_arabic_vol.jpg"
+        },
+        {
+          "id": "sunan_tirmizi_arabic_vol_2",
+          "title": "المجلد الثاني",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/sunan-tirmizi-arabic/sunan_tirmizi_arabic_vol_2.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/sunan-tirmizi-arabic/cover/sunan_tirmizi_arabic_vol.jpg"
+        },
+        {
+          "id": "sunan_tirmizi_arabic_vol_3",
+          "title": "المجلد الثالث",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/sunan-tirmizi-arabic/sunan_tirmizi_arabic_vol_3.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/sunan-tirmizi-arabic/cover/sunan_tirmizi_arabic_vol.jpg"
+        },
+        {
+          "id": "sunan_tirmizi_arabic_vol_4",
+          "title": "المجلد الرابع",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/sunan-tirmizi-arabic/sunan_tirmizi_arabic_vol_4.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/sunan-tirmizi-arabic/cover/sunan_tirmizi_arabic_vol.jpg"
+        },
+        {
+          "id": "sunan_tirmizi_arabic_vol_5",
+          "title": "المجلد الخامس",
+          "type": "collection",
+          "pdfUrl": "https://raw.githubusercontent.com/hozifa460/books/main/sunan-tirmizi-arabic/sunan_tirmizi_arabic_vol_5.pdf",
+          "imageUrl": "https://raw.githubusercontent.com/hozifa460/books/main/sunan-tirmizi-arabic/cover/sunan_tirmizi_arabic_vol.jpg"
+        }
+
+      ]
     },
     {
       "id": "nasai",

@@ -33,30 +33,10 @@ class AdhanReceiver : BroadcastReceiver() {
             mediaPlayer?.release()
             mediaPlayer = null
 
-            mediaPlayer = if (!localPath.isNullOrEmpty() && File(localPath).exists() && !isReminder) {
-                MediaPlayer().apply {
-                    setDataSource(localPath)
-                    setAudioAttributes(
-                        AudioAttributes.Builder()
-                            .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                            .setUsage(AudioAttributes.USAGE_ALARM)
-                            .build()
-                    )
-                    prepare()
-                    isLooping = false
-                    setOnCompletionListener {
-                        it.release()
-                        mediaPlayer = null
-                        NotificationManagerCompat.from(context).cancel(notificationId)
-                    }
-                    start()
-                }
-            } else {
-                val soundResId =
-                    context.resources.getIdentifier(soundName, "raw", context.packageName)
-                if (soundResId != 0) {
-                    MediaPlayer.create(context, soundResId)?.apply {
-                        isLooping = false
+            mediaPlayer = when {
+                !localPath.isNullOrEmpty() && File(localPath).exists() -> {
+                    MediaPlayer().apply {
+                        setDataSource(localPath)
                         setAudioAttributes(
                             AudioAttributes.Builder()
                                 .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
@@ -69,6 +49,8 @@ class AdhanReceiver : BroadcastReceiver() {
                                 )
                                 .build()
                         )
+                        prepare()
+                        isLooping = false
                         setOnCompletionListener {
                             it.release()
                             mediaPlayer = null
@@ -76,8 +58,37 @@ class AdhanReceiver : BroadcastReceiver() {
                         }
                         start()
                     }
-                } else {
-                    null
+                }
+
+                else -> {
+                    val soundResId =
+                        context.resources.getIdentifier(soundName, "raw", context.packageName)
+
+                    if (soundResId != 0) {
+                        MediaPlayer.create(context, soundResId)?.apply {
+                            isLooping = false
+                            setAudioAttributes(
+                                AudioAttributes.Builder()
+                                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                                    .setUsage(
+                                        if (isReminder) {
+                                            AudioAttributes.USAGE_NOTIFICATION
+                                        } else {
+                                            AudioAttributes.USAGE_ALARM
+                                        }
+                                    )
+                                    .build()
+                            )
+                            setOnCompletionListener {
+                                it.release()
+                                mediaPlayer = null
+                                NotificationManagerCompat.from(context).cancel(notificationId)
+                            }
+                            start()
+                        }
+                    } else {
+                        null
+                    }
                 }
             }
 
@@ -126,7 +137,8 @@ class AdhanReceiver : BroadcastReceiver() {
         }
 
         try {
-            NotificationManagerCompat.from(context).notify(notificationId, notificationBuilder.build())
+            NotificationManagerCompat.from(context)
+                .notify(notificationId, notificationBuilder.build())
         } catch (e: SecurityException) {
             e.printStackTrace()
         }
