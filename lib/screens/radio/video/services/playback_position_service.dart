@@ -10,10 +10,19 @@ class PlaybackPositionService {
 
   final Map<String, int> _memCache = {};
 
+  static String _stableId(String key) {
+    int hash = 5381;
+    for (int i = 0; i < key.length; i++) {
+      hash = ((hash << 5) + hash) + key.codeUnitAt(i);
+      hash &= 0x7FFFFFFF;
+    }
+    return 'p_$hash';
+  }
+
   Future<void> savePosition(String key, Duration position) async {
     if (key.isEmpty || position.inSeconds <= 0) return;
 
-    final id = key.hashCode.abs().toString();
+    final id = _stableId(key);
     _memCache[id] = position.inMilliseconds;
 
     try {
@@ -25,7 +34,7 @@ class PlaybackPositionService {
   Duration getPosition(String key) {
     if (key.isEmpty) return Duration.zero;
 
-    final id = key.hashCode.abs().toString();
+    final id = _stableId(key);
     final cached = _memCache[id];
     if (cached != null) return Duration(milliseconds: cached);
 
@@ -35,7 +44,7 @@ class PlaybackPositionService {
   Future<Duration> getPositionAsync(String key) async {
     if (key.isEmpty) return Duration.zero;
 
-    final id = key.hashCode.abs().toString();
+    final id = _stableId(key);
 
     if (_memCache.containsKey(id)) {
       return Duration(milliseconds: _memCache[id]!);
@@ -55,7 +64,7 @@ class PlaybackPositionService {
 
   Future<void> clearPosition(String key) async {
     if (key.isEmpty) return;
-    final id = key.hashCode.abs().toString();
+    final id = _stableId(key);
     _memCache.remove(id);
 
     try {

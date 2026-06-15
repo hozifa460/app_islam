@@ -46,8 +46,14 @@ class VideoDownloadService extends ChangeNotifier {
   String? getLocalPath(String videoId) =>
       _downloads[videoId]?.localPath;
 
-  static String videoIdFromUrl(String url) =>
-      url.hashCode.abs().toString();
+  static String videoIdFromUrl(String url) {
+    int hash = 5381;
+    for (int i = 0; i < url.length; i++) {
+      hash = ((hash << 5) + hash) + url.codeUnitAt(i);
+      hash &= 0x7FFFFFFF;
+    }
+    return 'v_$hash';
+  }
 
   // ══════════════════════════════════════════════════════
   // تهيئة

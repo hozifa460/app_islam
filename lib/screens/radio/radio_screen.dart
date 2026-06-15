@@ -120,8 +120,7 @@ class _RadioScreenState extends State<RadioScreen>
 
   @override
   void dispose() {
-    VideoCacheManager().disposeAll();
-    ThumbnailMemoryCache().clear(); // ✅ امسح الصور المصغرة أيضاً
+    VideoCacheManager().pauseAll();
     _equalizerController.dispose();
     _bgController.dispose();
     _headerController.dispose();

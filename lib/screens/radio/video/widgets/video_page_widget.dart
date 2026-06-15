@@ -235,11 +235,8 @@ class _VideoPageWidgetState extends State<VideoPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('🟢🟢🟢 CORRECT FILE 🟢🟢🟢');
-    debugPrint('🟢🟢🟢 VIDEO PAGE WIDGET BUILD 🟢🟢🟢');
     final c = widget.controller;
     final ready = widget.isInitialized && c != null;
-    debugPrint('🎬 VideoPageWidget ready=$ready active=${widget.isActive} title=${widget.item.title}');
     final playing = c?.value.isPlaying ?? false;
     final hasError = c?.value.hasError ?? false;
     final pos = c?.value.position ?? Duration.zero;

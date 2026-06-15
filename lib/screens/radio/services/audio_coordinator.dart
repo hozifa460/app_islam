@@ -373,7 +373,6 @@ class AudioCoordinator extends ChangeNotifier {
       ]);
 
       if (!_isLatest(requestId)) return;
-      _saveToHistory(station, 'local');
 
       _activePlayer = ActivePlayer.online;
       notifyListeners();

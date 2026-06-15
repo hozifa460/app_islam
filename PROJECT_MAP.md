@@ -1,6 +1,6 @@
 # PROJECT_MAP.md
 
-آخر تحديث: 2026-06-15 — metadata في JSON (isLive) + تصنيف Dart يعتمد على metadata بدلاً من العنوان فقط.
+آخر تحديث: 2026-06-15 — إصلاح 6 مشاكل حرجة في مشغل يوتيوب (debug prints, busy-wait, memory leak, hashCode, crash, double history).
 
 ## نظرة عامة
 تطبيق إسلامي شامل (Flutter) — Android/iOS. يتعامل مع: الفتاوى، الراديو، القنوات، المكتبة، أوقات الصلاة، والأذكار.
@@ -459,6 +459,7 @@ services/youtube_download_service.dart  # Orchestrator (SharedPrefs + dispatchin
 - ~~**2026-06-15 — الفيديوهات الجديدة في أسفل الكاتيغوري**~~ → ✅ تبديل ترتيب `combined` في `_fetchYouTubeChannels` و `_refreshLiveYouTube`: `[...,mergedGroups, ...nonYouTubeItems]` بدلاً من `[...,nonYouTubeItems, ...mergedGroups]`. الآن مجموعات يوتيوب (🎙️/🔴/📱) تظهر أولاً داخل كل كاتيغوري، ثم عناصر MP3 بعدها. الاختبارات: `youtube_refresh_test.dart` تغطي ترتيب `mergeYouTubeItems` و `_mergeGroupSubItems`.
 - ~~**2026-06-15 — تصنيف بثوث مباشرة خاطئ**~~ → ✅ إزالة الكلمات العريضة من Dart `_isLive` (`حوارات`, `اتصالات`, `لقاء`, `مكالمات`, `حواري/حوارنا/حواره/حوارها مع`). الآن Dart `_isLive` يطابق Python `_is_live` بالضبط: فقط `بث`/`مباشر`/`لايف`/`live`/`streaming`/`على الهواء`. الكلمات العريضة كانت تُصنِّف فيديوهات مُعدَّة (مثل "حوار مع نصراني") كبث مباشر. الاختبارات: اختباران جديدان يتأكدان أن `حوارات/اتصالات/لقاء` ≠ live و `بث مباشر/لايف/مباشر` = live.
 - ~~**2026-06-15 — metadata في JSON للتصنيف**~~ → ✅ إضافة `isLive` و `durationSeconds` في subItems عبر Python CI (`sync_youtube.py`). Dart Model (`RecitationSubItem`) يقرأ هذه الحقول. Dart `classifySubItem()` يصنّف باستخدام `isLive` أولاً ثم fallback للعنوان. هذا يضمن أن التصنيف دقيق حتى لو العنوان غامض. الملفات: `sync_youtube.py` + `recitation_models.dart` + `recitation_categories_data.dart`. الاختبارات: 5 اختبارات جديدة `classifySubItem`.
+- ~~**2026-06-15 — مشاكل حرجة في مشغل يوتيوب**~~ → ✅ 6 إصلاحات: (1) حذف debug prints من `video_page_widget.dart` كانت تطبع عند كل rebuild. (2) استبدال busy-wait loop في `video_cache_manager.dart` بـ Completer مع timeout 30s. (3) LRU eviction في `VideoCacheManager` مع `maxCacheSize=5` لمنع memory leak. (4) استبدال `hashCode` غير المستقر بـ djb2 hash في `video_download_service.dart` و `playback_position_service.dart`. (5) استبدال `disposeAll()` بـ `pauseAll()` في `radio_screen.dart` لمنع crash عند الخروج. (6) حذف `_saveToHistory` المكرر من `audio_coordinator.dart`.
 
 ---
 
