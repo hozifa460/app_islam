@@ -1,10 +1,14 @@
 import 'dart:io';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 
+import 'theme/books_theme.dart';
+import 'animations/books_animations.dart';
+import 'widgets/common/animated_gradient_header.dart';
+import 'widgets/volumes_screen/download_progress_widget.dart';
+import 'widgets/volumes_screen/volume_grid_item.dart';
 import 'books_reader_screen.dart';
 import '../hadith/hadith_book_screen.dart';
 
@@ -35,7 +39,8 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
   http.Client? _downloadClient;
   double _currentFileProgress = 0.0;
   String _currentDownloadingTitle = '';
-  final Color _gold = const Color(0xFFE6B325);
+
+  bool get isDark => Theme.of(context).brightness == Brightness.dark;
 
   @override
   void initState() {
@@ -51,9 +56,7 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
 
   void _stopDownloadAll() {
     debugPrint('⛔ Stop download requested');
-
     _downloadClient?.close();
-
     setState(() {
       _cancelDownloadAll = true;
       _wasDownloadStopped = true;
@@ -117,10 +120,8 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(
-              'حدث خطأ أثناء تحميل المجلدات',
-              style: GoogleFonts.cairo(),
-            ),
+            content: Text('حدث خطأ أثناء تحميل المجلدات',
+                style: GoogleFonts.cairo()),
             backgroundColor: Colors.red,
           ),
         );
@@ -142,18 +143,16 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
     if (id == 'riyad') id = 'riyadussalihin';
     if (id == 'nawawi40') id = 'forty';
 
-    final urlString =
-        volume['type'] == 'hadith'
-            ? 'https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-$id.json'
-            : (volume['pdfUrl'] ?? '');
+    final urlString = volume['type'] == 'hadith'
+        ? 'https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-$id.json'
+        : (volume['pdfUrl'] ?? '');
 
     if (urlString.isEmpty) return;
 
     final dir = await getApplicationDocumentsDirectory();
-    final file =
-        volume['type'] == 'hadith'
-            ? File('${dir.path}/hadith_${id}_v1.json')
-            : File('${dir.path}/$id.pdf');
+    final file = volume['type'] == 'hadith'
+        ? File('${dir.path}/hadith_${id}_v1.json')
+        : File('${dir.path}/$id.pdf');
 
     try {
       if (mounted) {
@@ -182,11 +181,7 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
       await for (final chunk in response.stream) {
         if (_cancelDownloadAll) {
           await sink.close();
-
-          if (await file.exists()) {
-            await file.delete();
-          }
-
+          if (await file.exists()) await file.delete();
           debugPrint('⛔ Download canceled أثناء تحميل $id');
           return;
         }
@@ -205,18 +200,13 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
       await sink.close();
 
       if (mounted) {
-        setState(() {
-          _currentFileProgress = 1.0;
-        });
+        setState(() => _currentFileProgress = 1.0);
       }
 
       debugPrint('✅ Finished downloading $id');
     } catch (e) {
       debugPrint('❌ Download single volume error for $id: $e');
-
-      if (await file.exists()) {
-        await file.delete();
-      }
+      if (await file.exists()) await file.delete();
     } finally {
       _downloadClient?.close();
       _downloadClient = null;
@@ -234,10 +224,9 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
       if (id == 'riyad') id = 'riyadussalihin';
       if (id == 'nawawi40') id = 'forty';
 
-      final File file =
-          volume['type'] == 'hadith'
-              ? File('${dir.path}/hadith_${id}_v1.json')
-              : File('${dir.path}/$id.pdf');
+      final File file = volume['type'] == 'hadith'
+          ? File('${dir.path}/hadith_${id}_v1.json')
+          : File('${dir.path}/$id.pdf');
 
       tempStatus[volume['id'].toString()] = await file.exists();
     }
@@ -250,678 +239,238 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
     }
   }
 
+  void _navigateToVolume(Map<String, dynamic> volume) {
+    if (volume['type'] == 'hadith') {
+      Navigator.push(
+        context,
+        BooksPageRoute(
+          page: HadithBookScreen(
+            bookId: volume['id'],
+            bookTitle: volume['title'],
+            primaryColor: widget.primaryColor,
+          ),
+        ),
+      );
+    } else {
+      Navigator.push(
+        context,
+        BooksPageRoute(
+          page: BookReaderScreen(
+            bookId: volume['id'],
+            bookTitle: volume['title'],
+            primaryColor: widget.primaryColor,
+            pdfUrl: volume['pdfUrl'] ?? '',
+          ),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final bgColor = isDark ? const Color(0xFF0A0E17) : const Color(0xFFF5F7FA);
-    final cardColor = isDark ? const Color(0xFF151B26) : Colors.white;
-    final textColor = isDark ? Colors.white : const Color(0xFF1A1A1A);
-    final subTextColor = isDark ? Colors.white70 : Colors.black54;
-    const gold = Color(0xFFE6B325);
+    final bgColor = BooksTheme.getBackgroundColor(isDark);
+    final textColor = BooksTheme.getTextColor(isDark);
+    final subTextColor = BooksTheme.getSubTextColor(isDark);
 
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
         backgroundColor: bgColor,
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(90),
-          child: AppBar(
-            elevation: 0,
-            automaticallyImplyLeading: false,
-            backgroundColor: Colors.transparent,
-            flexibleSpace: Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    widget.primaryColor,
-                    widget.primaryColor.withOpacity(0.78),
+        appBar: AnimatedGradientHeader(
+          title: widget.title,
+          subtitle: 'اختر المجلد الذي يناسبك للقراءة',
+          primaryColor: widget.primaryColor,
+          icon: Icons.library_books_rounded,
+          onBack: () => Navigator.pop(context),
+        ),
+        body: _loadingStatus
+            ? Center(
+          child: CircularProgressIndicator(color: widget.primaryColor),
+        )
+            : SafeArea(
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              final sizes = BooksSizes(MediaQuery.of(context).size);
+              final downloadedCount =
+                  _downloadedVolumes.values.where((e) => e).length;
+              final totalCount = widget.volumes.length;
+
+              return SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    // رأس المعلومات
+                    _InfoHeader(
+                      isDark: isDark,
+                      textColor: textColor,
+                      subTextColor: subTextColor,
+                    ),
+                    const SizedBox(height: 14),
+
+                    // قسم التحميل
+                    DownloadProgressWidget(
+                      downloadedCount: downloadedCount,
+                      totalCount: totalCount,
+                      isDownloading: _isDownloadingAll,
+                      downloadProgress: _downloadAllProgress,
+                      currentFileProgress: _currentFileProgress,
+                      currentDownloadingTitle: _currentDownloadingTitle,
+                      wasDownloadStopped: _wasDownloadStopped,
+                      primaryColor: widget.primaryColor,
+                      isDark: isDark,
+                      onDownloadAll: _downloadAllVolumes,
+                      onStop: _stopDownloadAll,
+                    ),
+                    const SizedBox(height: 16),
+
+                    // شبكة المجلدات
+                    GridView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: widget.volumes.length,
+                      gridDelegate:
+                      SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: sizes.gridCrossAxisCount,
+                        crossAxisSpacing: sizes.gridSpacing,
+                        mainAxisSpacing: sizes.gridSpacing,
+                        childAspectRatio: sizes.gridChildAspectRatio,
+                      ),
+                      itemBuilder: (context, index) {
+                        final volume = Map<String, dynamic>.from(
+                            widget.volumes[index]);
+                        final isDownloaded = _downloadedVolumes[
+                        volume['id'].toString()] ??
+                            false;
+
+                        return VolumeGridItem(
+                          volume: volume,
+                          isDownloaded: isDownloaded,
+                          index: index,
+                          isDark: isDark,
+                          isSmall: sizes.isSmall,
+                          onTap: () => _navigateToVolume(volume),
+                        );
+                      },
+                    ),
                   ],
                 ),
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(24),
-                  bottomRight: Radius.circular(24),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: widget.primaryColor.withOpacity(0.18),
-                    blurRadius: 18,
-                    offset: const Offset(0, 6),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ═══════════════════════════════════════════
+// رأس المعلومات
+// ═══════════════════════════════════════════
+class _InfoHeader extends StatefulWidget {
+  final bool isDark;
+  final Color textColor;
+  final Color subTextColor;
+
+  const _InfoHeader({
+    required this.isDark,
+    required this.textColor,
+    required this.subTextColor,
+  });
+
+  @override
+  State<_InfoHeader> createState() => _InfoHeaderState();
+}
+
+class _InfoHeaderState extends State<_InfoHeader>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _fadeAnimation;
+  late Animation<Offset> _slideAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.0, 0.6, curve: Curves.easeOut),
+      ),
+    );
+    _slideAnimation = Tween<Offset>(
+      begin: const Offset(0.3, 0),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeOutCubic,
+    ));
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SlideTransition(
+      position: _slideAnimation,
+      child: FadeTransition(
+        opacity: _fadeAnimation,
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(18),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                BooksTheme.gold.withOpacity(0.10),
+                BooksTheme.gold.withOpacity(0.05),
+              ],
+            ),
+            borderRadius: BorderRadius.circular(22),
+            border: Border.all(color: BooksTheme.gold.withOpacity(0.18)),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Row(
+                children: [
+                  Icon(
+                    Icons.auto_stories_rounded,
+                    color: BooksTheme.gold,
+                    size: 28,
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      'المجلدات المتاحة',
+                      style: GoogleFonts.cairo(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: widget.textColor,
+                      ),
+                    ),
                   ),
                 ],
               ),
-              child: SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(14, 8, 14, 12),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 42,
-                        height: 42,
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.16),
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                        child: IconButton(
-                          padding: EdgeInsets.zero,
-                          icon: const Icon(
-                            Icons.arrow_back_ios_new,
-                            color: Colors.white,
-                            size: 18,
-                          ),
-                          onPressed: () => Navigator.pop(context),
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            FittedBox(
-                              fit: BoxFit.scaleDown,
-                              alignment: Alignment.centerRight,
-                              child: Text(
-                                widget.title,
-                                maxLines: 1,
-                                style: GoogleFonts.cairo(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 3),
-                            Text(
-                              'اختر المجلد الذي يناسبك للقراءة',
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: GoogleFonts.cairo(
-                                color: Colors.white.withOpacity(0.82),
-                                fontSize: 11.5,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      Container(
-                        width: 42,
-                        height: 42,
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.14),
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                        child: const Icon(
-                          Icons.library_books_rounded,
-                          color: Colors.white,
-                          size: 20,
-                        ),
-                      ),
-                    ],
-                  ),
+              const SizedBox(height: 6),
+              Text(
+                'اختر المجلد الذي تريد قراءته أو تحميله',
+                style: GoogleFonts.cairo(
+                  fontSize: 12,
+                  color: widget.subTextColor,
                 ),
               ),
-            ),
+            ],
           ),
         ),
-        body:
-            _loadingStatus
-                ? Center(
-                  child: CircularProgressIndicator(color: widget.primaryColor),
-                )
-                : SafeArea(
-                  child: LayoutBuilder(
-                    builder: (context, constraints) {
-                      final width = constraints.maxWidth;
-                      final small = width < 360;
-                      final spacing = small ? 10.0 : 12.0;
-
-                      final crossAxisCount = width < 430 ? 2 : 3;
-                      final childAspectRatio = small ? 0.68 : 0.75;
-
-                      final downloadedCount =
-                          _downloadedVolumes.values.where((e) => e).length;
-
-                      final totalCount = widget.volumes.length;
-                      final overallProgress =
-                          totalCount == 0 ? 0.0 : downloadedCount / totalCount;
-
-                      return SingleChildScrollView(
-                        physics: const BouncingScrollPhysics(),
-                        padding: const EdgeInsets.all(16),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Container(
-                              width: double.infinity,
-                              padding: const EdgeInsets.all(18),
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: [
-                                    widget.primaryColor.withOpacity(0.10),
-                                    gold.withOpacity(0.10),
-                                  ],
-                                ),
-                                borderRadius: BorderRadius.circular(22),
-                                border: Border.all(
-                                  color: gold.withOpacity(0.18),
-                                ),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    'المجلدات المتاحة',
-                                    style: GoogleFonts.cairo(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: textColor,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 6),
-                                  Text(
-                                    'اختر المجلد الذي تريد قراءته أو تحميله',
-                                    style: GoogleFonts.cairo(
-                                      fontSize: 12,
-                                      color: subTextColor,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 14),
-
-                            Container(
-                              width: double.infinity,
-                              padding: const EdgeInsets.all(16),
-                              decoration: BoxDecoration(
-                                color: cardColor,
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(
-                                  color: gold.withOpacity(0.16),
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(
-                                      isDark ? 0.18 : 0.05,
-                                    ),
-                                    blurRadius: 8,
-                                    offset: const Offset(0, 3),
-                                  ),
-                                ],
-                              ),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Container(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 10,
-                                          vertical: 5,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: gold.withOpacity(0.10),
-                                          borderRadius: BorderRadius.circular(
-                                            12,
-                                          ),
-                                          border: Border.all(
-                                            color: gold.withOpacity(0.20),
-                                          ),
-                                        ),
-                                        child: Text(
-                                          '$downloadedCount / $totalCount محمّل',
-                                          style: GoogleFonts.cairo(
-                                            color: gold,
-                                            fontSize: 11.5,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                      const Spacer(),
-                                      _isDownloadingAll
-                                          ? ElevatedButton.icon(
-                                            style: ElevatedButton.styleFrom(
-                                              backgroundColor: Colors.redAccent,
-                                              foregroundColor: Colors.white,
-                                              elevation: 0,
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(12),
-                                              ),
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                    horizontal: 12,
-                                                    vertical: 10,
-                                                  ),
-                                            ),
-                                            onPressed: _stopDownloadAll,
-                                            icon: const Icon(
-                                              Icons.stop_rounded,
-                                              size: 18,
-                                            ),
-                                            label: Text(
-                                              'إيقاف',
-                                              style: GoogleFonts.cairo(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 12,
-                                              ),
-                                            ),
-                                          )
-                                          : ElevatedButton.icon(
-                                            style: ElevatedButton.styleFrom(
-                                              backgroundColor:
-                                                  widget.primaryColor,
-                                              foregroundColor: Colors.white,
-                                              elevation: 0,
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(12),
-                                              ),
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                    horizontal: 12,
-                                                    vertical: 10,
-                                                  ),
-                                            ),
-                                            onPressed: _downloadAllVolumes,
-                                            icon: const Icon(
-                                              Icons.download_rounded,
-                                              size: 18,
-                                            ),
-                                            label: Text(
-                                              'تحميل الكل',
-                                              style: GoogleFonts.cairo(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 12,
-                                              ),
-                                            ),
-                                          ),
-                                    ],
-                                  ),
-
-                                  const SizedBox(height: 14),
-
-                                  if (_isDownloadingAll) ...[
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(12),
-                                      child: LinearProgressIndicator(
-                                        value: _downloadAllProgress,
-                                        minHeight: 7,
-                                        backgroundColor: Colors.grey
-                                            .withOpacity(0.15),
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                              widget.primaryColor,
-                                            ),
-                                      ),
-                                    ),
-
-                                    const SizedBox(height: 8),
-
-                                    Row(
-                                      children: [
-                                        Text(
-                                          '${((_isDownloadingAll ? _downloadAllProgress : overallProgress) * 100).toInt()}%',
-                                          style: GoogleFonts.cairo(
-                                            fontSize: 11.5,
-                                            color:
-                                                downloadedCount == totalCount
-                                                    ? Colors.green
-                                                    : widget.primaryColor,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        const Spacer(),
-                                        Text(
-                                          '$downloadedCount من $totalCount مجلد',
-                                          style: GoogleFonts.cairo(
-                                            fontSize: 11.5,
-                                            color: subTextColor,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-
-                                    const SizedBox(height: 10),
-
-                                    if (_isDownloadingAll &&
-                                        _currentDownloadingTitle
-                                            .isNotEmpty) ...[
-                                      Align(
-                                        alignment: Alignment.centerRight,
-                                        child: Text(
-                                          'جاري تحميل: $_currentDownloadingTitle',
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: GoogleFonts.cairo(
-                                            fontSize: 11.5,
-                                            color: subTextColor,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(height: 6),
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(10),
-                                        child: LinearProgressIndicator(
-                                          value: _currentFileProgress,
-                                          minHeight: 5,
-                                          backgroundColor: Colors.grey
-                                              .withOpacity(0.12),
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                                _gold,
-                                              ),
-                                        ),
-                                      ),
-                                      const SizedBox(height: 4),
-                                      Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          '${(_currentFileProgress * 100).toInt()}%',
-                                          style: GoogleFonts.cairo(
-                                            fontSize: 11,
-                                            color: _gold,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-
-                                    if (_wasDownloadStopped &&
-                                        !_isDownloadingAll) ...[
-                                      const SizedBox(height: 8),
-                                      Row(
-                                        children: [
-                                          const Icon(
-                                            Icons.pause_circle_outline,
-                                            color: Colors.orange,
-                                            size: 16,
-                                          ),
-                                          const SizedBox(width: 6),
-                                          Expanded(
-                                            child: Text(
-                                              'تم إيقاف التحميل سابقًا، ويمكنك استكماله بالضغط على تحميل الكل',
-                                              style: GoogleFonts.cairo(
-                                                fontSize: 11,
-                                                color: Colors.orange,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ],
-                                ],
-                              ),
-                            ),
-
-                            const SizedBox(height: 16),
-
-                            GridView.builder(
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: widget.volumes.length,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: crossAxisCount,
-                                    crossAxisSpacing: spacing,
-                                    mainAxisSpacing: spacing,
-                                    childAspectRatio: childAspectRatio,
-                                  ),
-                              itemBuilder: (context, index) {
-                                final volume = Map<String, dynamic>.from(
-                                  widget.volumes[index],
-                                );
-                                final imageUrl =
-                                    volume['imageUrl']?.toString() ?? '';
-                                final isDownloaded =
-                                    _downloadedVolumes[volume['id']
-                                        .toString()] ??
-                                    false;
-
-                                return TweenAnimationBuilder<double>(
-                                  tween: Tween(begin: 0.0, end: 1.0),
-                                  duration: Duration(
-                                    milliseconds: 350 + (index * 60),
-                                  ),
-                                  curve: Curves.easeOutCubic,
-                                  builder: (context, value, child) {
-                                    return Opacity(
-                                      opacity: value,
-                                      child: Transform.translate(
-                                        offset: Offset(0, 18 * (1 - value)),
-                                        child: child,
-                                      ),
-                                    );
-                                  },
-                                  child: InkWell(
-                                    borderRadius: BorderRadius.circular(18),
-                                    onTap: () {
-                                      if (volume['type'] == 'hadith') {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder:
-                                                (_) => HadithBookScreen(
-                                                  bookId: volume['id'],
-                                                  bookTitle: volume['title'],
-                                                  primaryColor:
-                                                      widget.primaryColor,
-                                                ),
-                                          ),
-                                        );
-                                      } else {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder:
-                                                (_) => BookReaderScreen(
-                                                  bookId: volume['id'],
-                                                  bookTitle: volume['title'],
-                                                  primaryColor:
-                                                      widget.primaryColor,
-                                                  pdfUrl:
-                                                      volume['pdfUrl'] ?? '',
-                                                ),
-                                          ),
-                                        );
-                                      }
-                                    },
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: cardColor,
-                                        borderRadius: BorderRadius.circular(18),
-                                        border: Border.all(
-                                          color: gold.withOpacity(0.18),
-                                        ),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.black.withOpacity(
-                                              isDark ? 0.18 : 0.05,
-                                            ),
-                                            blurRadius: 10,
-                                            offset: const Offset(0, 4),
-                                          ),
-                                        ],
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(12),
-                                        child: Column(
-                                          children: [
-                                            Expanded(
-                                              child: Stack(
-                                                children: [
-                                                  Positioned.fill(
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                            14,
-                                                          ),
-                                                      child:
-                                                          imageUrl.isNotEmpty
-                                                              ? CachedNetworkImage(
-                                                                imageUrl:
-                                                                    imageUrl,
-                                                                fit:
-                                                                    BoxFit
-                                                                        .cover,
-                                                                width:
-                                                                    double
-                                                                        .infinity,
-                                                                placeholder:
-                                                                    (
-                                                                      context,
-                                                                      url,
-                                                                    ) => Container(
-                                                                      color:
-                                                                          isDark
-                                                                              ? Colors.white.withOpacity(
-                                                                                0.04,
-                                                                              )
-                                                                              : Colors.grey.shade100,
-                                                                      child: Center(
-                                                                        child: CircularProgressIndicator(
-                                                                          color:
-                                                                              gold,
-                                                                          strokeWidth:
-                                                                              2,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                errorWidget:
-                                                                    (
-                                                                      context,
-                                                                      url,
-                                                                      error,
-                                                                    ) => Container(
-                                                                      color:
-                                                                          isDark
-                                                                              ? Colors.white.withOpacity(
-                                                                                0.04,
-                                                                              )
-                                                                              : Colors.grey.shade100,
-                                                                      child: Icon(
-                                                                        Icons
-                                                                            .book,
-                                                                        color: gold
-                                                                            .withOpacity(
-                                                                              0.6,
-                                                                            ),
-                                                                        size:
-                                                                            36,
-                                                                      ),
-                                                                    ),
-                                                              )
-                                                              : Container(
-                                                                color:
-                                                                    isDark
-                                                                        ? Colors
-                                                                            .white
-                                                                            .withOpacity(
-                                                                              0.04,
-                                                                            )
-                                                                        : Colors
-                                                                            .grey
-                                                                            .shade100,
-                                                                child: Icon(
-                                                                  Icons.book,
-                                                                  color: gold
-                                                                      .withOpacity(
-                                                                        0.6,
-                                                                      ),
-                                                                  size: 36,
-                                                                ),
-                                                              ),
-                                                    ),
-                                                  ),
-                                                  Positioned(
-                                                    top: 8,
-                                                    left: 8,
-                                                    child: Container(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                            6,
-                                                          ),
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            isDownloaded
-                                                                ? Colors.green
-                                                                    .withOpacity(
-                                                                      0.9,
-                                                                    )
-                                                                : Colors.black
-                                                                    .withOpacity(
-                                                                      0.7,
-                                                                    ),
-                                                        shape: BoxShape.circle,
-                                                        border: Border.all(
-                                                          color: Colors.white
-                                                              .withOpacity(0.2),
-                                                        ),
-                                                      ),
-                                                      child: Icon(
-                                                        isDownloaded
-                                                            ? Icons.check
-                                                            : Icons
-                                                                .cloud_download,
-                                                        color: Colors.white,
-                                                        size: 16,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            const SizedBox(height: 10),
-                                            Text(
-                                              volume['title'] ?? 'مجلد',
-                                              textAlign: TextAlign.center,
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
-                                              style: GoogleFonts.cairo(
-                                                fontWeight: FontWeight.bold,
-                                                color: textColor,
-                                                fontSize: small ? 12 : 13,
-                                                height: 1.3,
-                                              ),
-                                            ),
-                                            const SizedBox(height: 4),
-                                            Text(
-                                              isDownloaded
-                                                  ? 'جاهز للقراءة'
-                                                  : 'اضغط لفتح المجلد',
-                                              textAlign: TextAlign.center,
-                                              maxLines: 1,
-                                              overflow: TextOverflow.ellipsis,
-                                              style: GoogleFonts.cairo(
-                                                color:
-                                                    isDownloaded
-                                                        ? Colors.green
-                                                        : subTextColor,
-                                                fontSize: small ? 10 : 11,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
-                ),
       ),
     );
   }

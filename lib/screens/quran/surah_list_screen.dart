@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:islamic_app/screens/quran/surah_deatil.dart';
+import 'package:islamic_app/screens/quran/surah_detail/surah_deatil.dart';
 import '../../services/quran_services.dart';
 
 class SurahListScreen extends StatefulWidget {

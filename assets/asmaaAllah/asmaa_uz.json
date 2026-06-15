@@ -1,0 +1,598 @@
+{
+  "asma_allah": [
+    {
+      "id": 1,
+      "name": "Alloh (Allah - الله)",
+      "meaning": "Barcha komillik, ulug'vorlik va go'zallik sifatlarini o'zida jamlagan eng ulug' ism. U Zotdan o'zga hech kim bu ism bilan atalmaydi va u barcha ismlarning aslidir.",
+      "reflection": "Hayotingizning har bir lahzasida Allohning ulug'vorligini his eting, Unga chin ishonch va ixlos bilan eng ulug' ismi ila duo qiling. U duo qilganning duosini ijobat qiluvchi, yaqindir."
+    },
+    {
+      "id": 2,
+      "name": "O'ta mehribon (Ar-Rahman - الرحمن)",
+      "meaning": "Dunyodagi barcha maxluqotlarni, xoh mo'min, xoh kofir bo'lsin, qamrab oluvchi keng rahmat egasi. Uning rahmati har bir narsani qamrab olgan, U barchaga riziq, ofiyat va muhlat beruvchidir.",
+      "reflection": "Allohning keng rahmatidan so'rang va har holatingizda Uning lutfini his eting. Rahmat sizni sog'ligingiz, rizqingiz va hidoyatingizda qanday o'rab olganini tafakkur qiling."
+    },
+    {
+      "id": 3,
+      "name": "Rahmli (Ar-Rahim - الرحيم)",
+      "meaning": "Qiyomat kunida o'zining mo'min bandalariga xos rahmat ko'rsatuvchi, ularni jannatga kiritib, do'zaxdan qutqaruvchi Zot. U O'z bandalariga mag'firat, rozilik va ulug' savoblar in'om etadi.",
+      "reflection": "Alloh mo'min bandalariga qanday rahm qilishini o'ylang, va o'zingizga qanday rahm qilinishini xohlasangiz, insonlarga ham shunday yaxshilik qiling. Allohning rahmati yaxshilik qiluvchilarga yaqindir."
+    },
+    {
+      "id": 4,
+      "name": "Haqiqiy Podshoh (Al-Malik - الملك)",
+      "meaning": "Barcha narsaning egasi, O'z mulkida xohlaganicha, hech qanday qarshiliksiz tasarruf qiluvchi Zot. Osmonlar va yerning mulki Unikidir, xohlaganiga beradi, xohlaganidan tortib oladi.",
+      "reflection": "Mulk faqat Allohga xos ekanini his eting va barcha ishlaringizda Unga tavakkal qiling. Qalbingizni o'tkinchi dunyo mulkiga bog'lamang."
+    },
+    {
+      "id": 5,
+      "name": "Barcha nuqsonlardan pok (Al-Quddus - القدوس)",
+      "meaning": "Barcha kamchilik va ayblardan pok, Uning ulug'vorligiga mos kelmaydigan barcha narsalardan munazzah Zot. Farishtalar Uni ulug'lab, tasbeh aytadilar.",
+      "reflection": "E'tiqodingiz va so'zingizda Allohni barcha nuqsonlardan pok deb biling. Qalbingizni Allohga qullik qilishga munosib bo'lmagan narsalardan tozalang."
+    },
+    {
+      "id": 6,
+      "name": "Tinchlik va ofiyat manbai (As-Salam - السلام)",
+      "meaning": "Barcha ayb, nuqson va ofatlardan salomat bo'lgan Zot. U bandalarini xavf-xatarlardan asraydi, mo'minlar qalbiga xotirjamlik va tinchlik soladi.",
+      "reflection": "Dilingiz, dunyoyingiz va oxiratingiz uchun Allohdan salomatlik so'rang. Atrofingizdagilar uchun tinchlik va xotirjamlik manbai bo'ling, odamlar orasida salomni yoying."
+    },
+    {
+      "id": 7,
+      "name": "Omonlik beruvchi (Al-Mu'min - المؤمن)",
+      "meaning": "O'z maxluqotlarini zulmdan asrovchi, Qiyomat kunida mo'min bandalarini azobdan omon saqlovchi Zot. U payg'ambarlarini mo'jizalar bilan tasdiqlaguvchidir.",
+      "reflection": "Allohning mo'min bandalariga bergan omonligini his qiling va Uning haq va'dasiga ishoning. Odamlar bilan muomalada ishonchli bo'ling."
+    },
+    {
+      "id": 8,
+      "name": "Kuzatib va asrab turuvchi (Al-Muhaimin - المهيمن)",
+      "meaning": "Har bir narsani kuzatuvchi va asrovchi, ishlarning sirlarini va qalblar yashirgan narsalarni biluvchi Zot. Bandalarning barcha so'zlari va ishlari Unga ayondir.",
+      "reflection": "Alloh har bir narsadan xabardor ekanligini biling, shuning uchun yashirin va oshkora holatingizni isloh qiling. Har doim Alloh sizni ko'rib turganini his qilib yashang."
+    },
+    {
+      "id": 9,
+      "name": "Qudratli va g'olib (Al-'Aziz - العزيز)",
+      "meaning": "Hech qachon mag'lub bo'lmaydigan qudratli va g'olib Zot. O'z dushmanlaridan intiqom olishda qudratli, hamma narsani O'ziga bo'ysundirgan Zot.",
+      "reflection": "Azizlik va kuchni faqat Allohdan so'rang, Undan boshqasiga xor bo'lmang. Bilingki, haqiqiy azizlik Allohga, Uning Rasuliga va mo'minlarga xosdir."
+    },
+    {
+      "id": 10,
+      "name": "Nuqsonlarni tuzatuvchi / Qudratli (Al-Jabbar - الجبار)",
+      "meaning": "Siniqlarni tuzatuvchi, faqirni boy qiluvchi va ishlarni isloh etuvchi Zot. U har qanday mutakabbirni bo'ysundiruvchi, bandalarini O'z xohishiga bo'ysundiruvchi Zotdir.",
+      "reflection": "Siniq qalbingizni tuzatuvchi Allohning qudratini his eting. Har qanday qiyinchilikda Unga yuzlaning, chunki U siniq qalblarga taskin beruvchidir."
+    },
+    {
+      "id": 11,
+      "name": "Ulug'vor (Al-Mutakabbir - المتكبر)",
+      "meaning": "Maxluqotlar sifatlaridan oliy va ulug'vor Zot. Kibriyo va ulug'lik faqat Unga xosdir. U barcha nuqson va ayblardan pokdir.",
+      "reflection": "Allohga va insonlarga nisbatan tavozeli bo'ling. Kibriyo faqat Allohning ridosidir. Mutakabbirlik qilganlarni Alloh xor qiladi."
+    },
+    {
+      "id": 12,
+      "name": "Yaratuvchi (Al-Khaliq - الخالق)",
+      "meaning": "Barcha narsalarni yo'qdan bor qilgan va ularni yaratishdan oldin xususiyatlarini belgilab qo'ygan Zot. U O'zining qudrati, hikmati va ilmi bilan hamma narsani yaratgan.",
+      "reflection": "Atrofingizdagi koinotda Allohning yaratuvchanligini tafakkur qiling. Yaratilish va hayot ne'mati uchun Unga shukr qiling."
+    },
+    {
+      "id": 13,
+      "name": "Yo'qdan bor qiluvchi (Al-Bari' - البارئ)",
+      "meaning": "Maxluqotlarni O'z qudrati bilan yaratib, ularni turli shakl va sifatlarda bir-biridan ajratib turuvchi Zot. Ularni hech qanday kamchiliksiz, mukammal qilib yaratgan.",
+      "reflection": "Allohning yaratishdagi aniqligini va har bir maxluqni qanday farqli qilganini o'ylang. Allohning yaratganlariga chiroyli muomala qiling."
+    },
+    {
+      "id": 14,
+      "name": "Surat beruvchi (Al-Musawwir - المصور)",
+      "meaning": "Barcha maxluqotlarga shakl bergan va har biriga o'ziga xos surat ato etgan Zot. Odamlar bir-birlarini tanishlari uchun turli xil suratlarda yaratgan.",
+      "reflection": "Sizga chiroyli surat va ko'rinish bergani uchun Allohga shukr qiling. Haqiqiy go'zallik qalb va xulq go'zalligidir."
+    },
+    {
+      "id": 15,
+      "name": "Ko'plab mag'firat qiluvchi (Al-Ghaffar - الغفار)",
+      "meaning": "Bandalarining gunohlarini ko'p kechiruvchi, ularning ayblarini yashiruvchi va takror-takror afv etuvchi Zot. U mag'firat qilishdan charchamaydi.",
+      "reflection": "Har doim istig'for aytishni ko'paytiring, chunki mag'firat eshigi doim ochiq. Gunohlar qanchalik katta bo'lmasin, Allohning rahmatidan noumid bo'lmang."
+    },
+    {
+      "id": 16,
+      "name": "Bo'ysundiruvchi (Al-Qahhar - القهار)",
+      "meaning": "Barcha narsani O'z qudrati va kuchi bilan bo'ysundirgan, har qanday maxluq Uning ulug'ligi oldida bo'yin egadigan Zot. Zalimlar va mutakabbirlarni qahr etuvchi.",
+      "reflection": "Allohning barcha zolimlarni bo'ysundira olish qudratini his eting va Undan o'zgadan qo'rqmang. Bilingki, nohaq zolimlik qilganlarni Alloh O'z haqqi bilan qahr qiladi."
+    },
+    {
+      "id": 17,
+      "name": "Ko'plab ne'matlar beruvchi (Al-Wahhab - الوهاب)",
+      "meaning": "Cheksiz ne'mat va in'omlarni beminnat, sababsiz va evazsiz beruvchi Zot. Xohlagan bandasiga xohlaganicha in'om etadi, Uning ehsoni hech qachon tugamaydi.",
+      "reflection": "Allohning fazli va in'omidan so'rang, U hech qachon tugamaydigan xazinaga ega bo'lgan Zotdir. Insonlarga nisbatan saxiy bo'ling."
+    },
+    {
+      "id": 18,
+      "name": "Riziq beruvchi (Ar-Razzaq - الرزاق)",
+      "meaning": "Barcha maxluqotlarga riziq beruvchi va ularning ozuqasini O'z zimmasiga olgan Zot. Xoh mo'min, xoh kofir bo'lsin, hech bir maxluq Uning rizqidan quruq qolmaydi.",
+      "reflection": "Rizq borasida xotirjam bo'ling, sizga yozilgan rizq Allohning hikmati bilan o'z vaqtida keladi. Halol rizq talab qiling va Allohga tavakkal qiling."
+    },
+    {
+      "id": 19,
+      "name": "Eshiklarni ochuvchi / Hukm qiluvchi (Al-Fattah - الفتاح)",
+      "meaning": "Bandalariga rahmat va riziq eshiklarini ochuvchi, ular orasida haq va adolat bilan hukm qiluvchi Zot. Yopiq ishlarni ochuvchi va yordam so'raganlarga najot beruvchi.",
+      "reflection": "Agar eshiklar yuzingizga yopilgan bo'lsa, Al-Fattah bo'lgan Allohga yuzlaning. Bilingki, Alloh ochgan eshikni hech kim yopolmaydi, U yopgan eshikni hech kim ocholmaydi."
+    },
+    {
+      "id": 20,
+      "name": "Barcha narsani biluvchi (Al-'Alim - العليم)",
+      "meaning": "Har bir narsani ochiq va yashirin, kichik va kattasini to'liq biluvchi Zot. O'tgan, hozirgi va kelajakdagi barcha narsalarni biladi. Osmonlar va yerda Unga hech narsa maxfiy qolmaydi.",
+      "reflection": "Alloh har bir narsani bilib turishini doimo yodda tuting va yashirin hamda oshkora amallaringizda ixlosli bo'ling. Foydali ilm talab qiling va unga amal qiling."
+    },
+    {
+      "id": 21,
+      "name": "Qisuvchi / Qabz qiluvchi (Al-Qabidh - القابض)",
+      "meaning": "O'z hikmati va xohishi bilan rizqlar va ruhlarni qabz qiluvchi (qisuvchi) Zot. Sinov va imtihon uchun xohlaganiga torlik beradi. Uning tor qilishi ham adolat va hikmatdir.",
+      "reflection": "Agar ishlaringiz torayib qolsa, bilingki bu Allohdan bir hikmatdir va har bir qiyinchilik ortidan yengillik keladi. Sabr qiling va noumid bo'lmang."
+    },
+    {
+      "id": 22,
+      "name": "Keng qiluvchi / Yoyuvchi (Al-Basith - الباسط)",
+      "meaning": "O'z fazli va karami bilan xohlagan bandasiga rizqni keng qilib beruvchi, rahmatini yoyuvchi Zot. U gunohkorlarning tavbasini qabul qilish uchun qo'lini yoyib turadi.",
+      "reflection": "Agar Alloh sizga rizq va in'omni keng qilib qo'ygan bo'lsa, shukr qiling va kibrlanmang. Bilingki, kenglik ham xuddi torlik kabi bir sinovdir."
+    },
+    {
+      "id": 23,
+      "name": "Pasaytiruvchi (Al-Khafidh - الخافض)",
+      "meaning": "O'z hikmati va adolati bilan xohlagan kimsesini past qiluvchi, mutakabbirlarni tushirib, zolimlarni xor qiluvchi Zot. Haqdan yuz o'girganlarni xor qiladi.",
+      "reflection": "Yer yuzida kibr va manmanlik qilishdan ehtiyot bo'ling, chunki Alloh mutakabbirlarni pasaytiradi. Alloh uchun tavoze'li bo'ling, U sizni yuksaltiradi."
+    },
+    {
+      "id": 24,
+      "name": "Ko'taruvchi / Yuksaltiruvchi (Ar-Rafi' - الرافع)",
+      "meaning": "Mo'minlarni toat va iymon bilan yuksaltiruvchi, xohlagan bandalarini O'z fazli bilan ko'taruvchi Zot. Ilm va iymon ahlini darajalarini baland qiladi.",
+      "reflection": "Ilm, solih amal va taqvo bilan Alloh huzuridagi darajangizni yuksaltirishga harakat qiling. Haqiqiy yuksalish qalbning iymon bilan yuksalishidir."
+    },
+    {
+      "id": 25,
+      "name": "Aziz qiluvchi (Al-Mu'izz - المعز)",
+      "meaning": "O'zi xohlagan bandasiga azizlik va obro' beruvchi Zot. Azizlik faqat Allohning toati va Uning diniga tutinish bilan bo'ladi.",
+      "reflection": "Azizlikni faqat Allohdan so'rang va uni maxluqotlardan qidirmang. Bilingki, azizlik toatda, xorlik esa gunoh va isyondadir."
+    },
+    {
+      "id": 26,
+      "name": "Xor qiluvchi (Al-Mudzill - المذل)",
+      "meaning": "O'z hikmati va adolati bilan xohlagan kimsasini xor qiluvchi Zot. Unga isyon qilgan va toatidan kibrlanganlarni, yer yuzida buzg'unchilik qilgan zolimlarni xor qiladi.",
+      "reflection": "O'z kuchingiz, boyligingiz yoki obro'yingizga aldanib qolmang, chunki Alloh har qanday mutakabbirni xor qilishga qodirdir. Xorlik va xo'rlikdan Allohdan panoh so'rang."
+    },
+    {
+      "id": 27,
+      "name": "Har narsani eshituvchi (As-Sami' - السميع)",
+      "meaning": "Turli tillardagi va turli ehtiyojlardagi barcha ovozlarni eshituvchi Zot. Unga hech qanday ovoz aralashib ketmaydi. Zulumot kechada qora tosh ustidagi chumolining qadam tovushini ham eshitadi.",
+      "reflection": "Duolaringizni ishonch bilan qiling, chunki Alloh dilingizdagi shivirlashni, qalbingizdagi nidosini eshitadi. Alloh rozi bo'lmaydigan so'zlarni aytishdan saqlaning."
+    },
+    {
+      "id": 28,
+      "name": "Har narsani ko'ruvchi (Al-Bashir - البصير)",
+      "meaning": "Qanchalik mayda va kichik bo'lmasin, har bir narsani ko'ruvchi Zot. Osmonlar va yerdagi hech bir harakat Undan maxfiy qolmaydi.",
+      "reflection": "Har doim va har qayerda Allohning sizni ko'rib turganini his qiling va ishlaringizni xufyona va oshkora holda ham isloh qiling."
+    },
+    {
+      "id": 29,
+      "name": "Hukm qiluvchi (Al-Hakam - الحكم)",
+      "meaning": "O'z bandalari orasida haq va adolat bilan hukm qiluvchi, zarracha miqdorida ham zulm qilmaydigan Zot. Uning hukmi rad etilmas, Uning qarori adolatlidirdir.",
+      "reflection": "Allohning hukmi va qadariga rozi bo'ling. Odamlar orasida hukm qilganingizda faqat adolat bilan hukm qiling."
+    },
+    {
+      "id": 30,
+      "name": "O'ta adolatli (Al-'Adl - العدل)",
+      "meaning": "O'z hukmi va qarorlarida zulm va nohaqlikdan mutlaqo pok bo'lgan Zot. U O'zining hech bir maxluqiga zulm qilmaydi va yaxshilik qilganlarning ajrini zoye qilmaydi.",
+      "reflection": "Odamlar bilan muomalangizda adolatli bo'ling va hech kimga zulm qilmang. Bilingki, zulm Qiyomat kunida zulmatlarga aylanadi."
+    },
+    {
+      "id": 31,
+      "name": "Lutf ko'rsatuvchi / Ziyrak (Al-Lathif - اللطيف)",
+      "meaning": "O'z bandalariga ular sezmagan va o'ylamagan tomondan muloyimlik va maxfiy lutf bilan yaxshiliklar yetkazuvchi Zot. U bandalari ishlarini yuksak hikmat bilan boshqaradi.",
+      "reflection": "Hayotingizdagi o'zingiz e'tibor bermagan Allohning lutfi va marhamatini tafakkur qiling. Har bir qiyinchilik ortida Al-Latif bo'lgan Zotning yengilligi bordir."
+    },
+    {
+      "id": 32,
+      "name": "Hamma narsadan xabardor (Al-Khabir - الخبير)",
+      "meaning": "Ishlarning eng nozik va yashirin tomonlarini, ularning botinini to'liq biluvchi Zot. Qalblardagi niyatlar va yashirin sirlar Unga ayondir.",
+      "reflection": "Alloh sizning holatingizdan va qalbingizdagi narsalardan to'liq xabardor ekanligini biling, shuning uchun niyatingiz va botiningizni isloh qiling."
+    },
+    {
+      "id": 33,
+      "name": "O'ta halim (Al-Halim - الحليم)",
+      "meaning": "Ungi isyon qilganlarni jazolashga shoshilmaydigan, balki gunohiga qaramay ularga muhlat berib, ofiyat va riziq ato etuvchi Zot. U muhlat beradi, ammo aslo unutmaydi.",
+      "reflection": "Odamlar bilan muomalangizda halimlik va muloyimlik bilan yondashing, chunki halimlik xulqlarning sayyididir. Qasos olishga shoshilmang."
+    },
+    {
+      "id": 34,
+      "name": "Ulug' (Al-'Azhim - العظيم)",
+      "meaning": "Osmonlar va yerda buyuklik va kibriyo egasi bo'lgan Zot. Uning Zoti, sifatlari va ishlari ulug'dir. Aql Uni to'liq anglay olmaydi, ko'zlar Uni idrok eta olmaydi.",
+      "reflection": "Allohni qalbingiz va a'zolaringiz bilan ulug'lang, Uning buyruqlarining birortasini ham mensimaslik qilmang. Namozda Uning huzurida turganda ulug'ligini his eting."
+    },
+    {
+      "id": 35,
+      "name": "Ko'p mag'firat qiluvchi (Al-Ghafur - الغفور)",
+      "meaning": "Gunohlarni kechiruvchi, ayblarni yashiruvchi va yomonliklarni o'tkazib yuboruvchi Zot. Uning mag'firati kengdir, gunohlar qancha ko'p bo'lmasin, tavba qilganlarni kechiradi.",
+      "reflection": "Gunohingiz qanchalik katta bo'lmasin, Allohning rahmatidan umid uzmang. U kechirishni yaxshi ko'ruvchi Zotdir. Har vaqt tavba qilib yuring."
+    },
+    {
+      "id": 36,
+      "name": "Shukr qiluvchi / Qadrlovchi (Asy-Syakur - الشكور)",
+      "meaning": "Oz amalga ko'p ajr beruvchi, xohlagan bandasining hasanotlarini (yaxshiliklarini) ko'paytirib beruvchi Zot. Uning huzurida zarracha amal ham zoye ketmaydi.",
+      "reflection": "Allohning behisob ne'matlariga shukr qiling, va bilingki, U eng kichik amalingizni ham qadrlaydi. Shunday ekan, oz bo'lsa-da, toatlarni ko'paytiring."
+    },
+    {
+      "id": 37,
+      "name": "O'ta oliy (Al-'Aliy - العلي)",
+      "meaning": "O'z Zoti, sifatlari va qadri bilan barcha maxluqotlaridan yuksakda bo'lgan Zot. U hamma narsadan oliydir, Undan oliyroq hech narsa yo'qdir.",
+      "reflection": "Oliy va Buyuk Allohga bog'laning, Undan past bo'lgan narsalarga bog'lanmang. Himmat va maqsadlaringizni baland qiling, jannatning oliy darajalarini so'rang."
+    },
+    {
+      "id": 38,
+      "name": "O'ta katta (Al-Kabir - الكبير)",
+      "meaning": "O'z Zoti va sifatlarida ulug' va katta bo'lgan Zot, Uning oldida barcha narsa kichikdir. U har qanday kattadan kattaroq, har qanday ulug'dan ulug'roqdir.",
+      "reflection": "Qalbingizda Allohni ulug'lang, shunda undan boshqa hamma narsa kichik bo'lib qoladi. Biror narsadan qo'rqqaningizda, Alloh hamma narsadan Akbar (Katta) ekanini eslang."
+    },
+    {
+      "id": 39,
+      "name": "Har narsani saqlovchi (Al-Hafizh - الحفيظ)",
+      "meaning": "O'z maxluqotlarini halokatdan va yo'q bo'lishdan saqlovchi, bandalarining amallarini mukofot yoki jazo berish uchun saqlab qoluvchi Zot. Osmonlar va yerni asraguvchidir.",
+      "reflection": "Oila a'zolaringizni, molingizni va diningizni Allohning panohiga topshiring, U eng yaxshi saqlovchidir. Allohning buyruqlarini saqlang, Alloh sizni saqlaydi."
+    },
+    {
+      "id": 40,
+      "name": "Riziq va quvvat beruvchi (Al-Muqit - المقيت)",
+      "meaning": "Har bir maxluqqa o'z vaqtida riziq va ozuqa yetkazib beruvchi Zot. U bandalarining riziqlarini O'z zimmasiga olgan, har bir tirik jonga rizq yetkazishga qodirdir.",
+      "reflection": "Rizqingiz borasida xotirjam bo'ling, chunki Alloh riziq beruvchi Al-Muqitdir. Muhtojlarga taom berishni ham unutmang."
+    },
+    {
+      "id": 41,
+      "name": "Hisob qilib turuvchi / Kifoya qiluvchi (Al-Hasib - الحسيب)",
+      "meaning": "Bandalariga barcha ishlarda kifoya qiluvchi va Qiyomat kunida ularning amallarini hisob-kitob qiluvchi Zot. Tavakkal qilganga yetarli bo'ladi.",
+      "reflection": "Hisob qilinishingizdan oldin o'zingizni hisob-kitob qiling. Bilingki, Alloh sizning Hisobchingizdir, hisob uchun javob tayyorlang."
+    },
+    {
+      "id": 42,
+      "name": "Buyuk va ulug'vor (Al-Jalil - الجليل)",
+      "meaning": "Ulug'lik, kamolot va buyuklik sifatlari bilan sifatlangan Zot. U O'z mulki va saltanatida buyukdir. Uning ulug'lik sifatlari qalblarni haybat va ehtiromga to'ldiradi.",
+      "reflection": "Qalbingizda Allohni ulug'lang va Uning sizni gunoh ustida ko'rishidan hayo qiling. Bilingki, Uning ulug'ligi sizning Uning huzurida xokisor bo'lishingizni taqozo etadi."
+    },
+    {
+      "id": 43,
+      "name": "O'ta karamli (Al-Karim - الكريم)",
+      "meaning": "Ko'p yaxshilik va in'om etuvchi, so'ralmasdan, hisobsiz va minnatsiz ato etuvchi Zot. Uning karami har qanday karamdan ustundir.",
+      "reflection": "Saxiylik va karam sifatlari bilan xulqlaning, Alloh sizga bergan narsalardan infoq qiling. Bilingki, Allohning huzuridagi narsalar yaxshiroq va boqiydir."
+    },
+    {
+      "id": 44,
+      "name": "Kuzatib turuvchi (Ar-Raqib - الرقيب)",
+      "meaning": "Qalblar yashirgan sirlardan xabardor, har bir nafsning qilgan ishi ustida qoim bo'lgan Zot. Undan hech narsa maxfiy qolmaydi, U bandalarining ishlari va so'zlarini kuzatib turadi.",
+      "reflection": "Yashirin va oshkora ishlaringizda Allohni kuzatib turganini his qiling, chunki U sizni har lahzada ko'rib turadi. Shunday ekan, amalingizni go'zal qiling."
+    },
+    {
+      "id": 45,
+      "name": "Duolarni ijobat qiluvchi (Al-Mujib - المجيب)",
+      "meaning": "Duo qiluvchining duosini ijobat qiluvchi va nido qilganga javob beruvchi Zot. U ixlos bilan duo qilganga yaqindir, muztarning (chorasizning) duosini ijobat qiladi va yomonlikni arib, g'am-tashvishni ketkazadi.",
+      "reflection": "Allohga ishonch va xotirjamlik bilan duo qiling, chunki U so'rovchini quruq qaytarmaydigan yaqin va ijobat qiluvchi Zotdir. Duoyingiz qabul bo'lishiga yaxshi gumonda bo'ling."
+    },
+    {
+      "id": 46,
+      "name": "Keng qamrovli (Al-Wasi' - الواسع)",
+      "meaning": "Raxmati barcha narsani qamrab olgan, ilmi har bir narsaga yetgan va rizqi barcha maxluqotlariga keng bo'lgan Zot. Uning ne'matlari, mag'firati va fazli cheksizdir.",
+      "reflection": "Allohning keng rahmatini o'zingiz uchun toraytirmang, u siz o'ylagandan ham kengroqdir. Uning keng fazlidan so'rang va hech qachon umidsizlikka tushmang."
+    },
+    {
+      "id": 47,
+      "name": "O'ta hikmatli (Al-Hakim - الحكيم)",
+      "meaning": "Yuksak hikmat bilan har bir narsani o'zining munosib joyiga qo'yuvchi Zot. U biror narsani behuda qilmaydi, Uning barcha ishlari va buyruqlari O'zi biladigan hikmatga asoslangan.",
+      "reflection": "Sizga kelgan har bir taqdirda Allohning hikmatiga ishoning, garchi hozircha hikmatini tushunmasangiz ham. Allohning barcha taqdiri yaxshilik va hikmatdir."
+    },
+    {
+      "id": 48,
+      "name": "O'z bandalarini yaxshi ko'ruvchi (Al-Wadud - الودود)",
+      "meaning": "O'zining solih bandalarini yaxshi ko'ruvchi va ularga ne'matlari hamda lutfi bilan muhabbatini izhor qiluvchi Zot. U o'z do'stlarining qalblarida sevikli bo'lib, ular ham Uni sevadilar.",
+      "reflection": "Allohga itoat qilganingizda Uning sizga bo'lgan muhabbatini his qiling va itoat orqali Unga muhabbatingizni bildiring. Qalbingizni Allohning muhabbatiga to'ldiring."
+    },
+    {
+      "id": 49,
+      "name": "O'ta shon-sharafli (Al-Majid - المجيد)",
+      "meaning": "Ulug' shon-sharaf, mukammal qadr-qimmat va keng saltanat egasi bo'lgan Zot. Uning shon-sharafi osmonlar va yerni to'ldirgan, farishtalar va barcha maxluqotlar Uni ulug'laydilar.",
+      "reflection": "Qalbingiz, tilingiz va a'zolaringiz bilan Allohni ulug'lang, Unga ko'p hamdu sano ayting. Bilingki, Allohning shon-sharafini to'la idrok qilib bo'lmaydi."
+    },
+    {
+      "id": 50,
+      "name": "Qayta tiriltiruvchi / Yuboruvchi (Al-Ba'ith - الباعث)",
+      "meaning": "Qiyomat kunida o'liklarni hisob-kitob va jazo uchun qayta tiriltiruvchi Zot. Insonlarni hidoyatga boshlash uchun payg'ambarlar yuboruvchi, mo'minlar qalbiga himmat va g'ayrat soluvchi Zotdir.",
+      "reflection": "Qayta tirilish kuniga solih amallar va nasuh (chin) tavba bilan tayyorgarlik ko'ring. Bilingki, siz qayta tirilasiz va har bir katta-yu kichik amal uchun hisob qilinuvchisiz."
+    },
+    {
+      "id": 51,
+      "name": "Har narsaga hoziru nozir (Asy-Syahid - الشهيد)",
+      "meaning": "Undan hech narsa g'oyib bo'lmaydigan, har bir narsani ko'rib, bilib turuvchi Zot. Bandalarning amallari, so'zlari va niyatlariga guvoh bo'lib turadi, Qiyomat kuni ularning qilganlariga guvohlik beradi.",
+      "reflection": "Amallaringiz va so'zlaringizda Allohning guvoh ekanini his eting va nima qilsangiz, chiroyli qiling. Alloh sizga guvohdir, bas Uning guvohligi sizning foydangizga bo'lsin."
+    },
+    {
+      "id": 52,
+      "name": "Haqiqiy / O'zgarmas (Al-Haqq - الحق)",
+      "meaning": "Mavjudligida shubha bo'lmagan, ilohligida gumon bo'lmagan Zot. U Zoti, sifatlari, ishlari, va'dasi va tahdidi bilan mutlaq Haqdir. Undan boshqa hamma narsa botildir.",
+      "reflection": "Agar yolg'iz bo'lsangiz ham haqqa mahkam yopishingiz, bilingki botil qancha kattalashmasin, baribir yo'q bo'luvchidir. Rostgo'ylikni lozim tuting."
+    },
+    {
+      "id": 53,
+      "name": "Ishonchli vakil (Al-Wakil - الوكيل)",
+      "meaning": "Bandalarining rizqi va maslahatlarini kafolatga oluvchi, tavakkal qilganlarning ishlarini yurituvchi Zot. Kim Uni vakil qilsa, U barcha g'am-tashvishiga kifoya qiladi va yomonlikni qaytaradi.",
+      "reflection": "Allohga chinakamiga tavakkal qiling va ishlaringizni Unga topshiring. Kim Allohga tavakkal qilsa, U unga kifoyadir. Vakil sifatida Alloh yetarlidir."
+    },
+    {
+      "id": 54,
+      "name": "O'ta quvvatli (Al-Qawiy - القوي)",
+      "meaning": "Mukammal quvvat egasi bo'lib, osmonlar va yerda Uni hech narsa ojiz qoldira olmaydi. Uning quvvatini hech narsa yengolmaydi, Unga charchoq, zaiflik yetmas.",
+      "reflection": "O'z quvvatingizni Qaviy bo'lgan Allohdan oling, o'zingizning shaxsiy kuchingizga tayanib qolmang. Allohdan yordam so'rang, ojiz qolmang (La havla va la quvvata illa billah)."
+    },
+    {
+      "id": 55,
+      "name": "O'ta matonatli / Quvvatli (Al-Matin - المتين)",
+      "meaning": "G'oyat qattiq quvvatga ega, Unga zaiflik yetmaydigan Zot. Uning matonati Unga isyon qilganlarni jazolashdagi qudrati va shiddatidadir. U hech narsadan ta'sirlanmaydi.",
+      "reflection": "Iymoningizda matonatli bo'ling va haq ustida sobit turing. Bilingki, Alloh Uning dushmanlariga va avliyolariga dushmanlik qilganlarga shiddatli azob beruvchidir."
+    },
+    {
+      "id": 56,
+      "name": "Do'st va madadkor (Al-Waliy - الولي)",
+      "meaning": "Mo'min bandalarining yordamchisi va do'sti bo'lgan Zot. Ularni O'z inoyati, himoyasi va nusrati bilan asraydi. U mo'minlarni zulmatlardan nurga chiqaruvchi Valiydir.",
+      "reflection": "Allohni o'zingizga do'st va yordamchi qilib oling, Uning do'stligi bilan boshqalarning yordamidan behojat bo'ling. Alloh kimga do'st bo'lsa, uni aslo yordamsiz tashlab qo'ymaydi."
+    },
+    {
+      "id": 57,
+      "name": "Barcha maqtovlarga loyiq (Al-Hamid - الحميد)",
+      "meaning": "Har holatda va har vaqtda maqtovga sazovor bo'lgan, O'z zoti, sifatlari va ishlari bilan hamdu sanoga loyiq Zot. Uning hamdi osmonlar va yerni to'ldirgan.",
+      "reflection": "Xursandchilikda ham, qiyinchilikda ham Allohga hamd aytishni unutmang, chunki U har holatda maqtovga loyiqdir. Tilingizni Allohning hamdi va shukri bilan ho'l qiling."
+    },
+    {
+      "id": 58,
+      "name": "Barcha narsani hisobga oluvchi (Al-Muhshi - المحصي)",
+      "meaning": "Barcha narsani hisobini olgan va tafsilotini bilgan Zot, Undan hech bir narsa maxfiy qolmaydi. Bandalarning amallari, nafaslari va qadamlarini hisoblaydi.",
+      "reflection": "Bilingki, har bir amalingiz hisoblanib turibdi, bas har bir ishingizda go'zal xulq bilan bo'ling. Yaxshiliklaringizni yomonliklaringizdan ko'paytirishga harakat qiling."
+    },
+    {
+      "id": 59,
+      "name": "Yo'qdan bor qilib boshlovchi (Al-Mubdi' - المبدئ)",
+      "meaning": "Barcha narsalarni oldingi o'xshashisiz birinchi bo'lib yaratgan va yo'qdan bor qilgan Zot. U O'z qudrati va irodasi bilan sababsiz va vositasiz ijod qildi.",
+      "reflection": "Yaratilishingizning boshlanishi va Alloh sizni qanday qilib yo'qdan bor qilgani haqida tafakkur qiling. Mavjudlik va hayot ne'mati uchun Unga shukr qiling."
+    },
+    {
+      "id": 60,
+      "name": "Qaytaruvchi (Al-Mu'id - المعيد)",
+      "meaning": "Qiyomat kunida xaloyiqni o'lgandan so'ng xuddi birinchi marta yaratganidek qayta tiriltiruvchi Zot. Hisob-kitob uchun ularni qaytarishga Qodirdir.",
+      "reflection": "O'limdan keyingi qayta tirilishga to'la ishoning va solih amallar bilan Allohga ro'baro' bo'lishga tayyorgarlik ko'ring. U sizni qanday boshlagan bo'lsa, shunday qaytaradi."
+    },
+    {
+      "id": 61,
+      "name": "Tiriltiruvchi / Hayot beruvchi (Al-Muhyi - المحيي)",
+      "meaning": "O'liklarni tiriltiruvchi va o'likdan tirikni chiqaruvchi Zot. U ruh pufalash orqali hayot ato etadi va Qiyomat kunida qayta tiriltiradi. O'lik qalblarni iymon nuri bilan tiriltiradi.",
+      "reflection": "Allohdan qalbingizni iymon, ilm va zikr bilan tiriltirishini so'rang. Bilingki, qalbning hayoti tana hayotidan muhimroqdir."
+    },
+    {
+      "id": 62,
+      "name": "O'ldiruvchi (Al-Mumit - المميت)",
+      "meaning": "Tiriklarni o'ldiruvchi va xohlagan vaqtida ularning ruhlarini oluvchi Zot. U qaysi biringiz chiroyliroq amal qilishingizni sinash uchun o'lim va hayotni yaratgan.",
+      "reflection": "Har kuni o'limni eslang va unga solih amallar bilan tayyorlaning. Bu dunyo hayotiga aldanib qolmang, u faqat o'tkinchi joy, abadiy qarorgoh emas."
+    },
+    {
+      "id": 63,
+      "name": "Tirik / Mangu hayot (Al-Hayy - الحي)",
+      "meaning": "Yo'qlik bilan boshlanmagan va fano (yo'q bo'lish) ga yuz tutmaydigan komil va abadiy hayotga ega bo'lgan Zot. Uning hayotida uyqu va mudroq yo'qdir.",
+      "reflection": "Hech qachon o'lmaydigan Tirik Zotga tavakkal qiling, o'ladigan tiriklarga bog'lanib qolmang. Boqiy qoladigan oxirat hayoti uchun amal qiling."
+    },
+    {
+      "id": 64,
+      "name": "O'z-o'zidan qoim / Boshqalarni qoim qiluvchi (Al-Qayyum - القيوم)",
+      "meaning": "O'z-o'zidan qoim bo'lib, o'zgaga hojati yo'q Zot. Barcha narsalar Uning yordamisiz turolmaydi. U koinotni boshqarib, saqlab, mudroq va uyqusiz nazorat qiladi.",
+      "reflection": "Barcha ishlaringizda Qayyum bo'lgan Allohdan yordam so'rang, U sizning hayotingizni boshqarib turuvchidir. Bir lahza ham Uni zikr qilishdan g'ofil bo'lmang."
+    },
+    {
+      "id": 65,
+      "name": "Topuvchi / Behojat (Al-Wajid - الواجد)",
+      "meaning": "Hech kimga va hech narsaga muhtoj bo'lmagan Boy Zot. Xohlagan narsasini xohlagan vaqtida topadi, Unga hech narsa ojizlik qilolmaydi.",
+      "reflection": "Faqat Behojat va Boy bo'lgan Allohgagina ehtiyojingizni bildiring va Undangina so'rang."
+    },
+    {
+      "id": 66,
+      "name": "Shon-sharafli / Karamli (Al-Majid - الماجد)",
+      "meaning": "O'z karami, saxiyligi va shon-sharafida ulug' va mukammal bo'lgan Zot. Sifatlarida ulug'vor, ishlari buyuk, in'omlarida karamlidir.",
+      "reflection": "Allohni ulug'lang va Uning ulug'ligidan so'rang. Haqiqiy shon-sharaf Allohning toatida va Unga yaqinlashishdadir."
+    },
+    {
+      "id": 67,
+      "name": "Yagona (Al-Wahid - الواحد)",
+      "meaning": "O'z Zoti, sifatlari va ishlarida tanho bo'lgan, sherigi va o'xshashi yo'q Zot. U tug'magan ham, tug'ilmagan ham, va Unga hech kim teng emasdir.",
+      "reflection": "Ibodat, duo va yordam so'rashda Allohni yagona deb biling, Unga shirk keltirmang. Tavhid banda Parvardigoriga yaqinlashadigan eng ulug' narsadir."
+    },
+    {
+      "id": 68,
+      "name": "Barcha ehtiyojlar unga qaratiluvchi (Ash-Shamad - الصمد)",
+      "meaning": "Barcha maxluqotlar hojat va ehtiyojlarida Unga yuzlanadigan Xoja. U hamma narsadan behojat, lekin hamma Unga muhtojdir. U yemaydi va ichmaydi.",
+      "reflection": "Har qanday ehtiyojda faqat Allohga yuzlaning, qalbingiz bilan boshqaga talpinmang. U Samaddirki, O'ziga yuzlanganlarni hech qachon noumid qilmaydi."
+    },
+    {
+      "id": 69,
+      "name": "Qodir (Al-Qadir - القادر)",
+      "meaning": "Barcha narsaga qodir bo'lgan Zot, osmonlar va yerda Uni hech narsa ojiz qoldirolmaydi. U biror narsani xohlasa, faqat 'Bo'l' deydi, bas u narsa bo'ladi.",
+      "reflection": "Allohning mutlaq qudratiga iymon keltiring va qanchalik imkonsiz ko'rinmasin, Undan so'rang. Alloh uchun imkonsiz narsaning o'zi yo'q."
+    },
+    {
+      "id": 70,
+      "name": "O'ta qudratli (Al-Muqtadir - المقتدر)",
+      "meaning": "Har qanday narsaga to'la qodir bo'lgan, qudrati ustidan hech narsa g'olib kelolmaydigan Zot. U xohlagan ishni, xohlagan vaqtida xohlaganicha qiladi.",
+      "reflection": "Allohning har bir narsaga o'ta qudratli ekanini his eting, Alloh bilan birga bo'lsangiz hech narsadan qo'rqmang."
+    },
+    {
+      "id": 71,
+      "name": "Oldinga suruvchi (Al-Muqaddim - المقدم)",
+      "meaning": "O'z hikmati va ilmi bilan xohlagan narsasini oldinga suruvchi Zot. U xohlagan bandasining darajasini, obro'sini va vaqtini oldinga suradi.",
+      "reflection": "Solih amal va foydali ilm bilan o'zingizni Alloh huzurida oldinga surishga harakat qiling."
+    },
+    {
+      "id": 72,
+      "name": "Orqaga suruvchi (Al-Mu'akhir - المؤخر)",
+      "meaning": "O'z hikmati va adolati bilan xohlagan narsasini orqaga suruvchi Zot. U jazolashni kechiktirib muhlat beradi. Uning kechiktirishi ham, oldinga surishi ham hikmatdir.",
+      "reflection": "Agar siz kutgan narsa kechiksa, bilingki unda Allohning hikmati bor. Sabr qiling, chunki Alloh nimanidir kechiktirsa, faqat yaxshilik uchundir."
+    },
+    {
+      "id": 73,
+      "name": "Eng birinchi / Boshlanishi yo'q (Al-Awwal - الأول)",
+      "meaning": "Undan oldin hech narsa bo'lmagan, boshlanishi yo'q Birinchi Zot. Uning mavjudligi azalidir va ibtidodan xolidir.",
+      "reflection": "Allohning birinchi va azaliy ekanini tafakkur qiling, har bir ishda birinchi Unga yuzlaning. Har bir ishingizni Allohning nomi bilan boshlang."
+    },
+    {
+      "id": 74,
+      "name": "Eng oxirgi / Oxiri yo'q (Al-Akhir - الآخر)",
+      "meaning": "Undan keyin hech narsa yo'q, hamma narsa fano bo'lgandan so'ng ham Boqiy qoluvchi Zot. U oxiri yo'q Mangu Zotdir.",
+      "reflection": "O'limdan keyingi hayot uchun amal qiling, oxiratingizni dunyoyingizdan yaxshiroq qiling. Hamma narsa yo'q bo'lganda ham Boqiy qoluvchi Allohga ro'baro' bo'lishingizni yodda tuting."
+    },
+    {
+      "id": 75,
+      "name": "Ochiq-oydin / Zohir (Az-Zahir - الظاهر)",
+      "meaning": "O'zining buyukligi va qudrati bilan har bir narsadan oliy bo'lgan, barcha maxluqotlarda Uning mavjudligi oyatlari ochiq-oydin ko'rinib turadigan Zot.",
+      "reflection": "Atrofingizdagi koinotda ochiq-oydin ko'rinib turgan Allohning mo'jizalarini tafakkur qiling. Uning qudrati har bir narsada namoyon bo'lishini ko'ring."
+    },
+    {
+      "id": 76,
+      "name": "Yashirin / Botin (Al-Batin - الباطن)",
+      "meaning": "Ilmi barcha narsani qamrab olgan, ammo ko'zlar va aql to'la idrok eta olmaydigan Yashirin Zot. U qalblardagi sirlarni va eng yashirin narsalarni biladi.",
+      "reflection": "Oshkora ishlaringizni qanday isloh qilsangiz, botiningizni ham shunday isloh qiling, chunki Alloh sizning sirlaringizni biladi."
+    },
+    {
+      "id": 77,
+      "name": "Boshqaruvchi / Hokim (Al-Wali - الوالي)",
+      "meaning": "Hamma narsaning Egasi, ishlarning tasarrufini O'z qo'lida tutuvchi, xalqlarning ishlarini boshqaruvchi Zot. U bandalari ishlarini O'z hikmati va rahmati bilan boshqaradi.",
+      "reflection": "O'z ishlaringizni Boshqaruvchi Allohga topshiring va bilingki, U hamma narsani eng go'zal tarzda boshqaruvchidir."
+    },
+    {
+      "id": 78,
+      "name": "O'ta oliy / Yuksalgan (Al-Muta'ali - المتعالي)",
+      "meaning": "Maxluqotlar sifatidan pok bo'lgan, Uning ulug'vorligiga mos kelmaydigan narsalardan Oliy bo'lgan Zot. Uning sherigi va o'xshashi yo'qdir.",
+      "reflection": "Past narsalar va arzimas ishlardan yuksaling, o'ta Oliy bo'lgan Allohga bog'laning. O'tkinchi narsalardan o'z himmatingizni yuksaltiring."
+    },
+    {
+      "id": 79,
+      "name": "Yaxshilik qiluvchi (Al-Barr - البر)",
+      "meaning": "O'z bandalariga yaxshilik qiluvchi, ularga keng lutfi va rahmati bilan mehribon bo'lgan Zot. Uning ne'matlari va ehsoni barcha maxluqotlariga yetadi.",
+      "reflection": "Ota-onangizga va odamlarga yaxshilik qiling, chunki Alloh yaxshilik qiluvchilarni sevadi. Sizga berilgan har bir ne'matda Allohning yaxshiligini his eting."
+    },
+    {
+      "id": 80,
+      "name": "Tavbalarni qabul qiluvchi (At-Tawwab - التواب)",
+      "meaning": "Tavba qiluvchilarning tavbasini qabul qiluvchi va gunohkorlarni afv etuvchi Zot. Banda qanchalik ko'p tavba qilsa ham, U qabul qilaveradi va bundan xursand bo'ladi.",
+      "reflection": "Har doim Allohga tavba qiling va ko'p qaytishingizdan aslo uyalmang. U tavba qiluvchilarni va ularning qaytishini yaxshi ko'radigan Tavvobdir."
+    },
+    {
+      "id": 81,
+      "name": "Qasos oluvchi (Al-Muntaqim - المنتقم)",
+      "meaning": "Zolimlar, isyonkorlar va buzg'unchilardan O'zining adolati va hikmati bilan qasos oluvchi Zot. Jazolashga shoshilmaydi, biroq ular qaytmasalar, qattiq jazolaydi.",
+      "reflection": "Allohga gunoh qilishdan va zolimlikdan saqlaning. Bilingki, Alloh muhlat beradi, ammo aslo beparvo qoldirmaydi, kech bo'lmasidan tavba qiling."
+    },
+    {
+      "id": 82,
+      "name": "Afv etuvchi (Al-'Afuw - العفو)",
+      "meaning": "Gunohlarni o'chiruvchi va xatolarni kechiruvchi Zot. U afv etishni yaxshi ko'radi va ko'p kechiradi. Uning afvi jazosidan, rahmati g'azabidan kengroqdir.",
+      "reflection": "Odamlarni afv eting, shunda Alloh ham sizni afv etadi. \"Allohumma innaka afuvvun tuhibbul afva, fa'fu anni\" (Ey Alloh, Sen Afv etuvchisan, afvni sevasan, meni afv et) duosini ko'p ayting."
+    },
+    {
+      "id": 83,
+      "name": "O'ta mehribon va shafqatli (Ar-Ra'uf - الرؤوف)",
+      "meaning": "Bandalariga o'ta shafqatli, mehribon va lutfli Zot, ularga o'zlaridan ham mehribonroqdir. Uning shafqati jazolashdan, lutfi esa qahr qilishdan ustundir.",
+      "reflection": "Atrofingizdagilarga mehribon bo'ling va ularga shafqat qiling. Zaiflar va miskinlarga nisbatan rahm-shafqatli bo'ling."
+    },
+    {
+      "id": 84,
+      "name": "Barcha mulkning haqiqiy egasi (Malikul-Mulk - مالك الملك)",
+      "meaning": "Barcha mulkning egasi, unda xohlaganicha hech qanday qarshiliksiz tasarruf qiluvchi Zot. Xohlaganiga mulk beradi, xohlaganidan tortib oladi. Barcha yaxshilik Uning qo'lidadir.",
+      "reflection": "O'tkinchi dunyo mulkiga bog'lanib qolmang, haqiqiy mulk faqat Allohgagina xos ekanligini biling. Allohning fazlidan so'rang."
+    },
+    {
+      "id": 85,
+      "name": "Ulug'lik va ikrom egasi (Dzul-Jalal wal-Ikram - ذو الجلال والإكرام)",
+      "meaning": "Ulug'lik va kibriyo egasi, hamda ikrom va ehson manbai. Ulug'ligi sababli yuksaklanadi, ehsoni sababli seviladi. Komillik va go'zallik egasi.",
+      "reflection": "Allohni ulug'lang va Uning bandalarini ikrom qiling. Kim Allohning bandalarini ikrom qilsa, Alloh ham uni ikrom qiladi."
+    },
+    {
+      "id": 86,
+      "name": "Adolat qiluvchi (Al-Muqsit - المقسط)",
+      "meaning": "Mazlumning haqqini zolimdan olib beruvchi, ular orasida haq va adolat bilan hukm qiluvchi Zot. Uning adolati dunyo va oxiratni qamrab olgandir.",
+      "reflection": "Odamlar bilan muomalada adolatli va insofli bo'ling, hech kimga zulm qilmang. Bilingki, Alloh adolat qiluvchilarni sevadi."
+    },
+    {
+      "id": 87,
+      "name": "To'plovchi / Jamlovchi (Al-Jami' - الجامع)",
+      "meaning": "Shubha yo'q bo'lgan Qiyomat kunida barcha xaloyiqni jamlovchi Zot. Turli-tuman va qarama-qarshi narsalarni O'z hikmati bilan birlashtiruvchi.",
+      "reflection": "Qiyomat kunidagi buyuk to'planishga tayyorgarlik ko'ring. Qalbingizni Alloh uchun jamlang va xotirjamligingizni yo'qotmang."
+    },
+    {
+      "id": 88,
+      "name": "Behojat / Boy (Al-Ghaniy - الغني)",
+      "meaning": "Hech bir maxluqiga ehtiyoji bo'lmagan Boy Zot, aksincha barcha maxluqotlari Unga muhtojdir. U mutlaq behojatdir, hech narsaga muhtoj emas.",
+      "reflection": "Boshqalardan behojat bo'lib, faqat Allohgagina yuzlaning. Haqiqiy boylik bu nafs va qalb boyligidir."
+    },
+    {
+      "id": 89,
+      "name": "Boy qiluvchi / Behojat qiluvchi (Al-Mughni - المغني)",
+      "meaning": "O'z fazli va karami bilan xohlagan bandasini boy qiluvchi Zot. Ularni mol-dunyo, ilm, iymon va qanoat bilan behojat qiladi.",
+      "reflection": "Allohdan boylik va behojatlik so'rang, U sizga bergan narsalaridan boshqalarga ham bering. Eng boy inson Alloh unga qanoat va rozilik bergan insondir."
+    },
+    {
+      "id": 90,
+      "name": "Man qiluvchi / To'suvchi (Al-Mani' - المانع)",
+      "meaning": "O'z hikmati va rahmati bilan xohlagan narsasini to'suvchi Zot. Mo'min bandalaridan balo va yomonliklarni to'sadi, va ba'zi ne'matlarni hikmat yuzasidan man qiladi.",
+      "reflection": "Agar Alloh sizdan biror narsani to'sgan bo'lsa, bilingki, bunda siz uchun yaxshilik bor. Balki yaxshiroq narsa berish uchun to'sgandir."
+    },
+    {
+      "id": 91,
+      "name": "Zarar yetkazuvchi (Ad-Dhar - الضار)",
+      "meaning": "O'z hikmati va ilmi bilan xohlaganiga zarar va balo yetkazuvchi Zot. Bu zulm emas, balki hikmat, sinov va imtihondir. Uning ruxsatisiz hech kim zarar yetkaza olmaydi.",
+      "reflection": "Allohdan o'zga hech kimning zarari yetishidan qo'rqmang, bilingki, sizga yetgan narsa sizni chetlab o'tishi mumkin emasdi. Balo va sinovlarda sabr qiling."
+    },
+    {
+      "id": 92,
+      "name": "Manfaat beruvchi (An-Nafi' - النافع)",
+      "meaning": "O'z rahmati va fazli bilan xohlagan bandasiga manfaat va yaxshilik yetkazuvchi Zot. Koinotdagi barcha manfaat Allohdan keladi.",
+      "reflection": "Insonlarga manfaat yetkazishga harakat qiling, chunki Alloh bandalariga manfaat beruvchilarni sevadi. Odamlarning eng yaxshisi odamlarga ko'p manfaat yetkazadiganidir."
+    },
+    {
+      "id": 93,
+      "name": "Nur (An-Nur - النور)",
+      "meaning": "Osmonlar va yerni O'z nuri bilan yoritgan, mo'minlar qalbini hidoyat va iymon nuri bilan yoritgan Zot. Uning nuri barcha zulmatni yoritadi.",
+      "reflection": "Allohdan qalbingizni va basiratingizni iymon va hidoyat nuri bilan yoritishini so'rang. O'z hayotingizni boshqalar yo'lini yoritadigan nurga aylantiring."
+    },
+    {
+      "id": 94,
+      "name": "Hidoyat qiluvchi (Al-Hadi - الهادي)",
+      "meaning": "Xohlagan kishisini to'g'ri yo'lga va haq dinga hidoyat qiluvchi Zot. Qalblarni O'zini tanishga hidoyat qiladi. Uning hidoyati bebaho buyuk ne'matdir.",
+      "reflection": "Har bir namozda va duoda Allohdan hidoyat va sobitqadamlik so'rang. Boshqalarni ham hikmat va chiroyli mav'iza bilan hidoyatga chaqirishga harakat qiling."
+    },
+    {
+      "id": 95,
+      "name": "O'xshashsiz yaratuvchi (Al-Badi' - البديع)",
+      "meaning": "Maxluqotlarni oldingi andoza va o'xshashisiz yaratgan va ixtiro qilgan Zot. Uning yaratishdagi ijodkorligi aql-idroklarni hayratga soladi.",
+      "reflection": "Allohning yaratishdagi o'xshashsizligini tafakkur qiling va Uning ulug'ligiga shukrona sajdasi qiling. O'z ish va ibodat ishlaringizda ham chiroyli yondashuvni odat qiling."
+    },
+    {
+      "id": 96,
+      "name": "Boqiy qoluvchi (Al-Baqi - الباقي)",
+      "meaning": "Hech qachon zavolga yuz tutmaydigan, fano bo'lmaydigan Boqiy Zot. Uning yuzidan boshqa har bir narsa halok bo'luvchidir. Barcha maxluqotlar fano bo'lganda ham U boqiydir.",
+      "reflection": "Boqiy qoladigan narsalar uchun amal qiling, foniylikka yuz tutadigan narsalarga bog'lanib qolmang. Alloh huzuridagi narsalar yaxshiroq va boqiydir."
+    },
+    {
+      "id": 97,
+      "name": "Merosxo'r (Al-Warith - الوارث)",
+      "meaning": "Hamma fano bo'lib ketgandan keyin yer va undagi hamma narsaning yolg'iz merosxo'ri bo'lib qoladigan Zot. Barcha ishlar oxir-oqibat Unga qaytadi.",
+      "reflection": "Hamma narsani o'zingizdan keyin tashlab ketishingizni eslang, shuning uchun oxiratingiz uchun zaxira tayyorlang. Alloh yo'lida qilgan ehsonlaringiz siz uchun qoladigan meros ekanini biling."
+    },
+    {
+      "id": 98,
+      "name": "To'g'ri yo'lga boshlovchi (Ar-Rashid - الرشيد)",
+      "meaning": "Maxluqotlarni o'zlarining diniy va dunyoviy manfaatlariga to'g'ri yo'llab qo'yuvchi Zot. Uning boshqaruvi hikmatli va to'g'ridir. Xohlaganini to'g'ri yo'lga hidoyat qiladi.",
+      "reflection": "Barcha ishlaringizda Allohdan to'g'ri yo'l (rushd) so'rang, qaror qabul qilishda istixora qiling. Kim Allohga tavakkal qilib to'g'ri yo'l so'rasa, Alloh uni to'g'ri yo'lga boshlaydi."
+    },
+    {
+      "id": 99,
+      "name": "O'ta sabrli (As-Sabur - الصبور)",
+      "meaning": "Qodir bo'lsa-da, osiylarni jazolashga shoshilmaydigan Zot. Tavba qilib qaytishlari uchun ularga muhlat beradi va sabr qiladi. Uning sabri va halimligi buyukdir.",
+      "reflection": "Allohning taqdirlariga, toatda bo'lishga va ma'siyatdan tiyilishga sabrli bo'ling. Bilingki, sabr yengillik kaliti va muvaffaqiyat yo'lidir."
+    }
+  ]
+}

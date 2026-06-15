@@ -1,0 +1,38 @@
+[
+  {
+    "text": "سُبْحَانَ اللَّهِ",
+    "target": 33,
+    "translation": "Glory be to Allah",
+    "transliteration": "Subhan Allah"
+  },
+  {
+    "text": "الْحَمْدُ لِلَّهِ",
+    "target": 33,
+    "translation": "All praise is for Allah",
+    "transliteration": "Alhamdu lillah"
+  },
+  {
+    "text": "اللَّهُ أَكْبَرُ",
+    "target": 34,
+    "translation": "Allah is the Greatest",
+    "transliteration": "Allahu Akbar"
+  },
+  {
+    "text": "لَا إِلَهَ إِلَّا اللَّهُ",
+    "target": 100,
+    "translation": "There is no deity but Allah",
+    "transliteration": "La ilaha illa Allah"
+  },
+  {
+    "text": "أَسْتَغْفِرُ اللَّهَ",
+    "target": 100,
+    "translation": "I seek Allah's forgiveness",
+    "transliteration": "Astaghfirullah"
+  },
+  {
+    "text": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",
+    "target": 100,
+    "translation": "Glory be to Allah and praise is His",
+    "transliteration": "Subhan Allah wa bihamdih"
+  }
+]

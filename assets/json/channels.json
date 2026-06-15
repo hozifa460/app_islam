@@ -12,8 +12,9 @@
         "name": "يوتيوب",
         "icon": "youtube",
         "color": "#FF0000",
-        "url": "https://youtube.com/@zaink-r8q?si=le-IwhyWVMIThncb",
+        "link": "https://youtube.com/@zaink-r8q?si=le-IwhyWVMIThncb",
         "handle": "@Zaink-r8q",
+        "channelId": "UCQKqsmz6fY_4l5ilNpJ5iSw",
         "channel_image": "https://yt3.googleusercontent.com/0K1L6_hj5LaIjA0a-Iwpk0FUqNsJcFKp3t2nmBh-yvkzSLOPfbz_f4KWLHqqy4VTx25avFfkU-c=s160-c-k-c0x00ffffff-no-rj",
         "live_url": "https://www.youtube.com/@Zaink-r8q/streams",
         "subscribers": "369k"
@@ -22,7 +23,7 @@
         "name": "تيك توك",
         "icon": "tiktok",
         "color": "#010101",
-        "url": "https://www.tiktok.com/@zainkairalah.8?is_from_webapp=1&sender_device=pc",
+        "link": "https://www.tiktok.com/@zainkairalah.8?is_from_webapp=1&sender_device=pc",
         "handle": "@zainkairalah.8",
         "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/6b66ff35404104b53e3dd38254be1997~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=dc357dc1&x-expires=1774648800&x-signature=3Cibgx6NzGagk%2BjoOCfdRSGKKp0%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my",
         "subscribers": "1.2M"
@@ -42,8 +43,9 @@
         "name": "يوتيوب",
         "icon": "youtube",
         "color": "#FF0000",
-        "url": "https://youtube.com/@othmanalkamees?si=cORxutM4WdsqPzP-",
+        "link": "https://youtube.com/@othmanalkamees?si=cORxutM4WdsqPzP-",
         "handle": "@othmanalkamees",
+        "channelId": "UCWjCSGhmSGu0VLf2mPFS0Kg",
         "channel_image": "https://yt3.googleusercontent.com/mdSJF_9xy4FsjPnLs3Q6hhbjSFRy9jb1nECG_2XsvIyziceIWn4P_RSc1Qt2X1Qn_J-AbzXqEGw=s160-c-k-c0x00ffffff-no-rj",
         "live_url": "https://www.youtube.com/@othmanalkamees/streams",
         "subscribers": "5.68 مليون"
@@ -52,7 +54,7 @@
         "name": "تيك توك",
         "icon": "tiktok",
         "color": "#010101",
-        "url": "https://www.tiktok.com/@othmanelkamees?is_from_webapp=1&sender_device=pc",
+        "link": "https://www.tiktok.com/@othmanelkamees?is_from_webapp=1&sender_device=pc",
         "handle": "@othmanelkamees",
         "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/7328867491479584773~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=21bf20a7&x-expires=1774652400&x-signature=X3x3UsbyU7IdxkcKL72AnumgW6c%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my",
         "subscribers": "767.3K"
@@ -61,52 +63,45 @@
   },
   {
     "id": 3,
-    "name": "الشيخ محمد صالح المنجد",
-    "title": "مؤسس إسلام سؤال وجواب",
-    "category": "فقه وفتاوى",
-    "country": "السعودية",
-    "flag": "🇸🇦",
-    "image": "https://yt3.googleusercontent.com/ytc/AIdro_lRz5IgsTDKrwPb0TXkq2rKtBe3yqG9sD1Hu7mRrQ=s176-c-k-c0x00ffffff-no-rj",
+    "name": "معاذ عليان",
+    "title": "محتور ومناقش",
+    "category": "محاورات",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/hwUn8IxqmbiHd-PjUqvuN7yxNosq2kBVIltrX97FmR4ZFGce3TS7bFOVWsC6HtfsdEzUSP5r=s160-c-k-c0x00ffffff-no-rj",
     "platforms": [
       {
         "name": "يوتيوب",
         "icon": "youtube",
         "color": "#FF0000",
-        "url": "https://www.youtube.com/@islamqa",
-        "handle": "@islamqa",
+        "link": "https://youtube.com/@mo3az3lian?si=wiZ8Xf4w2ffl1ycj",
+        "handle": "@mo3az3lian",
+        "channelId": "UCZgb3h-QHvK8abuJzs73vag",
         "channel_image": "https://yt3.googleusercontent.com/ytc/AIdro_lRz5IgsTDKrwPb0TXkq2rKtBe3yqG9sD1Hu7mRrQ=s176-c-k-c0x00ffffff-no-rj",
-        "live_url": "https://www.youtube.com/@islamqa/live",
+        "live_url": "https://www.youtube.com/@mo3az3lian/streams",
         "subscribers": "5.8M"
       }
     ]
   },
   {
     "id": 4,
-    "name": "الشيخ سعد الغامدي",
-    "title": "قارئ وداعية إسلامي",
-    "category": "تفسير وقرآن",
-    "country": "السعودية",
-    "flag": "🇸🇦",
-    "image": "https://yt3.googleusercontent.com/ytc/AIdro_nPQ4X_mR1c2jnxRY7xOC5hfJkGgL3J6b8mU9EYRw=s176-c-k-c0x00ffffff-no-rj",
+    "name": "الشيخ ايمن عبد الجليل",
+    "title": "داعية اسلامي",
+    "category": "وعظ",
+    "country": "مصر",
+    "flag": "🇪🇬",
+    "image": "https://yt3.googleusercontent.com/SAe0sUS2DsVUfuLD1b3F8rEUmeJ5_-Q4OM3wlC5Rt5amRrcTG_I7IXuhDDwYJkIxfRhLqbjlhk0=s160-c-k-c0x00ffffff-no-rj",
     "platforms": [
       {
         "name": "يوتيوب",
         "icon": "youtube",
         "color": "#FF0000",
-        "url": "https://www.youtube.com/@saadalghamdi",
-        "handle": "@saadalghamdi",
-        "channel_image": "https://yt3.googleusercontent.com/ytc/AIdro_nPQ4X_mR1c2jnxRY7xOC5hfJkGgL3J6b8mU9EYRw=s176-c-k-c0x00ffffff-no-rj",
-        "live_url": "https://www.youtube.com/@saadalghamdi/live",
-        "subscribers": "4.1M"
-      },
-      {
-        "name": "تيك توك",
-        "icon": "tiktok",
-        "color": "#010101",
-        "url": "https://www.tiktok.com/@saad.alghamdi",
-        "handle": "@saad.alghamdi",
-        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
-        "subscribers": "890K"
+        "link": "https://youtube.com/@ayman_abdelgelil?si=mU2E63tIhxZYRY2N",
+        "handle": "@ayman_abdelgelil",
+        "channelId": "UC-hKhCAfM5HXbqqfKvcviEA",
+        "channel_image": "https://yt3.googleusercontent.com/SAe0sUS2DsVUfuLD1b3F8rEUmeJ5_-Q4OM3wlC5Rt5amRrcTG_I7IXuhDDwYJkIxfRhLqbjlhk0=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@alghazaly/live",
+        "subscribers": "1.24M"
       }
     ]
   },
@@ -117,15 +112,16 @@
     "category": "دعاة",
     "country": "السعودية",
     "flag": "🇸🇦",
-    "image": "https://yt3.googleusercontent.com/ytc/AIdro_kTJKfRWGn6hYhwlO3R6S2g5LJQbq2KbCpT7w=s176-c-k-c0x00ffffff-no-rj",
+    "image": "https://yt3.googleusercontent.com/ytc/AIdro_n8ZFy2kkWVn5AWne2wTGM95sc-OH4Idp2i_g2AQinLlg=s160-c-k-c0x00ffffff-no-rj",
     "platforms": [
       {
         "name": "يوتيوب",
         "icon": "youtube",
         "color": "#FF0000",
-        "url": "https://www.youtube.com/@MohammedAlArefi",
+        "link": "https://youtube.com/@hamode656?si=rqQboVOYU62V30-F",
         "handle": "@MohammedAlArefi",
-        "channel_image": "https://yt3.googleusercontent.com/ytc/AIdro_kTJKfRWGn6hYhwlO3R6S2g5LJQbq2KbCpT7w=s176-c-k-c0x00ffffff-no-rj",
+        "channelId": "UCdC_KOXojzyy8eN36X1Wiow",
+        "channel_image": "https://yt3.googleusercontent.com/ytc/AIdro_n8ZFy2kkWVn5AWne2wTGM95sc-OH4Idp2i_g2AQinLlg=s160-c-k-c0x00ffffff-no-rj",
         "live_url": "https://www.youtube.com/@MohammedAlArefi/live",
         "subscribers": "9.3M"
       },
@@ -133,7 +129,7 @@
         "name": "تيك توك",
         "icon": "tiktok",
         "color": "#010101",
-        "url": "https://www.tiktok.com/@mohammed.alarifi",
+        "link": "https://www.tiktok.com/@mohammed.alarifi",
         "handle": "@mohammed.alarifi",
         "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/alarifi.jpg",
         "subscribers": "2.4M"
@@ -142,7 +138,7 @@
         "name": "X (تويتر)",
         "icon": "twitter",
         "color": "#1DA1F2",
-        "url": "https://twitter.com/alarefe",
+        "link": "https://twitter.com/alarefe",
         "handle": "@alarefe",
         "channel_image": "https://pbs.twimg.com/profile_images/alarefe.jpg",
         "subscribers": "15M"
@@ -151,19 +147,20 @@
   },
   {
     "id": 6,
-    "name": "الشيخ نبيل العوضي",
-    "title": "داعية وكاتب إسلامي",
+    "name": "الشيخ مصطفى العدوي",
+    "title": "داعية وعالم اسلامي",
     "category": "دعاة",
-    "country": "الكويت",
-    "flag": "🇰🇼",
-    "image": "https://yt3.googleusercontent.com/ytc/AIdro_k2X5tHkPvr6hPc5J0m8fFnL7_TUXJq3CjE8Gw=s176-c-k-c0x00ffffff-no-rj",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/-eLizqc_bQxxWlqbLSCmXOS65zhK40eHZ0VR09QJgiVXdm8HtKGFOJoA7-RUYkSu8fHxlwh4=s160-c-k-c0x00ffffff-no-rj",
     "platforms": [
       {
         "name": "يوتيوب",
         "icon": "youtube",
         "color": "#FF0000",
-        "url": "https://www.youtube.com/@nabilalawadhy",
-        "handle": "@nabilalawadhy",
+        "link": "https://youtube.com/@ftawamostafaaladwy?si=tso680RihprA0XY_",
+        "handle": "@ftawamostafaaladwy",
+        "channelId": "UCYW44APHfIo0GyAO9iosHjQ",
         "channel_image": "https://yt3.googleusercontent.com/ytc/AIdro_k2X5tHkPvr6hPc5J0m8fFnL7_TUXJq3CjE8Gw=s176-c-k-c0x00ffffff-no-rj",
         "live_url": "https://www.youtube.com/@nabilalawadhy/live",
         "subscribers": "6.7M"
@@ -172,7 +169,7 @@
         "name": "تيك توك",
         "icon": "tiktok",
         "color": "#010101",
-        "url": "https://www.tiktok.com/@nabil.alawadhy",
+        "link": "https://www.tiktok.com/@nabil.alawadhy",
         "handle": "@nabil.alawadhy",
         "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/nabil_alawadhy.jpg",
         "subscribers": "1.8M"
@@ -181,43 +178,45 @@
   },
   {
     "id": 7,
-    "name": "د. خالد الجندي",
-    "title": "عضو المجلس الأعلى للشؤون الإسلامية",
-    "category": "فقه وفتاوى",
+    "name": "الشيخ محمود نصار",
+    "title": "داعي الى الله",
+    "category": "دعاة",
     "country": "مصر",
     "flag": "🇪🇬",
-    "image": "https://yt3.googleusercontent.com/ytc/AIdro_kXJ7gzp5gUe_4VCk2nJp_9GGvWYQnXPd4B2Q=s176-c-k-c0x00ffffff-no-rj",
+    "image": "https://yt3.googleusercontent.com/lwH4yOFADgZkfH36im2IPrlmwxFJKzREeP0kluXyTNTH2flQOiDds3o7089qCkJl7N9CTtfWag=s160-c-k-c0x00ffffff-no-rj",
     "platforms": [
       {
         "name": "يوتيوب",
         "icon": "youtube",
         "color": "#FF0000",
-        "url": "https://www.youtube.com/@KhaledAlGindy",
-        "handle": "@KhaledAlGindy",
-        "channel_image": "https://yt3.googleusercontent.com/ytc/AIdro_kXJ7gzp5gUe_4VCk2nJp_9GGvWYQnXPd4B2Q=s176-c-k-c0x00ffffff-no-rj",
-        "live_url": "https://www.youtube.com/@KhaledAlGindy/live",
-        "subscribers": "2.1M"
+        "link": "https://youtube.com/@m.nassar6020?si=Hx7IsbTYd2ZS5ljT",
+        "handle": "@m.nassar6020",
+        "channelId": "UCKkUyJzPZ_auhTcAqHCDfqg",
+        "channel_image": "https://yt3.googleusercontent.com/lwH4yOFADgZkfH36im2IPrlmwxFJKzREeP0kluXyTNTH2flQOiDds3o7089qCkJl7N9CTtfWag=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "",
+        "subscribers": "127الف"
       }
     ]
   },
   {
     "id": 8,
-    "name": "الشيخ صالح الفوزان",
-    "title": "عالم وعضو هيئة كبار العلماء",
-    "category": "عقيدة",
-    "country": "السعودية",
+    "name": "الداعية علي دعوة",
+    "title": "داعية الى الله",
+    "category": "دعاة",
+    "country": "",
     "flag": "🇸🇦",
-    "image": "https://yt3.googleusercontent.com/ytc/AIdro_kJq8RzPmM5bXoJYPcL4Q2tgYqjLR8fLqRdPQ=s176-c-k-c0x00ffffff-no-rj",
+    "image": "https://yt3.googleusercontent.com/ytc/AIdro_nKK_IiXxsBeL6bwORDwkcVCsMbkjQMXaDbLzu3i_wqgg=s160-c-k-c0x00ffffff-no-rj",
     "platforms": [
       {
         "name": "يوتيوب",
         "icon": "youtube",
         "color": "#FF0000",
-        "url": "https://www.youtube.com/@alfawzan",
-        "handle": "@alfawzan",
-        "channel_image": "https://yt3.googleusercontent.com/ytc/AIdro_kJq8RzPmM5bXoJYPcL4Q2tgYqjLR8fLqRdPQ=s176-c-k-c0x00ffffff-no-rj",
-        "live_url": "https://www.youtube.com/@alfawzan/live",
-        "subscribers": "3.5M"
+        "link": "https://youtube.com/@alidawaharabic?si=SA1N-l4dWwLT_IeD",
+        "handle": "@alidawaharabic",
+        "channelId": "UCHpfbcz5KfmtPMBuuUISaSw",
+        "channel_image": "https://yt3.googleusercontent.com/ytc/AIdro_nKK_IiXxsBeL6bwORDwkcVCsMbkjQMXaDbLzu3i_wqgg=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@AliDawah/streams",
+        "subscribers": "1.34M"
       }
     ]
   },
@@ -228,23 +227,24 @@
     "category": "تزكية",
     "country": "مصر",
     "flag": "🇪🇬",
-    "image": "https://yt3.googleusercontent.com/ytc/AIdro_nL5J6mK8Pu9ZGY7gQxT2lVmOJlX7A3PsRcBw=s176-c-k-c0x00ffffff-no-rj",
+    "image": "https://yt3.googleusercontent.com/ytc/AIdro_mRVzYSL1K-8yvAmRow06evEOAbyCR-Uazaa_YRe-fNSvc=s160-c-k-c0x00ffffff-no-rj",
     "platforms": [
       {
         "name": "يوتيوب",
         "icon": "youtube",
         "color": "#FF0000",
-        "url": "https://www.youtube.com/@omarabdelkafi",
-        "handle": "@omarabdelkafi",
-        "channel_image": "https://yt3.googleusercontent.com/ytc/AIdro_nL5J6mK8Pu9ZGY7gQxT2lVmOJlX7A3PsRcBw=s176-c-k-c0x00ffffff-no-rj",
-        "live_url": "https://www.youtube.com/@omarabdelkafi/live",
-        "subscribers": "4.8M"
+        "link": "https://youtube.com/@abdelkafytube?si=7u_u5h_-WVM9aBoM",
+        "handle": "@abdelkafytube",
+        "channelId": "UCKUOmGXE9Ytlc2EzpGqimtw",
+        "channel_image": "https://yt3.googleusercontent.com/ytc/AIdro_mRVzYSL1K-8yvAmRow06evEOAbyCR-Uazaa_YRe-fNSvc=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@abdelkafytube/streams",
+        "subscribers": "10.2M"
       },
       {
         "name": "تيك توك",
         "icon": "tiktok",
         "color": "#010101",
-        "url": "https://www.tiktok.com/@omar.abdelkafi",
+        "link": "https://www.tiktok.com/@omar.abdelkafi",
         "handle": "@omar.abdelkafi",
         "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/omar_abdelkafi.jpg",
         "subscribers": "2.2M"
@@ -258,23 +258,24 @@
     "category": "عقيدة",
     "country": "الأردن",
     "flag": "🇯🇴",
-    "image": "https://yt3.googleusercontent.com/ytc/AIdro_kRz5IgsTDKrwPb0TXkq2rKtBe3yqG9sD1Hu7mRrQ=s176-c-k-c0x00ffffff-no-rj",
+    "image": "https://yt3.googleusercontent.com/Oei_CmE__RBRr6DFViOz_vkmCAt1fKGdXvOJROpFBSEFXZm0EcdN26m11ttwC81zT5LWusLiPQ=s160-c-k-c0x00ffffff-no-rj",
     "platforms": [
       {
         "name": "يوتيوب",
         "icon": "youtube",
         "color": "#FF0000",
-        "url": "https://www.youtube.com/@EyadQunaibi",
-        "handle": "@EyadQunaibi",
-        "channel_image": "https://yt3.googleusercontent.com/ytc/AIdro_kRz5IgsTDKrwPb0TXkq2rKtBe3yqG9sD1Hu7mRrQ=s176-c-k-c0x00ffffff-no-rj",
-        "live_url": "https://www.youtube.com/@EyadQunaibi/live",
-        "subscribers": "7.2M"
+        "link": "https://youtube.com/@eyadqunaibi?si=EgTHlfo8xl7w7rRe",
+        "handle": "@eyadqunaibi",
+        "channelId": "UCahYlNszeMy_PHffYvgAOHg",
+        "channel_image": "https://yt3.googleusercontent.com/Oei_CmE__RBRr6DFViOz_vkmCAt1fKGdXvOJROpFBSEFXZm0EcdN26m11ttwC81zT5LWusLiPQ=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@eyadqunaibi/streams",
+        "subscribers": "2.1M"
       },
       {
         "name": "تيك توك",
         "icon": "tiktok",
         "color": "#010101",
-        "url": "https://www.tiktok.com/@iyad.qunaibi",
+        "link": "https://www.tiktok.com/@iyad.qunaibi",
         "handle": "@iyad.qunaibi",
         "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/qunaibi.jpg",
         "subscribers": "3.1M"
@@ -283,7 +284,7 @@
         "name": "X (تويتر)",
         "icon": "twitter",
         "color": "#1DA1F2",
-        "url": "https://twitter.com/EyadQunaibi",
+        "link": "https://twitter.com/EyadQunaibi",
         "handle": "@EyadQunaibi",
         "channel_image": "https://pbs.twimg.com/profile_images/qunaibi.jpg",
         "subscribers": "4.5M"
@@ -292,28 +293,29 @@
   },
   {
     "id": 11,
-    "name": "الشيخ وسيم يوسف",
-    "title": "داعية وخطيب",
-    "category": "تزكية",
-    "country": "الإمارات",
+    "name": "الدكتور هيثم طلعت",
+    "title": "داعية الى الله",
+    "category": "دعاة",
+    "country": "مصر",
     "flag": "🇦🇪",
-    "image": "https://yt3.googleusercontent.com/ytc/AIdro_kTJKfRWGn6hYhwlO3R6S2g5LJQbq2KbCpT7w=s176-c-k-c0x00ffffff-no-rj",
+    "image": "https://yt3.googleusercontent.com/PI0Fwa7984hsKgXzrYMNs3ui9j2QQ9ONjeufqclHph-f6Wtw8psI11fF9j_Py0eRQ60Q9m4X=s160-c-k-c0x00ffffff-no-rj",
     "platforms": [
       {
         "name": "يوتيوب",
         "icon": "youtube",
         "color": "#FF0000",
-        "url": "https://www.youtube.com/@WaseemYousif",
-        "handle": "@WaseemYousif",
-        "channel_image": "https://yt3.googleusercontent.com/ytc/AIdro_kTJKfRWGn6hYhwlO3R6S2g5LJQbq2KbCpT7w=s176-c-k-c0x00ffffff-no-rj",
-        "live_url": "https://www.youtube.com/@WaseemYousif/live",
-        "subscribers": "5.4M"
+        "link": "https://youtube.com/@dr.haitham_talaat?si=MON8HBdbbf046W7M",
+        "handle": "@dr.haitham_talaat",
+        "channelId": "UCLj8UFOcdFrvlh24Lw7jrgA",
+        "channel_image": "https://yt3.googleusercontent.com/PI0Fwa7984hsKgXzrYMNs3ui9j2QQ9ONjeufqclHph-f6Wtw8psI11fF9j_Py0eRQ60Q9m4X=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@Dr.Haitham_Talaat/streams",
+        "subscribers": "1.15M"
       },
       {
         "name": "تيك توك",
         "icon": "tiktok",
         "color": "#010101",
-        "url": "https://www.tiktok.com/@waseem.yousif",
+        "link": "https://www.tiktok.com/@waseem.yousif",
         "handle": "@waseem.yousif",
         "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/waseem_yousif.jpg",
         "subscribers": "1.9M"
@@ -322,43 +324,1050 @@
   },
   {
     "id": 12,
-    "name": "الشيخ علي جابر",
-    "title": "قارئ وإمام المسجد الحرام",
-    "category": "تفسير وقرآن",
-    "country": "السعودية",
+    "name": "الشيخ محمد الغليظ",
+    "title": "بحر العلم",
+    "category": "تزكية",
+    "country": "مصر",
     "flag": "🇸🇦",
-    "image": "https://yt3.googleusercontent.com/ytc/AIdro_nPQ4X_mR1c2jnxRY7xOC5hfJkGgL3J6b8mU9EYRw=s176-c-k-c0x00ffffff-no-rj",
+    "image": "https://yt3.googleusercontent.com/OJdKBXnwjxerWUmkvqJqC9ip86KwhhPc7pYOHvcRLd433wshUfb0_4tOqtKxGHVEXKyUzhPk=s160-c-k-c0x00ffffff-no-rj",
     "platforms": [
       {
         "name": "يوتيوب",
         "icon": "youtube",
         "color": "#FF0000",
-        "url": "https://www.youtube.com/@alijaber",
-        "handle": "@alijaber",
-        "channel_image": "https://yt3.googleusercontent.com/ytc/AIdro_nPQ4X_mR1c2jnxRY7xOC5hfJkGgL3J6b8mU9EYRw=s176-c-k-c0x00ffffff-no-rj",
-        "live_url": "https://www.youtube.com/@alijaber/live",
-        "subscribers": "8.1M"
+        "link": "https://youtube.com/@mohelghaleez?si=HdQXu6ridHU7hS-8",
+        "handle": "@mohelghaleez",
+        "channelId": "UC87hmYpPnVdgmv4bvs0V-eg",
+        "channel_image": "https://yt3.googleusercontent.com/OJdKBXnwjxerWUmkvqJqC9ip86KwhhPc7pYOHvcRLd433wshUfb0_4tOqtKxGHVEXKyUzhPk=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@mohelghaleez/streams",
+        "subscribers": "1.91M"
       }
     ]
   },
   {
     "id": 13,
-    "name": "الشيخ محمد الغزالي",
-    "title": "عالم وفقيه إسلامي",
-    "category": "تفسير وقرآن",
+    "name": "ايه المشكلة",
+    "title": "بودكاست تزكية",
+    "category": "تزكية",
     "country": "مصر",
     "flag": "🇪🇬",
-    "image": "https://yt3.googleusercontent.com/ytc/AIdro_kPq2nM8Pu9ZGY7gQxT2lVmOJlX7A3PsRcBw=s176-c-k-c0x00ffffff-no-rj",
+    "image": "https://yt3.googleusercontent.com/4mGekhSGJqSuZuRV0U664_zvkYVNu1eex45SKxvkLbE1zgXKtVuSLccNxjxv96J6ZynXHuCact0=s160-c-k-c0x00ffffff-no-rj",
     "platforms": [
       {
         "name": "يوتيوب",
         "icon": "youtube",
         "color": "#FF0000",
-        "url": "https://www.youtube.com/@alghazaly",
-        "handle": "@alghazaly",
-        "channel_image": "https://yt3.googleusercontent.com/ytc/AIdro_kPq2nM8Pu9ZGY7gQxT2lVmOJlX7A3PsRcBw=s176-c-k-c0x00ffffff-no-rj",
+        "link": "https://youtube.com/@eh_el_moshkla?si=i6btZH129g01b4t8",
+        "handle": "@eh_el_moshkla",
+        "channelId": "UCQ2X_YPmdjBOjVq6dLbO0pQ",
+        "channel_image": "https://yt3.googleusercontent.com/4mGekhSGJqSuZuRV0U664_zvkYVNu1eex45SKxvkLbE1zgXKtVuSLccNxjxv96J6ZynXHuCact0=s160-c-k-c0x00ffffff-no-rj",
         "live_url": "https://www.youtube.com/@alghazaly/live",
-        "subscribers": "2.9M"
+        "subscribers": "1.24M"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "ياسر ممدوح",
+    "title": "مفكر اسلامي",
+    "category": "وعظ",
+    "country": "مصر",
+    "flag": "🇪🇬",
+    "image": "https://yt3.googleusercontent.com/ytc/AIdro_nL9psk0shZuYK2svmpoIK2EhTtmHo4m5xfUHnt24rryxo=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@yassermamdouh?si=y06ZaaIWfrLx2KgS",
+        "handle": "@yassermamdouh",
+        "channelId": "UC4a5m_aUZQ-PARanwoOKHAw",
+        "channel_image": "https://yt3.googleusercontent.com/ytc/AIdro_nL9psk0shZuYK2svmpoIK2EhTtmHo4m5xfUHnt24rryxo=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@alghazaly/live",
+        "subscribers": "1.24M"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "الشيخ امير منير",
+    "title": "داعية اسلامي",
+    "category": "وعظ",
+    "country": "مصر",
+    "flag": "🇪🇬",
+    "image": "https://yt3.googleusercontent.com/ytc/AIdro_lJjNsY_EgB8oYncqEtrseWQ7AtczcRiuj29NbuBl99AA=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@amirmounirofficial?si=2ZxyBEqp-pRnQWT2",
+        "handle": "@amirmounirofficial",
+        "channelId": "UCp479sePW_R7NM8AhPyUDoQ",
+        "channel_image": "https://yt3.googleusercontent.com/ytc/AIdro_lJjNsY_EgB8oYncqEtrseWQ7AtczcRiuj29NbuBl99AA=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@alghazaly/live",
+        "subscribers": "1.24M"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "قرار ازالة",
+    "title": "محاور ومناقش فريد",
+    "category": "محاورات",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/bHzp40SANbiSwIG7KcOiBTuON4moNYCh_8jpgd07F6x56hzrv0OgFRlPyNlgxJRTN3v1mRZiGQ=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/channel/UCuAsYA8YKcLaQa3KTrwd-vQ?si=GyW1dh77clZ2GVjh",
+        "handle": "@UCuAsYA8YKcLaQa3KTrwd-vQ",
+        "channelId": "UCuAsYA8YKcLaQa3KTrwd-vQ",
+        "channel_image": "https://yt3.googleusercontent.com/bHzp40SANbiSwIG7KcOiBTuON4moNYCh_8jpgd07F6x56hzrv0OgFRlPyNlgxJRTN3v1mRZiGQ=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@UCuAsYA8YKcLaQa3KTrwd-vQ/streams",
+        "subscribers": "4.1M"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "الشيخ علاء ابراهيم",
+    "title": "داعية",
+    "category": "دعاة",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/0YvS_9nXaWKoHnuwQfAWDG4R9w7ivf1Yz__6xgKG2G0LOd-NYLmxxt0JYkm3kpJpSKuRweHP5A=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@alaaeldinebrahim0?si=SwYA9VryiIMWRvAL",
+        "handle": "@alaaeldinebrahim0",
+        "channelId": "UCt5GkqG_FUDjTN75J1CL8cg",
+        "channel_image": "https://yt3.googleusercontent.com/0YvS_9nXaWKoHnuwQfAWDG4R9w7ivf1Yz__6xgKG2G0LOd-NYLmxxt0JYkm3kpJpSKuRweHP5A=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@alaaeldinebrahim0/streams",
+        "subscribers": "105 الف"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "الشيخ امجد سمير",
+    "title": "داعية ومربي للنفس",
+    "category": "دعاة",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/hb6S9RTY3q6ZKOCMyjtG-bssUQioTYWTGQbKRmg5fyTBmxrvvqbqSQhh0IvbnQ4A9NsU64fg7w=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@amgad_samir?si=C_s4Wl4dObqnlOpn",
+        "handle": "@amgad_samir",
+        "channelId": "UC_FFy2YxiElNMba-t-6VwTA",
+        "channel_image": "https://yt3.googleusercontent.com/hb6S9RTY3q6ZKOCMyjtG-bssUQioTYWTGQbKRmg5fyTBmxrvvqbqSQhh0IvbnQ4A9NsU64fg7w=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@amgad_samir/streams",
+        "subscribers": "556 الف"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "الشيخ محمد الفرماوى",
+    "title": "مجاوب مقنع للشبهات",
+    "category": "دعاة",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/F3TPKWKnmnyDBCa6rNOu1ugk4SnW_UCsD2ZUt4yR4wIAUWyBCNvf_jQ0TKjbP7PmkjOKa8KrhQ=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@mohamedelframawey?si=PXmCQmINn2MSmpcb",
+        "handle": "@mohamedelframawey",
+        "channelId": "UCM2RnVqp7peU8k6rrQXt40Q",
+        "channel_image": "https://yt3.googleusercontent.com/F3TPKWKnmnyDBCa6rNOu1ugk4SnW_UCsD2ZUt4yR4wIAUWyBCNvf_jQ0TKjbP7PmkjOKa8KrhQ=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@mohamedelframawey/streams",
+        "subscribers": "556 الف"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "الشيخ علاء حامد",
+    "title": "محارب لفساد النفس",
+    "category": "تزكية",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/obex1h9M4mc53j_RrQneIgouB814L2jvxusQBJ1wF7i-DQ3Q86JOt3NxDvZJ9YqAxZenlV53=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@3laahamed?si=hFZBrKPuXskfF2bJ",
+        "handle": "@3laahamed",
+        "channelId": "UCwLgnvgp32d8bHtQljXqWeQ",
+        "channel_image": "https://yt3.googleusercontent.com/obex1h9M4mc53j_RrQneIgouB814L2jvxusQBJ1wF7i-DQ3Q86JOt3NxDvZJ9YqAxZenlV53=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@3laahamed/streams",
+        "subscribers": "1.23 مليون"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "name": "بدون ورق",
+    "title": "بودكاست ملم",
+    "category": "علم متنوع",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/0-Zfkk-eQom9oa07PUtWemXngKsS9FprWdXMamMJJY5m0PRA0XGkoD0l0MGWV-rzOEjwcaLmYQ=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@bidonwaraq?si=xbOsevaVe93P8KhI",
+        "handle": "@bidonwaraq",
+        "channelId": "UC7mCgzz-LYRt-a3mCvUbccg",
+        "channel_image": "https://yt3.googleusercontent.com/0-Zfkk-eQom9oa07PUtWemXngKsS9FprWdXMamMJJY5m0PRA0XGkoD0l0MGWV-rzOEjwcaLmYQ=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@bidonwaraq/streams",
+        "subscribers": "1.77 مليون"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "name": "فاهم",
+    "title": "بودكاست بيخليك فاهم",
+    "category": "تزكية",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/UGcuE6niVr5GTJ6W_bqKltzDd2WYI041p5bXufQSionkuquqpE1_w22ZmfMmhFvyjTBe1YKi9A=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@fahem.podcast?si=vh55qCP0bb3uaBsu",
+        "handle": "@fahem.podcast",
+        "channelId": "UCuIayeub56xP83u7u-_d-SQ",
+        "channel_image": "https://yt3.googleusercontent.com/UGcuE6niVr5GTJ6W_bqKltzDd2WYI041p5bXufQSionkuquqpE1_w22ZmfMmhFvyjTBe1YKi9A=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@fahem.podcast/streams",
+        "subscribers": "1.37 مليون"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "name": "الشيخ عمرو حسن",
+    "title": "داعية ومناقش",
+    "category": "دعاة",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/VoVz-B9fh3dnUl4253PTm-NESU4skyC38HJY3FE-P_GXWa3QeNHvWguipZ2qjNOS9SPR38ZT=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@amrhaofficial44?si=lWfJtWLM5pyqYLgd",
+        "handle": "@amrhaofficial44",
+        "channelId": "UC_4enTcwPS4Kk56toPRlJpg",
+        "channel_image": "https://yt3.googleusercontent.com/VoVz-B9fh3dnUl4253PTm-NESU4skyC38HJY3FE-P_GXWa3QeNHvWguipZ2qjNOS9SPR38ZT=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@amrhaofficial44/streams",
+        "subscribers": "362 الف"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "name": "انس اكشن",
+    "title": "مميز في سرد الاحداث التاريخية واحداث الاخرة",
+    "category": "تاريخ",
+    "country": "السعودية",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/aW9CWiufoylM3B-xWBEsRPFmUz_izeazRO8qyqJeJJAFgak8glrwTkpGnULmCL9JEclXxHC5=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@anasaction?si=HZl54fuCd8AeciXk",
+        "handle": "@anasaction",
+        "channelId": "UCePJs1M5fKzUYDbAjRa1TSA",
+        "channel_image": "https://yt3.googleusercontent.com/aW9CWiufoylM3B-xWBEsRPFmUz_izeazRO8qyqJeJJAFgak8glrwTkpGnULmCL9JEclXxHC5=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@anasaction/streams",
+        "subscribers": "4.62 مليون"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "name": "الدكتور ذاكر نايك",
+    "title": "لا يحتاج تعليق",
+    "category": "محاورات",
+    "country": "الهند",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/A6kn_iCWpSorr42ehtB2yM9hJJHZSkvW0BWDz-2p-7BjnmvcFiU3vuQWXK-Wd5aTJRrXSvcC=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@th3message3?si=ffyU98UQi_elZbQ_",
+        "handle": "@th3message3",
+        "channelId": "UCWZEG9O221KaXiWThBtMHQQ",
+        "channel_image": "https://yt3.googleusercontent.com/A6kn_iCWpSorr42ehtB2yM9hJJHZSkvW0BWDz-2p-7BjnmvcFiU3vuQWXK-Wd5aTJRrXSvcC=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@th3message3/streams",
+        "subscribers": "1.36 مليون"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "name": "حكاوي",
+    "title": "عمرو عابدين",
+    "category": "حكاوي",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/55B_uh4ynhZLvnOT-ImLV0hProjeAimG-n_rL8pq7Py1TXu0POejwuI9-wO-WUioevy8ePsp=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@7akawi-aa?si=7sFKubR1m54ddlja",
+        "handle": "@7akawi-aa",
+        "channelId": "UCaIM7U5vrZkvLAz_BFCiyPw",
+        "channel_image": "https://yt3.googleusercontent.com/55B_uh4ynhZLvnOT-ImLV0hProjeAimG-n_rL8pq7Py1TXu0POejwuI9-wO-WUioevy8ePsp=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@7akawi-aa/streams",
+        "subscribers": "978 الف"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "name": "عشوائيات",
+    "title": "عمرو عابدين",
+    "category": "غرائب واسئلة",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/ytc/AIdro_m2rmTcefphbc6GFt94mP4CAker5QN06BL_z3EnDImibrk=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@3shwa2yattv?si=4PrRZlFohBA9oL3n",
+        "handle": "@3shwa2yattv",
+        "channelId": "UCe1m3ZH68Q8314yqulWHTcw",
+        "channel_image": "https://yt3.googleusercontent.com/ytc/AIdro_m2rmTcefphbc6GFt94mP4CAker5QN06BL_z3EnDImibrk=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@3shwa2yattv/streams",
+        "subscribers": "5.31 مليون"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "name": "اسئلة منتصف الليل",
+    "title": "عمرو عابدين",
+    "category": "غرائب واسئلة",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/ytc/AIdro_kxYPB4xzuLlGKHIS6mokEETXMwXiF18VxEgoxxR3zqTJg=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@noselleel?si=0pr7jLjlaCQdfBmE",
+        "handle": "@noselleel",
+        "channelId": "UCYskjD6IuQJrxrW3I0EriZA",
+        "channel_image": "https://yt3.googleusercontent.com/ytc/AIdro_kxYPB4xzuLlGKHIS6mokEETXMwXiF18VxEgoxxR3zqTJg=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@noselleel/streams",
+        "subscribers": "3.23 مليون"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "name": "احمد عامر",
+    "title": "",
+    "category": "تزكية",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/ytc/AIdro_nDbbgM4tmukGQoqWBYpeZ2WCt0GDzjIubAZa-dJZ5iBJU=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@ahmedamer2692?si=1Is5Hr5jLo5KPLaE",
+        "handle": "@ahmedamer2692",
+        "channelId": "UCah56qawts736uNxZA3inLQ",
+        "channel_image": "https://yt3.googleusercontent.com/ytc/AIdro_nDbbgM4tmukGQoqWBYpeZ2WCt0GDzjIubAZa-dJZ5iBJU=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@ahmedamer2692/streams",
+        "subscribers": "3.23 مليون"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "name": "عبدالله الغافري",
+    "title": "مبدع",
+    "category": "غرائب واسئلة",
+    "country": "قطر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/lx7AH0ki6wYatYQscEwg_uJYq4kZ-_SVAcF-eN-iaKQTknNlRbbCMeGE_85MZ3uHG3de3F-btw=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@alghafriqqq?si=7fTNRgiIl57FtXWA",
+        "handle": "@alghafriqqq",
+        "channelId": "UCeriWoRVWMHXBbo-FNG-0GQ",
+        "channel_image": "https://yt3.googleusercontent.com/lx7AH0ki6wYatYQscEwg_uJYq4kZ-_SVAcF-eN-iaKQTknNlRbbCMeGE_85MZ3uHG3de3F-btw=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@alghafriqqq/streams",
+        "subscribers": "4.48 مليون"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "name": "تجويد قران كريم",
+    "title": "\"تجويد قرآن كريم\" هي قناة مخصصة لنشر تلاوات عذبة وتراث الشيخ محمد صديق المنشاوي، أحد أعلام تلاوة القرآن الكريم في العالم الإسلامي.\nنقدم لكم أجمل التلاوات القرآنية المرتلة والمجودة بأصوات خاشعة ومؤثرة، بالإضافة إلى تسجيلات نادرة للشيخ المنشاوي، لتأخذكم في رحلة روحانية مع كلمات الله عز وجل.\nتابعونا للحصول على جرعة يومية من الإيمان والتأمل مع أفضل التلاوات والتسجيلات النادرة للقرّاء العظام",
+    "category": "قران كريم",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/-oVIh3oZ65skZvbD7pJ8zhEQ4W0J5CVKYzuMuNzKCkrHCuXHvXpXmSZzilk5EHrvB-EG7v6NBw=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@tajwed_quran.official?si=0kCLQR0nswKwzycR",
+        "handle": "@tajwed_quran.official",
+        "channelId": "UCjOHZLDRqQMGADGZ6vt98qg",
+        "channel_image": "https://yt3.googleusercontent.com/-oVIh3oZ65skZvbD7pJ8zhEQ4W0J5CVKYzuMuNzKCkrHCuXHvXpXmSZzilk5EHrvB-EG7v6NBw=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@tajwed_quran.official/streams",
+        "subscribers": "411 الف"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "name": "دروس اونلاين",
+    "title": "هذه القناه مهتمه بتعليم اللغه الانجليزية و  الجرافيك  و نصائح في اي مجال او تعليم كيفية عمل اي شئ- الى حد ما - ...ببساطه هذه قناة للتعلم.",
+    "category": "تعليم",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/ytc/AIdro_nwE4n9vyXfAvno2VZ8TXieaSUQZJhlKpbp8IzWc0RX_50=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@droosonline4u?si=KnQxt6tJpis8lZtf",
+        "handle": "@droosonline4u",
+        "channelId": "UCEHvaZ336u7TIsUQ2c6SAeQ",
+        "channel_image": "https://yt3.googleusercontent.com/ytc/AIdro_nwE4n9vyXfAvno2VZ8TXieaSUQZJhlKpbp8IzWc0RX_50=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@droosonline4u/streams",
+        "subscribers": "9.57 مليون"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "name": "Towards Eternity",
+    "title": "نحو الخلود هي قناة يوتيوب إسلامية تهدف إلى نشر رسالة الإسلام في جميع أنحاء العالم بأكثر من 13 لغة.\n\nإذا كنت ترغب في دعم هذه المنظمة غير الربحية وأن تكون جزءًا منها، فتواصل معنا. يمكن لمساعدتك أن تمكّننا من الوصول إلى مزيد من الناس وإنتاج محتوى إسلامي بجودة أعلى.\n",
+    "category": "دعاة",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/pgWMY0cZBP8ThclBPzgeEiCSQyWnDjQw0YZDzsUWz0TMozlq7GDwNr6msV-akYS96uaZ9rVqNeA=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@towardseternity?si=7u2xlNK1A4TM6RvD",
+        "handle": "@towardseternity",
+        "channelId": "UCPubBVDCzu7IWWnitlkEsNw",
+        "channel_image": "https://yt3.googleusercontent.com/pgWMY0cZBP8ThclBPzgeEiCSQyWnDjQw0YZDzsUWz0TMozlq7GDwNr6msV-akYS96uaZ9rVqNeA=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@towardseternity/streams",
+        "subscribers": "3.54 مليون"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "name": "مَدارِك",
+    "title": "ليه اسم القناة \"مدارك\n\nلأن \"مدارك\" هو المكان اللي فيه الإنسان يوسع وعيه، يفهم نفسه ويكتشف حياته بعمق…\nيصحى من الروتين، يميّز بين المهم وغير المهم، ويبني نفسه خطوة بخطوة نحو نسخة أفضل.\n\nالقناة دي مساحة تجمع بين تطوير الذات، العادات اليومية، الروتين الصحي، وتنمية العقل.\nبنقدّم محتوى واضح وبسيط يساعدك تطور حياتك في كل جانب، وتعيش كل يوم بوعي أكبر وتركيز أعلى.\n\n\uD83D\uDCCC مش مجرد فيديوهات…\nدي رحلة مداركك الخاصة، اللي بتخليك تشوف حياتك من زاوية جديدة وتطور نفسك باستمرار.\n",
+    "category": "دعاة",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/7T1TRdaXiQh4ECAHoQa1WrOM6CBQpX9dQjDJ9i1WigMJiZ79O0ajt2Lzi9ZsNkGyxGfYrrNu7g=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/channel/UCguJLISMdGYVKa3c_sNKImw?si=BI9vaNWsrGqZK7_Z",
+        "handle": "@UCguJLISMdGYVKa3c_sNKImw",
+        "channelId": "UCguJLISMdGYVKa3c_sNKImw",
+        "channel_image": "https://yt3.googleusercontent.com/7T1TRdaXiQh4ECAHoQa1WrOM6CBQpX9dQjDJ9i1WigMJiZ79O0ajt2Lzi9ZsNkGyxGfYrrNu7g=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@UCguJLISMdGYVKa3c_sNKImw/streams",
+        "subscribers": "19.6 ألف"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "name": "قران المسلم - Holy Quran",
+    "title": "\uD83C\uDF39 يَا أَيُّهَا الَّذِينَ آمَنُوا اصْبِرُوا وَصَابِرُوا وَرَابِطُوا وَاتَّقُوا اللَّهَ لَعَلَّكُمْ تُفْلِحُونَ \n\uD83D\uDC46 تنويه إذا رأيت مقطع إعلاني يخالف الدين الإسلامي أغلق الفيديو وعاود تصفحه من جديد \uD83D\uDC9D اللهم ما بلغت اللهم فاشهد \n* فضلا لا تنسوا الاشتراك في قناتنا \n* إعجاب \uD83D\uDC4D Like \uD83C\uDF39 الاشتراك Share \uD83D\uDC9D تفعيل جرس \uD83D\uDD14 التنبيهات\n* لكي  يصلك إشعار بكل ما هو جديد  \n* قناة إسلامية تهتم بكل ما هو مفيد للمجتمع المسلم في دنياهم وآخرتهم\n* نرجو إعطائنا توجهاتكم وآرائكم في المادة التي نقدمها لحضراتكم\n* الرجاء الاشتراك ودعم قناتي ",
+    "category": "قران كريم",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/CznrlVzSbO0u7FHv2vN4bDgsKANGX5Lx4r94ZvQS-URfwvblfNbIY3ISs4M-L63juXekvynWYQ=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/channel/UCjZfyCvkTeoNTRGnt7ywtQQ?si=eV9Du1oM8EOXjixo",
+        "handle": "@UCjZfyCvkTeoNTRGnt7ywtQQ",
+        "channelId": "UCjZfyCvkTeoNTRGnt7ywtQQ",
+        "channel_image": "https://yt3.googleusercontent.com/CznrlVzSbO0u7FHv2vN4bDgsKANGX5Lx4r94ZvQS-URfwvblfNbIY3ISs4M-L63juXekvynWYQ=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@UCjZfyCvkTeoNTRGnt7ywtQQ/streams",
+        "subscribers": "19.6 ألف"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "name": "Podcast 360",
+    "title": "360 هي شبكة إنتاج بودكاست تقدم محتوى عميق ومتنوع يناقش جوانب الحياة من كل الزوايا\nللتعاون مع Podcast360 يرجى التواصل:\nمن خلال الرقم: 01500205544\nأو من خلال الأيميل: info@podcast-360.com",
+    "category": "دعاة",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/LTt90QnqPuEQH1_V2CZ1kuqxYNHMjP--d3iJ9ycE1hFJ4GGfUCR5Cy3q1SpJKUZKac_1-Yp1AlI=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@podcast360-me?si=j4shcY9g9qnTXQoO",
+        "handle": "@podcast360-me",
+        "channelId": "UCnRx4_9RQ6aA62LFqB2bpzA",
+        "channel_image": "https://yt3.googleusercontent.com/LTt90QnqPuEQH1_V2CZ1kuqxYNHMjP--d3iJ9ycE1hFJ4GGfUCR5Cy3q1SpJKUZKac_1-Yp1AlI=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@podcast360-me/streams",
+        "subscribers": "2.25 مليون"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "name": "Muslim Talks",
+    "title": "",
+    "category": "تزكية",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/6BYhOLcNmDopXf8PJFI0VhYiY766slljYiB8jmkVcl9FsD_oK1QtPJ8bdUcZxsR-cWBMMqOitF0=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@muslimtalks-011?si=yGvzDMpkFwBf00uB",
+        "handle": "@muslimtalks-011",
+        "channelId": "UCcFsqF8PMdscZ_Def1vBrgw",
+        "channel_image": "https://yt3.googleusercontent.com/6BYhOLcNmDopXf8PJFI0VhYiY766slljYiB8jmkVcl9FsD_oK1QtPJ8bdUcZxsR-cWBMMqOitF0=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@muslimtalks-011/streams",
+        "subscribers": "110 ألف مشترك"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "name": "عبد الدائم الكحيل",
+    "title": "قناة علمية هادفة تكشف روائع العلم الحديث على ضوء القرآن والسنّة، وتعرض الحقائق بأسلوب علمي مبسط وموثق.. اشترك الآن واكتشف معنا أسرار الإعجاز في الكون والطبيعة والإنسان...",
+    "category": "تعليم",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/x8urtR6rmwfxssAfPhYJCrnD9bsasVKqrYFblrYiW2Nq97czCl4Q9i_0gCS8CgoESvX-70J0eGs=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@kaheel777?si=Pp_EvGfI0fffY7F9",
+        "handle": "@kaheel777",
+        "channelId": "UCjbEAXhy8db1GD4UmqTiX-Q",
+        "channel_image": "https://yt3.googleusercontent.com/x8urtR6rmwfxssAfPhYJCrnD9bsasVKqrYFblrYiW2Nq97czCl4Q9i_0gCS8CgoESvX-70J0eGs=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@kaheel777/streams",
+        "subscribers": "2.57 مليون"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "name": "Yousef Elkott l يوسف القط",
+    "title": "في قناتنا نقدم لك قصصًا واقعية من مختلف الأزمان، نغوص فيها لنتعرف على تجارب حقيقية وأحداث غيرت مسار التاريخ. كل قصة تحمل درسًا وفكرة جديدة، و متحمس جداً أن تكون جزءًا من هذه الرحلة!\nانضم إلينا الآن، ولا تفوت أي لحظة مثيرة! \uD83D\uDD14",
+    "category": "تاريخ",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/rCogcaRY9RpYKp3wL6a4ef_r5YHVSWk6rEMu1_TkSljbQar5eh6ilfIRM8ZLDrMfeSxiuhYlNw=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@jousef_elkott?si=VSkFtOowCajVuE3l",
+        "handle": "@jousef_elkott",
+        "channelId": "UChU-1ed3OUk7AkXaLbo3k3w",
+        "channel_image": "https://yt3.googleusercontent.com/rCogcaRY9RpYKp3wL6a4ef_r5YHVSWk6rEMu1_TkSljbQar5eh6ilfIRM8ZLDrMfeSxiuhYlNw=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@jousef_elkott/streams",
+        "subscribers": "1.69 مليون"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "name": "Waleed - وليد",
+    "title": " \" أهلاً أنا الدوك وليد \"\nدكتور أسنان تحولت من شخص مشتت وتايه إلى رائد أعمال وكاتب وصانع محتوى!\n\nبساعدك تفهم وتتحكم في نفسك، تحترف صناعة المحتوى،  تحول نفسك لبراند مؤثر وتعمل من نفسك بيزنس!\nالى ذلك الحين، ماتنساش تحب نفسك♥\uFE0F\n",
+    "category": "تعليم",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/XYHccgly2_qROc6j6RrvtvahT8eOeajrS5zXzj5_o2XMfs82v0NksZJawysn1Sg-Hq5QqlmZdw=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@thedocwaleed?si=pS9_JHKRHZ85hx-A",
+        "handle": "@thedocwaleed",
+        "channelId": "UCSFHcQ6-5uayv5v7yLQFUYA",
+        "channel_image": "https://yt3.googleusercontent.com/XYHccgly2_qROc6j6RrvtvahT8eOeajrS5zXzj5_o2XMfs82v0NksZJawysn1Sg-Hq5QqlmZdw=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@thedocwaleed/streams",
+        "subscribers": "867 ألف"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "name": "RaeedXA-G",
+    "title": "For business \nEmail : Raeedxa@Raeedxa.com",
+    "category": "تعليم",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/zo4PMHV1G7jvKIO78g4OiHS0Uh1IxQDfxlmHa2u3sXRg1kkyeIDhKDn2g0KystzKPhiTAFUZLw=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@raeedxa-g?si=AUjFpwhYVXaPLheP",
+        "handle": "@raeedxa-g",
+        "channelId": "UCg8xWu-MwBGQJyiqad1pJVg",
+        "channel_image": "https://yt3.googleusercontent.com/zo4PMHV1G7jvKIO78g4OiHS0Uh1IxQDfxlmHa2u3sXRg1kkyeIDhKDn2g0KystzKPhiTAFUZLw=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@raeedxa-g/streams",
+        "subscribers": "298 ألف"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "name": "Fedaadeen فداءالدين",
+    "title": "",
+    "category": "دعاة",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/UdzD03mC7yMPWYRSys94jRfmLxW1Vww4hmkG-aPat1NdUuRGcHOMkml6Dli_Ym72cQc_Zch0h_o=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@fedaaadeen?si=2IRFt6psMxJwP_y7",
+        "handle": "@fedaaadeen",
+        "channelId": "UCMzbNvfJ4osPOxbjI0K5BeA",
+        "channel_image": "https://yt3.googleusercontent.com/UdzD03mC7yMPWYRSys94jRfmLxW1Vww4hmkG-aPat1NdUuRGcHOMkml6Dli_Ym72cQc_Zch0h_o=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@fedaaadeen/streams",
+        "subscribers": "298 ألف"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "name": "Dawah Youtubers Arabic",
+    "title": "السلام عليكم ورحمة الله وبركاته.\nنقوم في هذه القناة بترجمة مقاطع لها علاقة بمقارنة الأديان ومختلف الإيديولوجيات والتيارات الفكرية",
+    "category": "محاورات",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/QqKqA099ES7nLnGOauT-WUZuCpVeARlbXpy2KqVulsbTWDKQGg8YcOTrATz2H8xea1qmVj3-AA=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@dawahyoutubersarabic4318?si=rNNy5JassYaD10vD",
+        "handle": "@dawahyoutubersarabic4318",
+        "channelId": "UCQpGIJlmR0ACzNsY_X6Qa-Q",
+        "channel_image": "https://yt3.googleusercontent.com/QqKqA099ES7nLnGOauT-WUZuCpVeARlbXpy2KqVulsbTWDKQGg8YcOTrATz2H8xea1qmVj3-AA=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@dawahyoutubersarabic4318/streams",
+        "subscribers": "394 ألف"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "name": "عبد النور",
+    "title": "قناة بصائر هي نافذتك إلى رحلة إيمانية عميقة تسلط الضوء على جمال الدين الإسلامي وهدي السنة النبوية الشريفة. نهدف من خلال محتوانا إلى إصلاح القلوب وتقوية العلاقة بالله، عبر تناول مواضيع روحية واجتماعية بأسلوب بسيط وملهم. نقدم قصصًا مليئة بالعبر، ودروسًا نبوية تعيننا على فهم ديننا بشكل أعمق، لنعيش حياة متوازنة مليئة بالإيمان والأمل. انضم إلينا في بصائر، حيث تجد الإلهام والبصيرة لتجديد علاقتك بخالقك",
+    "category": "تزكية",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/UMED4y0cyNf9aRvZnNYWqec_o0dqu_T11vPcE3tPDlQ7qINDNOhbYROlfUDF10CY2d8DrQhHxw=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@abdennourog13?si=h_q2t5L2H22gn874",
+        "handle": "@abdennourog13",
+        "channelId": "UCRy2-JUh9lzqYgp8fg8PAFg",
+        "channel_image": "https://yt3.googleusercontent.com/UMED4y0cyNf9aRvZnNYWqec_o0dqu_T11vPcE3tPDlQ7qINDNOhbYROlfUDF10CY2d8DrQhHxw=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@abdennourog13/streams",
+        "subscribers": "50.5 ألف"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "name": "وليد إسماعيل الدافع",
+    "title": "قناة متخصصة في كشف التناقضات الفكرية والعقائدية،\nوالرد على الشبهات بالأدلة العقلية والنقلية،\nمع مناقشات مباشرة وحوارات جريئة بدون إساءة أو تهجّم.\n\nاشترك ليصلك كل جديد.\n\n\nمحبكم وليد اسماعيل",
+    "category": "محوارات",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/La3K_G7lkIMtLqB5sjycNUr-k3VMdwYZcL_AxiyQ-4kQz9rXmsmfnDsWHwZEV8hZTbtntYeuXLY=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@waleedismail1?si=pbx0uSBgD8EvXNc5",
+        "handle": "@waleedismail1",
+        "channelId": "UC_UgKbgJ0eyMHkewdRvXVXA",
+        "channel_image": "https://yt3.googleusercontent.com/La3K_G7lkIMtLqB5sjycNUr-k3VMdwYZcL_AxiyQ-4kQz9rXmsmfnDsWHwZEV8hZTbtntYeuXLY=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@waleedismail1/streams",
+        "subscribers": "2.12 مليون"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "name": "طحالب",
+    "title": "قناة طحالب الرسمية \n------------------------\n\nFollow On\n-----------------\nSupport on Patreon : https://www.patreon.com/tahalip \n subscribe: shorturl.at/nqGPS\n------------------------------------------------\n#طحالب \n#قناة_طحالب\n#Tahalip",
+    "category": "",
+    "country": "مصر",
+    "flag": "\uD83C\uDDEA\uD83C\uDDEC",
+    "image": "https://yt3.googleusercontent.com/ytc/AIdro_lH4fJXxD7AGJmgv3gnUE0Rp8tv_0DMM-v7KHrw0-wAVA=s160-c-k-c0x00ffffff-no-rj",
+    "platforms": [
+      {
+        "name": "يوتيوب",
+        "icon": "youtube",
+        "color": "#FF0000",
+        "link": "https://youtube.com/@tahalip?si=cXDpNyhZjNB2jFnA",
+        "handle": "@tahalip",
+        "channelId": "UCuLxvZzGeoJYATCMr97dJZQ",
+        "channel_image": "https://yt3.googleusercontent.com/ytc/AIdro_lH4fJXxD7AGJmgv3gnUE0Rp8tv_0DMM-v7KHrw0-wAVA=s160-c-k-c0x00ffffff-no-rj",
+        "live_url": "https://www.youtube.com/@tahalip/streams",
+        "subscribers": "1.4 مليون"
+      },
+      {
+        "name": "تيك توك",
+        "icon": "tiktok",
+        "color": "#010101",
+        "link": "https://www.tiktok.com/@saad.alghamdi",
+        "handle": "@saad.alghamdi",
+        "channel_image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/saad_alghamdi.jpg",
+        "subscribers": "890K"
       }
     ]
   }

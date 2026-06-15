@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islamic_app/screens/hadith/hadith_book_screen.dart';
-import 'package:islamic_app/screens/quran/surah_deatil.dart';
+import 'package:islamic_app/screens/quran/surah_detail/surah_deatil.dart';
 import 'package:islamic_app/screens/search/global_search_delegate_screen.dart';
 
 class GlobalSearchActionButton extends StatelessWidget {

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islamic_app/screens/quran/quran_search_delegate.dart';
-import 'package:islamic_app/screens/quran/surah_deatil.dart';
+import 'package:islamic_app/screens/quran/surah_detail/surah_deatil.dart';
+import 'quran_roots_screen.dart';
 
 class QuranScreen extends StatefulWidget {
   const QuranScreen({super.key});
@@ -10,13 +11,16 @@ class QuranScreen extends StatefulWidget {
   State<QuranScreen> createState() => _QuranScreenState();
 }
 
-class _QuranScreenState extends State<QuranScreen> with SingleTickerProviderStateMixin {
-  final TextEditingController _searchController = TextEditingController();
+class _QuranScreenState extends State<QuranScreen>
+    with TickerProviderStateMixin {
+  final TextEditingController _searchController =
+  TextEditingController();
   List<Map<String, dynamic>> filteredSurahs = [];
   String selectedFilter = 'الكل';
-
-  // اللون الثابت (للهوية البصرية)
   final Color _gold = const Color(0xFFE6B325);
+  late TabController _mainTabController;
+  late AnimationController _headerAnimController;
+  late Animation<double> _headerAnim;
 
   final List<Map<String, dynamic>> surahs = [
     {'name': 'الفاتحة', 'english': 'Al-Fatiha', 'number': 1, 'ayahs': 7, 'type': 'مكية', 'juz': 1},
@@ -139,11 +143,23 @@ class _QuranScreenState extends State<QuranScreen> with SingleTickerProviderStat
   void initState() {
     super.initState();
     filteredSurahs = surahs;
+    _mainTabController = TabController(length: 2, vsync: this);
+    _headerAnimController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1200),
+    );
+    _headerAnim = CurvedAnimation(
+      parent: _headerAnimController,
+      curve: Curves.easeOutBack,
+    );
+    _headerAnimController.forward();
   }
 
   @override
   void dispose() {
     _searchController.dispose();
+    _mainTabController.dispose();
+    _headerAnimController.dispose();
     super.dispose();
   }
 
@@ -169,236 +185,537 @@ class _QuranScreenState extends State<QuranScreen> with SingleTickerProviderStat
 
   @override
   Widget build(BuildContext context) {
-    // ✅ ضبط الألوان بناءً على الوضع المظلم أو الفاتح
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final primary = Theme.of(context).colorScheme.primary;
-
-    // ✅ الألوان الديناميكية
-    final bgColor = isDark ? const Color(0xFF0A0E17) : const Color(0xFFF5F7FA);
-    final cardColor = isDark ? Colors.white.withOpacity(0.05) : Colors.white;
-    final textColorMain = isDark ? Colors.white : const Color(0xFF1A1A1A);
-    final textColorSub = isDark ? Colors.white54 : Colors.black54;
-    final borderColor = isDark ? Colors.white.withOpacity(0.1) : _gold.withOpacity(0.2);
-    final shadowColor = isDark ? Colors.black.withOpacity(0.3) : Colors.grey.withOpacity(0.1);
+    final bgColor =
+    isDark ? const Color(0xFF0A0E17) : const Color(0xFFF5F7FA);
+    final cardColor =
+    isDark ? Colors.white.withOpacity(0.05) : Colors.white;
+    final textColorMain =
+    isDark ? Colors.white : const Color(0xFF1A1A1A);
+    final textColorSub =
+    isDark ? Colors.white54 : Colors.black54;
+    final borderColor = isDark
+        ? Colors.white.withOpacity(0.1)
+        : _gold.withOpacity(0.2);
+    final shadowColor = isDark
+        ? Colors.black.withOpacity(0.3)
+        : Colors.grey.withOpacity(0.1);
 
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
         backgroundColor: bgColor,
         extendBodyBehindAppBar: true,
-        body: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
-          slivers: [
-            // ✅ الـ AppBar الشفاف والاحترافي
-            SliverAppBar(
-              expandedHeight: 220,
-              pinned: true,
-              backgroundColor: Colors.transparent, // شفاف ليظهر التدرج
-              elevation: 0,
-              leading: Container(
-                margin: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: isDark ? Colors.white.withOpacity(0.1) : Colors.black.withOpacity(0.05),
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: isDark ? Colors.white.withOpacity(0.1) : Colors.black.withOpacity(0.05)),
-                ),
-                child: IconButton(
-                  icon: Icon(Icons.arrow_back_ios_new, color: textColorMain),
-                  onPressed: () => Navigator.pop(context),
-                ),
-              ),
-              actions: [
-                Container(
+        body: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) {
+            return [
+              SliverAppBar(
+                expandedHeight: 260,
+                pinned: true,
+                backgroundColor: isDark
+                    ? const Color(0xFF0A0E17)
+                    : const Color(0xFF6B3410),
+                elevation: 0,
+                leading: Container(
                   margin: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: isDark ? Colors.white.withOpacity(0.1) : Colors.black.withOpacity(0.05),
+                    color: Colors.white.withOpacity(0.15),
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: isDark ? Colors.white.withOpacity(0.1) : Colors.black.withOpacity(0.05)),
+                    border: Border.all(
+                        color: Colors.white.withOpacity(0.2)),
                   ),
                   child: IconButton(
-                    icon: Icon(Icons.search, color: textColorMain),
-                    tooltip: 'بحث في الآيات',
-                    onPressed: () {
-                      showSearch(
-                        context: context,
-                        delegate: QuranSearch(primaryColor: primary),
-                      ).then((result) {
-                        if (result != null) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => SurahDetailScreen(
-                                surahName: result['surahName'],
-                                surahNumber: result['surahNumber'],
-                                initialPage: result['page'],
+                    icon: const Icon(Icons.arrow_back_ios_new,
+                        color: Colors.white),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                ),
+                actions: [
+                  Container(
+                    margin: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.15),
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                          color: Colors.white.withOpacity(0.2)),
+                    ),
+                    child: IconButton(
+                      icon: const Icon(Icons.search,
+                          color: Colors.white),
+                      onPressed: () {
+                        showSearch(
+                          context: context,
+                          delegate:
+                          QuranSearch(primaryColor: primary),
+                        ).then((result) {
+                          if (result != null) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => SurahDetailScreen(
+                                  surahName: result['surahName'],
+                                  surahNumber:
+                                  result['surahNumber'],
+                                  initialPage: result['page'],
+                                ),
                               ),
-                            ),
-                          );
-                        }
-                      });
-                    },
-                  ),
-                ),
-              ],
-              flexibleSpace: FlexibleSpaceBar(
-                background: Container(
-                  decoration: BoxDecoration(
-                    // ✅ تدرج ديناميكي
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: isDark
-                          ? [const Color(0xFF0A0E17), const Color(0xFF151B26)]
-                          : [primary.withOpacity(0.1), Colors.white],
+                            );
+                          }
+                        });
+                      },
                     ),
                   ),
-                  child: SafeArea(
-                    child: Center(
+                ],
+                flexibleSpace: FlexibleSpaceBar(
+                  background: _buildHeader(isDark),
+                ),
+                bottom: PreferredSize(
+                  preferredSize: const Size.fromHeight(52),
+                  child: _buildTabBar(isDark, textColorSub),
+                ),
+              ),
+            ];
+          },
+          body: TabBarView(
+            controller: _mainTabController,
+            children: [
+              // ── التبويب الأول: السور ──
+              CustomScrollView(
+                physics: const BouncingScrollPhysics(),
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(
+                          20, 16, 20, 0),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          _buildSearchBar(cardColor, textColorMain,
+                              textColorSub, borderColor, shadowColor),
+                          const SizedBox(height: 16),
+                          _buildFilterRow(isDark),
                           const SizedBox(height: 20),
-                          Container(
-                            padding: const EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                              color: _gold.withOpacity(0.1),
-                              shape: BoxShape.circle,
-                              border: Border.all(color: _gold.withOpacity(0.3)),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: _gold.withOpacity(0.2),
-                                  blurRadius: 20,
-                                  spreadRadius: 2,
-                                )
-                              ],
-                            ),
-                            child: Icon(Icons.menu_book_rounded, size: 45, color: _gold),
-                          ),
-                          const SizedBox(height: 12),
-                          Text(
-                            'القرآن الكريم',
-                            style: GoogleFonts.amiri(
-                              fontSize: 32,
-                              fontWeight: FontWeight.bold,
-                              color: textColorMain,
-                              height: 1,
-                            ),
-                          ),
                         ],
                       ),
                     ),
                   ),
-                ),
-              ),
-            ),
-
-            // ✅ بحث وفلتر السور (بتصميم زجاجي ديناميكي)
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
-                child: Column(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: cardColor,
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: borderColor),
-                        boxShadow: [
-                          BoxShadow(
-                            color: shadowColor,
-                            blurRadius: 10,
-                            offset: const Offset(0, 5),
-                          )
-                        ],
-                      ),
-                      child: TextField(
-                        controller: _searchController,
-                        onChanged: _filterSurahs,
-                        style: GoogleFonts.cairo(color: textColorMain),
-                        decoration: InputDecoration(
-                          hintText: 'ابحث عن سورة بالاسم أو الرقم...',
-                          hintStyle: GoogleFonts.cairo(color: textColorSub),
-                          prefixIcon: Icon(Icons.search, color: _gold),
-                          suffixIcon: _searchController.text.isNotEmpty
-                              ? IconButton(
-                            icon: Icon(Icons.clear, color: textColorSub),
-                            onPressed: () {
-                              _searchController.clear();
-                              _filterSurahs('');
-                            },
-                          )
-                              : null,
-                          border: InputBorder.none,
-                          contentPadding: const EdgeInsets.symmetric(vertical: 16),
+                  SliverPadding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20),
+                    sliver: SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                            (context, index) => _buildSurahCard(
+                          filteredSurahs[index],
+                          isDark,
+                          cardColor,
+                          textColorMain,
+                          textColorSub,
+                          borderColor,
+                          shadowColor,
                         ),
+                        childCount: filteredSurahs.length,
                       ),
                     ),
-                    const SizedBox(height: 16),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          _buildFilterChip('الكل', isDark),
-                          const SizedBox(width: 8),
-                          _buildFilterChip('مكية', isDark),
-                          const SizedBox(width: 8),
-                          _buildFilterChip('مدنية', isDark),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                  ],
-                ),
+                  ),
+                  const SliverToBoxAdapter(
+                      child: SizedBox(height: 20)),
+                ],
               ),
-            ),
 
-            // ✅ قائمة السور
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              sliver: SliverList(
-                delegate: SliverChildBuilderDelegate(
-                      (context, index) {
-                    final surah = filteredSurahs[index];
-                    return _buildSurahCard(surah, isDark, cardColor, textColorMain, textColorSub, borderColor, shadowColor);
-                  },
-                  childCount: filteredSurahs.length,
-                ),
-              ),
-            ),
-
-            const SliverToBoxAdapter(child: SizedBox(height: 20)),
-          ],
+              // ── التبويب الثاني: جذور الكلمات ──
+              const QuranRootsScreen(),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  // ✅ تصميم الشريحة الزجاجية (الزر) مع دعم الأوضاع
+  // ✅ الهيدر الجديد الجميل
+  Widget _buildHeader(bool isDark) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: isDark
+              ? [
+            const Color(0xFF1A0A00),
+            const Color(0xFF2D1200),
+            const Color(0xFF0A0E17),
+          ]
+              : [
+            const Color(0xFF4A1A05),
+            const Color(0xFF8B4513),
+            const Color(0xFFD4AF37),
+          ],
+        ),
+      ),
+      child: Stack(
+        children: [
+          // ✅ دوائر زخرفية في الخلفية
+          Positioned(
+            top: -30,
+            right: -30,
+            child: Container(
+              width: 150,
+              height: 150,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: _gold.withOpacity(0.05),
+                border: Border.all(
+                    color: _gold.withOpacity(0.1), width: 1),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 40,
+            left: -20,
+            child: Container(
+              width: 100,
+              height: 100,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.white.withOpacity(0.03),
+                border: Border.all(
+                    color: Colors.white.withOpacity(0.05),
+                    width: 1),
+              ),
+            ),
+          ),
+          Positioned(
+            top: 60,
+            left: 40,
+            child: Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: _gold.withOpacity(0.05),
+              ),
+            ),
+          ),
+
+          // ✅ المحتوى الرئيسي
+          SafeArea(
+            child: ScaleTransition(
+              scale: _headerAnim,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 16),
+
+                  // ✅ أيقونة القرآن الجديدة
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      // هالة خارجية
+                      Container(
+                        width: 90,
+                        height: 90,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: _gold.withOpacity(0.2),
+                            width: 1,
+                          ),
+                        ),
+                      ),
+                      // هالة وسطى
+                      Container(
+                        width: 74,
+                        height: 74,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: _gold.withOpacity(0.08),
+                          border: Border.all(
+                            color: _gold.withOpacity(0.3),
+                            width: 1.5,
+                          ),
+                        ),
+                      ),
+                      // الأيقونة
+                      Container(
+                        width: 58,
+                        height: 58,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: RadialGradient(
+                            colors: [
+                              _gold.withOpacity(0.3),
+                              _gold.withOpacity(0.1),
+                            ],
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: _gold.withOpacity(0.4),
+                              blurRadius: 20,
+                              spreadRadius: 2,
+                            ),
+                          ],
+                        ),
+                        child: const Center(
+                          child: Text(
+                            '﷽',
+                            style: TextStyle(
+                              fontSize: 22,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 14),
+
+                  // ✅ العنوان
+                  Text(
+                    'القرآن الكريم',
+                    style: GoogleFonts.amiri(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      height: 1,
+                      shadows: [
+                        Shadow(
+                          color: Colors.black.withOpacity(0.3),
+                          blurRadius: 8,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 6),
+
+                  // ✅ الآية الكريمة
+                  Text(
+                    'إِنَّا نَحْنُ نَزَّلْنَا الذِّكْرَ وَإِنَّا لَهُ لَحَافِظُونَ',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.amiri(
+                      fontSize: 13,
+                      color: _gold.withOpacity(0.9),
+                      height: 1.5,
+                    ),
+                  ),
+
+                  const SizedBox(height: 4),
+
+                  // ✅ إحصائيات صغيرة
+                  Row(
+                    mainAxisAlignment:
+                    MainAxisAlignment.center,
+                    children: [
+                      _buildStatChip('١١٤', 'سورة'),
+                      Container(
+                        width: 1,
+                        height: 20,
+                        color: Colors.white.withOpacity(0.2),
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 12),
+                      ),
+                      _buildStatChip('٦٢٣٦', 'آية'),
+                      Container(
+                        width: 1,
+                        height: 20,
+                        color: Colors.white.withOpacity(0.2),
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 12),
+                      ),
+                      _buildStatChip('٣٠', 'جزءاً'),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // ✅ إحصائية صغيرة
+  Widget _buildStatChip(String number, String label) {
+    return Column(
+      children: [
+        Text(
+          number,
+          style: GoogleFonts.cairo(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: _gold,
+          ),
+        ),
+        Text(
+          label,
+          style: GoogleFonts.cairo(
+            fontSize: 11,
+            color: Colors.white60,
+          ),
+        ),
+      ],
+    );
+  }
+
+  // ✅ شريط التبويبات الجميل
+  Widget _buildTabBar(bool isDark, Color textColorSub) {
+    return Container(
+      height: 52,
+      decoration: BoxDecoration(
+        color: isDark
+            ? const Color(0xFF0A0E17)
+            : Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: TabBar(
+        controller: _mainTabController,
+        indicator: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(color: _gold, width: 3),
+          ),
+        ),
+        labelStyle: GoogleFonts.cairo(
+          fontWeight: FontWeight.bold,
+          fontSize: 14,
+        ),
+        unselectedLabelStyle:
+        GoogleFonts.cairo(fontSize: 13),
+        labelColor: _gold,
+        unselectedLabelColor: textColorSub,
+        tabs: const [
+          Tab(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.menu_book_rounded, size: 18),
+                SizedBox(width: 6),
+                Text('السور'),
+              ],
+            ),
+          ),
+          Tab(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.account_tree_outlined, size: 18),
+                SizedBox(width: 6),
+                Text('جذور الكلمات'),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSearchBar(
+      Color cardColor,
+      Color textColorMain,
+      Color textColorSub,
+      Color borderColor,
+      Color shadowColor,
+      ) {
+    return Container(
+      decoration: BoxDecoration(
+        color: cardColor,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: borderColor),
+        boxShadow: [
+          BoxShadow(
+              color: shadowColor,
+              blurRadius: 10,
+              offset: const Offset(0, 5))
+        ],
+      ),
+      child: TextField(
+        controller: _searchController,
+        onChanged: _filterSurahs,
+        style: GoogleFonts.cairo(color: textColorMain),
+        decoration: InputDecoration(
+          hintText: 'ابحث عن سورة بالاسم أو الرقم...',
+          hintStyle: GoogleFonts.cairo(color: textColorSub),
+          prefixIcon: Icon(Icons.search, color: _gold),
+          suffixIcon: _searchController.text.isNotEmpty
+              ? IconButton(
+            icon:
+            Icon(Icons.clear, color: textColorSub),
+            onPressed: () {
+              _searchController.clear();
+              _filterSurahs('');
+            },
+          )
+              : null,
+          border: InputBorder.none,
+          contentPadding:
+          const EdgeInsets.symmetric(vertical: 16),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFilterRow(bool isDark) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          _buildFilterChip('الكل', isDark),
+          const SizedBox(width: 8),
+          _buildFilterChip('مكية', isDark),
+          const SizedBox(width: 8),
+          _buildFilterChip('مدنية', isDark),
+        ],
+      ),
+    );
+  }
+
   Widget _buildFilterChip(String label, bool isDark) {
     final isSelected = selectedFilter == label;
     return GestureDetector(
       onTap: () => _setFilter(label),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+        padding: const EdgeInsets.symmetric(
+            horizontal: 20, vertical: 8),
         decoration: BoxDecoration(
           color: isSelected
-              ? _gold.withOpacity(isDark ? 0.2 : 0.8)
-              : (isDark ? Colors.white.withOpacity(0.05) : Colors.white),
+              ? _gold.withOpacity(isDark ? 0.2 : 0.85)
+              : (isDark
+              ? Colors.white.withOpacity(0.05)
+              : Colors.white),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: isSelected
-                ? _gold.withOpacity(isDark ? 0.5 : 1.0)
-                : (isDark ? Colors.white.withOpacity(0.1) : Colors.grey.withOpacity(0.3)),
+                ? _gold
+                : (isDark
+                ? Colors.white.withOpacity(0.1)
+                : Colors.grey.withOpacity(0.3)),
           ),
-          boxShadow: isSelected && !isDark ? [BoxShadow(color: _gold.withOpacity(0.4), blurRadius: 8, offset: const Offset(0, 3))] : null,
+          boxShadow: isSelected && !isDark
+              ? [
+            BoxShadow(
+                color: _gold.withOpacity(0.4),
+                blurRadius: 8,
+                offset: const Offset(0, 3))
+          ]
+              : null,
         ),
         child: Text(
           label,
           style: GoogleFonts.cairo(
             color: isSelected
                 ? (isDark ? _gold : Colors.white)
-                : (isDark ? Colors.white70 : Colors.black87),
+                : (isDark
+                ? Colors.white70
+                : Colors.black87),
             fontWeight: FontWeight.bold,
             fontSize: 13,
           ),
@@ -407,7 +724,6 @@ class _QuranScreenState extends State<QuranScreen> with SingleTickerProviderStat
     );
   }
 
-  // ✅ تصميم بطاقة السورة لتطابق بطاقة الصلوات (ديناميكي)
   Widget _buildSurahCard(
       Map<String, dynamic> surah,
       bool isDark,
@@ -415,7 +731,7 @@ class _QuranScreenState extends State<QuranScreen> with SingleTickerProviderStat
       Color textColorMain,
       Color textColorSub,
       Color borderColor,
-      Color shadowColor
+      Color shadowColor,
       ) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -425,10 +741,9 @@ class _QuranScreenState extends State<QuranScreen> with SingleTickerProviderStat
         border: Border.all(color: borderColor),
         boxShadow: [
           BoxShadow(
-            color: shadowColor,
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          )
+              color: shadowColor,
+              blurRadius: 10,
+              offset: const Offset(0, 4))
         ],
       ),
       child: Material(
@@ -446,26 +761,29 @@ class _QuranScreenState extends State<QuranScreen> with SingleTickerProviderStat
               ),
             );
           },
-          child: Container(
+          child: Padding(
             padding: const EdgeInsets.all(16),
             child: Row(
               children: [
-                // المربع الذي يحوي رقم السورة
                 Container(
                   width: 50,
                   height: 50,
                   decoration: BoxDecoration(
                     color: _gold.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(color: _gold.withOpacity(0.3)),
+                    borderRadius:
+                    BorderRadius.circular(15),
+                    border: Border.all(
+                        color: _gold.withOpacity(0.3)),
                   ),
                   child: Center(
                     child: Text(
                       '${surah['number']}',
                       style: GoogleFonts.cairo(
-                          color: isDark ? _gold : const Color(0xFFB8860B),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18
+                        color: isDark
+                            ? _gold
+                            : const Color(0xFFB8860B),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
                       ),
                     ),
                   ),
@@ -473,7 +791,8 @@ class _QuranScreenState extends State<QuranScreen> with SingleTickerProviderStat
                 const SizedBox(width: 16),
                 Expanded(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment:
+                    CrossAxisAlignment.start,
                     children: [
                       Text(
                         surah['name'],
@@ -487,55 +806,67 @@ class _QuranScreenState extends State<QuranScreen> with SingleTickerProviderStat
                       Wrap(
                         spacing: 8,
                         runSpacing: 4,
-                        crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                            decoration: BoxDecoration(
-                                color: surah['type'] == 'مكية'
-                                    ? const Color(0xFFE67E22).withOpacity(0.15)
-                                    : const Color(0xFF3498DB).withOpacity(0.15),
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(
-                                  color: surah['type'] == 'مكية'
-                                      ? const Color(0xFFE67E22).withOpacity(0.3)
-                                      : const Color(0xFF3498DB).withOpacity(0.3),
-                                )
-                            ),
-                            child: Text(
-                              surah['type'],
-                              style: GoogleFonts.cairo(
-                                fontSize: 10,
-                                color: surah['type'] == 'مكية' ? const Color(0xFFE67E22) : const Color(0xFF3498DB),
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
+                          _buildBadge(
+                            surah['type'],
+                            surah['type'] == 'مكية'
+                                ? const Color(0xFFE67E22)
+                                : const Color(0xFF3498DB),
                           ),
-                          Text('${surah['ayahs']} آية', style: GoogleFonts.cairo(fontSize: 12, color: textColorSub)),
-                          Text('الجزء ${surah['juz']}', style: GoogleFonts.cairo(fontSize: 12, color: textColorSub)),
+                          Text('${surah['ayahs']} آية',
+                              style: GoogleFonts.cairo(
+                                  fontSize: 12,
+                                  color: textColorSub)),
+                          Text('الجزء ${surah['juz']}',
+                              style: GoogleFonts.cairo(
+                                  fontSize: 12,
+                                  color: textColorSub)),
                         ],
                       ),
                     ],
                   ),
                 ),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment:
+                  CrossAxisAlignment.end,
                   children: [
                     Text(
-                        surah['english'],
-                        style: GoogleFonts.poppins(
-                          fontSize: 11,
-                          color: textColorSub,
-                          fontWeight: FontWeight.w500,
-                        )
+                      surah['english'],
+                      style: GoogleFonts.poppins(
+                        fontSize: 11,
+                        color: textColorSub,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                     const SizedBox(height: 8),
-                    Icon(Icons.arrow_forward_ios, size: 14, color: _gold.withOpacity(0.5)),
+                    Icon(Icons.arrow_forward_ios,
+                        size: 14,
+                        color: _gold.withOpacity(0.5)),
                   ],
                 ),
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBadge(String text, Color color) {
+    return Container(
+      padding:
+      const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+      decoration: BoxDecoration(
+        color: color.withOpacity(0.15),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: color.withOpacity(0.3)),
+      ),
+      child: Text(
+        text,
+        style: GoogleFonts.cairo(
+          fontSize: 10,
+          color: color,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );

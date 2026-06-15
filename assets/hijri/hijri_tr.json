@@ -1,0 +1,53 @@
+{
+  "weekDays": ["Pt", "Sa", "Ça", "Pe", "Cu", "Ct", "Pz"],
+  "arabicMonths": [
+    "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+    "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
+  ],
+  "hijriMonths": [
+    "Muharrem", "Safer", "Rebiülevvel", "Rebiülahir", "Cemaziyelevvel", "Cemaziyelahir",
+    "Recep", "Şaban", "Ramazan", "Şevval", "Zilkade", "Zilhicce"
+  ],
+  "islamicFacts": [
+    "Hicri takvim, Peygamber Efendimiz'in ﷺ Mekke'den Medine'ye hicretiyle başlar.",
+    "Ramazan ayı, Hicri takvimin dokuzuncu ayıdır.",
+    "Haram aylar şunlardır: Zilkade, Zilhicce, Muharrem ve Recep.",
+    "Kadir Gecesi bin aydan daha hayırlıdır ve Ramazan'ın son on gününde aranır.",
+    "Cuma günü, Müslümanlar için haftanın en hayırlı günüdür.",
+    "Arefe günü tutulan oruç, hacca gitmeyenler için Allah'ın izniyle iki yıllık günahlara keffarettir.",
+    "Aşure Günü mübarek bir gündür ve bu günde oruç tutmak sünnettir.",
+    "Zekat, Oruç ve Hac ibadetleri Hicri takvime göre yerine getirilir.",
+    "Hilalin görülmesi, Hicri ayların başlangıcı ile ilgili bir sünnettir.",
+    "İslami bayramlar Miladi takvime göre değil, Hicri takvime göre belirlenir."
+  ],
+  "hijriEvents": {
+    "1-10": {"title": "Aşure Günü", "desc": "Büyük mükafatı olan, oruç tutulması tavsiye edilen bir gün."},
+    "3-12": {"title": "Mevlid Kandili", "desc": "Peygamber Efendimiz'in ﷺ dünyaya geldiği kutlu gece."},
+    "7-27": {"title": "Miraç Kandili", "desc": "İsra ve Miraç hadisesinin yaşandığı mübarek gece."},
+    "8-15": {"title": "Berat Kandili", "desc": "Pek çok Müslümanın ibadetle geçirdiği mübarek bir gece."},
+    "9-1": {"title": "Ramazan Başlangıcı", "desc": "Mübarek Ramazan ayının başlangıcı."},
+    "9-27": {"title": "Kadir Gecesi (Tahmini)", "desc": "Yılın en büyük gecelerinden biri, son on günde aranır."},
+    "10-1": {"title": "Ramazan Bayramı", "desc": "Ramazan orucunu tamamlayan Müslümanlar için bir sevinç günü."},
+    "12-9": {"title": "Arefe Günü", "desc": "Yılın en faziletli günlerinden biri, hacda olmayanların oruç tutması sünnettir."},
+    "12-10": {"title": "Kurban Bayramı", "desc": "Kurban kesme günü ve Müslümanlar için en büyük günlerden biri."}
+  },
+  "hijriNotes": {
+    "1-10": {"title": "Dini Bilgi", "desc": "Aşure günü oruç tutmak ve öncesine veya sonrasına bir gün eklemek sünnettir."},
+    "9-1": {"title": "Dini Bilgi", "desc": "Ramazan oruç, teravih ve Kur'an okuma ayıdır."},
+    "9-27": {"title": "Dini Bilgi", "desc": "Kadir Gecesi son 10 günde aranır; bin aydan daha hayırlıdır."},
+    "10-1": {"title": "Dini Bilgi", "desc": "Bayram, sevinç ve şükür günüdür, mutluluğu göstermek sünnettir."},
+    "12-9": {"title": "Dini Bilgi", "desc": "Hacca gitmeyenler için Arefe günü orucu iki yıllık günahlara keffarettir."},
+    "12-10": {"title": "Dini Bilgi", "desc": "Kurban Bayramı en büyük günlerden biridir ve kurban kesmek meşrudur."}
+  },
+  "upcomingEvents": [
+    {"month": 1, "day": 10, "title": "Aşure Günü"},
+    {"month": 3, "day": 12, "title": "Mevlid Kandili"},
+    {"month": 7, "day": 27, "title": "Miraç Kandili"},
+    {"month": 8, "day": 15, "title": "Berat Kandili"},
+    {"month": 9, "day": 1, "title": "Ramazan Başlangıcı"},
+    {"month": 9, "day": 27, "title": "Kadir Gecesi"},
+    {"month": 10, "day": 1, "title": "Ramazan Bayramı"},
+    {"month": 12, "day": 9, "title": "Arefe Günü"},
+    {"month": 12, "day": 10, "title": "Kurban Bayramı"}
+  ]
+}

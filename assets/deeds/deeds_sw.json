@@ -1,0 +1,91 @@
+{
+  "_comment_deed_1": "Utukufu ni wa Mwenyezi Mungu na sifa njema zote ni Zake (SubhanAllahi wa bihamdihi)",
+  "deed_1_title": "Utukufu ni wa Mwenyezi Mungu na sifa njema zote ni Zake",
+  "deed_1_reward": "Utapandiwa mtende ndani ya Pepo",
+  "deed_1_hadith": "Yeyote atakayesema 'SubhanAllah wa bihamdihi', hupandiwa mtende ndani ya Pepo.",
+  "deed_1_source": "Imepokewa na Tirmidhi na kusahihishwa na Al-Albani",
+
+  "_comment_deed_2": "Utukufu ni wa Mwenyezi Mungu Aliye Mkuu, na sifa njema zote ni Zake",
+  "deed_2_title": "Utukufu ni wa Mwenyezi Mungu Aliye Mkuu, na sifa njema zote ni Zake",
+  "deed_2_reward": "Zina uzito mkubwa kwenye Mizani",
+  "deed_2_hadith": "Maneno mawili mepesi kwenye ulimi, mazito kwenye mizani, na yanayopendwa na Mwingi wa Rehema: 'SubhanAllah wa bihamdihi, SubhanAllahil Adhiym'.",
+  "deed_2_source": "Imepokewa na Bukhari na Muslim",
+
+  "_comment_deed_3": "Utukufu ni wa Mwenyezi Mungu na sifa njema zote ni Zake (Mara 100)",
+  "deed_3_title": "Utukufu ni wa Mwenyezi Mungu na sifa njema zote ni Zake (Mara 100)",
+  "deed_3_reward": "Hufutiwa madhambi hata yakiwa kama povu la bahari",
+  "deed_3_hadith": "Atakayesema 'SubhanAllah wa bihamdihi' kwa siku mara mia, atafutiwa makosa yake hata kama ni kiasi cha povu la bahari.",
+  "deed_3_source": "Imepokewa na Bukhari na Muslim",
+
+  "_comment_deed_4": "Kusoma Surat Al-Ikhlas (Mara 10)",
+  "deed_4_title": "Kusoma Surat Al-Ikhlas (Mara 10)",
+  "deed_4_reward": "Utajengewa jumba la kifahari ndani ya Pepo",
+  "deed_4_hadith": "Yeyote anayesoma 'Qul huwa Llahu Ahad' (Surat Al Ikhlas) mara kumi, Mwenyezi Mungu atamjengea jumba Peponi.",
+  "deed_4_source": "Imepokewa na Ahmad na kusahihishwa na Al-Albani",
+
+  "_comment_deed_5": "Hakuna uwezo wala nguvu isipokuwa kwa Mwenyezi Mungu (La hawla wa la quwwata illa billah)",
+  "deed_5_title": "Hakuna uwezo wala nguvu isipokuwa kwa Mwenyezi Mungu",
+  "deed_5_reward": "Hazina miongoni mwa hazina za Peponi",
+  "deed_5_hadith": "Je, nikujulishe neno ambalo ni miongoni mwa hazina za Peponi? 'La hawla wa la quwwata illa billah'.",
+  "deed_5_source": "Imepokewa na Bukhari na Muslim",
+
+  "_comment_deed_6": "Hapana mola apasaye kuabudiwa kwa haki ila Mwenyezi Mungu, Mmoja pekee, asiye na mshirika. Ufalme na sifa njema ni Zake, Naye ni Mweza wa kila kitu",
+  "deed_6_title": "Hapana mola apasaye kuabudiwa kwa haki ila Mwenyezi Mungu, Mmoja pekee, asiye na mshirika. Ufalme na sifa njema ni Zake, Naye ni Mweza wa kila kitu",
+  "deed_6_reward": "Mema 100, kufutiwa madhambi 100, na hifadhi dhidi ya shetani",
+  "deed_6_hadith": "Yeyote atakayeisema kwa siku mara mia, atapata thawabu sawa na kuacha huru watumwa kumi, na ataandikiwa mema mia moja, na atafutiwa madhambi mia moja, na atakuwa katika hifadhi dhidi ya Shetani.",
+  "deed_6_source": "Imepokewa na Bukhari na Muslim",
+
+  "_comment_deed_7": "Kumswalia Mtume ﷺ",
+  "deed_7_title": "Kumswalia Mtume ﷺ",
+  "deed_7_reward": "Rehema 10 kutoka kwa Mwenyezi Mungu, kufutiwa madhambi 10, na kunyanyuliwa daraja 10",
+  "deed7_hadith": "Yeyote atakayeniswalia mimi mara moja, Mwenyezi Mungu atamswalia mara kumi, atamfutia makosa kumi, na atamnyanyua daraja kumi.",
+  "deed7_source": "Imepokewa na Muslim na An-Nasa'i",
+
+  "_comment_deed_8": "Namuomba msamaha Mwenyezi Mungu na natubu Kwake",
+  "deed_8_title": "Namuomba msamaha Mwenyezi Mungu na natubu Kwake",
+  "deed_8_reward": "Uokovu katika kila dhiki na ufumbuzi wa kila tatizo",
+  "deed8_hadith": "Yeyote anayedumu katika kuomba msamaha (Istighfar), Mwenyezi Mungu humjalia ufumbuzi katika kila dhiki, na njia ya kutokea katika kila tatizo, na humruzuku kutoka kusikotarajiwa.",
+  "deed8_source": "Imepokewa na Abu Dawud na Ibn Majah",
+
+  "_comment_deed_9": "Kusoma Ayatul Kursi baada ya kila swala",
+  "deed_9_title": "Kusoma Ayatul Kursi baada ya kila swala",
+  "deed_9_reward": "Hazuiliwi kuingia Peponi isipokuwa kufa",
+  "deed_9_hadith": "Yeyote anayesoma Ayatul Kursi baada ya kila swala ya faradhi, hakuna kitakachomzuia kuingia Peponi isipokuwa kifo.",
+  "deed_9_source": "Imepokewa na An-Nasa'i na kusahihishwa na Al-Albani",
+
+  "_comment_deed_10": "SubhanAllah, Alhamdulillah, La ilaha illallah, Allahu Akbar",
+  "deed_10_title": "SubhanAllah, Alhamdulillah, La ilaha illallah, Allahu Akbar",
+  "deed_10_reward": "Maneno yanayopendwa zaidi na Mwenyezi Mungu",
+  "deed10_hadith": "Maneno yanayopendwa zaidi na Mwenyezi Mungu ni manne: SubhanAllah, Alhamdulillah, La ilaha illallah, na Allahu Akbar.",
+  "deed_10_source": "Imepokewa na Muslim",
+
+  "_comment_deed_11": "SubhanAllah (33), Alhamdulillah (33), Allahu Akbar (34)",
+  "deed_11_title": "SubhanAllah (33), Alhamdulillah (33), Allahu Akbar (34)",
+  "deed_11_reward": "Husamehewa madhambi yake hata yakiwa kama povu la bahari",
+  "deed_11_hadith": "Yeyote anayemtakasa Mwenyezi Mungu (SubhanAllah) mara 33, na kumhimidi (Alhamdulillah) mara 33, na kumkukuza (Allahu Akbar) mara 33 (au 34) baada ya kila swala, husamehewa madhambi yake.",
+  "deed_11_source": "Imepokewa na Muslim",
+
+  "_comment_deed_12": "Hapana mola apasaye kuabudiwa kwa haki ila Mwenyezi Mungu",
+  "deed_12_title": "Hapana mola apasaye kuabudiwa kwa haki ila Mwenyezi Mungu",
+  "deed_12_reward": "Bora ya yale waliyoyasema Manabii",
+  "deed_12_hadith": "Bora ya Dhikr ni 'La ilaha illallah', na bora ya Dua ni 'Alhamdulillah'.",
+  "deed_12_source": "Imepokewa na Tirmidhi na Ibn Majah",
+
+  "_comment_deed_13": "Sifa njema zote ni za Mwenyezi Mungu (Alhamdulillah)",
+  "deed_13_title": "Sifa njema zote ni za Mwenyezi Mungu",
+  "deed_13_reward": "Huijaza Mizani",
+  "deed_13_hadith": "Usafi ni nusu ya Iyman, na 'Alhamdulillah' huijaza Mizani.",
+  "deed_13_source": "Imepokewa na Muslim",
+
+  "_comment_deed_14": "Kwa Jina la Mwenyezi Mungu, ambaye kwa Jina Lake hakidhuru kitu chochote ardhini wala mbinguni, Naye ni Mwenye kusikia, Mwenye kujua (Mara 3)",
+  "deed_14_title": "Kwa Jina la Mwenyezi Mungu, ambaye kwa Jina Lake hakidhuru kitu chochote ardhini wala mbinguni, Naye ni Mwenye kusikia, Mwenye kujua (Mara 3)",
+  "deed_14_reward": "Hifadhi kutokana na kila shari",
+  "deed_14_hadith": "Atakayesema maneno haya mara tatu asubuhi na mara tatu jioni, hakuna kitu kitakachomdhuru.",
+  "deed_14_source": "Imepokewa na Abu Dawud na Tirmidhi",
+
+  "_comment_deed_15": "Najikinga kwa maneno ya Mwenyezi Mungu yaliyotimia kutokana na shari ya alivyoviumba (Mara 3)",
+  "deed_15_title": "Najikinga kwa maneno ya Mwenyezi Mungu yaliyotimia kutokana na shari ya alivyoviumba (Mara 3)",
+  "deed_15_reward": "Hifadhi kutokana na kila madhara",
+  "deed_15_hadith": "Atakayesema maneno haya mara tatu anapofikiwa na jioni, hatodhurika na sumu au wadudu usiku huo.",
+  "deed_15_source": "Imepokewa na Muslim"
+}

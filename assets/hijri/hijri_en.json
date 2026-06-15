@@ -1,0 +1,53 @@
+{
+  "weekDays": ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+  "arabicMonths": [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ],
+  "hijriMonths": [
+    "Muharram", "Safar", "Rabi' al-Awwal", "Rabi' al-Thani", "Jumada al-Awwal", "Jumada al-Thani",
+    "Rajab", "Sha'ban", "Ramadan", "Shawwal", "Dhu al-Qi'dah", "Dhu al-Hijjah"
+  ],
+  "islamicFacts": [
+    "The Hijri calendar begins with the Prophet's ﷺ migration from Makkah to Madinah.",
+    "Ramadan is the ninth month of the Hijri calendar.",
+    "The sacred months are: Dhu al-Qi'dah, Dhu al-Hijjah, Muharram, and Rajab.",
+    "Laylat al-Qadr is better than a thousand months and is sought in the last ten days of Ramadan.",
+    "Friday is the best day of the week for Muslims.",
+    "Fasting on the Day of Arafah expiates the sins of two years, by Allah's will, for non-pilgrims.",
+    "The Day of Ashura is a blessed day, and fasting on it is recommended.",
+    "Zakat, Fasting, and Hajj are connected to the Hijri calendar.",
+    "Sighting the crescent moon is a Sunnah associated with the beginning of Hijri months.",
+    "Islamic holidays are determined by the Hijri calendar, not the Gregorian."
+  ],
+  "hijriEvents": {
+    "1-10": {"title": "Day of Ashura", "desc": "A highly recommended day for fasting with great reward."},
+    "3-12": {"title": "Mawlid al-Nabi", "desc": "Anniversary of the Prophet's ﷺ birth according to well-known dates."},
+    "7-27": {"title": "Isra and Mi'raj", "desc": "A blessed night associated with the Night Journey and Ascension."},
+    "8-15": {"title": "Mid-Sha'ban", "desc": "A blessed night observed by many Muslims."},
+    "9-1": {"title": "Beginning of Ramadan", "desc": "The start of the blessed month of Ramadan."},
+    "9-27": {"title": "Laylat al-Qadr (Expected)", "desc": "One of the greatest nights, sought in the last ten days."},
+    "10-1": {"title": "Eid al-Fitr", "desc": "A day of joy for Muslims after completing the fasting of Ramadan."},
+    "12-9": {"title": "Day of Arafah", "desc": "One of the best days of the year, highly recommended for non-pilgrims to fast."},
+    "12-10": {"title": "Eid al-Adha", "desc": "The Day of Sacrifice and one of the greatest days for Muslims."}
+  },
+  "hijriNotes": {
+    "1-10": {"title": "Islamic Note", "desc": "It is recommended to fast on Ashura, and to add a day before or after it."},
+    "9-1": {"title": "Islamic Note", "desc": "Ramadan is the month of fasting, night prayers, and reciting the Quran."},
+    "9-27": {"title": "Islamic Note", "desc": "Laylat al-Qadr is sought in the last ten days; it is better than a thousand months."},
+    "10-1": {"title": "Islamic Note", "desc": "Eid is a day of joy and gratitude, where expressing happiness is Sunnah."},
+    "12-9": {"title": "Islamic Note", "desc": "Fasting on the Day of Arafah for non-pilgrims expiates two years of sins."},
+    "12-10": {"title": "Islamic Note", "desc": "Eid al-Adha is one of the greatest days, in which offering a sacrifice is prescribed."}
+  },
+  "upcomingEvents": [
+    {"month": 1, "day": 10, "title": "Day of Ashura"},
+    {"month": 3, "day": 12, "title": "Mawlid al-Nabi"},
+    {"month": 7, "day": 27, "title": "Isra and Mi'raj"},
+    {"month": 8, "day": 15, "title": "Mid-Sha'ban"},
+    {"month": 9, "day": 1, "title": "Beginning of Ramadan"},
+    {"month": 9, "day": 27, "title": "Laylat al-Qadr"},
+    {"month": 10, "day": 1, "title": "Eid al-Fitr"},
+    {"month": 12, "day": 9, "title": "Day of Arafah"},
+    {"month": 12, "day": 10, "title": "Eid al-Adha"}
+  ]
+}

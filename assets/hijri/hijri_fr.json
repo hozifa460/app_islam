@@ -1,0 +1,53 @@
+{
+  "weekDays": ["Lu", "Ma", "Me", "Je", "Ve", "Sa", "Di"],
+  "arabicMonths": [
+    "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+    "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+  ],
+  "hijriMonths": [
+    "Mouharram", "Safar", "Rabi' al-Awwal", "Rabi' ath-Thani", "Joumada al-Awwal", "Joumada ath-Thani",
+    "Rajab", "Cha'bane", "Ramadan", "Chawwal", "Dhou al-Qi'dah", "Dhou al-Hijjah"
+  ],
+  "islamicFacts": [
+    "Le calendrier hégirien commence avec la migration (Hégire) du Prophète ﷺ de La Mecque à Médine.",
+    "Le Ramadan est le neuvième mois du calendrier hégirien.",
+    "Les mois sacrés sont : Dhou al-Qi'dah, Dhou al-Hijjah, Mouharram et Rajab.",
+    "La Nuit du Destin (Laylat al-Qadr) est meilleure que mille mois et est recherchée dans les dix derniers jours de Ramadan.",
+    "Le vendredi est le meilleur jour de la semaine pour les musulmans.",
+    "Jeûner le jour d'Arafat expie les péchés de deux années, par la volonté d'Allah, pour le non-pèlerin.",
+    "Le jour d'Achoura est un jour béni, et il est recommandé de le jeûner.",
+    "La Zakat, le jeûne et le Hajj sont liés au calendrier hégirien.",
+    "L'observation du croissant de lune est une Sounnah liée au début des mois hégiriens.",
+    "Les fêtes islamiques sont déterminées par le calendrier hégirien et non grégorien."
+  ],
+  "hijriEvents": {
+    "1-10": {"title": "Jour d'Achoura", "desc": "Un jour où il est fortement recommandé de jeûner, avec une grande récompense."},
+    "3-12": {"title": "Mawlid an-Nabi", "desc": "L'anniversaire de la naissance du Prophète ﷺ selon des dates connues."},
+    "7-27": {"title": "Isra et Mi'raj", "desc": "Une nuit bénie associée au voyage nocturne et à l'ascension."},
+    "8-15": {"title": "Mi-Cha'bane", "desc": "Une nuit bénie observée par de nombreux musulmans."},
+    "9-1": {"title": "Début du Ramadan", "desc": "Le début du mois béni de Ramadan."},
+    "9-27": {"title": "Nuit du Destin (Prévue)", "desc": "L'une des plus grandes nuits, recherchée dans les dix derniers jours."},
+    "10-1": {"title": "Aïd al-Fitr", "desc": "Un jour de joie pour les musulmans après avoir accompli le jeûne de Ramadan."},
+    "12-9": {"title": "Jour d'Arafat", "desc": "L'un des meilleurs jours de l'année, recommandé pour le jeûne des non-pèlerins."},
+    "12-10": {"title": "Aïd al-Adha", "desc": "Le jour du sacrifice et l'un des plus grands jours pour les musulmans."}
+  },
+  "hijriNotes": {
+    "1-10": {"title": "Note Islamique", "desc": "Il est recommandé de jeûner Achoura, et d'y ajouter un jour avant ou après."},
+    "9-1": {"title": "Note Islamique", "desc": "Ramadan est le mois du jeûne, des prières nocturnes et de la récitation du Coran."},
+    "9-27": {"title": "Note Islamique", "desc": "Laylat al-Qadr est recherchée dans les 10 derniers jours ; elle vaut mieux que 1000 mois."},
+    "10-1": {"title": "Note Islamique", "desc": "L'Aïd est un jour de joie et de gratitude où exprimer le bonheur est une Sounnah."},
+    "12-9": {"title": "Note Islamique", "desc": "Jeûner le jour d'Arafat pour le non-pèlerin expie deux ans de péchés."},
+    "12-10": {"title": "Note Islamique", "desc": "Aïd al-Adha est l'un des plus grands jours, durant lequel le sacrifice est prescrit."}
+  },
+  "upcomingEvents": [
+    {"month": 1, "day": 10, "title": "Jour d'Achoura"},
+    {"month": 3, "day": 12, "title": "Mawlid an-Nabi"},
+    {"month": 7, "day": 27, "title": "Isra et Mi'raj"},
+    {"month": 8, "day": 15, "title": "Mi-Cha'bane"},
+    {"month": 9, "day": 1, "title": "Début du Ramadan"},
+    {"month": 9, "day": 27, "title": "Nuit du Destin"},
+    {"month": 10, "day": 1, "title": "Aïd al-Fitr"},
+    {"month": 12, "day": 9, "title": "Jour d'Arafat"},
+    {"month": 12, "day": 10, "title": "Aïd al-Adha"}
+  ]
+}

@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import '../services/adhan_image_cache_service.dart';
+import '../screens/prayer/more/services/adhan_image_cache_service.dart';
 
 class OfflineMuezzinImage extends StatelessWidget {
   final String muezzinId;

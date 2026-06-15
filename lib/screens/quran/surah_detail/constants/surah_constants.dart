@@ -1,0 +1,75 @@
+class SurahConstants {
+  static const String kReciterIdKey = 'quran_selected_reciter_id';
+  static const String kReciterNameKey = 'quran_selected_reciter_name';
+  static const String kLastPageKey = 'quran_last_page';
+  static const String kLastSurahKey = 'quran_last_surah_name';
+  static const String kBookmarkPageKey = 'quran_bookmark_page';
+  static const String kBookmarkSurahKey = 'quran_bookmark_surah_name';
+  static const String kQuranPagesFullyDownloadedKey = 'quran_pages_fully_downloaded';
+
+  static const String quranPagesBaseUrl =
+      'https://raw.githubusercontent.com/rn0x/Quran-Data/version-2.0/data/quran_image';
+
+  static const List<Map<String, String>> reciters = [
+    {'id': 'ar.alafasy', 'name': 'مشاري العفاسي'},
+    {'id': 'ar.husary', 'name': 'محمود خليل الحصري'},
+    {'id': 'ar.abdulbasitmurattal', 'name': 'عبدالباسط عبدالصمد'},
+    {'id': 'ar.minshawi', 'name': 'محمد صديق المنشاوي'},
+    {'id': 'ar.mahermuaiqly', 'name': 'ماهر المعيقلي'},
+  ];
+
+  static const List<String> surahNames = [
+    'الفاتحة', 'البقرة', 'آل عمران', 'النساء', 'المائدة', 'الأنعام',
+    'الأعراف', 'الأنفال', 'التوبة', 'يونس', 'هود', 'يوسف', 'الرعد',
+    'إبراهيم', 'الحجر', 'النحل', 'الإسراء', 'الكهف', 'مريم', 'طه',
+    'الأنبياء', 'الحج', 'المؤمنون', 'النور', 'الفرقان', 'الشعراء',
+    'النمل', 'القصص', 'العنكبوت', 'الروم', 'لقمان', 'السجدة',
+    'الأحزاب', 'سبأ', 'فاطر', 'يس', 'الصافات', 'ص', 'الزمر', 'غافر',
+    'فصلت', 'الشورى', 'الزخرف', 'الدخان', 'الجاثية', 'الأحقاف',
+    'محمد', 'الفتح', 'الحجرات', 'ق', 'الذاريات', 'الطور', 'النجم',
+    'القمر', 'الرحمن', 'الواقعة', 'الحديد', 'المجادلة', 'الحشر',
+    'الممتحنة', 'الصف', 'الجمعة', 'المنافقون', 'التغابن', 'الطلاق',
+    'التحريم', 'الملك', 'القلم', 'الحاقة', 'المعارج', 'نوح', 'الجن',
+    'المزمل', 'المدثر', 'القيامة', 'الإنسان', 'المرسلات', 'النبأ',
+    'النازعات', 'عبس', 'التكوير', 'الإنفطار', 'المطففين', 'الإنشقاق',
+    'البروج', 'الطارق', 'الأعلى', 'الغاشية', 'الفجر', 'البلد',
+    'الشمس', 'الليل', 'الضحى', 'الشرح', 'التين', 'العلق', 'القدر',
+    'البينة', 'الزلزلة', 'العاديات', 'القارعة', 'التكاثر', 'العصر',
+    'الهمزة', 'الفيل', 'قريش', 'الماعون', 'الكوثر', 'الكافرون',
+    'النصر', 'المسد', 'الإخلاص', 'الفلق', 'الناس',
+  ];
+
+  static const List<int> surahStartPages = [
+    1, 2, 50, 77, 106, 128, 151, 177, 187, 208, 221, 235, 249, 255, 262,
+    267, 282, 293, 305, 312, 322, 332, 342, 350, 359, 367, 377, 385, 396,
+    404, 411, 415, 418, 428, 434, 440, 446, 453, 458, 467, 477, 483, 489,
+    496, 499, 502, 507, 511, 515, 518, 520, 523, 526, 528, 531, 534, 537,
+    542, 545, 549, 551, 553, 554, 556, 558, 560, 562, 564, 566, 568, 570,
+    572, 574, 575, 577, 578, 580, 582, 583, 585, 586, 587, 587, 589, 590,
+    591, 591, 592, 593, 594, 595, 595, 596, 596, 597, 597, 598, 598, 599,
+    599, 600, 600, 601, 601, 601, 602, 602, 602, 603, 603, 603, 604, 604, 604,
+  ];
+
+  static const List<int> juzStartPages = [
+    1, 22, 42, 62, 82, 102, 121, 142, 162, 182, 201, 222, 242, 262, 282,
+    302, 322, 342, 362, 382, 402, 422, 442, 462, 482, 502, 522, 542, 562, 582,
+  ];
+
+  static String toArabicNum(int n) {
+    const nums = {
+      '0': '٠', '1': '١', '2': '٢', '3': '٣', '4': '٤',
+      '5': '٥', '6': '٦', '7': '٧', '8': '٨', '9': '٩',
+    };
+    String s = n.toString();
+    nums.forEach((k, v) => s = s.replaceAll(k, v));
+    return s;
+  }
+
+  static String getPageImageUrl(int page) {
+    return '$quranPagesBaseUrl/$page.png';
+  }
+
+  static int getPageForJuz(int juz) {
+    return juzStartPages[juz - 1];
+  }
+}

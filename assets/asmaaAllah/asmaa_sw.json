@@ -1,0 +1,598 @@
+{
+  "asma_allah": [
+    {
+      "id": 1,
+      "name": "Mwenyezi Mungu (Allah - الله)",
+      "meaning": "Jina kuu kabisa linalokusanya sifa zote za ukamilifu, utukufu, na uzuri. Hili ni jina maalum kwa Mwenyezi Mungu Mtukufu, hakuna mwingine anayeitwa nalo, na ndiyo asili ya majina yote.",
+      "reflection": "Hisi utukufu wa Mwenyezi Mungu katika kila wakati wa maisha yako, na umuombe kwa jina lake kuu kwa yakini na ikhlasi, kwani Yeye yuko karibu na hujibu maombi, hamwangushi anayemuomba."
+    },
+    {
+      "id": 2,
+      "name": "Mwingi wa Rehema (Ar-Rahman - الرحمن)",
+      "meaning": "Mwenye rehema pana inayowajumuisha viumbe wote duniani, waumini na makafiri, watu na majini. Rehema yake imeenea kila kitu, Yeye ndiye anayewaruzuku, kuwapa afya na kuwapa muda.",
+      "reflection": "Muombe Mwenyezi Mungu rehema zake pana, na uhisi wema wake kwako katika kila hali. Tafakari jinsi rehema yake inavyokuzunguka kila upande, katika afya yako, ruzuku yako, na uongofu wako."
+    },
+    {
+      "id": 3,
+      "name": "Mwenye Kurehemu (Ar-Rahim - الرحيم)",
+      "meaning": "Mwenye kuwaneemesha waja wake waumini kwa rehema maalum Siku ya Kiyama, atawaingiza Peponi na kuwaokoa na Moto. Yeye ndiye anayewafadhili waja wake kwa msamaha, radhi, na thawabu kubwa.",
+      "reflection": "Tafakari jinsi Mwenyezi Mungu anavyowarehemu waja wake waumini, na wafanyie wema watu kama unavyopenda kurehemewa. Jua kuwa rehema ya Mwenyezi Mungu iko karibu na wafanyao mema."
+    },
+    {
+      "id": 4,
+      "name": "Mfalme (Al-Malik - الملك)",
+      "meaning": "Mmiliki wa kila kitu, anayefanya apendavyo katika ufalme wake bila kupingwa wala kuzuiwa. Ufalme wa mbingu na ardhi ni wake, humpa amtakaye na humnyima amtakaye.",
+      "reflection": "Hisi kwamba ufalme wote ni wa Mwenyezi Mungu pekee, na mtegemee Yeye katika mambo yako yote. Usiunganishe moyo wako na ufalme unaoondoka, kwani kila ufalme usio wa Mungu unaisha."
+    },
+    {
+      "id": 5,
+      "name": "Mtakatifu (Al-Quddus - القدوس)",
+      "meaning": "Aliyetakasika na kila upungufu na aibu, Aliyetakasika na kila lisilolingana na utukufu na ukubwa wake. Msafi kutokana na kila doa, ambaye Malaika humtakasa na kumsabihi.",
+      "reflection": "Mtukuze Mwenyezi Mungu kutokana na kila upungufu katika itikadi na kauli yako, na safisha moyo wako na kila lisilofaa katika utumwa wako kwa Allah. Msabihi kila wakati."
+    },
+    {
+      "id": 6,
+      "name": "Mtoa Amani (As-Salam - السلام)",
+      "meaning": "Aliyesalimika na kila aibu, upungufu, na janga. Yeye ndiye anayewasalimisha waja wake na hofu na hatari, na kusambaza amani na usalama katika nyoyo za waumini.",
+      "reflection": "Muombe Mwenyezi Mungu amani na usalama katika dini yako, dunia yako, na akhera yako. Kuwa chanzo cha amani na usalama kwa wanaokuzunguka, na sambaza salamu (amani) kwa watu."
+    },
+    {
+      "id": 7,
+      "name": "Mtoa Usalama (Al-Mu'min - المؤمن)",
+      "meaning": "Anayewapa amani viumbe wake dhidi ya dhulma, na kuwapa amani waja wake waumini dhidi ya adhabu Siku ya Kiyama. Anayewasadikisha Mitume wake kwa miujiza.",
+      "reflection": "Hisi amani ya Mwenyezi Mungu kwa waja wake waumini, na amini ahadi yake ya kweli. Kuwa mwaminifu katika miamala yako na watu, kwani muumini wa kweli ni yule ambaye watu wanajihisi salama kwake."
+    },
+    {
+      "id": 8,
+      "name": "Mlinzi / Mwangalizi (Al-Muhaimin - المهيمن)",
+      "meaning": "Mwangalizi na Mlinzi wa kila kitu, anayejua siri za mambo na yaliyofichika nyoyoni. Shahidi wa viumbe wake kwa yale wanayoyasema na kuyafanya, hakuna kinachofichika kwake.",
+      "reflection": "Jua kuwa Mwenyezi Mungu anaona kila kitu, tengeneza siri zako na dhahiri yako. Mchunge Mwenyezi Mungu katika hali zako zote kana kwamba unamuona, na ikiwa humuoni basi Yeye anakuona."
+    },
+    {
+      "id": 9,
+      "name": "Mwenye Nguvu Zote (Al-'Aziz - العزيز)",
+      "meaning": "Mwenye nguvu asiyeshindwa wala kudhibitiwa. Mwenye nguvu katika kuwaadhibu maadui zake, anayeshinda kila kitu na kukidhibiti. Utukufu wake hupatikana tu kwa kumtii.",
+      "reflection": "Tafuta utukufu na nguvu kutoka kwa Mwenyezi Mungu pekee, na usijidhalilishe kwa asiyekuwa Yeye. Jua kuwa utukufu wote ni wa Mwenyezi Mungu, Mtume wake, na waumini."
+    },
+    {
+      "id": 10,
+      "name": "Jabari / Mwenye Kudhibiti (Al-Jabbar - الجبار)",
+      "meaning": "Anayeunga yaliyovunjika, kumtajirisha fakiri, na kutengeneza mambo. Mwenye kuwadhibiti wajeuri wote, na anayewalazimisha viumbe kufanya anavyotaka.",
+      "reflection": "Hisi nguvu ya Mwenyezi Mungu inayoikarabati hali yako na kukusaidia katika udhaifu wako. Mwelekee Yeye katika kila mtihani, kwani Yeye ndiye anayeunga nyoyo zilizovunjika."
+    },
+    {
+      "id": 11,
+      "name": "Mkubwa / Mwenye Kujivuna (Al-Mutakabbir - المتكبر)",
+      "meaning": "Aliye juu ya sifa za viumbe, ambaye ametukuka kwa uola wake hivyo hakuna mfano wake. Mwenye utukufu na ukubwa, Aliyetakasika na kila upungufu.",
+      "reflection": "Kuwa mnyenyekevu kwa Mwenyezi Mungu na kwa watu, kwani ukubwa ni sifa ya Mwenyezi Mungu pekee. Yeyote anayeshindana Naye kwa ukubwa, Mwenyezi Mungu atamuangamiza."
+    },
+    {
+      "id": 12,
+      "name": "Muumba (Al-Khaliq - الخالق)",
+      "meaning": "Aliyekileta kila kitu kutoka kwenye kutokuwepo, na kukipangia hali na sifa zake kabla ya kukiumba. Yeye ndiye aliyeumba kila kitu kwa uwezo, hikima, na ujuzi wake.",
+      "reflection": "Tafakari uumbaji wa Mwenyezi Mungu na ubunifu wake katika ulimwengu unaokuzunguka. Mshukuru kwa neema ya kuumbwa na kuishi, na tumia alivyokuumbia katika yale anayoyaridhia."
+    },
+    {
+      "id": 13,
+      "name": "Mtengenezaji (Al-Bari' - البارئ)",
+      "meaning": "Aliyeviumba viumbe na kuvipa uhai kwa uwezo wake, na kuvitofautisha kila kimoja kwa sifa na maumbo mbalimbali, vikiwa havina kasoro wala hitilafu.",
+      "reflection": "Tafakari usahihi wa uumbaji wa Mwenyezi Mungu na jinsi alivyomuumba kila kiumbe tofauti. Wafanyie wema viumbe wa Mwenyezi Mungu, kwani wote ni tegemezi Kwake."
+    },
+    {
+      "id": 14,
+      "name": "Mtia Sura (Al-Musawwir - المصور)",
+      "meaning": "Aliyevitia sura viumbe vyote na kumpa kila kiumbe sura na umbo lake maalum linalomtofautisha na wengine. Aliwaumba kwa sura tofauti ili watambuane.",
+      "reflection": "Mshukuru Mwenyezi Mungu kwa sura yako nzuri na uumbaji wako, na usikemee sura ya mtu yeyote. Jua kuwa uzuri wa kweli ni uzuri wa moyo na matendo."
+    },
+    {
+      "id": 15,
+      "name": "Mwingi wa Kusamehe (Al-Ghaffar - الغفار)",
+      "meaning": "Mwingi wa kuwasamehe waja wake, anayewasitiri dhambi zao na kuwasamehe mara kwa mara. Hachoki kusamehe hata kama dhambi zikijirudia, Yeye husamehe dhambi zote.",
+      "reflection": "Kithirisha kuomba msamaha (Istighfar) wakati wote, kwani mlango wa msamaha uko wazi haufungwi. Usikate tamaa na rehema ya Mwenyezi Mungu haijalishi ukubwa wa dhambi zako."
+    },
+    {
+      "id": 16,
+      "name": "Mwenye Kutendesha Nguvu (Al-Qahhar - القهار)",
+      "meaning": "Aliyekidhibiti kila kitu kwa uwezo na nguvu zake, kila kiumbe kimetii na kudhalilika mbele ya utukufu wake. Hakuna kinachomshinda katika mbingu wala ardhi.",
+      "reflection": "Hisi nguvu ya Mwenyezi Mungu juu ya kila dhalimu na jeuri, na usimuogope yeyote isipokuwa Yeye. Jua kuwa anayewadhulumu watu kwa batili, Mwenyezi Mungu atamwadhibu kwa haki yake."
+    },
+    {
+      "id": 17,
+      "name": "Mpaji Mkuu (Al-Wahhab - الوهاب)",
+      "meaning": "Mwingi wa vipaji na neema, anayetoa bila sababu, bila kikomo, wala kutarajia malipo. Humpa amtakaye anachotaka, vipaji vyake havikati na neema zake hazihesabiki.",
+      "reflection": "Muombe Mwenyezi Mungu fadhila zake, kwani Yeye ndiye Mpaji Mkarimu ambaye hazina zake haziishi. Kuwa mkarimu kwa watu, kwani Mwenyezi Mungu anawapenda wakarimu."
+    },
+    {
+      "id": 18,
+      "name": "Mtoa Ruzuku (Ar-Razzaq - الرزاق)",
+      "meaning": "Anayewaruzuku viumbe wote na kudhamini chakula chao. Hamsahau kiumbe chake yeyote, kila kiumbe ruzuku yake iko kwa Mwenyezi Mungu, anaruzuku waumini na makafiri.",
+      "reflection": "Kuwa na utulivu, kwani ruzuku yako uliyopangiwa itakufikia kwa wakati wake kwa hikima ya Mwenyezi Mungu. Tafuta ruzuku ya halali na mtegemee Mwenyezi Mungu."
+    },
+    {
+      "id": 19,
+      "name": "Mfunguaji (Al-Fattah - الفتاح)",
+      "meaning": "Anayewafungulia waja wake milango ya rehema na ruzuku, na anayehukumu baina yao kwa haki na uadilifu. Anafungua mambo yaliyofungwa na kutoa faraja.",
+      "reflection": "Ikiwa milango imefungwa mbele yako, mwelekee Al-Fattah (Mfunguaji). Jua kuwa anachokifungua Mwenyezi Mungu hakuna wa kukifunga, na anachokifunga hakuna wa kukifungua."
+    },
+    {
+      "id": 20,
+      "name": "Mjuzi wa Yote (Al-'Alim - العليم)",
+      "meaning": "Ambaye ujuzi wake umezunguka kila kitu, cha dhahiri na cha siri, kikubwa na kidogo. Anajua yaliyopita, yaliyopo, na yajayo. Hakuna kinachofichika kwake mbinguni wala ardhini.",
+      "reflection": "Kumbuka ujuzi wa Mwenyezi Mungu unaozunguka kila kitu, na fanya vitendo vyako kwa ikhlasi kwa siri na dhahiri. Tafuta elimu yenye manufaa na uifanyie kazi."
+    },
+    {
+      "id": 21,
+      "name": "Mkunjuaji / Mzuiaji (Al-Qabidh - القابض)",
+      "meaning": "Anayezuia ruzuku na kuchukua roho kwa hikima na matakwa yake, humbana amtakaye kama mtihani. Kuzuia kwake ni uadilifu na hikima, huzuia ili atoe.",
+      "reflection": "Ikiwa mambo yamekua magumu kwako, jua kuwa kuzuiliwa ni hikima kutoka kwa Mwenyezi Mungu, na baada ya dhiki kuna faraja. Subiri na tarajia malipo."
+    },
+    {
+      "id": 22,
+      "name": "Mpanuaji (Al-Basith - الباسط)",
+      "meaning": "Anayemkunjulia ruzuku amtakaye katika waja wake kwa fadhila na ukarimu wake. Hukunjua mkono wake usiku ili mkosaji wa mchana atubu, na mchana ili mkosaji wa usiku atubu.",
+      "reflection": "Ikiwa Mwenyezi Mungu amekukunjulia ruzuku na neema, mshukuru na usijivune. Jua kuwa kukunjuliwa pia ni mtihani kama kuzuiliwa."
+    },
+    {
+      "id": 23,
+      "name": "Mshushaji (Al-Khafidh - الخافض)",
+      "meaning": "Anayemshusha amtakaye katika viumbe wake kwa hikima na uadilifu wake, huwashusha wenye kiburi na kuwadhalilisha madhalimu. Hushusha makafiri na wapinga haki.",
+      "reflection": "Jihadhari na kiburi na kujiinua ardhini, kwani Mwenyezi Mungu huwashusha wenye kiburi. Nyenyekea kwa Mwenyezi Mungu atakuinua, na shikamana na unyenyekevu."
+    },
+    {
+      "id": 24,
+      "name": "Mnyanyuaji (Ar-Rafi' - الرافع)",
+      "meaning": "Anayewainua waumini kwa utiifu na imani, na humuinua amtakaye kwa fadhila zake. Huwainua wenye elimu na imani daraja za juu.",
+      "reflection": "Jitahidi kujiinua mbele ya Mwenyezi Mungu kwa elimu, matendo mema na ucha Mungu. Jua kuwa kuinuliwa kwa kweli ni kule kwa moyo kwa imani."
+    },
+    {
+      "id": 25,
+      "name": "Mtoa Heshima (Al-Mu'izz - المعز)",
+      "meaning": "Anayetoa utukufu na heshima kwa amtakaye, akamfanya mtukufu na mkarimu. Hapati utukufu isipokuwa aliyempa Mwenyezi Mungu, na hakuna utukufu isipokuwa kwa utiifu Kwake.",
+      "reflection": "Tafuta utukufu kwa Mwenyezi Mungu pekee, na usiwatafute viumbe. Jua kuwa utukufu uko katika kumtii na udhalili uko katika kumuasi."
+    },
+    {
+      "id": 26,
+      "name": "Mtoa Udhalili (Al-Mudzill - المذل)",
+      "meaning": "Anayemdhalilisha amtakaye katika viumbe wake kwa uadilifu wake. Humdhalilisha anayemuasi na kufanya kiburi, na kuwadhalilisha madhalimu na waharibifu.",
+      "reflection": "Usidanganyike na nguvu, mali, au cheo chako, kwani Mwenyezi Mungu ana uwezo wa kumdhalilisha kila mwenye kiburi. Jilinde kwa Mwenyezi Mungu dhidi ya udhalili."
+    },
+    {
+      "id": 27,
+      "name": "Msikivu wa Yote (As-Sami' - السميع)",
+      "meaning": "Anayesikia sauti zote zenye lugha tofauti na mahitaji mbalimbali, hasumbuliwi na sauti kuingiliana. Anasikia siri, minong'ono, na mtembeo wa chungu juu ya mwamba.",
+      "reflection": "Omba dua kwa yakini, kwani Mwenyezi Mungu anasikia minong'ono na sauti ya moyo wako. Usiseme maneno yasiyomridhisha Mwenyezi Mungu."
+    },
+    {
+      "id": 28,
+      "name": "Mwenye Kuona (Al-Bashir - البصير)",
+      "meaning": "Anayeona kila kitu hata kiwe kidogo vipi, anaona mtembeo wa chungu mweusi juu ya mwamba mweusi katika usiku wa giza. Hafichikiwi na chochote ardhini wala mbinguni.",
+      "reflection": "Hisi kuwa Mwenyezi Mungu anakuona kila wakati, na fanya matendo yako kwa uzuri kwa siri na dhahiri. Jua kuwa Mwenyezi Mungu anakuona popote ulipo."
+    },
+    {
+      "id": 29,
+      "name": "Hakimu (Al-Hakam - الحكم)",
+      "meaning": "Anayehukumu baina ya waja wake kwa haki na uadilifu, hamdhulumu yeyote hata chembe. Hukumu yake inatekelezwa haipingwi, Yeye ndiye Hakimu mkuu.",
+      "reflection": "Ridhika na hukumu ya Mwenyezi Mungu na makadirio yake, na ujue kuwa hahukumu isipokuwa kwa haki. Usimhukumu yeyote isipokuwa kwa uadilifu."
+    },
+    {
+      "id": 30,
+      "name": "Muadilifu (Al-'Adl - العدل)",
+      "meaning": "Aliyetakasika na dhulma na uonevu katika hukumu na mipango yake. Hamdhulumu kiumbe yeyote, na hapotezi malipo ya mwenye kufanya mema. Uadilifu wake ni kamili.",
+      "reflection": "Kuwa muadilifu katika hukumu na miamala yako na watu, wala usimdhulumu yeyote. Jua kuwa dhulma ni giza Siku ya Kiyama."
+    },
+    {
+      "id": 31,
+      "name": "Mpole / Mjuzi wa Siri (Al-Lathif - اللطيف)",
+      "meaning": "Anayewafikishia kheri na neema waja wake kwa upole na siri, kutoka wasipojua wala kutarajia. Huwafanyia wepesi waja wake katika makadirio yao kwa hikima kubwa.",
+      "reflection": "Tafakari upole wa Mwenyezi Mungu kwako katika mambo madogo ya maisha yako ambayo huenda huyatambui. Jua kuwa nyuma ya kila dhiki kuna faraja kutoka kwa Mpole."
+    },
+    {
+      "id": 32,
+      "name": "Mwenye Habari (Al-Khabir - الخبير)",
+      "meaning": "Mjuzi wa mambo ya ndani na siri zake, hakuna kinachofichika kwake kuhusu hali za viumbe wake. Anajua yaliyomo vifuani na siri za nyoyo.",
+      "reflection": "Jua kuwa Mwenyezi Mungu ana habari na hali yako na yaliyomo moyoni mwako, tengeneza nia yako. Muombe Mwenyezi Mungu aisafishe siri yako."
+    },
+    {
+      "id": 33,
+      "name": "Mvumilivu (Al-Halim - الحليم)",
+      "meaning": "Asiyefanya haraka kumuadhibu anayemuasi, badala yake humpa muda, afya, na ruzuku pamoja na maasi yake. Uvumilivu wake umeenea, anatoa muda na anasamehe.",
+      "reflection": "Pamba tabia yako kwa uvumilivu na upole unapotangamana na watu. Usifanye haraka kulipiza kisasi, kwani Mwenyezi Mungu ni Mvumilivu sana."
+    },
+    {
+      "id": 34,
+      "name": "Mtukufu (Al-'Azhim - العظيم)",
+      "meaning": "Mwenye ukubwa na utukufu mbinguni na ardhini, Mtukufu katika dhati yake, sifa zake na vitendo vyake. Akili haziwezi kumdhibiti wala macho kumfikia.",
+      "reflection": "Mtukuze Mwenyezi Mungu katika moyo wako na vitendo vyako, na usidharau chochote katika amri zake. Hisi utukufu wake unaposimama mbele yake kwenye swala."
+    },
+    {
+      "id": 35,
+      "name": "Msamehevu (Al-Ghafur - الغفور)",
+      "meaning": "Anayesamehe madhambi, kusitiri aibu na kufuta makosa. Msamaha wake ni mpana, humsamehe anayetubu kwake hata kama madhambi yake yamekuwa makubwa vipi.",
+      "reflection": "Usikate tamaa na rehema na msamaha wa Mwenyezi Mungu hata ufanye dhambi kiasi gani. Yeye ni Msamehevu anayependa kusamehe, tubu kwake kila wakati."
+    },
+    {
+      "id": 36,
+      "name": "Mwenye Shukrani / Mlipaji (Asy-Syakur - الشكور)",
+      "meaning": "Anayelipa kitendo kidogo kwa ujira mkubwa, na huzidisha mema kwa amtakaye. Huwashukuru waja wake kwa utiifu wao kwa kuwalipa na kuwapa fadhila zaidi.",
+      "reflection": "Mshukuru Mwenyezi Mungu kwa neema zake zisizohesabika, na ujue kwamba analipa kwa kitendo kidogo unachokifanya. Kithirisha matendo mema hata yakiwa madogo."
+    },
+    {
+      "id": 37,
+      "name": "Aliye Juu (Al-'Aliy - العلي)",
+      "meaning": "Aliye juu ya viumbe wake kwa dhati yake, sifa zake na uwezo wake. Mwenye daraja la juu na cheo kitukufu. Yuko juu ya kila kitu kwa njia zote.",
+      "reflection": "Jiunganishe na Mwenyezi Mungu Aliye Juu na usiunganishe moyo wako na vilivyo chini yake. Inua malengo yako kufikia daraja za juu kabisa Peponi."
+    },
+    {
+      "id": 38,
+      "name": "Mkubwa (Al-Kabir - الكبير)",
+      "meaning": "Aliyekuwa mkubwa katika dhati yake na sifa zake, kila kitu kikiwa duni kwake. Mkubwa kuliko kila kikubwa. Yeye ndiye mwenye ukubwa mbinguni na ardhini.",
+      "reflection": "Mkuze Mwenyezi Mungu katika moyo wako ndipo kila kitu kitakua kidogo mbele yako. Ukikuta jambo zito, kumbuka kuwa Mwenyezi Mungu (Allahu Akbar) ni mkubwa kuliko kila kitu."
+    },
+    {
+      "id": 39,
+      "name": "Mlinzi (Al-Hafizh - الحفيظ)",
+      "meaning": "Anayewahifadhi viumbe wake na maangamizi, na anayehifadhi matendo ya waja wake ili kuwalipa. Anahifadhi mbingu na ardhi, na kuwahifadhi waumini katika dini yao.",
+      "reflection": "Muombe Mwenyezi Mungu aihifadhi familia yako, mali yako, na dini yako, Yeye ndiye Mlinzi mbora. Mhifadhi Mwenyezi Mungu naye atakuhifadhi (shika amri zake)."
+    },
+    {
+      "id": 40,
+      "name": "Mlishaji / Mwenye Uwezo (Al-Muqit - المقيت)",
+      "meaning": "Anayefikisha chakula na ruzuku kwa kila kiumbe kwa wakati wake muafaka. Ndiye mdhamini wa chakula cha waja, anayeweza kufikisha ruzuku kwa kila aliye hai.",
+      "reflection": "Kuwa na utulivu kuhusu ruzuku yako, kwani Mwenyezi Mungu ndiye Mlishaji. Pia usisahau kuwalisha wanaohitaji chakula."
+    },
+    {
+      "id": 41,
+      "name": "Mhasibu / Mwenye Kutosheleza (Al-Hasib - الحسيب)",
+      "meaning": "Mwenye kuwatosheleza waja wake katika mambo yao yote, na mhasibu wao kwa vitendo vyao Siku ya Kiyama. Humtosheleza anayemtegemea, na kuihesabu kila nafsi kwa uadilifu.",
+      "reflection": "Ihesabu nafsi yako kabla hujahesabiwa. Pima matendo yako kabla hayajapimwa. Jua kuwa Mwenyezi Mungu atakuhesabu, hivyo jiandae kutoa majibu Siku ya Hukumu."
+    },
+    {
+      "id": 42,
+      "name": "Mwenye Utukufu (Al-Jalil - الجليل)",
+      "meaning": "Alisifiwa kwa sifa za utukufu, ukamilifu na ukubwa. Mkuu katika ufalme na mamlaka yake. Sifa zake za utukufu hujaza nyoyo heshima na kicho.",
+      "reflection": "Mtukuze Mwenyezi Mungu katika moyo wako, na uone haya kumuasi anapokuona. Jua kuwa utukufu wake unakutaka uwe mnyenyekevu mbele yake."
+    },
+    {
+      "id": 43,
+      "name": "Mkarimu (Al-Karim - الكريم)",
+      "meaning": "Mwingi wa kheri na utoaji, anayetoa bila kuombwa, bila hesabu wala masimbulizi. Ukarimu wake haupimiki, humpa anayemuomba na asiyemuomba.",
+      "reflection": "Jipambe na tabia ya ukarimu na utoaji kutoka kwa alichokupa Mwenyezi Mungu. Jua kuwa kilichoko kwa Mwenyezi Mungu ni bora na kinabakia, usifanye ubakhili."
+    },
+    {
+      "id": 44,
+      "name": "Mwangalizi (Ar-Raqib - الرقيب)",
+      "meaning": "Anayejua yanayofichwa na vifua, anayesimamia kila nafsi kwa ilichochuma. Hakuna kinachofichika kwake, anachunga matendo ya waja, kauli zao na mawazo yao.",
+      "reflection": "Mchunge Mwenyezi Mungu kwa siri na dhahiri, na ujue anakuangalia kila wakati. Fanya matendo mazuri na kuwa na msimamo katika kumtii."
+    },
+    {
+      "id": 45,
+      "name": "Mwitikiaji (Al-Mujib - المجيب)",
+      "meaning": "Anayeitikia dua ya muombaji anapomuomba. Yuko karibu na yule anayemwita kwa unyoofu. Huitikia mwenye shida, huondoa ubaya na kufariji dhiki.",
+      "reflection": "Muombe Mwenyezi Mungu kwa yakini na utulivu, Yeye ndiye Mwitikiaji aliye karibu asiyemkatalia muombaji. Mdhannie Mwenyezi Mungu dhana nzuri katika kukubali dua yako."
+    },
+    {
+      "id": 46,
+      "name": "Mwenye Wasaa (Al-Wasi' - الواسع)",
+      "meaning": "Ambaye rehema yake imeenea kila kitu, elimu yake imeenea kila kitu, na ruzuku yake imewaenea viumbe wake wote. Hazina zake haziishi.",
+      "reflection": "Usiibane rehema ya Mwenyezi Mungu maishani mwako, kwani ni pana zaidi kuliko unavyofikiria. Muombe fadhila zake na usikate tamaa."
+    },
+    {
+      "id": 47,
+      "name": "Mwenye Hikima (Al-Hakim - الحكيم)",
+      "meaning": "Anayeweka kila kitu mahali pake panapostahili kwa hikima kubwa. Hafanyi jambo kwa mchezo na hakadirii bure; vitendo na amri zake zote zina hikima.",
+      "reflection": "Amini hikima ya Mwenyezi Mungu katika kila anachokukadiria, hata kama huelewi hikima yake kwa wakati huo. Kila qadari ya Mwenyezi Mungu ni kheri na hikima."
+    },
+    {
+      "id": 48,
+      "name": "Mwenye Mapenzi (Al-Wadud - الودود)",
+      "meaning": "Anayewapenda waja wake wema, anayewajali kwa neema na hisani zake. Ndiye mpenzi katika nyoyo za waja wake; anawapenda nao wanampenda.",
+      "reflection": "Hisi mapenzi ya Mwenyezi Mungu kwako unapomtii, na mjikurubishe kwake kwa matendo mema. Jaza moyo wako kwa kumpenda Mwenyezi Mungu."
+    },
+    {
+      "id": 49,
+      "name": "Mtukufu Mkuu (Al-Majid - المجيد)",
+      "meaning": "Mwenye utukufu mkuu, heshima kamili na ufalme mpana. Utukufu wake umejaa mbinguni na ardhini. Malaika na viumbe wote humtukuza.",
+      "reflection": "Mtukuze Mwenyezi Mungu kwa moyo wako, ulimi wako, na viungo vyako. Kithirisha kumsifu, na ujue utukufu wa Mungu hauwezi kufikiwa kwa akili zetu."
+    },
+    {
+      "id": 50,
+      "name": "Mfufuaji (Al-Ba'ith - الباعث)",
+      "meaning": "Anayewafufua viumbe Siku ya Kiyama baada ya kufa kwa ajili ya hesabu na malipo. Ndiye anayewatuma Mitume, na anayefufua hima kwenye nyoyo za waumini.",
+      "reflection": "Jiandae kwa siku ya Kufufuliwa kwa matendo mema na toba ya kweli. Jua utafufuliwa na kuhesabiwa kwa kila jambo dogo na kubwa."
+    },
+    {
+      "id": 51,
+      "name": "Shahidi (Asy-Syahid - الشهيد)",
+      "meaning": "Ambaye hakuna kinachofichika kwake, anashuhudia kila kitu na kukijua. Anashuhudia vitendo vya waja, na atakuwa Shahidi juu yao Siku ya Kiyama.",
+      "reflection": "Kumbuka ushahidi wa Mwenyezi Mungu juu ya vitendo na kauli zako. Fanya vizuri katika unayoyatenda, ili ushahidi Wake uwe kwa faida yako, si dhidi yako."
+    },
+    {
+      "id": 52,
+      "name": "Wa Haki (Al-Haqq - الحق)",
+      "meaning": "Aliye imara asiye na shaka katika uwepo wake, na Uola wake. Yeye ndiye Haki katika dhati yake, sifa zake, vitendo vyake na ahadi zake. Vyote isipokuwa Yeye vinaweza kuwepo au kutokuwepo, lakini uwepo Wake ni wa lazima.",
+      "reflection": "Shikamana na haki hata kama uko peke yako. Jua kuwa batili haijalishi inavuma vipi itaangamia. Kuwa mkweli siku zote."
+    },
+    {
+      "id": 53,
+      "name": "Mtegemewa (Al-Wakil - الوكيل)",
+      "meaning": "Mdhamini wa ruzuku na maslahi ya waja, Msimamizi wa mambo ya anayemtegemea. Anayemfanya kuwa Mtegemewa, humtosheleza dhidi ya kila wasiwasi na ubaya.",
+      "reflection": "Mtegemee Mwenyezi Mungu ukweli wa kumtegemea, mwachie mambo yako. Mwenye kumtegemea Mwenyezi Mungu anamtosheleza."
+    },
+    {
+      "id": 54,
+      "name": "Mwenye Nguvu (Al-Qawiy - القوي)",
+      "meaning": "Mwenye nguvu kamili ambaye hashindwi na chochote ardhini wala mbinguni. Nguvu zake hazishindiki. Hapatwi na uchovu, udhaifu wala kulegea.",
+      "reflection": "Pata nguvu zako kutoka kwa Mwenyezi Mungu, usitegemee nguvu zako binafsi. Muombe msaada wala usijione mnyonge (La hawla wa la quwwata illa billah)."
+    },
+    {
+      "id": 55,
+      "name": "Imara (Al-Matin - المتين)",
+      "meaning": "Mwenye nguvu kali asiyepatwa na udhaifu wala uchovu. Uimara wake upo katika uwezo na adhabu kwa anayemuasi. Hatikiswi na chochote.",
+      "reflection": "Kuwa imara katika imani yako na thabiti kwenye haki. Jua kuwa Mwenyezi Mungu ni imara na mkali wa kuadhibu kwa maadui zake."
+    },
+    {
+      "id": 56,
+      "name": "Mlinzi / Rafiki (Al-Waliy - الولي)",
+      "meaning": "Msaidizi na Msimamizi wa mambo ya waja wake waumini. Huwatunza kwa uangalizi wake, ulinzi wake na nusura yake. Huwatoa gizani kuwapeleka kwenye nuru.",
+      "reflection": "Mfanye Mwenyezi Mungu kuwa Mlinzi wako, na jitosheleze kwa ulinzi wake kuliko msaada wa yeyote. Aliye chini ya ulinzi wa Mungu hatadhulumiwa."
+    },
+    {
+      "id": 57,
+      "name": "Mwenye Kusifiwa (Al-Hamid - الحميد)",
+      "meaning": "Mwenye kusifiwa katika kila hali na kila wakati. Anayestahiki sifa na shukrani kwa dhati yake, sifa zake na matendo yake. Kila kitu kinamsifu Yeye.",
+      "reflection": "Mhimidi (msifu) Mwenyezi Mungu katika raha na shida, kwani Yeye ni wa kusifiwa kila wakati. Fanya ulimi wako uwe mwepesi kumshukuru Mwenyezi Mungu."
+    },
+    {
+      "id": 58,
+      "name": "Mwenye Kudhibiti Hesabu (Al-Muhshi - المحصي)",
+      "meaning": "Aliyehesabu kila kitu kwa idadi na kukijua kiundani, hakuna kinachofichika kwake. Anahesabu vitendo vya waja, pumzi zao na hatua zao.",
+      "reflection": "Jua kuwa kila tendo lako linahesabiwa, fanya wema katika unayoyatenda. Fanya mema yako yawe mengi kuliko mabaya yako."
+    },
+    {
+      "id": 59,
+      "name": "Mwanzilishi (Al-Mubdi' - المبدئ)",
+      "meaning": "Aliyeanza kuumba vitu vyote bila kuwa na mfano uliotangulia. Alianzisha viumbe kwa uwezo wake kutoka kwenye kutokuwepo bila kusaidiwa.",
+      "reflection": "Tafakari mwanzo wa kuumbwa kwako na jinsi Mwenyezi Mungu alivyokuumba kutoka pasipo kuwepo. Mshukuru kwa neema ya kuishi."
+    },
+    {
+      "id": 60,
+      "name": "Mrejeza (Al-Mu'id - المعيد)",
+      "meaning": "Anayewarejesha viumbe baada ya kufa kwao Siku ya Kiyama kama alivyoanza kuwaumba mara ya kwanza, kwa ajili ya hesabu na malipo.",
+      "reflection": "Amini ufufuo baada ya kifo, na ujiandae kukutana na Mwenyezi Mungu kwa matendo mema. Kama alivyokuanzisha, atakurejesha Kwake."
+    },
+    {
+      "id": 61,
+      "name": "Mhuishaji (Al-Muhyi - المحيي)",
+      "meaning": "Anayehuisha wafu na kutoa kilicho hai kutoka kwa kilichokufa. Yeye ndiye aliyetoa uhai kwa kupuliza roho, na atahuisha Siku ya Ufufuo. Huhuisha nyoyo zilizokufa kwa nuru ya imani.",
+      "reflection": "Muombe Mwenyezi Mungu ahuaishe moyo wako kwa imani na elimu. Jua kuwa uhai wa moyo ni bora na muhimu kuliko uhai wa mwili."
+    },
+    {
+      "id": 62,
+      "name": "Mfishaji (Al-Mumit - المميت)",
+      "meaning": "Anayewafisha walio hai na kuchukua roho zao anapotaka. Aliumba mauti na uhai ili awajaribu ni nani mwenye vitendo vizuri. Kila nafsi itaonja mauti.",
+      "reflection": "Kumbuka kifo kila siku na kujiandaa nacho kwa matendo mema. Usihadaiwe na maisha ya dunia, kwani ni njia tu si makazi ya kudumu."
+    },
+    {
+      "id": 63,
+      "name": "Aliye Hai (Al-Hayy - الحي)",
+      "meaning": "Mwenye uhai kamili wa milele ambao haukutanguliwa na kutokuwepo wala haufuatwi na kutoweka. Uhai wake si kama wa viumbe, bali ni uhai kamili usiokuwa na usingizi wala kusinzia.",
+      "reflection": "Mtegemee Aliye Hai asiyekufa, na usitegemee viumbe hai watakaokufa. Fanya kazi kwa ajili ya maisha ya akhera yanayobaki."
+    },
+    {
+      "id": 64,
+      "name": "Msimamiaji wa Yote (Al-Qayyum - القيوم)",
+      "meaning": "Anayesimama Mwenyewe na Mkwasi asiyehitaji chochote, Msimamizi wa viumbe wake ambaye hakuna kinachoweza kusimama isipokuwa kwa uwezo Wake. Hachukuliwi na usingizi wala kusinzia.",
+      "reflection": "Muombe msaada Al-Qayyum katika mambo yako yote, Yeye ndiye anayesimamia maisha yako. Usighafilike kumkumbuka hata kwa sekunde moja."
+    },
+    {
+      "id": 65,
+      "name": "Mwenye Kupata (Al-Wajid - الواجد)",
+      "meaning": "Mkwasi asiyehitaji chochote, anayepata kila anachokitaka wakati wowote. Hashindwi na chochote na hahitaji chochote, bali kila kitu kinamhitaji.",
+      "reflection": "Usiwe na haja isipokuwa kwa Mwenyezi Mungu Al-Wajid. Muombe Yeye pekee, kwani Yeye hupata anachotaka na hashindwi na chochote."
+    },
+    {
+      "id": 66,
+      "name": "Mtukufu (Al-Majid - الماجد)",
+      "meaning": "Mkarimu, Mtukufu katika ukarimu wake na heshima yake. Mwenye utukufu na heshima kamili. Mtukufu katika sifa zake, mkuu katika vitendo vyake, mkarimu katika utoaji wake.",
+      "reflection": "Mtukuze Mwenyezi Mungu, na uombe kutokana na ukarimu wake. Jua kuwa utukufu wa kweli ni katika kumtii Mwenyezi Mungu na kukurubiana naye."
+    },
+    {
+      "id": 67,
+      "name": "Mmoja (Al-Wahid - الواحد)",
+      "meaning": "Pweke katika dhati yake, sifa zake na matendo yake. Hana mshirika, mfano wala kifani. Mmoja asiye na mshirika, hakuzaa wala hakuzaliwa.",
+      "reflection": "Mpepwekeshe Mwenyezi Mungu (Tawhiyd) katika ibada na dua zako, na usimshirikishe na chochote. Tawhiyd ndiyo njia kubwa ya kujikurubisha kwa Allah."
+    },
+    {
+      "id": 68,
+      "name": "Mkusudiwa (Ash-Shamad - الصمد)",
+      "meaning": "Bwana ambaye viumbe vyote vinamkusudia kwa mahitaji yao. Yeye hahitaji yeyote, lakini kila mtu anamhitaji. Hali, hanywi, Yeye ametakasika.",
+      "reflection": "Mkusudie Mwenyezi Mungu pekee katika kila haja yako, na usielekeze moyo wako kwa mwingine. Yeye ndiye Ash-Shamad asiyemkatisha tamaa anayemkusudia."
+    },
+    {
+      "id": 69,
+      "name": "Mwenye Uwezo (Al-Qadir - القادر)",
+      "meaning": "Anayeweza kila kitu, hashindwi na chochote mbinguni wala ardhini. Akitaka jambo, huliambia 'Kuwa' nalo huwa. Uwezo wake ni kamili na matakwa yake hupita.",
+      "reflection": "Amini uwezo kamili wa Mwenyezi Mungu. Muombe unachotaka hata kama kinaonekana hakiwezekani. Kwa Mwenyezi Mungu, hakuna kisichowezekana."
+    },
+    {
+      "id": 70,
+      "name": "Mwenye Kudura Zote (Al-Muqtadir - المقتدر)",
+      "meaning": "Mwenye uwezo wa hali ya juu asiyeweza kuzuiwa na chochote. Uwezo wake uko juu ya kila uwezo. Hufanya anachotaka apendavyo, hashindwi abadan.",
+      "reflection": "Hisi uwezo wa Mwenyezi Mungu juu ya kila kitu, na usione ugumu wa jambo lolote ukiwa pamoja na Mwenyezi Mungu. Anayekuwa na Allah hashindwi."
+    },
+    {
+      "id": 71,
+      "name": "Mwenye Kutanguliza (Al-Muqaddim - المقدم)",
+      "meaning": "Anayemtanguliza amtakaye katika viumbe wake kwa hikima na ujuzi wake. Hutanguliza anayemtaka katika daraja, cheo, na wakati.",
+      "reflection": "Jitahidi kujitanguliza kwa matendo mema na elimu yenye manufaa. Jua kuwa Mwenyezi Mungu humtanguliza anayestahili kwa hikima yake."
+    },
+    {
+      "id": 72,
+      "name": "Mwenye Kuchelewesha (Al-Mu'akhir - المؤخر)",
+      "meaning": "Anayemchelewesha amtakaye katika viumbe wake kwa hikima na uadilifu wake. Huchelewesha adhabu kumpa mtu muda wa kutubu. Kuchelewesha kwake ni hikima.",
+      "reflection": "Ikiwa jambo lako limechelewa, jua kuwa kuna hikima kutoka kwa Mwenyezi Mungu. Subiri, kwani Mwenyezi Mungu hacheleweshi jambo isipokuwa lina kheri."
+    },
+    {
+      "id": 73,
+      "name": "Wa Kwanza (Al-Awwal - الأول)",
+      "meaning": "Ambaye hakuna chochote kabla yake. Alikuwepo na hakukuwa na chochote pamoja naye. Yeye ni Wa Kwanza asiye na mwanzo. Uwepo wake wa azali hauna mwanzo.",
+      "reflection": "Tafakari U-kwanza wa Mwenyezi Mungu, na umfanye awe wa kwanza kugeukia katika kila jambo. Anza kila kazi kwa jina la Mwenyezi Mungu."
+    },
+    {
+      "id": 74,
+      "name": "Wa Mwisho (Al-Akhir - الآخر)",
+      "meaning": "Ambaye hakuna chochote baada yake, anayebaki baada ya kuangamia kila kitu. Yeye ni Wa Mwisho asiye na mwisho. Atabakia baada ya viumbe vyote kuangamia.",
+      "reflection": "Fanyia kazi maisha ya baada ya kifo, na ijalie akhera yako kuwa bora kuliko dunia yako. Kumbuka kuwa utakutana na Mwenyezi Mungu (Wa Mwisho)."
+    },
+    {
+      "id": 75,
+      "name": "Wa Dhahiri (Az-Zahir - الظاهر)",
+      "meaning": "Aliye juu ya kila kitu kwa utukufu na uwezo wake, ambaye alama za uwepo wake ziko dhahiri katika kila kiumbe. Yuko dhahiri kwa ushahidi usioweza kufichika.",
+      "reflection": "Tafakari alama za Mwenyezi Mungu zilizo dhahiri katika ulimwengu. Tazama jinsi Mwenyezi Mungu anavyokuonyesha uwezo wake katika kila unachokiona."
+    },
+    {
+      "id": 76,
+      "name": "Wa Ndani (Al-Batin - الباطن)",
+      "meaning": "Aliye karibu ambaye elimu yake imezunguka kila kitu, asiyeweza kuonekana na macho wala kudhibitiwa na fikra. Anajua siri na yaliyofichika kabisa.",
+      "reflection": "Safisha ndani yako kama unavyosafisha nje yako, kwani Mwenyezi Mungu anajua unachokificha na unachokidhihirisha. Takasa moyo wako na unafiki."
+    },
+    {
+      "id": 77,
+      "name": "Mtawala (Al-Wali - الوالي)",
+      "meaning": "Mmiliki wa kila kitu, Msimamizi wa mambo yote, anayesimamia mambo ya viumbe wake kwa upangaji. Husimamia mambo ya waja kwa hikima na rehema zake.",
+      "reflection": "Kabidhi mambo yako kwa Mwenyezi Mungu (Mtawala), na ujue kuwa Yeye ndiye Msimamizi wa kila kitu. Salimu amri yako kwa Mwenyezi Mungu upate utulivu."
+    },
+    {
+      "id": 78,
+      "name": "Aliye Juu Kabisa (Al-Muta'ali - المتعالي)",
+      "meaning": "Aliyetakasika na sifa za viumbe, aliye juu ya kila lisilolingana na utukufu wake. Ametukuka na kuwa na mshirika au mfano. Yuko juu kwa dhati yake.",
+      "reflection": "Jiepushe na mambo duni na madogo madogo, na jifunge na Aliye Juu Kabisa. Inua malengo yako juu ya kila kinachoangamia."
+    },
+    {
+      "id": 79,
+      "name": "Mwema (Al-Barr - البر)",
+      "meaning": "Mwenye huruma kwa waja wake kwa wema, upole na ihsani yake pana. Mwingi wa wema, utoaji, na upole kwa viumbe wake. Huwafanyia wema waja wake.",
+      "reflection": "Wafanyie wema wazazi wako na uwafanyie wema watu, kwani Mwenyezi Mungu anawapenda wafanyao wema. Hisi wema wa Mwenyezi Mungu kwako katika kila neema."
+    },
+    {
+      "id": 80,
+      "name": "Mpokea Toba (At-Tawwab - التواب)",
+      "meaning": "Anayekubali toba za wenye kutubu na kuwasamehe wakosaji hata wakirudia dhambi mara ngapi. Mja anapotubu, Mwenyezi Mungu humpokewa na hufurahia sana toba yake.",
+      "reflection": "Tubu kwa Mwenyezi Mungu kila wakati, usione haya kurudi kwake mara kwa mara. Yeye ni At-Tawwab anayependa wanaotubu na kufurahia kurudi kwao."
+    },
+    {
+      "id": 81,
+      "name": "Mlipiza Kisasi (Al-Muntaqim - المنتقم)",
+      "meaning": "Anayelipiza kisasi kwa madhalimu, waasi na waharibifu kwa uadilifu wake. Hafanyi haraka kuadhibu, huwapa muda. Wasipoacha, huwaadhibu kwa adhabu kali.",
+      "reflection": "Jihadhari na kumuasi Mwenyezi Mungu, wala usijiaminishe na adhabu yake. Jua kuwa anatoa muda lakini hasahau, fanya haraka kutubu."
+    },
+    {
+      "id": 82,
+      "name": "Msamehevu / Mfuta Madhambi (Al-'Afuw - العفو)",
+      "meaning": "Anayefuta madhambi na kusamehe maasi. Anapenda kusamehe na husamehe mengi. Msamaha wake ni mpana zaidi kuliko adhabu yake. Husamehe aliyedhulumu.",
+      "reflection": "Wasamehe watu ili Mwenyezi Mungu akusamehe. Kithirisha kusema: 'Ewe Allah, Wewe ni Msamehevu, unapenda kusamehe, basi nisamehe'."
+    },
+    {
+      "id": 83,
+      "name": "Mpole Sana (Ar-Ra'uf - الرؤوف)",
+      "meaning": "Mwenye huruma na upole mkubwa kwa waja wake, anawarehemu kuliko wanavyojirehemu wenyewe. Upole wake unatangulia adhabu yake.",
+      "reflection": "Kuwa mpole na mwenye huruma kwa unaotangamana nao, Mwenyezi Mungu huwarehemu waja wake wenye huruma. Kuwa mpole kwa wanyonge na maskini."
+    },
+    {
+      "id": 84,
+      "name": "Mfalme wa Wafalme (Malikul-Mulk - مالك الملك)",
+      "meaning": "Mmiliki wa ufalme wote, anayefanya apendavyo humo bila mpinzani. Humpa ufalme amtakaye na kumnyang'anya ufalme amtakaye. Kheri yote iko Mkononi Mwake.",
+      "reflection": "Usijifunge na ufalme unaoangamia wa dunia, jua kuwa ufalme wa kweli ni wa Mwenyezi Mungu pekee. Muombe Mwenyezi Mungu fadhila zake."
+    },
+    {
+      "id": 85,
+      "name": "Mwenye Utukufu na Ukarimu (Dzul-Jalal wal-Ikram - ذو الجلال والإكرام)",
+      "meaning": "Mwenye ukubwa, utukufu, na asili ya ukarimu, hisani na wema. Hutukuzwa na kuheshimiwa kwa utukufu wake, na hupendwa kwa ukarimu wake. Mwenye uzuri na ukamilifu.",
+      "reflection": "Mtukuze Mwenyezi Mungu na uwaheshimu waja wake. Anayewaheshimu waja wa Mwenyezi Mungu naye atamheshimu. Muombe kupitia utukufu na ukarimu Wake."
+    },
+    {
+      "id": 86,
+      "name": "Muadilifu (Al-Muqsit - المقسط)",
+      "meaning": "Muadilifu anayempa haki aliyedhulumiwa dhidi ya dhalimu, na kuhukumu kwa haki. Ni muadilifu katika hukumu yake, ruzuku na utoaji wake.",
+      "reflection": "Kuwa muadilifu katika matendo na miamala yako na watu, usimdhulumu yeyote. Jua kuwa Mwenyezi Mungu anawapenda waadilifu."
+    },
+    {
+      "id": 87,
+      "name": "Mkusanyaji (Al-Jami' - الجامع)",
+      "meaning": "Anayewakusanya viumbe wote kwa ajili ya Siku isiyo na shaka (Kiyama). Anajumuisha vitu vilivyotawanyika kwa hikima yake. Amekusanya ukamilifu wote kwake.",
+      "reflection": "Jiandae kwa Siku ya Mkusanyiko Mkuu, Siku ya Kiyama. Kusanya moyo wako kwa Mwenyezi Mungu na usitawanye mawazo yako katika mambo yasiyofaa."
+    },
+    {
+      "id": 88,
+      "name": "Mkwasi / Tajiri (Al-Ghaniy - الغني)",
+      "meaning": "Asiyehitaji yeyote miongoni mwa viumbe wake kwa lolote, na viumbe wake wote wanamhitaji Yeye kwa kila kitu. Utajiri wake haupimiki, hahitaji chochote abadan.",
+      "reflection": "Mtegemee Mwenyezi Mungu, na usijidhalilishe kwa kiumbe. Jua kuwa utajiri wa kweli ni utajiri wa nafsi na moyo (kinai)."
+    },
+    {
+      "id": 89,
+      "name": "Mtoshelezi (Al-Mughni - المغني)",
+      "meaning": "Anayemtajirisha amtakaye katika waja wake kwa fadhila na ukarimu wake. Huwatajirisha kwa mali, elimu, imani, na kuridhika.",
+      "reflection": "Muombe Mwenyezi Mungu utajiri, na uwatajirishe wengine (uwasaidie) kwa kile alichokupa. Tajiri wa kweli ni yule ambaye Mwenyezi Mungu amemtosheleza kwa kinai."
+    },
+    {
+      "id": 90,
+      "name": "Mzuiaji (Al-Mani' - المانع)",
+      "meaning": "Anayezuia anachotaka kwa amtakaye kwa hikima na rehema zake. Huzuia mitihani na shari kwa waumini, na huzuia baadhi ya neema kwa hikima na mtihani.",
+      "reflection": "Mwenyezi Mungu akikuzuia jambo, jua kuwa katika kuzuiwa huko kuna kheri kwako. Pengine Mwenyezi Mungu anakuzuia ili akupe lililo bora zaidi."
+    },
+    {
+      "id": 91,
+      "name": "Mdhuru (Ad-Dhar - الضار)",
+      "meaning": "Anayekadiria madhara na mitihani kwa amtakaye kwa hikima na ujuzi wake. Kudhuru kwake si dhulma bali ni hikima na mtihani. Hakuna anayeweza kudhuru ila kwa idhini Yake.",
+      "reflection": "Usihofu madhara ya yeyote isipokuwa Mwenyezi Mungu. Jua kuwa lililokupata halikukosea. Subiri kwenye mitihani na utarajie malipo kwa Mungu."
+    },
+    {
+      "id": 92,
+      "name": "Mtoa Manufaa (An-Nafi' - النافع)",
+      "meaning": "Anayekadiria manufaa kwa amtakaye katika waja wake kwa rehema na fadhila zake. Kila manufaa katika ulimwengu yanatoka kwa Mwenyezi Mungu. Ndiye chanzo cha kheri zote.",
+      "reflection": "Jitahidi kuwanufaisha watu, kwani Mwenyezi Mungu anampenda anayewanufaisha waja wake. Mbora wa watu ni yule anayewanufaisha sana wenzake."
+    },
+    {
+      "id": 93,
+      "name": "Nuru (An-Nur - النور)",
+      "meaning": "Aliyeangaza mbingu na ardhi kwa nuru yake, na kuangaza nyoyo za waumini kwa uongofu na imani. Nuru yake huondoa kila kiza, na kwayo huangaziwa wanaokaa mbinguni na ardhini.",
+      "reflection": "Muombe Mwenyezi Mungu aunganishe moyo wako na nuru ya imani. Fanya maisha yako yawe nuru inayowamulikia njia watu wengine kwa wema."
+    },
+    {
+      "id": 94,
+      "name": "Mwongozaji (Al-Hadi - الهادي)",
+      "meaning": "Anayemuongoza amtakaye kwenye njia iliyonyooka na dini ya haki. Huongoza nyoyo kumjua Yeye, na kuongoza akili kumwamini Yeye. Uongofu wake ni neema kubwa mno.",
+      "reflection": "Muombe Mwenyezi Mungu uongofu na msimamo thabiti katika kila swala. Jibidishe kuwaongoza wengine kwa hikima na mawaidha mazuri."
+    },
+    {
+      "id": 95,
+      "name": "Mbunifu (Al-Badi' - البديع)",
+      "meaning": "Aliyebuni viumbe na kuviumba bila mfano uliotangulia. Ubunifu wake katika viumbe vyake hushangaza akili. Mbunifu wa mbingu na ardhi asiye na mfano.",
+      "reflection": "Tafakari ubunifu wa Mwenyezi Mungu katika uumbaji wake. Wewe pia fanya ubunifu (Ihsan) katika kazi zako, ibada zako, na miamala yako."
+    },
+    {
+      "id": 96,
+      "name": "Wa Milele (Al-Baqi - الباقي)",
+      "meaning": "Wa kudumu asiyeondoka, asiyeangamia wala uwepo wake kuisha. Kila kitu kitahiliki isipokuwa Dhati yake. Atabakia baada ya kuangamia viumbe vyake, hatuna mipaka ya wakati.",
+      "reflection": "Fanyia kazi yale yanayobaki na usijifunge na yale yanayoangamia. Yaliyoko kwa Mwenyezi Mungu ni bora na ya kudumu, na akhera ni bora kuliko dunia."
+    },
+    {
+      "id": 97,
+      "name": "Mrithi (Al-Warith - الوارث)",
+      "meaning": "Anayerithi ardhi na vilivyomo baada ya kuangamia kwao wote. Anabaki baada ya kuangamia viumbe na anarithi kila kitu. Kwake ndiko marejeo ya mambo yote.",
+      "reflection": "Kumbuka kuwa utaacha kila kitu nyuma yako, hivyo jiandalie akhera yako. Jua kuwa unachokitoa katika njia ya Mwenyezi Mungu ndicho kinachobaki kwako."
+    },
+    {
+      "id": 98,
+      "name": "Mwongozi Mwema (Ar-Rashid - الرشيد)",
+      "meaning": "Anayewaongoza viumbe kwenye manufaa yao ya kidini na kidunia. Mipango yake ina hikima, na matendo yake yote ni sahihi. Humuongoza amtakaye kwenye njia iliyonyooka.",
+      "reflection": "Muombe Mwenyezi Mungu uongofu (Rushd) katika mambo yako yote, fanya Istikhara katika maamuzi yako. Anayemtegemea Mwenyezi Mungu, Atamuongoza kwenye liliyo sawa."
+    },
+    {
+      "id": 99,
+      "name": "Mvumilivu Mkuu (As-Sabur - الصبور)",
+      "meaning": "Asiyefanya haraka kuwaadhibu waasi pamoja na kuwa ana uwezo juu yao. Huwapa muda na kuwavumilia ili watubu na kurudi Kwake. Uvumilivu wake ni mpana na huruma yake ni kubwa.",
+      "reflection": "Pamba tabia yako kwa subira juu ya makadirio ya Mwenyezi Mungu, katika kumtii, na kujizuia na kumuasi. Subira ni ufunguo wa faraja na njia ya mafanikio."
+    }
+  ]
+}

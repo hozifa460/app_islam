@@ -1,8 +1,16 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'color_control/miracle_color_provider.dart';
+import 'color_control/miracle_theme.dart';
+import 'widgets/miracle_helpers.dart';
+import 'widgets/star_field_widget.dart';
 
 class MiracleDetailScreen extends StatefulWidget {
   final Map<String, dynamic> item;
@@ -23,26 +31,64 @@ class MiracleDetailScreen extends StatefulWidget {
 }
 
 class _MiracleDetailScreenState extends State<MiracleDetailScreen>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
+  // ── Controllers ───────────────────────────────
   late AnimationController _animController;
+  late AnimationController _particleController;
+  late AnimationController _pulseController;
+  late Animation<double> _pulseAnim;
+  late Animation<double> _fadeAnim;
+
+  // ── State ─────────────────────────────────────
   late bool _isFav;
+  final List<StarParticle> _particles = [];
+  final _rng = Random();
 
   @override
   void initState() {
     super.initState();
     _isFav = widget.isFavorite;
+
     _animController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 800),
-    )..forward();
+      duration: const Duration(milliseconds: 900),
+    );
+    _fadeAnim = CurvedAnimation(
+      parent: _animController,
+      curve: Curves.easeOutCubic,
+    );
+
+    _particleController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 14),
+    )..repeat();
+
+    _pulseController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 2200),
+    )..repeat(reverse: true);
+    _pulseAnim = Tween<double>(begin: 0.45, end: 1.0).animate(
+      CurvedAnimation(parent: _pulseController, curve: Curves.easeInOut),
+    );
+
+    for (int i = 0; i < 55; i++) {
+      _particles.add(StarParticle.random(_rng));
+    }
+
+    _animController.forward();
   }
 
   @override
   void dispose() {
     _animController.dispose();
+    _particleController.dispose();
+    _pulseController.dispose();
     super.dispose();
   }
 
+  // ══════════════════════════════════════════════
+  //  ACTIONS
+  // ══════════════════════════════════════════════
   Future<void> _openUrl(String url) async {
     final uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
@@ -75,7 +121,6 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
       if (year.isNotEmpty) buffer.writeln('📅 سنة الاكتشاف: $year');
     }
 
-    // Add sources
     final sourcesList = item['sources'];
     if (sourcesList is List && sourcesList.isNotEmpty) {
       buffer.writeln();
@@ -89,7 +134,6 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
 
     buffer.writeln();
     buffer.writeln('— تطبيق الإعجاز العلمي');
-
     Share.share(buffer.toString().trim());
   }
 
@@ -108,13 +152,14 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
     }
 
     Clipboard.setData(ClipboardData(text: buffer.toString().trim()));
+    if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'تم النسخ بنجاح',
+          'تم النسخ بنجاح ✓',
           style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
         ),
-        backgroundColor: widget.primaryColor,
+        backgroundColor: MiracleTheme.neonBlue,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         duration: const Duration(seconds: 2),
@@ -122,999 +167,798 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
     );
   }
 
-  IconData _getCategoryIcon(String category) {
-    switch (category) {
-      case 'علم الفلك':
-        return Icons.stars_rounded;
-      case 'علم الأجنة':
-        return Icons.child_care_rounded;
-      case 'علم البحار':
-        return Icons.water_rounded;
-      case 'علم الجيولوجيا':
-        return Icons.terrain_rounded;
-      case 'علم الفيزياء':
-        return Icons.science_rounded;
-      case 'علم المياه':
-        return Icons.water_drop_rounded;
-      case 'علم النبات':
-        return Icons.local_florist_rounded;
-      case 'علم الأحياء':
-        return Icons.biotech_rounded;
-      case 'علم الأحياء الدقيقة':
-        return Icons.coronavirus_rounded;
-      case 'علم الطب':
-        return Icons.medical_services_rounded;
-      case 'علم الأعصاب':
-        return Icons.psychology_rounded;
-      case 'علم الجغرافيا':
-        return Icons.public_rounded;
-      case 'علم النفس':
-        return Icons.self_improvement_rounded;
-      case 'علم الحشرات':
-        return Icons.bug_report_rounded;
-      case 'علم التغذية':
-        return Icons.restaurant_rounded;
-      case 'علم الصحة العامة':
-        return Icons.health_and_safety_rounded;
-      case 'إعجاز غيبي':
-        return Icons.visibility_rounded;
-      case 'إعجاز تاريخي':
-        return Icons.history_edu_rounded;
-      case 'معجزات نبوية':
-        return Icons.auto_awesome_rounded;
-      default:
-        return Icons.lightbulb_rounded;
-    }
-  }
-
-  Color _getCategoryColor(String category) {
-    switch (category) {
-      case 'علم الفلك':
-        return const Color(0xFF5C6BC0);
-      case 'علم الأجنة':
-        return const Color(0xFFEC407A);
-      case 'علم البحار':
-        return const Color(0xFF039BE5);
-      case 'علم الجيولوجيا':
-        return const Color(0xFF795548);
-      case 'علم الفيزياء':
-        return const Color(0xFF7E57C2);
-      case 'علم المياه':
-        return const Color(0xFF00ACC1);
-      case 'علم النبات':
-        return const Color(0xFF43A047);
-      case 'علم الأحياء':
-        return const Color(0xFF66BB6A);
-      case 'علم الأحياء الدقيقة':
-        return const Color(0xFFEF5350);
-      case 'علم الطب':
-        return const Color(0xFFE53935);
-      case 'علم الأعصاب':
-        return const Color(0xFFAB47BC);
-      case 'علم الجغرافيا':
-        return const Color(0xFF26A69A);
-      case 'علم النفس':
-        return const Color(0xFF8D6E63);
-      case 'علم الحشرات':
-        return const Color(0xFFFF7043);
-      case 'علم التغذية':
-        return const Color(0xFFFFA726);
-      case 'علم الصحة العامة':
-        return const Color(0xFF29B6F6);
-      case 'إعجاز غيبي':
-        return const Color(0xFFFFCA28);
-      case 'إعجاز تاريخي':
-        return const Color(0xFF8D6E63);
-      case 'معجزات نبوية':
-        return const Color(0xFFE6B325);
-      default:
-        return widget.primaryColor;
-    }
-  }
-
+  // ══════════════════════════════════════════════
+  //  BUILD
+  // ══════════════════════════════════════════════
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final bgColor = isDark ? const Color(0xFF0A0E17) : const Color(0xFFF5F5F0);
-    final cardColor = isDark ? const Color(0xFF151B26) : Colors.white;
-    final textColor = isDark ? Colors.white : const Color(0xFF1A1A1A);
-    final subTextColor = isDark ? Colors.white70 : Colors.black54;
-    const gold = Color(0xFFE6B325);
+    final t = MiracleTheme.of(isDark);
 
     final item = widget.item;
     final isQuran = item['type'] == 'quran';
-    final accentColor = isQuran ? widget.primaryColor : gold;
+    final accentColor =
+        isQuran ? const Color(0xFF4FC3F7) : MiracleTheme.neonGold;
+    final category = (item['category'] ?? '').toString();
+    final catColor = MiracleHelpers.getCategoryColor(category);
+    final catIcon = MiracleHelpers.getCategoryIcon(category);
+    final emoji = MiracleHelpers.getCategoryEmoji(category);
+    final engCategory = MiracleHelpers.getCategoryEnglish(category);
+    final sciExp = (item['scientificExplanation'] ?? '').toString();
+    final discoveryYear = (item['discoveryYear'] ?? '').toString();
+    final scientist = (item['scientist'] ?? '').toString();
     final youtubeUrl = (item['youtubeUrl'] ?? '').toString();
     final videoUrl = (item['videoUrl'] ?? '').toString();
     final book = (item['book'] ?? '').toString();
-    final category = (item['category'] ?? '').toString();
-    final catColor = _getCategoryColor(category);
-    final catIcon = _getCategoryIcon(category);
-    final scientificExplanation =
-        (item['scientificExplanation'] ?? '').toString();
-    final discoveryYear = (item['discoveryYear'] ?? '').toString();
-    final scientist = (item['scientist'] ?? '').toString();
     final rating = (item['rating'] ?? 0) as int;
 
-    // Parse sources list
     final sourcesList = item['sources'];
     final List<Map<String, dynamic>> sources = [];
     if (sourcesList is List) {
       for (final src in sourcesList) {
-        if (src is Map) {
-          sources.add(Map<String, dynamic>.from(src));
-        }
+        if (src is Map) sources.add(Map<String, dynamic>.from(src));
       }
     }
 
     return Directionality(
       textDirection: TextDirection.rtl,
-      child: Scaffold(
-        backgroundColor: bgColor,
-        body: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
-          slivers: [
-            // ─── App Bar ───
-            SliverAppBar(
-              expandedHeight: MediaQuery.of(context).size.height * 0.28,
-              pinned: true,
-              backgroundColor: widget.primaryColor,
-              leading: IconButton(
-                icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white),
-                onPressed: () => Navigator.pop(context),
-              ),
-              actions: [
-                IconButton(
-                  icon: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 300),
-                    transitionBuilder:
-                        (child, anim) =>
-                            ScaleTransition(scale: anim, child: child),
-                    child: Icon(
-                      _isFav
-                          ? Icons.favorite_rounded
-                          : Icons.favorite_border_rounded,
-                      key: ValueKey(_isFav),
-                      color: _isFav ? Colors.redAccent : Colors.white,
-                      size: 22,
-                    ),
-                  ),
-                  onPressed: () {
-                    setState(() => _isFav = !_isFav);
-                    widget.onToggleFavorite?.call();
-                  },
-                ),
-                IconButton(
-                  icon: const Icon(
-                    Icons.copy_rounded,
-                    color: Colors.white,
-                    size: 22,
-                  ),
-                  onPressed: _copyToClipboard,
-                ),
-                IconButton(
-                  icon: const Icon(
-                    Icons.share_rounded,
-                    color: Colors.white,
-                    size: 22,
-                  ),
-                  onPressed: _shareContent,
-                ),
-              ],
-              flexibleSpace: FlexibleSpaceBar(
-                centerTitle: true,
-                titlePadding: const EdgeInsets.only(
-                  bottom: 14,
-                  left: 60,
-                  right: 60,
-                ),
-                title: Text(
-                  item['title'] ?? '',
-                  style: GoogleFonts.cairo(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                background: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [catColor.withOpacity(0.6), widget.primaryColor],
-                    ),
-                  ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        top: -20,
-                        right: -20,
-                        child: Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white.withOpacity(0.08),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 40,
-                        left: -30,
-                        child: Container(
-                          width: 80,
-                          height: 80,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white.withOpacity(0.05),
-                          ),
-                        ),
-                      ),
-                      Center(
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 40),
-                          child: Container(
-                            width: 80,
-                            height: 80,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white.withOpacity(0.15),
-                              border: Border.all(
-                                color: gold.withOpacity(0.4),
-                                width: 2,
-                              ),
-                            ),
-                            child: Icon(catIcon, color: gold, size: 34),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+      child: Material(
+        color: Colors.transparent,
+        child: Container(
+          color: t.bg1,
+          child: Stack(
+            children: [
+              // خلفية متحركة
+              Positioned.fill(
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 400),
+                  color: t.bg1,
                 ),
               ),
-            ),
-
-            // ─── Content ───
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
+              // نجوم
+              Positioned.fill(
+                child: AnimatedBuilder(
+                  animation: _particleController,
+                  builder:
+                      (_, __) => StarFieldWidget(
+                        particles: _particles,
+                        animValue: _particleController.value,
+                        starOpacityFactor: t.starOpacityFactor,
+                        nebulaOpacityFactor: t.nebulaOpacityFactor,
+                        primaryColor: t.neonBlue,
+                        bg1: t.bg1,
+                      ),
+                ),
+              ),
+              // Scaffold شفاف للـ AppBar فقط
+              Scaffold(
+                backgroundColor: Colors.transparent,
+                body: Stack(
                   children: [
-                    // ── Tags Row ──
-                    _buildAnimatedWidget(
-                      delay: 0,
-                      child: Wrap(
-                        spacing: 8,
-                        runSpacing: 8,
-                        alignment: WrapAlignment.start,
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 12,
-                              vertical: 5,
-                            ),
-                            decoration: BoxDecoration(
-                              color: catColor.withOpacity(0.12),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(catIcon, size: 14, color: catColor),
-                                const SizedBox(width: 4),
-                                Flexible(
-                                  child: Text(
-                                    category,
-                                    style: GoogleFonts.cairo(
-                                      fontSize: 11,
-                                      fontWeight: FontWeight.bold,
-                                      color: catColor,
+                    // ── Star field ──
+                    AnimatedBuilder(
+                      animation: _particleController,
+                      builder:
+                          (_, __) => StarFieldWidget(
+                            particles: _particles,
+                            animValue: _particleController.value,
+                            starOpacityFactor: t.starOpacityFactor,
+                            nebulaOpacityFactor: t.nebulaOpacityFactor,
+                            primaryColor: t.neonBlue,
+                            bg1: t.bg1,
+                          ),
+                    ),
+
+                    // ── Content ──
+                    FadeTransition(
+                      opacity: _fadeAnim,
+                      child: CustomScrollView(
+                        physics: const BouncingScrollPhysics(),
+                        slivers: [
+                          // ── App Bar ──
+                          _buildAppBar(
+                            t: t,
+                            catColor: catColor,
+                            catIcon: catIcon,
+                            emoji: emoji,
+                            engCategory: engCategory,
+                            isQuran: isQuran,
+                            accentColor: accentColor,
+                            item: item,
+                          ),
+
+                          // ── Body ──
+                          SliverToBoxAdapter(
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+                              child: Column(
+                                children: [
+                                  // Tags row
+                                  _buildAnimated(
+                                    delay: 0,
+                                    child: _TagsRow(
+                                      catColor: catColor,
+                                      catIcon: catIcon,
+                                      category: category,
+                                      accentColor: accentColor,
+                                      isQuran: isQuran,
+                                      rating: rating,
+                                      t: t,
                                     ),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
                                   ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 12,
-                              vertical: 5,
-                            ),
-                            decoration: BoxDecoration(
-                              color: accentColor.withOpacity(0.12),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Text(
-                              isQuran ? '📖 القرآن الكريم' : '☪ السنة النبوية',
-                              style: GoogleFonts.cairo(
-                                fontSize: 11,
-                                fontWeight: FontWeight.bold,
-                                color: accentColor,
-                              ),
-                            ),
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: List.generate(
-                              5,
-                              (i) => Icon(
-                                i < rating
-                                    ? Icons.star_rounded
-                                    : Icons.star_outline_rounded,
-                                color:
-                                    i < rating
-                                        ? gold
-                                        : subTextColor.withOpacity(0.2),
-                                size: 16,
+                                  const SizedBox(height: 14),
+
+                                  // Source card
+                                  _buildAnimated(
+                                    delay: 80,
+                                    child: _SourceCard(
+                                      item: item,
+                                      accentColor: accentColor,
+                                      isQuran: isQuran,
+                                      book: book,
+                                      t: t,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 14),
+
+                                  // Description
+                                  _buildAnimated(
+                                    delay: 160,
+                                    child: _SectionCard(
+                                      icon: Icons.description_rounded,
+                                      title: 'وجه الإعجاز',
+                                      content:
+                                          (item['description'] ?? '')
+                                              .toString(),
+                                      color: MiracleTheme.neonBlue,
+                                      t: t,
+                                    ),
+                                  ),
+
+                                  // Scientific explanation
+                                  if (sciExp.isNotEmpty) ...[
+                                    const SizedBox(height: 14),
+                                    _buildAnimated(
+                                      delay: 240,
+                                      child: _SectionCard(
+                                        icon: Icons.science_rounded,
+                                        title: 'التفسير العلمي',
+                                        content: sciExp,
+                                        color: const Color(0xFFCE93D8),
+                                        t: t,
+                                      ),
+                                    ),
+                                  ],
+
+                                  // Discovery info
+                                  if (discoveryYear.isNotEmpty ||
+                                      scientist.isNotEmpty) ...[
+                                    const SizedBox(height: 14),
+                                    _buildAnimated(
+                                      delay: 320,
+                                      child: _DiscoveryCard(
+                                        discoveryYear: discoveryYear,
+                                        scientist: scientist,
+                                        t: t,
+                                      ),
+                                    ),
+                                  ],
+
+                                  // Sources
+                                  if (sources.isNotEmpty) ...[
+                                    const SizedBox(height: 14),
+                                    _buildAnimated(
+                                      delay: 400,
+                                      child: _SourcesCard(
+                                        sources: sources,
+                                        t: t,
+                                        onOpenUrl: _openUrl,
+                                      ),
+                                    ),
+                                  ],
+
+                                  // Video links
+                                  if (youtubeUrl.isNotEmpty ||
+                                      videoUrl.isNotEmpty) ...[
+                                    const SizedBox(height: 14),
+                                    _buildAnimated(
+                                      delay: 480,
+                                      child: _VideoCard(
+                                        youtubeUrl: youtubeUrl,
+                                        videoUrl: videoUrl,
+                                        accentColor: accentColor,
+                                        t: t,
+                                        onOpenUrl: _openUrl,
+                                      ),
+                                    ),
+                                  ],
+
+                                  const SizedBox(height: 30),
+                                ],
                               ),
                             ),
                           ),
                         ],
                       ),
                     ),
-
-                    const SizedBox(height: 16),
-
-                    // ── Source Card ──
-                    _buildAnimatedWidget(
-                      delay: 100,
-                      child: Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          color: cardColor,
-                          borderRadius: BorderRadius.circular(24),
-                          border: Border.all(
-                            color: accentColor.withOpacity(0.2),
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(
-                                isDark ? 0.2 : 0.06,
-                              ),
-                              blurRadius: 12,
-                              offset: const Offset(0, 4),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Row(
-                              children: [
-                                Icon(
-                                  isQuran
-                                      ? Icons.menu_book_rounded
-                                      : Icons.format_quote_rounded,
-                                  color: accentColor,
-                                  size: 20,
-                                ),
-                                const SizedBox(width: 8),
-                                Text(
-                                  isQuran ? 'النص القرآني' : 'الحديث النبوي',
-                                  style: GoogleFonts.cairo(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    color: accentColor,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 14),
-                            Container(
-                              width: double.infinity,
-                              padding: const EdgeInsets.all(16),
-                              decoration: BoxDecoration(
-                                color: accentColor.withOpacity(0.04),
-                                borderRadius: BorderRadius.circular(16),
-                                border: Border.all(
-                                  color: accentColor.withOpacity(0.1),
-                                ),
-                              ),
-                              child: Text(
-                                item['source'] ?? '',
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.amiri(
-                                  fontSize: 20,
-                                  height: 1.9,
-                                  color: textColor,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 12),
-                            Wrap(
-                              spacing: 8,
-                              runSpacing: 8,
-                              alignment: WrapAlignment.end,
-                              children: [
-                                Flexible(
-                                  child: _buildTag(
-                                    item['reference'] ?? '',
-                                    accentColor,
-                                  ),
-                                ),
-                                if (book.isNotEmpty)
-                                  Flexible(
-                                    child: _buildTag(book, subTextColor),
-                                  ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-
-                    const SizedBox(height: 16),
-
-                    // ── Description Card ──
-                    _buildAnimatedWidget(
-                      delay: 200,
-                      child: _buildSectionCard(
-                        icon: Icons.description_rounded,
-                        title: 'وجه الإعجاز',
-                        content: item['description'] ?? '',
-                        color: widget.primaryColor,
-                        cardColor: cardColor,
-                        textColor: textColor,
-                        isDark: isDark,
-                      ),
-                    ),
-
-                    // ── Scientific Explanation Card ──
-                    if (scientificExplanation.isNotEmpty) ...[
-                      const SizedBox(height: 16),
-                      _buildAnimatedWidget(
-                        delay: 300,
-                        child: _buildSectionCard(
-                          icon: Icons.science_rounded,
-                          title: 'التفسير العلمي',
-                          content: scientificExplanation,
-                          color: const Color(0xFF7E57C2),
-                          cardColor: cardColor,
-                          textColor: textColor,
-                          isDark: isDark,
-                        ),
-                      ),
-                    ],
-
-                    // ── Discovery Info Card ──
-                    if (discoveryYear.isNotEmpty || scientist.isNotEmpty) ...[
-                      const SizedBox(height: 16),
-                      _buildAnimatedWidget(
-                        delay: 400,
-                        child: Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(18),
-                          decoration: BoxDecoration(
-                            color: cardColor,
-                            borderRadius: BorderRadius.circular(22),
-                            border: Border.all(color: gold.withOpacity(0.2)),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(
-                                  isDark ? 0.15 : 0.04,
-                                ),
-                                blurRadius: 8,
-                                offset: const Offset(0, 3),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.history_edu_rounded,
-                                    color: gold,
-                                    size: 20,
-                                  ),
-                                  const SizedBox(width: 8),
-                                  Text(
-                                    'معلومات الاكتشاف',
-                                    style: GoogleFonts.cairo(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold,
-                                      color: gold,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 14),
-                              if (discoveryYear.isNotEmpty)
-                                _buildInfoRow(
-                                  icon: Icons.calendar_today_rounded,
-                                  label: 'سنة الاكتشاف',
-                                  value: discoveryYear,
-                                  color: gold,
-                                  textColor: textColor,
-                                  subTextColor: subTextColor,
-                                ),
-                              if (discoveryYear.isNotEmpty &&
-                                  scientist.isNotEmpty)
-                                Divider(
-                                  color: subTextColor.withOpacity(0.1),
-                                  height: 20,
-                                ),
-                              if (scientist.isNotEmpty)
-                                _buildInfoRow(
-                                  icon: Icons.person_rounded,
-                                  label: 'العالم / المكتشف',
-                                  value: scientist,
-                                  color: gold,
-                                  textColor: textColor,
-                                  subTextColor: subTextColor,
-                                ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-
-                    // ── Sources / References Card ──
-                    if (sources.isNotEmpty) ...[
-                      const SizedBox(height: 16),
-                      _buildAnimatedWidget(
-                        delay: 450,
-                        child: _buildSourcesCard(
-                          sources: sources,
-                          cardColor: cardColor,
-                          textColor: textColor,
-                          subTextColor: subTextColor,
-                          isDark: isDark,
-                        ),
-                      ),
-                    ],
-
-                    // ── Video Links ──
-                    if (youtubeUrl.isNotEmpty || videoUrl.isNotEmpty) ...[
-                      const SizedBox(height: 16),
-                      _buildAnimatedWidget(
-                        delay: 500,
-                        child: Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(18),
-                          decoration: BoxDecoration(
-                            color: cardColor,
-                            borderRadius: BorderRadius.circular(22),
-                            border: Border.all(color: gold.withOpacity(0.18)),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.video_library_rounded,
-                                    color: widget.primaryColor,
-                                    size: 20,
-                                  ),
-                                  const SizedBox(width: 8),
-                                  Text(
-                                    'محتوى مرئي مرتبط',
-                                    style: GoogleFonts.cairo(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold,
-                                      color: widget.primaryColor,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 14),
-                              if (youtubeUrl.isNotEmpty)
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: ElevatedButton.icon(
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.red.shade600,
-                                      foregroundColor: Colors.white,
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 12,
-                                      ),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(14),
-                                      ),
-                                      elevation: 0,
-                                    ),
-                                    onPressed: () => _openUrl(youtubeUrl),
-                                    icon: const Icon(
-                                      Icons.play_circle_fill_rounded,
-                                    ),
-                                    label: Text(
-                                      'مشاهدة على يوتيوب',
-                                      style: GoogleFonts.cairo(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              if (youtubeUrl.isNotEmpty && videoUrl.isNotEmpty)
-                                const SizedBox(height: 10),
-                              if (videoUrl.isNotEmpty)
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: OutlinedButton.icon(
-                                    style: OutlinedButton.styleFrom(
-                                      foregroundColor: widget.primaryColor,
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 12,
-                                      ),
-                                      side: BorderSide(
-                                        color: widget.primaryColor.withOpacity(
-                                          0.25,
-                                        ),
-                                      ),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(14),
-                                      ),
-                                    ),
-                                    onPressed: () => _openUrl(videoUrl),
-                                    icon: const Icon(
-                                      Icons.video_library_rounded,
-                                    ),
-                                    label: Text(
-                                      'مشاهدة الفيديو المباشر',
-                                      style: GoogleFonts.cairo(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-
-                    const SizedBox(height: 30),
                   ],
                 ),
-              ),
-            ),
-          ],
-        ),
 
-        // ─── Bottom Action Bar ───
-        bottomNavigationBar: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-          decoration: BoxDecoration(
-            color: cardColor,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(isDark ? 0.3 : 0.08),
-                blurRadius: 10,
-                offset: const Offset(0, -3),
+                // ── Bottom bar ──
+                bottomNavigationBar: _BottomBar(
+                  isFav: _isFav,
+                  accentColor: accentColor,
+                  t: t,
+                  onShare: _shareContent,
+                  onCopy: _copyToClipboard,
+                  onToggleFav: () {
+                    setState(() => _isFav = !_isFav);
+                    widget.onToggleFavorite?.call();
+                  },
+                ),
               ),
             ],
-          ),
-          child: SafeArea(
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                final isSmall = constraints.maxWidth < 320;
-
-                return Row(
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: SizedBox(
-                        height: 44,
-                        child: ElevatedButton.icon(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: widget.primaryColor,
-                            foregroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                            elevation: 0,
-                            padding: const EdgeInsets.symmetric(horizontal: 8),
-                          ),
-                          onPressed: _shareContent,
-                          icon: const Icon(Icons.share_rounded, size: 18),
-                          label: FittedBox(
-                            fit: BoxFit.scaleDown,
-                            child: Text(
-                              'مشاركة',
-                              style: GoogleFonts.cairo(
-                                fontWeight: FontWeight.bold,
-                                fontSize: isSmall ? 11 : 13,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      flex: 3,
-                      child: SizedBox(
-                        height: 44,
-                        child: OutlinedButton.icon(
-                          style: OutlinedButton.styleFrom(
-                            foregroundColor: widget.primaryColor,
-                            side: BorderSide(
-                              color: widget.primaryColor.withOpacity(0.3),
-                            ),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                            padding: const EdgeInsets.symmetric(horizontal: 8),
-                          ),
-                          onPressed: _copyToClipboard,
-                          icon: const Icon(Icons.copy_rounded, size: 18),
-                          label: FittedBox(
-                            fit: BoxFit.scaleDown,
-                            child: Text(
-                              'نسخ',
-                              style: GoogleFonts.cairo(
-                                fontWeight: FontWeight.bold,
-                                fontSize: isSmall ? 11 : 13,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    SizedBox(
-                      width: 44,
-                      height: 44,
-                      child: Material(
-                        color: _isFav
-                            ? Colors.redAccent.withOpacity(0.1)
-                            : Colors.transparent,
-                        borderRadius: BorderRadius.circular(14),
-                        child: InkWell(
-                          borderRadius: BorderRadius.circular(14),
-                          onTap: () {
-                            setState(() => _isFav = !_isFav);
-                            widget.onToggleFavorite?.call();
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(14),
-                              border: Border.all(
-                                color: _isFav
-                                    ? Colors.redAccent.withOpacity(0.3)
-                                    : subTextColor.withOpacity(0.2),
-                              ),
-                            ),
-                            child: Center(
-                              child: AnimatedSwitcher(
-                                duration: const Duration(milliseconds: 300),
-                                transitionBuilder: (child, anim) =>
-                                    ScaleTransition(scale: anim, child: child),
-                                child: Icon(
-                                  _isFav
-                                      ? Icons.favorite_rounded
-                                      : Icons.favorite_border_rounded,
-                                  key: ValueKey(_isFav),
-                                  color: _isFav
-                                      ? Colors.redAccent
-                                      : subTextColor.withOpacity(0.5),
-                                  size: 20,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                );
-              },
-            ),
           ),
         ),
       ),
     );
   }
 
-  // ═══════════════════════════════════════════════
-  //  SOURCES CARD (NEW)
-  // ═══════════════════════════════════════════════
-  Widget _buildSourcesCard({
-    required List<Map<String, dynamic>> sources,
-    required Color cardColor,
-    required Color textColor,
-    required Color subTextColor,
-    required bool isDark,
+  // ══════════════════════════════════════════════
+  //  APP BAR
+  // ══════════════════════════════════════════════
+  Widget _buildAppBar({
+    required MiracleThemeColors t,
+    required Color catColor,
+    required IconData catIcon,
+    required String emoji,
+    required String engCategory,
+    required bool isQuran,
+    required Color accentColor,
+    required Map<String, dynamic> item,
   }) {
+    final expandedH = MediaQuery.of(context).size.height * 0.30;
+
+    return SliverAppBar(
+      expandedHeight: expandedH,
+      floating: false,
+      pinned: true,
+      elevation: 0,
+      backgroundColor: t.bg1.withOpacity(0.95),
+
+      leading: Padding(
+        padding: const EdgeInsets.all(8),
+        child: GestureDetector(
+          onTap: () => Navigator.pop(context),
+          child: Container(
+            decoration: BoxDecoration(
+              color: t.glass,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: t.glassBorder),
+            ),
+            child: Icon(
+              Icons.arrow_back_ios_new,
+              color: Colors.white,
+              size: 18,
+            ),
+          ),
+        ),
+      ),
+
+      actions: [
+        _buildActionBtn(
+          icon: _isFav ? Icons.favorite_rounded : Icons.favorite_border_rounded,
+          color: _isFav ? MiracleTheme.neonRed : Colors.white,
+          t: t,
+          onTap: () {
+            setState(() => _isFav = !_isFav);
+            widget.onToggleFavorite?.call();
+          },
+        ),
+        _buildActionBtn(
+          icon: Icons.copy_rounded,
+          color: Colors.white,
+          t: t,
+          onTap: _copyToClipboard,
+        ),
+        _buildActionBtn(
+          icon: Icons.share_rounded,
+          color: Colors.white,
+          t: t,
+          onTap: _shareContent,
+        ),
+        const SizedBox(width: 4),
+      ],
+
+      flexibleSpace: FlexibleSpaceBar(
+        centerTitle: true,
+        titlePadding: const EdgeInsets.only(bottom: 14),
+        title: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.55,
+          child: Text(
+            (item['title'] ?? '').toString(),
+            style: GoogleFonts.cairo(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 13,
+              shadows: [
+                Shadow(color: Colors.black.withOpacity(0.5), blurRadius: 8),
+              ],
+            ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+          ),
+        ),
+        background: _DetailAppBarBackground(
+          t: t,
+          catColor: catColor,
+          catIcon: catIcon,
+          emoji: emoji,
+          engCategory: engCategory,
+          pulseAnim: _pulseAnim,
+          isQuran: isQuran,
+          accentColor: accentColor,
+          item: item,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildActionBtn({
+    required IconData icon,
+    required Color color,
+    required MiracleThemeColors t,
+    required VoidCallback onTap,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 2),
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          width: 40,
+          height: 40,
+          margin: const EdgeInsets.symmetric(vertical: 8),
+          decoration: BoxDecoration(
+            color: t.glass,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: t.glassBorder),
+          ),
+          child: Icon(icon, color: color, size: 18),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildAnimated({required int delay, required Widget child}) {
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0.0, end: 1.0),
+      duration: Duration(milliseconds: 500 + delay),
+      curve: Curves.easeOutCubic,
+      builder:
+          (_, value, __) => Opacity(
+            opacity: value,
+            child: Transform.translate(
+              offset: Offset(0, 16 * (1 - value)),
+              child: child,
+            ),
+          ),
+    );
+  }
+}
+
+// ══════════════════════════════════════════════
+//  APP BAR BACKGROUND
+// ══════════════════════════════════════════════
+class _DetailAppBarBackground extends StatelessWidget {
+  final MiracleThemeColors t;
+  final Color catColor;
+  final IconData catIcon;
+  final String emoji;
+  final String engCategory;
+  final Animation<double> pulseAnim;
+  final bool isQuran;
+  final Color accentColor;
+  final Map<String, dynamic> item;
+
+  const _DetailAppBarBackground({
+    required this.t,
+    required this.catColor,
+    required this.catIcon,
+    required this.emoji,
+    required this.engCategory,
+    required this.pulseAnim,
+    required this.isQuran,
+    required this.accentColor,
+    required this.item,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [catColor.withOpacity(0.3), t.bg2, t.bg1],
+        ),
+      ),
+      child: Stack(
+        children: [
+          // Emoji watermark
+          Positioned(
+            top: -10,
+            right: -10,
+            child: Text(
+              emoji,
+              style: TextStyle(
+                fontSize: 150,
+                color: Colors.white.withOpacity(0.06),
+              ),
+            ),
+          ),
+
+          // Glow orbs
+          Positioned(
+            top: -40,
+            left: -40,
+            child: Container(
+              width: 200,
+              height: 200,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: RadialGradient(
+                  colors: [catColor.withOpacity(0.12), Colors.transparent],
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 30,
+            right: 40,
+            child: Container(
+              width: 80,
+              height: 80,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: RadialGradient(
+                  colors: [
+                    MiracleTheme.neonBlue.withOpacity(0.08),
+                    Colors.transparent,
+                  ],
+                ),
+              ),
+            ),
+          ),
+
+          // Centre content
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 55),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // Pulsing icon
+                  AnimatedBuilder(
+                    animation: pulseAnim,
+                    builder:
+                        (_, __) => Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Container(
+                              width: 100,
+                              height: 100,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                gradient: RadialGradient(
+                                  colors: [
+                                    catColor.withOpacity(
+                                      0.18 * pulseAnim.value,
+                                    ),
+                                    Colors.transparent,
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Container(
+                              width: 66,
+                              height: 66,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.white.withOpacity(0.07),
+                                border: Border.all(
+                                  color: catColor.withOpacity(0.5),
+                                  width: 1.5,
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: catColor.withOpacity(
+                                      0.28 * pulseAnim.value,
+                                    ),
+                                    blurRadius: 22,
+                                    spreadRadius: 4,
+                                  ),
+                                ],
+                              ),
+                              child: Icon(catIcon, color: catColor, size: 30),
+                            ),
+                          ],
+                        ),
+                  ),
+
+                  const SizedBox(height: 8),
+
+                  // Type badge
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 5,
+                    ),
+                    decoration: BoxDecoration(
+                      color: accentColor.withOpacity(0.15),
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: accentColor.withOpacity(0.35)),
+                    ),
+                    child: Text(
+                      isQuran ? '📖 القرآن الكريم' : '☪ السنة النبوية',
+                      style: GoogleFonts.cairo(
+                        color: accentColor,
+                        fontSize: 11,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// ══════════════════════════════════════════════
+//  TAGS ROW
+// ══════════════════════════════════════════════
+class _TagsRow extends StatelessWidget {
+  final Color catColor;
+  final IconData catIcon;
+  final String category;
+  final Color accentColor;
+  final bool isQuran;
+  final int rating;
+  final MiracleThemeColors t;
+
+  const _TagsRow({
+    required this.catColor,
+    required this.catIcon,
+    required this.category,
+    required this.accentColor,
+    required this.isQuran,
+    required this.rating,
+    required this.t,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      spacing: 8,
+      runSpacing: 8,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      children: [
+        // Category tag
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          decoration: BoxDecoration(
+            color: catColor.withOpacity(0.12),
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: catColor.withOpacity(0.2)),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(catIcon, size: 13, color: catColor),
+              const SizedBox(width: 4),
+              ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 130),
+                child: Text(
+                  category,
+                  style: GoogleFonts.cairo(
+                    fontSize: 11,
+                    fontWeight: FontWeight.bold,
+                    color: catColor,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
+        ),
+
+        // Type tag
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          decoration: BoxDecoration(
+            color: accentColor.withOpacity(0.12),
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: accentColor.withOpacity(0.2)),
+          ),
+          child: Text(
+            isQuran ? '📖 القرآن الكريم' : '☪ السنة النبوية',
+            style: GoogleFonts.cairo(
+              fontSize: 11,
+              fontWeight: FontWeight.bold,
+              color: accentColor,
+            ),
+          ),
+        ),
+
+        // Rating stars
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: List.generate(
+            5,
+            (i) => Icon(
+              i < rating ? Icons.star_rounded : Icons.star_outline_rounded,
+              color:
+                  i < rating
+                      ? MiracleTheme.neonGold
+                      : Colors.white.withOpacity(0.2),
+              size: 16,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// ══════════════════════════════════════════════
+//  SOURCE CARD  (آية / حديث)
+// ══════════════════════════════════════════════
+class _SourceCard extends StatelessWidget {
+  final Map<String, dynamic> item;
+  final Color accentColor;
+  final bool isQuran;
+  final String book;
+  final MiracleThemeColors t;
+
+  const _SourceCard({
+    required this.item,
+    required this.accentColor,
+    required this.isQuran,
+    required this.book,
+    required this.t,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: cardColor,
+        color: t.glass,
         borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: Colors.blue.withOpacity(0.2)),
+        border: Border.all(color: accentColor.withOpacity(0.25)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(isDark ? 0.15 : 0.04),
-            blurRadius: 8,
-            offset: const Offset(0, 3),
+            color: accentColor.withOpacity(0.06),
+            blurRadius: 16,
+            offset: const Offset(0, 6),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Title row
           Row(
             children: [
-              Icon(Icons.source_rounded,
-                  color: Colors.blue.shade600, size: 20),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  'المصادر والمراجع',
-                  style: GoogleFonts.cairo(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue.shade600,
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+              Container(
+                width: 36,
+                height: 36,
+                decoration: BoxDecoration(
+                  color: accentColor.withOpacity(0.12),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: accentColor.withOpacity(0.25)),
+                ),
+                child: Icon(
+                  isQuran
+                      ? Icons.menu_book_rounded
+                      : Icons.format_quote_rounded,
+                  color: accentColor,
+                  size: 18,
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 8, vertical: 2),
-                decoration: BoxDecoration(
-                  color: Colors.blue.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Text(
-                  '${sources.length}',
-                  style: GoogleFonts.cairo(
-                    fontSize: 11,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue.shade600,
-                  ),
+              const SizedBox(width: 10),
+              Text(
+                isQuran ? 'النص القرآني' : 'الحديث النبوي',
+                style: GoogleFonts.cairo(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: accentColor,
                 ),
               ),
             ],
           ),
           const SizedBox(height: 14),
-          ...sources.asMap().entries.map((entry) {
-            final index = entry.key;
-            final source = entry.value;
-            final name = (source['name'] ?? '').toString();
-            final url = (source['url'] ?? '').toString();
-            final isLast = index == sources.length - 1;
 
-            return Column(
-              children: [
-                InkWell(
-                  onTap: url.isNotEmpty ? () => _openUrl(url) : null,
-                  borderRadius: BorderRadius.circular(12),
-                  child: Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.blue.withOpacity(0.04),
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: Colors.blue.withOpacity(0.08)),
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 28,
-                          height: 28,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.blue.withOpacity(0.1),
-                          ),
-                          child: Center(
-                            child: FittedBox(
-                              child: Text(
-                                '${index + 1}',
-                                style: GoogleFonts.cairo(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.blue.shade600,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                name,
-                                style: GoogleFonts.cairo(
-                                  fontSize: 11.5,
-                                  fontWeight: FontWeight.w600,
-                                  color: textColor,
-                                ),
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              if (url.isNotEmpty)
-                                Text(
-                                  url,
-                                  style: GoogleFonts.cairo(
-                                    fontSize: 9.5,
-                                    color: Colors.blue.shade400,
-                                  ),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                            ],
-                          ),
-                        ),
-                        if (url.isNotEmpty) ...[
-                          const SizedBox(width: 4),
-                          Icon(
-                            Icons.open_in_new_rounded,
-                            size: 14,
-                            color: Colors.blue.shade400,
-                          ),
-                        ],
-                      ],
-                    ),
-                  ),
-                ),
-                if (!isLast) const SizedBox(height: 8),
-              ],
-            );
-          }),
+          // Source text
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: accentColor.withOpacity(0.05),
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: accentColor.withOpacity(0.12)),
+            ),
+            child: Text(
+              (item['source'] ?? '').toString(),
+              textAlign: TextAlign.center,
+              style: GoogleFonts.amiri(
+                fontSize: 20,
+                height: 1.9,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const SizedBox(height: 12),
+
+          // Reference + book
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: [
+              _GlassTag(
+                text: (item['reference'] ?? '').toString(),
+                color: accentColor,
+                t: t,
+              ),
+              if (book.isNotEmpty)
+                _GlassTag(text: book, color: Colors.white54, t: t),
+            ],
+          ),
         ],
       ),
     );
   }
+}
 
-  // ═══════════════════════════════════════════════
-  //  HELPER WIDGETS
-  // ═══════════════════════════════════════════════
-  Widget _buildTag(String text, Color color) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.10),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Text(
-        text,
-        style: GoogleFonts.cairo(
-          fontSize: 11,
-          fontWeight: FontWeight.bold,
-          color: color,
-        ),
-        maxLines: 2,
-        overflow: TextOverflow.ellipsis,
-      ),
-    );
-  }
+// ══════════════════════════════════════════════
+//  SECTION CARD  (description / scientific)
+// ══════════════════════════════════════════════
+class _SectionCard extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String content;
+  final Color color;
+  final MiracleThemeColors t;
 
-  Widget _buildSectionCard({
-    required IconData icon,
-    required String title,
-    required String content,
-    required Color color,
-    required Color cardColor,
-    required Color textColor,
-    required bool isDark,
-  }) {
+  const _SectionCard({
+    required this.icon,
+    required this.title,
+    required this.content,
+    required this.color,
+    required this.t,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: cardColor,
+        color: t.glass,
         borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: color.withOpacity(0.15)),
+        border: Border.all(color: color.withOpacity(0.2)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(isDark ? 0.15 : 0.04),
-            blurRadius: 8,
-            offset: const Offset(0, 3),
+            color: color.withOpacity(0.05),
+            blurRadius: 14,
+            offset: const Offset(0, 5),
           ),
         ],
       ),
@@ -1123,8 +967,17 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
         children: [
           Row(
             children: [
-              Icon(icon, color: color, size: 20),
-              const SizedBox(width: 8),
+              Container(
+                width: 36,
+                height: 36,
+                decoration: BoxDecoration(
+                  color: color.withOpacity(0.12),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: color.withOpacity(0.25)),
+                ),
+                child: Icon(icon, color: color, size: 18),
+              ),
+              const SizedBox(width: 10),
               Text(
                 title,
                 style: GoogleFonts.cairo(
@@ -1141,24 +994,636 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
             textAlign: TextAlign.right,
             style: GoogleFonts.cairo(
               fontSize: 13.5,
-              height: 1.9,
-              color: textColor.withOpacity(0.85),
+              height: 1.95,
+              color: Colors.white.withOpacity(0.88),
             ),
           ),
         ],
       ),
     );
   }
+}
 
-  Widget _buildInfoRow({
-    required IconData icon,
-    required String label,
-    required String value,
-    required Color color,
-    required Color textColor,
-    required Color subTextColor,
-  }) {
+// ══════════════════════════════════════════════
+//  DISCOVERY CARD
+// ══════════════════════════════════════════════
+class _DiscoveryCard extends StatelessWidget {
+  final String discoveryYear;
+  final String scientist;
+  final MiracleThemeColors t;
+
+  const _DiscoveryCard({
+    required this.discoveryYear,
+    required this.scientist,
+    required this.t,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(18),
+      decoration: BoxDecoration(
+        color: t.glass,
+        borderRadius: BorderRadius.circular(22),
+        border: Border.all(color: MiracleTheme.neonGold.withOpacity(0.22)),
+        boxShadow: [
+          BoxShadow(
+            color: MiracleTheme.neonGold.withOpacity(0.06),
+            blurRadius: 14,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Header
+          Row(
+            children: [
+              Container(
+                width: 36,
+                height: 36,
+                decoration: BoxDecoration(
+                  color: MiracleTheme.neonGold.withOpacity(0.12),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    color: MiracleTheme.neonGold.withOpacity(0.25),
+                  ),
+                ),
+                child: const Icon(
+                  Icons.history_edu_rounded,
+                  color: MiracleTheme.neonGold,
+                  size: 18,
+                ),
+              ),
+              const SizedBox(width: 10),
+              Text(
+                'معلومات الاكتشاف',
+                style: GoogleFonts.cairo(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: MiracleTheme.neonGold,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 14),
+
+          if (discoveryYear.isNotEmpty)
+            _InfoRow(
+              icon: Icons.calendar_today_rounded,
+              label: 'سنة الاكتشاف',
+              value: discoveryYear,
+              color: MiracleTheme.neonGold,
+            ),
+
+          if (discoveryYear.isNotEmpty && scientist.isNotEmpty)
+            Divider(color: Colors.white.withOpacity(0.08), height: 20),
+
+          if (scientist.isNotEmpty)
+            _InfoRow(
+              icon: Icons.person_rounded,
+              label: 'العالم / المكتشف',
+              value: scientist,
+              color: MiracleTheme.neonGold,
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+// ══════════════════════════════════════════════
+//  SOURCES CARD
+// ══════════════════════════════════════════════
+class _SourcesCard extends StatelessWidget {
+  final List<Map<String, dynamic>> sources;
+  final MiracleThemeColors t;
+  final Future<void> Function(String) onOpenUrl;
+
+  const _SourcesCard({
+    required this.sources,
+    required this.t,
+    required this.onOpenUrl,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final provider = context.watch<MiracleColorProvider>();
+    final t = MiracleTheme.of(isDark, provider: provider);
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(18),
+      decoration: BoxDecoration(
+        color: t.glass,
+        borderRadius: BorderRadius.circular(22),
+        border: Border.all(color: MiracleTheme.neonBlue.withOpacity(0.22)),
+        boxShadow: [
+          BoxShadow(
+            color: MiracleTheme.neonBlue.withOpacity(0.05),
+            blurRadius: 14,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Header
+          Row(
+            children: [
+              Container(
+                width: 36,
+                height: 36,
+                decoration: BoxDecoration(
+                  color: MiracleTheme.neonBlue.withOpacity(0.12),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    color: MiracleTheme.neonBlue.withOpacity(0.25),
+                  ),
+                ),
+                child: Icon(
+                  Icons.source_rounded,
+                  color: MiracleTheme.neonBlue,
+                  size: 18,
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  'المصادر والمراجع',
+                  style: GoogleFonts.cairo(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: MiracleTheme.neonBlue,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                decoration: BoxDecoration(
+                  color: MiracleTheme.neonBlue.withOpacity(0.12),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Text(
+                  '${sources.length}',
+                  style: GoogleFonts.poppins(
+                    fontSize: 11,
+                    fontWeight: FontWeight.bold,
+                    color: MiracleTheme.neonBlue,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 14),
+
+          // Source items
+          ...sources.asMap().entries.map((entry) {
+            final index = entry.key;
+            final source = entry.value;
+            final name = (source['name'] ?? '').toString();
+            final url = (source['url'] ?? '').toString();
+            final isLast = index == sources.length - 1;
+
+            return Column(
+              children: [
+                GestureDetector(
+                  onTap: url.isNotEmpty ? () => onOpenUrl(url) : null,
+                  child: Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: MiracleTheme.neonBlue.withOpacity(0.05),
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: MiracleTheme.neonBlue.withOpacity(0.1),
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        // Index circle
+                        Container(
+                          width: 28,
+                          height: 28,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: MiracleTheme.neonBlue.withOpacity(0.1),
+                            border: Border.all(
+                              color: MiracleTheme.neonBlue.withOpacity(0.2),
+                            ),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '${index + 1}',
+                              style: GoogleFonts.poppins(
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                                color: MiracleTheme.neonBlue,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+
+                        // Name + URL
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                name,
+                                style: GoogleFonts.cairo(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                ),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              if (url.isNotEmpty)
+                                Text(
+                                  url,
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 9,
+                                    color: MiracleTheme.neonBlue.withOpacity(
+                                      0.7,
+                                    ),
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                            ],
+                          ),
+                        ),
+
+                        if (url.isNotEmpty)
+                          Icon(
+                            Icons.open_in_new_rounded,
+                            size: 14,
+                            color: MiracleTheme.neonBlue.withOpacity(0.7),
+                          ),
+                      ],
+                    ),
+                  ),
+                ),
+                if (!isLast) const SizedBox(height: 8),
+              ],
+            );
+          }),
+        ],
+      ),
+    );
+  }
+}
+
+// ══════════════════════════════════════════════
+//  VIDEO CARD
+// ══════════════════════════════════════════════
+class _VideoCard extends StatelessWidget {
+  final String youtubeUrl;
+  final String videoUrl;
+  final Color accentColor;
+  final MiracleThemeColors t;
+  final Future<void> Function(String) onOpenUrl;
+
+  const _VideoCard({
+    required this.youtubeUrl,
+    required this.videoUrl,
+    required this.accentColor,
+    required this.t,
+    required this.onOpenUrl,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(18),
+      decoration: BoxDecoration(
+        color: t.glass,
+        borderRadius: BorderRadius.circular(22),
+        border: Border.all(color: accentColor.withOpacity(0.2)),
+        boxShadow: [
+          BoxShadow(
+            color: accentColor.withOpacity(0.05),
+            blurRadius: 14,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                width: 36,
+                height: 36,
+                decoration: BoxDecoration(
+                  color: accentColor.withOpacity(0.12),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: accentColor.withOpacity(0.25)),
+                ),
+                child: Icon(
+                  Icons.video_library_rounded,
+                  color: accentColor,
+                  size: 18,
+                ),
+              ),
+              const SizedBox(width: 10),
+              Text(
+                'محتوى مرئي مرتبط',
+                style: GoogleFonts.cairo(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: accentColor,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 14),
+
+          // YouTube button
+          if (youtubeUrl.isNotEmpty)
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red.shade700,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  elevation: 0,
+                ),
+                onPressed: () => onOpenUrl(youtubeUrl),
+                icon: const Icon(Icons.play_circle_fill_rounded, size: 20),
+                label: Text(
+                  'مشاهدة على يوتيوب',
+                  style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+
+          if (youtubeUrl.isNotEmpty && videoUrl.isNotEmpty)
+            const SizedBox(height: 10),
+
+          // Direct video button
+          if (videoUrl.isNotEmpty)
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton.icon(
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: accentColor,
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  side: BorderSide(color: accentColor.withOpacity(0.3)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                ),
+                onPressed: () => onOpenUrl(videoUrl),
+                icon: const Icon(Icons.video_library_rounded, size: 20),
+                label: Text(
+                  'مشاهدة الفيديو المباشر',
+                  style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+// ══════════════════════════════════════════════
+//  BOTTOM BAR
+// ══════════════════════════════════════════════
+class _BottomBar extends StatelessWidget {
+  final bool isFav;
+  final Color accentColor;
+  final MiracleThemeColors t;
+  final VoidCallback onShare;
+  final VoidCallback onCopy;
+  final VoidCallback onToggleFav;
+
+  const _BottomBar({
+    required this.isFav,
+    required this.accentColor,
+    required this.t,
+    required this.onShare,
+    required this.onCopy,
+    required this.onToggleFav,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+      decoration: BoxDecoration(
+        color: t.bg2,
+        border: Border(top: BorderSide(color: Colors.white.withOpacity(0.06))),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.3),
+            blurRadius: 12,
+            offset: const Offset(0, -4),
+          ),
+        ],
+      ),
+      child: SafeArea(
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final isSmall = constraints.maxWidth < 320;
+
+            return Row(
+              children: [
+                // Share
+                Expanded(
+                  flex: 3,
+                  child: SizedBox(
+                    height: 46,
+                    child: ElevatedButton.icon(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: accentColor.withOpacity(0.15),
+                        foregroundColor: accentColor,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14),
+                          side: BorderSide(color: accentColor.withOpacity(0.3)),
+                        ),
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                      ),
+                      onPressed: onShare,
+                      icon: const Icon(Icons.share_rounded, size: 18),
+                      label: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          'مشاركة',
+                          style: GoogleFonts.cairo(
+                            fontWeight: FontWeight.bold,
+                            fontSize: isSmall ? 11 : 13,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+
+                // Copy
+                Expanded(
+                  flex: 3,
+                  child: SizedBox(
+                    height: 46,
+                    child: ElevatedButton.icon(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: MiracleTheme.neonBlue.withOpacity(
+                          0.12,
+                        ),
+                        foregroundColor: MiracleTheme.neonBlue,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14),
+                          side: BorderSide(
+                            color: MiracleTheme.neonBlue.withOpacity(0.3),
+                          ),
+                        ),
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                      ),
+                      onPressed: onCopy,
+                      icon: const Icon(Icons.copy_rounded, size: 18),
+                      label: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          'نسخ',
+                          style: GoogleFonts.cairo(
+                            fontWeight: FontWeight.bold,
+                            fontSize: isSmall ? 11 : 13,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+
+                // Favorite toggle
+                GestureDetector(
+                  onTap: onToggleFav,
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 300),
+                    width: 46,
+                    height: 46,
+                    decoration: BoxDecoration(
+                      color:
+                          isFav
+                              ? MiracleTheme.neonRed.withOpacity(0.15)
+                              : t.glass,
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(
+                        color:
+                            isFav
+                                ? MiracleTheme.neonRed.withOpacity(0.4)
+                                : Colors.white.withOpacity(0.15),
+                        width: isFav ? 1.5 : 1,
+                      ),
+                      boxShadow:
+                          isFav
+                              ? [
+                                BoxShadow(
+                                  color: MiracleTheme.neonRed.withOpacity(0.2),
+                                  blurRadius: 10,
+                                ),
+                              ]
+                              : [],
+                    ),
+                    child: Center(
+                      child: AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 280),
+                        transitionBuilder:
+                            (child, anim) =>
+                                ScaleTransition(scale: anim, child: child),
+                        child: Icon(
+                          isFav
+                              ? Icons.favorite_rounded
+                              : Icons.favorite_border_rounded,
+                          key: ValueKey(isFav),
+                          color: isFav ? MiracleTheme.neonRed : Colors.white38,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+// ══════════════════════════════════════════════
+//  SMALL REUSABLE WIDGETS
+// ══════════════════════════════════════════════
+class _GlassTag extends StatelessWidget {
+  final String text;
+  final Color color;
+  final MiracleThemeColors t;
+
+  const _GlassTag({required this.text, required this.color, required this.t});
+
+  @override
+  Widget build(BuildContext context) {
+    if (text.isEmpty) return const SizedBox.shrink();
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      decoration: BoxDecoration(
+        color: color.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: color.withOpacity(0.2)),
+      ),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 200),
+        child: Text(
+          text,
+          style: GoogleFonts.cairo(
+            fontSize: 11,
+            fontWeight: FontWeight.bold,
+            color: color,
+          ),
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ),
+    );
+  }
+}
+
+class _InfoRow extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final String value;
+  final Color color;
+
+  const _InfoRow({
+    required this.icon,
+    required this.label,
+    required this.value,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           width: 36,
@@ -1166,6 +1631,7 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: color.withOpacity(0.1),
+            border: Border.all(color: color.withOpacity(0.2)),
           ),
           child: Icon(icon, color: color, size: 16),
         ),
@@ -1176,42 +1642,22 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
             children: [
               Text(
                 label,
-                style: GoogleFonts.cairo(
-                  fontSize: 11,
-                  color: subTextColor,
-                ),
+                style: GoogleFonts.cairo(fontSize: 11, color: Colors.white54),
               ),
               Text(
                 value,
                 style: GoogleFonts.cairo(
                   fontSize: 13,
                   fontWeight: FontWeight.bold,
-                  color: textColor,
+                  color: Colors.white,
                 ),
-                maxLines: 2,
+                maxLines: 3,
                 overflow: TextOverflow.ellipsis,
               ),
             ],
           ),
         ),
       ],
-    );
-  }
-
-  Widget _buildAnimatedWidget({required int delay, required Widget child}) {
-    return TweenAnimationBuilder<double>(
-      tween: Tween(begin: 0.0, end: 1.0),
-      duration: Duration(milliseconds: 500 + delay),
-      curve: Curves.easeOutCubic,
-      builder: (context, value, _) {
-        return Opacity(
-          opacity: value,
-          child: Transform.translate(
-            offset: Offset(0, 15 * (1 - value)),
-            child: child,
-          ),
-        );
-      },
     );
   }
 }

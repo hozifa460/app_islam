@@ -1,28 +1,46 @@
-// main_shell_screen.dart
+import 'dart:async';
+import 'dart:io';
 import 'dart:ui';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islamic_app/screens/AsmaAllah/asma_allah_screen.dart';
 import 'package:islamic_app/screens/Azkar/azkar_screen.dart';
 import 'package:islamic_app/screens/GreatMuslim/great_muslims_screen.dart';
 import 'package:islamic_app/screens/books/books_screen.dart';
-import 'package:islamic_app/screens/channels_screen.dart';
+import 'package:islamic_app/screens/channels/cache/image_cache_config.dart';
+import 'package:islamic_app/screens/channels/channels_screen.dart';
+import 'package:islamic_app/screens/channels/services/channels_prefetch_service.dart';
+import 'package:islamic_app/screens/channels/services/feed_cache_service.dart';
+import 'package:islamic_app/screens/channels/services/youtube_service.dart';
 import 'package:islamic_app/screens/dua/dua_screen.dart';
+import 'package:islamic_app/screens/fatwa/fatwa_chat_screen.dart';
+import 'package:islamic_app/screens/fatwa/fatwa_search_screen.dart';
 import 'package:islamic_app/screens/hadith/hadith_screen.dart';
-import 'package:islamic_app/screens/hasanat_screen.dart';
-import 'package:islamic_app/screens/hijri_calendar_screen.dart';
-import 'package:islamic_app/screens/home/screen/HomeScreen.dart';
+import 'package:islamic_app/screens/hasanat/hasanat_screen.dart';
+import 'package:islamic_app/screens/hijri/hijri_calendar_screen.dart';
+import 'package:islamic_app/screens/home/HomeScreen.dart';
 import 'package:islamic_app/screens/inheritance/inheritance_screen.dart';
-import 'package:islamic_app/screens/khatma_screen.dart';
+import 'package:islamic_app/screens/khatma/khatma_screen.dart';
 import 'package:islamic_app/screens/mircle/miracles_screen.dart';
-import 'package:islamic_app/screens/prayer/muzzin_settings.dart';
-import 'package:islamic_app/screens/prayer/prayer_time_screen.dart';
-import 'package:islamic_app/screens/qibla_screen.dart';
+import 'package:islamic_app/screens/prayer/muzzin_settings/muzzin_settings.dart';
+import 'package:islamic_app/screens/prayer/prayer_times_screen/prayer_time_screen.dart';
+import 'package:islamic_app/screens/profile/profile_screen.dart';
+import 'package:islamic_app/screens/profile/providers/profile_image_provider.dart';
+import 'package:islamic_app/screens/prophet_sunnah/prophet_sunnah_screen.dart';
+import 'package:islamic_app/screens/qibla/qibla_splash_screen.dart';
+import 'package:islamic_app/screens/qibla/qibla_screen.dart';
 import 'package:islamic_app/screens/quran/quran_screen.dart';
+import 'package:islamic_app/screens/radio/radio_screen.dart';
 import 'package:islamic_app/screens/salawat/salawat_reminder_screen.dart';
-import 'package:islamic_app/screens/settings_screen.dart';
-import 'package:islamic_app/screens/sunnah_tracker_screen.dart';
+import 'package:islamic_app/screens/settings/settings_screen.dart';
+import 'package:islamic_app/screens/sunnah/sunnah_tracker_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'languages/app_localizations.dart';
 
 class MainShellScreen extends StatefulWidget {
   final Function(bool) onThemeChanged;
@@ -63,8 +81,73 @@ class _MainShellScreenState extends State<MainShellScreen> {
 
   static const _gold = Color(0xFFC8A44D);
 
-  /// اللون الرئيسي المختار - يستخدم في كل مكان
+  String? _profileImage;
+
+  bool _channelsTabWarmed = false;
+
   Color get _primary => widget.appColors[widget.selectedColorIndex];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadProfileImage();
+
+    Future.delayed(const Duration(milliseconds: 600), () {
+      if (!mounted) return;
+
+      unawaited(() async {
+        await ChannelsPrefetchService.warmupBeforeOpen();
+        if (!mounted) return;
+        await _precacheChannelsFeedImages();
+      }());
+    });
+
+    Future.delayed(const Duration(milliseconds: 1200), () {
+      if (!mounted || _channelsTabWarmed) return;
+
+      setState(() {
+        _visitedTabs.add(3); // تبويب القنوات
+        _channelsTabWarmed = true;
+      });
+    });
+  }
+
+  Future<void> _precacheChannelsFeedImages() async {
+    try {
+      final cached = await FeedCacheService.loadFeed();
+      if (cached == null) return;
+      if (!mounted) return;
+
+      final items = <YoutubeVideo>[
+        ...cached.videos.take(8),
+        ...cached.shorts.take(4),
+      ];
+
+      for (final video in items) {
+        if (video.thumbnail.trim().isEmpty) continue;
+
+        try {
+          await precacheImage(
+            CachedNetworkImageProvider(
+              video.thumbnail,
+              cacheManager: ImageCacheConfig.customCacheManager,
+            ),
+            context,
+          );
+        } catch (_) {}
+      }
+    } catch (e) {
+      debugPrint('❌ _precacheChannelsFeedImages error: $e');
+    }
+  }
+
+  Future<void> _loadProfileImage() async {
+    final p = await SharedPreferences.getInstance();
+    final path = p.getString('profile_local_image');
+    if (path != null && File(path).existsSync() && mounted) {
+      setState(() => _profileImage = path);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,10 +156,15 @@ class _MainShellScreenState extends State<MainShellScreen> {
 
     return Scaffold(
       backgroundColor: bg,
+      // ✅ أضف الزر العائم هنا
+      floatingActionButton: _buildFatwaFAB(context, isDark),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       body: Stack(
         children: [
-          // ── المحتوى ──
           Positioned.fill(
+            left: 0,
+            right: 0,
+            bottom: 0,
             child: _LazyIndexedStack(
               index: _currentIndex,
               visitedTabs: _visitedTabs,
@@ -84,8 +172,6 @@ class _MainShellScreenState extends State<MainShellScreen> {
               children: _buildTabs(isDark),
             ),
           ),
-
-          // ── البوتوم بار العائم ──
           Positioned(
             left: 0,
             right: 0,
@@ -110,9 +196,65 @@ class _MainShellScreenState extends State<MainShellScreen> {
     );
   }
 
+  Widget _buildFatwaFAB(BuildContext context, bool isDark) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Gap(10),
+        // ═══ زر البحث في الفتاوى ═══
+        _FatwaFABButton(
+          icon: Icons.search_rounded,
+          tooltip: 'البحث في الفتاوى',
+          color: const Color(0xFF2E7D32),
+          isDark: isDark,
+          onTap: () => _openScreen(context, const FatwaSearchScreen()),
+        ),
+
+        const SizedBox(height: 10),
+
+        // ═══ زر المساعد الذكي ═══
+        _FatwaFABButton(
+          icon: Icons.auto_awesome_rounded,
+          tooltip: 'مساعد الفتاوى',
+          color: const Color(0xFF1565C0),
+          isDark: isDark,
+          onTap: () => _openScreen(context, const FatwaChatScreen()),
+        ),
+        Gap(80),
+      ],
+    );
+  }
+
+  void _openScreen(BuildContext context, Widget screen) {
+    HapticFeedback.lightImpact();
+    Navigator.push(
+      context,
+      PageRouteBuilder(
+        transitionDuration: const Duration(milliseconds: 400),
+        reverseTransitionDuration: const Duration(milliseconds: 300),
+        pageBuilder: (_, animation, __) => screen,
+        transitionsBuilder: (_, animation, __, child) {
+          final curved = CurvedAnimation(
+            parent: animation,
+            curve: Curves.easeOutCubic,
+          );
+          return FadeTransition(
+            opacity: curved,
+            child: SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(0, 0.05),
+                end: Offset.zero,
+              ).animate(curved),
+              child: child,
+            ),
+          );
+        },
+      ),
+    );
+  }
+
   List<Widget> _buildTabs(bool isDark) {
     return [
-      // Tab 0: الرئيسية
       HomeScreen(
         onThemeChanged: widget.onThemeChanged,
         onColorChanged: widget.onColorChanged,
@@ -121,11 +263,7 @@ class _MainShellScreenState extends State<MainShellScreen> {
         appColors: widget.appColors,
         colorNames: widget.colorNames,
       ),
-
-      // Tab 1: الختمة
       KhatmaScreen(primaryColor: _primary),
-
-      // Tab 2: الصلاة
       PrayerTimesScreen(
         primaryColor: _primary,
         prayerTimes: widget.prayerTimes,
@@ -134,73 +272,31 @@ class _MainShellScreenState extends State<MainShellScreen> {
         onApplyCalculationMethod: widget.onApplyCalculationMethod,
         onReminderOffsetChanged: widget.onReminderOffsetChanged,
       ),
-
-      // Tab 3: المكتبة
-      BooksScreen(primaryColor: _primary),
-
-      // Tab 4: المزيد
+      ChannelsScreen(primaryColor: _primary),
       _buildMoreTab(context, _primary, isDark),
     ];
   }
 
-  // ── تبويب المزيد ──
-  Widget _buildMoreTab(
-      BuildContext context, Color _primary, bool isDark) {
+  // ══════════════════════════════════════════
+  //  تبويب المزيد — مترجم
+  // ══════════════════════════════════════════
+  Widget _buildMoreTab(BuildContext context, Color primary, bool isDark) {
+    final tr = context.tr;
     final textColor = isDark ? Colors.white : const Color(0xFF1A1A1A);
 
     final items = [
+      {'title': tr.moreQuran, 'icon': Icons.menu_book_rounded, 'screen': const QuranScreen()},
+      {'title': tr.moreAzkar, 'icon': Icons.auto_awesome_rounded, 'screen': const AzkarScreen()},
+      {'title': tr.moreHasanat, 'icon': Icons.emoji_events_rounded, 'screen': const HasanatScreen()},
+      {'title': tr.moreSalawat, 'icon': Icons.access_time_filled_rounded, 'screen': SalawatReminderScreen(primaryColor: primary)},
+      {'title': tr.moreDua, 'icon': Icons.favorite_rounded, 'screen': const DuaScreen()},
+      {'title': tr.moreKhatma, 'icon': Icons.track_changes, 'screen': KhatmaScreen(primaryColor: primary)},
+      {'title': tr.moreQibla, 'icon': Icons.location_on_rounded, 'screen': const QiblaSplashScreen()},
+      {'title': tr.moreHadith, 'icon': Icons.format_quote_rounded, 'screen': HadithScreen(primaryColor: primary)},
+      {'title': tr.moreHijri, 'icon': Icons.calendar_month_rounded, 'screen': HijriCalendarScreen(primaryColor: primary)},
+      {'title': tr.moreAsmaAllah, 'icon': Icons.numbers_rounded, 'screen': AsmaAllahScreen(primaryColor: primary)},
       {
-        'title': 'القرآن الكريم',
-        'icon': Icons.menu_book_rounded,
-        'screen': const QuranScreen()
-      },
-      {
-        'title': 'أذكار المسلم',
-        'icon': Icons.auto_awesome_rounded,
-        'screen': const AzkarScreen()
-      },
-      {
-        'title': 'حصاد الحسنات',
-        'icon': Icons.emoji_events_rounded,
-        'screen': const HasanatScreen()
-      },
-      {
-        'title': 'صلي على النبي',
-        'icon': Icons.access_time_filled_rounded,
-        'screen': SalawatReminderScreen(primaryColor: _primary)
-      },
-      {
-        'title': 'الأدعية',
-        'icon': Icons.favorite_rounded,
-        'screen': const DuaScreen()
-      },
-      {
-        'title': 'الختمة',
-        'icon': Icons.track_changes,
-        'screen': KhatmaScreen(primaryColor: _primary)
-      },
-      {
-        'title': 'القبلة',
-        'icon': Icons.location_on_rounded,
-        'screen': const QiblaScreen()
-      },
-      {
-        'title': 'الاحاديث',
-        'icon': Icons.format_quote_rounded,
-        'screen': HadithScreen(primaryColor: _primary)
-      },
-      {
-        'title': 'التقويم الهجري',
-        'icon': Icons.calendar_month_rounded,
-        'screen': HijriCalendarScreen(primaryColor: _primary)
-      },
-      {
-        'title': 'أسماء الله الحسنى',
-        'icon': Icons.numbers_rounded,
-        'screen': AsmaAllahScreen(primaryColor: _primary)
-      },
-      {
-        'title': 'الاعدادات',
+        'title': tr.moreSettings,
         'icon': Icons.settings_rounded,
         'screen': SettingsScreen(
           onThemeChanged: widget.onThemeChanged,
@@ -209,51 +305,17 @@ class _MainShellScreenState extends State<MainShellScreen> {
           selectedColorIndex: widget.selectedColorIndex,
           appColors: widget.appColors,
           colorNames: widget.colorNames,
-          primaryColor: _primary,
-        )
+          primaryColor: primary,
+        ),
       },
-      {
-        'title': 'المكتبة',
-        'icon': Icons.local_library_rounded,
-        'screen': BooksScreen(primaryColor: _primary)
-      },
-      {
-        'title': 'المعجزات',
-        'icon': Icons.grade,
-        'screen': MiraclesScreen(primaryColor: _primary)
-      },
-      {
-        'title': 'المؤذن',
-        'icon': Icons.volume_up_rounded,
-        'screen': MuezzinSettingsScreen(primaryColor: _primary)
-      },
-      {
-        'title': 'المواريث',
-        'icon': Icons.calculate_rounded,
-        'screen': InheritanceScreen(
-          selectedColorIndex: widget.selectedColorIndex,
-          appColors: widget.appColors,
-          isDarkMode: widget.isDarkMode,
-        )
-      },
-      {
-        'title': 'شاشة البث',
-        'icon': Icons.live_tv,
-        'screen': ChannelsScreen(primaryColor: _primary)
-      },
-      {
-        'title': 'العظماء',
-        'icon': Icons.person_4,
-        'screen': GreatMuslimsScreen(primaryColor: _primary)
-      },
-      {
-        'title': 'سنن الرسول',
-        'icon': Icons.handyman_rounded,
-        'screen': SunnahTrackerScreen(
-          isDarkMode: widget.isDarkMode,
-          onToggleTheme: () {},
-        )
-      },
+      {'title': tr.moreBooks, 'icon': Icons.local_library_rounded, 'screen': BooksScreen(primaryColor: primary)},
+      {'title': tr.moreMiracles, 'icon': Icons.grade, 'screen': MiraclesScreen(primaryColor: primary)},
+      {'title': tr.moreProphetSunnah, 'icon': Icons.data_exploration, 'screen': ProphetSunnahScreen()},
+      {'title': tr.moreInheritance, 'icon': Icons.calculate_rounded, 'screen': InheritanceScreen(selectedColorIndex: widget.selectedColorIndex, appColors: widget.appColors, isDarkMode: widget.isDarkMode)},
+      {'title': tr.moreChannels, 'icon': Icons.live_tv, 'screen': ChannelsScreen(primaryColor: primary)},
+      {'title': tr.moreGreatMuslims, 'icon': Icons.person_4, 'screen': GreatMuslimsScreen(primaryColor: primary)},
+      {'title': tr.moreSunnahTracker, 'icon': Icons.handyman_rounded, 'screen': SunnahTrackerScreen(isDarkMode: widget.isDarkMode, onToggleTheme: () {})},
+      {'title': tr.moreradio, 'icon': Icons.radio, 'screen': RadioScreen(primaryColor: primary)},
     ];
 
     return SafeArea(
@@ -264,28 +326,29 @@ class _MainShellScreenState extends State<MainShellScreen> {
           final largeCircle = small ? 82.0 : 98.0;
           final smallCircle = small ? 68.0 : 84.0;
 
-          Widget buildCircleItem(
-              Map<String, dynamic> item, {
-                required double size,
-              }) {
+          Widget buildCircleItem(Map<String, dynamic> item, {required double size}) {
             return ConstrainedBox(
-              constraints: BoxConstraints(
-                minWidth: size + 12,
-                maxWidth: size + 26,
-              ),
+              constraints: BoxConstraints(minWidth: size + 12, maxWidth: size + 26),
               child: GestureDetector(
                 onTap: () async {
                   await HapticFeedback.lightImpact();
+
+                  final screen = item['screen'];
+                  if (screen is ChannelsScreen) {
+                    unawaited(() async {
+                      await ChannelsPrefetchService.warmupBeforeOpen();
+                      if (!mounted) return;
+                      await _precacheChannelsFeedImages();
+                    }());
+                  }
+
                   if (!context.mounted) return;
                   Navigator.push(
                     context,
                     PageRouteBuilder(
-                      transitionDuration:
-                      const Duration(milliseconds: 400),
-                      reverseTransitionDuration:
-                      const Duration(milliseconds: 300),
-                      pageBuilder: (_, animation, __) =>
-                      item['screen'] as Widget,
+                      transitionDuration: const Duration(milliseconds: 400),
+                      reverseTransitionDuration: const Duration(milliseconds: 300),
+                      pageBuilder: (_, animation, __) => item['screen'] as Widget,
                       transitionsBuilder: (_, animation, __, child) {
                         final curved = CurvedAnimation(
                           parent: animation,
@@ -314,28 +377,11 @@ class _MainShellScreenState extends State<MainShellScreen> {
                       height: size,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: isDark
-                            ? Colors.white.withOpacity(0.04)
-                            : Colors.white,
-                        border: Border.all(
-                          // ★ حدود بلون التطبيق مع لمسة ذهبية ★
-                          color: _gold,
-                          width: 2,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: _primary.withOpacity(0.10),
-                            blurRadius: 8,
-                            offset: const Offset(0, 3),
-                          ),
-                        ],
+                        color: isDark ? Colors.white.withOpacity(0.04) : Colors.white,
+                        border: Border.all(color: _gold, width: 2),
+                        boxShadow: [BoxShadow(color: _primary.withOpacity(0.10), blurRadius: 8, offset: const Offset(0, 3))],
                       ),
-                      child: Icon(
-                        item['icon'] as IconData,
-                        // ★ أيقونة بلون التطبيق ★
-                        color: isDark ? Colors.white70 : _primary,
-                        size: size * 0.40,
-                      ),
+                      child: Icon(item['icon'] as IconData, color: isDark ? Colors.white70 : _primary, size: size * 0.40),
                     ),
                     const SizedBox(height: 8),
                     SizedBox(
@@ -345,12 +391,7 @@ class _MainShellScreenState extends State<MainShellScreen> {
                         textAlign: TextAlign.center,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.cairo(
-                          fontSize: small ? 10.8 : 12,
-                          fontWeight: FontWeight.bold,
-                          color: textColor,
-                          height: 1.35,
-                        ),
+                        style: GoogleFonts.cairo(fontSize: small ? 10.8 : 12, fontWeight: FontWeight.bold, color: textColor, height: 1.35),
                       ),
                     ),
                   ],
@@ -361,81 +402,80 @@ class _MainShellScreenState extends State<MainShellScreen> {
 
           Widget buildRow(List<Widget> children) => Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: children
-                .map((c) => Padding(
-              padding:
-              const EdgeInsets.symmetric(horizontal: 6),
-              child: c,
-            ))
-                .toList(),
+            children: children.map((c) => Padding(padding: const EdgeInsets.symmetric(horizontal: 6), child: c)).toList(),
           );
+
           return Stack(
             children: [
-              Positioned.fill(
-                child:
-                _buildMoreSoftBackground(_primary, isDark),
-              ),
+              Positioned.fill(child: _buildMoreSoftBackground(_primary, isDark)),
               SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 padding: const EdgeInsets.fromLTRB(12, 16, 12, 120),
                 child: Column(
                   children: [
+                    // ═══ الهيدر ═══
                     Row(
                       children: [
+                        Consumer<ProfileImageProvider>(
+                          builder: (context, imgProvider, _) {
+                            final path = imgProvider.imagePath;
+                            return GestureDetector(
+                              onTap: () async {
+                                await Navigator.push(
+                                  context,
+                                  PageRouteBuilder(
+                                    pageBuilder: (_, anim, __) => ProfileScreen(isDarkMode: isDark, onThemeChanged: widget.onThemeChanged),
+                                    transitionsBuilder: (_, anim, __, child) => FadeTransition(opacity: anim, child: child),
+                                    transitionDuration: const Duration(milliseconds: 350),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                width: 40,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: const Color(0xFFC8A44D).withOpacity(0.6), width: 2),
+                                  boxShadow: [BoxShadow(color: const Color(0xFFC8A44D).withOpacity(0.2), blurRadius: 8)],
+                                ),
+                                child: ClipOval(
+                                  child: path != null && File(path).existsSync()
+                                      ? Image.file(File(path), fit: BoxFit.cover, key: ValueKey(path))
+                                      : Container(
+                                    color: isDark ? Colors.white.withOpacity(0.08) : _primary.withOpacity(0.08),
+                                    child: Icon(Icons.person_rounded, size: 22, color: isDark ? Colors.white70 : _primary),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
                         const Spacer(),
                         Text(
-                          'المزيد',
-                          style: GoogleFonts.cairo(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                            color: textColor,
-                          ),
+                          tr.more, // ← مترجم
+                          style: GoogleFonts.cairo(fontSize: 22, fontWeight: FontWeight.bold, color: textColor),
                         ),
                       ],
                     ),
-                    buildRow([
-                      buildCircleItem(items[12], size: largeCircle)
-                    ]),
+
+                    // ═══ الشبكة ═══
+                    buildRow([buildCircleItem(items[12], size: largeCircle)]),
                     const SizedBox(height: 18),
-                    buildRow([
-                      buildCircleItem(items[0], size: smallCircle),
-                      buildCircleItem(items[1], size: smallCircle),
-                    ]),
+                    buildRow([buildCircleItem(items[0], size: smallCircle), buildCircleItem(items[1], size: smallCircle)]),
                     const SizedBox(height: 18),
-                    buildRow([
-                      buildCircleItem(items[2], size: smallCircle),
-                      buildCircleItem(items[3], size: largeCircle),
-                      buildCircleItem(items[4], size: smallCircle),
-                    ]),
+                    buildRow([buildCircleItem(items[2], size: smallCircle), buildCircleItem(items[3], size: largeCircle), buildCircleItem(items[4], size: smallCircle)]),
                     const SizedBox(height: 18),
-                    buildRow([
-                      buildCircleItem(items[5], size: smallCircle),
-                      buildCircleItem(items[6], size: smallCircle),
-                    ]),
+                    buildRow([buildCircleItem(items[13], size: smallCircle), buildCircleItem(items[6], size: smallCircle)]),
                     const SizedBox(height: 18),
-                    buildRow([
-                      buildCircleItem(items[14], size: largeCircle)
-                    ]),
+                    buildRow([buildCircleItem(items[14], size: largeCircle)]),
                     const SizedBox(height: 18),
-                    buildRow([
-                      buildCircleItem(items[7], size: smallCircle),
-                      buildCircleItem(items[8], size: smallCircle),
-                    ]),
+                    buildRow([buildCircleItem(items[7], size: smallCircle), buildCircleItem(items[8], size: smallCircle)]),
                     const SizedBox(height: 18),
-                    buildRow([
-                      buildCircleItem(items[9], size: smallCircle),
-                      buildCircleItem(items[10], size: largeCircle),
-                      buildCircleItem(items[11], size: smallCircle),
-                    ]),
+                    buildRow([buildCircleItem(items[9], size: smallCircle), buildCircleItem(items[10], size: largeCircle), buildCircleItem(items[11], size: smallCircle)]),
                     const SizedBox(height: 18),
-                    buildRow([
-                      buildCircleItem(items[17], size: smallCircle),
-                      buildCircleItem(items[16], size: smallCircle),
-                    ]),
+                    buildRow([buildCircleItem(items[17], size: smallCircle), buildCircleItem(items[16], size: smallCircle)]),
                     const SizedBox(height: 18),
-                    buildRow([
-                      buildCircleItem(items[15], size: largeCircle)
-                    ]),
+                    buildRow([buildCircleItem(items[18], size: largeCircle)]),
                   ],
                 ),
               ),
@@ -447,26 +487,15 @@ class _MainShellScreenState extends State<MainShellScreen> {
   }
 
   Widget _buildMoreSoftBackground(Color primary, bool isDark) {
-    final patternColor = isDark
-        ? Colors.white.withOpacity(0.035)
-        : primary.withOpacity(0.045);
-    final moonColor = isDark
-        ? Colors.white.withOpacity(0.04)
-        : _gold.withOpacity(0.10);
-    final starColor = isDark
-        ? Colors.white.withOpacity(0.10)
-        : _gold.withOpacity(0.18);
-    final bgColor =
-    isDark ? const Color(0xFF0E1714) : const Color(0xFFF7F3EA);
+    final patternColor = isDark ? Colors.white.withOpacity(0.035) : primary.withOpacity(0.045);
+    final moonColor = isDark ? Colors.white.withOpacity(0.04) : _gold.withOpacity(0.10);
+    final starColor = isDark ? Colors.white.withOpacity(0.10) : _gold.withOpacity(0.18);
+    final bgColor = isDark ? const Color(0xFF0E1714) : const Color(0xFFF7F3EA);
 
     return IgnorePointer(
       child: Stack(
         children: [
-          Positioned.fill(
-            child: CustomPaint(
-              painter: _MorePatternPainter(patternColor),
-            ),
-          ),
+          Positioned.fill(child: CustomPaint(painter: _MorePatternPainter(patternColor))),
           Positioned(
             top: 70,
             left: 18,
@@ -474,41 +503,13 @@ class _MainShellScreenState extends State<MainShellScreen> {
               width: 80,
               height: 80,
               child: Stack(children: [
-                Container(
-                  width: 80,
-                  height: 80,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: moonColor,
-                  ),
-                ),
-                Positioned(
-                  left: 20,
-                  top: 4,
-                  child: Container(
-                    width: 64,
-                    height: 64,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: bgColor,
-                    ),
-                  ),
-                ),
+                Container(width: 80, height: 80, decoration: BoxDecoration(shape: BoxShape.circle, color: moonColor)),
+                Positioned(left: 20, top: 4, child: Container(width: 64, height: 64, decoration: BoxDecoration(shape: BoxShape.circle, color: bgColor))),
               ]),
             ),
           ),
-          Positioned(
-            top: 84,
-            left: 84,
-            child: Icon(Icons.star_rounded,
-                size: 10, color: starColor),
-          ),
-          Positioned(
-            top: 108,
-            left: 102,
-            child: Icon(Icons.star_rounded,
-                size: 7, color: starColor.withOpacity(0.85)),
-          ),
+          Positioned(top: 84, left: 84, child: Icon(Icons.star_rounded, size: 10, color: starColor)),
+          Positioned(top: 108, left: 102, child: Icon(Icons.star_rounded, size: 7, color: starColor.withOpacity(0.85))),
         ],
       ),
     );
@@ -516,7 +517,7 @@ class _MainShellScreenState extends State<MainShellScreen> {
 }
 
 // ══════════════════════════════════════════════════════════════
-//  Glass Floating NavBar - iOS 17 (بدون حواف سميكة)
+//  Glass Floating NavBar — مترجم
 // ══════════════════════════════════════════════════════════════
 class _GlassNavBar extends StatefulWidget {
   final int currentIndex;
@@ -541,21 +542,19 @@ class _GlassNavBarState extends State<_GlassNavBar>
     with SingleTickerProviderStateMixin {
   late AnimationController _enterCtrl;
 
-  static const _icons = [
-    _Tab(Icons.home_outlined, Icons.home_rounded, 'الرئيسية'),
-    _Tab(Icons.track_changes_outlined, Icons.track_changes, 'الختمة'),
-    _Tab(Icons.mosque_outlined, Icons.mosque_rounded, 'الصلاة'),
-    _Tab(Icons.auto_stories_outlined, Icons.auto_stories_rounded, 'المكتبة'),
-    _Tab(Icons.grid_view_outlined, Icons.grid_view_rounded, 'المزيد'),
+  // ═══ الأيقونات ثابتة، النصوص تأتي من الترجمة ═══
+  static const _tabIcons = [
+    _TabIcons(Icons.home_outlined, Icons.home_rounded),
+    _TabIcons(Icons.track_changes_outlined, Icons.track_changes),
+    _TabIcons(Icons.mosque_outlined, Icons.mosque_rounded),
+    _TabIcons(Icons.live_tv, Icons.live_tv_rounded),
+    _TabIcons(Icons.grid_view_outlined, Icons.grid_view_rounded),
   ];
 
   @override
   void initState() {
     super.initState();
-    _enterCtrl = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 800),
-    );
+    _enterCtrl = AnimationController(vsync: this, duration: const Duration(milliseconds: 800));
     Future.delayed(const Duration(milliseconds: 300), () {
       if (mounted) _enterCtrl.forward();
     });
@@ -569,6 +568,7 @@ class _GlassNavBarState extends State<_GlassNavBar>
 
   @override
   Widget build(BuildContext context) {
+    final tr = context.tr;
     final mq = MediaQuery.of(context);
     final w = mq.size.width;
     final bottomSafe = mq.padding.bottom;
@@ -579,33 +579,23 @@ class _GlassNavBarState extends State<_GlassNavBar>
     final bottomPad = bottomSafe > 0 ? bottomSafe + 4 : 16.0;
     final radius = compact ? 24.0 : 28.0;
 
+    // ═══ النصوص المترجمة ═══
+    final tabLabels = [tr.navHome, tr.navKhatma, tr.navPrayer, tr.navLibrary, tr.navMore];
+
     return AnimatedBuilder(
       animation: _enterCtrl,
       builder: (context, child) {
-        final t = CurvedAnimation(
-          parent: _enterCtrl,
-          curve: Curves.easeOutCubic,
-        ).value;
-
+        final t = CurvedAnimation(parent: _enterCtrl, curve: Curves.easeOutCubic).value;
         return Transform.translate(
           offset: Offset(0, barH * (1 - t)),
-          child: Opacity(
-            opacity: t.clamp(0.0, 1.0),
-            child: child,
-          ),
+          child: Opacity(opacity: t.clamp(0.0, 1.0), child: child),
         );
       },
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-
-          // ── البار ──
           Padding(
-            padding: EdgeInsets.only(
-              left: margin,
-              right: margin,
-              bottom: bottomPad ,
-            ),
+            padding: EdgeInsets.only(left: margin, right: margin, bottom: bottomPad),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(radius),
               child: BackdropFilter(
@@ -614,23 +604,14 @@ class _GlassNavBarState extends State<_GlassNavBar>
                   height: barH,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(radius),
-                    color: widget.isDark
-                        ? const Color(0xFF1C2520).withOpacity(0.85)
-                        : Colors.white.withOpacity(0.75),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(
-                            widget.isDark ? 0.3 : 0.06),
-                        blurRadius: 20,
-                        offset: const Offset(0, 6),
-                      ),
-                    ],
+                    color: widget.isDark ? const Color(0xFF1C2520).withOpacity(0.85) : Colors.white.withOpacity(0.75),
+                    boxShadow: [BoxShadow(color: Colors.black.withOpacity(widget.isDark ? 0.3 : 0.06), blurRadius: 20, offset: const Offset(0, 6))],
                   ),
                   child: Row(
-                    children: List.generate(_icons.length, (i) {
+                    children: List.generate(_tabIcons.length, (i) {
                       return Expanded(
                         child: _GlassTab(
-                          tab: _icons[i],
+                          tab: _Tab(_tabIcons[i].icon, _tabIcons[i].activeIcon, tabLabels[i]),
                           isActive: widget.currentIndex == i,
                           isDark: widget.isDark,
                           primary: widget.primary,
@@ -650,8 +631,15 @@ class _GlassNavBarState extends State<_GlassNavBar>
   }
 }
 
+// ═══ أيقونات التبويب (بدون نص) ═══
+class _TabIcons {
+  final IconData icon;
+  final IconData activeIcon;
+  const _TabIcons(this.icon, this.activeIcon);
+}
+
 // ══════════════════════════════════════════════════════════════
-//  عنصر التبويب
+//  عنصر التبويب (بدون تغيير — يأخذ label من _Tab)
 // ══════════════════════════════════════════════════════════════
 class _GlassTab extends StatefulWidget {
   final _Tab tab;
@@ -684,39 +672,16 @@ class _GlassTabState extends State<_GlassTab>
   @override
   void initState() {
     super.initState();
-    _ctrl = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 400),
-    );
+    _ctrl = AnimationController(vsync: this, duration: const Duration(milliseconds: 400));
 
     _iconScale = TweenSequence<double>([
-      TweenSequenceItem(
-        tween: Tween(begin: 1.0, end: 0.85),
-        weight: 20,
-      ),
-      TweenSequenceItem(
-        tween: Tween(begin: 0.85, end: 1.15),
-        weight: 40,
-      ),
-      TweenSequenceItem(
-        tween: Tween(begin: 1.15, end: 1.0),
-        weight: 40,
-      ),
-    ]).animate(CurvedAnimation(
-      parent: _ctrl,
-      curve: Curves.easeOut,
-    ));
+      TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.85), weight: 20),
+      TweenSequenceItem(tween: Tween(begin: 0.85, end: 1.15), weight: 40),
+      TweenSequenceItem(tween: Tween(begin: 1.15, end: 1.0), weight: 40),
+    ]).animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeOut));
 
-    _iconLift = Tween<double>(begin: 0, end: -3).animate(
-      CurvedAnimation(parent: _ctrl, curve: Curves.easeOutCubic),
-    );
-
-    _labelOpacity = Tween<double>(begin: 0.5, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _ctrl,
-        curve: const Interval(0.4, 1.0, curve: Curves.easeOut),
-      ),
-    );
+    _iconLift = Tween<double>(begin: 0, end: -3).animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeOutCubic));
+    _labelOpacity = Tween<double>(begin: 0.5, end: 1.0).animate(CurvedAnimation(parent: _ctrl, curve: const Interval(0.4, 1.0, curve: Curves.easeOut)));
 
     if (widget.isActive) _ctrl.value = 1.0;
   }
@@ -724,11 +689,8 @@ class _GlassTabState extends State<_GlassTab>
   @override
   void didUpdateWidget(_GlassTab old) {
     super.didUpdateWidget(old);
-    if (widget.isActive && !old.isActive) {
-      _ctrl.forward(from: 0);
-    } else if (!widget.isActive && old.isActive) {
-      _ctrl.reverse();
-    }
+    if (widget.isActive && !old.isActive) _ctrl.forward(from: 0);
+    else if (!widget.isActive && old.isActive) _ctrl.reverse();
   }
 
   @override
@@ -748,9 +710,7 @@ class _GlassTabState extends State<_GlassTab>
     final labelSz = compact ? 9.0 : 10.0;
 
     final activeClr = primary;
-    final inactiveClr = isDark
-        ? const Color(0xFF7A8A82)
-        : const Color(0xFF8E9E96);
+    final inactiveClr = isDark ? const Color(0xFF7A8A82) : const Color(0xFF8E9E96);
 
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
@@ -762,7 +722,6 @@ class _GlassTabState extends State<_GlassTab>
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              // ── الأيقونة ──
               Transform.translate(
                 offset: Offset(0, active ? _iconLift.value : 0),
                 child: Transform.scale(
@@ -772,10 +731,7 @@ class _GlassTabState extends State<_GlassTab>
                     switchInCurve: Curves.easeOutBack,
                     transitionBuilder: (child, anim) => FadeTransition(
                       opacity: anim,
-                      child: ScaleTransition(
-                        scale: Tween(begin: 0.6, end: 1.0).animate(anim),
-                        child: child,
-                      ),
+                      child: ScaleTransition(scale: Tween(begin: 0.6, end: 1.0).animate(anim), child: child),
                     ),
                     child: Icon(
                       active ? widget.tab.activeIcon : widget.tab.icon,
@@ -786,41 +742,25 @@ class _GlassTabState extends State<_GlassTab>
                   ),
                 ),
               ),
-
               SizedBox(height: compact ? 3 : 4),
-
-              // ── النص ──
               Opacity(
-                opacity: active
-                    ? _labelOpacity.value
-                    : 0.6,
+                opacity: active ? _labelOpacity.value : 0.6,
                 child: FittedBox(
                   fit: BoxFit.scaleDown,
                   child: Text(
                     widget.tab.label,
                     maxLines: 1,
-                    style: GoogleFonts.cairo(
-                      fontSize: labelSz,
-                      fontWeight: active ? FontWeight.w700 : FontWeight.w500,
-                      color: active ? activeClr : inactiveClr,
-                      height: 1.0,
-                    ),
+                    style: GoogleFonts.cairo(fontSize: labelSz, fontWeight: active ? FontWeight.w700 : FontWeight.w500, color: active ? activeClr : inactiveClr, height: 1.0),
                   ),
                 ),
               ),
-
               SizedBox(height: compact ? 2 : 3),
-
-              // ── المؤشر ──
               AnimatedContainer(
                 duration: const Duration(milliseconds: 350),
                 curve: Curves.easeOutCubic,
                 width: active ? 20 : 0,
                 height: 3,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(2),
-                  color: activeClr,
-                ),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(2), color: activeClr),
               ),
             ],
           );
@@ -830,9 +770,7 @@ class _GlassTabState extends State<_GlassTab>
   }
 }
 
-// ══════════════════════════════════════════════════════════════
-//  بيانات التبويب
-// ══════════════════════════════════════════════════════════════
+// ═══ بيانات التبويب ═══
 class _Tab {
   final IconData icon;
   final IconData activeIcon;
@@ -840,7 +778,7 @@ class _Tab {
   const _Tab(this.icon, this.activeIcon, this.label);
 }
 
-
+// ═══ LazyIndexedStack (بدون تغيير) ═══
 class _LazyIndexedStack extends StatefulWidget {
   final int index;
   final Set<int> visitedTabs;
@@ -881,9 +819,6 @@ class _LazyIndexedStackState extends State<_LazyIndexedStack> {
       index: widget.index,
       children: List.generate(widget.children.length, (i) {
         if (!_built.contains(i)) {
-          // ★ إصلاح الشاشة الحمراء ★
-          // SizedBox.expand بدل SizedBox.shrink
-          // + لون الخلفية لمنع الوميض
           return ColoredBox(color: widget.backgroundColor, child: const SizedBox.expand());
         }
         return widget.children[i];
@@ -892,9 +827,7 @@ class _LazyIndexedStackState extends State<_LazyIndexedStack> {
   }
 }
 
-// ══════════════════════════════════════════════════════════════
-//  Pattern Painter
-// ══════════════════════════════════════════════════════════════
+// ═══ Pattern Painter (بدون تغيير) ═══
 class _MorePatternPainter extends CustomPainter {
   final Color color;
   const _MorePatternPainter(this.color);
@@ -924,4 +857,94 @@ class _MorePatternPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_MorePatternPainter old) => old.color != color;
+}
+
+// ═══════════════════════════════════════════
+// زر الفتاوى العائم
+// ═══════════════════════════════════════════
+class _FatwaFABButton extends StatefulWidget {
+  final IconData icon;
+  final String tooltip;
+  final Color color;
+  final bool isDark;
+  final VoidCallback onTap;
+
+  const _FatwaFABButton({
+    required this.icon,
+    required this.tooltip,
+    required this.color,
+    required this.isDark,
+    required this.onTap,
+  });
+
+  @override
+  State<_FatwaFABButton> createState() => _FatwaFABButtonState();
+}
+
+class _FatwaFABButtonState extends State<_FatwaFABButton>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _ctrl;
+  late Animation<double> _scale;
+
+  @override
+  void initState() {
+    super.initState();
+    _ctrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 150),
+      lowerBound: 0.0,
+      upperBound: 0.1,
+    );
+    _scale = Tween<double>(begin: 1.0, end: 0.9).animate(
+      CurvedAnimation(parent: _ctrl, curve: Curves.easeInOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: widget.tooltip,
+      child: GestureDetector(
+        onTapDown: (_) => _ctrl.forward(),
+        onTapUp: (_) {
+          _ctrl.reverse();
+          widget.onTap();
+        },
+        onTapCancel: () => _ctrl.reverse(),
+        child: AnimatedBuilder(
+          animation: _scale,
+          builder: (context, child) => Transform.scale(
+            scale: _scale.value,
+            child: child,
+          ),
+          child: Container(
+            width: 48,
+            height: 48,
+            decoration: BoxDecoration(
+              color: widget.color,
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: widget.color.withOpacity(0.4),
+                  blurRadius: 12,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: Icon(
+              widget.icon,
+              color: Colors.white,
+              size: 22,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }

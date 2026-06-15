@@ -2,6 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+
+    <key>io.flutter.embedded_views_preview</key>
+    <true/>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+        <key>NSAllowsArbitraryLoadsInWebContent</key>
+        <true/>
+    </dict>
+
+    <key>NSMicrophoneUsageDescription</key>
+    <string>نحتاج إذن الميكروفون للتسميع ومتابعة قراءتك للقرآن الكريم</string>
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>نحتاج إذن التعرف على الكلام لمتابعة قراءتك ومقارنتها بالنص القرآني</string>
+
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

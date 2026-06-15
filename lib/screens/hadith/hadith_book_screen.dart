@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -28,7 +29,8 @@ class HadithBookScreen extends StatefulWidget {
   State<HadithBookScreen> createState() => _HadithBookScreenState();
 }
 
-class _HadithBookScreenState extends State<HadithBookScreen> {
+class _HadithBookScreenState extends State<HadithBookScreen>
+    with TickerProviderStateMixin {
   List<dynamic> _allHadiths = [];
   List<dynamic> _displayedHadiths = [];
 
@@ -39,18 +41,78 @@ class _HadithBookScreenState extends State<HadithBookScreen> {
 
   int _currentMax = 20;
   final ItemScrollController _itemScrollController = ItemScrollController();
+  final ItemPositionsListener _itemPositionsListener = ItemPositionsListener.create();
   final TextEditingController _searchController = TextEditingController();
+
+  bool _showScrollToTop = false;
+  bool _isSearchExpanded = false;
+  final FocusNode _searchFocusNode = FocusNode();
+
+  late AnimationController _fabAnimationController;
+  late AnimationController _loadingAnimationController;
+  late Animation<double> _fabScaleAnimation;
+  late Animation<double> _loadingRotation;
+
+  final Color _gold = const Color(0xFFD4A847);
 
   @override
   void initState() {
     super.initState();
+
+    _fabAnimationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+    );
+    _fabScaleAnimation = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(parent: _fabAnimationController, curve: Curves.easeOutBack),
+    );
+
+    _loadingAnimationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    )..repeat();
+    _loadingRotation = Tween<double>(begin: 0, end: 2 * pi).animate(
+      CurvedAnimation(parent: _loadingAnimationController, curve: Curves.linear),
+    );
+
+    _itemPositionsListener.itemPositions.addListener(_onScroll);
     _initOfflineBook();
+  }
+
+  void _onScroll() {
+    final positions = _itemPositionsListener.itemPositions.value;
+    if (positions.isEmpty) return;
+
+    final firstVisible = positions.reduce((a, b) => a.index < b.index ? a : b);
+    final shouldShow = firstVisible.index > 3;
+
+    if (shouldShow != _showScrollToTop) {
+      setState(() => _showScrollToTop = shouldShow);
+      if (shouldShow) {
+        _fabAnimationController.forward();
+      } else {
+        _fabAnimationController.reverse();
+      }
+    }
   }
 
   @override
   void dispose() {
     _searchController.dispose();
+    _searchFocusNode.dispose();
+    _fabAnimationController.dispose();
+    _loadingAnimationController.dispose();
     super.dispose();
+  }
+
+  void _scrollToTop() {
+    if (_itemScrollController.isAttached) {
+      _itemScrollController.scrollTo(
+        index: 0,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeOutCubic,
+      );
+    }
   }
 
   void _jumpToInitialHadith() {
@@ -75,7 +137,6 @@ class _HadithBookScreenState extends State<HadithBookScreen> {
     });
   }
 
-  // ✅ دالة قوية لتنظيف النص للبحث
   String _normalizeText(String text) {
     if (text.isEmpty) return "";
     return text
@@ -88,10 +149,9 @@ class _HadithBookScreenState extends State<HadithBookScreen> {
         .trim();
   }
 
-  // دالة لتلوين كلمة البحث داخل الحديث
   List<TextSpan> _buildHighlightedHadithText(String text, String? keyword, Color textColor) {
     if (keyword == null || keyword.trim().isEmpty) {
-      return [TextSpan(text: text, style: GoogleFonts.amiri(fontSize: 22, height: 1.8, color: textColor))];
+      return [TextSpan(text: text, style: GoogleFonts.amiri(fontSize: 20, height: 1.9, color: textColor))];
     }
 
     List<TextSpan> spans = [];
@@ -103,18 +163,24 @@ class _HadithBookScreenState extends State<HadithBookScreen> {
       if (cleanWord.contains(cleanKeyword)) {
         spans.add(TextSpan(
           text: '$word ',
-          style: GoogleFonts.amiri(fontSize: 22, height: 1.8, color: Colors.black87, backgroundColor: Colors.amber.withOpacity(0.8)),
+          style: GoogleFonts.amiri(
+            fontSize: 20,
+            height: 1.9,
+            color: Colors.black87,
+            backgroundColor: _gold.withOpacity(0.4),
+            fontWeight: FontWeight.bold,
+          ),
         ));
       } else {
         spans.add(TextSpan(
           text: '$word ',
-          style: GoogleFonts.amiri(fontSize: 22, height: 1.8, color: textColor),
+          style: GoogleFonts.amiri(fontSize: 20, height: 1.9, color: textColor),
         ));
       }
     }
     return spans;
   }
-  // ✅ تحميل وحفظ الكتاب أوفلاين
+
   Future<void> _initOfflineBook() async {
     try {
       String apiId = widget.bookId;
@@ -125,14 +191,12 @@ class _HadithBookScreenState extends State<HadithBookScreen> {
       final file = File('${dir.path}/hadith_${apiId}_v1.json');
 
       if (await file.exists()) {
-        // 1. الكتاب محمل مسبقاً (سريع جداً)
         setState(() {
           _statusMessage = 'جاري فتح الكتاب...';
         });
         final jsonString = await file.readAsString();
         _processData(json.decode(jsonString));
       } else {
-        // 2. تحميل الكتاب لأول مرة (يأخذ بضع ثواني)
         setState(() {
           _isDownloading = true;
           _statusMessage = 'جاري تنزيل الكتاب لأول مرة...\nسيعمل بدون إنترنت لاحقاً.';
@@ -142,10 +206,8 @@ class _HadithBookScreenState extends State<HadithBookScreen> {
         final response = await http.get(url);
 
         if (response.statusCode == 200) {
-          // فك التشفير لحفظ اللغة العربية بشكل صحيح
           final decodedBody = utf8.decode(response.bodyBytes);
-          await file.writeAsString(decodedBody); // حفظ في الهاتف
-
+          await file.writeAsString(decodedBody);
           _processData(json.decode(decodedBody));
         } else {
           throw Exception('فشل في التحميل');
@@ -163,7 +225,6 @@ class _HadithBookScreenState extends State<HadithBookScreen> {
     }
   }
 
-  // ✅ تجهيز البيانات للعرض
   void _processData(dynamic data) {
     List<dynamic> rawList = [];
     if (data is Map && data.containsKey('hadiths')) {
@@ -175,11 +236,9 @@ class _HadithBookScreenState extends State<HadithBookScreen> {
     List<dynamic> validList = [];
 
     for (var h in rawList) {
-      // محاولة استخراج النص من الحقول المختلفة
       String rawText = h['text'] ?? h['body'] ?? h['hadithArabic'] ?? '';
       String cleanText = rawText.replaceAll(RegExp(r'<[^>]*>'), '').trim();
 
-      // استخراج الباب (Reference / Chapter)
       String reference = '';
       if (h['reference'] != null && h['reference'] is Map) {
         reference = h['reference']['book']?.toString() ?? '';
@@ -205,7 +264,6 @@ class _HadithBookScreenState extends State<HadithBookScreen> {
 
       _jumpToInitialHadith();
     }
-
   }
 
   void _loadMore() {
@@ -239,152 +297,487 @@ class _HadithBookScreenState extends State<HadithBookScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // ✅ كشف وضع الهاتف
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final bgColor = isDark ? const Color(0xFF121212) : Colors.grey.shade100;
-    final textColor = isDark ? Colors.white : Colors.black87;
+    final bgColor = isDark ? const Color(0xFF0A0E17) : const Color(0xFFF5F3EE);
+    final textColor = isDark ? Colors.white : const Color(0xFF2D2D2D);
 
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        backgroundColor: bgColor, // ✅ خلفية متكيفة
-        appBar: AppBar(
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(widget.bookTitle, style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
-              if (!_isLoading && !_hasError)
-                Text(
-                  '${_allHadiths.length} حديث',
-                  style: GoogleFonts.cairo(fontSize: 12, color: Colors.white70),
-                ),
-            ],
-          ),
-          backgroundColor: widget.primaryColor,
-          foregroundColor: Colors.white,
-          elevation: 0,
+        backgroundColor: bgColor,
+        body: CustomScrollView(
+          physics: const NeverScrollableScrollPhysics(),
+          slivers: [
+            // ─── Header ───
+            _buildSliverAppBar(isDark, bgColor),
+
+            // ─── Body ───
+            SliverFillRemaining(
+              child: _buildBody(isDark, textColor, bgColor),
+            ),
+          ],
         ),
-        body: _buildBody(isDark, textColor), // ✅ تمرير المتغيرات
+        floatingActionButton: _buildFloatingButtons(isDark),
       ),
     );
   }
 
-  Widget _buildBody(bool isDark, Color textColor) {
-    final cardColor = isDark ? const Color(0xFF1E1E1E) : Colors.white;
-
-    if (_isLoading || _isDownloading) {
-      return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CircularProgressIndicator(color: widget.primaryColor),
-            const SizedBox(height: 20),
-            Text(
-              _statusMessage,
-              textAlign: TextAlign.center,
-              style: GoogleFonts.cairo(fontSize: 16, color: widget.primaryColor, fontWeight: FontWeight.bold),
+  Widget _buildSliverAppBar(bool isDark, Color bgColor) {
+    return SliverAppBar(
+      expandedHeight: _isSearchExpanded ? 140 : 120,
+      pinned: true,
+      floating: false,
+      backgroundColor: isDark ? const Color(0xFF111827) : widget.primaryColor,
+      leading: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.15),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: IconButton(
+            icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white, size: 18),
+            onPressed: () => Navigator.pop(context),
+          ),
+        ),
+      ),
+      actions: [
+        // Search toggle button
+        Padding(
+          padding: const EdgeInsets.only(left: 8),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.15),
+              borderRadius: BorderRadius.circular(12),
             ),
-          ],
-        ),
-      );
-    }
-
-    if (_hasError) {
-      return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.wifi_off_rounded, size: 80, color: isDark ? Colors.grey.shade700 : Colors.grey),
-            const SizedBox(height: 16),
-            Text(_statusMessage, style: GoogleFonts.cairo(fontSize: 16, color: textColor)),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: widget.primaryColor),
-              onPressed: _initOfflineBook,
-              child: const Text('إعادة المحاولة', style: TextStyle(color: Colors.white)),
-            )
-          ],
-        ),
-      );
-    }
-
-    return Column(
-      children: [
-        // ================= 1. شريط البحث =================
-        Container(
-          padding: const EdgeInsets.all(16),
-          color: widget.primaryColor,
-          child: TextField(
-            controller: _searchController,
-            onChanged: _filterHadiths,
-            style: TextStyle(color: isDark ? Colors.white : Colors.black87), // ✅ لون النص متكيف
-            decoration: InputDecoration(
-              hintText: 'ابحث عن كلمة، أو رقم الحديث...',
-              hintStyle: GoogleFonts.cairo(color: isDark ? Colors.white54 : Colors.grey),
-              prefixIcon: Icon(Icons.search, color: isDark ? Colors.white70 : widget.primaryColor),
-              suffixIcon: _searchController.text.isNotEmpty
-                  ? IconButton(
-                icon: Icon(Icons.clear, color: isDark ? Colors.white54 : Colors.grey),
-                onPressed: () {
-                  _searchController.clear();
-                  _filterHadiths('');
-                },
-              )
-                  : null,
-              filled: true,
-              fillColor: isDark ? Colors.grey.shade800 : Colors.white, // ✅ خلفية حقل البحث متكيفة
-              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
+            child: IconButton(
+              icon: Icon(
+                _isSearchExpanded ? Icons.close : Icons.search,
+                color: Colors.white,
+                size: 20,
+              ),
+              onPressed: () {
+                setState(() {
+                  _isSearchExpanded = !_isSearchExpanded;
+                  if (!_isSearchExpanded) {
+                    _searchController.clear();
+                    _filterHadiths('');
+                    _searchFocusNode.unfocus();
+                  } else {
+                    Future.delayed(const Duration(milliseconds: 300), () {
+                      _searchFocusNode.requestFocus();
+                    });
+                  }
+                });
+              },
             ),
           ),
         ),
-
-        // ================= 2. القائمة =================
-        Expanded(
-          child: _displayedHadiths.isEmpty
-              ? Center(
-            child: Text(
-              'لا توجد نتائج مطابقة',
-              style: GoogleFonts.cairo(color: Colors.grey, fontSize: 16),
-            ),
-          )
-              : ScrollablePositionedList.builder(
-            itemScrollController: _itemScrollController,
-            padding: const EdgeInsets.all(12),
-            itemCount: (_currentMax < _displayedHadiths.length)
-                ? _currentMax + 1
-                : _displayedHadiths.length,
-            itemBuilder: (context, index) {
-              if (_currentMax < _displayedHadiths.length && index == _currentMax) {
-                return Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Center(
-                    child: CircularProgressIndicator(
-                      color: widget.primaryColor,
-                      strokeWidth: 3,
-                    ),
-                  ),
-                );
-              }
-
-              final hadith = _displayedHadiths[index];
-              return _buildHadithCard(hadith, isDark, cardColor, textColor);
-            },
-          ),
-        ),
+        const SizedBox(width: 8),
       ],
+      flexibleSpace: FlexibleSpaceBar(
+        background: Stack(
+          fit: StackFit.expand,
+          children: [
+            // Background pattern
+            CustomPaint(
+              painter: _HeaderPatternPainter(
+                color: Colors.white.withOpacity(0.03),
+              ),
+            ),
+
+            // Content
+            SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(60, 8, 16, 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Title row
+                    Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: _gold.withOpacity(0.2),
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(color: _gold.withOpacity(0.3)),
+                          ),
+                          child: Icon(
+                            Icons.auto_stories_rounded,
+                            color: _gold,
+                            size: 22,
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                widget.bookTitle,
+                                style: GoogleFonts.amiri(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              if (!_isLoading && !_hasError)
+                                Row(
+                                  children: [
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 8,
+                                        vertical: 2,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white.withOpacity(0.15),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Text(
+                                        '${_allHadiths.length} حديث',
+                                        style: GoogleFonts.cairo(
+                                          fontSize: 11,
+                                          color: _gold,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
+                                    if (_searchController.text.isNotEmpty) ...[
+                                      const SizedBox(width: 8),
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 8,
+                                          vertical: 2,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: _gold.withOpacity(0.2),
+                                          borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        child: Text(
+                                          '${_displayedHadiths.length} نتيجة',
+                                          style: GoogleFonts.cairo(
+                                            fontSize: 11,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ],
+                                ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    // Search bar (animated)
+                    AnimatedContainer(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                      height: _isSearchExpanded ? 56 : 0,
+                      child: AnimatedOpacity(
+                        duration: const Duration(milliseconds: 200),
+                        opacity: _isSearchExpanded ? 1 : 0,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 12),
+                          child: _buildSearchField(isDark),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            // Bottom curve
+            Positioned(
+              bottom: -1,
+              left: 0,
+              right: 0,
+              child: Container(
+                height: 20,
+                decoration: BoxDecoration(
+                  color: bgColor,
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(24),
+                    topRight: Radius.circular(24),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
-  // ✅ بناء بطاقة الحديث الاحترافية
-  Widget _buildHadithCard(dynamic hadith, bool isDark, Color cardColor, Color textColor) {
+  Widget _buildSearchField(bool isDark) {
+    return Container(
+      height: 44,
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.15),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.white.withOpacity(0.1)),
+      ),
+      child: TextField(
+        controller: _searchController,
+        focusNode: _searchFocusNode,
+        onChanged: _filterHadiths,
+        style: GoogleFonts.cairo(color: Colors.white, fontSize: 14),
+        decoration: InputDecoration(
+          hintText: 'ابحث بالكلمة أو رقم الحديث...',
+          hintStyle: GoogleFonts.cairo(color: Colors.white54, fontSize: 13),
+          prefixIcon: Icon(Icons.search, color: _gold, size: 20),
+          suffixIcon: _searchController.text.isNotEmpty
+              ? IconButton(
+            icon: const Icon(Icons.clear, color: Colors.white54, size: 18),
+            onPressed: () {
+              _searchController.clear();
+              _filterHadiths('');
+            },
+          )
+              : null,
+          border: InputBorder.none,
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBody(bool isDark, Color textColor, Color bgColor) {
+    final cardColor = isDark ? const Color(0xFF151B26) : Colors.white;
+
+    if (_isLoading || _isDownloading) {
+      return _buildLoadingState(isDark);
+    }
+
+    if (_hasError) {
+      return _buildErrorState(isDark, textColor);
+    }
+
+    if (_displayedHadiths.isEmpty) {
+      return _buildEmptyState(isDark);
+    }
+
+    return ScrollablePositionedList.builder(
+      itemScrollController: _itemScrollController,
+      itemPositionsListener: _itemPositionsListener,
+      padding: const EdgeInsets.fromLTRB(16, 8, 16, 100),
+      itemCount: _displayedHadiths.length,
+      itemBuilder: (context, index) {
+        final hadith = _displayedHadiths[index];
+        return TweenAnimationBuilder<double>(
+          tween: Tween(begin: 0, end: 1),
+          duration: Duration(milliseconds: 300 + (index % 5) * 50),
+          curve: Curves.easeOutCubic,
+          builder: (context, value, child) {
+            return Opacity(
+              opacity: value,
+              child: Transform.translate(
+                offset: Offset(0, 20 * (1 - value)),
+                child: child,
+              ),
+            );
+          },
+          child: _buildHadithCard(hadith, index, isDark, cardColor, textColor),
+        );
+      },
+    );
+  }
+
+  Widget _buildLoadingState(bool isDark) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // Animated loading indicator
+          AnimatedBuilder(
+            animation: _loadingRotation,
+            builder: (context, child) {
+              return Stack(
+                alignment: Alignment.center,
+                children: [
+                  // Outer ring
+                  Transform.rotate(
+                    angle: _loadingRotation.value,
+                    child: Container(
+                      width: 80,
+                      height: 80,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: widget.primaryColor.withOpacity(0.2),
+                          width: 3,
+                        ),
+                      ),
+                      child: CustomPaint(
+                        painter: _ArcPainter(
+                          color: widget.primaryColor,
+                          strokeWidth: 3,
+                        ),
+                      ),
+                    ),
+                  ),
+                  // Inner icon
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: widget.primaryColor.withOpacity(0.1),
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      _isDownloading ? Icons.cloud_download_rounded : Icons.menu_book_rounded,
+                      color: widget.primaryColor,
+                      size: 24,
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+          const SizedBox(height: 24),
+          Text(
+            _statusMessage,
+            textAlign: TextAlign.center,
+            style: GoogleFonts.cairo(
+              fontSize: 15,
+              color: widget.primaryColor,
+              fontWeight: FontWeight.w600,
+              height: 1.6,
+            ),
+          ),
+          if (_isDownloading) ...[
+            const SizedBox(height: 16),
+            SizedBox(
+              width: 200,
+              child: LinearProgressIndicator(
+                backgroundColor: widget.primaryColor.withOpacity(0.1),
+                valueColor: AlwaysStoppedAnimation(widget.primaryColor),
+                borderRadius: BorderRadius.circular(4),
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+
+  Widget _buildErrorState(bool isDark, Color textColor) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(32),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 100,
+              height: 100,
+              decoration: BoxDecoration(
+                color: Colors.red.withOpacity(0.1),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                Icons.wifi_off_rounded,
+                size: 50,
+                color: Colors.red.withOpacity(0.7),
+              ),
+            ),
+            const SizedBox(height: 24),
+            Text(
+              'تعذر تحميل الكتاب',
+              style: GoogleFonts.cairo(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: textColor,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              _statusMessage,
+              textAlign: TextAlign.center,
+              style: GoogleFonts.cairo(
+                fontSize: 14,
+                color: textColor.withOpacity(0.6),
+              ),
+            ),
+            const SizedBox(height: 24),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: widget.primaryColor,
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              onPressed: _initOfflineBook,
+              icon: const Icon(Icons.refresh_rounded),
+              label: Text('إعادة المحاولة', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildEmptyState(bool isDark) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width: 80,
+            height: 80,
+            decoration: BoxDecoration(
+              color: _gold.withOpacity(0.1),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              Icons.search_off_rounded,
+              size: 40,
+              color: _gold,
+            ),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            'لا توجد نتائج',
+            style: GoogleFonts.cairo(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : Colors.black87,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'جرّب البحث بكلمات مختلفة',
+            style: GoogleFonts.cairo(
+              fontSize: 14,
+              color: isDark ? Colors.white54 : Colors.grey,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildHadithCard(
+      dynamic hadith,
+      int index,
+      bool isDark,
+      Color cardColor,
+      Color textColor,
+      ) {
     final body = hadith['originalText'];
     final hadithNumber = hadith['hadithnumber'];
     final chapter = hadith['chapter'];
-
     List grades = hadith['grades'] ?? [];
-    String narrator = '';
 
+    String narrator = '';
     if (body.startsWith('عن') || body.startsWith('حدثنا')) {
       int firstComma = body.indexOf('،');
       int firstColon = body.indexOf(':');
@@ -403,70 +796,138 @@ class _HadithBookScreenState extends State<HadithBookScreen> {
       }
     }
 
-    return Card(
-      color: cardColor, // ✅ بطاقة متكيفة
-      margin: const EdgeInsets.only(bottom: 12),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-        side: isDark ? BorderSide(color: Colors.white.withOpacity(0.05)) : BorderSide.none, // حد خفيف في الداكن
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      decoration: BoxDecoration(
+        color: cardColor,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: isDark ? Colors.white.withOpacity(0.06) : Colors.grey.withOpacity(0.1),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: isDark ? Colors.black.withOpacity(0.2) : Colors.black.withOpacity(0.04),
+            blurRadius: 15,
+            offset: const Offset(0, 5),
+          ),
+        ],
       ),
-      elevation: isDark ? 0 : 2, // إزالة الظل في الداكن لجمالية أفضل
-      shadowColor: Colors.black.withOpacity(0.05),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // 1. الترويسة العلوية
+          // Header
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: BoxDecoration(
-              color: isDark ? widget.primaryColor.withOpacity(0.15) : widget.primaryColor.withOpacity(0.05),
-              borderRadius: const BorderRadius.only(topLeft: Radius.circular(16), topRight: Radius.circular(16)),
+              gradient: LinearGradient(
+                colors: isDark
+                    ? [widget.primaryColor.withOpacity(0.15), widget.primaryColor.withOpacity(0.05)]
+                    : [widget.primaryColor.withOpacity(0.08), widget.primaryColor.withOpacity(0.02)],
+              ),
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
             ),
             child: Row(
               children: [
+                // Number badge
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                  decoration: BoxDecoration(color: widget.primaryColor, borderRadius: BorderRadius.circular(8)),
-                  child: Text(
-                    'رقم: $hadithNumber',
-                    style: GoogleFonts.cairo(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [widget.primaryColor, widget.primaryColor.withOpacity(0.8)],
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: widget.primaryColor.withOpacity(0.3),
+                        blurRadius: 8,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(Icons.tag, color: Colors.white, size: 12),
+                      const SizedBox(width: 4),
+                      Text(
+                        '$hadithNumber',
+                        style: GoogleFonts.cairo(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 13,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                const SizedBox(width: 10),
+                const SizedBox(width: 12),
+
+                // Chapter
                 Expanded(
                   child: Text(
-                    chapter.isNotEmpty ? 'باب: $chapter' : widget.bookTitle,
-                    style: GoogleFonts.cairo(color: widget.primaryColor, fontSize: 13, fontWeight: FontWeight.bold),
+                    chapter.isNotEmpty ? chapter : widget.bookTitle,
+                    style: GoogleFonts.cairo(
+                      color: widget.primaryColor,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                IconButton(
-                  icon: Icon(Icons.share, size: 20, color: isDark ? Colors.grey.shade400 : Colors.grey),
-                  padding: EdgeInsets.zero,
-                  constraints: const BoxConstraints(),
-                  onPressed: () {
+
+                // Actions
+                _buildActionButton(
+                  icon: Icons.copy_rounded,
+                  onTap: () {
+                    Clipboard.setData(ClipboardData(text: '$body\n\n[${widget.bookTitle} - رقم: $hadithNumber]'));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('تم نسخ الحديث', style: GoogleFonts.cairo()),
+                        backgroundColor: widget.primaryColor,
+                        behavior: SnackBarBehavior.floating,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      ),
+                    );
+                  },
+                  isDark: isDark,
+                ),
+                const SizedBox(width: 4),
+                _buildActionButton(
+                  icon: Icons.share_rounded,
+                  onTap: () {
                     Share.share('$body\n\n[${widget.bookTitle} - رقم: $hadithNumber]');
                   },
-                )
+                  isDark: isDark,
+                ),
               ],
             ),
           ),
 
-          // 2. نص الحديث
+          // Hadith text
           Padding(
-            padding: const EdgeInsets.fromLTRB(20, 16, 20, 10),
+            padding: const EdgeInsets.fromLTRB(20, 20, 20, 16),
             child: SelectableText.rich(
               TextSpan(
                 children: [
                   if (narrator.isNotEmpty)
                     TextSpan(
                       text: '$narrator\n',
-                      style: GoogleFonts.amiri(fontSize: 18, color: widget.primaryColor, fontWeight: FontWeight.bold),
+                      style: GoogleFonts.amiri(
+                        fontSize: 17,
+                        color: widget.primaryColor,
+                        fontWeight: FontWeight.bold,
+                        height: 1.8,
+                      ),
                     ),
-                  // ✅ تمرير textColor لضمان تلون النص الأساسي
                   ..._buildHighlightedHadithText(
-                    narrator.isNotEmpty ? body.substring(narrator.length).trim().replaceFirst(RegExp(r'^[،:]'), '').trim() : body,
-                    widget.searchQuery,
+                    narrator.isNotEmpty
+                        ? body.substring(narrator.length).trim().replaceFirst(RegExp(r'^[،:]'), '').trim()
+                        : body,
+                    _searchController.text,
                     textColor,
                   ),
                 ],
@@ -476,56 +937,22 @@ class _HadithBookScreenState extends State<HadithBookScreen> {
             ),
           ),
 
-          // 3. الحكم على الحديث
+          // Grades
           if (grades.isNotEmpty)
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 16),
+            Container(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Divider(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
+                  Divider(
+                    color: isDark ? Colors.white.withOpacity(0.06) : Colors.grey.withOpacity(0.15),
+                  ),
                   const SizedBox(height: 8),
                   Wrap(
                     spacing: 8,
                     runSpacing: 8,
                     children: grades.map<Widget>((grade) {
-                      String gradeText = grade['grade'].toString().trim();
-                      String gradeName = grade['name'].toString().trim();
-
-                      // ✅ ألوان تقييم متكيفة مع الوضع الداكن
-                      Color chipBg = isDark ? Colors.grey.shade800 : Colors.grey.shade100;
-                      Color chipText = isDark ? Colors.grey.shade300 : Colors.black87;
-
-                      if (gradeText.toLowerCase().contains('sahih')) {
-                        chipBg = isDark ? Colors.green.withOpacity(0.2) : Colors.green.shade50;
-                        chipText = isDark ? Colors.green.shade300 : Colors.green.shade800;
-                        gradeText = 'صحيح';
-                      } else if (gradeText.toLowerCase().contains('hasan')) {
-                        chipBg = isDark ? Colors.blue.withOpacity(0.2) : Colors.blue.shade50;
-                        chipText = isDark ? Colors.blue.shade300 : Colors.blue.shade800;
-                        gradeText = 'حسن';
-                      } else if (gradeText.toLowerCase().contains('daif')) {
-                        chipBg = isDark ? Colors.orange.withOpacity(0.2) : Colors.orange.shade50;
-                        chipText = isDark ? Colors.orange.shade300 : Colors.orange.shade800;
-                        gradeText = 'ضعيف';
-                      }
-
-                      return Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                        decoration: BoxDecoration(
-                            color: chipBg,
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: chipText.withOpacity(isDark ? 0.4 : 0.2))
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(Icons.verified_outlined, size: 14, color: chipText),
-                            const SizedBox(width: 4),
-                            Text('$gradeName: $gradeText', style: GoogleFonts.cairo(fontSize: 11, color: chipText, fontWeight: FontWeight.bold)),
-                          ],
-                        ),
-                      );
+                      return _buildGradeChip(grade, isDark);
                     }).toList(),
                   ),
                 ],
@@ -535,4 +962,183 @@ class _HadithBookScreenState extends State<HadithBookScreen> {
       ),
     );
   }
+
+  Widget _buildActionButton({
+    required IconData icon,
+    required VoidCallback onTap,
+    required bool isDark,
+  }) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(8),
+        child: Container(
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: isDark ? Colors.white.withOpacity(0.05) : Colors.white.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Icon(
+            icon,
+            size: 18,
+            color: isDark ? Colors.white54 : Colors.grey.shade600,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildGradeChip(dynamic grade, bool isDark) {
+    String gradeText = grade['grade'].toString().trim();
+    String gradeName = grade['name'].toString().trim();
+
+    Color chipBg;
+    Color chipText;
+    IconData gradeIcon;
+
+    if (gradeText.toLowerCase().contains('sahih')) {
+      chipBg = isDark ? const Color(0xFF0D3B2E) : Colors.green.shade50;
+      chipText = isDark ? Colors.green.shade300 : Colors.green.shade700;
+      gradeIcon = Icons.verified_rounded;
+      gradeText = 'صحيح';
+    } else if (gradeText.toLowerCase().contains('hasan')) {
+      chipBg = isDark ? const Color(0xFF1E3A5F) : Colors.blue.shade50;
+      chipText = isDark ? Colors.blue.shade300 : Colors.blue.shade700;
+      gradeIcon = Icons.check_circle_rounded;
+      gradeText = 'حسن';
+    } else if (gradeText.toLowerCase().contains('daif')) {
+      chipBg = isDark ? const Color(0xFF4A2C00) : Colors.orange.shade50;
+      chipText = isDark ? Colors.orange.shade300 : Colors.orange.shade700;
+      gradeIcon = Icons.info_rounded;
+      gradeText = 'ضعيف';
+    } else {
+      chipBg = isDark ? Colors.grey.shade800 : Colors.grey.shade100;
+      chipText = isDark ? Colors.grey.shade300 : Colors.grey.shade700;
+      gradeIcon = Icons.help_outline_rounded;
+    }
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      decoration: BoxDecoration(
+        color: chipBg,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: chipText.withOpacity(0.2)),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(gradeIcon, size: 14, color: chipText),
+          const SizedBox(width: 6),
+          Text(
+            '$gradeName: $gradeText',
+            style: GoogleFonts.cairo(
+              fontSize: 11,
+              color: chipText,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildFloatingButtons(bool isDark) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        // Scroll to top button
+        ScaleTransition(
+          scale: _fabScaleAnimation,
+          child: FloatingActionButton.small(
+            heroTag: 'scrollTop',
+            backgroundColor: widget.primaryColor,
+            onPressed: _scrollToTop,
+            child: const Icon(Icons.keyboard_arrow_up_rounded, color: Colors.white),
+          ),
+        ),
+        const SizedBox(height: 12),
+
+        // Quick search button (when search is not expanded)
+        if (!_isSearchExpanded)
+          FloatingActionButton(
+            heroTag: 'search',
+            backgroundColor: _gold,
+            onPressed: () {
+              setState(() => _isSearchExpanded = true);
+              Future.delayed(const Duration(milliseconds: 300), () {
+                _searchFocusNode.requestFocus();
+              });
+            },
+            child: const Icon(Icons.search_rounded, color: Colors.white),
+          ),
+      ],
+    );
+  }
+}
+
+// ─── Header Pattern Painter ───
+class _HeaderPatternPainter extends CustomPainter {
+  final Color color;
+
+  _HeaderPatternPainter({required this.color});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 0.8;
+
+    const spacing = 40.0;
+
+    for (double x = 0; x < size.width + spacing; x += spacing) {
+      for (double y = 0; y < size.height + spacing; y += spacing) {
+        _drawOctagon(canvas, Offset(x, y), spacing * 0.3, paint);
+      }
+    }
+  }
+
+  void _drawOctagon(Canvas canvas, Offset center, double radius, Paint paint) {
+    final path = Path();
+    for (int i = 0; i < 8; i++) {
+      final angle = (i * pi / 4) - pi / 8;
+      final x = center.dx + radius * cos(angle);
+      final y = center.dy + radius * sin(angle);
+      if (i == 0) {
+        path.moveTo(x, y);
+      } else {
+        path.lineTo(x, y);
+      }
+    }
+    path.close();
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+}
+
+// ─── Arc Painter for Loading ───
+class _ArcPainter extends CustomPainter {
+  final Color color;
+  final double strokeWidth;
+
+  _ArcPainter({required this.color, required this.strokeWidth});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = strokeWidth
+      ..strokeCap = StrokeCap.round;
+
+    final rect = Rect.fromLTWH(0, 0, size.width, size.height);
+    canvas.drawArc(rect, 0, pi * 0.7, false, paint);
+    canvas.drawArc(rect, pi, pi * 0.7, false, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

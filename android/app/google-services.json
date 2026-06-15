@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "106627546775",
+    "project_id": "appislam-flutter",
+    "storage_bucket": "appislam-flutter.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106627546775:android:5609f0c7e50a91e12773d2",
+        "android_client_info": {
+          "package_name": "com.example.appislam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "106627546775-blt9sm92rqp2i5edlbm8nfvd0o057gb6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.appislam",
+            "certificate_hash": "6adcad8b262513c3127fe3d46897789341094c55"
+          }
+        },
+        {
+          "client_id": "106627546775-u7cl14fiub8uihfqankp0ch0q72vmo6d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfVV6ShGF2uBFaxdHdkyqbBjQUngHPRiM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "106627546775-u7cl14fiub8uihfqankp0ch0q72vmo6d.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "106627546775-8n2757sii6d84f2ur1pevkb8taskrnmm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.appislam"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

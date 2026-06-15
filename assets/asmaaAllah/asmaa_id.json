@@ -1,0 +1,598 @@
+{
+  "asma_allah": [
+    {
+      "id": 1,
+      "name": "Allah (الله)",
+      "meaning": "Nama keagungan yang paling agung, menghimpun semua sifat kesempurnaan, kebesaran, dan keindahan. Ini adalah nama khusus bagi Allah SWT, tidak ada yang dinamai dengannya selain Dia, dan merupakan asal dari semua nama.",
+      "reflection": "Rasakan keagungan Allah dalam setiap momen kehidupanmu, dan berdoalah dengan nama-Nya yang agung dengan penuh keyakinan dan keikhlasan, karena Dia Maha Dekat dan Mengabulkan, tidak akan mengecewakan orang yang berdoa kepada-Nya."
+    },
+    {
+      "id": 2,
+      "name": "Ar-Rahman (الرحمن)",
+      "meaning": "Yang memiliki rahmat luas yang mencakup seluruh makhluk di dunia, baik yang mukmin maupun kafir, manusia maupun jin. Rahmat-Nya meliputi segala sesuatu; Dia yang memberi rezeki, kesehatan, dan menangguhkan hukuman.",
+      "reflection": "Mohonlah rahmat Allah yang luas, dan rasakan kelembutan-Nya dalam setiap keadaan. Renungkan bagaimana rahmat-Nya mengelilingimu dari segala sisi, dalam kesehatan, rezeki, dan petunjuk yang kamu miliki."
+    },
+    {
+      "id": 3,
+      "name": "Ar-Rahim (الرحيم)",
+      "meaning": "Yang memberi nikmat kepada hamba-hamba-Nya yang beriman dengan rahmat khusus pada hari Kiamat, memasukkan mereka ke surga dan menyelamatkan dari neraka. Dia mengaruniakan ampunan, ridha, dan pahala besar.",
+      "reflection": "Renungkan bagaimana Allah merahmati hamba-hamba-Nya yang beriman. Berbuat baiklah kepada manusia sebagaimana kamu ingin dirahmati. Ketahuilah bahwa rahmat Allah dekat kepada orang-orang yang berbuat baik."
+    },
+    {
+      "id": 4,
+      "name": "Al-Malik (الملك)",
+      "meaning": "Pemilik segala sesuatu, yang berkuasa atas kerajaan-Nya sesuai kehendak-Nya tanpa ada yang menentang atau menentang. Pemilik langit dan bumi, memberi kepada siapa yang dikehendaki-Nya dan menahan dari siapa yang dikehendaki-Nya.",
+      "reflection": "Sadari bahwa kerajaan hanya milik Allah semata, dan bertawakallah kepada-Nya dalam segala urusanmu. Jangan gantungkan hatimu pada kekuasaan yang fana, karena semua kekuasaan selain kekuasaan Allah akan binasa."
+    },
+    {
+      "id": 5,
+      "name": "Al-Quddus (القدوس)",
+      "meaning": "Yang Maha Suci dari segala kekurangan dan aib, serta bersih dari segala hal yang tidak layak bagi keagungan-Nya. Disucikan dan bertasbih untuk-Nya para malaikat.",
+      "reflection": "Sucikan Allah dari segala kekurangan dalam keyakinan dan ucapanmu, serta sucikan hatimu dari segala yang tidak pantas bagi penghambaanmu kepada Allah. Bertasbihlah kepada-Nya di setiap waktu."
+    },
+    {
+      "id": 6,
+      "name": "As-Salam (السلام)",
+      "meaning": "Yang terbebas dari segala aib, kekurangan, dan bahaya. Dia yang menyelamatkan hamba-hamba-Nya dari ketakutan, dan menyebarkan kedamaian di hati orang beriman. Dari-Nya datang keselamatan dunia dan akhirat.",
+      "reflection": "Mohonlah keselamatan kepada Allah untuk agama, dunia, dan akhiratmu. Jadilah sumber kedamaian dan rasa aman bagi orang di sekitarmu, dan sebarkanlah salam antar sesama manusia."
+    },
+    {
+      "id": 7,
+      "name": "Al-Mu'min (المؤمن)",
+      "meaning": "Yang memberi keamanan kepada makhluk-Nya dari kezaliman, dan mengamankan hamba-hamba-Nya yang beriman dari siksa-Nya pada hari Kiamat. Dia membenarkan para Rasul-Nya dengan mukjizat dan janji pahala-Nya.",
+      "reflection": "Rasakan keamanan dari Allah bagi hamba-hamba-Nya yang beriman, dan percayalah pada janji-Nya yang benar. Jadilah orang yang dapat dipercaya, karena mukmin sejati adalah yang orang lain merasa aman darinya."
+    },
+    {
+      "id": 8,
+      "name": "Al-Muhaimin (المهيمن)",
+      "meaning": "Yang Maha Mengawasi dan Memelihara segala sesuatu, mengetahui segala rahasia hati. Menjadi saksi atas segala perkataan dan perbuatan makhluk-Nya, tidak ada yang tersembunyi bagi-Nya.",
+      "reflection": "Ketahuilah bahwa Allah mengawasi segalanya, maka perbaikilah niat dan tindakanmu. Awasi dirimu dalam setiap keadaan seolah-olah kamu melihat-Nya, jika tidak, ketahuilah bahwa Dia melihatmu."
+    },
+    {
+      "id": 9,
+      "name": "Al-'Aziz (العزيز)",
+      "meaning": "Yang Maha Kuasa dan Perkasa yang tidak bisa dikalahkan. Sangat perkasa dalam membalas musuh-Nya, dan menundukkan segala sesuatu. Keagungan-Nya tidak tertandingi kecuali dengan ketaatan kepada-Nya.",
+      "reflection": "Ambillah kemuliaan dari Allah semata, dan jangan merendahkan diri kepada selain-Nya. Ketahuilah bahwa kemuliaan itu milik Allah, Rasul-Nya, dan orang-orang mukmin."
+    },
+    {
+      "id": 10,
+      "name": "Al-Jabbar (الجبار)",
+      "meaning": "Yang menambal yang patah, memperkaya yang miskin, dan memperbaiki keadaan. Yang Maha Menundukkan setiap orang yang sombong dan keras kepala, serta memaksa makhluk-Nya sesuai kehendak-Nya.",
+      "reflection": "Rasakan kekuatan Allah yang menambal kehancuranmu dan membantumu saat lemah. Berlarilah kepada-Nya di setiap cobaan, karena Dia-lah yang menghibur hati yang hancur."
+    },
+    {
+      "id": 11,
+      "name": "Al-Mutakabbir (المتكبر)",
+      "meaning": "Yang Maha Agung dari sifat-sifat makhluk, yang kebesaran-Nya tidak ada bandingannya. Memiliki keagungan dan kesombongan Ilahi yang suci dari segala kekurangan. Kesombongan adalah pakaian-Nya.",
+      "reflection": "Rendahkan hatimu karena Allah dan manusia. Siapa yang bersaing dengan kebesaran Allah akan dihancurkan-Nya. Jadilah rendah hati, niscaya Allah akan mengangkat derajatmu."
+    },
+    {
+      "id": 12,
+      "name": "Al-Khaliq (الخالق)",
+      "meaning": "Yang mengadakan segala sesuatu dari ketiadaan, dan menentukan ukuran, sifat, serta keadaannya sebelum menciptakannya. Dia menciptakan segala sesuatu dengan kekuasaan, hikmah, dan ilmu-Nya.",
+      "reflection": "Renungkan ciptaan Allah di alam semesta ini. Bersyukurlah atas nikmat penciptaan dan kehidupan, dan gunakan apa yang Allah ciptakan untuk hal-hal yang diridhai-Nya."
+    },
+    {
+      "id": 13,
+      "name": "Al-Bari' (البارئ)",
+      "meaning": "Yang mewujudkan ciptaan-Nya dengan kekuasaan-Nya, membedakan satu sama lain dengan sifat dan bentuk yang beragam. Dia menciptakan tanpa ada ketidakseimbangan atau cacat.",
+      "reflection": "Pikirkanlah ketelitian ciptaan Allah dan bagaimana Dia menciptakan setiap makhluk secara berbeda. Berbuat baiklah kepada sesama ciptaan Allah, karena semua adalah tanggungan Allah."
+    },
+    {
+      "id": 14,
+      "name": "Al-Musawwir (المصور)",
+      "meaning": "Yang membentuk semua makhluk dan memberi masing-masing rupa yang membedakannya. Dia menciptakan rupa yang bermacam-macam agar mereka dapat saling mengenal dan berbeda.",
+      "reflection": "Bersyukurlah kepada Allah atas rupa dan penciptaanmu yang baik, dan janganlah mencela fisik siapa pun. Ketahuilah bahwa keindahan sejati adalah keindahan hati dan perbuatan."
+    },
+    {
+      "id": 15,
+      "name": "Al-Ghaffar (الغفار)",
+      "meaning": "Yang Maha Banyak Ampunan bagi hamba-hamba-Nya, yang menutupi dosa dan memaafkannya berulang kali. Dia tidak lelah mengampuni meski dosa berulang, karena Dia Maha Pengampun lagi Maha Penyayang.",
+      "reflection": "Perbanyaklah istighfar di setiap waktu, karena pintu ampunan selalu terbuka. Jangan pernah putus asa dari rahmat Allah sebesar apa pun dosamu, karena Dia mengampuni segala dosa."
+    },
+    {
+      "id": 16,
+      "name": "Al-Qahhar (القهار)",
+      "meaning": "Yang menundukkan segala sesuatu dengan kekuasaan dan keperkasaan-Nya, sehingga setiap makhluk tunduk pada keagungan-Nya. Dia menundukkan orang-orang zalim dan sombong.",
+      "reflection": "Rasakan penaklukan Allah atas setiap orang yang zalim dan sombong, jangan takut kepada selain Dia. Siapa yang menindas orang dengan kebatilan, Allah akan menundukkannya dengan kebenaran-Nya."
+    },
+    {
+      "id": 17,
+      "name": "Al-Wahhab (الوهاب)",
+      "meaning": "Yang Maha Banyak Pemberian-Nya, memberi tanpa sebab, tanpa syarat, dan tanpa mengharap balasan. Memberikan karunia kepada siapa yang Dia kehendaki, pemberian-Nya tak terputus dan tak terhitung.",
+      "reflection": "Mintalah kepada Allah dari karunia-Nya, karena Dia Maha Pemberi yang tidak pernah habis pemberian-Nya. Jadilah orang yang dermawan, karena Allah menyukai kedermawanan."
+    },
+    {
+      "id": 18,
+      "name": "Ar-Razzaq (الرزاق)",
+      "meaning": "Yang memberi rezeki kepada seluruh makhluk dan menjamin makanan mereka. Dia tidak melupakan satu pun makhluk-Nya, memberi rezeki kepada yang beriman maupun kafir, yang baik maupun yang fasik.",
+      "reflection": "Tenanglah, rezeki yang telah ditetapkan untukmu akan datang tepat waktu sesuai hikmah Allah. Berusahalah mencari rezeki yang halal dan bertawakallah kepada Allah."
+    },
+    {
+      "id": 19,
+      "name": "Al-Fattah (الفتاح)",
+      "meaning": "Yang membuka pintu rahmat dan rezeki bagi hamba-Nya, dan memberi keputusan dengan hak dan keadilan. Membuka jalan keluar dari kesulitan bagi siapa yang memohon pertolongan-Nya.",
+      "reflection": "Jika pintu-pintu terasa tertutup, berdoalah kepada Al-Fattah. Ketahuilah bahwa apa yang dibuka oleh Allah tidak ada yang bisa menutupnya, dan apa yang ditutup-Nya tidak ada yang bisa membukanya."
+    },
+    {
+      "id": 20,
+      "name": "Al-'Alim (العليم)",
+      "meaning": "Yang ilmu-Nya meliputi segala sesuatu, baik yang tampak maupun tersembunyi. Mengetahui apa yang telah lalu, yang sedang terjadi, dan yang belum terjadi. Tidak ada yang tersembunyi bagi-Nya di bumi maupun di langit.",
+      "reflection": "Hadirkan kesadaran akan ilmu Allah yang Maha Meliputi segalanya, dan ikhlaskan amalmu baik sembunyi maupun terang-terangan. Tuntutlah ilmu yang bermanfaat dan amalkan."
+    },
+    {
+      "id": 21,
+      "name": "Al-Qabidh (القابض)",
+      "meaning": "Yang menahan atau menyempitkan rezeki dan ruh dengan hikmah-Nya sebagai ujian. Pengekangan-Nya adalah keadilan dan hikmah, Dia menahan untuk memberi pelajaran dan membentangkan rahmat.",
+      "reflection": "Jika hidup terasa sempit, ketahuilah bahwa itu adalah hikmah dari Allah dan ujian, serta sesudah kesulitan pasti ada kemudahan. Bersabarlah dan jangan putus asa."
+    },
+    {
+      "id": 22,
+      "name": "Al-Basith (الباسط)",
+      "meaning": "Yang melapangkan rezeki kepada siapa yang dikehendaki-Nya, membentangkan rahmat dan pemberian-Nya. Dia membuka tangan-Nya di malam hari menerima taubat pembuat dosa siang hari, dan sebaliknya.",
+      "reflection": "Jika Allah melapangkan rezekimu, bersyukurlah dan jangan sombong. Ingatlah bahwa kelapangan adalah ujian sama halnya seperti kesempitan."
+    },
+    {
+      "id": 23,
+      "name": "Al-Khafidh (الخافض)",
+      "meaning": "Yang merendahkan siapa yang dikehendaki-Nya dengan keadilan, merendahkan orang yang sombong dan menistakan orang zalim serta mereka yang berpaling dari kebenaran.",
+      "reflection": "Waspadalah terhadap kesombongan, karena Allah merendahkan orang yang sombong. Tawadhu'lah karena Allah agar Dia meninggikanmu."
+    },
+    {
+      "id": 24,
+      "name": "Ar-Rafi' (الرافع)",
+      "meaning": "Yang meninggikan derajat orang-orang mukmin dengan ketaatan. Meninggikan para ahli ilmu dan iman, serta mengangkat kedudukan siapa saja yang dipilih-Nya.",
+      "reflection": "Berusahalah untuk mencapai derajat tinggi di sisi Allah dengan ilmu, amal saleh, dan takwa. Ketahuilah bahwa derajat tertinggi adalah tingginya iman di hati."
+    },
+    {
+      "id": 25,
+      "name": "Al-Mu'izz (المعز)",
+      "meaning": "Yang menganugerahkan kemuliaan kepada siapa yang dikehendaki-Nya, menjadikannya mulia dan dihormati. Kemuliaan sejati hanya didapat melalui ketaatan kepada Allah dan memegang teguh agama-Nya.",
+      "reflection": "Mintalah kemuliaan hanya dari Allah, bukan dari manusia. Kemuliaan ada dalam ketaatan, dan kehinaan ada dalam kemaksiatan."
+    },
+    {
+      "id": 26,
+      "name": "Al-Mudzill (المذل)",
+      "meaning": "Yang menghinakan siapa yang dikehendaki-Nya dengan keadilan-Nya, menghinakan mereka yang bermaksiat dan sombong terhadap perintah-Nya, serta para pembuat kerusakan di bumi.",
+      "reflection": "Jangan tertipu oleh kekuatan, kekayaan, atau kedudukanmu, karena Allah mampu menghinakan orang yang sombong. Berlindunglah kepada Allah dari kehinaan."
+    },
+    {
+      "id": 27,
+      "name": "As-Sami' (السميع)",
+      "meaning": "Yang mendengar semua suara dengan berbagai bahasa dan kebutuhan. Tidak ada suara yang samar bagi-Nya. Dia mendengar bisikan rahasia, bahkan langkah semut di atas batu hitam.",
+      "reflection": "Berdoalah dengan penuh keyakinan, karena Allah mendengar bisikan dan rintihan hatimu. Jangan ucapkan hal-hal yang tidak diridhai Allah, karena Dia Maha Mendengar."
+    },
+    {
+      "id": 28,
+      "name": "Al-Bashir (البصير)",
+      "meaning": "Yang melihat segala sesuatu sekecil apa pun. Dia melihat semut hitam di atas batu hitam di malam yang gelap gulita. Tidak ada satu pun gerak atau diam di langit dan bumi yang tersembunyi bagi-Nya.",
+      "reflection": "Hadirkan perasaan bahwa Allah selalu mengawasimu di setiap waktu. Perbaikilah amalmu secara diam-diam maupun terang-terangan."
+    },
+    {
+      "id": 29,
+      "name": "Al-Hakam (الحكم)",
+      "meaning": "Yang menetapkan hukum di antara hamba-hamba-Nya dengan hak dan keadilan, tidak menzalimi sebesar dzarrah pun. Keputusan-Nya mutlak tidak dapat ditolak. Dia Hakim Tertinggi tempat kembali semua urusan.",
+      "reflection": "Ridhalah terhadap hukum dan takdir Allah. Janganlah kamu menghakimi manusia kecuali dengan adil dan objektif."
+    },
+    {
+      "id": 30,
+      "name": "Al-'Adl (العدل)",
+      "meaning": "Yang Maha Adil, disucikan dari kezaliman dalam takdir, hukum, dan pengaturan-Nya. Tidak menzalimi makhluk-Nya, dan tidak menyia-nyiakan pahala orang yang berbuat baik.",
+      "reflection": "Jadilah orang yang adil dalam ucapan dan perbuatanmu terhadap orang lain. Ketahuilah bahwa kezaliman adalah kegelapan di hari Kiamat."
+    },
+    {
+      "id": 31,
+      "name": "Al-Lathif (اللطيف)",
+      "meaning": "Yang menyampaikan kebaikan kepada hamba-hamba-Nya dengan kelembutan yang tidak disadari. Dia berbuat lembut dalam takdir-Nya, dan mengatur urusan makhluk-Nya dengan hikmah yang sangat halus.",
+      "reflection": "Renungkan kelembutan Allah dalam detail kehidupanmu yang mungkin tidak kamu sadari. Dibalik setiap kesulitan pasti ada jalan keluar dari Yang Maha Lembut."
+    },
+    {
+      "id": 32,
+      "name": "Al-Khabir (الخبير)",
+      "meaning": "Yang mengetahui secara detail segala sesuatu hingga ke rahasia dan batinnya. Mengetahui apa yang ada di dalam dada dan niat yang tersembunyi. Pengalaman dan ilmu-Nya meliputi segala sesuatu.",
+      "reflection": "Ketahuilah bahwa Allah sangat mengetahui kondisimu dan apa yang ada di hatimu. Mintalah agar Dia membersihkan hatimu dan memperbaiki niatmu."
+    },
+    {
+      "id": 33,
+      "name": "Al-Halim (الحليم)",
+      "meaning": "Yang tidak terburu-buru menghukum orang yang bermaksiat. Dia menangguhkan, memberi kesehatan, dan tetap memberi rezeki. Kesantunan-Nya menaungi seluruh penduduk bumi; Dia menangguhkan tapi tidak mengabaikan.",
+      "reflection": "Hiasilah dirimu dengan sifat santun dan sabar dalam menghadapi manusia. Jangan terburu-buru membalas dendam, karena Allah itu Maha Penyantun."
+    },
+    {
+      "id": 34,
+      "name": "Al-'Azhim (العظيم)",
+      "meaning": "Yang memiliki keagungan mutlak di langit dan bumi. Keagungan dalam Dzat, Sifat, dan Perbuatan-Nya tidak dapat dijangkau oleh akal dan penglihatan manusia.",
+      "reflection": "Agungkanlah Allah dalam hati dan anggota badanmu. Jangan meremehkan perintah-Nya, dan rasakan keagungan-Nya saat kamu berdiri dalam shalat."
+    },
+    {
+      "id": 35,
+      "name": "Al-Ghafur (الغفور)",
+      "meaning": "Yang mengampuni dosa, menutupi aib, dan memaafkan kesalahan. Ampunan-Nya sangat luas; Dia mengampuni siapa saja yang bertobat kepada-Nya sebesar apa pun dosanya.",
+      "reflection": "Jangan pernah putus asa dari rahmat dan ampunan Allah. Dia adalah Al-Ghafur yang senang mengampuni. Teruslah bertaubat kepada-Nya setiap saat."
+    },
+    {
+      "id": 36,
+      "name": "Asy-Syakur (الشكور)",
+      "meaning": "Yang membalas amal sedikit dengan pahala yang berlipat ganda. Berterima kasih kepada hamba-Nya dengan memberi pahala atas ketaatan mereka. Tidak akan sia-sia di sisi-Nya amalan walau sebesar dzarrah.",
+      "reflection": "Bersyukurlah kepada Allah atas nikmat-Nya yang tak terhitung, dan ketahuilah bahwa Dia menghargai sekecil apa pun amalmu. Perbanyaklah ibadah sekecil apa pun itu."
+    },
+    {
+      "id": 37,
+      "name": "Al-'Aliy (العلي)",
+      "meaning": "Yang Maha Tinggi kedudukan, derajat, dan sifat-Nya di atas seluruh makhluk-Nya. Tidak ada yang lebih tinggi dari-Nya. Memiliki ketinggian mutlak dari segala sisi.",
+      "reflection": "Gantungkan hatimu kepada Allah Yang Maha Tinggi, dan jangan terikat pada hal yang remeh. Tinggikan cita-citamu untuk menggapai derajat tertinggi di surga."
+    },
+    {
+      "id": 38,
+      "name": "Al-Kabir (الكبير)",
+      "meaning": "Yang Maha Besar Dzat dan Sifat-Nya, segala sesuatu selain-Nya adalah kecil. Lebih besar dari semua kebesaran, memiliki kebesaran mutlak di langit dan di bumi.",
+      "reflection": "Besarkanlah Allah di hatimu, niscaya segala sesuatu selain-Nya akan terasa kecil. Jika kamu merasa takut akan sesuatu, ingatlah bahwa Allah Maha Besar (Allahu Akbar)."
+    },
+    {
+      "id": 39,
+      "name": "Al-Hafizh (الحفيظ)",
+      "meaning": "Yang memelihara ciptaan-Nya dari kehancuran, dan menjaga catatan amal hamba-hamba-Nya untuk dibalas. Memelihara langit dan bumi agar tidak hancur, dan menjaga orang beriman dalam urusan agama mereka.",
+      "reflection": "Titipkanlah dirimu, keluarga, dan agamamu kepada Allah. Jagalah (batasan) Allah, niscaya Dia menjagamu, dan jagalah anggota tubuhmu dari kemaksiatan."
+    },
+    {
+      "id": 40,
+      "name": "Al-Muqit (المقيت)",
+      "meaning": "Yang menyampaikan makanan dan rezeki kepada setiap makhluk tepat pada waktunya. Menanggung keberlangsungan hidup hamba-hamba-Nya, Mampu memberikan rezeki kepada setiap makhluk hidup.",
+      "reflection": "Tenanglah soal rezeki dan kehidupanmu, karena Allah Al-Muqit yang menanggungnya. Namun jangan lupa untuk saling berbagi makanan dengan yang membutuhkan."
+    },
+    {
+      "id": 41,
+      "name": "Al-Hasib (الحسيب)",
+      "meaning": "Yang mencukupi hamba-Nya dalam segala urusan, dan kelak yang akan menghisab amal perbuatan mereka di hari Kiamat dengan sangat teliti dan adil.",
+      "reflection": "Hisablah (evaluasi) dirimu sendiri sebelum kamu dihisab oleh Allah. Timbanglah amalmu sebelum ditimbang, dan bersiaplah dengan jawaban di hari Perhitungan."
+    },
+    {
+      "id": 42,
+      "name": "Al-Jalil (الجليل)",
+      "meaning": "Yang memiliki sifat kebesaran, kesempurnaan, dan keluhuran. Keagungan kerajaan-Nya mengisi hati orang beriman dengan rasa hormat dan kekaguman yang luar biasa.",
+      "reflection": "Agungkanlah Allah di dalam hatimu, dan malulah jika Dia melihatmu sedang bermaksiat. Ketahuilah bahwa keagungan-Nya mengharuskan ketundukan total kepada-Nya."
+    },
+    {
+      "id": 43,
+      "name": "Al-Karim (الكريم)",
+      "meaning": "Yang banyak memberi dan Maha Pemurah. Memberi tanpa diminta, tanpa batas, dan tanpa mengharap pamrih. Kemurahan-Nya melampaui batas; Dia memberi kepada semua makhluk.",
+      "reflection": "Hiasilah dirimu dengan sifat kedermawanan, berinfaklah dari apa yang Allah berikan. Apa yang di sisi Allah lebih baik dan kekal, maka janganlah pelit."
+    },
+    {
+      "id": 44,
+      "name": "Ar-Raqib (الرقيب)",
+      "meaning": "Yang mengawasi apa yang tersembunyi di dalam dada dan mengawasi setiap jiwa atas apa yang diperbuatnya. Tidak ada yang luput dari pandangan-Nya, mengawasi amal, ucapan, dan niat hamba.",
+      "reflection": "Selalu sadari pengawasan Allah, baik dalam kesendirian maupun keramaian. Perbaikilah perilakumu karena Dia selalu melihatmu setiap saat."
+    },
+    {
+      "id": 45,
+      "name": "Al-Mujib (المجيب)",
+      "meaning": "Yang mengabulkan doa orang yang memohon kepada-Nya. Maha Dekat dengan hamba yang berdoa dengan tulus, mengabulkan permohonan orang yang terdesak dan melepaskan dari kesulitan.",
+      "reflection": "Berdoalah kepada Allah dengan penuh keyakinan dan ketenangan. Berprasangka baiklah kepada Allah bahwa Dia pasti akan mengabulkan doa-doamu."
+    },
+    {
+      "id": 46,
+      "name": "Al-Wasi' (الواسع)",
+      "meaning": "Yang rahmat-Nya, ilmu-Nya, dan rezeki-Nya sangat luas mencakup segala sesuatu. Pemberian dan ampunan-Nya tak bertepi, perbendaharaan-Nya tak akan pernah habis.",
+      "reflection": "Jangan pernah mempersempit rahmat Allah, karena rahmat-Nya jauh lebih luas dari apa yang kamu bayangkan. Mintalah karunia-Nya tanpa keraguan."
+    },
+    {
+      "id": 47,
+      "name": "Al-Hakim (الحكيم)",
+      "meaning": "Yang meletakkan sesuatu tepat pada tempatnya dengan kebijaksanaan mutlak. Tidak melakukan sesuatu yang sia-sia, setiap tindakan dan perintah-Nya memiliki hikmah yang mendalam.",
+      "reflection": "Percayalah pada kebijaksanaan Allah atas setiap takdir yang menimpamu, meskipun saat ini kamu belum memahaminya. Semua takdir-Nya pasti mengandung kebaikan."
+    },
+    {
+      "id": 48,
+      "name": "Al-Wadud (الودود)",
+      "meaning": "Yang sangat mencintai hamba-hamba-Nya yang saleh, dan menunjukkan kasih sayang kepada mereka dengan berbagai nikmat. Dia dicintai di hati para kekasih-Nya.",
+      "reflection": "Rasakan cinta Allah ketika kamu menaati-Nya, dan tunjukkan rasa cintamu melalui ketaatan. Penuhi hatimu dengan cinta kepada-Nya; siapa mencintai Allah, Dia akan mencintainya."
+    },
+    {
+      "id": 49,
+      "name": "Al-Majid (المجيد)",
+      "meaning": "Yang memiliki kemuliaan besar, kehormatan sempurna, dan kekuasaan luas. Kemuliaan-Nya memenuhi langit dan bumi, seluruh malaikat dan makhluk memuji kemuliaan-Nya.",
+      "reflection": "Muliakanlah Allah dengan hati, lisan, dan anggota badanmu, dan perbanyaklah memuji-Nya. Ketahuilah bahwa kemuliaan Allah tak dapat dijangkau oleh batas akal."
+    },
+    {
+      "id": 50,
+      "name": "Al-Ba'ith (الباعث)",
+      "meaning": "Yang membangkitkan makhluk pada hari Kiamat setelah kematian mereka untuk dihisab. Dia juga yang membangkitkan (mengutus) para rasul, serta membangkitkan semangat dalam hati orang beriman.",
+      "reflection": "Bersiaplah menghadapi hari kebangkitan dengan amal saleh dan taubat nasuha. Ingatlah bahwa kamu akan dibangkitkan dan dimintai pertanggungjawaban."
+    },
+    {
+      "id": 51,
+      "name": "Asy-Syahid (الشهيد)",
+      "meaning": "Yang tidak ada sesuatu pun yang luput dari pengawasan-Nya. Menjadi saksi atas segala sesuatu, menyaksikan perbuatan, ucapan, dan niat para hamba, serta kelak akan memberikan kesaksian pada hari Kiamat.",
+      "reflection": "Hadirkan kesadaran bahwa Allah menyaksikan segala tindakan dan ucapanmu. Buatlah kesaksian Allah kelak menjadi pembela bagimu, bukan memberatkanmu."
+    },
+    {
+      "id": 52,
+      "name": "Al-Haqq (الحق)",
+      "meaning": "Yang keberadaan-Nya adalah mutlak benar dan nyata. Dia adalah kebenaran dalam Dzat, Sifat, janji, dan ancaman-Nya. Segala sesuatu selain-Nya adalah fana, hanya Dia yang wujud-Nya abadi.",
+      "reflection": "Berpegang teguhlah pada kebenaran meskipun kamu sendirian. Kebatilan pasti akan hancur. Jujurlah selalu, karena kejujuran membawa kepada kebaikan."
+    },
+    {
+      "id": 53,
+      "name": "Al-Wakil (الوكيل)",
+      "meaning": "Yang menjamin rezeki makhluk, memelihara urusan mereka, dan mengurus siapa saja yang bertawakal kepada-Nya. Siapa menjadikan-Nya sebagai Pelindung, Dia akan mencukupinya dari segala kesedihan dan bahaya.",
+      "reflection": "Bertawakallah kepada Allah dengan sebenar-benarnya, dan serahkan urusanmu kepada-Nya. Cukuplah Allah sebagai sebaik-baik penolong dan pelindung."
+    },
+    {
+      "id": 54,
+      "name": "Al-Qawiy (القوي)",
+      "meaning": "Yang Maha Kuat Sempurna, tidak ada sesuatu di langit dan bumi yang dapat melemahkan-Nya. Dengan kekuatan-Nya Dia menegakkan langit dan bumi, tidak tersentuh kelemahan atau kelelahan.",
+      "reflection": "Ambillah kekuatanmu dari Allah, dan jangan hanya mengandalkan kekuatan dirimu. Mintalah pertolongan Allah (Laa hawla wa laa quwwata illa billah)."
+    },
+    {
+      "id": 55,
+      "name": "Al-Matin (المتين)",
+      "meaning": "Yang Maha Kokoh, kekuatan-Nya tidak akan pernah menyusut atau terpengaruh oleh apapun. Sangat keras siksa-Nya bagi mereka yang bermaksiat. Tidak tergoyahkan oleh siapapun.",
+      "reflection": "Jadilah pribadi yang kokoh dalam iman dan teguh pada kebenaran. Ketahuilah bahwa Allah sangat tegas hukumannya bagi mereka yang memusuhi wali-wali-Nya."
+    },
+    {
+      "id": 56,
+      "name": "Al-Waliy (الولي)",
+      "meaning": "Yang membela, menolong, dan mengurus urusan hamba-hamba-Nya yang beriman. Dia membimbing mereka, melindungi mereka, dan mengeluarkan mereka dari kegelapan menuju cahaya.",
+      "reflection": "Jadikanlah Allah sebagai Pelindung dan Penolong utamamu, cukuplah dengan pertolongan-Nya daripada bantuan makhluk lain."
+    },
+    {
+      "id": 57,
+      "name": "Al-Hamid (الحميد)",
+      "meaning": "Yang Maha Terpuji dalam setiap keadaan dan waktu, berhak menerima segala pujian atas Dzat, Sifat, dan Perbuatan-Nya. Segala yang ada di langit dan bumi memuji-Nya.",
+      "reflection": "Pujilah Allah di saat senang maupun susah (Alhamdulillah 'ala kulli haal). Biasakan lisanmu untuk selalu basah dengan pujian dan rasa syukur kepada-Nya."
+    },
+    {
+      "id": 58,
+      "name": "Al-Muhshi (المحصي)",
+      "meaning": "Yang menghitung segala sesuatu secara detail, tidak ada yang tersembunyi bagi-Nya. Menghitung amal perbuatan, nafas, dan langkah hamba-Nya; tidak ada hal kecil yang luput dari perhitungan-Nya.",
+      "reflection": "Sadari bahwa setiap amal perbuatanmu sedang dihitung. Lakukanlah yang terbaik dan pastikan amal kebaikanmu lebih banyak dari keburukanmu."
+    },
+    {
+      "id": 59,
+      "name": "Al-Mubdi' (المبدئ)",
+      "meaning": "Yang memulai penciptaan segala sesuatu dari ketiadaan, tanpa ada contoh sebelumnya. Dia menciptakan semuanya hanya dengan kehendak dan kekuasaan-Nya.",
+      "reflection": "Renungkan awal penciptaanmu dari ketiadaan, dan bersyukurlah kepada Allah yang telah menganugerahkan kehidupan dan keberadaan untukmu."
+    },
+    {
+      "id": 60,
+      "name": "Al-Mu'id (المعيد)",
+      "meaning": "Yang mengembalikan makhluk kehidupan setelah kematian mereka pada hari Kiamat, persis sebagaimana Dia menciptakan mereka pertama kali, untuk dihisab dan diberi balasan.",
+      "reflection": "Yakinilah Hari Kebangkitan setelah kematian, dan bersiaplah menemui Allah dengan amal saleh. Sebagaimana Dia memulaimu, Dia akan mengembalikanmu."
+    },
+    {
+      "id": 61,
+      "name": "Al-Muhyi (المحيي)",
+      "meaning": "Yang Maha Menghidupkan makhluk dengan meniupkan ruh, dan akan menghidupkan mereka di hari kebangkitan. Dia juga menghidupkan hati yang mati dengan cahaya iman dan petunjuk.",
+      "reflection": "Mintalah kepada Allah untuk menghidupkan hatimu dengan iman, ilmu, dan zikir. Ketahuilah bahwa kehidupan hati jauh lebih penting dari kehidupan jasmani."
+    },
+    {
+      "id": 62,
+      "name": "Al-Mumit (المميت)",
+      "meaning": "Yang mematikan makhluk hidup dan mencabut ruh mereka kapan pun Dia kehendaki. Allah menciptakan kehidupan dan kematian untuk menguji siapa yang terbaik amalnya.",
+      "reflection": "Ingatlah akan kematian setiap hari dan bersiaplah. Jangan tertipu oleh kehidupan dunia, karena dunia hanyalah tempat persinggahan, bukan tempat menetap abadi."
+    },
+    {
+      "id": 63,
+      "name": "Al-Hayy (الحي)",
+      "meaning": "Yang Maha Hidup abadi, kehidupan sempurna yang tidak didahului ketiadaan dan tidak akan berujung pada kebinasaan. Kehidupan-Nya bebas dari kantuk dan tidur.",
+      "reflection": "Bertawakallah kepada Yang Maha Hidup yang tidak akan mati. Jangan terlalu bergantung pada makhluk yang akan binasa. Bekerjalah untuk kehidupan akhirat yang kekal."
+    },
+    {
+      "id": 64,
+      "name": "Al-Qayyum (القيوم)",
+      "meaning": "Yang Maha Berdiri Sendiri, tidak membutuhkan siapa pun, tetapi semua makhluk bergantung kepada-Nya agar bisa berdiri dan hidup. Dia mengatur dan memelihara seluruh ciptaan tanpa merasa kantuk.",
+      "reflection": "Mohonlah pertolongan kepada Al-Qayyum dalam segala urusan, Dialah yang mengatur kehidupanmu. Jangan pernah lalai dari mengingat-Nya walau sedetik pun."
+    },
+    {
+      "id": 65,
+      "name": "Al-Wajid (الواجد)",
+      "meaning": "Yang Maha Kaya, tidak membutuhkan apa pun, menemukan segala yang Ia inginkan kapan saja Ia kehendaki. Tidak ada sesuatu pun yang melemahkan-Nya dan Dia tidak bergantung pada siapa pun.",
+      "reflection": "Jangan merasa butuh dan bergantung kecuali hanya kepada Allah Yang Maha Kaya, mintalah segalanya hanya kepada-Nya."
+    },
+    {
+      "id": 66,
+      "name": "Al-Majid (الماجد)",
+      "meaning": "Yang sangat mulia, luhur, dan dermawan. Memiliki kemuliaan, keagungan, dan kehormatan yang sempurna. Sangat agung dalam tindakan-Nya dan melimpah dalam pemberian-Nya.",
+      "reflection": "Muliakan dan agungkanlah Allah, serta mohonlah dari kemurahan-Nya. Kemuliaan sejati manusia adalah jika ia berada di jalan ketaatan kepada Allah."
+    },
+    {
+      "id": 67,
+      "name": "Al-Wahid (الواحد)",
+      "meaning": "Yang Maha Esa dalam Dzat, Sifat, dan Perbuatan-Nya. Tidak ada sekutu, tandingan, atau yang menyamai-Nya. Dia Tunggal, tidak beranak dan tidak diperanakkan.",
+      "reflection": "Esakanlah Allah (Tauhid) dalam ibadah, doa, dan permohonan pertolongan. Tauhid adalah jalan terbesar seorang hamba mendekatkan diri pada Tuhannya."
+    },
+    {
+      "id": 68,
+      "name": "Ash-Shamad (الصمد)",
+      "meaning": "Tuan segala sesuatu, tempat bergantung seluruh makhluk dalam kebutuhan dan permohonan mereka. Dia Maha Kaya, tidak butuh pada siapa pun, namun semua butuh pada-Nya.",
+      "reflection": "Jadikan Allah satu-satunya tempat bergantung dalam setiap kebutuhan. Jangan palingkan hatimu kepada selain-Nya, karena Dia tidak akan mengecewakan yang menuju kepada-Nya."
+    },
+    {
+      "id": 69,
+      "name": "Al-Qadir (القادر)",
+      "meaning": "Yang Maha Kuasa atas segala sesuatu, tidak ada yang dapat melemahkan-Nya di bumi maupun di langit. Jika Dia menghendaki sesuatu, Dia berfirman 'Jadilah!' maka terjadilah.",
+      "reflection": "Berimanlah pada kekuasaan mutlak Allah. Mintalah kepada-Nya apa saja meski terlihat mustahil bagi manusia, karena bagi Allah tidak ada yang mustahil."
+    },
+    {
+      "id": 70,
+      "name": "Al-Muqtadir (المقتدر)",
+      "meaning": "Yang sangat berkuasa dan kekuasaan-Nya di atas segala sesuatu. Melakukan apa yang dikehendaki-Nya dan kapan pun Dia kehendaki, tidak ada yang dapat menahan kuasa-Nya.",
+      "reflection": "Rasakan kekuasaan Allah yang tiada tara. Jangan merasa kesulitan menghadapi hidup selama kamu bersama Allah, Sang Pemilik Kekuasaan Penuh."
+    },
+    {
+      "id": 71,
+      "name": "Al-Muqaddim (المقدم)",
+      "meaning": "Yang Mendahulukan siapa saja yang Dia kehendaki berdasarkan hikmah dan ilmu-Nya. Mendahulukan derajat, pangkat, dan waktu bagi siapa yang Ia pilih.",
+      "reflection": "Berusahalah untuk mendahulukan dirimu dalam amal saleh dan ilmu. Ketahuilah bahwa Allah-lah yang mengangkat derajat hamba-Nya dengan kebijaksanaan-Nya."
+    },
+    {
+      "id": 72,
+      "name": "Al-Mu'akhir (المؤخر)",
+      "meaning": "Yang Mengakhirkan atau menunda siapa saja yang Dia kehendaki. Menunda hukuman bagi pendosa sebagai waktu untuk bertobat, serta menunda derajat bagi sebagian yang lain dengan hikmah.",
+      "reflection": "Jika sesuatu yang kamu inginkan tertunda, ketahuilah bahwa ada hikmah di baliknya. Bersabarlah, karena Allah tidak menunda sesuatu kecuali untuk kebaikan."
+    },
+    {
+      "id": 73,
+      "name": "Al-Awwal (الأول)",
+      "meaning": "Yang Maha Awal, tidak ada sesuatu pun sebelum-Nya. Dia ada sebelum segala yang ada, keberadaan-Nya tanpa permulaan dan bersifat azali.",
+      "reflection": "Jadikanlah Allah sebagai yang pertama dalam hatimu dan tempat pertama untuk mengadu. Mulailah setiap tindakan dan pekerjaanmu dengan nama Allah."
+    },
+    {
+      "id": 74,
+      "name": "Al-Akhir (الآخر)",
+      "meaning": "Yang Maha Akhir, tidak ada sesuatu pun sesudah-Nya. Dia yang tetap Kekal setelah hancurnya semua makhluk. Dia Yang Maha Hidup dan Tidak Pernah Mati.",
+      "reflection": "Bekerjalah untuk kehidupan setelah kematian, jadikan akhiratmu lebih baik dari duniamu. Ingatlah bahwa pada akhirnya engkau akan kembali menemui Allah."
+    },
+    {
+      "id": 75,
+      "name": "Az-Zahir (الظاهر)",
+      "meaning": "Yang Maha Nyata, tinggi di atas segala ciptaan-Nya. Tanda-tanda kekuasaan dan bukti keberadaan-Nya sangat jelas terlihat pada semua makhluk di alam semesta.",
+      "reflection": "Perhatikanlah bukti nyata kebesaran Allah di alam sekitarmu. Lihatlah bagaimana kekuasaan-Nya tampak nyata dalam setiap hal yang kamu temui."
+    },
+    {
+      "id": 76,
+      "name": "Al-Batin (الباطن)",
+      "meaning": "Yang Maha Ghaib, ilmu-Nya sangat dekat dan meliputi segala sesuatu, namun wujud-Nya tidak dapat dijangkau oleh penglihatan dan akal. Mengetahui segala rahasia yang tersembunyi.",
+      "reflection": "Perbaiki batin (hati) mu sebagaimana kamu memperbaiki penampilan luarmu. Bersihkan hatimu dari kemunafikan, karena Allah Maha Mengetahui yang tersembunyi."
+    },
+    {
+      "id": 77,
+      "name": "Al-Wali (الوالي)",
+      "meaning": "Yang Maha Menguasai segala sesuatu, yang mengurus dan mengatur urusan seluruh makhluk-Nya dengan hikmah dan kasih sayang-Nya.",
+      "reflection": "Serahkan seluruh urusanmu kepada Pengatur Segala Hal (Allah), sadarilah bahwa Dia mengurus kehidupanmu. Berserah dirilah, maka kamu akan tenang."
+    },
+    {
+      "id": 78,
+      "name": "Al-Muta'ali (المتعالي)",
+      "meaning": "Yang Maha Tinggi dari segala sifat makhluk-Nya, suci dari sekutu dan yang menyamai-Nya. Ketinggian Dzat dan Sifat-Nya melampaui seluruh alam semesta.",
+      "reflection": "Jauhkan dirimu dari sifat-sifat yang rendah, gantungkan cita-citamu pada Allah Yang Maha Tinggi. Tinggikan tekadmu dari hal-hal duniawi yang sementara."
+    },
+    {
+      "id": 79,
+      "name": "Al-Barr (البر)",
+      "meaning": "Yang Maha Penderma, sangat lembut dan berbuat baik kepada hamba-hamba-Nya. Memberikan karunia, kebaikan, dan kasih sayang dalam segala keadaan kepada seluruh ciptaan-Nya.",
+      "reflection": "Berbuat baiklah (Birr) kepada kedua orang tuamu dan sesama manusia, karena Allah mencintai orang yang berbuat baik. Rasakan kebaikan Allah dalam setiap nikmatmu."
+    },
+    {
+      "id": 80,
+      "name": "At-Tawwab (التواب)",
+      "meaning": "Yang Maha Penerima Taubat, selalu menerima kembali hamba yang bertaubat meski berulang kali berbuat dosa. Pintu taubat-Nya terbuka dan Dia sangat gembira melihat hamba-Nya bertaubat.",
+      "reflection": "Bertaubatlah kepada Allah kapan saja, jangan malu untuk terus kembali kepada-Nya. Dia-lah At-Tawwab yang menyukai hamba yang bertaubat dan membersihkan diri."
+    },
+    {
+      "id": 81,
+      "name": "Al-Muntaqim (المنتقم)",
+      "meaning": "Yang Maha Pemberi Balasan kepada orang zalim dan pendosa dengan keadilan-Nya. Tidak buru-buru menghukum namun memberi tenggat, jika mereka tidak bertaubat, Dia akan menghukum dengan tegas.",
+      "reflection": "Berhati-hatilah agar tidak bermaksiat dan menzalimi orang lain. Allah memberi tangguh tapi tidak melupakan; maka segeralah bertaubat sebelum terlambat."
+    },
+    {
+      "id": 82,
+      "name": "Al-'Afuw (العفو)",
+      "meaning": "Yang Maha Pemaaf, menghapus dan memaafkan kesalahan. Maaf-Nya jauh lebih luas daripada hukuman-Nya, dan rahmat-Nya mendahului murka-Nya. Memaafkan orang yang menzalimi dan berbuat buruk.",
+      "reflection": "Maafkanlah kesalahan manusia agar Allah memaafkanmu. Perbanyaklah doa: 'Allahumma innaka 'Afuwwun tuhibbul 'afwa fa'fu 'anni' (Ya Allah Engkau Maha Pemaaf, menyukai kemaafan, maafkanlah aku)."
+    },
+    {
+      "id": 83,
+      "name": "Ar-Ra'uf (الرؤوف)",
+      "meaning": "Yang Sangat Mengasihi, kelembutan dan kasih sayang-Nya sangat besar, bahkan melebihi kasih sayang seseorang pada dirinya sendiri. Belas kasihan-Nya mendahului azab-Nya.",
+      "reflection": "Lembut dan belas kasihanlah kepada orang di sekitarmu, terutama yang lemah. Allah akan mengasihi hamba-hamba-Nya yang memiliki rasa belas kasihan."
+    },
+    {
+      "id": 84,
+      "name": "Malikul-Mulk (مالك الملك)",
+      "meaning": "Pemilik Mutlak segala kekuasaan, yang berbuat apa saja di dalam kerajaan-Nya tanpa ada yang menghalangi. Memberikan dan mencabut kekuasaan dari siapa yang Ia kehendaki. Segala kebaikan ada di Tangan-Nya.",
+      "reflection": "Jangan terikat pada kekuasaan duniawi yang fana, sadarilah bahwa kerajaan yang hakiki hanya milik Allah. Berdoalah dan memohon hanya kepada Pemilik segalanya."
+    },
+    {
+      "id": 85,
+      "name": "Dzul-Jalal wal-Ikram (ذو الجلال والإكرام)",
+      "meaning": "Pemilik Kebesaran, Keagungan, dan Kemuliaan. Sumber dari segala kemurahan dan penghormatan. Sangat diagungkan karena kebesaran-Nya dan dicintai karena kemuliaan-Nya.",
+      "reflection": "Agungkan dan muliakan Allah. Barangsiapa memuliakan hamba-hamba Allah, niscaya Allah memuliakannya. Mintalah kebaikan lewat kemuliaan dan keagungan-Nya."
+    },
+    {
+      "id": 86,
+      "name": "Al-Muqsit (المقسط)",
+      "meaning": "Yang Maha Adil, yang memberikan hak kepada yang didzalimi dan menegakkan keadilan mutlak dalam hukum, takdir, serta rezeki yang dibagikan-Nya.",
+      "reflection": "Bersikap adil dan proporsional dalam bermuamalah dengan orang lain. Jangan menzalimi siapa pun. Ingatlah bahwa Allah mencintai orang-orang yang berbuat adil."
+    },
+    {
+      "id": 87,
+      "name": "Al-Jami' (الجامع)",
+      "meaning": "Yang Maha Mengumpulkan, kelak mengumpulkan seluruh makhluk di Hari Kiamat yang tak ada keraguan padanya. Menyatukan yang terpisah dan menyatukan semua kesempurnaan pada Dzat-Nya.",
+      "reflection": "Bersiaplah menghadapi hari besar di mana semua dikumpulkan (Kiamat). Satukan niat dan fokus hatimu hanya untuk Allah, jangan biarkan pikiranmu tercerai-berai pada hal fana."
+    },
+    {
+      "id": 88,
+      "name": "Al-Ghaniy (الغني)",
+      "meaning": "Yang Maha Kaya, sama sekali tidak membutuhkan makhluk-Nya, sebaliknya, semua makhluk sangat membutuhkan-Nya dalam segala hal.",
+      "reflection": "Merasa cukuplah (Istighna) dengan Allah dari selain-Nya. Jangan pernah merendahkan dirimu kepada makhluk. Kekayaan sejati adalah kekayaan jiwa dan hati (Qana'ah)."
+    },
+    {
+      "id": 89,
+      "name": "Al-Mughni (المغني)",
+      "meaning": "Yang Maha Pemberi Kekayaan, memberikan kekayaan kepada siapa saja yang Dia kehendaki. Mengkayakan jiwa dengan rasa cukup (qanaah), hati dengan iman, dan badan dengan kesehatan.",
+      "reflection": "Mintalah kecukupan kepada Allah dan bantulah orang lain dengan rezeki yang kamu miliki. Orang paling kaya adalah mereka yang diberi hati yang ridha dan qana'ah."
+    },
+    {
+      "id": 90,
+      "name": "Al-Mani' (المانع)",
+      "meaning": "Yang Maha Mencegah, menahan sesuatu dari siapa yang Dia kehendaki karena hikmah. Menolak bencana dari hamba yang mukmin, serta terkadang mencegah kenikmatan demi hikmah dan ujian.",
+      "reflection": "Jika Allah menahan sesuatu darimu, yakinlah bahwa di baliknya terdapat kebaikan. Terkadang Dia mencegah untuk memberimu perlindungan atau hal yang jauh lebih baik."
+    },
+    {
+      "id": 91,
+      "name": "Ad-Dhar (الضار)",
+      "meaning": "Yang menakdirkan bahaya dan musibah atas hikmah dan ilmu-Nya. Bahaya dari-Nya bukanlah kezaliman melainkan ujian dan pembersihan dosa. Tidak ada yang bisa menimpakan bahaya kecuali dengan izin-Nya.",
+      "reflection": "Jangan takut kepada bahaya dari makhluk apa pun selain atas izin Allah. Musibah yang menimpa adalah ujian kesabaran, maka bersabar dan harapkanlah pahala dari-Nya."
+    },
+    {
+      "id": 92,
+      "name": "An-Nafi' (النافع)",
+      "meaning": "Yang Maha Pemberi Manfaat bagi siapa yang Dia kehendaki. Seluruh kebaikan dan manfaat di alam semesta bersumber dari-Nya. Tidak ada yang dapat memberikan manfaat kecuali dengan izin-Nya.",
+      "reflection": "Berusahalah untuk selalu menebar manfaat kepada sesama, karena Allah sangat menyukai hamba-Nya yang bermanfaat. Sebaik-baik manusia adalah yang paling bermanfaat bagi orang lain."
+    },
+    {
+      "id": 93,
+      "name": "An-Nur (النور)",
+      "meaning": "Yang Maha Bercahaya, menerangi langit dan bumi dengan cahaya-Nya. Menerangi hati orang-orang mukmin dengan hidayah dan iman. Cahaya-Nya menerangi kegelapan jiwa.",
+      "reflection": "Berdoalah agar Allah menerangi hati dan pandanganmu dengan cahaya iman dan petunjuk-Nya. Jadikan hidupmu sebagai 'cahaya' yang menerangi jalan bagi orang lain menuju kebaikan."
+    },
+    {
+      "id": 94,
+      "name": "Al-Hadi (الهادي)",
+      "meaning": "Yang Maha Pemberi Petunjuk kepada siapa saja yang dikehendaki-Nya menuju jalan kebenaran (agama Islam). Menuntun hati untuk mengenal-Nya. Hidayah-Nya adalah nikmat terbesar yang tak ternilai harganya.",
+      "reflection": "Mintalah hidayah dan keteguhan iman dari Allah di setiap shalat dan doa. Berusahalah untuk menjadi jalan hidayah bagi orang lain dengan dakwah yang penuh hikmah."
+    },
+    {
+      "id": 95,
+      "name": "Al-Badi' (البديع)",
+      "meaning": "Yang menciptakan alam semesta dan isinya tanpa ada contoh atau model sebelumnya. Penciptaan-Nya menakjubkan dan membuat akal terpesona. Sang Pencipta yang tiada tara.",
+      "reflection": "Renungkan keindahan ciptaan Allah yang tiada duanya, bersujudlah mensyukuri keagungan-Nya. Hadirkan pula kebaikan, kreativitas, dan inovasi dalam amal ibadah dan pekerjaanmu."
+    },
+    {
+      "id": 96,
+      "name": "Al-Baqi (الباقي)",
+      "meaning": "Yang Maha Kekal Abadi, tidak akan pernah sirna, punah, atau berakhir keberadaan-Nya. Semua yang ada di bumi akan binasa kecuali Dzat-Nya. Kekal selamanya tanpa batas waktu.",
+      "reflection": "Beramallah untuk sesuatu yang kekal (akhirat) dan jangan terpaku pada yang fana (dunia). Apa yang ada di sisi Allah adalah lebih baik dan kekal."
+    },
+    {
+      "id": 97,
+      "name": "Al-Warith (الوارث)",
+      "meaning": "Yang Maha Mewarisi bumi beserta seluruh isinya setelah semuanya musnah. Dia tetap hidup setelah hancurnya seluruh ciptaan, kepada-Nyalah tempat kembali segala urusan.",
+      "reflection": "Ingatlah bahwa kamu akan meninggalkan semua harta dan kedudukan di dunia ini. Siapkan bekal akhirat, karena harta yang engkau infakkan di jalan Allah itulah peninggalan sejatimu."
+    },
+    {
+      "id": 98,
+      "name": "Ar-Rashid (الرشيد)",
+      "meaning": "Yang Maha Memberi Petunjuk yang lurus kepada makhluk-Nya demi kebaikan agama dan dunia mereka. Segala pengaturan-Nya sangat bijaksana, tindakan-Nya adalah ketepatan mutlak.",
+      "reflection": "Mohonlah bimbingan lurus (Rusyd) kepada Allah dalam setiap keputusan hidupmu. Lakukan Istikharah, karena siapa yang bertawakal dan meminta petunjuk-Nya pasti akan diarahkan-Nya."
+    },
+    {
+      "id": 99,
+      "name": "As-Sabur (الصبور)",
+      "meaning": "Yang Maha Sabar, tidak tergesa-gesa menghukum orang yang berdosa padahal Dia sangat mampu melakukannya. Dia menangguhkan mereka untuk memberi kesempatan agar mereka kembali dan bertaubat.",
+      "reflection": "Hiasilah dirimu dengan kesabaran menghadapi takdir Allah, bersabar dalam ketaatan, dan bersabar menjauhi maksiat. Kesabaran adalah kunci jalan keluar (Faraj) dan kesuksesan."
+    }
+  ]
+}

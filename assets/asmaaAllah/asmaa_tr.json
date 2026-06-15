@@ -1,0 +1,598 @@
+{
+  "asma_allah": [
+    {
+      "id": 1,
+      "name": "Allah (الله)",
+      "meaning": "En Büyük Ulühiyet (Mülkiyet ve Kutsallık) İsmi, mükemmellik, ululuk ve güzellik sıfatlarının hepsini kapsar. Bu, Gerçek Yüce Allah'ın eşsiz ismidir; başka hiç kimse bu isimle anılmaz ve bu isim, diğer tüm ilahi isimlerin köküdür.",
+      "reflection": "Allah'ın yüceliğini hayatının her anında hisset ve O'nu En Büyük İsmi ile samimiyetle ve kesin bir şekilde dua et, çünkü O, yakın olan ve dua edeni asla üzmeyen Cevap Verendir."
+    },
+    {
+      "id": 2,
+      "name": "Er-Rahman (الرحمن) - En Rahman (Er Rahman Olan)",
+      "meaning": "Bu dünyadaki tüm yaratıklara – müminlere ve kafirlere, insanlara ve cinlere – kapsayıcı ve engin rahmetiyle merhamet eden. Rahmeti her şeyi kuşatır; O, herkesi rızıklandıran, onları sıhhatle korumayan ve onlara mühlet verendir.",
+      "reflection": "Allah'ın engin rahmetinden dile ve hayatının her halinde sana şefkatini hisset. Rahmetinin sağlığında, rızkında ve hidayetinde her taraftan seni nasıl kuşattığını derinlemesine düşün."
+    },
+    {
+      "id": 3,
+      "name": "Er-Rahim (الرحيم) - En Rahim (Er Rahim Olan)",
+      "meaning": "Kıyamet gününde iman eden kullarına özel rahmetini bahşeden; onları cennete koyarak ve onları ateşten kurtararak. Kullarını bağışlama, rıza ve büyük mükafatla ikram edendir.",
+      "reflection": "Allah'ın mümin kullarına nasıl merhamet ettiğini derinlemesine düşün ve insanlara, sana merhamet edilmesini istediğin gibi iyi davran. Bil ki Allah'ın rahmeti ihsan edenlere yakındır."
+    },
+    {
+      "id": 4,
+      "name": "Al-Malik (الملك) - Melik (Kral) / Hükümdar",
+      "meaning": "Her şeyin mutlak sahibi olan, krallığını karşı koyan veya rekabet eden olmadan dilediği gibi idare eden. Göğün ve yerin mülkiyeti O'nundur; dilediğine verir, dilediğinden alır, dilediğini yüceltir, dilediğini alçaltır.",
+      "reflection": "Hükümdarlığın yalnızca Allah'a ait olduğunu bil ve tüm işlerinde O'na tevekkül et. Kalbini geçici bir dünya saltanatına bağlama, çünkü Allah'ın mülkiyeti dışındaki her mülkiyet geçicidir."
+    },
+    {
+      "id": 5,
+      "name": "Al-Kuddus (القدوس) - En Kuddus (Kutsal Olan)",
+      "meaning": "Her türlü kusur ve eksiklikten uzak olan, yüceliği ve büyüklüğüne yakışmayan her şeyden uzak olan. Her türlü lekeden arınmış; melekler tarafından kutsanan ve yüceltilen.",
+      "reflection": "İnancında ve sözlerinde Allah'ı her türlü kusurdan arındır ve kulluğunun O'na itaate aykırı olduğu her şeyden kalbini temizle. O'nu her zaman tesbih et."
+    },
+    {
+      "id": 6,
+      "name": "As-Salam (السلام) - Selam / Esenlik Kaynağı",
+      "meaning": "Her türlü kusurdan, eksiklikten ve zarardan uzak olan. Kullarını korkulardan ve tehlikelerden koruyan ve müminlerin kalplerine selam ve güvenlik verendir. Bu dünyada ve ahirette selam ve esenlik O'ndan gelir.",
+      "reflection": "Dininde, dünya hayatında ve ahiretinde Allah'tan güvenlik dile ve çevrendekilere selam ve güvenlik kaynağı ol. İnsanlar arasında selamı yay."
+    },
+    {
+      "id": 7,
+      "name": "Al-Mu'min (المؤمن) - Güven Veren / Emniyet Veren",
+      "meaning": "Yaratıklarını adaletsizlikten koruyan ve mümin kullarını kıyamet gününde azabından emniyete alandır. Mucizelerle peygamberlerinin doğruluğunu tasdik eden ve müminlere mükafat vaadini yerine getirendir.",
+      "reflection": "Allah'ın mümin kullarına nasıl emniyet verdiğini hisset ve O'nun gerçek vaadine güven. İnsanlarla olan ilişkilerinde güvenilir ol, çünkü gerçek mümin, insanların güvendiği kimsedir."
+    },
+    {
+      "id": 8,
+      "name": "Al-Muhaymin (المهيمن) - Koruyucu / Gözetici",
+      "meaning": "Gizli işlerin ve kalplerin sırlarının tamamen farkında olan her şeyin gözlemci bekçisi. Kullarının sözleri ve eylemleri hakkındaki Şahit; hiçbir şey O'na gizli değildir.",
+      "reflection": "Allah'ın her şeyi gördüğünü bil, bu yüzden gizli ve açık hayatını düzelt. O'nu her zaman gördüğün gibi bil, çünkü O seni görüyor, sen O'nu görmesen bile."
+    },
+    {
+      "id": 9,
+      "name": "Al-Aziz (العزيز) - Aziz (Muhterem ve Güçlü)",
+      "meaning": "Yenilemeyen ve boyun eğdirilemeyen Güçlü ve Galip. Düşmanlarına intikam almada Güçlü olan, gücü her şeyi boyun eğdiren Aziz. Onun mukaddes mekanına hiçbir saldırı olmaz ve O'na ancak itaatle ulaşılır.",
+      "reflection": "Onurunu ve kuvvetini yalnızca Allah'tan al ve kimsenin önünde kendini küçük düşürme. Bil ki onur Allah'a, Resulüne ve müminlere aittir."
+    },
+    {
+      "id": 10,
+      "name": "Al-Jabbar (الجبار) - Zorla Yaptıran / Düzelten",
+      "meaning": "Kırılmışı onaran, fakiri zenginleştiren ve işleri düzelten. Her inatçı tiranı boyun eğdiren, ulaşılmaz Büyük Olan, yarattıklarını emir ve yasaklarına boyun eğdiren.",
+      "reflection": "Allah'ın kırıklığını onaran ve zayıflığında sana yardım eden kudretini hisset. Her zorlukta O'na sığın, çünkü O, kırık kalpleri onaran Düzelten'dir."
+    },
+    {
+      "id": 11,
+      "name": "Al-Mutakabbir (المتكبر) - En Büyük / Ululuk Sahibi",
+      "meaning": "Yaratıkların niteliklerinin üzerinde yücelen Büyük Olan, O'nun rububiyetinde yüce olan ve O'nun eşi benzeri yoktur. Gurur ve büyüklük Sahibi, her kusurdan uzak. Gurur O'nun elbisesi ve büyüklük O'nun örtüsüdür.",
+      "reflection": "Allah'ın ve insanların önünde tevazu göster, çünkü gurur yalnız Allah'ın elbisesidir. O'nun gururuyla yarışan kimseyi Allah yere serer. Tevazu göster ve Allah seni yüceltsin."
+    },
+    {
+      "id": 12,
+      "name": "Al-Khaliq (الخالق) - Yaratıcı",
+      "meaning": "Yokluktan varlığa tüm şeyleri getiren ve yaratılmalarından önce onların hallerini ve niteliklerini takdir eden. O'nun kudreti, hikmeti ve ilmiyle her şeyi yoktan yaratan.",
+      "reflection": "Allah'ın yaratılışını ve evrendeki yeniliğini etrafındaki kainatta tefekkür et. Yaratılış ve varoluş nimeti için O'na şükret ve Allah'ın yarattığını O'na hoşnut olacak şekilde kullan."
+    },
+    {
+      "id": 13,
+      "name": "Al-Bari' (البارئ) - Başlatan / Yapan",
+      "meaning": "Yaratmayı başlatan ve kudretiyle onları varlığa getiren, onları farklı özellikler ve şekillerle birbirinden ayıran. Yaratıkları tutarsızlıktan, uyumsuzluktan ve kusurdan arınmış olarak yaratan.",
+      "reflection": "Allah'ın yaratılışının hassasiyeti ve her yaratığı farklı bir şekilde nasıl şekillendirdiğini tefekkür et. Allah'ın yaratıklarına iyi davran, çünkü hepsi Allah'a muhtaçtır."
+    },
+    {
+      "id": 14,
+      "name": "Al-Musawwir (المصور) - Şekil Veren / Biçimlendiren",
+      "meaning": "Tüm var olan şeylere şekil veren ve her yaratığa kendine özgü şeklini ve benzersiz görünüşünü veren. Yaratıklarını birbirlerini tanımaları ve birbirlerinden ayrılmaları için farklı şekillere sokan.",
+      "reflection": "Sana verdiği mükemmel şekil için Allah'a şükret ve hiç kimsenin görünüşüyle alay etme. Gerçek güzelliğin kalbin ve eylemlerin güzelliğinde olduğunu bil."
+    },
+    {
+      "id": 15,
+      "name": "Al-Ghaffar (الغفار) - Çok Affeden / Günahları Örten",
+      "meaning": "Kullarına bol bol bağışlayan, günahlarını örten ve onları defalarca affeden. Günahlar tekrarlansa bile affetmekten yorulmaz; tüm günahları affeder.",
+      "reflection": "Affın kapısı açık ve asla kapanmayacağı için her zaman bağışlanma dile. Günahların ne kadar büyük olursa olsun Allah'ın rahmetinden asla ümitsizliğe kapılma."
+    },
+    {
+      "id": 16,
+      "name": "Al-Qahhar (القهار) - Zorla Bağdıran / Hepsine Üstün Gelen",
+      "meaning": "Kudreti ve hükmiyle her şeyi boyun eğdiren. Her yaratık O'na boyun eğer ve var olan her şey O'nun büyüklüğü karşısında kendini küçük görür. Göklerde veya yerde hiçbir şey O'na sığınmaz; zorba ve kibirli kimseleri boyun eğdirir.",
+      "reflection": "Allah'ın her zalim ve kibirli kimse üzerindeki mutlak hakimiyetini aklında tut ve O'ndan başka kimseye korkma. Bil ki haksız yere insanları ezen kimse, Allah tarafından haklı bir şekilde boyun eğdirilecektir."
+    },
+    {
+      "id": 17,
+      "name": "Al-Wahhab (الوهاب) - İhsan Eden / Bağışlayan",
+      "meaning": "Hediyelerin ve nimetlerin bol bol vereni, sebep, karşılık veya gizli bir niyet olmadan veren. Dilediğine dilediğini bağışlar; bağışları sonsuz ve nimetleri sayısız.",
+      "reflection": "Allah'ın lütuflarından ve bağışlarından dile, çünkü O, bağışları asla tükenmeyen Cömert Bağışlayıcı'dır. İnsanlara cömert ol, çünkü Allah cömertleri sever."
+    },
+    {
+      "id": 18,
+      "name": "Ar-Razzaq (الرزاق) - Rızık Veren",
+      "meaning": "Tüm yaratıklara rızık veren ve onların geçimlerini temin eden. Hiçbir yaratığını unutmaz; her varlığın rızkı Allah'a bağlıdır. Mümin ve kafire, salih ve günahkâra rızık verir.",
+      "reflection": "Sakin ol ve emin ol; sana takdir edilen rızık, Allah'ın hikmetiyle belirlenen zamanında sana ulaşacak. Helal bir rızık için çaba göster ve Allah'a tevekkül et."
+    },
+    {
+      "id": 19,
+      "name": "Al-Fattah (الفتاح) - Açan / Çözüm Veren",
+      "meaning": "Kullarının merhamet ve rızık kapılarını açan ve onlar arasında hak ve adaletle hüküm veren. Kapalı meseleleri açan ve O'ndan yardım isteyenler için hayır ve ferahlık kapılarını açan.",
+      "reflection": "Kapılar sana kapanırsa Al-Fattah'a (Açan'a) yönel. Allah'ın açtığı şeyi hiç kimse kapayamaz ve kapattığını hiç kimse açamaz."
+    },
+    {
+      "id": 20,
+      "name": "Al-Aleem (العليم) - Alim / Her Şeyi Bilen",
+      "meaning": "Her şeyi, hem açık olanı hem de gizli olanı, hem ince olanı hem de büyük olanı kuşatan bilgiye sahip olan. Ne olduğunu, ne olduğunu ve olmadıysa olsaydı nasıl olacağını bilir. Göklerde ve yerde hiçbir şey O'na gizli kalmaz.",
+      "reflection": "Allah'ın her şeyi kuşatan ilmini aklında tut ve eylemlerinde, gizlide de açıkta da samimi ol. Faydalı ilim ara ve ona göre amel et."
+    },
+    {
+      "id": 21,
+      "name": "Al-Qabid (القابض) - Kısıtlayan / Sınırlayan",
+      "meaning": "Hikmeti ve iradesiyle rızkı ve canları geri tutan. Dilediğini imtihan ve test olarak kısıtlar. Tutması adalet ve hikmete dayanır; vermek için tutar ve genişletmek için kısıtlar.",
+      "reflection": "İşler sana dar gelirse, bil ki Allah'tan gelen bu kısıtlama bir hikmet içerir ve zorluktan sonra kolaylık gelir. Sabret ve ümitsizliğe kapılma."
+    },
+    {
+      "id": 22,
+      "name": "Al-Basit (الباسط) - Genişleten / Açan",
+      "meaning": "Kullarından dilediğine lütfu ve cömertliğiyle rızkı genişleten ve merhameti ve ikramı yayandır. Günahkârı gündüz affetmek için gecede, gecenin günahkârını affetmek için gündüz elini açar.",
+      "reflection": "Allah sana rızıkta ve nimetlerde genişlik verirse O'na şükret ve kibirlenme. Bil ki genişlik de bir imtihan, tıpkı darlığın bir imtihan olması gibi."
+    },
+    {
+      "id": 23,
+      "name": "Al-Khafid (الخافض) - Alçaltan / Küçük Düşüren",
+      "meaning": "Hikmeti ve adaletiyle yarattıklarından dilediğini alçaltan, kibirli ve zalimleri küçük düşüren. Kafirliği ve kafirleri alçaltan ve hak üzerine yükselip de ondan yüz çevirenleri alçaltan.",
+      "reflection": "Gurur ve kibirden sakın ve bil ki Allah kibirli kimseleri alçaltır. Kendini Allah'a karşı tevazu göster ve Allah seni yüceltsin; her durumda tevazuyu koru."
+    },
+    {
+      "id": 24,
+      "name": "Ar-Rafi' (الرافع) - Yükselten",
+      "meaning": "İtaat ve iman yoluyla müminleri yükselten ve lütfuyla kullarından dilediğini yükselten. İlim ve iman sahiplerini derecelerle yükselten ve seçtiklerinin mevkisini ve konumunu yükselten.",
+      "reflection": "İlim, salih amel ve takva yoluyla Allah katında yükselmeye çalış ve bil ki gerçek yükseliş, kalbin imanla yükselmesidir."
+    },
+    {
+      "id": 25,
+      "name": "Al-Mu'izz (المعز) - Onur Veren / İzzet Veren",
+      "meaning": "Kullarından dilediğine onur ve hürmet veren, onları saygın ve yüksek mertebeli kılan. Allah'ın izzet verdiği kimse dışında kimse izzetli olamaz ve izzet ancak Allah'a itaatle ve dinine sarılmakla elde edilir.",
+      "reflection": "Onuru sadece Allah'tan iste ve mahlûkatın yanında arama. Bil ki izzet itaatte, zillet ise isyandadır."
+    },
+    {
+      "id": 26,
+      "name": "Al-Mudhill (المذل) - Alçaltan / Küçük Düşüren",
+      "meaning": "Adaleti ve hikmetiyle yarattıklarından dilediğini alçaltan, onları değersiz ve hor görülen kılan. O'na isyan eden ve ibadet etmeyi reddeden kimseleri alçaltan ve yeryüzünde zalimleri ve fesatçıları küçük düşüren.",
+      "reflection": "Gücün, servetin veya statün tarafından aldanma, çünkü Allah her kibirli kimseyi alçaltmaya gücü yetendir. Alçalma ve rezillikten Allah'a sığın."
+    },
+    {
+      "id": 27,
+      "name": "As-Sami' (السميع) - İşiten / Her Şeyi İşiten",
+      "meaning": "Farklı dillerdeki ve çeşitli ihtiyaçlardaki tüm sesleri duyan. Bir şeyi duymak, başka bir şeyi duymasından O'nu alıkoymaz. Gizli olanı, fısıltıyı ve bir taş üzerindeki karıncanın ayak seslerini işitir.",
+      "reflection": "Yalvarışını kesinlikle yükselt, çünkü Allah fısıltılarını ve kalbinin çağrısını işitir. Allah'ın razı olmadığı sözler söyleme, çünkü O, söylediğin her şeyi İşiten'dir."
+    },
+    {
+      "id": 28,
+      "name": "Al-Basir (البصير) - Görür / Her Şeyi Gören",
+      "meaning": "Ne kadar küçük olursa olsun her şeyi gören. Karanlık bir gecede sert bir kaya üzerindeki siyah karıncanın yürüyüşünü görür. Göklerde ve yerde hiçbir hareket ve dikkatsizlik O'na gizli kalmaz.",
+      "reflection": "Allah'ın her zaman sana baktığını aklında tut ve eylemlerini gizlide de açıkta da mükemmelleştir. Bil ki Allah seni nerede olursan olur görür."
+    },
+    {
+      "id": 29,
+      "name": "Al-Hakam (الحكم) - Hakem / Hüküm Veren",
+      "meaning": "Kulları arasında hak ve adaletle hüküm veren; hiç kimseye bir atom ağırlığında bile zulmetmez. Hükmü yerine getirilir ve geri çevrilemez; kararı adildir. Dönüş O'na olacaktır.",
+      "reflection": "Allah'ın hükmü ve takdiriyle hoşnut ol ve bil ki O sadece hak ve adaletle hükmeder. İnsanları ancak adalet ve tarafsızlıkla hükmet."
+    },
+    {
+      "id": 30,
+      "name": "Al-Adl (العدل) - Adil",
+      "meaning": "Hükümlerinde, kararlarında ve idaresinde zulüm ve zorbalıktan uzak olan. Hiçbir yaratığına zulmetmez ve iyi davrananın mükafatını asla boşa çıkarmaz. Adaleti her şeyde mutlaktır.",
+      "reflection": "Hükümlerinde ve insanlarla ilişkilerinde adil ol ve kimseyi zulme uğratma. Bil ki zulüm, kıyamet gününde karanlık olarak ortaya çıkacaktır."
+    },
+    {
+      "id": 31,
+      "name": "Al-Latif (اللطيف) - Latif / İnce / Şefkatli",
+      "meaning": "İyiliği ve nimetleri kullarına, nereden algılamadıkları ve beklemedikleri yerden, nazikçe, ince bir şekilde ve şefkatle ulaştıran. Kullarına takdirlerinde naziktir ve onların işlerini son derece incelik ve hikmetle idare eder.",
+      "reflection": "Dikkatini çekebilecek yaşamının ayrıntılarında sana olan Latif (İnce) liğini tefekkür et. Her zorluğun arkasında Latif, Habir'in bir ferahlığı olduğunu bil."
+    },
+    {
+      "id": 32,
+      "name": "Al-Khabir (الخبير) - Habir (Her Şeyden Haberdar Olan)",
+      "meaning": "En ince detayları, gizli işleri ve iç gerçeklikleri bilen. Yaratıklarının hiçbir durumu O'na gizli değildir. Göğüslerde olanı ve kalplerin gizlediklerini bilir; haberi her şeyi kapsar.",
+      "reflection": "Bil ki Allah senin durumunu ve kalbindekini tamamen biliyor, bu yüzden niyetini ve içini düzelt. Allah'tan kalbini temizlemesini iste."
+    },
+    {
+      "id": 33,
+      "name": "Al-Haleem (الحليم) - Halim (Yumuşak Huylu / Hoşgörülü)",
+      "meaning": "İsyan edenlere karşı cezalandırmada acele etmeyen, aksine onlara mühlet veren, onları affeden ve isyanlarına rağmen onları rızıklandıran. Hoşgörüsü tüm yeryüzü ehlini kapsar; mühlet verir ama ihmal etmez, affeder ve bağışlar.",
+      "reflection": "İnsanlarla ilişkilerinde hoşgörülü ol ve sabırlı ol, çünkü hoşgörü ahlakın efendisidir. İntikam için acele etme, çünkü Allah Halim'dir (Yumuşak Huylu) ve hoşgörülüdür."
+    },
+    {
+      "id": 34,
+      "name": "Al-Azeem (العظيم) - Azim / En Büyük",
+      "meaning": "Göklerde ve yerde büyüklük ve gurur O'nundur; zatında, sıfatlarında ve işlerinde azim ve yücedir. Akıllar O'nu kavrayamaz ve bakışlar O'na erişemez.",
+      "reflection": "Kalbinde ve uzuvlarınla Allah'ı büyüt ve O'nun hiçbir emrini küçük görme. Namazında O'nun huzurunda dururken O'nun azametini hisset."
+    },
+    {
+      "id": 35,
+      "name": "Al-Ghafur (الغفور) - Gafur (Çok Affeden)",
+      "meaning": "Günahları affeden, kusurları örten ve kötülükleri görmezden gelen. Affı geniş ve merhameti büyüktür. İster ne kadar çok günah işlemiş olursa olsun, tövbe edip O'na döneni affeder.",
+      "reflection": "Günahların ne kadar büyük olursa olsun Allah'ın rahmetinden ve affından asla ümitsizliğe kapılma, çünkü O, affetmeyi seven Gafur'dur. O'na her zaman tövbe et."
+    },
+    {
+      "id": 36,
+      "name": "Ash-Shakur (الشكور) - Şakur (Çok Şükreden / Çok Ödül Veren)",
+      "meaning": "Az bir davranışı büyük bir mükafatla karşılık veren ve dilediğine iyilikleri katlayan. Kullarının itaatleri için onları mükafatlandırarak ve lütuflarını onlara arttırarak şükreder.",
+      "reflection": "Allah'ın sayısız nimetleri için O'na şükret ve bil ki O'nun sunduğun en küçük eylemi takdir eder ve ödüllendirir. İtaat eylemlerini çoğalt, sana küçük görünse bile."
+    },
+    {
+      "id": 37,
+      "name": "Al-Aliyy (العلي) - Ali (En Yüce)",
+      "meaning": "Yaratıklarının üzerinde zatında, sıfatlarında ve kudretinde yüce olan; makam ve mertebede yüksek olan. O, her şeyin üzerindedir ve O'ndan daha yüksek hiçbir şey yoktur. Her yönden mutlak yücelik O'nundur.",
+      "reflection": "En Yüce Olan Azim'e bağlan ve O'nun altındaki şeylere bağlanma. Hırsını en yüksek seviyelere çıkar ve cennetteki en yüksek dereceleri iste."
+    },
+    {
+      "id": 38,
+      "name": "Al-Kabir (الكبير) - Kebir (En Büyük)",
+      "meaning": "Zatında ve sıfatlarında büyük ve ulu olan; O'ndan başka her şey küçüktür. Her büyük şeyden daha büyük. Göğün ve yerin büyüklüğü O'nundur.",
+      "reflection": "Allah'ı kalbinde büyüt ve diğer her şey küçük olacaktır. Bir şey sana çok büyük görünürse, Allah'ın seni korkutan veya meşgul eden her şeyden daha büyük olduğunu hatırla."
+    },
+    {
+      "id": 39,
+      "name": "Al-Hafiz (الحفيظ) - Hafiz (Koruyucu / Muhafız)",
+      "meaning": "Yaratılışını yok olmaktan ve helak olmaktan koruyan ve kullarının eylemlerini onları mükafatlandırmak için koruyan. Göğün ve yerin yıkılmasını engelleyen ve mümin kullarını dinlerinde ve dünya hayatlarında koruyan.",
+      "reflection": "Aileni, malını ve dinini Allah'a emanet et, çünkü O en iyi koruyucudur. Allah'ı koru (itaat ederek) ve O da seni korur; uzuvlarını isyandan koru."
+    },
+    {
+      "id": 40,
+      "name": "Al-Muqit (المقيت) - Geçindiren / Besleyen",
+      "meaning": "Uygun zamanda her yaratığa yiyecek ve geçimini sağlayan. Kullarının geçimlerini üstlenen ve her canlıya geçim sağlayabilen.",
+      "reflection": "Rızkın konusunda sakin ol, çünkü Allah, kullarının rızıklarını garanti eden Geçindiricidir. Ve muhtaçları beslemeyi unutma."
+    },
+    {
+      "id": 41,
+      "name": "Al-Hasib (الحسيب) - Hesap Soran / Yeterli Kılınan",
+      "meaning": "Kullarının tüm işlerinde Yeterli Olan ve onların eylemlerinden dolayı Kıyamet gününde onlardan hesap soracak olan. Kendisine tevekkül edene yeterli gelir ve her canı yaptığına göre tam ve adil bir şekilde hesaba çeker.",
+      "reflection": "Hesap sorulmadan önce kendin hesap sor ve tartılmadan önce eylemlerini tart. Bil ki Allah senin Hesap Sorucun, bu yüzden hesaba bir cevap hazırla."
+    },
+    {
+      "id": 42,
+      "name": "Al-Jalil (الجليل) - Celil (Muhterem / Büyük)",
+      "meaning": "Ululuk, mükemmellik ve büyüklük sıfatlarıyla nitelenen; mülkünde ve saltanatında Azametli olan. Makamda yüce ve rütbede yüksek; kalpleri saygı ve tazimle dolduran ululuk sıfatlarına sahip.",
+      "reflection": "Kalbinde Allah'ı tazim et ve büyüt ve O'nun seni bir günah işlerken görmesinden utan. Bil ki O'nun azameti, O'na karşı teslimiyetini ve tevazunu gerektirir."
+    },
+    {
+      "id": 43,
+      "name": "Al-Karim (الكريم) - Kerim (Cömert / İkram Sahibi)",
+      "meaning": "İyilik ve bağışta bol olan, kendisinden istenmeden, hesap etmeden ve iyiliğini hatırlatmadan veren. Cömertliği her cömertliği aşar; karşılıksız ve bedelsiz verir.",
+      "reflection": "Cömertliğin ahlakını benimse ve Allah'ın sana verdiğinden harca. Bil ki Allah'ın katında olan daha iyi ve daha kalıcıdır, bu yüzden sana verdiğiyle cimri olma."
+    },
+    {
+      "id": 44,
+      "name": "Ar-Raqib (الرقيب) - Gözetici / Bekleyici",
+      "meaning": "Göğüslerin gizlediğinden haberdar olan, her canın kazandığı şeyin gözetleyicisi. Hiçbir şey O'ndan gizli kalmaz ve O hiçbir şeyi ihmal etmez. Kullarının eylemlerini, sözlerini ve geçen düşüncelerini gözlemler.",
+      "reflection": "Gizlide de açıkta da Allah tarafından gözetildiğini hisset ve bil ki O seni her an görüyor. Bu yüzden eylemlerini güzelleştir ve O'na itaatte dosdoğru kal."
+    },
+    {
+      "id": 45,
+      "name": "Al-Mujib (المجيب) - Cevap Veren",
+      "meaning": "Dua edenin çağrısına cevap veren ve yalvarana icabet eden. O'na samimiyetle yalvarana yakındır; çaresizlere cevap verir, kötülüğü kaldırır ve sıkıntıyı giderir.",
+      "reflection": "Kesinlik ve huzur içinde Allah'a dua et, çünkü O, yakın olan ve yalvaranı reddetmeyen Cevap Verendir. Dualarının kabulü hakkında Allah hakkında iyi zanda bulun."
+    },
+    {
+      "id": 46,
+      "name": "Al-Wasi' (الواسع) - Vasi (Geniş / Her Şeyi Kuşatan)",
+      "meaning": "Rahmeti, ilmi ve rızkı her şeyi kuşatan. İkramında, bağışlamasında ve lütuflarında geniş; hazineleri asla tükenmez ve O'nun katındaki şeyin sonu gelmez.",
+      "reflection": "Allah'ın geniş rahmetini kendi üzerinde daraltma, çünkü hayal edebileceğinden daha geniştir. O'nun geniş lütuflarından dile ve ümitsizliğe kapılma."
+    },
+    {
+      "id": 47,
+      "name": "Al-Hakim (الحكيم) - Hakim (Hikmet Sahibi)",
+      "meaning": "Her şeyi mutlak hikmetle uygun yerine koyan. Boş yere hiçbir şey yapmaz ve hiçbir şeyi gayesiz tayin etmez; aksine tüm eylemleri ve emirleri yalnızca O'nun bildiği bir hikmete dayanır.",
+      "reflection": "Sana takdir ettiği her şeyde Allah'ın hikmetine güven, hikmetini anlamasan bile. Allah'ın her takdiri iyidir ve hikmetlidir."
+    },
+    {
+      "id": 48,
+      "name": "Al-Wadud (الودود) - Vudud (Sevgi Dolu / Dost)",
+      "meaning": "Salih kullarını seven ve onlara nimetleri ve ince lütuflarıyla kendini sevdiren. O, dostlarının kalplerinde Sevilen'dir; O onları sever ve onlar O'nu severler. Özel sevgisi sadık müminler içindir.",
+      "reflection": "Allah'a itaat ettiğin zaman sana olan sevgisini hisset ve itaat eylemleriyle O'na kendini sevdir. Kalbini Allah sevgisiyle doldur, çünkü Allah'ı seveni Allah sever."
+    },
+    {
+      "id": 49,
+      "name": "Al-Majid (المجيد) - Mecid (Mühteşem / Şerefli)",
+      "meaning": "Muazzam görkem, mükemmel şeref ve geniş otorite sahibi olan. Görkemi gökleri ve yeri doldurur ve tüm eylemleri görkemli ve büyüktür. Melekler ve tüm yaratıklar O'nu tesbih ederler.",
+      "reflection": "Kalbinle, dilinle ve uzuvlarınla Allah'ı yücelt ve O'na hamd et. Allah'ın görkeminin gerçek özünün tam olarak kavranamayacağını bil."
+    },
+    {
+      "id": 50,
+      "name": "Al-Ba'ith (الباعث) - Ba'seden (Dirilten)",
+      "meaning": "Ölümden sonra hesap ve mükafat için yaratıkları dirilten. İnsanları hidayete erdirmek için peygamberleri gönderen ve mümin kullarının kalplerinde azim ve kararlılık uyandırandır.",
+      "reflection": "Salih ameller ve samimi tövbe ile kıyamet gününe hazırlan. Bil ki diriltilip, küçük de olsa büyük de olsa her şeyden hesaba çekileceksin."
+    },
+    {
+      "id": 51,
+      "name": "Ash-Shahid (الشهيد) - Şahit",
+      "meaning": "Hiçbir şey O'na gizli kalmaz; her şeye şahitlik eder, her şeyi bilir ve her şeyden haberdardır. Kullarının eylemlerine, sözlerine ve niyetlerine şahitlik eder ve kıyamet gününde yaratıklarının yaptıklarına Şahit olacaktır.",
+      "reflection": "Allah'ın eylemlerin ve sözlerin hakkında şahitlik ettiğini aklında tut ve mükemmel bir şekilde amel et. Allah sana şahitlik eder, bu yüzden şahitliğini senin lehine olacak şekilde yap, aleyhine değil."
+    },
+    {
+      "id": 52,
+      "name": "Al-Haqq (الحق) - Hak / Gerçek",
+      "meaning": "Varlığında şüphe olmayan, Rabliğinde ve İlahiliğinde şüphe bulunmayan sabit gerçek. O, zatında, sıfatlarında, işlerinde, vaadinde ve va'dinde Hak'tır. Diğer her şey var olabilir veya olmayabilir, ancak O'nun varlığı zorunludur.",
+      "reflection": "Hak üzere dur, yalnız olsan bile, ve bil ki ne kadar şişirilmiş olursa olsun batıl yok olmaya mahkumdur. Doğruluk içinde ol, çünkü doğruluk takvaya götürür."
+    },
+    {
+      "id": 53,
+      "name": "Al-Wakil (الوكيل) - Vekil / İşleri Gören",
+      "meaning": "Kullarının geçim ve çıkarlarının garantörü ve kendisine tevekkül edenlerin işlerini idare eden. O'nu Vekil edinen kimseye her endişe ve kederden yeter ve her kötülüğü ondan uzaklaştırır.",
+      "reflection": "Allah'a gerçek tevekkülle tevekkül et ve işlerini O'na tevdi et. Allah'a tevekkül edene O yeter. Ve Allah Vekil olarak yeter."
+    },
+    {
+      "id": 54,
+      "name": "Al-Qawiyy (القوي) - Kavi (Güçlü)",
+      "meaning": "Kudreti mükemmel olan ve göklerde veya yerde hiçbir şey O'na direnemez. Kudreti yenilmez; onunla gökleri ve yeri kurdu. Yorgunluk, bitkinlik veya zayıflık O'nu etkilemez.",
+      "reflection": "Kavi olan Allah'tan kuvvet al ve kendi kuvvetine güvenme. Allah'tan yardım dile ve çaresiz hissetme; kuvvet ve kudret ancak Allah'tandır."
+    },
+    {
+      "id": 55,
+      "name": "Al-Mateen (المتين) - Metin (Güçlü / Sağlam)",
+      "meaning": "Asla zayıflık veya yorgunluk yaşamayan Son Derece Güçlü. Sağlamlığı O'nun kudretinde ve O'na isyan edenlere karşı şiddetindedir. Hiçbir şey O'nu etkilemez, hiçbir şey O'nu sarsmaz ve hiçbir şey O'nun kuvvetini azaltmaz.",
+      "reflection": "İmanında sağlam ol ve hak üzere sabit ol. Bil ki Allah, O'na ve O'nun dostlarına düşman olanlara karşı sağlam ve şiddetli bir şekilde cezalandırıcıdır."
+    },
+    {
+      "id": 56,
+      "name": "Al-Waliyy (الولي) - Veli (Dost / Koruyucu)",
+      "meaning": "Mümin kullarının işlerini yöneten, koruması ve yardımıyla onlara destek olan ve onlara yardım eden. Müminlerin velisidir, onları karanlıktan aydınlığa çıkarır.",
+      "reflection": "Allah'ı Veli ve Yardımcı et ve bir kimsenin veliliğine O'nun veliliği sayesinde ihtiyaç duyma. Allah'ın velisi olan kimse asla yalnız bırakılmaz."
+    },
+    {
+      "id": 57,
+      "name": "Al-Hamid (الحميد) - Hamid (Övgüye Layık)",
+      "meaning": "Her durumda ve her zaman övgüye layık olan, zatı, sıfatları ve işleri için övgü ve övgüye layık olan. Övgüsü gökleri ve yeri doldurur ve içindekilerin hepsi O'nu tesbih eder ve O'nu yüceltir.",
+      "reflection": "İşte de zorlukta da Allah'ı öv, çünkü O her durumda Övgüye Layıktır. Dilini Allah'ı övmek ve O'na şükretmekle nemli tut."
+    },
+    {
+      "id": 58,
+      "name": "Al-Muhsee (المحصي) - Muhsi (Her Şeyi Sayan)",
+      "meaning": "Her şeyi ayrıntılı olarak sayan ve bildiği için O'nun yaratılışından hiçbir şey gizli kalmayan. Kullarının eylemlerini, nefeslerini ve adımlarını sayar ve ne kadar küçük olursa olsun hiçbir şey O'ndan kaçmaz.",
+      "reflection": "Bil ki her eylem senin için veya aleyhinde sayılır, bu yüzden yaptığın her şeyde iyi davran. İyiliklerinin kötülüklerinden daha fazla olmasını sağla."
+    },
+    {
+      "id": 59,
+      "name": "Al-Mubdi' (المبدئ) - Mubdi (Başlatan)",
+      "meaning": "Hiçbir önceki örnek olmadan tüm şeylerin yaratılışını başlatan ve onları icat eden. Kudreti ve iradesiyle her şeyi yoktan var eden.",
+      "reflection": "Yaratılışının başlangıcı ve Allah'ın seni yoktan nasıl var ettiğini tefekkür et. Yaratılış ve hayat nimeti için O'na şükret."
+    },
+    {
+      "id": 60,
+      "name": "Al-Mu'eed (المعيد) - Mu'id (Geri Getiren)",
+      "meaning": "Ölümden sonra Kıyamet gününde yaratıkları, onları ilk seferde başlattığı gibi, geri getiren. Onları yoktan yarattığı gibi, onları helaklarından sonra hesap ve mükafat için geri getirmeye gücü yetendir.",
+      "reflection": "Ölümden sonra dirilişe kesinlikle inan ve Allah ile buluşmaya salih amellerle hazırlan. Seni nasıl başlattıysa, seni geri getirecek ve O'na döneceksin."
+    },
+    {
+      "id": 61,
+      "name": "Al-Muhyi (المحيي) - Muhyi (Can Veren)",
+      "meaning": "Ölülere can veren ve ölüden diriyi çıkaran. Ruhu onlara üfleyerek yaratıklara hayat veren ve onları Kıyamet gününde diriltecek olan. İman ve hidayet nuruyla ölü kalpleri de dirilten.",
+      "reflection": "Allah'tan kalbini iman, ilim ve zikirle diriltmesini iste. Bil ki kalbin hayatı bedenin hayatından daha önemlidir."
+    },
+    {
+      "id": 62,
+      "name": "Al-Mumit (المميت) - Mumit (Öldüren)",
+      "meaning": "Canlıları öldüren ve dilediğinde canlarını alan. Ölümü ve hayatı, hanginizin daha iyi amel işleyeceğini denemek için yarattı. Her canlı ölümü tadacak ve O'na döndürüleceksiniz.",
+      "reflection": "Her gün ölümü hatırla ve ona salih amellerle hazırlan. Dünya hayatı seni aldatmasın, çünkü o bir geçiş yeridir, kalıcı bir ikamet yeri değil."
+    },
+    {
+      "id": 63,
+      "name": "Al-Hayy (الحي) - Hayy (Diri / Yaşayan)",
+      "meaning": "Hiçbir şey tarafından öncelenmeyen ve yok olma ile son bulmayan tam ve ebedi hayata sahip olan. Hayatı yaratıkların hayatı gibi değildir; uyku ve gafletten uzak mükemmel bir hayattır.",
+      "reflection": "Ölmeyen Hayy'a tevekkül et ve ölecek olan diri varlıklara bağlanma. Ahiretin ebedi hayatı için çalış."
+    },
+    {
+      "id": 64,
+      "name": "Al-Qayyum (القيوم) - Kayyum (Varlığı Ayakta Tutan)",
+      "meaning": "Kendiliğinden var olan ve kendisi hariç her şeye muhtaç olmayan, her şeyin O'nunla ayakta durduğu. Yaratıklarını idare etme, koruması ve bakımıyla onları ayakta tutar; ne uyuklama ne de uyku O'nu alıkoyar.",
+      "reflection": "Kayyum'dan tüm işlerinde yardım iste, çünkü O hayatını ayakta tutan ve işlerini idare eden O'dur. O'nu bir an bile anmaktan ihmal etme."
+    },
+    {
+      "id": 65,
+      "name": "Al-Wajid (الواجد) - Vacid (Bulur / Varlıklı)",
+      "meaning": "Hiçbir şeye muhtaç olmayan ve hiçbir şeyden mahrum kalmayan Zengin. Dilediğini dilediğinde bulur. Hiçbir şey O'nu engelleyemez ve O hiçbir şeye muhtaç değildir, oysa her şey O'na muhtaçtır.",
+      "reflection": "İhtiyacını sadece Varlıklı ve Zengin olan Allah'a göster ve sadece O'ndan dile. Çünkü O, dilediğini bulan ve O'ndan hiçbir şey kaçmayan O'dur."
+    },
+    {
+      "id": 66,
+      "name": "Al-Majid (المجيد) - Mecid (Şerefli / İkram Sahibi)",
+      "meaning": "İkramda ve cömertlikte ve şeref ve ikramda büyük ve ulu olan; mükemmel görkem, iktidar ve şerefe sahip. Sıfatlarında şerefli, işlerinde büyük, ikramında cömert.",
+      "reflection": "Allah'ı yücelt ve O'nu azametlendir ve O'nun görkeminden ve ikramından dile. Bil ki gerçek görkem Allah'a itaatte ve O'na yakınlıktadır."
+    },
+    {
+      "id": 67,
+      "name": "Al-Wahid (الواحد) - Vahid (Tek / Bir)",
+      "meaning": "Varlığı, sıfatları ve işleriyle birlikte teklikte eşsiz olan; ortağı, eşi ve benzeri yok. Tek, Bir, Eşsiz, Ebedi Sığınak; ne doğurmuş ne doğurulmuştur ve O'nun eşi benzeri yoktur.",
+      "reflection": "İbadetinde, duanda ve yardım talebinde Allah'ı tevhit et ve O'na hiçbir şeyi ortak etme. Tevhit, kulun Rabbi'ne yaklaşmasının en büyük vesilesidir."
+    },
+    {
+      "id": 68,
+      "name": "As-Samad (الصمد) - Samed (Sığınılacak / Kendine Yeten)",
+      "meaning": "Tüm yaratıkların ihtiyaçlarında ve taleplerinde O'na yöneldiği Efendi. Hiç kimseye muhtaç olmayan, herkesin O'na muhtaç olduğu. O ne yer ne içer, O pak ve yücedir.",
+      "reflection": "Her ihtiyacında yalnızca Allah'a yönel ve kalbini başkasına yöneltme. O, kendisine yönelenleri asla üzmeyen Samed'dir."
+    },
+    {
+      "id": 69,
+      "name": "Al-Qadir (القادر) - Kadir (Gücü Yeten / Kudretli)",
+      "meaning": "Her şeye gücü yeten; göklerde ve yerde hiçbir şey O'nu aciz bırakamaz. Bir şeyi dilerse ona sadece 'Ol!' der ve o da oluverir. Kudreti tam ve iradesi yürürlüktedir.",
+      "reflection": "Allah'ın mutlak kudretine iman et ve ne kadar imkânsız görünürse görünsün O'ndan ne istersen dile. Çünkü Allah her şeye kadirdir."
+    },
+    {
+      "id": 70,
+      "name": "Al-Muqtadir (المقتدر) - Muktedir (Her Şeye Kadir Olan)",
+      "meaning": "Hiçbir şeyin O'na karşı koyamayacağı en üstün kudrete sahip olan. Kudreti her türlü kudretin üzerinde ve kuvveti her türlü kuvvetin üzerindedir. Dilediğini, dilediği şekilde, dilediği zaman yapar; hiçbir şey O'nu hiçbir zaman aciz bırakamaz.",
+      "reflection": "Allah'ın her şey üzerindeki kudretini hisset ve hiçbir şeyi Allah için çok zor görme. Allah'ın yanında olan kimseye hiçbir şey yenilmez."
+    },
+    {
+      "id": 71,
+      "name": "Al-Muqaddim (المقدم) - Öne Çıkaran / İlerleten",
+      "meaning": "Hikmeti, ilmi ve rahmetiyle yarattıklarından dilediğini öne çıkaran. Sebepleri neticelerinin önüne koyar ve derece, rütbe, kader ve zamanda dilediğini ilerletir.",
+      "reflection": "Salih ameller ve faydalı ilim yoluyla kendini ilerletmeye çalış ve bil ki Allah hikmetiyle hak edenleri ilerletir."
+    },
+    {
+      "id": 72,
+      "name": "Al-Mu'akhkhir (المؤخر) - Geri Bırakan / Sonraya Bırakan",
+      "meaning": "Hikmeti ve adaletiyle yarattıklarından dilediğini geri bırakan. Ceza vermek için mühlet vererek geri bırakır ve rütbe ve mertebede dilediğini geri bırakır. Geri bırakması hikmettir ve ileri çıkarması hikmettir.",
+      "reflection": "Eğer bir şey senin için gecikirse, bil ki bu gecikmede Allah'ın bir hikmeti vardır. Sabret ve sevabını bekle, çünkü Allah bir şeyi ancak iyilik için geciktirir."
+    },
+    {
+      "id": 73,
+      "name": "Al-Awwal (الأول) - Evvel (İlk)",
+      "meaning": "Öncesinde hiçbir şeyin olmadığı O; O vardı ve O'nunla birlikte veya O'ndan önce hiçbir şey yoktu. O, başlangıcı olmayan İlk'tir; varlığının bir başlangıcı yoktur. Varlığının başlangıcı olmayan ezeliliğiyle her şeyden önce gelmiştir.",
+      "reflection": "Allah'ın önceliğini ve ezeliliğini tefekkür et ve O'nu her işte kendine yöneleceğin ilk kimse yap. Her işe Allah'ın adıyla başla."
+    },
+    {
+      "id": 74,
+      "name": "Al-Akhir (الآخر) - Ahir (Son)",
+      "meaning": "Sonrasında hiçbir şeyin olmadığı O; her şeyin yok olmasından sonra Kalan. O, sonu olmayan Son'dur; varlığının bir sonu yoktur. Tüm yaratıklar yok olduktan sonra O kalır, çünkü O ölmeyen Hayy'dır.",
+      "reflection": "Ölümden sonra gelecek şeyler için çalış ve ahiretini dünya hayatından daha iyi bir yer yap. Her şey yok olduktan sonra kalacak olan Son Olan Allah ile buluşacağını hatırla."
+    },
+    {
+      "id": 75,
+      "name": "Az-Zahir (الظاهر) - Zahir (Açık / Görünür)",
+      "meaning": "Büyüklüğü ve kudretiyle her şeyin üzerinde yüce olan, varlığının işaretleri ve delilleri her yaratıkta açık olan. Tefekkür eden ve düşünen kimse için gizli kalmayan işaretleriyle açık.",
+      "reflection": "Evrende etrafındaki Allah'ın açık işaretlerini tefekkür et. Gördüğün her şeyde sana kudretini nasıl gösterdiğini gör."
+    },
+    {
+      "id": 76,
+      "name": "Al-Batin (الباطن) - Batın (Gizli / İçte Olan)",
+      "meaning": "Her şeyi kapsayan ilmiyle Yakın olan, bakışların algılayamadığı ve düşüncelerin kapsayamadığı. Akılların hakikatini kavrayamadığı, hayallerin çevreleyemediği şekilde gizli. Gizli olanı ve daha da gizli olanı bilir.",
+      "reflection": "Dışını düzelttiğin gibi içini de düzelt, çünkü Allah senin gizlediğini ve açığa vurduğunu bilir. Kalbini riya ve nifaktan temizle."
+    },
+    {
+      "id": 77,
+      "name": "Al-Wali (الوالي) - Vali (Yönetici / İdare Eden)",
+      "meaning": "Her şeyin sahibi olan, tüm işler üzerinde tasarruf eden, yaratıklarının işlerini idare ve yönetimle yöneten. Kulların işlerini hikmeti ve rahmetiyle yönetir ve idare eder.",
+      "reflection": "İşlerini Vali ve İdareci Allah'a tevdi et ve bil ki O her şeyin kontrolünü elinde tutar. İşlerini Allah'a bırak ve huzur bulursun."
+    },
+    {
+      "id": 78,
+      "name": "Al-Muta'ali (المتعالي) - Müteali (En Yüce / En Ululanmış)",
+      "meaning": "Yaratıkların niteliklerinin üzerinde yücelen, yüceliğine yakışmayan her şeyden yüce olan. Ortak, eş ve benzerden münezzeh. Yaratıklarının hepsinin üzerinde zatında ve sıfatlarında son derece Yüce.",
+      "reflection": "Dünyevi ve önemsiz şeylerin üzerine çık ve En Yüce, Azim'e bağlan. Geçici olan her şeyin üzerine hırsını yükselt."
+    },
+    {
+      "id": 79,
+      "name": "Al-Barr (البر) - Barr (İyilik Eden / İyilik Kaynağı)",
+      "meaning": "İyiliği ve cömertliğiyle kullarına şefkatli olan. Yaratıklarına her hallerinde bol bol ihsanda bulunan ve onlara nazik davranandır.",
+      "reflection": "Anne babana iyi davran ve insanlara iyilik et, çünkü Allah iyilik edenleri sever. Nimetlendirdiğin her nimette sana olan Allah'ın iyiliğini hisset."
+    },
+    {
+      "id": 80,
+      "name": "At-Tawwab (التواب) - Tevvab (Tövbeleri Kabul Eden)",
+      "meaning": "Tövbe edenlerin tövbesini kabul eden ve günahkarları affeden, günahları ne kadar tekrarlarsa tekrarlasınlar. Kul tövbe ettikçe Allah affederek O'na döner ve kulunun dönüşünden büyük bir sevinç duyar. Kapısı açıktır ve asla kapanmaz.",
+      "reflection": "Her zaman Allah'a tövbe et ve O'na sık sık dönüşünden utanma. O, tövbeleri kabul eden, tövbe edenleri seven ve onların dönüşünden sevinen Tevvab'dır."
+    },
+    {
+      "id": 81,
+      "name": "Al-Muntaqim (المنتقم) - Müntakim (İntikam Alan)",
+      "meaning": "Zalimlere, isyan edenlere ve bozgunculara adaleti ve hikmetiyle intikam alan. İntikam almak için acele etmez, fakat mühlet verir; eğer günahkâr son vermezse, onları güçlü ve kudretli bir şekilde yakalar.",
+      "reflection": "Allah'a isyandan sakın ve O'nun hilesinden güvende hissetme. Bil ki Allah mühlet verir ama ihmal etmez, bu yüzden geç olmadan tövbe et."
+    },
+    {
+      "id": 82,
+      "name": "Al-Afuww (العفو) - Afuvv (Çok Affeden / Bağışlayan)",
+      "meaning": "Günahları silen ve isyan eylemlerini görmezden gelen. Affetmeyi sever ve çok affeder. Affı, cezasından daha geniştir ve rahmeti gazabından önce gelir.",
+      "reflection": "İnsanları affet ve Allah da seni affedecek ve sık sık şöyle de: 'Allah'ım, şüphesiz Sen Affedicisin, affetmeyi seversin, öyleyse bizi affet.' Af etmek, Allah'ın en sevdiği amellerdendir."
+    },
+    {
+      "id": 83,
+      "name": "Ar-Ra'uf (الرؤوف) - Rauf (Çok Merhametli)",
+      "meaning": "Kullarına karşı şefkat ve merhamette son derece bol olan; onlara kendilerinden daha merhametli. Merhameti gazabından önce gelir.",
+      "reflection": "Çevrendekilere merhametli ve acıma duygusuyla yaklaş, çünkü Allah merhametli kullarına merhamet eder. Zayıflara ve muhtaçlara merhametli ol."
+    },
+    {
+      "id": 84,
+      "name": "Malik-ul-Mulk (مالك الملك) - Mülkün Sahibi / Hükümdarların Hükümdarı",
+      "meaning": "Tüm mülkün tek sahibi, ona dilediği gibi, karşı koyan olmadan tasarruf eden. Mülkü dilediğine verir ve dilediğinden alır, dilediğini yüceltir ve dilediğini alçaltır. Tüm hayır O'nun elindedir.",
+      "reflection": "Dünyanın geçici mülküne bağlanma ve bil ki gerçek hükümranlık yalnızca Allah'a aittir. Allah'ın lütfunu dile."
+    },
+    {
+      "id": 85,
+      "name": "Dhul-Jalali wal-Ikram (ذو الجلال والإكرام) - Celal ve İkram Sahibi",
+      "meaning": "Büyüklük, gurur ve ululuğun ve ikramın, ihsanın ve iyiliğin kaynağı olan. Celali için tazim edilir ve ikramı için sevilir ve hürmet görür. Güzellik, mükemmellik ve ululuğun Sahibi.",
+      "reflection": "Allah'ı tazim et ve yücelt ve kullarını hürmet et, çünkü Allah'ın kullarını hürmet eden kimseyi Allah hürmet eder. Celali ve ikramı ile O'ndan dile."
+    },
+    {
+      "id": 86,
+      "name": "Al-Muqsit (المقسط) - Mukıst (Adil / Dengeli)",
+      "meaning": "Zalime karşı mazlumun hakkını veren ve aralarında hak ile hükmeden adil. Hükmünde, takdirinde, rızkında ve ikramında denge sahibidir. Adaleti bu dünyayı ve ahireti kapsar.",
+      "reflection": "İnsanlarla ilişkilerinde adil ve dengeli ol ve kimseyi zulmetme. Bil ki Allah dengeli olanları sever."
+    },
+    {
+      "id": 87,
+      "name": "Al-Jami' (الجامع) - Cami (Toplayan)",
+      "meaning": "Şüphe olmayan bir günün (Kıyamet gününün) için tüm yaratıkları bir araya getirecek olan. Dağınık ve zıt şeyleri de hikmetiyle bir araya getirir. Zatında ve sıfatlarında tüm mükemmellikleri bir araya getirmiştir.",
+      "reflection": "Büyük Toplanma Günü'ne (Kıyamet Günü) hazırlan ve ondan sonra gelecek şeyler için çalış. Kalbini Allah'ta topla ve endişelerini dağıtma."
+    },
+    {
+      "id": 88,
+      "name": "Al-Ghaniyy (الغني) - Gani (Zengin / Kendine Yeterli)",
+      "meaning": "Hiçbir yaratığından hiçbir şeyde asla hiç kimseye muhtaç olmayan, oysa tüm yaratıkları her şeyde O'na mutlak olarak muhtaç olan. Kendi zatında zengin ve her şeyden müstağni.",
+      "reflection": "Allah'a karşı kendini yalnızca zenginleştir ve hiçbir yaratığın önünde kendini küçük düşürme. Bil ki gerçek zenginlik ruhun ve kalbin zenginliğidir."
+    },
+    {
+      "id": 89,
+      "name": "Al-Mughni (المغني) - Muğni (Zenginleştiren)",
+      "meaning": "Lütfu ve cömertliğiyle kullarından dilediğini zenginleştiren. Onları mal, ilim, iman ve rıza ile zenginleştirir. Ruhları rıza ile, kalpleri iman ile ve bedenleri sıhhat ile zenginleştirir.",
+      "reflection": "Allah'tan zenginlik dile ve Allah'ın sana verdiğiyle başkalarını zenginleştir. Bil ki en zengin kimse, Allah'ın rıza ile zenginleştirdiği kimse."
+    },
+    {
+      "id": 90,
+      "name": "Al-Mani' (المانع) - Mani (Engelleyen / Koruyan)",
+      "meaning": "Hikmeti ve rahmetiyle dilediğine dilediğini engelleyen. Mümin kullarını musibetlerden ve kötülüklerden uzak tutar ve hikmet ve imtihan olarak dilediğine bazı nimetleri engeller.",
+      "reflection": "Allah sana bir şeyi engellerse, bil ki bu engellemede senin için bir hayır vardır. Belki Allah sana daha iyi bir şey vermek için seni bir şeyden mahrum bırakır."
+    },
+    {
+      "id": 91,
+      "name": "Ad-Darr (الضار) - Darr (Zarar Veren / Musibet Veren)",
+      "meaning": "Hikmeti ve ilmiyle dilediğine zarar ve musibet takdir eden. O'nun zararı bir zulüm değil, aksine bir hikmet, bir imtihan ve bir arıtmadır. O'nun izni olmadan kimse zarar veremez.",
+      "reflection": "Allah'tan başkasından zarar görme korkusu duyma ve bil ki seni bulan şey seni kaçırmamalıydı. İmtihanda sabret ve ecir bekle."
+    },
+    {
+      "id": 92,
+      "name": "An-Nafi' (النافع) - Nafi (Faydalı Olan)",
+      "meaning": "Kullarından dilediğine rahmetiyle fayda takdir eden. Evrendeki her fayda Allah'tandır ve O'nun izni olmadan kimse kimseye fayda veremez. O, her türlü hayır ve faydanın kaynağıdır.",
+      "reflection": "İnsanlara faydalı olmaya çalış, çünkü Allah kullarına faydalı olanları sever. İnsanların en iyisi, insanlara en faydalı olandır."
+    },
+    {
+      "id": 93,
+      "name": "An-Nur (النور) - Nur (Işık / Nur)",
+      "meaning": "Gökleri ve yeri nuruyla aydınlatan ve müminlerin kalplerini hidayet ve imanla aydınlatan. Nuru her karanlığı dağıtmıştır ve onunla göklerin ve yerin sakinleri aydınlanır.",
+      "reflection": "Allah'tan kalbini ve basiretini iman ve hidayet nuruyla aydınlatmasını dile. Hayatını başkalarının yolunu aydınlatan bir ışık yap."
+    },
+    {
+      "id": 94,
+      "name": "Al-Hadi (الهادي) - Hadi (Hidayete Erdirten / Rehber)",
+      "meaning": "Dilediğini doğru yola ve hak dinine hidayet eden. Kalpleri O'nu tanımaya ve akılları O'na iman etmeye yönlendirir. Hidayeti paha biçilmez büyük bir nimettir.",
+      "reflection": "Her namazda ve her duada hidayet ve sebat dile. Başkalarını hikmetle ve güzel nasihatle hidayete erdirmeye çalış."
+    },
+    {
+      "id": 95,
+      "name": "Al-Badi' (البديع) - Badi (Eşsiz / Orijinal)",
+      "meaning": "Yaratıkları hiçbir önceki örnek veya model olmadan başlatan ve icat eden. Yaratılışındaki yenilik akılları hayrete düşürür ve zihinleri şaşırtır. Eşsiz göklerin ve yerin yaratıcısı.",
+      "reflection": "Allah'ın yaratılışındaki yeniliği tefekkür et ve görkemi için şükrederek secde et. Çalışmalarında, ibadetinde ve ilişkilerinde sen de yenilikçi ve mükemmel ol."
+    },
+    {
+      "id": 96,
+      "name": "Al-Baqi (الباقي) - Bakı (Ebedi / Kalan)",
+      "meaning": "Varlığına son vermeyen, yok olmayan veya sona ermeyen Daimi. Her şey yok olacak, ancak O'nun Zatı kalacaktır. Yaratıklarının yok olmasından sonra kalıcı, ezeli ve ebedi, zaman tarafından sınırlandırılmayan.",
+      "reflection": "Kalıcı olanı için çalış ve yok olana bağlanma. Allah'ın katındakiler daha iyi ve daha kalıcıdır ve ahiret dünya hayatından daha iyidir."
+    },
+    {
+      "id": 97,
+      "name": "Al-Warith (الوارث) - Varis (Mirasçı)",
+      "meaning": "Yeryüzünü ve üzerindekilerini hepsi yok olduktan sonra miras alan. Yaratıkların yok olmasından sonra kalır ve her şeyi miras alır. İşlerin hepsi sahipleri gittikten sonra O'na döner.",
+      "reflection": "Her şeyi geride bırakacağını hatırla, bu yüzden ahiretin için iyilikleri öne gönder. Allah yolunda harcadığın şeyin gerçekte sana kalandan olduğunu bil."
+    },
+    {
+      "id": 98,
+      "name": "Ar-Rasheed (الرشيد) - Raşid (Doğru Yola Hidayet Eden)",
+      "meaning": "Yaratıkları hidayete erdirip onları dini ve dünyevi menfaatlerine yönlendiren. Yönetimi hikmetli ve doğru yoldadır ve tüm eylemleri doğru ve yerindedir. Dilediğini doğru yola hidayet eder.",
+      "reflection": "Tüm işlerinde doğru hidayet dile ve kararlarında O'na danış (İstihare). Allah'a tevekkül eden ve O'ndan hidayet isteyen kimseyi O hidayete erdirir."
+    },
+    {
+      "id": 99,
+      "name": "As-Sabur (الصبور) - Sabur (Sabrı Çok Olan)",
+      "meaning": "İsyan edenler üzerinde kudreti olmasına rağmen onları cezalandırmada acele etmeyen. Onlara mühlet verir ve onlarla sabırlıdır ki tövbe etsinler ve geri dönsünler. Sabrı geniştir ve kullarına şans şans verir.",
+      "reflection": "Allah'ın takdirlerine, O'na itaatte ve günahlardan kaçınmada sabırla donat kendini. Bil ki sabır ferahlığın anahtarıdır ve başarı yoludur."
+    }
+  ]
+}

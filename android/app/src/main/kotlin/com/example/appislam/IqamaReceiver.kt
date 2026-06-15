@@ -24,36 +24,30 @@ class IqamaReceiver : BroadcastReceiver() {
 
         val powerManager = context.getSystemService(Context.POWER_SERVICE) as PowerManager
         val wakeLock = powerManager.newWakeLock(
-            PowerManager.PARTIAL_WAKE_LOCK,
-            "appislam:iqamaWakeLock"
+            PowerManager.PARTIAL_WAKE_LOCK, "appislam:iqamaWakeLock"
         )
-        wakeLock.acquire(120 * 1000L)
+        wakeLock.acquire(2 * 60 * 1000L)
 
         try {
             val prayerName = intent.getStringExtra("prayerName") ?: "الصلاة"
             val soundName = intent.getStringExtra("soundName") ?: "iqama1"
             val localPath = intent.getStringExtra("localPath")
-            val requestCode = intent.getIntExtra("requestCode", 0)
-            val triggerAtMillis = intent.getLongExtra("triggerAt", 0L)
 
-            Log.d(TAG, "Prayer: $prayerName | Sound: $soundName | LocalPath: $localPath")
+            Log.d(TAG, "Prayer: $prayerName | Sound: $soundName | Local: $localPath")
 
             val notificationId = ("iqama_$prayerName").hashCode()
 
-            // إيقاف أي صوت إقامة سابق
             try {
                 mediaPlayer?.stop()
                 mediaPlayer?.release()
                 mediaPlayer = null
             } catch (e: Exception) {
-                e.printStackTrace()
+                Log.w(TAG, "Error stopping previous player", e)
             }
 
-            // تشغيل صوت الإقامة
             try {
                 mediaPlayer = when {
                     !localPath.isNullOrEmpty() && File(localPath).exists() -> {
-                        Log.d(TAG, "Playing from local path: $localPath")
                         MediaPlayer().apply {
                             setAudioAttributes(
                                 AudioAttributes.Builder()
@@ -68,15 +62,20 @@ class IqamaReceiver : BroadcastReceiver() {
                                 it.release()
                                 mediaPlayer = null
                                 NotificationManagerCompat.from(context).cancel(notificationId)
+                                if (wakeLock.isHeld) wakeLock.release()
                             }
                             start()
                         }
                     }
 
                     else -> {
-                        val soundResId =
-                            context.resources.getIdentifier(soundName, "raw", context.packageName)
-                        Log.d(TAG, "Trying raw resource: $soundName (resId=$soundResId)")
+                        var soundResId = context.resources.getIdentifier(soundName, "raw", context.packageName)
+
+                        // ✅ Fallback إلى makkah
+                        if (soundResId == 0) {
+                            Log.w(TAG, "Iqama sound '$soundName' not found, falling back to makkah")
+                            soundResId = context.resources.getIdentifier("makkah", "raw", context.packageName)
+                        }
 
                         if (soundResId != 0) {
                             MediaPlayer.create(context, soundResId)?.apply {
@@ -91,72 +90,46 @@ class IqamaReceiver : BroadcastReceiver() {
                                     it.release()
                                     mediaPlayer = null
                                     NotificationManagerCompat.from(context).cancel(notificationId)
+                                    if (wakeLock.isHeld) wakeLock.release()
                                 }
                                 start()
                             }
-                        } else {
-                            Log.e(TAG, "No sound found for: $soundName")
-                            null
-                        }
+                        } else null
                     }
                 }
             } catch (e: Exception) {
                 Log.e(TAG, "Error playing iqama sound", e)
             }
 
-            // زر إيقاف الصوت
             val stopIntent = Intent(context, StopIqamaReceiver::class.java).apply {
                 putExtra("notificationId", notificationId)
             }
-
             val stopPendingIntent = PendingIntent.getBroadcast(
-                context,
-                notificationId + 4000,
-                stopIntent,
+                context, notificationId + 7000, stopIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
 
-            val notificationBuilder =
-                NotificationCompat.Builder(context, "iqama_channel")
-                    .setSmallIcon(R.mipmap.ic_launcher)
-                    .setContentTitle("إقامة صلاة $prayerName")
-                    .setContentText("قد قامت الصلاة.. قد قامت الصلاة")
-                    .setPriority(NotificationCompat.PRIORITY_HIGH)
-                    .setOngoing(true)
-                    .setAutoCancel(false)
-                    .addAction(
-                        android.R.drawable.ic_media_pause,
-                        "إيقاف الإقامة",
-                        stopPendingIntent
-                    )
+            val builder = NotificationCompat.Builder(context, "iqama_channel")
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("إقامة صلاة $prayerName")
+                .setContentText("قد قامت الصلاة.. قد قامت الصلاة")
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_ALARM)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                .setOngoing(true)
+                .setAutoCancel(false)
+                .addAction(android.R.drawable.ic_media_pause, "إيقاف الإقامة", stopPendingIntent)
 
             try {
-                NotificationManagerCompat.from(context)
-                    .notify(notificationId, notificationBuilder.build())
-                Log.d(TAG, "Iqama notification shown successfully")
+                NotificationManagerCompat.from(context).notify(notificationId, builder.build())
             } catch (e: SecurityException) {
                 Log.e(TAG, "Notification permission denied", e)
             }
 
-            // إعادة جدولة لليوم التالي
-            if (triggerAtMillis > 0 && requestCode > 0) {
-                val nextTrigger = triggerAtMillis + (24 * 60 * 60 * 1000L)
-                Log.d(TAG, "Rescheduling iqama for next day at: $nextTrigger")
-
-                AlarmScheduler.scheduleIqama(
-                    context = context,
-                    triggerAtMillis = nextTrigger,
-                    prayerName = prayerName,
-                    requestCode = requestCode,
-                    soundName = soundName,
-                    localPath = localPath
-                )
-            }
-
+        } catch (e: Exception) {
+            Log.e(TAG, "Fatal error in IqamaReceiver", e)
         } finally {
-            if (wakeLock.isHeld) {
-                wakeLock.release()
-            }
+            if (mediaPlayer == null && wakeLock.isHeld) wakeLock.release()
         }
     }
 }

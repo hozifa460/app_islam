@@ -5,6 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../models/dua_model.dart';
 import 'dua_category_screen.dart';
+import 'widgets/dua_animations.dart';
+import 'widgets/dua_styled_widgets.dart';
 
 class DuaScreen extends StatefulWidget {
   const DuaScreen({super.key});
@@ -80,16 +82,12 @@ class _DuaScreenState extends State<DuaScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final primary = Theme.of(context).colorScheme.primary;
-    final bgColor = isDark ? const Color(0xFF0A0E17) : const Color(0xFFF5F7FA);
-    final textColor = isDark ? Colors.white : const Color(0xFF1A1A1A);
-    final subColor = isDark ? Colors.white60 : Colors.black54;
+    final theme = DuaTheme.of(context);
 
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        backgroundColor: bgColor,
+        backgroundColor: theme.bgColor,
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -100,205 +98,85 @@ class _DuaScreenState extends State<DuaScreen> {
             style: GoogleFonts.cairo(
               fontWeight: FontWeight.bold,
               fontSize: 24,
-              color: textColor,
+              color: theme.textColor,
             ),
           ),
-          leading: Container(
-            margin: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: isDark
-                  ? Colors.white.withOpacity(0.1)
-                  : primary.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: IconButton(
-              icon: Icon(Icons.arrow_back_ios_new, color: textColor),
-              onPressed: () => Navigator.pop(context),
-            ),
+          leading: DuaBackButton(
+            isDark: theme.isDark,
+            primary: theme.primary,
           ),
         ),
         body: SafeArea(
-          child: _loading
-              ? Center(child: CircularProgressIndicator(color: primary))
-              : _categories.isEmpty
-              ? Center(
-            child: Text(
-              'لا توجد أدعية',
-              style: GoogleFonts.cairo(color: subColor),
-            ),
-          )
-              : LayoutBuilder(
-            builder: (context, constraints) {
-              final width = constraints.maxWidth;
-              final crossCount = width > 600 ? 3 : 2;
-              final cardWidth =
-                  (width - 16 * 2 - 14 * (crossCount - 1)) /
-                      crossCount;
-              final cardHeight = cardWidth * 1.1;
+          child: _buildBody(theme),
+        ),
+      ),
+    );
+  }
 
-              return GridView.builder(
-                padding: const EdgeInsets.all(16),
-                physics: const BouncingScrollPhysics(),
-                gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: crossCount,
-                  crossAxisSpacing: 14,
-                  mainAxisSpacing: 14,
-                  mainAxisExtent: cardHeight,
-                ),
-                itemCount: _categories.length,
-                itemBuilder: (context, index) {
-                  final cat = _categories[index];
-                  final catColor = _getColor(cat.color);
-                  final catIcon = _getIcon(cat.icon);
+  Widget _buildBody(DuaTheme theme) {
+    if (_loading) {
+      return Center(
+        child: CircularProgressIndicator(color: theme.primary),
+      );
+    }
 
-                  return TweenAnimationBuilder<double>(
-                    tween: Tween(begin: 0.0, end: 1.0),
-                    duration:
-                    Duration(milliseconds: 400 + (index * 80)),
-                    curve: Curves.easeOutCubic,
-                    builder: (context, value, child) {
-                      return Opacity(
-                        opacity: value,
-                        child: Transform.translate(
-                          offset: Offset(0, 30 * (1 - value)),
-                          child: child,
-                        ),
-                      );
-                    },
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => DuaCategoryScreen(
-                              category: cat,
-                              catColor: catColor,
-                              catIcon: catIcon,
-                            ),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: isDark
-                                ? [
-                              catColor.withOpacity(0.15),
-                              catColor.withOpacity(0.05),
-                            ]
-                                : [
-                              Colors.white,
-                              catColor.withOpacity(0.05),
-                            ],
-                            begin: Alignment.topRight,
-                            end: Alignment.bottomLeft,
-                          ),
-                          borderRadius: BorderRadius.circular(24),
-                          border: Border.all(
-                            color: catColor.withOpacity(
-                                isDark ? 0.3 : 0.2),
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: isDark
-                                  ? Colors.black.withOpacity(0.3)
-                                  : catColor.withOpacity(0.1),
-                              blurRadius: 15,
-                              offset: const Offset(0, 5),
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 14,
-                          ),
-                          child: Column(
-                            mainAxisAlignment:
-                            MainAxisAlignment.center,
-                            children: [
-                              Flexible(
-                                flex: 3,
-                                child: FittedBox(
-                                  fit: BoxFit.scaleDown,
-                                  child: Container(
-                                    width: 52,
-                                    height: 52,
-                                    decoration: BoxDecoration(
-                                      color: catColor
-                                          .withOpacity(0.15),
-                                      borderRadius:
-                                      BorderRadius.circular(16),
-                                      border: Border.all(
-                                        color: catColor
-                                            .withOpacity(0.3),
-                                      ),
-                                    ),
-                                    child: Icon(
-                                      catIcon,
-                                      color: catColor,
-                                      size: 26,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              Flexible(
-                                flex: 3,
-                                child: Text(
-                                  cat.name,
-                                  style: GoogleFonts.cairo(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
-                                    color: textColor,
-                                    height: 1.3,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              Flexible(
-                                flex: 2,
-                                child: FittedBox(
-                                  fit: BoxFit.scaleDown,
-                                  child: Container(
-                                    padding:
-                                    const EdgeInsets.symmetric(
-                                      horizontal: 10,
-                                      vertical: 3,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: catColor
-                                          .withOpacity(0.12),
-                                      borderRadius:
-                                      BorderRadius.circular(12),
-                                    ),
-                                    child: Text(
-                                      '${cat.duas.length} دعاء',
-                                      style: GoogleFonts.cairo(
-                                        fontSize: 11,
-                                        color: catColor,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+    if (_categories.isEmpty) {
+      return Center(
+        child: Text(
+          'لا توجد أدعية',
+          style: GoogleFonts.cairo(color: theme.subColor),
+        ),
+      );
+    }
+
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final width = constraints.maxWidth;
+        final crossCount = width > 600 ? 3 : 2;
+        final cardWidth = (width - 16 * 2 - 14 * (crossCount - 1)) / crossCount;
+        final cardHeight = cardWidth * 1.1;
+
+        return GridView.builder(
+          padding: const EdgeInsets.all(16),
+          physics: const BouncingScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: crossCount,
+            crossAxisSpacing: 14,
+            mainAxisSpacing: 14,
+            mainAxisExtent: cardHeight,
+          ),
+          itemCount: _categories.length,
+          itemBuilder: (context, index) {
+            final cat = _categories[index];
+            final catColor = _getColor(cat.color);
+            final catIcon = _getIcon(cat.icon);
+
+            return AnimatedGridItem(
+              index: index,
+              child: DuaCategoryCard(
+                name: cat.name,
+                icon: catIcon,
+                color: catColor,
+                duasCount: cat.duas.length,
+                isDark: theme.isDark,
+                textColor: theme.textColor,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => DuaCategoryScreen(
+                        category: cat,
+                        catColor: catColor,
+                        catIcon: catIcon,
                       ),
                     ),
                   );
                 },
-              );
-            },
-          ),
-        ),
-      ),
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }

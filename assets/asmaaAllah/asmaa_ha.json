@@ -1,0 +1,598 @@
+{
+  "asma_allah": [
+    {
+      "id": 1,
+      "name": "Allah (Allah - الله)",
+      "meaning": "Sunan Allah mafi girma, wanda ya tattara dukkan siffofin kamala, girma, da kyawun gani. Wannan suna ya kebanta da Allah Madaukakin Sarki kadai, ba a kiran kowa da shi, kuma shi ne asalin dukkan sunaye.",
+      "reflection": "Ji girmamawar Allah a kowane lokaci na rayuwarka, kuma ka roke Shi da sunansa mafi girma da yakini da ikhlasi, domin Shi makusanci ne mai amsawa wanda ba ya wulakanta mai rokonSa."
+    },
+    {
+      "id": 2,
+      "name": "Mai Rahama (Ar-Rahman - الرحمن)",
+      "meaning": "Ma'abocin rahama mai fadi da ta game dukkan halittu a duniya, muminai da kafirai, mutane da aljannu. RahamarSa ta mamaye komai, Shi ne mai azurtawa, mai ba da lafiya, da mai jinkirtawa.",
+      "reflection": "Roki Allah daga rahamarSa mai fadi, kuma ka ji tausayinSa a gare ka a kowane hali. Yi tunani a kan yadda rahamarSa ta kewaye ka ta ko'ina: a lafiyarka, arzikinka, da shiriyarka."
+    },
+    {
+      "id": 3,
+      "name": "Mai Jinkai (Ar-Rahim - الرحيم)",
+      "meaning": "Mai yi wa bayinSa muminai ni'ima da wata rahama ta musamman a Ranar Alkiyama, inda zai shigar da su Aljannah ya tseratar da su daga Wuta. Yana yi wa bayinSa falala da gafara, yarda, da sakamako mai girma.",
+      "reflection": "Yi tunani a kan yadda Allah yake yi wa bayinSa muminai jinkai, kuma ka kyautata wa mutane kamar yadda kake son a yi maka jinkai. Ka sani cewa rahamar Allah tana kusa da masu kyautautawa."
+    },
+    {
+      "id": 4,
+      "name": "Sarki (Al-Malik - الملك)",
+      "meaning": "Mamallakin komai, mai gudanarwa a cikin mulkinSa yadda Ya so ba tare da wani mai jayayya ba. Mulkin sammai da qasa naSa ne, Yana bayarwa ga wanda Ya so kuma Yana hanawa ga wanda Ya so.",
+      "reflection": "Ji a jikinka cewa mulki na Allah ne shi kadai, ka dogara a gare Shi a dukkan al'amuranka. Kada ka bari zuciyarka ta rataya da mulki mai karewa, domin kowane mulki in ba na Allah ba mai karewa ne."
+    },
+    {
+      "id": 5,
+      "name": "Mai Tsarki (Al-Quddus - القدوس)",
+      "meaning": "Wanda ya tsarkaka daga dukkan tawaya da aibu, Kuma Ya tsarkaka daga dukkan abin da bai dace da girmansa ba. Tsarkakakke wanda Mala'iku ke tsarkake Shi kuma suke tasbihi a gare Shi.",
+      "reflection": "Tsarkake Allah daga dukkan tawaya a cikin akidarka da maganarka, kuma ka tsarkake zuciyarka daga duk abin da bai dace da bautarka ga Allah ba. Ka yi tasbihi a gare Shi a kowane lokaci."
+    },
+    {
+      "id": 6,
+      "name": "Mai Aminci (As-Salam - السلام)",
+      "meaning": "Kubitacce daga dukkan aibu da nakasa. Shi ne wanda ke kubutar da bayinSa daga abubuwan tsoro da hatsari, kuma Yana sanya aminci a zukatan muminai. Daga gare Shi ne aminci a duniya da lahira.",
+      "reflection": "Nemi aminci da tsira daga Allah a addininka, duniyarka, da akhirarka. Ka zama mabubbugar aminci ga mutanen da ke kewaye da kai, kuma ka yada sallama a tsakanin mutane."
+    },
+    {
+      "id": 7,
+      "name": "Mai Ba da Aminci (Al-Mu'min - المؤمن)",
+      "meaning": "Wanda ke amintar da halittunSa daga zalunci, kuma Yana amintar da bayinSa muminai daga azabarSa a Ranar Alkiyama. Shi ne mai gaskata ManzanninSa da mu'ujizoji.",
+      "reflection": "Ka ji amincin Allah a kan bayinSa muminai, kuma ka amince da alkawarinSa na gaskiya. Ka zama mai amana a mu'amalarka da mutane, domin mumini shi ne wanda mutane suka aminta da shi."
+    },
+    {
+      "id": 8,
+      "name": "Mai Kula / Mai Tsaro (Al-Muhaimin - المهيمن)",
+      "meaning": "Mai kula kuma mai kiyaye komai, Masanin abubuwan da ke boye da asirin zukata. Mashaidi a kan halittunSa bisa abin da suke aikatawa ko fada, babu abin da ke boyuwa a gare Shi.",
+      "reflection": "Ka sani cewa Allah yana sane da komai, don haka ka gyara asirinka da bayyanarka. Ka ji tsoron Allah a dukkan halinka kamar kana ganinSa, in ba ka ganinSa Shi Yana ganin ka."
+    },
+    {
+      "id": 9,
+      "name": "Mabuwayi (Al-'Aziz - العزيز)",
+      "meaning": "Mai karfi, mabuwayi wanda ba a rinjayarSa, Mabuwayi wajen daukar fansa a kan abokan gabanSa, kuma wanda ya mallaki komai ya rinjaye shi. Ba a samun girmama sai da yi Masa biyayya.",
+      "reflection": "Nemi daukaka da izza daga Allah Shi kadai, kada ka kankantar da kanka ga wani ba Shi ba. Ka sani cewa daukaka ta Allah ce da ManzonSa da kuma muminai."
+    },
+    {
+      "id": 10,
+      "name": "Mai Tilastawa / Mai Gyarawa (Al-Jabbar - الجبار)",
+      "meaning": "Wanda ke gyara abin da ya karye, Ya wadata matalauci, Ya gyara al'amura. Mai rinjayar kowane mai taurin kai, kuma Mai tilasta halittunSa a kan abin da Ya so na umurninSa.",
+      "reflection": "Ka ji karfin Allah wanda yake gyara karyewarka, Yana taimakonka a rauninka. Koma zuwa gare Shi a kowace jarrabawa, domin Shi ne ke gyara zukatan da suka karye."
+    },
+    {
+      "id": 11,
+      "name": "Mai Girman Kai / Mai Qasaita (Al-Mutakabbir - المتكبر)",
+      "meaning": "Mai girma, wanda ya daukaka daga siffofin halittu. Ma'abocin qasaita da girma, wanda Ya tsarkaka daga dukkan tawaya. Girman kai rigarSa ce, qasaita kuma mayafinSa.",
+      "reflection": "Ka kankantar da kai ga Allah da kuma mutane, domin girman kai na Allah ne Shi kadai. Duk wanda ya yi jayayya da Allah a kansa, Allah zai murkushe shi."
+    },
+    {
+      "id": 12,
+      "name": "Mahalicci (Al-Khaliq - الخالق)",
+      "meaning": "Wanda ya samar da abubuwa bayan ba su nan, Ya kuma kaddara musu halayensu da siffofinsu kafin halittar su. Shi ne ya halicci komai daga babu da ikonsa da hikimarsa.",
+      "reflection": "Yi tunani a kan halittun Allah da kwarewarSa a cikin sararin samaniya. Ka gode Masa a kan ni'imar halitta da rayuwa, kuma ka yi amfani da abin da ya halitta wajen abin da Ya yarda da shi."
+    },
+    {
+      "id": 13,
+      "name": "Mai Halitta (Al-Bari' - البارئ)",
+      "meaning": "Wanda ya halicci halittu da ikonSa, Ya kuma banbanta su daga juna da siffofi da kamanni daban-daban ba tare da wani lahani ko sabani ba.",
+      "reflection": "Yi tunani a kan daidaiton halittar Allah da yadda ya rarrabe kowace halitta da siffarta. Ka kyautautawa halittun Allah, domin dukkansu iyalin Allah ne."
+    },
+    {
+      "id": 14,
+      "name": "Mai Siffatawa (Al-Musawwir - المصور)",
+      "meaning": "Wanda ya zana dukkan halittu, Ya bai wa kowace halitta siffarta da kamanninta wanda yake banbanta ta. Ya yi halittunSa da kamanni daban-daban domin su rika gane juna.",
+      "reflection": "Gode wa Allah a kan kyakkyawar siffar da ya yi maka, kada ka aibata halittar kowa. Ka sani cewa asalin kyau shi ne kyawun zuciya da aiki."
+    },
+    {
+      "id": 15,
+      "name": "Mai Yawan Gafara (Al-Ghaffar - الغفار)",
+      "meaning": "Mai yawan yi wa bayinSa gafara, Yana suturta zunubansu kuma Yana yafe su sau da yawa. Ba Ya gajiya da yin gafara koda zunubai sun maimaitu.",
+      "reflection": "Yawaita yin istigfari (neman gafara) a kowane lokaci, domin kofar gafara a bude take ba a rufe ta. Kada ka yanke tsammani daga rahamar Allah komai girmar zunubinka."
+    },
+    {
+      "id": 16,
+      "name": "Mai Rinjaye / Mai Qahira (Al-Qahhar - القهار)",
+      "meaning": "Wanda ya rinjayi komai da ikonSa da karfinSa, kowace halitta ta mika wuya ga girmansa. Babu abin da zai buwaye Shi a sama ko a kasa, Yana rinjayar azzalumai da masu girman kai.",
+      "reflection": "Ka ji tsoron ikon Allah a kan kowane azzalumi da mai girman kai, kada ka ji tsoron kowa in ba Shi ba. Ka sani wanda ya rinjayi mutane da zalunci, Allah zai murkushe shi da gaskiyarSa."
+    },
+    {
+      "id": 17,
+      "name": "Mai Yawan Kyauta (Al-Wahhab - الوهاب)",
+      "meaning": "Mai yawan kyauta da kyaututtuka, Yana bayarwa ba tare da dalili ba, ba don neman lada ko biya ba. Yana bai wa wanda Ya so abin da Ya so, kyautarSa ba ta yankewa.",
+      "reflection": "Roki Allah daga falalarSa da kyautarSa, domin Shi ne Mai yawan kyauta wanda taskarSa ba ta karewa. Ka zama mai kyauta ga mutane, domin Allah Yana son masu kyauta."
+    },
+    {
+      "id": 18,
+      "name": "Mai Ba da Arziki (Ar-Razzaq - الرزاق)",
+      "meaning": "Wanda ke azurta dukkan halittu kuma Ya dauki nauyin abincinsu da arzikinsu. Ba Ya mantawa da kowace halitta daga arzikinta, Yana azurta mumini da kafiri, na gari da fajiri.",
+      "reflection": "Ka kwantar da hankalinka, arzikin da aka kaddara maka zai zo maka a lokacin da Allah Ya tsara. Ka yi qoqari wajen neman halak kuma ka dogara ga Allah."
+    },
+    {
+      "id": 19,
+      "name": "Mai Budewa / Mai Hukunci (Al-Fattah - الفتاح)",
+      "meaning": "Wanda ke bude kofofin rahama da arziki ga bayinSa, kuma Ya yi hukunci a tsakaninsu da gaskiya da adalci. Yana bude kofofin alheri da mafita ga wanda ya nemi taimakonSa.",
+      "reflection": "Idan kofofi suka rufe a gabanka, koma ga Al-Fattah. Ka sani cewa abin da Allah ya bude babu mai rufe shi, kuma abin da ya rufe babu mai bude shi."
+    },
+    {
+      "id": 20,
+      "name": "Masani (Al-'Alim - العليم)",
+      "meaning": "Wanda iliminSa ya kewaye komai, na fili da na boye, karami da babba. Yana sane da abin da ya kasance, wanda ke faruwa, da wanda zai faru. Babu abin da ke buya a gare Shi a sama da kasa.",
+      "reflection": "Ka tuna cewa ilimin Allah ya kewaye komai, saboda haka ka kyautata aikinka a boye da bayyana. Nemi ilimi mai amfani kuma ka yi aiki da shi."
+    },
+    {
+      "id": 21,
+      "name": "Mai Riqewa / Mai Quntatawa (Al-Qabidh - القابض)",
+      "meaning": "Wanda ke riqe arziki da rayuka da hikimarSa da soNsa, Yana kuntatawa wanda Ya so a matsayin jarrabawa. RikewarSa adalci ne da hikima; Yana riqewa ne domin Ya bayar.",
+      "reflection": "Idan al'amura suka matsa maka, ka sani cewa hakan hikima ce daga Allah, kuma bayan tsanani akwai sauki. Yi hakuri, ka nemi lada kuma kada ka fidda tsammani."
+    },
+    {
+      "id": 22,
+      "name": "Mai Shimfidawa (Al-Basith - الباسط)",
+      "meaning": "Wanda ke shimfida arziki ga wanda Ya so a cikin bayinSa da falalarSa da karamcinSa. Yana shimfida rahamarSa da kyautarSa, Yana shimfida hannunsa daddare don mai laifin rana ya tuba.",
+      "reflection": "Idan Allah ya yalwata maka arziki da kyauta, ka gode Masa kuma kada ka yi girman kai. Ka sani cewa yalwa ma jarrabawa ce kamar yadda kuntatawa take jarrabawa."
+    },
+    {
+      "id": 23,
+      "name": "Mai Qasqantarwa (Al-Khafidh - الخافض)",
+      "meaning": "Wanda ke qasqantar da wanda Ya so daga halittunSa da hikimarSa da adalcinSa. Yana kaskantar da masu girman kai da azzalumai. Yana kaskantar da kafirci da wadanda suka bijire wa gaskiya.",
+      "reflection": "Ka kiyayi girman kai da dagawa a ban kasa, domin Allah yana kaskantar da masu girman kai. Kankantar da kai don Allah zai daukaka ka."
+    },
+    {
+      "id": 24,
+      "name": "Mai Daukakawa (Ar-Rafi' - الرافع)",
+      "meaning": "Wanda ke daukaka muminai da biyayya da imani, Yana daukaka wanda Ya so a cikin bayinSa da falalarSa. Yana daukaka ma'abota ilimi da imani darajoji masu yawa.",
+      "reflection": "Nemi daukaka a wurin Allah ta hanyar ilimi da aiki na gari da takawa. Ka sani daukaka ta gaskiya ita ce daukakar zuciya da imani."
+    },
+    {
+      "id": 25,
+      "name": "Mai Girmamawa (Al-Mu'izz - المعز)",
+      "meaning": "Wanda ke bai wa wanda Ya so daga bayinSa daukaka, Ya mayar da shi abin girmamawa. Ba a samun izza sai ga wanda Allah ya ba shi, kuma ba a samunta sai da biyayya ga Allah.",
+      "reflection": "Nemi izza da girmamawa daga Allah Shi kadai, kada ka neme ta daga halittu. Ka sani cewa daukaka tana cikin biyayya ne, kaskanci kuma yana cikin sabo."
+    },
+    {
+      "id": 26,
+      "name": "Mai Wulakantarwa (Al-Mudzill - المذل)",
+      "meaning": "Wanda ke wulakanta wanda Ya so daga halittunSa da adalcinSa da hikimarSa. Yana wulakanta wanda ya yi Masa sabo, ya yi girman kai, da masu barna a doron kasa.",
+      "reflection": "Kada karfinka ko dukiyarka ko matsayinka su rude ka, domin Allah yana da iko Ya wulakanta kowane mai girman kai. Nemi tsarin Allah daga kaskanci da wulakanci."
+    },
+    {
+      "id": 27,
+      "name": "Mai Ji (As-Sami' - السميع)",
+      "meaning": "Wanda ke jin dukkan sautuka da bambancin harsuna da bukatoci, sauti ba ya sarke Masa wani sauti. Yana jin sirri da gunaguni, har ma da takun kudan tururuwa a kan dutse.",
+      "reflection": "Roki Allah da yakini, domin Allah yana jin muryarka da kukan zuciyarka. Kada ka fadi maganar da ba ta faranta wa Allah rai ba, domin Shi ne mai jin komai."
+    },
+    {
+      "id": 28,
+      "name": "Mai Gani (Al-Bashir - البصير)",
+      "meaning": "Wanda ke ganin komai komai kankantarsa. Yana ganin takun tururuwa baka a kan dutse baki a cikin daren duhu. Babu wani motsi ko natsuwa a sammai da kasa da ke boyuwa a gare Shi.",
+      "reflection": "Ka tuna cewa Allah yana kallonka a kowane lokaci, ka gyara aikinka a boye da bayyane. Ka sani cewa Allah Yana ganin ka duk inda kake."
+    },
+    {
+      "id": 29,
+      "name": "Mai Hukunci (Al-Hakam - الحكم)",
+      "meaning": "Wanda ke hukunci tsakanin bayinSa da gaskiya da adalci, ba Ya zaluntar kowa ko da kwayar zarra. HukuncinSa tabbatacce ne ba a mayar da shi, Shi ne babban alkali wanda komai ke komawa gareshi.",
+      "reflection": "Ka yarda da hukuncin Allah da kaddararSa, ka sani cewa ba Ya hukunci sai da gaskiya da adalci. Kada ka yi hukunci a kan mutane sai da adalci."
+    },
+    {
+      "id": 30,
+      "name": "Mai Adalci (Al-'Adl - العدل)",
+      "meaning": "Wanda Ya tsarkaka daga zalunci a cikin hukuncinSa da kaddarawarSa. Ba Ya zaluntar kowa daga halittunSa, kuma ba Ya zubar da ladan wanda ya kyautata aiki. AdalcinSa cikakke ne a kan komai.",
+      "reflection": "Ka zama mai adalci a hukuncinka da mu'amalarka da mutane, kada ka zalunci kowa. Ka sani cewa zalunci duhu ne a Ranar Kiyama."
+    },
+    {
+      "id": 31,
+      "name": "Mai Tausayi / Mai Lura (Al-Lathif - اللطيف)",
+      "meaning": "Wanda ke isar da alheri da ni'imomi ga bayinSa da taushin hali da boye, ta yadda ba su sani ba. Yana tausayawa bayinSa a cikin kaddarorinSa, Yana tafiyar da al'amuransu da hikima.",
+      "reflection": "Yi tunani a kan taushin Allah a gare ka a dukkan abubuwan rayuwarka wadanda wata kila ba ka lura da su ba. Ka sani cewa a bayan kowane kuncin akwai mafita daga Mai tausayi."
+    },
+    {
+      "id": 32,
+      "name": "Masani Mai Bada Labari (Al-Khabir - الخبير)",
+      "meaning": "Masanin diddigin al'amura da asirinsu. Babu abin da ke boyuwa a gare Shi game da halin bayinSa. Yana sanin abin da ke cikin zukata, kuma saninSa ya mamaye komai.",
+      "reflection": "Ka sani cewa Allah Masani ne a kan halinka da abin da ke zuciyarka, saboda haka ka gyara niyyarka da asirinka. Nemi Allah Ya tsarkake zuciyarka."
+    },
+    {
+      "id": 33,
+      "name": "Mai Haquri (Al-Halim - الحليم)",
+      "meaning": "Wanda ba ya gaggawar yi wa masu sabo uquba, a maimakon haka Yana yi musu jinkiri, Yana ba su lafiya da arziki duk da sabonsu. HakurinSa ya mamaye kowa, Yana jinkirtawa amma ba Ya mantawa.",
+      "reflection": "Siffantu da hakuri da jinkiri wajen mu'amalarka da mutane, ka sani hakuri shi ne shugaban kyawawan halaye. Kada ka gaggauta ramuwa, domin Allah mai hakuri ne."
+    },
+    {
+      "id": 34,
+      "name": "Mai Girma (Al-'Azhim - العظيم)",
+      "meaning": "Wanda ke da girma da daukaka a sammai da kasa. Mai girma ne a zatinsa, siffofinsa, da ayyukansa. Hankula ba sa iya kewaye Shi, kuma gani ba ya Riskar sa.",
+      "reflection": "Girmama Allah a cikin zuciyarka da gabobbinka, kada ka raina wani umurni daga umurninSa. Ji girmanSa a lokacin da ka tsaya a gabanSa a cikin sallah."
+    },
+    {
+      "id": 35,
+      "name": "Mai Gafara (Al-Ghafur - الغفور)",
+      "meaning": "Wanda ke gafarta zunubai da suturta aibi. Gafararsa tana da fadi, yana gafartawa wanda ya tuba koda zunubansa sun kai in da suka kai.",
+      "reflection": "Kada ka yanke tsammani daga rahamar Allah da gafararSa komai yawan zunubanka, Shi Mai gafara ne wanda yake son yin gafara. Tuba zuwa gare Shi a kowane lokaci."
+    },
+    {
+      "id": 36,
+      "name": "Mai Godiya / Mai Sakamako (Asy-Syakur - الشكور)",
+      "meaning": "Wanda ke bayar da lada mai yawa a kan aiki kadan, Yana rubanya hasanoni ga wanda Ya so. Yana godewa bayinSa kan toacensu ta hanyar ba su lada da kara musu falala.",
+      "reflection": "Gode wa Allah a kan ni'imominSa da ba a iya kirgawa, ka sani Shi Yana saka maka ko da a karamin aikin da ka yi. Yawaita kyawawan ayyuka ko da kankaninta."
+    },
+    {
+      "id": 37,
+      "name": "Maukaki (Al-'Aliy - العلي)",
+      "meaning": "Wanda ya daukaka sama da halittunSa da zatinsa da siffofinsa da matsayinsa. Ya daukaka a kan komai, babu wani abu da ya fi Shi daukaka.",
+      "reflection": "Rataya da Allah Maukaki, kada ka rataya da abin da ke qasa da Shi. Daga himmarka zuwa abubuwa masu girma, ka nemi darajoji madaukaka a Aljannah."
+    },
+    {
+      "id": 38,
+      "name": "Babba (Al-Kabir - الكبير)",
+      "meaning": "Wanda ya girmama a zatinSa da siffofinSa, duk wani abu in ba Shi ba kankane ne. Ya fi kowane babba girma. Shi ne ma'abocin kibriya a sammai da kasa.",
+      "reflection": "Girmama Allah a zuciyarka, komai in ba Shi ba zai kankanta. Idan ka ga wani abu yana girmama a idonka, ka tuna cewa Allah (Allahu Akbar) Yafi komai girma."
+    },
+    {
+      "id": 39,
+      "name": "Mai Kiyayewa (Al-Hafizh - الحفيظ)",
+      "meaning": "Wanda ke kiyaye halittunsa daga bacewa, Yana kiyaye ayyukan bayinsa don Ya saka musu da su. Yana kiyaye sammai da kasa daga gushewa, Yana kiyaye bayinSa muminai.",
+      "reflection": "Sanya iyalinka, dukiyarka, da addininka a cikin kiyayewar Allah, Shi ne mafi kyawun masu kiyayewa. Kiyaye (dokokin) Allah zai kiyaye ka."
+    },
+    {
+      "id": 40,
+      "name": "Mai Ciyarwa / Mai Iko (Al-Muqit - المقيت)",
+      "meaning": "Wanda ke isar da abinci da gina jiki ga kowace halitta a lokacin da ya dace. Shi ke daukar nauyin ciyar da bayi, Mai iko wajen isar da arziki ga kowane mai rai.",
+      "reflection": "Kwantar da hankalinka game da arzikinka, domin Allah Shi ne Mai ciyarwa wanda ya dauki nauyin arzikin bayinsa. Kada ka manta da ciyar da mabukata."
+    },
+    {
+      "id": 41,
+      "name": "Mai Hisabi / Mai Isarwa (Al-Hasib - الحسيب)",
+      "meaning": "Mai isar wa bayinsa a dukkan lamuransu, kuma Mai yi musu hisabi a kan ayyukansu a Ranar Kiyama. Yana isar wa wanda ya dogara gare Shi, Yana hisabi da adalci.",
+      "reflection": "Yi wa kanka hisabi kafin a yi maka hisabi, ka auna ayyukanka kafin a auna su. Ka sani cewa Allah zai yi maka hisabi, don haka ka tanadi amsa."
+    },
+    {
+      "id": 42,
+      "name": "Mai Jalala / Mai Girma (Al-Jalil - الجليل)",
+      "meaning": "Wanda aka siffanta da siffofin jalala, kamala, da girma. Mai girma a cikin mulkinSa da ikonSa. Siffofinsa suna cika zukata da kwarjini da girmamawa.",
+      "reflection": "Girmama Allah a cikin zuciyarka, ka ji kunyar Ya ganka a kan sabo. Ka sani cewa girmansa yana neman ka kankantar da kanka a gabanSa."
+    },
+    {
+      "id": 43,
+      "name": "Mai Kyauta / Mkarimi (Al-Karim - الكريم)",
+      "meaning": "Mai yawan alheri da kyauta, wanda ke bayarwa ba tare da tambaya ba, ba lissafi, ba gori. Karamcinsa ya zarce komai, Yana bayarwa ba tare da neman wani canji ba.",
+      "reflection": "Siffantu da kyauta da karamci, ka bayar daga abin da Allah ya azurta ka. Ka sani cewa abin da ke wurin Allah shi ne mafi alheri, kada ka yi rowa."
+    },
+    {
+      "id": 44,
+      "name": "Mai Lura / Mai Tsaro (Ar-Raqib - الرقيب)",
+      "meaning": "Masanin abin da qiraza suka boye, wanda ke tsaye a kan kowace rai bisa abin da ta aikata. Babu abin da ke buya a gareshi, Yana lura da ayyukan bayi da maganganunsu.",
+      "reflection": "Lura da Allah a boye da bayyane, ka sani Yana kallonka a kowane lokaci. Don haka ka kyautata aikinka kuma ka tsaya a kan biyayya."
+    },
+    {
+      "id": 45,
+      "name": "Mai Amsawa (Al-Mujib - المجيب)",
+      "meaning": "Wanda ke amsa kiran mai roko idan ya roke Shi. Makusanci ne ga wanda ya roke shi da gaskiya da ikhlasi, Yana amsa kiran mai shiga uku, Yana yaye bakin ciki.",
+      "reflection": "Roki Allah da yakini da nutsuwa, domin Shi ne Mai amsawa Makusanci wanda ba ya mayar da mai roko. Kyautata zatonka ga Allah a kan zai amsa addu'arka."
+    },
+    {
+      "id": 46,
+      "name": "Mai Yalwa (Al-Wasi' - الواسع)",
+      "meaning": "Wanda rahamarSa ta yalwaci komai, iliminSa ya yalwaci komai, kuma arzikinSa ya yalwaci dukkan halittunSa. TaskarSa ba ta qarewa.",
+      "reflection": "Kada ka kuntatawa kanka rahamar Allah mai yalwa, tafi fadi fiye da yadda kake tsammani. Roke Shi daga falalarSa mai yalwa kada ka fidda tsammani."
+    },
+    {
+      "id": 47,
+      "name": "Mai Hikima (Al-Hakim - الحكيم)",
+      "meaning": "Wanda ke ajiye komai a matsayinsa da ya dace da hikima mai zurfi. Ba Ya yin wani abu don wasa, dukkan ayyukanSa da umarninSa suna kan hikimar da Ya sani ne Shi kadai.",
+      "reflection": "Ka aminta da hikimar Allah a cikin dukkan abin da Ya kaddara maka, ko da ba ka fahimci hikimar a lokacin ba. Kaddarar Allah duka alheri ce da hikima."
+    },
+    {
+      "id": 48,
+      "name": "Mai So / Mai Kauna (Al-Wadud - الودود)",
+      "meaning": "Mai son bayinSa na gari, wanda ke nuna musu kauna da ni'imominSa. Shi ne abin so a zukatan waliyyanSa, Yana son su su ma suna son Sa.",
+      "reflection": "Ji son Allah a gare ka idan ka yi Masa biyayya, kuma ka nuna kauna gare Shi da ibada. Cika zuciyarka da son Allah, wanda ya so Allah, Allah zai so shi."
+    },
+    {
+      "id": 49,
+      "name": "Mai Daraja / Mai Girma (Al-Majid - المجيد)",
+      "meaning": "Ma'abocin daraja mai girma, daukaka cikakkiya, da mulki mai fadi. DarajarSa ta cika sammai da kasa, ayyukanSa duka masu daraja ne.",
+      "reflection": "Girmama Allah a zuciyarka da harshenka da gabobbinka, ka yawaita yaba Masa. Ka sani cewa darajar Allah ba za a iya riskar girmanta gaba daya ba."
+    },
+    {
+      "id": 50,
+      "name": "Mai Tayarwa (Al-Ba'ith - الباعث)",
+      "meaning": "Wanda ke tayar da halittu a Ranar Kiyama bayan mutuwarsu domin hisabi da sakamako. Yana aiko da Manzanni, Yana tayar da himma a zukatan muminai.",
+      "reflection": "Yi shiri don ranar Tashin Kiyama da aiki na gari da tuba ta gaskiya. Ka sani za a tayar da kai kuma a yi maka hisabi a kan kowane karami da babba."
+    },
+    {
+      "id": 51,
+      "name": "Mashaidi (Asy-Syahid - الشهيد)",
+      "meaning": "Wanda babu abin da ke boyuwa gare Shi, Yana ganin komai kuma Yana saninsa. Yana shaida ayyukan bayi, kuma Shi ne Mashaidi a kansu Ranar Kiyama.",
+      "reflection": "Tuna shaidar Allah a kan ayyukanka da maganganunka, kyautata aikin da kake yi. Allah mashaidi ne a kanka don haka sanya shaidarsa ta zama maka alheri."
+    },
+    {
+      "id": 52,
+      "name": "Gaskiya (Al-Haqq - الحق)",
+      "meaning": "Tabbatacce wanda babu shakka a kan kasancewarSa ko ububiyyarSa. Shi ne gaskiya a zatinSa, siffofinSa, ayyukanSa, da alkawarinSa. Duk abin da ba Shi ba zai iya zamowa ko kada ya zamo.",
+      "reflection": "Rike gaskiya ko da kai kadai ne, ka sani karya komai huruwarta za ta bace. Lizimci gaskiya domin tana shiriya zuwa ga aikin kwarai."
+    },
+    {
+      "id": 53,
+      "name": "Wakili / Mai Wakiltarwa (Al-Wakil - الوكيل)",
+      "meaning": "Mai daukar nauyin arzikin bayi da maslaharsu, Yana tsayuwa da lamuran wanda ya dogara gare Shi. Wanda ya sanya Shi wakilinsa, Zai isar masa daga kowane bakin ciki da sharri.",
+      "reflection": "Dogara ga Allah tabbataccen dogaro, ka mika lamarinka gare Shi. Duk wanda ya dogara ga Allah Ya isar masa, Allah ya isar ya zama Wakili."
+    },
+    {
+      "id": 54,
+      "name": "Mai Karfi (Al-Qawiy - القوي)",
+      "meaning": "Cikakken Mai karfi wanda babu abin da ke gagaranSa a kasa ko a sama. KarfinSa ba a rinjayarsa. Ba ya fuskantar gajiyawa, rauni ko kasala.",
+      "reflection": "Nemi karfinka daga Allah Mai karfi, kada ka dogara da karfinka. Nemi taimakon Allah kada ka gaza, (Babu dabara babu karfi sai da Allah)."
+    },
+    {
+      "id": 55,
+      "name": "Mai Qarfi / Tabbatacce (Al-Matin - المتين)",
+      "meaning": "Mai tsananin karfi wanda rauni ko gajiya ba sa shafarsa. KwarinSa yana cikin ikonSa da azabarSa ga mai saba Masa. Ba Ya girgiza kuma karfinSa ba ya raguwa.",
+      "reflection": "Ka zama tsayayye a cikin imaninka kuma tabbatacce a kan gaskiya. Ka sani cewa Allah Mai karfi ne kuma mai tsananin kama masu saba masa."
+    },
+    {
+      "id": 56,
+      "name": "Majibinci / Mataimaki (Al-Waliy - الولي)",
+      "meaning": "Mataimaki, mai tallafawa, mai kula da al'amuran bayinSa muminai. Yana jibintarsu da taimakonSa da kiyayewarSa. Shi ne Majibincin muminai, Yana fitar da su daga duhu zuwa haske.",
+      "reflection": "Sanya Allah ya zama Majibincinka da Mataimakinka, wadata da jibintarSa daga jibintar kowa. Wanda Allah ne Majibincinsa ba zai taba tabewa ba."
+    },
+    {
+      "id": 57,
+      "name": "Abin Godewa (Al-Hamid - الحميد)",
+      "meaning": "Abin godewa a kowane hali da kowane lokaci, wanda ya cancanci yabo da godiya a zatinSa, siffofinSa da ayyukanSa. GodiyarSa ta cika sammai da kasa.",
+      "reflection": "Gode wa Allah a cikin tsanani da sauki, domin Shi ne abin godewa a kowane hali. Sanya harshenka ya zama mai sanya godiya da yabon Allah."
+    },
+    {
+      "id": 58,
+      "name": "Mai Lissaftawa (Al-Muhshi - المحصي)",
+      "meaning": "Wanda ya kiyaye komai da lissafi kuma ya san komai daki-daki, babu abin da ke buya a gare Shi. Ya lissafa ayyukan bayi, numfashinsu da takunsu.",
+      "reflection": "Ka sani cewa kowane aiki lissafaffe ne, don haka ka kyautata abin da kake yi. Sanya kyawawan ayyukanka su fi munanan ayyukanka yawa."
+    },
+    {
+      "id": 59,
+      "name": "Mai Farawa (Al-Mubdi' - المبدئ)",
+      "meaning": "Wanda ya fara halittar abubuwa baki daya kuma ya kirkiro su ba bisa wani tsari na da ba. Ya fara halitta da ikonSa daga babu, ba tare da wani sababi ko sanadi ba.",
+      "reflection": "Yi tunani a kan farkon halittarka da yadda Allah ya samo ka daga babu. Ka gode Masa a kan ni'imar samarwa da rayuwa."
+    },
+    {
+      "id": 60,
+      "name": "Mai Mayarwa (Al-Mu'id - المعيد)",
+      "meaning": "Wanda ke mayar da halittu bayan mutuwarsu a Ranar Kiyama kamar yadda ya fara su da farko. Kamar yadda ya samo su daga babu zai iya mayar da su don hisabi.",
+      "reflection": "Yakini da tashin kiyama bayan mutuwa, ka shirya wa haduwa da Allah da aiki na gari. Kamar yadda Ya fara ka, Zai mayar da kai gareshi."
+    },
+    {
+      "id": 61,
+      "name": "Mai Rayarwa (Al-Muhyi - المحيي)",
+      "meaning": "Wanda ke rayar da matattu da fitar da mai rai daga matacce. Shi ne ya raya halittu da busa musu ruhu, Zai rayar da su Ranar Tashin Kiyama. Yana rayar da matattun zukata da hasken imani.",
+      "reflection": "Roki Allah ya rayar da zuciyarka da imani, ilimi, da zikiri. Ka sani cewa rayuwar zuciya ta fi rayuwar gangar jiki muhimmanci."
+    },
+    {
+      "id": 62,
+      "name": "Mai Kashewa (Al-Mumit - المميت)",
+      "meaning": "Wanda ke kashe masu rai kuma Ya karbi rayukansu a lokacin da Ya so. Ya halicci mutuwa da rayuwa domin ya jarraba ku wane ne mafi kyawun aiki.",
+      "reflection": "Tuna mutuwa a kowace rana, ka shirya mata da aiki na gari. Kada rayuwar duniya ta rude ka, domin ita gidan wucewa ce ba gidan tabbata ba."
+    },
+    {
+      "id": 63,
+      "name": "Rayayye (Al-Hayy - الحي)",
+      "meaning": "Wanda ke da rayuwa cikakkiya ta dindindin wacce ba ta faro daga rashi ba, ba kuma za ta kare ba. RayuwarSa ba irin ta halittu ba ce, rayuwa ce da ba ta dauke da bacci ko gyangyadi.",
+      "reflection": "Dogara ga Rayayye wanda ba ya mutuwa, kada ka dogara ga masu rai wadanda za su mutu. Yi aiki domin rayuwar lahira wanzaggiya."
+    },
+    {
+      "id": 64,
+      "name": "Mai Tsayuwa da Komai (Al-Qayyum - القيوم)",
+      "meaning": "Mai tsayuwa da kanSa wanda ba Ya bukatar kowa, Mai tsayar da waninSa wanda komai ba ya tsayuwa sai da Shi. Yana lura da halittunSa ba Ya gyangyadi ba Ya bacci.",
+      "reflection": "Nemi taimakon Al-Qayyum a dukkan lamuranka, domin Shi ne ke tsayar da rayuwarka. Kada ka gaza wajen ambatonSa ko da na dan lokaci kadan."
+    },
+    {
+      "id": 65,
+      "name": "Mai Samuwa (Al-Wajid - الواجد)",
+      "meaning": "Mawadacin da ba Ya bukatar komai, Yana samun duk abin da Ya nufa a lokacin da Ya so. Babu abin da ke gagaranSa, komai kuma Yana bukatarSa.",
+      "reflection": "Kada ka nuna talaucinka sai ga Allah Mawadaci Mai samuwa, roke Shi Shi kadai. Shi ne ke samun abin da Ya so, babu abin da ke gagaranSa."
+    },
+    {
+      "id": 66,
+      "name": "Mai Daukaka / Mai Daraja (Al-Majid - الماجد)",
+      "meaning": "Makarimi mai girma a karamcinSa da darajarSa, wanda ke da daukaka, izza, da sharaf cikakkiya. Mai daukaka a siffofinSa, mai girma a ayyukanSa, mkarimi a kyautarSa.",
+      "reflection": "Daukaka Allah ka girmama Shi, ka roki daukakarSa da karamcinSa. Ka sani cewa daukaka ta gaskiya tana cikin biyayya ga Allah ne."
+    },
+    {
+      "id": 67,
+      "name": "Makadaici (Al-Wahid - الواحد)",
+      "meaning": "Makadaici a zatinSa, siffofinSa, da ayyukanSa, ba Shi da abokin tarayya, tsara, ko misali. Makadaici Tilo, bai haifa ba kuma ba a haife shi ba.",
+      "reflection": "Kadaita Allah a cikin ibadarka da addu'arka, kada ka hada Shi da kowa. Tauhidi shi ne mafi girmar abin da bawa zai nemi kusanci ga Ubangijinsa da shi."
+    },
+    {
+      "id": 68,
+      "name": "Wadda ake nufi da bukata (Ash-Shamad - الصمد)",
+      "meaning": "Shugaban da dukkan halittu ke fuskantarsa a cikin bukatunsu. Shi mawadaci ne daga kowa, kuma kowa yana bukatarsa. Ba ya ci ba ya sha, Ya tsarkaka.",
+      "reflection": "Fuskanci Allah Shi kadai a kowace bukata, kada zuciyarka ta karkata ga waninsa. Shi ne Ash-Shamad wanda ba ya kunyatar da mai nufinsa."
+    },
+    {
+      "id": 69,
+      "name": "Mai Iko (Al-Qadir - القادر)",
+      "meaning": "Wanda ke da iko a kan komai, babu abin da ke gagaranSa a kasa ko a sama. Idan Ya so abu yana ce masa ne kawai 'Kasance', sai ya kasance.",
+      "reflection": "Yi imani da cikakken ikon Allah, ka roke Shi abin da kake so ko da ya yi kama da abin da ba zai yiwu ba. Domin ga Allah babu abin da ba zai yiwu ba."
+    },
+    {
+      "id": 70,
+      "name": "Mai Cikakken Iko (Al-Muqtadir - المقتدر)",
+      "meaning": "Mai matukar iko wanda babu abin da ke gagaranSa. IkonSa yana sama da kowane iko. Yana yin abin da Ya so yadda Ya so a lokacin da Ya so.",
+      "reflection": "Ji ikon Allah a kan komai, kada ka dauki wani abu da wahala in dai kana tare da Allah. Wanda Allah ke tare da shi babu abin da zai buwaye shi."
+    },
+    {
+      "id": 71,
+      "name": "Mai Gabatarwa (Al-Muqaddim - المقدم)",
+      "meaning": "Wanda ke gabatar da wanda Ya so daga halittunSa da hikimarSa da iliminSa. Yana gabatar da wanda Ya so a matsayi, daraja, da zamani.",
+      "reflection": "Yi kokari wajen gabatar da kanka ta hanyar aiki na kwarai da ilimi mai amfani, ka sani Allah yana gabatar da wanda ya cancanta da hikimarSa."
+    },
+    {
+      "id": 72,
+      "name": "Mai Jinkirtarwa (Al-Mu'akhir - المؤخر)",
+      "meaning": "Wanda ke jinkirtar da wanda Ya so daga halittunSa da hikimarSa da adalcinSa. Yana jinkirtar da uquba a matsayin sassauci, Yana jinkirtar da wanda Ya so a daraja. JinkirinSa hikima ne.",
+      "reflection": "Idan wani abu ya jinkirta a gare ka, ka sani cewa a cikin jinkirin akwai hikimar Allah. Yi hakuri, domin Allah ba ya jinkirtar da abu sai don alheri."
+    },
+    {
+      "id": 73,
+      "name": "Na Farko (Al-Awwal - الأول)",
+      "meaning": "Wanda babu komai kafin Shi, Ya kasance babu wani abu tare da Shi. Shi ne Na Farko ba tare da mafari ba, kasancewarSa ba ta da farko.",
+      "reflection": "Tafakari a kan kasancewar Allah Na Farko kuma matabbaci, ka sanya Shi ya zama na farko da zaka fuskanta a kowane al'amari. Fara kowane aiki da sunan Allah."
+    },
+    {
+      "id": 74,
+      "name": "Na Karshe (Al-Akhir - الآخر)",
+      "meaning": "Wanda babu komai bayan Shi, Wanzajje bayan gushewar komai. Shi ne Na Karshe wanda ba shi da qarshe. Zai wanzu bayan dukkan halittu, Shi ne Rayayye da ba Ya mutuwa.",
+      "reflection": "Yi aiki don abin da ke bayan mutuwa, ka sanya akhirarka ta fi duniyarka alheri. Tuna cewa za ka hadu da Allah Na Karshe wanda zai wanzu bayan komai ya kare."
+    },
+    {
+      "id": 75,
+      "name": "Bayyananne (Az-Zahir - الظاهر)",
+      "meaning": "Maukaki sama da komai da girmansa da ikonSa, wanda ayoyin kasancewarSa suke a bayyane a jikin kowace halitta. Bayyananne da dalilanSa da ba su buya ga mai tunani.",
+      "reflection": "Tafakari a kan ayoyin Allah a bayyane a cikin sararin samaniya. Kalli yadda Allah ke bayyana maka ikonSa a cikin kowane abin da kake gani."
+    },
+    {
+      "id": 76,
+      "name": "Boyayye (Al-Batin - الباطن)",
+      "meaning": "Makusanci wanda iliminSa ya kewaye komai, wanda idanu ba sa riskarsa, kuma tunani ba ya kewaye Shi. Yana sane da sirri da abin da ya fi buya.",
+      "reflection": "Gyara boyenka (ziciyarka) kamar yadda kake gyara bayyanarka, Allah ya san abin da kake boyewa da wanda kake bayyanawa. Tsarkake zuciyarka daga riya."
+    },
+    {
+      "id": 77,
+      "name": "Mai Gudanarwa (Al-Wali - الوالي)",
+      "meaning": "Mamallakin komai, mai tafiyar da dukkan al'amura, Mai tsayuwa da lamuran halittunsa. Yana kula da al'amuran bayi da hikimarSa da rahamarSa.",
+      "reflection": "Mika lamarinka ga Allah Mai gudanarwa, ka sani Shi ne ke gudanar da komai. Mika wuya ga Allah za ka sami nutsuwa."
+    },
+    {
+      "id": 78,
+      "name": "Maukaki (Al-Muta'ali - المتعالي)",
+      "meaning": "Wanda ya daukaka daga siffofin halittu, ya daukaka daga dukkan abin da bai dace da girmansa ba. Ya daukaka sama da samun abokin tarayya ko misali.",
+      "reflection": "Daukaka daga abubuwan wulakanci da kananan al'amura, ka rataya da Maukaki Mai girma. Daukaka himmarka daga kowane abu mai karewa."
+    },
+    {
+      "id": 79,
+      "name": "Mai Yawan Alheri (Al-Barr - البر)",
+      "meaning": "Mai juyayi ga bayinSa da kyautatawarSa, da tausayinSa, da alherinSa mai fadi. Mai yawan kyautautawa da tausayi ga halittunSa. Yana kyautautawa bayinSa a dukkan halinsu.",
+      "reflection": "Kyautautawa iyayenka da mutane, domin Allah Yana son masu kyautautawa. Ka ji alherin Allah a kanka a cikin kowace ni'ima da kake samu."
+    },
+    {
+      "id": 80,
+      "name": "Mai Karbar Tuba (At-Tawwab - التواب)",
+      "meaning": "Wanda ke karbar tuban masu tuba kuma ya yafe wa masu sabo komai yawan maimaita zunubinsu. Yana karbar tuban bawa da zarar ya tuba, Yana farin ciki da tuban bawansa.",
+      "reflection": "Tuba ga Allah a kowane lokaci kada ka ji kunyar yawan komawarka gareshi. Shi ne At-Tawwab wanda yake son masu tuba kuma Yana farin ciki da komawarsu."
+    },
+    {
+      "id": 81,
+      "name": "Mai Daukar Fansa (Al-Muntaqim - المنتقم)",
+      "meaning": "Wanda ke daukar fansa daga azzalumai da masu sabo da adalcinSa. Ba Ya gaggawar yin uquba amma Yana ba da jinkiri, idan mai sabo bai hanu ba Zai kama shi kamawa mai karfi.",
+      "reflection": "Kiyayi sabawa Allah kada ka aminta da makircinsa. Ka sani cewa Allah Yana ba da jinkiri ne amma ba ya mantawa, don haka ka yi gaggawar tuba."
+    },
+    {
+      "id": 82,
+      "name": "Mai Yafiya (Al-'Afuw - العفو)",
+      "meaning": "Wanda ke goge munanan ayyuka ya yafe sabo. Yana son yafiya kuma Yana yawan yafiya. YafiyarSa tafi azabarSa yawa, rahamarSa ta riga fushinSa.",
+      "reflection": "Yafe wa mutane Allah Zai yafe maka. Kuma ka yawaita fadin: 'Allahumma innaka Afuwwun tuhibbul afwa fa'afu anni' (Ya Allah Kai Mai yafiya ne kana son yafiya, ka yafe min)."
+    },
+    {
+      "id": 83,
+      "name": "Mai Tausayi (Ar-Ra'uf - الرؤوف)",
+      "meaning": "Mai tsananin rahama da tausayi ga bayinSa, ya fi su tausayin kansu. TausayinSa ya rigayi azabarSa, kyakkyawar kulawarSa ta rigayi kamunSa.",
+      "reflection": "Tausayawa wadanda ke kewaye da kai, Allah Yana tausayawa bayinSa masu tausayi. Ka zama mai tausayi ga raunana da miskinai."
+    },
+    {
+      "id": 84,
+      "name": "Mamallakin Mulki (Malikul-Mulk - مالك الملك)",
+      "meaning": "Mamallakin dukkan mulki, Mai tafiyar da shi yadda Ya so ba tare da wani mai jayayya ba. Yana ba da mulki ga wanda Ya so, Yana kwace shi daga wanda Ya so. Alheri duka a HannunSa yake.",
+      "reflection": "Kada ka rataya da mulkin duniya mai karewa, ka sani mulki na gaskiya na Allah ne kadai. Roki Allah daga falalarSa."
+    },
+    {
+      "id": 85,
+      "name": "Ma'abocin Girma da Karama (Dzul-Jalal wal-Ikram - ذو الجلال والإكرام)",
+      "meaning": "Ma'abocin girma da kibriya da jalala, kuma asalin dukkan ikirami da kyautautawa. Ana girmama Shi saboda girmansa, Ana sonsa saboda karamcinSa.",
+      "reflection": "Girmama Allah ka daukaka Shi, ka girmama bayinSa, domin wanda ya girmama bayin Allah, Allah zai girmama shi. Roke Shi da girmanSa da karamcinSa."
+    },
+    {
+      "id": 86,
+      "name": "Mai Adalci (Al-Muqsit - المقسط)",
+      "meaning": "Adali wanda ke kwatar wa wanda aka zalunta hakkinsa daga azzalumi. Yana yin adalci a hukuncinSa, raba arzikinSa da bayarwarSa. AdalcinSa ya hada duniya da lahira.",
+      "reflection": "Ka zama adali a mu'amalarka da mutane, kada ka zalunci kowa. Ka sani cewa Allah Yana son masu yin adalci."
+    },
+    {
+      "id": 87,
+      "name": "Mai Tarawa (Al-Jami' - الجامع)",
+      "meaning": "Wanda zai tattara halittu baki daya a Ranar da babu shakka a cikinta (Ranar Kiyama). Yana harhada abubuwa mabambanta da hikimarSa. Ya tattara dukkan kamala a zatinSa.",
+      "reflection": "Yi shirin ranar tattarawa mafi girma, ka yi aiki domin abin da ke bayanta. Tattara zuciyarka ga Allah kada ka wargaza hankalinka."
+    },
+    {
+      "id": 88,
+      "name": "Mawadaci (Al-Ghaniy - الغني)",
+      "meaning": "Wanda ba Ya bukatar kowa daga halittunSa a komai, amma dukkan halittunSa suna bukatarSa a komai. Mawadaci a zatinSa, ba Ya talaucewa a kowane yanayi.",
+      "reflection": "Wadata da Allah daga waninSa, kada ka kankantar da kanka ga halitta. Ka sani cewa wadata ta gaskiya ita ce wadatar zuciya da ruhi."
+    },
+    {
+      "id": 89,
+      "name": "Mai Wadatatarwa (Al-Mughni - المغني)",
+      "meaning": "Wanda ke wadata wanda Ya so daga bayinSa da falalarSa da karamcinSa. Yana wadata su da dukiya, ilimi, imani da yarda (qana'a).",
+      "reflection": "Roki Allah wadata, kuma ka wadata (taimaka) waninka daga abin da Allah ya ba ka. Mafi arzikin mutane shi ne wanda Allah ya wadata shi da qana'a."
+    },
+    {
+      "id": 90,
+      "name": "Mai Hanawa (Al-Mani' - المانع)",
+      "meaning": "Wanda ke hana abin da Ya so daga wanda Ya so bisa hikimarSa da rahamarSa. Yana hana musiba daga bayinSa muminai, kuma Yana hana wasu ni'imomi don wata hikima ko jarrabawa.",
+      "reflection": "Idan Allah ya hana ka wani abu, ka sani cewa a cikin hanawar akwai alheri a gare ka. Watakila Allah ya hana ka don Ya ba ka abin da ya fi kyau."
+    },
+    {
+      "id": 91,
+      "name": "Mai Cutarwa / Jarrabawa (Ad-Dhar - الضار)",
+      "meaning": "Wanda ke kaddara cuta da musiba ga wanda Ya so da hikimarSa da iliminSa. CutarwarSa ba zalunci ba ne, a'a hikima ce, jarrabawa ce. Babu wanda zai iya cutarwa sai da izininSa.",
+      "reflection": "Kada ka ji tsoron cutarwar kowa in ba Allah ba, ka sani abin da ya same ka ba zai taba kuskure ka ba. Yi hakuri da jarrabawa ka nemi lada."
+    },
+    {
+      "id": 92,
+      "name": "Mai Amfanarwa (An-Nafi' - النافع)",
+      "meaning": "Wanda ke kaddara amfani ga wanda Ya so a cikin bayinSa da rahamarSa. Kowane amfani a sararin samaniya daga Allah yake. Shi ne asalin kowane alheri da amfani.",
+      "reflection": "Yi kokarin zama mai amfanar da mutane, domin Allah Yana son wanda ke amfanar da bayinSa. Fiyayyen mutane shi ne wanda ya fi su amfanar da mutane."
+    },
+    {
+      "id": 93,
+      "name": "Haske (An-Nur - النور)",
+      "meaning": "Wanda ya haskaka sammai da kasa da haskenSa, Ya haskaka zukatan muminai da shiriya da imani. HaskenSa yana haskaka kowane duhu.",
+      "reflection": "Roki Allah ya haskaka zuciyarka da basirarka da hasken imani da shiriya. Sanya rayuwarka ta zama hasken da ke haskaka wa wani tafarkinsa."
+    },
+    {
+      "id": 94,
+      "name": "Mai Shiryarwa (Al-Hadi - الهادي)",
+      "meaning": "Wanda ke shiryar da wanda Ya so zuwa ga hanya madaidaiciya da addinin gaskiya. Yana shiryar da zukata don su gane Shi. ShiriyarSa ni'ima ce mai girma da ba ta misaltuwa.",
+      "reflection": "Roki Allah shiriya da tabbata a kowace sallah da kowace addu'a. Yi kokarin shiryar da waninka da hikima da wa'azi mai kyau."
+    },
+    {
+      "id": 95,
+      "name": "Makagi / Kirkirarru (Al-Badi' - البديع)",
+      "meaning": "Wanda ya kirkiro halittu ba a kan wani misali na da ba. KirkirarSa a cikin halittunSa tana ba wa hankula mamaki. Shi ne Makagin sammai da kasa.",
+      "reflection": "Tafakari a kan kirkirar Allah a cikin halittunSa, ka yi sujjadar godiya a kan girmansa. Kai ma ka zama mai kirkira (mai kyautautawa) a aikinka da ibadarka."
+    },
+    {
+      "id": 96,
+      "name": "Tabbatacce / Wanzajje (Al-Baqi - الباقي)",
+      "meaning": "Dindindin wanda ba ya gushewa, ba ya fuskantar lalacewa ko karewa. Komai halakakke ne sai ZatinSa. Wanzajje bayan karewar halittunSa, ba ya da iyaka.",
+      "reflection": "Yi aiki don abin da zai wanzu (lahira), kada ka rataya da abin da zai kare (duniya). Abin da ke wurin Allah shi ne mafi alheri kuma mafi wanzuwa."
+    },
+    {
+      "id": 97,
+      "name": "Magaji (Al-Warith - الوارث)",
+      "meaning": "Wanda zai gaji kasa da wanda ke kanta bayan karewarsu duka. Yana wanzuwa bayan karewar halittu Ya gaji komai. Zuwa gareshi komai zai koma.",
+      "reflection": "Ka tuna cewa za ka bar komai a bayanka, don haka ka tanadi na akhirarka. Ka sani abin da kake ciyarwa a tafarkin Allah shi ne abin da zai rage maka."
+    },
+    {
+      "id": 98,
+      "name": "Mai Shiryarwa / Mai Gudanarwa (Ar-Rashid - الرشيد)",
+      "meaning": "Wanda ke nuna wa halittu hanya ya shiryar da su ga maslaharsu ta addini da duniya. TsarinSa mai hikima ne, ayyukanSa duka daidai ne. Yana shiryar da wanda Ya so.",
+      "reflection": "Nemi shiriya da dacewa daga Allah a dukkan lamuranka, ka yi istikhara a cikin kudurorinka. Wanda ya dogara ga Allah ya nemi shiriyarSa, Zai shiryar da shi."
+    },
+    {
+      "id": 99,
+      "name": "Mai Hakuri (As-Sabur - الصبور)",
+      "meaning": "Wanda ba ya gaggawar yi wa masu sabo uquba kodayake Yana da iko a kansu. Yana yi musu jinkiri domin su tuba su koma gare Shi. HakurinSa mai fadi ne.",
+      "reflection": "Siffantu da hakuri a kan qaddarar Allah, da yin biyayya gareshi, da kuma barin sabonsa. Ka sani cewa hakuri mabudin sauki ne kuma hanyar nasara ce."
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class QiblaTheme {
+  final bool isDark;
+  QiblaTheme({required this.isDark});
+
+  // ==============================
+  // 🎨 Colors
+  // ==============================
+  static const Color bgDark = Color(0xFF0A0E17);
+  static const Color bgLight = Color(0xFFF0F4FF);
+  static const Color gold = Color(0xFFE6B325);
+  static const Color green = Color(0xFF2ECC71);
+  static const Color darkGreen = Color(0xFF1A6B3A);
+  static const Color red = Color(0xFFE74C3C);
+  static const Color blue = Color(0xFF3498DB);
+  static const Color orange = Colors.orange;
+
+  Color get bg => isDark ? bgDark : bgLight;
+  Color get textColor => isDark ? Colors.white : const Color(0xFF1A1A2E);
+
+  // ==============================
+  // 🎨 Card & Surface Colors
+  // ==============================
+  Color get cardBg => isDark
+      ? Colors.white.withOpacity(0.05)
+      : Colors.white.withOpacity(0.9);
+
+  Color get cardBorder => isDark
+      ? Colors.white.withOpacity(0.07)
+      : gold.withOpacity(0.16);
+
+  Color get backBtnBg => isDark
+      ? Colors.white.withOpacity(0.08)
+      : Colors.white.withOpacity(0.9);
+
+  Color get backBtnBorder => isDark
+      ? Colors.white.withOpacity(0.1)
+      : gold.withOpacity(0.25);
+
+  // ==============================
+  // 🎨 Background Gradients
+  // ==============================
+  List<Color> facingGradient(bool isFacing) => isDark
+      ? [
+    isFacing ? const Color(0xFF0D2016) : const Color(0xFF0D1520),
+    bgDark,
+  ]
+      : [
+    isFacing ? const Color(0xFFE8F8EF) : const Color(0xFFEEF3FF),
+    bgLight,
+  ];
+
+  // ==============================
+  // 📐 Dimensions
+  // ==============================
+  static const double cardRadius = 18.0;
+  static const double bannerRadius = 20.0;
+  static const double accuracyBarRadius = 18.0;
+  static const double howToUseRadius = 18.0;
+  static const double calibrationRadius = 13.0;
+  static const double backBtnRadius = 12.0;
+
+  static const double compassMinSize = 210.0;
+  static const double compassMaxSize = 310.0;
+  static const double compassSizeFactor = 0.74;
+
+  static const double needleWidth = 26.0;
+  static const double centerDotSize = 38.0;
+
+  // ==============================
+  // 📦 Shadows
+  // ==============================
+  List<BoxShadow> get cardShadow => [
+    BoxShadow(
+      color: Colors.black.withOpacity(isDark ? 0.10 : 0.04),
+      blurRadius: 7,
+      offset: const Offset(0, 2),
+    ),
+  ];
+
+  List<BoxShadow> get accuracyShadow => [
+    BoxShadow(
+      color: Colors.black.withOpacity(isDark ? 0.10 : 0.04),
+      blurRadius: 8,
+      offset: const Offset(0, 2),
+    ),
+  ];
+
+  // ==============================
+  // 🔤 Text Styles
+  // ==============================
+  TextStyle get titleStyle => GoogleFonts.cairo(
+  fontSize: 20,
+  fontWeight: FontWeight.w800,
+  color: textColor,
+  );
+
+  TextStyle get subtitleStyle => GoogleFonts.cairo(
+  fontSize: 10,
+  color: textColor.withOpacity(0.45),
+  );
+
+  TextStyle labelStyle(double fontSize) => GoogleFonts.cairo(
+  fontSize: fontSize,
+  color: isDark ? Colors.white60 : Colors.black54,
+  );
+
+  TextStyle boldStyle(double fontSize, Color color) => GoogleFonts.cairo(
+  fontSize: fontSize,
+  fontWeight: FontWeight.w800,
+  color: color,
+  );
+
+  // ==============================
+  // 🔧 Guidance Helpers
+  // ==============================
+  static Color getGuidanceColor(double deviation) {
+  final abs = deviation.abs();
+  if (abs < 5) return green;
+  if (abs < 25) return const Color(0xFFF39C12);
+  return red;
+  }
+
+  static String getDirectionLabel(double deviation) {
+  final d = deviation;
+  final abs = d.abs();
+  if (abs < 5) return '✓  القبلة أمامك مباشرة';
+  if (abs < 20) return d > 0 ? 'دوّر قليلاً لليسار' : 'دوّر قليلاً لليمين';
+  if (abs < 60) return d > 0 ? 'دوّر لليسار' : 'دوّر لليمين';
+  if (abs < 120) return d > 0 ? 'القبلة على يسارك' : 'القبلة على يمينك';
+  return 'القبلة خلفك، استدر';
+  }
+
+  static IconData getDirectionIcon(double deviation) {
+  final d = deviation;
+  final abs = d.abs();
+  if (abs < 5) return Icons.check_circle_rounded;
+  if (abs < 20) return d > 0 ? Icons.rotate_left : Icons.rotate_right;
+  if (abs < 120) return d > 0 ? Icons.arrow_back_rounded : Icons.arrow_forward_rounded;
+  return Icons.sync_rounded;
+  }
+
+  static String getAccuracyText(int accuracy) {
+  if (accuracy >= 95) return '✓ ممتاز — أنت تواجه القبلة بدقة عالية';
+  if (accuracy >= 70) return 'قريب — استمر في الدوران قليلاً';
+  if (accuracy >= 40) return 'متوسط — دوّر نحو الإبرة الخضراء';
+  return 'بعيد — دوّر هاتفك نحو الإبرة الخضراء';
+  }
+}

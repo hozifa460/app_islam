@@ -1,0 +1,53 @@
+{
+  "weekDays": ["Is", "Ta", "Ar", "Kh", "Ji", "Sa", "Ax"],
+  "arabicMonths": [
+    "Janaayo", "Febraayo", "Maajo", "Abriil", "Maajo", "Juun",
+    "Luuliyo", "Agoosto", "Sebteembar", "Oktoobar", "Nofeembar", "Diseembar"
+  ],
+  "hijriMonths": [
+    "Muxarram", "Safar", "Rabiic al-Awwal", "Rabiic al-Thani", "Jumaada al-Awwal", "Jumaada al-Thani",
+    "Rajab", "Shacbaan", "Ramadaan", "Shawaal", "Dhu al-Qicdah", "Dhu al-Xijjah"
+  ],
+  "islamicFacts": [
+    "Jadwalka Hijriyada wuxuu ka bilaabmaa hijradii Nabiga ﷺ uu ka hijrooday Makka ilaa Madiina.",
+    "Ramadaan waa bisha sagaalaad ee jadwalka Hijriyada.",
+    "Bilooyinka xurmada leh waa: Dhu al-Qicdah, Dhu al-Xijjah, Muxarram, iyo Rajab.",
+    "Habeenka Qadriga wuxuu ka khayr badan yahay kun bilood, waxaana la raadiyaa tobanka dambe ee Ramadaan.",
+    "Maalinta Jimcaha waa maalinta ugu fadliga badan usbuuca ee Muslimiinta.",
+    "Soomida maalinta Carafo waxay tirtirtaa dembiyada laba sano, idanka Alle, qofka aan xajinayn.",
+    "Maalinta Caashuuraa waa maalin barakaysan, soomideeduna waa sunne.",
+    "Sako, Soom iyo Xaj dhammaantood waxay xiriir la leeyihiin jadwalka Hijriyada.",
+    "Aragtida bisha curatay waa sunne la xiriirta bilowga bilaha Hijriyada.",
+    "Ciidaha Islaamka waxaa lagu go'aamiyaa jadwalka Hijriyada ee ma aha kan Miilaadiga."
+  ],
+  "hijriEvents": {
+    "1-10": {"title": "Maalinta Caashuuraa", "desc": "Maalin si weyn loo dhiirigeliyay soomideeda oo ajir weyn leh."},
+    "3-12": {"title": "Mawliidka Nabiga", "desc": "Xuska dhalashada Nabiga ﷺ sida ku xusan taariikho caan ah."},
+    "7-27": {"title": "Israa wal-Micraaj", "desc": "Habeen barakaysan oo lala xiriiriyo Dheelmintii iyo Miraj-kii."},
+    "8-15": {"title": "Nus-Shacbaan", "desc": "Habeen barakaysan oo muslimiin badani cibaadaystaan."},
+    "9-1": {"title": "Bilowga Ramadaan", "desc": "Bilowga bisha barakaysan ee Ramadaan."},
+    "9-27": {"title": "Habeenka Qadriga (La filayo)", "desc": "Habeennada ugu waaweyn sanadka, laga raadiyo 10ka dambe."},
+    "10-1": {"title": "Ciid al-Fidri", "desc": "Maalin farxadeed ee Muslimiinta kadib dhammaystirka soonta Ramadaan."},
+    "12-9": {"title": "Maalinta Carafo", "desc": "Maalmaha ugu khayrka badan, la dhiirigaliyay inuu soomo qofka aan xajinayn."},
+    "12-10": {"title": "Ciid al-Adxa", "desc": "Maalinta Gowraca (Udxiyada) iyo mid kamid ah maalmaha ugu waaweyn."}
+  },
+  "hijriNotes": {
+    "1-10": {"title": "Faa'iido Diini ah", "desc": "Waa sunne in la soomo Caashuuraa, laguna daro maalin ka hor ama ka dib."},
+    "9-1": {"title": "Faa'iido Diini ah", "desc": "Ramadaan waa bisha soonta, salaadda taraawiixda iyo akhriska Quraanka."},
+    "9-27": {"title": "Faa'iido Diini ah", "desc": "Laylatul Qadri waxaa laga raadiyaa 10ka dambe; way ka khayr badantahay 1000 bilood."},
+    "10-1": {"title": "Faa'iido Diini ah", "desc": "Ciiddu waa maalin farxad iyo shukri, muujinta farxadduna waa sunne."},
+    "12-9": {"title": "Faa'iido Diini ah", "desc": "Soomida maalinta Carafo ee qofka aan xajinayn waxay tirtirtaa 2 sano oo dembi ah."},
+    "12-10": {"title": "Faa'iido Diini ah", "desc": "Ciid al-Adxa waa maalin weyn oo la jideeyay in la gowraco udxiyo."}
+  },
+  "upcomingEvents": [
+    {"month": 1, "day": 10, "title": "Maalinta Caashuuraa"},
+    {"month": 3, "day": 12, "title": "Mawliidka Nabiga"},
+    {"month": 7, "day": 27, "title": "Israa wal-Micraaj"},
+    {"month": 8, "day": 15, "title": "Nus-Shacbaan"},
+    {"month": 9, "day": 1, "title": "Bilowga Ramadaan"},
+    {"month": 9, "day": 27, "title": "Habeenka Qadriga"},
+    {"month": 10, "day": 1, "title": "Ciid al-Fidri"},
+    {"month": 12, "day": 9, "title": "Maalinta Carafo"},
+    {"month": 12, "day": 10, "title": "Ciid al-Adxa"}
+  ]
+}

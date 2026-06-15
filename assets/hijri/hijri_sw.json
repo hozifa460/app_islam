@@ -1,0 +1,53 @@
+{
+  "weekDays": ["Jt", "Jn", "Jt", "Al", "Ij", "Jm", "Jp"],
+  "arabicMonths": [
+    "Januari", "Februari", "Machi", "Aprili", "Mei", "Juni",
+    "Julai", "Agosti", "Septemba", "Oktoba", "Novemba", "Desemba"
+  ],
+  "hijriMonths": [
+    "Muharram", "Safar", "Rabi' al-Awwal", "Rabi' al-Thani", "Jumada al-Awwal", "Jumada al-Thani",
+    "Rajab", "Sha'ban", "Ramadan", "Shawwal", "Dhu al-Qi'dah", "Dhu al-Hijjah"
+  ],
+  "islamicFacts": [
+    "Kalenda ya Hijiria inaanza na kugura (Hijra) kwa Mtume ﷺ kutoka Makka kwenda Madina.",
+    "Ramadan ni mwezi wa tisa katika kalenda ya Hijiria.",
+    "Miezi mitukufu ni: Dhu al-Qi'dah, Dhu al-Hijjah, Muharram, na Rajab.",
+    "Laylat al-Qadr ni bora kuliko miezi elfu na inatafutwa katika kumi la mwisho la Ramadan.",
+    "Ijumaa ni siku bora ya wiki kwa Waislamu.",
+    "Kufunga siku ya Arafah kunafuta madhambi ya miaka miwili, kwa idhini ya Allah, kwa wasioenda Hija.",
+    "Siku ya Ashura ni siku iliyobarikiwa, na kufunga siku hiyo kunapendekezwa.",
+    "Zaka, Funga, na Hija zinahusiana sana na kalenda ya Hijiria.",
+    "Kuona mwezi mwandamo ni Sunnah inayohusiana na mwanzo wa miezi ya Hijiria.",
+    "Sikukuu za Kiislamu zinapangwa kulingana na kalenda ya Hijiria, si kalenda ya Miladia."
+  ],
+  "hijriEvents": {
+    "1-10": {"title": "Siku ya Ashura", "desc": "Siku inayopendekezwa sana kufungwa yenye malipo makubwa."},
+    "3-12": {"title": "Mawlid al-Nabi", "desc": "Siku ya kuadhimisha kuzaliwa kwa Mtume ﷺ kwa mujibu wa tarehe maarufu."},
+    "7-27": {"title": "Isra na Mi'raj", "desc": "Usiku uliobarikiwa unaohusishwa na Safari ya Usiku na Kupaa."},
+    "8-15": {"title": "Nusu ya Sha'ban", "desc": "Usiku uliobarikiwa ambao huadhimishwa na Waislamu wengi."},
+    "9-1": {"title": "Kuanza kwa Ramadan", "desc": "Mwanzo wa mwezi mtukufu wa Ramadan."},
+    "9-27": {"title": "Laylat al-Qadr (Inatarajiwa)", "desc": "Moja ya usiku bora zaidi, unatafutwa katika siku kumi za mwisho."},
+    "10-1": {"title": "Eid al-Fitr", "desc": "Siku ya furaha kwa Waislamu baada ya kukamilisha funga ya Ramadan."},
+    "12-9": {"title": "Siku ya Arafah", "desc": "Moja ya siku bora zaidi za mwaka, inashauriwa kufungwa kwa wasio Hujaji."},
+    "12-10": {"title": "Eid al-Adha", "desc": "Siku ya Kuchinja na moja ya siku kuu zaidi kwa Waislamu."}
+  },
+  "hijriNotes": {
+    "1-10": {"title": "Ujumbe wa Kiislamu", "desc": "Inashauriwa kufunga Ashura, na kuongeza siku kabla au baada yake."},
+    "9-1": {"title": "Ujumbe wa Kiislamu", "desc": "Ramadan ni mwezi wa kufunga, sala za usiku (Taraweeh) na kusoma Qur'an."},
+    "9-27": {"title": "Ujumbe wa Kiislamu", "desc": "Laylat al-Qadr inatafutwa katika siku 10 za mwisho; ni bora kuliko miezi 1000."},
+    "10-1": {"title": "Ujumbe wa Kiislamu", "desc": "Eid ni siku ya furaha na shukrani, kudhihirisha furaha ni Sunnah."},
+    "12-9": {"title": "Ujumbe wa Kiislamu", "desc": "Kufunga siku ya Arafah kwa asiye Hujaji kunafuta dhambi za miaka miwili."},
+    "12-10": {"title": "Ujumbe wa Kiislamu", "desc": "Eid al-Adha ni siku kuu ambapo kuchinja kumeamrishwa."}
+  },
+  "upcomingEvents": [
+    {"month": 1, "day": 10, "title": "Siku ya Ashura"},
+    {"month": 3, "day": 12, "title": "Mawlid al-Nabi"},
+    {"month": 7, "day": 27, "title": "Isra na Mi'raj"},
+    {"month": 8, "day": 15, "title": "Nusu ya Sha'ban"},
+    {"month": 9, "day": 1, "title": "Kuanza kwa Ramadan"},
+    {"month": 9, "day": 27, "title": "Laylat al-Qadr"},
+    {"month": 10, "day": 1, "title": "Eid al-Fitr"},
+    {"month": 12, "day": 9, "title": "Siku ya Arafah"},
+    {"month": 12, "day": 10, "title": "Eid al-Adha"}
+  ]
+}

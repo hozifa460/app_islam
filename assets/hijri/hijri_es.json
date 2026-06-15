@@ -1,0 +1,53 @@
+{
+  "weekDays": ["Lu", "Ma", "Mi", "Ju", "Vi", "Sá", "Do"],
+  "arabicMonths": [
+    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+  ],
+  "hijriMonths": [
+    "Muharram", "Safar", "Rabi' al-Awwal", "Rabi' ath-Thani", "Jumada al-Awwal", "Jumada ath-Thani",
+    "Rajab", "Sha'ban", "Ramadán", "Shawwal", "Dhu al-Qi'dah", "Dhu al-Hijjah"
+  ],
+  "islamicFacts": [
+    "El calendario islámico (Hégira) comienza con la emigración del Profeta ﷺ de La Meca a Medina.",
+    "El Ramadán es el noveno mes del calendario islámico.",
+    "Los meses sagrados son: Dhu al-Qi'dah, Dhu al-Hijjah, Muharram y Rajab.",
+    "La Noche del Destino (Laylat al-Qadr) es mejor que mil meses y se busca en los últimos diez días de Ramadán.",
+    "El viernes es el mejor día de la semana para los musulmanes.",
+    "Ayunar el día de Arafah expía los pecados de dos años, con el permiso de Allah, para quien no hace el Hayy.",
+    "El día de Ashura es un día bendito, y se recomienda ayunar en él.",
+    "El Zakat, el Ayuno y el Hayy están vinculados al calendario islámico.",
+    "Ver la luna creciente es una Sunnah relacionada con el inicio de los meses islámicos.",
+    "Las festividades islámicas se determinan según el calendario islámico, no el gregoriano."
+  ],
+  "hijriEvents": {
+    "1-10": {"title": "Día de Ashura", "desc": "Un día altamente recomendado para ayunar con gran recompensa."},
+    "3-12": {"title": "Mawlid al-Nabi", "desc": "Aniversario del nacimiento del Profeta ﷺ según fechas conocidas."},
+    "7-27": {"title": "Isra y Mi'raj", "desc": "Una noche bendita asociada al Viaje Nocturno y la Ascensión."},
+    "8-15": {"title": "Mitad de Sha'ban", "desc": "Una noche bendita observada por muchos musulmanes."},
+    "9-1": {"title": "Inicio de Ramadán", "desc": "El comienzo del bendito mes de Ramadán."},
+    "9-27": {"title": "Laylat al-Qadr (Esperada)", "desc": "Una de las noches más grandes, buscada en los últimos diez días."},
+    "10-1": {"title": "Eid al-Fitr", "desc": "Día de alegría para los musulmanes tras completar el ayuno de Ramadán."},
+    "12-9": {"title": "Día de Arafah", "desc": "Uno de los mejores días del año, muy recomendado ayunar para no peregrinos."},
+    "12-10": {"title": "Eid al-Adha", "desc": "Día del Sacrificio y uno de los días más grandes para los musulmanes."}
+  },
+  "hijriNotes": {
+    "1-10": {"title": "Nota Islámica", "desc": "Se recomienda ayunar en Ashura y agregar un día antes o después."},
+    "9-1": {"title": "Nota Islámica", "desc": "Ramadán es el mes del ayuno, oraciones nocturnas y recitación del Corán."},
+    "9-27": {"title": "Nota Islámica", "desc": "Laylat al-Qadr se busca en los últimos 10 días; es mejor que 1000 meses."},
+    "10-1": {"title": "Nota Islámica", "desc": "El Eid es un día de alegría y gratitud donde expresar felicidad es Sunnah."},
+    "12-9": {"title": "Nota Islámica", "desc": "Ayunar en el Día de Arafah para no peregrinos expía dos años de pecados."},
+    "12-10": {"title": "Nota Islámica", "desc": "Eid al-Adha es un gran día en el que se prescribe ofrecer un sacrificio."}
+  },
+  "upcomingEvents": [
+    {"month": 1, "day": 10, "title": "Día de Ashura"},
+    {"month": 3, "day": 12, "title": "Mawlid al-Nabi"},
+    {"month": 7, "day": 27, "title": "Isra y Mi'raj"},
+    {"month": 8, "day": 15, "title": "Mitad de Sha'ban"},
+    {"month": 9, "day": 1, "title": "Inicio de Ramadán"},
+    {"month": 9, "day": 27, "title": "Laylat al-Qadr"},
+    {"month": 10, "day": 1, "title": "Eid al-Fitr"},
+    {"month": 12, "day": 9, "title": "Día de Arafah"},
+    {"month": 12, "day": 10, "title": "Eid al-Adha"}
+  ]
+}

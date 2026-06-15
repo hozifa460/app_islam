@@ -1,0 +1,53 @@
+{
+  "weekDays": ["Du", "Se", "Ch", "Pa", "Ju", "Sh", "Ya"],
+  "arabicMonths": [
+    "Yanvar", "Fevral", "Mart", "Aprel", "May", "Iyun",
+    "Iyul", "Avgust", "Sentabr", "Oktabr", "Noyabr", "Dekabr"
+  ],
+  "hijriMonths": [
+    "Muharram", "Safar", "Rabiulavval", "Rabiuloxir", "Jumodiulavval", "Jumodiuloxir",
+    "Rajab", "Sha'bon", "Ramazon", "Shavvol", "Zulqa'da", "Zulhijja"
+  ],
+  "islamicFacts": [
+    "Hijriy taqvim Payg'ambarimiz ﷺ ning Makkadan Madinaga hijratlaridan boshlanadi.",
+    "Ramazon - hijriy taqvimning to'qqizinchi oyi.",
+    "Haram oylar: Zulqa'da, Zulhijja, Muharram va Rajab.",
+    "Qadr kechasi ming oydan yaxshiroqdir va Ramazonning oxirgi o'n kunligida izlanadi.",
+    "Juma kuni musulmonlar uchun haftaning eng yaxshi kunidir.",
+    "Arafa kunida ro'za tutish, hojilardan tashqari kishilar uchun, Allohning izni bilan ikki yillik gunohlarga kafforat bo'ladi.",
+    "Ashuro kuni muborak kun bo'lib, unda ro'za tutish mustahabdir.",
+    "Zakot, Ro'za va Haj amallari hijriy taqvim bilan bog'liq.",
+    "Yangi oyni (hilolni) ko'rish hijriy oylarning boshlanishi bilan bog'liq sunnatdir.",
+    "Islomiy bayramlar milodiy emas, balki hijriy taqvim asosida belgilanadi."
+  ],
+  "hijriEvents": {
+    "1-10": {"title": "Ashuro kuni", "desc": "Ro'za tutish kuchli tavsiya etilgan va katta ajrga ega kun."},
+    "3-12": {"title": "Mavlid an-Nabiy", "desc": "Payg'ambarimiz ﷺ ning tavallud kunlari (mashhur sanalarga ko'ra)."},
+    "7-27": {"title": "Isro va Me'roj", "desc": "Tungi sayr va osmonga ko'tarilish bilan bog'liq muborak kecha."},
+    "8-15": {"title": "Baroat kechasi", "desc": "Ko'plab musulmonlar e'tibor beradigan muborak kecha."},
+    "9-1": {"title": "Ramazonning boshlanishi", "desc": "Muborak Ramazon oyining kirib kelishi."},
+    "9-27": {"title": "Qadr kechasi (taxminiy)", "desc": "Yilning eng ulug' kechalaridan biri, oxirgi 10 kunda izlanadi."},
+    "10-1": {"title": "Iyd al-Fitr (Ramazon hayiti)", "desc": "Ramazon ro'zasi tugaganidan keyingi musulmonlarning xursandchilik kuni."},
+    "12-9": {"title": "Arafa kuni", "desc": "Yilning eng yaxshi kunlaridan biri, haj qilmaydiganlar ro'za tutishi mustahab."},
+    "12-10": {"title": "Iyd al-Adha (Qurbon hayiti)", "desc": "Qurbonlik kuni va musulmonlar uchun eng ulug' kunlardan biri."}
+  },
+  "hijriNotes": {
+    "1-10": {"title": "Diniy eslatma", "desc": "Ashuro kunida ro'za tutish, undan oldin yoki keyin bir kun qo'shish sunnatdir."},
+    "9-1": {"title": "Diniy eslatma", "desc": "Ramazon - ro'za, tungi namozlar va Qur'on tilovati oyidir."},
+    "9-27": {"title": "Diniy eslatma", "desc": "Qadr kechasi oxirgi 10 kunda izlanadi; u 1000 oydan afzaldir."},
+    "10-1": {"title": "Diniy eslatma", "desc": "Hayit quvonch va shukr kunidir, unda xursandchilikni izhor qilish sunnatdir."},
+    "12-9": {"title": "Diniy eslatma", "desc": "Haj qilmaydiganlar uchun Arafa kunidagi ro'za ikki yillik gunohlarni o'chiradi."},
+    "12-10": {"title": "Diniy eslatma", "desc": "Qurbon hayiti eng ulug' kunlardan bo'lib, unda qurbonlik qilish mashru' qilingan."}
+  },
+  "upcomingEvents": [
+    {"month": 1, "day": 10, "title": "Ashuro kuni"},
+    {"month": 3, "day": 12, "title": "Mavlid an-Nabiy"},
+    {"month": 7, "day": 27, "title": "Isro va Me'roj"},
+    {"month": 8, "day": 15, "title": "Baroat kechasi"},
+    {"month": 9, "day": 1, "title": "Ramazonning boshlanishi"},
+    {"month": 9, "day": 27, "title": "Qadr kechasi"},
+    {"month": 10, "day": 1, "title": "Iyd al-Fitr"},
+    {"month": 12, "day": 9, "title": "Arafa kuni"},
+    {"month": 12, "day": 10, "title": "Iyd al-Adha"}
+  ]
+}

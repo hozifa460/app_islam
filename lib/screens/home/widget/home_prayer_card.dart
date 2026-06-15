@@ -1,0 +1,1004 @@
+import 'dart:math';
+import 'dart:ui';
+
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import '../../../languages/app_localizations.dart';
+import '../../prayer/features/prayer_os/domain/controllers/prayer_journey_controller.dart';
+import '../../prayer/features/prayer_os/presentation/widgets/prayer_log_sheet.dart';
+import 'home_card_skeleton.dart';
+
+class HomePrayerCard extends StatefulWidget {
+  final Color primary;
+  final Color gold;
+  final Color cardColor;
+  final bool isDark;
+  final Map<String, String> prayerTimes;
+  final String cityName;
+  final bool isPrayerLoading;
+  final String nextPrayerName;
+  final String timeLeft;
+  final List<Map<String, dynamic>> prayerInfo;
+  final Animation<double> prayerPulseAnim;
+  final VoidCallback onTap;
+
+  const HomePrayerCard({
+    super.key,
+    required this.primary,
+    required this.gold,
+    required this.cardColor,
+    required this.isDark,
+    required this.prayerTimes,
+    required this.cityName,
+    required this.isPrayerLoading,
+    required this.nextPrayerName,
+    required this.timeLeft,
+    required this.prayerInfo,
+    required this.prayerPulseAnim,
+    required this.onTap,
+  });
+
+  @override
+  State<HomePrayerCard> createState() => _HomePrayerCardState();
+}
+
+class _HomePrayerCardState extends State<HomePrayerCard>
+    with TickerProviderStateMixin {
+  late AnimationController _starController;
+  late AnimationController _breatheController;
+  late Animation<double> _starAnim;
+  late Animation<double> _breatheAnim;
+  late List<_StarData> _stars;
+
+  @override
+  void initState() {
+    super.initState();
+    _starController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 3200),
+    )..repeat(reverse: true);
+    _starAnim = Tween<double>(begin: 0.2, end: 1.0).animate(
+      CurvedAnimation(parent: _starController, curve: Curves.easeInOut),
+    );
+    _breatheController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 4000),
+    )..repeat(reverse: true);
+    _breatheAnim = Tween<double>(begin: 0.5, end: 1.0).animate(
+      CurvedAnimation(parent: _breatheController, curve: Curves.easeInOut),
+    );
+    final rng = Random(42);
+    _stars = List.generate(20, (i) => _StarData(
+      x: rng.nextDouble(),
+      y: rng.nextDouble() * 0.5,
+      size: 0.5 + rng.nextDouble() * 1.6,
+      phase: rng.nextDouble() * 2 * pi,
+    ));
+  }
+
+  @override
+  void dispose() {
+    _starController.dispose();
+    _breatheController.dispose();
+    super.dispose();
+  }
+
+  // ════════════════════════════════════════════
+  // حسابات
+  // ════════════════════════════════════════════
+
+  double _calculateProgress() {
+    if (widget.prayerTimes.isEmpty) return 0.0;
+    try {
+      final now = DateTime.now();
+      DateTime? prev, next;
+      final keys = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+      for (int i = 0; i < keys.length; i++) {
+        final t = _parseTime(widget.prayerTimes[keys[i]] ?? '');
+        if (t.isAfter(now)) {
+          next = t;
+          prev = i > 0
+              ? _parseTime(widget.prayerTimes[keys[i - 1]] ?? '')
+              : _parseTime(widget.prayerTimes['Isha'] ?? '')
+              .subtract(const Duration(days: 1));
+          break;
+        }
+      }
+      if (next == null) {
+        next = _parseTime(widget.prayerTimes['Fajr'] ?? '')
+            .add(const Duration(days: 1));
+        prev = _parseTime(widget.prayerTimes['Isha'] ?? '');
+      }
+      if (prev != null) {
+        final total = next.difference(prev).inMinutes;
+        final elapsed = now.difference(prev).inMinutes;
+        return total <= 0 ? 0.0 : (elapsed / total).clamp(0.0, 1.0);
+      }
+    } catch (_) {}
+    return 0.5;
+  }
+
+  DateTime _parseTime(String t) {
+    final now = DateTime.now();
+    try {
+      final p = t.split(' ')[0].split(':');
+      return DateTime(now.year, now.month, now.day,
+          int.parse(p[0]), int.parse(p[1]));
+    } catch (_) {
+      return now;
+    }
+  }
+
+  String _formatAMPM(String t24) {
+    if (t24.isEmpty || t24 == '--:--') return '--:--';
+    try {
+      final p = t24.split(' ')[0].split(':');
+      int h = int.parse(p[0]);
+      final m = int.parse(p[1]);
+      final period = h >= 12 ? 'م' : 'ص';
+      if (h > 12) h -= 12;
+      if (h == 0) h = 12;
+      return '${h.toString().padLeft(2, '0')}:'
+          '${m.toString().padLeft(2, '0')} $period';
+    } catch (_) {
+      return t24;
+    }
+  }
+
+  String _getCurrentKey() {
+    final now = DateTime.now();
+    final keys = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+    for (final k in keys) {
+      if (_parseTime(widget.prayerTimes[k] ?? '').isAfter(now)) return k;
+    }
+    return 'Fajr';
+  }
+
+  ({String name, String time}) _getAfterNext() {
+    final keys = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+    final idx = keys.indexOf(_getCurrentKey());
+    final nextKey = keys[(idx + 1) % keys.length];
+    String name = '';
+    for (final p in widget.prayerInfo) {
+      if (p['key'] == nextKey) {
+        name = p['name'] as String;
+        break;
+      }
+    }
+    return (
+    name: name,
+    time: _formatAMPM(widget.prayerTimes[nextKey] ?? '')
+    );
+  }
+
+  IconData _timeIcon() {
+    final h = DateTime.now().hour;
+    if (h >= 4 && h < 7) return Icons.nightlight_round;
+    if (h >= 7 && h < 12) return Icons.wb_sunny_rounded;
+    if (h >= 12 && h < 15) return Icons.light_mode_rounded;
+    if (h >= 15 && h < 17) return Icons.wb_sunny_outlined;
+    if (h >= 17 && h < 20) return Icons.wb_twilight_rounded;
+    return Icons.nights_stay_rounded;
+  }
+// ════════════════════════════════════════════
+// تحديد الفترة الحالية بناءً على مواقيت الصلاة
+// ════════════════════════════════════════════
+  String _getCurrentPeriod() {
+    if (widget.prayerTimes.isEmpty) {
+      // fallback للوقت العام إذا لم تُحمل المواقيت بعد
+      final h = DateTime.now().hour;
+      if (h >= 4 && h < 7)  return 'fajr';
+      if (h >= 7 && h < 12) return 'day';
+      if (h >= 12 && h < 15) return 'noon';
+      if (h >= 15 && h < 17) return 'asr';
+      if (h >= 17 && h < 20) return 'dusk';
+      return 'night';
+    }
+
+    final now = DateTime.now();
+
+    final fajr    = _parseTime(widget.prayerTimes['Fajr']    ?? '');
+    final sunrise = _parseTime(widget.prayerTimes['Sunrise'] ?? '');
+    final dhuhr   = _parseTime(widget.prayerTimes['Dhuhr']   ?? '');
+    final asr     = _parseTime(widget.prayerTimes['Asr']     ?? '');
+    final maghrib = _parseTime(widget.prayerTimes['Maghrib'] ?? '');
+    final isha    = _parseTime(widget.prayerTimes['Isha']    ?? '');
+
+    // قبل الفجر = ليل
+    if (now.isBefore(fajr)) return 'night';
+
+    // فجر → شروق
+    if (now.isAfter(fajr) && now.isBefore(sunrise)) return 'fajr';
+
+    // شروق → ظهر (نصف المسافة بين الشروق والظهر = ضحى)
+    if (now.isAfter(sunrise) && now.isBefore(dhuhr)) {
+      final midMorning = sunrise.add(
+        Duration(
+          minutes: dhuhr.difference(sunrise).inMinutes ~/ 2,
+        ),
+      );
+      return now.isBefore(midMorning) ? 'day' : 'noon_before';
+    }
+
+    // ظهر → عصر
+    if (now.isAfter(dhuhr) && now.isBefore(asr)) return 'noon';
+
+    // عصر → مغرب
+    if (now.isAfter(asr) && now.isBefore(maghrib)) {
+      // نصف المسافة بين العصر والمغرب = لحظة قريبة من الغروب
+      final midEvening = asr.add(
+        Duration(
+          minutes: maghrib.difference(asr).inMinutes ~/ 2,
+        ),
+      );
+      return now.isBefore(midEvening) ? 'asr' : 'dusk_before';
+    }
+
+    // مغرب → عشاء
+    if (now.isAfter(maghrib) && now.isBefore(isha)) return 'dusk';
+
+    // بعد العشاء = ليل
+    return 'night';
+  }
+
+// ════════════════════════════════════════════
+// صورة الخلفية حسب مواقيت الصلاة الفعلية
+// ════════════════════════════════════════════
+  String _bgImage() {
+    final period = _getCurrentPeriod();
+    switch (period) {
+      case 'fajr':
+        return 'assets/images/mosque_fajr.jpg';
+      case 'day':
+      case 'noon_before':
+        return 'assets/images/mosque_day.jpg';
+      case 'noon':
+        return 'assets/images/mosque_noon.jpg';
+      case 'asr':
+        return 'assets/images/mosque_asr.jpg';
+      case 'dusk_before':
+      case 'dusk':
+        return 'assets/images/mosque_dusk.jpg';
+      case 'night':
+      default:
+        return 'assets/images/mosque_night.jpg';
+    }
+  }
+
+// ════════════════════════════════════════════
+// الـ overlay حسب مواقيت الصلاة الفعلية
+// ════════════════════════════════════════════
+  List<Color> _overlayColors() {
+    final period = _getCurrentPeriod();
+
+    if (!widget.isDark) {
+      // Light Mode: ألوان ثابتة حسب الفترة
+      switch (period) {
+        case 'fajr':
+          return [
+            const Color(0xFF1A237E).withOpacity(0.40),
+            const Color(0xFF1A237E).withOpacity(0.35),
+            const Color(0xFF1A237E).withOpacity(0.50),
+          ];
+        case 'day':
+        case 'noon_before':
+          return [
+            const Color(0xFF0D47A1).withOpacity(0.35),
+            const Color(0xFF0D47A1).withOpacity(0.30),
+            const Color(0xFF0D47A1).withOpacity(0.45),
+          ];
+        case 'noon':
+          return [
+            const Color(0xFF01579B).withOpacity(0.35),
+            const Color(0xFF01579B).withOpacity(0.30),
+            const Color(0xFF01579B).withOpacity(0.45),
+          ];
+        case 'asr':
+          return [
+            const Color(0xFF4A148C).withOpacity(0.38),
+            const Color(0xFF8B5E3C).withOpacity(0.35),
+            const Color(0xFF4A148C).withOpacity(0.50),
+          ];
+        case 'dusk_before':
+        case 'dusk':
+          return [
+            const Color(0xFF880E4F).withOpacity(0.40),
+            const Color(0xFF8B3A1A).withOpacity(0.35),
+            const Color(0xFF880E4F).withOpacity(0.55),
+          ];
+        case 'night':
+        default:
+          return [
+            const Color(0xFF0D1B2A).withOpacity(0.45),
+            const Color(0xFF0D1B2A).withOpacity(0.40),
+            const Color(0xFF0D1B2A).withOpacity(0.55),
+          ];
+      }
+    } else {
+      // Dark Mode: ألوان غامقة حسب الفترة
+      switch (period) {
+        case 'fajr':
+          return [
+            const Color(0xFF0A0F1E).withOpacity(0.85),
+            const Color(0xFF1B1F4A).withOpacity(0.80),
+            const Color(0xFF2D1B69).withOpacity(0.90),
+          ];
+        case 'day':
+        case 'noon_before':
+          return [
+            const Color(0xFF0D1B2A).withOpacity(0.82),
+            const Color(0xFF1A3A5C).withOpacity(0.78),
+            const Color(0xFF1E4D7B).withOpacity(0.88),
+          ];
+        case 'noon':
+          return [
+            const Color(0xFF0D1B2A).withOpacity(0.82),
+            const Color(0xFF1E3A5F).withOpacity(0.78),
+            const Color(0xFF2A5E8C).withOpacity(0.88),
+          ];
+        case 'asr':
+          return [
+            const Color(0xFF1A1205).withOpacity(0.83),
+            const Color(0xFF3D2C0A).withOpacity(0.80),
+            const Color(0xFF5A3A0F).withOpacity(0.90),
+          ];
+        case 'dusk_before':
+        case 'dusk':
+          return [
+            const Color(0xFF0D0810).withOpacity(0.83),
+            const Color(0xFF3D1030).withOpacity(0.80),
+            const Color(0xFF7A2010).withOpacity(0.90),
+          ];
+        case 'night':
+        default:
+          return [
+            const Color(0xFF020508).withOpacity(0.88),
+            const Color(0xFF080C14).withOpacity(0.85),
+            const Color(0xFF0F1520).withOpacity(0.92),
+          ];
+      }
+    }
+  }
+
+// ════════════════════════════════════════════
+// النجوم تظهر حسب مواقيت الصلاة الفعلية
+// ════════════════════════════════════════════
+  bool _showStars() {
+    final period = _getCurrentPeriod();
+    return period == 'night' || period == 'fajr';
+  }
+  Color _accentColor() {
+    final h = DateTime.now().hour;
+    if (!widget.isDark) {
+      if (h >= 4 && h < 7) return const Color(0xFFD4DCFF);
+      if (h >= 7 && h < 12) return const Color(0xFFFFE5A0);
+      if (h >= 12 && h < 15) return const Color(0xFFFFE080);
+      if (h >= 15 && h < 17) return const Color(0xFFFFCC80);
+      if (h >= 17 && h < 20) return const Color(0xFFFFAA70);
+      return const Color(0xFFE8C86A);
+    } else {
+      if (h >= 4 && h < 7) return const Color(0xFF9AA8E8);
+      if (h >= 7 && h < 12) return const Color(0xFFFFD085);
+      if (h >= 12 && h < 15) return const Color(0xFFFFC857);
+      if (h >= 15 && h < 17) return const Color(0xFFFFAA44);
+      if (h >= 17 && h < 20) return const Color(0xFFFF7043);
+      return const Color(0xFFC8A44D);
+    }
+  }
+
+  // ════════════════════════════════════════════
+  // BUILD
+  // ════════════════════════════════════════════
+
+  @override
+  Widget build(BuildContext context) {
+    final tr = context.tr;
+    if (widget.isPrayerLoading) return _buildSkeleton();
+
+    final journey = context.watch<PrayerJourneyController>();
+    final isLogged = journey.isPrayerLogged(_getCurrentKey());
+    final accent = _accentColor();
+    final progress = _calculateProgress();
+    final after = _getAfterNext();
+
+    return GestureDetector(
+      onTap: () async {
+        if (!isLogged) {
+          final r = await showPrayerLogSheet(
+            context,
+            prayerKey: _getCurrentKey(),
+            prayerName: widget.nextPrayerName,
+            prayerTime: widget.prayerTimes[_getCurrentKey()] ?? '--:--',
+            primaryColor: widget.primary,
+          );
+          if (r != null && r.success && mounted) {
+            await journey.initialize();
+          }
+        } else {
+          widget.onTap();
+        }
+      },
+      child: AnimatedBuilder(
+        animation: Listenable.merge([_starAnim, _breatheAnim]),
+        builder: (_, __) {
+          return Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(24),
+              boxShadow: [
+                BoxShadow(
+                  color: widget.isDark
+                      ? Colors.black.withOpacity(0.50)
+                      : widget.primary.withOpacity(0.18),
+                  blurRadius: widget.isDark ? 20 : 14,
+                  offset: const Offset(0, 6),
+                ),
+              ],
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(24),
+              child: Stack(
+                children: [
+                  _buildBackground(),
+                  if (_showStars() && widget.isDark)
+                    Positioned.fill(
+                      child: CustomPaint(
+                        painter: _StarsPainter(
+                          stars: _stars,
+                          twinkle: _starAnim.value,
+                        ),
+                      ),
+                    ),
+                  _buildContent(tr, accent, progress, after),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  // ════════════════════════════════════════════
+  // خلفية + overlay
+  // ════════════════════════════════════════════
+
+  Widget _buildBackground() {
+    return Positioned.fill(
+      child: Image.asset(
+        _bgImage(),
+        fit: BoxFit.cover,
+        alignment: Alignment.bottomCenter,
+        errorBuilder: (_, __, ___) {
+          final fallbackColors = widget.isDark
+              ? [const Color(0xFF080C14), const Color(0xFF1B2838)]
+              : [widget.primary.withOpacity(0.8), widget.primary];
+          return DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: fallbackColors,
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  // ════════════════════════════════════════════
+  // المحتوى — مسافات مُقلّصة
+  // ════════════════════════════════════════════
+
+  Widget _buildContent(
+      AppLocalizations tr,
+      Color accent,
+      double progress,
+      ({String name, String time}) after,
+      ) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          // الموقع + أيقونة
+          _buildTopRow(accent),
+          const SizedBox(height: 10),
+
+          // اسم الصلاة + العداد
+          _buildMainSection(tr, accent),
+          const SizedBox(height: 10),
+
+          // شريط التقدم
+          _buildProgressBar(progress, accent),
+          const SizedBox(height: 8),
+
+          // الصلاة التالية
+          if (after.name.isNotEmpty) ...[
+            _buildAfterNext(tr, accent, after),
+            const SizedBox(height: 8),
+          ],
+
+          // صف واحد لأوقات الصلوات بدل صفين
+          _buildPrayerRow6(accent),
+        ],
+      ),
+    );
+  }
+
+  // ════════════════════════════════════════════
+  // الموقع + أيقونة — أصغر
+  // ════════════════════════════════════════════
+
+  Widget _buildTopRow(Color accent) {
+    return Row(
+      children: [
+        Expanded(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 5,
+                ),
+                decoration: BoxDecoration(
+                  color: widget.isDark
+                      ? Colors.white.withOpacity(0.08)
+                      : Colors.white.withOpacity(0.25),
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(
+                    color: widget.isDark
+                        ? Colors.white.withOpacity(0.12)
+                        : Colors.white.withOpacity(0.40),
+                    width: 0.8,
+                  ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.location_on_rounded,
+                        color: accent, size: 13),
+                    const SizedBox(width: 4),
+                    Expanded(
+                      child: Text(
+                        widget.cityName,
+                        style: GoogleFonts.cairo(
+                          color: Colors.white.withOpacity(0.95),
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(width: 8),
+        Container(
+          padding: const EdgeInsets.all(6),
+          decoration: BoxDecoration(
+            color: widget.isDark
+                ? Colors.white.withOpacity(0.08)
+                : Colors.white.withOpacity(0.20),
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: accent.withOpacity(0.35),
+              width: 0.8,
+            ),
+          ),
+          child: Icon(_timeIcon(), color: accent, size: 14),
+        ),
+      ],
+    );
+  }
+
+  // ════════════════════════════════════════════
+  // الصلاة التالية + العداد — في صف واحد مُدمج
+  // ════════════════════════════════════════════
+
+  Widget _buildMainSection(AppLocalizations tr, Color accent) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        // اسم الصلاة
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                tr.nextPrayerLabel,
+                style: GoogleFonts.cairo(
+                  color: Colors.white.withOpacity(0.65),
+                  fontSize: 11,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                alignment: AlignmentDirectional.centerStart,
+                child: Text(
+                  widget.nextPrayerName.isEmpty
+                      ? '...'
+                      : widget.nextPrayerName,
+                  style: GoogleFonts.amiri(
+                    color: Colors.white,
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    height: 1.15,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(width: 8),
+
+        // عداد مُدمج أصغر
+        _buildTimerBadge(accent),
+      ],
+    );
+  }
+
+  Widget _buildTimerBadge(Color accent) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(14),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+          decoration: BoxDecoration(
+            color: widget.isDark
+                ? accent.withOpacity(0.12)
+                : Colors.white.withOpacity(0.25),
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(
+              color: widget.isDark
+                  ? accent.withOpacity(0.28)
+                  : Colors.white.withOpacity(0.45),
+              width: 0.8,
+            ),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.timer_outlined, color: accent, size: 13),
+              const SizedBox(width: 5),
+              Text(
+                widget.timeLeft.isEmpty ? '--:--' : widget.timeLeft,
+                style: GoogleFonts.cairo(
+                  color: Colors.white,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // ════════════════════════════════════════════
+  // شريط التقدم — أنحف
+  // ════════════════════════════════════════════
+
+  Widget _buildProgressBar(double progress, Color accent) {
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0, end: progress),
+      duration: const Duration(milliseconds: 1100),
+      curve: Curves.easeOutCubic,
+      builder: (_, val, __) {
+        return LayoutBuilder(builder: (_, bc) {
+          final totalW = bc.maxWidth.isFinite ? bc.maxWidth : 200.0;
+          final fillW = (totalW * val).clamp(0.0, totalW);
+          const barH = 4.0;
+          const dotSize = 8.0;
+
+          return SizedBox(
+            width: totalW,
+            height: dotSize + 2,
+            child: Stack(
+              alignment: Alignment.centerLeft,
+              children: [
+                // track
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  top: (dotSize + 2 - barH) / 2,
+                  child: Container(
+                    height: barH,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white.withOpacity(0.15),
+                    ),
+                  ),
+                ),
+                // fill
+                if (fillW > 0)
+                  Positioned(
+                    left: 0,
+                    top: (dotSize + 2 - barH) / 2,
+                    child: Container(
+                      width: fillW,
+                      height: barH,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        gradient: LinearGradient(
+                          colors: [
+                            Colors.white.withOpacity(0.60),
+                            Colors.white,
+                          ],
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.white.withOpacity(0.20),
+                            blurRadius: 4,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                // نقطة
+                if (val > 0.03)
+                  Positioned(
+                    left: (fillW - dotSize / 2)
+                        .clamp(0.0, totalW - dotSize),
+                    child: Container(
+                      width: dotSize,
+                      height: dotSize,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: accent.withOpacity(0.35),
+                            blurRadius: 6,
+                            spreadRadius: 0.5,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          );
+        });
+      },
+    );
+  }
+
+  // ════════════════════════════════════════════
+  // الصلاة التالية — أصغر
+  // ════════════════════════════════════════════
+
+  Widget _buildAfterNext(
+      AppLocalizations tr,
+      Color accent,
+      ({String name, String time}) after,
+      ) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(12),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+          decoration: BoxDecoration(
+            color: widget.isDark
+                ? Colors.white.withOpacity(0.06)
+                : Colors.white.withOpacity(0.20),
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: widget.isDark
+                  ? Colors.white.withOpacity(0.08)
+                  : Colors.white.withOpacity(0.30),
+              width: 0.8,
+            ),
+          ),
+          child: Row(
+            children: [
+              Icon(
+                Icons.skip_next_rounded,
+                color: Colors.white.withOpacity(0.50),
+                size: 14,
+              ),
+              const SizedBox(width: 5),
+              Expanded(
+                child: Text(
+                  '${after.name} ${tr.willStartAt}',
+                  style: GoogleFonts.cairo(
+                    color: Colors.white.withOpacity(0.65),
+                    fontSize: 10,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              const SizedBox(width: 5),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                  vertical: 3,
+                ),
+                decoration: BoxDecoration(
+                  color: accent.withOpacity(0.22),
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: accent.withOpacity(0.35),
+                    width: 0.8,
+                  ),
+                ),
+                child: Text(
+                  after.time,
+                  style: GoogleFonts.cairo(
+                    color: Colors.white,
+                    fontSize: 10,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // ════════════════════════════════════════════
+  // ✅ صف واحد لكل الصلوات الستة — بدون overflow
+  // ════════════════════════════════════════════
+
+  Widget _buildPrayerRow6(Color accent) {
+    return Row(
+      children: widget.prayerInfo.asMap().entries.map((e) {
+        final i = e.key;
+        final p = e.value;
+        final isNext =
+        widget.nextPrayerName.contains(p['name'] as String);
+        final time =
+        _formatAMPM(widget.prayerTimes[p['key']] ?? '--:--');
+
+        return Expanded(
+          child: Padding(
+            padding: EdgeInsets.only(left: i > 0 ? 4 : 0),
+            child: _buildPrayerCell(
+              p: p,
+              time: time,
+              isNext: isNext,
+              accent: accent,
+            ),
+          ),
+        );
+      }).toList(),
+    );
+  }
+
+  Widget _buildPrayerCell({
+    required Map<String, dynamic> p,
+    required String time,
+    required bool isNext,
+    required Color accent,
+  }) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 2),
+      decoration: BoxDecoration(
+        color: isNext
+            ? accent.withOpacity(widget.isDark ? 0.16 : 0.20)
+            : Colors.white.withOpacity(widget.isDark ? 0.05 : 0.12),
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: isNext
+              ? accent.withOpacity(widget.isDark ? 0.35 : 0.40)
+              : Colors.white.withOpacity(widget.isDark ? 0.06 : 0.20),
+          width: isNext ? 1 : 0.6,
+        ),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            p['icon'] as IconData,
+            size: 13,
+            color: isNext
+                ? accent
+                : Colors.white.withOpacity(0.55),
+          ),
+          const SizedBox(height: 2),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              p['name'] as String,
+              style: GoogleFonts.cairo(
+                fontSize: 8.5,
+                fontWeight: FontWeight.w700,
+                color: isNext
+                    ? Colors.white
+                    : Colors.white.withOpacity(0.65),
+              ),
+              maxLines: 1,
+            ),
+          ),
+          const SizedBox(height: 1),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              time,
+              style: GoogleFonts.cairo(
+                fontSize: 8,
+                fontWeight: FontWeight.w600,
+                color: isNext
+                    ? accent
+                    : Colors.white.withOpacity(0.50),
+              ),
+              maxLines: 1,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // ════════════════════════════════════════════
+  // التحميل
+  // ════════════════════════════════════════════
+
+  Widget _buildSkeleton() {
+    return HomeCardSkeleton(
+      isDark: widget.isDark,
+      height: 180,
+      borderRadius: BorderRadius.circular(24),
+    );
+  }
+
+
+}
+
+// ════════════════════════════════════════════
+// رسام النجوم
+// ════════════════════════════════════════════
+
+class _StarData {
+  final double x, y, size, phase;
+  _StarData({
+    required this.x,
+    required this.y,
+    required this.size,
+    required this.phase,
+  });
+}
+
+class _StarsPainter extends CustomPainter {
+  final List<_StarData> stars;
+  final double twinkle;
+  _StarsPainter({required this.stars, required this.twinkle});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    for (final s in stars) {
+      final o = (0.2 + 0.8 * sin(s.phase + twinkle * pi * 2))
+          .clamp(0.05, 1.0);
+      canvas.drawCircle(
+        Offset(s.x * size.width, s.y * size.height),
+        s.size,
+        Paint()
+          ..color = Colors.white.withOpacity(o)
+          ..maskFilter =
+          MaskFilter.blur(BlurStyle.normal, s.size * 0.5),
+      );
+    }
+  }
+
+  @override
+  bool shouldRepaint(_StarsPainter o) => o.twinkle != twinkle;
+}

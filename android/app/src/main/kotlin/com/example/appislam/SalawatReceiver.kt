@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.media.AudioAttributes
 import android.media.MediaPlayer
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import java.io.File
@@ -13,10 +14,13 @@ import java.io.File
 class SalawatReceiver : BroadcastReceiver() {
 
     companion object {
+        private const val TAG = "SalawatReceiver"
         var mediaPlayer: MediaPlayer? = null
     }
 
     override fun onReceive(context: Context, intent: Intent) {
+        Log.d(TAG, "Salawat reminder triggered!")
+
         val message = intent.getStringExtra("message")
             ?: "اللهم صل وسلم على نبينا محمد ﷺ"
         val soundName = intent.getStringExtra("soundName") ?: "saly"
@@ -26,16 +30,16 @@ class SalawatReceiver : BroadcastReceiver() {
 
         val notificationId = 7007
 
-        // ✅ إيقاف أي صوت سابق
+        // إيقاف أي صوت سابق
         try {
             mediaPlayer?.stop()
             mediaPlayer?.release()
             mediaPlayer = null
         } catch (e: Exception) {
-            e.printStackTrace()
+            Log.w(TAG, "Error stopping previous player", e)
         }
 
-        // ✅ تشغيل الصوت
+        // تشغيل الصوت
         try {
             mediaPlayer = when {
                 !localPath.isNullOrEmpty() && File(localPath).exists() -> {
@@ -58,8 +62,9 @@ class SalawatReceiver : BroadcastReceiver() {
                 }
 
                 else -> {
-                    val soundResId =
-                        context.resources.getIdentifier(soundName, "raw", context.packageName)
+                    val soundResId = context.resources.getIdentifier(
+                        soundName, "raw", context.packageName
+                    )
 
                     if (soundResId != 0) {
                         MediaPlayer.create(context, soundResId)?.apply {
@@ -77,22 +82,23 @@ class SalawatReceiver : BroadcastReceiver() {
                             start()
                         }
                     } else {
+                        Log.e(TAG, "Sound not found: $soundName")
                         null
                     }
                 }
             }
         } catch (e: Exception) {
-            e.printStackTrace()
+            Log.e(TAG, "Error playing salawat sound", e)
         }
 
-        // ✅ إرسال الإشعار
+        // إشعار
         val stopIntent = Intent(context, StopSalawatReceiver::class.java).apply {
             putExtra("notificationId", notificationId)
         }
 
         val stopPendingIntent = PendingIntent.getBroadcast(
             context,
-            notificationId + 2000,
+            notificationId + 8000,
             stopIntent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
@@ -114,12 +120,11 @@ class SalawatReceiver : BroadcastReceiver() {
             NotificationManagerCompat.from(context)
                 .notify(notificationId, notificationBuilder.build())
         } catch (e: SecurityException) {
-            e.printStackTrace()
+            Log.e(TAG, "Notification permission denied", e)
         }
 
-        // ✅ إعادة جدولة التنبيه التالي تلقائياً (بدل setRepeating)
+        // إعادة جدولة التنبيه التالي
         val nextTrigger = System.currentTimeMillis() + intervalMillis
-
         AlarmScheduler.scheduleSalawat(
             context = context,
             triggerAtMillis = nextTrigger,

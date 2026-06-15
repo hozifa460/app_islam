@@ -1,0 +1,53 @@
+{
+  "weekDays": ["Se", "Te", "Qa", "Qi", "Se", "Sá", "Do"],
+  "arabicMonths": [
+    "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+    "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+  ],
+  "hijriMonths": [
+    "Muharram", "Safar", "Rabi' al-Awwal", "Rabi' ath-Thani", "Jumada al-Awwal", "Jumada ath-Thani",
+    "Rajab", "Sha'ban", "Ramadan", "Shawwal", "Dhu al-Qi'dah", "Dhu al-Hijjah"
+  ],
+  "islamicFacts": [
+    "O calendário islâmico (Hégira) começa com a migração do Profeta ﷺ de Meca para Medina.",
+    "O Ramadã é o nono mês do calendário islâmico.",
+    "Os meses sagrados são: Dhu al-Qi'dah, Dhu al-Hijjah, Muharram e Rajab.",
+    "A Noite do Destino (Laylat al-Qadr) é melhor que mil meses e é buscada nos últimos dez dias do Ramadã.",
+    "Sexta-feira é o melhor dia da semana para os muçulmanos.",
+    "Jejuar no Dia de Arafah expia os pecados de dois anos, pela vontade de Allah, para os não-peregrinos.",
+    "O Dia de Ashura é um dia abençoado e é recomendado jejuar nele.",
+    "O Zakat, o Jejum e o Hajj estão ligados ao calendário islâmico.",
+    "A observação da lua crescente é uma Sunnah relacionada ao início dos meses islâmicos.",
+    "Os feriados islâmicos são determinados pelo calendário islâmico, não pelo gregoriano."
+  ],
+  "hijriEvents": {
+    "1-10": {"title": "Dia de Ashura", "desc": "Um dia altamente recomendado para jejuar com grande recompensa."},
+    "3-12": {"title": "Mawlid al-Nabi", "desc": "Aniversário do nascimento do Profeta ﷺ segundo datas conhecidas."},
+    "7-27": {"title": "Isra e Mi'raj", "desc": "Uma noite abençoada associada à Jornada Noturna e à Ascensão."},
+    "8-15": {"title": "Metade de Sha'ban", "desc": "Uma noite abençoada observada por muitos muçulmanos."},
+    "9-1": {"title": "Início do Ramadã", "desc": "O início do abençoado mês do Ramadã."},
+    "9-27": {"title": "Laylat al-Qadr (Esperada)", "desc": "Uma das maiores noites, buscada nos últimos dez dias."},
+    "10-1": {"title": "Eid al-Fitr", "desc": "Um dia de alegria para os muçulmanos após completar o jejum do Ramadã."},
+    "12-9": {"title": "Dia de Arafah", "desc": "Um dos melhores dias do ano, jejum recomendado para os não-peregrinos."},
+    "12-10": {"title": "Eid al-Adha", "desc": "O Dia do Sacrifício e um dos maiores dias para os muçulmanos."}
+  },
+  "hijriNotes": {
+    "1-10": {"title": "Nota Islâmica", "desc": "É recomendado jejuar no Ashura, adicionando um dia antes ou depois."},
+    "9-1": {"title": "Nota Islâmica", "desc": "Ramadã é o mês de jejum, orações noturnas e recitação do Alcorão."},
+    "9-27": {"title": "Nota Islâmica", "desc": "Laylat al-Qadr é buscada nos últimos 10 dias; é melhor que 1000 meses."},
+    "10-1": {"title": "Nota Islâmica", "desc": "O Eid é um dia de alegria e gratidão, onde expressar felicidade é Sunnah."},
+    "12-9": {"title": "Nota Islâmica", "desc": "Jejuar no Dia de Arafah para os não-peregrinos expia dois anos de pecados."},
+    "12-10": {"title": "Nota Islâmica", "desc": "Eid al-Adha é um dos maiores dias, onde o sacrifício é prescrito."}
+  },
+  "upcomingEvents": [
+    {"month": 1, "day": 10, "title": "Dia de Ashura"},
+    {"month": 3, "day": 12, "title": "Mawlid al-Nabi"},
+    {"month": 7, "day": 27, "title": "Isra e Mi'raj"},
+    {"month": 8, "day": 15, "title": "Metade de Sha'ban"},
+    {"month": 9, "day": 1, "title": "Início do Ramadã"},
+    {"month": 9, "day": 27, "title": "Laylat al-Qadr"},
+    {"month": 10, "day": 1, "title": "Eid al-Fitr"},
+    {"month": 12, "day": 9, "title": "Dia de Arafah"},
+    {"month": 12, "day": 10, "title": "Eid al-Adha"}
+  ]
+}

@@ -1,7 +1,9 @@
-// splash_screen.dart
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../languages/app_localizations.dart';
 
 class SplashScreen extends StatefulWidget {
   final VoidCallback onFinish;
@@ -14,28 +16,35 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
 
-  late AnimationController _mainCtrl;
-  late AnimationController _pulseCtrl;
-  late AnimationController _particleCtrl;
+  // ═══ Animation Controllers ═══
+  late AnimationController _mainController;
+  late AnimationController _pulseController;
+  late AnimationController _particleController;
 
+  // ═══ Animations ═══
   late Animation<double> _logoScale;
   late Animation<double> _logoOpacity;
-  late Animation<double> _ringScale1;
-  late Animation<double> _ringScale2;
-  late Animation<double> _ringOpacity1;
-  late Animation<double> _ringOpacity2;
-  late Animation<double> _textSlide;
-  late Animation<double> _textOpacity;
+  late Animation<double> _logoRotation;
+  late Animation<double> _ring1Scale;
+  late Animation<double> _ring2Scale;
+  late Animation<double> _ring3Scale;
+  late Animation<double> _ring1Opacity;
+  late Animation<double> _ring2Opacity;
+  late Animation<double> _ring3Opacity;
+  late Animation<double> _titleSlide;
+  late Animation<double> _titleOpacity;
   late Animation<double> _subtitleOpacity;
   late Animation<double> _dividerWidth;
-  late Animation<double> _bottomOpacity;
+  late Animation<double> _verseOpacity;
   late Animation<double> _pulse;
 
   bool _navigated = false;
 
-  static const _gold    = Color(0xFFE6B325);
-  static const _bgDark  = Color(0xFF0A0E17);
-  static const _bgLight = Color(0xFFF0F4FF);
+  // ═══ ألوان ═══
+  static const Color _gold = Color(0xFFD4AF37);
+  static const Color _goldLight = Color(0xFFE6C866);
+  static const Color _goldDark = Color(0xFFB8860B);
+
 
   @override
   void initState() {
@@ -44,118 +53,184 @@ class _SplashScreenState extends State<SplashScreen>
     _startSequence();
   }
 
-  void _setupAnimations() {
-    _mainCtrl = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 2000),
-    );
-    _pulseCtrl = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1800),
-    )..repeat(reverse: true);
-    _particleCtrl = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 8),
-    )..repeat();
-
-    // شعار
-    _logoScale = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-      parent: _mainCtrl,
-      curve: const Interval(0.00, 0.45, curve: Curves.easeOutBack),
-    ));
-    _logoOpacity = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-      parent: _mainCtrl,
-      curve: const Interval(0.00, 0.30, curve: Curves.easeIn),
-    ));
-
-    // حلقات
-    _ringScale1 = Tween(begin: 0.6, end: 1.15).animate(CurvedAnimation(
-      parent: _mainCtrl,
-      curve: const Interval(0.10, 0.50, curve: Curves.easeOut),
-    ));
-    _ringScale2 = Tween(begin: 0.4, end: 1.30).animate(CurvedAnimation(
-      parent: _mainCtrl,
-      curve: const Interval(0.15, 0.60, curve: Curves.easeOut),
-    ));
-    _ringOpacity1 = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-      parent: _mainCtrl,
-      curve: const Interval(0.10, 0.40, curve: Curves.easeIn),
-    ));
-    _ringOpacity2 = Tween(begin: 0.0, end: 0.6).animate(CurvedAnimation(
-      parent: _mainCtrl,
-      curve: const Interval(0.15, 0.45, curve: Curves.easeIn),
-    ));
-
-    // نصوص
-    _textSlide = Tween(begin: 40.0, end: 0.0).animate(CurvedAnimation(
-      parent: _mainCtrl,
-      curve: const Interval(0.40, 0.72, curve: Curves.easeOutCubic),
-    ));
-    _textOpacity = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-      parent: _mainCtrl,
-      curve: const Interval(0.40, 0.70, curve: Curves.easeIn),
-    ));
-    _subtitleOpacity = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-      parent: _mainCtrl,
-      curve: const Interval(0.58, 0.82, curve: Curves.easeIn),
-    ));
-    _dividerWidth = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-      parent: _mainCtrl,
-      curve: const Interval(0.52, 0.78, curve: Curves.easeOutCubic),
-    ));
-    _bottomOpacity = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-      parent: _mainCtrl,
-      curve: const Interval(0.72, 1.00, curve: Curves.easeIn),
-    ));
-
-    // نبضة
-    _pulse = Tween(begin: 1.0, end: 1.07).animate(
-      CurvedAnimation(parent: _pulseCtrl, curve: Curves.easeInOut),
-    );
-  }
-
-  void _startSequence() {
-    _mainCtrl.forward();
-    // ✅ وقت كافٍ للـ HomeScreen يبني نفسه خلف السبلاش
-    Future.delayed(const Duration(milliseconds: 3000), () {
-      if (mounted && !_navigated) {
-        _navigated = true;
-        // ✅ نوقف الـ controllers الثقيلة قبل الانتقال
-        _pulseCtrl.stop();
-        _particleCtrl.stop();
-        widget.onFinish();
-      }
-    });
-  }
-
   @override
   void dispose() {
-    _mainCtrl.dispose();
-    _pulseCtrl.dispose();
-    _particleCtrl.dispose();
+    _mainController.dispose();
+    _pulseController.dispose();
+    _particleController.dispose();
     super.dispose();
+  }
+
+  void _setupAnimations() {
+    _mainController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 2800),
+    );
+
+    _pulseController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 2000),
+    )..repeat(reverse: true);
+
+    _particleController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 12),
+    )..repeat();
+
+    _logoScale = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _mainController,
+        curve: const Interval(0.0, 0.55, curve: Curves.easeOutBack),
+      ),
+    );
+
+    _logoOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _mainController,
+        curve: const Interval(0.0, 0.35, curve: Curves.easeOut),
+      ),
+    );
+
+    _logoRotation = Tween<double>(begin: -0.15, end: 0.0).animate(
+      CurvedAnimation(
+        parent: _mainController,
+        curve: const Interval(0.0, 0.55, curve: Curves.easeOutCubic),
+      ),
+    );
+
+    _ring1Scale = Tween<double>(begin: 0.5, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _mainController,
+        curve: const Interval(0.15, 0.60, curve: Curves.easeOutCubic),
+      ),
+    );
+
+    _ring2Scale = Tween<double>(begin: 0.4, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _mainController,
+        curve: const Interval(0.20, 0.65, curve: Curves.easeOutCubic),
+      ),
+    );
+
+    _ring3Scale = Tween<double>(begin: 0.3, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _mainController,
+        curve: const Interval(0.25, 0.70, curve: Curves.easeOutCubic),
+      ),
+    );
+
+    _ring1Opacity = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _mainController,
+        curve: const Interval(0.15, 0.45, curve: Curves.easeOut),
+      ),
+    );
+
+    _ring2Opacity = Tween<double>(begin: 0.0, end: 0.8).animate(
+      CurvedAnimation(
+        parent: _mainController,
+        curve: const Interval(0.20, 0.50, curve: Curves.easeOut),
+      ),
+    );
+
+    _ring3Opacity = Tween<double>(begin: 0.0, end: 0.6).animate(
+      CurvedAnimation(
+        parent: _mainController,
+        curve: const Interval(0.25, 0.55, curve: Curves.easeOut),
+      ),
+    );
+
+    _titleSlide = Tween<double>(begin: 60.0, end: 0.0).animate(
+      CurvedAnimation(
+        parent: _mainController,
+        curve: const Interval(0.50, 0.78, curve: Curves.easeOutCubic),
+      ),
+    );
+
+    _titleOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _mainController,
+        curve: const Interval(0.50, 0.75, curve: Curves.easeOut),
+      ),
+    );
+
+    _subtitleOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _mainController,
+        curve: const Interval(0.65, 0.88, curve: Curves.easeOut),
+      ),
+    );
+
+    _dividerWidth = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _mainController,
+        curve: const Interval(0.58, 0.82, curve: Curves.easeOutCubic),
+      ),
+    );
+
+    _verseOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _mainController,
+        curve: const Interval(0.78, 0.98, curve: Curves.easeOut),
+      ),
+    );
+
+    _pulse = Tween<double>(begin: 1.0, end: 1.04).animate(
+      CurvedAnimation(
+        parent: _pulseController,
+        curve: Curves.easeInOut,
+      ),
+    );
+  }
+
+  void _startSequence() async {
+    await _mainController.forward();
+    await Future.delayed(const Duration(milliseconds: 300));
+
+    if (mounted && !_navigated) {
+      _navigated = true;
+      widget.onFinish();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final tr = context.tr; // ← الترجمة
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        final w = constraints.maxWidth;
-        final h = constraints.maxHeight;
-        final logoSize = (w * 0.32).clamp(90.0, 155.0);
-        final ringSize = logoSize * 1.35;
+        final size = constraints.biggest;
+        final width = size.width;
+        final height = size.height;
 
-        return ColoredBox(
-          color: isDark ? _bgDark : _bgLight,
+        final isSmallDevice = width < 360 || height < 640;
+        final isMediumDevice = width < 400 || height < 700;
+
+        final logoSize = _calculateLogoSize(
+          width, height, isSmallDevice, isMediumDevice,
+        );
+        final ring1Size = logoSize * 1.45;
+        final ring2Size = logoSize * 1.75;
+        final ring3Size = logoSize * 2.05;
+
+        return Container(
+          width: width,
+          height: height,
+          decoration: BoxDecoration(
+            gradient: _buildBackgroundGradient(isDark),
+          ),
           child: Stack(
-            fit: StackFit.expand,
             children: [
-              _buildBackground(isDark, w, h),
-              _buildParticles(isDark, w, h),
-              _buildCenter(isDark, w, h, logoSize, ringSize),
-              _buildBottom(isDark, w, h),
+              _buildBackgroundDecoration(isDark, width, height),
+              _buildParticles(isDark, width, height),
+              _buildMainContent(
+                isDark, width, height,
+                logoSize, ring1Size, ring2Size, ring3Size,
+                isSmallDevice, isMediumDevice,
+                tr, // ← تمرير الترجمة
+              ),
+              _buildBottomSection(isDark, width, height, isSmallDevice, tr),
             ],
           ),
         );
@@ -163,376 +238,725 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 
-  // ── خلفية ──
-  Widget _buildBackground(bool isDark, double w, double h) {
-    return Stack(fit: StackFit.expand, children: [
-      DecoratedBox(
-        decoration: BoxDecoration(
-          gradient: RadialGradient(
-            center: const Alignment(0, -0.2),
-            radius: 1.2,
-            colors: isDark
-                ? [const Color(0xFF1A2744), const Color(0xFF0D1420), _bgDark]
-                : [const Color(0xFFDDE8FF), const Color(0xFFEEF3FF), _bgLight],
-            stops: const [0.0, 0.5, 1.0],
-          ),
-        ),
-      ),
-      Positioned(
-        top: -(h * 0.12), left: w * 0.1,
-        child: _glowCircle(w * 0.8, _gold.withOpacity(isDark ? 0.12 : 0.08)),
-      ),
-      Positioned(
-        bottom: -(h * 0.08), right: -(w * 0.2),
-        child: _glowCircle(w * 0.7, _gold.withOpacity(isDark ? 0.07 : 0.05)),
-      ),
-    ]);
+  double _calculateLogoSize(
+      double width,
+      double height,
+      bool isSmall,
+      bool isMedium,
+      ) {
+    if (isSmall) {
+      return min(width * 0.26, height * 0.13).clamp(85.0, 110.0);
+    } else if (isMedium) {
+      return min(width * 0.30, height * 0.15).clamp(100.0, 130.0);
+    } else {
+      return min(width * 0.33, height * 0.17).clamp(110.0, 150.0);
+    }
   }
 
-  Widget _glowCircle(double size, Color color) => SizedBox(
-    width: size, height: size,
-    child: DecoratedBox(
+  Gradient _buildBackgroundGradient(bool isDark) {
+    return LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: isDark
+          ? [
+        const Color(0xFF0A0E1A),
+        const Color(0xFF1A2540),
+        const Color(0xFF0F1628),
+        const Color(0xFF050810),
+      ]
+          : [
+        const Color(0xFFFFFDF8),
+        const Color(0xFFFFF9EC),
+        const Color(0xFFFFFBF0),
+        const Color(0xFFFFF5DE),
+      ],
+      stops: const [0.0, 0.35, 0.65, 1.0],
+    );
+  }
+
+  Widget _buildBackgroundDecoration(bool isDark, double width, double height) {
+    return Stack(
+      children: [
+        Positioned(
+          top: -height * 0.12,
+          left: width * 0.15,
+          child: _buildGlowCircle(
+            width * 0.7,
+            _gold.withOpacity(isDark ? 0.06 : 0.05),
+          ),
+        ),
+        Positioned(
+          bottom: -height * 0.08,
+          right: -width * 0.15,
+          child: _buildGlowCircle(
+            width * 0.6,
+            _goldLight.withOpacity(isDark ? 0.04 : 0.03),
+          ),
+        ),
+        Positioned(
+          top: height * 0.3,
+          right: -width * 0.1,
+          child: _buildGlowCircle(
+            width * 0.4,
+            _goldDark.withOpacity(isDark ? 0.03 : 0.02),
+          ),
+        ),
+        Positioned.fill(
+          child: CustomPaint(
+            painter: _IslamicPatternPainter(
+              color: _gold.withOpacity(isDark ? 0.015 : 0.025),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildGlowCircle(double size, Color color) {
+    return Container(
+      width: size,
+      height: size,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        gradient: RadialGradient(colors: [color, Colors.transparent]),
-      ),
-    ),
-  );
-
-  // ── جسيمات ──
-  Widget _buildParticles(bool isDark, double w, double h) {
-    return AnimatedBuilder(
-      animation: _particleCtrl,
-      builder: (_, __) => CustomPaint(
-        painter: _ParticlePainter(
-          progress: _particleCtrl.value,
-          color: _gold,
-          isDark: isDark,
-          centerY: h * 0.42,
+        gradient: RadialGradient(
+          colors: [color, Colors.transparent],
+          stops: const [0.0, 0.7],
         ),
       ),
     );
   }
 
-  // ── المحتوى الوسطى ──
-  Widget _buildCenter(bool isDark, double w, double h,
-      double logoSize, double ringSize) {
+  Widget _buildParticles(bool isDark, double width, double height) {
+    return AnimatedBuilder(
+      animation: _particleController,
+      builder: (_, __) {
+        return CustomPaint(
+          size: Size(width, height),
+          painter: _ParticlePainter(
+            progress: _particleController.value,
+            color: _gold,
+            isDark: isDark,
+            centerX: width / 2,
+            centerY: height * 0.40,
+          ),
+        );
+      },
+    );
+  }
 
-    final textColor = isDark ? Colors.white : const Color(0xFF1A1A2E);
+  // ═══════════════════════════════════════════════════════════
+  // المحتوى الرئيسي - مع حماية من الـ Overflow
+  // ═══════════════════════════════════════════════════════════
+  Widget _buildMainContent(
+      bool isDark,
+      double width,
+      double height,
+      double logoSize,
+      double ring1Size,
+      double ring2Size,
+      double ring3Size,
+      bool isSmall,
+      bool isMedium,
+      AppLocalizations tr,
+      ) {
+    final textColor = isDark ? Colors.white : const Color(0xFF2C1810);
+    final subtitleColor = isDark
+        ? Colors.white.withOpacity(0.65)
+        : const Color(0xFF5D4E37).withOpacity(0.75);
+
+    // ═══ حساب المساحة المتاحة ═══
+    final topPadding = MediaQuery.of(context).padding.top;
+    final bottomPadding = MediaQuery.of(context).padding.bottom;
+    final availableHeight = height - topPadding - bottomPadding - 100;
 
     return SafeArea(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+      child: SizedBox(
+        width: width,
+        height: height - topPadding - bottomPadding,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // ═══ مساحة مرنة علوية ═══
+            Flexible(flex: 1, child: const SizedBox()),
 
-          // شعار + حلقات
-          AnimatedBuilder(
-            animation: Listenable.merge([_mainCtrl, _pulseCtrl]),
-            builder: (_, __) {
-              final rW = ringSize * 1.4;
-              return SizedBox(
-                width: rW, height: rW,
-                child: Stack(alignment: Alignment.center, children: [
-
-                  // حلقة خارجية
-                  Opacity(
-                    opacity: _ringOpacity2.value.clamp(0.0, 1.0),
-                    child: Transform.scale(
-                      scale: _ringScale2.value,
-                      child: _ring(ringSize * 1.2, _gold.withOpacity(0.15), 1.0),
-                    ),
-                  ),
-
-                  // حلقة داخلية
-                  Opacity(
-                    opacity: _ringOpacity1.value.clamp(0.0, 1.0),
-                    child: Transform.scale(
-                      scale: _ringScale1.value,
-                      child: _ring(ringSize, _gold.withOpacity(0.30), 1.5),
-                    ),
-                  ),
-
-                  // الشعار
-                  Opacity(
-                    opacity: _logoOpacity.value.clamp(0.0, 1.0),
-                    child: Transform.scale(
-                      scale: (_logoScale.value * _pulse.value).clamp(0.0, 2.0),
-                      child: _buildLogo(isDark, logoSize),
-                    ),
-                  ),
-                ]),
-              );
-            },
-          ),
-
-          SizedBox(height: h * 0.038),
-
-          // الاسم
-          AnimatedBuilder(
-            animation: _mainCtrl,
-            builder: (_, __) => Opacity(
-              opacity: _textOpacity.value.clamp(0.0, 1.0),
-              child: Transform.translate(
-                offset: Offset(0, _textSlide.value),
-                child: Text(
-                  'طريق الإسلام',
-                  style: GoogleFonts.amiri(
-                    fontSize: (w * 0.10).clamp(28.0, 50.0),
-                    fontWeight: FontWeight.bold,
-                    color: textColor,
-                    height: 1.2,
-                    shadows: [Shadow(color: _gold.withOpacity(0.2), blurRadius: 12)],
-                  ),
-                  textAlign: TextAlign.center,
-                ),
+            // ═══ الشعار مع الحلقات ═══
+            Flexible(
+              flex: 4,
+              child: _buildLogoSection(
+                isDark,
+                logoSize,
+                ring1Size,
+                ring2Size,
+                ring3Size,
               ),
             ),
-          ),
 
-          SizedBox(height: h * 0.010),
+            // ═══ مساحة بين الشعار والنص ═══
+            SizedBox(height: (height * 0.03).clamp(12.0, 30.0)),
 
-          // فاصل
-          AnimatedBuilder(
-            animation: _mainCtrl,
-            builder: (_, __) {
-              final v = _dividerWidth.value.clamp(0.0, 1.0);
-              final maxW = (w * 0.32).clamp(80.0, 150.0);
-              return SizedBox(
-                height: 20,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Opacity(opacity: v,
-                        child: Icon(Icons.star_rounded,
-                            color: _gold.withOpacity(0.7), size: 10)),
-                    const SizedBox(width: 6),
-                    ClipRect(
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        widthFactor: v,
-                        child: Container(
-                          width: maxW, height: 1.5,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(colors: [
-                              Colors.transparent,
-                              _gold.withOpacity(0.7),
-                              Colors.transparent,
-                            ]),
+            // ═══ العنوان ═══
+            Flexible(
+              flex: 1,
+              child: _buildTitle(textColor, width, isSmall, tr),
+            ),
+
+            // ═══ الفاصل ═══
+            SizedBox(height: (height * 0.015).clamp(8.0, 18.0)),
+            _buildDivider(width, isSmall),
+            SizedBox(height: (height * 0.012).clamp(6.0, 15.0)),
+
+            // ═══ الوصف ═══
+            Flexible(
+              flex: 1,
+              child: _buildSubtitle(subtitleColor, width, isSmall, tr),
+            ),
+
+            // ═══ مساحة مرنة سفلية ═══
+            Flexible(flex: 2, child: const SizedBox()),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // قسم الشعار مع 3 حلقات
+  // ═══════════════════════════════════════════════════════════
+  Widget _buildLogoSection(
+      bool isDark,
+      double logoSize,
+      double ring1Size,
+      double ring2Size,
+      double ring3Size,
+      ) {
+    return AnimatedBuilder(
+      animation: Listenable.merge([_mainController, _pulseController]),
+      builder: (_, __) {
+        return Center(
+          child: SizedBox(
+            width: ring3Size * 1.15,
+            height: ring3Size * 1.15,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                // ═══ الحلقة الثالثة ═══
+                Opacity(
+                  opacity: _ring3Opacity.value,
+                  child: Transform.scale(
+                    scale: _ring3Scale.value,
+                    child: Container(
+                      width: ring3Size,
+                      height: ring3Size,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: _gold.withOpacity(isDark ? 0.1 : 0.08),
+                          width: 1.2,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+
+                // ═══ الحلقة الثانية ═══
+                Opacity(
+                  opacity: _ring2Opacity.value,
+                  child: Transform.scale(
+                    scale: _ring2Scale.value,
+                    child: Container(
+                      width: ring2Size,
+                      height: ring2Size,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: _gold.withOpacity(isDark ? 0.18 : 0.15),
+                          width: 1.5,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+
+                // ═══ الحلقة الأولى ═══
+                Opacity(
+                  opacity: _ring1Opacity.value,
+                  child: Transform.scale(
+                    scale: _ring1Scale.value,
+                    child: Container(
+                      width: ring1Size,
+                      height: ring1Size,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: _gold.withOpacity(isDark ? 0.3 : 0.25),
+                          width: 2,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+
+                // ═══ الشعار ═══
+                Opacity(
+                  opacity: _logoOpacity.value,
+                  child: Transform.scale(
+                    scale: _logoScale.value * _pulse.value,
+                    child: Transform.rotate(
+                      angle: _logoRotation.value,
+                      child: Container(
+                        width: logoSize,
+                        height: logoSize,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: RadialGradient(
+                            colors: isDark
+                                ? [
+                              const Color(0xFF1E2A4A),
+                              const Color(0xFF0F1628),
+                            ]
+                                : [
+                              Colors.white,
+                              const Color(0xFFFFF8E8),
+                            ],
+                          ),
+                          border: Border.all(color: _gold, width: 2.8),
+                          boxShadow: [
+                            BoxShadow(
+                              color: _gold.withOpacity(isDark ? 0.35 : 0.25),
+                              blurRadius: 35,
+                              spreadRadius: 5,
+                            ),
+                            BoxShadow(
+                              color: isDark
+                                  ? Colors.black.withOpacity(0.4)
+                                  : _gold.withOpacity(0.12),
+                              blurRadius: 25,
+                              offset: const Offset(0, 12),
+                            ),
+                          ],
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(logoSize * 0.20),
+                          child: Image.asset(
+                            'assets/icon/icon.png',
+                            fit: BoxFit.contain,
+                            errorBuilder: (_, __, ___) => Icon(
+                              Icons.mosque_rounded,
+                              size: logoSize * 0.48,
+                              color: _gold,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                    const SizedBox(width: 6),
-                    Opacity(opacity: v,
-                        child: Icon(Icons.star_rounded,
-                            color: _gold.withOpacity(0.7), size: 10)),
-                  ],
-                ),
-              );
-            },
-          ),
-
-          SizedBox(height: h * 0.008),
-
-          // الوصف
-          AnimatedBuilder(
-            animation: _mainCtrl,
-            builder: (_, __) => Opacity(
-              opacity: _subtitleOpacity.value.clamp(0.0, 1.0),
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: (w * 0.1).clamp(12.0, 40.0)),
-                child: Text(
-                  'رفيقك في العبادة اليومية',
-                  style: GoogleFonts.cairo(
-                    fontSize: (w * 0.040).clamp(12.0, 17.0),
-                    fontWeight: FontWeight.w500,
-                    color: isDark
-                        ? Colors.white.withOpacity(0.55)
-                        : const Color(0xFF1A1A2E).withOpacity(0.50),
                   ),
-                  textAlign: TextAlign.center,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // العنوان - محمي من الـ Overflow
+  // ═══════════════════════════════════════════════════════════
+  Widget _buildTitle(Color textColor, double width, bool isSmall, AppLocalizations tr) {
+    // ═══ حجم الخط المتكيف ═══
+    final baseFontSize = isSmall ? 28.0 : 38.0;
+    final maxWidth = width * 0.85;
+
+    return AnimatedBuilder(
+      animation: _mainController,
+      builder: (_, __) {
+        return Opacity(
+          opacity: _titleOpacity.value,
+          child: Transform.translate(
+            offset: Offset(0, _titleSlide.value),
+            child: Container(
+              constraints: BoxConstraints(maxWidth: maxWidth),
+              padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+              child: ShaderMask(
+                shaderCallback: (bounds) {
+                  return LinearGradient(
+                    colors: [
+                      _goldDark,
+                      _gold,
+                      _goldLight,
+                      _gold,
+                      _goldDark,
+                    ],
+                    stops: const [0.0, 0.25, 0.5, 0.75, 1.0],
+                  ).createShader(bounds);
+                },
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    tr.splashTitle, // ← مترجم
+                    style: GoogleFonts.amiri(
+                      fontSize: baseFontSize,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      height: 1.3,
+                      letterSpacing: 1.2,
+                    ),
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                  ),
                 ),
               ),
             ),
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 
-  Widget _ring(double size, Color color, double width) => SizedBox(
-    width: size, height: size,
-    child: DecoratedBox(
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(color: color, width: width),
-      ),
-    ),
-  );
+  // ═══════════════════════════════════════════════════════════
+  // الفاصل الزخرفي
+  // ═══════════════════════════════════════════════════════════
+  Widget _buildDivider(double width, bool isSmall) {
+    return AnimatedBuilder(
+      animation: _mainController,
+      builder: (_, __) {
+        final progress = _dividerWidth.value;
+        final maxWidth = (width * 0.35).clamp(80.0, 140.0);
 
-  Widget _buildLogo(bool isDark, double size) {
-    return Container(
-      width: size, height: size,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        gradient: RadialGradient(
-          colors: isDark
-              ? [const Color(0xFF1E2D4A), const Color(0xFF0D1420)]
-              : [Colors.white, const Color(0xFFEEF3FF)],
-        ),
-        border: Border.all(color: _gold.withOpacity(0.45), width: 2),
-        boxShadow: [
-          BoxShadow(
-            color: _gold.withOpacity(isDark ? 0.22 : 0.14),
-            blurRadius: 28, spreadRadius: 3,
+        return SizedBox(
+          height: 26,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Transform.scale(
+                scale: progress,
+                child: Opacity(
+                  opacity: progress,
+                  child: Icon(
+                    Icons.auto_awesome_rounded,
+                    color: _gold.withOpacity(0.85),
+                    size: isSmall ? 10 : 12,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 10),
+              ClipRect(
+                child: Align(
+                  alignment: Alignment.center,
+                  widthFactor: progress,
+                  child: Container(
+                    width: maxWidth,
+                    height: 2.5,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.transparent,
+                          _goldDark.withOpacity(0.6),
+                          _gold,
+                          _goldLight,
+                          _gold,
+                          _goldDark.withOpacity(0.6),
+                          Colors.transparent,
+                        ],
+                      ),
+                      borderRadius: BorderRadius.circular(2),
+                      boxShadow: [
+                        BoxShadow(
+                          color: _gold.withOpacity(0.3),
+                          blurRadius: 8,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 10),
+              Transform.scale(
+                scale: progress,
+                child: Opacity(
+                  opacity: progress,
+                  child: Icon(
+                    Icons.auto_awesome_rounded,
+                    color: _gold.withOpacity(0.85),
+                    size: isSmall ? 10 : 12,
+                  ),
+                ),
+              ),
+            ],
           ),
-          BoxShadow(
-            color: Colors.black.withOpacity(isDark ? 0.35 : 0.07),
-            blurRadius: 18, offset: const Offset(0, 7),
-          ),
-        ],
-      ),
-      padding: EdgeInsets.all(size * 0.15),
-      child: Image.asset(
-        'assets/icon/icon.png',
-        fit: BoxFit.contain,
-        errorBuilder: (_, __, ___) =>
-            Icon(Icons.mosque_rounded, size: size * 0.48, color: _gold),
-      ),
+        );
+      },
     );
   }
 
-  // ── القسم السفلي ──
-  Widget _buildBottom(bool isDark, double w, double h) {
+  // ═══════════════════════════════════════════════════════════
+  // الوصف - محمي من الـ Overflow
+  // ═══════════════════════════════════════════════════════════
+  Widget _buildSubtitle(Color color, double width, bool isSmall, AppLocalizations tr) {
+    final fontSize = isSmall ? 13.0 : 16.0;
+
+    return AnimatedBuilder(
+      animation: _mainController,
+      builder: (_, __) {
+        return Opacity(
+          opacity: _subtitleOpacity.value,
+          child: Container(
+            constraints: BoxConstraints(maxWidth: width * 0.8),
+            padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                tr.splashSubtitle, // ← مترجم
+                style: GoogleFonts.cairo(
+                  fontSize: fontSize,
+                  fontWeight: FontWeight.w600,
+                  color: color,
+                  letterSpacing: 0.8,
+                  height: 1.4,
+                ),
+                textAlign: TextAlign.center,
+                maxLines: 1,
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // القسم السفلي - محمي من الـ Overflow
+  // ═══════════════════════════════════════════════════════════
+  Widget _buildBottomSection(
+      bool isDark,
+      double width,
+      double height,
+      bool isSmall,
+      AppLocalizations tr,
+      ) {
+    final verseColor = isDark
+        ? _gold.withOpacity(0.75)
+        : _goldDark.withOpacity(0.85);
+
+    final bottomPadding = MediaQuery.of(context).padding.bottom;
+    final verseFontSize = isSmall ? 12.0 : 15.0;
+
     return Positioned(
-      bottom: 0, left: 0, right: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
       child: SafeArea(
         top: false,
         child: AnimatedBuilder(
-          animation: _mainCtrl,
-          builder: (_, __) => Opacity(
-            opacity: _bottomOpacity.value.clamp(0.0, 1.0),
-            child: Padding(
-              padding: EdgeInsets.only(
-                bottom: (h * 0.038).clamp(14.0, 38.0),
-                left:   (w * 0.06).clamp(12.0, 30.0),
-                right:  (w * 0.06).clamp(12.0, 30.0),
-              ),
-              child: Column(mainAxisSize: MainAxisSize.min, children: [
-                _AnimatedDots(color: _gold),
-                SizedBox(height: (h * 0.018).clamp(8.0, 20.0)),
-                Text(
-                  '﴿ وَاذْكُرُوا اللَّهَ كَثِيرًا لَعَلَّكُمْ تُفْلِحُونَ ﴾',
-                  style: GoogleFonts.amiri(
-                    fontSize: (w * 0.035).clamp(11.0, 15.0),
-                    color: _gold.withOpacity(isDark ? 0.65 : 0.72),
-                    fontWeight: FontWeight.w600,
-                    height: 1.5,
-                  ),
-                  textAlign: TextAlign.center,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
+          animation: _mainController,
+          builder: (_, __) {
+            return Opacity(
+              opacity: _verseOpacity.value,
+              child: Padding(
+                padding: EdgeInsets.only(
+                  bottom: (isSmall ? 16 : 24) + bottomPadding,
+                  left: width * 0.08,
+                  right: width * 0.08,
                 ),
-              ]),
-            ),
-          ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _LoadingDots(color: _gold),
+                    SizedBox(height: isSmall ? 12 : 18),
+
+                    // ═══ الآية - محمية من الـ Overflow ═══
+                    ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxWidth: width * 0.85,
+                        maxHeight: 60,
+                      ),
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          tr.splashVerse, // ← مترجم
+                          style: GoogleFonts.amiri(
+                            fontSize: verseFontSize,
+                            color: verseColor,
+                            fontWeight: FontWeight.w700,
+                            height: 1.6,
+                            letterSpacing: 0.5,
+                          ),
+                          textAlign: TextAlign.center,
+                          maxLines: 2,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
         ),
       ),
     );
   }
 }
 
-// ══════════════════════════════════════════════════════════════
-//  Particle Painter
-// ══════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════
+// رسام الجسيمات (بدون تغيير)
+// ═══════════════════════════════════════════════════════════════
 class _ParticlePainter extends CustomPainter {
   final double progress;
-  final Color  color;
-  final bool   isDark;
+  final Color color;
+  final bool isDark;
+  final double centerX;
   final double centerY;
 
-  static final _pts = List.generate(16, (i) {
-    final r = Random(i * 137);
-    return (
-    angle:   (i / 16) * 2 * pi,
-    radius:  0.26 + r.nextDouble() * 0.16,
-    size:    1.4  + r.nextDouble() * 2.2,
-    speed:   0.25 + r.nextDouble() * 0.65,
-    opacity: 0.12 + r.nextDouble() * 0.28,
+  static final List<_Particle> _particles = List.generate(24, (i) {
+    final random = Random(i * 137);
+    return _Particle(
+      angle: (i / 24) * 2 * pi,
+      radius: 0.20 + random.nextDouble() * 0.22,
+      size: 1.0 + random.nextDouble() * 2.8,
+      speed: 0.15 + random.nextDouble() * 0.75,
+      opacity: 0.08 + random.nextDouble() * 0.32,
     );
   });
 
-  const _ParticlePainter({
+  _ParticlePainter({
     required this.progress,
     required this.color,
     required this.isDark,
+    required this.centerX,
     required this.centerY,
   });
 
   @override
   void paint(Canvas canvas, Size size) {
-    final cx = size.width / 2;
-    final cy = centerY;
-    final minD = size.width < size.height ? size.width : size.height;
     final paint = Paint()..style = PaintingStyle.fill;
+    final minDimension = min(size.width, size.height);
 
-    for (final p in _pts) {
-      final a = p.angle + progress * 2 * pi * p.speed;
-      final r = p.radius * minD * 0.5;
+    for (final particle in _particles) {
+      final angle = particle.angle + progress * 2 * pi * particle.speed;
+      final radius = particle.radius * minDimension * 0.5;
+
+      final x = centerX + cos(angle) * radius;
+      final y = centerY + sin(angle) * radius;
+
       paint.color = color.withOpacity(
-          isDark ? p.opacity : p.opacity * 0.55);
-      canvas.drawCircle(
-        Offset(cx + cos(a) * r, cy + sin(a) * r),
-        p.size,
-        paint,
+        isDark ? particle.opacity : particle.opacity * 0.65,
       );
+
+      canvas.drawCircle(Offset(x, y), particle.size, paint);
     }
   }
 
   @override
-  bool shouldRepaint(_ParticlePainter o) => o.progress != progress;
+  bool shouldRepaint(_ParticlePainter oldDelegate) {
+    return oldDelegate.progress != progress;
+  }
 }
 
-// ══════════════════════════════════════════════════════════════
-//  Loading Dots
-// ══════════════════════════════════════════════════════════════
-class _AnimatedDots extends StatefulWidget {
+class _Particle {
+  final double angle;
+  final double radius;
+  final double size;
+  final double speed;
+  final double opacity;
+
+  _Particle({
+    required this.angle,
+    required this.radius,
+    required this.size,
+    required this.speed,
+    required this.opacity,
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// رسام النقوش الإسلامية (بدون تغيير)
+// ═══════════════════════════════════════════════════════════════
+class _IslamicPatternPainter extends CustomPainter {
   final Color color;
-  const _AnimatedDots({required this.color});
+
+  _IslamicPatternPainter({required this.color});
 
   @override
-  State<_AnimatedDots> createState() => _AnimatedDotsState();
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 0.6;
+
+    const step = 75.0;
+
+    for (double x = 0; x < size.width + step; x += step) {
+      for (double y = 0; y < size.height + step; y += step) {
+        final cx = x + step / 2;
+        final cy = y + step / 2;
+
+        final path = Path();
+        for (int i = 0; i < 16; i++) {
+          final angle = (pi / 8) * i;
+          final r = i.isEven ? step * 0.28 : step * 0.15;
+          final px = cx + r * cos(angle);
+          final py = cy + r * sin(angle);
+          if (i == 0) {
+            path.moveTo(px, py);
+          } else {
+            path.lineTo(px, py);
+          }
+        }
+        path.close();
+        canvas.drawPath(path, paint);
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(_IslamicPatternPainter oldDelegate) {
+    return oldDelegate.color != color;
+  }
 }
 
-class _AnimatedDotsState extends State<_AnimatedDots>
-    with TickerProviderStateMixin {
+// ═══════════════════════════════════════════════════════════════
+// النقاط المتحركة (بدون تغيير)
+// ═══════════════════════════════════════════════════════════════
+class _LoadingDots extends StatefulWidget {
+  final Color color;
+  const _LoadingDots({required this.color});
 
-  final _ctrls = <AnimationController>[];
-  final _anims = <Animation<double>>[];
+  @override
+  State<_LoadingDots> createState() => _LoadingDotsState();
+}
+
+class _LoadingDotsState extends State<_LoadingDots>
+    with TickerProviderStateMixin {
+  final List<AnimationController> _controllers = [];
+  final List<Animation<double>> _animations = [];
 
   @override
   void initState() {
     super.initState();
     for (int i = 0; i < 3; i++) {
-      final c = AnimationController(
+      final controller = AnimationController(
         vsync: this,
-        duration: const Duration(milliseconds: 650),
+        duration: const Duration(milliseconds: 700),
       );
-      _ctrls.add(c);
-      _anims.add(Tween(begin: 0.0, end: 1.0)
-          .animate(CurvedAnimation(parent: c, curve: Curves.easeInOut)));
+      _controllers.add(controller);
+
+      final animation = Tween<double>(begin: 0.0, end: 1.0).animate(
+        CurvedAnimation(parent: controller, curve: Curves.easeInOut),
+      );
+      _animations.add(animation);
+
       Future.delayed(Duration(milliseconds: i * 180), () {
-        if (mounted) c.repeat(reverse: true);
+        if (mounted) controller.repeat(reverse: true);
       });
     }
   }
 
   @override
   void dispose() {
-    for (final c in _ctrls) c.dispose();
+    for (final controller in _controllers) {
+      controller.dispose();
+    }
     super.dispose();
   }
 
@@ -541,21 +965,34 @@ class _AnimatedDotsState extends State<_AnimatedDots>
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
-      children: List.generate(3, (i) => AnimatedBuilder(
-        animation: _anims[i],
-        builder: (_, __) {
-          final v = _anims[i].value;
-          return Container(
-            margin: const EdgeInsets.symmetric(horizontal: 3),
-            width:  5 + v * 2,
-            height: 5 + v * 2,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: widget.color.withOpacity(0.35 + v * 0.65),
-            ),
-          );
-        },
-      )),
+      children: List.generate(3, (index) {
+        return AnimatedBuilder(
+          animation: _animations[index],
+          builder: (_, __) {
+            final value = _animations[index].value;
+            return Container(
+              margin: const EdgeInsets.symmetric(horizontal: 5),
+              width: 7 + value * 3,
+              height: 7 + value * 3,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: RadialGradient(
+                  colors: [
+                    widget.color.withOpacity(0.5 + value * 0.5),
+                    widget.color.withOpacity(0.3 + value * 0.4),
+                  ],
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: widget.color.withOpacity(value * 0.5),
+                    blurRadius: 6 + value * 6,
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      }),
     );
   }
 }

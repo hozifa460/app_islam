@@ -1,0 +1,53 @@
+{
+  "weekDays": ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
+  "arabicMonths": [
+    "Januar", "Februar", "März", "April", "Mai", "Juni",
+    "Juli", "August", "September", "Oktober", "November", "Dezember"
+  ],
+  "hijriMonths": [
+    "Muharram", "Safar", "Rabi' al-Awwal", "Rabi' ath-Thani", "Dschumada al-Awwal", "Dschumada ath-Thani",
+    "Radschab", "Scha'ban", "Ramadan", "Schawwal", "Dhu l-Qa'da", "Dhu l-Hiddscha"
+  ],
+  "islamicFacts": [
+    "Der Hijri-Kalender beginnt mit der Auswanderung (Hidschra) des Propheten ﷺ von Mekka nach Medina.",
+    "Ramadan ist der neunte Monat des Hijri-Kalenders.",
+    "Die heiligen Monate sind: Dhu l-Qa'da, Dhu l-Hiddscha, Muharram und Radschab.",
+    "Die Nacht der Bestimmung (Lailat al-Qadr) ist besser als tausend Monate und wird in den letzten zehn Tagen des Ramadan gesucht.",
+    "Der Freitag ist der beste Tag der Woche für Muslime.",
+    "Das Fasten am Tag von Arafat sühnt durch Allahs Willen die Sünden von zwei Jahren für Nicht-Pilger.",
+    "Der Tag von Aschura ist ein gesegneter Tag, und das Fasten an ihm wird empfohlen.",
+    "Zakat, Fasten und Hadsch sind an den Hijri-Kalender gebunden.",
+    "Die Sichtung der Mondsichel ist eine Sunnah, die mit dem Beginn der Hijri-Monate verbunden ist.",
+    "Islamische Feiertage werden durch den Hijri-Kalender und nicht durch den gregorianischen bestimmt."
+  ],
+  "hijriEvents": {
+    "1-10": {"title": "Tag von Aschura", "desc": "Ein sehr empfohlener Fastentag mit großer Belohnung."},
+    "3-12": {"title": "Mawlid an-Nabi", "desc": "Jahrestag der Geburt des Propheten ﷺ nach bekannten Daten."},
+    "7-27": {"title": "Isra und Mi'radsch", "desc": "Eine gesegnete Nacht im Zusammenhang mit der Himmelsreise."},
+    "8-15": {"title": "Mitte von Scha'ban", "desc": "Eine gesegnete Nacht, die von vielen Muslimen beachtet wird."},
+    "9-1": {"title": "Beginn des Ramadan", "desc": "Der Beginn des gesegneten Monats Ramadan."},
+    "9-27": {"title": "Lailat al-Qadr (Erwartet)", "desc": "Eine der großartigsten Nächte, die in den letzten zehn Tagen gesucht wird."},
+    "10-1": {"title": "Eid al-Fitr", "desc": "Ein Tag der Freude für Muslime nach Abschluss des Ramadan-Fastens."},
+    "12-9": {"title": "Tag von Arafat", "desc": "Einer der besten Tage im Jahr, sehr empfohlen für Nicht-Pilger zum Fasten."},
+    "12-10": {"title": "Eid al-Adha", "desc": "Das Opferfest und einer der größten Tage für Muslime."}
+  },
+  "hijriNotes": {
+    "1-10": {"title": "Islamischer Hinweis", "desc": "Es wird empfohlen, an Aschura zu fasten und einen Tag davor oder danach hinzuzufügen."},
+    "9-1": {"title": "Islamischer Hinweis", "desc": "Ramadan ist der Monat des Fastens, der Nachtgebete und der Koranrezitation."},
+    "9-27": {"title": "Islamischer Hinweis", "desc": "Lailat al-Qadr wird in den letzten 10 Tagen gesucht; sie ist besser als 1000 Monate."},
+    "10-1": {"title": "Islamischer Hinweis", "desc": "Eid ist ein Tag der Freude, an dem es Sunnah ist, Fröhlichkeit zu zeigen."},
+    "12-9": {"title": "Islamischer Hinweis", "desc": "Das Fasten am Tag von Arafat für Nicht-Pilger sühnt zwei Jahre der Sünden."},
+    "12-10": {"title": "Islamischer Hinweis", "desc": "Eid al-Adha ist einer der größten Tage, an dem das Opfer (Qurbani) vorgeschrieben ist."}
+  },
+  "upcomingEvents": [
+    {"month": 1, "day": 10, "title": "Tag von Aschura"},
+    {"month": 3, "day": 12, "title": "Mawlid an-Nabi"},
+    {"month": 7, "day": 27, "title": "Isra und Mi'radsch"},
+    {"month": 8, "day": 15, "title": "Mitte von Scha'ban"},
+    {"month": 9, "day": 1, "title": "Beginn des Ramadan"},
+    {"month": 9, "day": 27, "title": "Lailat al-Qadr"},
+    {"month": 10, "day": 1, "title": "Eid al-Fitr"},
+    {"month": 12, "day": 9, "title": "Tag von Arafat"},
+    {"month": 12, "day": 10, "title": "Eid al-Adha"}
+  ]
+}

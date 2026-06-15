@@ -1,0 +1,598 @@
+{
+  "asma_allah": [
+    {
+      "id": 1,
+      "name": "Allah (الله)",
+      "meaning": "Il Nome Supremo di Maestà, che racchiude tutti gli attributi di perfezione, maestà e bellezza. È il nome esclusivo del Vero Dio, Esaltato sia; nessun altro è chiamato così, ed è la radice di tutti gli altri nomi divini.",
+      "reflection": "Senti la grandezza di Allah in ogni momento della tua vita e invocalo con il Suo Nome Supremo con certezza e sincerità, poiché Egli è il Vicino, Colui che risponde e che non delude mai chi Lo invoca."
+    },
+    {
+      "id": 2,
+      "name": "Ar-Rahman (الرحمن) - Il Compassionevole",
+      "meaning": "Il Possessore della vasta misericordia che abbraccia tutte le creature in questo mondo, credenti e non credenti, umani e jinn. La Sua misericordia avvolge ogni cosa; è Lui che provvede a tutti, dona loro salute e concede loro tregua.",
+      "reflection": "Chiedi ad Allah della Sua vasta misericordia e senti la Sua bontà verso di te in ogni situazione. Rifletti su come la Sua misericordia ti circondi da ogni lato: nella tua salute, nel tuo sostentamento e nella tua guida."
+    },
+    {
+      "id": 3,
+      "name": "Ar-Raheem (الرحيم) - Il Misericordioso",
+      "meaning": "Colui che concede la Sua misericordia speciale ai Suoi servi credenti nel Giorno della Resurrezione, ammettendoli in Paradiso e salvandoli dal Fuoco. È Lui che colma i Suoi servi di perdono, compiacimento e immensa ricompensa.",
+      "reflection": "Rifletti su come Allah mostra misericordia ai Suoi servi credenti. Sii gentile con le persone proprio come ami che ti venga mostrata misericordia. Sappi che la misericordia di Allah è vicina a coloro che fanno il bene."
+    },
+    {
+      "id": 4,
+      "name": "Al-Malik (الملك) - Il Sovrano",
+      "meaning": "Il Proprietario assoluto di tutto, che dispone del Suo regno come vuole senza rivali né opposizioni. A Lui appartiene il dominio dei cieli e della terra; dà a chi vuole e priva chi vuole, onora chi vuole e umilia chi vuole.",
+      "reflection": "Sii consapevole che la sovranità appartiene solo ad Allah e confida in Lui in tutti i tuoi affari. Non attaccare il tuo cuore a un potere terreno effimero, poiché ogni regno diverso da quello di Allah perirà."
+    },
+    {
+      "id": 5,
+      "name": "Al-Quddus (القدوس) - Il Santissimo / Il Puro",
+      "meaning": "Il Purificato da ogni imperfezione e difetto, esaltato al di sopra di tutto ciò che non si addice alla Sua maestà e grandezza. Il Puro da ogni macchia, che gli angeli santificano e glorificano.",
+      "reflection": "Purifica Allah da ogni imperfezione nella tua fede e nelle tue parole, e purifica il tuo cuore da tutto ciò che contraddice la tua servitù verso di Lui. Glorificalo in ogni momento."
+    },
+    {
+      "id": 6,
+      "name": "As-Salam (السلام) - La Fonte della Pace",
+      "meaning": "L'Esente da ogni difetto, mancanza e danno. È Colui che protegge i Suoi servi da paure e pericoli e diffonde pace e sicurezza nei cuori dei credenti. Da Lui proviene la pace e la salvezza in questo mondo e nell'Aldilà.",
+      "reflection": "Chiedi ad Allah la sicurezza nella tua religione, nella tua vita terrena e nell'Aldilà. Sii una fonte di pace e sicurezza per chi ti circonda e diffondi il saluto di pace tra le persone."
+    },
+    {
+      "id": 7,
+      "name": "Al-Mu'min (المؤمن) - Il Datore di Sicurezza",
+      "meaning": "Colui che garantisce sicurezza alla Sua creazione contro l'ingiustizia e mette al sicuro i Suoi servi credenti dal Suo castigo nel Giorno del Giudizio. Egli conferma la veridicità dei Suoi messaggeri attraverso i miracoli e compie la Sua promessa di ricompensa ai credenti.",
+      "reflection": "Senti la sicurezza che Allah concede ai Suoi servi credenti e confida nella Sua vera promessa. Sii degno di fiducia nei tuoi rapporti con gli altri, poiché il vero credente è colui di cui le persone si fidano."
+    },
+    {
+      "id": 8,
+      "name": "Al-Muhaymin (المهيمن) - Il Custode / Il Sorvegliante",
+      "meaning": "Il Guardiano vigile di tutto, consapevole delle questioni nascoste e dei segreti dei cuori. Il Testimone sulla Sua creazione riguardo a tutte le loro parole e azioni; nulla Gli è nascosto.",
+      "reflection": "Sappi che Allah osserva tutto, quindi rettifica il tuo interiore e il tuo esteriore. Sii consapevole di Allah in tutti i tuoi stati come se Lo vedessi, perché anche se tu non Lo vedi, Egli ti vede."
+    },
+    {
+      "id": 9,
+      "name": "Al-Aziz (العزيز) - L'Eccelso / L'Onnipotente",
+      "meaning": "Il Forte e Invincibile che non può essere sconfitto né sottomesso. Il Potente nella Sua vendetta contro i Suoi nemici, la cui forza sottomette tutto. Il Suo santuario è inaccessibile e ciò che Egli possiede si ottiene solo attraverso l'obbedienza a Lui.",
+      "reflection": "Ottieni il tuo onore e la tua forza solo da Allah e non umiliarti davanti a nessun altro. Sappi che l'onore appartiene ad Allah, al Suo Messaggero e ai credenti."
+    },
+    {
+      "id": 10,
+      "name": "Al-Jabbar (الجبار) - Il Costrittore / Il Riparatore",
+      "meaning": "Colui che ripara ciò che è rotto, arricchisce il povero e rettifica le questioni. È il Dominatore di ogni tiranno ostinato e l'Inaccessibile che obbliga la Sua creazione a sottomettersi ai Suoi ordini e divieti.",
+      "reflection": "Senti il potere di Allah che ripara il tuo dolore e ti aiuta nella tua debolezza. Rifugiati in Lui in ogni difficoltà, poiché Egli è il Riparatore che guarisce i cuori infranti."
+    },
+    {
+      "id": 11,
+      "name": "Al-Mutakabbir (المتكبر) - Il Supremo / Il Fiero",
+      "meaning": "Il Grandioso, esaltato al di sopra degli attributi della creazione, supremo nella Sua Signoria e senza pari. Il Possessore dell'orgoglio e della grandezza, puro da ogni difetto. L'orgoglio è il Suo mantello e la grandezza la Sua veste.",
+      "reflection": "Sii umile davanti ad Allah e alle persone, poiché l'orgoglio è il mantello solo di Allah. Chiunque competa con Lui nel Suo orgoglio, Allah lo spezzerà. Sii umile e Allah ti innalzerà."
+    },
+    {
+      "id": 12,
+      "name": "Al-Khaliq (الخالق) - Il Creatore",
+      "meaning": "Colui che ha portato tutte le cose all'esistenza dal nulla e ha decretato i loro stati e attributi prima di crearle. Egli ha creato tutto dal nulla attraverso il Suo potere, la Sua saggezza e la Sua conoscenza.",
+      "reflection": "Contempla la creazione di Allah e la Sua innovazione nell'universo che ti circonda. Ringrazialo per la benedizione della creazione e dell'esistenza, e utilizza ciò che Allah ha creato in ciò che Gli compiace."
+    },
+    {
+      "id": 13,
+      "name": "Al-Bari' (البارئ) - L'Iniziatore / Il Produttore",
+      "meaning": "Colui che ha iniziato la creazione e l'ha portata all'esistenza con il Suo potere, distinguendola con tratti e forme diverse. Egli ha creato tutto libero da incoerenze, disarmonie e difetti.",
+      "reflection": "Rifletti sulla precisione della creazione di Allah e su come ha formato ogni creatura in modo diverso. Tratta la creazione di Allah con bontà, poiché tutti dipendono da Allah."
+    },
+    {
+      "id": 14,
+      "name": "Al-Musawwir (المصور) - Il Plasmatore",
+      "meaning": "Colui che ha dato forma a tutte le cose esistenti e ha conferito a ogni creatura la sua forma e il suo aspetto unici. Egli ha plasmato la Sua creazione in forme diverse affinché si riconoscano e si distinguano a vicenda.",
+      "reflection": "Ringrazia Allah per l'eccellente forma che ti ha dato e non deridere mai l'aspetto di nessuno. Sappi che la vera bellezza risiede nella bellezza del cuore e delle azioni."
+    },
+    {
+      "id": 15,
+      "name": "Al-Ghaffar (الغفار) - Il Perdonatore Assoluto",
+      "meaning": "Colui che perdona costantemente i Suoi servi, nascondendo i loro peccati e perdonandoli ancora e ancora. Non si stanca di perdonare anche se i peccati si ripetono; Egli perdona tutti i peccati.",
+      "reflection": "Chiedi perdono costantemente in ogni momento, poiché la porta del perdono è aperta e non si chiude mai. Non disperare mai della misericordia di Allah, non importa quanto siano grandi i tuoi peccati."
+    },
+    {
+      "id": 16,
+      "name": "Al-Qahhar (القهار) - Il Dominatore Supremo",
+      "meaning": "Colui che sottomette tutto con il Suo potere e la Sua forza. Ogni creatura si sottomette a Lui e tutto ciò che esiste si umilia davanti alla Sua grandezza. Nulla nei cieli o sulla terra Gli sfugge; Egli sottomette i tiranni e gli arroganti.",
+      "reflection": "Tieni presente il dominio assoluto di Allah su ogni oppressore e arrogante, e non temere nessun altro che Lui. Sappi che chi opprime ingiustamente sarà giustamente sottomesso da Allah."
+    },
+    {
+      "id": 17,
+      "name": "Al-Wahhab (الوهاب) - Il Munifico / Il Donatore",
+      "meaning": "L'Abbondante Donatore di doni e benedizioni, che dona senza richiedere causa, compensazione o motivo nascosto. Concede ciò che vuole a chi vuole; i Suoi doni sono infiniti e le Sue benedizioni incalcolabili.",
+      "reflection": "Chiedi ad Allah della Sua grazia e dei Suoi doni, poiché Egli è il Generoso Donatore la cui donazione non si esaurisce mai. Sii generoso con le persone, poiché Allah ama i generosi."
+    },
+    {
+      "id": 18,
+      "name": "Ar-Razzaq (الرزاق) - Il Provveditore",
+      "meaning": "Colui che provvede a tutte le creature e si fa carico del loro sostentamento. Non dimentica nessuna delle Sue creature; la provvisione di ogni essere dipende da Lui. Provvede al credente e al non credente, al pio e al peccatore.",
+      "reflection": "Tranquillizzati; la provvisione che è stata decretata per te ti arriverà a tempo debito per la saggezza di Allah. Sforzati di cercare un sostentamento lecito e riponi la tua fiducia in Allah."
+    },
+    {
+      "id": 19,
+      "name": "Al-Fattah (الفتاح) - Colui che apre / Il Giudice",
+      "meaning": "Colui che apre le porte della misericordia e della provvisione per i Suoi servi, e giudica tra loro con verità e giustizia. Apre le questioni chiuse e sblocca le porte del bene e del sollievo per coloro che cercano il Suo aiuto.",
+      "reflection": "Se le porte si chiudono davanti a te, rivolgiti ad Al-Fattah. Sappi che ciò che Allah apre, nessuno può chiuderlo; e ciò che Egli chiude, nessuno può aprirlo."
+    },
+    {
+      "id": 20,
+      "name": "Al-Aleem (العليم) - L'Onnisciente",
+      "meaning": "Colui la cui conoscenza abbraccia tutto, l'apparente e il nascosto, il minuscolo e l'immenso. Sa ciò che è stato, ciò che è e ciò che non è stato, se fosse stato, come sarebbe stato. Nulla nei cieli né sulla terra Gli è nascosto.",
+      "reflection": "Tieni presente la conoscenza onnicomprensiva di Allah, e sii sincero nelle tue azioni, in segreto e in pubblico. Cerca la conoscenza benefica e mettila in pratica."
+    },
+    {
+      "id": 21,
+      "name": "Al-Qabid (القابض) - Colui che restringe",
+      "meaning": "Colui che restringe la provvisione e le anime per Sua saggezza e volontà. Restringe a chi Egli vuole come prova e test. La Sua restrizione si basa sulla giustizia e sulla saggezza; trattiene per dare, e restringe per espandere.",
+      "reflection": "Se le situazioni diventano difficili per te, sappi che la restrizione di Allah contiene saggezza e che con la difficoltà arriva il sollievo. Sii paziente e non disperare."
+    },
+    {
+      "id": 22,
+      "name": "Al-Basit (الباسط) - Colui che espande",
+      "meaning": "Colui che espande la provvisione a chi Egli vuole tra i Suoi servi per Sua grazia e generosità, diffondendo misericordia e doni. Estende la Sua mano di notte per perdonare il peccatore del giorno, e di giorno per perdonare il peccatore della notte.",
+      "reflection": "Se Allah espande per te la provvisione e le benedizioni, ringrazialo e non diventare arrogante. Sappi che l'abbondanza è una prova, così come lo è la restrizione."
+    },
+    {
+      "id": 23,
+      "name": "Al-Khafid (الخافض) - Colui che abbassa",
+      "meaning": "Colui che umilia chi vuole della Sua creazione per Sua saggezza e giustizia, abbattendo gli arroganti e umiliando gli oppressori. Degrada la miscredenza e i miscredenti, e abbassa coloro che si innalzano al di sopra della verità.",
+      "reflection": "Guardati dall'orgoglio e dall'arroganza sulla terra, poiché Allah umilia gli arroganti. Umiliati davanti ad Allah ed Egli ti innalzerà; mantieni l'umiltà in tutte le situazioni."
+    },
+    {
+      "id": 24,
+      "name": "Ar-Rafi' (الرافع) - Colui che innalza",
+      "meaning": "Colui che innalza i credenti attraverso l'obbedienza e la fede, e innalza chi Egli vuole per Sua grazia. Innalza in gradi la gente di conoscenza e fede, ed eleva lo status di coloro che Egli sceglie.",
+      "reflection": "Sforzati di essere innalzato davanti ad Allah attraverso la conoscenza, le buone azioni e la pietà. Sappi che la vera elevazione è l'elevazione del cuore attraverso la fede."
+    },
+    {
+      "id": 25,
+      "name": "Al-Mu'izz (المعز) - Colui che dà onore",
+      "meaning": "Colui che conferisce onore e potere a chi vuole tra i Suoi servi, rendendoli onorati e di alto rango. Nessuno è onorato tranne colui che Allah onora, e non c'è onore se non attraverso l'obbedienza ad Allah.",
+      "reflection": "Cerca l'onore solo in Allah e non cercarlo nelle creature. Sappi che l'onore risiede nell'obbedienza e l'umiliazione nella disobbedienza."
+    },
+    {
+      "id": 26,
+      "name": "Al-Mudhill (المذل) - Colui che umilia",
+      "meaning": "Colui che umilia chi vuole per Sua giustizia e saggezza, rendendolo vile e disprezzato. Umilia coloro che Gli disobbediscono e si rifiutano di adorarLo, e degrada gli oppressori e i corruttori sulla terra.",
+      "reflection": "Non lasciarti ingannare dalla tua forza, ricchezza o status, poiché Allah è capace di umiliare qualsiasi arrogante. Cerca rifugio in Allah dall'umiliazione e dal disonore."
+    },
+    {
+      "id": 27,
+      "name": "As-Sami' (السميع) - L'Audiente",
+      "meaning": "Colui che ascolta tutti i suoni in diverse lingue e diverse necessità. Ascoltare una cosa non Lo distrae dall'ascoltarne un'altra. Ascolta il segreto, il sussurro e i passi di una formica su una roccia.",
+      "reflection": "Eleva la tua supplica con certezza, poiché Allah ascolta i tuoi sussurri e il richiamo del tuo cuore. Non dire parole che dispiacciono ad Allah, poiché Egli è Colui che ascolta tutto ciò che pronunci."
+    },
+    {
+      "id": 28,
+      "name": "Al-Baseer (البصير) - L'Onniveggente",
+      "meaning": "Colui che vede tutto, non importa quanto piccolo. Vede il cammino della formica nera sulla roccia dura nella notte buia. Nessun movimento né immobilità nei cieli e sulla terra Gli è nascosto.",
+      "reflection": "Tieni presente che lo sguardo di Allah è su di te in ogni momento, e perfeziona le tue azioni in segreto e in pubblico. Sappi che Allah ti vede ovunque tu sia."
+    },
+    {
+      "id": 29,
+      "name": "Al-Hakam (الحكم) - Il Giudice",
+      "meaning": "Colui che giudica tra i Suoi servi con verità e giustizia; non opprime nessuno, nemmeno del peso di un atomo. Il Suo giudizio viene eseguito ed è ineludibile; il Suo decreto è giusto e inappellabile. È il Giudice Supremo a cui si farà ritorno.",
+      "reflection": "Sii soddisfatto del giudizio e del decreto di Allah, e sappi che Egli giudica solo con verità ed equità. Non giudicare le persone se non con giustizia e imparzialità."
+    },
+    {
+      "id": 30,
+      "name": "Al-Adl (العدل) - Il Giusto",
+      "meaning": "L'Esente da ingiustizia e tirannia nei Suoi decreti, giudizi e amministrazione. Non opprime nessuna delle Sue creature e non spreca mai la ricompensa di chi fa il bene. La Sua giustizia è assoluta in tutto.",
+      "reflection": "Sii giusto nei tuoi giudizi e nei tuoi rapporti con le persone, e non opprimere nessuno. Sappi che l'ingiustizia si trasformerà in oscurità nel Giorno della Resurrezione."
+    },
+    {
+      "id": 31,
+      "name": "Al-Lateef (اللطيف) - Il Sottile / Il Benevolo",
+      "meaning": "Colui che fa giungere il bene e le benedizioni ai Suoi servi con dolcezza, sottigliezza e gentilezza, da dove non percepiscono né si aspettano. È benevolo con i Suoi servi nei Suoi decreti, gestendo i loro affari con estrema saggezza.",
+      "reflection": "Rifletti sulla sottigliezza di Allah verso di te nei dettagli della tua vita a cui potresti non prestare attenzione. Sappi che dietro ogni difficoltà c'è un sollievo dal Sottile, l'Onnisciente."
+    },
+    {
+      "id": 32,
+      "name": "Al-Khabeer (الخبير) - Il Ben Informato",
+      "meaning": "Il Conoscitore dei minimi dettagli, delle questioni nascoste e delle realtà interiori. Nessuno stato delle Sue creature Gli è nascosto. Sa cosa c'è nei petti e cosa nascondono le coscienze.",
+      "reflection": "Sappi che Allah è perfettamente informato del tuo stato e di ciò che c'è nel tuo cuore. Rettifica la tua intenzione e il tuo interiore, e chiedi ad Allah di purificare il tuo cuore."
+    },
+    {
+      "id": 33,
+      "name": "Al-Halim (الحليم) - Il Clemente / Il Paziente",
+      "meaning": "Colui che non si affretta a punire coloro che Gli disobbediscono, ma dà loro tempo, li perdona e li provvede nonostante la loro disobbedienza. La Sua clemenza abbraccia tutti; dà tempo ma non dimentica, e perdona.",
+      "reflection": "Adornati di tolleranza e pazienza nei tuoi rapporti con le persone. Non affrettarti a vendicarti, poiché Allah è Clemente e Tollerante."
+    },
+    {
+      "id": 34,
+      "name": "Al-Azim (العظيم) - Il Grandioso / Il Magnifico",
+      "meaning": "Colui al quale appartiene la grandezza e l'orgoglio nei cieli e sulla terra, magnifico nella Sua essenza, nei Suoi attributi e nelle Sue azioni. Le menti non possono comprenderlo e gli sguardi non possono raggiungerlo.",
+      "reflection": "Glorifica Allah nel tuo cuore e con le tue membra, e non minimizzare mai nessuno dei Suoi comandamenti. Senti la Sua immensità quando ti fermi davanti a Lui nella tua preghiera."
+    },
+    {
+      "id": 35,
+      "name": "Al-Ghafoor (الغفور) - Il Perdonatore",
+      "meaning": "Colui che perdona i peccati, nasconde i difetti e trascura le cattive azioni. Il Suo perdono è vasto e la Sua clemenza immensa. Perdona chi si pente e torna a Lui indipendentemente dalla gravità dei suoi peccati.",
+      "reflection": "Non disperare della misericordia di Allah e del Suo perdono, indipendentemente dai tuoi peccati, poiché Egli è il Perdonatore che ama perdonare. Pentiti a Lui in ogni momento."
+    },
+    {
+      "id": 36,
+      "name": "Ash-Shakoor (الشكور) - Il Riconoscente / Il Ricompensatore",
+      "meaning": "Colui che ricompensa immensamente l'azione più piccola, e moltiplica le buone azioni per chi Egli vuole. Apprezza i Suoi servi per la loro obbedienza ricompensandoli e aumentando i Suoi favori su di loro.",
+      "reflection": "Ringrazia Allah per le Sue innumerevoli benedizioni e sappi che Egli apprezza la più piccola azione che offri. Moltiplica gli atti di obbedienza, anche se ti sembrano piccoli."
+    },
+    {
+      "id": 37,
+      "name": "Al-Aliyy (العلي) - L'Altissimo",
+      "meaning": "L'Elevato al di sopra delle Sue creature nella Sua essenza, nei Suoi attributi e nel Suo potere; Alto in status e rango. È al di sopra di tutto, e nulla è più alto di Lui. Possiede l'elevazione assoluta in tutti gli aspetti.",
+      "reflection": "Attaccati all'Altissimo, l'Immenso, e non attaccarti a ciò che è al di sotto di Lui. Eleva le tue ambizioni e cerca i gradi più alti nel Paradiso."
+    },
+    {
+      "id": 38,
+      "name": "Al-Kabir (الكبير) - Il Più Grande",
+      "meaning": "Colui che è grande e magnifico nella Sua essenza e nei Suoi attributi; tutto il resto è piccolo in confronto. È più grande di qualsiasi cosa grande. A Lui appartiene la grandezza nei cieli e sulla terra.",
+      "reflection": "Ingrandisci Allah nel tuo cuore e tutto il resto diventerà piccolo. Se qualcosa ti sembra immenso, ricorda che Allah è più grande di qualsiasi cosa che ti spaventi o ti preoccupi."
+    },
+    {
+      "id": 39,
+      "name": "Al-Hafiz (الحفيظ) - Il Preservatore",
+      "meaning": "Colui che preserva la Sua creazione dalla distruzione, e preserva le azioni dei Suoi servi per ricompensarli. Evita che i cieli e la terra crollino, e protegge i Suoi servi credenti nella loro religione e nella loro vita mondana.",
+      "reflection": "Affida la tua famiglia, la tua ricchezza e la tua religione ad Allah, poiché Egli è il migliore dei protettori. Preserva Allah (obbedendogli) ed Egli ti preserverà; proteggi le tue membra dal disobbedirGli."
+    },
+    {
+      "id": 40,
+      "name": "Al-Muqit (المقيت) - Il Sostenitore / Il Nutritore",
+      "meaning": "Colui che consegna il nutrimento e il sostentamento a ogni creatura al momento opportuno. Si fa carico delle provvigioni dei Suoi servi, capace di far arrivare il sostentamento a ogni essere vivente, qualunque esso sia.",
+      "reflection": "Tranquillizzati riguardo alla tua provvisione, poiché Allah è il Sostenitore che garantisce le provvigioni dei Suoi servi. E non dimenticare di nutrire i bisognosi."
+    },
+    {
+      "id": 41,
+      "name": "Al-Hasib (الحسيب) - Colui che chiede conto / Il Sufficiente",
+      "meaning": "Il Sufficiente per i Suoi servi in tutti i loro affari, e Colui che chiederà loro conto delle loro azioni nel Giorno della Resurrezione. Basterà a chi confida in Lui, e chiederà conto a ogni anima con precisione e giustizia.",
+      "reflection": "Chiedi conto a te stesso prima che ti venga chiesto conto, e pesa le tue azioni prima che vengano pesate. Sappi che Allah è il tuo Valutatore, quindi prepara una risposta per il giudizio."
+    },
+    {
+      "id": 42,
+      "name": "Al-Jalil (الجليل) - Il Maestoso",
+      "meaning": "Il Descritto con attributi di maestà, perfezione e grandezza; il Magnifico nel Suo regno e autorità. Maestoso in status ed elevato in rango, possessore degli attributi di gloria che riempiono i cuori di reverenza.",
+      "reflection": "Venera e ingrandisci Allah nel tuo cuore, e prova vergogna che Egli ti veda commettere un peccato. Sappi che la Sua maestà esige la tua sottomissione e umiltà dinanzi a Lui."
+    },
+    {
+      "id": 43,
+      "name": "Al-Karim (الكريم) - Il Generoso",
+      "meaning": "Abbondante in bontà e donazione, che dona senza che gli venga chiesto, senza calcolare e senza ricordare i Suoi favori. La Sua generosità supera ogni generosità; dona senza compensazione né contropartita.",
+      "reflection": "Adotta i modi della generosità e spendi di ciò che Allah ti ha provveduto. Sappi che ciò che è presso Allah è migliore e più duraturo, quindi non essere avaro con ciò che ti ha dato."
+    },
+    {
+      "id": 44,
+      "name": "Ar-Raqib (الرقيب) - Il Sorvegliante",
+      "meaning": "Il Consapevole di ciò che nascondono i petti, il Supervisore di ogni anima e di ciò che ha guadagnato. Nulla Gli sfugge e non trascura nulla. Osserva le azioni, le parole e i pensieri dei Suoi servi.",
+      "reflection": "Sentiti osservato da Allah in segreto e in pubblico, e sappi che Egli ti guarda in ogni istante. Migliora pertanto le tue azioni e mantieniti retto nella Sua obbedienza."
+    },
+    {
+      "id": 45,
+      "name": "Al-Mujib (المجيب) - Colui che risponde",
+      "meaning": "Colui che risponde alla chiamata di chi Lo invoca, e ascolta chi Lo supplica. È vicino a chi Lo invoca con sincerità; risponde ai disperati, elimina il male e allevia l'angoscia.",
+      "reflection": "Invoca Allah con certezza e tranquillità, poiché Egli è il Vicino, Colui che risponde e non rifiuta chi chiede. Abbi una buona opinione di Allah riguardo alla risposta alle tue suppliche."
+    },
+    {
+      "id": 46,
+      "name": "Al-Wasi' (الواسع) - L'Onnipresente / L'Immenso",
+      "meaning": "Colui la cui misericordia, conoscenza e provvisione abbracciano tutto. Vasto nei Suoi doni, nel Suo perdono e nella Sua grazia; i Suoi tesori non si esauriscono mai e ciò che possiede non ha fine.",
+      "reflection": "Non limitare su te stesso la vasta misericordia di Allah, poiché è più grande di quanto immagini. Chiedigli della Sua immensa grazia e non disperare."
+    },
+    {
+      "id": 47,
+      "name": "Al-Hakim (الحكيم) - Il Saggio",
+      "meaning": "Colui che colloca ogni cosa al suo posto appropriato con assoluta saggezza. Non fa nulla invano né decreta nulla senza scopo; tutte le Sue azioni e i Suoi comandamenti si basano su una saggezza che solo Lui conosce.",
+      "reflection": "Confida nella saggezza di Allah in tutto ciò che decreta per te, anche se non comprendi la saggezza immediatamente. Ogni decreto di Allah è buono e saggio."
+    },
+    {
+      "id": 48,
+      "name": "Al-Wadud (الودود) - L'Amorevole",
+      "meaning": "Colui che ama i Suoi servi pii, e si fa amare da loro attraverso le Sue benedizioni e i Suoi sottili favori. È l'Amato nei cuori dei Suoi alleati; Egli li ama e loro Lo amano. Il Suo affetto speciale è per i credenti sinceri.",
+      "reflection": "Senti l'amore di Allah per te quando Gli obbedisci, e fatti amare da Lui attraverso le buone azioni. Riempi il tuo cuore con l'amore di Allah, poiché chi ama Allah, Allah lo ama."
+    },
+    {
+      "id": 49,
+      "name": "Al-Majid (المجيد) - Il Glorioso",
+      "meaning": "Il Possessore dell'immensa gloria, dell'onore perfetto e della vasta autorità. La Sua gloria riempie i cieli e la terra, e tutte le Sue azioni sono gloriose e grandiose. Gli angeli e tutte le creature Lo glorificano.",
+      "reflection": "Glorifica Allah con il tuo cuore, la tua lingua e le tue membra, e moltiplica le Sue lodi. Sappi che la vera essenza della gloria di Allah non può essere compresa nella sua totalità."
+    },
+    {
+      "id": 50,
+      "name": "Al-Ba'ith (الباعث) - Colui che risuscita",
+      "meaning": "Colui che risuscita la creazione nel Giorno del Giudizio dopo la loro morte per il rendiconto e la ricompensa. È Colui che invia i messaggeri per guidare l'umanità, e Colui che risveglia la determinazione nei cuori dei Suoi servi credenti.",
+      "reflection": "Preparati per il Giorno della Resurrezione con buone azioni e un pentimento sincero. Sappi che sarai risuscitato e renderai conto di tutto, che sia piccolo o grande."
+    },
+    {
+      "id": 51,
+      "name": "Ash-Shahid (الشهيد) - Il Testimone",
+      "meaning": "Colui a cui nulla sfugge; Egli è testimone di tutto, lo sa ed è informato. È testimone delle azioni, delle parole e delle intenzioni dei Suoi servi, e sarà Testimone di ciò che le Sue creature avranno fatto nel Giorno del Giudizio.",
+      "reflection": "Tieni presente il testimo di Allah sulle tue azioni e parole, e agisci con eccellenza. Allah è testimone contro di te, quindi fai in modo che la Sua testimonianza sia a tuo favore e non contro di te."
+    },
+    {
+      "id": 52,
+      "name": "Al-Haqq (الحق) - La Verità",
+      "meaning": "La Realtà fermamente stabilita la cui esistenza è indubitabile, così come la Sua Signoria e Divinità. È la Verità nella Sua essenza, nei Suoi attributi, nei Suoi atti, nella Sua promessa e nella Sua minaccia. Tutto il resto può esistere o meno, ma la Sua esistenza è assoluta.",
+      "reflection": "Attieniti alla verità anche se sei solo, e sappi che la falsità, per quanto gonfiata, è destinata a scomparire. Sii veritiero, poiché la veridicità guida alla pietà."
+    },
+    {
+      "id": 53,
+      "name": "Al-Wakil (الوكيل) - Il Garante / Il Protettore",
+      "meaning": "Il Garante delle provvigioni e degli interessi dei Suoi servi, gestendo gli affari di chi confida in Lui. A chi Lo prende come Garante, Egli basta contro ogni preoccupazione e dolore, e allontana da lui ogni male e danno.",
+      "reflection": "Confida in Allah con una fiducia assoluta e affidagli i tuoi affari. A chi confida in Allah, Egli è sufficiente. E Allah basta come Garante."
+    },
+    {
+      "id": 54,
+      "name": "Al-Qawiyy (القوي) - Il Forte",
+      "meaning": "Colui la cui forza è perfetta, a cui nulla resiste nei cieli né sulla terra. La Sua forza è invincibile; con essa ha stabilito i cieli e la terra. Non è colpito da fatica, esaurimento né debolezza.",
+      "reflection": "Ottieni la tua forza da Allah il Forte e non fidarti della tua sola forza. Cerca l'aiuto di Allah e non sentirti incapace; non c'è forza né potere se non in Allah."
+    },
+    {
+      "id": 55,
+      "name": "Al-Matin (المتين) - L'Infallibile / Il Saldo",
+      "meaning": "L'Estremamente Forte che non sperimenta mai debolezza né stanchezza. La Sua fermezza risiede nel Suo potere e nel Suo rigore contro chi Gli disobbedisce. Non è influenzato da nulla, nulla Lo scuote, e nulla diminuisce la Sua forza.",
+      "reflection": "Sii fermo nella tua fede e costante nella verità. Sappi che Allah è fermo e severo nel punire i Suoi nemici e i nemici dei Suoi alleati."
+    },
+    {
+      "id": 56,
+      "name": "Al-Waliyy (الولي) - Il Protettore / L'Alleato",
+      "meaning": "Il Sostenitore, l'Aiutante e Colui che amministra gli affari dei Suoi servi credenti. Si occupa di loro con la Sua cura, protezione e aiuto. È l'alleato dei credenti, facendoli uscire dalle tenebre verso la luce.",
+      "reflection": "Prendi Allah come Protettore e Alleato, e non avrai bisogno dell'alleanza di nessun'altra creatura. Chi ha Allah come alleato non sarà mai abbandonato."
+    },
+    {
+      "id": 57,
+      "name": "Al-Hamid (الحميد) - Il Degno di lode",
+      "meaning": "Colui che è lodato in ogni situazione e in ogni momento, degno di lode e di encomio per la Sua essenza, i Suoi attributi e le Sue azioni. La Sua lode riempie i cieli e la terra, e tutto ciò che vi è Lo loda ed esalta.",
+      "reflection": "Loda Allah nella facilità e nelle avversità, poiché Egli è Degno di lode in ogni stato. Mantieni la tua lingua umida con la lode e il ringraziamento ad Allah."
+    },
+    {
+      "id": 58,
+      "name": "Al-Muhsi (المحصي) - Colui che tiene il conto",
+      "meaning": "Colui che ha contato ogni cosa e la conosce in dettaglio, in modo che nulla della Sua creazione Gli è nascosto. Conta le azioni, i respiri e i passi dei Suoi servi, e nulla Gli sfugge, per quanto minuscolo.",
+      "reflection": "Sappi che ogni azione è contata contro di te o a tuo favore, quindi agisci bene in tutto ciò che fai. Fai in modo che le tue buone azioni siano più numerose di quelle cattive."
+    },
+    {
+      "id": 59,
+      "name": "Al-Mubdi' (المبدئ) - L'Iniziatore",
+      "meaning": "Colui che ha iniziato la creazione di tutte le cose e le ha inventate senza alcun modello precedente. Ha iniziato la creazione per Suo potere e volontà, portando tutto all'esistenza dal nulla, senza causa né intermediario.",
+      "reflection": "Rifletti sull'inizio della tua creazione e su come Allah ti ha portato all'esistenza dal nulla. Ringrazialo per la benedizione della creazione e della vita."
+    },
+    {
+      "id": 60,
+      "name": "Al-Mu'id (المعيد) - Colui che ripristina",
+      "meaning": "Colui che ripristina la creazione dopo la morte nel Giorno della Resurrezione, così come li ha iniziati la prima volta. Proprio come li ha creati dal nulla, è capace di ripristinarli dopo il loro annientamento per giudicarli e ricompensarli.",
+      "reflection": "Abbi la certezza della resurrezione dopo la morte e preparati ad incontrare Allah con buone azioni. Così come ti ha originato, ti ripristinerà, e a Lui farai ritorno."
+    },
+    {
+      "id": 61,
+      "name": "Al-Muhyi (المحيي) - Il Datore di vita",
+      "meaning": "Colui che dà la vita ai morti e trae il vivo dal morto. Egli è Colui che ha dato la vita alle creature infondendo in loro l'anima, e le risusciterà nel Giorno del Giudizio. Egli dà anche vita ai cuori morti con la luce della fede e della guida.",
+      "reflection": "Chiedi ad Allah di dare vita al tuo cuore attraverso la fede, la conoscenza e il Suo ricordo. Sappi che la vita del cuore è più importante della vita del corpo."
+    },
+    {
+      "id": 62,
+      "name": "Al-Mumit (المميت) - Colui che dà la morte",
+      "meaning": "Colui che dà la morte ai vivi e prende le loro anime quando Egli vuole. Ha creato la morte e la vita per mettervi alla prova su chi di voi operi meglio. Ogni anima assaggerà la morte, e a Lui sarete ricondotti.",
+      "reflection": "Ricorda la morte ogni giorno e preparati ad essa con buone azioni. Non lasciarti ingannare dalla vita mondana, poiché è un luogo di passaggio e non una dimora permanente."
+    },
+    {
+      "id": 63,
+      "name": "Al-Hayy (الحي) - Il Vivente",
+      "meaning": "Colui che possiede la vita perfetta, eterna e permanente, che non è stata preceduta dalla non-esistenza e non sarà seguita dall'annientamento. La Sua vita non è come la vita delle creature; è una vita perfetta libera dal sonno e dalla distrazione.",
+      "reflection": "Riponi la tua fiducia nel Vivente che non muore e non attaccarti ai vivi che muoiono. Lavora per la vita eterna dell'Aldilà."
+    },
+    {
+      "id": 64,
+      "name": "Al-Qayyum (القيوم) - Il Sussistente",
+      "meaning": "Colui che sussiste da Sé, indipendente da tutto il resto, e per il Quale tutto il resto sussiste. Mantiene la Sua creazione gestendola, preservandola e curandola; non Lo coglie né sonnolenza né sonno.",
+      "reflection": "Cerca l'aiuto del Sussistente in tutti i tuoi affari, poiché Egli è Colui che mantiene la tua vita e gestisce i tuoi problemi. Non trascurare il Suo ricordo nemmeno per un istante."
+    },
+    {
+      "id": 65,
+      "name": "Al-Wajid (الواجد) - Colui che trova",
+      "meaning": "L'Autosufficiente che non ha bisogno di nulla e a cui non manca nulla. Trova ciò che vuole quando lo vuole. Nulla Lo frustra e non ha bisogno di nulla, mentre tutto ha bisogno di Lui.",
+      "reflection": "Esponi il tuo bisogno solo ad Allah, il Ricco e l'Autosufficiente, e chiedi solo a Lui. Poiché Egli è Colui che trova ciò che vuole e nulla Gli sfugge."
+    },
+    {
+      "id": 66,
+      "name": "Al-Majid (الماجد) - Il Nobile / L'Illustre",
+      "meaning": "Il Nobile e Grande nella Sua generosità e onore, che possiede la gloria, il potere e la nobiltà perfette. Nobile nei Suoi attributi, grandioso nelle Sue azioni e generoso nei Suoi doni.",
+      "reflection": "Glorifica Allah ed esaltalo, e chiedi della Sua gloria e generosità. Sappi che la vera gloria risiede nell'obbedienza ad Allah e nella vicinanza a Lui."
+    },
+    {
+      "id": 67,
+      "name": "Al-Wahid (الواحد) - L'Unico",
+      "meaning": "Colui che è totalmente unico nella Sua essenza, nei Suoi attributi e nelle Sue azioni; non ha associati, uguali o simili. Uno, Unico, Singolare, il Rifugio Eterno; non ha generato né è stato generato, e non c'è nessuno uguale a Lui.",
+      "reflection": "Unifica Allah nella tua adorazione, nella tua supplica e nella tua ricerca di aiuto, e non associargli nulla. Il monoteismo (Tawhid) è il mezzo più grande con cui un servo si avvicina al suo Signore."
+    },
+    {
+      "id": 68,
+      "name": "As-Samad (الصمد) - L'Assoluto / Il Rifugio Eterno",
+      "meaning": "Il Signore a Cui tutte le creature si rivolgono per le loro necessità e richieste. Prescinde da tutti, mentre tutti hanno bisogno di Lui. Non mangia e non beve, Gloria a Lui!.",
+      "reflection": "Rivolgiti unicamente ad Allah per ogni tua necessità e non orientare il tuo cuore verso nessun altro. Egli è il Rifugio Eterno che non delude mai chi si rivolge a Lui."
+    },
+    {
+      "id": 69,
+      "name": "Al-Qadir (القادر) - L'Onnipotente / Il Capace",
+      "meaning": "Colui che è capace di tutto; nulla nei cieli né sulla terra Lo frustra. Se vuole una cosa, Gli dice solo 'Sii', ed essa è. Il Suo potere è perfetto e la Sua volontà è ineludibile.",
+      "reflection": "Credi nel potere assoluto di Allah e chiediGli ciò che desideri anche se sembra impossibile. Perché Allah è Capace di tutte le cose."
+    },
+    {
+      "id": 70,
+      "name": "Al-Muqtadir (المقتدر) - L'Onnipotente Supremo",
+      "meaning": "Colui che possiede un potere supremo al quale nulla può resistere. Il Suo potere è al di sopra di ogni potere, e la Sua forza al di sopra di ogni forza. Fa ciò che vuole, come vuole, quando vuole; nulla può contrastarLo.",
+      "reflection": "Senti l'onnipotenza di Allah su tutte le cose e non considerare nulla come troppo difficile per Allah. Chi ha Allah dalla sua parte, nulla può vincerlo."
+    },
+    {
+      "id": 71,
+      "name": "Al-Muqaddim (المقدم) - Colui che anticipa",
+      "meaning": "Colui che anticipa chi vuole delle Sue creature per Sua saggezza, conoscenza e misericordia. Colloca le cause prima dei loro effetti e anticipa chi vuole in status, rango, destino e tempo.",
+      "reflection": "Sforzati di avanzare mediante buone azioni e conoscenza utile, e sappi che Allah anticipa coloro che lo meritano per Sua saggezza."
+    },
+    {
+      "id": 72,
+      "name": "Al-Mu'akhkhir (المؤخر) - Colui che ritarda",
+      "meaning": "Colui che ritarda chi vuole delle Sue creature per Sua saggezza e giustizia. Ritarda il castigo per concedere tregua, e ritarda chi vuole in rango e status. Il Suo ritardo è saggezza, e il Suo anticipo è saggezza.",
+      "reflection": "Se qualcosa viene ritardato per te, sappi che c'è una saggezza di Allah in quel ritardo. Sii paziente e cerca la ricompensa, poiché Allah non ritarda qualcosa se non per un bene."
+    },
+    {
+      "id": 73,
+      "name": "Al-Awwal (الأول) - Il Primo",
+      "meaning": "Colui prima del Quale non c'è nulla; esisteva quando non c'era nulla con Lui né prima di Lui. È il Primo senza inizio; la Sua esistenza non ha un principio. Ha preceduto tutte le cose con la Sua esistenza eterna che non ha inizio.",
+      "reflection": "Rifletti sull'anteriorità e sull'eternità di Allah, e fai in modo che Egli sia il primo a cui ti rivolgi in ogni questione. Inizia ogni azione nel nome di Allah."
+    },
+    {
+      "id": 74,
+      "name": "Al-Akhir (الآخر) - L'Ultimo",
+      "meaning": "Colui dopo il Quale non c'è nulla; l'Eterno dopo l'annientamento di tutto. È l'Ultimo senza fine; la Sua esistenza non ha un termine. Rimane dopo che tutte le creature periscono, poiché Egli è il Vivente che non muore.",
+      "reflection": "Lavora per ciò che viene dopo la morte e fai in modo che il tuo Aldilà sia un posto migliore della tua vita presente. Ricorda che incontrerai Allah, l'Ultimo, Colui che rimarrà dopo che tutto perirà."
+    },
+    {
+      "id": 75,
+      "name": "Az-Zahir (الظاهر) - Il Manifesto",
+      "meaning": "L'Elevato al di sopra di tutto per la Sua grandezza e potere, i cui segni e prove di esistenza sono evidenti in ogni creatura. Manifesto per i Suoi segni che non si nascondono a chiunque rifletta e mediti.",
+      "reflection": "Contempla i segni manifesti di Allah nell'universo che ti circonda. Guarda come Allah ti manifesta il Suo potere in tutto ciò che vedi."
+    },
+    {
+      "id": 76,
+      "name": "Al-Batin (الباطن) - L'Occulto",
+      "meaning": "Il Vicino la cui conoscenza abbraccia tutto, che gli sguardi non possono percepire e i pensieri non possono comprendere. Nascosto in modo tale che le menti non possono cogliere la Sua vera essenza. Conosce il segreto e ciò che è ancora più nascosto.",
+      "reflection": "Rettifica il tuo interiore così come rettifichi il tuo esteriore, poiché Allah sa ciò che nascondi e ciò che mostri. Purifica il tuo cuore dall'ostentazione e dall'ipocrisia."
+    },
+    {
+      "id": 77,
+      "name": "Al-Wali (الوالي) - Il Governatore",
+      "meaning": "Il Possessore di tutto, che dispone di tutti gli affari, l'Amministratore degli affari delle Sue creature con direzione e gestione. Governa gli affari dei servi e li gestisce con la Sua saggezza e misericordia.",
+      "reflection": "Delega i tuoi affari ad Allah, il Governatore e Amministratore, e sappi che Egli ha il controllo di tutto. Abbandonati ad Allah e troverai riposo."
+    },
+    {
+      "id": 78,
+      "name": "Al-Muta'ali (المتعالي) - Il Sublime / L'Eccelso",
+      "meaning": "L'Esaltato al di sopra degli attributi delle creature, elevato al di sopra di tutto ciò che non si addice alla Sua maestà. Esaltato al di sopra di avere associati, pari o uguali. Supremamente Alto nella Sua essenza e nei Suoi attributi sopra tutte le Sue creature.",
+      "reflection": "Elevati al di sopra delle cose vili e mondane e attaccati al Sublime, il Magnifico. Eleva le tue ambizioni al di sopra di tutto ciò che è effimero."
+    },
+    {
+      "id": 79,
+      "name": "Al-Barr (البر) - Il Benefico",
+      "meaning": "Il Compassionevole verso i Suoi servi attraverso la Sua bontà, dolcezza e vasta generosità. Abbondante in beneficenza, doni e tolleranza con la Sua creazione. Tratta bene i Suoi servi ed è gentile con loro in tutte le loro situazioni.",
+      "reflection": "Sii buono con i tuoi genitori e benevolo con le persone, poiché Allah ama coloro che fanno il bene. Senti la bontà di Allah verso di te in ogni benedizione di cui godi."
+    },
+    {
+      "id": 80,
+      "name": "At-Tawwab (التواب) - Colui che accoglie il pentimento",
+      "meaning": "Colui che accetta il pentimento di chi si pente e perdona i peccatori, indipendentemente dalla frequenza dei loro peccati. Ogni volta che il servo si pente, Allah si volge verso di lui perdonando, rallegrandosi grandemente per il suo ritorno. La Sua porta è aperta.",
+      "reflection": "Pentiti ad Allah in ogni momento e non vergognarti di tornare frequentemente a Lui. Egli è Colui che accetta il pentimento, ama coloro che si pentono e si rallegra del loro ritorno."
+    },
+    {
+      "id": 81,
+      "name": "Al-Muntaqim (المنتقم) - Il Vendicatore",
+      "meaning": "Colui che prende vendetta degli oppressori, dei disobbedienti e dei corruttori per Sua giustizia e saggezza. Non si affretta a vendicarsi, ma concede una tregua; se non si fermano, li prende con la forza di un Potente, Onnipotente.",
+      "reflection": "Guardati dal disobbedire ad Allah e non sentirti al sicuro dal Suo piano. Sappi che Allah concede una tregua ma non dimentica, quindi affrettati a pentirti prima che sia troppo tardi."
+    },
+    {
+      "id": 82,
+      "name": "Al-Afuww (العفو) - L'Indulgente",
+      "meaning": "Colui che cancella i peccati e trascura gli atti di disobbedienza. Ama perdonare e perdona molto. La Sua indulgenza è più vasta del Suo castigo, e la Sua misericordia precede la Sua ira. Perdona a chi fa male e scusa chi offende.",
+      "reflection": "Perdona le persone e Allah ti perdonerà, e ripeti spesso: 'Oh Allah, Tu sei l'Indulgente, ami perdonare, quindi perdonaci'. Il perdono è tra le azioni più amate da Allah."
+    },
+    {
+      "id": 83,
+      "name": "Ar-Ra'uf (الرؤوف) - Il Compassionevole",
+      "meaning": "L'Estremamente Misericordioso, clemente e gentile con i Suoi servi; più misericordioso con loro di quanto lo siano loro stessi. La Sua compassione precede il Suo castigo. È gentile con i Suoi servi nelle Sue legislazioni e nei Suoi decreti.",
+      "reflection": "Sii gentile e compassionevole con chi ti circonda, poiché Allah mostra misericordia ai Suoi servi misericordiosi. Sii benevolo con i deboli e i bisognosi."
+    },
+    {
+      "id": 84,
+      "name": "Malik-ul-Mulk (مالك الملك) - Il Sovrano del Regno",
+      "meaning": "Il Possessore di ogni dominio, che ne dispone come vuole senza alcun rivale. Dà la sovranità a chi vuole e la toglie a chi vuole; onora chi vuole e umilia chi vuole. Tutto il bene è nella Sua mano.",
+      "reflection": "Non attaccarti al dominio effimero di questo mondo e sappi che la vera sovranità appartiene solo ad Allah. Chiedi ad Allah del Suo favore."
+    },
+    {
+      "id": 85,
+      "name": "Dhul-Jalali wal-Ikram (ذو الجلال والإكرام) - Il Signore della Maestà e della Generosità",
+      "meaning": "Il Possessore della grandezza, dell'orgoglio e della maestà, e la fonte dell'onore, delle benedizioni e della bontà. È venerato per la Sua maestà, e amato e onorato per la Sua generosità. Possessore di bellezza, perfezione e grandezza.",
+      "reflection": "Venera e ingrandisci Allah, e onora i Suoi servi, poiché chi onora i servi di Allah, Allah lo onorerà. Chiedi a Lui per la Sua maestà e generosità."
+    },
+    {
+      "id": 86,
+      "name": "Al-Muqsit (المقسط) - L'Equo",
+      "meaning": "Il Giusto che fa giustizia all'oppresso contro l'oppressore, e giudica tra loro con la verità. È equo nel Suo giudizio, nel Suo decreto, nella Sua provvisione e nei Suoi doni. La Sua giustizia abbraccia questo mondo e l'Aldilà.",
+      "reflection": "Sii giusto ed equo nei tuoi rapporti con le persone, e non opprimere nessuno. Sappi che Allah ama coloro che sono equi."
+    },
+    {
+      "id": 87,
+      "name": "Al-Jami' (الجامع) - Colui che riunisce",
+      "meaning": "Colui che riunirà tutte le creature per un Giorno sul quale non vi è dubbio, il Giorno della Resurrezione. Riunisce anche cose disperse e opposte per Sua saggezza. Ha riunito tutte le perfezioni nella Sua essenza e nei Suoi attributi.",
+      "reflection": "Preparati per il Grande Giorno della Riunione (il Giorno della Resurrezione), e lavora per ciò che lo segue. Riunisci il tuo cuore in Allah e non disperdere le tue preoccupazioni."
+    },
+    {
+      "id": 88,
+      "name": "Al-Ghaniyy (الغني) - L'Autosufficiente / Il Ricco",
+      "meaning": "Colui che non ha assolutamente bisogno di nessuno della Sua creazione per nulla, mentre tutte le Sue creature hanno un bisogno assoluto di Lui in tutto. Ricco in Sé stesso di tutto il resto; non sperimenta mai il bisogno.",
+      "reflection": "Arricchisciti con Allah al di sopra di ogni altra cosa e non umiliarti davanti a nessuna creatura. Sappi che la vera ricchezza è la ricchezza dell'anima e del cuore."
+    },
+    {
+      "id": 89,
+      "name": "Al-Mughni (المغني) - Colui che arricchisce",
+      "meaning": "Colui che arricchisce chi vuole tra i Suoi servi per Sua grazia e generosità. Li arricchisce con beni, conoscenza, fede e contentamento. Arricchisce le anime con la soddisfazione, i cuori con la fede e i corpi con la salute.",
+      "reflection": "Chiedi ad Allah la ricchezza, e arricchisci gli altri di ciò che Allah ti ha dato. Sappi che la persona più ricca è quella che Allah ha arricchito con contentamento e soddisfazione."
+    },
+    {
+      "id": 90,
+      "name": "Al-Mani' (المانع) - Colui che impedisce",
+      "meaning": "Colui che impedisce ciò che vuole a chi vuole per Sua saggezza e misericordia. Allontana le afflizioni e il male dai Suoi servi credenti, e trattiene certe benedizioni da chi vuole per saggezza e come prova.",
+      "reflection": "Se Allah ti nega qualcosa, sappi che c'è un bene per te in quella negazione. Forse Allah ti priva per darti qualcosa di meglio."
+    },
+    {
+      "id": 91,
+      "name": "Ad-Darr (الضار) - Colui che nuoce",
+      "meaning": "Colui che decreta il danno e l'afflizione su chi vuole per Sua saggezza e conoscenza. Il Suo danno non è un'ingiustizia, ma una saggezza, una prova e una purificazione. Nessuno può causare danno se non col Suo permesso.",
+      "reflection": "Non temere il danno di nessuno tranne che di Allah, e sappi che ciò che ti ha colpito non avrebbe potuto mancarti. Sii paziente di fronte alla prova e aspetta la ricompensa."
+    },
+    {
+      "id": 92,
+      "name": "An-Nafi' (النافع) - Il Benefattore",
+      "meaning": "Colui che decreta il beneficio per chi vuole tra i Suoi servi per Sua misericordia e grazia. Ogni beneficio nell'universo proviene da Allah, e nessuno può beneficiare un altro se non con il Suo permesso. È la fonte di tutto il bene.",
+      "reflection": "Sforzati di essere utile alle persone, poiché Allah ama coloro che sono utili ai Suoi servi. I migliori esseri umani sono i più utili per gli altri."
+    },
+    {
+      "id": 93,
+      "name": "An-Nur (النور) - La Luce",
+      "meaning": "Colui che ha illuminato i cieli e la terra con la Sua luce, e ha illuminato i cuori dei credenti con la guida e la fede. La Sua luce ha dissipato ogni oscurità, e attraverso essa sono illuminati gli abitanti dei cieli e della terra.",
+      "reflection": "Chiedi ad Allah di illuminare il tuo cuore e il tuo discernimento con la luce della fede e della guida. Fai della tua vita una luce che illumini il cammino degli altri."
+    },
+    {
+      "id": 94,
+      "name": "Al-Hadi (الهادي) - La Guida",
+      "meaning": "Colui che guida chi vuole verso la retta via e la religione della verità. Guida i cuori a conoscerLo e guida le menti a credere in Lui. La Sua guida è un'immensa e inestimabile benedizione.",
+      "reflection": "Chiedi ad Allah guida e fermezza in ogni preghiera e ogni supplica. Sforzati di guidare gli altri con saggezza e buone parole."
+    },
+    {
+      "id": 95,
+      "name": "Al-Badi' (البديع) - L'Incomparabile Originatore",
+      "meaning": "Colui che ha originato e creato la creazione senza alcun modello precedente. La Sua innovazione nella Sua creazione sconcerta le menti e stupisce gli intelletti. L'Originatore dei cieli e della terra senza pari.",
+      "reflection": "Contempla l'innovazione di Allah nella Sua creazione e prostrati in ringraziamento per la Sua grandezza. Sii innovativo ed eccellente nel tuo lavoro, nella tua adorazione e nel tuo comportamento."
+    },
+    {
+      "id": 96,
+      "name": "Al-Baqi (الباقي) - L'Eterno / Il Permanente",
+      "meaning": "Il Permanente che non smette di esistere, che non perisce né si estingue. Tutto perirà tranne il Suo Volto. Rimane dopo la scomparsa della Sua creazione, eterno e perpetuo, che il tempo non limita.",
+      "reflection": "Lavora per ciò che dura e non attaccarti a ciò che perisce. Ciò che è presso Allah è migliore e più duraturo, e l'Aldilà è migliore della vita presente."
+    },
+    {
+      "id": 97,
+      "name": "Al-Warith (الوارث) - L'Erede",
+      "meaning": "Colui che eredita la terra e tutti coloro che vi si trovano dopo che tutti sono periti. Rimane dopo l'annientamento della creazione ed eredita tutto. A Lui è il ritorno di tutti gli affari dopo la partenza dei loro possessori.",
+      "reflection": "Ricorda che lascerai tutto indietro, quindi invia avanti buone azioni per il tuo Aldilà. Sappi che ciò che spendi sul sentiero di Allah è ciò che ti rimane davvero."
+    },
+    {
+      "id": 98,
+      "name": "Ar-Rashid (الرشيد) - La Guida verso il Giusto Cammino",
+      "meaning": "Colui che guida la creazione e li dirige verso i loro interessi religiosi e mondani. La Sua gestione è saggia e retta, e tutte le Sue azioni sono giuste e corrette. Guida chi vuole verso la retta via.",
+      "reflection": "Chiedi ad Allah rettitudine in tutti i tuoi affari e consultalo nelle tue decisioni. Chi confida in Allah e Gli chiede guida, Egli lo guiderà."
+    },
+    {
+      "id": 99,
+      "name": "As-Sabur (الصبور) - Il Paziente",
+      "meaning": "Colui che non si affretta a punire i disobbedienti nonostante il Suo potere su di loro. Concede loro tregua ed è paziente con loro affinché si pentano e ritornino. La Sua pazienza è immensa, dando opportunità dopo opportunità.",
+      "reflection": "Adornati di pazienza davanti ai decreti di Allah, nell'obbedirGli e nell'allontanarti dalla disobbedienza. Sappi che la pazienza è la chiave del sollievo e il percorso verso il successo."
+    }
+  ]
+}

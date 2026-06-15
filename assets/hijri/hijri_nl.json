@@ -1,0 +1,53 @@
+{
+  "weekDays": ["Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo"],
+  "arabicMonths": [
+    "Januari", "Februari", "Maart", "April", "Mei", "Juni",
+    "Juli", "Augustus", "September", "Oktober", "November", "December"
+  ],
+  "hijriMonths": [
+    "Muharram", "Safar", "Rabi' al-Awwal", "Rabi' ath-Thani", "Djoemada al-Awwal", "Djoemada ath-Thani",
+    "Radjab", "Sha'ban", "Ramadan", "Shawwal", "Dhoe al-Qi'dah", "Dhoe al-Hiddjah"
+  ],
+  "islamicFacts": [
+    "De Hijri-kalender begint met de migratie van de Profeet ﷺ van Mekka naar Medina.",
+    "Ramadan is de negende maand van de Hijri-kalender.",
+    "De heilige maanden zijn: Dhoe al-Qi'dah, Dhoe al-Hiddjah, Muharram en Radjab.",
+    "De Waardevolle Nacht (Laylat al-Qadr) is beter dan duizend maanden en wordt gezocht in de laatste tien dagen van Ramadan.",
+    "Vrijdag is de beste dag van de week voor moslims.",
+    "Vasten op de dag van Arafah wist de zonden van twee jaar uit, met Allah's wil, voor de niet-pelgrim.",
+    "De dag van Ashura is een gezegende dag en vasten op deze dag wordt aanbevolen.",
+    "Zakat, Vasten en de Hajj zijn verbonden met de Hijri-kalender.",
+    "Het waarnemen van de nieuwe maan is een Sunnah verbonden aan het begin van de Hijri-maanden.",
+    "Islamitische feestdagen worden bepaald door de Hijri-kalender en niet door de Gregoriaanse."
+  ],
+  "hijriEvents": {
+    "1-10": {"title": "Dag van Ashura", "desc": "Een sterk aanbevolen vastendag met een grote beloning."},
+    "3-12": {"title": "Mawlid an-Nabi", "desc": "Verjaardag van de geboorte van de Profeet ﷺ volgens bekende data."},
+    "7-27": {"title": "Isra en Mi'raj", "desc": "Een gezegende nacht verbonden met de Nachtreis en Hemelvaart."},
+    "8-15": {"title": "Midden van Sha'ban", "desc": "Een gezegende nacht in acht genomen door veel moslims."},
+    "9-1": {"title": "Begin van Ramadan", "desc": "Het begin van de gezegende maand Ramadan."},
+    "9-27": {"title": "Laylat al-Qadr (Verwacht)", "desc": "Eén van de beste nachten, gezocht in de laatste tien dagen."},
+    "10-1": {"title": "Eid al-Fitr", "desc": "Een dag van vreugde voor moslims na het afronden van het vasten."},
+    "12-9": {"title": "Dag van Arafah", "desc": "Eén van de beste dagen, aanbevolen om te vasten voor niet-pelgrims."},
+    "12-10": {"title": "Eid al-Adha", "desc": "De Dag van het Offer en één van de belangrijkste dagen voor moslims."}
+  },
+  "hijriNotes": {
+    "1-10": {"title": "Islamitische Notitie", "desc": "Het wordt aanbevolen om op Ashura te vasten en er een dag voor of na toe te voegen."},
+    "9-1": {"title": "Islamitische Notitie", "desc": "Ramadan is de maand van vasten, nachtgebeden en Koranrecitatie."},
+    "9-27": {"title": "Islamitische Notitie", "desc": "Laylat al-Qadr wordt gezocht in de laatste 10 dagen; het is beter dan 1000 maanden."},
+    "10-1": {"title": "Islamitische Notitie", "desc": "Eid is een dag van vreugde en dankbaarheid; blijdschap tonen is Sunnah."},
+    "12-9": {"title": "Islamitische Notitie", "desc": "Vasten op Arafah voor niet-pelgrims wist twee jaar aan zonden uit."},
+    "12-10": {"title": "Islamitische Notitie", "desc": "Eid al-Adha is een grootse dag waarop het offer wordt voorgeschreven."}
+  },
+  "upcomingEvents": [
+    {"month": 1, "day": 10, "title": "Dag van Ashura"},
+    {"month": 3, "day": 12, "title": "Mawlid an-Nabi"},
+    {"month": 7, "day": 27, "title": "Isra en Mi'raj"},
+    {"month": 8, "day": 15, "title": "Midden van Sha'ban"},
+    {"month": 9, "day": 1, "title": "Begin van Ramadan"},
+    {"month": 9, "day": 27, "title": "Laylat al-Qadr"},
+    {"month": 10, "day": 1, "title": "Eid al-Fitr"},
+    {"month": 12, "day": 9, "title": "Dag van Arafah"},
+    {"month": 12, "day": 10, "title": "Eid al-Adha"}
+  ]
+}

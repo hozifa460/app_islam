@@ -1,0 +1,53 @@
+{
+  "weekDays": ["Li", "Ta", "La", "Al", "Ju", "As", "La"],
+  "arabicMonths": [
+    "Janairu", "Fabrairu", "Maris", "Afrilu", "Mayu", "Yuni",
+    "Yuli", "Agusta", "Satumba", "Oktoba", "Nuwamba", "Disamba"
+  ],
+  "hijriMonths": [
+    "Muharram", "Safar", "Rabi'u al-Awwal", "Rabi'u al-Thani", "Jumada al-Awwal", "Jumada al-Thani",
+    "Rajab", "Sha'aban", "Ramadan", "Shawwal", "Dhu al-Qi'dah", "Dhu al-Hijjah"
+  ],
+  "islamicFacts": [
+    "Kalendar Hijira ta fara ne daga hijirar Annabi ﷺ daga Makka zuwa Madina.",
+    "Ramadan shine watan tara a kalendar Hijira.",
+    "Watanni masu alfarma sune: Dhu al-Qi'dah, Dhu al-Hijjah, Muharram, da Rajab.",
+    "Daren Laylatul Qadr ya fi watanni dubu alheri, kuma ana nemansa a goman karshe na Ramadan.",
+    "Ranar Juma'a ita ce rana mafi kyau a mako ga Musulmai.",
+    "Azumin ranar Arafah yana kankare zunubin shekara biyu, da ikon Allah, ga wanda ba alhaji ba.",
+    "Ranar Ashura rana ce mai albarka, kuma ana so a yi azumi a cikinta.",
+    "Zakka, Azumi, da Aikin Hajji suna da nasaba da kalendar Hijira.",
+    "Ganin jinjirin wata Sunnah ce da ke da alaƙa da farkon watannin Hijira.",
+    "Ana gane ranakun bukukuwan Musulunci ta kalendar Hijira, ba kalendar Miladiyya ba."
+  ],
+  "hijriEvents": {
+    "1-10": {"title": "Ranar Ashura", "desc": "Ranar da aka fi so a yi azumi mai cike da lada mai yawa."},
+    "3-12": {"title": "Mawlidi", "desc": "Ranar haihuwar Annabi ﷺ bisa ga fitattun kwanan wata."},
+    "7-27": {"title": "Isra'i da Mi'iraji", "desc": "Dare mai albarka mai nasaba da Tafiyar Dare da Mi'iraji."},
+    "8-15": {"title": "Nisfu Sha'aban", "desc": "Dare mai albarka wanda Musulmai da yawa ke raya shi."},
+    "9-1": {"title": "Farkon Ramadan", "desc": "Farkon watan Ramadan mai albarka."},
+    "9-27": {"title": "Laylatul Qadr (Hasashe)", "desc": "Daya daga cikin darare mafi girma, ana nemansa a goman karshe."},
+    "10-1": {"title": "Karamar Sallah (Eid al-Fitr)", "desc": "Ranar farin ciki ga Musulmai bayan kammala azumin Ramadan."},
+    "12-9": {"title": "Ranar Arafah", "desc": "Daya daga cikin ranaku mafi kyau a shekara, ana son azumi ga wanda ba Alhaji ba."},
+    "12-10": {"title": "Babbar Sallah (Eid al-Adha)", "desc": "Ranar Layya kuma daya daga cikin ranaku mafi girma ga Musulmai."}
+  },
+  "hijriNotes": {
+    "1-10": {"title": "Bayani na Musulunci", "desc": "Ana so a yi azumin Ashura, sannan a hada da rana daya kafin ko bayan shi."},
+    "9-1": {"title": "Bayani na Musulunci", "desc": "Ramadan watan azumi ne, sallolin dare, da karatun Alkur'ani."},
+    "9-27": {"title": "Bayani na Musulunci", "desc": "Ana neman Laylatul Qadr a goman karshe; tafi watanni 1000 alheri."},
+    "10-1": {"title": "Bayani na Musulunci", "desc": "Ranar Sallah rana ce ta murna da godiya, nuna farin ciki Sunnah ce."},
+    "12-9": {"title": "Bayani na Musulunci", "desc": "Azumin Arafah ga wanda ba alhaji ba yana kankare zunubin shekara biyu."},
+    "12-10": {"title": "Bayani na Musulunci", "desc": "Babbar Sallah rana ce mai girma da aka shar'anta yin layya a cikinta."}
+  },
+  "upcomingEvents": [
+    {"month": 1, "day": 10, "title": "Ranar Ashura"},
+    {"month": 3, "day": 12, "title": "Mawlidi"},
+    {"month": 7, "day": 27, "title": "Isra'i da Mi'iraji"},
+    {"month": 8, "day": 15, "title": "Nisfu Sha'aban"},
+    {"month": 9, "day": 1, "title": "Farkon Ramadan"},
+    {"month": 9, "day": 27, "title": "Laylatul Qadr"},
+    {"month": 10, "day": 1, "title": "Karamar Sallah"},
+    {"month": 12, "day": 9, "title": "Ranar Arafah"},
+    {"month": 12, "day": 10, "title": "Babbar Sallah"}
+  ]
+}

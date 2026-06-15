@@ -1,0 +1,91 @@
+{
+  "_comment_deed_1": "Allohni pok deb yod etaman va Unga hamd aytaman (Subhanallohi va bihamdihi)",
+  "deed_1_title": "Allohni pok deb yod etaman va Unga hamd aytaman",
+  "deed_1_reward": "Jannatda bir xurmo daraxti ekiladi",
+  "deed_1_hadith": "Kimki 'Subhanallohi va bihamdihi' desa, u uchun Jannatda bir xurmo daraxti ekiladi.",
+  "deed_1_source": "Termiziy rivoyati, Alboniy sahih degan",
+
+  "_comment_deed_2": "Buyuk Allohni pok deb yod etaman va Unga hamd aytaman",
+  "deed_2_title": "Buyuk Allohni pok deb yod etaman va Unga hamd aytaman",
+  "deed_2_reward": "Tarozida og'ir keladi",
+  "deed_2_hadith": "Tilda yengil, tarozida og‘ir, Rahmonga suyukli ikki kalima bor: Subhanallohi va bihamdihi, Subhanallohil 'Aziym.",
+  "deed_2_source": "Buxoriy va Muslim rivoyati",
+
+  "_comment_deed_3": "Allohni pok deb yod etaman va Unga hamd aytaman (100 marta)",
+  "deed_3_title": "Allohni pok deb yod etaman va Unga hamd aytaman (100 marta)",
+  "deed_3_reward": "Gunohlar dengiz ko'pigidek bo'lsa ham kechiriladi",
+  "deed_3_hadith": "Kim bir kunda yuz marta 'Subhanallohi va bihamdihi' desa, gunohlari dengiz ko'pigidek bo'lsa ham kechiriladi.",
+  "deed_3_source": "Buxoriy va Muslim rivoyati",
+
+  "_comment_deed_4": "Ixlos surasini o'qish (10 marta)",
+  "deed_4_title": "Ixlos surasini o'qish (10 marta)",
+  "deed_4_reward": "Jannatda qasr quriladi",
+  "deed_4_hadith": "Kim 'Qul huvallohu ahad'ni o'n marta o'qisa, Alloh u uchun Jannatda bir qasr quradi.",
+  "deed_4_source": "Ahmad rivoyati, Alboniy sahih degan",
+
+  "_comment_deed_5": "Allohdan o'zga o'zgartirguvchi ham, quvvat ham yo'q (La havla va la quvvata illa billah)",
+  "deed_5_title": "Allohdan o'zga o'zgartirguvchi ham, quvvat ham yo'q",
+  "deed_5_reward": "Jannat xazinalaridan bir xazina",
+  "deed_5_hadith": "Senga Jannat xazinalaridan bo'lgan bir so'zni o'rgataymi? U 'La havla va la quvvata illa billah'dir.",
+  "deed_5_source": "Buxoriy va Muslim rivoyati",
+
+  "_comment_deed_6": "Allohdan o'zga iloh yo'q, U yagonadir, Uning sherigi yo'q, mulk Unikidir, hamd Unikidir va U barcha narsaga qodirdir",
+  "deed_6_title": "Allohdan o'zga iloh yo'q, U yagonadir, Uning sherigi yo'q, mulk Unikidir, hamd Unikidir va U barcha narsaga qodirdir",
+  "deed_6_reward": "100 hasanot, 100 gunoh o'chiriladi va shaytondan himoya",
+  "deed_6_hadith": "Kim shuni bir kunda yuz marta aytsa, unga o'nta qulni ozod qilganning savobi beriladi, unga yuzta hasanot yoziladi, yuzta xatosi o'chiriladi va o'sha kuni kechgacha shaytondan himoyada bo'ladi.",
+  "deed_6_source": "Buxoriy va Muslim rivoyati",
+
+  "_comment_deed_7": "Payg'ambarimizga ﷺ salavot aytish",
+  "deed_7_title": "Payg'ambarimizga ﷺ salavot aytish",
+  "deed_7_reward": "Allohdan 10 ta salavot, 10 gunohning o'chirilishi va 10 darajaga ko'tarilish",
+  "deed7_hadith": "Kim menga bir marta salavot aytsa, Alloh unga o'n marta salavot aytadi, uning o'nta xatosini o'chiradi va darajasini o'n marta ko'taradi.",
+  "deed7_source": "Muslim va Nasoiy rivoyati",
+
+  "_comment_deed_8": "Allohdan mag'firat so'rayman va Unga tavba qilaman (Astag'firulloh)",
+  "deed_8_title": "Allohdan mag'firat so'rayman va Unga tavba qilaman",
+  "deed_8_reward": "Har qanday siqilish va g'amdan chiqish yo'li",
+  "deed8_hadith": "Kim istig'for aytishni kanda qilmasa, Alloh uni har qanday g'amdan va siqilishdan qutqaradi hamda uni o'zi kutmagan tomondan rizqlantiradi.",
+  "deed8_source": "Abu Dovud va Ibn Moja rivoyati",
+
+  "_comment_deed_9": "Har namozdan so'ng Oyatul Kursiyni o'qish",
+  "deed_9_title": "Har namozdan so'ng Oyatul Kursiyni o'qish",
+  "deed_9_reward": "Jannatga kirishiga faqat o'lim to'sqinlik qiladi",
+  "deed_9_hadith": "Kim har farz namozidan so'ng Oyatul Kursiyni o'qisa, uning Jannatga kirishiga o'limdan boshqa monelik qiladigan narsa qolmaydi.",
+  "deed_9_source": "Nasoiy rivoyati, Alboniy sahih degan",
+
+  "_comment_deed_10": "Subhanalloh, Alhamdulillah, La ilaha illalloh, Allohu Akbar",
+  "deed_10_title": "Subhanalloh, Alhamdulillah, La ilaha illalloh, Allohu Akbar",
+  "deed_10_reward": "Allohga eng suyukli so'zlar",
+  "deed10_hadith": "Allohga eng suyukli kalimalar to'rttadir: Subhanalloh, Alhamdulillah, La ilaha illalloh va Allohu Akbar.",
+  "deed_10_source": "Muslim rivoyati",
+
+  "_comment_deed_11": "Subhanalloh (33), Alhamdulillah (33), Allohu Akbar (34)",
+  "deed_11_title": "Subhanalloh (33), Alhamdulillah (33), Allohu Akbar (34)",
+  "deed_11_reward": "Gunohlari dengiz ko'pigidek bo'lsa ham kechiriladi",
+  "deed_11_hadith": "Kim har namoz ortidan Allohga o'ttiz uch marta tasbih, o'ttiz uch marta hamd va o'ttiz uch (yoki o'ttiz to'rt) marta takbir aytsa, gunohlari kechiriladi.",
+  "deed_11_source": "Muslim rivoyati",
+
+  "_comment_deed_12": "Allohdan o'zga iloh yo'q (La ilaha illalloh)",
+  "deed_12_title": "Allohdan o'zga iloh yo'q",
+  "deed_12_reward": "Payg'ambarlar aytgan eng afzal so'z",
+  "deed_12_hadith": "Zikrlarning eng afzali 'La ilaha illalloh', duolarning eng afzali esa 'Alhamdulillah'dir.",
+  "deed_12_source": "Termiziy va Ibn Moja rivoyati",
+
+  "_comment_deed_13": "Allohga hamd bo'lsin (Alhamdulillah)",
+  "deed_13_title": "Allohga hamd bo'lsin",
+  "deed_13_reward": "Tarozini to'ldiradi",
+  "deed_13_hadith": "Poklik iymonning yarmidir, 'Alhamdulillah' esa tarozini to'ldiradi.",
+  "deed_13_source": "Muslim rivoyati",
+
+  "_comment_deed_14": "Ismi ila yeru osmonda hech narsa zarar bera olmaydigan Allohning nomi bilan. U Eshitguvchi, Bilguvchidir (3 marta)",
+  "deed_14_title": "Ismi ila yeru osmonda hech narsa zarar bera olmaydigan Allohning nomi bilan. U Eshitguvchi, Bilguvchidir (3 marta)",
+  "deed_14_reward": "Har qanday yomonlikdan himoya",
+  "deed_14_hadith": "Kim buni tong otganda uch marta, kech kirganda uch marta aytsa, unga hech narsa zarar yetkaza olmaydi.",
+  "deed_14_source": "Abu Dovud va Termiziy rivoyati",
+
+  "_comment_deed_15": "Allohning mukammal kalimalari bilan U yaratgan narsalarning yomonligidan panoh tilayman (3 marta)",
+  "deed_15_title": "Allohning mukammal kalimalari bilan U yaratgan narsalarning yomonligidan panoh tilayman (3 marta)",
+  "deed_15_reward": "Har qanday ozordan himoya",
+  "deed_15_hadith": "Kim kech kirganda shuni uch marta aytsa, o'sha kechasi unga zaharli hasharot zarar bera olmaydi.",
+  "deed_15_source": "Muslim rivoyati"
+}

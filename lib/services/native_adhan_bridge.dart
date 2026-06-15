@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 class NativeAdhanBridge {
   static const MethodChannel _channel = MethodChannel('adhan_native_bridge');
 
-  // ========== الأذان (بدون تعديل) ==========
+  // ========== الأذان ==========
   static Future<void> scheduleAdhan({
     required DateTime time,
     required String prayerName,
@@ -26,7 +26,7 @@ class NativeAdhanBridge {
     });
   }
 
-  // ========== التنبيه القبلي (مسار مستقل) ==========
+  // ========== التنبيه القبلي ==========
   static Future<void> scheduleReminder({
     required DateTime time,
     required String prayerName,
@@ -49,7 +49,7 @@ class NativeAdhanBridge {
     });
   }
 
-  // ========== الإقامة (مسار مستقل) ==========
+  // ========== الإقامة ==========
   static Future<void> scheduleIqama({
     required DateTime time,
     required String prayerName,
@@ -72,7 +72,7 @@ class NativeAdhanBridge {
     });
   }
 
-  // ========== الصلاة على النبي (بدون تعديل) ==========
+  // ========== الصلاة على النبي ==========
   static Future<void> scheduleSalawatReminder({
     required DateTime startTime,
     required Duration interval,
@@ -96,4 +96,31 @@ class NativeAdhanBridge {
       'requestCode': requestCode,
     });
   }
+
+  // ✅ حفظ جدول الصلوات
+  static Future<void> savePrayerSchedule({
+    required List<Map<String, dynamic>> schedule,
+  }) async {
+    await _channel.invokeMethod('savePrayerSchedule', {
+      'schedule': schedule,
+    });
+  }
+
+  // ✅ جديد: إلغاء جميع المنبهات
+  static Future<void> cancelAllAlarms() async {
+    await _channel.invokeMethod('cancelAllAlarms');
+  }
+
+  // ✅ جديد: توليد requestCode موحد بين Flutter و Kotlin
+  static int generateRequestCode(int dayIndex, int prayerIndex, int type) {
+    return 10000 + (type * 1000) + (dayIndex * 5) + prayerIndex;
+  }
+
+  static const Map<String, int> prayerIndices = {
+    'Fajr': 0,
+    'Dhuhr': 1,
+    'Asr': 2,
+    'Maghrib': 3,
+    'Isha': 4,
+  };
 }

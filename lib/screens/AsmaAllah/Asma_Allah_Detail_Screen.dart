@@ -1,9 +1,21 @@
+// lib/screens/asma_allah/asma_allah_detail_screen.dart
+
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../../languages/app_localizations.dart';
+import '../../services/asma_allah_service.dart';
+import 'detail/asma_detail_nav_buttons.dart';
+import 'widgets/asma_theme.dart';
+import 'widgets/asma_painters.dart';
+import 'widgets/asma_shared_widgets.dart';
+
 class AsmaAllahDetailScreen extends StatefulWidget {
-  final String name;
+  final String fullName;     // ✅ الاسم الكامل من JSON
+  final String displayName;  // ✅ الاسم القصير
   final String meaning;
   final Color primaryColor;
   final int order;
@@ -12,7 +24,8 @@ class AsmaAllahDetailScreen extends StatefulWidget {
 
   const AsmaAllahDetailScreen({
     super.key,
-    required this.name,
+    required this.fullName,
+    required this.displayName,
     required this.meaning,
     required this.primaryColor,
     required this.order,
@@ -26,6 +39,11 @@ class AsmaAllahDetailScreen extends StatefulWidget {
 
 class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
     with SingleTickerProviderStateMixin {
+  String _detailedMeaning = '';
+  String _reflection = '';
+  bool _isLoading = true;
+  bool _isFirstLoad = true;
+
   late AnimationController _controller;
   late Animation<double> _fadeTop;
   late Animation<double> _fadeCard;
@@ -44,55 +62,41 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
     );
 
     _fadeTop = CurvedAnimation(
-      parent: _controller,
-      curve: const Interval(0.0, 0.45, curve: Curves.easeOut),
-    );
-
+        parent: _controller,
+        curve: const Interval(0.0, 0.45, curve: Curves.easeOut));
     _fadeCard = CurvedAnimation(
-      parent: _controller,
-      curve: const Interval(0.20, 0.75, curve: Curves.easeOut),
-    );
-
+        parent: _controller,
+        curve: const Interval(0.20, 0.75, curve: Curves.easeOut));
     _fadeButtons = CurvedAnimation(
-      parent: _controller,
-      curve: const Interval(0.45, 1.0, curve: Curves.easeOut),
-    );
-
-    _slideTop = Tween<Offset>(
-      begin: const Offset(0, 0.08),
-      end: Offset.zero,
-    ).animate(
-      CurvedAnimation(
         parent: _controller,
-        curve: const Interval(0.0, 0.45, curve: Curves.easeOutCubic),
-      ),
-    );
+        curve: const Interval(0.45, 1.0, curve: Curves.easeOut));
 
-    _slideCard = Tween<Offset>(
-      begin: const Offset(0, 0.08),
-      end: Offset.zero,
-    ).animate(
-      CurvedAnimation(
+    _slideTop = Tween<Offset>(begin: const Offset(0, 0.08), end: Offset.zero)
+        .animate(CurvedAnimation(
         parent: _controller,
-        curve: const Interval(0.20, 0.75, curve: Curves.easeOutCubic),
-      ),
-    );
-
-    _slideButtons = Tween<Offset>(
-      begin: const Offset(0, 0.08),
-      end: Offset.zero,
-    ).animate(
-      CurvedAnimation(
+        curve: const Interval(0.0, 0.45, curve: Curves.easeOutCubic)));
+    _slideCard = Tween<Offset>(begin: const Offset(0, 0.08), end: Offset.zero)
+        .animate(CurvedAnimation(
         parent: _controller,
-        curve: const Interval(0.45, 1.0, curve: Curves.easeOutCubic),
-      ),
-    );
+        curve: const Interval(0.20, 0.75, curve: Curves.easeOutCubic)));
+    _slideButtons =
+        Tween<Offset>(begin: const Offset(0, 0.08), end: Offset.zero).animate(
+            CurvedAnimation(
+                parent: _controller,
+                curve: const Interval(0.45, 1.0, curve: Curves.easeOutCubic)));
 
     Future.delayed(const Duration(milliseconds: 100), () {
-      if (mounted) {
-        _controller.forward();
-      }
+      if (mounted) _controller.forward();
     });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_isFirstLoad) {
+      _isFirstLoad = false;
+      _loadNameData();
+    }
   }
 
   @override
@@ -101,703 +105,679 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
     super.dispose();
   }
 
-  Future<void> _shareName() async {
-    await Share.share('${widget.name}\n\n${widget.meaning}');
+  Future<void> _loadNameData() async {
+    try {
+      final langCode = Localizations.localeOf(context).languageCode;
+      final data = await AsmaAllahService.getNameByOrder(widget.order, langCode);
+      if (mounted) {
+        setState(() {
+          _detailedMeaning = data['meaning'] as String;
+          _reflection = (data['reflection'] ?? '') as String;
+          _isLoading = false;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _detailedMeaning = widget.meaning;
+          _reflection = context.tr.defaultReflection;
+          _isLoading = false;
+        });
+      }
+    }
   }
 
-  void _goToName(BuildContext context, int newIndex) {
-    final item = widget.names[newIndex - 1];
-
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder:
-            (_) => AsmaAllahDetailScreen(
-              name: item['name']!,
-              meaning: item['meaning']!,
-              primaryColor: widget.primaryColor,
-              order: newIndex,
-              names: widget.names,
-              heroTag: 'asma_name_$newIndex',
-            ),
-      ),
+  Future<void> _shareName() async {
+    await Share.share(
+      context.tr.shareAsmaFormat(widget.displayName, widget.meaning),
     );
   }
 
-  String _getReflectionForName(String name) {
-    switch (name) {
-      case 'الرحمن':
-        return 'اسأل الله من رحمته الواسعة، واستشعر لطفه بك في كل حال.';
-      case 'الرحيم':
-        return 'تأمل كيف يرحم الله عباده، وأحسن إلى الناس كما تحب أن تُرحم.';
-      case 'الغفور':
-        return 'أكثر من الاستغفار، فباب المغفرة مفتوح لمن رجع إلى الله بصدق.';
-      case 'الرزاق':
-        return 'اطمئن، فما قُسم لك من رزق سيأتيك في وقته بحكمة الله.';
-      case 'السميع':
-        return 'ارفع دعاءك بيقين، فالله يسمع همسك ونداء قلبك.';
-      case 'البصير':
-        return 'استحضر نظر الله إليك، وأحسن عملك في السر والعلن.';
-      case 'الهادي':
-        return 'سل الله الهداية والثبات، فهو الهادي إلى الصراط المستقيم.';
-      case 'العفو':
-        return 'ارجُ عفو الله دائمًا، فهو يحب من عباده الرجوع والإنابة.';
-      default:
-        return 'تدبر هذا الاسم، وادعُ الله به، واستحضر أثره في حياتك اليومية.';
+  void _goToName(BuildContext context, int newIndex) async {
+    try {
+      final langCode = Localizations.localeOf(context).languageCode;
+      final data = await AsmaAllahService.getNameByOrder(newIndex, langCode);
+      if (!mounted) return;
+
+      Navigator.pushReplacement(
+        context,
+        PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 300),
+          pageBuilder: (_, __, ___) => AsmaAllahDetailScreen(
+            fullName: data['fullName'] as String,        // ✅
+            displayName: data['displayName'] as String,  // ✅
+            meaning: data['meaning'] as String,
+            primaryColor: widget.primaryColor,
+            order: newIndex,
+            names: widget.names,
+            heroTag: 'asma_name_$newIndex',
+          ),
+          transitionsBuilder: (_, animation, __, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
+        ),
+      );
+    } catch (e) {
+      final item = widget.names[newIndex - 1];
+      if (!mounted) return;
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (_) => AsmaAllahDetailScreen(
+            fullName: item['name']!,
+            displayName: item['displayName'] ?? item['name']!,
+            meaning: item['meaning']!,
+            primaryColor: widget.primaryColor,
+            order: newIndex,
+            names: widget.names,
+            heroTag: 'asma_name_$newIndex',
+          ),
+        ),
+      );
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final reflection = _getReflectionForName(widget.name);
-
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final bgColor = isDark ? const Color(0xFF0A0E17) : const Color(0xFFF8F6F1);
-    final cardColor = isDark ? const Color(0xFF151B26) : Colors.white;
-    final textColor = isDark ? Colors.white : const Color(0xFF1A1A1A);
-    final subTextColor = isDark ? Colors.white70 : Colors.black54;
-    const gold = Color(0xFFE6B325);
+    final theme = AsmaTheme(isDark: isDark);
+    final screenSize = MediaQuery.of(context).size;
+    final isSmall = screenSize.width < 360;
+    final isMedium = screenSize.width < 400;
+
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
+      ),
+    );
 
     return Directionality(
-      textDirection: TextDirection.rtl,
+      textDirection: context.tr.textDirection,
       child: Scaffold(
-        backgroundColor: bgColor,
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(86),
-          child: AppBar(
-            backgroundColor: widget.primaryColor,
-            elevation: 0,
-            automaticallyImplyLeading: false,
-            flexibleSpace: Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    widget.primaryColor,
-                    widget.primaryColor.withOpacity(0.82),
-                  ],
-                ),
-              ),
-              child: Stack(
-                children: [
-                  Positioned(
-                    top: 10,
-                    left: 18,
-                    child: Icon(
-                      Icons.nightlight_round,
-                      size: 34,
-                      color: Colors.white.withOpacity(0.10),
-                    ),
-                  ),
-                  Positioned(
-                    top: 28,
-                    left: 48,
-                    child: Icon(
-                      Icons.star_rounded,
-                      size: 10,
-                      color: Colors.white.withOpacity(0.18),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 10,
-                    right: 22,
-                    child: Icon(
-                      Icons.auto_awesome_rounded,
-                      size: 14,
-                      color: Colors.white.withOpacity(0.10),
-                    ),
-                  ),
-                  SafeArea(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(12, 6, 12, 10),
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 40,
-                            height: 40,
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.12),
-                              shape: BoxShape.circle,
-                            ),
-                            child: IconButton(
-                              padding: EdgeInsets.zero,
-                              icon: const Icon(
-                                Icons.arrow_back_ios_new,
-                                color: Colors.white,
-                                size: 18,
-                              ),
-                              onPressed: () => Navigator.pop(context),
-                            ),
-                          ),
-
-                          const SizedBox(width: 10),
-
-                          Expanded(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                FittedBox(
-                                  fit: BoxFit.scaleDown,
-                                  alignment: Alignment.centerRight,
-                                  child: Text(
-                                    widget.name,
-                                    style: GoogleFonts.cairo(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
-                                    ),
-                                    maxLines: 1,
-                                  ),
-                                ),
-                                const SizedBox(height: 2),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Flexible(
-                                      child: Text(
-                                        'الاسم رقم ${widget.order} من ${widget.names.length}',
-                                        overflow: TextOverflow.ellipsis,
-                                        style: GoogleFonts.cairo(
-                                          color: Colors.white.withOpacity(0.80),
-                                          fontSize: 11,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(width: 6),
-                                    SizedBox(
-                                      width: 44,
-                                      height: 10,
-                                      child: Stack(
-                                        alignment: Alignment.center,
-                                        children: [
-                                          Container(
-                                            height: 1.2,
-                                            width: 44,
-                                            color: Colors.white.withOpacity(0.22),
-                                          ),
-                                          Container(
-                                            width: 8,
-                                            height: 8,
-                                            decoration: BoxDecoration(
-                                              color: const Color(0xFFE6B325),
-                                              shape: BoxShape.circle,
-                                              border: Border.all(
-                                                color: Colors.white.withOpacity(0.55),
-                                                width: 1,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          const SizedBox(width: 10),
-
-                          Container(
-                            width: 40,
-                            height: 40,
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.12),
-                              shape: BoxShape.circle,
-                            ),
-                            child: IconButton(
-                              padding: EdgeInsets.zero,
-                              icon: const Icon(
-                                Icons.share_rounded,
-                                color: Colors.white,
-                                size: 18,
-                              ),
-                              onPressed: _shareName,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
+        backgroundColor:
+        isDark ? const Color(0xFF0A0E1A) : const Color(0xFFFFFDF8),
         body: Stack(
           children: [
-            Positioned.fill(
-              child: IgnorePointer(
-                child: Opacity(
-                  opacity: 0.35,
-                  child: CustomPaint(
-                    painter: _AsmaSubtlePatternPainter(
-                      color: widget.primaryColor.withOpacity(0.08),
-                    ),
-                  ),
+            Positioned.fill(child: _buildBackground(isDark)),
+            Column(
+              children: [
+                _buildAppBar(context, isDark, isSmall),
+                Expanded(
+                  child:
+                  _buildContent(context, isDark, theme, isSmall, isMedium),
                 ),
-              ),
-            ),
-            SafeArea(
-              child: LayoutBuilder(
-                builder: (context, constraints) {
-                  final width = constraints.maxWidth;
-                  final small = width < 360;
-
-                  final circleSize = small ? 100.0 : 120.0;
-                  final circleText = small ? 23.0 : 28.0;
-                  final quoteText = small ? 18.0 : 22.0;
-                  final titleText = small ? 15.0 : 16.0;
-                  final bodyText = small ? 13.0 : 15.0;
-                  final hintText = small ? 11.0 : 12.0;
-
-                  return SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    padding: const EdgeInsets.all(20),
-                    child: Column(
-                      children: [
-                        FadeTransition(
-                          opacity: _fadeTop,
-                          child: SlideTransition(
-                            position: _slideTop,
-                            child: Hero(
-                              tag: widget.heroTag,
-                              child: Material(
-                                color: Colors.transparent,
-                                child: Stack(
-                                  alignment: Alignment.center,
-                                  children: [
-                                    Container(
-                                      width: circleSize,
-                                      height: circleSize,
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: gold.withOpacity(0.12),
-                                        border: Border.all(
-                                          color: gold.withOpacity(0.25),
-                                          width: 2,
-                                        ),
-                                      ),
-                                      child: Center(
-                                        child: FittedBox(
-                                          fit: BoxFit.scaleDown,
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(10),
-                                            child: Text(
-                                              widget.name,
-                                              textAlign: TextAlign.center,
-                                              style: GoogleFonts.amiri(
-                                                fontSize: circleText,
-                                                fontWeight: FontWeight.bold,
-                                                color: widget.primaryColor,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Positioned(
-                                      top: 4,
-                                      left: 8,
-                                      child: Container(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 8,
-                                          vertical: 4,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: widget.primaryColor
-                                              .withOpacity(0.10),
-                                          borderRadius: BorderRadius.circular(
-                                            10,
-                                          ),
-                                        ),
-                                        child: Text(
-                                          '${widget.order}',
-                                          style: GoogleFonts.cairo(
-                                            fontSize: 11,
-                                            fontWeight: FontWeight.bold,
-                                            color: widget.primaryColor,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        const SizedBox(height: 24),
-
-                        FadeTransition(
-                          opacity: _fadeCard,
-                          child: SlideTransition(
-                            position: _slideCard,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Center(
-                                  child: Container(
-                                    width: 80,
-                                    height: 12,
-                                    alignment: Alignment.center,
-                                    child: Stack(
-                                      alignment: Alignment.center,
-                                      children: [
-                                        Container(
-                                          width: 80,
-                                          height: 1.2,
-                                          color: gold.withOpacity(0.35),
-                                        ),
-                                        Container(
-                                          width: 10,
-                                          height: 10,
-                                          decoration: BoxDecoration(
-                                            color: widget.primaryColor
-                                                .withOpacity(0.85),
-                                            shape: BoxShape.circle,
-                                            border: Border.all(
-                                              color: gold.withOpacity(0.7),
-                                              width: 1.2,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(height: 16),
-
-                                Directionality(
-                                  textDirection: TextDirection.ltr,
-                                  child: Container(
-                                    width: double.infinity,
-                                    padding: const EdgeInsets.all(20),
-                                    decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                        begin: Alignment.topLeft,
-                                        end: Alignment.bottomRight,
-                                        colors: [
-                                          widget.primaryColor.withOpacity(0.08),
-                                          gold.withOpacity(0.10),
-                                        ],
-                                      ),
-                                      borderRadius: BorderRadius.circular(24),
-                                      border: Border.all(
-                                        color: gold.withOpacity(0.24),
-                                      ),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black.withOpacity(
-                                            isDark ? 0.16 : 0.05,
-                                          ),
-                                          blurRadius: 10,
-                                          offset: const Offset(0, 4),
-                                        ),
-                                      ],
-                                    ),
-                                    child: Stack(
-                                      children: [
-                                        Positioned(
-                                          top: -4,
-                                          left: -2,
-                                          child: Icon(
-                                            Icons.format_quote_rounded,
-                                            size: 40,
-                                            color: gold.withOpacity(0.18),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(top: 8),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.end,
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              Text(
-                                                'المعنى',
-                                                style: GoogleFonts.cairo(
-                                                  fontSize: titleText,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: widget.primaryColor,
-                                                  ),
-                                                ),
-
-                                              const SizedBox(height: 10),
-                                              Text(
-                                                widget.meaning,
-                                                textAlign: TextAlign.right,
-                                                style: GoogleFonts.cairo(
-                                                  fontSize: bodyText,
-                                                  height: 1.8,
-                                                  color: textColor,
-                                                ),
-                                              ),
-                                              const SizedBox(height: 16),
-                                              Text(
-                                                'تدبر هذا الاسم واستحضر أثره في قلبك ودعائك.',
-                                                textAlign: TextAlign.right,
-                                                style: GoogleFonts.cairo(
-                                                  fontSize: hintText,
-                                                  color: subTextColor,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-
-                                Center(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top: 16),
-                                    child: SizedBox(
-                                      width: small ? 70 : 80,
-                                      height: 12,
-                                      child: Stack(
-                                        alignment: Alignment.center,
-                                        children: [
-                                          Container(
-                                            width: small ? 70 : 80,
-                                            height: 1.2,
-                                            color: gold.withOpacity(0.35),
-                                          ),
-                                          Container(
-                                            width: 10,
-                                            height: 10,
-                                            decoration: BoxDecoration(
-                                              color: widget.primaryColor
-                                                  .withOpacity(0.85),
-                                              shape: BoxShape.circle,
-                                              border: Border.all(
-                                                color: gold.withOpacity(0.7),
-                                                width: 1.2,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-
-                        const SizedBox(height: 10),
-
-                        FadeTransition(
-                          opacity: _fadeCard,
-                          child: SlideTransition(
-                            position: _slideCard,
-                            child: Directionality(
-                              textDirection: TextDirection.ltr,
-                              child: Container(
-                                width: double.infinity,
-                                padding: const EdgeInsets.all(20),
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight,
-                                    colors: [
-                                      widget.primaryColor.withOpacity(0.08),
-                                      gold.withOpacity(0.10),
-                                    ],
-                                  ),
-                                  borderRadius: BorderRadius.circular(24),
-                                  border: Border.all(
-                                    color: gold.withOpacity(0.24),
-                                  ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(
-                                        isDark ? 0.16 : 0.05,
-                                      ),
-                                      blurRadius: 10,
-                                      offset: const Offset(0, 4),
-                                    ),
-                                  ],
-                                ),
-                                child: Stack(
-                                  children: [
-                                    Positioned(
-                                      top: -4,
-                                      left: -2,
-                                      child: Icon(
-                                        Icons.format_quote_rounded,
-                                        size: 40,
-                                        color: gold.withOpacity(0.18),
-                                      ),
-                                    ),
-                                    Column(
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            Icon(
-                                              Icons.auto_awesome_rounded,
-                                              color: gold,
-                                              size: 18,
-                                            ),
-                                            const SizedBox(width: 8),
-                                            Text(
-                                              'تأمل ودعاء',
-                                              style: GoogleFonts.cairo(
-                                                fontSize: titleText,
-                                                fontWeight: FontWeight.bold,
-                                                color: widget.primaryColor,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        const SizedBox(height: 16),
-                                        Text(
-                                          '“$reflection”',
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.amiri(
-                                            fontSize: quoteText,
-                                            height: 1.9,
-                                            fontWeight: FontWeight.bold,
-                                            color:
-                                                isDark
-                                                    ? Colors.white
-                                                    : const Color(0xFF2E2415),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        const SizedBox(height: 20),
-
-                        FadeTransition(
-                          opacity: _fadeButtons,
-                          child: SlideTransition(
-                            position: _slideButtons,
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: OutlinedButton.icon(
-                                    style: OutlinedButton.styleFrom(
-                                      side: BorderSide(
-                                        color: widget.primaryColor.withOpacity(
-                                          0.25,
-                                        ),
-                                      ),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(14),
-                                      ),
-                                    ),
-                                    onPressed:
-                                        widget.order > 1
-                                            ? () => _goToName(
-                                              context,
-                                              widget.order - 1,
-                                            )
-                                            : null,
-                                    icon: const Icon(
-                                      Icons.arrow_back_ios_new_rounded,
-                                      size: 16,
-                                    ),
-                                    label: Text(
-                                      'السابق',
-                                      style: GoogleFonts.cairo(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(width: 10),
-                                Expanded(
-                                  child: ElevatedButton.icon(
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: widget.primaryColor,
-                                      foregroundColor: Colors.white,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(14),
-                                      ),
-                                    ),
-                                    onPressed:
-                                        widget.order < widget.names.length
-                                            ? () => _goToName(
-                                              context,
-                                              widget.order + 1,
-                                            )
-                                            : null,
-                                    icon: const Icon(
-                                      Icons.arrow_forward_ios_rounded,
-                                      size: 16,
-                                    ),
-                                    label: Text(
-                                      'التالي',
-                                      style: GoogleFonts.cairo(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
+              ],
             ),
           ],
         ),
       ),
     );
   }
-}
 
-class _AsmaSubtlePatternPainter extends CustomPainter {
-  final Color color;
-
-  _AsmaSubtlePatternPainter({required this.color});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint =
-        Paint()
-          ..color = color
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = 1;
-
-    const step = 80.0;
-
-    for (double x = -step; x < size.width + step; x += step) {
-      for (double y = -step; y < size.height + step; y += step) {
-        final path = Path();
-        path.moveTo(x + step / 2, y);
-        path.lineTo(x + step, y + step / 4);
-        path.lineTo(x + step, y + step * 0.75);
-        path.lineTo(x + step / 2, y + step);
-        path.lineTo(x, y + step * 0.75);
-        path.lineTo(x, y + step / 4);
-        path.close();
-        canvas.drawPath(path, paint);
-      }
-    }
+  Widget _buildBackground(bool isDark) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: AsmaTheme(isDark: isDark).bgGradientAlt,
+        ),
+      ),
+      child: CustomPaint(
+        painter: AsmaIslamicPatternPainter(
+          color: isDark
+              ? AsmaTheme.gold.withOpacity(0.03)
+              : AsmaTheme.gold.withOpacity(0.05),
+          step: 60,
+          sides: 8,
+        ),
+        size: Size.infinite,
+      ),
+    );
   }
 
-  @override
-  bool shouldRepaint(covariant _AsmaSubtlePatternPainter oldDelegate) {
-    return oldDelegate.color != color;
+  Widget _buildAppBar(BuildContext context, bool isDark, bool isSmall) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            isDark
+                ? const Color(0xFF1A2540)
+                : const Color(0xFFEEB742).withOpacity(0.95),
+            isDark
+                ? const Color(0xFF0F1628)
+                : const Color(0xFF9D7A2E).withOpacity(0.85),
+          ],
+        ),
+        borderRadius: const BorderRadius.only(
+          bottomLeft: Radius.circular(28),
+          bottomRight: Radius.circular(28),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: isDark
+                ? Colors.black.withOpacity(0.3)
+                : widget.primaryColor.withOpacity(0.3),
+            blurRadius: 20,
+            offset: const Offset(0, 8),
+          ),
+        ],
+      ),
+      child: SafeArea(
+        bottom: false,
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(
+            isSmall ? 12 : 16,
+            isSmall ? 8 : 12,
+            isSmall ? 12 : 16,
+            isSmall ? 16 : 20,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                children: [
+                  _buildAppBarButton(
+                    icon: Icons.arrow_back_ios_new_rounded,
+                    onTap: () => Navigator.pop(context),
+                    isDark: isDark,
+                    isSmall: isSmall,
+                  ),
+                  const Spacer(),
+                  _buildOrderBadge(isSmall),
+                  SizedBox(width: isSmall ? 8 : 12),
+                  _buildAppBarButton(
+                    icon: Icons.share_rounded,
+                    onTap: _shareName,
+                    isDark: isDark,
+                    isSmall: isSmall,
+                  ),
+                ],
+              ),
+              SizedBox(height: isSmall ? 12 : 16),
+              // ✅ عرض الاسم الكامل في AppBar
+              _buildFullNameDisplay(isSmall, isDark),
+              SizedBox(height: isSmall ? 8 : 12),
+              _buildProgressIndicator(isSmall),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildAppBarButton({
+    required IconData icon,
+    required VoidCallback onTap,
+    required bool isDark,
+    required bool isSmall,
+  }) {
+    return Material(
+      color: Colors.white.withOpacity(isDark ? 0.08 : 0.15),
+      borderRadius: BorderRadius.circular(14),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(14),
+        onTap: onTap,
+        child: Container(
+          padding: EdgeInsets.all(isSmall ? 10 : 12),
+          child: Icon(icon, color: Colors.white, size: isSmall ? 18 : 20),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildOrderBadge(bool isSmall) {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: isSmall ? 12 : 16,
+        vertical: isSmall ? 6 : 8,
+      ),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+            colors: [AsmaTheme.gold.withOpacity(0.9), AsmaTheme.goldDark]),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+              color: AsmaTheme.gold.withOpacity(0.4),
+              blurRadius: 8,
+              offset: const Offset(0, 2)),
+        ],
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.star_rounded,
+              color: Colors.white, size: isSmall ? 14 : 16),
+          SizedBox(width: isSmall ? 4 : 6),
+          Text(
+            '${widget.order} / ${widget.names.length}',
+            style: GoogleFonts.cairo(
+              color: Colors.white,
+              fontSize: isSmall ? 12 : 14,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// ✅ عرض الاسم الكامل من JSON في AppBar
+  Widget _buildFullNameDisplay(bool isSmall, bool isDark) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        _buildDecorator(isSmall),
+        SizedBox(width: isSmall ? 8 : 12),
+        Flexible(
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              widget.fullName, // ✅ الاسم الكامل هنا
+              textAlign: TextAlign.center,
+              style: GoogleFonts.amiri(
+                color: Colors.white,
+                fontSize: isSmall ? 18 : 22,
+                fontWeight: FontWeight.bold,
+                shadows: [
+                  Shadow(
+                      color: Colors.black.withOpacity(0.3), blurRadius: 10)
+                ],
+              ),
+            ),
+          ),
+        ),
+        SizedBox(width: isSmall ? 8 : 12),
+        _buildDecorator(isSmall, flip: true),
+      ],
+    );
+  }
+
+  Widget _buildDecorator(bool isSmall, {bool flip = false}) {
+    return Transform.flip(
+      flipX: flip,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: isSmall ? 15 : 20,
+            height: 2,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [AsmaTheme.gold.withOpacity(0.1), AsmaTheme.gold]),
+              borderRadius: BorderRadius.circular(1),
+            ),
+          ),
+          const SizedBox(width: 3),
+          Container(
+            width: isSmall ? 5 : 6,
+            height: isSmall ? 5 : 6,
+            decoration: BoxDecoration(
+              color: AsmaTheme.gold,
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                    color: AsmaTheme.gold.withOpacity(0.5), blurRadius: 6)
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildProgressIndicator(bool isSmall) {
+    final progress = widget.order / widget.names.length;
+    return Column(
+      children: [
+        Container(
+          height: isSmall ? 4 : 5,
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.15),
+            borderRadius: BorderRadius.circular(3),
+          ),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return Stack(
+                children: [
+                  AnimatedContainer(
+                    duration: const Duration(milliseconds: 500),
+                    width: constraints.maxWidth * progress,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(colors: [
+                        AsmaTheme.goldLight,
+                        AsmaTheme.gold,
+                        AsmaTheme.goldDark
+                      ]),
+                      borderRadius: BorderRadius.circular(3),
+                      boxShadow: [
+                        BoxShadow(
+                            color: AsmaTheme.gold.withOpacity(0.5),
+                            blurRadius: 6)
+                      ],
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ),
+        SizedBox(height: isSmall ? 6 : 8),
+        Text(
+          context.tr.nameOfTotalNames(widget.order),
+          style: GoogleFonts.cairo(
+            color: Colors.white.withOpacity(0.7),
+            fontSize: isSmall ? 10 : 12,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildContent(BuildContext context, bool isDark, AsmaTheme theme,
+      bool isSmall, bool isMedium) {
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      padding: EdgeInsets.symmetric(
+        horizontal: isSmall ? 16 : 20,
+        vertical: isSmall ? 20 : 24,
+      ),
+      child: Column(
+        children: [
+          FadeTransition(
+            opacity: _fadeTop,
+            child: SlideTransition(
+              position: _slideTop,
+              child: _buildNameCircle(isDark, isSmall),
+            ),
+          ),
+          SizedBox(height: isSmall ? 20 : 28),
+          AsmaDecorativeDivider(isSmall: isSmall),
+          SizedBox(height: isSmall ? 20 : 24),
+          FadeTransition(
+            opacity: _fadeCard,
+            child: SlideTransition(
+              position: _slideCard,
+              child: _buildMeaningCard(isDark, isSmall, theme),
+            ),
+          ),
+          SizedBox(height: isSmall ? 16 : 20),
+          FadeTransition(
+            opacity: _fadeCard,
+            child: SlideTransition(
+              position: _slideCard,
+              child: _buildReflectionCard(isDark, isSmall, theme),
+            ),
+          ),
+          SizedBox(height: isSmall ? 20 : 28),
+          FadeTransition(
+            opacity: _fadeButtons,
+            child: SlideTransition(
+              position: _slideButtons,
+              child: AsmaDetailNavButtons(
+                order: widget.order,
+                totalNames: widget.names.length,
+                isDark: isDark,
+                isSmall: isSmall,
+                onNavigate: (index) => _goToName(context, index),
+              ),
+            ),
+          ),
+          SizedBox(height: isSmall ? 16 : 20),
+        ],
+      ),
+    );
+  }
+
+  /// ✅ عرض الاسم القصير في الدائرة
+  Widget _buildNameCircle(bool isDark, bool isSmall) {
+    final size = isSmall ? 110.0 : 130.0;
+    return Hero(
+      tag: widget.heroTag,
+      child: Material(
+        color: Colors.transparent,
+        child: Container(
+          width: size,
+          height: size,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: RadialGradient(
+              colors: isDark
+                  ? [const Color(0xFF1E2A4A), const Color(0xFF0F1628)]
+                  : [Colors.white, const Color(0xFFFFF8E8)],
+            ),
+            border: Border.all(color: AsmaTheme.gold, width: 3),
+            boxShadow: [
+              BoxShadow(
+                color: AsmaTheme.gold.withOpacity(isDark ? 0.3 : 0.25),
+                blurRadius: 25,
+                spreadRadius: 5,
+              ),
+              BoxShadow(
+                color: isDark
+                    ? Colors.black.withOpacity(0.3)
+                    : AsmaTheme.gold.withOpacity(0.1),
+                blurRadius: 40,
+                spreadRadius: 10,
+              ),
+            ],
+          ),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Container(
+                width: size * 0.75,
+                height: size * 0.75,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                      color: AsmaTheme.gold.withOpacity(0.3), width: 1.5),
+                ),
+              ),
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Padding(
+                  padding: EdgeInsets.all(size * 0.12),
+                  child: Text(
+                      widget.displayName, // ✅ الاسم القصير هنا
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.amiri(
+                      fontSize: size * 0.26,
+                      fontWeight: FontWeight.bold,
+                      color: isDark ? AsmaTheme.gold : AsmaTheme.goldDark,
+                      shadows: [
+                        Shadow(
+                            color: AsmaTheme.gold.withOpacity(0.3),
+                            blurRadius: 10)
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 0,
+                right: 0,
+                child: Container(
+                  padding:
+                  const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [AsmaTheme.gold, AsmaTheme.goldDark]),
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                          color: AsmaTheme.gold.withOpacity(0.4), blurRadius: 8)
+                    ],
+                  ),
+                  child: Text('${widget.order}',
+                      style: GoogleFonts.cairo(
+                        color: Colors.white,
+                        fontSize: isSmall ? 11 : 13,
+                        fontWeight: FontWeight.bold,
+                      )),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMeaningCard(bool isDark, bool isSmall, AsmaTheme theme) {
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.all(isSmall ? 18 : 24),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: theme.cardGradient,
+        ),
+        borderRadius: BorderRadius.circular(AsmaTheme.cardRadius),
+        border: Border.all(color: theme.cardBorder, width: 1.5),
+        boxShadow: theme.cardShadow,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: AsmaTheme.gold.withOpacity(0.15),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Icon(Icons.menu_book_rounded,
+                    color: AsmaTheme.gold, size: isSmall ? 20 : 24),
+              ),
+              const SizedBox(width: 12),
+              Text(context.tr.meaningTitle,
+                  style: GoogleFonts.cairo(
+                    fontSize: isSmall ? 16 : 18,
+                    fontWeight: FontWeight.bold,
+                    color: isDark ? AsmaTheme.gold : AsmaTheme.goldDark,
+                  )),
+            ],
+          ),
+          SizedBox(height: isSmall ? 14 : 18),
+          Text(
+            _isLoading ? widget.meaning : _detailedMeaning,
+            textAlign: TextAlign.justify,
+            style: theme.bodyText(isSmall ? 14 : 16),
+          ),
+          SizedBox(height: isSmall ? 14 : 18),
+          Container(
+            padding: EdgeInsets.all(isSmall ? 12 : 14),
+            decoration: BoxDecoration(
+              color: AsmaTheme.gold.withOpacity(isDark ? 0.1 : 0.08),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: AsmaTheme.gold.withOpacity(0.2)),
+            ),
+            child: Row(
+              children: [
+                Icon(Icons.lightbulb_outline_rounded,
+                    color: AsmaTheme.gold, size: isSmall ? 18 : 20),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Text(
+                    context.tr.reflectOnName,
+                    style: GoogleFonts.cairo(
+                      fontSize: isSmall ? 11 : 13,
+                      color: theme.subTextColor,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildReflectionCard(bool isDark, bool isSmall, AsmaTheme theme) {
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.all(isSmall ? 18 : 24),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: isDark
+              ? [
+            AsmaTheme.gold.withOpacity(0.12),
+            const Color(0xFF1A2438).withOpacity(0.9)
+          ]
+              : [AsmaTheme.gold.withOpacity(0.08), const Color(0xFFFFF8E8)],
+        ),
+        borderRadius: BorderRadius.circular(AsmaTheme.cardRadius),
+        border: Border.all(
+          color: AsmaTheme.gold.withOpacity(isDark ? 0.35 : 0.3),
+          width: 1.5,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: AsmaTheme.gold.withOpacity(isDark ? 0.15 : 0.1),
+            blurRadius: 20,
+            offset: const Offset(0, 8),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.auto_awesome_rounded,
+                  color: AsmaTheme.gold, size: isSmall ? 20 : 24),
+              const SizedBox(width: 10),
+              Text(context.tr.reflectionAndDua,
+                  style: GoogleFonts.cairo(
+                    fontSize: isSmall ? 16 : 18,
+                    fontWeight: FontWeight.bold,
+                    color: isDark ? AsmaTheme.gold : AsmaTheme.goldDark,
+                  )),
+              const SizedBox(width: 10),
+              Icon(Icons.auto_awesome_rounded,
+                  color: AsmaTheme.gold, size: isSmall ? 20 : 24),
+            ],
+          ),
+          SizedBox(height: isSmall ? 16 : 20),
+          Icon(Icons.format_quote_rounded,
+              color: AsmaTheme.gold.withOpacity(0.4), size: isSmall ? 30 : 36),
+          SizedBox(height: isSmall ? 8 : 12),
+          _isLoading
+              ? Center(
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: CircularProgressIndicator(color: AsmaTheme.gold),
+            ),
+          )
+              : Text(
+            _reflection,
+            textAlign: TextAlign.center,
+            style: GoogleFonts.amiri(
+              fontSize: isSmall ? 17 : 20,
+              height: 2.0,
+              fontWeight: FontWeight.w600,
+              color: theme.textColor,
+            ),
+          ),
+          SizedBox(height: isSmall ? 8 : 12),
+          Transform.rotate(
+            angle: math.pi,
+            child: Icon(Icons.format_quote_rounded,
+                color: AsmaTheme.gold.withOpacity(0.4), size: isSmall ? 30 : 36),
+          ),
+        ],
+      ),
+    );
   }
 }

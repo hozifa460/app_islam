@@ -1,0 +1,53 @@
+{
+  "weekDays": ["Se", "Se", "Ra", "Ka", "Ju", "Sa", "Mi"],
+  "arabicMonths": [
+    "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+    "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+  ],
+  "hijriMonths": [
+    "Muharram", "Safar", "Rabiul Awal", "Rabiul Akhir", "Jumadil Awal", "Jumadil Akhir",
+    "Rajab", "Sya'ban", "Ramadhan", "Syawal", "Dzulqa'dah", "Dzulhijjah"
+  ],
+  "islamicFacts": [
+    "Kalender Hijriah dimulai sejak hijrahnya Nabi ﷺ dari Makkah ke Madinah.",
+    "Ramadhan adalah bulan kesembilan dalam kalender Hijriah.",
+    "Bulan-bulan haram (suci) adalah: Dzulqa'dah, Dzulhijjah, Muharram, dan Rajab.",
+    "Lailatul Qadr lebih baik dari seribu bulan, dan dicari pada sepuluh malam terakhir bulan Ramadhan.",
+    "Hari Jumat adalah hari terbaik dalam sepekan bagi umat Islam.",
+    "Puasa hari Arafah menghapus dosa dua tahun, dengan izin Allah, bagi yang tidak berhaji.",
+    "Hari Asyura adalah hari yang diberkahi, dan disunnahkan untuk berpuasa di dalamnya.",
+    "Zakat, Puasa, dan Haji terkait erat dengan kalender Hijriah.",
+    "Melihat hilal adalah Sunnah yang berkaitan dengan awal bulan Hijriah.",
+    "Hari raya Islam ditentukan berdasarkan kalender Hijriah, bukan Masehi."
+  ],
+  "hijriEvents": {
+    "1-10": {"title": "Hari Asyura", "desc": "Hari yang sangat dianjurkan untuk berpuasa dengan pahala yang besar."},
+    "3-12": {"title": "Maulid Nabi", "desc": "Peringatan hari kelahiran Nabi ﷺ menurut tanggal yang masyhur."},
+    "7-27": {"title": "Isra Mi'raj", "desc": "Malam penuh berkah yang berkaitan dengan peristiwa Isra dan Mi'raj."},
+    "8-15": {"title": "Nisfu Sya'ban", "desc": "Malam penuh berkah yang banyak dihidupkan oleh umat Islam."},
+    "9-1": {"title": "Awal Ramadhan", "desc": "Permulaan bulan suci Ramadhan."},
+    "9-27": {"title": "Lailatul Qadr (Perkiraan)", "desc": "Salah satu malam paling agung, dicari pada sepuluh hari terakhir."},
+    "10-1": {"title": "Idul Fitri", "desc": "Hari kegembiraan bagi umat Islam setelah selesai berpuasa Ramadhan."},
+    "12-9": {"title": "Hari Arafah", "desc": "Salah satu hari terbaik dalam setahun, sangat dianjurkan puasa bagi yang tidak wukuf."},
+    "12-10": {"title": "Idul Adha", "desc": "Hari raya kurban dan salah satu hari paling agung bagi umat Islam."}
+  },
+  "hijriNotes": {
+    "1-10": {"title": "Catatan Islami", "desc": "Disunnahkan puasa Asyura, dan menambahkan satu hari sebelum atau sesudahnya."},
+    "9-1": {"title": "Catatan Islami", "desc": "Ramadhan adalah bulan puasa, shalat malam (Tarawih), dan membaca Al-Qur'an."},
+    "9-27": {"title": "Catatan Islami", "desc": "Lailatul Qadr dicari di 10 hari terakhir; malam ini lebih baik dari 1000 bulan."},
+    "10-1": {"title": "Catatan Islami", "desc": "Idul Fitri adalah hari kebahagiaan dan syukur, menampakkan kegembiraan adalah Sunnah."},
+    "12-9": {"title": "Catatan Islami", "desc": "Puasa Arafah bagi selain jemaah haji menghapus dosa dua tahun."},
+    "12-10": {"title": "Catatan Islami", "desc": "Idul Adha adalah hari yang agung di mana disyariatkan menyembelih hewan kurban."}
+  },
+  "upcomingEvents": [
+    {"month": 1, "day": 10, "title": "Hari Asyura"},
+    {"month": 3, "day": 12, "title": "Maulid Nabi"},
+    {"month": 7, "day": 27, "title": "Isra Mi'raj"},
+    {"month": 8, "day": 15, "title": "Nisfu Sya'ban"},
+    {"month": 9, "day": 1, "title": "Awal Ramadhan"},
+    {"month": 9, "day": 27, "title": "Lailatul Qadr"},
+    {"month": 10, "day": 1, "title": "Idul Fitri"},
+    {"month": 12, "day": 9, "title": "Hari Arafah"},
+    {"month": 12, "day": 10, "title": "Idul Adha"}
+  ]
+}

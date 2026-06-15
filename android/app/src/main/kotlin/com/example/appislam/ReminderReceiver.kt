@@ -24,36 +24,30 @@ class ReminderReceiver : BroadcastReceiver() {
 
         val powerManager = context.getSystemService(Context.POWER_SERVICE) as PowerManager
         val wakeLock = powerManager.newWakeLock(
-            PowerManager.PARTIAL_WAKE_LOCK,
-            "appislam:reminderWakeLock"
+            PowerManager.PARTIAL_WAKE_LOCK, "appislam:reminderWakeLock"
         )
-        wakeLock.acquire(60 * 1000L)
+        wakeLock.acquire(2 * 60 * 1000L)
 
         try {
             val prayerName = intent.getStringExtra("prayerName") ?: "الصلاة"
             val soundName = intent.getStringExtra("soundName") ?: "hayalaaslah"
             val localPath = intent.getStringExtra("localPath")
-            val requestCode = intent.getIntExtra("requestCode", 0)
-            val triggerAtMillis = intent.getLongExtra("triggerAt", 0L)
 
-            Log.d(TAG, "Prayer: $prayerName | Sound: $soundName | LocalPath: $localPath")
+            Log.d(TAG, "Prayer: $prayerName | Sound: $soundName | Local: $localPath")
 
             val notificationId = ("pre_reminder_$prayerName").hashCode()
 
-            // إيقاف أي صوت سابق
             try {
                 mediaPlayer?.stop()
                 mediaPlayer?.release()
                 mediaPlayer = null
             } catch (e: Exception) {
-                e.printStackTrace()
+                Log.w(TAG, "Error stopping previous player", e)
             }
 
-            // تشغيل الصوت
             try {
                 mediaPlayer = when {
                     !localPath.isNullOrEmpty() && File(localPath).exists() -> {
-                        Log.d(TAG, "Playing from local path: $localPath")
                         MediaPlayer().apply {
                             setAudioAttributes(
                                 AudioAttributes.Builder()
@@ -67,15 +61,20 @@ class ReminderReceiver : BroadcastReceiver() {
                             setOnCompletionListener {
                                 it.release()
                                 mediaPlayer = null
+                                if (wakeLock.isHeld) wakeLock.release()
                             }
                             start()
                         }
                     }
 
                     else -> {
-                        val soundResId =
-                            context.resources.getIdentifier(soundName, "raw", context.packageName)
-                        Log.d(TAG, "Trying raw resource: $soundName (resId=$soundResId)")
+                        var soundResId = context.resources.getIdentifier(soundName, "raw", context.packageName)
+
+                        // ✅ Fallback إلى makkah
+                        if (soundResId == 0) {
+                            Log.w(TAG, "Reminder sound '$soundName' not found, falling back to makkah")
+                            soundResId = context.resources.getIdentifier("makkah", "raw", context.packageName)
+                        }
 
                         if (soundResId != 0) {
                             MediaPlayer.create(context, soundResId)?.apply {
@@ -89,75 +88,47 @@ class ReminderReceiver : BroadcastReceiver() {
                                 setOnCompletionListener {
                                     it.release()
                                     mediaPlayer = null
+                                    if (wakeLock.isHeld) wakeLock.release()
                                 }
                                 start()
                             }
-                        } else {
-                            Log.e(TAG, "No sound found for: $soundName")
-                            null
-                        }
+                        } else null
                     }
                 }
             } catch (e: Exception) {
-                Log.e(TAG, "Error playing sound", e)
+                Log.e(TAG, "Error playing reminder sound", e)
             }
 
-            // زر إيقاف الصوت
             val stopIntent = Intent(context, StopReminderReceiver::class.java).apply {
                 putExtra("notificationId", notificationId)
             }
-
             val stopPendingIntent = PendingIntent.getBroadcast(
-                context,
-                notificationId + 3000,
-                stopIntent,
+                context, notificationId + 6000, stopIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
 
-            val notificationBuilder =
-                NotificationCompat.Builder(context, "reminder_channel")
-                    .setSmallIcon(R.mipmap.ic_launcher)
-                    .setContentTitle("اقتربت صلاة $prayerName")
-                    .setContentText("متبقي دقائق قليلة على الأذان")
-                    .setStyle(
-                        NotificationCompat.BigTextStyle()
-                            .bigText("متبقي دقائق قليلة على أذان $prayerName، استعد للصلاة 🕌")
-                    )
-                    .setPriority(NotificationCompat.PRIORITY_HIGH)
-                    .setAutoCancel(true)
-                    .addAction(
-                        android.R.drawable.ic_media_pause,
-                        "إيقاف الصوت",
-                        stopPendingIntent
-                    )
+            val builder = NotificationCompat.Builder(context, "reminder_channel")
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("اقتربت صلاة $prayerName")
+                .setContentText("متبقي دقائق قليلة على الأذان")
+                .setStyle(NotificationCompat.BigTextStyle()
+                    .bigText("متبقي دقائق قليلة على أذان $prayerName، استعد للصلاة 🕌"))
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_REMINDER)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                .setAutoCancel(true)
+                .addAction(android.R.drawable.ic_media_pause, "إيقاف الصوت", stopPendingIntent)
 
             try {
-                NotificationManagerCompat.from(context)
-                    .notify(notificationId, notificationBuilder.build())
-                Log.d(TAG, "Notification shown successfully")
+                NotificationManagerCompat.from(context).notify(notificationId, builder.build())
             } catch (e: SecurityException) {
                 Log.e(TAG, "Notification permission denied", e)
             }
 
-            // إعادة جدولة لليوم التالي
-            if (triggerAtMillis > 0 && requestCode > 0) {
-                val nextTrigger = triggerAtMillis + (24 * 60 * 60 * 1000L)
-                Log.d(TAG, "Rescheduling for next day at: $nextTrigger")
-
-                AlarmScheduler.scheduleReminder(
-                    context = context,
-                    triggerAtMillis = nextTrigger,
-                    prayerName = prayerName,
-                    requestCode = requestCode,
-                    soundName = soundName,
-                    localPath = localPath
-                )
-            }
-
+        } catch (e: Exception) {
+            Log.e(TAG, "Fatal error in ReminderReceiver", e)
         } finally {
-            if (wakeLock.isHeld) {
-                wakeLock.release()
-            }
+            if (mediaPlayer == null && wakeLock.isHeld) wakeLock.release()
         }
     }
 }

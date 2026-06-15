@@ -1,0 +1,598 @@
+{
+  "asma_allah": [
+    {
+      "id": 1,
+      "name": "Allaah (Allah - الله)",
+      "meaning": "Magaca ugu weyn ee kulmiya dhammaan sifooyinka kaamilka ah, weynaanta iyo quruxda. Waa magac u gaar ah Ilaahay kor ahaaye, cid kalena looma bixiyo, waana asalka magacyada oo dhan.",
+      "reflection": "Dareen weynaanta Alle daqiiqad kasta oo noloshaada ah, oo ku barya magaciisa ugu weyn adigoo yaqiinsan oo ikhlaas leh, waayo Wuxuu u dhow yahay midka barya, mana hoojiyo qofka tuuga."
+    },
+    {
+      "id": 2,
+      "name": "Naxariiste Guud (Ar-Rahman - الرحمن)",
+      "meaning": "Kii naxariistiisu ay wada koobtay dhammaan makhluuqaadka adduunka, mu'minkooda iyo gaalkooda, insigooda iyo jinkooda. Waa midka arzaaqa, caafimaadka siiya, waqtigana u kordhiya.",
+      "reflection": "Alle ka bari naxariistiisa ballaaran, oo dareen naxariistiisa xaalad kasta. U fiirso sida naxariistiisu kuu koobtay dhan kasta, caafimaadkaaga, arzaaqdaada, iyo hanuunkaagaba."
+    },
+    {
+      "id": 3,
+      "name": "Naxariistaha Gaarka ah (Ar-Rahim - الرحيم)",
+      "meaning": "Kii ugu deeqa addoomadiisa mu'miniinta ah naxariis gaar ah Maalinta Qiyaamaha, oo geliya Jannada kana badbaadiya Naarta. Wuxuu siiyaa dambi dhaaf, raalli ahaansho iyo abaalmarin weyn.",
+      "reflection": "U fiirso sida Alle ugu naxariisto addoomadiisa mu'miniinta ah, dadkana ugu naxariiso sidaad jeceshahay in lagugu naxariisto. Ogoow in naxariista Alle ay u dhow tahay sama-falayaasha."
+    },
+    {
+      "id": 4,
+      "name": "Boqorka (Al-Malik - الملك)",
+      "meaning": "Milkiilaha wax walba, kan siduu doono uga taliya mulkigiisa iyadoo aan cidi kula murmin ama hortaagin. Mulkiga samooyinka iyo dhulku isagaa iska leh, wuxuu wax siiyaa cidduu doono, wuxuuna ka reebaa cidduu doono.",
+      "reflection": "Dareen in mulkigu uu Allaah keliya leeyahay, oo taladaada isaga u dhiibo. Qalbigaaga haku xirin mulki tirtirmaya, waayo mulki walba oo aan kan Alle ahayn wuu baaba'ayaa."
+    },
+    {
+      "id": 5,
+      "name": "Kan Nasahan (Al-Quddus - القدوس)",
+      "meaning": "Kan ka nasahan dhaliil kasta iyo cillad kasta, kana hufan wixii aan u qalmin weynaantiisa. Waa Daahirka ay Malaa'igtu weyneeyaan oo ay tasbiixsadaan.",
+      "reflection": "Alle kaga weynee caqiidadaada iyo hadalkaaga wixii naqsi ah, qalbigaagana ka nadiifi wixii aan u qalmin cibaadadaada Alle. Tasbiixso mar walba."
+    },
+    {
+      "id": 6,
+      "name": "Nabad-gelyaha (As-Salam - السلام)",
+      "meaning": "Kan ka nabad-galay cillad kasta iyo dhibaato. Waa kan nabad-geliya addoomadiisa cabsida, oo ku beera nabad iyo ammaan quluubta mu'miniinta. Nabad-gelyada adduun iyo aakhiro Isaga ayey ka timaadaa.",
+      "reflection": "Alle weydiiso nabad-gelyo diintaada, adduunyadaada iyo aakhiradaada. Noqo il nabad iyo ammaan u ah dadka kugu xeeran, salaantana dhexdiina ku faafiya."
+    },
+    {
+      "id": 7,
+      "name": "Sugaha Nabad-gelyada (Al-Mu'min - المؤمن)",
+      "meaning": "Kan ka nabad-geliya makhluuqiisa dulmiga, oo mu'miniinta ka nabad-geliya caddabkiisa Maalinta Qiyaamaha. Wuxuu Rusushiisa ku rumeeyaa mucjisooyin.",
+      "reflection": "Dareen ammaanka Alle siiyo mu'miniinta, oo rumeyso ballan-qaadkiisa xaqqa ah. Aamin ku noqo la dhaqankaaga dadka, waayo mu'minka dhabta ah waa kan dadku ka aaminaan naftooda iyo maalkooda."
+    },
+    {
+      "id": 8,
+      "name": "Ilaaliyaha / Maamulaha (Al-Muhaimin - المهيمن)",
+      "meaning": "Ilaaliyaha iyo kor-joogaha wax walba, ogaha sifooyinka qarsoon iyo siraha quluubta. Waa markhaatiga falalka iyo hadallada makhluuqa, waxna kama qarsoonaan karaan.",
+      "reflection": "Ogoow in Alle uu ku arko, ee wanaaji sirtaada iyo muuqaalkaaga. Ilaali naftaada xaalad kasta adigoo u dhaqmaya sidii inuu ku arko, haddii aadan arkeynina Isagu wuu ku arkaa."
+    },
+    {
+      "id": 9,
+      "name": "Adkaadaha (Al-'Aziz - العزيز)",
+      "meaning": "Kan awoodda badan ee aan la jebin karin, kan xoogga badan ee ka aarsada cadawgiisa. Mid aan la gaari karin wuxuu haysto in isaga la adeeco mooyee.",
+      "reflection": "Cisadaada iyo sharaftaada Allaah keliya weydiiso, hana isku dulleyn ciddii aan Isaga ahayn. Ogoow cisadu inay u sugnaatay Alle, Rasuulkiisa iyo Mu'miniinta."
+    },
+    {
+      "id": 10,
+      "name": "Awood Badnaha / Kabaha (Al-Jabbar - الجبار)",
+      "meaning": "Kan kaba wixii jabay, hodmiya faqiirka, hagaajiyana arrimaha. Waa kan muquuniya mid kasta oo madax-adayg badan, dadkana isugu keena wuxuu doono.",
+      "reflection": "Dareen awoodda Alle ee kabaysa jabkaaga oo ku xoojinaysa daciifnimadaada. Isaga u noqo dhib kasta, waayo Wuxuu kabaa quluubta jaban."
+    },
+    {
+      "id": 11,
+      "name": "Weynaadaha (Al-Mutakabbir - المتكبر)",
+      "meaning": "Kan ka weyn sifooyinka makhluuqaadka, kan keligiis u qalma is-weyneyn iyo weynaan. Kibrigu waa is-weyneyn Isaga u gaar ah oo ka nasahan dhaliil.",
+      "reflection": "Is-hoosaysii Alle iyo dadkaba dartiis, waayo kibriga Alle keliya ayaa iska leh. Ciddii kula tartanta, Alle wuu jebin doonaa. Hoos-u-dhig naftaada Alle ayaa ku sarraysiin doonee."
+    },
+    {
+      "id": 12,
+      "name": "Abuuraha (Al-Khaliq - الخالق)",
+      "meaning": "Kan wax ka abuura meel eber ah (wax aan horay u jirin), isagoo qaddara sifooyinkooda intaanu abuurin. Wax walba Wuxuu ku abuuray awooddiisa iyo xigmaddiisa.",
+      "reflection": "U fiirso abuurka Alle ee koonkan kugu xeeran. Ku shukri nicmada abuurka iyo nolosha, wuxuu Alle abuurayna u isticmaal wax uu raalli ka yahay."
+    },
+    {
+      "id": 13,
+      "name": "Sameeyaha (Al-Bari' - البارئ)",
+      "meaning": "Kan soo saaray makhluuqaadka awooddiisa isagoo ku kala duway sifooyin iyo qaabab, bilaa iska hor-imaad iyo iin la'aan.",
+      "reflection": "Tafakur sida Alle u dhameystiray abuurkiisa oo u kala soocay. Wanaaji ula-dhaqanka makhluuqaadka Alle, waayo kulligood waa ciyaalka (ku tiirsanayaasha) Alle."
+    },
+    {
+      "id": 14,
+      "name": "Suureeyaha (Al-Musawwir - المصور)",
+      "meaning": "Kan suuradeeyay dhammaan makhluuqaadka, siiyeyna kasta muuqaal iyo qaab u gaar ah oo lagu garto, si ay isu aqoonsadaan.",
+      "reflection": "U mahadnaq Alle suuradda qurxoon ee uu ku siiyey, hana ku caayin abuurka Alle cidna. Quruxda dhabta ahi waa quruxda qalbida iyo dhaqanka."
+    },
+    {
+      "id": 15,
+      "name": "Dambi Dhaaf Badnaha (Al-Ghaffar - الغفار)",
+      "meaning": "Kan dambi-dhaafka u badan addoomadiisa, astura dambiyadooda, soo noq-noqodna ku cafiya. Kama caajiso dambi dhaafka xitaa haddii dambigu bato.",
+      "reflection": "Badi dambi-dhaaf weydiisiga (Istighfaar) waqti kasta, waayo albaabka dambi-dhaafku wuu furan yahay. Ha ka quusan naxariista Alle dambigaagu si kasta ha u weynaado e."
+    },
+    {
+      "id": 16,
+      "name": "Qasbaha (Al-Qahhar - القهار)",
+      "meaning": "Kan awooddiisa ku qasbay wax walba oo la wada hoos yimid. Wax kasta Isaga ayay u dulleysan yihiin, wuxuuna muquuniyaa daalimiinta iyo madax-adeygayaasha.",
+      "reflection": "Dareen awoodda Alle uu ku qasbayo mid kasta oo daalim ah, hana ka baqin cid aan Alle ahayn. Ogoow ciddii dadka ku qasabta baadil in Alle ku muquunin doono xaqiisa."
+    },
+    {
+      "id": 17,
+      "name": "Deeq Bixiyaha (Al-Wahhab - الوهاب)",
+      "meaning": "Kan bixiya deeqaha iyo hibada isagoo aan sabab, abaal-gud, ama beddel u doonayn. Wuxuu siiyaa cidduu doono wuxuu doono, deeqdiisuna ma go'do.",
+      "reflection": "Alle weydiiso fadligiisa, waayo waa Deeq-bixiye deeqdiisu aysan dhammaanayn. Dadka ula dhaqan si deeqsinimo leh, waayo Alle wuxuu jecelyahay deeqsiyaasha."
+    },
+    {
+      "id": 18,
+      "name": "Arzaaqaha (Ar-Razzaq - الرزاق)",
+      "meaning": "Kan quudiya makhluuqaadka oo damaanad qaaday arzaaqdooda. Qofna kama hilmaamo arzaaqdiisa; mu'min iyo gaalba, mid fiican iyo mid xunba.",
+      "reflection": "Ku xasilo arzaaqda laguu qoray oo kugu imaan doonta xigmadda Alle. Dadaal si aad u raadsato xalaal, Allehna talo-saaro."
+    },
+    {
+      "id": 19,
+      "name": "Furaha (Al-Fattah - الفتاح)",
+      "meaning": "Kan wajaadiisa u fura albaabada naxariista iyo arzaaqda, kuna kala saara xaqqa iyo caddaaladda. Wuxuu furaa arrimaha xirmay iyo dhibta ciddii isaga weydiisato.",
+      "reflection": "Haddii albaabadu kaa xirmaan, miciin bido Al-Fattah. Ogoow wuxuu Alle furo inaan la xiri karin, wuxuu xirona inaan la furi karin."
+    },
+    {
+      "id": 20,
+      "name": "Ogaha (Al-'Alim - العليم)",
+      "meaning": "Kan cilmigiisu wada koobay wax walba, muuqda iyo qarsoonba, weyn iyo yarba. Wuu ogyahay wixii dhacay, wixii dhacaya iyo wixii dhici lahaa. Waxba kama qarsoona.",
+      "reflection": "Maanka ku hay cilmiga Alle ee koobay wax walba, daacadna ku noqo camalkaaga sir iyo caddaanba. Raadso culuunta anfacda oo ku camal fal."
+    },
+    {
+      "id": 21,
+      "name": "Cidhiidhyaha / Qabtaha (Al-Qabidh - القابض)",
+      "meaning": "Kan yareeya (cidhiidhya) arzaaqda iyo ruuxda isagoo xigmad leh, u cidhiidhya cidduu doono imtixaan ahaan. Cidhiidhintiisu waa caddaalad iyo xigmad; u cidhiidhya si uu wax u bixiyo.",
+      "reflection": "Haddii arrimuhu kugu cidhiidhyaan, ogoow waa xigmad Alle, cidhiidhiga dabadiina waxaa xiga is-kala-bixin. Sabir oo ha quusan."
+    },
+    {
+      "id": 22,
+      "name": "Fidiyaha (Al-Basith - الباسط)",
+      "meaning": "Kan arzaaqda u fidiya (badiya) cidduu doono wajaadiisa dhexdiisa fadligiisa dartiis, oo fidiya naxariistiisa. Gacantiisa ayuu bixiyaa habeenkii si uu u toobad aqbalo midkii maalinkii qalda, iyo maalinkii si uu u toobad aqbalo kii habeenkii qalda.",
+      "reflection": "Haddii Alle kuu badiyo arzaaqda, ku shukri oo ha kibirin. Ogoow fidisnimadu (balaarin) waa imtixaan si la mid ah cidhiidhyidaba."
+    },
+    {
+      "id": 23,
+      "name": "Hoos-dhigaha (Al-Khafidh - الخافض)",
+      "meaning": "Kan hoos u dhiga cidduu doono makhluuqgiisa caddaaladdiisa darteed, hoos u dhiga kibriilayaasha oo dulleeya daalimiinta iyo kuwa xaqqa ka jeedsada.",
+      "reflection": "Iska jir kibri iyo is-weyneyn adduunka, waayo Alle wuxuu hoos u dhigaa kuwa is-weyneeya. U jilci naftaada Alle wuu ku sarraysiin doonaaye."
+    },
+    {
+      "id": 24,
+      "name": "Kor-yeelaha (Ar-Rafi' - الرافع)",
+      "meaning": "Kan kor u yeela mu'miniinta daacadnimo iyo iimaan, darajadana u kordhiya ehlu-cilmiga iyo iimaanka. Kor buu u qaadaa cidduu doono.",
+      "reflection": "Ku raadi sarraynta Alle agtiisa cilmi, camal suuban, iyo taqwa. Sarraynta dhabta ahi waa sarraynta qalbigu ku sarrayso iimaan."
+    },
+    {
+      "id": 25,
+      "name": "Ciseeyaha (Al-Mu'izz - المعز)",
+      "meaning": "Kan siiya ciso (sharaf) cidduu doono, isagoo ka dhiga mid sharaf iyo ixtiraam leh. Sharaf lama helo Isaga la'aantiis, cisana kuma jirto waxaan daacadnimadiisa ahayn.",
+      "reflection": "Ciso weydiiso Allaah keliya, hana weydiisan makhluuq. Ogoow cisadu waxay ku jirtaa cibaadada Alle, dulliguna wuxuu ku jiraa caasinimadiisa."
+    },
+    {
+      "id": 26,
+      "name": "Dulleeyaha (Al-Mudzill - المذل)",
+      "meaning": "Kan dulleeya cidduu doono isagoo caddaalad iyo xigmad wata. Wuxuu dulleeyaa kii caasiya oo is-weyneeya, wuxuuna dullaysiiyaa daalimiinta iyo kuwa fasahaadka sameeya.",
+      "reflection": "Yaanay ku dhagrin awooddaada, maalkaaga, ama maqaamkaagu, Alle wuu awoodaa inuu dulleeyo mid kasta oo kibriya. Alle ka magan-gal dulli."
+    },
+    {
+      "id": 27,
+      "name": "Maqlaha (As-Sami' - السميع)",
+      "meaning": "Kan maqla codadkoo dhan iyadoo ay kala duwan yihiin luqadahoodu, umana qasmaan baahiyaha. Wuxuu maqlaa sirta, hoos-u-hadalka, iyo murgashada qudhaanjada saaran dhagaxa.",
+      "reflection": "Ku bari Alle si yaqiin ah, waayo Wuxuu maqlaa hoos u hadalkaaga iyo qaylada qalbigaaga. Ha dhihin hadal uusan Alle raalli ka ahayn."
+    },
+    {
+      "id": 28,
+      "name": "Arkaha (Al-Bashir - البصير)",
+      "meaning": "Kan arka wax kasta si kasta oo ay u yar yihiin, arka qudhaanjada madow ee saaran dhagax madow habeen gudcur ah. Wax ka qarsoon majiraan samo iyo dhul.",
+      "reflection": "Ogoow in Alle ku arkayo waqti kasta, oo wanaaji camalkaaga sir iyo caddaanba. Ogoow in Alle ku arkayo meel kasta oo aad joogtid."
+    },
+    {
+      "id": 29,
+      "name": "Xaakimka (Al-Hakam - الحكم)",
+      "meaning": "Kan u xukuma wajaadiisa si xaq iyo caddaalad ah, cidna ma dulmiyo qaddar yar. Xukunkiisu waa mid fulaya aan la celin karin, waana Xaakimka ugu sarreeya.",
+      "reflection": "Ku raalli noqo xukunka iyo qaddarka Alle, ogoow ma xukumo xaq iyo caddaalad mooyee. Dadkana ha xukumin caddaalad mooyee."
+    },
+    {
+      "id": 30,
+      "name": "Caadilka (Al-'Adl - العدل)",
+      "meaning": "Kan ka nasahan dulmi iyo caddaalad-darro qaddarkiisa iyo xukunkiisa. Ma dulmiyo cidna, mana zayiciyo ajarka qof sama-falay. Caddaaladdiisu waa mid dhamaystiran.",
+      "reflection": "Noqo mid caddaalad sameeya go'aannadaada iyo la-dhaqankaaga dadka, hana dulmin cidna. Ogoow dulmigu waa mugdiga Maalinta Qiyaamaha."
+    },
+    {
+      "id": 31,
+      "name": "Dabacsanaha / Oge Hoose (Al-Lathif - اللطيف)",
+      "meaning": "Kan gaarsiiya khayrka wajaadiisa isagoo ula dhaqma si dabacsan oo aanay dareemayn. Wuxuu ugu roonaadaa qaddarkiisa wajaadiisa, waana xigmad badan.",
+      "reflection": "Tafakur dabacsanaanta Alle ee kugu xeeran faahfaahinta noloshaada oo laga yaabo inaadan ogeyn. Ogoow dhib kasta gadaashiis waxaa jira faraj ka yimid Al-Ladiif."
+    },
+    {
+      "id": 32,
+      "name": "Xog-Ogaalka (Al-Khabir - الخبير)",
+      "meaning": "Kan og tafaasiisha arrimaha, sirahooda, iyo badhtankooda. Wax kama qarsoona xaalka makhluuqiisa. Wuxuu ogyahay wixii quluubta ku jira.",
+      "reflection": "Ogoow in Alle uu xog ogaal u yahay xaalkaaga iyo qalbgaaga, markaa hagaaji niyaddaada iyo qarsoodigaaga. Alle weydiiso inuu ku daahiriyo."
+    },
+    {
+      "id": 33,
+      "name": "Dulqaadaha (Al-Halim - الحليم)",
+      "meaning": "Kan aan ku degdegin ciqaabidda kuwa caasiya, balse siiya fursad, caafimaad, iyo ruzuq iyagoo caasiyaya. Dulqaadkiisu wuu waasac yahay, wuu fursad siiyaa laakiin ma hilmaamo.",
+      "reflection": "Ku sifoow dulqaad marka aad dadka la macaamilaysid. Ha ku degdegin aar-goosi, waayo Alle waa Dulqaade wayn."
+    },
+    {
+      "id": 34,
+      "name": "Waynaha (Al-'Azhim - العظيم)",
+      "meaning": "Wuxuu leeyahay weynaan iyo is-weyneyn samooyinka iyo dhulka, Waa weynaha dadiisa, sifooyinkiisa, iyo falalkiisa. Ma koobi karaan caqligu mana arki karaan indhuhu.",
+      "reflection": "Ku weynee Alle qalbigaaga iyo jirkaaga, hana dhayalsan mid ka mid ah amarradiisa. Dareen weynaantiisa marka aad hor taagan tahay Salaadda."
+    },
+    {
+      "id": 35,
+      "name": "Dambi Dhaafaha (Al-Ghafur - الغفور)",
+      "meaning": "Kan cafiya dambiyada, astura aibaha, kana gudba qaladaadka. Dambi dhaafkiisu waa waasac, wuxuu cafiyaa midka toobad keena xitaa haddii dambigiisu bato.",
+      "reflection": "Ha ka quusan naxariista Alle iyo dambi dhaafkiisa dambigaagu si kasta ha u weynaado e. Waa midka jecel dambi-dhaafka ee toobad keen mar walba."
+    },
+    {
+      "id": 36,
+      "name": "Abaal-gudaha (Asy-Syakur - الشكور)",
+      "meaning": "Kan ku abaal-guda amal yar ajar weyn, oo u labanlaaba wanaagga cidduu doono. Wuxuu uga mahadceliyaa wajaadiisa daacadnimadooda, mana lunto in le'eg zarro (atamyar).",
+      "reflection": "Ku shukri Alle nicmooyinkiisa aan la soo koobi karin, ogoow wuxuu kuu qiraa abaalka amal kasta oo yar. Badi wanaagga xitaa haddii uu yaryahay."
+    },
+    {
+      "id": 37,
+      "name": "Sareeyaha (Al-'Aliy - العلي)",
+      "meaning": "Kan sareeya makhluuqaadkiisa oo dhan, dadiisa, sifooyinkiisa iyo qaddarkiisa. Darajadiisu waa mid sareysa, wax isaga ka sarreeya majiraan.",
+      "reflection": "Ku xirnow Allaah Sareeyaha, hana isku xirin waxyaabaha liita. Kor u qaad hankaaga oo raadi darajooyinka ugu sarreeya ee Jannada."
+    },
+    {
+      "id": 38,
+      "name": "Weynaha (Al-Kabir - الكبير)",
+      "meaning": "Kan weynaha ah ee dadiisa iyo sifooyinkiisaba ah, wax kastoo aan Isaga ahaynna ay yaryihiin. Wuxuu ka weyn yahay wax walba oo weyn. Wuxuu leeyahay kibriga iyo weynaanta.",
+      "reflection": "Ku weynee Alle qalbigaaga si uu kaaga yareeyo wax kasta. Haddii aad wax weyn u aragtid xusuuso in (Allahu Akbar) Alle ka weyn yahay wax kasta oo ku baqdin gelinaya."
+    },
+    {
+      "id": 39,
+      "name": "Ilaaliyaha (Al-Hafizh - الحفيظ)",
+      "meaning": "Kan ka ilaaliya makhluuqaadka halaag, xifdiyana amallada wajaadiisa si uu uga abaal mariyo. Wuxuu xifdiyaa samooyinka iyo dhulka, oo xifdiyaa diinta mu'miniinta.",
+      "reflection": "Dhiibso Alle ehelkaaga, maalkaaga iyo diintaada, waayo Waa Ilaaliyaha ugu khayr badan. Dhawr (ilaali) Alle Wuu ku dhawri doonaaye."
+    },
+    {
+      "id": 40,
+      "name": "Quudiyaha / Awoodaha (Al-Muqit - المقيت)",
+      "meaning": "Kan gaarsiiya quudka iyo raashinka kasta makhluuq xilliga ku habboon. Waa kafiilka quudka addoomada, Wuxuu awoodaa inuu gaarsiiyo ruzuq kasta noole.",
+      "reflection": "Ku xasilo quudkaaga iyo ruzuuqdaada, waayo Allaah ayaa damaanad qaaday. Hana hilmaamin inaad quudisid dadka baahan."
+    },
+    {
+      "id": 41,
+      "name": "Xisaabiyaha / Kufiyaha (Al-Hasib - الحسيب)",
+      "meaning": "Kan ugu filan wajaadiisa arrimohooda oo dhan, kana xisaabiya camalkooda Maalinta Qiyaamaha. Wuxuu ugu filan yahay kan isaga tala-saarta.",
+      "reflection": "Xisaabi naftaada intaan lagu xisaabin, miisaan camalkaaga intaan lagu miisaamin. Ogoow Alle waa xisaabiyahaaga ee u diyaarso jawaab xisaabta."
+    },
+    {
+      "id": 42,
+      "name": "Waynaha Cadiimka ah (Al-Jalil - الجليل)",
+      "meaning": "Wuxuu leeyahay sifooyinka waynaanta, kaamilnimada, iyo weynaanta. Waa Weyne mulkigiisa iyo awooddiisa. Sifooyinkiisu waxay buuxiyaan quluubta qaddarin iyo cabsi.",
+      "reflection": "Ku weynee Alle qalbigaaga, kawna xishood inuu kugu arko macsi. Ogoow waynaantiisu waxay kugu waajibinaysaa is-hoosaysiin iyo is-dullayn hortiisa."
+    },
+    {
+      "id": 43,
+      "name": "Deeqsiga (Al-Karim - الكريم)",
+      "meaning": "Khayr iyo deeq badnaha, bixiya adigoon weydiisan, waxna kaaga baahnayn. Deeqsiinimadiisu waxay ka sarreysaa mid kasta, wax walba isaga ayaa bixiya isagoon beddel rabin.",
+      "reflection": "Isku sifee deeqsinimo iyo dabeecad wanaag, bixi wixii Alle ku siiyey. Ogoow waxa Alle agtiisa yaalla ayaa khayr iyo baaqi ah, ee ha bakhaylin."
+    },
+    {
+      "id": 44,
+      "name": "Kor-joogaha (Ar-Raqib - الرقيب)",
+      "meaning": "Kan og waxa lalaabta qariyey, ilaaliyaha nafsad kasta waxay kasbatay. Kama maqna waxba, mana mooga waxba. Wuxuu kor-jooge u yahay falalka iyo hadallada.",
+      "reflection": "Iska ilaali Alle sir iyo caddaan, ogowna inuu ku eegayo daqiiqad kasta. Wanaaji camalkaaga oo toosnaan muuji."
+    },
+    {
+      "id": 45,
+      "name": "Ajiibaha / Aqbalaha (Al-Mujib - المجيب)",
+      "meaning": "Kan ajiiba (aqbala) ducada qofka marka uu baryo. Wuxuu u dhow yahay midka u dhawaaqa si dhab ah iyo ikhlaas leh. Wuxuu aqbalaa dhibbanaha wuxuuna feydaa dhibka.",
+      "reflection": "Alle ku bari yaqiin iyo deganaan, waa Ajiibaha u dhow ee aan soo celinayn weydiistaha. Alle kaga fiicanow ajiibida ducadaada."
+    },
+    {
+      "id": 46,
+      "name": "Deeqda Waasica ah (Al-Wasi' - الواسع)",
+      "meaning": "Kan naxariistiisu wada koobtay wax walba, cilmigiisu wada koobay wax walba, arzuqdiisuna waasac tahay. Waa Deeq-bixiye waasac ah, qasnadihiisu ma dhammaadaan.",
+      "reflection": "Ha isku yareyn naxariista Alle, way ka baaxad weyn tahay waxaad malayso. Weydiiso fadligiisa ballaaran hana ka quusan."
+    },
+    {
+      "id": 47,
+      "name": "Xakiimka (Al-Hakim - الحكيم)",
+      "meaning": "Kan meel-dhiga wax walba meeshii ku habboonayd xigmad buuxda dartiis. Waxba ma yeelo macno-darro, amar kasta iyo falkastana wuxuu u sameeyaa xigmad isaga keligiis og.",
+      "reflection": "Ku kalsoonow xigmadda Alle wax kasta oo uu kuu qaddaray, xitaa haddii aadan xigmadda fahmin isla markiiba. Qaddarka Alle waa khayr iyo xigmad."
+    },
+    {
+      "id": 48,
+      "name": "Jecelaha (Al-Wadud - الودود)",
+      "meaning": "Kan jecel addoomadiisa saalixiinta ah, wuxuuna u naxariistaa (u jecelyahay) nicmooyinkiisa iyo fadligiisa. Waa la jecel yahay quluubta awliyadiisa.",
+      "reflection": "Dareen jacaylka Alle ee kugu wajahan markaad adeecdo, isuguna dhowow isaga daacadnimo. Qalbigaaga ka buuxi jacaylka Alle."
+    },
+    {
+      "id": 49,
+      "name": "Sharaftaha (Al-Majid - المجيد)",
+      "meaning": "Wuxuu leeyahay sharaf weyn, cisso buuxda iyo awood ballaaran. Sharaftiisu waxay buuxisay samooyinka iyo dhulka. Malaa'igta iyo makhluuqyada ayaa wada weyneeya.",
+      "reflection": "Ku weynee Alle qalbigaaga iyo carrabkaaga iyo xubnahaaga, badi amaantiisa. Ogoow sharafta Alle in aan maskax la gaari karin."
+    },
+    {
+      "id": 50,
+      "name": "Soo-saaraha / Soo-bixiyaha (Al-Ba'ith - الباعث)",
+      "meaning": "Kan soo saara dadka Maalinta Qiyaamaha dhimashada kadib si loo xisaabiyo loona abaal-mariyo. Wuxuu soo saaraa rususha, wuxuuna soo bixiyaa himilada quluubta mu'miniinta.",
+      "reflection": "U diyaargarow maalinta bixinta camal suuban iyo toobad. Ogoow in lagu soo bixin doono oo lagugu xisaabin doono mid kasta yar iyo weynba."
+    },
+    {
+      "id": 51,
+      "name": "Markhaatiga (Asy-Syahid - الشهيد)",
+      "meaning": "Kan aan waxba ka qarsoonayn, wax walba goobjoog ka ah oo arka. Wuxuu markhaati ka yahay camalka wajaadiisa, waana Markhaatiga waxa ay sameeyaan Maalinta Qiyaamaha.",
+      "reflection": "Maskaxda ku hay in Alle yahay markhaatiga falalkaaga iyo erayadaada. Gabi ahaanba wanaaji waxaad samaynayso, Alle ha uga dhigin markhaati lagugu qaado ee hakuugu noqdo mid kuu marag kaca."
+    },
+    {
+      "id": 52,
+      "name": "Xaqa (Al-Haqq - الحق)",
+      "meaning": "Sugnaha aan shaki ku jirin jiritaankiisa iyo ilaahnimadiisa. Wuxuu xaq ku yahay dadiisa, sifooyinkiisa, falalkiisa, ballankiisa iyo digniintiisa. Wixii isaga kasoo hara waa la waayi karaa, laakiin jiritaankiisu waa waajib.",
+      "reflection": "Ku dheganow xaqa xataa haddii aad keligaa tahay, ogoow baadilku inuu tirtirmi doono. Ku toosnow daacadnimo."
+    },
+    {
+      "id": 53,
+      "name": "Wakiilka (Al-Wakil - الوكيل)",
+      "meaning": "Kafiilka arzaaqda wajaadiisa iyo danahooda, u xil-saaraha arrimaha cidda tala-saarta Isaga. Qofkii isaga ka dhigta Wakiil, wuu uga fillaan doonaa walwal kasta iyo shar kasta.",
+      "reflection": "Talosaaro Alle tala-saarasho dhab ah, una dhiibo arrimahaaga. Qofkii Alle tala-saarta, isagaa ugu filan wakiilnimo."
+    },
+    {
+      "id": 54,
+      "name": "Xoogaha (Al-Qawiy - القوي)",
+      "meaning": "Xoogga dhamaystiran ee aan cidna kaga adkaan karin dhulka iyo samada. Xooggiisa cidi kama guulaysato. Kama muuqato daal, tabaryari ama nuglaan.",
+      "reflection": "Xooggaaga ka raadso Alle Xoogga badan, hana isku halleyn xooggaaga keligiis. Kaalmayso Alle hana caajisin."
+    },
+    {
+      "id": 55,
+      "name": "Adkaha (Al-Matin - المتين)",
+      "meaning": "Kan awooddiisu aad u daran tahay ee aan la kulmin daciifnimo. Adkaantiisu waxay ku jirtaa awooddiisa isaga iyo ciqaabtiisa kuwii caasiya. Waxba kama dhimaan awooddiisa.",
+      "reflection": "Ku adkow iimaankaaga oo ku sugnow xaqa. Ogoow Alle wuu ku daran yahay ciddii isaga la dagaalanta."
+    },
+    {
+      "id": 56,
+      "name": "Sokeeyaha / Gargaaraha (Al-Waliy - الولي)",
+      "meaning": "U gargaaraha iyo kafaala-qaadaha arrimaha wajaadiisa mu'miniinta. Wuxuu u kafaala qaaday xannaanayn, ilaalin iyo gargaar. Wuxuu ka saaraa gudcurka una geeyaa nuurka.",
+      "reflection": "Alle ka dhigo sokeeye iyo gargaare, iskagana fillaan gargaarkiisa cid kasta. Cidii Alle yahay sokeeyihiisa weligiis lama hoojin doono."
+    },
+    {
+      "id": 57,
+      "name": "Mahad-sanaha (Al-Hamid - الحميد)",
+      "meaning": "Kan lagu mahadiyo xaalad kasta iyo waqti kasta. Wuxuu mutaystay mahad dhammaan dadiisa, sifooyinkiisa, iyo falalkiisaba. Mahaddiisu waxay buuxisay samooyinka iyo dhulka.",
+      "reflection": "U mahadceli Alle xaalad wanaag iyo mid xunba. Ka dhig carrabkaaga mid qooyan mahadnaqa Alle."
+    },
+    {
+      "id": 58,
+      "name": "Koobaha / Tiriyaha (Al-Muhshi - المحصي)",
+      "meaning": "Kan koobay wax kasta tiradooda oo tafaasishooda ogyahay. Waxba kama qarsoona makhluuqaadkiisa. Wuxuu tiriyaa amallada addoomada, neef-qaadashadooda iyo tallaabadooda.",
+      "reflection": "Ogoow in camal walba lagu tiriyey, wanaaji waxa aad qabanayso oo dhan. Badi xasanadkaaga (wanaaggaaga)."
+    },
+    {
+      "id": 59,
+      "name": "Bilaabaha (Al-Mubdi' - المبدئ)",
+      "meaning": "Kan bilaabay abuurista wax kasta kana abuuray isagoon tusaale hore ka qaadan. Wuxuu ku bilaabay khalqiga awoodiisa eber isagoo aan sabab iyo dhex-dhexaad adeegsan.",
+      "reflection": "Tafakur bilowga abuurkaaga, sida Alle kaaga abuuray waxba. U shukri nicmada nolosha iyo abuurka."
+    },
+    {
+      "id": 60,
+      "name": "Soo-celiyaha (Al-Mu'id - المعيد)",
+      "meaning": "Kan soo celiya makhluuqa dhimashada kadib Maalinta Qiyaamaha siduu u bilaabay markii ugu horraysay. Wuxuu awoodaa inuu dib u soo celiyo xisaabta iyo abaalka aawadiis.",
+      "reflection": "Yaqiini soo-bixinta dhimashada kadib, una diyaargarow la-kulanka Alle adoo samaynaya camal suuban."
+    },
+    {
+      "id": 61,
+      "name": "Noleeyaha (Al-Muhyi - المحيي)",
+      "meaning": "Kan nooleeya dadka dhintay kana soo saara nolol dhimasho dhexdeeda. Wuxuu ku nooleeyaa quluubta dhintay nuurka iimaanka iyo hanuunka.",
+      "reflection": "Alle weydiiso inuu qalbgaaga ku nooleeyo iimaan, cilmi, iyo zikri. Ogoow nolosha qalbigu in ay ka muhiimsan tahay nolosha jirka."
+    },
+    {
+      "id": 62,
+      "name": "Dilaha (Al-Mumit - المميت)",
+      "meaning": "Kan dila kuwa nool oo qaada rooxdooda marka uu doono. Wuxuu u abuuray dhimashada iyo nolosha inuu idin imtixaano kiinna camal wanaagsan. Naf kasta waa mid dhadhamin doonta dhimashada.",
+      "reflection": "Xusuuso dhimashada maalin kasta oo u diyaargarow camal wanaagsan. Yayna ku dhagrin nolosha adduun, waayo waa guri laga gudbayo."
+    },
+    {
+      "id": 63,
+      "name": "Noolaha (Al-Hayy - الحي)",
+      "meaning": "Kan leh nolol kaamil ah, abadi ah oo aan fana lahayn. Noloshiisu maaha mid sida makhluuqaadka oo kale, waa nolol dhamaystiran oo aan hurdo iyo dhac-dhac midna soo marin.",
+      "reflection": "Talo saaro Noolaha aan dhimanayn, hana ku xirmin kuwa nool ee dhimanaya. U shaqayso nolosha aakhirada ee baaqiga ah."
+    },
+    {
+      "id": 64,
+      "name": "Toosiyaha / Is-taagaha (Al-Qayyum - القيوم)",
+      "meaning": "Kan naftiisa ku taagan ee aan cidna u baahnayn, kan dadka kale ku taagan yihiin, qofna uusan is-taagi karin Isaga la'aantiis. Wuxuu ku taagan yahay xafididda koonka bilaa hurdo iyo daal.",
+      "reflection": "Gargaar weydiiso Al-Qayyum dhammaan arrimahaaga. Waa kan maamulaya noloshaada, hana ka marnaato zikrigiisa il-biriqsi."
+    },
+    {
+      "id": 65,
+      "name": "Helaha / Taajirka (Al-Wajid - الواجد)",
+      "meaning": "Qaniga aan u baahnayn waxba. Wuxuu hela wuxuu rabo waqtiga uu rabo. Waxna kama ajiijiyaan, Isaguna uma baahna waxba, balse wax walba isaga ayey u baahan yihiin.",
+      "reflection": "Ha isku dulleyn cid aan Alle ahayn, Isaga uun weydiiso baahidaada waayo Wuxuu heli karaa wax walba."
+    },
+    {
+      "id": 66,
+      "name": "Sharaftaha Cadiimka ah (Al-Majid - الماجد)",
+      "meaning": "Deeq-bixiyaha weyn sharaftiisa iyo fadligiisa, kaas oo leh sharaf, ciso iyo karam. Waa deeqsi sifooyinkiisa, weyn ficilladiisa, deeqsi bixintiisa.",
+      "reflection": "Weynne Alle, weydiiso weynaantiisa iyo deeqdiisa. Sharafta dhabta ahi waxay ku jirtaa daacada Alle."
+    },
+    {
+      "id": 67,
+      "name": "Midka ah (Al-Wahid - الواحد)",
+      "meaning": "Kan keligiis ku ah midaynta dadiisa, sifooyinkiisa iyo falalkiisa. Ma laha shariik, wax u eg iyo wax la mid ah. Waa Keli mid ah, aan dhalin, la dhalin, cidi u qalmin.",
+      "reflection": "Ku midaysid Alle cibaadadaada iyo ducadaada, cidna ha ku lammaanaynin. Tawxiidku waa waxa ugu weyn ee qofku Alle isugu soo dhawaado."
+    },
+    {
+      "id": 68,
+      "name": "Loo-baahdaha (Ash-Shamad - الصمد)",
+      "meaning": "Sayidka ay makhluuqaadka oo dhan ula noqdaan baahiyahooda. Isagu cidna uma baahna, balse qof walba isaga ayuu u baahan yahay. Waxba macuno mana cabo.",
+      "reflection": "Alle ula noqo baahi kasta, hana u soo jeedin qalbigaaga cid kale. Waa Ash-Shamad ee aan dayacin ciddii doonata."
+    },
+    {
+      "id": 69,
+      "name": "Awoodaha (Al-Qadir - القادر)",
+      "meaning": "Kan awooda wax kasta, waxna aanay uga ajiijin karin dhulka iyo samada. Marka uu doono shay, wuxuu leeyahay uun 'Ahow' wuuna ahaadaa.",
+      "reflection": "Rumayso awoodda Alle ee buuxda, ka bari wixii aad rabto xitaa haddii ay u muuqato mid aan suurta-gal ahayn."
+    },
+    {
+      "id": 70,
+      "name": "Awoodda dhamaystiran leh (Al-Muqtadir - المقتدر)",
+      "meaning": "Kan awoodda ballaaran leh, awooddiisana aysan waxna diidi karin. Awooddiisu waa mid ka sarraysa awood kasta. Wuxuu falaa wuxuu rabo siduu rabo waqtiguu rabo.",
+      "reflection": "Dareen awooda Alle ee wax kasta korkooda ah, hana u arkin wax adag markaad Alle wehel ka dhigato."
+    },
+    {
+      "id": 71,
+      "name": "Soo-horreysiiyaha (Al-Muqaddim - المقدم)",
+      "meaning": "Kan soo horreysiiya cidduu doono isagoo xigmad, cilmi iyo naxariis leh. Wuxuu soo horreysiiyaa darajada, mansabka, iyo waqtiga.",
+      "reflection": "Dadaal sidii aad isku horraysiin lahayd camal wanaagsan iyo cilmi anfacaya, Alle ayaa horreysiiya ciddii mutaysata."
+    },
+    {
+      "id": 72,
+      "name": "Dib-u-dhigaha (Al-Mu'akhir - المؤخر)",
+      "meaning": "Kan dib u dhiga cidduu doono xigmaddiisa iyo caddaaladdiisa. Wuxuu dib u dhigaa ciqaabta si uu fursad u siiyo, wuxuuna dib u dhigaa darajada iyo qaddarka.",
+      "reflection": "Haddii wax kaa daahaan, ogoow waa xigmadda Alle. Sabir, waayo Alle waxna dib uma dhigo ilaa inay khayr kuu yihiin awgood."
+    },
+    {
+      "id": 73,
+      "name": "Kan ugu horreeya (Al-Awwal - الأول)",
+      "meaning": "Midka aan waxba ka horrayn, waana Isaga bilow la'aanta ah. Noloshiisu ma leh bilow.",
+      "reflection": "Tafakur horraynta Alle iyo sifooyinkiisa, oo ka dhigo midka ugu horreeya ee aad xusto arrimahaaga oo dhan."
+    },
+    {
+      "id": 74,
+      "name": "Kan ugu dambeeya (Al-Akhir - الآخر)",
+      "meaning": "Midka aan waxba ka dambayn, Baaqiga marka la waayo wax kasta. Isagu waa kan ugu dambeeya ee aan dhammaad lahayn.",
+      "reflection": "U shaqayso nolosha aakhirada oo ha illaawin inaad la kulmi doonto Alle Maalinta Qiyaamaha."
+    },
+    {
+      "id": 75,
+      "name": "Muuqdaha (Az-Zahir - الظاهر)",
+      "meaning": "Sareeyaha kaga sarreeya wax kasta awooddiisa iyo weynaantiisa, kaasoo caddaymaha iyo calaamaduhu ku muuqdaan makhluuq kasta.",
+      "reflection": "Tafakur calaamadaha Alle ee ka muuqda koonka kugu xeeran, iyo sida awoodiisu uga dhex muuqato wax kasta."
+    },
+    {
+      "id": 76,
+      "name": "Qarsoodaha (Al-Batin - الباطن)",
+      "meaning": "Kan dhow oo cilmigiisu wada koobay wax walba, aanay indhuhu arki karin balse og sirihii ugu qarsoonaa ee la is qariyey.",
+      "reflection": "Daahiri batin-kaaga (gudahaaga) sida aad udhahirisay dibaddaada, waayo Alle wuu ogyahay waxaad qarinayso iyo waxaad muujinayso."
+    },
+    {
+      "id": 77,
+      "name": "Maamulaha (Al-Wali - الوالي)",
+      "meaning": "Milkiilaha wax walba, maamulaha arrimaha, kafaala-qaadaha makhluuqaadka. Wuxuu ku maamulaa dadka xigmaddiisa iyo naxariistiisa.",
+      "reflection": "U xil-saaro arrimahaaga Alle Maamulaha ah, ogoow wuxuu u maamulaa si buuxda ee dhiibso arrintaada si aad u xasilato."
+    },
+    {
+      "id": 78,
+      "name": "Sareeyaha xad-dhaafka ah (Al-Muta'ali - المتعالي)",
+      "meaning": "Ka nasahan sifooyinka makhluuqa, ka sareeya wax kastoo aan u qalmin jalaladiisa iyo weynaantiisa.",
+      "reflection": "Ka sarray mari himiladaada waxyaabaha dunida ee qiimo-darrada ah, kuna xidhnow Alle Sareeyaha ah."
+    },
+    {
+      "id": 79,
+      "name": "Baariga / Wanaag badnaha (Al-Barr - البر)",
+      "meaning": "U naxariistaha wajaadiisa, deeqsiga weyn, jilic-sanaha. Wuxuu dadka ku kool-kooliyaa naxariis iyo wanaag.",
+      "reflection": "Wanaaji waalidkaaga iyo dadka, Alle wuxuu jecel yahay wanaag falaha. Dareen wanaagga Alle ku siiyey."
+    },
+    {
+      "id": 80,
+      "name": "Toobad-aqbalaha (At-Tawwab - التواب)",
+      "meaning": "Kan toobadda ka aqbala wajaadiisa toobad keenka ah, cafiya dambiilayaasha xitaa haddii dambigoodu noqnoqdo.",
+      "reflection": "Tubu mar walba oo ha ka xishoon dib u laabashada Alle, waayo Wuxuu jecel yahay kuwa toobad keena wuu na ku farxaa toobadooda."
+    },
+    {
+      "id": 81,
+      "name": "Aargoostaha (Ciqaabaha) (Al-Muntaqim - المنتقم)",
+      "meaning": "Kan ciqaaba daalimiinta iyo kuwa ku caasiya xigmaddiisa. Wuxuu siiyaa fursad balse hadday ka waantoobi waayaan aad buu u ciqaabaa.",
+      "reflection": "Iska jir in aad caasido Alle hana iska iloowin qorshahiisa, Alle wuu daahiyaa balse ma hilmaamo."
+    },
+    {
+      "id": 82,
+      "name": "Saamaxaha / Cafiyaha (Al-'Afuw - العفو)",
+      "meaning": "Kan baabi'iya dembiyada iskana cafiya caasinimada. Wuxuu jecel yahay inuu cafiyo, cafiintiisuna wey ka waasacsan tahay ciqaabtiisa.",
+      "reflection": "Cafi dadka si uu Alle kuu cafiyo, oo badi ducadan: 'Ilaahayow adigu waad iska cafisaa, waadna jeceshahay is cafinta ee i cafi'."
+    },
+    {
+      "id": 83,
+      "name": "Naxariistaha Jilicsan (Ar-Ra'uf - الرؤوف)",
+      "meaning": "Aad ugu jilicsan una naxariista wajaadiisa, oo ka naxariis badan naftooda. Naxariistiisa waxay ka hormartaa ciqaabtiisa.",
+      "reflection": "U naxariiso dadka kugu xeeran oo u debec, waayo Alle wuu u naxariistaa wajaadiisa naxariista leh."
+    },
+    {
+      "id": 84,
+      "name": "Mulkiilaha Mulkiga (Malikul-Mulk - مالك الملك)",
+      "meaning": "Mulkiilaha mulkiga dhammaantiis, wuxuu ku dhaqaa wuxuu rabo cabsi la'aan. Wuxuu siiyaa mulkiga cidduu rabo, kana xoogaa cidduu rabo.",
+      "reflection": "Ha isku lullaacin mulki adduun oo hallaabaya, ogoow mulki dhab ah Alle kaliya ayaa iska leh."
+    },
+    {
+      "id": 85,
+      "name": "Jallaal iyo Ikraam Badnaha (Dzul-Jalal wal-Ikram - ذو الجلال والإكرام)",
+      "meaning": "Lahaanshaha weynaanta iyo kibriyada, isha bixinta iyo ikraamka. Waa la weyneeyaa weynaantiisa darteed, waana la jecelyahay deeqdiisa awgeed.",
+      "reflection": "Weynee Alle, sidoo kale cisay addoomadiisa waayo ciddii cisa addoomada Alle, Allaa cisaynaya."
+    },
+    {
+      "id": 86,
+      "name": "Caadilka / Gar-sooraha (Al-Muqsit - المقسط)",
+      "meaning": "Caadilka u xukuma dulmanaha xaqiisa kana dhiciya daalimka. Garsoorihiisa ayaa ku caddaalad fala xukunka iyo qaddarka.",
+      "reflection": "Ku caadil noqo noloshaada iyo hab-dhaqankaaga, hana dulmin cidna waayo Alle wuxuu jecel yahay kuwa caddaaladda fala."
+    },
+    {
+      "id": 87,
+      "name": "Kulmiyaha (Al-Jami' - الجامع)",
+      "meaning": "Kulmiya makhluuqaadka maalin aan shaki ku jirin (Qiyaamaha). Wuxuu kulmiyaa waxyaabaha kala duwan xigmadiisa.",
+      "reflection": "U diyaargarow maalinta kulanka weyn, una shaqayso wixii maalintaas ka dambeeya."
+    },
+    {
+      "id": 88,
+      "name": "Taajirka (Al-Ghaniy - الغني)",
+      "meaning": "Aan u baahnayn cidna oo makhluuqiisa ah, halka makhluuqaadka dhammaan u baahan yihiin Isaga.",
+      "reflection": "Kaaftoon isaga cuskada oo ha isku dulleynin makhluuq. Taajirnimada dhabta ahi waa taajirnimada nafta."
+    },
+    {
+      "id": 89,
+      "name": "Taajiriye / Hodmiye (Al-Mughni - المغني)",
+      "meaning": "Kan taajiriye ka dhiga wajaadiisa cidda uu doono. Wuxuu ku hodmiyaa maal, cilmi, iimaan iyo qanaaco.",
+      "reflection": "Alle weydiiso hodonnimo, hana ka faquuqin wixii lagu siiyey kuwa baahan."
+    },
+    {
+      "id": 90,
+      "name": "Diidaha / Hortaagaha (Al-Mani' - المانع)",
+      "meaning": "Kan diida wuxuu doono ciddii uu doono xigmadiisa darteed. Wuxuu mu'miniinta ka hortaagaa balaayada iyo sharta.",
+      "reflection": "Haddii Alle kaa diido shay, ogoow waxaa ku jirta khayr, oo wuxuu kuu diiday inuu ku siiyo wax ka khayr badan."
+    },
+    {
+      "id": 91,
+      "name": "Dhibaateeyaha (Xigmaddiisa) (Ad-Dhar - الضار)",
+      "meaning": "Kan qaddara dhibaato u geysta cidduu doono. Dhibkiisu maaha dulmi balse waa xigmad iyo imtixaan.",
+      "reflection": "Ha ka baqin dhib laga helo makhluuq, waayo wixii kugu dhacaya cidi kama hor istaagi karto Alle agtiisa, samir yeesho."
+    },
+    {
+      "id": 92,
+      "name": "Anfacaha (An-Nafi' - النافع)",
+      "meaning": "Kan u qaddara nacfi (faa'iido) wajaadiisa. Dhammaan khayrka dunida iyo anfacaduba Alle xaggiisa bay ka yimaadaan.",
+      "reflection": "Isku day inaad dadka anfacdo waayo Alle wuxuu jecel yahay kuwa dadka anfaca."
+    },
+    {
+      "id": 93,
+      "name": "Nuurka (An-Nur - النور)",
+      "meaning": "Kan ku nuuriyey samooyinka iyo dhulka nuurkiisa, kuna nuuriyey quluubta mu'miniinta hanuunka.",
+      "reflection": "Alle weydiiso inuu ku nuuriyo qalbigaaga iyo basiiyadaada nuurka iimaanka."
+    },
+    {
+      "id": 94,
+      "name": "Hanuuniyaha (Al-Hadi - الهادي)",
+      "meaning": "Kan hanuuniya cidduu doono isagoo ku toosiya jidka toosan iyo diinta xaqqa ah.",
+      "reflection": "Alle weydiiso hanuun iyo sugnaansho waqti kasta iyo salaad walba."
+    },
+    {
+      "id": 95,
+      "name": "Abuuraha (Bilaa tusaale) (Al-Badi' - البديع)",
+      "meaning": "Kan abuuray makhluuqaadkii u horreeyey bilaa tusaale iyo nooc laga soo min-guuriyey.",
+      "reflection": "Tafakur weynaanta abuurka Alle iyo sida cajaa'ibka leh ee uu u agaasimay."
+    },
+    {
+      "id": 96,
+      "name": "Baaqiga / Haraha (Al-Baqi - الباقي)",
+      "meaning": "Joogtada aan waligii dhammaanayn. Wax walba way dhiman isaguse waa haraha aakhiro iyo waligiiba.",
+      "reflection": "U shaqayso wixii hari doona (aakhiro) hana isku dhajin wixii dhamaan doona (adduunka)."
+    },
+    {
+      "id": 97,
+      "name": "Dhaxlaha (Al-Warith - الوارث)",
+      "meaning": "Dhaxlaha dhulka iyo dadka korkeeda saaran marka la wada dhinto. Wuxuu wada dhaxli doonaa hantida iyo mulkiga dhammaan.",
+      "reflection": "Xusuusnow inaad wax walba gadaashaada kaga tagayso, una kaydso aakhiradaada."
+    },
+    {
+      "id": 98,
+      "name": "Toosiyaha (Ar-Rashid - الرشيد)",
+      "meaning": "Kan ku toosiya dadka maslaxaddooda diinta iyo adduunkaba. Talooyinkiisa oo dhami waa xigmad iyo toosnaan.",
+      "reflection": "Dedaal in aad Alle weydiisatid inuu kugu toosiyo talada khayrka leh."
+    },
+    {
+      "id": 99,
+      "name": "Samir Badnaha (As-Sabur - الصبور)",
+      "meaning": "Kan u samra dambiilayaasha isagoon dadajin ciqaabta si ay u toobad keenaan, dulqaadkiisuna wuu ballaaran yahay.",
+      "reflection": "Ku dulqaado qaddarka Alle iyo daacaddiisa, sabarku waa furaha guusha."
+    }
+  ]
+}
