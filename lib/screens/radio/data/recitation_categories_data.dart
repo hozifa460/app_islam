@@ -10,6 +10,7 @@ import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 
 import '../models/recitation_models.dart';
+export '../models/recitation_models.dart';
 import 'radio_data.dart';
 
 class RecitationCategoriesData {
