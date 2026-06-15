@@ -54,8 +54,11 @@ class RecitationService {
   int _revealedCount = 0;
   List<WordMatch> _wordMatches = [];
 
-  // ✅ Wit.ai Token — أنشئ حساب مجاني على wit.ai
-  static const String _witAiToken = '7J7N2Y3AZEAYP6WMX7IDMZNXL6LQ7WGP';
+  // ✅ Wit.ai Token — ضع المفتاح في --dart-define=WIT_AI_TOKEN=...
+  static const String _witAiToken = String.fromEnvironment(
+    'WIT_AI_TOKEN',
+    defaultValue: '',
+  );
 
   // Callbacks
   Function(RecitationState)? onStateChanged;

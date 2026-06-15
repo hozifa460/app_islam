@@ -28,11 +28,11 @@ class AuthService extends ChangeNotifier {
   final GoogleSignIn _google = GoogleSignIn(scopes: ['email']);
 
   // ═══════════════════════════════════════════
-  // ✅ ضع معلومات EmailJS هنا
+  // ✅ EmailJS — أضف المفاتيح عبر --dart-define
   // ═══════════════════════════════════════════
-  static const _emailJsServiceId = 'service_xxxxxxx';
-  static const _emailJsTemplateId = 'template_xxxxxxx';
-  static const _emailJsPublicKey = 'xxxxxxxxxxxx';
+  static const _emailJsServiceId = String.fromEnvironment('EMAILJS_SERVICE_ID', defaultValue: '');
+  static const _emailJsTemplateId = String.fromEnvironment('EMAILJS_TEMPLATE_ID', defaultValue: '');
+  static const _emailJsPublicKey = String.fromEnvironment('EMAILJS_PUBLIC_KEY', defaultValue: '');
 
   AuthStatus _status = AuthStatus.initial;
   UserModel? _user;

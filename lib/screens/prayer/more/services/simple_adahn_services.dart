@@ -1,3 +1,4 @@
+﻿import 'package:flutter/foundation.dart';
 import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
@@ -7,43 +8,43 @@ class SimpleAdhanService {
   factory SimpleAdhanService() => _instance;
   SimpleAdhanService._internal();
 
-  // ✅ نسخ الملف من assets/adahn/ (مع n)
+  // âœ… ظ†ط³ط® ط§ظ„ظ…ظ„ظپ ظ…ظ† assets/adahn/ (ظ…ط¹ n)
   Future<String?> getAdhanPath(String muezzinId) async {
     try {
       final dir = await getTemporaryDirectory();
       final localFile = File('${dir.path}/adhan_$muezzinId.mp3');
 
-      // إذا كان موجوداً، نرجعه
+      // ط¥ط°ط§ ظƒط§ظ† ظ…ظˆط¬ظˆط¯ط§ظ‹طŒ ظ†ط±ط¬ط¹ظ‡
       if (await localFile.exists()) {
         return localFile.path;
       }
 
-      // ✅ المحاولة 1: البحث مباشرة في assets/adahn/
+      // âœ… ط§ظ„ظ…ط­ط§ظˆظ„ط© 1: ط§ظ„ط¨ط­ط« ظ…ط¨ط§ط´ط±ط© ظپظٹ assets/adahn/
       try {
         final byteData = await rootBundle.load('assets/adahn/$muezzinId.mp3');
         await localFile.writeAsBytes(byteData.buffer.asUint8List());
-        print('✅ Loaded from assets/adahn/$muezzinId.mp3');
+        debugPrint('âœ… Loaded from assets/adahn/$muezzinId.mp3');
         return localFile.path;
       } catch (e) {
-        print('❌ Not found: assets/adahn/$muezzinId.mp3');
+        debugPrint('â‌Œ Not found: assets/adahn/$muezzinId.mp3');
       }
 
-      // ✅ المحاولة 2: إذا كان ID = 'menshawy' والملف 'menshawy.mp3'
+      // âœ… ط§ظ„ظ…ط­ط§ظˆظ„ط© 2: ط¥ط°ط§ ظƒط§ظ† ID = 'menshawy' ظˆط§ظ„ظ…ظ„ظپ 'menshawy.mp3'
       if (muezzinId == 'menshawy') {
         try {
           final byteData = await rootBundle.load('assets/adahn/menshawy.mp3');
           await localFile.writeAsBytes(byteData.buffer.asUint8List());
-          print('✅ Loaded: assets/adahn/menshawy.mp3');
+          debugPrint('âœ… Loaded: assets/adahn/menshawy.mp3');
           return localFile.path;
         } catch (e) {
-          print('❌ Not found: assets/adahn/menshawy.mp3');
+          debugPrint('â‌Œ Not found: assets/adahn/menshawy.mp3');
         }
       }
 
       return null;
 
     } catch (e) {
-      print('❌ Error: $e');
+      debugPrint('â‌Œ Error: $e');
       return null;
     }
   }

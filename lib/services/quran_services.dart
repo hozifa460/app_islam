@@ -1,3 +1,4 @@
+﻿import 'package:flutter/foundation.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -8,7 +9,7 @@ class QuranService {
   static const String _fileName = 'quran_data.json';
   static Map<String, dynamic>? _cachedData;
 
-  // ✅ طريقة جديدة للتحقق من الإنترنت
+  // âœ… ط·ط±ظٹظ‚ط© ط¬ط¯ظٹط¯ط© ظ„ظ„طھط­ظ‚ظ‚ ظ…ظ† ط§ظ„ط¥ظ†طھط±ظ†طھ
   static Future<bool> hasInternetConnection() async {
     try {
       final result = await InternetAddress.lookup('google.com')
@@ -78,7 +79,7 @@ class QuranService {
             }).toList(),
           });
         } else {
-          throw Exception('فشل تحميل سورة $i');
+          throw Exception('ظپط´ظ„ طھط­ظ…ظٹظ„ ط³ظˆط±ط© $i');
         }
 
         await Future.delayed(const Duration(milliseconds: 50));
@@ -96,7 +97,7 @@ class QuranService {
       _cachedData = quranData;
       return quranData;
     } catch (e) {
-      print('خطأ في تحميل القرآن: $e');
+      debugPrint('ط®ط·ط£ ظپظٹ طھط­ظ…ظٹظ„ ط§ظ„ظ‚ط±ط¢ظ†: $e');
       return null;
     }
   }

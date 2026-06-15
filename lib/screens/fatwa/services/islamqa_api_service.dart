@@ -1,3 +1,4 @@
+﻿import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 class IslamQAResult {
@@ -37,9 +38,9 @@ class IslamQAResult {
 }
 
 class IslamQAApiService {
-  // ══════════════════════════════════════
-  // البحث في إسلام سؤال وجواب عبر DuckDuckGo HTML
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ط¨ط­ط« ظپظٹ ط¥ط³ظ„ط§ظ… ط³ط¤ط§ظ„ ظˆط¬ظˆط§ط¨ ط¹ط¨ط± DuckDuckGo HTML
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static Future<List<IslamQAResult>> searchIslamQA(String query) async {
     try {
       final searchQuery = Uri.encodeComponent(
@@ -48,7 +49,7 @@ class IslamQAApiService {
 
       final searchUrl = 'https://html.duckduckgo.com/html/?q=$searchQuery';
 
-      print('🔍 جاري البحث عبر DuckDuckGo: $searchUrl');
+      debugPrint('ًں”چ ط¬ط§ط±ظٹ ط§ظ„ط¨ط­ط« ط¹ط¨ط± DuckDuckGo: $searchUrl');
 
       final response = await http.get(
         Uri.parse(searchUrl),
@@ -58,8 +59,8 @@ class IslamQAApiService {
         },
       ).timeout(const Duration(seconds: 15));
 
-      print('📡 Status: ${response.statusCode}');
-      print('📝 Body length: ${response.body.length}');
+      debugPrint('ًں“، Status: ${response.statusCode}');
+      debugPrint('ًں“‌ Body length: ${response.body.length}');
 
       if (response.statusCode != 200 || response.body.isEmpty) {
         return [];
@@ -67,7 +68,7 @@ class IslamQAApiService {
 
       final links = _extractDuckDuckGoLinks(response.body);
 
-      print('📎 تم العثور على ${links.length} رابط فتوى من DuckDuckGo');
+      debugPrint('ًں“ژ طھظ… ط§ظ„ط¹ط«ظˆط± ط¹ظ„ظ‰ ${links.length} ط±ط§ط¨ط· ظپطھظˆظ‰ ظ…ظ† DuckDuckGo');
 
       if (links.isEmpty) return [];
 
@@ -85,14 +86,14 @@ class IslamQAApiService {
 
       return results;
     } catch (e) {
-      print('❌ searchIslamQA error: $e');
+      debugPrint('â‌Œ searchIslamQA error: $e');
       return [];
     }
   }
 
-  // ══════════════════════════════════════
-  // استخراج روابط نتائج DuckDuckGo
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ط³طھط®ط±ط§ط¬ ط±ظˆط§ط¨ط· ظ†طھط§ط¦ط¬ DuckDuckGo
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static List<Map<String, String>> _extractDuckDuckGoLinks(String html) {
     final results = <Map<String, String>>[];
 
@@ -116,7 +117,7 @@ class IslamQAApiService {
             'url': decodedUrl,
             'title': title,
           });
-          print('  📎 وجد: $title');
+          debugPrint('  ًں“ژ ظˆط¬ط¯: $title');
         }
       }
 
@@ -126,9 +127,9 @@ class IslamQAApiService {
     return results;
   }
 
-  // ══════════════════════════════════════
-  // فك رابط DuckDuckGo
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ظپظƒ ط±ط§ط¨ط· DuckDuckGo
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static String _decodeDuckDuckGoUrl(String href) {
     try {
       String normalized = href;
@@ -151,15 +152,15 @@ class IslamQAApiService {
     }
   }
 
-  // ══════════════════════════════════════
-  // جلب الفتوى كاملة من صفحة إسلام سؤال وجواب
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط¬ظ„ط¨ ط§ظ„ظپطھظˆظ‰ ظƒط§ظ…ظ„ط© ظ…ظ† طµظپط­ط© ط¥ط³ظ„ط§ظ… ط³ط¤ط§ظ„ ظˆط¬ظˆط§ط¨
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static Future<IslamQAResult?> _fetchFullFatwa(
       String url,
       String fallbackTitle,
       ) async {
     try {
-      print('📖 جاري جلب الفتوى: $url');
+      debugPrint('ًں“– ط¬ط§ط±ظٹ ط¬ظ„ط¨ ط§ظ„ظپطھظˆظ‰: $url');
 
       final response = await http.get(
         Uri.parse(url),
@@ -190,18 +191,18 @@ class IslamQAApiService {
         title: title,
         question: title,
         answer: answer,
-        source: 'إسلام سؤال وجواب',
+        source: 'ط¥ط³ظ„ط§ظ… ط³ط¤ط§ظ„ ظˆط¬ظˆط§ط¨',
         url: url,
       );
     } catch (e) {
-      print('❌ _fetchFullFatwa error: $e');
+      debugPrint('â‌Œ _fetchFullFatwa error: $e');
       return null;
     }
   }
 
-  // ══════════════════════════════════════
-  // استخراج العنوان
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ط³طھط®ط±ط§ط¬ ط§ظ„ط¹ظ†ظˆط§ظ†
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static String _extractTitle(String html) {
     final patterns = [
       RegExp(r'<title>(.*?)</title>', dotAll: true),
@@ -212,7 +213,7 @@ class IslamQAApiService {
       final match = p.firstMatch(html);
       if (match != null) {
         final title = _cleanHtml(match.group(1) ?? '')
-            .replaceAll(' - الإسلام سؤال وجواب', '')
+            .replaceAll(' - ط§ظ„ط¥ط³ظ„ط§ظ… ط³ط¤ط§ظ„ ظˆط¬ظˆط§ط¨', '')
             .trim();
         if (title.isNotEmpty) return title;
       }
@@ -221,13 +222,13 @@ class IslamQAApiService {
     return '';
   }
 
-  // ══════════════════════════════════════
-  // استخراج نص الفتوى
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ط³طھط®ط±ط§ط¬ ظ†طµ ط§ظ„ظپطھظˆظ‰
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static String _extractFatwaText(String html) {
     String cleaned = html;
 
-    // إزالة السكربتات والستايلات
+    // ط¥ط²ط§ظ„ط© ط§ظ„ط³ظƒط±ط¨طھط§طھ ظˆط§ظ„ط³طھط§ظٹظ„ط§طھ
     cleaned = cleaned.replaceAll(
       RegExp(r'<script[^>]*>.*?</script>', dotAll: true),
       '',
@@ -249,7 +250,7 @@ class IslamQAApiService {
       '',
     );
 
-    // استخراج الفقرات
+    // ط§ط³طھط®ط±ط§ط¬ ط§ظ„ظپظ‚ط±ط§طھ
     final pPattern = RegExp(r'<p[^>]*>(.*?)</p>', dotAll: true);
     final paragraphs = <String>[];
 
@@ -278,9 +279,9 @@ class IslamQAApiService {
     return bodyText.trim();
   }
 
-  // ══════════════════════════════════════
-  // تنظيف HTML
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // طھظ†ط¸ظٹظپ HTML
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static String _cleanHtml(String html) {
     return html
         .replaceAll(RegExp(r'<[^>]*>'), '')
@@ -294,9 +295,9 @@ class IslamQAApiService {
         .trim();
   }
 
-  // ══════════════════════════════════════
-  // البحث في إسلام ويب عبر DuckDuckGo HTML
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ط¨ط­ط« ظپظٹ ط¥ط³ظ„ط§ظ… ظˆظٹط¨ ط¹ط¨ط± DuckDuckGo HTML
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static Future<List<IslamQAResult>> searchIslamWeb(String query) async {
     try {
       final searchQuery = Uri.encodeComponent(
@@ -305,8 +306,8 @@ class IslamQAApiService {
 
       final searchUrl = 'https://html.duckduckgo.com/html/?q=$searchQuery';
 
-      print('🔍 جاري البحث في إسلام ويب عبر DuckDuckGo...');
-      print('🔗 $searchUrl');
+      debugPrint('ًں”چ ط¬ط§ط±ظٹ ط§ظ„ط¨ط­ط« ظپظٹ ط¥ط³ظ„ط§ظ… ظˆظٹط¨ ط¹ط¨ط± DuckDuckGo...');
+      debugPrint('ًں”— $searchUrl');
 
       final response = await http.get(
         Uri.parse(searchUrl),
@@ -316,8 +317,8 @@ class IslamQAApiService {
         },
       ).timeout(const Duration(seconds: 15));
 
-      print('📡 IslamWeb Status: ${response.statusCode}');
-      print('📝 IslamWeb Body length: ${response.body.length}');
+      debugPrint('ًں“، IslamWeb Status: ${response.statusCode}');
+      debugPrint('ًں“‌ IslamWeb Body length: ${response.body.length}');
 
       if (response.statusCode != 200 || response.body.isEmpty) {
         return [];
@@ -329,7 +330,7 @@ class IslamQAApiService {
         pathMustContain: '/ar/fatwa/',
       );
 
-      print('📎 تم العثور على ${links.length} رابط فتوى من إسلام ويب');
+      debugPrint('ًں“ژ طھظ… ط§ظ„ط¹ط«ظˆط± ط¹ظ„ظ‰ ${links.length} ط±ط§ط¨ط· ظپطھظˆظ‰ ظ…ظ† ط¥ط³ظ„ط§ظ… ظˆظٹط¨');
 
       if (links.isEmpty) return [];
 
@@ -347,14 +348,14 @@ class IslamQAApiService {
 
       return results;
     } catch (e) {
-      print('❌ searchIslamWeb error: $e');
+      debugPrint('â‌Œ searchIslamWeb error: $e');
       return [];
     }
   }
 
-  // ══════════════════════════════════════
-  // استخراج روابط DuckDuckGo بحسب دومين ومسار محدد
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ط³طھط®ط±ط§ط¬ ط±ظˆط§ط¨ط· DuckDuckGo ط¨ط­ط³ط¨ ط¯ظˆظ…ظٹظ† ظˆظ…ط³ط§ط± ظ…ط­ط¯ط¯
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static List<Map<String, String>> _extractDuckDuckGoDomainLinks(
       String html, {
         required String domainMustContain,
@@ -383,7 +384,7 @@ class IslamQAApiService {
             'url': decodedUrl,
             'title': title,
           });
-          print('  📎 وجد: $title');
+          debugPrint('  ًں“ژ ظˆط¬ط¯: $title');
         }
       }
 
@@ -393,15 +394,15 @@ class IslamQAApiService {
     return results;
   }
 
-  // ══════════════════════════════════════
-  // جلب الفتوى كاملة من إسلام ويب
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط¬ظ„ط¨ ط§ظ„ظپطھظˆظ‰ ظƒط§ظ…ظ„ط© ظ…ظ† ط¥ط³ظ„ط§ظ… ظˆظٹط¨
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static Future<IslamQAResult?> _fetchFullIslamWebFatwa(
       String url,
       String fallbackTitle,
       ) async {
     try {
-      print('📖 جاري جلب فتوى إسلام ويب: $url');
+      debugPrint('ًں“– ط¬ط§ط±ظٹ ط¬ظ„ط¨ ظپطھظˆظ‰ ط¥ط³ظ„ط§ظ… ظˆظٹط¨: $url');
 
       final response = await http.get(
         Uri.parse(url),
@@ -431,10 +432,10 @@ class IslamQAApiService {
       }
 
       answer = _trimAtMarkers(answer, [
-        'مواد ذات صلة',
-        'اقرأ أيضا',
-        'المزيد من الفتاوى',
-        'انظر أيضا',
+        'ظ…ظˆط§ط¯ ط°ط§طھ طµظ„ط©',
+        'ط§ظ‚ط±ط£ ط£ظٹط¶ط§',
+        'ط§ظ„ظ…ط²ظٹط¯ ظ…ظ† ط§ظ„ظپطھط§ظˆظ‰',
+        'ط§ظ†ط¸ط± ط£ظٹط¶ط§',
       ]);
 
       if (answer.isEmpty || answer.length < 60) {
@@ -449,18 +450,18 @@ class IslamQAApiService {
         title: title,
         question: question,
         answer: answer,
-        source: 'إسلام ويب',
+        source: 'ط¥ط³ظ„ط§ظ… ظˆظٹط¨',
         url: url,
       );
     } catch (e) {
-      print('❌ _fetchFullIslamWebFatwa error: $e');
+      debugPrint('â‌Œ _fetchFullIslamWebFatwa error: $e');
       return null;
     }
   }
 
-  // ══════════════════════════════════════
-  // استخراج عنوان فتوى إسلام ويب
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ط³طھط®ط±ط§ط¬ ط¹ظ†ظˆط§ظ† ظپطھظˆظ‰ ط¥ط³ظ„ط§ظ… ظˆظٹط¨
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static String _extractIslamWebTitle(String html) {
     final patterns = [
       RegExp(r'<title>(.*?)</title>', dotAll: true),
@@ -471,8 +472,8 @@ class IslamQAApiService {
       final match = p.firstMatch(html);
       if (match != null) {
         final title = _cleanHtml(match.group(1) ?? '')
-            .replaceAll(' - إسلام ويب - مركز الفتوى', '')
-            .replaceAll(' - إسلام ويب', '')
+            .replaceAll(' - ط¥ط³ظ„ط§ظ… ظˆظٹط¨ - ظ…ط±ظƒط² ط§ظ„ظپطھظˆظ‰', '')
+            .replaceAll(' - ط¥ط³ظ„ط§ظ… ظˆظٹط¨', '')
             .trim();
         if (title.isNotEmpty) return title;
       }
@@ -481,17 +482,17 @@ class IslamQAApiService {
     return '';
   }
 
-  // ══════════════════════════════════════
-  // استخراج السؤال والجواب من فتوى إسلام ويب
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ط³طھط®ط±ط§ط¬ ط§ظ„ط³ط¤ط§ظ„ ظˆط§ظ„ط¬ظˆط§ط¨ ظ…ظ† ظپطھظˆظ‰ ط¥ط³ظ„ط§ظ… ظˆظٹط¨
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static Map<String, String> _extractIslamWebQuestionAnswer(String html) {
     final stripped = _stripHtmlBoilerplate(html);
     final fullText = _cleanHtml(stripped);
 
-    // إسلام ويب غالبًا فيه "السؤال" ثم "الإجابــة"
+    // ط¥ط³ظ„ط§ظ… ظˆظٹط¨ ط؛ط§ظ„ط¨ظ‹ط§ ظپظٹظ‡ "ط§ظ„ط³ط¤ط§ظ„" ط«ظ… "ط§ظ„ط¥ط¬ط§ط¨ظ€ظ€ط©"
     final patterns = [
-      RegExp(r'السؤال\s*(.*?)\s*الإجاب(?:ة|ــة)\s*(.*)', dotAll: true),
-      RegExp(r'السؤال\s*(.*?)\s*الاجابة\s*(.*)', dotAll: true),
+      RegExp(r'ط§ظ„ط³ط¤ط§ظ„\s*(.*?)\s*ط§ظ„ط¥ط¬ط§ط¨(?:ط©|ظ€ظ€ط©)\s*(.*)', dotAll: true),
+      RegExp(r'ط§ظ„ط³ط¤ط§ظ„\s*(.*?)\s*ط§ظ„ط§ط¬ط§ط¨ط©\s*(.*)', dotAll: true),
     ];
 
     for (final p in patterns) {
@@ -512,9 +513,9 @@ class IslamQAApiService {
     return {};
   }
 
-  // ══════════════════════════════════════
-  // استخراج الفقرات العامة كخطة احتياطية
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ط³طھط®ط±ط§ط¬ ط§ظ„ظپظ‚ط±ط§طھ ط§ظ„ط¹ط§ظ…ط© ظƒط®ط·ط© ط§ط­طھظٹط§ط·ظٹط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static String _extractGenericParagraphs(String html) {
     final cleaned = _stripHtmlBoilerplate(html);
     final pPattern = RegExp(r'<p[^>]*>(.*?)</p>', dotAll: true);
@@ -534,9 +535,9 @@ class IslamQAApiService {
     return _cleanHtml(cleaned);
   }
 
-  // ══════════════════════════════════════
-  // إزالة العناصر غير المهمة من الصفحة
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط¥ط²ط§ظ„ط© ط§ظ„ط¹ظ†ط§طµط± ط؛ظٹط± ط§ظ„ظ…ظ‡ظ…ط© ظ…ظ† ط§ظ„طµظپط­ط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static String _stripHtmlBoilerplate(String html) {
     String cleaned = html;
 
@@ -564,9 +565,9 @@ class IslamQAApiService {
     return cleaned;
   }
 
-  // ══════════════════════════════════════
-  // قص النص عند عبارات لاحقة غير مفيدة
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ظ‚طµ ط§ظ„ظ†طµ ط¹ظ†ط¯ ط¹ط¨ط§ط±ط§طھ ظ„ط§ط­ظ‚ط© ط؛ظٹط± ظ…ظپظٹط¯ط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static String _trimAtMarkers(String text, List<String> markers) {
     String result = text;
     for (final marker in markers) {
@@ -577,9 +578,9 @@ class IslamQAApiService {
     return result;
   }
 
-  // ══════════════════════════════════════
-  // البحث في موقع الشيخ ابن باز
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ط¨ط­ط« ظپظٹ ظ…ظˆظ‚ط¹ ط§ظ„ط´ظٹط® ط§ط¨ظ† ط¨ط§ط²
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static Future<List<IslamQAResult>> searchBinBaz(String query) async {
     try {
       final searchQuery = Uri.encodeComponent(
@@ -587,7 +588,7 @@ class IslamQAApiService {
       );
       final searchUrl = 'https://html.duckduckgo.com/html/?q=$searchQuery';
 
-      print('🔍 جاري البحث في موقع ابن باز...');
+      debugPrint('ًں”چ ط¬ط§ط±ظٹ ط§ظ„ط¨ط­ط« ظپظٹ ظ…ظˆظ‚ط¹ ط§ط¨ظ† ط¨ط§ط²...');
 
       final response = await http.get(
         Uri.parse(searchUrl),
@@ -605,28 +606,28 @@ class IslamQAApiService {
         pathMustContain: '/',
       );
 
-      print('📎 ابن باز: ${links.length} رابط');
+      debugPrint('ًں“ژ ط§ط¨ظ† ط¨ط§ط²: ${links.length} ط±ط§ط¨ط·');
 
       final results = <IslamQAResult>[];
       for (final link in links.take(3)) {
         final fatwa = await _fetchGenericFatwa(
           link['url']!,
           link['title']!,
-          'موقع الشيخ ابن باز',
+          'ظ…ظˆظ‚ط¹ ط§ظ„ط´ظٹط® ط§ط¨ظ† ط¨ط§ط²',
         );
         if (fatwa != null) results.add(fatwa);
       }
 
       return results;
     } catch (e) {
-      print('❌ searchBinBaz error: $e');
+      debugPrint('â‌Œ searchBinBaz error: $e');
       return [];
     }
   }
 
-  // ══════════════════════════════════════
-  // البحث في موقع الشيخ ابن عثيمين
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ط¨ط­ط« ظپظٹ ظ…ظˆظ‚ط¹ ط§ظ„ط´ظٹط® ط§ط¨ظ† ط¹ط«ظٹظ…ظٹظ†
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static Future<List<IslamQAResult>> searchBinOthaimeen(String query) async {
     try {
       final searchQuery = Uri.encodeComponent(
@@ -634,7 +635,7 @@ class IslamQAApiService {
       );
       final searchUrl = 'https://html.duckduckgo.com/html/?q=$searchQuery';
 
-      print('🔍 جاري البحث في موقع ابن عثيمين...');
+      debugPrint('ًں”چ ط¬ط§ط±ظٹ ط§ظ„ط¨ط­ط« ظپظٹ ظ…ظˆظ‚ط¹ ط§ط¨ظ† ط¹ط«ظٹظ…ظٹظ†...');
 
       final response = await http.get(
         Uri.parse(searchUrl),
@@ -652,28 +653,28 @@ class IslamQAApiService {
         pathMustContain: '/',
       );
 
-      print('📎 ابن عثيمين: ${links.length} رابط');
+      debugPrint('ًں“ژ ط§ط¨ظ† ط¹ط«ظٹظ…ظٹظ†: ${links.length} ط±ط§ط¨ط·');
 
       final results = <IslamQAResult>[];
       for (final link in links.take(3)) {
         final fatwa = await _fetchGenericFatwa(
           link['url']!,
           link['title']!,
-          'موقع الشيخ ابن عثيمين',
+          'ظ…ظˆظ‚ط¹ ط§ظ„ط´ظٹط® ط§ط¨ظ† ط¹ط«ظٹظ…ظٹظ†',
         );
         if (fatwa != null) results.add(fatwa);
       }
 
       return results;
     } catch (e) {
-      print('❌ searchBinOthaimeen error: $e');
+      debugPrint('â‌Œ searchBinOthaimeen error: $e');
       return [];
     }
   }
 
-  // ══════════════════════════════════════
-  // البحث في حراس العقيدة
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ط¨ط­ط« ظپظٹ ط­ط±ط§ط³ ط§ظ„ط¹ظ‚ظٹط¯ط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static Future<List<IslamQAResult>> searchHorasAlAqidah(String query) async {
     try {
       final searchQuery = Uri.encodeComponent(
@@ -681,7 +682,7 @@ class IslamQAApiService {
       );
       final searchUrl = 'https://html.duckduckgo.com/html/?q=$searchQuery';
 
-      print('🔍 جاري البحث في حراس العقيدة...');
+      debugPrint('ًں”چ ط¬ط§ط±ظٹ ط§ظ„ط¨ط­ط« ظپظٹ ط­ط±ط§ط³ ط§ظ„ط¹ظ‚ظٹط¯ط©...');
 
       final response = await http.get(
         Uri.parse(searchUrl),
@@ -699,35 +700,35 @@ class IslamQAApiService {
         pathMustContain: '/',
       );
 
-      print('📎 حراس العقيدة: ${links.length} رابط');
+      debugPrint('ًں“ژ ط­ط±ط§ط³ ط§ظ„ط¹ظ‚ظٹط¯ط©: ${links.length} ط±ط§ط¨ط·');
 
       final results = <IslamQAResult>[];
       for (final link in links.take(3)) {
         final fatwa = await _fetchGenericFatwa(
           link['url']!,
           link['title']!,
-          'حراس العقيدة',
+          'ط­ط±ط§ط³ ط§ظ„ط¹ظ‚ظٹط¯ط©',
         );
         if (fatwa != null) results.add(fatwa);
       }
 
       return results;
     } catch (e) {
-      print('❌ searchHorasAlAqidah error: $e');
+      debugPrint('â‌Œ searchHorasAlAqidah error: $e');
       return [];
     }
   }
 
-  // ══════════════════════════════════════
-  // جلب فتوى من أي موقع عام
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط¬ظ„ط¨ ظپطھظˆظ‰ ظ…ظ† ط£ظٹ ظ…ظˆظ‚ط¹ ط¹ط§ظ…
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static Future<IslamQAResult?> _fetchGenericFatwa(
       String url,
       String fallbackTitle,
       String sourceName,
       ) async {
     try {
-      print('📖 جاري جلب: $url');
+      debugPrint('ًں“– ط¬ط§ط±ظٹ ط¬ظ„ط¨: $url');
 
       final response = await http.get(
         Uri.parse(url),
@@ -741,7 +742,7 @@ class IslamQAApiService {
 
       final html = response.body;
 
-      // استخراج العنوان
+      // ط§ط³طھط®ط±ط§ط¬ ط§ظ„ط¹ظ†ظˆط§ظ†
       String title = '';
       final titlePatterns = [
         RegExp(r'<title>(.*?)</title>', dotAll: true),
@@ -759,19 +760,19 @@ class IslamQAApiService {
 
       if (title.isEmpty) title = fallbackTitle;
 
-      // استخراج المحتوى
+      // ط§ط³طھط®ط±ط§ط¬ ط§ظ„ظ…ط­طھظˆظ‰
       String content = _extractGenericContent(html);
 
       if (content.isEmpty || content.length < 60) return null;
 
-      // تنظيف
+      // طھظ†ط¸ظٹظپ
       content = _removeBoilerplate(content, sourceName);
 
       if (content.length > 2500) {
         content = '${content.substring(0, 2500)}...';
       }
 
-      print('✅ تم جلب: ${title.substring(0, title.length.clamp(0, 50))}');
+      debugPrint('âœ… طھظ… ط¬ظ„ط¨: ${title.substring(0, title.length.clamp(0, 50))}');
 
       return IslamQAResult(
         title: title,
@@ -781,16 +782,16 @@ class IslamQAApiService {
         url: url,
       );
     } catch (e) {
-      print('❌ _fetchGenericFatwa error: $e');
+      debugPrint('â‌Œ _fetchGenericFatwa error: $e');
       return null;
     }
   }
 
-  // ══════════════════════════════════════
-  // استخراج المحتوى العام من أي صفحة
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ط³طھط®ط±ط§ط¬ ط§ظ„ظ…ط­طھظˆظ‰ ط§ظ„ط¹ط§ظ… ظ…ظ† ط£ظٹ طµظپط­ط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static String _extractGenericContent(String html) {
-    // إزالة العناصر غير المهمة
+    // ط¥ط²ط§ظ„ط© ط§ظ„ط¹ظ†ط§طµط± ط؛ظٹط± ط§ظ„ظ…ظ‡ظ…ط©
     String cleaned = html;
 
     cleaned = cleaned.replaceAll(
@@ -818,7 +819,7 @@ class IslamQAApiService {
       RegExp(r'<!--.*?-->', dotAll: true), '',
     );
 
-    // محاولة 1: استخراج من article
+    // ظ…ط­ط§ظˆظ„ط© 1: ط§ط³طھط®ط±ط§ط¬ ظ…ظ† article
     final articlePattern = RegExp(
       r'<article[^>]*>(.*?)</article>',
       dotAll: true,
@@ -829,7 +830,7 @@ class IslamQAApiService {
       if (text.length > 60) return text;
     }
 
-    // محاولة 2: استخراج من div.content أو div.entry
+    // ظ…ط­ط§ظˆظ„ط© 2: ط§ط³طھط®ط±ط§ط¬ ظ…ظ† div.content ط£ظˆ div.entry
     final divPatterns = [
       RegExp(r'<div[^>]*class="[^"]*(?:content|entry|fatwa|answer|post-body|article-body)[^"]*"[^>]*>(.*?)</div>\s*</div>', dotAll: true),
       RegExp(r'<div[^>]*class="[^"]*(?:content|entry|fatwa|answer)[^"]*"[^>]*>(.*?)</div>', dotAll: true),
@@ -843,17 +844,17 @@ class IslamQAApiService {
       }
     }
 
-    // محاولة 3: جمع كل الفقرات
+    // ظ…ط­ط§ظˆظ„ط© 3: ط¬ظ…ط¹ ظƒظ„ ط§ظ„ظپظ‚ط±ط§طھ
     final text = _extractParagraphs(cleaned);
     if (text.length > 60) return text;
 
-    // محاولة 4: النص الكامل بعد تنظيف HTML
+    // ظ…ط­ط§ظˆظ„ط© 4: ط§ظ„ظ†طµ ط§ظ„ظƒط§ظ…ظ„ ط¨ط¹ط¯ طھظ†ط¸ظٹظپ HTML
     return _cleanHtml(cleaned);
   }
 
-  // ══════════════════════════════════════
-  // استخراج الفقرات من HTML
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ط³طھط®ط±ط§ط¬ ط§ظ„ظپظ‚ط±ط§طھ ظ…ظ† HTML
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static String _extractParagraphs(String html) {
     final pPattern = RegExp(r'<p[^>]*>(.*?)</p>', dotAll: true);
     final paragraphs = <String>[];
@@ -868,23 +869,23 @@ class IslamQAApiService {
     return paragraphs.join('\n\n').trim();
   }
 
-  // ══════════════════════════════════════
-  // إزالة نصوص غير مرغوبة حسب المصدر
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط¥ط²ط§ظ„ط© ظ†طµظˆطµ ط؛ظٹط± ظ…ط±ط؛ظˆط¨ط© ط­ط³ط¨ ط§ظ„ظ…طµط¯ط±
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static String _removeBoilerplate(String text, String source) {
     final unwanted = [
-      RegExp(r'مشاركة.*?تويتر', dotAll: true),
-      RegExp(r'شارك.*?فيسبوك', dotAll: true),
-      RegExp(r'تم النشر.*?\d{4}', dotAll: true),
-      RegExp(r'عدد الزيارات.*?\d+', dotAll: true),
-      RegExp(r'التصنيف.*?\n', dotAll: true),
-      RegExp(r'المصدر.*?\n', dotAll: true),
-      RegExp(r'مواد ذات صلة.*', dotAll: true),
-      RegExp(r'اقرأ أيضا.*', dotAll: true),
-      RegExp(r'المزيد من الفتاوى.*', dotAll: true),
-      RegExp(r'الرابط المختصر.*', dotAll: true),
-      RegExp(r'حقوق النشر.*', dotAll: true),
-      RegExp(r'جميع الحقوق.*', dotAll: true),
+      RegExp(r'ظ…ط´ط§ط±ظƒط©.*?طھظˆظٹطھط±', dotAll: true),
+      RegExp(r'ط´ط§ط±ظƒ.*?ظپظٹط³ط¨ظˆظƒ', dotAll: true),
+      RegExp(r'طھظ… ط§ظ„ظ†ط´ط±.*?\d{4}', dotAll: true),
+      RegExp(r'ط¹ط¯ط¯ ط§ظ„ط²ظٹط§ط±ط§طھ.*?\d+', dotAll: true),
+      RegExp(r'ط§ظ„طھطµظ†ظٹظپ.*?\n', dotAll: true),
+      RegExp(r'ط§ظ„ظ…طµط¯ط±.*?\n', dotAll: true),
+      RegExp(r'ظ…ظˆط§ط¯ ط°ط§طھ طµظ„ط©.*', dotAll: true),
+      RegExp(r'ط§ظ‚ط±ط£ ط£ظٹط¶ط§.*', dotAll: true),
+      RegExp(r'ط§ظ„ظ…ط²ظٹط¯ ظ…ظ† ط§ظ„ظپطھط§ظˆظ‰.*', dotAll: true),
+      RegExp(r'ط§ظ„ط±ط§ط¨ط· ط§ظ„ظ…ط®طھطµط±.*', dotAll: true),
+      RegExp(r'ط­ظ‚ظˆظ‚ ط§ظ„ظ†ط´ط±.*', dotAll: true),
+      RegExp(r'ط¬ظ…ظٹط¹ ط§ظ„ط­ظ‚ظˆظ‚.*', dotAll: true),
     ];
 
     String result = text;

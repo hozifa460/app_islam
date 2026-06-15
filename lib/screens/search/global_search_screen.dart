@@ -74,7 +74,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
         _quranDatabase = tempQuran;
       }
     } catch (e) {
-      print("Error loading Quran for search: $e");
+      debugPrint("Error loading Quran for search: $e");
     }
 
     // 2. طھط­ظ…ظٹظ„ ط§ظ„ط£ط­ط§ط¯ظٹط« ط§ظ„ظ…ط­ظ„ظٹط© (ط§ظ„ط£ط±ط¨ط¹ظˆظ† ط§ظ„ظ†ظˆظˆظٹط© ظƒط¹ظٹظ†ط© ط³ط±ظٹط¹ط© + ظ…ط­ط§ظˆظ„ط© ط¬ظ„ط¨ ط±ظٹط§ط¶ ط§ظ„طµط§ظ„ط­ظٹظ†)

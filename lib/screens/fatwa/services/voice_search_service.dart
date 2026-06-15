@@ -1,4 +1,4 @@
-// services/voice_search_service.dart
+﻿// services/voice_search_service.dart
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:flutter/material.dart';
 
@@ -9,8 +9,8 @@ class VoiceSearchService {
   static Future<bool> initialize() async {
     if (_isInitialized) return true;
     _isInitialized = await _speech.initialize(
-      onError: (error) => print('❌ خطأ: $error'),
-      onStatus: (status) => print('📢 الحالة: $status'),
+      onError: (error) => debugPrint('â‌Œ ط®ط·ط£: $error'),
+      onStatus: (status) => debugPrint('ًں“¢ ط§ظ„ط­ط§ظ„ط©: $status'),
     );
     return _isInitialized;
   }
@@ -24,7 +24,7 @@ class VoiceSearchService {
     final available = await initialize();
 
     if (!available) {
-      onError('الميكروفون غير متاح');
+      onError('ط§ظ„ظ…ظٹظƒط±ظˆظپظˆظ† ط؛ظٹط± ظ…طھط§ط­');
       return;
     }
 
@@ -37,7 +37,7 @@ class VoiceSearchService {
           onListeningStop();
         }
       },
-      localeId: 'ar_SA',       // عربي سعودي
+      localeId: 'ar_SA',       // ط¹ط±ط¨ظٹ ط³ط¹ظˆط¯ظٹ
       listenFor: const Duration(seconds: 10),
       pauseFor: const Duration(seconds: 3),
       partialResults: false,

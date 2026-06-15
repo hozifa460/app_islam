@@ -34,7 +34,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
         _fatawa = []; // LocalSearchService ظٹط­ظ…ظ„ ظƒظ„ ط´ظٹط، ط¯ط§ط®ظ„ظٹط§ظ‹
       });
     } catch (e) {
-      print('â‌Œ طھط­ظ…ظٹظ„: $e');
+      debugPrint('â‌Œ طھط­ظ…ظٹظ„: $e');
     }
   }
 

@@ -69,9 +69,9 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
         _isDataLoaded = true;
       });
 
-      print('âœ… طھظ… طھط­ظ…ظٹظ„ ${LocalSearchService.allFatawa.length} ظپطھظˆظ‰ ظپظٹ ط´ط§ط´ط© ط§ظ„ط¨ط­ط«');
+      debugPrint('âœ… طھظ… طھط­ظ…ظٹظ„ ${LocalSearchService.allFatawa.length} ظپطھظˆظ‰ ظپظٹ ط´ط§ط´ط© ط§ظ„ط¨ط­ط«');
     } catch (e) {
-      print('â‌Œ ط®ط·ط£ ظپظٹ طھط­ظ…ظٹظ„ ط§ظ„ظپطھط§ظˆظ‰: $e');
+      debugPrint('â‌Œ ط®ط·ط£ ظپظٹ طھط­ظ…ظٹظ„ ط§ظ„ظپطھط§ظˆظ‰: $e');
       if (mounted) {
         setState(() {
           _isDataLoaded = true;
@@ -105,7 +105,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
         _isLoading = false;
       });
     } catch (e) {
-      print('â‌Œ ط®ط·ط£ ظپظٹ ط§ظ„ط¨ط­ط«: $e');
+      debugPrint('â‌Œ ط®ط·ط£ ظپظٹ ط§ظ„ط¨ط­ط«: $e');
       setState(() {
         _isLoading = false;
         _hasSearched = true;

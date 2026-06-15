@@ -84,7 +84,7 @@ class GlobalSearchDelegate extends SearchDelegate<Map<String, dynamic>?> {
           }
         }
       } catch (e) {
-        print("Quran Error: $e");
+        debugPrint("Quran Error: $e");
       }
 
       // 2. ظ‚ط±ط§ط،ط© ظƒطھط¨ ط§ظ„ط£ط­ط§ط¯ظٹط« ط§ظ„ظ…طھظˆظپط±ط© ظپظ‚ط· ظˆطھط¹ظٹظٹظ† ط§ظ„ط§ط³ظ… ط§ظ„طµط­ظٹط­
@@ -118,7 +118,7 @@ class GlobalSearchDelegate extends SearchDelegate<Map<String, dynamic>?> {
             }
           }
         } catch (e) {
-          print("Hadith Error for $bookId: $e");
+          debugPrint("Hadith Error for $bookId: $e");
         }
       }
 

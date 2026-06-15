@@ -7,16 +7,35 @@
     <true/>
     <key>NSAppTransportSecurity</key>
     <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-        <key>NSAllowsArbitraryLoadsInWebContent</key>
-        <true/>
+        <key>NSExceptionDomains</key>
+        <dict>
+            <key>firestore.googleapis.com</key>
+            <dict>
+                <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                <false/>
+                <key>NSExceptionRequiresForwardSecrecy</key>
+                <true/>
+            </dict>
+            <key>www.googleapis.com</key>
+            <dict>
+                <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                <false/>
+            </dict>
+        </dict>
     </dict>
 
     <key>NSMicrophoneUsageDescription</key>
     <string>نحتاج إذن الميكروفون للتسميع ومتابعة قراءتك للقرآن الكريم</string>
     <key>NSSpeechRecognitionUsageDescription</key>
     <string>نحتاج إذن التعرف على الكلام لمتابعة قراءتك ومقارنتها بالنص القرآني</string>
+    <key>NSCameraUsageDescription</key>
+    <string>نحتاج إذن الكاميرا لالتقاط صورة الملف الشخصي</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>نحتاج إذن الوصول للمعرض لاختيار صورة الملف الشخصي</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>نحتاج موقعك لحساب مواقيت الصلاة واتجاه القبلة بدقة</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>نحتاج موقعك في الخلفية لإرسال تنبيهات مواعيد الصلاة</string>
 
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>

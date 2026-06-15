@@ -1,3 +1,4 @@
+﻿import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -44,7 +45,7 @@ class SunnahService {
       await _loadCompletedFromPrefs();
       _isLoaded = true;
     } catch (e) {
-      print('Error loading sunnahs: $e');
+      debugPrint('Error loading sunnahs: $e');
       _sunnahs = [];
     }
   }
@@ -61,7 +62,7 @@ class SunnahService {
         sunnah.isCompleted = _completedIds.contains(sunnah.id);
       }
     } catch (e) {
-      print('Error loading completed: $e');
+      debugPrint('Error loading completed: $e');
     }
   }
 
@@ -70,7 +71,7 @@ class SunnahService {
     return '${now.year}-${now.month}-${now.day}';
   }
 
-  // ─── الفترة الحالية ───
+  // â”€â”€â”€ ط§ظ„ظپطھط±ط© ط§ظ„ط­ط§ظ„ظٹط© â”€â”€â”€
   String getCurrentPeriod() {
     final hour = DateTime.now().hour;
     if (hour >= 3 && hour < 6) return 'fajr';
@@ -85,24 +86,24 @@ class SunnahService {
     return 'tahajjud';
   }
 
-  // ─── تسمية الفترة ───
+  // â”€â”€â”€ طھط³ظ…ظٹط© ط§ظ„ظپطھط±ط© â”€â”€â”€
   String getPeriodLabel(String period) {
     const labels = {
-      'fajr': 'وقت الفجر',
-      'morning_adhkar': 'أذكار الصباح',
-      'duha': 'وقت الضحى',
-      'dhuhr': 'وقت الظهر',
-      'asr': 'وقت العصر',
-      'evening_adhkar': 'أذكار المساء',
-      'maghrib': 'وقت المغرب',
-      'isha': 'وقت العشاء',
-      'witr': 'وقت الوتر',
-      'tahajjud': 'وقت التهجد',
+      'fajr': 'ظˆظ‚طھ ط§ظ„ظپط¬ط±',
+      'morning_adhkar': 'ط£ط°ظƒط§ط± ط§ظ„طµط¨ط§ط­',
+      'duha': 'ظˆظ‚طھ ط§ظ„ط¶ط­ظ‰',
+      'dhuhr': 'ظˆظ‚طھ ط§ظ„ط¸ظ‡ط±',
+      'asr': 'ظˆظ‚طھ ط§ظ„ط¹طµط±',
+      'evening_adhkar': 'ط£ط°ظƒط§ط± ط§ظ„ظ…ط³ط§ط،',
+      'maghrib': 'ظˆظ‚طھ ط§ظ„ظ…ط؛ط±ط¨',
+      'isha': 'ظˆظ‚طھ ط§ظ„ط¹ط´ط§ط،',
+      'witr': 'ظˆظ‚طھ ط§ظ„ظˆطھط±',
+      'tahajjud': 'ظˆظ‚طھ ط§ظ„طھظ‡ط¬ط¯',
     };
     return labels[period] ?? period;
   }
 
-  // ─── سنن فترة معينة ───
+  // â”€â”€â”€ ط³ظ†ظ† ظپطھط±ط© ظ…ط¹ظٹظ†ط© â”€â”€â”€
   List<SunnahModel> getSunnahsForPeriod(String period) {
     final weekday = DateTime.now().weekday;
     final result = <SunnahModel>[];
@@ -115,7 +116,7 @@ class SunnahService {
     return result;
   }
 
-  // ─── معلومات الفترة التالية ───
+  // â”€â”€â”€ ظ…ط¹ظ„ظˆظ…ط§طھ ط§ظ„ظپطھط±ط© ط§ظ„طھط§ظ„ظٹط© â”€â”€â”€
   NextPeriodInfo? getNextPeriodInfo() {
     final cur = getCurrentPeriod();
     final idx = _orderedPeriods.indexOf(cur);
@@ -144,7 +145,7 @@ class SunnahService {
     return null;
   }
 
-  // ─── السنن الحالية ───
+  // â”€â”€â”€ ط§ظ„ط³ظ†ظ† ط§ظ„ط­ط§ظ„ظٹط© â”€â”€â”€
   List<SunnahModel> getCurrentSunnahs() {
     final weekday = DateTime.now().weekday;
     final currentPeriod = getCurrentPeriod();
@@ -167,23 +168,23 @@ class SunnahService {
 
   String getCategoryLabel(String category) {
     const labels = {
-      'fajr': 'سنن الفجر',
-      'morning_adhkar': 'أذكار الصباح',
-      'duha': 'صلاة الضحى',
-      'dhuhr': 'سنن الظهر',
-      'asr': 'سنن العصر',
-      'evening_adhkar': 'أذكار المساء',
-      'maghrib': 'سنن المغرب',
-      'isha': 'سنن العشاء',
-      'witr': 'صلاة الوتر',
-      'tahajjud': 'قيام الليل',
-      'sleep': 'سنن النوم',
-      'always': 'سنن دائمة',
-      'weekly_fast': 'صيام أسبوعي',
-      'monthly_fast': 'صيام شهري',
-      'friday': 'سنن الجمعة',
-      'yearly_fast': 'صيام سنوي',
-      'yearly_prayer': 'صلوات سنوية',
+      'fajr': 'ط³ظ†ظ† ط§ظ„ظپط¬ط±',
+      'morning_adhkar': 'ط£ط°ظƒط§ط± ط§ظ„طµط¨ط§ط­',
+      'duha': 'طµظ„ط§ط© ط§ظ„ط¶ط­ظ‰',
+      'dhuhr': 'ط³ظ†ظ† ط§ظ„ط¸ظ‡ط±',
+      'asr': 'ط³ظ†ظ† ط§ظ„ط¹طµط±',
+      'evening_adhkar': 'ط£ط°ظƒط§ط± ط§ظ„ظ…ط³ط§ط،',
+      'maghrib': 'ط³ظ†ظ† ط§ظ„ظ…ط؛ط±ط¨',
+      'isha': 'ط³ظ†ظ† ط§ظ„ط¹ط´ط§ط،',
+      'witr': 'طµظ„ط§ط© ط§ظ„ظˆطھط±',
+      'tahajjud': 'ظ‚ظٹط§ظ… ط§ظ„ظ„ظٹظ„',
+      'sleep': 'ط³ظ†ظ† ط§ظ„ظ†ظˆظ…',
+      'always': 'ط³ظ†ظ† ط¯ط§ط¦ظ…ط©',
+      'weekly_fast': 'طµظٹط§ظ… ط£ط³ط¨ظˆط¹ظٹ',
+      'monthly_fast': 'طµظٹط§ظ… ط´ظ‡ط±ظٹ',
+      'friday': 'ط³ظ†ظ† ط§ظ„ط¬ظ…ط¹ط©',
+      'yearly_fast': 'طµظٹط§ظ… ط³ظ†ظˆظٹ',
+      'yearly_prayer': 'طµظ„ظˆط§طھ ط³ظ†ظˆظٹط©',
     };
     return labels[category] ?? category;
   }
@@ -208,7 +209,7 @@ class SunnahService {
         _completedIds.map((id) => id.toString()).toList(),
       );
     } catch (e) {
-      print('Error saving completed: $e');
+      debugPrint('Error saving completed: $e');
     }
   }
 
@@ -222,12 +223,12 @@ class SunnahService {
       final today = _getTodayKey();
       await prefs.setStringList('completed_sunnahs_$today', []);
     } catch (e) {
-      print('Error resetting: $e');
+      debugPrint('Error resetting: $e');
     }
   }
 }
 
-// ─── Model ───
+// â”€â”€â”€ Model â”€â”€â”€
 class NextPeriodInfo {
   final SunnahModel sunnah;
   final String periodLabel;

@@ -1,3 +1,4 @@
+﻿import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
@@ -47,9 +48,9 @@ class PrayerTimesRefreshService {
         'https://api.aladhan.com/v1/timings/$date?latitude=$lat&longitude=$long&method=$method',
       );
 
-      print('METHOD KEY = $methodKey');
-      print('METHOD ID = $method');
-      print('REQUEST URL = $url');
+      debugPrint('METHOD KEY = $methodKey');
+      debugPrint('METHOD ID = $method');
+      debugPrint('REQUEST URL = $url');
 
       final response = await http.get(url).timeout(const Duration(seconds: 8));
 
@@ -59,15 +60,15 @@ class PrayerTimesRefreshService {
 
         await prefs.setString('last_prayer_times', json.encode(timings));
 
-        print('UPDATED TIMINGS = $timings');
+        debugPrint('UPDATED TIMINGS = $timings');
 
         return timings;
       }
 
-      print('API ERROR STATUS = ${response.statusCode}');
+      debugPrint('API ERROR STATUS = ${response.statusCode}');
       return null;
     } catch (e) {
-      print('REFRESH METHOD ERROR = $e');
+      debugPrint('REFRESH METHOD ERROR = $e');
       return null;
     }
   }

@@ -1,12 +1,13 @@
+﻿import 'package:flutter/foundation.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:audio_session/audio_session.dart';
 
 class RadioService {
   static final AudioPlayer player = AudioPlayer();
-  static const String radioUrl = 'https://n06.radiojar.com/8s5u5tpdtwzuv?1710007804961=.mp3'; // رابط بديل إذا لم يعمل الأول
+  static const String radioUrl = 'https://n06.radiojar.com/8s5u5tpdtwzuv?1710007804961=.mp3'; // ط±ط§ط¨ط· ط¨ط¯ظٹظ„ ط¥ط°ط§ ظ„ظ… ظٹط¹ظ…ظ„ ط§ظ„ط£ظˆظ„
 
   static Future<void> initRadio() async {
-    // إعداد الجلسة الصوتية ليعمل في الخلفية
+    // ط¥ط¹ط¯ط§ط¯ ط§ظ„ط¬ظ„ط³ط© ط§ظ„طµظˆطھظٹط© ظ„ظٹط¹ظ…ظ„ ظپظٹ ط§ظ„ط®ظ„ظپظٹط©
     final session = await AudioSession.instance;
     await session.configure(const AudioSessionConfiguration.music());
   }
@@ -16,14 +17,14 @@ class RadioService {
       if (player.playing) {
         await player.stop();
       } else {
-        // إذا لم يكن المشغل مهيأ، هيئه
+        // ط¥ط°ط§ ظ„ظ… ظٹظƒظ† ط§ظ„ظ…ط´ط؛ظ„ ظ…ظ‡ظٹط£طŒ ظ‡ظٹط¦ظ‡
         if (player.audioSource == null) {
           await player.setUrl(radioUrl);
         }
         await player.play();
       }
     } catch (e) {
-      print("خطأ في تشغيل الراديو: $e");
+      debugPrint("ط®ط·ط£ ظپظٹ طھط´ط؛ظٹظ„ ط§ظ„ط±ط§ط¯ظٹظˆ: $e");
     }
   }
 }
