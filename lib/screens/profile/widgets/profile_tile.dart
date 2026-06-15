@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfileTile extends StatelessWidget {
@@ -51,7 +51,7 @@ class ProfileTile extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(11),
                       color: (destructive ? Colors.red : color)
-                          .withOpacity(0.1),
+                          .withValues(alpha: 0.1),
                     ),
                     child: Icon(
                       icon,
@@ -79,7 +79,7 @@ class ProfileTile extends StatelessWidget {
                             style: GoogleFonts.cairo(
                               fontSize: 11.5,
                               color: isDark
-                                  ? Colors.white.withOpacity(0.4)
+                                  ? Colors.white.withValues(alpha: 0.4)
                                   : Colors.grey.shade500,
                             ),
                             maxLines: 1,
@@ -94,7 +94,7 @@ class ProfileTile extends StatelessWidget {
                         Icons.arrow_forward_ios_rounded,
                         size: 14,
                         color: isDark
-                            ? Colors.white.withOpacity(0.2)
+                            ? Colors.white.withValues(alpha: 0.2)
                             : Colors.grey.shade400,
                       )
                           : const SizedBox.shrink()),
@@ -109,7 +109,7 @@ class ProfileTile extends StatelessWidget {
             indent: 64,
             endIndent: 14,
             color: isDark
-                ? Colors.white.withOpacity(0.04)
+                ? Colors.white.withValues(alpha: 0.04)
                 : Colors.grey.shade100,
           ),
       ],

@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -41,8 +41,8 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
     duration: const Duration(seconds: 2),
   )..repeat(reverse: true);
 
-  // ══ FIX #9: إزالة _waveCtrl — shimmer effect مكلف ══
-  // استبدال بـ static gradient بدون أنيميشن مستمر
+  // â•گâ•گ FIX #9: ط¥ط²ط§ظ„ط© _waveCtrl â€” shimmer effect ظ…ظƒظ„ظپ â•گâ•گ
+  // ط§ط³طھط¨ط¯ط§ظ„ ط¨ظ€ static gradient ط¨ط¯ظˆظ† ط£ظ†ظٹظ…ظٹط´ظ† ظ…ط³طھظ…ط±
 
   late final _fadeAnim =
   CurvedAnimation(parent: _fadeCtrl, curve: Curves.easeOut);
@@ -88,14 +88,14 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
 
   String get _emoji {
     final h = DateTime.now().hour;
-    if (h >= 3 && h < 6) return '🌙';
-    if (h >= 6 && h < 9) return '🌅';
-    if (h >= 9 && h < 12) return '☀️';
-    if (h >= 12 && h < 15) return '🌞';
-    if (h >= 15 && h < 17) return '🌤️';
-    if (h >= 17 && h < 19) return '🌆';
-    if (h >= 19 && h < 21) return '🌇';
-    return '🌃';
+    if (h >= 3 && h < 6) return 'ًںŒ™';
+    if (h >= 6 && h < 9) return 'ًںŒ…';
+    if (h >= 9 && h < 12) return 'âک€ï¸ڈ';
+    if (h >= 12 && h < 15) return 'ًںŒ‍';
+    if (h >= 15 && h < 17) return 'ًںŒ¤ï¸ڈ';
+    if (h >= 17 && h < 19) return 'ًںŒ†';
+    if (h >= 19 && h < 21) return 'ًںŒ‡';
+    return 'ًںŒƒ';
   }
 
   @override
@@ -167,20 +167,20 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: allDone
-                ? _g.withOpacity(.2 + _pulseAnim.value * .12)
-                : _p.withOpacity(.08),
+                ? _g.withValues(alpha: .2 + _pulseAnim.value * .12)
+                : _p.withValues(alpha: .08),
             width: allDone ? 1.5 : 1,
           ),
           boxShadow: [
             BoxShadow(
               color: (allDone ? _g : _p)
-                  .withOpacity(.06 + (allDone ? _pulseAnim.value * .06 : 0)),
+                  .withValues(alpha: .06 + (allDone ? _pulseAnim.value * .06 : 0)),
               blurRadius: allDone ? 20 : 12,
               spreadRadius: allDone ? 1 : 0,
               offset: const Offset(0, 5),
             ),
             BoxShadow(
-              color: Colors.grey.withOpacity(_dk ? .10 : .45),
+              color: Colors.grey.withValues(alpha: _dk ? .10 : .45),
               blurRadius: 5,
               offset: const Offset(0, 5),
             ),
@@ -214,18 +214,18 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
                   end: Alignment.bottomLeft,
                   colors: allDone
                       ? [
-                    _g.withOpacity(_dk ? .20 : .14),
-                    _g.withOpacity(_dk ? .05 : .03),
+                    _g.withValues(alpha: _dk ? .20 : .14),
+                    _g.withValues(alpha: _dk ? .05 : .03),
                   ]
                       : [
-                    _p.withOpacity(_dk ? .14 : .08),
-                    _p.withOpacity(_dk ? .03 : .02),
+                    _p.withValues(alpha: _dk ? .14 : .08),
+                    _p.withValues(alpha: _dk ? .03 : .02),
                   ],
                 ),
               ),
             ),
 
-            // ══ FIX #9: إزالة shimmer overlay — مكلف جداً ══
+            // â•گâ•گ FIX #9: ط¥ط²ط§ظ„ط© shimmer overlay â€” ظ…ظƒظ„ظپ ط¬ط¯ط§ظ‹ â•گâ•گ
             if (allDone)
               Positioned.fill(
                 child: Container(
@@ -235,7 +235,7 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
                       end: Alignment.bottomRight,
                       colors: [
                         Colors.transparent,
-                        _g.withOpacity(.04),
+                        _g.withValues(alpha: .04),
                         Colors.transparent,
                       ],
                     ),
@@ -251,7 +251,7 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
                 height: 60,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: accent.withOpacity(.05),
+                  color: accent.withValues(alpha: .05),
                 ),
               ),
             ),
@@ -263,7 +263,7 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
                 height: 38,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: _g.withOpacity(.04),
+                  color: _g.withValues(alpha: .04),
                 ),
               ),
             ),
@@ -313,13 +313,13 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: _em.withOpacity(_dk ? .12 : .08),
-        border: Border.all(color: _em.withOpacity(.18)),
+        color: _em.withValues(alpha: _dk ? .12 : .08),
+        border: Border.all(color: _em.withValues(alpha: .18)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // ══ FIX: نقطة بسيطة بدل AnimatedBuilder ══
+          // â•گâ•گ FIX: ظ†ظ‚ط·ط© ط¨ط³ظٹط·ط© ط¨ط¯ظ„ AnimatedBuilder â•گâ•گ
           AnimatedBuilder(
             animation: _pulseCtrl,
             builder: (_, __) => Container(
@@ -330,7 +330,7 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
                 color: _em,
                 boxShadow: [
                   BoxShadow(
-                    color: _em.withOpacity(_pulseAnim.value * .6),
+                    color: _em.withValues(alpha: _pulseAnim.value * .6),
                     blurRadius: 4,
                     spreadRadius: _pulseAnim.value * 1.5,
                   ),
@@ -368,7 +368,7 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
               strokeWidth: 4.5,
               strokeCap: StrokeCap.round,
               valueColor: AlwaysStoppedAnimation(
-                _dk ? Colors.white.withOpacity(.06) : Colors.black.withOpacity(.05),
+                _dk ? Colors.white.withValues(alpha: .06) : Colors.black.withValues(alpha: .05),
               ),
             ),
           ),
@@ -392,7 +392,7 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
             curve: Curves.elasticOut,
             builder: (_, v, __) => Transform.scale(
               scale: v,
-              child: const Text('✅', style: TextStyle(fontSize: 18)),
+              child: const Text('âœ…', style: TextStyle(fontSize: 18)),
             ),
           )
               : Column(
@@ -442,11 +442,11 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
             begin: Alignment.centerRight,
             end: Alignment.centerLeft,
             colors: checked
-                ? [_em.withOpacity(_dk ? .10 : .06), _em.withOpacity(_dk ? .03 : .02)]
-                : [c.withOpacity(_dk ? .10 : .05), c.withOpacity(_dk ? .03 : .01)],
+                ? [_em.withValues(alpha: _dk ? .10 : .06), _em.withValues(alpha: _dk ? .03 : .02)]
+                : [c.withValues(alpha: _dk ? .10 : .05), c.withValues(alpha: _dk ? .03 : .01)],
           ),
           border: Border.all(
-            color: checked ? _em.withOpacity(.20) : c.withOpacity(.12),
+            color: checked ? _em.withValues(alpha: .20) : c.withValues(alpha: .12),
           ),
         ),
         child: Row(
@@ -512,10 +512,10 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
             : LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [c.withOpacity(.2), c.withOpacity(.06)],
+          colors: [c.withValues(alpha: .2), c.withValues(alpha: .06)],
         ),
         border: Border.all(
-          color: checked ? _em.withOpacity(.3) : c.withOpacity(.15),
+          color: checked ? _em.withValues(alpha: .3) : c.withValues(alpha: .15),
         ),
       ),
       child: Center(
@@ -535,7 +535,7 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
 
   Widget _importanceBadge(String imp) {
     final tr = context.tr;
-    final high = imp == '★ ${tr.confirmed}';
+    final high = imp == 'âک… ${tr.confirmed}';
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
       decoration: BoxDecoration(
@@ -547,7 +547,7 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
         ),
       ),
       child: Text(
-        high ? '★ ${tr.confirmed}' : tr.recommended,
+        high ? 'âک… ${tr.confirmed}' : tr.recommended,
         style: GoogleFonts.cairo(
           fontSize: 7.5,
           fontWeight: FontWeight.bold,
@@ -575,12 +575,12 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
               : LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [c, c.withOpacity(.8)],
+            colors: [c, c.withValues(alpha: .8)],
           ),
           color: checked
-              ? (_dk ? Colors.white.withOpacity(.06) : Colors.grey.shade100)
+              ? (_dk ? Colors.white.withValues(alpha: .06) : Colors.grey.shade100)
               : null,
-          border: checked ? Border.all(color: _t3.withOpacity(.3)) : null,
+          border: checked ? Border.all(color: _t3.withValues(alpha: .3)) : null,
         ),
         child: AnimatedSwitcher(
           duration: const Duration(milliseconds: 200),
@@ -618,16 +618,16 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
         borderRadius: BorderRadius.circular(14),
         gradient: LinearGradient(
           colors: [
-            _g.withOpacity(_dk ? .07 : .04),
-            _g.withOpacity(_dk ? .02 : .01),
+            _g.withValues(alpha: _dk ? .07 : .04),
+            _g.withValues(alpha: _dk ? .02 : .01),
           ],
         ),
-        border: Border.all(color: _g.withOpacity(.08)),
+        border: Border.all(color: _g.withValues(alpha: .08)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text('🌙', style: TextStyle(fontSize: 22)),
+          const Text('ًںŒ™', style: TextStyle(fontSize: 22)),
           const SizedBox(width: 10),
           Expanded(
             child: Column(
@@ -665,11 +665,11 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
         gradient: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
-          colors: [accent, accent.withOpacity(.82)],
+          colors: [accent, accent.withValues(alpha: .82)],
         ),
         boxShadow: [
           BoxShadow(
-            color: accent.withOpacity(.16),
+            color: accent.withValues(alpha: .16),
             blurRadius: 10,
             offset: const Offset(0, 3),
           ),
@@ -688,8 +688,8 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
               children: [
                 Text(
                   allDone
-                      ? '📋 ${tr.viewAllSunnah}'
-                      : '📋 ${tr.viewDetailsAndMore}',
+                      ? 'ًں“‹ ${tr.viewAllSunnah}'
+                      : 'ًں“‹ ${tr.viewDetailsAndMore}',
                   style: GoogleFonts.cairo(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
@@ -701,7 +701,7 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
                   padding: const EdgeInsets.all(3),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Colors.white.withOpacity(.2),
+                    color: Colors.white.withValues(alpha: .2),
                   ),
                   child: const Icon(
                     Icons.arrow_forward_ios_rounded,
@@ -717,13 +717,13 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
     );
   }
 
-  // ══ FIX #9: إزالة _shimmerText — استبدال بنص عادي مع لون ذهبي ══
+  // â•گâ•گ FIX #9: ط¥ط²ط§ظ„ط© _shimmerText â€” ط§ط³طھط¨ط¯ط§ظ„ ط¨ظ†طµ ط¹ط§ط¯ظٹ ظ…ط¹ ظ„ظˆظ† ط°ظ‡ط¨ظٹ â•گâ•گ
   String _motive(double p, int r) {
     final tr = context.tr;
-    if (r == 1) return '⚡ ${tr.motiveOneSunnah}';
-    if (p > .7) return '🔥 ${tr.motiveAlmostDone}';
-    if (p > .4) return '💪 ${tr.motiveKeepGoing}';
-    if (p > 0) return '🌱 ${tr.motiveGoodStart}';
-    return '✨ ${tr.motiveStartNow}';
+    if (r == 1) return 'âڑ، ${tr.motiveOneSunnah}';
+    if (p > .7) return 'ًں”¥ ${tr.motiveAlmostDone}';
+    if (p > .4) return 'ًں’ھ ${tr.motiveKeepGoing}';
+    if (p > 0) return 'ًںŒ± ${tr.motiveGoodStart}';
+    return 'âœ¨ ${tr.motiveStartNow}';
   }
 }

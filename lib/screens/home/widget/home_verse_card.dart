@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../languages/app_localizations.dart';
 
-/// ══ FIX #4: إزالة BackdropFilter — استبداله بـ Container عادي ══
-/// BackdropFilter يسبب rasterization كل frame أثناء السكرول
+/// â•گâ•گ FIX #4: ط¥ط²ط§ظ„ط© BackdropFilter â€” ط§ط³طھط¨ط¯ط§ظ„ظ‡ ط¨ظ€ Container ط¹ط§ط¯ظٹ â•گâ•گ
+/// BackdropFilter ظٹط³ط¨ط¨ rasterization ظƒظ„ frame ط£ط«ظ†ط§ط، ط§ظ„ط³ظƒط±ظˆظ„
 class HomeVerseCard extends StatelessWidget {
   final Color gold;
   final Color cardColor;
@@ -26,12 +26,12 @@ class HomeVerseCard extends StatelessWidget {
       final width = constraints.maxWidth;
       final small = width < 360;
 
-      // ══ FIX #13: كاش ألوان ══
+      // â•گâ•گ FIX #13: ظƒط§ط´ ط£ظ„ظˆط§ظ† â•گâ•گ
       final bgColor = isDark
-          ? Colors.white.withOpacity(0.05)
-          : Colors.white.withOpacity(0.85);
-      final borderColor = gold.withOpacity(0.18);
-      final shadowColor = Colors.black.withOpacity(isDark ? 0.08 : 0.03);
+          ? Colors.white.withValues(alpha: 0.05)
+          : Colors.white.withValues(alpha: 0.85);
+      final borderColor = gold.withValues(alpha: 0.18);
+      final shadowColor = Colors.black.withValues(alpha: isDark ? 0.08 : 0.03);
       final textColor = isDark ? Colors.white : const Color(0xFF2E2415);
       final subColor = isDark ? Colors.white60 : Colors.black54;
 
@@ -58,7 +58,7 @@ class HomeVerseCard extends StatelessWidget {
                 child: Icon(
                   Icons.auto_awesome,
                   size: 42,
-                  color: gold.withOpacity(0.10),
+                  color: gold.withValues(alpha: 0.10),
                 ),
               ),
               Column(
@@ -84,7 +84,7 @@ class HomeVerseCard extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                       decoration: BoxDecoration(
-                        color: gold.withOpacity(0.10),
+                        color: gold.withValues(alpha: 0.10),
                         borderRadius: BorderRadius.circular(14),
                       ),
                       child: Text(

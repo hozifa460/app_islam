@@ -1,13 +1,13 @@
-// lib/screens/radio/widgets_surah_player/sp_online_info.dart
+﻿// lib/screens/radio/widgets_surah_player/sp_online_info.dart
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islamic_app/screens/radio/widgets_surah_player_screen/theme/sp_colors.dart';
 import 'package:islamic_app/screens/radio/widgets_surah_player_screen/theme/sp_shapes.dart';
 
-/// ══════════════════════════════════════════════════════════════
-/// معلومات الاستماع الأونلاين
-/// ══════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ظ…ط¹ظ„ظˆظ…ط§طھ ط§ظ„ط§ط³طھظ…ط§ط¹ ط§ظ„ط£ظˆظ†ظ„ط§ظٹظ†
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class SpOnlineInfo extends StatelessWidget {
   final bool isDark;
   final bool isTablet;
@@ -31,12 +31,12 @@ class SpOnlineInfo extends StatelessWidget {
           Icon(
             Icons.info_outline_rounded,
             size: SpSizes.onlineIconSize(isTablet),
-            color: Colors.blue.withOpacity(0.7),
+            color: Colors.blue.withValues(alpha: 0.7),
           ),
           const SizedBox(width: 10),
           Expanded(
             child: Text(
-              'تستمع للسورة بدون تحميل. اضغط "تحميل" للاستماع بدون إنترنت لاحقاً.',
+              'طھط³طھظ…ط¹ ظ„ظ„ط³ظˆط±ط© ط¨ط¯ظˆظ† طھط­ظ…ظٹظ„. ط§ط¶ط؛ط· "طھط­ظ…ظٹظ„" ظ„ظ„ط§ط³طھظ…ط§ط¹ ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ ظ„ط§ط­ظ‚ط§ظ‹.',
               style: GoogleFonts.cairo(
                 fontSize: SpSizes.onlineInfoSize(isTablet),
                 color: SpColors.textSecondary(isDark),

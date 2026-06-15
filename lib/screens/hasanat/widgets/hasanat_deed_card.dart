@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../languages/app_localizations.dart';
@@ -36,7 +36,7 @@ class HasanatDeedCard extends StatelessWidget {
 
     final bgCard = isDark ? const Color(0xFF151B26) : Colors.white;
     final borderColor =
-        isDark ? Colors.white.withOpacity(0.08) : accentColor.withOpacity(0.15);
+        isDark ? Colors.white.withValues(alpha: 0.08) : accentColor.withValues(alpha: 0.15);
 
     return TweenAnimationBuilder<double>(
       tween: Tween(begin: 0.0, end: 1.0),
@@ -61,8 +61,8 @@ class HasanatDeedCard extends StatelessWidget {
             BoxShadow(
               color:
                   isDark
-                      ? Colors.black.withOpacity(0.3)
-                      : Colors.grey.withOpacity(0.08),
+                      ? Colors.black.withValues(alpha: 0.3)
+                      : Colors.grey.withValues(alpha: 0.08),
               blurRadius: 12,
               offset: const Offset(0, 4),
             ),
@@ -86,19 +86,19 @@ class HasanatDeedCard extends StatelessWidget {
     );
   }
 
-  // ✅ هيدر الجائزة
+  // âœ… ظ‡ظٹط¯ط± ط§ظ„ط¬ط§ط¦ط²ط©
   Widget _buildRewardHeader(Color accentColor) {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.symmetric(horizontal: 14, vertical: isSmall ? 8 : 10),
       decoration: BoxDecoration(
-        color: accentColor.withOpacity(isDark ? 0.12 : 0.06),
+        color: accentColor.withValues(alpha: isDark ? 0.12 : 0.06),
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(22),
           topRight: Radius.circular(22),
         ),
         border: Border(
-          bottom: BorderSide(color: accentColor.withOpacity(0.15)),
+          bottom: BorderSide(color: accentColor.withValues(alpha: 0.15)),
         ),
       ),
       child: Row(
@@ -127,7 +127,7 @@ class HasanatDeedCard extends StatelessWidget {
     );
   }
 
-  // ✅ المحتوى الرئيسي
+  // âœ… ط§ظ„ظ…ط­طھظˆظ‰ ط§ظ„ط±ط¦ظٹط³ظٹ
   Widget _buildContent(
       BuildContext context,
     Color accentColor,
@@ -141,7 +141,7 @@ class HasanatDeedCard extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // الذكر
+          // ط§ظ„ط°ظƒط±
           Text(
             deed.title,
             style: GoogleFonts.amiri(
@@ -154,13 +154,13 @@ class HasanatDeedCard extends StatelessWidget {
           ),
           const SizedBox(height: 14),
 
-          // الحديث
+          // ط§ظ„ط­ط¯ظٹط«
           _buildHadithBox(accentColor),
           const SizedBox(height: 16),
 
-          // التقدم والزر
+          // ط§ظ„طھظ‚ط¯ظ… ظˆط§ظ„ط²ط±
           _buildProgressAndButton(
-            context,         // 👈 نمرر الـ context هنا في البداية
+            context,         // ًں‘ˆ ظ†ظ…ط±ط± ط§ظ„ظ€ context ظ‡ظ†ط§ ظپظٹ ط§ظ„ط¨ط¯ط§ظٹط©
             accentColor,
             target,
             currentProgress,
@@ -171,7 +171,7 @@ class HasanatDeedCard extends StatelessWidget {
     );
   }
 
-  // ✅ صندوق الحديث
+  // âœ… طµظ†ط¯ظˆظ‚ ط§ظ„ط­ط¯ظٹط«
   Widget _buildHadithBox(Color accentColor) {
     return Container(
       width: double.infinity,
@@ -179,14 +179,14 @@ class HasanatDeedCard extends StatelessWidget {
       decoration: BoxDecoration(
         color:
             isDark
-                ? Colors.white.withOpacity(0.04)
-                : accentColor.withOpacity(0.04),
+                ? Colors.white.withValues(alpha: 0.04)
+                : accentColor.withValues(alpha: 0.04),
         borderRadius: BorderRadius.circular(14),
         border: Border.all(
           color:
               isDark
-                  ? Colors.white.withOpacity(0.06)
-                  : accentColor.withOpacity(0.1),
+                  ? Colors.white.withValues(alpha: 0.06)
+                  : accentColor.withValues(alpha: 0.1),
         ),
       ),
       child: Column(
@@ -208,7 +208,7 @@ class HasanatDeedCard extends StatelessWidget {
               Icon(
                 Icons.menu_book_rounded,
                 size: 12,
-                color: accentColor.withOpacity(0.7),
+                color: accentColor.withValues(alpha: 0.7),
               ),
               const SizedBox(width: 4),
               Flexible(
@@ -216,7 +216,7 @@ class HasanatDeedCard extends StatelessWidget {
                   deed.source,
                   style: GoogleFonts.cairo(
                     fontSize: isSmall ? 10 : 11,
-                    color: accentColor.withOpacity(0.8),
+                    color: accentColor.withValues(alpha: 0.8),
                     fontWeight: FontWeight.bold,
                   ),
                   maxLines: 1,
@@ -230,9 +230,9 @@ class HasanatDeedCard extends StatelessWidget {
     );
   }
 
-  // ✅ التقدم وزر الإضافة
+  // âœ… ط§ظ„طھظ‚ط¯ظ… ظˆط²ط± ط§ظ„ط¥ط¶ط§ظپط©
   Widget _buildProgressAndButton(
-      BuildContext context, // 👈 تم إضافة context هنا
+      BuildContext context, // ًں‘ˆ طھظ… ط¥ط¶ط§ظپط© context ظ‡ظ†ط§
       Color accentColor,
       int target,
       int currentProgress,
@@ -247,7 +247,7 @@ class HasanatDeedCard extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  context.tr.progressLabel, // 👈 تمت الترجمة
+                  context.tr.progressLabel, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
                   style: GoogleFonts.cairo(
                     fontSize: isSmall ? 10 : 11,
                     color: subColor,
@@ -289,9 +289,9 @@ class HasanatDeedCard extends StatelessWidget {
               vertical: 10,
             ),
             decoration: BoxDecoration(
-              color: accentColor.withOpacity(0.15),
+              color: accentColor.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(14),
-              border: Border.all(color: accentColor.withOpacity(0.4)),
+              border: Border.all(color: accentColor.withValues(alpha: 0.4)),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -305,7 +305,7 @@ class HasanatDeedCard extends StatelessWidget {
                   const SizedBox(width: 6),
                   FittedBox(
                     child: Text(
-                      context.tr.addButton, // 👈 تمت الترجمة
+                      context.tr.addButton, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
                       style: GoogleFonts.cairo(
                         color: accentColor,
                         fontWeight: FontWeight.bold,

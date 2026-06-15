@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -62,8 +62,8 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
 
   Future<void> _loadNames() async {
     try {
-      final String currentLang = context.tr.locale.languageCode; // جلب كود اللغة
-      final data = await AsmaAllahService.getNamesSimple(currentLang); // تمريرها للـ Service
+      final String currentLang = context.tr.locale.languageCode; // ط¬ظ„ط¨ ظƒظˆط¯ ط§ظ„ظ„ط؛ط©
+      final data = await AsmaAllahService.getNamesSimple(currentLang); // طھظ…ط±ظٹط±ظ‡ط§ ظ„ظ„ظ€ Service
       if (mounted) {
         setState(() {
           _allNames = data;
@@ -98,7 +98,7 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
     );
 
     return Directionality(
-      textDirection: context.tr.textDirection, // 👈 تمت الإضافة ليدعم اللغات LTR
+      textDirection: context.tr.textDirection, // ًں‘ˆ طھظ…طھ ط§ظ„ط¥ط¶ط§ظپط© ظ„ظٹط¯ط¹ظ… ط§ظ„ظ„ط؛ط§طھ LTR
       child: Scaffold(
         body: Container(
           width: double.infinity,
@@ -112,19 +112,19 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
           ),
           child: Stack(
             children: [
-              // النقوش
+              // ط§ظ„ظ†ظ‚ظˆط´
               Positioned.fill(
                 child: CustomPaint(
                   painter: AsmaIslamicPatternPainter(
                     color: AsmaTheme.gold
-                        .withOpacity(isDark ? 0.025 : 0.04),
+                        .withValues(alpha: isDark ? 0.025 : 0.04),
                     step: 65,
                     sides: 6,
                   ),
                 ),
               ),
 
-              // المحتوى
+              // ط§ظ„ظ…ط­طھظˆظ‰
               Column(
                 children: [
                   _buildAppBar(context, isDark),
@@ -146,9 +146,9 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   // AppBar
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildAppBar(BuildContext context, bool isDark) {
     final theme = AsmaTheme(isDark: isDark);
 
@@ -166,8 +166,8 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
         boxShadow: [
           BoxShadow(
             color: isDark
-                ? Colors.black.withOpacity(0.4)
-                : AsmaTheme.gold.withOpacity(0.3),
+                ? Colors.black.withValues(alpha: 0.4)
+                : AsmaTheme.gold.withValues(alpha: 0.3),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -190,7 +190,7 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
                   Column(
                     children: [
                       Text(
-                        context.tr.asmaAllahTitle, // 👈 تمت الترجمة (موجودة مسبقاً)
+                        context.tr.asmaAllahTitle, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط© (ظ…ظˆط¬ظˆط¯ط© ظ…ط³ط¨ظ‚ط§ظ‹)
                         style: GoogleFonts.cairo(
                           color: Colors.white,
                           fontSize: 20,
@@ -218,7 +218,7 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 10),
                             child: Text(
-                              context.tr.ninetyNineNames, // 👈 تمت الترجمة (موجودة مسبقاً)
+                              context.tr.ninetyNineNames, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط© (ظ…ظˆط¬ظˆط¯ط© ظ…ط³ط¨ظ‚ط§ظ‹)
                               style: GoogleFonts.cairo(
                                 color: AsmaTheme.gold,
                                 fontSize: 13,
@@ -258,9 +258,9 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // شريط البحث
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط´ط±ظٹط· ط§ظ„ط¨ط­ط«
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildSearchBar(bool isDark) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
@@ -272,8 +272,8 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
           gradient: LinearGradient(
             colors: isDark
                 ? [
-              const Color(0xFF1A2438).withOpacity(0.9),
-              const Color(0xFF0F1628).withOpacity(0.9),
+              const Color(0xFF1A2438).withValues(alpha: 0.9),
+              const Color(0xFF0F1628).withValues(alpha: 0.9),
             ]
                 : [Colors.white, const Color(0xFFFFF8E8)],
           ),
@@ -282,16 +282,16 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
           border: Border.all(
             color: _isSearchFocused
                 ? AsmaTheme.gold
-                : AsmaTheme.gold.withOpacity(isDark ? 0.2 : 0.25),
+                : AsmaTheme.gold.withValues(alpha: isDark ? 0.2 : 0.25),
             width: _isSearchFocused ? 2 : 1.5,
           ),
           boxShadow: [
             BoxShadow(
               color: _isSearchFocused
-                  ? AsmaTheme.gold.withOpacity(0.2)
+                  ? AsmaTheme.gold.withValues(alpha: 0.2)
                   : (isDark
-                  ? Colors.black.withOpacity(0.2)
-                  : AsmaTheme.gold.withOpacity(0.08)),
+                  ? Colors.black.withValues(alpha: 0.2)
+                  : AsmaTheme.gold.withValues(alpha: 0.08)),
               blurRadius: _isSearchFocused ? 15 : 10,
               offset: const Offset(0, 4),
             ),
@@ -324,11 +324,11 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
                     fontSize: 15,
                   ),
                   decoration: InputDecoration(
-                    hintText: context.tr.searchNameOrMeaningHint, // 👈 تمت الترجمة
+                    hintText: context.tr.searchNameOrMeaningHint, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
                     hintStyle: GoogleFonts.cairo(
                       color: isDark
                           ? Colors.white38
-                          : AsmaTheme.brownSub.withOpacity(0.5),
+                          : AsmaTheme.brownSub.withValues(alpha: 0.5),
                       fontSize: 14,
                     ),
                     border: InputBorder.none,
@@ -347,7 +347,7 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
                 child: Container(
                   padding: const EdgeInsets.all(6),
                   decoration: BoxDecoration(
-                    color: AsmaTheme.gold.withOpacity(0.15),
+                    color: AsmaTheme.gold.withValues(alpha: 0.15),
                     shape: BoxShape.circle,
                   ),
                   child: const Icon(Icons.close_rounded,
@@ -360,9 +360,9 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // شارة العدد
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط´ط§ط±ط© ط§ظ„ط¹ط¯ط¯
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildCountBadge(bool isDark) {
     final count = _filteredNames.length;
     final isFiltered = _searchQuery.isNotEmpty;
@@ -377,13 +377,13 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  AsmaTheme.gold.withOpacity(0.15),
-                  AsmaTheme.gold.withOpacity(0.08)
+                  AsmaTheme.gold.withValues(alpha: 0.15),
+                  AsmaTheme.gold.withValues(alpha: 0.08)
                 ],
               ),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
-                  color: AsmaTheme.gold.withOpacity(0.25)),
+                  color: AsmaTheme.gold.withValues(alpha: 0.25)),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -398,7 +398,7 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
                 const SizedBox(width: 6),
                 Text(
                   isFiltered ? context.tr.resultsCount(count) :
-                  context.tr.namesCount(count), // 👈 تمت الترجمة
+                  context.tr.namesCount(count), // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
                   style: GoogleFonts.cairo(
                     color: isDark ? AsmaTheme.gold : AsmaTheme.goldDark,
                     fontSize: 13,
@@ -420,8 +420,8 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
                     horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
                   color: isDark
-                      ? Colors.white.withOpacity(0.08)
-                      : Colors.grey.withOpacity(0.1),
+                      ? Colors.white.withValues(alpha: 0.08)
+                      : Colors.grey.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Row(
@@ -434,7 +434,7 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
                         size: 16),
                     const SizedBox(width: 4),
                     Text(
-                      context.tr.clearFilter, // 👈 تمت الترجمة
+                      context.tr.clearFilter, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
                       style: GoogleFonts.cairo(
                         color: isDark
                             ? Colors.white70
@@ -451,9 +451,9 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // الحالات
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ط­ط§ظ„ط§طھ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildLoadingState(bool isDark) {
     return Center(
       child: Column(
@@ -465,7 +465,7 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
               child: CircularProgressIndicator(
                   color: AsmaTheme.gold, strokeWidth: 3)),
           const SizedBox(height: 20),
-          Text(context.tr.loadingNames, // 👈 تمت الترجمة
+          Text(context.tr.loadingNames, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
               style: GoogleFonts.cairo(
                 color: isDark ? Colors.white54 : AsmaTheme.brownSub,
                 fontSize: 15,
@@ -483,21 +483,21 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
           Container(
             padding: const EdgeInsets.all(24),
             decoration: BoxDecoration(
-              color: AsmaTheme.gold.withOpacity(0.1),
+              color: AsmaTheme.gold.withValues(alpha: 0.1),
               shape: BoxShape.circle,
             ),
             child: Icon(Icons.search_off_rounded,
-                color: AsmaTheme.gold.withOpacity(0.5), size: 48),
+                color: AsmaTheme.gold.withValues(alpha: 0.5), size: 48),
           ),
           const SizedBox(height: 20),
-          Text(context.tr.noMatchingResults, // 👈 تمت الترجمة
+          Text(context.tr.noMatchingResults, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
               style: GoogleFonts.cairo(
                 fontSize: 17,
                 color: isDark ? Colors.white70 : AsmaTheme.brownSub,
                 fontWeight: FontWeight.bold,
               )),
           const SizedBox(height: 8),
-          Text(context.tr.tryAnotherSearch, // 👈 تمت الترجمة
+          Text(context.tr.tryAnotherSearch, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
               style: GoogleFonts.cairo(
                 fontSize: 14,
                 color: isDark ? Colors.white38 : Colors.black38,
@@ -507,9 +507,9 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // شبكة الأسماء
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط´ط¨ظƒط© ط§ظ„ط£ط³ظ…ط§ط،
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildNamesGrid(bool isDark) {
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -524,7 +524,7 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
         final usableWidth =
             width - (padding * 2) - (spacing * (crossAxisCount - 1));
         final itemWidth = usableWidth / crossAxisCount;
-        final itemHeight = isSmall ? 200.0 : 220.0;  // ✅ كان 185 و 200
+        final itemHeight = isSmall ? 200.0 : 220.0;  // âœ… ظƒط§ظ† 185 ظˆ 200
         final childAspectRatio = itemWidth / itemHeight;
 
         return GridView.builder(
@@ -543,8 +543,8 @@ class _AsmaAllahAllNamesScreenState extends State<AsmaAllahAllNamesScreen>
 
             return AsmaNameCard(
               name: item['name']!,
-              displayName: item['displayName'] ?? item['name']!,     // ✅
-              arabicName: item['arabicName'] ?? '',                   // ✅
+              displayName: item['displayName'] ?? item['name']!,     // âœ…
+              arabicName: item['arabicName'] ?? '',                   // âœ…
               meaning: item['meaning']!,
               order: originalIndex,
               isDark: isDark,

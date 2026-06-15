@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../theme/books_theme.dart';
 import '../../animations/books_animations.dart';
 
-/// ═══════════════════════════════════════════════════════════════════════════
-/// بطاقة الكتاب المتحركة
-/// ═══════════════════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ط¨ط·ط§ظ‚ط© ط§ظ„ظƒطھط§ط¨ ط§ظ„ظ…طھط­ط±ظƒط©
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class BookCardWidget extends StatelessWidget {
   final Map<String, dynamic> book;
   final String downloadStatus;
@@ -39,7 +39,7 @@ class BookCardWidget extends StatelessWidget {
       },
       child: Column(
         children: [
-          // غلاف الكتاب
+          // ط؛ظ„ط§ظپ ط§ظ„ظƒطھط§ط¨
           _BookCover(
             imageUrl: book['imageUrl'] ?? '',
             downloadStatus: downloadStatus,
@@ -47,7 +47,7 @@ class BookCardWidget extends StatelessWidget {
             onDownloadTap: onDownloadTap,
           ),
           const SizedBox(height: 8),
-          // معلومات الكتاب
+          // ظ…ط¹ظ„ظˆظ…ط§طھ ط§ظ„ظƒطھط§ط¨
           _BookInfo(
             title: book['title'],
             downloadStatus: downloadStatus,
@@ -62,9 +62,9 @@ class BookCardWidget extends StatelessWidget {
   }
 }
 
-// ═══════════════════════════════════════════
-// غلاف الكتاب
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط؛ظ„ط§ظپ ط§ظ„ظƒطھط§ط¨
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _BookCover extends StatelessWidget {
   final String imageUrl;
   final String downloadStatus;
@@ -95,14 +95,14 @@ class _BookCover extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          // الصورة
+          // ط§ظ„طµظˆط±ط©
           Positioned.fill(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(16),
               child: _BookImage(imageUrl: imageUrl, isDark: isDark),
             ),
           ),
-          // أيقونة التحميل
+          // ط£ظٹظ‚ظˆظ†ط© ط§ظ„طھط­ظ…ظٹظ„
           Positioned(
             top: 8,
             left: 8,
@@ -117,9 +117,9 @@ class _BookCover extends StatelessWidget {
   }
 }
 
-// ═══════════════════════════════════════════
-// صورة الكتاب مع Shimmer
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// طµظˆط±ط© ط§ظ„ظƒطھط§ط¨ ظ…ط¹ Shimmer
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _BookImage extends StatelessWidget {
   final String imageUrl;
   final bool isDark;
@@ -182,9 +182,9 @@ class _ShimmerPlaceholderState extends State<_ShimmerPlaceholder>
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              BooksTheme.cardDark.withOpacity(0.6),
-              BooksTheme.cardDark.withOpacity(0.3),
-              BooksTheme.cardDark.withOpacity(0.6),
+              BooksTheme.cardDark.withValues(alpha: 0.6),
+              BooksTheme.cardDark.withValues(alpha: 0.3),
+              BooksTheme.cardDark.withValues(alpha: 0.6),
             ],
             stops: [
               _controller.value - 0.3,
@@ -215,16 +215,16 @@ class _PlaceholderBookCover extends StatelessWidget {
       color: BooksTheme.cardDark,
       child: Icon(
         Icons.book,
-        color: BooksTheme.gold.withOpacity(0.5),
+        color: BooksTheme.gold.withValues(alpha: 0.5),
         size: 36,
       ),
     );
   }
 }
 
-// ═══════════════════════════════════════════
-// أيقونة حالة التحميل
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط£ظٹظ‚ظˆظ†ط© ط­ط§ظ„ط© ط§ظ„طھط­ظ…ظٹظ„
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _DownloadStatusIcon extends StatelessWidget {
   final String status;
   final VoidCallback onTap;
@@ -259,9 +259,9 @@ class _DownloadStatusIcon extends StatelessWidget {
   }
 }
 
-// ═══════════════════════════════════════════
-// معلومات الكتاب
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ظ…ط¹ظ„ظˆظ…ط§طھ ط§ظ„ظƒطھط§ط¨
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _BookInfo extends StatelessWidget {
   final String title;
   final String downloadStatus;
@@ -286,7 +286,7 @@ class _BookInfo extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          // العنوان
+          // ط§ظ„ط¹ظ†ظˆط§ظ†
           SizedBox(
             height: 32,
             child: Text(
@@ -303,7 +303,7 @@ class _BookInfo extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 2),
-          // حالة التحميل
+          // ط­ط§ظ„ط© ط§ظ„طھط­ظ…ظٹظ„
           Text(
             BooksTheme.downloadStatusLabel(downloadStatus),
             textAlign: TextAlign.center,
@@ -315,7 +315,7 @@ class _BookInfo extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
-          // شريط التقدم للمجموعات
+          // ط´ط±ظٹط· ط§ظ„طھظ‚ط¯ظ… ظ„ظ„ظ…ط¬ظ…ظˆط¹ط§طھ
           if (isCollection && (totalParts ?? 0) > 0) ...[
             const SizedBox(height: 3),
             _CollectionProgressBar(
@@ -329,9 +329,9 @@ class _BookInfo extends StatelessWidget {
   }
 }
 
-// ═══════════════════════════════════════════
-// شريط تقدم المجموعة
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط´ط±ظٹط· طھظ‚ط¯ظ… ط§ظ„ظ…ط¬ظ…ظˆط¹ط©
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _CollectionProgressBar extends StatelessWidget {
   final int downloaded;
   final int total;
@@ -357,7 +357,7 @@ class _CollectionProgressBar extends StatelessWidget {
           child: LinearProgressIndicator(
             value: value,
             minHeight: 3,
-            backgroundColor: Colors.grey.withOpacity(0.15),
+            backgroundColor: Colors.grey.withValues(alpha: 0.15),
             valueColor: AlwaysStoppedAnimation<Color>(
               isComplete ? Colors.green : BooksTheme.gold,
             ),

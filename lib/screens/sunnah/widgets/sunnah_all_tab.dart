@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../model/sunnah_model.dart';
 import '../services/sunnah_service.dart';
@@ -43,9 +43,9 @@ class SunnahAllTab extends StatelessWidget {
   List<SunnahModel> _applyFilter(List<SunnahModel> sunnahs) {
     switch (selectedFilterIndex) {
       case 1:
-        return sunnahs.where((s) => s.importance == 'مؤكدة').toList();
+        return sunnahs.where((s) => s.importance == 'ظ…ط¤ظƒط¯ط©').toList();
       case 2:
-        return sunnahs.where((s) => s.importance == 'مستحبة').toList();
+        return sunnahs.where((s) => s.importance == 'ظ…ط³طھط­ط¨ط©').toList();
       case 3:
         return sunnahs.where((s) => !s.isCompleted).toList();
       default:
@@ -117,7 +117,7 @@ class SunnahAllTab extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: SunnahTheme.emerald.withOpacity(0.15),
+            color: SunnahTheme.emerald.withValues(alpha: 0.15),
             blurRadius: 16,
             offset: const Offset(0, 6),
           ),
@@ -137,7 +137,7 @@ class SunnahAllTab extends StatelessWidget {
                   child: CircularProgressIndicator(
                     value: percentage / 100,
                     strokeWidth: 5,
-                    backgroundColor: Colors.white.withOpacity(0.1),
+                    backgroundColor: Colors.white.withValues(alpha: 0.1),
                     valueColor: AlwaysStoppedAnimation<Color>(
                       percentage == 100
                           ? SunnahTheme.goldLight
@@ -160,7 +160,7 @@ class SunnahAllTab extends StatelessWidget {
                     Text(
                       '%',
                       style: TextStyle(
-                        color: Colors.white.withOpacity(0.6),
+                        color: Colors.white.withValues(alpha: 0.6),
                         fontSize: size.width * 0.025,
                       ),
                     ),
@@ -179,7 +179,7 @@ class SunnahAllTab extends StatelessWidget {
                     colors: [SunnahTheme.emeraldLight, SunnahTheme.goldLight],
                   ).createShader(b),
                   child: Text(
-                    'إنجازك اليوم',
+                    'ط¥ظ†ط¬ط§ط²ظƒ ط§ظ„ظٹظˆظ…',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: size.width * 0.045,
@@ -189,12 +189,12 @@ class SunnahAllTab extends StatelessWidget {
                 ),
                 SizedBox(height: size.height * 0.01),
                 _buildStatRow(
-                    '✅ أكملت', '${service.completedToday}', SunnahTheme.emeraldLight),
+                    'âœ… ط£ظƒظ…ظ„طھ', '${service.completedToday}', SunnahTheme.emeraldLight),
                 SizedBox(height: size.height * 0.005),
                 _buildStatRow(
-                    '📋 المجموع', '${service.totalSunnahs}', SunnahTheme.blueLight),
+                    'ًں“‹ ط§ظ„ظ…ط¬ظ…ظˆط¹', '${service.totalSunnahs}', SunnahTheme.blueLight),
                 SizedBox(height: size.height * 0.005),
-                _buildStatRow('⏳ المتبقي',
+                _buildStatRow('âڈ³ ط§ظ„ظ…طھط¨ظ‚ظٹ',
                     '${service.totalSunnahs - service.completedToday}', SunnahTheme.goldLight),
               ],
             ),
@@ -209,7 +209,7 @@ class SunnahAllTab extends StatelessWidget {
       children: [
         Text(label,
             style: TextStyle(
-              color: Colors.white.withOpacity(0.65),
+              color: Colors.white.withValues(alpha: 0.65),
               fontSize: size.width * 0.03,
             )),
         const Spacer(),
@@ -218,9 +218,9 @@ class SunnahAllTab extends StatelessWidget {
             horizontal: size.width * 0.025, vertical: 3,
           ),
           decoration: BoxDecoration(
-            color: color.withOpacity(0.15),
+            color: color.withValues(alpha: 0.15),
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: color.withOpacity(0.3), width: 1),
+            border: Border.all(color: color.withValues(alpha: 0.3), width: 1),
           ),
           child: Text(value,
               style: TextStyle(
@@ -236,8 +236,8 @@ class SunnahAllTab extends StatelessWidget {
   Widget _buildFilterChips(List<SunnahModel> allSunnahs) {
     final counts = [
       allSunnahs.length,
-      allSunnahs.where((s) => s.importance == 'مؤكدة').length,
-      allSunnahs.where((s) => s.importance == 'مستحبة').length,
+      allSunnahs.where((s) => s.importance == 'ظ…ط¤ظƒط¯ط©').length,
+      allSunnahs.where((s) => s.importance == 'ظ…ط³طھط­ط¨ط©').length,
       allSunnahs.where((s) => !s.isCompleted).length,
     ];
 
@@ -268,8 +268,8 @@ class SunnahAllTab extends StatelessWidget {
                   width: 1,
                 ),
                 boxShadow: selected
-                    ? [BoxShadow(color: SunnahTheme.emerald.withOpacity(0.35), blurRadius: 8)]
-                    : [BoxShadow(color: Colors.black.withOpacity(0.04), blurRadius: 4, offset: const Offset(0, 2))],
+                    ? [BoxShadow(color: SunnahTheme.emerald.withValues(alpha: 0.35), blurRadius: 8)]
+                    : [BoxShadow(color: Colors.black.withValues(alpha: 0.04), blurRadius: 4, offset: const Offset(0, 2))],
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -284,7 +284,7 @@ class SunnahAllTab extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
                     decoration: BoxDecoration(
-                      color: selected ? Colors.white.withOpacity(0.2) : theme.divider,
+                      color: selected ? Colors.white.withValues(alpha: 0.2) : theme.divider,
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text('${counts[i]}',
@@ -318,18 +318,18 @@ class SunnahAllTab extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         gradient: isNow
             ? LinearGradient(colors: [
-          SunnahTheme.emerald.withOpacity(theme.isDark ? 0.18 : 0.12),
-          SunnahTheme.emerald.withOpacity(0.03),
+          SunnahTheme.emerald.withValues(alpha: theme.isDark ? 0.18 : 0.12),
+          SunnahTheme.emerald.withValues(alpha: 0.03),
         ])
             : null,
         color: isNow ? null : theme.card,
         border: Border.all(
-          color: isNow ? SunnahTheme.emerald.withOpacity(0.35) : theme.divider,
+          color: isNow ? SunnahTheme.emerald.withValues(alpha: 0.35) : theme.divider,
           width: 1,
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(theme.isDark ? 0.2 : 0.04),
+            color: Colors.black.withValues(alpha: theme.isDark ? 0.2 : 0.04),
             blurRadius: 6,
             offset: const Offset(0, 2),
           ),
@@ -337,7 +337,7 @@ class SunnahAllTab extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Text(SunnahTheme.categoryIcons[category] ?? '📿',
+          Text(SunnahTheme.categoryIcons[category] ?? 'ًں“؟',
               style: TextStyle(fontSize: size.width * 0.048)),
           SizedBox(width: size.width * 0.025),
           Expanded(
@@ -362,12 +362,12 @@ class SunnahAllTab extends StatelessWidget {
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: SunnahTheme.gold.withOpacity(0.25 * pulseAnim.value),
+                      color: SunnahTheme.gold.withValues(alpha: 0.25 * pulseAnim.value),
                       blurRadius: 6,
                     ),
                   ],
                 ),
-                child: const Text('● الآن',
+                child: const Text('â—ڈ ط§ظ„ط¢ظ†',
                     style: TextStyle(
                       color: Colors.black87,
                       fontSize: 10,

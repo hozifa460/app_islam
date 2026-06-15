@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../languages/app_localizations.dart';
@@ -65,8 +65,8 @@ class PrayerAppBar extends StatelessWidget implements PreferredSizeWidget {
           margin: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: isDark
-                ? Colors.white.withOpacity(0.1)
-                : gold.withOpacity(0.1),
+                ? Colors.white.withValues(alpha: 0.1)
+                : gold.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(12),
           ),
           child: IconButton(
@@ -79,8 +79,8 @@ class PrayerAppBar extends StatelessWidget implements PreferredSizeWidget {
         margin: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: isDark
-              ? Colors.white.withOpacity(0.1)
-              : gold.withOpacity(0.1),
+              ? Colors.white.withValues(alpha: 0.1)
+              : gold.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(12),
         ),
         child: IconButton(

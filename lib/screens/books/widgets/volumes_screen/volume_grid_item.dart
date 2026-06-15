@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../theme/books_theme.dart';
 import '../../animations/books_animations.dart';
 
-/// ═══════════════════════════════════════════════════════════════════════════
-/// عنصر المجلد في الشبكة
-/// ═══════════════════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ط¹ظ†طµط± ط§ظ„ظ…ط¬ظ„ط¯ ظپظٹ ط§ظ„ط´ط¨ظƒط©
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class VolumeGridItem extends StatelessWidget {
   final Map<String, dynamic> volume;
   final bool isDownloaded;
@@ -43,7 +43,7 @@ class VolumeGridItem extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             child: Column(
               children: [
-                // الغلاف
+                // ط§ظ„ط؛ظ„ط§ظپ
                 Expanded(
                   child: _VolumeCover(
                     imageUrl: imageUrl,
@@ -52,14 +52,14 @@ class VolumeGridItem extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                // العنوان
+                // ط§ظ„ط¹ظ†ظˆط§ظ†
                 _VolumeTitle(
-                  title: volume['title'] ?? 'مجلد',
+                  title: volume['title'] ?? 'ظ…ط¬ظ„ط¯',
                   isSmall: isSmall,
                   isDark: isDark,
                 ),
                 const SizedBox(height: 4),
-                // الحالة
+                // ط§ظ„ط­ط§ظ„ط©
                 _VolumeStatus(
                   isDownloaded: isDownloaded,
                   isSmall: isSmall,
@@ -74,9 +74,9 @@ class VolumeGridItem extends StatelessWidget {
   }
 }
 
-// ═══════════════════════════════════════════
-// غلاف المجلد
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط؛ظ„ط§ظپ ط§ظ„ظ…ط¬ظ„ط¯
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _VolumeCover extends StatelessWidget {
   final String imageUrl;
   final bool isDownloaded;
@@ -92,7 +92,7 @@ class _VolumeCover extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // الصورة
+        // ط§ظ„طµظˆط±ط©
         Positioned.fill(
           child: ClipRRect(
             borderRadius: BorderRadius.circular(14),
@@ -107,7 +107,7 @@ class _VolumeCover extends StatelessWidget {
                 : _ErrorPlaceholder(isDark: isDark),
           ),
         ),
-        // أيقونة الحالة
+        // ط£ظٹظ‚ظˆظ†ط© ط§ظ„ط­ط§ظ„ط©
         Positioned(
           top: 8,
           left: 8,
@@ -127,7 +127,7 @@ class _LoadingPlaceholder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: isDark
-          ? Colors.white.withOpacity(0.04)
+          ? Colors.white.withValues(alpha: 0.04)
           : Colors.grey.shade100,
       child: Center(
         child: CircularProgressIndicator(
@@ -148,11 +148,11 @@ class _ErrorPlaceholder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: isDark
-          ? Colors.white.withOpacity(0.04)
+          ? Colors.white.withValues(alpha: 0.04)
           : Colors.grey.shade100,
       child: Icon(
         Icons.book,
-        color: BooksTheme.gold.withOpacity(0.6),
+        color: BooksTheme.gold.withValues(alpha: 0.6),
         size: 36,
       ),
     );
@@ -212,10 +212,10 @@ class _StatusBadgeState extends State<_StatusBadge>
         padding: const EdgeInsets.all(6),
         decoration: BoxDecoration(
           color: widget.isDownloaded
-              ? Colors.green.withOpacity(0.9)
-              : Colors.black.withOpacity(0.7),
+              ? Colors.green.withValues(alpha: 0.9)
+              : Colors.black.withValues(alpha: 0.7),
           shape: BoxShape.circle,
-          border: Border.all(color: Colors.white.withOpacity(0.2)),
+          border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
         ),
         child: Icon(
           widget.isDownloaded ? Icons.check : Icons.cloud_download,
@@ -227,9 +227,9 @@ class _StatusBadgeState extends State<_StatusBadge>
   }
 }
 
-// ═══════════════════════════════════════════
-// عنوان المجلد
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط¹ظ†ظˆط§ظ† ط§ظ„ظ…ط¬ظ„ط¯
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _VolumeTitle extends StatelessWidget {
   final String title;
   final bool isSmall;
@@ -258,9 +258,9 @@ class _VolumeTitle extends StatelessWidget {
   }
 }
 
-// ═══════════════════════════════════════════
-// حالة المجلد
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط­ط§ظ„ط© ط§ظ„ظ…ط¬ظ„ط¯
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _VolumeStatus extends StatelessWidget {
   final bool isDownloaded;
   final bool isSmall;
@@ -287,7 +287,7 @@ class _VolumeStatus extends StatelessWidget {
         ),
       ),
       child: Text(
-        isDownloaded ? 'جاهز للقراءة' : 'اضغط لفتح المجلد',
+        isDownloaded ? 'ط¬ط§ظ‡ط² ظ„ظ„ظ‚ط±ط§ط،ط©' : 'ط§ط¶ط؛ط· ظ„ظپطھط­ ط§ظ„ظ…ط¬ظ„ط¯',
         key: ValueKey(isDownloaded),
         textAlign: TextAlign.center,
         maxLines: 1,

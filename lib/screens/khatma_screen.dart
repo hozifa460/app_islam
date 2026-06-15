@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islamic_app/screens/quran/surah_deatil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -27,10 +27,10 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
   int _setupPages = 4;
   int _selectedPreset = -1;
 
-  // ✅ التراجع
+  // âœ… ط§ظ„طھط±ط§ط¬ط¹
   int? _previousPage;
 
-  // ✅ إحصائيات إضافية
+  // âœ… ط¥ط­طµط§ط¦ظٹط§طھ ط¥ط¶ط§ظپظٹط©
   int _consecutiveDays = 0;
   DateTime? _startDate;
   int _totalPagesRead = 0;
@@ -39,14 +39,14 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
   final int _totalJuz = 30;
 
   final List<int> _surahStartPages = [1, 2, 50, 77, 106, 128, 151, 177, 187, 208, 221, 235, 249, 255, 262, 267, 282, 293, 305, 312, 322, 332, 342, 350, 359, 367, 377, 385, 396, 404, 411, 415, 418, 428, 434, 440, 446, 453, 458, 467, 477, 483, 489, 496, 499, 502, 507, 511, 515, 518, 520, 523, 526, 528, 531, 534, 537, 542, 545, 549, 551, 553, 554, 556, 558, 560, 562, 564, 566, 568, 570, 572, 574, 575, 577, 578, 580, 582, 583, 585, 586, 587, 587, 589, 590, 591, 591, 592, 593, 594, 595, 595, 596, 596, 597, 597, 598, 598, 599, 599, 600, 600, 601, 601, 601, 602, 602, 602, 603, 603, 603, 604, 604, 604];
-  final List<String> _surahNames = ["الفاتحة", "البقرة", "آل عمران", "النساء", "المائدة", "الأنعام", "الأعراف", "الأنفال", "التوبة", "يونس", "هود", "يوسف", "الرعد", "إبراهيم", "الحجر", "النحل", "الإسراء", "الكهف", "مريم", "طه", "الأنبياء", "الحج", "المؤمنون", "النور", "الفرقان", "الشعراء", "النمل", "القصص", "العنكبوت", "الروم", "لقمان", "السجدة", "الأحزاب", "سبأ", "فاطر", "يس", "الصافات", "ص", "الزمر", "غافر", "فصلت", "الشورى", "الزخرف", "الدخان", "الجاثية", "الأحقاف", "محمد", "الفتح", "الحجرات", "ق", "الذاريات", "الطور", "النجم", "القمر", "الرحمن", "الواقعة", "الحديد", "المجادلة", "الحشر", "الممتحنة", "الصف", "الجمعة", "المنافقون", "التغابن", "الطلاق", "التحريم", "الملك", "القلم", "الحاقة", "المعارج", "نوح", "الجن", "المزمل", "المدثر", "القيامة", "الإنسان", "المرسلات", "النبأ", "النازعات", "عبس", "التكوير", "الانفطار", "المطففين", "الانشقاق", "البروج", "الطارق", "الأعلى", "الغاشية", "الفجر", "البلد", "الشمس", "الليل", "الضحى", "الشرح", "التين", "العلق", "القدر", "البينة", "الزلزلة", "العاديات", "القارعة", "التكاثر", "العصر", "الهمزة", "الفيل", "قريش", "الماعون", "الكوثر", "الكافرون", "النصر", "المسد", "الإخلاص", "الفلق", "الناس"];
+  final List<String> _surahNames = ["ط§ظ„ظپط§طھط­ط©", "ط§ظ„ط¨ظ‚ط±ط©", "ط¢ظ„ ط¹ظ…ط±ط§ظ†", "ط§ظ„ظ†ط³ط§ط،", "ط§ظ„ظ…ط§ط¦ط¯ط©", "ط§ظ„ط£ظ†ط¹ط§ظ…", "ط§ظ„ط£ط¹ط±ط§ظپ", "ط§ظ„ط£ظ†ظپط§ظ„", "ط§ظ„طھظˆط¨ط©", "ظٹظˆظ†ط³", "ظ‡ظˆط¯", "ظٹظˆط³ظپ", "ط§ظ„ط±ط¹ط¯", "ط¥ط¨ط±ط§ظ‡ظٹظ…", "ط§ظ„ط­ط¬ط±", "ط§ظ„ظ†ط­ظ„", "ط§ظ„ط¥ط³ط±ط§ط،", "ط§ظ„ظƒظ‡ظپ", "ظ…ط±ظٹظ…", "ط·ظ‡", "ط§ظ„ط£ظ†ط¨ظٹط§ط،", "ط§ظ„ط­ط¬", "ط§ظ„ظ…ط¤ظ…ظ†ظˆظ†", "ط§ظ„ظ†ظˆط±", "ط§ظ„ظپط±ظ‚ط§ظ†", "ط§ظ„ط´ط¹ط±ط§ط،", "ط§ظ„ظ†ظ…ظ„", "ط§ظ„ظ‚طµطµ", "ط§ظ„ط¹ظ†ظƒط¨ظˆطھ", "ط§ظ„ط±ظˆظ…", "ظ„ظ‚ظ…ط§ظ†", "ط§ظ„ط³ط¬ط¯ط©", "ط§ظ„ط£ط­ط²ط§ط¨", "ط³ط¨ط£", "ظپط§ط·ط±", "ظٹط³", "ط§ظ„طµط§ظپط§طھ", "طµ", "ط§ظ„ط²ظ…ط±", "ط؛ط§ظپط±", "ظپطµظ„طھ", "ط§ظ„ط´ظˆط±ظ‰", "ط§ظ„ط²ط®ط±ظپ", "ط§ظ„ط¯ط®ط§ظ†", "ط§ظ„ط¬ط§ط«ظٹط©", "ط§ظ„ط£ط­ظ‚ط§ظپ", "ظ…ط­ظ…ط¯", "ط§ظ„ظپطھط­", "ط§ظ„ط­ط¬ط±ط§طھ", "ظ‚", "ط§ظ„ط°ط§ط±ظٹط§طھ", "ط§ظ„ط·ظˆط±", "ط§ظ„ظ†ط¬ظ…", "ط§ظ„ظ‚ظ…ط±", "ط§ظ„ط±ط­ظ…ظ†", "ط§ظ„ظˆط§ظ‚ط¹ط©", "ط§ظ„ط­ط¯ظٹط¯", "ط§ظ„ظ…ط¬ط§ط¯ظ„ط©", "ط§ظ„ط­ط´ط±", "ط§ظ„ظ…ظ…طھط­ظ†ط©", "ط§ظ„طµظپ", "ط§ظ„ط¬ظ…ط¹ط©", "ط§ظ„ظ…ظ†ط§ظپظ‚ظˆظ†", "ط§ظ„طھط؛ط§ط¨ظ†", "ط§ظ„ط·ظ„ط§ظ‚", "ط§ظ„طھط­ط±ظٹظ…", "ط§ظ„ظ…ظ„ظƒ", "ط§ظ„ظ‚ظ„ظ…", "ط§ظ„ط­ط§ظ‚ط©", "ط§ظ„ظ…ط¹ط§ط±ط¬", "ظ†ظˆط­", "ط§ظ„ط¬ظ†", "ط§ظ„ظ…ط²ظ…ظ„", "ط§ظ„ظ…ط¯ط«ط±", "ط§ظ„ظ‚ظٹط§ظ…ط©", "ط§ظ„ط¥ظ†ط³ط§ظ†", "ط§ظ„ظ…ط±ط³ظ„ط§طھ", "ط§ظ„ظ†ط¨ط£", "ط§ظ„ظ†ط§ط²ط¹ط§طھ", "ط¹ط¨ط³", "ط§ظ„طھظƒظˆظٹط±", "ط§ظ„ط§ظ†ظپط·ط§ط±", "ط§ظ„ظ…ط·ظپظپظٹظ†", "ط§ظ„ط§ظ†ط´ظ‚ط§ظ‚", "ط§ظ„ط¨ط±ظˆط¬", "ط§ظ„ط·ط§ط±ظ‚", "ط§ظ„ط£ط¹ظ„ظ‰", "ط§ظ„ط؛ط§ط´ظٹط©", "ط§ظ„ظپط¬ط±", "ط§ظ„ط¨ظ„ط¯", "ط§ظ„ط´ظ…ط³", "ط§ظ„ظ„ظٹظ„", "ط§ظ„ط¶ط­ظ‰", "ط§ظ„ط´ط±ط­", "ط§ظ„طھظٹظ†", "ط§ظ„ط¹ظ„ظ‚", "ط§ظ„ظ‚ط¯ط±", "ط§ظ„ط¨ظٹظ†ط©", "ط§ظ„ط²ظ„ط²ظ„ط©", "ط§ظ„ط¹ط§ط¯ظٹط§طھ", "ط§ظ„ظ‚ط§ط±ط¹ط©", "ط§ظ„طھظƒط§ط«ط±", "ط§ظ„ط¹طµط±", "ط§ظ„ظ‡ظ…ط²ط©", "ط§ظ„ظپظٹظ„", "ظ‚ط±ظٹط´", "ط§ظ„ظ…ط§ط¹ظˆظ†", "ط§ظ„ظƒظˆط«ط±", "ط§ظ„ظƒط§ظپط±ظˆظ†", "ط§ظ„ظ†طµط±", "ط§ظ„ظ…ط³ط¯", "ط§ظ„ط¥ط®ظ„ط§طµ", "ط§ظ„ظپظ„ظ‚", "ط§ظ„ظ†ط§ط³"];
 
-  // ✅ خيارات الختمة السريعة
+  // âœ… ط®ظٹط§ط±ط§طھ ط§ظ„ط®طھظ…ط© ط§ظ„ط³ط±ظٹط¹ط©
   final List<Map<String, dynamic>> _presets = [
-    {'days': 30, 'pages': 20, 'icon': Icons.calendar_month, 'label': 'شهر'},
-    {'days': 15, 'pages': 40, 'icon': Icons.speed, 'label': 'أسبوعين'},
-    {'days': 10, 'pages': 60, 'icon': Icons.flash_on, 'label': '10 أيام'},
-    {'days': 7, 'pages': 86, 'icon': Icons.rocket_launch, 'label': 'أسبوع'},
+    {'days': 30, 'pages': 20, 'icon': Icons.calendar_month, 'label': 'ط´ظ‡ط±'},
+    {'days': 15, 'pages': 40, 'icon': Icons.speed, 'label': 'ط£ط³ط¨ظˆط¹ظٹظ†'},
+    {'days': 10, 'pages': 60, 'icon': Icons.flash_on, 'label': '10 ط£ظٹط§ظ…'},
+    {'days': 7, 'pages': 86, 'icon': Icons.rocket_launch, 'label': 'ط£ط³ط¨ظˆط¹'},
   ];
 
   @override
@@ -94,16 +94,16 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
     final TimeOfDay? picked = await showTimePicker(
       context: context,
       initialTime: TimeOfDay.now(),
-      helpText: 'اختر وقت التذكير اليومي للختمة',
-      confirmText: 'حفظ',
-      cancelText: 'إلغاء',
+      helpText: 'ط§ط®طھط± ظˆظ‚طھ ط§ظ„طھط°ظƒظٹط± ط§ظ„ظٹظˆظ…ظٹ ظ„ظ„ط®طھظ…ط©',
+      confirmText: 'ط­ظپط¸',
+      cancelText: 'ط¥ظ„ط؛ط§ط،',
     );
 
     if (picked != null) {
       await NotificationService.scheduleKhatmaReminder(
         id: 1001,
-        title: 'وقت قراءة القرآن 📖',
-        body: 'حان موعد وردك اليومي، لا تفوّت أجر القراءة',
+        title: 'ظˆظ‚طھ ظ‚ط±ط§ط،ط© ط§ظ„ظ‚ط±ط¢ظ† ًں“–',
+        body: 'ط­ط§ظ† ظ…ظˆط¹ط¯ ظˆط±ط¯ظƒ ط§ظ„ظٹظˆظ…ظٹطŒ ظ„ط§ طھظپظˆظ‘طھ ط£ط¬ط± ط§ظ„ظ‚ط±ط§ط،ط©',
         time: picked,
       );
 
@@ -116,7 +116,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    'تم ضبط التذكير في ${picked.format(context)}',
+                    'طھظ… ط¶ط¨ط· ط§ظ„طھط°ظƒظٹط± ظپظٹ ${picked.format(context)}',
                     style: GoogleFonts.cairo(),
                   ),
                 ),
@@ -238,7 +238,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.2),
+                color: Colors.white.withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: const Icon(Icons.celebration, color: Colors.white, size: 24),
@@ -249,8 +249,8 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('أحسنت! تم إنجاز الورد ✅', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
-                  Text('استمر في المحافظة على وردك', style: GoogleFonts.cairo(fontSize: 12)),
+                  Text('ط£ط­ط³ظ†طھ! طھظ… ط¥ظ†ط¬ط§ط² ط§ظ„ظˆط±ط¯ âœ…', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
+                  Text('ط§ط³طھظ…ط± ظپظٹ ط§ظ„ظ…ط­ط§ظپط¸ط© ط¹ظ„ظ‰ ظˆط±ط¯ظƒ', style: GoogleFonts.cairo(fontSize: 12)),
                 ],
               ),
             ),
@@ -284,7 +284,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
           children: [
             const Icon(Icons.undo, color: Colors.white),
             const SizedBox(width: 12),
-            Text('تم التراجع عن الورد الأخير', style: GoogleFonts.cairo()),
+            Text('طھظ… ط§ظ„طھط±ط§ط¬ط¹ ط¹ظ† ط§ظ„ظˆط±ط¯ ط§ظ„ط£ط®ظٹط±', style: GoogleFonts.cairo()),
           ],
         ),
         backgroundColor: Colors.orange,
@@ -317,12 +317,12 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
               ),
               const SizedBox(height: 20),
               Text(
-                '🎉 ختمة مباركة!',
+                'ًںژ‰ ط®طھظ…ط© ظ…ط¨ط§ط±ظƒط©!',
                 style: GoogleFonts.cairo(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 12),
               Text(
-                'تقبل الله طاعتك وبارك لك في وقتك وعملك\nأتممت قراءة القرآن الكريم كاملاً',
+                'طھظ‚ط¨ظ„ ط§ظ„ظ„ظ‡ ط·ط§ط¹طھظƒ ظˆط¨ط§ط±ظƒ ظ„ظƒ ظپظٹ ظˆظ‚طھظƒ ظˆط¹ظ…ظ„ظƒ\nط£طھظ…ظ…طھ ظ‚ط±ط§ط،ط© ط§ظ„ظ‚ط±ط¢ظ† ط§ظ„ظƒط±ظٹظ… ظƒط§ظ…ظ„ط§ظ‹',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.cairo(color: Colors.grey.shade600, height: 1.5),
               ),
@@ -339,13 +339,13 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                     Navigator.pop(ctx);
                     _resetKhatma();
                   },
-                  child: Text('بدء ختمة جديدة', style: GoogleFonts.cairo(fontWeight: FontWeight.bold, color: Colors.white)),
+                  child: Text('ط¨ط¯ط، ط®طھظ…ط© ط¬ط¯ظٹط¯ط©', style: GoogleFonts.cairo(fontWeight: FontWeight.bold, color: Colors.white)),
                 ),
               ),
               const SizedBox(height: 10),
               TextButton(
                 onPressed: () => Navigator.pop(ctx),
-                child: Text('لاحقاً', style: GoogleFonts.cairo(color: Colors.grey)),
+                child: Text('ظ„ط§ط­ظ‚ط§ظ‹', style: GoogleFonts.cairo(color: Colors.grey)),
               ),
             ],
           ),
@@ -372,14 +372,14 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
   }
 
   String _toArabicNum(int n) {
-    const nums = {'0': '٠', '1': '١', '2': '٢', '3': '٣', '4': '٤', '5': '٥', '6': '٦', '7': '٧', '8': '٨', '9': '٩'};
+    const nums = {'0': 'ظ ', '1': 'ظ،', '2': 'ظ¢', '3': 'ظ£', '4': 'ظ¤', '5': 'ظ¥', '6': 'ظ¦', '7': 'ظ§', '8': 'ظ¨', '9': 'ظ©'};
     String s = n.toString();
     nums.forEach((k, v) => s = s.replaceAll(k, v));
     return s;
   }
 
   int _getEstimatedMinutes() {
-    // تقدير: حوالي دقيقة لكل صفحة
+    // طھظ‚ط¯ظٹط±: ط­ظˆط§ظ„ظٹ ط¯ظ‚ظٹظ‚ط© ظ„ظƒظ„ طµظپط­ط©
     return _dailyPages;
   }
 
@@ -406,7 +406,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
   }
 
   // ======================================================
-  // 1️⃣ شاشة إعداد الختمة المحسّنة
+  // 1ï¸ڈâƒ£ ط´ط§ط´ط© ط¥ط¹ط¯ط§ط¯ ط§ظ„ط®طھظ…ط© ط§ظ„ظ…ط­ط³ظ‘ظ†ط©
   // ======================================================
   Widget _buildSetupScreen(bool isDark) {
     int daysToFinish = (_totalPages / _setupPages).ceil();
@@ -415,7 +415,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
     return CustomScrollView(
       physics: const BouncingScrollPhysics(),
       slivers: [
-        // ✅ Header مخصص
+        // âœ… Header ظ…ط®طµطµ
         SliverAppBar(
           expandedHeight: 200,
           pinned: true,
@@ -457,7 +457,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                               child: Container(
                                 padding: EdgeInsets.all(isSmall ? 12 : 20),
                                 decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.15),
+                                  color: Colors.white.withValues(alpha: 0.15),
                                   shape: BoxShape.circle,
                                 ),
                                 child: Icon(
@@ -469,7 +469,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                             ),
                             const SizedBox(height: 10),
                             Text(
-                              'ابدأ رحلتك مع القرآن',
+                              'ط§ط¨ط¯ط£ ط±ط­ظ„طھظƒ ظ…ط¹ ط§ظ„ظ‚ط±ط¢ظ†',
                               style: GoogleFonts.cairo(
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
@@ -478,10 +478,10 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              'اختر خطتك واستمر في الطاعة',
+                              'ط§ط®طھط± ط®ط·طھظƒ ظˆط§ط³طھظ…ط± ظپظٹ ط§ظ„ط·ط§ط¹ط©',
                               style: GoogleFonts.cairo(
                                 fontSize: 14,
-                                color: Colors.white.withOpacity(0.8),
+                                color: Colors.white.withValues(alpha: 0.8),
                               ),
                             ),
                           ],
@@ -501,9 +501,9 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // ✅ الاختيارات السريعة
+                // âœ… ط§ظ„ط§ط®طھظٹط§ط±ط§طھ ط§ظ„ط³ط±ظٹط¹ط©
                 Text(
-                  'خطط سريعة',
+                  'ط®ط·ط· ط³ط±ظٹط¹ط©',
                   style: GoogleFonts.cairo(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -543,7 +543,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                               boxShadow: [
                                 if (isSelected)
                                   BoxShadow(
-                                    color: widget.primaryColor.withOpacity(0.3),
+                                    color: widget.primaryColor.withValues(alpha: 0.3),
                                     blurRadius: 12,
                                     offset: const Offset(0, 4),
                                   ),
@@ -566,7 +566,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                                   ),
                                 ),
                                 Text(
-                                  '${preset['pages']} صفحة/يوم',
+                                  '${preset['pages']} طµظپط­ط©/ظٹظˆظ…',
                                   style: GoogleFonts.cairo(
                                     fontSize: 12,
                                     color: isSelected ? Colors.white70 : Colors.grey,
@@ -583,7 +583,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
 
                 const SizedBox(height: 28),
 
-                // ✅ التخصيص اليدوي
+                // âœ… ط§ظ„طھط®طµظٹطµ ط§ظ„ظٹط¯ظˆظٹ
                 Container(
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
@@ -591,7 +591,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                     borderRadius: BorderRadius.circular(24),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.05),
+                        color: Colors.black.withValues(alpha: 0.05),
                         blurRadius: 20,
                         offset: const Offset(0, 8),
                       ),
@@ -604,7 +604,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                           Icon(Icons.tune, color: widget.primaryColor),
                           const SizedBox(width: 10),
                           Text(
-                            'تخصيص يدوي',
+                            'طھط®طµظٹطµ ظٹط¯ظˆظٹ',
                             style: GoogleFonts.cairo(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -641,7 +641,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                                   ),
                                 ),
                                 Text(
-                                  'صفحة يومياً',
+                                  'طµظپط­ط© ظٹظˆظ…ظٹط§ظ‹',
                                   style: GoogleFonts.cairo(
                                     color: Colors.grey,
                                     fontSize: 13,
@@ -664,9 +664,9 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                       SliderTheme(
                         data: SliderTheme.of(context).copyWith(
                           activeTrackColor: widget.primaryColor,
-                          inactiveTrackColor: widget.primaryColor.withOpacity(0.15),
+                          inactiveTrackColor: widget.primaryColor.withValues(alpha: 0.15),
                           thumbColor: widget.primaryColor,
-                          overlayColor: widget.primaryColor.withOpacity(0.12),
+                          overlayColor: widget.primaryColor.withValues(alpha: 0.12),
                           trackHeight: 6,
                           thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 10),
                         ),
@@ -688,18 +688,18 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
 
                 const SizedBox(height: 20),
 
-                // ✅ ملخص الخطة
+                // âœ… ظ…ظ„ط®طµ ط§ظ„ط®ط·ط©
                 Container(
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        widget.primaryColor.withOpacity(0.1),
-                        widget.primaryColor.withOpacity(0.05),
+                        widget.primaryColor.withValues(alpha: 0.1),
+                        widget.primaryColor.withValues(alpha: 0.05),
                       ],
                     ),
                     borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: widget.primaryColor.withOpacity(0.2)),
+                    border: Border.all(color: widget.primaryColor.withValues(alpha: 0.2)),
                   ),
                   child: Column(
                     children: [
@@ -708,7 +708,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                           Icon(Icons.info_outline, color: widget.primaryColor, size: 20),
                           const SizedBox(width: 8),
                           Text(
-                            'ملخص الخطة',
+                            'ظ…ظ„ط®طµ ط§ظ„ط®ط·ط©',
                             style: GoogleFonts.cairo(
                               fontWeight: FontWeight.bold,
                               color: widget.primaryColor,
@@ -717,18 +717,18 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                         ],
                       ),
                       const SizedBox(height: 16),
-                      _summaryRow(Icons.calendar_today, 'مدة الختمة', '$daysToFinish يوم'),
+                      _summaryRow(Icons.calendar_today, 'ظ…ط¯ط© ط§ظ„ط®طھظ…ط©', '$daysToFinish ظٹظˆظ…'),
                       const SizedBox(height: 10),
-                      _summaryRow(Icons.timer_outlined, 'وقت القراءة اليومي', '≈ $_setupPages دقيقة'),
+                      _summaryRow(Icons.timer_outlined, 'ظˆظ‚طھ ط§ظ„ظ‚ط±ط§ط،ط© ط§ظ„ظٹظˆظ…ظٹ', 'â‰ˆ $_setupPages ط¯ظ‚ظٹظ‚ط©'),
                       const SizedBox(height: 10),
-                      _summaryRow(Icons.auto_stories, 'عدد الصفحات الكلي', '٦٠٤ صفحة'),
+                      _summaryRow(Icons.auto_stories, 'ط¹ط¯ط¯ ط§ظ„طµظپط­ط§طھ ط§ظ„ظƒظ„ظٹ', 'ظ¦ظ ظ¤ طµظپط­ط©'),
                     ],
                   ),
                 ),
 
                 const SizedBox(height: 28),
 
-                // ✅ زر البدء
+                // âœ… ط²ط± ط§ظ„ط¨ط¯ط،
                 SizedBox(
                   width: double.infinity,
                   height: 58,
@@ -739,7 +739,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                         borderRadius: BorderRadius.circular(18),
                       ),
                       elevation: 4,
-                      shadowColor: widget.primaryColor.withOpacity(0.4),
+                      shadowColor: widget.primaryColor.withValues(alpha: 0.4),
                     ),
                     onPressed: () => _startKhatma(_setupPages, false),
                     child: Row(
@@ -748,7 +748,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                         const Icon(Icons.play_arrow_rounded, color: Colors.white, size: 28),
                         const SizedBox(width: 10),
                         Text(
-                          'ابدأ الختمة الآن',
+                          'ط§ط¨ط¯ط£ ط§ظ„ط®طھظ…ط© ط§ظ„ط¢ظ†',
                           style: GoogleFonts.cairo(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -779,7 +779,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
             Icon(
               icon,
               size: isSmall ? 16 : 18,
-              color: widget.primaryColor.withOpacity(0.7),
+              color: widget.primaryColor.withValues(alpha: 0.7),
             ),
             SizedBox(width: isSmall ? 8 : 10),
             Expanded(
@@ -816,13 +816,13 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
   Widget _circleBtn(IconData icon, VoidCallback onTap) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        // حجم ديناميكي بناءً على عرض الشاشة
+        // ط­ط¬ظ… ط¯ظٹظ†ط§ظ…ظٹظƒظٹ ط¨ظ†ط§ط،ظ‹ ط¹ظ„ظ‰ ط¹ط±ط¶ ط§ظ„ط´ط§ط´ط©
         final screenWidth = MediaQuery.of(context).size.width;
         final size = screenWidth < 360 ? 44.0 : 52.0;
         final iconSize = screenWidth < 360 ? 24.0 : 28.0;
 
         return Material(
-          color: widget.primaryColor.withOpacity(0.1),
+          color: widget.primaryColor.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(size / 2),
           child: InkWell(
             onTap: onTap,
@@ -840,7 +840,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
   }
 
   // ======================================================
-  // 2️⃣ لوحة التحكم الاحترافية (Dashboard)
+  // 2ï¸ڈâƒ£ ظ„ظˆط­ط© ط§ظ„طھط­ظƒظ… ط§ظ„ط§ط­طھط±ط§ظپظٹط© (Dashboard)
   // ======================================================
   Widget _buildDashboard(bool isDark) {
     int endPage = _currentPage + _dailyPages - 1;
@@ -858,7 +858,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
     return CustomScrollView(
       physics: const BouncingScrollPhysics(),
       slivers: [
-        // ✅ Header مع الدائرة
+        // âœ… Header ظ…ط¹ ط§ظ„ط¯ط§ط¦ط±ط©
         SliverAppBar(
           expandedHeight: 320,
           pinned: true,
@@ -870,7 +870,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
           actions: [
             IconButton(
               icon: const Icon(Icons.alarm_add_rounded, color: Colors.white),
-              tooltip: 'تذكير يومي',
+              tooltip: 'طھط°ظƒظٹط± ظٹظˆظ…ظٹ',
               onPressed: _selectReminderTime,
             ),
             PopupMenuButton<String>(
@@ -887,7 +887,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                     children: [
                       const Icon(Icons.refresh, color: Colors.red),
                       const SizedBox(width: 10),
-                      Text('إعادة الختمة', style: GoogleFonts.cairo()),
+                      Text('ط¥ط¹ط§ط¯ط© ط§ظ„ط®طھظ…ط©', style: GoogleFonts.cairo()),
                     ],
                   ),
                 ),
@@ -902,7 +902,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                 final contentHeight = totalHeight - topPadding - kToolbarHeight;
                 final screenWidth = constraints.maxWidth;
 
-                // أحجام ديناميكية
+                // ط£ط­ط¬ط§ظ… ط¯ظٹظ†ط§ظ…ظٹظƒظٹط©
                 final isNarrow = screenWidth < 360;
                 final isTight = contentHeight < 200;
 
@@ -952,7 +952,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  // دائرة التقدم
+                                  // ط¯ط§ط¦ط±ط© ط§ظ„طھظ‚ط¯ظ…
                                   TweenAnimationBuilder<double>(
                                     tween: Tween<double>(begin: 0, end: progress),
                                     duration: const Duration(milliseconds: 1500),
@@ -969,7 +969,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                                                 value: 1.0,
                                                 strokeWidth: strokeW,
                                                 backgroundColor:
-                                                Colors.white.withOpacity(0.2),
+                                                Colors.white.withValues(alpha: 0.2),
                                                 color: Colors.transparent,
                                               ),
                                             ),
@@ -1006,12 +1006,12 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                                                     ),
                                                     decoration: BoxDecoration(
                                                       color: Colors.white
-                                                          .withOpacity(0.2),
+                                                          .withValues(alpha: 0.2),
                                                       borderRadius:
                                                       BorderRadius.circular(20),
                                                     ),
                                                     child: Text(
-                                                      'الجزء ${_toArabicNum(currentJuz)}',
+                                                      'ط§ظ„ط¬ط²ط، ${_toArabicNum(currentJuz)}',
                                                       style: GoogleFonts.cairo(
                                                         fontSize: juzFont,
                                                         color: Colors.white,
@@ -1029,7 +1029,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
 
                                   SizedBox(height: gapAfterCircle),
 
-                                  // الإحصائيات السريعة
+                                  // ط§ظ„ط¥ط­طµط§ط¦ظٹط§طھ ط§ظ„ط³ط±ظٹط¹ط©
                                   _buildDashboardStats(remainingPages, isNarrow, isTight),
                                 ],
                               ),
@@ -1050,14 +1050,14 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                // ✅ بطاقة الورد اليومي
+                // âœ… ط¨ط·ط§ظ‚ط© ط§ظ„ظˆط±ط¯ ط§ظ„ظٹظˆظ…ظٹ
                 Container(
                   decoration: BoxDecoration(
                     color: bgCard,
                     borderRadius: BorderRadius.circular(24),
                     boxShadow: [
                       BoxShadow(
-                        color: widget.primaryColor.withOpacity(0.1),
+                        color: widget.primaryColor.withValues(alpha: 0.1),
                         blurRadius: 20,
                         offset: const Offset(0, 8),
                       ),
@@ -1065,11 +1065,11 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                   ),
                   child: Column(
                     children: [
-                      // العنوان
+                      // ط§ظ„ط¹ظ†ظˆط§ظ†
                       Container(
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: widget.primaryColor.withOpacity(0.08),
+                          color: widget.primaryColor.withValues(alpha: 0.08),
                           borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
                         ),
                         child: LayoutBuilder(
@@ -1081,7 +1081,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                                 Container(
                                   padding: EdgeInsets.all(isSmall ? 8 : 10),
                                   decoration: BoxDecoration(
-                                    color: widget.primaryColor.withOpacity(0.15),
+                                    color: widget.primaryColor.withValues(alpha: 0.15),
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   child: Icon(
@@ -1099,7 +1099,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                                         fit: BoxFit.scaleDown,
                                         alignment: AlignmentDirectional.centerStart,
                                         child: Text(
-                                          'ورد اليوم',
+                                          'ظˆط±ط¯ ط§ظ„ظٹظˆظ…',
                                           style: GoogleFonts.cairo(
                                             fontSize: isSmall ? 14 : 16,
                                             fontWeight: FontWeight.bold,
@@ -1111,7 +1111,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                                         fit: BoxFit.scaleDown,
                                         alignment: AlignmentDirectional.centerStart,
                                         child: Text(
-                                          '$_dailyPages صفحة • ≈ ${_getEstimatedMinutes()} دقيقة',
+                                          '$_dailyPages طµظپط­ط© â€¢ â‰ˆ ${_getEstimatedMinutes()} ط¯ظ‚ظٹظ‚ط©',
                                           style: GoogleFonts.cairo(
                                             fontSize: isSmall ? 10 : 12,
                                             color: Colors.grey,
@@ -1127,7 +1127,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                         ),
                       ),
 
-                      // تفاصيل الورد
+                      // طھظپط§طµظٹظ„ ط§ظ„ظˆط±ط¯
                       Padding(
                         padding: const EdgeInsets.all(16),
                         child: LayoutBuilder(
@@ -1137,7 +1137,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                             return Row(
                               children: [
                                 Expanded(
-                                  child: _pageCard('البداية', _currentPage, currentSurahIdx, isDark),
+                                  child: _pageCard('ط§ظ„ط¨ط¯ط§ظٹط©', _currentPage, currentSurahIdx, isDark),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.symmetric(horizontal: isSmall ? 6 : 12),
@@ -1148,7 +1148,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                                   ),
                                 ),
                                 Expanded(
-                                  child: _pageCard('النهاية', endPage, endSurahIdx, isDark),
+                                  child: _pageCard('ط§ظ„ظ†ظ‡ط§ظٹط©', endPage, endSurahIdx, isDark),
                                 ),
                               ],
                             );
@@ -1156,7 +1156,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                         ),
                       ),
 
-                      // الأزرار
+                      // ط§ظ„ط£ط²ط±ط§ط±
                       Padding(
                         padding: const EdgeInsets.fromLTRB(16, 0, 16, 20),
                         child: LayoutBuilder(
@@ -1185,7 +1185,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                                     label: FittedBox(
                                       fit: BoxFit.scaleDown,
                                       child: Text(
-                                        'قراءة الورد',
+                                        'ظ‚ط±ط§ط،ط© ط§ظ„ظˆط±ط¯',
                                         style: GoogleFonts.cairo(
                                           fontSize: isSmall ? 14 : 16,
                                           fontWeight: FontWeight.bold,
@@ -1215,7 +1215,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                                     label: FittedBox(
                                       fit: BoxFit.scaleDown,
                                       child: Text(
-                                        'قرأته من المصحف',
+                                        'ظ‚ط±ط£طھظ‡ ظ…ظ† ط§ظ„ظ…طµط­ظپ',
                                         style: GoogleFonts.cairo(
                                           fontSize: isSmall ? 12 : 14,
                                           fontWeight: FontWeight.bold,
@@ -1237,7 +1237,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                                         color: Colors.orange,
                                       ),
                                       label: Text(
-                                        'تراجع عن آخر ورد',
+                                        'طھط±ط§ط¬ط¹ ط¹ظ† ط¢ط®ط± ظˆط±ط¯',
                                         style: GoogleFonts.cairo(
                                           color: Colors.orange,
                                           fontSize: isSmall ? 11 : 13,
@@ -1257,7 +1257,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
 
                 const SizedBox(height: 20),
 
-                // ✅ الإحصائيات التفصيلية
+                // âœ… ط§ظ„ط¥ط­طµط§ط¦ظٹط§طھ ط§ظ„طھظپطµظٹظ„ظٹط©
                 Container(
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
@@ -1265,7 +1265,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                     borderRadius: BorderRadius.circular(20),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.05),
+                        color: Colors.black.withValues(alpha: 0.05),
                         blurRadius: 15,
                         offset: const Offset(0, 5),
                       ),
@@ -1283,7 +1283,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                               fit: BoxFit.scaleDown,
                               alignment: AlignmentDirectional.centerStart,
                               child: Text(
-                                'إحصائيات الختمة',
+                                'ط¥ط­طµط§ط¦ظٹط§طھ ط§ظ„ط®طھظ…ط©',
                                 style: GoogleFonts.cairo(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -1295,13 +1295,13 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                         ],
                       ),
                       const SizedBox(height: 20),
-                      _statRow(Icons.auto_stories, 'الصفحة الحالية', '${_toArabicNum(_currentPage)} / ٦٠٤', isDark),
+                      _statRow(Icons.auto_stories, 'ط§ظ„طµظپط­ط© ط§ظ„ط­ط§ظ„ظٹط©', '${_toArabicNum(_currentPage)} / ظ¦ظ ظ¤', isDark),
                       const SizedBox(height: 14),
-                      _statRow(Icons.view_agenda, 'الجزء الحالي', 'الجزء ${_toArabicNum(currentJuz)} من ٣٠', isDark),
+                      _statRow(Icons.view_agenda, 'ط§ظ„ط¬ط²ط، ط§ظ„ط­ط§ظ„ظٹ', 'ط§ظ„ط¬ط²ط، ${_toArabicNum(currentJuz)} ظ…ظ† ظ£ظ ', isDark),
                       const SizedBox(height: 14),
-                      _statRow(Icons.book, 'السورة الحالية', _surahNames[currentSurahIdx - 1], isDark),
+                      _statRow(Icons.book, 'ط§ظ„ط³ظˆط±ط© ط§ظ„ط­ط§ظ„ظٹط©', _surahNames[currentSurahIdx - 1], isDark),
                       const SizedBox(height: 14),
-                      _statRow(Icons.calendar_today, 'أيام متبقية', '${_getDaysRemaining()} يوم', isDark),
+                      _statRow(Icons.calendar_today, 'ط£ظٹط§ظ… ظ…طھط¨ظ‚ظٹط©', '${_getDaysRemaining()} ظٹظˆظ…', isDark),
                     ],
                   ),
                 ),
@@ -1326,7 +1326,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
         vertical: isTight ? 6 : 10,
       ),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.1),
+        color: Colors.white.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(16),
       ),
       child: IntrinsicHeight(
@@ -1334,9 +1334,9 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
           children: [
             Expanded(
               child: _dashStatItem(
-                'قرأت',
+                'ظ‚ط±ط£طھ',
                 '${_currentPage - 1}',
-                'صفحة',
+                'طµظپط­ط©',
                 statFontSize,
                 labelFontSize,
               ),
@@ -1350,9 +1350,9 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
             ),
             Expanded(
               child: _dashStatItem(
-                'متبقي',
+                'ظ…طھط¨ظ‚ظٹ',
                 '$remainingPages',
-                'صفحة',
+                'طµظپط­ط©',
                 statFontSize,
                 labelFontSize,
               ),
@@ -1366,9 +1366,9 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
             ),
             Expanded(
               child: _dashStatItem(
-                'الأيام',
+                'ط§ظ„ط£ظٹط§ظ…',
                 '${_getDaysRemaining()}',
-                'متبقية',
+                'ظ…طھط¨ظ‚ظٹط©',
                 statFontSize,
                 labelFontSize,
               ),
@@ -1434,7 +1434,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
         return Container(
           padding: EdgeInsets.all(isSmall ? 10 : 14),
           decoration: BoxDecoration(
-            color: widget.primaryColor.withOpacity(0.08),
+            color: widget.primaryColor.withValues(alpha: 0.08),
             borderRadius: BorderRadius.circular(16),
           ),
           child: Column(
@@ -1451,7 +1451,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
               FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
-                  'ص ${_toArabicNum(page)}',
+                  'طµ ${_toArabicNum(page)}',
                   style: GoogleFonts.amiri(
                     fontSize: isSmall ? 18 : 22,
                     fontWeight: FontWeight.bold,
@@ -1464,7 +1464,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
                 constraints: BoxConstraints(maxWidth: constraints.maxWidth - 20),
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                 decoration: BoxDecoration(
-                  color: widget.primaryColor.withOpacity(0.15),
+                  color: widget.primaryColor.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: FittedBox(
@@ -1498,7 +1498,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
             Container(
               padding: EdgeInsets.all(isSmall ? 6 : 8),
               decoration: BoxDecoration(
-                color: widget.primaryColor.withOpacity(0.1),
+                color: widget.primaryColor.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Icon(icon, size: isSmall ? 16 : 18, color: widget.primaryColor),
@@ -1549,17 +1549,17 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
           children: [
             const Icon(Icons.warning_amber, color: Colors.orange),
             const SizedBox(width: 10),
-            Text('تأكيد', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
+            Text('طھط£ظƒظٹط¯', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
           ],
         ),
         content: Text(
-          'هل أنت متأكد من إعادة الختمة؟ سيتم مسح كل التقدم الحالي.',
+          'ظ‡ظ„ ط£ظ†طھ ظ…طھط£ظƒط¯ ظ…ظ† ط¥ط¹ط§ط¯ط© ط§ظ„ط®طھظ…ط©طں ط³ظٹطھظ… ظ…ط³ط­ ظƒظ„ ط§ظ„طھظ‚ط¯ظ… ط§ظ„ط­ط§ظ„ظٹ.',
           style: GoogleFonts.cairo(),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text('إلغاء', style: GoogleFonts.cairo()),
+            child: Text('ط¥ظ„ط؛ط§ط،', style: GoogleFonts.cairo()),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
@@ -1567,7 +1567,7 @@ class _KhatmaScreenState extends State<KhatmaScreen> with TickerProviderStateMix
               Navigator.pop(ctx);
               _resetKhatma();
             },
-            child: Text('إعادة', style: GoogleFonts.cairo(color: Colors.white)),
+            child: Text('ط¥ط¹ط§ط¯ط©', style: GoogleFonts.cairo(color: Colors.white)),
           ),
         ],
       ),

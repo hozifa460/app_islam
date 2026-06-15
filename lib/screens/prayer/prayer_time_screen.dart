@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -246,7 +246,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
     required bool isDark,
   }) {
     if (!isDefaultMuezzin) {
-      return _gold.withOpacity(isDark ? 0.16 : 0.9);
+      return _gold.withValues(alpha: isDark ? 0.16 : 0.9);
     }
     return Colors.transparent;
   }
@@ -363,7 +363,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              '✅ تم تفعيل الأذان بنجاح',
+              'âœ… طھظ… طھظپط¹ظٹظ„ ط§ظ„ط£ط°ط§ظ† ط¨ظ†ط¬ط§ط­',
               style: GoogleFonts.cairo(fontSize: 13),
             ),
             backgroundColor: Colors.green.shade700,
@@ -374,7 +374,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
     } else {
       if (mounted) setState(() => _adhanEnabled = false);
       await prefs.setBool('adhan_enabled', false);
-      _showErrorSnackBar('لم تكتمل الشروط اللازمة لتفعيل الأذان');
+      _showErrorSnackBar('ظ„ظ… طھظƒطھظ…ظ„ ط§ظ„ط´ط±ظˆط· ط§ظ„ظ„ط§ط²ظ…ط© ظ„طھظپط¹ظٹظ„ ط§ظ„ط£ط°ط§ظ†');
     }
   }
 
@@ -407,7 +407,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
         iqamaSound: iqamaSound,
       );
     }
-    // تحميل حالة التفعيل التلقائي
+    // طھط­ظ…ظٹظ„ ط­ط§ظ„ط© ط§ظ„طھظپط¹ظٹظ„ ط§ظ„طھظ„ظ‚ط§ط¦ظٹ
     _autoReminderEnabled = prefs.getBool('auto_reminder_enabled') ?? false;
     _autoIqamaEnabled = prefs.getBool('auto_iqama_enabled') ?? false;
   }
@@ -419,13 +419,13 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
     await prefs.setBool('auto_reminder_enabled', value);
 
     if (value) {
-      // تحميل أول صوت تنبيه
+      // طھط­ظ…ظٹظ„ ط£ظˆظ„ طµظˆطھ طھظ†ط¨ظٹظ‡
       final downloadedPath = await _downloadReminderSoundIfNeeded('hayalaaslah');
 
       for (final key in const ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha']) {
         final current = _customizationFor(key);
 
-        // فقط إذا لم يكن المستخدم قد خصص هذه الصلاة مسبقاً
+        // ظپظ‚ط· ط¥ط°ط§ ظ„ظ… ظٹظƒظ† ط§ظ„ظ…ط³طھط®ط¯ظ… ظ‚ط¯ ط®طµطµ ظ‡ط°ظ‡ ط§ظ„طµظ„ط§ط© ظ…ط³ط¨ظ‚ط§ظ‹
         if (!current.reminderEnabled) {
           final updated = current.copyWith(
             reminderEnabled: true,
@@ -445,7 +445,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              'تم تفعيل التنبيه القبلي لجميع الصلوات',
+              'طھظ… طھظپط¹ظٹظ„ ط§ظ„طھظ†ط¨ظٹظ‡ ط§ظ„ظ‚ط¨ظ„ظٹ ظ„ط¬ظ…ظٹط¹ ط§ظ„طµظ„ظˆط§طھ',
               style: GoogleFonts.cairo(),
             ),
             backgroundColor: Colors.green,
@@ -479,7 +479,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              'تم إيقاف التنبيه القبلي لجميع الصلوات',
+              'طھظ… ط¥ظٹظ‚ط§ظپ ط§ظ„طھظ†ط¨ظٹظ‡ ط§ظ„ظ‚ط¨ظ„ظٹ ظ„ط¬ظ…ظٹط¹ ط§ظ„طµظ„ظˆط§طھ',
               style: GoogleFonts.cairo(),
             ),
             backgroundColor: Colors.orange,
@@ -498,7 +498,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
     await prefs.setBool('auto_iqama_enabled', value);
 
     if (value) {
-      // تحميل أول صوت إقامة
+      // طھط­ظ…ظٹظ„ ط£ظˆظ„ طµظˆطھ ط¥ظ‚ط§ظ…ط©
       final downloadedPath = await _downloadIqamaSoundIfNeeded(iqamaCatalog.first.id);
 
       for (final key in const ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha']) {
@@ -523,7 +523,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              'تم تفعيل الإقامة لجميع الصلوات',
+              'طھظ… طھظپط¹ظٹظ„ ط§ظ„ط¥ظ‚ط§ظ…ط© ظ„ط¬ظ…ظٹط¹ ط§ظ„طµظ„ظˆط§طھ',
               style: GoogleFonts.cairo(),
             ),
             backgroundColor: Colors.green,
@@ -557,7 +557,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              'تم إيقاف الإقامة لجميع الصلوات',
+              'طھظ… ط¥ظٹظ‚ط§ظپ ط§ظ„ط¥ظ‚ط§ظ…ط© ظ„ط¬ظ…ظٹط¹ ط§ظ„طµظ„ظˆط§طھ',
               style: GoogleFonts.cairo(),
             ),
             backgroundColor: Colors.orange,
@@ -623,38 +623,38 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
     _rows = [
       _PrayerRow(
         key: 'Fajr',
-        name: 'الفجر',
+        name: 'ط§ظ„ظپط¬ط±',
         time: times['Fajr'] ?? '05:30',
         icon: Icons.wb_twilight,
       ),
       _PrayerRow(
         key: 'Sunrise',
-        name: 'الشروق',
+        name: 'ط§ظ„ط´ط±ظˆظ‚',
         time: times['Sunrise'] ?? '06:45',
         icon: Icons.wb_sunny_outlined,
         noAdhan: true,
       ),
       _PrayerRow(
         key: 'Dhuhr',
-        name: 'الظهر',
+        name: 'ط§ظ„ط¸ظ‡ط±',
         time: times['Dhuhr'] ?? '12:15',
         icon: Icons.sunny,
       ),
       _PrayerRow(
         key: 'Asr',
-        name: 'العصر',
+        name: 'ط§ظ„ط¹طµط±',
         time: times['Asr'] ?? '15:45',
         icon: Icons.filter_drama,
       ),
       _PrayerRow(
         key: 'Maghrib',
-        name: 'المغرب',
+        name: 'ط§ظ„ظ…ط؛ط±ط¨',
         time: times['Maghrib'] ?? '18:20',
         icon: Icons.nights_stay,
       ),
       _PrayerRow(
         key: 'Isha',
-        name: 'العشاء',
+        name: 'ط§ظ„ط¹ط´ط§ط،',
         time: times['Isha'] ?? '19:45',
         icon: Icons.star_rounded,
       ),
@@ -746,7 +746,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
               borderRadius: BorderRadius.circular(20),
             ),
             title: Text(
-              'فحص جاهزية الأذان',
+              'ظپط­طµ ط¬ط§ظ‡ط²ظٹط© ط§ظ„ط£ط°ط§ظ†',
               style: GoogleFonts.cairo(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -756,23 +756,23 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
               mainAxisSize: MainAxisSize.min,
               children: [
                 _buildDiagnosticItem(
-                  'إذن الإشعارات',
+                  'ط¥ط°ظ† ط§ظ„ط¥ط´ط¹ط§ط±ط§طھ',
                   hasNotification,
                   () => openAppSettings(),
                 ),
                 _buildDiagnosticItem(
-                  'المنبهات الدقيقة (أندرويد 12+)',
+                  'ط§ظ„ظ…ظ†ط¨ظ‡ط§طھ ط§ظ„ط¯ظ‚ظٹظ‚ط© (ط£ظ†ط¯ط±ظˆظٹط¯ 12+)',
                   hasExactAlarm,
                   () => Permission.scheduleExactAlarm.request(),
                 ),
                 _buildDiagnosticItem(
-                  'استثناء البطارية',
+                  'ط§ط³طھط«ظ†ط§ط، ط§ظ„ط¨ط·ط§ط±ظٹط©',
                   ignoresBattery,
                   () => Permission.ignoreBatteryOptimizations.request(),
                 ),
                 const SizedBox(height: 15),
                 Text(
-                  '⚠️ ملاحظة: إذا كنت تستخدم شاومي/ريدمي، يرجى تفعيل "التشغيل التلقائي" (Autostart) من إعدادات التطبيق في الهاتف يدوياً.',
+                  'âڑ ï¸ڈ ظ…ظ„ط§ط­ط¸ط©: ط¥ط°ط§ ظƒظ†طھ طھط³طھط®ط¯ظ… ط´ط§ظˆظ…ظٹ/ط±ظٹط¯ظ…ظٹطŒ ظٹط±ط¬ظ‰ طھظپط¹ظٹظ„ "ط§ظ„طھط´ط؛ظٹظ„ ط§ظ„طھظ„ظ‚ط§ط¦ظٹ" (Autostart) ظ…ظ† ط¥ط¹ط¯ط§ط¯ط§طھ ط§ظ„طھط·ط¨ظٹظ‚ ظپظٹ ط§ظ„ظ‡ط§طھظپ ظٹط¯ظˆظٹط§ظ‹.',
                   style: GoogleFonts.cairo(color: Colors.orange, fontSize: 12),
                 ),
               ],
@@ -780,7 +780,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(ctx),
-                child: Text('إغلاق', style: GoogleFonts.cairo(color: _gold)),
+                child: Text('ط¥ط؛ظ„ط§ظ‚', style: GoogleFonts.cairo(color: _gold)),
               ),
             ],
           ),
@@ -808,7 +808,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
             TextButton(
               onPressed: fixAction,
               child: Text(
-                'إصلاح',
+                'ط¥طµظ„ط§ط­',
                 style: GoogleFonts.cairo(color: _gold, fontSize: 12),
               ),
             ),
@@ -835,11 +835,11 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
             final textColor = isDark ? Colors.white : const Color(0xFF1A1A1A);
             final subColor = isDark ? Colors.white54 : Colors.black54;
             final cardBg = isDark
-                ? Colors.white.withOpacity(0.05)
+                ? Colors.white.withValues(alpha: 0.05)
                 : Colors.grey.shade50;
             final borderCol = isDark
-                ? Colors.white.withOpacity(0.08)
-                : Colors.black.withOpacity(0.08);
+                ? Colors.white.withValues(alpha: 0.08)
+                : Colors.black.withValues(alpha: 0.08);
 
             return Container(
               constraints: BoxConstraints(
@@ -849,10 +849,10 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
               decoration: BoxDecoration(
                 color: bg,
                 borderRadius: BorderRadius.circular(28),
-                border: Border.all(color: _gold.withOpacity(0.2)),
+                border: Border.all(color: _gold.withValues(alpha: 0.2)),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(isDark ? 0.4 : 0.1),
+                    color: Colors.black.withValues(alpha: isDark ? 0.4 : 0.1),
                     blurRadius: 20,
                     offset: const Offset(0, 10),
                   ),
@@ -863,19 +863,19 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    // المقبض
+                    // ط§ظ„ظ…ظ‚ط¨ط¶
                     const SizedBox(height: 12),
                     Container(
                       width: 40,
                       height: 4,
                       decoration: BoxDecoration(
-                        color: Colors.grey.withOpacity(0.3),
+                        color: Colors.grey.withValues(alpha: 0.3),
                         borderRadius: BorderRadius.circular(4),
                       ),
                     ),
                     const SizedBox(height: 16),
 
-                    // العنوان
+                    // ط§ظ„ط¹ظ†ظˆط§ظ†
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
@@ -883,7 +883,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                           Container(
                             padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
-                              color: _gold.withOpacity(0.15),
+                              color: _gold.withValues(alpha: 0.15),
                               borderRadius: BorderRadius.circular(14),
                             ),
                             child: Icon(Icons.settings, color: _gold, size: 22),
@@ -894,7 +894,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'إعدادات الصلاة التلقائية',
+                                  'ط¥ط¹ط¯ط§ط¯ط§طھ ط§ظ„طµظ„ط§ط© ط§ظ„طھظ„ظ‚ط§ط¦ظٹط©',
                                   style: GoogleFonts.cairo(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
@@ -902,7 +902,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                   ),
                                 ),
                                 Text(
-                                  'تحكم بالأذان والتنبيه والإقامة',
+                                  'طھط­ظƒظ… ط¨ط§ظ„ط£ط°ط§ظ† ظˆط§ظ„طھظ†ط¨ظٹظ‡ ظˆط§ظ„ط¥ظ‚ط§ظ…ط©',
                                   style: GoogleFonts.cairo(
                                     fontSize: 12,
                                     color: subColor,
@@ -917,22 +917,22 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
 
                     const SizedBox(height: 16),
 
-                    // المحتوى القابل للتمرير
+                    // ط§ظ„ظ…ط­طھظˆظ‰ ط§ظ„ظ‚ط§ط¨ظ„ ظ„ظ„طھظ…ط±ظٹط±
                     Flexible(
                       child: SingleChildScrollView(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         physics: const BouncingScrollPhysics(),
                         child: Column(
                           children: [
-                            // ═══════ 1. الأذان ═══════
+                            // â•گâ•گâ•گâ•گâ•گâ•گâ•گ 1. ط§ظ„ط£ط°ط§ظ† â•گâ•گâ•گâ•گâ•گâ•گâ•گ
                             _buildSettingsCard(
                               isDark: isDark,
                               cardBg: cardBg,
                               borderCol: borderCol,
                               icon: Icons.mosque_rounded,
                               iconColor: _gold,
-                              title: 'الأذان التلقائي',
-                              subtitle: 'تشغيل الأذان عند كل صلاة',
+                              title: 'ط§ظ„ط£ط°ط§ظ† ط§ظ„طھظ„ظ‚ط§ط¦ظٹ',
+                              subtitle: 'طھط´ط؛ظٹظ„ ط§ظ„ط£ط°ط§ظ† ط¹ظ†ط¯ ظƒظ„ طµظ„ط§ط©',
                               textColor: textColor,
                               subColor: subColor,
                               trailing: Transform.scale(
@@ -946,23 +946,23 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                   },
                                 ),
                               ),
-                              statusText: _adhanEnabled ? 'مفعّل' : 'معطّل',
+                              statusText: _adhanEnabled ? 'ظ…ظپط¹ظ‘ظ„' : 'ظ…ط¹ط·ظ‘ظ„',
                               statusColor:
                               _adhanEnabled ? Colors.green : Colors.grey,
                             ),
 
                             const SizedBox(height: 10),
 
-                            // ═══════ 2. التنبيه القبلي ═══════
+                            // â•گâ•گâ•گâ•گâ•گâ•گâ•گ 2. ط§ظ„طھظ†ط¨ظٹظ‡ ط§ظ„ظ‚ط¨ظ„ظٹ â•گâ•گâ•گâ•گâ•گâ•گâ•گ
                             _buildSettingsCard(
                               isDark: isDark,
                               cardBg: cardBg,
                               borderCol: borderCol,
                               icon: Icons.notifications_active_rounded,
                               iconColor: Colors.blue,
-                              title: 'التنبيه القبلي التلقائي',
+                              title: 'ط§ظ„طھظ†ط¨ظٹظ‡ ط§ظ„ظ‚ط¨ظ„ظٹ ط§ظ„طھظ„ظ‚ط§ط¦ظٹ',
                               subtitle:
-                              'تنبيه قبل الأذان بـ 10 دقائق لكل صلاة',
+                              'طھظ†ط¨ظٹظ‡ ظ‚ط¨ظ„ ط§ظ„ط£ط°ط§ظ† ط¨ظ€ 10 ط¯ظ‚ط§ط¦ظ‚ ظ„ظƒظ„ طµظ„ط§ط©',
                               textColor: textColor,
                               subColor: subColor,
                               trailing: Transform.scale(
@@ -977,8 +977,8 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                 ),
                               ),
                               statusText: _autoReminderEnabled
-                                  ? 'مفعّل'
-                                  : 'معطّل',
+                                  ? 'ظ…ظپط¹ظ‘ظ„'
+                                  : 'ظ…ط¹ط·ظ‘ظ„',
                               statusColor: _autoReminderEnabled
                                   ? Colors.blue
                                   : Colors.grey,
@@ -986,16 +986,16 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
 
                             const SizedBox(height: 10),
 
-                            // ═══════ 3. الإقامة ═══════
+                            // â•گâ•گâ•گâ•گâ•گâ•گâ•گ 3. ط§ظ„ط¥ظ‚ط§ظ…ط© â•گâ•گâ•گâ•گâ•گâ•گâ•گ
                             _buildSettingsCard(
                               isDark: isDark,
                               cardBg: cardBg,
                               borderCol: borderCol,
                               icon: Icons.timer_rounded,
                               iconColor: Colors.purple,
-                              title: 'الإقامة التلقائية',
+                              title: 'ط§ظ„ط¥ظ‚ط§ظ…ط© ط§ظ„طھظ„ظ‚ط§ط¦ظٹط©',
                               subtitle:
-                              'تشغيل الإقامة بعد الأذان بـ 10 دقائق',
+                              'طھط´ط؛ظٹظ„ ط§ظ„ط¥ظ‚ط§ظ…ط© ط¨ط¹ط¯ ط§ظ„ط£ط°ط§ظ† ط¨ظ€ 10 ط¯ظ‚ط§ط¦ظ‚',
                               textColor: textColor,
                               subColor: subColor,
                               trailing: Transform.scale(
@@ -1010,7 +1010,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                 ),
                               ),
                               statusText:
-                              _autoIqamaEnabled ? 'مفعّل' : 'معطّل',
+                              _autoIqamaEnabled ? 'ظ…ظپط¹ظ‘ظ„' : 'ظ…ط¹ط·ظ‘ظ„',
                               statusColor: _autoIqamaEnabled
                                   ? Colors.purple
                                   : Colors.grey,
@@ -1020,7 +1020,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                             Divider(color: borderCol, height: 1),
                             const SizedBox(height: 16),
 
-                            // ═══════ 4. طريقة الحساب ═══════
+                            // â•گâ•گâ•گâ•گâ•گâ•گâ•گ 4. ط·ط±ظٹظ‚ط© ط§ظ„ط­ط³ط§ط¨ â•گâ•گâ•گâ•گâ•گâ•گâ•گ
                             Container(
                               padding: const EdgeInsets.all(16),
                               decoration: BoxDecoration(
@@ -1036,7 +1036,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                       Container(
                                         padding: const EdgeInsets.all(8),
                                         decoration: BoxDecoration(
-                                          color: _gold.withOpacity(0.12),
+                                          color: _gold.withValues(alpha: 0.12),
                                           borderRadius:
                                           BorderRadius.circular(10),
                                         ),
@@ -1048,7 +1048,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                       ),
                                       const SizedBox(width: 10),
                                       Text(
-                                        'طريقة الحساب',
+                                        'ط·ط±ظٹظ‚ط© ط§ظ„ط­ط³ط§ط¨',
                                         style: GoogleFonts.cairo(
                                           color: textColor,
                                           fontWeight: FontWeight.bold,
@@ -1069,7 +1069,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                     decoration: InputDecoration(
                                       filled: true,
                                       fillColor: isDark
-                                          ? Colors.white.withOpacity(0.04)
+                                          ? Colors.white.withValues(alpha: 0.04)
                                           : Colors.white,
                                       contentPadding:
                                       const EdgeInsets.symmetric(
@@ -1080,14 +1080,14 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         borderRadius:
                                         BorderRadius.circular(12),
                                         borderSide: BorderSide(
-                                          color: _gold.withOpacity(0.15),
+                                          color: _gold.withValues(alpha: 0.15),
                                         ),
                                       ),
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius:
                                         BorderRadius.circular(12),
                                         borderSide: BorderSide(
-                                          color: _gold.withOpacity(0.15),
+                                          color: _gold.withValues(alpha: 0.15),
                                         ),
                                       ),
                                     ),
@@ -1095,7 +1095,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                       DropdownMenuItem(
                                         value: 'umm_al_qura',
                                         child: Text(
-                                          'أم القرى (مكة المكرمة)',
+                                          'ط£ظ… ط§ظ„ظ‚ط±ظ‰ (ظ…ظƒط© ط§ظ„ظ…ظƒط±ظ…ط©)',
                                           style: GoogleFonts.cairo(
                                               fontSize: 13),
                                         ),
@@ -1103,7 +1103,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                       DropdownMenuItem(
                                         value: 'egyptian',
                                         child: Text(
-                                          'الهيئة العامة المصرية',
+                                          'ط§ظ„ظ‡ظٹط¦ط© ط§ظ„ط¹ط§ظ…ط© ط§ظ„ظ…طµط±ظٹط©',
                                           style: GoogleFonts.cairo(
                                               fontSize: 13),
                                         ),
@@ -1111,7 +1111,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                       DropdownMenuItem(
                                         value: 'mwl',
                                         child: Text(
-                                          'رابطة العالم الإسلامي',
+                                          'ط±ط§ط¨ط·ط© ط§ظ„ط¹ط§ظ„ظ… ط§ظ„ط¥ط³ظ„ط§ظ…ظٹ',
                                           style: GoogleFonts.cairo(
                                               fontSize: 13),
                                         ),
@@ -1144,7 +1144,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                               .showSnackBar(
                                             SnackBar(
                                               content: Text(
-                                                'تم تحديث المواقيت',
+                                                'طھظ… طھط­ط¯ظٹط« ط§ظ„ظ…ظˆط§ظ‚ظٹطھ',
                                                 style: GoogleFonts.cairo(),
                                               ),
                                               backgroundColor: Colors.green,
@@ -1160,7 +1160,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
 
                             const SizedBox(height: 16),
 
-                            // ═══════ 5. فحص الجاهزية ═══════
+                            // â•گâ•گâ•گâ•گâ•گâ•گâ•گ 5. ظپط­طµ ط§ظ„ط¬ط§ظ‡ط²ظٹط© â•گâ•گâ•گâ•گâ•گâ•گâ•گ
                             GestureDetector(
                               onTap: () {
                                 Navigator.pop(bottomSheetContext);
@@ -1169,12 +1169,12 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                               child: Container(
                                 padding: const EdgeInsets.all(16),
                                 decoration: BoxDecoration(
-                                  color: Colors.blueAccent.withOpacity(
+                                  color: Colors.blueAccent.withValues(alpha: 
                                       isDark ? 0.08 : 0.05),
                                   borderRadius: BorderRadius.circular(18),
                                   border: Border.all(
                                     color: Colors.blueAccent
-                                        .withOpacity(0.2),
+                                        .withValues(alpha: 0.2),
                                   ),
                                 ),
                                 child: Row(
@@ -1183,7 +1183,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                       padding: const EdgeInsets.all(8),
                                       decoration: BoxDecoration(
                                         color: Colors.blueAccent
-                                            .withOpacity(0.12),
+                                            .withValues(alpha: 0.12),
                                         borderRadius:
                                         BorderRadius.circular(10),
                                       ),
@@ -1200,7 +1200,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'فحص جاهزية الهاتف',
+                                            'ظپط­طµ ط¬ط§ظ‡ط²ظٹط© ط§ظ„ظ‡ط§طھظپ',
                                             style: GoogleFonts.cairo(
                                               color: Colors.blueAccent,
                                               fontWeight: FontWeight.bold,
@@ -1208,7 +1208,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                             ),
                                           ),
                                           Text(
-                                            'اكتشف لماذا لا يعمل الأذان',
+                                            'ط§ظƒطھط´ظپ ظ„ظ…ط§ط°ط§ ظ„ط§ ظٹط¹ظ…ظ„ ط§ظ„ط£ط°ط§ظ†',
                                             style: GoogleFonts.cairo(
                                               color: subColor,
                                               fontSize: 11,
@@ -1221,7 +1221,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                       Icons.arrow_forward_ios_rounded,
                                       size: 16,
                                       color: Colors.blueAccent
-                                          .withOpacity(0.6),
+                                          .withValues(alpha: 0.6),
                                     ),
                                   ],
                                 ),
@@ -1230,16 +1230,16 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
 
                             const SizedBox(height: 16),
 
-                            // ═══════ ملاحظة ═══════
+                            // â•گâ•گâ•گâ•گâ•گâ•گâ•گ ظ…ظ„ط§ط­ط¸ط© â•گâ•گâ•گâ•گâ•گâ•گâ•گ
                             Container(
                               padding: const EdgeInsets.all(14),
                               decoration: BoxDecoration(
                                 color: Colors.orange
-                                    .withOpacity(isDark ? 0.08 : 0.05),
+                                    .withValues(alpha: isDark ? 0.08 : 0.05),
                                 borderRadius: BorderRadius.circular(14),
                                 border: Border.all(
                                   color:
-                                  Colors.orange.withOpacity(0.2),
+                                  Colors.orange.withValues(alpha: 0.2),
                                 ),
                               ),
                               child: Row(
@@ -1254,10 +1254,10 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                   const SizedBox(width: 10),
                                   Expanded(
                                     child: Text(
-                                      'يمكنك تخصيص كل صلاة على حدة بالضغط عليها من القائمة الرئيسية',
+                                      'ظٹظ…ظƒظ†ظƒ طھط®طµظٹطµ ظƒظ„ طµظ„ط§ط© ط¹ظ„ظ‰ ط­ط¯ط© ط¨ط§ظ„ط¶ط؛ط· ط¹ظ„ظٹظ‡ط§ ظ…ظ† ط§ظ„ظ‚ط§ط¦ظ…ط© ط§ظ„ط±ط¦ظٹط³ظٹط©',
                                       style: GoogleFonts.cairo(
                                         color: Colors.orange
-                                            .withOpacity(0.9),
+                                            .withValues(alpha: 0.9),
                                         fontSize: 11.5,
                                         height: 1.5,
                                       ),
@@ -1308,7 +1308,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
           Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: iconColor.withOpacity(0.12),
+              color: iconColor.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(icon, color: iconColor, size: 22),
@@ -1343,7 +1343,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                     vertical: 2,
                   ),
                   decoration: BoxDecoration(
-                    color: statusColor.withOpacity(0.12),
+                    color: statusColor.withValues(alpha: 0.12),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
@@ -1377,7 +1377,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
     if (row.noAdhan == true) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('الشروق ليس له أذان', style: GoogleFonts.cairo()),
+          content: Text('ط§ظ„ط´ط±ظˆظ‚ ظ„ظٹط³ ظ„ظ‡ ط£ط°ط§ظ†', style: GoogleFonts.cairo()),
           backgroundColor: Colors.orange,
         ),
       );
@@ -1407,7 +1407,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
               decoration: BoxDecoration(
                 color: bg,
                 borderRadius: BorderRadius.circular(24),
-                border: Border.all(color: _gold.withOpacity(0.2)),
+                border: Border.all(color: _gold.withValues(alpha: 0.2)),
               ),
               child: SafeArea(
                 top: false,
@@ -1419,13 +1419,13 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                         width: 42,
                         height: 4,
                         decoration: BoxDecoration(
-                          color: Colors.grey.withOpacity(0.35),
+                          color: Colors.grey.withValues(alpha: 0.35),
                           borderRadius: BorderRadius.circular(4),
                         ),
                       ),
                       const SizedBox(height: 14),
                       Text(
-                        'تخصيص صلاة ${row.name}',
+                        'طھط®طµظٹطµ طµظ„ط§ط© ${row.name}',
                         style: GoogleFonts.cairo(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -1443,16 +1443,16 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                       ),
                       const SizedBox(height: 20),
 
-                      _settingsSectionTitle('المؤذن الحالي', textColor),
+                      _settingsSectionTitle('ط§ظ„ظ…ط¤ط°ظ† ط§ظ„ط­ط§ظ„ظٹ', textColor),
                       const SizedBox(height: 8),
 
                       Container(
                         width: double.infinity,
                         padding: const EdgeInsets.all(14),
                         decoration: BoxDecoration(
-                          color: _gold.withOpacity(0.08),
+                          color: _gold.withValues(alpha: 0.08),
                           borderRadius: BorderRadius.circular(16),
-                          border: Border.all(color: _gold.withOpacity(0.18)),
+                          border: Border.all(color: _gold.withValues(alpha: 0.18)),
                         ),
                         child: Row(
                           children: [
@@ -1482,7 +1482,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                                     ? const Color(0xFF151B26)
                                                     : Colors.white,
                                             title:
-                                                'تخصيص مؤذن لصلاة ${row.name}',
+                                                'طھط®طµظٹطµ ظ…ط¤ط°ظ† ظ„طµظ„ط§ط© ${row.name}',
                                             currentId: currentMuezzin.id,
                                           ),
                                     );
@@ -1505,7 +1505,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                 setState(() {});
                               },
                               child: Text(
-                                'تغيير',
+                                'طھط؛ظٹظٹط±',
                                 style: GoogleFonts.cairo(
                                   color: _gold,
                                   fontWeight: FontWeight.bold,
@@ -1517,14 +1517,14 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                       ),
 
                       const SizedBox(height: 18),
-                      _settingsSectionTitle('إعدادات الأذان', textColor),
+                      _settingsSectionTitle('ط¥ط¹ط¯ط§ط¯ط§طھ ط§ظ„ط£ط°ط§ظ†', textColor),
 
                       SwitchListTile(
                         contentPadding: EdgeInsets.zero,
                         value: config.adhanEnabled,
                         activeColor: _gold,
                         title: Text(
-                          'تفعيل الأذان لهذه الصلاة',
+                          'طھظپط¹ظٹظ„ ط§ظ„ط£ط°ط§ظ† ظ„ظ‡ط°ظ‡ ط§ظ„طµظ„ط§ط©',
                           style: GoogleFonts.cairo(color: textColor),
                         ),
                         onChanged: (val) {
@@ -1541,7 +1541,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                           Align(
                             alignment: Alignment.centerRight,
                             child: Text(
-                              'عدد دقائق التنبيه',
+                              'ط¹ط¯ط¯ ط¯ظ‚ط§ط¦ظ‚ ط§ظ„طھظ†ط¨ظٹظ‡',
                               style: GoogleFonts.cairo(
                                 color: textColor,
                                 fontWeight: FontWeight.bold,
@@ -1559,41 +1559,41 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                               filled: true,
                               fillColor:
                                   isDark
-                                      ? Colors.white.withOpacity(0.04)
+                                      ? Colors.white.withValues(alpha: 0.04)
                                       : Colors.grey.shade50,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(14),
                                 borderSide: BorderSide(
-                                  color: _gold.withOpacity(0.15),
+                                  color: _gold.withValues(alpha: 0.15),
                                 ),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(14),
                                 borderSide: BorderSide(
-                                  color: _gold.withOpacity(0.15),
+                                  color: _gold.withValues(alpha: 0.15),
                                 ),
                               ),
                             ),
                             items: const [
                               DropdownMenuItem(
                                 value: 0,
-                                child: Text('إيقاف التنبيه القبلي'),
+                                child: Text('ط¥ظٹظ‚ط§ظپ ط§ظ„طھظ†ط¨ظٹظ‡ ط§ظ„ظ‚ط¨ظ„ظٹ'),
                               ),
                               DropdownMenuItem(
                                 value: 5,
-                                child: Text('5 دقائق'),
+                                child: Text('5 ط¯ظ‚ط§ط¦ظ‚'),
                               ),
                               DropdownMenuItem(
                                 value: 10,
-                                child: Text('10 دقائق'),
+                                child: Text('10 ط¯ظ‚ط§ط¦ظ‚'),
                               ),
                               DropdownMenuItem(
                                 value: 15,
-                                child: Text('15 دقيقة'),
+                                child: Text('15 ط¯ظ‚ظٹظ‚ط©'),
                               ),
                               DropdownMenuItem(
                                 value: 20,
-                                child: Text('20 دقيقة'),
+                                child: Text('20 ط¯ظ‚ظٹظ‚ط©'),
                               ),
                             ],
                             onChanged: (val) async {
@@ -1619,7 +1619,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                             Align(
                               alignment: Alignment.centerRight,
                               child: Text(
-                                'صوت التنبيه القبلي',
+                                'طµظˆطھ ط§ظ„طھظ†ط¨ظٹظ‡ ط§ظ„ظ‚ط¨ظ„ظٹ',
                                 style: GoogleFonts.cairo(
                                   color: textColor,
                                   fontWeight: FontWeight.bold,
@@ -1640,29 +1640,29 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                 filled: true,
                                 fillColor:
                                     isDark
-                                        ? Colors.white.withOpacity(0.04)
+                                        ? Colors.white.withValues(alpha: 0.04)
                                         : Colors.grey.shade50,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(14),
                                   borderSide: BorderSide(
-                                    color: _gold.withOpacity(0.15),
+                                    color: _gold.withValues(alpha: 0.15),
                                   ),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(14),
                                   borderSide: BorderSide(
-                                    color: _gold.withOpacity(0.15),
+                                    color: _gold.withValues(alpha: 0.15),
                                   ),
                                 ),
                               ),
                               items: const [
                                 DropdownMenuItem(
                                   value: 'hayalaaslah',
-                                  child: Text('حي على الصلاة'),
+                                  child: Text('ط­ظٹ ط¹ظ„ظ‰ ط§ظ„طµظ„ط§ط©'),
                                 ),
                                 DropdownMenuItem(
                                   value: 'prayfajr',
-                                  child: Text('الصلاة خير من النوم'),
+                                  child: Text('ط§ظ„طµظ„ط§ط© ط®ظٹط± ظ…ظ† ط§ظ„ظ†ظˆظ…'),
                                 ),
                               ],
                               onChanged: (val) async {
@@ -1681,15 +1681,15 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                         ],
                       ),
 
-                      // ========== الإقامة ==========
+                      // ========== ط§ظ„ط¥ظ‚ط§ظ…ط© ==========
                       const SizedBox(height: 18),
-                      _settingsSectionTitle('الإقامة', textColor),
+                      _settingsSectionTitle('ط§ظ„ط¥ظ‚ط§ظ…ط©', textColor),
                       const SizedBox(height: 8),
 
                       Align(
                         alignment: Alignment.centerRight,
                         child: Text(
-                          'وقت الإقامة بعد الأذان',
+                          'ظˆظ‚طھ ط§ظ„ط¥ظ‚ط§ظ…ط© ط¨ط¹ط¯ ط§ظ„ط£ط°ط§ظ†',
                           style: GoogleFonts.cairo(
                             color: textColor,
                             fontWeight: FontWeight.bold,
@@ -1703,27 +1703,27 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: isDark
-                              ? Colors.white.withOpacity(0.04)
+                              ? Colors.white.withValues(alpha: 0.04)
                               : Colors.grey.shade50,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(14),
                             borderSide:
-                            BorderSide(color: _gold.withOpacity(0.15)),
+                            BorderSide(color: _gold.withValues(alpha: 0.15)),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(14),
                             borderSide:
-                            BorderSide(color: _gold.withOpacity(0.15)),
+                            BorderSide(color: _gold.withValues(alpha: 0.15)),
                           ),
                         ),
                         items: const [
-                          DropdownMenuItem(value: 0, child: Text('إيقاف الإقامة')),
-                          DropdownMenuItem(value: 5, child: Text('5 دقائق بعد الأذان')),
-                          DropdownMenuItem(value: 10, child: Text('10 دقائق بعد الأذان')),
-                          DropdownMenuItem(value: 15, child: Text('15 دقيقة بعد الأذان')),
-                          DropdownMenuItem(value: 20, child: Text('20 دقيقة بعد الأذان')),
-                          DropdownMenuItem(value: 25, child: Text('25 دقيقة بعد الأذان')),
-                          DropdownMenuItem(value: 30, child: Text('30 دقيقة بعد الأذان')),
+                          DropdownMenuItem(value: 0, child: Text('ط¥ظٹظ‚ط§ظپ ط§ظ„ط¥ظ‚ط§ظ…ط©')),
+                          DropdownMenuItem(value: 5, child: Text('5 ط¯ظ‚ط§ط¦ظ‚ ط¨ط¹ط¯ ط§ظ„ط£ط°ط§ظ†')),
+                          DropdownMenuItem(value: 10, child: Text('10 ط¯ظ‚ط§ط¦ظ‚ ط¨ط¹ط¯ ط§ظ„ط£ط°ط§ظ†')),
+                          DropdownMenuItem(value: 15, child: Text('15 ط¯ظ‚ظٹظ‚ط© ط¨ط¹ط¯ ط§ظ„ط£ط°ط§ظ†')),
+                          DropdownMenuItem(value: 20, child: Text('20 ط¯ظ‚ظٹظ‚ط© ط¨ط¹ط¯ ط§ظ„ط£ط°ط§ظ†')),
+                          DropdownMenuItem(value: 25, child: Text('25 ط¯ظ‚ظٹظ‚ط© ط¨ط¹ط¯ ط§ظ„ط£ط°ط§ظ†')),
+                          DropdownMenuItem(value: 30, child: Text('30 ط¯ظ‚ظٹظ‚ط© ط¨ط¹ط¯ ط§ظ„ط£ط°ط§ظ†')),
                         ],
                         onChanged: (val) async {
                           if (val != null) {
@@ -1745,7 +1745,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                         Align(
                           alignment: Alignment.centerRight,
                           child: Text(
-                            'صوت الإقامة',
+                            'طµظˆطھ ط§ظ„ط¥ظ‚ط§ظ…ط©',
                             style: GoogleFonts.cairo(
                               color: textColor,
                               fontWeight: FontWeight.bold,
@@ -1761,17 +1761,17 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: isDark
-                                ? Colors.white.withOpacity(0.04)
+                                ? Colors.white.withValues(alpha: 0.04)
                                 : Colors.grey.shade50,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(14),
                               borderSide:
-                              BorderSide(color: _gold.withOpacity(0.15)),
+                              BorderSide(color: _gold.withValues(alpha: 0.15)),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(14),
                               borderSide:
-                              BorderSide(color: _gold.withOpacity(0.15)),
+                              BorderSide(color: _gold.withValues(alpha: 0.15)),
                             ),
                           ),
                           items: iqamaCatalog
@@ -1799,7 +1799,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                             child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
                                 side: BorderSide(
-                                  color: Colors.red.withOpacity(0.35),
+                                  color: Colors.red.withValues(alpha: 0.35),
                                 ),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(14),
@@ -1820,7 +1820,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                 setState(() {});
                               },
                               child: Text(
-                                'إعادة الافتراضي',
+                                'ط¥ط¹ط§ط¯ط© ط§ظ„ط§ظپطھط±ط§ط¶ظٹ',
                                 style: GoogleFonts.cairo(
                                   color: Colors.red,
                                   fontWeight: FontWeight.bold,
@@ -1852,7 +1852,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                        'تم حفظ تخصيص صلاة ${row.name}',
+                                        'طھظ… ط­ظپط¸ طھط®طµظٹطµ طµظ„ط§ط© ${row.name}',
                                         style: GoogleFonts.cairo(),
                                       ),
                                       backgroundColor: Colors.green,
@@ -1863,7 +1863,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                 setState(() {});
                               },
                               child: Text(
-                                'حفظ',
+                                'ط­ظپط¸',
                                 style: GoogleFonts.cairo(
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -1955,14 +1955,14 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                 backgroundColor: _bgCard,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
-                  side: BorderSide(color: _gold.withOpacity(0.3), width: 1),
+                  side: BorderSide(color: _gold.withValues(alpha: 0.3), width: 1),
                 ),
                 title: Row(
                   children: [
                     Icon(Icons.warning_amber_rounded, color: _gold),
                     const SizedBox(width: 10),
                     Text(
-                      'صلاحيات ناقصة',
+                      'طµظ„ط§ط­ظٹط§طھ ظ†ط§ظ‚طµط©',
                       style: GoogleFonts.cairo(
                         color: Colors.white,
                         fontSize: 18,
@@ -1977,7 +1977,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'لضمان عمل الأذان، يرجى تفعيل الآتي في الإعدادات:',
+                        'ظ„ط¶ظ…ط§ظ† ط¹ظ…ظ„ ط§ظ„ط£ط°ط§ظ†طŒ ظٹط±ط¬ظ‰ طھظپط¹ظٹظ„ ط§ظ„ط¢طھظٹ ظپظٹ ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ:',
                         style: GoogleFonts.cairo(
                           color: Colors.white70,
                           fontSize: 13,
@@ -1986,14 +1986,14 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                       ),
                       const SizedBox(height: 12),
                       if (!ignoresBattery)
-                        _buildInstructionRow('1', 'استثناء البطارية (مستحسن)'),
+                        _buildInstructionRow('1', 'ط§ط³طھط«ظ†ط§ط، ط§ظ„ط¨ط·ط§ط±ظٹط© (ظ…ط³طھط­ط³ظ†)'),
                       if (!hasExactAlarm)
-                        _buildInstructionRow('2', 'المنبهات والتذكيرات'),
+                        _buildInstructionRow('2', 'ط§ظ„ظ…ظ†ط¨ظ‡ط§طھ ظˆط§ظ„طھط°ظƒظٹط±ط§طھ'),
                       if (!hasNotification)
-                        _buildInstructionRow('3', 'السماح بالإشعارات'),
+                        _buildInstructionRow('3', 'ط§ظ„ط³ظ…ط§ط­ ط¨ط§ظ„ط¥ط´ط¹ط§ط±ط§طھ'),
                       const SizedBox(height: 10),
                       Text(
-                        'ملاحظة: لشاومي وأوبو يُفضل تفعيل (التشغيل التلقائي) و(الظهور على شاشة القفل).',
+                        'ظ…ظ„ط§ط­ط¸ط©: ظ„ط´ط§ظˆظ…ظٹ ظˆط£ظˆط¨ظˆ ظٹظڈظپط¶ظ„ طھظپط¹ظٹظ„ (ط§ظ„طھط´ط؛ظٹظ„ ط§ظ„طھظ„ظ‚ط§ط¦ظٹ) ظˆ(ط§ظ„ط¸ظ‡ظˆط± ط¹ظ„ظ‰ ط´ط§ط´ط© ط§ظ„ظ‚ظپظ„).',
                         style: GoogleFonts.cairo(
                           color: Colors.orange,
                           fontSize: 11,
@@ -2010,7 +2010,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                       await prefs.setBool('adhan_enabled', false);
                     },
                     child: Text(
-                      'إلغاء',
+                      'ط¥ظ„ط؛ط§ط،',
                       style: GoogleFonts.cairo(color: Colors.grey),
                     ),
                   ),
@@ -2032,7 +2032,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                       await openAppSettings();
                     },
                     child: Text(
-                      'الذهاب للإعدادات',
+                      'ط§ظ„ط°ظ‡ط§ط¨ ظ„ظ„ط¥ط¹ط¯ط§ط¯ط§طھ',
                       style: GoogleFonts.cairo(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -2063,7 +2063,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
         await NativeAdhanBridge.cancelIqama(id + 2000);
       }
 
-      _showErrorSnackBar('تم إيقاف الأذان التلقائي', isOrange: true);
+      _showErrorSnackBar('طھظ… ط¥ظٹظ‚ط§ظپ ط§ظ„ط£ط°ط§ظ† ط§ظ„طھظ„ظ‚ط§ط¦ظٹ', isOrange: true);
     }
   }
 
@@ -2072,7 +2072,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            '✅ تم تفعيل وجدولة الأذان بنجاح',
+            'âœ… طھظ… طھظپط¹ظٹظ„ ظˆط¬ط¯ظˆظ„ط© ط§ظ„ط£ط°ط§ظ† ط¨ظ†ط¬ط§ط­',
             style: GoogleFonts.cairo(),
           ),
           backgroundColor: Colors.green,
@@ -2102,7 +2102,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
       'Isha': 104,
     };
 
-    // إلغاء كل شيء أولاً
+    // ط¥ظ„ط؛ط§ط، ظƒظ„ ط´ظٹط، ط£ظˆظ„ط§ظ‹
     for (final id in ids.values) {
       await NativeAdhanBridge.cancelAdhan(id);
       await NativeAdhanBridge.cancelReminder(id + 1000);
@@ -2136,7 +2136,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
       final adhanSound =
           m.localSoundName.isNotEmpty ? m.localSoundName : 'makkah';
 
-      // ✅ 1. جدولة الأذان
+      // âœ… 1. ط¬ط¯ظˆظ„ط© ط§ظ„ط£ط°ط§ظ†
       debugPrint('>> Adhan: ${row.name} at $prayerTime');
       await NativeAdhanBridge.scheduleAdhan(
         time: prayerTime,
@@ -2146,7 +2146,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
         localPath: local,
       );
 
-      // ✅ 2. جدولة التنبيه القبلي
+      // âœ… 2. ط¬ط¯ظˆظ„ط© ط§ظ„طھظ†ط¨ظٹظ‡ ط§ظ„ظ‚ط¨ظ„ظٹ
       if (config.reminderEnabled && config.reminderOffset > 0) {
         final reminderTime = prayerTime.subtract(
           Duration(minutes: config.reminderOffset),
@@ -2174,7 +2174,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
         }
       }
 
-      // ✅ 3. جدولة الإقامة
+      // âœ… 3. ط¬ط¯ظˆظ„ط© ط§ظ„ط¥ظ‚ط§ظ…ط©
       if (config.iqamaEnabled && config.iqamaDelay > 0) {
         final iqamaTime = prayerTime.add(Duration(minutes: config.iqamaDelay));
 
@@ -2211,7 +2211,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
     if (row.noAdhan == true) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('الشروق ليس له أذان', style: GoogleFonts.cairo()),
+          content: Text('ط§ظ„ط´ط±ظˆظ‚ ظ„ظٹط³ ظ„ظ‡ ط£ط°ط§ظ†', style: GoogleFonts.cairo()),
           backgroundColor: Colors.orange,
         ),
       );
@@ -2249,11 +2249,11 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
 
     final listCardGradient =
         isDark
-            ? [Colors.white.withOpacity(0.05), Colors.white.withOpacity(0.02)]
+            ? [Colors.white.withValues(alpha: 0.05), Colors.white.withValues(alpha: 0.02)]
             : [Colors.white, Colors.white];
 
     final listCardBorder =
-        isDark ? Colors.white.withOpacity(0.1) : gold.withOpacity(0.2);
+        isDark ? Colors.white.withValues(alpha: 0.1) : gold.withValues(alpha: 0.2);
 
     if (_loading) {
       return Scaffold(
@@ -2276,7 +2276,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
         title: Text(
           context.watch<PrayerTimesController>().cityName.isNotEmpty
               ? context.watch<PrayerTimesController>().cityName
-              : 'مواقيت الصلاة',
+              : 'ظ…ظˆط§ظ‚ظٹطھ ط§ظ„طµظ„ط§ط©',
           style: GoogleFonts.cairo(
             fontWeight: FontWeight.w700,
             fontSize: 20,
@@ -2286,7 +2286,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
         actions: [
           IconButton(
             icon: Icon(Icons.my_location, color: gold),
-            tooltip: 'تحديث الموقع',
+            tooltip: 'طھط­ط¯ظٹط« ط§ظ„ظ…ظˆظ‚ط¹',
             onPressed: () async {
               await context
                   .read<PrayerTimesController>()
@@ -2318,8 +2318,8 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
             decoration: BoxDecoration(
               color:
                   isDark
-                      ? Colors.white.withOpacity(0.1)
-                      : gold.withOpacity(0.1),
+                      ? Colors.white.withValues(alpha: 0.1)
+                      : gold.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(12),
             ),
             child: IconButton(
@@ -2332,7 +2332,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
           margin: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             color:
-                isDark ? Colors.white.withOpacity(0.1) : gold.withOpacity(0.1),
+                isDark ? Colors.white.withValues(alpha: 0.1) : gold.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(12),
           ),
           child: IconButton(
@@ -2353,16 +2353,16 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [gold.withOpacity(0.2), gold.withOpacity(0.05)],
+                  colors: [gold.withValues(alpha: 0.2), gold.withValues(alpha: 0.05)],
                 ),
                 borderRadius: BorderRadius.circular(24),
-                border: Border.all(color: gold.withOpacity(0.3)),
+                border: Border.all(color: gold.withValues(alpha: 0.3)),
                 boxShadow: [
                   BoxShadow(
                     color:
                         isDark
-                            ? Colors.black.withOpacity(0.3)
-                            : Colors.grey.withOpacity(0.1),
+                            ? Colors.black.withValues(alpha: 0.3)
+                            : Colors.grey.withValues(alpha: 0.1),
                     blurRadius: 20,
                     offset: const Offset(0, 10),
                   ),
@@ -2382,14 +2382,14 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                 vertical: 6,
                               ),
                               decoration: BoxDecoration(
-                                color: gold.withOpacity(0.2),
+                                color: gold.withValues(alpha: 0.2),
                                 borderRadius: BorderRadius.circular(20),
                                 border: Border.all(
-                                  color: gold.withOpacity(0.4),
+                                  color: gold.withValues(alpha: 0.4),
                                 ),
                               ),
                               child: Text(
-                                'الصلاة القادمة',
+                                'ط§ظ„طµظ„ط§ط© ط§ظ„ظ‚ط§ط¯ظ…ط©',
                                 style: GoogleFonts.cairo(
                                   color: textColor,
                                   fontSize: 13,
@@ -2418,10 +2418,10 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                             const SizedBox(height: 6),
                             if (nextM != null)
                               Text(
-                                'المؤذن: ${nextM.name}',
+                                'ط§ظ„ظ…ط¤ط°ظ†: ${nextM.name}',
                                 style: GoogleFonts.cairo(
                                   fontSize: 13,
-                                  color: gold.withOpacity(0.9),
+                                  color: gold.withValues(alpha: 0.9),
                                 ),
                               ),
                           ],
@@ -2447,7 +2447,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                               ),
                             ),
                             Text(
-                              'متبقي',
+                              'ظ…طھط¨ظ‚ظٹ',
                               style: GoogleFonts.cairo(
                                 fontSize: 10,
                                 color: gold,
@@ -2465,18 +2465,18 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                         child: ElevatedButton.icon(
                           onPressed: _playNextAdhanPreview,
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: gold.withOpacity(0.2),
+                            backgroundColor: gold.withValues(alpha: 0.2),
                             foregroundColor: gold,
                             elevation: 0,
                             padding: const EdgeInsets.symmetric(vertical: 12),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
-                              side: BorderSide(color: gold.withOpacity(0.3)),
+                              side: BorderSide(color: gold.withValues(alpha: 0.3)),
                             ),
                           ),
                           icon: const Icon(Icons.play_arrow),
                           label: Text(
-                            'استمع للأذان',
+                            'ط§ط³طھظ…ط¹ ظ„ظ„ط£ط°ط§ظ†',
                             style: GoogleFonts.cairo(
                               fontWeight: FontWeight.bold,
                             ),
@@ -2503,7 +2503,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                 ),
                 const SizedBox(width: 12),
                 Text(
-                  'جدول المواقيت',
+                  'ط¬ط¯ظˆظ„ ط§ظ„ظ…ظˆط§ظ‚ظٹطھ',
                   style: GoogleFonts.cairo(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -2518,12 +2518,12 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                       vertical: 6,
                     ),
                     decoration: BoxDecoration(
-                      color: gold.withOpacity(0.15),
+                      color: gold.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: gold.withOpacity(0.35)),
+                      border: Border.all(color: gold.withValues(alpha: 0.35)),
                     ),
                     child: Text(
-                      'التالية: ${nextRow.name}',
+                      'ط§ظ„طھط§ظ„ظٹط©: ${nextRow.name}',
                       style: GoogleFonts.cairo(
                         color: gold,
                         fontSize: 12,
@@ -2551,9 +2551,9 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                     gradient: LinearGradient(
                       colors:
                           isCurrent
-                              ? [gold.withOpacity(0.15), gold.withOpacity(0.05)]
+                              ? [gold.withValues(alpha: 0.15), gold.withValues(alpha: 0.05)]
                               : isNext
-                              ? [gold.withOpacity(0.10), gold.withOpacity(0.03)]
+                              ? [gold.withValues(alpha: 0.10), gold.withValues(alpha: 0.03)]
                               : listCardGradient,
                     ),
                     color: _getPrayerCardAccentColor(
@@ -2564,11 +2564,11 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                     border: Border.all(
                       color:
                           isCurrent
-                              ? gold.withOpacity(0.9)
+                              ? gold.withValues(alpha: 0.9)
                               : !isDefaultMuezzin
-                              ? gold.withOpacity(0.45)
+                              ? gold.withValues(alpha: 0.45)
                               : isNext
-                              ? gold.withOpacity(0.55)
+                              ? gold.withValues(alpha: 0.55)
                               : listCardBorder,
                       width: isCurrent ? 2.0 : (!isDefaultMuezzin ? 1.4 : 1.0),
                     ),
@@ -2576,7 +2576,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                         isNext
                             ? [
                               BoxShadow(
-                                color: gold.withOpacity(0.25),
+                                color: gold.withValues(alpha: 0.25),
                                 blurRadius: 16,
                                 offset: const Offset(0, 8),
                               ),
@@ -2585,8 +2585,8 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                               BoxShadow(
                                 color:
                                     isDark
-                                        ? Colors.black.withOpacity(0.2)
-                                        : Colors.grey.withOpacity(0.05),
+                                        ? Colors.black.withValues(alpha: 0.2)
+                                        : Colors.grey.withValues(alpha: 0.05),
                                 blurRadius: 5,
                                 offset: const Offset(0, 2),
                               ),
@@ -2604,15 +2604,15 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                             decoration: BoxDecoration(
                               color:
                                   isPast
-                                      ? Colors.grey.withOpacity(0.2)
-                                      : gold.withOpacity(
+                                      ? Colors.grey.withValues(alpha: 0.2)
+                                      : gold.withValues(alpha: 
                                         isCurrent || isNext ? 0.25 : 0.10,
                                       ),
                               borderRadius: BorderRadius.circular(15),
                               border:
                                   (isCurrent || isNext)
                                       ? Border.all(
-                                        color: gold.withOpacity(0.8),
+                                        color: gold.withValues(alpha: 0.8),
                                         width: 1.5,
                                       )
                                       : null,
@@ -2642,7 +2642,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         shape: BoxShape.circle,
                                         boxShadow: [
                                           BoxShadow(
-                                            color: gold.withOpacity(0.8),
+                                            color: gold.withValues(alpha: 0.8),
                                             blurRadius: 6,
                                             spreadRadius: 1,
                                           ),
@@ -2669,7 +2669,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         fontSize: 22,
                                         color:
                                             isPast
-                                                ? subTextColor.withOpacity(0.5)
+                                                ? subTextColor.withValues(alpha: 0.5)
                                                 : textColor,
                                         fontWeight:
                                             isCurrent
@@ -2679,30 +2679,30 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                     ),
                                     if (isCurrent)
                                       _badge(
-                                        'الآن',
+                                        'ط§ظ„ط¢ظ†',
                                         bg: gold,
                                         fg: Colors.black,
                                       ),
                                     if (isNext && !isCurrent)
                                       _badge(
-                                        'التالية',
-                                        bg: gold.withOpacity(0.2),
+                                        'ط§ظ„طھط§ظ„ظٹط©',
+                                        bg: gold.withValues(alpha: 0.2),
                                         fg: gold,
-                                        border: gold.withOpacity(0.5),
+                                        border: gold.withValues(alpha: 0.5),
                                       ),
                                   ],
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
                                   row.noAdhan == true
-                                      ? 'هذه الصلاة لا تحتوي على أذان'
-                                      : 'اضغط لتخصيص الصلاة',
+                                      ? 'ظ‡ط°ظ‡ ط§ظ„طµظ„ط§ط© ظ„ط§ طھط­طھظˆظٹ ط¹ظ„ظ‰ ط£ط°ط§ظ†'
+                                      : 'ط§ط¶ط؛ط· ظ„طھط®طµظٹطµ ط§ظ„طµظ„ط§ط©',
                                   style: GoogleFonts.cairo(
                                     fontSize: 11.5,
                                     color:
                                         row.noAdhan == true
                                             ? Colors.orange
-                                            : subTextColor.withOpacity(0.75),
+                                            : subTextColor.withValues(alpha: 0.75),
                                   ),
                                 ),
                               ],
@@ -2720,7 +2720,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                     fontSize: 18,
                                     color:
                                         isPast
-                                            ? subTextColor.withOpacity(0.4)
+                                            ? subTextColor.withValues(alpha: 0.4)
                                             : (isCurrent || isNext
                                                 ? gold
                                                 : textColor),
@@ -2730,10 +2730,10 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                               ),
                               if (row.noAdhan == true)
                                 Text(
-                                  'بدون أذان',
+                                  'ط¨ط¯ظˆظ† ط£ط°ط§ظ†',
                                   style: GoogleFonts.cairo(
                                     fontSize: 11,
-                                    color: subTextColor.withOpacity(0.5),
+                                    color: subTextColor.withValues(alpha: 0.5),
                                   ),
                                 ),
                             ],
@@ -2750,14 +2750,14 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                         decoration: BoxDecoration(
                           color:
                               isDark
-                                  ? Colors.white.withOpacity(0.05)
-                                  : Colors.black.withOpacity(0.03),
+                                  ? Colors.white.withValues(alpha: 0.05)
+                                  : Colors.black.withValues(alpha: 0.03),
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(
                             color:
                                 isDark
-                                    ? Colors.white.withOpacity(0.06)
-                                    : Colors.black.withOpacity(0.05),
+                                    ? Colors.white.withValues(alpha: 0.06)
+                                    : Colors.black.withValues(alpha: 0.05),
                           ),
                         ),
                         child: Row(
@@ -2771,15 +2771,15 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                             Expanded(
                               child: Text(
                                 row.noAdhan == true
-                                    ? 'لا يمكن تخصيص الشروق'
-                                    : 'المؤذن الحالي: ${m.name}',
+                                    ? 'ظ„ط§ ظٹظ…ظƒظ† طھط®طµظٹطµ ط§ظ„ط´ط±ظˆظ‚'
+                                    : 'ط§ظ„ظ…ط¤ط°ظ† ط§ظ„ط­ط§ظ„ظٹ: ${m.name}',
                                 overflow: TextOverflow.ellipsis,
                                 style: GoogleFonts.cairo(
                                   fontSize: 13,
                                   color:
                                       row.noAdhan == true
-                                          ? subTextColor.withOpacity(0.6)
-                                          : _gold.withOpacity(0.95),
+                                          ? subTextColor.withValues(alpha: 0.6)
+                                          : _gold.withValues(alpha: 0.95),
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -2791,11 +2791,11 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                   vertical: 5,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: _gold.withOpacity(0.12),
+                                  color: _gold.withValues(alpha: 0.12),
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Text(
-                                  'تخصيص',
+                                  'طھط®طµظٹطµ',
                                   style: GoogleFonts.cairo(
                                     fontSize: 11,
                                     color: _gold,
@@ -2814,7 +2814,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                           children: [
                             _muezzinTypeBadge(isDefault: isDefaultMuezzin),
                             _statusMiniBadge(
-                              label: 'الأذان',
+                              label: 'ط§ظ„ط£ط°ط§ظ†',
                               color:
                                   config.adhanEnabled
                                       ? Colors.green
@@ -2824,8 +2824,8 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                             _statusMiniBadge(
                               label:
                                   config.reminderEnabled
-                                      ? 'تنبيه ${config.reminderOffset}د'
-                                      : 'التنبيه',
+                                      ? 'طھظ†ط¨ظٹظ‡ ${config.reminderOffset}ط¯'
+                                      : 'ط§ظ„طھظ†ط¨ظٹظ‡',
                               color:
                                   config.reminderEnabled
                                       ? Colors.blue
@@ -2834,8 +2834,8 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                             ),
                             _statusMiniBadge(
                               label: config.iqamaEnabled
-                                  ? 'إقامة ${config.iqamaDelay}د'
-                                  : 'الإقامة',
+                                  ? 'ط¥ظ‚ط§ظ…ط© ${config.iqamaDelay}ط¯'
+                                  : 'ط§ظ„ط¥ظ‚ط§ظ…ط©',
                               color: config.iqamaEnabled ? Colors.purple : Colors.grey,
                               active: config.iqamaEnabled,
                             ),
@@ -2863,7 +2863,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
           Container(
             padding: const EdgeInsets.all(4),
             decoration: BoxDecoration(
-              color: _gold.withOpacity(0.2),
+              color: _gold.withValues(alpha: 0.2),
               shape: BoxShape.circle,
             ),
             child: Text(
@@ -2916,12 +2916,12 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         decoration: BoxDecoration(
-          color: Colors.grey.withOpacity(0.12),
+          color: Colors.grey.withValues(alpha: 0.12),
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Colors.grey.withOpacity(0.25)),
+          border: Border.all(color: Colors.grey.withValues(alpha: 0.25)),
         ),
         child: Text(
-          'افتراضي',
+          'ط§ظپطھط±ط§ط¶ظٹ',
           style: GoogleFonts.cairo(
             fontSize: 10.5,
             fontWeight: FontWeight.bold,
@@ -2934,12 +2934,12 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        color: _gold.withOpacity(0.12),
+        color: _gold.withValues(alpha: 0.12),
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: _gold.withOpacity(0.30)),
+        border: Border.all(color: _gold.withValues(alpha: 0.30)),
       ),
       child: Text(
-        'مخصص',
+        'ظ…ط®طµطµ',
         style: GoogleFonts.cairo(
           fontSize: 10.5,
           fontWeight: FontWeight.bold,
@@ -2957,11 +2957,11 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        color: active ? color.withOpacity(0.12) : Colors.grey.withOpacity(0.10),
+        color: active ? color.withValues(alpha: 0.12) : Colors.grey.withValues(alpha: 0.10),
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           color:
-              active ? color.withOpacity(0.30) : Colors.grey.withOpacity(0.20),
+              active ? color.withValues(alpha: 0.30) : Colors.grey.withValues(alpha: 0.20),
         ),
       ),
       child: Text(
@@ -3017,11 +3017,11 @@ class _MuezzinPickerSheet extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final backgroundColor = isDark ? const Color(0xFF151B26) : Colors.white;
     final cardColor =
-        isDark ? Colors.white.withOpacity(0.05) : Colors.grey.shade50;
+        isDark ? Colors.white.withValues(alpha: 0.05) : Colors.grey.shade50;
     final borderColor =
         isDark
-            ? Colors.white.withOpacity(0.08)
-            : Colors.black.withOpacity(0.06);
+            ? Colors.white.withValues(alpha: 0.08)
+            : Colors.black.withValues(alpha: 0.06);
     final titleColor = isDark ? Colors.white : const Color(0xFF1A1A1A);
     final subColor = isDark ? Colors.white54 : Colors.black54;
 
@@ -3033,9 +3033,9 @@ class _MuezzinPickerSheet extends StatelessWidget {
         categoryName: '',
         m: MuezzinInfo(
           id: '__DEFAULT__',
-          name: 'استخدام المؤذن الافتراضي',
+          name: 'ط§ط³طھط®ط¯ط§ظ… ط§ظ„ظ…ط¤ط°ظ† ط§ظ„ط§ظپطھط±ط§ط¶ظٹ',
           url: '',
-          description: 'إلغاء التخصيص لهذه الصلاة',
+          description: 'ط¥ظ„ط؛ط§ط، ط§ظ„طھط®طµظٹطµ ظ„ظ‡ط°ظ‡ ط§ظ„طµظ„ط§ط©',
           imageUrl: '',
           localSoundName: 'makkah',
         ),
@@ -3054,10 +3054,10 @@ class _MuezzinPickerSheet extends StatelessWidget {
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: gold.withOpacity(0.22)),
+        border: Border.all(color: gold.withValues(alpha: 0.22)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(isDark ? 0.25 : 0.08),
+            color: Colors.black.withValues(alpha: isDark ? 0.25 : 0.08),
             blurRadius: 18,
             offset: const Offset(0, 8),
           ),
@@ -3072,7 +3072,7 @@ class _MuezzinPickerSheet extends StatelessWidget {
               width: 42,
               height: 4,
               decoration: BoxDecoration(
-                color: Colors.grey.withOpacity(0.35),
+                color: Colors.grey.withValues(alpha: 0.35),
                 borderRadius: BorderRadius.circular(4),
               ),
             ),
@@ -3094,7 +3094,7 @@ class _MuezzinPickerSheet extends StatelessWidget {
                   ),
                   const SizedBox(height: 6),
                   Text(
-                    'اختر مؤذنًا مختلفًا لهذه الصلاة',
+                    'ط§ط®طھط± ظ…ط¤ط°ظ†ظ‹ط§ ظ…ط®طھظ„ظپظ‹ط§ ظ„ظ‡ط°ظ‡ ط§ظ„طµظ„ط§ط©',
                     style: GoogleFonts.cairo(color: subColor, fontSize: 12),
                     textAlign: TextAlign.center,
                   ),
@@ -3102,7 +3102,7 @@ class _MuezzinPickerSheet extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 12),
-            Divider(color: Colors.grey.withOpacity(0.15), height: 1),
+            Divider(color: Colors.grey.withValues(alpha: 0.15), height: 1),
             Expanded(
               child: ListView.builder(
                 padding: const EdgeInsets.all(12),
@@ -3148,14 +3148,14 @@ class _MuezzinPickerSheet extends StatelessWidget {
                       color: cardColor,
                       borderRadius: BorderRadius.circular(18),
                       border: Border.all(
-                        color: isSel ? gold.withOpacity(0.6) : borderColor,
+                        color: isSel ? gold.withValues(alpha: 0.6) : borderColor,
                         width: isSel ? 1.8 : 1,
                       ),
                       boxShadow:
                           isSel
                               ? [
                                 BoxShadow(
-                                  color: gold.withOpacity(0.10),
+                                  color: gold.withValues(alpha: 0.10),
                                   blurRadius: 12,
                                   offset: const Offset(0, 4),
                                 ),
@@ -3171,9 +3171,9 @@ class _MuezzinPickerSheet extends StatelessWidget {
                         width: 46,
                         height: 46,
                         decoration: BoxDecoration(
-                          color: gold.withOpacity(0.12),
+                          color: gold.withValues(alpha: 0.12),
                           borderRadius: BorderRadius.circular(14),
-                          border: Border.all(color: gold.withOpacity(0.22)),
+                          border: Border.all(color: gold.withValues(alpha: 0.22)),
                         ),
                         child: Icon(
                           isDefaultOption
@@ -3193,7 +3193,7 @@ class _MuezzinPickerSheet extends StatelessWidget {
                       subtitle: Text(
                         isDefaultOption
                             ? m.description
-                            : '${it.categoryName} • ${m.description}',
+                            : '${it.categoryName} â€¢ ${m.description}',
                         style: GoogleFonts.cairo(color: subColor, fontSize: 12),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,

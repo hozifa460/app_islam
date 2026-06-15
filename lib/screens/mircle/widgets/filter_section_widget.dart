@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../color_control/miracle_theme.dart';
 import 'miracle_helpers.dart';
@@ -25,14 +25,14 @@ class FilterSectionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // ── Type filter (3 chips) ──
+        // â”€â”€ Type filter (3 chips) â”€â”€
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 0, 16, 10),
           child: Row(
             children: [
               Expanded(
                 child: _FilterChip(
-                  label:    'الكل',
+                  label:    'ط§ظ„ظƒظ„',
                   icon:     Icons.apps_rounded,
                   selected: selectedFilter == 'all',
                   color:    MiracleTheme.neonBlue,
@@ -43,7 +43,7 @@ class FilterSectionWidget extends StatelessWidget {
               const SizedBox(width: 8),
               Expanded(
                 child: _FilterChip(
-                  label:    'القرآن',
+                  label:    'ط§ظ„ظ‚ط±ط¢ظ†',
                   icon:     Icons.menu_book_rounded,
                   selected: selectedFilter == 'quran',
                   color:    const Color(0xFF4FC3F7),
@@ -54,7 +54,7 @@ class FilterSectionWidget extends StatelessWidget {
               const SizedBox(width: 8),
               Expanded(
                 child: _FilterChip(
-                  label:    'السنة',
+                  label:    'ط§ظ„ط³ظ†ط©',
                   icon:     Icons.auto_awesome_rounded,
                   selected: selectedFilter == 'sunnah',
                   color:    MiracleTheme.neonGold,
@@ -66,7 +66,7 @@ class FilterSectionWidget extends StatelessWidget {
           ),
         ),
 
-        // ── Category horizontal scroll ──
+        // â”€â”€ Category horizontal scroll â”€â”€
         SizedBox(
           height: 40,
           child: ListView.builder(
@@ -77,7 +77,7 @@ class FilterSectionWidget extends StatelessWidget {
             itemBuilder: (context, index) {
               if (index == 0) {
                 return _CategoryPill(
-                  label:    'الكل',
+                  label:    'ط§ظ„ظƒظ„',
                   selected: selectedCategory == 'all',
                   color:    MiracleTheme.neonBlue,
                   t:        t,
@@ -126,14 +126,14 @@ class _FilterChip extends StatelessWidget {
         duration: const Duration(milliseconds: 260),
         padding: const EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
-          color: selected ? color.withOpacity(0.15) : t.glass,
+          color: selected ? color.withValues(alpha: 0.15) : t.glass,
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
-            color: selected ? color.withOpacity(0.5) : t.glassBorder,
+            color: selected ? color.withValues(alpha: 0.5) : t.glassBorder,
             width: selected ? 1.5 : 1,
           ),
           boxShadow: selected
-              ? [BoxShadow(color: color.withOpacity(0.2), blurRadius: 10)]
+              ? [BoxShadow(color: color.withValues(alpha: 0.2), blurRadius: 10)]
               : [],
         ),
         child: Row(
@@ -186,13 +186,13 @@ class _CategoryPill extends StatelessWidget {
         margin: const EdgeInsets.only(left: 8),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
         decoration: BoxDecoration(
-          color: selected ? color.withOpacity(0.15) : t.glass,
+          color: selected ? color.withValues(alpha: 0.15) : t.glass,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: selected ? color.withOpacity(0.5) : t.glassBorder,
+            color: selected ? color.withValues(alpha: 0.5) : t.glassBorder,
           ),
           boxShadow: selected
-              ? [BoxShadow(color: color.withOpacity(0.15), blurRadius: 8)]
+              ? [BoxShadow(color: color.withValues(alpha: 0.15), blurRadius: 8)]
               : [],
         ),
         child: Text(

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../model/sunnah_model.dart';
 import '../services/sunnah_service.dart';
@@ -33,10 +33,10 @@ class SunnahDetailsSheet {
               borderRadius: const BorderRadius.vertical(
                   top: Radius.circular(SunnahTheme.detailSheetRadius)),
               border: Border.all(
-                  color: cardColor.withOpacity(0.2), width: 1),
+                  color: cardColor.withValues(alpha: 0.2), width: 1),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.3),
+                  color: Colors.black.withValues(alpha: 0.3),
                   blurRadius: 30,
                   offset: const Offset(0, -5),
                 ),
@@ -62,8 +62,8 @@ class SunnahDetailsSheet {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         _buildDetailCard(
-                          icon: '📝',
-                          title: 'الوصف',
+                          icon: 'ًں“‌',
+                          title: 'ط§ظ„ظˆطµظپ',
                           content: sunnah.description,
                           color: cardColor,
                           size: size,
@@ -71,8 +71,8 @@ class SunnahDetailsSheet {
                         ),
                         SizedBox(height: size.height * 0.014),
                         _buildDetailCard(
-                          icon: '📖',
-                          title: 'الدليل من السنة',
+                          icon: 'ًں“–',
+                          title: 'ط§ظ„ط¯ظ„ظٹظ„ ظ…ظ† ط§ظ„ط³ظ†ط©',
                           content: sunnah.hadith,
                           color: SunnahTheme.gold,
                           size: size,
@@ -84,8 +84,8 @@ class SunnahDetailsSheet {
                             Expanded(
                               child: _buildInfoTile(
                                 service.getCategoryLabel(sunnah.timeCategory),
-                                'وقت السنة',
-                                '🕐',
+                                'ظˆظ‚طھ ط§ظ„ط³ظ†ط©',
+                                'ًں•گ',
                                 cardColor,
                                 size,
                                 theme,
@@ -95,9 +95,9 @@ class SunnahDetailsSheet {
                             Expanded(
                               child: _buildInfoTile(
                                 sunnah.importance,
-                                'الأهمية',
-                                sunnah.importance == 'مؤكدة' ? '⭐' : '💫',
-                                sunnah.importance == 'مؤكدة'
+                                'ط§ظ„ط£ظ‡ظ…ظٹط©',
+                                sunnah.importance == 'ظ…ط¤ظƒط¯ط©' ? 'â­گ' : 'ًں’«',
+                                sunnah.importance == 'ظ…ط¤ظƒط¯ط©'
                                     ? SunnahTheme.gold
                                     : SunnahTheme.blue,
                                 size,
@@ -113,7 +113,7 @@ class SunnahDetailsSheet {
                         Center(
                           child: TextButton(
                             onPressed: () => Navigator.pop(context),
-                            child: Text('إغلاق',
+                            child: Text('ط¥ط؛ظ„ط§ظ‚',
                                 style: TextStyle(
                                   color: theme.textSecondary,
                                   fontSize: size.width * 0.035,
@@ -142,8 +142,8 @@ class SunnahDetailsSheet {
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
           colors: [
-            cardColor.withOpacity(theme.isDark ? 0.12 : 0.08),
-            cardColor.withOpacity(0.02),
+            cardColor.withValues(alpha: theme.isDark ? 0.12 : 0.08),
+            cardColor.withValues(alpha: 0.02),
           ],
         ),
       ),
@@ -155,14 +155,14 @@ class SunnahDetailsSheet {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(22),
               gradient: LinearGradient(colors: [
-                cardColor.withOpacity(0.25),
-                cardColor.withOpacity(0.08),
+                cardColor.withValues(alpha: 0.25),
+                cardColor.withValues(alpha: 0.08),
               ]),
               border: Border.all(
-                  color: cardColor.withOpacity(0.35), width: 1.5),
+                  color: cardColor.withValues(alpha: 0.35), width: 1.5),
               boxShadow: [
                 BoxShadow(
-                  color: cardColor.withOpacity(0.25),
+                  color: cardColor.withValues(alpha: 0.25),
                   blurRadius: 20,
                   spreadRadius: 2,
                 ),
@@ -191,7 +191,7 @@ class SunnahDetailsSheet {
               SunnahCard.buildImportanceBadge(sunnah.importance, size, theme),
               if (sunnah.rakaat > 0)
                 SunnahCard.buildMiniTag(
-                    '${sunnah.rakaat} ركعات', SunnahTheme.blue, size, theme),
+                    '${sunnah.rakaat} ط±ظƒط¹ط§طھ', SunnahTheme.blue, size, theme),
             ],
           ),
         ],
@@ -213,7 +213,7 @@ class SunnahDetailsSheet {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: theme.isDark ? SunnahTheme.darkBg : const Color(0xFFF9FAFB),
-        border: Border.all(color: color.withOpacity(0.2), width: 1),
+        border: Border.all(color: color.withValues(alpha: 0.2), width: 1),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -247,7 +247,7 @@ class SunnahDetailsSheet {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: theme.isDark ? SunnahTheme.darkBg : const Color(0xFFF9FAFB),
-        border: Border.all(color: color.withOpacity(0.2), width: 1),
+        border: Border.all(color: color.withValues(alpha: 0.2), width: 1),
       ),
       child: Column(children: [
         Text(icon, style: TextStyle(fontSize: size.width * 0.055)),
@@ -295,7 +295,7 @@ class SunnahDetailsSheet {
             boxShadow: [
               BoxShadow(
                 color: (sunnah.isCompleted ? Colors.grey : SunnahTheme.emerald)
-                    .withOpacity(0.35),
+                    .withValues(alpha: 0.35),
                 blurRadius: 14,
                 offset: const Offset(0, 4),
               ),
@@ -315,7 +315,7 @@ class SunnahDetailsSheet {
               ),
               SizedBox(width: size.width * 0.025),
               Text(
-                sunnah.isCompleted ? 'إلغاء الإكمال' : '✨ علّم كمكتمل',
+                sunnah.isCompleted ? 'ط¥ظ„ط؛ط§ط، ط§ظ„ط¥ظƒظ…ط§ظ„' : 'âœ¨ ط¹ظ„ظ‘ظ… ظƒظ…ظƒطھظ…ظ„',
                 style: TextStyle(
                   color: sunnah.isCompleted
                       ? (theme.isDark ? theme.textSecondary : Colors.black54)

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../languages/app_localizations.dart';
 import 'settings_theme.dart';
@@ -58,8 +58,8 @@ class SettingsHeader extends StatelessWidget {
             height: (w * 0.11).clamp(38.0, 50.0),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: theme.currentPrimary.withOpacity(0.12),
-              border: Border.all(color: theme.currentPrimary.withOpacity(0.3)),
+              color: theme.currentPrimary.withValues(alpha: 0.12),
+              border: Border.all(color: theme.currentPrimary.withValues(alpha: 0.3)),
             ),
             child: Icon(Icons.settings_rounded,
                 color: theme.currentPrimary,

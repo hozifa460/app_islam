@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'settings_theme.dart';
@@ -58,8 +58,8 @@ class SettingsSectionLabel extends StatelessWidget {
           height: (w * 0.07).clamp(24.0, 32.0),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: theme.currentPrimary.withOpacity(0.12),
-            border: Border.all(color: theme.currentPrimary.withOpacity(0.25)),
+            color: theme.currentPrimary.withValues(alpha: 0.12),
+            border: Border.all(color: theme.currentPrimary.withValues(alpha: 0.25)),
           ),
           child: Icon(icon,
               color: theme.currentPrimary,
@@ -74,7 +74,7 @@ class SettingsSectionLabel extends StatelessWidget {
             height: 1,
             decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
-                theme.currentPrimary.withOpacity(0.3),
+                theme.currentPrimary.withValues(alpha: 0.3),
                 Colors.transparent,
               ]),
             ),
@@ -133,8 +133,8 @@ class SettingsInfoRow extends StatelessWidget {
             height: iconBoxSize,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: color.withOpacity(0.12),
-              border: Border.all(color: color.withOpacity(0.25)),
+              color: color.withValues(alpha: 0.12),
+              border: Border.all(color: color.withValues(alpha: 0.25)),
             ),
             child: Icon(icon,
                 color: color, size: (w * 0.048).clamp(16.0, 22.0)),
@@ -156,7 +156,7 @@ class SettingsInfoRow extends StatelessWidget {
                 Text(sub,
                     style: GoogleFonts.cairo(
                       fontSize: (w * 0.028).clamp(10.0, 12.5),
-                      color: theme.textColor.withOpacity(0.5),
+                      color: theme.textColor.withValues(alpha: 0.5),
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis),
@@ -212,8 +212,8 @@ class SettingsActionRow extends StatelessWidget {
               height: iconBoxSize,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: color.withOpacity(0.12),
-                border: Border.all(color: color.withOpacity(0.25)),
+                color: color.withValues(alpha: 0.12),
+                border: Border.all(color: color.withValues(alpha: 0.25)),
               ),
               child: Icon(icon,
                   color: color, size: (w * 0.048).clamp(16.0, 22.0)),
@@ -235,7 +235,7 @@ class SettingsActionRow extends StatelessWidget {
                   Text(sub,
                       style: GoogleFonts.cairo(
                         fontSize: (w * 0.028).clamp(10.0, 12.5),
-                        color: theme.textColor.withOpacity(0.5),
+                        color: theme.textColor.withValues(alpha: 0.5),
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis),
@@ -245,7 +245,7 @@ class SettingsActionRow extends StatelessWidget {
             if (showArrow)
               Icon(Icons.arrow_forward_ios_rounded,
                   size: (w * 0.035).clamp(12.0, 16.0),
-                  color: theme.textColor.withOpacity(0.3)),
+                  color: theme.textColor.withValues(alpha: 0.3)),
           ],
         ),
       ),
@@ -278,12 +278,12 @@ class SettingsCustomSwitch extends StatelessWidget {
           color: value
               ? theme.currentPrimary
               : (theme.isDark
-              ? Colors.white.withOpacity(0.15)
-              : Colors.grey.withOpacity(0.25)),
+              ? Colors.white.withValues(alpha: 0.15)
+              : Colors.grey.withValues(alpha: 0.25)),
           boxShadow: value
               ? [
             BoxShadow(
-              color: theme.currentPrimary.withOpacity(0.35),
+              color: theme.currentPrimary.withValues(alpha: 0.35),
               blurRadius: 8,
               spreadRadius: 1,
             ),
@@ -303,7 +303,7 @@ class SettingsCustomSwitch extends StatelessWidget {
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.15),
+                  color: Colors.black.withValues(alpha: 0.15),
                   blurRadius: 4,
                   offset: const Offset(0, 1),
                 ),

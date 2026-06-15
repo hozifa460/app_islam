@@ -1,4 +1,4 @@
-// lib/screens/asma_allah/circle/asma_name_circle.dart
+﻿// lib/screens/asma_allah/circle/asma_name_circle.dart
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -53,7 +53,7 @@ class AsmaNameCircleWidget extends StatelessWidget {
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: borderColor.withOpacity(
+                      color: borderColor.withValues(alpha: 
                         0.2 + glowAnimation.value * 0.3,
                       ),
                       blurRadius: 8 + glowAnimation.value * 4,

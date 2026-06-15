@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../languages/app_localizations.dart';
 
-// ✅ زر دائري (+ / -) — بدون تغيير
+// âœ… ط²ط± ط¯ط§ط¦ط±ظٹ (+ / -) â€” ط¨ط¯ظˆظ† طھط؛ظٹظٹط±
 class KhatmaCircleButton extends StatelessWidget {
   final IconData icon;
   final Color primaryColor;
@@ -23,7 +23,7 @@ class KhatmaCircleButton extends StatelessWidget {
     final iconSize = screenWidth < 360 ? 24.0 : 28.0;
 
     return Material(
-      color: primaryColor.withOpacity(0.1),
+      color: primaryColor.withValues(alpha: 0.1),
       borderRadius: BorderRadius.circular(size / 2),
       child: InkWell(
         onTap: onTap,
@@ -39,7 +39,7 @@ class KhatmaCircleButton extends StatelessWidget {
   }
 }
 
-// ✅ صف ملخص الخطة — بدون تغيير
+// âœ… طµظپ ظ…ظ„ط®طµ ط§ظ„ط®ط·ط© â€” ط¨ط¯ظˆظ† طھط؛ظٹظٹط±
 class KhatmaSummaryRow extends StatelessWidget {
   final IconData icon;
   final String label;
@@ -63,7 +63,7 @@ class KhatmaSummaryRow extends StatelessWidget {
           children: [
             Icon(icon,
                 size: isSmall ? 16 : 18,
-                color: primaryColor.withOpacity(0.7)),
+                color: primaryColor.withValues(alpha: 0.7)),
             SizedBox(width: isSmall ? 8 : 10),
             Expanded(
               child: Text(label,
@@ -93,7 +93,7 @@ class KhatmaSummaryRow extends StatelessWidget {
   }
 }
 
-// ✅ بطاقة الصفحة (بداية / نهاية) — بدون تغيير
+// âœ… ط¨ط·ط§ظ‚ط© ط§ظ„طµظپط­ط© (ط¨ط¯ط§ظٹط© / ظ†ظ‡ط§ظٹط©) â€” ط¨ط¯ظˆظ† طھط؛ظٹظٹط±
 class KhatmaPageCard extends StatelessWidget {
   final String label;
   final int page;
@@ -122,7 +122,7 @@ class KhatmaPageCard extends StatelessWidget {
         return Container(
           padding: EdgeInsets.all(isSmall ? 10 : 14),
           decoration: BoxDecoration(
-            color: primaryColor.withOpacity(0.08),
+            color: primaryColor.withValues(alpha: 0.08),
             borderRadius: BorderRadius.circular(16),
           ),
           child: Column(
@@ -138,7 +138,7 @@ class KhatmaPageCard extends StatelessWidget {
               const SizedBox(height: 4),
               FittedBox(
                 fit: BoxFit.scaleDown,
-                child: Text('ص ${toArabicNum(page)}',
+                child: Text('طµ ${toArabicNum(page)}',
                     style: GoogleFonts.amiri(
                       fontSize: isSmall ? 18 : 22,
                       fontWeight: FontWeight.bold,
@@ -152,7 +152,7 @@ class KhatmaPageCard extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(
                     horizontal: 8, vertical: 3),
                 decoration: BoxDecoration(
-                  color: primaryColor.withOpacity(0.15),
+                  color: primaryColor.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: FittedBox(
@@ -175,7 +175,7 @@ class KhatmaPageCard extends StatelessWidget {
   }
 }
 
-// ✅ صف الإحصائيات — بدون تغيير
+// âœ… طµظپ ط§ظ„ط¥ط­طµط§ط¦ظٹط§طھ â€” ط¨ط¯ظˆظ† طھط؛ظٹظٹط±
 class KhatmaStatRow extends StatelessWidget {
   final IconData icon;
   final String label;
@@ -202,7 +202,7 @@ class KhatmaStatRow extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(isSmall ? 6 : 8),
               decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.1),
+                color: primaryColor.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Icon(icon,
@@ -242,9 +242,9 @@ class KhatmaStatRow extends StatelessWidget {
   }
 }
 
-// ══════════════════════════════════════════════════════════════
-// ✅ إحصائيات الداشبورد — هنا كان الخطأ!
-// ══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// âœ… ط¥ط­طµط§ط¦ظٹط§طھ ط§ظ„ط¯ط§ط´ط¨ظˆط±ط¯ â€” ظ‡ظ†ط§ ظƒط§ظ† ط§ظ„ط®ط·ط£!
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class KhatmaDashboardStats extends StatelessWidget {
   final int currentPage;
   final int remainingPages;
@@ -263,9 +263,9 @@ class KhatmaDashboardStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ══════════════════════════════════════
-    // ✅ الإصلاح: context.tr بدل context.read
-    // ══════════════════════════════════════
+    // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+    // âœ… ط§ظ„ط¥طµظ„ط§ط­: context.tr ط¨ط¯ظ„ context.read
+    // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
     final tr = context.tr;
     final statFontSize = isTight ? 16.0 : (isNarrow ? 18.0 : 22.0);
     final labelFontSize = isTight ? 9.0 : (isNarrow ? 10.0 : 12.0);
@@ -276,7 +276,7 @@ class KhatmaDashboardStats extends StatelessWidget {
         vertical: isTight ? 6 : 10,
       ),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.1),
+        color: Colors.white.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(16),
       ),
       child: IntrinsicHeight(

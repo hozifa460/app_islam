@@ -1,4 +1,4 @@
-import 'dart:math';
+﻿import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -86,8 +86,8 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
 
   Future<void> _loadNames() async {
     try {
-      final String currentLang = context.tr.locale.languageCode; // جلب كود اللغة
-      final data = await AsmaAllahService.getNamesSimple(currentLang); // تمريرها للـ Service
+      final String currentLang = context.tr.locale.languageCode; // ط¬ظ„ط¨ ظƒظˆط¯ ط§ظ„ظ„ط؛ط©
+      final data = await AsmaAllahService.getNamesSimple(currentLang); // طھظ…ط±ظٹط±ظ‡ط§ ظ„ظ„ظ€ Service
       if (mounted) {
         setState(() {
           _names = data;
@@ -129,7 +129,7 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
           ),
           child: Stack(
             children: [
-              // الحلقة التفاعلية
+              // ط§ظ„ط­ظ„ظ‚ط© ط§ظ„طھظپط§ط¹ظ„ظٹط©
               Positioned.fill(
                 child: SafeArea(
                   child: _buildInteractiveCircle(context, isDark),
@@ -147,7 +147,7 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
                 ),
               ),
 
-              // شريط التلميح
+              // ط´ط±ظٹط· ط§ظ„طھظ„ظ…ظٹط­
               Positioned(
                 top: 0,
                 left: 0,
@@ -167,7 +167,7 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
                 ),
               ),
 
-              // أزرار التحكم
+              // ط£ط²ط±ط§ط± ط§ظ„طھط­ظƒظ…
               Positioned(
                 bottom: 0,
                 left: 0,
@@ -189,9 +189,9 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   // AppBar
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildCustomAppBar(
       BuildContext context, bool isDark, AsmaTheme theme) {
     return LayoutBuilder(
@@ -217,8 +217,8 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
             boxShadow: [
               BoxShadow(
                 color: isDark
-                    ? AsmaTheme.gold.withOpacity(0.15)
-                    : AsmaTheme.gold.withOpacity(0.2),
+                    ? AsmaTheme.gold.withValues(alpha: 0.15)
+                    : AsmaTheme.gold.withValues(alpha: 0.2),
                 blurRadius: 15,
                 offset: const Offset(0, 4),
               ),
@@ -228,8 +228,8 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
             children: [
               Material(
                 color: isDark
-                    ? Colors.white.withOpacity(0.1)
-                    : AsmaTheme.gold.withOpacity(0.1),
+                    ? Colors.white.withValues(alpha: 0.1)
+                    : AsmaTheme.gold.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(12),
                 child: InkWell(
                   borderRadius: BorderRadius.circular(12),
@@ -252,7 +252,7 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
                     FittedBox(
                       fit: BoxFit.scaleDown,
                       child: Text(
-                        context.tr.asmaAllahTitle, // 👈 تمت الترجمة
+                        context.tr.asmaAllahTitle, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
                         style: GoogleFonts.cairo(
                           color: isDark
                               ? Colors.white
@@ -272,13 +272,13 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
                             width: isSmall ? 20 : 30,
                             height: 1.5,
                             color: AsmaTheme.gold
-                                .withOpacity(isDark ? 0.5 : 0.6),
+                                .withValues(alpha: isDark ? 0.5 : 0.6),
                           ),
                           Padding(
                             padding:
                             const EdgeInsets.symmetric(horizontal: 6),
                             child: Text(
-                              context.tr.ninetyNineNames, // 👈 تمت الترجمة
+                              context.tr.ninetyNineNames, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
                               style: GoogleFonts.cairo(
                                 color: AsmaTheme.gold,
                                 fontSize: isSmall ? 10 : 12,
@@ -290,7 +290,7 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
                             width: isSmall ? 20 : 30,
                             height: 1.5,
                             color: AsmaTheme.gold
-                                .withOpacity(isDark ? 0.5 : 0.6),
+                                .withValues(alpha: isDark ? 0.5 : 0.6),
                           ),
                         ],
                       ),
@@ -301,8 +301,8 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
               SizedBox(width: isSmall ? 6 : 12),
               Material(
                 color: isDark
-                    ? AsmaTheme.gold.withOpacity(0.15)
-                    : AsmaTheme.gold.withOpacity(0.12),
+                    ? AsmaTheme.gold.withValues(alpha: 0.15)
+                    : AsmaTheme.gold.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(12),
                 child: InkWell(
                   borderRadius: BorderRadius.circular(12),
@@ -328,7 +328,7 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
                         if (!isMedium) ...[
                           const SizedBox(width: 6),
                           Text(
-                            context.tr.showAllNames, // 👈 تمت الترجمة
+                            context.tr.showAllNames, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
                             style: GoogleFonts.cairo(
                               color: isDark
                                   ? Colors.white
@@ -350,9 +350,9 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // شريط التلميح
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط´ط±ظٹط· ط§ظ„طھظ„ظ…ظٹط­
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildHintBar(bool isDark) {
     return AnimatedBuilder(
       animation: _glowAnimation,
@@ -371,7 +371,7 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
                 gradient: LinearGradient(
                   colors: [
                     Colors.transparent,
-                    AsmaTheme.gold.withOpacity(
+                    AsmaTheme.gold.withValues(alpha: 
                         (isDark ? 0.05 : 0.08) * _glowAnimation.value),
                     Colors.transparent,
                   ],
@@ -386,17 +386,17 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
                     Icon(
                       Icons.touch_app_rounded,
                       color: AsmaTheme.gold
-                          .withOpacity(0.5 + 0.5 * _glowAnimation.value),
+                          .withValues(alpha: 0.5 + 0.5 * _glowAnimation.value),
                       size: isSmall ? 14 : 16,
                     ),
                     SizedBox(width: isSmall ? 4 : 8),
                     Text(
-                      context.tr.tapToSeeMeaning, // 👈 تمت الترجمة
+                      context.tr.tapToSeeMeaning, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
                       style: GoogleFonts.cairo(
                         color: isDark
-                            ? AsmaTheme.gold.withOpacity(
+                            ? AsmaTheme.gold.withValues(alpha: 
                             0.6 + 0.4 * _glowAnimation.value)
-                            : AsmaTheme.brownSub.withOpacity(
+                            : AsmaTheme.brownSub.withValues(alpha: 
                             0.6 + 0.3 * _glowAnimation.value),
                         fontSize: isSmall ? 11 : 13,
                         fontWeight: FontWeight.w600,
@@ -407,19 +407,19 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
                       Container(
                         width: 1,
                         height: isSmall ? 12 : 14,
-                        color: AsmaTheme.gold.withOpacity(0.3),
+                        color: AsmaTheme.gold.withValues(alpha: 0.3),
                       ),
                       SizedBox(width: isSmall ? 8 : 12),
                       Icon(Icons.pinch_rounded,
-                          color: AsmaTheme.gold.withOpacity(0.5),
+                          color: AsmaTheme.gold.withValues(alpha: 0.5),
                           size: isSmall ? 12 : 14),
                       const SizedBox(width: 4),
                       Text(
-                        context.tr.pinchToZoom, // 👈 تمت الترجمة
+                        context.tr.pinchToZoom, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
                         style: GoogleFonts.cairo(
                           color: isDark
-                              ? AsmaTheme.gold.withOpacity(0.4)
-                              : AsmaTheme.brownSub.withOpacity(0.4),
+                              ? AsmaTheme.gold.withValues(alpha: 0.4)
+                              : AsmaTheme.brownSub.withValues(alpha: 0.4),
                           fontSize: isSmall ? 9 : 11,
                         ),
                       ),
@@ -434,9 +434,9 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // الحلقة الدائرية
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ط­ظ„ظ‚ط© ط§ظ„ط¯ط§ط¦ط±ظٹط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildInteractiveCircle(BuildContext context, bool isDark) {
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -502,7 +502,7 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
                     return Stack(
                       clipBehavior: Clip.none,
                       children: [
-                        // النقوش
+                        // ط§ظ„ظ†ظ‚ظˆط´
                         Positioned(
                           left: -patternSize / 4,
                           top: -patternSize / 4,
@@ -511,14 +511,14 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
                             height: patternSize,
                             child: CustomPaint(
                               painter: AsmaIslamicPatternPainter(
-                                color: AsmaTheme.gold.withOpacity(0.03),
+                                color: AsmaTheme.gold.withValues(alpha: 0.03),
                                 sides: 6,
                               ),
                             ),
                           ),
                         ),
 
-                        // دوائر التوهج
+                        // ط¯ظˆط§ط¦ط± ط§ظ„طھظˆظ‡ط¬
                         AnimatedBuilder(
                           animation: _glowAnimation,
                           builder: (_, __) {
@@ -535,7 +535,7 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
                           },
                         ),
 
-                        // الحلقات الست
+                        // ط§ظ„ط­ظ„ظ‚ط§طھ ط§ظ„ط³طھ
                         for (int ringIndex = 0;
                         ringIndex < 6;
                         ringIndex++)
@@ -550,7 +550,7 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
                             isDark: isDark,
                           ),
 
-                        // المركز
+                        // ط§ظ„ظ…ط±ظƒط²
                         _buildCenterCircle(
                           centerX: centerX,
                           centerY: centerY,
@@ -569,9 +569,9 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // بناء حلقة واحدة
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط¨ظ†ط§ط، ط­ظ„ظ‚ط© ظˆط§ط­ط¯ط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   List<Widget> _buildNameRing({
     required BuildContext context,
     required List<Map<String, String>> ringNames,
@@ -588,7 +588,7 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
       const Color(0xFFCD853F),
       AsmaTheme.goldDark,
       AsmaTheme.gold,
-      AsmaTheme.gold.withOpacity(0.8),
+      AsmaTheme.gold.withValues(alpha: 0.8),
     ];
     final Color borderColor = borderColors[ringIndex % borderColors.length];
 
@@ -605,7 +605,7 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
         left: x,
         top: y,
         child: AsmaNameCircleWidget(
-          displayName: item['displayName'] ?? item['name']!,  // ✅ تغيير هنا
+          displayName: item['displayName'] ?? item['name']!,  // âœ… طھط؛ظٹظٹط± ظ‡ظ†ط§
           meaning: item['meaning']!,
           size: circleSize,
           borderColor: borderColor,
@@ -620,8 +620,8 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
                 reverseTransitionDuration: const Duration(milliseconds: 300),
                 pageBuilder: (_, animation, __) {
                   return AsmaAllahDetailScreen(
-                    fullName: item['name']!,                            // ✅ الكامل للـ AppBar
-                    displayName: item['displayName'] ?? item['name']!,  // ✅ القصير للدائرة
+                    fullName: item['name']!,                            // âœ… ط§ظ„ظƒط§ظ…ظ„ ظ„ظ„ظ€ AppBar
+                    displayName: item['displayName'] ?? item['name']!,  // âœ… ط§ظ„ظ‚طµظٹط± ظ„ظ„ط¯ط§ط¦ط±ط©
                     meaning: item['meaning']!,
                     primaryColor: widget.primaryColor,
                     order: globalIndex,
@@ -648,9 +648,9 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
     });
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // المركز
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ظ…ط±ظƒط²
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildCenterCircle({
     required double centerX,
     required double centerY,
@@ -685,7 +685,7 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: AsmaTheme.gold.withOpacity(
+                    color: AsmaTheme.gold.withValues(alpha: 
                       isDark
                           ? (0.2 + _glowAnimation.value * 0.4)
                           : (0.15 + _glowAnimation.value * 0.25),
@@ -695,7 +695,7 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
                   ),
                   BoxShadow(
                     color: AsmaTheme.gold
-                        .withOpacity(isDark ? 0.1 : 0.08),
+                        .withValues(alpha: isDark ? 0.1 : 0.08),
                     blurRadius: 50,
                     spreadRadius: 15,
                   ),
@@ -711,7 +711,7 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
                       shape: BoxShape.circle,
                       border: Border.all(
                         color: AsmaTheme.gold
-                            .withOpacity(isDark ? 0.3 : 0.25),
+                            .withValues(alpha: isDark ? 0.3 : 0.25),
                         width: 1.5,
                       ),
                     ),
@@ -721,7 +721,7 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
                     child: Padding(
                       padding: EdgeInsets.all(size * 0.15),
                       child: Text(
-                        context.tr.allahWord, // 👈 تمت الترجمة
+                        context.tr.allahWord, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
                         style: GoogleFonts.amiri(
                           fontSize: size * 0.35,
                           fontWeight: FontWeight.bold,
@@ -731,7 +731,7 @@ class _AsmaAllahScreenState extends State<AsmaAllahScreen>
                           shadows: [
                             Shadow(
                               color: AsmaTheme.gold
-                                  .withOpacity(isDark ? 0.5 : 0.3),
+                                  .withValues(alpha: isDark ? 0.5 : 0.3),
                               blurRadius: 15,
                             ),
                           ],

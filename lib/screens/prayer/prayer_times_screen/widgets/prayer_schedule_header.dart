@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../languages/app_localizations.dart';
@@ -46,9 +46,9 @@ class PrayerScheduleHeader extends StatelessWidget {
               vertical: 6,
             ),
             decoration: BoxDecoration(
-              color: gold.withOpacity(0.15),
+              color: gold.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: gold.withOpacity(0.35)),
+              border: Border.all(color: gold.withValues(alpha: 0.35)),
             ),
             child: Text(
               context.tr.upNextPrayer(nextPrayerName!),

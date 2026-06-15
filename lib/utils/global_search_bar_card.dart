@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islamic_app/screens/hadith/hadith_book_screen.dart';
 import 'package:islamic_app/screens/quran/surah_detail/surah_deatil.dart';
@@ -11,7 +11,7 @@ class GlobalSearchBarCard extends StatelessWidget {
   const GlobalSearchBarCard({
     super.key,
     required this.primaryColor,
-    this.hintText = 'ابحث في القرآن والسنة...',
+    this.hintText = 'ط§ط¨ط­ط« ظپظٹ ط§ظ„ظ‚ط±ط¢ظ† ظˆط§ظ„ط³ظ†ط©...',
   });
 
   @override
@@ -47,7 +47,7 @@ class GlobalSearchBarCard extends StatelessWidget {
               MaterialPageRoute(
                 builder: (_) => HadithBookScreen(
                   bookId: result['bookId'] ?? 'riyad',
-                  bookTitle: result['bookName'] ?? 'رياض الصالحين',
+                  bookTitle: result['bookName'] ?? 'ط±ظٹط§ط¶ ط§ظ„طµط§ظ„ط­ظٹظ†',
                   primaryColor: primaryColor,
                 ),
               ),
@@ -58,12 +58,12 @@ class GlobalSearchBarCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         decoration: BoxDecoration(
-          color: isDark ? Colors.white.withOpacity(0.06) : Colors.white,
+          color: isDark ? Colors.white.withValues(alpha: 0.06) : Colors.white,
           borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: primaryColor.withOpacity(0.14)),
+          border: Border.all(color: primaryColor.withValues(alpha: 0.14)),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(isDark ? 0.14 : 0.05),
+              color: Colors.black.withValues(alpha: isDark ? 0.14 : 0.05),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),

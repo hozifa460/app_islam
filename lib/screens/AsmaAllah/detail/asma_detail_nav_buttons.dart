@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../languages/app_localizations.dart';
 import '../widgets/asma_theme.dart';
@@ -28,7 +28,7 @@ class AsmaDetailNavButtons extends StatelessWidget {
       children: [
         Expanded(
             child: _buildBtn(
-                label: context.tr.btnPrevious, // 👈 تمت الترجمة
+                label: context.tr.btnPrevious, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
                 icon: Icons.arrow_back_ios_new_rounded,
                 isEnabled: hasPrevious,
                 isPrimary: false,
@@ -38,7 +38,7 @@ class AsmaDetailNavButtons extends StatelessWidget {
         SizedBox(width: isSmall ? 10 : 14),
         Expanded(
             child: _buildBtn(
-                label: context.tr.btnNext, // 👈 تمت الترجمة
+                label: context.tr.btnNext, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
                 icon: Icons.arrow_forward_ios_rounded,
                 isEnabled: hasNext,
                 isPrimary: true,
@@ -52,7 +52,7 @@ class AsmaDetailNavButtons extends StatelessWidget {
 
   Widget _buildBtn({required String label, required IconData icon, required bool isEnabled, required bool isPrimary, VoidCallback? onTap, bool iconAtEnd = false}) {
     final enabledBg = isPrimary ? AsmaTheme.gold : (isDark ? const Color(0xFF1A2438) : Colors.white);
-    final disabledBg = isDark ? Colors.grey.withOpacity(0.2) : Colors.grey.withOpacity(0.1);
+    final disabledBg = isDark ? Colors.grey.withValues(alpha: 0.2) : Colors.grey.withValues(alpha: 0.1);
     final enabledText = isPrimary ? Colors.white : (isDark ? Colors.white : AsmaTheme.goldDark);
     final disabledText = isDark ? Colors.white38 : Colors.grey;
 
@@ -67,10 +67,10 @@ class AsmaDetailNavButtons extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
-              color: isEnabled ? (isPrimary ? AsmaTheme.gold : AsmaTheme.gold.withOpacity(isDark ? 0.3 : 0.25)) : Colors.transparent,
+              color: isEnabled ? (isPrimary ? AsmaTheme.gold : AsmaTheme.gold.withValues(alpha: isDark ? 0.3 : 0.25)) : Colors.transparent,
               width: 1.5,
             ),
-            boxShadow: isEnabled && isPrimary ? [BoxShadow(color: AsmaTheme.gold.withOpacity(0.4), blurRadius: 12, offset: const Offset(0, 4))] : null,
+            boxShadow: isEnabled && isPrimary ? [BoxShadow(color: AsmaTheme.gold.withValues(alpha: 0.4), blurRadius: 12, offset: const Offset(0, 4))] : null,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,

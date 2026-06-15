@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DuolingoCard extends StatefulWidget {
@@ -54,10 +54,10 @@ class _DuolingoCardState extends State<DuolingoCard>
     Color iconColor;
 
     if (widget.completed) {
-      bgColor = Colors.green.withOpacity(0.15);
+      bgColor = Colors.green.withValues(alpha: 0.15);
       iconColor = Colors.green;
     } else {
-      bgColor = Colors.orange.withOpacity(0.1);
+      bgColor = Colors.orange.withValues(alpha: 0.1);
       iconColor = Colors.orange;
     }
 
@@ -75,7 +75,7 @@ class _DuolingoCardState extends State<DuolingoCard>
             color: bgColor,
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
-              color: iconColor.withOpacity(0.4),
+              color: iconColor.withValues(alpha: 0.4),
               width: 2,
             ),
           ),
@@ -85,7 +85,7 @@ class _DuolingoCardState extends State<DuolingoCard>
                 width: 50,
                 height: 50,
                 decoration: BoxDecoration(
-                  color: iconColor.withOpacity(0.2),
+                  color: iconColor.withValues(alpha: 0.2),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
@@ -112,7 +112,7 @@ class _DuolingoCardState extends State<DuolingoCard>
                       widget.subtitle,
                       style: GoogleFonts.cairo(
                         fontSize: 12,
-                        color: textColor.withOpacity(0.7),
+                        color: textColor.withValues(alpha: 0.7),
                       ),
                     ),
                   ],

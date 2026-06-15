@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 
 import '../../../languages/app_localizations.dart';
 
@@ -11,7 +11,7 @@ class ReferencesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final cardColor = isDarkMode ? const Color(0xFF151B26) : Colors.white;
     final textColor = isDarkMode ? Colors.white : const Color(0xFF2D2D2D);
-    final borderColor = isDarkMode ? Colors.white.withOpacity(0.08) : Colors.grey.withOpacity(0.15);
+    final borderColor = isDarkMode ? Colors.white.withValues(alpha: 0.08) : Colors.grey.withValues(alpha: 0.15);
     const greenColor = Color(0xFF1B5E20);
 
     return Container(
@@ -21,7 +21,7 @@ class ReferencesWidget extends StatelessWidget {
         border: Border.all(color: borderColor),
         boxShadow: [
           BoxShadow(
-            color: isDarkMode ? Colors.black.withOpacity(0.2) : Colors.black.withOpacity(0.05),
+            color: isDarkMode ? Colors.black.withValues(alpha: 0.2) : Colors.black.withValues(alpha: 0.05),
             blurRadius: 15,
             offset: const Offset(0, 5),
           ),
@@ -50,7 +50,7 @@ class ReferencesWidget extends StatelessWidget {
           context.tr.referencesSubtitle,
           style: TextStyle(
             fontSize: 11,
-            color: textColor.withOpacity(0.5),
+            color: textColor.withValues(alpha: 0.5),
           ),
         ),
         children: [
@@ -112,12 +112,12 @@ class ReferencesWidget extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            color.withOpacity(isDarkMode ? 0.12 : 0.06),
-            color.withOpacity(isDarkMode ? 0.06 : 0.02),
+            color.withValues(alpha: isDarkMode ? 0.12 : 0.06),
+            color.withValues(alpha: isDarkMode ? 0.06 : 0.02),
           ],
         ),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: color.withOpacity(0.15)),
+        border: Border.all(color: color.withValues(alpha: 0.15)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -127,7 +127,7 @@ class ReferencesWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: color.withOpacity(0.15),
+                  color: color.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Icon(icon, color: color, size: 18),

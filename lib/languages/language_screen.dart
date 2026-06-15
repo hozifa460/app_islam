@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../languages/app_localizations.dart';
 import '../../languages/locale_provider.dart';
@@ -6,29 +6,29 @@ import '../../languages/locale_provider.dart';
 class LanguageScreen extends StatelessWidget {
   const LanguageScreen({super.key});
 
-  // ═══ قائمة اللغات مع أسمائها الأصلية والأعلام ═══
+  // â•گâ•گâ•گ ظ‚ط§ط¦ظ…ط© ط§ظ„ظ„ط؛ط§طھ ظ…ط¹ ط£ط³ظ…ط§ط¦ظ‡ط§ ط§ظ„ط£طµظ„ظٹط© ظˆط§ظ„ط£ط¹ظ„ط§ظ… â•گâ•گâ•گ
   static const List<Map<String, String>> languages = [
-    {'code': 'ar', 'name': 'العربية', 'flag': '🇸🇦'},
-    {'code': 'en', 'name': 'English', 'flag': '🇺🇸'},
-    {'code': 'fr', 'name': 'Français', 'flag': '🇫🇷'},
-    {'code': 'de', 'name': 'Deutsch', 'flag': '🇩🇪'},
-    {'code': 'es', 'name': 'Español', 'flag': '🇪🇸'},
-    {'code': 'it', 'name': 'Italiano', 'flag': '🇮🇹'},
-    {'code': 'pt', 'name': 'Português', 'flag': '🇧🇷'},
-    {'code': 'nl', 'name': 'Nederlands', 'flag': '🇳🇱'},
-    {'code': 'ru', 'name': 'Русский', 'flag': '🇷🇺'},
-    {'code': 'tr', 'name': 'Türkçe', 'flag': '🇹🇷'},
-    {'code': 'ur', 'name': 'اردو', 'flag': '🇵🇰'},
-    {'code': 'id', 'name': 'Bahasa Indonesia', 'flag': '🇮🇩'},
-    {'code': 'ms', 'name': 'Bahasa Melayu', 'flag': '🇲🇾'},
-    {'code': 'hi', 'name': 'हिन्दी', 'flag': '🇮🇳'},
-    {'code': 'ja', 'name': '日本語', 'flag': '🇯🇵'},
-    {'code': 'zh', 'name': '中文', 'flag': '🇨🇳'},
-    {'code': 'uz', 'name': 'Oʻzbekcha', 'flag': '🇺🇿'},
-    {'code': 'sw', 'name': 'Kiswahili', 'flag': '🇹🇿'},
-    {'code': 'ha', 'name': 'Hausa', 'flag': '🇳🇬'},
-    {'code': 'am', 'name': 'አማርኛ', 'flag': '🇪🇹'},
-    {'code': 'so', 'name': 'Soomaali', 'flag': '🇸🇴'},
+    {'code': 'ar', 'name': 'ط§ظ„ط¹ط±ط¨ظٹط©', 'flag': 'ًں‡¸ًں‡¦'},
+    {'code': 'en', 'name': 'English', 'flag': 'ًں‡؛ًں‡¸'},
+    {'code': 'fr', 'name': 'Franأ§ais', 'flag': 'ًں‡«ًں‡·'},
+    {'code': 'de', 'name': 'Deutsch', 'flag': 'ًں‡©ًں‡ھ'},
+    {'code': 'es', 'name': 'Espaأ±ol', 'flag': 'ًں‡ھًں‡¸'},
+    {'code': 'it', 'name': 'Italiano', 'flag': 'ًں‡®ًں‡¹'},
+    {'code': 'pt', 'name': 'Portuguأھs', 'flag': 'ًں‡§ًں‡·'},
+    {'code': 'nl', 'name': 'Nederlands', 'flag': 'ًں‡³ًں‡±'},
+    {'code': 'ru', 'name': 'ذ رƒرپرپذ؛ذ¸ذ¹', 'flag': 'ًں‡·ًں‡؛'},
+    {'code': 'tr', 'name': 'Tأ¼rkأ§e', 'flag': 'ًں‡¹ًں‡·'},
+    {'code': 'ur', 'name': 'ط§ط±ط¯ظˆ', 'flag': 'ًں‡µًں‡°'},
+    {'code': 'id', 'name': 'Bahasa Indonesia', 'flag': 'ًں‡®ًں‡©'},
+    {'code': 'ms', 'name': 'Bahasa Melayu', 'flag': 'ًں‡²ًں‡¾'},
+    {'code': 'hi', 'name': 'à¤¹à¤؟à¤¨à¥چà¤¦à¥€', 'flag': 'ًں‡®ًں‡³'},
+    {'code': 'ja', 'name': 'و—¥وœ¬èھ‍', 'flag': 'ًں‡¯ًں‡µ'},
+    {'code': 'zh', 'name': 'ن¸­و–‡', 'flag': 'ًں‡¨ًں‡³'},
+    {'code': 'uz', 'name': 'Oت»zbekcha', 'flag': 'ًں‡؛ًں‡؟'},
+    {'code': 'sw', 'name': 'Kiswahili', 'flag': 'ًں‡¹ًں‡؟'},
+    {'code': 'ha', 'name': 'Hausa', 'flag': 'ًں‡³ًں‡¬'},
+    {'code': 'am', 'name': 'لٹ لˆ›لˆ­لٹ›', 'flag': 'ًں‡ھًں‡¹'},
+    {'code': 'so', 'name': 'Soomaali', 'flag': 'ًں‡¸ًں‡´'},
   ];
 
   @override
@@ -61,19 +61,19 @@ class LanguageScreen extends StatelessWidget {
             curve: Curves.easeInOut,
             decoration: BoxDecoration(
               color: isSelected
-                  ? colorScheme.primaryContainer.withOpacity(0.3)
+                  ? colorScheme.primaryContainer.withValues(alpha: 0.3)
                   : colorScheme.surface,
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
                 color: isSelected
                     ? colorScheme.primary
-                    : colorScheme.outline.withOpacity(0.15),
+                    : colorScheme.outline.withValues(alpha: 0.15),
                 width: isSelected ? 2 : 1,
               ),
               boxShadow: isSelected
                   ? [
                 BoxShadow(
-                  color: colorScheme.primary.withOpacity(0.15),
+                  color: colorScheme.primary.withValues(alpha: 0.15),
                   blurRadius: 8,
                   offset: const Offset(0, 2),
                 ),
@@ -102,7 +102,7 @@ class LanguageScreen extends StatelessWidget {
                 lang['code']!.toUpperCase(),
                 style: TextStyle(
                   fontSize: 12,
-                  color: colorScheme.onSurface.withOpacity(0.5),
+                  color: colorScheme.onSurface.withValues(alpha: 0.5),
                 ),
               ),
               trailing: isSelected
@@ -125,7 +125,7 @@ class LanguageScreen extends StatelessWidget {
               onTap: () {
                 localeProvider.setLocale(lang['code']!);
 
-                // رسالة تأكيد
+                // ط±ط³ط§ظ„ط© طھط£ظƒظٹط¯
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(

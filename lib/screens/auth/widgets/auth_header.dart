@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AuthHeader extends StatelessWidget {
@@ -29,14 +29,14 @@ class AuthHeader extends StatelessWidget {
             border: Border.all(color: _gold, width: 2.8),
             boxShadow: [
               BoxShadow(
-                color: _gold.withOpacity(isDark ? 0.35 : 0.2),
+                color: _gold.withValues(alpha: isDark ? 0.35 : 0.2),
                 blurRadius: 30,
                 spreadRadius: 4,
               ),
               BoxShadow(
                 color: isDark
-                    ? Colors.black.withOpacity(0.3)
-                    : _gold.withOpacity(0.1),
+                    ? Colors.black.withValues(alpha: 0.3)
+                    : _gold.withValues(alpha: 0.1),
                 blurRadius: 20,
                 offset: const Offset(0, 10),
               ),
@@ -61,7 +61,7 @@ class AuthHeader extends StatelessWidget {
             colors: [_goldD, _gold, _goldL, _gold, _goldD],
           ).createShader(b),
           child: Text(
-            'طريق الإسلام',
+            'ط·ط±ظٹظ‚ ط§ظ„ط¥ط³ظ„ط§ظ…',
             style: GoogleFonts.amiri(
               fontSize: 36,
               fontWeight: FontWeight.bold,
@@ -84,14 +84,14 @@ class AuthHeader extends StatelessWidget {
             ),
           ),
           child: Text(
-            isLogin ? 'مرحباً بعودتك 👋' : 'أهلاً وسهلاً بك ✨',
+            isLogin ? 'ظ…ط±ط­ط¨ط§ظ‹ ط¨ط¹ظˆط¯طھظƒ ًں‘‹' : 'ط£ظ‡ظ„ط§ظ‹ ظˆط³ظ‡ظ„ط§ظ‹ ط¨ظƒ âœ¨',
             key: ValueKey(isLogin),
             style: GoogleFonts.cairo(
               fontSize: 16,
               fontWeight: FontWeight.w500,
               color: isDark
-                  ? Colors.white.withOpacity(0.6)
-                  : const Color(0xFF5D4E37).withOpacity(0.7),
+                  ? Colors.white.withValues(alpha: 0.6)
+                  : const Color(0xFF5D4E37).withValues(alpha: 0.7),
             ),
           ),
         ),

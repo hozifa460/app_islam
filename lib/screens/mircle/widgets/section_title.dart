@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../color_control/miracle_theme.dart';
 
@@ -28,11 +28,11 @@ class SectionTitle extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end:   Alignment.bottomCenter,
-              colors: [accentColor, accentColor.withOpacity(0.3)],
+              colors: [accentColor, accentColor.withValues(alpha: 0.3)],
             ),
             borderRadius: BorderRadius.circular(2),
             boxShadow: [
-              BoxShadow(color: accentColor.withOpacity(0.4), blurRadius: 8),
+              BoxShadow(color: accentColor.withValues(alpha: 0.4), blurRadius: 8),
             ],
           ),
         ),
@@ -45,7 +45,7 @@ class SectionTitle extends StatelessWidget {
               fontSize:   17,
               fontWeight: FontWeight.bold,
               shadows: [
-                Shadow(color: accentColor.withOpacity(0.3), blurRadius: 8),
+                Shadow(color: accentColor.withValues(alpha: 0.3), blurRadius: 8),
               ],
             ),
             overflow: TextOverflow.ellipsis,
@@ -56,7 +56,7 @@ class SectionTitle extends StatelessWidget {
           child: Text(
             subtitle,
             style: GoogleFonts.poppins(
-              color:       accentColor.withOpacity(0.7),
+              color:       accentColor.withValues(alpha: 0.7),
               fontSize:    10,
               fontWeight:  FontWeight.w400,
               letterSpacing: 0.5,

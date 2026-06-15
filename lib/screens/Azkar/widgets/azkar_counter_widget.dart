@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/azkar_theme.dart';
 import '../animations/azkar_animations.dart';
 
-/// ═══════════════════════════════════════════════════════════════════════════
-/// ويدجت العداد المتحرك
-/// ═══════════════════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ظˆظٹط¯ط¬طھ ط§ظ„ط¹ط¯ط§ط¯ ط§ظ„ظ…طھط­ط±ظƒ
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class AzkarCounterWidget extends StatelessWidget {
   final int count;
   final int initialCount;
@@ -68,7 +68,7 @@ class AzkarCounterWidget extends StatelessWidget {
               ),
               SizedBox(width: size * 0.15),
               Text(
-                'تم',
+                'طھظ…',
                 style: GoogleFonts.cairo(
                   color: AzkarTheme.success,
                   fontWeight: FontWeight.w800,
@@ -97,7 +97,7 @@ class AzkarCounterWidget extends StatelessWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            // الدائرة الخارجية مع التقدم
+            // ط§ظ„ط¯ط§ط¦ط±ط© ط§ظ„ط®ط§ط±ط¬ظٹط© ظ…ط¹ ط§ظ„طھظ‚ط¯ظ…
             SizedBox(
               width: size,
               height: size,
@@ -108,12 +108,12 @@ class AzkarCounterWidget extends StatelessWidget {
                 builder: (context, value, child) => CircularProgressIndicator(
                   value: value,
                   strokeWidth: strokeWidth,
-                  backgroundColor: AzkarTheme.gold.withOpacity(0.15),
+                  backgroundColor: AzkarTheme.gold.withValues(alpha: 0.15),
                   valueColor: AlwaysStoppedAnimation<Color>(AzkarTheme.gold),
                 ),
               ),
             ),
-            // الدائرة الداخلية مع الرقم
+            // ط§ظ„ط¯ط§ط¦ط±ط© ط§ظ„ط¯ط§ط®ظ„ظٹط© ظ…ط¹ ط§ظ„ط±ظ‚ظ…
             Container(
               width: size * 0.85,
               height: size * 0.85,
@@ -146,9 +146,9 @@ class AzkarCounterWidget extends StatelessWidget {
   }
 }
 
-/// ═══════════════════════════════════════════════════════════════════════════
-/// صندوق المعلومات (المصدر / الفائدة)
-/// ═══════════════════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// طµظ†ط¯ظˆظ‚ ط§ظ„ظ…ط¹ظ„ظˆظ…ط§طھ (ط§ظ„ظ…طµط¯ط± / ط§ظ„ظپط§ط¦ط¯ط©)
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class AzkarInfoBox extends StatelessWidget {
   final IconData icon;
   final String text;

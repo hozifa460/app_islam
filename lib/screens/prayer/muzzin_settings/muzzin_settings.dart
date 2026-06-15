@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../more/data/muezzin_catalog.dart';
@@ -6,7 +6,7 @@ import '../prayer_times_screen/widgets/radio_widget.dart';
 import '../muezzin_list_screen/muezzin_list_screen.dart';
 import 'widgets/muezzin_category_card.dart';
 
-// استدعاء ملف الترجمة (تأكد من المسار الخاص بك)
+// ط§ط³طھط¯ط¹ط§ط، ظ…ظ„ظپ ط§ظ„طھط±ط¬ظ…ط© (طھط£ظƒط¯ ظ…ظ† ط§ظ„ظ…ط³ط§ط± ط§ظ„ط®ط§طµ ط¨ظƒ)
 import '../../../../languages/app_localizations.dart';
 
 class MuezzinSettingsScreen extends StatelessWidget {
@@ -32,7 +32,7 @@ class MuezzinSettingsScreen extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          context.tr.chooseMuezzinTitle, // تمت الترجمة هنا
+          context.tr.chooseMuezzinTitle, // طھظ…طھ ط§ظ„طھط±ط¬ظ…ط© ظ‡ظ†ط§
           style: GoogleFonts.cairo(
             fontWeight: FontWeight.bold,
             fontSize: 24,
@@ -43,13 +43,13 @@ class MuezzinSettingsScreen extends StatelessWidget {
           margin: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: isDark
-                ? Colors.white.withOpacity(0.1)
-                : Colors.black.withOpacity(0.1),
+                ? Colors.white.withValues(alpha: 0.1)
+                : Colors.black.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: isDark
-                  ? Colors.white.withOpacity(0.1)
-                  : Colors.black.withOpacity(0.1),
+                  ? Colors.white.withValues(alpha: 0.1)
+                  : Colors.black.withValues(alpha: 0.1),
             ),
           ),
           child: IconButton(
@@ -69,7 +69,7 @@ class MuezzinSettingsScreen extends StatelessWidget {
                   children: [
                     const SizedBox(height: 20),
                     Text(
-                      context.tr.chooseCategorySubtitle, // تمت الترجمة هنا
+                      context.tr.chooseCategorySubtitle, // طھظ…طھ ط§ظ„طھط±ط¬ظ…ط© ظ‡ظ†ط§
                       style: GoogleFonts.cairo(
                           color: subTextColor, fontSize: 16),
                     ),

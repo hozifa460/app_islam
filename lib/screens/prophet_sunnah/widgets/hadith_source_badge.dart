@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 
 class HadithSourceBadge extends StatelessWidget {
   final String source;
@@ -13,14 +13,14 @@ class HadithSourceBadge extends StatelessWidget {
   });
 
   Color get _color {
-    if (authenticity.contains('صحيح')) return const Color(0xFF4CAF50);
-    if (authenticity.contains('حسن')) return const Color(0xFFFF9800);
+    if (authenticity.contains('طµط­ظٹط­')) return const Color(0xFF4CAF50);
+    if (authenticity.contains('ط­ط³ظ†')) return const Color(0xFFFF9800);
     return const Color(0xFF9E9E9E);
   }
 
   IconData get _icon {
-    if (authenticity.contains('صحيح')) return Icons.verified_rounded;
-    if (authenticity.contains('حسن')) return Icons.check_circle_outline_rounded;
+    if (authenticity.contains('طµط­ظٹط­')) return Icons.verified_rounded;
+    if (authenticity.contains('ط­ط³ظ†')) return Icons.check_circle_outline_rounded;
     return Icons.info_outline_rounded;
   }
 
@@ -32,11 +32,11 @@ class HadithSourceBadge extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       mainAxisSize: MainAxisSize.min,
       children: [
-        // المصدر
+        // ط§ظ„ظ…طµط¯ط±
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.06),
+            color: Colors.black.withValues(alpha: 0.06),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Row(
@@ -58,13 +58,13 @@ class HadithSourceBadge extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 4),
-        // الدرجة
+        // ط§ظ„ط¯ط±ط¬ط©
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           decoration: BoxDecoration(
-            color: _color.withOpacity(0.1),
+            color: _color.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: _color.withOpacity(0.3)),
+            border: Border.all(color: _color.withValues(alpha: 0.3)),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,

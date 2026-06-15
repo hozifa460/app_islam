@@ -1,4 +1,4 @@
-
+﻿
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -33,10 +33,10 @@ class SalawatSliverHeader extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.15),
+            color: Colors.white.withValues(alpha: 0.15),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: Colors.white.withOpacity(0.2),
+              color: Colors.white.withValues(alpha: 0.2),
             ),
           ),
           child: IconButton(
@@ -69,7 +69,7 @@ class SalawatSliverHeader extends StatelessWidget {
                 // Islamic geometric pattern overlay
                 CustomPaint(
                   painter: IslamicPatternPainter(
-                    color: Colors.white.withOpacity(0.04),
+                    color: Colors.white.withValues(alpha: 0.04),
                   ),
                 ),
 
@@ -90,7 +90,7 @@ class SalawatSliverHeader extends StatelessWidget {
                             gradient: RadialGradient(
                               colors: [
                                 theme.accentGold
-                                    .withOpacity(0.12 * glowAnimation.value),
+                                    .withValues(alpha: 0.12 * glowAnimation.value),
                                 Colors.transparent,
                               ],
                             ),
@@ -114,10 +114,10 @@ class SalawatSliverHeader extends StatelessWidget {
                         children: [
                           // Ornamental top
                           Text(
-                            '﷽',
+                            'ï·½',
                             style: TextStyle(
                               fontSize: subtitleFontSize + 6,
-                              color: theme.accentGold.withOpacity(0.7),
+                              color: theme.accentGold.withValues(alpha: 0.7),
                             ),
                           ),
                           SizedBox(height: headerHeight * 0.02),
@@ -140,21 +140,21 @@ class SalawatSliverHeader extends StatelessWidget {
                                       end: Alignment.bottomRight,
                                       colors: [
                                         theme.accentGold
-                                            .withOpacity(0.3),
+                                            .withValues(alpha: 0.3),
                                         theme.accentGold
-                                            .withOpacity(0.1),
+                                            .withValues(alpha: 0.1),
                                       ],
                                     ),
                                     border: Border.all(
                                       color: theme.accentGold
-                                          .withOpacity(0.5),
+                                          .withValues(alpha: 0.5),
                                       width: 2,
                                     ),
                                     boxShadow: enabled
                                         ? [
                                       BoxShadow(
                                         color: theme.accentGold
-                                            .withOpacity(0.3),
+                                            .withValues(alpha: 0.3),
                                         blurRadius: 20,
                                         spreadRadius: 5,
                                       ),
@@ -163,14 +163,14 @@ class SalawatSliverHeader extends StatelessWidget {
                                   ),
                                   child: Center(
                                     child: Text(
-                                      'ﷺ',
+                                      'ï·؛',
                                       style: TextStyle(
                                         fontSize: calligraphyFontSize,
                                         color: Colors.white,
                                         shadows: [
                                           Shadow(
                                             color: theme.accentGold
-                                                .withOpacity(0.6),
+                                                .withValues(alpha: 0.6),
                                             blurRadius: 12,
                                           ),
                                         ],
@@ -198,7 +198,7 @@ class SalawatSliverHeader extends StatelessWidget {
                                   shadows: [
                                     Shadow(
                                       color:
-                                      Colors.black.withOpacity(0.3),
+                                      Colors.black.withValues(alpha: 0.3),
                                       blurRadius: 8,
                                     ),
                                   ],
@@ -215,7 +215,7 @@ class SalawatSliverHeader extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 16, vertical: 4),
                               decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.1),
+                                color: Colors.white.withValues(alpha: 0.1),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Text(
@@ -223,7 +223,7 @@ class SalawatSliverHeader extends StatelessWidget {
                                 style: GoogleFonts.cairo(
                                   fontSize: subtitleFontSize,
                                   color: theme.accentGold
-                                      .withOpacity(0.9),
+                                      .withValues(alpha: 0.9),
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 
 import '../../../languages/app_localizations.dart';
 
@@ -11,7 +11,7 @@ class UnitConversionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final cardColor = isDarkMode ? const Color(0xFF151B26) : Colors.white;
     final textColor = isDarkMode ? Colors.white : const Color(0xFF2D2D2D);
-    final borderColor = isDarkMode ? Colors.white.withOpacity(0.08) : Colors.grey.withOpacity(0.15);
+    final borderColor = isDarkMode ? Colors.white.withValues(alpha: 0.08) : Colors.grey.withValues(alpha: 0.15);
     const brownColor = Color(0xFF795548);
 
     return Container(
@@ -21,7 +21,7 @@ class UnitConversionWidget extends StatelessWidget {
         border: Border.all(color: borderColor),
         boxShadow: [
           BoxShadow(
-            color: isDarkMode ? Colors.black.withOpacity(0.2) : Colors.black.withOpacity(0.05),
+            color: isDarkMode ? Colors.black.withValues(alpha: 0.2) : Colors.black.withValues(alpha: 0.05),
             blurRadius: 15,
             offset: const Offset(0, 5),
           ),
@@ -50,14 +50,14 @@ class UnitConversionWidget extends StatelessWidget {
           context.tr.unitConversionDesc,
           style: TextStyle(
             fontSize: 11,
-            color: textColor.withOpacity(0.5),
+            color: textColor.withValues(alpha: 0.5),
           ),
         ),
         children: [
           // Units definitions
           _buildUnitRow(
             context: context,
-            emoji: '🌾',
+            emoji: 'ًںŒ¾',
             title: context.tr.feddanUnit,
             definition: context.tr.feddanDef,
             color: const Color(0xFF2E7D32),
@@ -65,7 +65,7 @@ class UnitConversionWidget extends StatelessWidget {
           const SizedBox(height: 10),
           _buildUnitRow(
             context: context,
-            emoji: '📐',
+            emoji: 'ًں“گ',
             title: context.tr.qiratUnit,
             definition: context.tr.qiratDef,
             color: brownColor,
@@ -73,7 +73,7 @@ class UnitConversionWidget extends StatelessWidget {
           const SizedBox(height: 10),
           _buildUnitRow(
             context: context,
-            emoji: '📏',
+            emoji: 'ًں“ڈ',
             title: context.tr.sahmUnit,
             definition: context.tr.sahmDef,
             color: const Color(0xFFE65100),
@@ -81,7 +81,7 @@ class UnitConversionWidget extends StatelessWidget {
           const SizedBox(height: 10),
           _buildUnitRow(
             context: context,
-            emoji: '📍',
+            emoji: 'ًں“چ',
             title: context.tr.meterUnit,
             definition: context.tr.meterDef,
             color: const Color(0xFF1565C0),
@@ -94,12 +94,12 @@ class UnitConversionWidget extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  brownColor.withOpacity(isDarkMode ? 0.12 : 0.06),
-                  brownColor.withOpacity(isDarkMode ? 0.06 : 0.02),
+                  brownColor.withValues(alpha: isDarkMode ? 0.12 : 0.06),
+                  brownColor.withValues(alpha: isDarkMode ? 0.06 : 0.02),
                 ],
               ),
               borderRadius: BorderRadius.circular(14),
-              border: Border.all(color: brownColor.withOpacity(0.15)),
+              border: Border.all(color: brownColor.withValues(alpha: 0.15)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,7 +109,7 @@ class UnitConversionWidget extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(6),
                       decoration: BoxDecoration(
-                        color: brownColor.withOpacity(0.15),
+                        color: brownColor.withValues(alpha: 0.15),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: const Icon(Icons.lightbulb_outline, color: brownColor, size: 16),
@@ -163,9 +163,9 @@ class UnitConversionWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: color.withOpacity(isDarkMode ? 0.1 : 0.05),
+        color: color.withValues(alpha: isDarkMode ? 0.1 : 0.05),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: color.withOpacity(0.2)),
+        border: Border.all(color: color.withValues(alpha: 0.2)),
       ),
       child: Row(
         children: [
@@ -188,7 +188,7 @@ class UnitConversionWidget extends StatelessWidget {
                   definition,
                   style: TextStyle(
                     fontSize: 12,
-                    color: textColor.withOpacity(0.7),
+                    color: textColor.withValues(alpha: 0.7),
                   ),
                 ),
               ],
@@ -224,7 +224,7 @@ class UnitConversionWidget extends StatelessWidget {
             text: TextSpan(
               style: TextStyle(
                 fontSize: 12,
-                color: textColor.withOpacity(0.8),
+                color: textColor.withValues(alpha: 0.8),
               ),
               children: [
                 TextSpan(

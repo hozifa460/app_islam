@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../languages/app_localizations.dart';
@@ -54,9 +54,9 @@ class MuezzinTypeBadge extends StatelessWidget {
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         decoration: BoxDecoration(
-          color: Colors.grey.withOpacity(0.12),
+          color: Colors.grey.withValues(alpha: 0.12),
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Colors.grey.withOpacity(0.25)),
+          border: Border.all(color: Colors.grey.withValues(alpha: 0.25)),
         ),
         child: Text(
           context.tr.defaultMuezzinBadge,
@@ -72,9 +72,9 @@ class MuezzinTypeBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        color: gold.withOpacity(0.12),
+        color: gold.withValues(alpha: 0.12),
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: gold.withOpacity(0.30)),
+        border: Border.all(color: gold.withValues(alpha: 0.30)),
       ),
       child: Text(
         context.tr.customMuezzinBadge,
@@ -106,13 +106,13 @@ class StatusMiniBadge extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
         color: active
-            ? color.withOpacity(0.12)
-            : Colors.grey.withOpacity(0.10),
+            ? color.withValues(alpha: 0.12)
+            : Colors.grey.withValues(alpha: 0.10),
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           color: active
-              ? color.withOpacity(0.30)
-              : Colors.grey.withOpacity(0.20),
+              ? color.withValues(alpha: 0.30)
+              : Colors.grey.withValues(alpha: 0.20),
         ),
       ),
       child: Text(

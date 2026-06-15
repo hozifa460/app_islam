@@ -1,4 +1,4 @@
-import 'dart:math';
+﻿import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islamic_app/screens/profile/widgets/profile_avatar.dart';
@@ -39,8 +39,8 @@ class ProfileHeaderCard extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: isDark
-                ? Colors.black.withOpacity(0.4)
-                : const Color(0xFF1B5E72).withOpacity(0.3),
+                ? Colors.black.withValues(alpha: 0.4)
+                : const Color(0xFF1B5E72).withValues(alpha: 0.3),
             blurRadius: 24,
             offset: const Offset(0, 10),
           ),
@@ -48,7 +48,7 @@ class ProfileHeaderCard extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          // زخرفة
+          // ط²ط®ط±ظپط©
           Positioned(
             top: -20,
             right: -20,
@@ -62,7 +62,7 @@ class ProfileHeaderCard extends StatelessWidget {
             ),
           ),
 
-          // نقوش
+          // ظ†ظ‚ظˆط´
           Positioned.fill(
             child: CustomPaint(
               painter: _HeaderPatternPainter(),
@@ -83,7 +83,7 @@ class ProfileHeaderCard extends StatelessWidget {
 
               const SizedBox(height: 16),
 
-              // الاسم
+              // ط§ظ„ط§ط³ظ…
               Text(
                 user.name,
                 style: GoogleFonts.cairo(
@@ -92,7 +92,7 @@ class ProfileHeaderCard extends StatelessWidget {
                   color: Colors.white,
                   shadows: [
                     Shadow(
-                      color: Colors.black.withOpacity(0.3),
+                      color: Colors.black.withValues(alpha: 0.3),
                       blurRadius: 8,
                     ),
                   ],
@@ -111,9 +111,9 @@ class ProfileHeaderCard extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Colors.white.withOpacity(0.1),
+                    color: Colors.white.withValues(alpha: 0.1),
                     border: Border.all(
-                      color: Colors.white.withOpacity(0.15),
+                      color: Colors.white.withValues(alpha: 0.15),
                     ),
                   ),
                   child: Row(
@@ -122,7 +122,7 @@ class ProfileHeaderCard extends StatelessWidget {
                       Icon(
                         Icons.email_outlined,
                         size: 14,
-                        color: Colors.white.withOpacity(0.7),
+                        color: Colors.white.withValues(alpha: 0.7),
                       ),
                       const SizedBox(width: 6),
                       Flexible(
@@ -130,7 +130,7 @@ class ProfileHeaderCard extends StatelessWidget {
                           user.email,
                           style: GoogleFonts.cairo(
                             fontSize: 12.5,
-                            color: Colors.white.withOpacity(0.8),
+                            color: Colors.white.withValues(alpha: 0.8),
                           ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -149,14 +149,14 @@ class ProfileHeaderCard extends StatelessWidget {
                   Icon(
                     Icons.calendar_today_rounded,
                     size: 12,
-                    color: _gold.withOpacity(0.7),
+                    color: _gold.withValues(alpha: 0.7),
                   ),
                   const SizedBox(width: 4),
                   Text(
-                    'عضو منذ ${_fmtDate(user.createdAt)}',
+                    'ط¹ط¶ظˆ ظ…ظ†ط° ${_fmtDate(user.createdAt)}',
                     style: GoogleFonts.cairo(
                       fontSize: 11.5,
-                      color: _gold.withOpacity(0.8),
+                      color: _gold.withValues(alpha: 0.8),
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -171,9 +171,9 @@ class ProfileHeaderCard extends StatelessWidget {
 
   String _fmtDate(DateTime d) {
     const m = [
-      '', 'يناير', 'فبراير', 'مارس', 'أبريل', 'مايو',
-      'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر',
-      'نوفمبر', 'ديسمبر',
+      '', 'ظٹظ†ط§ظٹط±', 'ظپط¨ط±ط§ظٹط±', 'ظ…ط§ط±ط³', 'ط£ط¨ط±ظٹظ„', 'ظ…ط§ظٹظˆ',
+      'ظٹظˆظ†ظٹظˆ', 'ظٹظˆظ„ظٹظˆ', 'ط£ط؛ط³ط·ط³', 'ط³ط¨طھظ…ط¨ط±', 'ط£ظƒطھظˆط¨ط±',
+      'ظ†ظˆظپظ…ط¨ط±', 'ط¯ظٹط³ظ…ط¨ط±',
     ];
     return '${m[d.month]} ${d.year}';
   }
@@ -183,7 +183,7 @@ class _HeaderPatternPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.white.withOpacity(0.03)
+      ..color = Colors.white.withValues(alpha: 0.03)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 0.8;
 

@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -70,11 +70,11 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
   final Map<int, String> _localPagePaths = {};
 
   String _backgroundPrepareMessage = '';
-  String _quranLoadingMessage = 'جاري إعداد القرآن...';
+  String _quranLoadingMessage = 'ط¬ط§ط±ظٹ ط¥ط¹ط¯ط§ط¯ ط§ظ„ظ‚ط±ط¢ظ†...';
   double _quranLoadingProgress = 0.0;
   late int _currentPage;
   String _selectedReciter = 'ar.alafasy';
-  String _selectedReciterName = 'مشاري العفاسي';
+  String _selectedReciterName = 'ظ…ط´ط§ط±ظٹ ط§ظ„ط¹ظپط§ط³ظٹ';
 
   String _viewMode = 'image';
 
@@ -105,10 +105,10 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
 
   StreamSubscription? _playerSubscription;
 
-  // ✅ جديد: لتتبع الصفحات الجاري تحميلها (منع التكرار)
+  // âœ… ط¬ط¯ظٹط¯: ظ„طھطھط¨ط¹ ط§ظ„طµظپط­ط§طھ ط§ظ„ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ظ‡ط§ (ظ…ظ†ط¹ ط§ظ„طھظƒط±ط§ط±)
   final Set<int> _pagesCurrentlyDownloading = {};
 
-  // ✅ جديد: عدد الصفحات المحملة للشاشة
+  // âœ… ط¬ط¯ظٹط¯: ط¹ط¯ط¯ ط§ظ„طµظپط­ط§طھ ط§ظ„ظ…ط­ظ…ظ„ط© ظ„ظ„ط´ط§ط´ط©
   int _downloadedPagesCount = 0;
   int _totalPagesToDownload = 604;
 
@@ -124,7 +124,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     _saveLastReadingPosition();
     _initAudioListeners();
     _loadPagesDownloadedState();
-    _fastPrepareIfPossible(); // ✅ معدّل: بدون تحميل كامل تلقائي
+    _fastPrepareIfPossible(); // âœ… ظ…ط¹ط¯ظ‘ظ„: ط¨ط¯ظˆظ† طھط­ظ…ظٹظ„ ظƒط§ظ…ظ„ طھظ„ظ‚ط§ط¦ظٹ
     _setupServices();
     _loadSelectedReciter();
   }
@@ -146,9 +146,9 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     super.dispose();
   }
 
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   //  Setup & Init
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   void _setupServices() {
     _ayahAudioService = AyahAudioService(
@@ -181,14 +181,14 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     _recitationService = RecitationService();
 
     _recitationService.onStateChanged = (state) {
-      debugPrint('📱 حالة: $state');
+      debugPrint('ًں“± ط­ط§ظ„ط©: $state');
       if (mounted) {
         setState(() {
           if (state == RecitationState.recording) {
             _isMicActive = true;
           } else if (state == RecitationState.processing) {
             _isMicActive = true;
-            _recitationSpokenText = 'جاري تحليل التلاوة...';
+            _recitationSpokenText = 'ط¬ط§ط±ظٹ طھط­ظ„ظٹظ„ ط§ظ„طھظ„ط§ظˆط©...';
           } else if (state == RecitationState.idle) {
             _isMicActive = false;
             _recitationSpokenText = '';
@@ -200,7 +200,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     _recitationService.onRecordingTime = (seconds) {
       if (mounted) {
         setState(() {
-          _recitationSpokenText = 'جاري التسجيل... ⏱️ $seconds ث — اضغط ■ عند الانتهاء';
+          _recitationSpokenText = 'ط¬ط§ط±ظٹ ط§ظ„طھط³ط¬ظٹظ„... âڈ±ï¸ڈ $seconds ط« â€” ط§ط¶ط؛ط· â–  ط¹ظ†ط¯ ط§ظ„ط§ظ†طھظ‡ط§ط،';
         });
       }
     };
@@ -216,7 +216,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     };
 
     _recitationService.onResult = (result) {
-      debugPrint('📱 نتيجة: ${(result.accuracy * 100).toInt()}%');
+      debugPrint('ًں“± ظ†طھظٹط¬ط©: ${(result.accuracy * 100).toInt()}%');
       if (mounted) {
         setState(() {
           _lastRecitationResult = result;
@@ -227,7 +227,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     };
 
     _recitationService.onError = (error) {
-      debugPrint('📱 خطأ: $error');
+      debugPrint('ًں“± ط®ط·ط£: $error');
       if (mounted) {
         setState(() {
           _isMicActive = false;
@@ -244,7 +244,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
       }
     };
 
-    // ✅ النص يُحمّل تلقائياً في الخلفية (~4 ميجابايت)
+    // âœ… ط§ظ„ظ†طµ ظٹظڈط­ظ…ظ‘ظ„ طھظ„ظ‚ط§ط¦ظٹط§ظ‹ ظپظٹ ط§ظ„ط®ظ„ظپظٹط© (~4 ظ…ظٹط¬ط§ط¨ط§ظٹطھ)
     _loadQuranText();
   }
 
@@ -275,17 +275,17 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     await prefs.setString(SurahConstants.kReciterNameKey, _selectedReciterName);
   }
 
-  /// ✅ تحميل النص تلقائياً في الخلفية (بدون تدخل المستخدم)
+  /// âœ… طھط­ظ…ظٹظ„ ط§ظ„ظ†طµ طھظ„ظ‚ط§ط¦ظٹط§ظ‹ ظپظٹ ط§ظ„ط®ظ„ظپظٹط© (ط¨ط¯ظˆظ† طھط¯ط®ظ„ ط§ظ„ظ…ط³طھط®ط¯ظ…)
   Future<void> _loadQuranText() async {
     if (_isQuranTextLoaded) return;
 
     final isReady = await QuranTextService.ensureLoaded();
 
     if (!isReady) {
-      debugPrint('📖 جاري تحميل نص القرآن تلقائياً (~4 ميجابايت)...');
+      debugPrint('ًں“– ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ظ†طµ ط§ظ„ظ‚ط±ط¢ظ† طھظ„ظ‚ط§ط¦ظٹط§ظ‹ (~4 ظ…ظٹط¬ط§ط¨ط§ظٹطھ)...');
       await QuranTextService.downloadFullQuran(
         onProgress: (progress, msg) {
-          debugPrint('📖 تحميل النص: ${(progress * 100).toInt()}% - $msg');
+          debugPrint('ًں“– طھط­ظ…ظٹظ„ ط§ظ„ظ†طµ: ${(progress * 100).toInt()}% - $msg');
         },
       );
     }
@@ -293,14 +293,14 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     if (mounted) {
       setState(() => _isQuranTextLoaded = QuranTextService.isLoaded);
       if (_isQuranTextLoaded) {
-        debugPrint('📖 ✅ تم تحميل نص القرآن بنجاح');
+        debugPrint('ًں“– âœ… طھظ… طھط­ظ…ظٹظ„ ظ†طµ ط§ظ„ظ‚ط±ط¢ظ† ط¨ظ†ط¬ط§ط­');
       }
     }
   }
 
-  // ══════════════════════════════════════════════════════════════
-  //  Download & Page Management (✅ معدّل)
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  Download & Page Management (âœ… ظ…ط¹ط¯ظ‘ظ„)
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Future<void> _loadPagesDownloadedState() async {
     final prefs = await SharedPreferences.getInstance();
@@ -368,7 +368,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     return null;
   }
 
-  /// ✅ معدّل: إعداد سريع - يحمّل الصفحة الحالية فقط + القريبة
+  /// âœ… ظ…ط¹ط¯ظ‘ظ„: ط¥ط¹ط¯ط§ط¯ ط³ط±ظٹط¹ - ظٹط­ظ…ظ‘ظ„ ط§ظ„طµظپط­ط© ط§ظ„ط­ط§ظ„ظٹط© ظپظ‚ط· + ط§ظ„ظ‚ط±ظٹط¨ط©
   Future<void> _fastPrepareIfPossible() async {
     try {
       final localPath = await _getLocalPagePathIfExists(_currentPage);
@@ -388,7 +388,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
           });
         }
 
-        // ✅ تحميل الصفحات القريبة فقط (ليس الكل)
+        // âœ… طھط­ظ…ظٹظ„ ط§ظ„طµظپط­ط§طھ ط§ظ„ظ‚ط±ظٹط¨ط© ظپظ‚ط· (ظ„ظٹط³ ط§ظ„ظƒظ„)
         _preloadNearbyPages(_currentPage);
         return;
       }
@@ -400,7 +400,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     }
   }
 
-  /// ✅ معدّل: إعداد الصفحة الأولى بدون تشغيل تحميل كامل
+  /// âœ… ظ…ط¹ط¯ظ‘ظ„: ط¥ط¹ط¯ط§ط¯ ط§ظ„طµظپط­ط© ط§ظ„ط£ظˆظ„ظ‰ ط¨ط¯ظˆظ† طھط´ط؛ظٹظ„ طھط­ظ…ظٹظ„ ظƒط§ظ…ظ„
   Future<void> _prepareInitialSelectedPage() async {
     final localPath = await _getLocalPagePathIfExists(_currentPage);
 
@@ -422,7 +422,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
           _isPreparingQuran = false;
         });
       }
-      // ✅ تحميل الصفحات القريبة
+      // âœ… طھط­ظ…ظٹظ„ ط§ظ„طµظپط­ط§طھ ط§ظ„ظ‚ط±ظٹط¨ط©
       _preloadNearbyPages(_currentPage);
       return;
     }
@@ -436,11 +436,11 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
       });
     }
 
-    // ✅ تحميل الصفحات القريبة بعد عرض الصفحة الحالية
+    // âœ… طھط­ظ…ظٹظ„ ط§ظ„طµظپط­ط§طھ ط§ظ„ظ‚ط±ظٹط¨ط© ط¨ط¹ط¯ ط¹ط±ط¶ ط§ظ„طµظپط­ط© ط§ظ„ط­ط§ظ„ظٹط©
     _preloadNearbyPages(_currentPage);
   }
 
-  /// ✅ جديد: تحميل صورة صفحة إذا لم تكن محملة (مع منع التكرار)
+  /// âœ… ط¬ط¯ظٹط¯: طھط­ظ…ظٹظ„ طµظˆط±ط© طµظپط­ط© ط¥ط°ط§ ظ„ظ… طھظƒظ† ظ…ط­ظ…ظ„ط© (ظ…ط¹ ظ…ظ†ط¹ ط§ظ„طھظƒط±ط§ط±)
   Future<void> _ensurePageImageCached(int page) async {
     if (page < 1 || page > 604) return;
     if (_localPagePaths.containsKey(page)) return;
@@ -458,25 +458,25 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     }
   }
 
-  /// ✅ معدّل: تحميل الصفحات القريبة (نص + صور)
+  /// âœ… ظ…ط¹ط¯ظ‘ظ„: طھط­ظ…ظٹظ„ ط§ظ„طµظپط­ط§طھ ط§ظ„ظ‚ط±ظٹط¨ط© (ظ†طµ + طµظˆط±)
   void _preloadNearbyPages(int page) {
-    // ترتيب الأولوية: التالية ثم السابقة ثم الأبعد
+    // طھط±طھظٹط¨ ط§ظ„ط£ظˆظ„ظˆظٹط©: ط§ظ„طھط§ظ„ظٹط© ط«ظ… ط§ظ„ط³ط§ط¨ظ‚ط© ط«ظ… ط§ظ„ط£ط¨ط¹ط¯
     final nearbyPages = [page + 1, page - 1, page + 2, page - 2, page + 3, page - 3];
 
     for (final p in nearbyPages) {
       if (p >= 1 && p <= 604) {
-        // تحميل النص
+        // طھط­ظ…ظٹظ„ ط§ظ„ظ†طµ
         if (!_pageAyahsCache.containsKey(p)) {
           _getPageAyahs(p);
         }
 
-        // ✅ جديد: تحميل الصورة
+        // âœ… ط¬ط¯ظٹط¯: طھط­ظ…ظٹظ„ ط§ظ„طµظˆط±ط©
         _ensurePageImageCached(p);
       }
     }
   }
 
-  /// ✅ يبقى كما هو لكن يُستدعى فقط عند طلب المستخدم
+  /// âœ… ظٹط¨ظ‚ظ‰ ظƒظ…ط§ ظ‡ظˆ ظ„ظƒظ† ظٹظڈط³طھط¯ط¹ظ‰ ظپظ‚ط· ط¹ظ†ط¯ ط·ظ„ط¨ ط§ظ„ظ…ط³طھط®ط¯ظ…
   Future<void> _downloadAllPagesInBackground() async {
     if (_isDownloadingAllPages || _areAllPagesDownloaded) return;
 
@@ -485,7 +485,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
         _isDownloadingAllPages = true;
         _isBackgroundPreparing = true;
         _downloadedPagesCount = 0;
-        _backgroundPrepareMessage = 'جاري تنزيل صفحات القرآن...';
+        _backgroundPrepareMessage = 'ط¬ط§ط±ظٹ طھظ†ط²ظٹظ„ طµظپط­ط§طھ ط§ظ„ظ‚ط±ط¢ظ†...';
       });
     }
 
@@ -494,7 +494,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     int downloadedSoFar = 0;
 
     try {
-      // أولاً: عد الصفحات المحملة مسبقاً
+      // ط£ظˆظ„ط§ظ‹: ط¹ط¯ ط§ظ„طµظپط­ط§طھ ط§ظ„ظ…ط­ظ…ظ„ط© ظ…ط³ط¨ظ‚ط§ظ‹
       for (int page = 1; page <= 604; page++) {
         final localPath = await _getLocalPagePathIfExists(page);
         if (localPath != null) downloadedSoFar++;
@@ -515,18 +515,18 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
             consecutiveFails++;
 
             if (consecutiveFails >= 10) {
-              debugPrint('⚠️ توقف التحميل: لا يوجد اتصال');
+              debugPrint('âڑ ï¸ڈ طھظˆظ‚ظپ ط§ظ„طھط­ظ…ظٹظ„: ظ„ط§ ظٹظˆط¬ط¯ ط§طھطµط§ظ„');
 
               if (mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
-                      'توقف التحميل - تحقق من الاتصال بالإنترنت',
+                      'طھظˆظ‚ظپ ط§ظ„طھط­ظ…ظٹظ„ - طھط­ظ‚ظ‚ ظ…ظ† ط§ظ„ط§طھطµط§ظ„ ط¨ط§ظ„ط¥ظ†طھط±ظ†طھ',
                       style: GoogleFonts.cairo(),
                     ),
                     backgroundColor: Colors.orange,
                     action: SnackBarAction(
-                      label: 'إعادة المحاولة',
+                      label: 'ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط©',
                       textColor: Colors.white,
                       onPressed: () {
                         setState(() {
@@ -551,7 +551,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
           setState(() {
             _downloadedPagesCount = downloadedSoFar;
             _backgroundPrepareMessage =
-            'جاري تنزيل صفحات القرآن... (${SurahConstants.toArabicNum(downloadedSoFar)}/٦٠٤)';
+            'ط¬ط§ط±ظٹ طھظ†ط²ظٹظ„ طµظپط­ط§طھ ط§ظ„ظ‚ط±ط¢ظ†... (${SurahConstants.toArabicNum(downloadedSoFar)}/ظ¦ظ ظ¤)';
           });
         }
       }
@@ -568,7 +568,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                   const SizedBox(width: 10),
                   Expanded(
                     child: Text(
-                      'تم تنزيل القرآن بالكامل للعمل بدون إنترنت ✅',
+                      'طھظ… طھظ†ط²ظٹظ„ ط§ظ„ظ‚ط±ط¢ظ† ط¨ط§ظ„ظƒط§ظ…ظ„ ظ„ظ„ط¹ظ…ظ„ ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ âœ…',
                       style: GoogleFonts.cairo(),
                     ),
                   ),
@@ -685,11 +685,11 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     return 1;
   }
 
-  // ══════════════════════════════════════════════════════════════
-  //  ✅ جديد: تأكيد تحميل جميع الصفحات
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  âœ… ط¬ط¯ظٹط¯: طھط£ظƒظٹط¯ طھط­ظ…ظٹظ„ ط¬ظ…ظٹط¹ ط§ظ„طµظپط­ط§طھ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
-  /// ✅ جديد: حوار تأكيد تحميل القرآن كاملاً
+  /// âœ… ط¬ط¯ظٹط¯: ط­ظˆط§ط± طھط£ظƒظٹط¯ طھط­ظ…ظٹظ„ ط§ظ„ظ‚ط±ط¢ظ† ظƒط§ظ…ظ„ط§ظ‹
   Future<void> _showDownloadAllConfirmation() async {
     if (_areAllPagesDownloaded) {
       if (!mounted) return;
@@ -699,7 +699,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
             children: [
               const Icon(Icons.check_circle, color: Colors.white, size: 20),
               const SizedBox(width: 8),
-              Text('القرآن محمّل بالكامل بالفعل ✅', style: GoogleFonts.cairo()),
+              Text('ط§ظ„ظ‚ط±ط¢ظ† ظ…ط­ظ…ظ‘ظ„ ط¨ط§ظ„ظƒط§ظ…ظ„ ط¨ط§ظ„ظپط¹ظ„ âœ…', style: GoogleFonts.cairo()),
             ],
           ),
           backgroundColor: Colors.green,
@@ -743,7 +743,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        // ═══ العنوان (ثابت) ═══
+                        // â•گâ•گâ•گ ط§ظ„ط¹ظ†ظˆط§ظ† (ط«ط§ط¨طھ) â•گâ•گâ•گ
                         Padding(
                           padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
                           child: Row(
@@ -751,7 +751,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                               Container(
                                 padding: const EdgeInsets.all(8),
                                 decoration: BoxDecoration(
-                                  color: primary.withOpacity(0.12),
+                                  color: primary.withValues(alpha: 0.12),
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Icon(Icons.download_rounded, color: primary, size: 22),
@@ -759,7 +759,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                               const SizedBox(width: 10),
                               Expanded(
                                 child: Text(
-                                  'تحميل القرآن كاملاً',
+                                  'طھط­ظ…ظٹظ„ ط§ظ„ظ‚ط±ط¢ظ† ظƒط§ظ…ظ„ط§ظ‹',
                                   style: GoogleFonts.cairo(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
@@ -770,7 +770,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                           ),
                         ),
 
-                        // ═══ المحتوى (قابل للتمرير) ═══
+                        // â•گâ•گâ•گ ط§ظ„ظ…ط­طھظˆظ‰ (ظ‚ط§ط¨ظ„ ظ„ظ„طھظ…ط±ظٹط±) â•گâ•گâ•گ
                         Flexible(
                           child: SingleChildScrollView(
                             padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
@@ -780,21 +780,21 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'سيتم تحميل جميع صفحات المصحف لتتمكن من القراءة بدون إنترنت.',
+                                  'ط³ظٹطھظ… طھط­ظ…ظٹظ„ ط¬ظ…ظٹط¹ طµظپط­ط§طھ ط§ظ„ظ…طµط­ظپ ظ„طھطھظ…ظƒظ† ظ…ظ† ط§ظ„ظ‚ط±ط§ط،ط© ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ.',
                                   style: GoogleFonts.cairo(fontSize: 13, height: 1.5),
                                 ),
                                 const SizedBox(height: 12),
 
-                                // معلومات التحميل
+                                // ظ…ط¹ظ„ظˆظ…ط§طھ ط§ظ„طھط­ظ…ظٹظ„
                                 Container(
                                   padding: const EdgeInsets.all(12),
                                   decoration: BoxDecoration(
                                     color: isDark
-                                        ? Colors.white.withOpacity(0.06)
-                                        : primary.withOpacity(0.06),
+                                        ? Colors.white.withValues(alpha: 0.06)
+                                        : primary.withValues(alpha: 0.06),
                                     borderRadius: BorderRadius.circular(12),
                                     border: Border.all(
-                                      color: primary.withOpacity(0.15),
+                                      color: primary.withValues(alpha: 0.15),
                                     ),
                                   ),
                                   child: Column(
@@ -802,24 +802,24 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                                     children: [
                                       _buildInfoRow(
                                         Icons.pages_outlined,
-                                        'المتبقية',
-                                        '${SurahConstants.toArabicNum(remainingCount)} صفحة',
+                                        'ط§ظ„ظ…طھط¨ظ‚ظٹط©',
+                                        '${SurahConstants.toArabicNum(remainingCount)} طµظپط­ط©',
                                         primary,
                                       ),
                                       if (downloadedCount > 0) ...[
                                         const SizedBox(height: 8),
                                         _buildInfoRow(
                                           Icons.check_circle_outline,
-                                          'المحمّل',
-                                          '${SurahConstants.toArabicNum(downloadedCount)} صفحة',
+                                          'ط§ظ„ظ…ط­ظ…ظ‘ظ„',
+                                          '${SurahConstants.toArabicNum(downloadedCount)} طµظپط­ط©',
                                           Colors.green,
                                         ),
                                       ],
                                       const SizedBox(height: 8),
                                       _buildInfoRow(
                                         Icons.storage_outlined,
-                                        'الحجم التقريبي',
-                                        '~$estimatedSizeMB ميجابايت',
+                                        'ط§ظ„ط­ط¬ظ… ط§ظ„طھظ‚ط±ظٹط¨ظٹ',
+                                        '~$estimatedSizeMB ظ…ظٹط¬ط§ط¨ط§ظٹطھ',
                                         Colors.blue,
                                       ),
                                     ],
@@ -828,11 +828,11 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
 
                                 const SizedBox(height: 10),
 
-                                // تنبيه WiFi
+                                // طھظ†ط¨ظٹظ‡ WiFi
                                 Container(
                                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
                                   decoration: BoxDecoration(
-                                    color: Colors.orange.withOpacity(0.1),
+                                    color: Colors.orange.withValues(alpha: 0.1),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Row(
@@ -841,7 +841,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                                       const SizedBox(width: 6),
                                       Expanded(
                                         child: Text(
-                                          'يُنصح بالاتصال بشبكة WiFi',
+                                          'ظٹظڈظ†طµط­ ط¨ط§ظ„ط§طھطµط§ظ„ ط¨ط´ط¨ظƒط© WiFi',
                                           style: GoogleFonts.cairo(
                                             fontSize: 11.5,
                                             color: Colors.orange.shade700,
@@ -853,7 +853,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                                   ),
                                 ),
 
-                                // شريط التقدم
+                                // ط´ط±ظٹط· ط§ظ„طھظ‚ط¯ظ…
                                 if (downloadedCount > 0) ...[
                                   const SizedBox(height: 10),
                                   ClipRRect(
@@ -861,7 +861,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                                     child: LinearProgressIndicator(
                                       value: downloadedCount / 604,
                                       backgroundColor: isDark
-                                          ? Colors.white.withOpacity(0.1)
+                                          ? Colors.white.withValues(alpha: 0.1)
                                           : Colors.grey.shade200,
                                       valueColor: AlwaysStoppedAnimation(primary),
                                       minHeight: 5,
@@ -869,7 +869,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                                   ),
                                   const SizedBox(height: 4),
                                   Text(
-                                    '${(downloadedCount / 604 * 100).toInt()}% مكتمل',
+                                    '${(downloadedCount / 604 * 100).toInt()}% ظ…ظƒطھظ…ظ„',
                                     style: GoogleFonts.cairo(
                                       fontSize: 11,
                                       color: Colors.grey,
@@ -881,7 +881,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                           ),
                         ),
 
-                        // ═══ الأزرار (ثابتة في الأسفل) ═══
+                        // â•گâ•گâ•گ ط§ظ„ط£ط²ط±ط§ط± (ط«ط§ط¨طھط© ظپظٹ ط§ظ„ط£ط³ظپظ„) â•گâ•گâ•گ
                         Padding(
                           padding: const EdgeInsets.fromLTRB(12, 4, 12, 12),
                           child: Row(
@@ -889,7 +889,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                               TextButton(
                                 onPressed: () => Navigator.pop(ctx, false),
                                 child: Text(
-                                  'لاحقاً',
+                                  'ظ„ط§ط­ظ‚ط§ظ‹',
                                   style: GoogleFonts.cairo(
                                     color: Colors.grey.shade500,
                                     fontWeight: FontWeight.w600,
@@ -902,7 +902,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                                 onPressed: () => Navigator.pop(ctx, true),
                                 icon: const Icon(Icons.download_rounded, size: 18),
                                 label: Text(
-                                  'تحميل الآن',
+                                  'طھط­ظ…ظٹظ„ ط§ظ„ط¢ظ†',
                                   style: GoogleFonts.cairo(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 13,
@@ -940,7 +940,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     }
   }
 
-  /// ✅ جديد: صف معلومات في حوار التأكيد
+  /// âœ… ط¬ط¯ظٹط¯: طµظپ ظ…ط¹ظ„ظˆظ…ط§طھ ظپظٹ ط­ظˆط§ط± ط§ظ„طھط£ظƒظٹط¯
   Widget _buildInfoRow(IconData icon, String label, String value, Color iconColor) {
     return Row(
       children: [
@@ -959,9 +959,9 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     );
   }
 
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   //  Navigation
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   void _jumpToPage(int page) {
     if (page < 1 || page > 604) return;
@@ -992,7 +992,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'تم حفظ علامة عند الصفحة $_currentPage',
+          'طھظ… ط­ظپط¸ ط¹ظ„ط§ظ…ط© ط¹ظ†ط¯ ط§ظ„طµظپط­ط© $_currentPage',
           style: GoogleFonts.cairo(),
         ),
         backgroundColor: Colors.green,
@@ -1008,7 +1008,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('لا يوجد موضع محفوظ سابقًا', style: GoogleFonts.cairo()),
+          content: Text('ظ„ط§ ظٹظˆط¬ط¯ ظ…ظˆط¶ط¹ ظ…ط­ظپظˆط¸ ط³ط§ط¨ظ‚ظ‹ط§', style: GoogleFonts.cairo()),
         ),
       );
       return;
@@ -1031,7 +1031,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     if (page == null) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('لا توجد علامة محفوظة', style: GoogleFonts.cairo())),
+        SnackBar(content: Text('ظ„ط§ طھظˆط¬ط¯ ط¹ظ„ط§ظ…ط© ظ…ط­ظپظˆط¸ط©', style: GoogleFonts.cairo())),
       );
       return;
     }
@@ -1057,9 +1057,9 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     };
   }
 
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   //  Audio & Recitation
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   void _switchViewMode(String mode) {
     if (mode == 'text' || mode == 'memorize') {
@@ -1067,7 +1067,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              'جاري تحميل نص القرآن، يرجى الانتظار...',
+              'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ظ†طµ ط§ظ„ظ‚ط±ط¢ظ†طŒ ظٹط±ط¬ظ‰ ط§ظ„ط§ظ†طھط¸ط§ط±...',
               style: GoogleFonts.cairo(),
             ),
             backgroundColor: Colors.orange,
@@ -1101,7 +1101,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            'جاري تحميل نص القرآن، يرجى الانتظار...',
+            'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ظ†طµ ط§ظ„ظ‚ط±ط¢ظ†طŒ ظٹط±ط¬ظ‰ ط§ظ„ط§ظ†طھط¸ط§ط±...',
             style: GoogleFonts.cairo(),
           ),
           backgroundColor: Colors.orange,
@@ -1115,7 +1115,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     if (ayahs.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('لا توجد آيات في هذه الصفحة', style: GoogleFonts.cairo()),
+          content: Text('ظ„ط§ طھظˆط¬ط¯ ط¢ظٹط§طھ ظپظٹ ظ‡ط°ظ‡ ط§ظ„طµظپط­ط©', style: GoogleFonts.cairo()),
           backgroundColor: Colors.orange,
         ),
       );
@@ -1141,16 +1141,16 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
 
   Future<void> _handleMicTap() async {
     if (_recitationService.state == RecitationState.recording) {
-      debugPrint('🎤 إيقاف التسجيل وبدء التحليل...');
+      debugPrint('ًںژ¤ ط¥ظٹظ‚ط§ظپ ط§ظ„طھط³ط¬ظٹظ„ ظˆط¨ط¯ط، ط§ظ„طھط­ظ„ظٹظ„...');
       setState(() {
-        _recitationSpokenText = 'جاري تحليل التلاوة...';
+        _recitationSpokenText = 'ط¬ط§ط±ظٹ طھط­ظ„ظٹظ„ ط§ظ„طھظ„ط§ظˆط©...';
       });
       await _recitationService.stop();
       return;
     }
 
     if (_recitationService.state == RecitationState.processing) {
-      debugPrint('🎤 جاري التحليل، انتظر...');
+      debugPrint('ًںژ¤ ط¬ط§ط±ظٹ ط§ظ„طھط­ظ„ظٹظ„طŒ ط§ظ†طھط¸ط±...');
       return;
     }
 
@@ -1166,7 +1166,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     if (!_isQuranTextLoaded) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('جاري تحميل النص...', style: GoogleFonts.cairo()),
+          content: Text('ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط§ظ„ظ†طµ...', style: GoogleFonts.cairo()),
           backgroundColor: Colors.orange,
         ),
       );
@@ -1187,7 +1187,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
 
     setState(() {
       _isMicActive = true;
-      _recitationSpokenText = 'اقرأ الآن... اضغط ■ عند الانتهاء';
+      _recitationSpokenText = 'ط§ظ‚ط±ط£ ط§ظ„ط¢ظ†... ط§ط¶ط؛ط· â–  ط¹ظ†ط¯ ط§ظ„ط§ظ†طھظ‡ط§ط،';
       _isTextHidden = false;
     });
 
@@ -1208,7 +1208,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     if (ayahs.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('لم يتم تحميل نص الصفحة بعد', style: GoogleFonts.cairo()),
+          content: Text('ظ„ظ… ظٹطھظ… طھط­ظ…ظٹظ„ ظ†طµ ط§ظ„طµظپط­ط© ط¨ط¹ط¯', style: GoogleFonts.cairo()),
           backgroundColor: Colors.orange,
         ),
       );
@@ -1250,7 +1250,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
             const SizedBox(width: 10),
             Expanded(
               child: Text(
-                'العربية غير متوفرة، جاري فتح الإعدادات لتحميلها...',
+                'ط§ظ„ط¹ط±ط¨ظٹط© ط؛ظٹط± ظ…طھظˆظپط±ط©طŒ ط¬ط§ط±ظٹ ظپطھط­ ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ ظ„طھط­ظ…ظٹظ„ظ‡ط§...',
                 style: GoogleFonts.cairo(fontSize: 12),
               ),
             ),
@@ -1273,7 +1273,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
         );
         if (launched) return;
       } catch (e) {
-        debugPrint('محاولة فشلت: $e');
+        debugPrint('ظ…ط­ط§ظˆظ„ط© ظپط´ظ„طھ: $e');
       }
 
       _showArabicLanguageGuide();
@@ -1315,9 +1315,9 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     );
   }
 
-  // ══════════════════════════════════════════════════════════════
-  //  Download Status (✅ معدّل)
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  Download Status (âœ… ظ…ط¹ط¯ظ‘ظ„)
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Future<int> _getDownloadedPagesCount() async {
     int count = 0;
@@ -1330,18 +1330,18 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     return count;
   }
 
-  /// ✅ معدّل: نص الحالة أوضح
+  /// âœ… ظ…ط¹ط¯ظ‘ظ„: ظ†طµ ط§ظ„ط­ط§ظ„ط© ط£ظˆط¶ط­
   String _getQuranDownloadStatusText() {
     if (_isDownloadingAllPages || _isBackgroundPreparing) {
-      return 'جاري تنزيل صفحات القرآن...';
+      return 'ط¬ط§ط±ظٹ طھظ†ط²ظٹظ„ طµظپط­ط§طھ ط§ظ„ظ‚ط±ط¢ظ†...';
     }
     if (_areAllPagesDownloaded) {
-      return 'القرآن محمّل بالكامل ✅';
+      return 'ط§ظ„ظ‚ط±ط¢ظ† ظ…ط­ظ…ظ‘ظ„ ط¨ط§ظ„ظƒط§ظ…ظ„ âœ…';
     }
-    return 'تحميل القرآن للقراءة بدون إنترنت';
+    return 'طھط­ظ…ظٹظ„ ط§ظ„ظ‚ط±ط¢ظ† ظ„ظ„ظ‚ط±ط§ط،ط© ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ';
   }
 
-  /// ✅ معدّل: عند الضغط يعرض التأكيد أو حالة التحميل
+  /// âœ… ظ…ط¹ط¯ظ‘ظ„: ط¹ظ†ط¯ ط§ظ„ط¶ط؛ط· ظٹط¹ط±ط¶ ط§ظ„طھط£ظƒظٹط¯ ط£ظˆ ط­ط§ظ„ط© ط§ظ„طھط­ظ…ظٹظ„
   Future<void> _handleQuranDownloadStatusTap() async {
     if (_isDownloadingAllPages) {
       await _showQuranDownloadStatusDialog();
@@ -1352,14 +1352,14 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
             children: [
               const Icon(Icons.check_circle, color: Colors.white, size: 20),
               const SizedBox(width: 8),
-              Text('القرآن محمّل بالكامل ✅', style: GoogleFonts.cairo()),
+              Text('ط§ظ„ظ‚ط±ط¢ظ† ظ…ط­ظ…ظ‘ظ„ ط¨ط§ظ„ظƒط§ظ…ظ„ âœ…', style: GoogleFonts.cairo()),
             ],
           ),
           backgroundColor: Colors.green,
         ),
       );
     } else {
-      // ✅ عرض حوار التأكيد بدلاً من التحميل المباشر
+      // âœ… ط¹ط±ط¶ ط­ظˆط§ط± ط§ظ„طھط£ظƒظٹط¯ ط¨ط¯ظ„ط§ظ‹ ظ…ظ† ط§ظ„طھط­ظ…ظٹظ„ ط§ظ„ظ…ط¨ط§ط´ط±
       await _showDownloadAllConfirmation();
     }
   }
@@ -1379,9 +1379,9 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     );
   }
 
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   //  Sheets
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   void _showReciterDialog(Color primary) {
     QuranMenuSheets.showReciterDialog(
@@ -1520,11 +1520,11 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     );
   }
 
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   //  Build Methods
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
-  /// ✅ معدّل: شريط التحميل يظهر فقط عند طلب المستخدم
+  /// âœ… ظ…ط¹ط¯ظ‘ظ„: ط´ط±ظٹط· ط§ظ„طھط­ظ…ظٹظ„ ظٹط¸ظ‡ط± ظپظ‚ط· ط¹ظ†ط¯ ط·ظ„ط¨ ط§ظ„ظ…ط³طھط®ط¯ظ…
   Widget _buildBackgroundPreparingBanner(Color primary) {
     final progress = _downloadedPagesCount / 604;
 
@@ -1539,11 +1539,11 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
             decoration: BoxDecoration(
-              color: primary.withOpacity(0.92),
+              color: primary.withValues(alpha: 0.92),
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.10),
+                  color: Colors.black.withValues(alpha: 0.10),
                   blurRadius: 10,
                   offset: const Offset(0, 4),
                 ),
@@ -1573,11 +1573,11 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                         ),
                       ),
                     ),
-                    // ✅ جديد: نسبة التقدم
+                    // âœ… ط¬ط¯ظٹط¯: ظ†ط³ط¨ط© ط§ظ„طھظ‚ط¯ظ…
                     Text(
                       '${(progress * 100).toInt()}%',
                       style: GoogleFonts.cairo(
-                        color: Colors.white.withOpacity(0.9),
+                        color: Colors.white.withValues(alpha: 0.9),
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
                       ),
@@ -1585,12 +1585,12 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                   ],
                 ),
                 const SizedBox(height: 6),
-                // ✅ جديد: شريط تقدم
+                // âœ… ط¬ط¯ظٹط¯: ط´ط±ظٹط· طھظ‚ط¯ظ…
                 ClipRRect(
                   borderRadius: BorderRadius.circular(4),
                   child: LinearProgressIndicator(
                     value: progress,
-                    backgroundColor: Colors.white.withOpacity(0.2),
+                    backgroundColor: Colors.white.withValues(alpha: 0.2),
                     valueColor: const AlwaysStoppedAnimation(Colors.white),
                     minHeight: 4,
                   ),
@@ -1612,7 +1612,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     if (currentPageAyahs != null && currentPageAyahs.isNotEmpty) {
       final apiName =
           currentPageAyahs.first['surah']?['name']?.toString() ?? '';
-      currentSurahName = apiName.replaceFirst(RegExp(r'^سورة\s*'), '');
+      currentSurahName = apiName.replaceFirst(RegExp(r'^ط³ظˆط±ط©\s*'), '');
       if (currentSurahName.isEmpty) {
         currentSurahName = widget.surahName;
       }
@@ -1681,7 +1681,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                     setState(() {
                       _currentPage = page;
                     });
-                    // ✅ تحميل الصفحات القريبة (نص + صور)
+                    // âœ… طھط­ظ…ظٹظ„ ط§ظ„طµظپط­ط§طھ ط§ظ„ظ‚ط±ظٹط¨ط© (ظ†طµ + طµظˆط±)
                     _preloadNearbyPages(page);
                     _saveLastReadingPosition();
 
@@ -1749,7 +1749,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
             ),
           ),
 
-          // ✅ معدّل: يظهر فقط عند تحميل يدوي
+          // âœ… ظ…ط¹ط¯ظ‘ظ„: ظٹط¸ظ‡ط± ظپظ‚ط· ط¹ظ†ط¯ طھط­ظ…ظٹظ„ ظٹط¯ظˆظٹ
           if (_isBackgroundPreparing && _backgroundPrepareMessage.isNotEmpty)
             _buildBackgroundPreparingBanner(primary),
 
@@ -1782,7 +1782,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                   }
                 });
               },
-              // ✅ معدّل: يعرض التأكيد أو الحالة
+              // âœ… ظ…ط¹ط¯ظ‘ظ„: ظٹط¹ط±ط¶ ط§ظ„طھط£ظƒظٹط¯ ط£ظˆ ط§ظ„ط­ط§ظ„ط©
               onDownloadStatusTap: _handleQuranDownloadStatusTap,
             ),
           ),

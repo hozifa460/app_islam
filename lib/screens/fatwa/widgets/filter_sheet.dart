@@ -1,4 +1,4 @@
-// widgets/filter_sheet.dart
+﻿// widgets/filter_sheet.dart
 import 'package:flutter/material.dart';
 
 class FilterSheet extends StatefulWidget {
@@ -22,33 +22,33 @@ class _FilterSheetState extends State<FilterSheet> {
   String? _selectedCategory;
 
   final List<String> _scholars = [
-    'الكل',
-    'ابن باز',
-    'ابن عثيمين',
-    'ابن القيم',
-    'الألباني',
-    'ابن تيمية',
+    'ط§ظ„ظƒظ„',
+    'ط§ط¨ظ† ط¨ط§ط²',
+    'ط§ط¨ظ† ط¹ط«ظٹظ…ظٹظ†',
+    'ط§ط¨ظ† ط§ظ„ظ‚ظٹظ…',
+    'ط§ظ„ط£ظ„ط¨ط§ظ†ظٹ',
+    'ط§ط¨ظ† طھظٹظ…ظٹط©',
   ];
 
   final List<Map<String, dynamic>> _categories = [
-    {'name': 'الكل', 'icon': Icons.all_inclusive},
-    {'name': 'صلاة', 'icon': Icons.mosque},
-    {'name': 'زكاة', 'icon': Icons.volunteer_activism},
-    {'name': 'صيام', 'icon': Icons.nights_stay},
-    {'name': 'حج', 'icon': Icons.location_city},
-    {'name': 'طهارة', 'icon': Icons.water_drop},
-    {'name': 'بيوع', 'icon': Icons.store},
-    {'name': 'نكاح', 'icon': Icons.favorite},
-    {'name': 'أذكار', 'icon': Icons.auto_stories},
-    {'name': 'عقيدة', 'icon': Icons.star},
-    {'name': 'جنائز', 'icon': Icons.sentiment_very_dissatisfied},
+    {'name': 'ط§ظ„ظƒظ„', 'icon': Icons.all_inclusive},
+    {'name': 'طµظ„ط§ط©', 'icon': Icons.mosque},
+    {'name': 'ط²ظƒط§ط©', 'icon': Icons.volunteer_activism},
+    {'name': 'طµظٹط§ظ…', 'icon': Icons.nights_stay},
+    {'name': 'ط­ط¬', 'icon': Icons.location_city},
+    {'name': 'ط·ظ‡ط§ط±ط©', 'icon': Icons.water_drop},
+    {'name': 'ط¨ظٹظˆط¹', 'icon': Icons.store},
+    {'name': 'ظ†ظƒط§ط­', 'icon': Icons.favorite},
+    {'name': 'ط£ط°ظƒط§ط±', 'icon': Icons.auto_stories},
+    {'name': 'ط¹ظ‚ظٹط¯ط©', 'icon': Icons.star},
+    {'name': 'ط¬ظ†ط§ط¦ط²', 'icon': Icons.sentiment_very_dissatisfied},
   ];
 
   @override
   void initState() {
     super.initState();
-    _selectedScholar = widget.selectedScholar ?? 'الكل';
-    _selectedCategory = widget.selectedCategory ?? 'الكل';
+    _selectedScholar = widget.selectedScholar ?? 'ط§ظ„ظƒظ„';
+    _selectedCategory = widget.selectedCategory ?? 'ط§ظ„ظƒظ„';
   }
 
   @override
@@ -67,7 +67,7 @@ class _FilterSheetState extends State<FilterSheet> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // ═══ Handle ═══
+            // â•گâ•گâ•گ Handle â•گâ•گâ•گ
             Center(
               child: Container(
                 width: 40,
@@ -81,7 +81,7 @@ class _FilterSheetState extends State<FilterSheet> {
 
             const SizedBox(height: 20),
 
-            // ═══ Title ═══
+            // â•گâ•گâ•گ Title â•گâ•گâ•گ
             Row(
               children: [
                 const Icon(
@@ -90,7 +90,7 @@ class _FilterSheetState extends State<FilterSheet> {
                 ),
                 const SizedBox(width: 8),
                 const Text(
-                  'تصفية النتائج',
+                  'طھطµظپظٹط© ط§ظ„ظ†طھط§ط¦ط¬',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -101,12 +101,12 @@ class _FilterSheetState extends State<FilterSheet> {
                 TextButton(
                   onPressed: () {
                     setState(() {
-                      _selectedScholar = 'الكل';
-                      _selectedCategory = 'الكل';
+                      _selectedScholar = 'ط§ظ„ظƒظ„';
+                      _selectedCategory = 'ط§ظ„ظƒظ„';
                     });
                   },
                   child: const Text(
-                    'إعادة تعيين',
+                    'ط¥ط¹ط§ط¯ط© طھط¹ظٹظٹظ†',
                     style: TextStyle(
                       color: Colors.red,
                       fontFamily: 'Cairo',
@@ -119,9 +119,9 @@ class _FilterSheetState extends State<FilterSheet> {
             const Divider(),
             const SizedBox(height: 10),
 
-            // ═══ Scholar Filter ═══
+            // â•گâ•گâ•گ Scholar Filter â•گâ•گâ•گ
             const Text(
-              'العالم / المفتي',
+              'ط§ظ„ط¹ط§ظ„ظ… / ط§ظ„ظ…ظپطھظٹ',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -175,9 +175,9 @@ class _FilterSheetState extends State<FilterSheet> {
 
             const SizedBox(height: 20),
 
-            // ═══ Category Filter ═══
+            // â•گâ•گâ•گ Category Filter â•گâ•گâ•گ
             const Text(
-              'التصنيف',
+              'ط§ظ„طھطµظ†ظٹظپ',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -204,7 +204,7 @@ class _FilterSheetState extends State<FilterSheet> {
                     ),
                     decoration: BoxDecoration(
                       color: isSelected
-                          ? const Color(0xFF2E7D32).withOpacity(0.1)
+                          ? const Color(0xFF2E7D32).withValues(alpha: 0.1)
                           : Colors.grey[100],
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
@@ -246,14 +246,14 @@ class _FilterSheetState extends State<FilterSheet> {
 
             const SizedBox(height: 24),
 
-            // ═══ Apply Button ═══
+            // â•گâ•گâ•گ Apply Button â•گâ•گâ•گ
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
                   widget.onFilter(
-                    _selectedScholar == 'الكل' ? null : _selectedScholar,
-                    _selectedCategory == 'الكل' ? null : _selectedCategory,
+                    _selectedScholar == 'ط§ظ„ظƒظ„' ? null : _selectedScholar,
+                    _selectedCategory == 'ط§ظ„ظƒظ„' ? null : _selectedCategory,
                   );
                   Navigator.pop(context);
                 },
@@ -266,7 +266,7 @@ class _FilterSheetState extends State<FilterSheet> {
                   elevation: 0,
                 ),
                 child: const Text(
-                  'تطبيق الفلتر',
+                  'طھط·ط¨ظٹظ‚ ط§ظ„ظپظ„طھط±',
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,

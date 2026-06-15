@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:islamic_app/screens/quran/surah_detail/surah_deatil.dart';
@@ -54,23 +54,23 @@ class _KhatmaScreenState extends State<KhatmaScreen>
   ];
 
   final List<String> surahNames = [
-    "الفاتحة", "البقرة", "آل عمران", "النساء", "المائدة", "الأنعام",
-    "الأعراف", "الأنفال", "التوبة", "يونس", "هود", "يوسف", "الرعد",
-    "إبراهيم", "الحجر", "النحل", "الإسراء", "الكهف", "مريم", "طه",
-    "الأنبياء", "الحج", "المؤمنون", "النور", "الفرقان", "الشعراء",
-    "النمل", "القصص", "العنكبوت", "الروم", "لقمان", "السجدة", "الأحزاب",
-    "سبأ", "فاطر", "يس", "الصافات", "ص", "الزمر", "غافر", "فصلت",
-    "الشورى", "الزخرف", "الدخان", "الجاثية", "الأحقاف", "محمد", "الفتح",
-    "الحجرات", "ق", "الذاريات", "الطور", "النجم", "القمر", "الرحمن",
-    "الواقعة", "الحديد", "المجادلة", "الحشر", "الممتحنة", "الصف",
-    "الجمعة", "المنافقون", "التغابن", "الطلاق", "التحريم", "الملك",
-    "القلم", "الحاقة", "المعارج", "نوح", "الجن", "المزمل", "المدثر",
-    "القيامة", "الإنسان", "المرسلات", "النبأ", "النازعات", "عبس",
-    "التكوير", "الانفطار", "المطففين", "الانشقاق", "البروج", "الطارق",
-    "الأعلى", "الغاشية", "الفجر", "البلد", "الشمس", "الليل", "الضحى",
-    "الشرح", "التين", "العلق", "القدر", "البينة", "الزلزلة", "العاديات",
-    "القارعة", "التكاثر", "العصر", "الهمزة", "الفيل", "قريش", "الماعون",
-    "الكوثر", "الكافرون", "النصر", "المسد", "الإخلاص", "الفلق", "الناس"
+    "ط§ظ„ظپط§طھط­ط©", "ط§ظ„ط¨ظ‚ط±ط©", "ط¢ظ„ ط¹ظ…ط±ط§ظ†", "ط§ظ„ظ†ط³ط§ط،", "ط§ظ„ظ…ط§ط¦ط¯ط©", "ط§ظ„ط£ظ†ط¹ط§ظ…",
+    "ط§ظ„ط£ط¹ط±ط§ظپ", "ط§ظ„ط£ظ†ظپط§ظ„", "ط§ظ„طھظˆط¨ط©", "ظٹظˆظ†ط³", "ظ‡ظˆط¯", "ظٹظˆط³ظپ", "ط§ظ„ط±ط¹ط¯",
+    "ط¥ط¨ط±ط§ظ‡ظٹظ…", "ط§ظ„ط­ط¬ط±", "ط§ظ„ظ†ط­ظ„", "ط§ظ„ط¥ط³ط±ط§ط،", "ط§ظ„ظƒظ‡ظپ", "ظ…ط±ظٹظ…", "ط·ظ‡",
+    "ط§ظ„ط£ظ†ط¨ظٹط§ط،", "ط§ظ„ط­ط¬", "ط§ظ„ظ…ط¤ظ…ظ†ظˆظ†", "ط§ظ„ظ†ظˆط±", "ط§ظ„ظپط±ظ‚ط§ظ†", "ط§ظ„ط´ط¹ط±ط§ط،",
+    "ط§ظ„ظ†ظ…ظ„", "ط§ظ„ظ‚طµطµ", "ط§ظ„ط¹ظ†ظƒط¨ظˆطھ", "ط§ظ„ط±ظˆظ…", "ظ„ظ‚ظ…ط§ظ†", "ط§ظ„ط³ط¬ط¯ط©", "ط§ظ„ط£ط­ط²ط§ط¨",
+    "ط³ط¨ط£", "ظپط§ط·ط±", "ظٹط³", "ط§ظ„طµط§ظپط§طھ", "طµ", "ط§ظ„ط²ظ…ط±", "ط؛ط§ظپط±", "ظپطµظ„طھ",
+    "ط§ظ„ط´ظˆط±ظ‰", "ط§ظ„ط²ط®ط±ظپ", "ط§ظ„ط¯ط®ط§ظ†", "ط§ظ„ط¬ط§ط«ظٹط©", "ط§ظ„ط£ط­ظ‚ط§ظپ", "ظ…ط­ظ…ط¯", "ط§ظ„ظپطھط­",
+    "ط§ظ„ط­ط¬ط±ط§طھ", "ظ‚", "ط§ظ„ط°ط§ط±ظٹط§طھ", "ط§ظ„ط·ظˆط±", "ط§ظ„ظ†ط¬ظ…", "ط§ظ„ظ‚ظ…ط±", "ط§ظ„ط±ط­ظ…ظ†",
+    "ط§ظ„ظˆط§ظ‚ط¹ط©", "ط§ظ„ط­ط¯ظٹط¯", "ط§ظ„ظ…ط¬ط§ط¯ظ„ط©", "ط§ظ„ط­ط´ط±", "ط§ظ„ظ…ظ…طھط­ظ†ط©", "ط§ظ„طµظپ",
+    "ط§ظ„ط¬ظ…ط¹ط©", "ط§ظ„ظ…ظ†ط§ظپظ‚ظˆظ†", "ط§ظ„طھط؛ط§ط¨ظ†", "ط§ظ„ط·ظ„ط§ظ‚", "ط§ظ„طھط­ط±ظٹظ…", "ط§ظ„ظ…ظ„ظƒ",
+    "ط§ظ„ظ‚ظ„ظ…", "ط§ظ„ط­ط§ظ‚ط©", "ط§ظ„ظ…ط¹ط§ط±ط¬", "ظ†ظˆط­", "ط§ظ„ط¬ظ†", "ط§ظ„ظ…ط²ظ…ظ„", "ط§ظ„ظ…ط¯ط«ط±",
+    "ط§ظ„ظ‚ظٹط§ظ…ط©", "ط§ظ„ط¥ظ†ط³ط§ظ†", "ط§ظ„ظ…ط±ط³ظ„ط§طھ", "ط§ظ„ظ†ط¨ط£", "ط§ظ„ظ†ط§ط²ط¹ط§طھ", "ط¹ط¨ط³",
+    "ط§ظ„طھظƒظˆظٹط±", "ط§ظ„ط§ظ†ظپط·ط§ط±", "ط§ظ„ظ…ط·ظپظپظٹظ†", "ط§ظ„ط§ظ†ط´ظ‚ط§ظ‚", "ط§ظ„ط¨ط±ظˆط¬", "ط§ظ„ط·ط§ط±ظ‚",
+    "ط§ظ„ط£ط¹ظ„ظ‰", "ط§ظ„ط؛ط§ط´ظٹط©", "ط§ظ„ظپط¬ط±", "ط§ظ„ط¨ظ„ط¯", "ط§ظ„ط´ظ…ط³", "ط§ظ„ظ„ظٹظ„", "ط§ظ„ط¶ط­ظ‰",
+    "ط§ظ„ط´ط±ط­", "ط§ظ„طھظٹظ†", "ط§ظ„ط¹ظ„ظ‚", "ط§ظ„ظ‚ط¯ط±", "ط§ظ„ط¨ظٹظ†ط©", "ط§ظ„ط²ظ„ط²ظ„ط©", "ط§ظ„ط¹ط§ط¯ظٹط§طھ",
+    "ط§ظ„ظ‚ط§ط±ط¹ط©", "ط§ظ„طھظƒط§ط«ط±", "ط§ظ„ط¹طµط±", "ط§ظ„ظ‡ظ…ط²ط©", "ط§ظ„ظپظٹظ„", "ظ‚ط±ظٹط´", "ط§ظ„ظ…ط§ط¹ظˆظ†",
+    "ط§ظ„ظƒظˆط«ط±", "ط§ظ„ظƒط§ظپط±ظˆظ†", "ط§ظ„ظ†طµط±", "ط§ظ„ظ…ط³ط¯", "ط§ظ„ط¥ط®ظ„ط§طµ", "ط§ظ„ظپظ„ظ‚", "ط§ظ„ظ†ط§ط³"
   ];
 
   @override
@@ -208,23 +208,23 @@ class _KhatmaScreenState extends State<KhatmaScreen>
     _playProgressAnimation();
   }
 
-  // ═══ التذكير ═══
+  // â•گâ•گâ•گ ط§ظ„طھط°ظƒظٹط± â•گâ•گâ•گ
   Future<void> selectReminderTime() async {
-    final tr = context.tr; // ← الترجمة
+    final tr = context.tr; // â†گ ط§ظ„طھط±ط¬ظ…ط©
 
     final TimeOfDay? picked = await showTimePicker(
       context: context,
       initialTime: TimeOfDay.now(),
-      helpText: tr.khatmaSelectTime, // ← مترجم
-      confirmText: tr.khatmaSave, // ← مترجم
-      cancelText: tr.khatmaCancel, // ← مترجم
+      helpText: tr.khatmaSelectTime, // â†گ ظ…طھط±ط¬ظ…
+      confirmText: tr.khatmaSave, // â†گ ظ…طھط±ط¬ظ…
+      cancelText: tr.khatmaCancel, // â†گ ظ…طھط±ط¬ظ…
     );
 
     if (picked != null) {
       await NotificationService.scheduleKhatmaReminder(
         id: 1001,
-        title: tr.khatmaReminderTitle, // ← مترجم
-        body: tr.khatmaReminderBody, // ← مترجم
+        title: tr.khatmaReminderTitle, // â†گ ظ…طھط±ط¬ظ…
+        body: tr.khatmaReminderBody, // â†گ ظ…طھط±ط¬ظ…
         time: picked,
       );
 
@@ -237,7 +237,7 @@ class _KhatmaScreenState extends State<KhatmaScreen>
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    tr.khatmaReminderSet(picked.format(context)), // ← مترجم
+                    tr.khatmaReminderSet(picked.format(context)), // â†گ ظ…طھط±ط¬ظ…
                     style: GoogleFonts.cairo(),
                   ),
                 ),
@@ -349,7 +349,7 @@ class _KhatmaScreenState extends State<KhatmaScreen>
   }
 
   void _showSuccessSnackbar() {
-    final tr = context.tr; // ← الترجمة
+    final tr = context.tr; // â†گ ط§ظ„طھط±ط¬ظ…ط©
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -358,7 +358,7 @@ class _KhatmaScreenState extends State<KhatmaScreen>
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.2),
+                color: Colors.white.withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: const Icon(Icons.celebration,
@@ -370,9 +370,9 @@ class _KhatmaScreenState extends State<KhatmaScreen>
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(tr.khatmaWirdDone, // ← مترجم
+                  Text(tr.khatmaWirdDone, // â†گ ظ…طھط±ط¬ظ…
                       style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
-                  Text(tr.khatmaKeepGoing, // ← مترجم
+                  Text(tr.khatmaKeepGoing, // â†گ ظ…طھط±ط¬ظ…
                       style: GoogleFonts.cairo(fontSize: 12)),
                 ],
               ),
@@ -404,7 +404,7 @@ class _KhatmaScreenState extends State<KhatmaScreen>
     _playProgressAnimation();
 
     if (mounted) {
-      final tr = context.tr; // ← الترجمة
+      final tr = context.tr; // â†گ ط§ظ„طھط±ط¬ظ…ط©
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -412,7 +412,7 @@ class _KhatmaScreenState extends State<KhatmaScreen>
             children: [
               const Icon(Icons.undo, color: Colors.white),
               const SizedBox(width: 12),
-              Text(tr.khatmaUndone, // ← مترجم
+              Text(tr.khatmaUndone, // â†گ ظ…طھط±ط¬ظ…
                   style: GoogleFonts.cairo()),
             ],
           ),
@@ -442,8 +442,8 @@ class _KhatmaScreenState extends State<KhatmaScreen>
 
   String toArabicNum(int n) {
     const nums = {
-      '0': '٠', '1': '١', '2': '٢', '3': '٣', '4': '٤',
-      '5': '٥', '6': '٦', '7': '٧', '8': '٨', '9': '٩'
+      '0': 'ظ ', '1': 'ظ،', '2': 'ظ¢', '3': 'ظ£', '4': 'ظ¤',
+      '5': 'ظ¥', '6': 'ظ¦', '7': 'ظ§', '8': 'ظ¨', '9': 'ظ©'
     };
     String s = n.toString();
     nums.forEach((k, v) => s = s.replaceAll(k, v));
@@ -467,7 +467,7 @@ class _KhatmaScreenState extends State<KhatmaScreen>
   void selectPreset(int index) {
     setState(() {
       _selectedPreset = index;
-      // ═══ استخدام القيم من khatmaPresets المترجمة ═══
+      // â•گâ•گâ•گ ط§ط³طھط®ط¯ط§ظ… ط§ظ„ظ‚ظٹظ… ظ…ظ† khatmaPresets ط§ظ„ظ…طھط±ط¬ظ…ط© â•گâ•گâ•گ
       final tr = context.tr;
       final presets = tr.khatmaPresets;
       _setupPages = int.parse(presets[index]['pages']!);
@@ -477,9 +477,9 @@ class _KhatmaScreenState extends State<KhatmaScreen>
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final tr = context.tr; // ← الترجمة
+    final tr = context.tr; // â†گ ط§ظ„طھط±ط¬ظ…ط©
 
-    // ═══ بناء الخطط السريعة من الترجمة ═══
+    // â•گâ•گâ•گ ط¨ظ†ط§ط، ط§ظ„ط®ط·ط· ط§ظ„ط³ط±ظٹط¹ط© ظ…ظ† ط§ظ„طھط±ط¬ظ…ط© â•گâ•گâ•گ
     final presets = tr.khatmaPresets.map((p) {
       final days = int.parse(p['days']!);
       final pages = int.parse(p['pages']!);
@@ -539,7 +539,7 @@ class _KhatmaScreenState extends State<KhatmaScreen>
     );
   }
 
-  // ═══ أيقونات الخطط ═══
+  // â•گâ•گâ•گ ط£ظٹظ‚ظˆظ†ط§طھ ط§ظ„ط®ط·ط· â•گâ•گâ•گ
   IconData _getPresetIcon(int days) {
     if (days == 30) return Icons.calendar_month;
     if (days == 15) return Icons.speed;

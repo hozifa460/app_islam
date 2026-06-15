@@ -1,4 +1,4 @@
-// lib/screens/radio/widgets_recitations_screen/theme/rec_shapes.dart
+﻿// lib/screens/radio/widgets_recitations_screen/theme/rec_shapes.dart
 
 import 'package:flutter/material.dart';
 import 'rec_colors.dart';
@@ -6,7 +6,7 @@ import 'rec_colors.dart';
 class RecShapes {
   RecShapes._();
 
-  // ══ Border Radius ══
+  // â•گâ•گ Border Radius â•گâ•گ
   static BorderRadius get radiusSmall => BorderRadius.circular(10);
   static BorderRadius get radiusMedium => BorderRadius.circular(12);
   static BorderRadius get radiusLarge => BorderRadius.circular(14);
@@ -19,7 +19,7 @@ class RecShapes {
   static BorderRadius get radiusCardBottom =>
       const BorderRadius.vertical(bottom: Radius.circular(12));
 
-  // ══ Mini Player ══
+  // â•گâ•گ Mini Player â•گâ•گ
   static BoxDecoration miniPlayer(BuildContext context, Color primary) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return BoxDecoration(
@@ -33,7 +33,7 @@ class RecShapes {
 
   static BoxDecoration miniPlayerIcon(BuildContext context, Color primary) {
     return BoxDecoration(
-      color: primary.withOpacity(
+      color: primary.withValues(alpha: 
         _isDark(context) ? 0.2 : 0.12,
       ),
       borderRadius: radiusCategory,
@@ -45,21 +45,21 @@ class RecShapes {
     shape: BoxShape.circle,
     boxShadow: [
       BoxShadow(
-        color: primary.withOpacity(0.3),
+        color: primary.withValues(alpha: 0.3),
         blurRadius: 6,
         offset: const Offset(0, 2),
       ),
     ],
   );
 
-  // ══ أيقونة التصنيف ══
+  // â•گâ•گ ط£ظٹظ‚ظˆظ†ط© ط§ظ„طھطµظ†ظٹظپ â•گâ•گ
   static BoxDecoration categoryIcon(List<Color> gradientColors) =>
       BoxDecoration(
         gradient: RecColors.categoryIconGradient(gradientColors),
         borderRadius: radiusCategory,
       );
 
-  // ══ زر التشغيل على البطاقة ══
+  // â•گâ•گ ط²ط± ط§ظ„طھط´ط؛ظٹظ„ ط¹ظ„ظ‰ ط§ظ„ط¨ط·ط§ظ‚ط© â•گâ•گ
   static BoxDecoration cardPlayButton({
     required bool hasStation,
     required Color gold,
@@ -69,28 +69,28 @@ class RecShapes {
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.3),
+            color: Colors.black.withValues(alpha: 0.3),
             blurRadius: 6,
           ),
         ],
       );
 
-  // ══ زر الرجوع ══
+  // â•گâ•گ ط²ط± ط§ظ„ط±ط¬ظˆط¹ â•گâ•گ
   static BoxDecoration backButton(BuildContext context) {
     return BoxDecoration(
       color: _isDark(context)
-          ? Colors.white.withOpacity(0.1)
-          : Colors.black.withOpacity(0.06),
+          ? Colors.white.withValues(alpha: 0.1)
+          : Colors.black.withValues(alpha: 0.06),
       shape: BoxShape.circle,
       border: Border.all(
         color: _isDark(context)
-            ? Colors.white.withOpacity(0.15)
-            : Colors.black.withOpacity(0.1),
+            ? Colors.white.withValues(alpha: 0.15)
+            : Colors.black.withValues(alpha: 0.1),
       ),
     );
   }
 
-  // ══ شريط البحث ══
+  // â•گâ•گ ط´ط±ظٹط· ط§ظ„ط¨ط­ط« â•گâ•گ
   static BoxDecoration searchBar(BuildContext context, Color primary) {
     return BoxDecoration(
       color: RecColors.searchBackground(context),
@@ -101,7 +101,7 @@ class RecShapes {
     );
   }
 
-  // ══ عنصر القارئ ══
+  // â•گâ•گ ط¹ظ†طµط± ط§ظ„ظ‚ط§ط±ط¦ â•گâ•گ
   static BoxDecoration reciterItem({
     required bool hasDownloads,
     required Color primary,
@@ -125,32 +125,32 @@ class RecShapes {
       );
     }
 
-    // Fallback بدون context
+    // Fallback ط¨ط¯ظˆظ† context
     return BoxDecoration(
       color: hasDownloads
-          ? primary.withOpacity(0.1)
-          : Colors.white.withOpacity(0.06),
+          ? primary.withValues(alpha: 0.1)
+          : Colors.white.withValues(alpha: 0.06),
       borderRadius: radiusReciterItem,
       border: Border.all(
         color: hasDownloads
-            ? primary.withOpacity(0.3)
-            : Colors.white.withOpacity(0.08),
+            ? primary.withValues(alpha: 0.3)
+            : Colors.white.withValues(alpha: 0.08),
       ),
     );
   }
 
-  // ══ سهم القارئ ══
+  // â•گâ•گ ط³ظ‡ظ… ط§ظ„ظ‚ط§ط±ط¦ â•گâ•گ
   static BoxDecoration reciterArrow(Color primary) => BoxDecoration(
-    color: primary.withOpacity(0.15),
+    color: primary.withValues(alpha: 0.15),
     shape: BoxShape.circle,
   );
 
-  // ══ مساعد ══
+  // â•گâ•گ ظ…ط³ط§ط¹ط¯ â•گâ•گ
   static bool _isDark(BuildContext context) =>
       Theme.of(context).brightness == Brightness.dark;
 }
 
-/// ══ أحجام متجاوبة ══
+/// â•گâ•گ ط£ط­ط¬ط§ظ… ظ…طھط¬ط§ظˆط¨ط© â•گâ•گ
 class RecSizes {
   RecSizes._();
 

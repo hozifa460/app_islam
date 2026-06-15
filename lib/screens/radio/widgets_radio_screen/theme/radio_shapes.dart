@@ -1,15 +1,15 @@
-// lib/screens/radio/widgets/radio_shapes.dart
+﻿// lib/screens/radio/widgets/radio_shapes.dart
 
 import 'package:flutter/material.dart';
 import 'radio_colors.dart';
 
-/// ══════════════════════════════════════════════════════════════
-/// أشكال وديكورات الراديو المخصصة
-/// ══════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ط£ط´ظƒط§ظ„ ظˆط¯ظٹظƒظˆط±ط§طھ ط§ظ„ط±ط§ط¯ظٹظˆ ط§ظ„ظ…ط®طµطµط©
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class RadioShapes {
   RadioShapes._();
 
-  // ══ Border Radius ══
+  // â•گâ•گ Border Radius â•گâ•گ
   static const double radiusSmall = 8.0;
   static const double radiusMedium = 12.0;
   static const double radiusLarge = 16.0;
@@ -27,7 +27,7 @@ class RadioShapes {
   static BorderRadius get borderRadiusPlayer =>
       const BorderRadius.vertical(top: Radius.circular(radiusPlayer));
 
-  // ══ ديكور البطاقة المميزة ══
+  // â•گâ•گ ط¯ظٹظƒظˆط± ط§ظ„ط¨ط·ط§ظ‚ط© ط§ظ„ظ…ظ…ظٹط²ط© â•گâ•گ
   static BoxDecoration featuredCardDecoration({
     required bool isPlaying,
     required Color gold,
@@ -42,7 +42,7 @@ class RadioShapes {
       ),
       boxShadow: [
         BoxShadow(
-          color: categoryColors.last.withOpacity(isPlaying ? 0.45 : 0.2),
+          color: categoryColors.last.withValues(alpha: isPlaying ? 0.45 : 0.2),
           blurRadius: isPlaying ? 18 : 10,
           offset: const Offset(0, 5),
         ),
@@ -50,7 +50,7 @@ class RadioShapes {
     );
   }
 
-  // ══ ديكور زر التشغيل الدائري ══
+  // â•گâ•گ ط¯ظٹظƒظˆط± ط²ط± ط§ظ„طھط´ط؛ظٹظ„ ط§ظ„ط¯ط§ط¦ط±ظٹ â•گâ•گ
   static BoxDecoration playButtonDecoration({
     required bool isPlaying,
     required Color gold,
@@ -61,21 +61,21 @@ class RadioShapes {
       shape: BoxShape.circle,
       boxShadow: [
         BoxShadow(
-          color: color.withOpacity(0.4),
+          color: color.withValues(alpha: 0.4),
           blurRadius: 8,
         ),
       ],
     );
   }
 
-  // ══ ديكور زر التشغيل الرئيسي في المشغل السفلي ══
+  // â•گâ•گ ط¯ظٹظƒظˆط± ط²ط± ط§ظ„طھط´ط؛ظٹظ„ ط§ظ„ط±ط¦ظٹط³ظٹ ظپظٹ ط§ظ„ظ…ط´ط؛ظ„ ط§ظ„ط³ظپظ„ظٹ â•گâ•گ
   static BoxDecoration mainPlayButtonDecoration(Color primary) {
     return BoxDecoration(
       color: primary,
       shape: BoxShape.circle,
       boxShadow: [
         BoxShadow(
-          color: primary.withOpacity(0.5),
+          color: primary.withValues(alpha: 0.5),
           blurRadius: 14,
           offset: const Offset(0, 3),
         ),
@@ -83,7 +83,7 @@ class RadioShapes {
     );
   }
 
-  // ══ ديكور زر الرجوع ══
+  // â•گâ•گ ط¯ظٹظƒظˆط± ط²ط± ط§ظ„ط±ط¬ظˆط¹ â•گâ•گ
   static BoxDecoration backButtonDecoration(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return BoxDecoration(
@@ -99,7 +99,7 @@ class RadioShapes {
     );
   }
 
-  // ══ ديكور شارة البث المباشر ══
+  // â•گâ•گ ط¯ظٹظƒظˆط± ط´ط§ط±ط© ط§ظ„ط¨ط« ط§ظ„ظ…ط¨ط§ط´ط± â•گâ•گ
   static BoxDecoration liveBadgeDecoration() {
     return BoxDecoration(
       border: Border.all(color: RadioColors.goldWithOpacity(0.4)),
@@ -108,7 +108,7 @@ class RadioShapes {
     );
   }
 
-  // ══ ديكور Tab Bar ══
+  // â•گâ•گ ط¯ظٹظƒظˆط± Tab Bar â•گâ•گ
   static BoxDecoration tabBarContainerDecoration(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return BoxDecoration(
@@ -125,7 +125,7 @@ class RadioShapes {
       borderRadius: BorderRadius.circular(13),
       boxShadow: [
         BoxShadow(
-          color: primary.withOpacity(0.35),
+          color: primary.withValues(alpha: 0.35),
           blurRadius: 10,
           offset: const Offset(0, 3),
         ),
@@ -133,7 +133,7 @@ class RadioShapes {
     );
   }
 
-  // ══ ديكور المشغل السفلي ══
+  // â•گâ•گ ط¯ظٹظƒظˆط± ط§ظ„ظ…ط´ط؛ظ„ ط§ظ„ط³ظپظ„ظٹ â•گâ•گ
   static BoxDecoration bottomPlayerDecoration(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return BoxDecoration(
@@ -156,7 +156,7 @@ class RadioShapes {
     );
   }
 
-  // ══ ديكور زر المفضلة ══
+  // â•گâ•گ ط¯ظٹظƒظˆط± ط²ط± ط§ظ„ظ…ظپط¶ظ„ط© â•گâ•گ
   static BoxDecoration favoriteButtonDecoration({double opacity = 0.35}) {
     return BoxDecoration(
       color: RadioColors.blackWithOpacity(opacity),
@@ -164,7 +164,7 @@ class RadioShapes {
     );
   }
 
-  // ══ ديكور شارة التصنيف ══
+  // â•گâ•گ ط¯ظٹظƒظˆط± ط´ط§ط±ط© ط§ظ„طھطµظ†ظٹظپ â•گâ•گ
   static BoxDecoration categoryBadgeDecoration() {
     return BoxDecoration(
       color: RadioColors.blackWithOpacity(0.4),
@@ -172,7 +172,7 @@ class RadioShapes {
     );
   }
 
-  // ══ ديكور الصورة البديلة (Fallback) ══
+  // â•گâ•گ ط¯ظٹظƒظˆط± ط§ظ„طµظˆط±ط© ط§ظ„ط¨ط¯ظٹظ„ط© (Fallback) â•گâ•گ
   static BoxDecoration fallbackImageDecoration(List<Color> colors) {
     return BoxDecoration(
       gradient: LinearGradient(
@@ -183,7 +183,7 @@ class RadioShapes {
     );
   }
 
-  // ══ ديكور Equalizer في المشغل ══
+  // â•گâ•گ ط¯ظٹظƒظˆط± Equalizer ظپظٹ ط§ظ„ظ…ط´ط؛ظ„ â•گâ•گ
   static BoxDecoration equalizerOverlayDecoration() {
     return BoxDecoration(
       color: RadioColors.blackWithOpacity(0.5),
@@ -191,43 +191,43 @@ class RadioShapes {
   }
 }
 
-/// ══ أحجام متجاوبة ══
+/// â•گâ•گ ط£ط­ط¬ط§ظ… ظ…طھط¬ط§ظˆط¨ط© â•گâ•گ
 class RadioSizes {
   RadioSizes._();
 
-  /// حجم بطاقة Featured
+  /// ط­ط¬ظ… ط¨ط·ط§ظ‚ط© Featured
   static double featuredCardHeight(bool isTablet) => isTablet ? 200.0 : 175.0;
   static double featuredCardWidth(bool isTablet) => isTablet ? 160.0 : 140.0;
 
-  /// حجم صورة المحطة
+  /// ط­ط¬ظ… طµظˆط±ط© ط§ظ„ظ…ط­ط·ط©
   static double stationImageHeight(double screenHeight) =>
       (screenHeight * 0.19).clamp(90.0, 300.0);
 
-  /// حجم صورة المشغل
+  /// ط­ط¬ظ… طµظˆط±ط© ط§ظ„ظ…ط´ط؛ظ„
   static double playerImageSize(bool isTablet) => isTablet ? 52.0 : 46.0;
 
-  /// حجم زر التشغيل الرئيسي
+  /// ط­ط¬ظ… ط²ط± ط§ظ„طھط´ط؛ظٹظ„ ط§ظ„ط±ط¦ظٹط³ظٹ
   static double mainPlayButtonSize(bool isTablet) => isTablet ? 50.0 : 44.0;
 
-  /// حجم زر التحكم
+  /// ط­ط¬ظ… ط²ط± ط§ظ„طھط­ظƒظ…
   static double controlButtonSize(bool isTablet) => isTablet ? 36.0 : 32.0;
 
-  /// حجم زر الرجوع
+  /// ط­ط¬ظ… ط²ط± ط§ظ„ط±ط¬ظˆط¹
   static const double backButtonSize = 40.0;
 
-  /// حجم زر المفضلة (Featured)
+  /// ط­ط¬ظ… ط²ط± ط§ظ„ظ…ظپط¶ظ„ط© (Featured)
   static const double favoriteButtonSizeFeatured = 28.0;
 
-  /// حجم زر المفضلة (Station)
+  /// ط­ط¬ظ… ط²ط± ط§ظ„ظ…ظپط¶ظ„ط© (Station)
   static const double favoriteButtonSizeStation = 27.0;
 
-  /// حجم زر التشغيل الصغير
+  /// ط­ط¬ظ… ط²ط± ط§ظ„طھط´ط؛ظٹظ„ ط§ظ„طµط؛ظٹط±
   static const double smallPlayButtonSize = 30.0;
 
-  /// ارتفاع Tab Bar
+  /// ط§ط±طھظپط§ط¹ Tab Bar
   static double tabBarHeight(bool isTablet) => isTablet ? 50.0 : 44.0;
 
-  /// خط الفونت المتجاوب
+  /// ط®ط· ط§ظ„ظپظˆظ†طھ ط§ظ„ظ…طھط¬ط§ظˆط¨
   static double headerFontSize(bool isTablet) => isTablet ? 36.0 : 30.0;
   static double subtitleFontSize(bool isTablet) => isTablet ? 14.0 : 12.0;
   static double sectionTitleSize(bool isTablet) => isTablet ? 17.0 : 15.0;

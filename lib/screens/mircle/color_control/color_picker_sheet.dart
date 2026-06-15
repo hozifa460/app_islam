@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'miracle_color_provider.dart';
@@ -39,7 +39,7 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
     });
   }
 
-  // ← هذا يجب أن يتطابق مع _adjustAccentColor في Provider
+  // â†گ ظ‡ط°ط§ ظٹط¬ط¨ ط£ظ† ظٹطھط·ط§ط¨ظ‚ ظ…ط¹ _adjustAccentColor ظپظٹ Provider
   Color _applyBrightness(Color base, double shift) {
     final hsl = HSLColor.fromColor(base);
 
@@ -80,11 +80,11 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
             top: Radius.circular(28)),
         border: Border(
           top: BorderSide(
-              color: previewColor.withOpacity(0.4), width: 1.5),
+              color: previewColor.withValues(alpha: 0.4), width: 1.5),
         ),
         boxShadow: [
           BoxShadow(
-            color:      previewColor.withOpacity(0.15),
+            color:      previewColor.withValues(alpha: 0.15),
             blurRadius: 30,
             offset:     const Offset(0, -10),
           ),
@@ -101,7 +101,7 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
                 width:  48,
                 height: 4,
                 decoration: BoxDecoration(
-                  color:        previewColor.withOpacity(0.5),
+                  color:        previewColor.withValues(alpha: 0.5),
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),
@@ -114,17 +114,17 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
 
-                    // ── Header ──
+                    // â”€â”€ Header â”€â”€
                     Row(
                       children: [
                         Container(
                           width:  44,
                           height: 44,
                           decoration: BoxDecoration(
-                            color:        previewColor.withOpacity(0.12),
+                            color:        previewColor.withValues(alpha: 0.12),
                             borderRadius: BorderRadius.circular(14),
                             border: Border.all(
-                                color: previewColor.withOpacity(0.3)),
+                                color: previewColor.withValues(alpha: 0.3)),
                           ),
                           child: Icon(Icons.palette_rounded,
                               color: previewColor, size: 22),
@@ -135,7 +135,7 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'تخصيص اللون',
+                                'طھط®طµظٹطµ ط§ظ„ظ„ظˆظ†',
                                 style: GoogleFonts.cairo(
                                   color:      Colors.white,
                                   fontSize:   17,
@@ -145,7 +145,7 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
                               Text(
                                 'Color Theme',
                                 style: GoogleFonts.poppins(
-                                  color:        previewColor.withOpacity(0.7),
+                                  color:        previewColor.withValues(alpha: 0.7),
                                   fontSize:     10,
                                   letterSpacing: 1,
                                 ),
@@ -162,7 +162,7 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
                             color: previewColor,
                             boxShadow: [
                               BoxShadow(
-                                color:        previewColor.withOpacity(0.5),
+                                color:        previewColor.withValues(alpha: 0.5),
                                 blurRadius:   12,
                                 spreadRadius: 2,
                               ),
@@ -173,17 +173,17 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
                     ),
                     const SizedBox(height: 16),
 
-                    // ── Selected Banner ──
+                    // â”€â”€ Selected Banner â”€â”€
                     AnimatedContainer(
                       duration: const Duration(milliseconds: 300),
                       width:   double.infinity,
                       padding: const EdgeInsets.symmetric(
                           horizontal: 14, vertical: 12),
                       decoration: BoxDecoration(
-                        color:        previewColor.withOpacity(0.08),
+                        color:        previewColor.withValues(alpha: 0.08),
                         borderRadius: BorderRadius.circular(16),
                         border: Border.all(
-                            color: previewColor.withOpacity(0.25)),
+                            color: previewColor.withValues(alpha: 0.25)),
                       ),
                       child: Row(
                         children: [
@@ -205,7 +205,7 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
                                 Text(
                                   preset.nameEn,
                                   style: GoogleFonts.poppins(
-                                    color:    previewColor.withOpacity(0.7),
+                                    color:    previewColor.withValues(alpha: 0.7),
                                     fontSize: 11,
                                   ),
                                 ),
@@ -216,13 +216,13 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 4),
                             decoration: BoxDecoration(
-                              color:        previewColor.withOpacity(0.15),
+                              color:        previewColor.withValues(alpha: 0.15),
                               borderRadius: BorderRadius.circular(10),
                               border: Border.all(
-                                  color: previewColor.withOpacity(0.3)),
+                                  color: previewColor.withValues(alpha: 0.3)),
                             ),
                             child: Text(
-                              'محدد ✓',
+                              'ظ…ط­ط¯ط¯ âœ“',
                               style: GoogleFonts.cairo(
                                 color:      previewColor,
                                 fontSize:   11,
@@ -235,7 +235,7 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
                     ),
                     const SizedBox(height: 16),
 
-                    // ── Color Grid ──
+                    // â”€â”€ Color Grid â”€â”€
                     _ColorGrid(
                       selected:        selected,
                       brightness:      _brightnessShift,
@@ -248,20 +248,20 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
                     ),
                     const SizedBox(height: 20),
 
-                    // ── Brightness Slider ──
+                    // â”€â”€ Brightness Slider â”€â”€
                     _BrightnessSlider(
                       preset:          preset,
                       brightnessShift: _brightnessShift,
                       previewColor:    previewColor,
                       applyBrightness: _applyBrightness,
-                      // ← يُحدِّث Provider فوراً أثناء السحب
+                      // â†گ ظٹظڈط­ط¯ظگظ‘ط« Provider ظپظˆط±ط§ظ‹ ط£ط«ظ†ط§ط، ط§ظ„ط³ط­ط¨
                       onChanged: (val) {
                         setState(() => _brightnessShift = val);
                         context
                             .read<MiracleColorProvider>()
                             .setBrightnessShiftImmediate(val);
                       },
-                      // ← يحفظ عند الانتهاء
+                      // â†گ ظٹط­ظپط¸ ط¹ظ†ط¯ ط§ظ„ط§ظ†طھظ‡ط§ط،
                       onChangeEnd: (val) {
                         context
                             .read<MiracleColorProvider>()
@@ -270,7 +270,7 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
                     ),
                     const SizedBox(height: 16),
 
-                    // ── Preview Strip ──
+                    // â”€â”€ Preview Strip â”€â”€
                     _PreviewStrip(
                       preset:          preset,
                       previewColor:    previewColor,
@@ -279,7 +279,7 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
                     ),
                     const SizedBox(height: 16),
 
-                    // ── Apply Button ──
+                    // â”€â”€ Apply Button â”€â”€
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
@@ -294,7 +294,7 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
                         ),
                         onPressed: () => Navigator.pop(context),
                         child: Text(
-                          'تطبيق اللون',
+                          'طھط·ط¨ظٹظ‚ ط§ظ„ظ„ظˆظ†',
                           style: GoogleFonts.cairo(
                             fontSize:   15,
                             fontWeight: FontWeight.bold,
@@ -313,9 +313,9 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
   }
 }
 
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 //  COLOR GRID
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _ColorGrid extends StatelessWidget {
   final int      selected;
   final double   brightness;
@@ -336,7 +336,7 @@ class _ColorGrid extends StatelessWidget {
       const spacing = 8.0;
       final itemW   =
           (constraints.maxWidth - spacing * (cols - 1)) / cols;
-      // ارتفاع محسوب بدقة:
+      // ط§ط±طھظپط§ط¹ ظ…ط­ط³ظˆط¨ ط¨ط¯ظ‚ط©:
       // circle=28 + gap=3 + emoji=16 + gap=2 + text=12 + padding=16 = 77
       const itemH = 95.0;
 
@@ -359,25 +359,25 @@ class _ColorGrid extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(14),
                   color: isSelected
-                      ? color.withOpacity(0.15)
-                      : Colors.white.withOpacity(0.05),
+                      ? color.withValues(alpha: 0.15)
+                      : Colors.white.withValues(alpha: 0.05),
                   border: Border.all(
                     color: isSelected
-                        ? color.withOpacity(0.7)
-                        : Colors.white.withOpacity(0.08),
+                        ? color.withValues(alpha: 0.7)
+                        : Colors.white.withValues(alpha: 0.08),
                     width: isSelected ? 2 : 1,
                   ),
                   boxShadow: isSelected
                       ? [
                     BoxShadow(
-                      color:        color.withOpacity(0.28),
+                      color:        color.withValues(alpha: 0.28),
                       blurRadius:   10,
                       spreadRadius: 1,
                     ),
                   ]
                       : [],
                 ),
-                // ← ClipRect يقطع أي overflow
+                // â†گ ClipRect ظٹظ‚ط·ط¹ ط£ظٹ overflow
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(13),
                   child: Padding(
@@ -390,7 +390,7 @@ class _ColorGrid extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        // ── Color Circle ──
+                        // â”€â”€ Color Circle â”€â”€
                         Stack(
                           alignment: Alignment.center,
                           children: [
@@ -402,7 +402,7 @@ class _ColorGrid extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   gradient: RadialGradient(colors: [
-                                    color.withOpacity(0.28),
+                                    color.withValues(alpha: 0.28),
                                     Colors.transparent,
                                   ]),
                                 ),
@@ -416,7 +416,7 @@ class _ColorGrid extends StatelessWidget {
                                 color: color,
                                 boxShadow: [
                                   BoxShadow(
-                                    color:     color.withOpacity(0.35),
+                                    color:     color.withValues(alpha: 0.35),
                                     blurRadius: 6,
                                   ),
                                 ],
@@ -434,7 +434,7 @@ class _ColorGrid extends StatelessWidget {
 
                         const SizedBox(height: 3),
 
-                        // ── Emoji ──
+                        // â”€â”€ Emoji â”€â”€
                         Text(
                           preset.emoji,
                           style: const TextStyle(
@@ -445,7 +445,7 @@ class _ColorGrid extends StatelessWidget {
 
                         const SizedBox(height: 2),
 
-                        // ── Name ──
+                        // â”€â”€ Name â”€â”€
                         SizedBox(
                           width: itemW - 10,
                           child: Text(
@@ -478,9 +478,9 @@ class _ColorGrid extends StatelessWidget {
   }
 }
 
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 //  BRIGHTNESS SLIDER
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _BrightnessSlider extends StatelessWidget {
   final MiracleColorPreset preset;
   final double             brightnessShift;
@@ -500,7 +500,7 @@ class _BrightnessSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ألوان التدرج من داكن لفاتح
+    // ط£ظ„ظˆط§ظ† ط§ظ„طھط¯ط±ط¬ ظ…ظ† ط¯ط§ظƒظ† ظ„ظپط§طھط­
     final darkColor  = applyBrightness(preset.primary, 0.0);
     final midColor   = applyBrightness(preset.primary, 0.5);
     final lightColor = applyBrightness(preset.primary, 1.0);
@@ -509,10 +509,10 @@ class _BrightnessSlider extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color:        Colors.white.withOpacity(0.04),
+        color:        Colors.white.withValues(alpha: 0.04),
         borderRadius: BorderRadius.circular(18),
         border: Border.all(
-            color: previewColor.withOpacity(0.15)),
+            color: previewColor.withValues(alpha: 0.15)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -524,7 +524,7 @@ class _BrightnessSlider extends StatelessWidget {
                   color: previewColor, size: 18),
               const SizedBox(width: 8),
               Text(
-                'درجة اللون',
+                'ط¯ط±ط¬ط© ط§ظ„ظ„ظˆظ†',
                 style: GoogleFonts.cairo(
                   color:      Colors.white,
                   fontSize:   13,
@@ -537,10 +537,10 @@ class _BrightnessSlider extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(
                     horizontal: 10, vertical: 3),
                 decoration: BoxDecoration(
-                  color:        previewColor.withOpacity(0.12),
+                  color:        previewColor.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(
-                      color: previewColor.withOpacity(0.25)),
+                      color: previewColor.withValues(alpha: 0.25)),
                 ),
                 child: Text(
                   _getBrightnessLabel(brightnessShift),
@@ -565,7 +565,7 @@ class _BrightnessSlider extends StatelessWidget {
               ),
               boxShadow: [
                 BoxShadow(
-                  color:      previewColor.withOpacity(0.2),
+                  color:      previewColor.withValues(alpha: 0.2),
                   blurRadius: 6,
                 ),
               ],
@@ -580,7 +580,7 @@ class _BrightnessSlider extends StatelessWidget {
               thumbColor:           previewColor,
               activeTrackColor:     Colors.transparent,
               inactiveTrackColor:   Colors.transparent,
-              overlayColor:         previewColor.withOpacity(0.15),
+              overlayColor:         previewColor.withValues(alpha: 0.15),
               thumbShape:           const RoundSliderThumbShape(
                 enabledThumbRadius: 12,
               ),
@@ -603,21 +603,21 @@ class _BrightnessSlider extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'داكن',
+                'ط¯ط§ظƒظ†',
                 style: GoogleFonts.cairo(
                   color:    darkColor,
                   fontSize: 10,
                 ),
               ),
               Text(
-                'أصلي',
+                'ط£طµظ„ظٹ',
                 style: GoogleFonts.cairo(
                   color:    Colors.white54,
                   fontSize: 10,
                 ),
               ),
               Text(
-                'فاتح',
+                'ظپط§طھط­',
                 style: GoogleFonts.cairo(
                   color:    lightColor,
                   fontSize: 10,
@@ -631,17 +631,17 @@ class _BrightnessSlider extends StatelessWidget {
   }
 
   String _getBrightnessLabel(double val) {
-    if (val < 0.2)       return 'داكن جداً';
-    if (val < 0.4)       return 'داكن';
-    if (val < 0.6)       return 'أصلي';
-    if (val < 0.8)       return 'فاتح';
-    return 'فاتح جداً';
+    if (val < 0.2)       return 'ط¯ط§ظƒظ† ط¬ط¯ط§ظ‹';
+    if (val < 0.4)       return 'ط¯ط§ظƒظ†';
+    if (val < 0.6)       return 'ط£طµظ„ظٹ';
+    if (val < 0.8)       return 'ظپط§طھط­';
+    return 'ظپط§طھط­ ط¬ط¯ط§ظ‹';
   }
 }
 
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 //  PREVIEW STRIP
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _PreviewStrip extends StatelessWidget {
   final MiracleColorPreset preset;
   final Color              previewColor;
@@ -661,16 +661,16 @@ class _PreviewStrip extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color:        Colors.white.withOpacity(0.03),
+        color:        Colors.white.withValues(alpha: 0.03),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-            color: Colors.white.withOpacity(0.07)),
+            color: Colors.white.withValues(alpha: 0.07)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'معاينة مباشرة',
+            'ظ…ط¹ط§ظٹظ†ط© ظ…ط¨ط§ط´ط±ط©',
             style: GoogleFonts.cairo(
               color:      Colors.white60,
               fontSize:   11,
@@ -689,11 +689,11 @@ class _PreviewStrip extends StatelessWidget {
                         preset.bg1, brightnessShift * 0.3),
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(
-                        color: previewColor.withOpacity(0.15)),
+                        color: previewColor.withValues(alpha: 0.15)),
                   ),
                   child: Center(
                     child: Text(
-                      'خلفية',
+                      'ط®ظ„ظپظٹط©',
                       style: GoogleFonts.cairo(
                         color:    Colors.white54,
                         fontSize: 10,
@@ -708,14 +708,14 @@ class _PreviewStrip extends StatelessWidget {
                 child: Container(
                   height: 40,
                   decoration: BoxDecoration(
-                    color:        Colors.white.withOpacity(0.08),
+                    color:        Colors.white.withValues(alpha: 0.08),
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(
-                        color: previewColor.withOpacity(0.3)),
+                        color: previewColor.withValues(alpha: 0.3)),
                   ),
                   child: Center(
                     child: Text(
-                      'بطاقة',
+                      'ط¨ط·ط§ظ‚ط©',
                       style: GoogleFonts.cairo(
                         color:      previewColor,
                         fontSize:   10,
@@ -741,14 +741,14 @@ class _PreviewStrip extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(
-                        color:      previewColor.withOpacity(0.35),
+                        color:      previewColor.withValues(alpha: 0.35),
                         blurRadius: 8,
                       ),
                     ],
                   ),
                   child: Center(
                     child: Text(
-                      'رئيسي',
+                      'ط±ط¦ظٹط³ظٹ',
                       style: GoogleFonts.cairo(
                         color:      Colors.white,
                         fontSize:   10,

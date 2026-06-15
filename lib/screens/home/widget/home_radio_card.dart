@@ -1,4 +1,4 @@
-import 'dart:math';
+﻿import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -52,7 +52,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
     super.dispose();
   }
 
-  // ══ دمج الـ 3 Selectors في Selector واحد ══
+  // â•گâ•گ ط¯ظ…ط¬ ط§ظ„ظ€ 3 Selectors ظپظٹ Selector ظˆط§ط­ط¯ â•گâ•گ
   _HomeRadioState _buildState(
       RadioIntillegence online,
       OfflineRadioService offline,
@@ -74,7 +74,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
       return _HomeRadioState(
         hasPlayer: true,
         name: onlineSurah.currentSurahName,
-        category: '${onlineSurah.currentStation!.name} • أونلاين',
+        category: '${onlineSurah.currentStation!.name} â€¢ ط£ظˆظ†ظ„ط§ظٹظ†',
         emoji: onlineSurah.currentStation!.iconEmoji,
         imageUrl: onlineSurah.currentStation!.imageUrl,
         isPlaying: onlineSurah.isPlaying,
@@ -88,7 +88,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
         name: offline.currentSurahName.isNotEmpty
             ? offline.currentSurahName
             : offline.currentStation!.name,
-        category: '${offline.currentStation!.name} • أوفلاين',
+        category: '${offline.currentStation!.name} â€¢ ط£ظˆظپظ„ط§ظٹظ†',
         emoji: offline.currentStation!.iconEmoji,
         imageUrl: offline.currentStation!.imageUrl,
         isPlaying: offline.isPlaying,
@@ -100,7 +100,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
       hasPlayer: false,
       name: '',
       category: '',
-      emoji: '📻',
+      emoji: 'ًں“»',
       imageUrl: null,
       isPlaying: false,
       isBuffering: false,
@@ -122,22 +122,22 @@ class _HomeRadioCardState extends State<HomeRadioCard>
           ),
         );
       },
-      // ══ Selector3 واحد بدل 3 متداخلة ══
+      // â•گâ•گ Selector3 ظˆط§ط­ط¯ ط¨ط¯ظ„ 3 ظ…طھط¯ط§ط®ظ„ط© â•گâ•گ
       child: Selector3<RadioIntillegence, OfflineRadioService,
           OnlineSurahService, _HomeRadioState>(
         selector: (_, online, offline, onlineSurah) =>
             _buildState(online, offline, onlineSurah),
         builder: (_, state, __) {
-          // ══ ألوان محسوبة مرة واحدة ══
+          // â•گâ•گ ط£ظ„ظˆط§ظ† ظ…ط­ط³ظˆط¨ط© ظ…ط±ط© ظˆط§ط­ط¯ط© â•گâ•گ
           final borderColor = state.isPlaying
-              ? widget.primary.withOpacity(0.32)
+              ? widget.primary.withValues(alpha: 0.32)
               : isDark
-              ? Colors.white.withOpacity(0.06)
-              : Colors.black.withOpacity(0.06);
+              ? Colors.white.withValues(alpha: 0.06)
+              : Colors.black.withValues(alpha: 0.06);
 
           final shadowColor = state.isPlaying
-              ? widget.primary.withOpacity(isDark ? 0.16 : 0.10)
-              : Colors.black.withOpacity(isDark ? 0.15 : 0.04);
+              ? widget.primary.withValues(alpha: isDark ? 0.16 : 0.10)
+              : Colors.black.withValues(alpha: isDark ? 0.15 : 0.04);
 
           return AnimatedContainer(
             duration: const Duration(milliseconds: 300),
@@ -148,17 +148,17 @@ class _HomeRadioCardState extends State<HomeRadioCard>
                 end: Alignment.bottomRight,
                 colors: state.isPlaying
                     ? [
-                  widget.primary.withOpacity(isDark ? 0.18 : 0.12),
-                  widget.gold.withOpacity(isDark ? 0.10 : 0.06),
-                  widget.primary.withOpacity(isDark ? 0.08 : 0.04),
+                  widget.primary.withValues(alpha: isDark ? 0.18 : 0.12),
+                  widget.gold.withValues(alpha: isDark ? 0.10 : 0.06),
+                  widget.primary.withValues(alpha: isDark ? 0.08 : 0.04),
                 ]
                     : [
                   isDark
                       ? const Color(0xFF111827)
                       : Colors.white,
                   isDark
-                      ? const Color(0xFF111827).withOpacity(0.96)
-                      : Colors.white.withOpacity(0.98),
+                      ? const Color(0xFF111827).withValues(alpha: 0.96)
+                      : Colors.white.withValues(alpha: 0.98),
                 ],
               ),
               border: Border.all(
@@ -207,7 +207,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
               borderRadius: BorderRadius.circular(14),
               boxShadow: [
                 BoxShadow(
-                  color: widget.primary.withOpacity(0.25),
+                  color: widget.primary.withValues(alpha: 0.25),
                   blurRadius: 8,
                   offset: const Offset(0, 3),
                 ),
@@ -225,7 +225,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
                         size: const Size(44, 44),
                         painter: _WavePainter(
                           progress: _animController.value,
-                          color: Colors.white.withOpacity(0.25),
+                          color: Colors.white.withValues(alpha: 0.25),
                         ),
                       ),
                     ),
@@ -239,7 +239,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  state.isPlaying ? 'يستمع الآن' : 'الراديو والتلاوات',
+                  state.isPlaying ? 'ظٹط³طھظ…ط¹ ط§ظ„ط¢ظ†' : 'ط§ظ„ط±ط§ط¯ظٹظˆ ظˆط§ظ„طھظ„ط§ظˆط§طھ',
                   style: GoogleFonts.cairo(
                     fontSize: 16,
                     fontWeight: FontWeight.w800,
@@ -256,7 +256,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
                       child: Text(
                         state.isPlaying
                             ? state.category
-                            : '${RadioStationsData.all.length} محطة • تلاوات وحفلات',
+                            : '${RadioStationsData.all.length} ظ…ط­ط·ط© â€¢ طھظ„ط§ظˆط§طھ ظˆط­ظپظ„ط§طھ',
                         style: GoogleFonts.cairo(
                           fontSize: 11,
                           color: state.isPlaying
@@ -278,7 +278,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: widget.primary.withOpacity(isDark ? 0.12 : 0.08),
+              color: widget.primary.withValues(alpha: isDark ? 0.12 : 0.08),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(
@@ -300,15 +300,15 @@ class _HomeRadioCardState extends State<HomeRadioCard>
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              widget.primary.withOpacity(isDark ? 0.10 : 0.06),
-              widget.gold.withOpacity(isDark ? 0.05 : 0.03),
+              widget.primary.withValues(alpha: isDark ? 0.10 : 0.06),
+              widget.gold.withValues(alpha: isDark ? 0.05 : 0.03),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: widget.primary.withOpacity(isDark ? 0.14 : 0.10),
+            color: widget.primary.withValues(alpha: isDark ? 0.14 : 0.10),
           ),
         ),
         child: Row(
@@ -327,8 +327,8 @@ class _HomeRadioCardState extends State<HomeRadioCard>
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          widget.primary.withOpacity(0.2),
-                          widget.gold.withOpacity(0.12),
+                          widget.primary.withValues(alpha: 0.2),
+                          widget.gold.withValues(alpha: 0.12),
                         ],
                       ),
                       borderRadius: BorderRadius.circular(12),
@@ -371,7 +371,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
                       Flexible(
                         child: Text(
                           state.isBuffering
-                              ? 'جاري التحميل...'
+                              ? 'ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„...'
                               : state.category,
                           style: GoogleFonts.cairo(
                             fontSize: 10,
@@ -393,7 +393,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
     );
   }
 
-  // ══ تبسيط Quick Stations — Selector واحد فقط ══
+  // â•گâ•گ طھط¨ط³ظٹط· Quick Stations â€” Selector ظˆط§ط­ط¯ ظپظ‚ط· â•گâ•گ
   Widget _buildQuickStations(bool isDark) {
     return Selector<ListeningHistoryService, List<ListeningHistoryItem>>(
       selector: (_, service) => service.history.take(3).toList(),
@@ -418,7 +418,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _sectionLabel('آخر ما استمعت إليه', isDark),
+          _sectionLabel('ط¢ط®ط± ظ…ط§ ط§ط³طھظ…ط¹طھ ط¥ظ„ظٹظ‡', isDark),
           ...items.map((item) => _RecentItemTile(
             item: item,
             primary: widget.primary,
@@ -430,7 +430,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
     );
   }
 
-  // ══ استبدال Selector المتداخل بـ Consumer بسيط ══
+  // â•گâ•گ ط§ط³طھط¨ط¯ط§ظ„ Selector ط§ظ„ظ…طھط¯ط§ط®ظ„ ط¨ظ€ Consumer ط¨ط³ظٹط· â•گâ•گ
   Widget _buildSuggestedSection(bool isDark) {
     return Consumer<RadioIntillegence>(
       builder: (_, radio, __) {
@@ -443,7 +443,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _sectionLabel('محطات مقترحة', isDark),
+              _sectionLabel('ظ…ط­ط·ط§طھ ظ…ظ‚طھط±ط­ط©', isDark),
               ...stations.map((s) => _QuickStationTile(
                 station: s,
                 primary: widget.primary,
@@ -471,7 +471,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
   }
 }
 
-// ══ باقي الكلاسات بدون تغيير ══
+// â•گâ•گ ط¨ط§ظ‚ظٹ ط§ظ„ظƒظ„ط§ط³ط§طھ ط¨ط¯ظˆظ† طھط؛ظٹظٹط± â•گâ•گ
 
 class _RecentItemTile extends StatelessWidget {
   final ListeningHistoryItem item;
@@ -498,13 +498,13 @@ class _RecentItemTile extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
         decoration: BoxDecoration(
           color: isDark
-              ? Colors.white.withOpacity(0.04)
-              : Colors.black.withOpacity(0.02),
+              ? Colors.white.withValues(alpha: 0.04)
+              : Colors.black.withValues(alpha: 0.02),
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
             color: isDark
-                ? Colors.white.withOpacity(0.06)
-                : Colors.black.withOpacity(0.04),
+                ? Colors.white.withValues(alpha: 0.06)
+                : Colors.black.withValues(alpha: 0.04),
           ),
         ),
         child: Row(
@@ -545,7 +545,7 @@ class _RecentItemTile extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 4, vertical: 1),
                         decoration: BoxDecoration(
-                          color: _typeColor.withOpacity(0.12),
+                          color: _typeColor.withValues(alpha: 0.12),
                           borderRadius: BorderRadius.circular(4),
                         ),
                         child: Text(
@@ -578,7 +578,7 @@ class _RecentItemTile extends StatelessWidget {
               width: 30,
               height: 30,
               decoration: BoxDecoration(
-                color: primary.withOpacity(isDark ? 0.12 : 0.08),
+                color: primary.withValues(alpha: isDark ? 0.12 : 0.08),
                 shape: BoxShape.circle,
               ),
               child: Icon(Icons.play_arrow_rounded, size: 16, color: primary),
@@ -610,7 +610,7 @@ class _RecentItemTile extends StatelessWidget {
       name: item.title,
       nameEn: item.title,
       url: item.audioUrl,
-      category: item.type == 'radio' ? 'راديو' : 'تلاوات',
+      category: item.type == 'radio' ? 'ط±ط§ط¯ظٹظˆ' : 'طھظ„ط§ظˆط§طھ',
       categoryEn: 'Recitations',
       description: item.subtitle,
       descriptionEn: item.subtitle,
@@ -663,13 +663,13 @@ class _QuickStationTile extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
         decoration: BoxDecoration(
           color: isDark
-              ? Colors.white.withOpacity(0.04)
-              : Colors.black.withOpacity(0.02),
+              ? Colors.white.withValues(alpha: 0.04)
+              : Colors.black.withValues(alpha: 0.02),
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
             color: isDark
-                ? Colors.white.withOpacity(0.06)
-                : Colors.black.withOpacity(0.04),
+                ? Colors.white.withValues(alpha: 0.06)
+                : Colors.black.withValues(alpha: 0.04),
           ),
         ),
         child: Row(
@@ -688,8 +688,8 @@ class _QuickStationTile extends StatelessWidget {
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          primary.withOpacity(0.15),
-                          primary.withOpacity(0.05),
+                          primary.withValues(alpha: 0.15),
+                          primary.withValues(alpha: 0.05),
                         ],
                       ),
                       borderRadius: BorderRadius.circular(10),
@@ -731,7 +731,7 @@ class _QuickStationTile extends StatelessWidget {
               width: 30,
               height: 30,
               decoration: BoxDecoration(
-                color: primary.withOpacity(isDark ? 0.12 : 0.08),
+                color: primary.withValues(alpha: isDark ? 0.12 : 0.08),
                 shape: BoxShape.circle,
               ),
               child: Icon(Icons.play_arrow_rounded, size: 16, color: primary),
@@ -776,12 +776,12 @@ class _PlayerControls extends StatelessWidget {
             height: 40,
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [primary, primary.withOpacity(0.8)],
+                colors: [primary, primary.withValues(alpha: 0.8)],
               ),
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: primary.withOpacity(0.3),
+                  color: primary.withValues(alpha: 0.3),
                   blurRadius: 8,
                   offset: const Offset(0, 2),
                 ),
@@ -822,7 +822,7 @@ class _PlayerControls extends StatelessWidget {
   }
 }
 
-// ══ زر تحكم مُعاد استخدامه ══
+// â•گâ•گ ط²ط± طھط­ظƒظ… ظ…ظڈط¹ط§ط¯ ط§ط³طھط®ط¯ط§ظ…ظ‡ â•گâ•گ
 class _ControlBtn extends StatelessWidget {
   final VoidCallback onTap;
   final IconData icon;
@@ -846,7 +846,7 @@ class _ControlBtn extends StatelessWidget {
         width: size,
         height: size,
         decoration: BoxDecoration(
-          color: primary.withOpacity(0.1),
+          color: primary.withValues(alpha: 0.1),
           shape: BoxShape.circle,
         ),
         child: Icon(icon, size: iconSize, color: primary),
@@ -877,7 +877,7 @@ class _MiniEqualizer extends StatelessWidget {
               height: h,
               margin: const EdgeInsets.symmetric(horizontal: 0.5),
               decoration: BoxDecoration(
-                color: color.withOpacity(0.6),
+                color: color.withValues(alpha: 0.6),
                 borderRadius: BorderRadius.circular(1),
               ),
             );
@@ -902,10 +902,10 @@ class _LiveDot extends StatelessWidget {
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
           decoration: BoxDecoration(
-            color: Colors.red.withOpacity(0.12),
+            color: Colors.red.withValues(alpha: 0.12),
             borderRadius: BorderRadius.circular(6),
             border: Border.all(
-              color: Colors.red.withOpacity(opacity * 0.5),
+              color: Colors.red.withValues(alpha: opacity * 0.5),
               width: 0.8,
             ),
           ),
@@ -916,11 +916,11 @@ class _LiveDot extends StatelessWidget {
                 width: 5,
                 height: 5,
                 decoration: BoxDecoration(
-                  color: Colors.red.withOpacity(opacity),
+                  color: Colors.red.withValues(alpha: opacity),
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.red.withOpacity(opacity * 0.4),
+                      color: Colors.red.withValues(alpha: opacity * 0.4),
                       blurRadius: 4,
                     ),
                   ],
@@ -959,7 +959,7 @@ class _WavePainter extends CustomPainter {
       final p = (progress + i * 0.33) % 1.0;
       final radius = 12.0 + p * 10.0;
       final opacity = (1.0 - p) * 0.4;
-      paint.color = color.withOpacity(opacity.clamp(0.0, 1.0));
+      paint.color = color.withValues(alpha: opacity.clamp(0.0, 1.0));
       canvas.drawCircle(center, radius, paint);
     }
   }

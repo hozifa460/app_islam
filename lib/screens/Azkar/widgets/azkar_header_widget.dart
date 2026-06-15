@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../languages/app_localizations.dart';
 import '../theme/azkar_theme.dart';
 import '../animations/azkar_animations.dart';
 import 'decorative_elements.dart';
 
-/// ═══════════════════════════════════════════════════════════════════════════
-/// ويدجت الهيدر
-/// ═══════════════════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ظˆظٹط¯ط¬طھ ط§ظ„ظ‡ظٹط¯ط±
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class AzkarSliverHeader extends StatelessWidget {
   final bool isDark;
   final bool innerBoxIsScrolled;
@@ -37,7 +37,7 @@ class AzkarSliverHeader extends StatelessWidget {
           ? const Color(0xFF0D1420)
           : const Color(0xFF1A2744),
       elevation: innerBoxIsScrolled ? 4 : 0,
-      shadowColor: Colors.black.withOpacity(0.3),
+      shadowColor: Colors.black.withValues(alpha: 0.3),
       leading: _buildBackButton(context),
       title: _buildCollapsedTitle(context),
       centerTitle: true,
@@ -70,12 +70,12 @@ class AzkarSliverHeader extends StatelessWidget {
     );
   }
 
-  Widget _buildCollapsedTitle(BuildContext context) { // 👈 تمرير context
+  Widget _buildCollapsedTitle(BuildContext context) { // ًں‘ˆ طھظ…ط±ظٹط± context
     return AnimatedOpacity(
       opacity: innerBoxIsScrolled ? 1.0 : 0.0,
       duration: const Duration(milliseconds: 200),
       child: Text(
-        context.tr.azkarTitle, // 👈 تمت الترجمة
+        context.tr.azkarTitle, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
         style: GoogleFonts.cairo(
           fontWeight: FontWeight.w800,
           fontSize: 20,
@@ -87,9 +87,9 @@ class AzkarSliverHeader extends StatelessWidget {
 
 }
 
-/// ═══════════════════════════════════════════════════════════════════════════
-/// خلفية الهيدر
-/// ═══════════════════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ط®ظ„ظپظٹط© ط§ظ„ظ‡ظٹط¯ط±
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class AzkarHeaderBackground extends StatelessWidget {
   final bool isDark;
   final Animation<double> headerAnimation;
@@ -113,13 +113,13 @@ class AzkarHeaderBackground extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          // الدوائر الزخرفية المتحركة
+          // ط§ظ„ط¯ظˆط§ط¦ط± ط§ظ„ط²ط®ط±ظپظٹط© ط§ظ„ظ…طھط­ط±ظƒط©
           FloatingDecorativeCircles(
             size: size,
             baseColor: AzkarTheme.gold,
           ),
 
-          // المحتوى الرئيسي
+          // ط§ظ„ظ…ط­طھظˆظ‰ ط§ظ„ط±ط¦ظٹط³ظٹ
           SafeArea(
             bottom: false,
             child: Padding(
@@ -128,16 +128,16 @@ class AzkarHeaderBackground extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // الأيقونة المتحركة
+                  // ط§ظ„ط£ظٹظ‚ظˆظ†ط© ط§ظ„ظ…طھط­ط±ظƒط©
                   AnimatedHeaderIcon(
                     size: (size.width * 0.16).clamp(52.0, 80.0),
                     animation: headerAnimation,
                   ),
                   const SizedBox(height: 10),
-                  // الآية
+                  // ط§ظ„ط¢ظٹط©
                   _buildQuranVerse(context, size),
                   const SizedBox(height: 8),
-                  // عدد التصنيفات
+                  // ط¹ط¯ط¯ ط§ظ„طھطµظ†ظٹظپط§طھ
                   _buildCategoriesCount(context, size),
                 ],
               ),
@@ -148,7 +148,7 @@ class AzkarHeaderBackground extends StatelessWidget {
     );
   }
 
-  Widget _buildQuranVerse(BuildContext context, Size size) { // 👈 تمرير context
+  Widget _buildQuranVerse(BuildContext context, Size size) { // ًں‘ˆ طھظ…ط±ظٹط± context
     return FadeTransition(
       opacity: headerAnimation,
       child: SlideInAnimationWidget(
@@ -158,9 +158,9 @@ class AzkarHeaderBackground extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: size.width * 0.08),
           child: Text(
-            context.tr.azkarQuranVerse, // 👈 تمت الترجمة
+            context.tr.azkarQuranVerse, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
             style: GoogleFonts.amiri(
-              color: AzkarTheme.gold.withOpacity(0.95),
+              color: AzkarTheme.gold.withValues(alpha: 0.95),
               fontSize: (size.width * 0.044).clamp(14.0, 20.0),
               fontWeight: FontWeight.w700,
               height: 1.4,
@@ -174,7 +174,7 @@ class AzkarHeaderBackground extends StatelessWidget {
     );
   }
 
-  Widget _buildCategoriesCount(BuildContext context, Size size) { // 👈 تمرير context
+  Widget _buildCategoriesCount(BuildContext context, Size size) { // ًں‘ˆ طھظ…ط±ظٹط± context
     return FadeTransition(
       opacity: headerAnimation,
       child: SlideInAnimationWidget(
@@ -184,17 +184,17 @@ class AzkarHeaderBackground extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.1),
+            color: Colors.white.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: Colors.white.withOpacity(0.2),
+              color: Colors.white.withValues(alpha: 0.2),
               width: 1,
             ),
           ),
           child: Text(
-            context.tr.azkarCategoriesCount(categoriesCount), // 👈 تمت الترجمة
+            context.tr.azkarCategoriesCount(categoriesCount), // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
             style: GoogleFonts.cairo(
-              color: Colors.white.withOpacity(0.85),
+              color: Colors.white.withValues(alpha: 0.85),
               fontSize: (size.width * 0.032).clamp(10.0, 13.0),
               fontWeight: FontWeight.w600,
             ),

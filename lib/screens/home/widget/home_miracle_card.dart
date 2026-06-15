@@ -1,4 +1,4 @@
-import 'dart:math';
+﻿import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -44,15 +44,15 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
   final _rng = Random();
 
   Color get _cardBg => widget.isDark
-      ? const Color(0xFF0D1829)   // Dark: نفس اللون
-      : const Color(0xFFFFFFFFF); // Light: أبيض
+      ? const Color(0xFF0D1829)   // Dark: ظ†ظپط³ ط§ظ„ظ„ظˆظ†
+      : const Color(0xFFFFFFFFF); // Light: ط£ط¨ظٹط¶
   Color get _glass => widget.isDark
       ? const Color(0x18FFFFFF)
-      : Colors.black.withOpacity(0.04);
+      : Colors.black.withValues(alpha: 0.04);
 
   Color get _glassBorder => widget.isDark
       ? const Color(0x30FFFFFF)
-      : Colors.black.withOpacity(0.08);
+      : Colors.black.withValues(alpha: 0.08);
   Color get _textColor => widget.isDark
       ? Colors.white
       : const Color(0xFF1A1A2E);
@@ -151,9 +151,9 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
     return _buildCard(widget.miracle!, neonBlue);
   }
 
-  // ══════════════════════════════════════════════
-  // LOADER — أقصر
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // LOADER â€” ط£ظ‚طµط±
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildLoader(Color neonBlue) {
     return Container(
       height: 68,
@@ -170,9 +170,9 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
             height: 38,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              color:  MiracleThemeColors.neonGold.withOpacity(0.08),
+              color:  MiracleThemeColors.neonGold.withValues(alpha: 0.08),
               border: Border.all(
-                color: MiracleThemeColors.neonGold.withOpacity(0.2),
+                color: MiracleThemeColors.neonGold.withValues(alpha: 0.2),
               ),
             ),
             child: const Icon(
@@ -213,7 +213,7 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
             child: CircularProgressIndicator(
               strokeWidth:     1.8,
               color:           neonBlue,
-              backgroundColor: neonBlue.withOpacity(0.1),
+              backgroundColor: neonBlue.withValues(alpha: 0.1),
             ),
           ),
           const SizedBox(width: 14),
@@ -226,23 +226,23 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
     final hsl = HSLColor.fromColor(c);
     final primaryHsl = HSLColor.fromColor(appPrimary);
 
-    // إذا كان اللون وردي/أحمر → استبدله بلون التطبيق
+    // ط¥ط°ط§ ظƒط§ظ† ط§ظ„ظ„ظˆظ† ظˆط±ط¯ظٹ/ط£ط­ظ…ط± â†’ ط§ط³طھط¨ط¯ظ„ظ‡ ط¨ظ„ظˆظ† ط§ظ„طھط·ط¨ظٹظ‚
     if (hsl.hue >= 300 || hsl.hue <= 30) {
       return HSLColor.fromAHSL(
         1.0,
-        primaryHsl.hue,                        // ← hue من لون التطبيق
+        primaryHsl.hue,                        // â†گ hue ظ…ظ† ظ„ظˆظ† ط§ظ„طھط·ط¨ظٹظ‚
         primaryHsl.saturation * 0.75,
         primaryHsl.lightness.clamp(0.30, 0.45),
       ).toColor();
     }
 
-    // باقي الألوان: غمّقها فقط
+    // ط¨ط§ظ‚ظٹ ط§ظ„ط£ظ„ظˆط§ظ†: ط؛ظ…ظ‘ظ‚ظ‡ط§ ظپظ‚ط·
     return Color.lerp(c, const Color(0xFF1A1A2E), 0.35)!;
   }
 
-  // ══════════════════════════════════════════════
-  // CARD — مُقلَّص
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // CARD â€” ظ…ظڈظ‚ظ„ظژظ‘طµ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildCard(Map<String, dynamic> item, Color neonBlue) {
     final isQuran     = item['type'] == 'quran';
     final accentColor = isQuran
@@ -277,10 +277,10 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
         decoration: BoxDecoration(
           color:        _cardBg,
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: catColor.withOpacity(0.15)),
+          border: Border.all(color: catColor.withValues(alpha: 0.15)),
           boxShadow: [
             BoxShadow(
-              color:      catColor.withOpacity(0.06),
+              color:      catColor.withValues(alpha: 0.06),
               blurRadius: 14,
               offset:     const Offset(0, 5),
             ),
@@ -291,7 +291,7 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
           child: Stack(
             children: [
 
-              // ── خلفية Light Mode ──
+              // â”€â”€ ط®ظ„ظپظٹط© Light Mode â”€â”€
               if (!widget.isDark)
                 Positioned.fill(
                   child: AnimatedBuilder(
@@ -305,7 +305,7 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
                   ),
                 ),
 
-              // ── gradient ──
+              // â”€â”€ gradient â”€â”€
               Positioned.fill(
                 child: DecoratedBox(
                   decoration: BoxDecoration(
@@ -313,7 +313,7 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
                       begin:  Alignment.topRight,
                       end:    Alignment.bottomLeft,
                       colors: [
-                        catColor.withOpacity(widget.isDark ? 0.07 : 0.05),
+                        catColor.withValues(alpha: widget.isDark ? 0.07 : 0.05),
                         _cardBg,
                       ],
                     ),
@@ -321,7 +321,7 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
                 ),
               ),
 
-              // ── Emoji watermark ──
+              // â”€â”€ Emoji watermark â”€â”€
               Positioned(
                 bottom: -8,
                 left:   -8,
@@ -329,12 +329,12 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
                   emoji,
                   style: TextStyle(
                     fontSize: 55,
-                    color: Colors.white.withOpacity(0.04),
+                    color: Colors.white.withValues(alpha: 0.04),
                   ),
                 ),
               ),
 
-              // ── نجوم Dark فقط ──
+              // â”€â”€ ظ†ط¬ظˆظ… Dark ظپظ‚ط· â”€â”€
               if (widget.isDark)
                 Positioned.fill(
                   child: AnimatedBuilder(
@@ -350,29 +350,29 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
                   ),
                 ),
 
-              // ── المحتوى ──
+              // â”€â”€ ط§ظ„ظ…ط­طھظˆظ‰ â”€â”€
               Material(
                 color:        Colors.transparent,
                 borderRadius: BorderRadius.circular(20),
                 child: InkWell(
                   borderRadius: BorderRadius.circular(20),
-                  splashColor:    catColor.withOpacity(0.08),
-                  highlightColor: catColor.withOpacity(0.04),
+                  splashColor:    catColor.withValues(alpha: 0.08),
+                  highlightColor: catColor.withValues(alpha: 0.04),
                   onTap: () => _toDetail(item),
                   child: Padding(
-                    // ✅ padding مُقلَّص
+                    // âœ… padding ظ…ظڈظ‚ظ„ظژظ‘طµ
                     padding: const EdgeInsets.all(12),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
 
-                        // ── الصف العلوي: بادج + أيقونة + عنوان ──
+                        // â”€â”€ ط§ظ„طµظپ ط§ظ„ط¹ظ„ظˆظٹ: ط¨ط§ط¯ط¬ + ط£ظٹظ‚ظˆظ†ط© + ط¹ظ†ظˆط§ظ† â”€â”€
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
 
-                            // أيقونة الفئة
+                            // ط£ظٹظ‚ظˆظ†ط© ط§ظ„ظپط¦ط©
                             Container(
                               width:  44,
                               height: 44,
@@ -382,15 +382,15 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
                                   begin:  Alignment.topLeft,
                                   end:    Alignment.bottomRight,
                                   colors: [
-                                    catColor.withOpacity(0.2),
-                                    catColor.withOpacity(0.05),
+                                    catColor.withValues(alpha: 0.2),
+                                    catColor.withValues(alpha: 0.05),
                                   ],
                                 ),
                                 border: Border.all(
-                                    color: catColor.withOpacity(0.2)),
+                                    color: catColor.withValues(alpha: 0.2)),
                                 boxShadow: [
                                   BoxShadow(
-                                    color:     catColor.withOpacity(0.10),
+                                    color:     catColor.withValues(alpha: 0.10),
                                     blurRadius: 8,
                                   ),
                                 ],
@@ -400,24 +400,24 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
 
                             const SizedBox(width: 10),
 
-                            // العنوان + البادج
+                            // ط§ظ„ط¹ظ†ظˆط§ظ† + ط§ظ„ط¨ط§ط¯ط¬
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
 
-                                  // بادج معجزة اليوم — مُصغَّر
+                                  // ط¨ط§ط¯ط¬ ظ…ط¹ط¬ط²ط© ط§ظ„ظٹظˆظ… â€” ظ…ظڈطµط؛ظژظ‘ط±
                                   Container(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 7, vertical: 2),
                                     decoration: BoxDecoration(
                                       color: MiracleThemeColors.neonGold
-                                          .withOpacity(0.10),
+                                          .withValues(alpha: 0.10),
                                       borderRadius: BorderRadius.circular(6),
                                       border: Border.all(
                                         color: MiracleThemeColors.neonGold
-                                            .withOpacity(0.22),
+                                            .withValues(alpha: 0.22),
                                       ),
                                     ),
                                     child: Row(
@@ -430,7 +430,7 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
                                         ),
                                         const SizedBox(width: 3),
                                         Text(
-                                          'معجزة اليوم',
+                                          'ظ…ط¹ط¬ط²ط© ط§ظ„ظٹظˆظ…',
                                           style: GoogleFonts.cairo(
                                             fontSize:   8.5,
                                             fontWeight: FontWeight.bold,
@@ -443,7 +443,7 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
 
                                   const SizedBox(height: 4),
 
-                                  // العنوان
+                                  // ط§ظ„ط¹ظ†ظˆط§ظ†
                                   Text(
                                     title,
                                     maxLines: 2,
@@ -456,7 +456,7 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
                                     ),
                                   ),
 
-                                  // الوصف الفرعي
+                                  // ط§ظ„ظˆطµظپ ط§ظ„ظپط±ط¹ظٹ
                                   Text(
                                     subtitle,
                                     maxLines: 1,
@@ -474,7 +474,7 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
 
                         const SizedBox(height: 10),
 
-                        // ── Source — أقصر ──
+                        // â”€â”€ Source â€” ط£ظ‚طµط± â”€â”€
                         Container(
                           width: double.infinity,
                           padding: const EdgeInsets.symmetric(
@@ -482,10 +482,10 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
                             vertical:    8,
                           ),
                           decoration: BoxDecoration(
-                            color: accentColor.withOpacity(0.06),
+                            color: accentColor.withValues(alpha: 0.06),
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(
-                                color: accentColor.withOpacity(0.10)),
+                                color: accentColor.withValues(alpha: 0.10)),
                           ),
                           child: Text(
                             source,
@@ -496,8 +496,8 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
                               fontSize:   12.5,
                               height:     1.6,
                               color: widget.isDark
-                                  ? Colors.white.withOpacity(0.85)
-                                  : const Color(0xFF1A1A2E).withOpacity(0.75),
+                                  ? Colors.white.withValues(alpha: 0.85)
+                                  : const Color(0xFF1A1A2E).withValues(alpha: 0.75),
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -505,11 +505,11 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
 
                         const SizedBox(height: 8),
 
-                        // ── الصف السفلي: Tags + زر ──
+                        // â”€â”€ ط§ظ„طµظپ ط§ظ„ط³ظپظ„ظٹ: Tags + ط²ط± â”€â”€
                         Row(
                           children: [
 
-                            // Tags في Wrap مُدمجة
+                            // Tags ظپظٹ Wrap ظ…ظڈط¯ظ…ط¬ط©
                             Expanded(
                               child: Wrap(
                                 spacing:    4,
@@ -517,7 +517,7 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
                                 crossAxisAlignment: WrapCrossAlignment.center,
                                 children: [
 
-                                  // نجوم التقييم
+                                  // ظ†ط¬ظˆظ… ط§ظ„طھظ‚ظٹظٹظ…
                                   Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: List.generate(5, (i) => Icon(
@@ -527,8 +527,8 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
                                       color: i < rating
                                           ? MiracleThemeColors.neonGold
                                           : widget.isDark
-                                          ? Colors.white.withOpacity(0.15)
-                                          : Colors.black.withOpacity(0.12),
+                                          ? Colors.white.withValues(alpha: 0.15)
+                                          : Colors.black.withValues(alpha: 0.12),
                                       size: 12,
                                     )),
                                   ),
@@ -536,7 +536,7 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
                                   if (srcCount > 0)
                                     _Tag(
                                       icon:  Icons.link_rounded,
-                                      text:  '$srcCount مصدر',
+                                      text:  '$srcCount ظ…طµط¯ط±',
                                       color: neonBlue,
                                       isDark: widget.isDark,
                                     ),
@@ -567,7 +567,7 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
                                     icon: isQuran
                                         ? Icons.menu_book_rounded
                                         : Icons.auto_awesome_rounded,
-                                    text:   isQuran ? 'قرآن' : 'سنة',
+                                    text:   isQuran ? 'ظ‚ط±ط¢ظ†' : 'ط³ظ†ط©',
                                     color:  accentColor,
                                     filled: true,
                                     isDark: widget.isDark,
@@ -578,23 +578,23 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
 
                             const SizedBox(width: 8),
 
-                            // ── زر اقرأ المزيد — مُصغَّر ──
+                            // â”€â”€ ط²ط± ط§ظ‚ط±ط£ ط§ظ„ظ…ط²ظٹط¯ â€” ظ…ظڈطµط؛ظژظ‘ط± â”€â”€
                             GestureDetector(
                               onTap: () => _toDetail(item),
                               child: Container(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 6),
                                 decoration: BoxDecoration(
-                                  color: accentColor.withOpacity(0.08),
+                                  color: accentColor.withValues(alpha: 0.08),
                                   borderRadius: BorderRadius.circular(10),
                                   border: Border.all(
-                                      color: accentColor.withOpacity(0.20)),
+                                      color: accentColor.withValues(alpha: 0.20)),
                                 ),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Text(
-                                      'المزيد',
+                                      'ط§ظ„ظ…ط²ظٹط¯',
                                       style: GoogleFonts.cairo(
                                         fontSize:   10.5,
                                         fontWeight: FontWeight.bold,
@@ -625,9 +625,9 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
     );
   }
 
-  // ══════════════════════════════════════════════
-  // خلفية Light Mode
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط®ظ„ظپظٹط© Light Mode
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildLightBg({
     required Color  catColor,
     required bool   isQuran,
@@ -676,22 +676,22 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
         Positioned(
           top: 10 + floatVal,
           right: 14,
-          child: Icon(icons[0], size: 18, color: catColor.withOpacity(0.10)),
+          child: Icon(icons[0], size: 18, color: catColor.withValues(alpha: 0.10)),
         ),
         Positioned(
           top: 40 - floatVal * 0.7,
           right: 44,
-          child: Icon(icons[1], size: 13, color: MiracleThemeColors.neonGold.withOpacity(0.08)),
+          child: Icon(icons[1], size: 13, color: MiracleThemeColors.neonGold.withValues(alpha: 0.08)),
         ),
         Positioned(
           bottom: 20 + floatVal * 0.5,
           right: 18,
-          child: Icon(icons[2], size: 14, color: neonBlue.withOpacity(0.07)),
+          child: Icon(icons[2], size: 14, color: neonBlue.withValues(alpha: 0.07)),
         ),
         Positioned(
           bottom: 15 - floatVal * 0.8,
           right: 48,
-          child: Icon(icons[3], size: 11, color: catColor.withOpacity(0.08)),
+          child: Icon(icons[3], size: 11, color: catColor.withValues(alpha: 0.08)),
         ),
         Positioned.fill(
           child: CustomPaint(
@@ -703,9 +703,9 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
   }
 }
 
-// ══════════════════════════════════════════════
-// أشكال هندسية
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط£ط´ظƒط§ظ„ ظ‡ظ†ط¯ط³ظٹط©
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
 class _GeomCircle extends StatelessWidget {
   final double size, opacity;
@@ -722,9 +722,9 @@ class _GeomCircle extends StatelessWidget {
       height: size,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        border: Border.all(color: color.withOpacity(opacity * 2), width: 1.2),
+        border: Border.all(color: color.withValues(alpha: opacity * 2), width: 1.2),
         gradient: RadialGradient(
-          colors: [color.withOpacity(opacity), color.withOpacity(0)],
+          colors: [color.withValues(alpha: opacity), color.withValues(alpha: 0)],
         ),
       ),
     );
@@ -748,9 +748,9 @@ class _GeomSquare extends StatelessWidget {
         width:  size,
         height: size,
         decoration: BoxDecoration(
-          border: Border.all(color: color.withOpacity(opacity * 2), width: 1),
+          border: Border.all(color: color.withValues(alpha: opacity * 2), width: 1),
           gradient: LinearGradient(
-            colors: [color.withOpacity(opacity), color.withOpacity(0)],
+            colors: [color.withValues(alpha: opacity), color.withValues(alpha: 0)],
           ),
           borderRadius: BorderRadius.circular(4),
         ),
@@ -778,10 +778,10 @@ class _HexagonPainter extends CustomPainter {
     }
     path.close();
     canvas.drawPath(path,
-        Paint()..color = color.withOpacity(opacity)..style = PaintingStyle.fill);
+        Paint()..color = color.withValues(alpha: opacity)..style = PaintingStyle.fill);
     canvas.drawPath(path,
         Paint()
-          ..color       = color.withOpacity(opacity * 2.5)
+          ..color       = color.withValues(alpha: opacity * 2.5)
           ..style       = PaintingStyle.stroke
           ..strokeWidth = 1);
   }
@@ -796,7 +796,7 @@ class _DotGridPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = color.withOpacity(opacity)
+      ..color = color.withValues(alpha: opacity)
       ..style = PaintingStyle.fill;
     const spacing = 20.0;
     const dotSize = 1.0;
@@ -810,9 +810,9 @@ class _DotGridPainter extends CustomPainter {
   bool shouldRepaint(_DotGridPainter o) => false;
 }
 
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 // TAG
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _Tag extends StatelessWidget {
   final IconData? icon;
   final String    text;
@@ -834,14 +834,14 @@ class _Tag extends StatelessWidget {
   Widget build(BuildContext context) {
     final glassBg = isDark
         ? const Color(0x18FFFFFF)
-        : Colors.black.withOpacity(0.04);
+        : Colors.black.withValues(alpha: 0.04);
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
       decoration: BoxDecoration(
-        color: filled ? color.withOpacity(0.12) : glassBg,
+        color: filled ? color.withValues(alpha: 0.12) : glassBg,
         borderRadius: BorderRadius.circular(6),
-        border: Border.all(color: color.withOpacity(0.18)),
+        border: Border.all(color: color.withValues(alpha: 0.18)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,

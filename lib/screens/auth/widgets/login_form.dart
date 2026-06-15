@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../services/auth_service.dart';
@@ -39,7 +39,7 @@ class _LoginFormState extends State<LoginForm> {
           _ErrorMsg(error: _error),
           AuthTextField(
             controller: _email,
-            label: 'البريد الإلكتروني',
+            label: 'ط§ظ„ط¨ط±ظٹط¯ ط§ظ„ط¥ظ„ظƒطھط±ظˆظ†ظٹ',
             hint: 'example@email.com',
             prefixIcon: Icons.email_outlined,
             keyboardType: TextInputType.emailAddress,
@@ -48,8 +48,8 @@ class _LoginFormState extends State<LoginForm> {
           const SizedBox(height: 16),
           AuthTextField(
             controller: _pass,
-            label: 'كلمة المرور',
-            hint: 'أدخل كلمة المرور',
+            label: 'ظƒظ„ظ…ط© ط§ظ„ظ…ط±ظˆط±',
+            hint: 'ط£ط¯ط®ظ„ ظƒظ„ظ…ط© ط§ظ„ظ…ط±ظˆط±',
             prefixIcon: Icons.lock_outline_rounded,
             isPassword: true,
             textInputAction: TextInputAction.done,
@@ -67,10 +67,10 @@ class _LoginFormState extends State<LoginForm> {
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               ),
               child: Text(
-                'نسيت كلمة المرور؟',
+                'ظ†ط³ظٹطھ ظƒظ„ظ…ط© ط§ظ„ظ…ط±ظˆط±طں',
                 style: GoogleFonts.cairo(
                   fontSize: 13,
-                  color: _gold.withOpacity(0.85),
+                  color: _gold.withValues(alpha: 0.85),
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -78,7 +78,7 @@ class _LoginFormState extends State<LoginForm> {
           ),
           const SizedBox(height: 24),
           AuthButton(
-            text: 'تسجيل الدخول',
+            text: 'طھط³ط¬ظٹظ„ ط§ظ„ط¯ط®ظˆظ„',
             isLoading: auth.isLoading,
             onPressed: _submit,
           ),
@@ -88,15 +88,15 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   String? _vEmail(String? v) {
-    if (v == null || v.trim().isEmpty) return 'البريد مطلوب';
+    if (v == null || v.trim().isEmpty) return 'ط§ظ„ط¨ط±ظٹط¯ ظ…ط·ظ„ظˆط¨';
     if (!RegExp(r'^[\w\-.]+@([\w\-]+\.)+[\w\-]{2,4}$')
-        .hasMatch(v.trim())) return 'بريد غير صحيح';
+        .hasMatch(v.trim())) return 'ط¨ط±ظٹط¯ ط؛ظٹط± طµط­ظٹط­';
     return null;
   }
 
   String? _vPass(String? v) {
-    if (v == null || v.isEmpty) return 'كلمة المرور مطلوبة';
-    if (v.length < 6) return '6 أحرف على الأقل';
+    if (v == null || v.isEmpty) return 'ظƒظ„ظ…ط© ط§ظ„ظ…ط±ظˆط± ظ…ط·ظ„ظˆط¨ط©';
+    if (v.length < 6) return '6 ط£ط­ط±ظپ ط¹ظ„ظ‰ ط§ظ„ط£ظ‚ظ„';
     return null;
   }
 
@@ -121,7 +121,7 @@ class _LoginFormState extends State<LoginForm> {
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20)),
         title: Text(
-          'إعادة تعيين كلمة المرور',
+          'ط¥ط¹ط§ط¯ط© طھط¹ظٹظٹظ† ظƒظ„ظ…ط© ط§ظ„ظ…ط±ظˆط±',
           style:
           GoogleFonts.cairo(fontWeight: FontWeight.w700),
           textAlign: TextAlign.center,
@@ -130,7 +130,7 @@ class _LoginFormState extends State<LoginForm> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'أدخل بريدك الإلكتروني وسنرسل لك رابط إعادة التعيين',
+              'ط£ط¯ط®ظ„ ط¨ط±ظٹط¯ظƒ ط§ظ„ط¥ظ„ظƒطھط±ظˆظ†ظٹ ظˆط³ظ†ط±ط³ظ„ ظ„ظƒ ط±ط§ط¨ط· ط¥ط¹ط§ط¯ط© ط§ظ„طھط¹ظٹظٹظ†',
               style: GoogleFonts.cairo(fontSize: 14, height: 1.6),
               textAlign: TextAlign.center,
             ),
@@ -155,7 +155,7 @@ class _LoginFormState extends State<LoginForm> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text('إلغاء',
+            child: Text('ط¥ظ„ط؛ط§ط،',
                 style: GoogleFonts.cairo(color: Colors.grey)),
           ),
           TextButton(
@@ -170,8 +170,8 @@ class _LoginFormState extends State<LoginForm> {
                   SnackBar(
                     content: Text(
                       r.success
-                          ? '✓ تم إرسال رابط إعادة التعيين'
-                          : r.error ?? 'خطأ',
+                          ? 'âœ“ طھظ… ط¥ط±ط³ط§ظ„ ط±ط§ط¨ط· ط¥ط¹ط§ط¯ط© ط§ظ„طھط¹ظٹظٹظ†'
+                          : r.error ?? 'ط®ط·ط£',
                       style: GoogleFonts.cairo(),
                     ),
                     backgroundColor: r.success
@@ -185,7 +185,7 @@ class _LoginFormState extends State<LoginForm> {
               }
             },
             child: Text(
-              'إرسال',
+              'ط¥ط±ط³ط§ظ„',
               style: GoogleFonts.cairo(
                   color: _gold, fontWeight: FontWeight.w700),
             ),
@@ -212,10 +212,10 @@ class _ErrorMsg extends StatelessWidget {
         padding: const EdgeInsets.symmetric(
             horizontal: 14, vertical: 12),
         decoration: BoxDecoration(
-          color: Colors.red.withOpacity(0.1),
+          color: Colors.red.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
-              color: Colors.red.withOpacity(0.25)),
+              color: Colors.red.withValues(alpha: 0.25)),
         ),
         child: Row(
           children: [

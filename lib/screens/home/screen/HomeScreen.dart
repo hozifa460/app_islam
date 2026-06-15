@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen>
 
   String _currentTime = '';
   Timer? _timer;
-  String _cityName = 'جاري التحديد...';
+  String _cityName = 'ط¬ط§ط±ظٹ ط§ظ„طھط­ط¯ظٹط¯...';
 
 
   List<Map<String, dynamic>> _azkarCategories = [];
@@ -127,59 +127,59 @@ class _HomeScreenState extends State<HomeScreen>
   };
 
   final List<Map<String, dynamic>> features = const [
-    {'title': 'القرآن الكريم', 'subtitle': '١١٤ سورة', 'icon': Icons.menu_book_rounded, 'badge': '📖'},
-    {'title': 'أوقات الصلاة', 'subtitle': 'مواقيت دقيقة', 'icon': Icons.access_time_filled_rounded, 'badge': '🕌'},
-    {'title': 'الأذكار', 'subtitle': 'صباح ومساء', 'icon': Icons.auto_awesome_rounded, 'badge': '✨'},
-    {'title': 'التسبيح', 'subtitle': 'عداد ذكي', 'icon': Icons.touch_app_rounded, 'badge': '📿'},
-    {'title': 'الأحاديث', 'subtitle': 'مكتبة السنة', 'icon': Icons.format_quote_rounded, 'badge': '📜'},
-    {'title': 'حصاد الحسنات', 'subtitle': 'أجور عظيمة', 'icon': Icons.emoji_events_rounded, 'badge': '🏰'},
-    {'title': 'ختمتي', 'subtitle': 'وردك اليومي', 'icon': Icons.track_changes, 'badge': '🎯'},
-    {'title': 'البث المباشر', 'subtitle': 'قنوات المشايخ', 'icon': Icons.live_tv_rounded, 'badge': '🔴'},
-    {'title': 'القبلة', 'subtitle': 'اتجاه القبلة', 'icon': Icons.explore_rounded, 'badge': '🧭'},
-    {'title': 'الأدعية', 'subtitle': 'أدعية مختارة', 'icon': Icons.favorite_rounded, 'badge': '🤲'},
-    {'title': 'المكتبة', 'subtitle': 'كتب إسلامية', 'icon': Icons.local_library_rounded, 'badge': '📚'},
-    {'title': 'المؤذن', 'subtitle': 'اختيار الصوت', 'icon': Icons.volume_up_rounded, 'badge': '🎙️'},
-    {'title': 'اسماء الله الحسنى', 'subtitle': 'اسماء العظيم', 'icon': Icons.volume_up_rounded, 'badge': '📜'},
-    {'title': 'المعجزات', 'subtitle': 'معجزات القران والسنة', 'icon': Icons.volume_up_rounded, 'badge': '📜'},
-    {'title': 'عظماء الإسلام', 'subtitle': 'شخصيات خالدة', 'icon': Icons.military_tech_rounded, 'badge': '🏛️'},
-    {'title': 'الإعدادات', 'subtitle': 'تخصيص التطبيق', 'icon': Icons.settings_rounded, 'badge': '⚙️'},
+    {'title': 'ط§ظ„ظ‚ط±ط¢ظ† ط§ظ„ظƒط±ظٹظ…', 'subtitle': 'ظ،ظ،ظ¤ ط³ظˆط±ط©', 'icon': Icons.menu_book_rounded, 'badge': 'ًں“–'},
+    {'title': 'ط£ظˆظ‚ط§طھ ط§ظ„طµظ„ط§ط©', 'subtitle': 'ظ…ظˆط§ظ‚ظٹطھ ط¯ظ‚ظٹظ‚ط©', 'icon': Icons.access_time_filled_rounded, 'badge': 'ًں•Œ'},
+    {'title': 'ط§ظ„ط£ط°ظƒط§ط±', 'subtitle': 'طµط¨ط§ط­ ظˆظ…ط³ط§ط،', 'icon': Icons.auto_awesome_rounded, 'badge': 'âœ¨'},
+    {'title': 'ط§ظ„طھط³ط¨ظٹط­', 'subtitle': 'ط¹ط¯ط§ط¯ ط°ظƒظٹ', 'icon': Icons.touch_app_rounded, 'badge': 'ًں“؟'},
+    {'title': 'ط§ظ„ط£ط­ط§ط¯ظٹط«', 'subtitle': 'ظ…ظƒطھط¨ط© ط§ظ„ط³ظ†ط©', 'icon': Icons.format_quote_rounded, 'badge': 'ًں“œ'},
+    {'title': 'ط­طµط§ط¯ ط§ظ„ط­ط³ظ†ط§طھ', 'subtitle': 'ط£ط¬ظˆط± ط¹ط¸ظٹظ…ط©', 'icon': Icons.emoji_events_rounded, 'badge': 'ًںڈ°'},
+    {'title': 'ط®طھظ…طھظٹ', 'subtitle': 'ظˆط±ط¯ظƒ ط§ظ„ظٹظˆظ…ظٹ', 'icon': Icons.track_changes, 'badge': 'ًںژ¯'},
+    {'title': 'ط§ظ„ط¨ط« ط§ظ„ظ…ط¨ط§ط´ط±', 'subtitle': 'ظ‚ظ†ظˆط§طھ ط§ظ„ظ…ط´ط§ظٹط®', 'icon': Icons.live_tv_rounded, 'badge': 'ًں”´'},
+    {'title': 'ط§ظ„ظ‚ط¨ظ„ط©', 'subtitle': 'ط§طھط¬ط§ظ‡ ط§ظ„ظ‚ط¨ظ„ط©', 'icon': Icons.explore_rounded, 'badge': 'ًں§­'},
+    {'title': 'ط§ظ„ط£ط¯ط¹ظٹط©', 'subtitle': 'ط£ط¯ط¹ظٹط© ظ…ط®طھط§ط±ط©', 'icon': Icons.favorite_rounded, 'badge': 'ًں¤²'},
+    {'title': 'ط§ظ„ظ…ظƒطھط¨ط©', 'subtitle': 'ظƒطھط¨ ط¥ط³ظ„ط§ظ…ظٹط©', 'icon': Icons.local_library_rounded, 'badge': 'ًں“ڑ'},
+    {'title': 'ط§ظ„ظ…ط¤ط°ظ†', 'subtitle': 'ط§ط®طھظٹط§ط± ط§ظ„طµظˆطھ', 'icon': Icons.volume_up_rounded, 'badge': 'ًںژ™ï¸ڈ'},
+    {'title': 'ط§ط³ظ…ط§ط، ط§ظ„ظ„ظ‡ ط§ظ„ط­ط³ظ†ظ‰', 'subtitle': 'ط§ط³ظ…ط§ط، ط§ظ„ط¹ط¸ظٹظ…', 'icon': Icons.volume_up_rounded, 'badge': 'ًں“œ'},
+    {'title': 'ط§ظ„ظ…ط¹ط¬ط²ط§طھ', 'subtitle': 'ظ…ط¹ط¬ط²ط§طھ ط§ظ„ظ‚ط±ط§ظ† ظˆط§ظ„ط³ظ†ط©', 'icon': Icons.volume_up_rounded, 'badge': 'ًں“œ'},
+    {'title': 'ط¹ط¸ظ…ط§ط، ط§ظ„ط¥ط³ظ„ط§ظ…', 'subtitle': 'ط´ط®طµظٹط§طھ ط®ط§ظ„ط¯ط©', 'icon': Icons.military_tech_rounded, 'badge': 'ًںڈ›ï¸ڈ'},
+    {'title': 'ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ', 'subtitle': 'طھط®طµظٹطµ ط§ظ„طھط·ط¨ظٹظ‚', 'icon': Icons.settings_rounded, 'badge': 'âڑ™ï¸ڈ'},
   ];
 
   final List<Map<String, dynamic>> _prayerInfo = [
-    {'name': 'الفجر', 'key': 'Fajr', 'icon': Icons.nightlight_round},
-    {'name': 'الشروق', 'key': 'Sunrise', 'icon': Icons.wb_sunny_outlined},
-    {'name': 'الظهر', 'key': 'Dhuhr', 'icon': Icons.wb_sunny},
-    {'name': 'العصر', 'key': 'Asr', 'icon': Icons.sunny_snowing},
-    {'name': 'المغرب', 'key': 'Maghrib', 'icon': Icons.wb_twilight},
-    {'name': 'العشاء', 'key': 'Isha', 'icon': Icons.nights_stay},
+    {'name': 'ط§ظ„ظپط¬ط±', 'key': 'Fajr', 'icon': Icons.nightlight_round},
+    {'name': 'ط§ظ„ط´ط±ظˆظ‚', 'key': 'Sunrise', 'icon': Icons.wb_sunny_outlined},
+    {'name': 'ط§ظ„ط¸ظ‡ط±', 'key': 'Dhuhr', 'icon': Icons.wb_sunny},
+    {'name': 'ط§ظ„ط¹طµط±', 'key': 'Asr', 'icon': Icons.sunny_snowing},
+    {'name': 'ط§ظ„ظ…ط؛ط±ط¨', 'key': 'Maghrib', 'icon': Icons.wb_twilight},
+    {'name': 'ط§ظ„ط¹ط´ط§ط،', 'key': 'Isha', 'icon': Icons.nights_stay},
   ];
 
   final List<Map<String, String>> dailyVerses = const [
-    {'verse': 'وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا', 'surah': 'الطلاق - ٢'},
-    {'verse': 'فَإِنَّ مَعَ الْعُسْرِ يُسْرًا', 'surah': 'الشرح - ٥'},
-    {'verse': 'لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا', 'surah': 'البقرة - ٢٨٦'},
-    {'verse': 'وَقُل رَّبِّ زِدْنِي عِلْمًا', 'surah': 'طه - ١١٤'},
-    {'verse': 'أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ', 'surah': 'الرعد - ٢٨'},
+    {'verse': 'ظˆظژظ…ظژظ† ظٹظژطھظژظ‘ظ‚ظگ ط§ظ„ظ„ظژظ‘ظ‡ظژ ظٹظژط¬ظ’ط¹ظژظ„ ظ„ظژظ‘ظ‡ظڈ ظ…ظژط®ظ’ط±ظژط¬ظ‹ط§', 'surah': 'ط§ظ„ط·ظ„ط§ظ‚ - ظ¢'},
+    {'verse': 'ظپظژط¥ظگظ†ظژظ‘ ظ…ظژط¹ظژ ط§ظ„ظ’ط¹ظڈط³ظ’ط±ظگ ظٹظڈط³ظ’ط±ظ‹ط§', 'surah': 'ط§ظ„ط´ط±ط­ - ظ¥'},
+    {'verse': 'ظ„ظژط§ ظٹظڈظƒظژظ„ظگظ‘ظپظڈ ط§ظ„ظ„ظژظ‘ظ‡ظڈ ظ†ظژظپظ’ط³ظ‹ط§ ط¥ظگظ„ظژظ‘ط§ ظˆظڈط³ظ’ط¹ظژظ‡ظژط§', 'surah': 'ط§ظ„ط¨ظ‚ط±ط© - ظ¢ظ¨ظ¦'},
+    {'verse': 'ظˆظژظ‚ظڈظ„ ط±ظژظ‘ط¨ظگظ‘ ط²ظگط¯ظ’ظ†ظگظٹ ط¹ظگظ„ظ’ظ…ظ‹ط§', 'surah': 'ط·ظ‡ - ظ،ظ،ظ¤'},
+    {'verse': 'ط£ظژظ„ظژط§ ط¨ظگط°ظگظƒظ’ط±ظگ ط§ظ„ظ„ظژظ‘ظ‡ظگ طھظژط·ظ’ظ…ظژط¦ظگظ†ظڈظ‘ ط§ظ„ظ’ظ‚ظڈظ„ظڈظˆط¨ظڈ', 'surah': 'ط§ظ„ط±ط¹ط¯ - ظ¢ظ¨'},
   ];
 
   final List<Map<String, String>> dailyHadiths = const [
-    {'text': '« إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ »', 'source': 'رواه البخاري'},
-    {'text': '« الدِّينُ النَّصِيحَةُ »', 'source': 'رواه مسلم'},
-    {'text': '« الْكَلِمَةُ الطَّيِّبَةُ صَدَقَةٌ »', 'source': 'رواه البخاري'},
-    {'text': '« تَبَسُّمُكَ فِي وَجْهِ أَخِيكَ لَكَ صَدَقَةٌ »', 'source': 'رواه الترمذي'},
-    {'text': '« خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ »', 'source': 'رواه البخاري'},
+    {'text': 'آ« ط¥ظگظ†ظ‘ظژظ…ظژط§ ط§ظ„ظ’ط£ظژط¹ظ’ظ…ظژط§ظ„ظڈ ط¨ظگط§ظ„ظ†ظ‘ظگظٹظ‘ظژط§طھظگ آ»', 'source': 'ط±ظˆط§ظ‡ ط§ظ„ط¨ط®ط§ط±ظٹ'},
+    {'text': 'آ« ط§ظ„ط¯ظ‘ظگظٹظ†ظڈ ط§ظ„ظ†ظ‘ظژطµظگظٹط­ظژط©ظڈ آ»', 'source': 'ط±ظˆط§ظ‡ ظ…ط³ظ„ظ…'},
+    {'text': 'آ« ط§ظ„ظ’ظƒظژظ„ظگظ…ظژط©ظڈ ط§ظ„ط·ظ‘ظژظٹظ‘ظگط¨ظژط©ظڈ طµظژط¯ظژظ‚ظژط©ظŒ آ»', 'source': 'ط±ظˆط§ظ‡ ط§ظ„ط¨ط®ط§ط±ظٹ'},
+    {'text': 'آ« طھظژط¨ظژط³ظ‘ظڈظ…ظڈظƒظژ ظپظگظٹ ظˆظژط¬ظ’ظ‡ظگ ط£ظژط®ظگظٹظƒظژ ظ„ظژظƒظژ طµظژط¯ظژظ‚ظژط©ظŒ آ»', 'source': 'ط±ظˆط§ظ‡ ط§ظ„طھط±ظ…ط°ظٹ'},
+    {'text': 'آ« ط®ظژظٹظ’ط±ظڈظƒظڈظ…ظ’ ظ…ظژظ†ظ’ طھظژط¹ظژظ„ظ‘ظژظ…ظژ ط§ظ„ظ’ظ‚ظڈط±ظ’ط¢ظ†ظژ ظˆظژط¹ظژظ„ظ‘ظژظ…ظژظ‡ظڈ آ»', 'source': 'ط±ظˆط§ظ‡ ط§ظ„ط¨ط®ط§ط±ظٹ'},
   ];
 
   List<GreatMuslim> _greatMuslims = [];
   bool _greatMuslimsLoaded = false;
-  Map<String, String> currentVerseOfDay = {'verse': 'جاري التحميل...', 'surah': ''};
-  Map<String, String> currentHadithOfDay = {'text': 'جاري التحميل...', 'source': ''};
+  Map<String, String> currentVerseOfDay = {'verse': 'ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„...', 'surah': ''};
+  Map<String, String> currentHadithOfDay = {'text': 'ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„...', 'source': ''};
 
   Future<void> _loadGreatMuslims() async {
     try {
-      GreatMuslimsService.clearCache(); // إعادة تحميل نظيفة
+      GreatMuslimsService.clearCache(); // ط¥ط¹ط§ط¯ط© طھط­ظ…ظٹظ„ ظ†ط¸ظٹظپط©
       final data = await GreatMuslimsService.load();
-      debugPrint('✅ HomeScreen: تم تحميل ${data.length} شخصية');
+      debugPrint('âœ… HomeScreen: طھظ… طھط­ظ…ظٹظ„ ${data.length} ط´ط®طµظٹط©');
       if (mounted) {
         setState(() {
           _greatMuslims = data;
@@ -187,7 +187,7 @@ class _HomeScreenState extends State<HomeScreen>
         });
       }
     } catch (e) {
-      debugPrint('❌ HomeScreen خطأ: $e');
+      debugPrint('â‌Œ HomeScreen ط®ط·ط£: $e');
     }
   }
 
@@ -345,7 +345,7 @@ class _HomeScreenState extends State<HomeScreen>
     _setDailyContent();
     _loadAzkarJson();
     _updateTime();
-    // أضف هذا في نهاية initState
+    // ط£ط¶ظپ ظ‡ط°ط§ ظپظٹ ظ†ظ‡ط§ظٹط© initState
     _loadGreatMuslims();
 
     Future.microtask(() async {
@@ -428,7 +428,7 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   String _getCurrentAzkarTitle() {
-    return _isMorningAzkarTime() ? 'أذكار الصباح' : 'أذكار المساء';
+    return _isMorningAzkarTime() ? 'ط£ط°ظƒط§ط± ط§ظ„طµط¨ط§ط­' : 'ط£ط°ظƒط§ط± ط§ظ„ظ…ط³ط§ط،';
   }
 
   IconData _getCurrentAzkarIcon() {
@@ -478,11 +478,11 @@ class _HomeScreenState extends State<HomeScreen>
 
     try {
       final prayers = [
-        {'key': 'Fajr', 'name': 'الفجر', 'id': 100},
-        {'key': 'Dhuhr', 'name': 'الظهر', 'id': 101},
-        {'key': 'Asr', 'name': 'العصر', 'id': 102},
-        {'key': 'Maghrib', 'name': 'المغرب', 'id': 103},
-        {'key': 'Isha', 'name': 'العشاء', 'id': 104},
+        {'key': 'Fajr', 'name': 'ط§ظ„ظپط¬ط±', 'id': 100},
+        {'key': 'Dhuhr', 'name': 'ط§ظ„ط¸ظ‡ط±', 'id': 101},
+        {'key': 'Asr', 'name': 'ط§ظ„ط¹طµط±', 'id': 102},
+        {'key': 'Maghrib', 'name': 'ط§ظ„ظ…ط؛ط±ط¨', 'id': 103},
+        {'key': 'Isha', 'name': 'ط§ظ„ط¹ط´ط§ط،', 'id': 104},
       ];
 
       for (final prayer in prayers) {
@@ -530,7 +530,7 @@ class _HomeScreenState extends State<HomeScreen>
         }
       }
     } catch (e) {
-      debugPrint('❌ خطأ أثناء الجدولة: $e');
+      debugPrint('â‌Œ ط®ط·ط£ ط£ط«ظ†ط§ط، ط§ظ„ط¬ط¯ظˆظ„ط©: $e');
     } finally {
       _isSchedulingNotifications = false;
     }
@@ -551,7 +551,7 @@ class _HomeScreenState extends State<HomeScreen>
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'تم تحديث الموقع والمواقيت',
+          'طھظ… طھط­ط¯ظٹط« ط§ظ„ظ…ظˆظ‚ط¹ ظˆط§ظ„ظ…ظˆط§ظ‚ظٹطھ',
           style: GoogleFonts.cairo(),
         ),
         backgroundColor: Colors.green,
@@ -567,8 +567,8 @@ class _HomeScreenState extends State<HomeScreen>
       MaterialPageRoute(
         builder: (_) => AdhanPlayerScreen(
           primaryColor: _primary,
-          prayerName: payload['prayerName'] ?? payload['prayer'] ?? 'الصلاة',
-          muezzinName: payload['muezzinName'] ?? 'مؤذن',
+          prayerName: payload['prayerName'] ?? payload['prayer'] ?? 'ط§ظ„طµظ„ط§ط©',
+          muezzinName: payload['muezzinName'] ?? 'ظ…ط¤ط°ظ†',
           url: payload['muezzinUrl'] ?? '',
           localPath: (payload['localPath'] != null && payload['localPath'].toString().isNotEmpty)
               ? payload['localPath']
@@ -608,9 +608,9 @@ class _HomeScreenState extends State<HomeScreen>
             currentVerseOfDay = {
               'verse': ayah['text']
                   .toString()
-                  .replaceAll('بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ', '')
+                  .replaceAll('ط¨ظگط³ظ’ظ…ظگ ظ±ظ„ظ„ظ‘ظژظ‡ظگ ظ±ظ„ط±ظ‘ظژط­ظ’ظ…ظژظ°ظ†ظگ ظ±ظ„ط±ظ‘ظژط­ظگظٹظ…ظگ', '')
                   .trim(),
-              'surah': '${surah['name']} - آية ${ayah['numberInSurah']}',
+              'surah': '${surah['name']} - ط¢ظٹط© ${ayah['numberInSurah']}',
             };
           });
         }
@@ -626,7 +626,7 @@ class _HomeScreenState extends State<HomeScreen>
           setState(() {
             currentHadithOfDay = {
               'text': hadith['text'].toString().replaceAll(RegExp(r'<[^>]*>'), '').trim(),
-              'source': 'رقم الحديث: ${hadith['hadithnumber']}',
+              'source': 'ط±ظ‚ظ… ط§ظ„ط­ط¯ظٹط«: ${hadith['hadithnumber']}',
             };
           });
         }
@@ -637,7 +637,7 @@ class _HomeScreenState extends State<HomeScreen>
   void _updateTime() {
     final now = DateTime.now();
     final hour = now.hour > 12 ? now.hour - 12 : (now.hour == 0 ? 12 : now.hour);
-    final period = now.hour >= 12 ? 'م' : 'ص';
+    final period = now.hour >= 12 ? 'ظ…' : 'طµ';
     final newTime = '$hour:${now.minute.toString().padLeft(2, '0')} $period';
 
     if (_currentTime != newTime && mounted) {
@@ -669,7 +669,7 @@ class _HomeScreenState extends State<HomeScreen>
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('تمت إعادة جدولة الأذان بعد إعادة تشغيل الهاتف', style: GoogleFonts.cairo()),
+          content: Text('طھظ…طھ ط¥ط¹ط§ط¯ط© ط¬ط¯ظˆظ„ط© ط§ظ„ط£ط°ط§ظ† ط¨ط¹ط¯ ط¥ط¹ط§ط¯ط© طھط´ط؛ظٹظ„ ط§ظ„ظ‡ط§طھظپ', style: GoogleFonts.cairo()),
           backgroundColor: Colors.green,
         ),
       );
@@ -685,12 +685,12 @@ class _HomeScreenState extends State<HomeScreen>
 
     final prayerOrder = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
     final prayerNames = {
-      'Fajr': 'الفجر',
-      'Sunrise': 'الشروق',
-      'Dhuhr': 'الظهر',
-      'Asr': 'العصر',
-      'Maghrib': 'المغرب',
-      'Isha': 'العشاء',
+      'Fajr': 'ط§ظ„ظپط¬ط±',
+      'Sunrise': 'ط§ظ„ط´ط±ظˆظ‚',
+      'Dhuhr': 'ط§ظ„ط¸ظ‡ط±',
+      'Asr': 'ط§ظ„ط¹طµط±',
+      'Maghrib': 'ط§ظ„ظ…ط؛ط±ط¨',
+      'Isha': 'ط§ظ„ط¹ط´ط§ط،',
     };
 
     for (final key in prayerOrder) {
@@ -703,15 +703,15 @@ class _HomeScreenState extends State<HomeScreen>
     }
 
     if (nextPrayerTime == null) {
-      nextName = 'الفجر';
+      nextName = 'ط§ظ„ظپط¬ط±';
       final fajr = _parseTime(prayerTimes['Fajr']!);
       nextPrayerTime = fajr.add(const Duration(days: 1));
     }
 
     final diff = nextPrayerTime.difference(now);
     final timeLeftString = diff.inHours > 0
-        ? '${diff.inHours}س و ${diff.inMinutes % 60}د'
-        : '${diff.inMinutes} دقيقة';
+        ? '${diff.inHours}ط³ ظˆ ${diff.inMinutes % 60}ط¯'
+        : '${diff.inMinutes} ط¯ظ‚ظٹظ‚ط©';
 
     if (mounted &&
         (_nextPrayerName != nextName || _timeLeft != timeLeftString)) {
@@ -746,10 +746,10 @@ class _HomeScreenState extends State<HomeScreen>
       final parts = cleanTime.split(':');
       int hour = int.parse(parts[0]);
       int minute = int.parse(parts[1]);
-      String period = 'ص';
+      String period = 'طµ';
 
       if (hour >= 12) {
-        period = 'م';
+        period = 'ظ…';
         if (hour > 12) hour -= 12;
       }
       if (hour == 0) hour = 12;
@@ -783,7 +783,7 @@ class _HomeScreenState extends State<HomeScreen>
       await prefs.setBool('reminder_enabled', offset > 0);
       await _schedulePrayerNotifications();
     } catch (e) {
-      debugPrint('❌ apply reminder offset error: $e');
+      debugPrint('â‌Œ apply reminder offset error: $e');
     }
   }
 
@@ -886,7 +886,7 @@ class _HomeScreenState extends State<HomeScreen>
     final bg = isDark ? const Color(0xFF0E1714) : const Color(0xFFF7F3EA);
     final cardColor = isDark ? const Color(0xFF13211D) : Colors.white;
     const gold = Color(0xFFC8A44D);
-    // ★ استخدام اللون المختار بدلاً من الثابت ★
+    // âک… ط§ط³طھط®ط¯ط§ظ… ط§ظ„ظ„ظˆظ† ط§ظ„ظ…ط®طھط§ط± ط¨ط¯ظ„ط§ظ‹ ظ…ظ† ط§ظ„ط«ط§ط¨طھ âک…
     final deepGreen = _primary;
 
 
@@ -995,7 +995,7 @@ class _HomeScreenState extends State<HomeScreen>
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                // ★ gradient يتكيف مع اللون المختار ★
+                // âک… gradient ظٹطھظƒظٹظپ ظ…ط¹ ط§ظ„ظ„ظˆظ† ط§ظ„ظ…ط®طھط§ط± âک…
                 colors: [
                   primary,
                   Color.lerp(primary, Colors.black, 0.25)!,
@@ -1009,8 +1009,8 @@ class _HomeScreenState extends State<HomeScreen>
                   padding: const EdgeInsets.all(2),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    // ★ اللون المختار ★
-                    color: primary.withOpacity(0.99),
+                    // âک… ط§ظ„ظ„ظˆظ† ط§ظ„ظ…ط®طھط§ط± âک…
+                    color: primary.withValues(alpha: 0.99),
                   ),
                   child: Image.asset(
                     'assets/icon/icon.png',
@@ -1023,7 +1023,7 @@ class _HomeScreenState extends State<HomeScreen>
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'طريق الاسلام',
+                  'ط·ط±ظٹظ‚ ط§ظ„ط§ط³ظ„ط§ظ…',
                   style: GoogleFonts.amiri(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -1031,7 +1031,7 @@ class _HomeScreenState extends State<HomeScreen>
                   ),
                 ),
                 Text(
-                  'رفيقك اليومي',
+                  'ط±ظپظٹظ‚ظƒ ط§ظ„ظٹظˆظ…ظٹ',
                   style: GoogleFonts.cairo(
                       fontSize: 12, color: Colors.white70),
                 ),
@@ -1046,7 +1046,7 @@ class _HomeScreenState extends State<HomeScreen>
               itemBuilder: (context, index) {
                 final feature = features[index];
                 return ListTile(
-                  // ★ أيقونة بلون التطبيق المختار ★
+                  // âک… ط£ظٹظ‚ظˆظ†ط© ط¨ظ„ظˆظ† ط§ظ„طھط·ط¨ظٹظ‚ ط§ظ„ظ…ط®طھط§ط± âک…
                   leading: Icon(feature['icon'] as IconData,
                       color: primary),
                   title: Text(
@@ -1069,7 +1069,7 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   Widget _buildScrollableHeader(Color deepGreen, Color gold) {
-    // حماية من القائمة الفارغة أثناء التحميل
+    // ط­ظ…ط§ظٹط© ظ…ظ† ط§ظ„ظ‚ط§ط¦ظ…ط© ط§ظ„ظپط§ط±ط؛ط© ط£ط«ظ†ط§ط، ط§ظ„طھط­ظ…ظٹظ„
     if (!_greatMuslimsLoaded) {
       return SizedBox(
         height: 180,
@@ -1087,7 +1087,7 @@ class _HomeScreenState extends State<HomeScreen>
         height: 120,
         child: Center(
           child: Text(
-            'لا توجد بيانات',
+            'ظ„ط§ طھظˆط¬ط¯ ط¨ظٹط§ظ†ط§طھ',
             style: GoogleFonts.cairo(color: gold),
           ),
         ),
@@ -1183,7 +1183,7 @@ class _HomeScreenState extends State<HomeScreen>
                               borderRadius: BorderRadius.circular(24),
                               boxShadow: [
                                 BoxShadow(
-                                  color: _primary.withOpacity(isActive ? 0.18 : 0.08),
+                                  color: _primary.withValues(alpha: isActive ? 0.18 : 0.08),
                                   blurRadius: isActive ? 16 : 10,
                                   offset: const Offset(0, 8),
                                 ),
@@ -1219,9 +1219,9 @@ class _HomeScreenState extends State<HomeScreen>
                                         begin: Alignment.topCenter,
                                         end: Alignment.bottomCenter,
                                         colors: [
-                                          Colors.black.withOpacity(0.08),
-                                          Colors.black.withOpacity(0.18),
-                                          Colors.black.withOpacity(0.78),
+                                          Colors.black.withValues(alpha: 0.08),
+                                          Colors.black.withValues(alpha: 0.18),
+                                          Colors.black.withValues(alpha: 0.78),
                                         ],
                                       ),
                                     ),
@@ -1236,11 +1236,11 @@ class _HomeScreenState extends State<HomeScreen>
                                         vertical: 5,
                                       ),
                                       decoration: BoxDecoration(
-                                        color: gold.withOpacity(0.18),
+                                        color: gold.withValues(alpha: 0.18),
                                         borderRadius: BorderRadius.circular(14),
                                       ),
                                       child: Text(
-                                        'عظيم الاسلام',
+                                        'ط¹ط¸ظٹظ… ط§ظ„ط§ط³ظ„ط§ظ…',
                                         style: GoogleFonts.cairo(
                                           color: Colors.white,
                                           fontSize: small ? 9.5 : 10.5,
@@ -1257,7 +1257,7 @@ class _HomeScreenState extends State<HomeScreen>
                                     child: Container(
                                       padding: const EdgeInsets.all(12),
                                       decoration: BoxDecoration(
-                                        color: Colors.black.withOpacity(0.24),
+                                        color: Colors.black.withValues(alpha: 0.24),
                                         borderRadius: BorderRadius.circular(18),
                                       ),
                                       child: Column(
@@ -1294,7 +1294,7 @@ class _HomeScreenState extends State<HomeScreen>
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
                                             style: GoogleFonts.cairo(
-                                              color: Colors.white.withOpacity(0.92),
+                                              color: Colors.white.withValues(alpha: 0.92),
                                               fontSize: descSize,
                                               fontWeight: FontWeight.w600,
                                             ),
@@ -1328,7 +1328,7 @@ class _HomeScreenState extends State<HomeScreen>
                   width: active ? 18 : 8,
                   height: 8,
                   decoration: BoxDecoration(
-                    color: active ? gold : gold.withOpacity(0.28),
+                    color: active ? gold : gold.withValues(alpha: 0.28),
                     borderRadius: BorderRadius.circular(10),
                   ),
                 );
@@ -1425,7 +1425,7 @@ class _HomeScreenState extends State<HomeScreen>
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                     decoration: BoxDecoration(
-                      color: primary.withOpacity(0.08),
+                      color: primary.withValues(alpha: 0.08),
                       borderRadius: BorderRadius.circular(18),
                     ),
                     child: Row(
@@ -1450,7 +1450,7 @@ class _HomeScreenState extends State<HomeScreen>
                   ),
                   const Spacer(),
                   Text(
-                    'مواقيت الصلاة',
+                    'ظ…ظˆط§ظ‚ظٹطھ ط§ظ„طµظ„ط§ط©',
                     style: GoogleFonts.cairo(
                       fontSize: titleFont,
                       fontWeight: FontWeight.bold,
@@ -1474,12 +1474,12 @@ class _HomeScreenState extends State<HomeScreen>
                         end: Alignment.bottomLeft,
                         colors: [
                           primary,
-                          primary.withOpacity(0.78),
+                          primary.withValues(alpha: 0.78),
                         ],
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: primary.withOpacity(glowStrength),
+                          color: primary.withValues(alpha: glowStrength),
                           blurRadius: glowBlur,
                           spreadRadius: progress > 0.75 ? 1.0 : 0.0,
                           offset: const Offset(0, 5),
@@ -1505,12 +1505,12 @@ class _HomeScreenState extends State<HomeScreen>
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
-                                          color: gold.withOpacity(ringOpacity),
+                                          color: gold.withValues(alpha: ringOpacity),
                                           width: 2,
                                         ),
                                         boxShadow: [
                                           BoxShadow(
-                                            color: gold.withOpacity(ringOpacity * 0.45),
+                                            color: gold.withValues(alpha: ringOpacity * 0.45),
                                             blurRadius: 10 + (nearPrayerFactor * 8),
                                             spreadRadius: nearPrayerFactor > 0.5 ? 0.5 : 0,
                                           ),
@@ -1522,7 +1522,7 @@ class _HomeScreenState extends State<HomeScreen>
                                     width: small ? 42 : 48,
                                     height: small ? 42 : 48,
                                     decoration: BoxDecoration(
-                                      color: Colors.white.withOpacity(0.14),
+                                      color: Colors.white.withValues(alpha: 0.14),
                                       shape: BoxShape.circle,
                                     ),
                                     child: Icon(
@@ -1540,9 +1540,9 @@ class _HomeScreenState extends State<HomeScreen>
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    'الصلاة القادمة',
+                                    'ط§ظ„طµظ„ط§ط© ط§ظ„ظ‚ط§ط¯ظ…ط©',
                                     style: GoogleFonts.cairo(
-                                      color: Colors.white.withOpacity(0.85),
+                                      color: Colors.white.withValues(alpha: 0.85),
                                       fontSize: subtitleFont,
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -1580,7 +1580,7 @@ class _HomeScreenState extends State<HomeScreen>
                                     return LinearProgressIndicator(
                                       value: value,
                                       minHeight: small ? 6 : 7,
-                                      backgroundColor: Colors.white.withOpacity(0.14),
+                                      backgroundColor: Colors.white.withValues(alpha: 0.14),
                                       valueColor: AlwaysStoppedAnimation<Color>(gold),
                                     );
                                   },
@@ -1591,7 +1591,7 @@ class _HomeScreenState extends State<HomeScreen>
                             Container(
                               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                               decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.12),
+                                color: Colors.white.withValues(alpha: 0.12),
                                 borderRadius: BorderRadius.circular(14),
                               ),
                               child: FittedBox(
@@ -1632,14 +1632,14 @@ class _HomeScreenState extends State<HomeScreen>
                       ),
                       decoration: BoxDecoration(
                         color: isNext
-                            ? primary.withOpacity(0.08)
+                            ? primary.withValues(alpha: 0.08)
                             : (isDark
-                            ? Colors.white.withOpacity(0.03)
-                            : Colors.grey.withOpacity(0.05)),
+                            ? Colors.white.withValues(alpha: 0.03)
+                            : Colors.grey.withValues(alpha: 0.05)),
                         borderRadius: BorderRadius.circular(18),
                         border: Border.all(
                           color: isNext
-                              ? primary.withOpacity(0.25)
+                              ? primary.withValues(alpha: 0.25)
                               : Colors.transparent,
                           width: 1.3,
                         ),
@@ -1710,7 +1710,7 @@ class _HomeScreenState extends State<HomeScreen>
                   child: Icon(
                     Icons.auto_awesome,
                     size: 42,
-                    color: gold.withOpacity(0.10),
+                    color: gold.withValues(alpha: 0.10),
                   ),
                 ),
                 Column(
@@ -1718,7 +1718,7 @@ class _HomeScreenState extends State<HomeScreen>
                   children: [
                     _sectionHeader(
                       icon: Icons.auto_awesome,
-                      title: 'آية اليوم',
+                      title: 'ط¢ظٹط© ط§ظ„ظٹظˆظ…',
                       color: gold,
                       size: small ? 15 : 16,
                     ),
@@ -1727,7 +1727,7 @@ class _HomeScreenState extends State<HomeScreen>
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                         decoration: BoxDecoration(
-                          color: gold.withOpacity(0.10),
+                          color: gold.withValues(alpha: 0.10),
                           borderRadius: BorderRadius.circular(14),
                         ),
                         child: Text(
@@ -1755,7 +1755,7 @@ class _HomeScreenState extends State<HomeScreen>
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      'اقرأها بتدبر واجعلها رفيق يومك',
+                      'ط§ظ‚ط±ط£ظ‡ط§ ط¨طھط¯ط¨ط± ظˆط§ط¬ط¹ظ„ظ‡ط§ ط±ظپظٹظ‚ ظٹظˆظ…ظƒ',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.cairo(
                         fontSize: small ? 11 : 12,
@@ -1785,15 +1785,15 @@ class _HomeScreenState extends State<HomeScreen>
         child: Container(
           decoration: BoxDecoration(
             color: isDark
-                ? Colors.white.withOpacity(0.05)
-                : Colors.white.withOpacity(0.55),
+                ? Colors.white.withValues(alpha: 0.05)
+                : Colors.white.withValues(alpha: 0.55),
             borderRadius: BorderRadius.circular(24),
             border: Border.all(
-              color: borderColor.withOpacity(0.18),
+              color: borderColor.withValues(alpha: 0.18),
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(isDark ? 0.08 : 0.03),
+                color: Colors.black.withValues(alpha: isDark ? 0.08 : 0.03),
                 blurRadius: 14,
                 offset: const Offset(0, 6),
               ),
@@ -1820,7 +1820,7 @@ class _HomeScreenState extends State<HomeScreen>
 
     final String previewText = currentAzkarList.isNotEmpty
         ? (currentAzkarList.first['text']?.toString() ?? '')
-        : 'جاري تحميل الأذكار...';
+        : 'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط§ظ„ط£ط°ظƒط§ط±...';
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -1877,7 +1877,7 @@ class _HomeScreenState extends State<HomeScreen>
                         );
                       },
                       child: Text(
-                        'قراءة',
+                        'ظ‚ط±ط§ط،ط©',
                         style: GoogleFonts.cairo(
                           fontWeight: FontWeight.bold,
                           fontSize: small ? 12 : 13,
@@ -1914,7 +1914,7 @@ class _HomeScreenState extends State<HomeScreen>
                             child: LinearProgressIndicator(
                               value: _isMorningAzkarTime() ? 0.55 : 0.75,
                               minHeight: small ? 5 : 6,
-                              backgroundColor: gold.withOpacity(0.15),
+                              backgroundColor: gold.withValues(alpha: 0.15),
                               valueColor: AlwaysStoppedAnimation<Color>(gold),
                             ),
                           ),
@@ -1938,12 +1938,12 @@ class _HomeScreenState extends State<HomeScreen>
       bool isDark,
       ) {
     final homeItems = [
-      {'title': 'القرآن', 'icon': Icons.menu_book_rounded, 'index': 0},
-      {'title': 'الحديث', 'icon': Icons.format_quote_rounded, 'index': 4},
-      {'title': 'الأذكار', 'icon': Icons.auto_awesome_rounded, 'index': 2},
-      {'title': 'القبلة', 'icon': Icons.explore_rounded, 'index': 8},
-      {'title': 'اسماء الله الحسنى', 'icon': Icons.numbers_rounded, 'index': 12},
-      {'title': 'التسبيح', 'icon': Icons.touch_app_rounded, 'index': 3},
+      {'title': 'ط§ظ„ظ‚ط±ط¢ظ†', 'icon': Icons.menu_book_rounded, 'index': 0},
+      {'title': 'ط§ظ„ط­ط¯ظٹط«', 'icon': Icons.format_quote_rounded, 'index': 4},
+      {'title': 'ط§ظ„ط£ط°ظƒط§ط±', 'icon': Icons.auto_awesome_rounded, 'index': 2},
+      {'title': 'ط§ظ„ظ‚ط¨ظ„ط©', 'icon': Icons.explore_rounded, 'index': 8},
+      {'title': 'ط§ط³ظ…ط§ط، ط§ظ„ظ„ظ‡ ط§ظ„ط­ط³ظ†ظ‰', 'icon': Icons.numbers_rounded, 'index': 12},
+      {'title': 'ط§ظ„طھط³ط¨ظٹط­', 'icon': Icons.touch_app_rounded, 'index': 3},
     ];
 
     return LayoutBuilder(
@@ -1987,7 +1987,7 @@ class _HomeScreenState extends State<HomeScreen>
                         width: small ? 44 : 52,
                         height: small ? 44 : 52,
                         decoration: BoxDecoration(
-                          color: _primary.withOpacity(0.08),
+                          color: _primary.withValues(alpha: 0.08),
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Icon(
@@ -2035,25 +2035,25 @@ class _HomeScreenState extends State<HomeScreen>
               child: Icon(
                 Icons.format_quote_rounded,
                 size: 44,
-                color: isDark ? Colors.white70 : primary.withOpacity(0.10),
+                color: isDark ? Colors.white70 : primary.withValues(alpha: 0.10),
               ),
             ),
             Column(
               children: [
                 _sectionHeader(
                   icon: Icons.lightbulb_outline,
-                  title: 'حديث اليوم',
+                  title: 'ط­ط¯ظٹط« ط§ظ„ظٹظˆظ…',
                   color: isDark ? Colors.white70 : primary,
                 ),
                 const SizedBox(height: 14),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
                   decoration: BoxDecoration(
-                    color: primary.withOpacity(0.08),
+                    color: primary.withValues(alpha: 0.08),
                     borderRadius: BorderRadius.circular(14),
                   ),
                   child: Text(
-                    'قال رسول الله ﷺ',
+                    'ظ‚ط§ظ„ ط±ط³ظˆظ„ ط§ظ„ظ„ظ‡ ï·؛',
                     style: GoogleFonts.cairo(
                       fontSize: 13,
                       color: isDark ? Colors.white70 : primary,
@@ -2095,10 +2095,10 @@ class _HomeScreenState extends State<HomeScreen>
     return BoxDecoration(
       color: isDark ? const Color(0xFF13211D) : Colors.white,
       borderRadius: BorderRadius.circular(24),
-      border: Border.all(color: borderColor.withOpacity(0.10)),
+      border: Border.all(color: borderColor.withValues(alpha: 0.10)),
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(isDark ? 0.14 : 0.05),
+          color: Colors.black.withValues(alpha: isDark ? 0.14 : 0.05),
           blurRadius: 14,
           offset: const Offset(0, 6),
         ),
@@ -2153,7 +2153,7 @@ class _HomeScreenState extends State<HomeScreen>
               height: 180,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: primary.withOpacity(0.05),
+                color: primary.withValues(alpha: 0.05),
               ),
             ),
           ),
@@ -2165,7 +2165,7 @@ class _HomeScreenState extends State<HomeScreen>
               height: 140,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: gold.withOpacity(0.05),
+                color: gold.withValues(alpha: 0.05),
               ),
             ),
           ),
@@ -2177,7 +2177,7 @@ class _HomeScreenState extends State<HomeScreen>
               height: 130,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: primary.withOpacity(0.04),
+                color: primary.withValues(alpha: 0.04),
               ),
             ),
           ),
@@ -2189,12 +2189,12 @@ class _HomeScreenState extends State<HomeScreen>
               height: 100,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: gold.withOpacity(0.04),
+                color: gold.withValues(alpha: 0.04),
               ),
             ),
           ),
 
-          // الهلال الكبير
+          // ط§ظ„ظ‡ظ„ط§ظ„ ط§ظ„ظƒط¨ظٹط±
           Positioned(
             top: 20 + moonShift,
             left: -30,
@@ -2208,7 +2208,7 @@ class _HomeScreenState extends State<HomeScreen>
                     height: 180,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: gold.withOpacity(0.08),
+                      color: gold.withValues(alpha: 0.08),
                     ),
                   ),
                   Positioned(
@@ -2228,14 +2228,14 @@ class _HomeScreenState extends State<HomeScreen>
             ),
           ),
 
-          // النجوم
+          // ط§ظ„ظ†ط¬ظˆظ…
           Positioned(
             top: 115 + starShift,
             left: 110,
             child: Icon(
               Icons.star_rounded,
               size: 10,
-              color: gold.withOpacity(0.10),
+              color: gold.withValues(alpha: 0.10),
             ),
           ),
           Positioned(
@@ -2244,7 +2244,7 @@ class _HomeScreenState extends State<HomeScreen>
             child: Icon(
               Icons.star_rounded,
               size: 8,
-              color: primary.withOpacity(0.08),
+              color: primary.withValues(alpha: 0.08),
             ),
           ),
           Positioned(
@@ -2253,7 +2253,7 @@ class _HomeScreenState extends State<HomeScreen>
             child: Icon(
               Icons.auto_awesome_rounded,
               size: 12,
-              color: gold.withOpacity(0.08),
+              color: gold.withValues(alpha: 0.08),
             ),
           ),
           Positioned(
@@ -2262,7 +2262,7 @@ class _HomeScreenState extends State<HomeScreen>
             child: Icon(
               Icons.star_rounded,
               size: 9,
-              color: gold.withOpacity(0.08),
+              color: gold.withValues(alpha: 0.08),
             ),
           ),
           Positioned(
@@ -2271,7 +2271,7 @@ class _HomeScreenState extends State<HomeScreen>
             child: Icon(
               Icons.auto_awesome_rounded,
               size: 11,
-              color: primary.withOpacity(0.08),
+              color: primary.withValues(alpha: 0.08),
             ),
           ),
           Positioned(
@@ -2280,7 +2280,7 @@ class _HomeScreenState extends State<HomeScreen>
             child: Icon(
               Icons.star_rounded,
               size: 10,
-              color: gold.withOpacity(0.08),
+              color: gold.withValues(alpha: 0.08),
             ),
           ),
           Positioned(
@@ -2289,7 +2289,7 @@ class _HomeScreenState extends State<HomeScreen>
             child: Icon(
               Icons.star_rounded,
               size: 8,
-              color: primary.withOpacity(0.07),
+              color: primary.withValues(alpha: 0.07),
             ),
           ),
         ],

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AuthTextField extends StatefulWidget {
@@ -60,17 +60,17 @@ class _AuthTextFieldState extends State<AuthTextField> {
           color: _focused
               ? _gold
               : isDark
-              ? Colors.white.withOpacity(0.10)
+              ? Colors.white.withValues(alpha: 0.10)
               : Colors.grey.shade300,
           width: _focused ? 2.0 : 1.4,
         ),
         color: isDark
-            ? Colors.white.withOpacity(_focused ? 0.07 : 0.04)
-            : Colors.white.withOpacity(_focused ? 0.95 : 0.75),
+            ? Colors.white.withValues(alpha: _focused ? 0.07 : 0.04)
+            : Colors.white.withValues(alpha: _focused ? 0.95 : 0.75),
         boxShadow: _focused
             ? [
           BoxShadow(
-            color: _gold.withOpacity(0.15),
+            color: _gold.withValues(alpha: 0.15),
             blurRadius: 14,
           ),
         ]

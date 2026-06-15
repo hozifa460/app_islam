@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:intl/intl.dart';
@@ -50,20 +50,20 @@ class HijriHeroHeader extends StatelessWidget {
         fit: StackFit.expand,
         clipBehavior: Clip.hardEdge,
         children: [
-          // النقش الإسلامي
+          // ط§ظ„ظ†ظ‚ط´ ط§ظ„ط¥ط³ظ„ط§ظ…ظٹ
           Positioned.fill(
             child: CustomPaint(
               painter: IslamicPatternPainter(
-                color: Colors.white.withOpacity(0.03),
+                color: Colors.white.withValues(alpha: 0.03),
                 lineWidth: 0.5,
               ),
             ),
           ),
 
-          // الدوائر الزخرفية
+          // ط§ظ„ط¯ظˆط§ط¦ط± ط§ظ„ط²ط®ط±ظپظٹط©
           _buildDecorativeCircles(),
 
-          // الهلال
+          // ط§ظ„ظ‡ظ„ط§ظ„
           Positioned(
             top: compact ? 50 : 60,
             left: compact ? 20 : tablet ? 40 : 28,
@@ -77,17 +77,17 @@ class HijriHeroHeader extends StatelessWidget {
             ),
           ),
 
-          // النجوم المتلألئة
+          // ط§ظ„ظ†ط¬ظˆظ… ط§ظ„ظ…طھظ„ط£ظ„ط¦ط©
           ..._buildStars(),
 
-          // الزخرفة الهندسية
+          // ط§ظ„ط²ط®ط±ظپط© ط§ظ„ظ‡ظ†ط¯ط³ظٹط©
           Positioned(
             top: compact ? 55 : 65,
             right: compact ? 15 : 25,
             child: _buildGeometricDecoration(),
           ),
 
-          // المحتوى الرئيسي
+          // ط§ظ„ظ…ط­طھظˆظ‰ ط§ظ„ط±ط¦ظٹط³ظٹ
           Positioned(
             left: 16,
             right: 16,
@@ -98,7 +98,7 @@ class HijriHeroHeader extends StatelessWidget {
             ),
           ),
 
-          // التدرج السفلي
+          // ط§ظ„طھط¯ط±ط¬ ط§ظ„ط³ظپظ„ظٹ
           Positioned(
             bottom: 0,
             left: 0,
@@ -113,7 +113,7 @@ class HijriHeroHeader extends StatelessWidget {
                     Colors.transparent,
                     Color.lerp(
                         primaryColor, const Color(0xFF0A0E17), 0.5)!
-                        .withOpacity(0.6),
+                        .withValues(alpha: 0.6),
                   ],
                 ),
               ),
@@ -124,13 +124,13 @@ class HijriHeroHeader extends StatelessWidget {
     );
   }
 
-  // ═══════════════════════════════════
-  // الدوائر الزخرفية المتوهجة
-  // ═══════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ط¯ظˆط§ط¦ط± ط§ظ„ط²ط®ط±ظپظٹط© ط§ظ„ظ…طھظˆظ‡ط¬ط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildDecorativeCircles() {
     return Stack(
       children: [
-        // دائرة كبيرة أعلى اليمين
+        // ط¯ط§ط¦ط±ط© ظƒط¨ظٹط±ط© ط£ط¹ظ„ظ‰ ط§ظ„ظٹظ…ظٹظ†
         Positioned(
           top: -80,
           right: -60,
@@ -145,8 +145,8 @@ class HijriHeroHeader extends StatelessWidget {
                   shape: BoxShape.circle,
                   gradient: RadialGradient(
                     colors: [
-                      HijriTheme.gold.withOpacity(0.12),
-                      HijriTheme.gold.withOpacity(0.05),
+                      HijriTheme.gold.withValues(alpha: 0.12),
+                      HijriTheme.gold.withValues(alpha: 0.05),
                       Colors.transparent,
                     ],
                   ),
@@ -156,7 +156,7 @@ class HijriHeroHeader extends StatelessWidget {
           ),
         ),
 
-        // دائرة متوسطة أسفل اليسار
+        // ط¯ط§ط¦ط±ط© ظ…طھظˆط³ط·ط© ط£ط³ظپظ„ ط§ظ„ظٹط³ط§ط±
         Positioned(
           bottom: -50,
           left: -40,
@@ -171,8 +171,8 @@ class HijriHeroHeader extends StatelessWidget {
                   shape: BoxShape.circle,
                   gradient: RadialGradient(
                     colors: [
-                      Colors.white.withOpacity(0.06),
-                      Colors.white.withOpacity(0.02),
+                      Colors.white.withValues(alpha: 0.06),
+                      Colors.white.withValues(alpha: 0.02),
                       Colors.transparent,
                     ],
                   ),
@@ -182,7 +182,7 @@ class HijriHeroHeader extends StatelessWidget {
           ),
         ),
 
-        // دائرة صغيرة في الوسط
+        // ط¯ط§ط¦ط±ط© طµط؛ظٹط±ط© ظپظٹ ط§ظ„ظˆط³ط·
         Positioned(
           top: compact ? 100 : 120,
           right: compact ? 80 : 100,
@@ -197,7 +197,7 @@ class HijriHeroHeader extends StatelessWidget {
                   shape: BoxShape.circle,
                   gradient: RadialGradient(
                     colors: [
-                      HijriTheme.gold.withOpacity(0.15),
+                      HijriTheme.gold.withValues(alpha: 0.15),
                       Colors.transparent,
                     ],
                   ),
@@ -210,9 +210,9 @@ class HijriHeroHeader extends StatelessWidget {
     );
   }
 
-  // ═══════════════════════════════════
-  // الهلال المحسّن
-  // ═══════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ظ‡ظ„ط§ظ„ ط§ظ„ظ…ط­ط³ظ‘ظ†
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildEnhancedCrescent() {
     final s = compact ? 55.0 : tablet ? 75.0 : 65.0;
     return SizedBox(
@@ -220,7 +220,7 @@ class HijriHeroHeader extends StatelessWidget {
       height: s,
       child: Stack(
         children: [
-          // توهج خارجي
+          // طھظˆظ‡ط¬ ط®ط§ط±ط¬ظٹ
           Container(
             width: s,
             height: s,
@@ -228,14 +228,14 @@ class HijriHeroHeader extends StatelessWidget {
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: HijriTheme.gold.withOpacity(0.3),
+                  color: HijriTheme.gold.withValues(alpha: 0.3),
                   blurRadius: 25,
                   spreadRadius: 5,
                 ),
               ],
             ),
           ),
-          // الهلال الرئيسي
+          // ط§ظ„ظ‡ظ„ط§ظ„ ط§ظ„ط±ط¦ظٹط³ظٹ
           Container(
             width: s,
             height: s,
@@ -244,18 +244,18 @@ class HijriHeroHeader extends StatelessWidget {
               gradient: RadialGradient(
                 center: const Alignment(-0.3, -0.3),
                 colors: [
-                  HijriTheme.gold.withOpacity(0.5),
-                  HijriTheme.gold.withOpacity(0.25),
-                  HijriTheme.gold.withOpacity(0.1),
+                  HijriTheme.gold.withValues(alpha: 0.5),
+                  HijriTheme.gold.withValues(alpha: 0.25),
+                  HijriTheme.gold.withValues(alpha: 0.1),
                 ],
               ),
               border: Border.all(
-                color: HijriTheme.gold.withOpacity(0.3),
+                color: HijriTheme.gold.withValues(alpha: 0.3),
                 width: 1,
               ),
             ),
           ),
-          // القطع الداخلي للهلال
+          // ط§ظ„ظ‚ط·ط¹ ط§ظ„ط¯ط§ط®ظ„ظٹ ظ„ظ„ظ‡ظ„ط§ظ„
           Positioned(
             left: s * 0.22,
             top: s * 0.05,
@@ -269,7 +269,7 @@ class HijriHeroHeader extends StatelessWidget {
               ),
             ),
           ),
-          // نجمة صغيرة بجانب الهلال
+          // ظ†ط¬ظ…ط© طµط؛ظٹط±ط© ط¨ط¬ط§ظ†ط¨ ط§ظ„ظ‡ظ„ط§ظ„
           Positioned(
             right: s * 0.05,
             bottom: s * 0.25,
@@ -289,9 +289,9 @@ class HijriHeroHeader extends StatelessWidget {
     );
   }
 
-  // ═══════════════════════════════════
-  // النجوم المتلألئة
-  // ═══════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ظ†ط¬ظˆظ… ط§ظ„ظ…طھظ„ط£ظ„ط¦ط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   List<Widget> _buildStars() {
     final starData = [
       {'top': 70.0, 'right': 50.0, 'size': 3.0, 'delay': 0.0},
@@ -328,7 +328,7 @@ class HijriHeroHeader extends StatelessWidget {
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                        color: HijriTheme.gold.withOpacity(0.6),
+                        color: HijriTheme.gold.withValues(alpha: 0.6),
                         blurRadius: 6,
                         spreadRadius: 1,
                       ),
@@ -343,9 +343,9 @@ class HijriHeroHeader extends StatelessWidget {
     }).toList();
   }
 
-  // ═══════════════════════════════════
-  // الزخرفة الهندسية
-  // ═══════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ط²ط®ط±ظپط© ط§ظ„ظ‡ظ†ط¯ط³ظٹط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildGeometricDecoration() {
     final size = compact ? 35.0 : 45.0;
     return AnimatedBuilder(
@@ -364,31 +364,31 @@ class HijriHeroHeader extends StatelessWidget {
     );
   }
 
-  // ═══════════════════════════════════
-  // المحتوى الرئيسي
-  // ═══════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ظ…ط­طھظˆظ‰ ط§ظ„ط±ط¦ظٹط³ظٹ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildMainContent(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        // المناسبة القادمة
+        // ط§ظ„ظ…ظ†ط§ط³ط¨ط© ط§ظ„ظ‚ط§ط¯ظ…ط©
         if (nextEvent != null) ...[
           _buildNextEventBadge(context),
           SizedBox(height: compact ? 8 : 10),
         ],
 
-        // اسم اليوم
+        // ط§ط³ظ… ط§ظ„ظٹظˆظ…
         _buildDayNameBadge(context),
         SizedBox(height: compact ? 12 : 16),
 
-        // التاريخ الهجري
+        // ط§ظ„طھط§ط±ظٹط® ط§ظ„ظ‡ط¬ط±ظٹ
         _buildHijriDate(context),
         const SizedBox(height: 6),
 
-        // التاريخ الميلادي
+        // ط§ظ„طھط§ط±ظٹط® ط§ظ„ظ…ظٹظ„ط§ط¯ظٹ
         _buildGregorianDate(),
 
-        // وسم المناسبة
+        // ظˆط³ظ… ط§ظ„ظ…ظ†ط§ط³ط¨ط©
         if (event != null) ...[
           SizedBox(height: compact ? 10 : 14),
           _buildEventBadge(),
@@ -397,9 +397,9 @@ class HijriHeroHeader extends StatelessWidget {
     );
   }
 
-  // ═══════════════════════════════════
-  // شارة المناسبة القادمة
-  // ═══════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط´ط§ط±ط© ط§ظ„ظ…ظ†ط§ط³ط¨ط© ط§ظ„ظ‚ط§ط¯ظ…ط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildNextEventBadge(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
@@ -409,13 +409,13 @@ class HijriHeroHeader extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            HijriTheme.gold.withOpacity(0.2),
-            HijriTheme.gold.withOpacity(0.08),
+            HijriTheme.gold.withValues(alpha: 0.2),
+            HijriTheme.gold.withValues(alpha: 0.08),
           ],
         ),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: HijriTheme.gold.withOpacity(0.3),
+          color: HijriTheme.gold.withValues(alpha: 0.3),
           width: 1,
         ),
       ),
@@ -430,10 +430,10 @@ class HijriHeroHeader extends StatelessWidget {
           SizedBox(width: compact ? 4 : 6),
           Flexible(
             child: Text(
-              'القادم: ${nextEvent!['title']}',
+              'ط§ظ„ظ‚ط§ط¯ظ…: ${nextEvent!['title']}',
               overflow: TextOverflow.ellipsis,
               style: GoogleFonts.cairo(
-                color: Colors.white.withOpacity(0.9),
+                color: Colors.white.withValues(alpha: 0.9),
                 fontSize: compact ? 9 : 10,
                 fontWeight: FontWeight.w600,
               ),
@@ -446,11 +446,11 @@ class HijriHeroHeader extends StatelessWidget {
               vertical: 2,
             ),
             decoration: BoxDecoration(
-              color: HijriTheme.gold.withOpacity(0.25),
+              color: HijriTheme.gold.withValues(alpha: 0.25),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Text(
-              'بعد ${HijriTheme.formatNum(nextEvent!['daysLeft'] , context )} يوم',
+              'ط¨ط¹ط¯ ${HijriTheme.formatNum(nextEvent!['daysLeft'] , context )} ظٹظˆظ…',
               style: GoogleFonts.cairo(
                 color: HijriTheme.gold,
                 fontSize: compact ? 8 : 9,
@@ -463,9 +463,9 @@ class HijriHeroHeader extends StatelessWidget {
     );
   }
 
-  // ═══════════════════════════════════
-  // شارة اسم اليوم
-  // ═══════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط´ط§ط±ط© ط§ط³ظ… ط§ظ„ظٹظˆظ…
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildDayNameBadge(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
@@ -475,13 +475,13 @@ class HijriHeroHeader extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Colors.white.withOpacity(0.12),
-            Colors.white.withOpacity(0.06),
+            Colors.white.withValues(alpha: 0.12),
+            Colors.white.withValues(alpha: 0.06),
           ],
         ),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: Colors.white.withOpacity(0.1),
+          color: Colors.white.withValues(alpha: 0.1),
         ),
       ),
       child: Row(
@@ -489,14 +489,14 @@ class HijriHeroHeader extends StatelessWidget {
         children: [
           Icon(
             Icons.wb_sunny_outlined,
-            color: HijriTheme.gold.withOpacity(0.8),
+            color: HijriTheme.gold.withValues(alpha: 0.8),
             size: compact ? 12 : 14,
           ),
           SizedBox(width: compact ? 4 : 6),
           Text(
             HijriTheme.getWeekday(selectedDate , context),
             style: GoogleFonts.cairo(
-              color: Colors.white.withOpacity(0.9),
+              color: Colors.white.withValues(alpha: 0.9),
               fontSize: compact ? 11 : 13,
               fontWeight: FontWeight.w600,
             ),
@@ -506,9 +506,9 @@ class HijriHeroHeader extends StatelessWidget {
     );
   }
 
-  // ═══════════════════════════════════
-  // التاريخ الهجري
-  // ═══════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„طھط§ط±ظٹط® ط§ظ„ظ‡ط¬ط±ظٹ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildHijriDate(BuildContext context) {
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 400),
@@ -546,7 +546,7 @@ class HijriHeroHeader extends StatelessWidget {
                 height: 1.2,
                 shadows: [
                   Shadow(
-                    color: Colors.black.withOpacity(0.3),
+                    color: Colors.black.withValues(alpha: 0.3),
                     blurRadius: 10,
                     offset: const Offset(0, 3),
                   ),
@@ -561,9 +561,9 @@ class HijriHeroHeader extends StatelessWidget {
     );
   }
 
-  // ═══════════════════════════════════
-  // التاريخ الميلادي
-  // ═══════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„طھط§ط±ظٹط® ط§ظ„ظ…ظٹظ„ط§ط¯ظٹ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildGregorianDate() {
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 350),
@@ -579,7 +579,7 @@ class HijriHeroHeader extends StatelessWidget {
               gradient: LinearGradient(
                 colors: [
                   Colors.transparent,
-                  HijriTheme.gold.withOpacity(0.4),
+                  HijriTheme.gold.withValues(alpha: 0.4),
                 ],
               ),
             ),
@@ -590,7 +590,7 @@ class HijriHeroHeader extends StatelessWidget {
             child: Text(
               DateFormat('dd MMMM yyyy', 'ar').format(selectedDate),
               style: GoogleFonts.cairo(
-                color: Colors.white.withOpacity(0.7),
+                color: Colors.white.withValues(alpha: 0.7),
                 fontSize: compact ? 11 : 13,
                 letterSpacing: 0.5,
               ),
@@ -602,7 +602,7 @@ class HijriHeroHeader extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  HijriTheme.gold.withOpacity(0.4),
+                  HijriTheme.gold.withValues(alpha: 0.4),
                   Colors.transparent,
                 ],
               ),
@@ -613,9 +613,9 @@ class HijriHeroHeader extends StatelessWidget {
     );
   }
 
-  // ═══════════════════════════════════
-  // وسم المناسبة
-  // ═══════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ظˆط³ظ… ط§ظ„ظ…ظ†ط§ط³ط¨ط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildEventBadge() {
     return AnimatedBuilder(
       animation: pulseController,
@@ -631,16 +631,16 @@ class HijriHeroHeader extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              HijriTheme.gold.withOpacity(0.25),
-              HijriTheme.gold.withOpacity(0.1),
+              HijriTheme.gold.withValues(alpha: 0.25),
+              HijriTheme.gold.withValues(alpha: 0.1),
             ],
           ),
           borderRadius: BorderRadius.circular(18),
           border:
-          Border.all(color: HijriTheme.gold.withOpacity(0.4)),
+          Border.all(color: HijriTheme.gold.withValues(alpha: 0.4)),
           boxShadow: [
             BoxShadow(
-              color: HijriTheme.gold.withOpacity(0.2),
+              color: HijriTheme.gold.withValues(alpha: 0.2),
               blurRadius: 12,
               spreadRadius: 1,
             ),
@@ -670,9 +670,9 @@ class HijriHeroHeader extends StatelessWidget {
     );
   }
 
-  // ═══════════════════════════════════
-  // الزخارف الجانبية للتاريخ
-  // ═══════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ط²ط®ط§ط±ظپ ط§ظ„ط¬ط§ظ†ط¨ظٹط© ظ„ظ„طھط§ط±ظٹط®
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildSideDecoration({required bool isLeft}) {
     return Row(
       mainAxisSize: MainAxisSize.min,
@@ -683,7 +683,7 @@ class HijriHeroHeader extends StatelessWidget {
             height: 4,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: HijriTheme.gold.withOpacity(0.6),
+              color: HijriTheme.gold.withValues(alpha: 0.6),
             ),
           ),
           const SizedBox(width: 4),
@@ -697,10 +697,10 @@ class HijriHeroHeader extends StatelessWidget {
               colors: isLeft
                   ? [
                 Colors.transparent,
-                HijriTheme.gold.withOpacity(0.5)
+                HijriTheme.gold.withValues(alpha: 0.5)
               ]
                   : [
-                HijriTheme.gold.withOpacity(0.5),
+                HijriTheme.gold.withValues(alpha: 0.5),
                 Colors.transparent
               ],
             ),
@@ -713,7 +713,7 @@ class HijriHeroHeader extends StatelessWidget {
             height: 4,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: HijriTheme.gold.withOpacity(0.6),
+              color: HijriTheme.gold.withValues(alpha: 0.6),
             ),
           ),
         ],

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../languages/app_localizations.dart';
@@ -33,15 +33,15 @@ class NextPrayerCard extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [gold.withOpacity(0.2), gold.withOpacity(0.05)],
+          colors: [gold.withValues(alpha: 0.2), gold.withValues(alpha: 0.05)],
         ),
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: gold.withOpacity(0.3)),
+        border: Border.all(color: gold.withValues(alpha: 0.3)),
         boxShadow: [
           BoxShadow(
             color: isDark
-                ? Colors.black.withOpacity(0.3)
-                : Colors.grey.withOpacity(0.1),
+                ? Colors.black.withValues(alpha: 0.3)
+                : Colors.grey.withValues(alpha: 0.1),
             blurRadius: 20,
             offset: const Offset(0, 10),
           ),
@@ -61,9 +61,9 @@ class NextPrayerCard extends StatelessWidget {
                         vertical: 6,
                       ),
                       decoration: BoxDecoration(
-                        color: gold.withOpacity(0.2),
+                        color: gold.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: gold.withOpacity(0.4)),
+                        border: Border.all(color: gold.withValues(alpha: 0.4)),
                       ),
                       child: Text(
                         context.tr.theNextPrayerCardTitle,
@@ -98,7 +98,7 @@ class NextPrayerCard extends StatelessWidget {
                         (context.tr.muezzinLabel(muezzinName!),
                         style: GoogleFonts.cairo(
                           fontSize: 13,
-                          color: gold.withOpacity(0.9),
+                          color: gold.withValues(alpha: 0.9),
                         ),
                       ),
                   ],
@@ -142,13 +142,13 @@ class NextPrayerCard extends StatelessWidget {
                 child: ElevatedButton.icon(
                   onPressed: onListenAdhan,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: gold.withOpacity(0.2),
+                    backgroundColor: gold.withValues(alpha: 0.2),
                     foregroundColor: gold,
                     elevation: 0,
                     padding: const EdgeInsets.symmetric(vertical: 12),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
-                      side: BorderSide(color: gold.withOpacity(0.3)),
+                      side: BorderSide(color: gold.withValues(alpha: 0.3)),
                     ),
                   ),
                   icon: const Icon(Icons.play_arrow),

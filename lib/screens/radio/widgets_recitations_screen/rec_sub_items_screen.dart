@@ -1,4 +1,4 @@
-// lib/screens/radio/widgets_recitations_screen/rec_sub_items_screen.dart
+﻿// lib/screens/radio/widgets_recitations_screen/rec_sub_items_screen.dart
 
 import 'dart:async';
 import 'dart:math';
@@ -41,13 +41,13 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
   late AnimationController _bgController;
   late AnimationController _equalizerController;
 
-  // ══ أضف هذا ══
+  // â•گâ•گ ط£ط¶ظپ ظ‡ط°ط§ â•گâ•گ
   String _searchQuery = '';
   final TextEditingController _searchController = TextEditingController();
 
-  // ══ أضف هذا ══
+  // â•گâ•گ ط£ط¶ظپ ظ‡ط°ط§ â•گâ•گ
   List<RecitationSubItem> get _filteredSubItems {
-    // فقط العناصر المفردة (بدون أقسام)
+    // ظپظ‚ط· ط§ظ„ط¹ظ†ط§طµط± ط§ظ„ظ…ظپط±ط¯ط© (ط¨ط¯ظˆظ† ط£ظ‚ط³ط§ظ…)
     final all = widget.parentItem.subItems ?? [];
     if (_searchQuery.trim().isEmpty) return all;
 
@@ -81,23 +81,23 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
     super.dispose();
   }
 
-  // أضف getter للأقسام المفلترة
+  // ط£ط¶ظپ getter ظ„ظ„ط£ظ‚ط³ط§ظ… ط§ظ„ظ…ظپظ„طھط±ط©
   List<RecitationSubSection> get _filteredSections {
     final sections = widget.parentItem.subSections ?? [];
     if (_searchQuery.trim().isEmpty) return sections;
 
     final query = _searchQuery.trim().toLowerCase();
     return sections.where((section) {
-      // بحث في عنوان القسم
+      // ط¨ط­ط« ظپظٹ ط¹ظ†ظˆط§ظ† ط§ظ„ظ‚ط³ظ…
       if (section.title.toLowerCase().contains(query)) return true;
-      // بحث في عناصر القسم
+      // ط¨ط­ط« ظپظٹ ط¹ظ†ط§طµط± ط§ظ„ظ‚ط³ظ…
       return section.items.any((sub) =>
       sub.title.toLowerCase().contains(query) ||
           sub.subtitle.toLowerCase().contains(query));
     }).toList();
   }
 
-// ══ بناء المحتوى (أقسام + عناصر مفردة) ══
+// â•گâ•گ ط¨ظ†ط§ط، ط§ظ„ظ…ط­طھظˆظ‰ (ط£ظ‚ط³ط§ظ… + ط¹ظ†ط§طµط± ظ…ظپط±ط¯ط©) â•گâ•گ
   Widget _buildContent() {
     final safePadding = MediaQuery.of(context).padding;
     final hasSections = _filteredSections.isNotEmpty;
@@ -107,15 +107,15 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
       padding: EdgeInsets.fromLTRB(16, 8, 16, 190 + safePadding.bottom),
       physics: const BouncingScrollPhysics(),
       children: [
-        // ══ الأقسام ══
+        // â•گâ•گ ط§ظ„ط£ظ‚ط³ط§ظ… â•گâ•گ
         if (hasSections)
           ..._filteredSections.map((section) =>
               _buildSection(section)),
 
-        // ══ العناصر المفردة (subItems بدون قسم) ══
+        // â•گâ•گ ط§ظ„ط¹ظ†ط§طµط± ط§ظ„ظ…ظپط±ط¯ط© (subItems ط¨ط¯ظˆظ† ظ‚ط³ظ…) â•گâ•گ
         if (hasLooseItems && hasSections) ...[
           const SizedBox(height: 16),
-          _buildSectionHeader('تلاوات أخرى', '🎵'),
+          _buildSectionHeader('طھظ„ط§ظˆط§طھ ط£ط®ط±ظ‰', 'ًںژµ'),
         ],
 
         if (hasLooseItems)
@@ -148,7 +148,7 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
     );
   }
 
-// ══ عنوان القسم ══
+// â•گâ•گ ط¹ظ†ظˆط§ظ† ط§ظ„ظ‚ط³ظ… â•گâ•گ
   Widget _buildSectionHeader(String title, String emoji) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10, top: 6),
@@ -158,7 +158,7 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
             width: 32,
             height: 32,
             decoration: BoxDecoration(
-              color: widget.primary.withOpacity(0.12),
+              color: widget.primary.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Center(
@@ -181,11 +181,11 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
     );
   }
 
-// ══ قسم كامل ══
+// â•گâ•گ ظ‚ط³ظ… ظƒط§ظ…ظ„ â•گâ•گ
   Widget _buildSection(RecitationSubSection section) {
     final allSubs = widget.parentItem.allSubItems;
 
-    // فلترة العناصر داخل القسم حسب البحث
+    // ظپظ„طھط±ط© ط§ظ„ط¹ظ†ط§طµط± ط¯ط§ط®ظ„ ط§ظ„ظ‚ط³ظ… ط­ط³ط¨ ط§ظ„ط¨ط­ط«
     List<RecitationSubItem> sectionItems;
     if (_searchQuery.trim().isEmpty) {
       sectionItems = section.items;
@@ -244,7 +244,7 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
         backgroundColor: RecColors.background(context),
         body: Stack(
           children: [
-            // ═════════ الخلفية ═════════
+            // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ ط§ظ„ط®ظ„ظپظٹط© â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
             Positioned.fill(
               child: AnimatedBuilder(
                 animation: _bgController,
@@ -259,7 +259,7 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
               ),
             ),
 
-            // ═════════ المحتوى ═════════
+            // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ ط§ظ„ظ…ط­طھظˆظ‰ â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
             Column(
               children: [
                 SizedBox(height: safePadding.top),
@@ -270,14 +270,14 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
                 // Header
                 _buildHeader(isTablet),
 
-                // ══ شريط البحث - أضف هذا ══
+                // â•گâ•گ ط´ط±ظٹط· ط§ظ„ط¨ط­ط« - ط£ط¶ظپ ظ‡ط°ط§ â•گâ•گ
                 Padding(
                   padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
                   child: _buildSearchBar(),
                 ),
 
-                // القائمة
-                // استبدل الـ Expanded الذي فيه ListView بهذا:
+                // ط§ظ„ظ‚ط§ط¦ظ…ط©
+                // ط§ط³طھط¨ط¯ظ„ ط§ظ„ظ€ Expanded ط§ظ„ط°ظٹ ظپظٹظ‡ ListView ط¨ظ‡ط°ط§:
 
                 Expanded(
                   child: RepaintBoundary(
@@ -289,7 +289,7 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
               ],
             ),
 
-            // ═════════ المشغل السفلي ═════════
+            // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ ط§ظ„ظ…ط´ط؛ظ„ ط§ظ„ط³ظپظ„ظٹ â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
             Positioned(
               bottom: 0,
               left: 0,
@@ -316,7 +316,7 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
               ),
             ),
 
-            // ═════════ FAB تحميل التلاوات ═════════
+            // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ FAB طھط­ظ…ظٹظ„ ط§ظ„طھظ„ط§ظˆط§طھ â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
             Consumer<AudioCoordinator>(
               builder: (_, coordinator, __) {
                 final hasPlayer = coordinator.hasActivePlayer;
@@ -348,7 +348,7 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
                         gradient: LinearGradient(
                           colors: [
                             widget.primary,
-                            widget.primary.withOpacity(0.8),
+                            widget.primary.withValues(alpha: 0.8),
                           ],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
@@ -356,7 +356,7 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
-                            color: widget.primary.withOpacity(0.4),
+                            color: widget.primary.withValues(alpha: 0.4),
                             blurRadius: 16,
                             offset: const Offset(0, 4),
                           ),
@@ -372,7 +372,7 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
                           ),
                           const SizedBox(width: 8),
                           Text(
-                            'تحميل التلاوات',
+                            'طھط­ظ…ظٹظ„ ط§ظ„طھظ„ط§ظˆط§طھ',
                             style: GoogleFonts.cairo(
                               fontSize: 14,
                               fontWeight: FontWeight.w700,
@@ -412,7 +412,7 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
           color: RecColors.searchText(context),
         ),
         decoration: InputDecoration(
-          hintText: 'ابحث في التلاوات...',
+          hintText: 'ط§ط¨ط­ط« ظپظٹ ط§ظ„طھظ„ط§ظˆط§طھ...',
           hintStyle: GoogleFonts.cairo(
             color: RecColors.searchHint(context),
             fontSize: 12,
@@ -458,10 +458,10 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('🔍', style: TextStyle(fontSize: 44)),
+          const Text('ًں”چ', style: TextStyle(fontSize: 44)),
           const SizedBox(height: 12),
           Text(
-            'لا توجد نتائج لـ "$_searchQuery"',
+            'ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬ ظ„ظ€ "$_searchQuery"',
             style: GoogleFonts.cairo(
               fontSize: 14,
               fontWeight: FontWeight.w700,
@@ -475,7 +475,7 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
     );
   }
 
-  // ═════════ AppBar ═════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ AppBar â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildAppBar(bool isTablet) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 10, 16, 8),
@@ -518,7 +518,7 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  '${widget.parentItem.subItemsCount} تلاوة',
+                  '${widget.parentItem.subItemsCount} طھظ„ط§ظˆط©',
                   style: GoogleFonts.cairo(
                     fontSize: 11,
                     color: RecColors.textSecondary(context),
@@ -532,7 +532,7 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
     );
   }
 
-  // ═════════ Header ═════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ Header â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildHeader(bool isTablet) {
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 0, 16, 12),
@@ -600,13 +600,13 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
                   children: [
                     _statBadge(
                       '${widget.parentItem.subItemsCount}',
-                      'تلاوة',
+                      'طھظ„ط§ظˆط©',
                       widget.primary,
                     ),
                     const SizedBox(width: 8),
                     _statBadge(
-                      '📂',
-                      'مجموعة',
+                      'ًں“‚',
+                      'ظ…ط¬ظ…ظˆط¹ط©',
                       RecColors.gold,
                     ),
                   ],
@@ -639,9 +639,9 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
   }
 }
 
-// ══════════════════════════════════════════════════════════════
-// بطاقة العنصر الفرعي
-// ══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط¨ط·ط§ظ‚ط© ط§ظ„ط¹ظ†طµط± ط§ظ„ظپط±ط¹ظٹ
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
 class _SubItemTile extends StatelessWidget {
   final RecitationSubItem subItem;
@@ -764,7 +764,7 @@ class _SubItemTile extends StatelessWidget {
                                   ),
                                   if (subItem.audioUrl.isNotEmpty) ...[
                                     Text(
-                                      ' • ',
+                                      ' â€¢ ',
                                       style: TextStyle(
                                         color: RecColors.textSecondary(context),
                                         fontSize: 10,
@@ -813,7 +813,7 @@ class _SubItemTile extends StatelessWidget {
                                       ? LinearGradient(
                                     colors: [
                                       primary,
-                                      primary.withOpacity(0.8),
+                                      primary.withValues(alpha: 0.8),
                                     ],
                                   )
                                       : null,
@@ -1063,7 +1063,7 @@ class _SubItemPlaybackState {
   int get hashCode => Object.hash(isCurrent, isPlaying, isBuffering);
 }
 
-// ══ الخلفية ══
+// â•گâ•گ ط§ظ„ط®ظ„ظپظٹط© â•گâ•گ
 class _SubItemsBgPainter extends CustomPainter {
   final double progress;
   final Color primary, gold;
@@ -1099,7 +1099,7 @@ class _SubItemsBgPainter extends CustomPainter {
 
       glow.shader = RadialGradient(
         colors: [
-          (i.isEven ? primary : gold).withOpacity(0.06),
+          (i.isEven ? primary : gold).withValues(alpha: 0.06),
           Colors.transparent,
         ],
       ).createShader(Rect.fromCircle(center: Offset(x, y), radius: r));

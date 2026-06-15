@@ -1,4 +1,4 @@
-import 'dart:convert';
+﻿import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'Constants/sunnah_theme.dart';
@@ -127,7 +127,7 @@ class _ProphetSunnahScreenState extends State<ProphetSunnahScreen>
   }
 }
 
-// ─── Loading ───────────────────────────────────────────────────────────────
+// â”€â”€â”€ Loading â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 class _LoadingView extends StatefulWidget {
   final bool isDark;
@@ -178,7 +178,7 @@ class _LoadingViewState extends State<_LoadingView>
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: SunnahTheme.gold.withOpacity(0.4),
+                    color: SunnahTheme.gold.withValues(alpha: 0.4),
                     blurRadius: 24,
                     spreadRadius: 4,
                   ),
@@ -193,7 +193,7 @@ class _LoadingViewState extends State<_LoadingView>
           ),
           const SizedBox(height: 24),
           Text(
-            'جاري تحميل السنن...',
+            'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط§ظ„ط³ظ†ظ†...',
             style: TextStyle(
               color: widget.isDark ? Colors.white70 : const Color(0xFF5A5A7A),
               fontSize: 16,
@@ -206,7 +206,7 @@ class _LoadingViewState extends State<_LoadingView>
   }
 }
 
-// ─── Error ─────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Error â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 class _ErrorView extends StatelessWidget {
   final VoidCallback onRetry;
@@ -224,7 +224,7 @@ class _ErrorView extends StatelessWidget {
                 size: 64, color: Colors.redAccent),
             const SizedBox(height: 16),
             Text(
-              'حدث خطأ في التحميل',
+              'ط­ط¯ط« ط®ط·ط£ ظپظٹ ط§ظ„طھط­ظ…ظٹظ„',
               style: TextStyle(
                 color: SunnahTheme.textPrimary(context),
                 fontSize: 18,
@@ -233,7 +233,7 @@ class _ErrorView extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              'تأكد من وجود ملف البيانات',
+              'طھط£ظƒط¯ ظ…ظ† ظˆط¬ظˆط¯ ظ…ظ„ظپ ط§ظ„ط¨ظٹط§ظ†ط§طھ',
               style: TextStyle(
                 color: SunnahTheme.textSecondary(context),
                 fontSize: 14,
@@ -243,7 +243,7 @@ class _ErrorView extends StatelessWidget {
             ElevatedButton.icon(
               onPressed: onRetry,
               icon: const Icon(Icons.refresh_rounded),
-              label: const Text('إعادة المحاولة'),
+              label: const Text('ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط©'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: SunnahTheme.gold,
                 foregroundColor: Colors.white,

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../languages/app_localizations.dart';
@@ -54,8 +54,8 @@ class _PrayerCustomizeSheetState extends State<PrayerCustomizeSheet> {
     final textColor = isDark ? Colors.white : const Color(0xFF1A1A1A);
     final subColor = isDark ? Colors.white54 : Colors.black45;
     final divColor = isDark
-        ? Colors.white.withOpacity(0.07)
-        : Colors.black.withOpacity(0.07);
+        ? Colors.white.withValues(alpha: 0.07)
+        : Colors.black.withValues(alpha: 0.07);
 
     return Directionality(
       textDirection: TextDirection.rtl,
@@ -65,10 +65,10 @@ class _PrayerCustomizeSheetState extends State<PrayerCustomizeSheet> {
         decoration: BoxDecoration(
           color: bg,
           borderRadius: BorderRadius.circular(28),
-          border: Border.all(color: widget.gold.withOpacity(0.18)),
+          border: Border.all(color: widget.gold.withValues(alpha: 0.18)),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(isDark ? 0.5 : 0.12),
+              color: Colors.black.withValues(alpha: isDark ? 0.5 : 0.12),
               blurRadius: 40,
               offset: const Offset(0, -8),
             ),
@@ -85,7 +85,7 @@ class _PrayerCustomizeSheetState extends State<PrayerCustomizeSheet> {
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
                 child: Column(
                   children: [
-                    // ── المؤذن ──
+                    // â”€â”€ ط§ظ„ظ…ط¤ط°ظ† â”€â”€
                     _SectionCard(
                       isDark: isDark,
                       cardBg: cardBg,
@@ -110,7 +110,7 @@ class _PrayerCustomizeSheetState extends State<PrayerCustomizeSheet> {
 
                     const SizedBox(height: 12),
 
-                    // ── الأذان ──
+                    // â”€â”€ ط§ظ„ط£ط°ط§ظ† â”€â”€
                     _SectionCard(
                       isDark: isDark,
                       cardBg: cardBg,
@@ -131,7 +131,7 @@ class _PrayerCustomizeSheetState extends State<PrayerCustomizeSheet> {
 
                     const SizedBox(height: 12),
 
-                    // ── التنبيه ──
+                    // â”€â”€ ط§ظ„طھظ†ط¨ظٹظ‡ â”€â”€
                     _SectionCard(
                       isDark: isDark,
                       cardBg: cardBg,
@@ -200,7 +200,7 @@ class _PrayerCustomizeSheetState extends State<PrayerCustomizeSheet> {
 
                     const SizedBox(height: 12),
 
-                    // ── الإقامة ──
+                    // â”€â”€ ط§ظ„ط¥ظ‚ط§ظ…ط© â”€â”€
                     _SectionCard(
                       isDark: isDark,
                       cardBg: cardBg,
@@ -288,9 +288,9 @@ class _PrayerCustomizeSheetState extends State<PrayerCustomizeSheet> {
   }
 }
 
-// ════════════════════════════════════════════════════
-// ✅ الهيدر
-// ════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// âœ… ط§ظ„ظ‡ظٹط¯ط±
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _Header extends StatelessWidget {
   final PrayerRow row;
   final Color gold;
@@ -316,33 +316,33 @@ class _Header extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // شريط السحب
+          // ط´ط±ظٹط· ط§ظ„ط³ط­ط¨
           Container(
             width: 38,
             height: 4,
             decoration: BoxDecoration(
-              color: Colors.grey.withOpacity(0.3),
+              color: Colors.grey.withValues(alpha: 0.3),
               borderRadius: BorderRadius.circular(4),
             ),
           ),
           const SizedBox(height: 16),
           Row(
             children: [
-              // أيقونة الصلاة
+              // ط£ظٹظ‚ظˆظ†ط© ط§ظ„طµظ„ط§ط©
               Container(
                 width: 50,
                 height: 50,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      gold.withOpacity(0.25),
-                      gold.withOpacity(0.08),
+                      gold.withValues(alpha: 0.25),
+                      gold.withValues(alpha: 0.08),
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
                   borderRadius: BorderRadius.circular(15),
-                  border: Border.all(color: gold.withOpacity(0.25)),
+                  border: Border.all(color: gold.withValues(alpha: 0.25)),
                 ),
                 child: Icon(row.icon, color: gold, size: 24),
               ),
@@ -364,7 +364,7 @@ class _Header extends StatelessWidget {
                     Row(
                       children: [
                         Icon(Icons.access_time_rounded,
-                            size: 13, color: gold.withOpacity(0.7)),
+                            size: 13, color: gold.withValues(alpha: 0.7)),
                         const SizedBox(width: 4),
                         Text(
                           row.time,
@@ -379,18 +379,18 @@ class _Header extends StatelessWidget {
                   ],
                 ),
               ),
-              // شارة التخصيص
+              // ط´ط§ط±ط© ط§ظ„طھط®طµظٹطµ
               Container(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 10, vertical: 5),
                 decoration: BoxDecoration(
-                  color: gold.withOpacity(0.1),
+                  color: gold.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(10),
                   border:
-                  Border.all(color: gold.withOpacity(0.2)),
+                  Border.all(color: gold.withValues(alpha: 0.2)),
                 ),
                 child: Text(
-                  'تخصيص',
+                  'طھط®طµظٹطµ',
                   style: GoogleFonts.cairo(
                     fontSize: 11,
                     color: gold,
@@ -406,9 +406,9 @@ class _Header extends StatelessWidget {
   }
 }
 
-// ════════════════════════════════════════════════════
-// ✅ بطاقة القسم
-// ════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// âœ… ط¨ط·ط§ظ‚ط© ط§ظ„ظ‚ط³ظ…
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _SectionCard extends StatelessWidget {
   final bool isDark;
   final Color cardBg;
@@ -439,7 +439,7 @@ class _SectionCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // عنوان القسم
+          // ط¹ظ†ظˆط§ظ† ط§ظ„ظ‚ط³ظ…
           Padding(
             padding:
             const EdgeInsets.fromLTRB(14, 12, 14, 10),
@@ -448,7 +448,7 @@ class _SectionCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(7),
                   decoration: BoxDecoration(
-                    color: iconColor.withOpacity(0.12),
+                    color: iconColor.withValues(alpha: 0.12),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Icon(icon, color: iconColor, size: 16),
@@ -466,7 +466,7 @@ class _SectionCard extends StatelessWidget {
             ),
           ),
           Divider(height: 1, color: divColor),
-          // المحتوى
+          // ط§ظ„ظ…ط­طھظˆظ‰
           Padding(
             padding: const EdgeInsets.all(14),
             child: child,
@@ -477,9 +477,9 @@ class _SectionCard extends StatelessWidget {
   }
 }
 
-// ════════════════════════════════════════════════════
-// ✅ صف المؤذن
-// ════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// âœ… طµظپ ط§ظ„ظ…ط¤ط°ظ†
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _MuezzinRow extends StatelessWidget {
   final String name;
   final Color gold;
@@ -502,7 +502,7 @@ class _MuezzinRow extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // ✅ اسم المؤذن كاملاً في سطر منفصل
+        // âœ… ط§ط³ظ… ط§ظ„ظ…ط¤ط°ظ† ظƒط§ظ…ظ„ط§ظ‹ ظپظٹ ط³ط·ط± ظ…ظ†ظپطµظ„
         Row(
           children: [
             Container(
@@ -511,8 +511,8 @@ class _MuezzinRow extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    gold.withOpacity(0.3),
-                    gold.withOpacity(0.1),
+                    gold.withValues(alpha: 0.3),
+                    gold.withValues(alpha: 0.1),
                   ],
                 ),
                 borderRadius: BorderRadius.circular(13),
@@ -525,14 +525,14 @@ class _MuezzinRow extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'المؤذن الحالي',
+                    'ط§ظ„ظ…ط¤ط°ظ† ط§ظ„ط­ط§ظ„ظٹ',
                     style: GoogleFonts.cairo(
                       fontSize: 10,
                       color: subColor,
                     ),
                   ),
                   const SizedBox(height: 2),
-                  // ✅ اسم المؤذن كاملاً بدون overflow
+                  // âœ… ط§ط³ظ… ط§ظ„ظ…ط¤ط°ظ† ظƒط§ظ…ظ„ط§ظ‹ ط¨ط¯ظˆظ† overflow
                   Text(
                     name,
                     style: GoogleFonts.cairo(
@@ -541,7 +541,7 @@ class _MuezzinRow extends StatelessWidget {
                       fontSize: 13,
                       height: 1.3,
                     ),
-                    // ✅ يكسر السطر إذا احتاج
+                    // âœ… ظٹظƒط³ط± ط§ظ„ط³ط·ط± ط¥ط°ط§ ط§ط­طھط§ط¬
                     softWrap: true,
                     maxLines: 3,
                     overflow: TextOverflow.visible,
@@ -554,7 +554,7 @@ class _MuezzinRow extends StatelessWidget {
 
         const SizedBox(height: 12),
 
-        // ✅ زر التغيير في سطر منفصل بعرض كامل
+        // âœ… ط²ط± ط§ظ„طھط؛ظٹظٹط± ظپظٹ ط³ط·ط± ظ…ظ†ظپطµظ„ ط¨ط¹ط±ط¶ ظƒط§ظ…ظ„
         SizedBox(
           width: double.infinity,
           child: GestureDetector(
@@ -563,12 +563,12 @@ class _MuezzinRow extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 10),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [gold, gold.withOpacity(0.85)],
+                  colors: [gold, gold.withValues(alpha: 0.85)],
                 ),
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: gold.withOpacity(0.3),
+                    color: gold.withValues(alpha: 0.3),
                     blurRadius: 8,
                     offset: const Offset(0, 3),
                   ),
@@ -601,9 +601,9 @@ class _MuezzinRow extends StatelessWidget {
   }
 }
 
-// ════════════════════════════════════════════════════
-// ✅ صف تبديل
-// ════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// âœ… طµظپ طھط¨ط¯ظٹظ„
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _ToggleRow extends StatelessWidget {
   final String label;
   final bool value;
@@ -650,7 +650,7 @@ class _ToggleRow extends StatelessWidget {
                   ),
                   const SizedBox(width: 5),
                   Text(
-                    value ? 'مفعّل' : 'معطّل',
+                    value ? 'ظ…ظپط¹ظ‘ظ„' : 'ظ…ط¹ط·ظ‘ظ„',
                     style: GoogleFonts.cairo(
                       fontSize: 11,
                       color: value ? Colors.green : subColor,
@@ -674,9 +674,9 @@ class _ToggleRow extends StatelessWidget {
   }
 }
 
-// ════════════════════════════════════════════════════
-// ✅ صف Dropdown - بدون overflow
-// ════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// âœ… طµظپ Dropdown - ط¨ط¯ظˆظ† overflow
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _DropRow<T> extends StatelessWidget {
   final String label;
   final bool isDark;
@@ -785,17 +785,17 @@ class _DropRow<T> extends StatelessWidget {
         Divider(
           height: 1,
           color: isDark
-              ? Colors.white.withOpacity(0.07)
-              : Colors.black.withOpacity(0.07),
+              ? Colors.white.withValues(alpha: 0.07)
+              : Colors.black.withValues(alpha: 0.07),
         ),
       ],
     );
   }
 }
 
-// ════════════════════════════════════════════════════
-// ✅ الأزرار
-// ════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// âœ… ط§ظ„ط£ط²ط±ط§ط±
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _Buttons extends StatelessWidget {
   final Color gold;
   final String resetLabel;
@@ -815,11 +815,11 @@ class _Buttons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        // زر إعادة الضبط
+        // ط²ط± ط¥ط¹ط§ط¯ط© ط§ظ„ط¶ط¨ط·
         Expanded(
           child: OutlinedButton.icon(
             style: OutlinedButton.styleFrom(
-              side: BorderSide(color: Colors.red.withOpacity(0.4)),
+              side: BorderSide(color: Colors.red.withValues(alpha: 0.4)),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16)),
               padding: const EdgeInsets.symmetric(vertical: 13),
@@ -838,18 +838,18 @@ class _Buttons extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 10),
-        // زر الحفظ
+        // ط²ط± ط§ظ„ط­ظپط¸
         Expanded(
           flex: 2,
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [gold, gold.withOpacity(0.8)],
+                colors: [gold, gold.withValues(alpha: 0.8)],
               ),
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  color: gold.withOpacity(0.35),
+                  color: gold.withValues(alpha: 0.35),
                   blurRadius: 12,
                   offset: const Offset(0, 4),
                 ),

@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../theme/books_theme.dart';
 import '../../animations/books_animations.dart';
 
-/// ═══════════════════════════════════════════════════════════════════════════
-/// شريط التحكم السفلي للقارئ
-/// ═══════════════════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ط´ط±ظٹط· ط§ظ„طھط­ظƒظ… ط§ظ„ط³ظپظ„ظٹ ظ„ظ„ظ‚ط§ط±ط¦
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class ReadingControlsWidget extends StatelessWidget {
   final int currentPage;
   final int totalPages;
@@ -37,13 +37,13 @@ class ReadingControlsWidget extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // شريط التمرير
+            // ط´ط±ظٹط· ط§ظ„طھظ…ط±ظٹط±
             _AnimatedSlider(
               value: safeCurrentValue,
               max: safeMaxValue,
               onChanged: onPageChanged,
             ),
-            // أزرار التحكم
+            // ط£ط²ط±ط§ط± ط§ظ„طھط­ظƒظ…
             _ControlButtons(
               currentPage: currentPage,
               totalPages: totalPages,
@@ -57,9 +57,9 @@ class ReadingControlsWidget extends StatelessWidget {
   }
 }
 
-// ═══════════════════════════════════════════
-// شريط التمرير المتحرك
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط´ط±ظٹط· ط§ظ„طھظ…ط±ظٹط± ط§ظ„ظ…طھط­ط±ظƒ
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _AnimatedSlider extends StatelessWidget {
   final double value;
   final double max;
@@ -77,10 +77,10 @@ class _AnimatedSlider extends StatelessWidget {
       data: SliderTheme.of(context).copyWith(
         thumbColor: Colors.white,
         activeTrackColor: Colors.white,
-        inactiveTrackColor: Colors.white.withOpacity(0.3),
+        inactiveTrackColor: Colors.white.withValues(alpha: 0.3),
         trackHeight: 2.6,
         thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 7),
-        overlayColor: Colors.white.withOpacity(0.2),
+        overlayColor: Colors.white.withValues(alpha: 0.2),
         overlayShape: const RoundSliderOverlayShape(overlayRadius: 14),
       ),
       child: Slider(
@@ -93,9 +93,9 @@ class _AnimatedSlider extends StatelessWidget {
   }
 }
 
-// ═══════════════════════════════════════════
-// أزرار التحكم
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط£ط²ط±ط§ط± ط§ظ„طھط­ظƒظ…
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _ControlButtons extends StatelessWidget {
   final int currentPage;
   final int totalPages;
@@ -235,9 +235,9 @@ class _AnimatedPageCounter extends StatelessWidget {
   }
 }
 
-/// ═══════════════════════════════════════════════════════════════════════════
-/// زر القفل العائم
-/// ═══════════════════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ط²ط± ط§ظ„ظ‚ظپظ„ ط§ظ„ط¹ط§ط¦ظ…
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class LockButtonWidget extends StatelessWidget {
   final bool isLocked;
   final VoidCallback onToggle;
@@ -273,7 +273,7 @@ class LockButtonWidget extends StatelessWidget {
             ),
             const SizedBox(height: 3),
             Text(
-              isLocked ? 'مقفل' : 'Lock',
+              isLocked ? 'ظ…ظ‚ظپظ„' : 'Lock',
               style: GoogleFonts.cairo(
                 fontSize: 9,
                 color: isLocked ? BooksTheme.gold : Colors.grey.shade800,

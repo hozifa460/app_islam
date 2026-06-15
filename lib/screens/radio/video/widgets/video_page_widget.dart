@@ -1,4 +1,4 @@
-// lib/screens/radio/video/video_page_widget.dart
+﻿// lib/screens/radio/video/video_page_widget.dart
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -47,13 +47,13 @@ class _VideoPageWidgetState extends State<VideoPageWidget> {
     super.initState();
     widget.controller?.addListener(_onUpdate);
 
-    // ✅ أظهر الأزرار أول مرة عند الدخول
+    // âœ… ط£ط¸ظ‡ط± ط§ظ„ط£ط²ط±ط§ط± ط£ظˆظ„ ظ…ط±ط© ط¹ظ†ط¯ ط§ظ„ط¯ط®ظˆظ„
     if (widget.isActive && widget.isInitialized) {
       _showControls = true;
       _startHideTimer();
     }
 
-    // ✅ شغّل تلقائياً بعد بناء الصفحة
+    // âœ… ط´ط؛ظ‘ظ„ طھظ„ظ‚ط§ط¦ظٹط§ظ‹ ط¨ط¹ط¯ ط¨ظ†ط§ط، ط§ظ„طµظپط­ط©
     _ensureAutoPlayIfNeeded();
   }
 
@@ -66,13 +66,13 @@ class _VideoPageWidgetState extends State<VideoPageWidget> {
       widget.controller?.addListener(_onUpdate);
     }
 
-    // ✅ إذا الصفحة أصبحت نشطة، أظهر الأزرار مؤقتاً
+    // âœ… ط¥ط°ط§ ط§ظ„طµظپط­ط© ط£طµط¨ط­طھ ظ†ط´ط·ط©طŒ ط£ط¸ظ‡ط± ط§ظ„ط£ط²ط±ط§ط± ظ…ط¤ظ‚طھط§ظ‹
     if (widget.isActive && !oldWidget.isActive) {
       setState(() => _showControls = true);
       _startHideTimer();
     }
 
-    // ✅ شغّل تلقائياً عند الرجوع/إعادة البناء
+    // âœ… ط´ط؛ظ‘ظ„ طھظ„ظ‚ط§ط¦ظٹط§ظ‹ ط¹ظ†ط¯ ط§ظ„ط±ط¬ظˆط¹/ط¥ط¹ط§ط¯ط© ط§ظ„ط¨ظ†ط§ط،
     _ensureAutoPlayIfNeeded();
   }
 
@@ -215,13 +215,13 @@ class _VideoPageWidgetState extends State<VideoPageWidget> {
     if (!widget.isActive) return;
     if (widget.controller == null) return;
 
-    // ✅ حاول فوراً بدون انتظار frame
+    // âœ… ط­ط§ظˆظ„ ظپظˆط±ط§ظ‹ ط¨ط¯ظˆظ† ط§ظ†طھط¸ط§ط± frame
     if (widget.isInitialized && !widget.controller!.value.isPlaying) {
       widget.controller!.play();
       return;
     }
 
-    // ✅ إذا لم يكن جاهزاً بعد، انتظر ثم حاول
+    // âœ… ط¥ط°ط§ ظ„ظ… ظٹظƒظ† ط¬ط§ظ‡ط²ط§ظ‹ ط¨ط¹ط¯طŒ ط§ظ†طھط¸ط± ط«ظ… ط­ط§ظˆظ„
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
       if (widget.controller == null) return;
@@ -271,7 +271,7 @@ class _VideoPageWidgetState extends State<VideoPageWidget> {
                 ),
               ),
 
-            // ═══ Clean Mode ═══
+            // â•گâ•گâ•گ Clean Mode â•گâ•گâ•گ
             if (_isCleanMode) ...[
               if (_showCleanBar && ready)
                 Positioned(
@@ -300,7 +300,7 @@ class _VideoPageWidgetState extends State<VideoPageWidget> {
               if (!_showCleanBar) _thinBar(pos, dur),
             ],
 
-            // ═══ Normal Mode ═══
+            // â•گâ•گâ•گ Normal Mode â•گâ•گâ•گ
             if (!_isCleanMode) ...[
               if (!playing && !_showControls && ready)
                 Center(
@@ -377,11 +377,11 @@ class _VideoPageWidgetState extends State<VideoPageWidget> {
                         vertical: 4,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.4),
+                        color: Colors.black.withValues(alpha: 0.4),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
-                        '← اسحب للعودة للصوت',
+                        'â†گ ط§ط³ط­ط¨ ظ„ظ„ط¹ظˆط¯ط© ظ„ظ„طµظˆطھ',
                         style: GoogleFonts.cairo(
                           fontSize: 10,
                           color: Colors.white54,
@@ -521,14 +521,14 @@ class _VideoPageWidgetState extends State<VideoPageWidget> {
                 _isFullscreen
                     ? Icons.fullscreen_exit_rounded
                     : Icons.fullscreen_rounded,
-            label: _isFullscreen ? 'تصغير' : 'تكبير',
+            label: _isFullscreen ? 'طھطµط؛ظٹط±' : 'طھظƒط¨ظٹط±',
             onTap: _toggleFullscreen,
           ),
           const SizedBox(height: 14),
           _SideBtn(
             size: s,
             icon: Icons.visibility_off_rounded,
-            label: 'خالية',
+            label: 'ط®ط§ظ„ظٹط©',
             onTap: _toggleCleanMode,
           ),
           const SizedBox(height: 14),
@@ -538,7 +538,7 @@ class _VideoPageWidgetState extends State<VideoPageWidget> {
                 c.value.volume > 0
                     ? Icons.volume_up_rounded
                     : Icons.volume_off_rounded,
-            label: c.value.volume > 0 ? 'صوت' : 'كتم',
+            label: c.value.volume > 0 ? 'طµظˆطھ' : 'ظƒطھظ…',
             onTap: () {
               HapticFeedback.selectionClick();
               c.setVolume(c.value.volume > 0 ? 0 : 1);
@@ -553,7 +553,7 @@ class _VideoPageWidgetState extends State<VideoPageWidget> {
                 return _SideBtn(
                   size: s,
                   icon: Icons.download_done_rounded,
-                  label: 'محمّل',
+                  label: 'ظ…ط­ظ…ظ‘ظ„',
                   color: Colors.green,
                   onTap: _showDownloadSheet,
                 );
@@ -598,7 +598,7 @@ class _VideoPageWidgetState extends State<VideoPageWidget> {
               return _SideBtn(
                 size: s,
                 icon: Icons.download_rounded,
-                label: 'تحميل',
+                label: 'طھط­ظ…ظٹظ„',
                 onTap: _showDownloadSheet,
               );
             },
@@ -609,9 +609,9 @@ class _VideoPageWidgetState extends State<VideoPageWidget> {
   }
 }
 
-// ══════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 // Download Sheet
-// ══════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _DownloadSheet extends StatefulWidget {
   final RecitationSubItem item;
   final Color primary;
@@ -685,9 +685,9 @@ class _DownloadSheetState extends State<_DownloadSheet> {
                 width: double.infinity,
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.05),
+                  color: Colors.white.withValues(alpha: 0.05),
                   borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: Colors.white.withOpacity(0.08)),
+                  border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
                 ),
                 child: Column(
                   children: [
@@ -700,7 +700,7 @@ class _DownloadSheetState extends State<_DownloadSheet> {
                         ),
                         const SizedBox(width: 8),
                         Text(
-                          'الحجم:',
+                          'ط§ظ„ط­ط¬ظ…:',
                           style: GoogleFonts.cairo(
                             fontSize: 12,
                             color: Colors.white54,
@@ -719,7 +719,7 @@ class _DownloadSheetState extends State<_DownloadSheet> {
                             : Text(
                               _size != null
                                   ? VideoSizeService.formatBytes(_size)
-                                  : 'غير معروف',
+                                  : 'ط؛ظٹط± ظ…ط¹ط±ظˆظپ',
                               style: GoogleFonts.cairo(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w700,
@@ -743,7 +743,7 @@ class _DownloadSheetState extends State<_DownloadSheet> {
                   ),
                 ),
                 const SizedBox(height: 8),
-                _btn('إلغاء', Icons.close_rounded, Colors.red, () {
+                _btn('ط¥ظ„ط؛ط§ط،', Icons.close_rounded, Colors.red, () {
                   dl.cancelDownload(widget.videoId);
                   Navigator.pop(context);
                 }),
@@ -752,7 +752,7 @@ class _DownloadSheetState extends State<_DownloadSheet> {
                   width: double.infinity,
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: Colors.green.withOpacity(0.08),
+                    color: Colors.green.withValues(alpha: 0.08),
                     borderRadius: BorderRadius.circular(14),
                   ),
                   child: Row(
@@ -764,7 +764,7 @@ class _DownloadSheetState extends State<_DownloadSheet> {
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        'تم التحميل ✓',
+                        'طھظ… ط§ظ„طھط­ظ…ظٹظ„ âœ“',
                         style: GoogleFonts.cairo(
                           fontSize: 13,
                           fontWeight: FontWeight.w700,
@@ -775,13 +775,13 @@ class _DownloadSheetState extends State<_DownloadSheet> {
                   ),
                 ),
                 const SizedBox(height: 12),
-                _btn('حذف', Icons.delete_rounded, Colors.red, () {
+                _btn('ط­ط°ظپ', Icons.delete_rounded, Colors.red, () {
                   dl.deleteDownload(widget.videoId);
                   Navigator.pop(context);
                 }),
               ] else
                 _btn(
-                  'تحميل الفيديو',
+                  'طھط­ظ…ظٹظ„ ط§ظ„ظپظٹط¯ظٹظˆ',
                   Icons.download_rounded,
                   widget.primary,
                   () {
@@ -815,8 +815,8 @@ class _DownloadSheetState extends State<_DownloadSheet> {
         padding: const EdgeInsets.symmetric(vertical: 14),
         decoration: BoxDecoration(
           gradient:
-              filled ? LinearGradient(colors: [c, c.withOpacity(0.8)]) : null,
-          color: filled ? null : c.withOpacity(0.1),
+              filled ? LinearGradient(colors: [c, c.withValues(alpha: 0.8)]) : null,
+          color: filled ? null : c.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(14),
         ),
         child: Row(
@@ -839,7 +839,7 @@ class _DownloadSheetState extends State<_DownloadSheet> {
   }
 }
 
-// ══════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _GlassBtn extends StatelessWidget {
   final double size;
   final IconData icon;
@@ -862,11 +862,11 @@ class _GlassBtn extends StatelessWidget {
         width: size,
         height: size,
         decoration: BoxDecoration(
-          color: Colors.black.withOpacity(0.45),
+          color: Colors.black.withValues(alpha: 0.45),
           shape: BoxShape.circle,
-          border: Border.all(color: Colors.white.withOpacity(0.15)),
+          border: Border.all(color: Colors.white.withValues(alpha: 0.15)),
           boxShadow: [
-            BoxShadow(color: Colors.black.withOpacity(0.3), blurRadius: 8),
+            BoxShadow(color: Colors.black.withValues(alpha: 0.3), blurRadius: 8),
           ],
         ),
         child: Icon(icon, color: Colors.white, size: iconSize ?? size * 0.5),
@@ -883,11 +883,11 @@ class _Glass extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.45),
+        color: Colors.black.withValues(alpha: 0.45),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white.withOpacity(0.1)),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
         boxShadow: [
-          BoxShadow(color: Colors.black.withOpacity(0.2), blurRadius: 10),
+          BoxShadow(color: Colors.black.withValues(alpha: 0.2), blurRadius: 10),
         ],
       ),
       child: child,
@@ -919,11 +919,11 @@ class _SideBtn extends StatelessWidget {
             width: size,
             height: size,
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.45),
+              color: Colors.black.withValues(alpha: 0.45),
               shape: BoxShape.circle,
-              border: Border.all(color: Colors.white.withOpacity(0.15)),
+              border: Border.all(color: Colors.white.withValues(alpha: 0.15)),
               boxShadow: [
-                BoxShadow(color: Colors.black.withOpacity(0.3), blurRadius: 6),
+                BoxShadow(color: Colors.black.withValues(alpha: 0.3), blurRadius: 6),
               ],
             ),
             child: Icon(icon, color: color ?? Colors.white, size: size * 0.48),

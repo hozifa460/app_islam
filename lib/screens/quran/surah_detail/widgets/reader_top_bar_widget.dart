@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/surah_constants.dart';
 
@@ -66,8 +66,8 @@ class ReaderTopBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final boxColor = isDark ? const Color(0xFF232323) : Colors.white;
     final borderColor = isDark
-        ? Colors.white.withOpacity(0.08)
-        : Colors.black.withOpacity(0.08);
+        ? Colors.white.withValues(alpha: 0.08)
+        : Colors.black.withValues(alpha: 0.08);
 
     final hizb = ((hizbQuarter - 1) ~/ 4) + 1;
     final juz = ((hizbQuarter - 1) ~/ 8) + 1;
@@ -104,7 +104,7 @@ class ReaderTopBarWidget extends StatelessWidget {
                 border: Border.all(color: borderColor),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
+                    color: Colors.black.withValues(alpha: 0.05),
                     blurRadius: 8,
                     offset: const Offset(0, 2),
                   ),
@@ -136,7 +136,7 @@ class ReaderTopBarWidget extends StatelessWidget {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          'صفحة $currentPage | جزء $juz | حزب $hizb',
+                          'طµظپط­ط© $currentPage | ط¬ط²ط، $juz | ط­ط²ط¨ $hizb',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.right,
@@ -224,7 +224,7 @@ class ReaderTopBarWidget extends StatelessWidget {
                     shape: BoxShape.circle,
                     boxShadow: [
                       BoxShadow(
-                        color: badgeColor.withOpacity(0.45),
+                        color: badgeColor.withValues(alpha: 0.45),
                         blurRadius: 6,
                         spreadRadius: 1,
                       ),

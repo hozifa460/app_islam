@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islamic_app/screens/auth/services/auth_service.dart';
 import 'package:provider/provider.dart';
@@ -93,9 +93,9 @@ class _AuthScreenState extends State<AuthScreen>
     final auth = context.watch<AuthService>();
     final tr = context.tr;
 
-    // ═══════════════════════════════════════
-    // ✅ OTP فقط - بدون VerifyEmail
-    // ═══════════════════════════════════════
+    // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+    // âœ… OTP ظپظ‚ط· - ط¨ط¯ظˆظ† VerifyEmail
+    // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
     if (auth.needsOTP) {
       return const OTPScreen();
     }
@@ -153,7 +153,7 @@ class _AuthScreenState extends State<AuthScreen>
                         tr.authQuote,
                         style: GoogleFonts.amiri(
                           fontSize: 14,
-                          color: _gold.withOpacity(isDark ? 0.5 : 0.65),
+                          color: _gold.withValues(alpha: isDark ? 0.5 : 0.65),
                           fontWeight: FontWeight.w700,
                           height: 1.6,
                         ),
@@ -177,18 +177,18 @@ class _AuthScreenState extends State<AuthScreen>
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
         color: isDark
-            ? Colors.white.withOpacity(0.04)
-            : Colors.white.withOpacity(0.55),
+            ? Colors.white.withValues(alpha: 0.04)
+            : Colors.white.withValues(alpha: 0.55),
         border: Border.all(
           color: isDark
-              ? Colors.white.withOpacity(0.07)
-              : _gold.withOpacity(0.12),
+              ? Colors.white.withValues(alpha: 0.07)
+              : _gold.withValues(alpha: 0.12),
         ),
         boxShadow: [
           BoxShadow(
             color: isDark
-                ? Colors.black.withOpacity(0.2)
-                : _gold.withOpacity(0.06),
+                ? Colors.black.withValues(alpha: 0.2)
+                : _gold.withValues(alpha: 0.06),
             blurRadius: 30,
             offset: const Offset(0, 10),
           ),

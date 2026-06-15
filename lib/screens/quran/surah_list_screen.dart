@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islamic_app/screens/quran/surah_detail/surah_deatil.dart';
 import '../../services/quran_services.dart';
@@ -39,7 +39,7 @@ class _SurahListScreenState extends State<SurahListScreen> {
   }
 
   String _toArabicNumber(int number) {
-    const arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+    const arabicNumbers = ['ظ ', 'ظ،', 'ظ¢', 'ظ£', 'ظ¤', 'ظ¥', 'ظ¦', 'ظ§', 'ظ¨', 'ظ©'];
     return number.toString().split('').map((digit) {
       return arabicNumbers[int.parse(digit)];
     }).join();
@@ -55,7 +55,7 @@ class _SurahListScreenState extends State<SurahListScreen> {
           backgroundColor: const Color(0xFF8B4513),
           foregroundColor: Colors.white,
           title: Text(
-            'القرآن الكريم',
+            'ط§ظ„ظ‚ط±ط¢ظ† ط§ظ„ظƒط±ظٹظ…',
             style: GoogleFonts.amiri(
               fontSize: 24,
               fontWeight: FontWeight.bold,
@@ -86,11 +86,11 @@ class _SurahListScreenState extends State<SurahListScreen> {
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: const Color(0xFF8B4513).withOpacity(0.2),
+          color: const Color(0xFF8B4513).withValues(alpha: 0.2),
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -142,7 +142,7 @@ class _SurahListScreenState extends State<SurahListScreen> {
         subtitle: Padding(
           padding: const EdgeInsets.only(top: 4),
           child: Text(
-            '${surah['revelationType'] == 'Meccan' ? 'مكية' : 'مدنية'} • ${_toArabicNumber(surah['numberOfAyahs'])} آية',
+            '${surah['revelationType'] == 'Meccan' ? 'ظ…ظƒظٹط©' : 'ظ…ط¯ظ†ظٹط©'} â€¢ ${_toArabicNumber(surah['numberOfAyahs'])} ط¢ظٹط©',
             style: GoogleFonts.cairo(
               fontSize: 12,
               color: Colors.grey[600],
@@ -151,7 +151,7 @@ class _SurahListScreenState extends State<SurahListScreen> {
         ),
         trailing: Icon(
           Icons.arrow_forward_ios,
-          color: const Color(0xFF8B4513).withOpacity(0.5),
+          color: const Color(0xFF8B4513).withValues(alpha: 0.5),
           size: 18,
         ),
       ),

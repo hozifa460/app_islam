@@ -1,4 +1,4 @@
-// lib/screens/radio/widgets/station_live_badge_widget.dart
+﻿// lib/screens/radio/widgets/station_live_badge_widget.dart
 
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -66,11 +66,11 @@ class StationLiveBadgeWidget extends StatelessWidget {
       width: 5,
       height: 5,
       decoration: BoxDecoration(
-        color: Colors.red.withOpacity(opacity),
+        color: Colors.red.withValues(alpha: opacity),
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-            color: Colors.red.withOpacity(opacity * 0.45),
+            color: Colors.red.withValues(alpha: opacity * 0.45),
             blurRadius: 4,
           ),
         ],

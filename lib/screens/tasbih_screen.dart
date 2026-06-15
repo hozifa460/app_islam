@@ -1,4 +1,4 @@
-import 'dart:math' as math;
+﻿import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,7 +13,7 @@ class TasbihScreen extends StatefulWidget {
 
 class _TasbihScreenState extends State<TasbihScreen>
     with SingleTickerProviderStateMixin {
-  // حالة التسبيح
+  // ط­ط§ظ„ط© ط§ظ„طھط³ط¨ظٹط­
   int counter = 0;
   int round = 1;
   int totalCount = 0;
@@ -25,44 +25,44 @@ class _TasbihScreenState extends State<TasbihScreen>
 
   final List<Map<String, dynamic>> tasbihList = [
     {
-      'text': 'سُبْحَانَ اللَّهِ',
+      'text': 'ط³ظڈط¨ظ’ط­ظژط§ظ†ظژ ط§ظ„ظ„ظژظ‘ظ‡ظگ',
       'target': 33,
       'translation': 'Glory be to Allah',
       'transliteration': 'Subhan Allah',
     },
     {
-      'text': 'الْحَمْدُ لِلَّهِ',
+      'text': 'ط§ظ„ظ’ط­ظژظ…ظ’ط¯ظڈ ظ„ظگظ„ظژظ‘ظ‡ظگ',
       'target': 33,
       'translation': 'All praise is for Allah',
       'transliteration': 'Alhamdu lillah',
     },
     {
-      'text': 'اللَّهُ أَكْبَرُ',
+      'text': 'ط§ظ„ظ„ظژظ‘ظ‡ظڈ ط£ظژظƒظ’ط¨ظژط±ظڈ',
       'target': 34,
       'translation': 'Allah is the Greatest',
       'transliteration': 'Allahu Akbar',
     },
     {
-      'text': 'لَا إِلَهَ إِلَّا اللَّهُ',
+      'text': 'ظ„ظژط§ ط¥ظگظ„ظژظ‡ظژ ط¥ظگظ„ظژظ‘ط§ ط§ظ„ظ„ظژظ‘ظ‡ظڈ',
       'target': 100,
       'translation': 'There is no deity but Allah',
       'transliteration': 'La ilaha illa Allah',
     },
     {
-      'text': 'أَسْتَغْفِرُ اللَّهَ',
+      'text': 'ط£ظژط³ظ’طھظژط؛ظ’ظپظگط±ظڈ ط§ظ„ظ„ظژظ‘ظ‡ظژ',
       'target': 100,
-      'translation': 'I seek Allah’s forgiveness',
+      'translation': 'I seek Allahâ€™s forgiveness',
       'transliteration': 'Astaghfirullah',
     },
     {
-      'text': 'سُبْحَانَ اللَّهِ وَبِحَمْدِهِ',
+      'text': 'ط³ظڈط¨ظ’ط­ظژط§ظ†ظژ ط§ظ„ظ„ظژظ‘ظ‡ظگ ظˆظژط¨ظگط­ظژظ…ظ’ط¯ظگظ‡ظگ',
       'target': 100,
       'translation': 'Glory be to Allah and praise is His',
       'transliteration': 'Subhan Allah wa bihamdih',
     },
   ];
 
-  // مفاتيح الحفظ
+  // ظ…ظپط§طھظٹط­ ط§ظ„ط­ظپط¸
   static const _kTotal = 'totalTasbih';
   static const _kSelected = 'tasbih_selectedIndex';
   static const _kCounter = 'tasbih_counter';
@@ -178,7 +178,7 @@ class _TasbihScreenState extends State<TasbihScreen>
                 ),
                 const SizedBox(height: 14),
                 Text(
-                  'تمت الجولة بنجاح',
+                  'طھظ…طھ ط§ظ„ط¬ظˆظ„ط© ط¨ظ†ط¬ط§ط­',
                   style: GoogleFonts.cairo(
                     fontWeight: FontWeight.w900,
                     fontSize: 18,
@@ -186,7 +186,7 @@ class _TasbihScreenState extends State<TasbihScreen>
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'أكملت $target تسبيحة',
+                  'ط£ظƒظ…ظ„طھ $target طھط³ط¨ظٹط­ط©',
                   style: GoogleFonts.cairo(fontSize: 15, color: Colors.grey.shade700),
                 ),
                 const SizedBox(height: 18),
@@ -196,7 +196,7 @@ class _TasbihScreenState extends State<TasbihScreen>
                       child: OutlinedButton(
                         style: OutlinedButton.styleFrom(
                           foregroundColor: primary,
-                          side: BorderSide(color: primary.withOpacity(0.3)),
+                          side: BorderSide(color: primary.withValues(alpha: 0.3)),
                           padding: const EdgeInsets.symmetric(vertical: 12),
                         ),
                         onPressed: () {
@@ -207,7 +207,7 @@ class _TasbihScreenState extends State<TasbihScreen>
                           });
                           _saveState();
                         },
-                        child: Text('إعادة', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
+                        child: Text('ط¥ط¹ط§ط¯ط©', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
                       ),
                     ),
                     const SizedBox(width: 10),
@@ -226,7 +226,7 @@ class _TasbihScreenState extends State<TasbihScreen>
                           });
                           _saveState();
                         },
-                        child: Text('جولة جديدة', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
+                        child: Text('ط¬ظˆظ„ط© ط¬ط¯ظٹط¯ط©', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
                       ),
                     ),
                   ],
@@ -253,13 +253,13 @@ class _TasbihScreenState extends State<TasbihScreen>
       child: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          title: Text('التسبيح', style: GoogleFonts.cairo(fontWeight: FontWeight.w900)),
+          title: Text('ط§ظ„طھط³ط¨ظٹط­', style: GoogleFonts.cairo(fontWeight: FontWeight.w900)),
           backgroundColor: Colors.transparent,
           elevation: 0,
           foregroundColor: Colors.white,
           actions: [
             IconButton(
-              tooltip: 'إعادة ضبط',
+              tooltip: 'ط¥ط¹ط§ط¯ط© ط¶ط¨ط·',
               icon: const Icon(Icons.refresh),
               onPressed: _resetCurrent,
             ),
@@ -267,7 +267,7 @@ class _TasbihScreenState extends State<TasbihScreen>
         ),
         body: Stack(
           children: [
-            // خلفية متدرجة
+            // ط®ظ„ظپظٹط© ظ…طھط¯ط±ط¬ط©
             Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
@@ -278,16 +278,16 @@ class _TasbihScreenState extends State<TasbihScreen>
               ),
             ),
 
-            // ظل مسجد بسيط (بدون صور)
+            // ط¸ظ„ ظ…ط³ط¬ط¯ ط¨ط³ظٹط· (ط¨ط¯ظˆظ† طµظˆط±)
             Positioned(
               left: -40,
               bottom: -20,
-              child: Icon(Icons.mosque, size: 240, color: Colors.white.withOpacity(0.08)),
+              child: Icon(Icons.mosque, size: 240, color: Colors.white.withValues(alpha: 0.08)),
             ),
             Positioned(
               right: -30,
               bottom: 40,
-              child: Icon(Icons.mosque, size: 200, color: Colors.white.withOpacity(0.06)),
+              child: Icon(Icons.mosque, size: 200, color: Colors.white.withValues(alpha: 0.06)),
             ),
 
             SafeArea(
@@ -295,7 +295,7 @@ class _TasbihScreenState extends State<TasbihScreen>
                 children: [
                   const SizedBox(height: 8),
 
-                  // العنوان مثل الصورة (Tasbih + وصف صغير)
+                  // ط§ظ„ط¹ظ†ظˆط§ظ† ظ…ط«ظ„ ط§ظ„طµظˆط±ط© (Tasbih + ظˆطµظپ طµط؛ظٹط±)
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 18),
                     child: Align(
@@ -311,7 +311,7 @@ class _TasbihScreenState extends State<TasbihScreen>
                           Text('Electronic tasbih and prayer beads',
                               style: GoogleFonts.cairo(
                                   fontSize: 13,
-                                  color: Colors.white.withOpacity(0.85))),
+                                  color: Colors.white.withValues(alpha: 0.85))),
                         ],
                       ),
                     ),
@@ -319,7 +319,7 @@ class _TasbihScreenState extends State<TasbihScreen>
 
                   const SizedBox(height: 14),
 
-                  // شريط اختيار الأذكار
+                  // ط´ط±ظٹط· ط§ط®طھظٹط§ط± ط§ظ„ط£ط°ظƒط§ط±
                   SizedBox(
                     height: 52,
                     child: ListView.builder(
@@ -335,10 +335,10 @@ class _TasbihScreenState extends State<TasbihScreen>
                             margin: const EdgeInsets.only(left: 10),
                             padding: const EdgeInsets.symmetric(horizontal: 14),
                             decoration: BoxDecoration(
-                              color: isSelected ? Colors.white : Colors.white.withOpacity(0.18),
+                              color: isSelected ? Colors.white : Colors.white.withValues(alpha: 0.18),
                               borderRadius: BorderRadius.circular(18),
                               border: Border.all(
-                                color: isSelected ? Colors.white : Colors.white.withOpacity(0.25),
+                                color: isSelected ? Colors.white : Colors.white.withValues(alpha: 0.25),
                                 width: 1,
                               ),
                             ),
@@ -362,13 +362,13 @@ class _TasbihScreenState extends State<TasbihScreen>
 
                   const SizedBox(height: 16),
 
-                  // كارت الهاتف / الذكر
+                  // ظƒط§ط±طھ ط§ظ„ظ‡ط§طھظپ / ط§ظ„ط°ظƒط±
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Column(
                         children: [
-                          // الكارت الأبيض
+                          // ط§ظ„ظƒط§ط±طھ ط§ظ„ط£ط¨ظٹط¶
                           Container(
                             width: double.infinity,
                             padding: const EdgeInsets.fromLTRB(18, 18, 18, 14),
@@ -382,7 +382,7 @@ class _TasbihScreenState extends State<TasbihScreen>
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
-                                // المحتوى
+                                // ط§ظ„ظ…ط­طھظˆظ‰
                                 Container(
                                   padding: const EdgeInsets.all(14),
                                   decoration: BoxDecoration(
@@ -425,7 +425,7 @@ class _TasbihScreenState extends State<TasbihScreen>
 
                                 const SizedBox(height: 16),
 
-                                // عداد مثل الصورة: 0/33 و Round
+                                // ط¹ط¯ط§ط¯ ظ…ط«ظ„ ط§ظ„طµظˆط±ط©: 0/33 ظˆ Round
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
@@ -467,7 +467,7 @@ class _TasbihScreenState extends State<TasbihScreen>
 
                                 const SizedBox(height: 14),
 
-                                // “خرز” المسبحة + الضغط للتسبيح
+                                // â€œط®ط±ط²â€‌ ط§ظ„ظ…ط³ط¨ط­ط© + ط§ظ„ط¶ط؛ط· ظ„ظ„طھط³ط¨ظٹط­
                                 GestureDetector(
                                   onTap: _increment,
                                   child: ScaleTransition(
@@ -488,7 +488,7 @@ class _TasbihScreenState extends State<TasbihScreen>
                                           ),
                                           const SizedBox(height: 8),
                                           Text(
-                                            'اضغط للتسبيح',
+                                            'ط§ط¶ط؛ط· ظ„ظ„طھط³ط¨ظٹط­',
                                             style: GoogleFonts.cairo(
                                               fontSize: 13,
                                               color: Colors.grey.shade700,
@@ -506,19 +506,19 @@ class _TasbihScreenState extends State<TasbihScreen>
 
                           const SizedBox(height: 14),
 
-                          // إجمالي التسبيح
+                          // ط¥ط¬ظ…ط§ظ„ظٹ ط§ظ„طھط³ط¨ظٹط­
                           Container(
                             width: double.infinity,
                             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                             decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.85),
+                              color: Colors.white.withValues(alpha: 0.85),
                               borderRadius: BorderRadius.circular(18),
-                              border: Border.all(color: Colors.white.withOpacity(0.7)),
+                              border: Border.all(color: Colors.white.withValues(alpha: 0.7)),
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('الإجمالي', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
+                                Text('ط§ظ„ط¥ط¬ظ…ط§ظ„ظٹ', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
                                 Text(
                                   '$totalCount',
                                   style: GoogleFonts.cairo(
@@ -546,7 +546,7 @@ class _TasbihScreenState extends State<TasbihScreen>
   }
 }
 
-/// خرز مسبحة فخم (يعبّر عن النسبة، ليس بعدد الهدف الكامل)
+/// ط®ط±ط² ظ…ط³ط¨ط­ط© ظپط®ظ… (ظٹط¹ط¨ظ‘ط± ط¹ظ† ط§ظ„ظ†ط³ط¨ط©طŒ ظ„ظٹط³ ط¨ط¹ط¯ط¯ ط§ظ„ظ‡ط¯ظپ ط§ظ„ظƒط§ظ…ظ„)
 class CurvedBeadsProgress extends StatelessWidget {
   final double progress; // 0..1
   final int beadCount;
@@ -561,7 +561,7 @@ class CurvedBeadsProgress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TweenAnimationBuilder يعطي حركة ناعمة للخرز عند كل تسبيحة
+    // TweenAnimationBuilder ظٹط¹ط·ظٹ ط­ط±ظƒط© ظ†ط§ط¹ظ…ط© ظ„ظ„ط®ط±ط² ط¹ظ†ط¯ ظƒظ„ طھط³ط¨ظٹط­ط©
     return TweenAnimationBuilder<double>(
       tween: Tween(begin: 0, end: progress.clamp(0.0, 1.0)),
       duration: const Duration(milliseconds: 220),
@@ -599,13 +599,13 @@ class _CurvedBeadsPainter extends CustomPainter {
     final count = beadCount.clamp(6, 40);
     final filled = (progress * count).round().clamp(0, count);
 
-    // منحنى مثل الصورة: من أسفل يسار إلى أعلى يمين
+    // ظ…ظ†ط­ظ†ظ‰ ظ…ط«ظ„ ط§ظ„طµظˆط±ط©: ظ…ظ† ط£ط³ظپظ„ ظٹط³ط§ط± ط¥ظ„ظ‰ ط£ط¹ظ„ظ‰ ظٹظ…ظٹظ†
     final start = Offset(size.width * 0.05, size.height * 0.75);
     final end   = Offset(size.width * 0.95, size.height * 0.25);
     final c1    = Offset(size.width * 0.35, size.height * 0.95);
     final c2    = Offset(size.width * 0.65, size.height * 0.05);
 
-    // خيط المسبحة
+    // ط®ظٹط· ط§ظ„ظ…ط³ط¨ط­ط©
     final stringPaint = Paint()
       ..color = const Color(0xFFBDBDBD)
       ..strokeWidth = 2
@@ -617,7 +617,7 @@ class _CurvedBeadsPainter extends CustomPainter {
 
     canvas.drawPath(path, stringPaint);
 
-    // دالة تعطي نقطة على المنحنى حسب t
+    // ط¯ط§ظ„ط© طھط¹ط·ظٹ ظ†ظ‚ط·ط© ط¹ظ„ظ‰ ط§ظ„ظ…ظ†ط­ظ†ظ‰ ط­ط³ط¨ t
     Offset pointOnCubic(double t) {
       // cubic bezier formula
       final mt = (1 - t);
@@ -632,7 +632,7 @@ class _CurvedBeadsPainter extends CustomPainter {
       );
     }
 
-    // رسم الخرز
+    // ط±ط³ظ… ط§ظ„ط®ط±ط²
     for (int i = 0; i < count; i++) {
       final t = (count == 1) ? 0.0 : i / (count - 1);
       final p = pointOnCubic(t);
@@ -640,23 +640,23 @@ class _CurvedBeadsPainter extends CustomPainter {
       final active = i < filled;
       final r = active ? 12.0 : 11.0;
 
-      // ظل خفيف للخرز النشط
+      // ط¸ظ„ ط®ظپظٹظپ ظ„ظ„ط®ط±ط² ط§ظ„ظ†ط´ط·
       if (active) {
         final shadowPaint = Paint()
-          ..color = beadColor.withOpacity(0.28)
+          ..color = beadColor.withValues(alpha: 0.28)
           ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8);
         canvas.drawCircle(p.translate(0, 4), r, shadowPaint);
       }
 
-      // تدرج يعطي شكل "خرزة" فخم
+      // طھط¯ط±ط¬ ظٹط¹ط·ظٹ ط´ظƒظ„ "ط®ط±ط²ط©" ظپط®ظ…
       final base = active ? beadColor : const Color(0xFFD8D8D8);
       final gradient = RadialGradient(
         center: const Alignment(-0.35, -0.35),
         radius: 0.9,
         colors: [
-          Colors.white.withOpacity(active ? 0.65 : 0.40),
-          base.withOpacity(active ? 0.95 : 0.85),
-          base.withOpacity(active ? 0.70 : 0.65),
+          Colors.white.withValues(alpha: active ? 0.65 : 0.40),
+          base.withValues(alpha: active ? 0.95 : 0.85),
+          base.withValues(alpha: active ? 0.70 : 0.65),
         ],
         stops: const [0.0, 0.55, 1.0],
       );
@@ -666,8 +666,8 @@ class _CurvedBeadsPainter extends CustomPainter {
 
       canvas.drawCircle(p, r, beadPaint);
 
-      // لمعة صغيرة
-      final highlightPaint = Paint()..color = Colors.white.withOpacity(active ? 0.55 : 0.35);
+      // ظ„ظ…ط¹ط© طµط؛ظٹط±ط©
+      final highlightPaint = Paint()..color = Colors.white.withValues(alpha: active ? 0.55 : 0.35);
       canvas.drawCircle(p.translate(-r * 0.35, -r * 0.35), r * 0.20, highlightPaint);
     }
   }

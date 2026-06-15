@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../color_control/miracle_theme.dart';
 import 'miracle_helpers.dart';
@@ -52,10 +52,10 @@ class MiracleCardWidget extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 14),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: catColor.withOpacity(0.15)),
+          border: Border.all(color: catColor.withValues(alpha: 0.15)),
           boxShadow: [
             BoxShadow(
-              color:      catColor.withOpacity(0.06),
+              color:      catColor.withValues(alpha: 0.06),
               blurRadius: 18,
               offset:     const Offset(0, 6),
             ),
@@ -73,7 +73,7 @@ class MiracleCardWidget extends StatelessWidget {
                       begin:  Alignment.topRight,
                       end:    Alignment.bottomLeft,
                       colors: [
-                        catColor.withOpacity(0.07),
+                        catColor.withValues(alpha: 0.07),
                         t.cardColor,
                       ],
                     ),
@@ -88,7 +88,7 @@ class MiracleCardWidget extends StatelessWidget {
                   emoji,
                   style: TextStyle(
                     fontSize: 60,
-                    color:    Colors.white.withOpacity(0.04),
+                    color:    Colors.white.withValues(alpha: 0.04),
                   ),
                 ),
               ),
@@ -98,8 +98,8 @@ class MiracleCardWidget extends StatelessWidget {
                 color: Colors.transparent,
                 child: InkWell(
                   onTap:           onTap,
-                  splashColor:     catColor.withOpacity(0.08),
-                  highlightColor:  catColor.withOpacity(0.04),
+                  splashColor:     catColor.withValues(alpha: 0.08),
+                  highlightColor:  catColor.withValues(alpha: 0.04),
                   child: Padding(
                     padding: const EdgeInsets.all(14),
                     child: Column(
@@ -144,7 +144,7 @@ class MiracleCardWidget extends StatelessWidget {
   }
 }
 
-// ── Top row ───────────────────────────────────────────────────────────────────
+// â”€â”€ Top row â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 class _TopRow extends StatelessWidget {
   final Map<String, dynamic> item;
   final Color catColor;
@@ -176,14 +176,14 @@ class _TopRow extends StatelessWidget {
               begin:  Alignment.topLeft,
               end:    Alignment.bottomRight,
               colors: [
-                catColor.withOpacity(0.2),
-                catColor.withOpacity(0.05),
+                catColor.withValues(alpha: 0.2),
+                catColor.withValues(alpha: 0.05),
               ],
             ),
-            border: Border.all(color: catColor.withOpacity(0.2)),
+            border: Border.all(color: catColor.withValues(alpha: 0.2)),
             boxShadow: [
               BoxShadow(
-                color:     catColor.withOpacity(0.1),
+                color:     catColor.withValues(alpha: 0.1),
                 blurRadius: 10,
               ),
             ],
@@ -211,7 +211,7 @@ class _TopRow extends StatelessWidget {
                         color:      Colors.white,
                         shadows: [
                           Shadow(
-                            color:     Colors.black.withOpacity(0.3),
+                            color:     Colors.black.withValues(alpha: 0.3),
                             blurRadius: 4,
                           ),
                         ],
@@ -232,18 +232,18 @@ class _TopRow extends StatelessWidget {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: isFavorite
-                              ? MiracleTheme.neonRed.withOpacity(0.15)
+                              ? MiracleTheme.neonRed.withValues(alpha: 0.15)
                               : t.glass,
                           border: Border.all(
                             color: isFavorite
-                                ? MiracleTheme.neonRed.withOpacity(0.4)
+                                ? MiracleTheme.neonRed.withValues(alpha: 0.4)
                                 : t.glassBorder,
                           ),
                           boxShadow: isFavorite
                               ? [
                             BoxShadow(
                               color: MiracleTheme.neonRed
-                                  .withOpacity(0.2),
+                                  .withValues(alpha: 0.2),
                               blurRadius: 8,
                             ),
                           ]
@@ -281,7 +281,7 @@ class _TopRow extends StatelessWidget {
   }
 }
 
-// ── Source preview ────────────────────────────────────────────────────────────
+// â”€â”€ Source preview â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 class _SourcePreview extends StatelessWidget {
   final String             source;
   final Color              accentColor;
@@ -299,9 +299,9 @@ class _SourcePreview extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(11),
       decoration: BoxDecoration(
-        color:        accentColor.withOpacity(0.06),
+        color:        accentColor.withValues(alpha: 0.06),
         borderRadius: BorderRadius.circular(12),
-        border:       Border.all(color: accentColor.withOpacity(0.1)),
+        border:       Border.all(color: accentColor.withValues(alpha: 0.1)),
       ),
       child: Text(
         source,
@@ -311,7 +311,7 @@ class _SourcePreview extends StatelessWidget {
         style: GoogleFonts.amiri(
           fontSize:   13,
           height:     1.7,
-          color:      Colors.white.withOpacity(0.85),
+          color:      Colors.white.withValues(alpha: 0.85),
           fontWeight: FontWeight.w600,
         ),
       ),
@@ -319,7 +319,7 @@ class _SourcePreview extends StatelessWidget {
   }
 }
 
-// ── Tags row ──────────────────────────────────────────────────────────────────
+// â”€â”€ Tags row â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 class _TagsRow extends StatelessWidget {
   final int    rating, srcCount;
   final String scientist, year, category;
@@ -355,7 +355,7 @@ class _TagsRow extends StatelessWidget {
                 : Icons.star_outline_rounded,
             color: i < rating
                 ? MiracleTheme.neonGold
-                : Colors.white.withOpacity(0.15),
+                : Colors.white.withValues(alpha: 0.15),
             size: 13,
           )),
         ),
@@ -363,7 +363,7 @@ class _TagsRow extends StatelessWidget {
         if (srcCount > 0)
           _SmallTag(
             icon:  Icons.link_rounded,
-            text:  '$srcCount مصدر',
+            text:  '$srcCount ظ…طµط¯ط±',
             color: MiracleTheme.neonBlue,
             t:     t,
           ),
@@ -394,7 +394,7 @@ class _TagsRow extends StatelessWidget {
           icon:   isQuran
               ? Icons.menu_book_rounded
               : Icons.auto_awesome_rounded,
-          text:   isQuran ? 'قرآن' : 'سنة',
+          text:   isQuran ? 'ظ‚ط±ط¢ظ†' : 'ط³ظ†ط©',
           color:  accentColor,
           t:      t,
           filled: true,
@@ -424,9 +424,9 @@ class _SmallTag extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
       decoration: BoxDecoration(
-        color:        filled ? color.withOpacity(0.12) : t.glass,
+        color:        filled ? color.withValues(alpha: 0.12) : t.glass,
         borderRadius: BorderRadius.circular(7),
-        border:       Border.all(color: color.withOpacity(0.2)),
+        border:       Border.all(color: color.withValues(alpha: 0.2)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,

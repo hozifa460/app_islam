@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AuthTabSelector extends StatelessWidget {
@@ -23,24 +23,24 @@ class AuthTabSelector extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(18),
         color: isDark
-            ? Colors.white.withOpacity(0.06)
-            : Colors.grey.shade200.withOpacity(0.7),
+            ? Colors.white.withValues(alpha: 0.06)
+            : Colors.grey.shade200.withValues(alpha: 0.7),
         border: Border.all(
           color: isDark
-              ? Colors.white.withOpacity(0.06)
-              : Colors.grey.shade300.withOpacity(0.5),
+              ? Colors.white.withValues(alpha: 0.06)
+              : Colors.grey.shade300.withValues(alpha: 0.5),
         ),
       ),
       child: Row(
         children: [
           _Tab(
-            text: 'تسجيل الدخول',
+            text: 'طھط³ط¬ظٹظ„ ط§ظ„ط¯ط®ظˆظ„',
             active: isLogin,
             isDark: isDark,
             onTap: () => onChanged(true),
           ),
           _Tab(
-            text: 'إنشاء حساب',
+            text: 'ط¥ظ†ط´ط§ط، ط­ط³ط§ط¨',
             active: !isLogin,
             isDark: isDark,
             onTap: () => onChanged(false),
@@ -84,7 +84,7 @@ class _Tab extends StatelessWidget {
             boxShadow: active
                 ? [
               BoxShadow(
-                color: _gold.withOpacity(0.35),
+                color: _gold.withValues(alpha: 0.35),
                 blurRadius: 12,
                 offset: const Offset(0, 4),
               ),
@@ -100,7 +100,7 @@ class _Tab extends StatelessWidget {
               color: active
                   ? Colors.white
                   : isDark
-                  ? Colors.white.withOpacity(0.5)
+                  ? Colors.white.withValues(alpha: 0.5)
                   : Colors.grey.shade600,
             ),
           ),

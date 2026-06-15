@@ -1,4 +1,4 @@
-import 'dart:io';
+﻿import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -100,7 +100,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final auth = context.watch<AuthService>();
-    final tr = context.tr; // ← الترجمة
+    final tr = context.tr; // â†گ ط§ظ„طھط±ط¬ظ…ط©
 
     if (!auth.isLoggedIn || (auth.user?.isGuest ?? true)) {
       return const GuestLockScreen();
@@ -117,7 +117,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           parent: AlwaysScrollableScrollPhysics(),
         ),
         slivers: [
-          // ═══ قسم اللغة ═══
+          // â•گâ•گâ•گ ظ‚ط³ظ… ط§ظ„ظ„ط؛ط© â•گâ•گâ•گ
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.only(top: 16),
@@ -137,7 +137,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
           ),
-          // ═══ AppBar ═══
+          // â•گâ•گâ•گ AppBar â•گâ•گâ•گ
           SliverAppBar(
             floating: true,
             snap: true,
@@ -150,8 +150,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: isDark
-                      ? Colors.white.withOpacity(0.08)
-                      : Colors.black.withOpacity(0.05),
+                      ? Colors.white.withValues(alpha: 0.08)
+                      : Colors.black.withValues(alpha: 0.05),
                 ),
                 child: Icon(
                   Icons.arrow_back_ios_new_rounded,
@@ -172,7 +172,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             centerTitle: true,
           ),
 
-          // ═══ الهيدر ═══
+          // â•گâ•گâ•گ ط§ظ„ظ‡ظٹط¯ط± â•گâ•گâ•گ
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.only(top: 8),
@@ -186,7 +186,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
 
-          // ═══ الإحصائيات ═══
+          // â•گâ•گâ•گ ط§ظ„ط¥ط­طµط§ط¦ظٹط§طھ â•گâ•گâ•گ
           const SliverToBoxAdapter(
             child: Padding(
               padding: EdgeInsets.only(top: 16),
@@ -194,7 +194,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
 
-          // ═══ قسم الحساب ═══
+          // â•گâ•گâ•گ ظ‚ط³ظ… ط§ظ„ط­ط³ط§ط¨ â•گâ•گâ•گ
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.only(top: 20),
@@ -237,7 +237,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
 
-          // ═══ قسم الإعدادات ═══
+          // â•گâ•گâ•گ ظ‚ط³ظ… ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ â•گâ•گâ•گ
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.only(top: 16),
@@ -255,7 +255,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       value: isDark,
                       onChanged: widget.onThemeChanged,
                       activeColor: _gold,
-                      activeTrackColor: _gold.withOpacity(0.3),
+                      activeTrackColor: _gold.withValues(alpha: 0.3),
                     ),
                   ),
                   ProfileTile(
@@ -271,7 +271,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
 
-          // ═══ قسم التطبيق ═══
+          // â•گâ•گâ•گ ظ‚ط³ظ… ط§ظ„طھط·ط¨ظٹظ‚ â•گâ•گâ•گ
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.only(top: 16),
@@ -303,7 +303,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
 
-          // ═══ تسجيل الخروج ═══
+          // â•گâ•گâ•گ طھط³ط¬ظٹظ„ ط§ظ„ط®ط±ظˆط¬ â•گâ•گâ•گ
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.only(top: 16),
@@ -323,7 +323,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
 
-          // ═══ آية ═══
+          // â•گâ•گâ•گ ط¢ظٹط© â•گâ•گâ•گ
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(
@@ -332,7 +332,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 tr.quoteVerse,
                 style: GoogleFonts.amiri(
                   fontSize: 15,
-                  color: _gold.withOpacity(0.45),
+                  color: _gold.withValues(alpha: 0.45),
                   fontWeight: FontWeight.w700,
                 ),
                 textAlign: TextAlign.center,
@@ -350,7 +350,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  // ═══ تعديل الاسم ═══
+  // â•گâ•گâ•گ طھط¹ط¯ظٹظ„ ط§ظ„ط§ط³ظ… â•گâ•گâ•گ
   void _editName(BuildContext context, String current) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final ctrl = TextEditingController(text: current);
@@ -421,7 +421,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  // ═══ إعادة تعيين كلمة المرور ═══
+  // â•گâ•گâ•گ ط¥ط¹ط§ط¯ط© طھط¹ظٹظٹظ† ظƒظ„ظ…ط© ط§ظ„ظ…ط±ظˆط± â•گâ•گâ•گ
   void _resetPassword(BuildContext context, String email) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final tr = context.tr;
@@ -481,7 +481,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  // ═══ عن التطبيق ═══
+  // â•گâ•گâ•گ ط¹ظ† ط§ظ„طھط·ط¨ظٹظ‚ â•گâ•گâ•گ
   void _showAbout(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final tr = context.tr;
@@ -495,7 +495,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             borderRadius: BorderRadius.circular(20)),
         title: ShaderMask(
           shaderCallback: (b) => LinearGradient(
-            colors: [_gold.withOpacity(0.8), _gold],
+            colors: [_gold.withValues(alpha: 0.8), _gold],
           ).createShader(b),
           child: Text(
             tr.appTitle,
@@ -516,17 +516,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 fontSize: 14,
                 height: 1.8,
                 color: isDark
-                    ? Colors.white.withOpacity(0.7)
+                    ? Colors.white.withValues(alpha: 0.7)
                     : Colors.grey.shade700,
               ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16),
             Text(
-              '﴿ وَاذْكُرُوا اللَّهَ كَثِيرًا ﴾',
+              'ï´؟ ظˆظژط§ط°ظ’ظƒظڈط±ظڈظˆط§ ط§ظ„ظ„ظژظ‘ظ‡ظژ ظƒظژط«ظگظٹط±ظ‹ط§ ï´¾',
               style: GoogleFonts.amiri(
                 fontSize: 15,
-                color: _gold.withOpacity(0.7),
+                color: _gold.withValues(alpha: 0.7),
                 fontWeight: FontWeight.w700,
               ),
               textAlign: TextAlign.center,
@@ -545,7 +545,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  // ═══ تسجيل الخروج ═══
+  // â•گâ•گâ•گ طھط³ط¬ظٹظ„ ط§ظ„ط®ط±ظˆط¬ â•گâ•گâ•گ
   void _signOut(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final tr = context.tr;
@@ -617,8 +617,8 @@ class _StatusChip extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: color.withOpacity(0.1),
-        border: Border.all(color: color.withOpacity(0.3)),
+        color: color.withValues(alpha: 0.1),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,

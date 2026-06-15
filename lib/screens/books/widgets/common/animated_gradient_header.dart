@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../theme/books_theme.dart';
 import '../../animations/books_animations.dart';
 
-/// ═══════════════════════════════════════════════════════════════════════════
-/// الهيدر المتدرج المتحرك
-/// ═══════════════════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ط§ظ„ظ‡ظٹط¯ط± ط§ظ„ظ…طھط¯ط±ط¬ ط§ظ„ظ…طھط­ط±ظƒ
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class AnimatedGradientHeader extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final String subtitle;
@@ -112,10 +112,10 @@ class _AnimatedHeaderContentState extends State<_AnimatedHeaderContent>
               opacity: _fadeAnimation,
               child: Row(
                 children: [
-                  // زر الرجوع
+                  // ط²ط± ط§ظ„ط±ط¬ظˆط¹
                   _BackButton(onBack: widget.onBack),
                   const SizedBox(width: 12),
-                  // العنوان والوصف
+                  // ط§ظ„ط¹ظ†ظˆط§ظ† ظˆط§ظ„ظˆطµظپ
                   Expanded(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -140,7 +140,7 @@ class _AnimatedHeaderContentState extends State<_AnimatedHeaderContent>
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: GoogleFonts.cairo(
-                            color: Colors.white.withOpacity(0.82),
+                            color: Colors.white.withValues(alpha: 0.82),
                             fontSize: 11.5,
                             fontWeight: FontWeight.w600,
                           ),
@@ -149,7 +149,7 @@ class _AnimatedHeaderContentState extends State<_AnimatedHeaderContent>
                     ),
                   ),
                   const SizedBox(width: 10),
-                  // الأيقونة
+                  // ط§ظ„ط£ظٹظ‚ظˆظ†ط©
                   _HeaderIcon(icon: widget.icon),
                 ],
               ),
@@ -174,7 +174,7 @@ class _BackButton extends StatelessWidget {
         width: 42,
         height: 42,
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.16),
+          color: Colors.white.withValues(alpha: 0.16),
           borderRadius: BorderRadius.circular(14),
         ),
         child: const Center(
@@ -236,7 +236,7 @@ class _HeaderIconState extends State<_HeaderIcon>
         width: 42,
         height: 42,
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.14),
+          color: Colors.white.withValues(alpha: 0.14),
           borderRadius: BorderRadius.circular(14),
         ),
         child: Icon(

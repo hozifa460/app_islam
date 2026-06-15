@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/services.dart';
@@ -12,27 +12,27 @@ class DailyChallengesScreen extends StatefulWidget {
 }
 
 class _DailyChallengesScreenState extends State<DailyChallengesScreen> with SingleTickerProviderStateMixin {
-  int _totalXP = 0; // النقاط الإجمالية
+  int _totalXP = 0; // ط§ظ„ظ†ظ‚ط§ط· ط§ظ„ط¥ط¬ظ…ط§ظ„ظٹط©
   List<bool> _completedTasks = [false, false, false, false, false];
 
   late AnimationController _animController;
   late Animation<double> _xpAnim;
 
-  // 🏆 نظام المستويات
+  // ًںڈ† ظ†ط¸ط§ظ… ط§ظ„ظ…ط³طھظˆظٹط§طھ
   final List<Map<String, dynamic>> _ranks = [
-    {'title': 'مبتدئ', 'minXP': 0, 'color': Colors.blueGrey},
-    {'title': 'ملتزم', 'minXP': 100, 'color': Colors.blue},
-    {'title': 'متدين', 'minXP': 300, 'color': Colors.purple},
-    {'title': 'عبد الله', 'minXP': 600, 'color': Colors.amber.shade700},
+    {'title': 'ظ…ط¨طھط¯ط¦', 'minXP': 0, 'color': Colors.blueGrey},
+    {'title': 'ظ…ظ„طھط²ظ…', 'minXP': 100, 'color': Colors.blue},
+    {'title': 'ظ…طھط¯ظٹظ†', 'minXP': 300, 'color': Colors.purple},
+    {'title': 'ط¹ط¨ط¯ ط§ظ„ظ„ظ‡', 'minXP': 600, 'color': Colors.amber.shade700},
   ];
 
-  // 📝 التحديات اليومية المتاحة
+  // ًں“‌ ط§ظ„طھط­ط¯ظٹط§طھ ط§ظ„ظٹظˆظ…ظٹط© ط§ظ„ظ…طھط§ط­ط©
   final List<Map<String, dynamic>> _todayTasks = [
-    {'title': 'صلاة الفجر في وقتها', 'xp': 20, 'icon': Icons.wb_twilight},
-    {'title': 'قراءة ورد القرآن (صفحتين)', 'xp': 15, 'icon': Icons.menu_book},
-    {'title': 'أذكار الصباح والمساء', 'xp': 15, 'icon': Icons.auto_awesome},
-    {'title': 'صلاة الضحى', 'xp': 10, 'icon': Icons.wb_sunny},
-    {'title': 'ركعتي قيام الليل (الوتر)', 'xp': 25, 'icon': Icons.nights_stay},
+    {'title': 'طµظ„ط§ط© ط§ظ„ظپط¬ط± ظپظٹ ظˆظ‚طھظ‡ط§', 'xp': 20, 'icon': Icons.wb_twilight},
+    {'title': 'ظ‚ط±ط§ط،ط© ظˆط±ط¯ ط§ظ„ظ‚ط±ط¢ظ† (طµظپط­طھظٹظ†)', 'xp': 15, 'icon': Icons.menu_book},
+    {'title': 'ط£ط°ظƒط§ط± ط§ظ„طµط¨ط§ط­ ظˆط§ظ„ظ…ط³ط§ط،', 'xp': 15, 'icon': Icons.auto_awesome},
+    {'title': 'طµظ„ط§ط© ط§ظ„ط¶ط­ظ‰', 'xp': 10, 'icon': Icons.wb_sunny},
+    {'title': 'ط±ظƒط¹طھظٹ ظ‚ظٹط§ظ… ط§ظ„ظ„ظٹظ„ (ط§ظ„ظˆطھط±)', 'xp': 25, 'icon': Icons.nights_stay},
   ];
 
   @override
@@ -51,7 +51,7 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
   Future<void> _loadProgress() async {
     final prefs = await SharedPreferences.getInstance();
 
-    // التحقق هل هو يوم جديد لتصفير المهام؟
+    // ط§ظ„طھط­ظ‚ظ‚ ظ‡ظ„ ظ‡ظˆ ظٹظˆظ… ط¬ط¯ظٹط¯ ظ„طھطµظپظٹط± ط§ظ„ظ…ظ‡ط§ظ…طں
     String lastDate = prefs.getString('last_challenge_date') ?? '';
     String today = DateTime.now().toString().substring(0, 10);
 
@@ -59,14 +59,14 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
       _totalXP = prefs.getInt('total_xp') ?? 0;
 
       if (lastDate == today) {
-        // لو نفس اليوم، حمل حالة المهام
+        // ظ„ظˆ ظ†ظپط³ ط§ظ„ظٹظˆظ…طŒ ط­ظ…ظ„ ط­ط§ظ„ط© ط§ظ„ظ…ظ‡ط§ظ…
         _completedTasks[0] = prefs.getBool('task_0') ?? false;
         _completedTasks[1] = prefs.getBool('task_1') ?? false;
         _completedTasks[2] = prefs.getBool('task_2') ?? false;
         _completedTasks[3] = prefs.getBool('task_3') ?? false;
         _completedTasks[4] = prefs.getBool('task_4') ?? false;
       } else {
-        // يوم جديد، صفر المهام واحفظ التاريخ
+        // ظٹظˆظ… ط¬ط¯ظٹط¯طŒ طµظپط± ط§ظ„ظ…ظ‡ط§ظ… ظˆط§ط­ظپط¸ ط§ظ„طھط§ط±ظٹط®
         prefs.setString('last_challenge_date', today);
         for(int i=0; i<5; i++) prefs.setBool('task_$i', false);
       }
@@ -83,9 +83,9 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
   }
 
   Future<void> _toggleTask(int index) async {
-    if (_completedTasks[index]) return; // لا يمكن التراجع (لتحفيز التقدم)
+    if (_completedTasks[index]) return; // ظ„ط§ ظٹظ…ظƒظ† ط§ظ„طھط±ط§ط¬ط¹ (ظ„طھط­ظپظٹط² ط§ظ„طھظ‚ط¯ظ…)
 
-    HapticFeedback.heavyImpact(); // اهتزاز عند الإنجاز
+    HapticFeedback.heavyImpact(); // ط§ظ‡طھط²ط§ط² ط¹ظ†ط¯ ط§ظ„ط¥ظ†ط¬ط§ط²
 
     final prefs = await SharedPreferences.getInstance();
     int gainedXP = _todayTasks[index]['xp'];
@@ -102,7 +102,7 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
     _checkLevelUp();
   }
 
-  // ✅ تحديد المستوى الحالي
+  // âœ… طھط­ط¯ظٹط¯ ط§ظ„ظ…ط³طھظˆظ‰ ط§ظ„ط­ط§ظ„ظٹ
   Map<String, dynamic> _getCurrentRank() {
     Map<String, dynamic> currentRank = _ranks[0];
     for (var rank in _ranks) {
@@ -113,20 +113,20 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
     return currentRank;
   }
 
-  // ✅ تحديد المستوى القادم
+  // âœ… طھط­ط¯ظٹط¯ ط§ظ„ظ…ط³طھظˆظ‰ ط§ظ„ظ‚ط§ط¯ظ…
   Map<String, dynamic>? _getNextRank() {
     for (var rank in _ranks) {
       if (_totalXP < rank['minXP']) return rank;
     }
-    return null; // وصل لأعلى مستوى
+    return null; // ظˆطµظ„ ظ„ط£ط¹ظ„ظ‰ ظ…ط³طھظˆظ‰
   }
 
-  // حساب نسبة التقدم للمستوى التالي
+  // ط­ط³ط§ط¨ ظ†ط³ط¨ط© ط§ظ„طھظ‚ط¯ظ… ظ„ظ„ظ…ط³طھظˆظ‰ ط§ظ„طھط§ظ„ظٹ
   double _calculateXPProgress() {
     var current = _getCurrentRank();
     var next = _getNextRank();
 
-    if (next == null) return 1.0; // ممتلئ دائماً إذا كان أعلى مستوى
+    if (next == null) return 1.0; // ظ…ظ…طھظ„ط¦ ط¯ط§ط¦ظ…ط§ظ‹ ط¥ط°ط§ ظƒط§ظ† ط£ط¹ظ„ظ‰ ظ…ط³طھظˆظ‰
 
     int currentMin = current['minXP'];
     int nextMin = next['minXP'];
@@ -136,7 +136,7 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
     return (xpInCurrentLevel / requiredXpForNext).clamp(0.0, 1.0);
   }
 
-  // التهنئة عند الترقية
+  // ط§ظ„طھظ‡ظ†ط¦ط© ط¹ظ†ط¯ ط§ظ„طھط±ظ‚ظٹط©
   void _checkLevelUp() {
     var next = _getNextRank();
     if (next != null && _totalXP >= next['minXP']) {
@@ -144,10 +144,10 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
         context: context,
         builder: (ctx) => AlertDialog(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          title: const Text('🎉 ترقية مباركة!'),
-          content: Text('ما شاء الله! لقد ارتقيت إلى مقام "${next['title']}". استمر في الطاعات.', style: GoogleFonts.cairo()),
+          title: const Text('ًںژ‰ طھط±ظ‚ظٹط© ظ…ط¨ط§ط±ظƒط©!'),
+          content: Text('ظ…ط§ ط´ط§ط، ط§ظ„ظ„ظ‡! ظ„ظ‚ط¯ ط§ط±طھظ‚ظٹطھ ط¥ظ„ظ‰ ظ…ظ‚ط§ظ… "${next['title']}". ط§ط³طھظ…ط± ظپظٹ ط§ظ„ط·ط§ط¹ط§طھ.', style: GoogleFonts.cairo()),
           actions: [
-            ElevatedButton(onPressed: () => Navigator.pop(ctx), style: ElevatedButton.styleFrom(backgroundColor: widget.primaryColor), child: const Text('متابعة'))
+            ElevatedButton(onPressed: () => Navigator.pop(ctx), style: ElevatedButton.styleFrom(backgroundColor: widget.primaryColor), child: const Text('ظ…طھط§ط¨ط¹ط©'))
           ],
         ),
       );
@@ -165,7 +165,7 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
       child: Scaffold(
         backgroundColor: Colors.grey.shade50,
         appBar: AppBar(
-          title: Text('تحديات اليوم', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
+          title: Text('طھط­ط¯ظٹط§طھ ط§ظ„ظٹظˆظ…', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
           backgroundColor: rankColor,
           foregroundColor: Colors.white,
           elevation: 0,
@@ -173,7 +173,7 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
         body: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
-            // ================== 1. الهيدر (المستوى والـ XP) ==================
+            // ================== 1. ط§ظ„ظ‡ظٹط¯ط± (ط§ظ„ظ…ط³طھظˆظ‰ ظˆط§ظ„ظ€ XP) ==================
             SliverToBoxAdapter(
               child: Container(
                 padding: const EdgeInsets.fromLTRB(20, 10, 20, 30),
@@ -183,18 +183,18 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
                     begin: Alignment.topLeft, end: Alignment.bottomRight,
                   ),
                   borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
-                  boxShadow: [BoxShadow(color: rankColor.withOpacity(0.3), blurRadius: 15, offset: const Offset(0, 5))],
+                  boxShadow: [BoxShadow(color: rankColor.withValues(alpha: 0.3), blurRadius: 15, offset: const Offset(0, 5))],
                 ),
                 child: Column(
                   children: [
                     const Icon(Icons.workspace_premium_rounded, size: 60, color: Colors.amberAccent),
                     const SizedBox(height: 10),
-                    Text('المقام الحالي', style: GoogleFonts.cairo(color: Colors.white70, fontSize: 14)),
+                    Text('ط§ظ„ظ…ظ‚ط§ظ… ط§ظ„ط­ط§ظ„ظٹ', style: GoogleFonts.cairo(color: Colors.white70, fontSize: 14)),
                     Text(currentRank['title'], style: GoogleFonts.amiri(color: Colors.white, fontSize: 36, fontWeight: FontWeight.bold)),
 
                     const SizedBox(height: 20),
 
-                    // شريط التقدم (XP)
+                    // ط´ط±ظٹط· ط§ظ„طھظ‚ط¯ظ… (XP)
                     AnimatedBuilder(
                         animation: _animController,
                         builder: (context, child) {
@@ -203,8 +203,8 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text('$_totalXP نقاط', style: GoogleFonts.cairo(color: Colors.white, fontWeight: FontWeight.bold)),
-                                  Text(nextRank != null ? '${nextRank['minXP']} للمقام القادم' : 'أعلى مقام', style: GoogleFonts.cairo(color: Colors.white70, fontSize: 12)),
+                                  Text('$_totalXP ظ†ظ‚ط§ط·', style: GoogleFonts.cairo(color: Colors.white, fontWeight: FontWeight.bold)),
+                                  Text(nextRank != null ? '${nextRank['minXP']} ظ„ظ„ظ…ظ‚ط§ظ… ط§ظ„ظ‚ط§ط¯ظ…' : 'ط£ط¹ظ„ظ‰ ظ…ظ‚ط§ظ…', style: GoogleFonts.cairo(color: Colors.white70, fontSize: 12)),
                                 ],
                               ),
                               const SizedBox(height: 8),
@@ -213,7 +213,7 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
                                 child: LinearProgressIndicator(
                                   value: _xpAnim.value,
                                   minHeight: 8,
-                                  backgroundColor: Colors.white.withOpacity(0.2),
+                                  backgroundColor: Colors.white.withValues(alpha: 0.2),
                                   valueColor: const AlwaysStoppedAnimation(Colors.amberAccent),
                                 ),
                               ),
@@ -226,7 +226,7 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
               ),
             ),
 
-            // ================== 2. عنوان المهام ==================
+            // ================== 2. ط¹ظ†ظˆط§ظ† ط§ظ„ظ…ظ‡ط§ظ… ==================
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.all(20),
@@ -234,13 +234,13 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
                   children: [
                     Container(width: 4, height: 20, decoration: BoxDecoration(color: widget.primaryColor, borderRadius: BorderRadius.circular(2))),
                     const SizedBox(width: 10),
-                    Text('المهام اليومية', style: GoogleFonts.cairo(fontSize: 20, fontWeight: FontWeight.bold)),
+                    Text('ط§ظ„ظ…ظ‡ط§ظ… ط§ظ„ظٹظˆظ…ظٹط©', style: GoogleFonts.cairo(fontSize: 20, fontWeight: FontWeight.bold)),
                   ],
                 ),
               ),
             ),
 
-            // ================== 3. قائمة التحديات ==================
+            // ================== 3. ظ‚ط§ط¦ظ…ط© ط§ظ„طھط­ط¯ظٹط§طھ ==================
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               sliver: SliverList(
@@ -256,14 +256,14 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
                         color: isDone ? Colors.green.shade50 : Colors.white,
                         borderRadius: BorderRadius.circular(16),
                         border: Border.all(color: isDone ? Colors.green.shade200 : Colors.grey.shade200),
-                        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.03), blurRadius: 10, offset: const Offset(0, 4))],
+                        boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.03), blurRadius: 10, offset: const Offset(0, 4))],
                       ),
                       child: ListTile(
                         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                         leading: Container(
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                            color: isDone ? Colors.green : widget.primaryColor.withOpacity(0.1),
+                            color: isDone ? Colors.green : widget.primaryColor.withValues(alpha: 0.1),
                             shape: BoxShape.circle,
                           ),
                           child: Icon(task['icon'], color: isDone ? Colors.white : widget.primaryColor),
@@ -276,7 +276,7 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
                               decoration: isDone ? TextDecoration.lineThrough : null,
                             )
                         ),
-                        subtitle: Text('+${task['xp']} نقطة', style: GoogleFonts.cairo(color: Colors.amber.shade700, fontWeight: FontWeight.bold, fontSize: 12)),
+                        subtitle: Text('+${task['xp']} ظ†ظ‚ط·ط©', style: GoogleFonts.cairo(color: Colors.amber.shade700, fontWeight: FontWeight.bold, fontSize: 12)),
                         trailing: isDone
                             ? const Icon(Icons.check_circle, color: Colors.green, size: 30)
                             : OutlinedButton(
@@ -285,7 +285,7 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                           ),
                           onPressed: () => _toggleTask(index),
-                          child: Text('إنجاز', style: GoogleFonts.cairo(color: widget.primaryColor, fontWeight: FontWeight.bold)),
+                          child: Text('ط¥ظ†ط¬ط§ط²', style: GoogleFonts.cairo(color: widget.primaryColor, fontWeight: FontWeight.bold)),
                         ),
                       ),
                     );

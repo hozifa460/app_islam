@@ -1,4 +1,4 @@
-// lib/screens/radio/widgets_radio_screen/live_badge_widget.dart
+﻿// lib/screens/radio/widgets_radio_screen/live_badge_widget.dart
 
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -70,11 +70,11 @@ class _LiveBadgeWidgetState extends State<LiveBadgeWidget>
                 width: 5,
                 height: 5,
                 decoration: BoxDecoration(
-                  color: Colors.red.withOpacity(opacity),
+                  color: Colors.red.withValues(alpha: opacity),
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.red.withOpacity(opacity * 0.5),
+                      color: Colors.red.withValues(alpha: opacity * 0.5),
                       blurRadius: 4,
                     ),
                   ],

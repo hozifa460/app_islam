@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -40,174 +40,174 @@ class _HasanatScreenState extends State<HasanatScreen>
 
   final List<Map<String, dynamic>> deeds = [
     {
-      'title': 'سُبْحَانَ اللَّهِ وَبِحَمْدِهِ',
-      'reward': 'تُغرس نخلة في الجنة',
-      'hadith': 'من قال سبحان الله وبحمده غُرست له نخلة في الجنة',
-      'source': 'رواه الترمذي وصححه الألباني',
+      'title': 'ط³ظڈط¨ظ’ط­ظژط§ظ†ظژ ط§ظ„ظ„ظژظ‘ظ‡ظگ ظˆظژط¨ظگط­ظژظ…ظ’ط¯ظگظ‡ظگ',
+      'reward': 'طھظڈط؛ط±ط³ ظ†ط®ظ„ط© ظپظٹ ط§ظ„ط¬ظ†ط©',
+      'hadith': 'ظ…ظ† ظ‚ط§ظ„ ط³ط¨ط­ط§ظ† ط§ظ„ظ„ظ‡ ظˆط¨ط­ظ…ط¯ظ‡ ط؛ظڈط±ط³طھ ظ„ظ‡ ظ†ط®ظ„ط© ظپظٹ ط§ظ„ط¬ظ†ط©',
+      'source': 'ط±ظˆط§ظ‡ ط§ظ„طھط±ظ…ط°ظٹ ظˆطµط­ط­ظ‡ ط§ظ„ط£ظ„ط¨ط§ظ†ظٹ',
       'type': 'palm',
-      'icon': '🌴',
+      'icon': 'ًںŒ´',
       'target': 1,
       'color': 0xFF4CAF50,
     },
     {
-      'title': 'سُبْحَانَ اللَّهِ العَظِيمِ وَبِحَمْدِهِ',
-      'reward': 'ثقيلتان في الميزان',
+      'title': 'ط³ظڈط¨ظ’ط­ظژط§ظ†ظژ ط§ظ„ظ„ظژظ‘ظ‡ظگ ط§ظ„ط¹ظژط¸ظگظٹظ…ظگ ظˆظژط¨ظگط­ظژظ…ظ’ط¯ظگظ‡ظگ',
+      'reward': 'ط«ظ‚ظٹظ„طھط§ظ† ظپظٹ ط§ظ„ظ…ظٹط²ط§ظ†',
       'hadith':
-      'كلمتان خفيفتان على اللسان، ثقيلتان في الميزان، حبيبتان إلى الرحمن: سبحان الله وبحمده، سبحان الله العظيم',
-      'source': 'رواه البخاري ومسلم',
+      'ظƒظ„ظ…طھط§ظ† ط®ظپظٹظپطھط§ظ† ط¹ظ„ظ‰ ط§ظ„ظ„ط³ط§ظ†طŒ ط«ظ‚ظٹظ„طھط§ظ† ظپظٹ ط§ظ„ظ…ظٹط²ط§ظ†طŒ ط­ط¨ظٹط¨طھط§ظ† ط¥ظ„ظ‰ ط§ظ„ط±ط­ظ…ظ†: ط³ط¨ط­ط§ظ† ط§ظ„ظ„ظ‡ ظˆط¨ط­ظ…ط¯ظ‡طŒ ط³ط¨ط­ط§ظ† ط§ظ„ظ„ظ‡ ط§ظ„ط¹ط¸ظٹظ…',
+      'source': 'ط±ظˆط§ظ‡ ط§ظ„ط¨ط®ط§ط±ظٹ ظˆظ…ط³ظ„ظ…',
       'type': 'scale',
-      'icon': '⚖️',
+      'icon': 'âڑ–ï¸ڈ',
       'target': 1,
       'color': 0xFF9C27B0,
     },
     {
-      'title': 'سُبْحَانَ اللَّهِ وَبِحَمْدِهِ (100 مرة)',
-      'reward': 'حط الخطايا وإن كانت كزبد البحر',
+      'title': 'ط³ظڈط¨ظ’ط­ظژط§ظ†ظژ ط§ظ„ظ„ظژظ‘ظ‡ظگ ظˆظژط¨ظگط­ظژظ…ظ’ط¯ظگظ‡ظگ (100 ظ…ط±ط©)',
+      'reward': 'ط­ط· ط§ظ„ط®ط·ط§ظٹط§ ظˆط¥ظ† ظƒط§ظ†طھ ظƒط²ط¨ط¯ ط§ظ„ط¨ط­ط±',
       'hadith':
-      'من قال سبحان الله وبحمده في يوم مائة مرة حُطّت خطاياه وإن كانت مثل زبد البحر',
-      'source': 'رواه البخاري ومسلم',
+      'ظ…ظ† ظ‚ط§ظ„ ط³ط¨ط­ط§ظ† ط§ظ„ظ„ظ‡ ظˆط¨ط­ظ…ط¯ظ‡ ظپظٹ ظٹظˆظ… ظ…ط§ط¦ط© ظ…ط±ط© ط­ظڈط·ظ‘طھ ط®ط·ط§ظٹط§ظ‡ ظˆط¥ظ† ظƒط§ظ†طھ ظ…ط«ظ„ ط²ط¨ط¯ ط§ظ„ط¨ط­ط±',
+      'source': 'ط±ظˆط§ظ‡ ط§ظ„ط¨ط®ط§ط±ظٹ ظˆظ…ط³ظ„ظ…',
       'type': 'hasana',
-      'icon': '🌊',
+      'icon': 'ًںŒٹ',
       'target': 100,
       'hasanaValue': 1,
       'color': 0xFF00BCD4,
     },
     {
-      'title': 'قِرَاءَةُ سُورَةِ الإِخْلَاصِ (10 مرات)',
-      'reward': 'يُبنى لك قصر في الجنة',
+      'title': 'ظ‚ظگط±ظژط§ط،ظژط©ظڈ ط³ظڈظˆط±ظژط©ظگ ط§ظ„ط¥ظگط®ظ’ظ„ظژط§طµظگ (10 ظ…ط±ط§طھ)',
+      'reward': 'ظٹظڈط¨ظ†ظ‰ ظ„ظƒ ظ‚طµط± ظپظٹ ط§ظ„ط¬ظ†ط©',
       'hadith':
-      'من قرأ قل هو الله أحد عشر مرات بنى الله له قصرًا في الجنة',
-      'source': 'رواه أحمد وصححه الألباني',
+      'ظ…ظ† ظ‚ط±ط£ ظ‚ظ„ ظ‡ظˆ ط§ظ„ظ„ظ‡ ط£ط­ط¯ ط¹ط´ط± ظ…ط±ط§طھ ط¨ظ†ظ‰ ط§ظ„ظ„ظ‡ ظ„ظ‡ ظ‚طµط±ظ‹ط§ ظپظٹ ط§ظ„ط¬ظ†ط©',
+      'source': 'ط±ظˆط§ظ‡ ط£ط­ظ…ط¯ ظˆطµط­ط­ظ‡ ط§ظ„ط£ظ„ط¨ط§ظ†ظٹ',
       'type': 'palace',
-      'icon': '🏰',
+      'icon': 'ًںڈ°',
       'target': 10,
       'color': 0xFFFF9800,
     },
     {
-      'title': 'لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ',
-      'reward': 'كنز من كنوز الجنة',
+      'title': 'ظ„ظژط§ ط­ظژظˆظ’ظ„ظژ ظˆظژظ„ظژط§ ظ‚ظڈظˆظژظ‘ط©ظژ ط¥ظگظ„ظژظ‘ط§ ط¨ظگط§ظ„ظ„ظژظ‘ظ‡ظگ',
+      'reward': 'ظƒظ†ط² ظ…ظ† ظƒظ†ظˆط² ط§ظ„ط¬ظ†ط©',
       'hadith':
-      'ألا أدلك على كلمة هي كنز من كنوز الجنة؟ لا حول ولا قوة إلا بالله',
-      'source': 'رواه البخاري ومسلم',
+      'ط£ظ„ط§ ط£ط¯ظ„ظƒ ط¹ظ„ظ‰ ظƒظ„ظ…ط© ظ‡ظٹ ظƒظ†ط² ظ…ظ† ظƒظ†ظˆط² ط§ظ„ط¬ظ†ط©طں ظ„ط§ ط­ظˆظ„ ظˆظ„ط§ ظ‚ظˆط© ط¥ظ„ط§ ط¨ط§ظ„ظ„ظ‡',
+      'source': 'ط±ظˆط§ظ‡ ط§ظ„ط¨ط®ط§ط±ظٹ ظˆظ…ط³ظ„ظ…',
       'type': 'jewel',
-      'icon': '💎',
+      'icon': 'ًں’ژ',
       'target': 1,
       'color': 0xFF2196F3,
     },
     {
       'title':
-      'لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ',
-      'reward': '100 حسنة وحط 100 سيئة وحرز من الشيطان',
+      'ظ„ظژط§ ط¥ظگظ„ظژظ‡ظژ ط¥ظگظ„ظژظ‘ط§ ط§ظ„ظ„ظژظ‘ظ‡ظڈ ظˆظژط­ظ’ط¯ظژظ‡ظڈ ظ„ظژط§ ط´ظژط±ظگظٹظƒظژ ظ„ظژظ‡ظڈطŒ ظ„ظژظ‡ظڈ ط§ظ„ظ’ظ…ظڈظ„ظ’ظƒظڈ ظˆظژظ„ظژظ‡ظڈ ط§ظ„ظ’ط­ظژظ…ظ’ط¯ظڈ ظˆظژظ‡ظڈظˆظژ ط¹ظژظ„ظژظ‰ ظƒظڈظ„ظگظ‘ ط´ظژظٹظ’ط،ظچ ظ‚ظژط¯ظگظٹط±ظŒ',
+      'reward': '100 ط­ط³ظ†ط© ظˆط­ط· 100 ط³ظٹط¦ط© ظˆط­ط±ط² ظ…ظ† ط§ظ„ط´ظٹط·ط§ظ†',
       'hadith':
-      'من قالها في يوم مائة مرة كانت له عدل عشر رقاب، وكُتبت له مائة حسنة، ومُحيت عنه مائة سيئة، وكانت له حرزًا من الشيطان',
-      'source': 'رواه البخاري ومسلم',
+      'ظ…ظ† ظ‚ط§ظ„ظ‡ط§ ظپظٹ ظٹظˆظ… ظ…ط§ط¦ط© ظ…ط±ط© ظƒط§ظ†طھ ظ„ظ‡ ط¹ط¯ظ„ ط¹ط´ط± ط±ظ‚ط§ط¨طŒ ظˆظƒظڈطھط¨طھ ظ„ظ‡ ظ…ط§ط¦ط© ط­ط³ظ†ط©طŒ ظˆظ…ظڈط­ظٹطھ ط¹ظ†ظ‡ ظ…ط§ط¦ط© ط³ظٹط¦ط©طŒ ظˆظƒط§ظ†طھ ظ„ظ‡ ط­ط±ط²ظ‹ط§ ظ…ظ† ط§ظ„ط´ظٹط·ط§ظ†',
+      'source': 'ط±ظˆط§ظ‡ ط§ظ„ط¨ط®ط§ط±ظٹ ظˆظ…ط³ظ„ظ…',
       'type': 'hasana',
-      'icon': '📿',
+      'icon': 'ًں“؟',
       'target': 1,
       'hasanaValue': 100,
       'color': 0xFF009688,
     },
     {
-      'title': 'الصَّلَاةُ عَلَى النَّبِيِّ ﷺ',
-      'reward': '10 صلوات من الله وحط 10 سيئات ورفع 10 درجات',
+      'title': 'ط§ظ„طµظژظ‘ظ„ظژط§ط©ظڈ ط¹ظژظ„ظژظ‰ ط§ظ„ظ†ظژظ‘ط¨ظگظٹظگظ‘ ï·؛',
+      'reward': '10 طµظ„ظˆط§طھ ظ…ظ† ط§ظ„ظ„ظ‡ ظˆط­ط· 10 ط³ظٹط¦ط§طھ ظˆط±ظپط¹ 10 ط¯ط±ط¬ط§طھ',
       'hadith':
-      'من صلّى عليّ صلاة واحدة صلّى الله عليه عشر صلوات، وحُطّت عنه عشر خطيئات، ورُفعت له عشر درجات',
-      'source': 'رواه مسلم والنسائي',
+      'ظ…ظ† طµظ„ظ‘ظ‰ ط¹ظ„ظٹظ‘ طµظ„ط§ط© ظˆط§ط­ط¯ط© طµظ„ظ‘ظ‰ ط§ظ„ظ„ظ‡ ط¹ظ„ظٹظ‡ ط¹ط´ط± طµظ„ظˆط§طھطŒ ظˆط­ظڈط·ظ‘طھ ط¹ظ†ظ‡ ط¹ط´ط± ط®ط·ظٹط¦ط§طھطŒ ظˆط±ظڈظپط¹طھ ظ„ظ‡ ط¹ط´ط± ط¯ط±ط¬ط§طھ',
+      'source': 'ط±ظˆط§ظ‡ ظ…ط³ظ„ظ… ظˆط§ظ„ظ†ط³ط§ط¦ظٹ',
       'type': 'light',
-      'icon': '✨',
+      'icon': 'âœ¨',
       'target': 1,
       'color': 0xFFFFC107,
     },
     {
-      'title': 'أَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ',
-      'reward': 'فرج من كل ضيق ومخرج من كل هم',
+      'title': 'ط£ظژط³ظ’طھظژط؛ظ’ظپظگط±ظڈ ط§ظ„ظ„ظژظ‘ظ‡ظژ ظˆظژط£ظژطھظڈظˆط¨ظڈ ط¥ظگظ„ظژظٹظ’ظ‡ظگ',
+      'reward': 'ظپط±ط¬ ظ…ظ† ظƒظ„ ط¶ظٹظ‚ ظˆظ…ط®ط±ط¬ ظ…ظ† ظƒظ„ ظ‡ظ…',
       'hadith':
-      'من لزم الاستغفار جعل الله له من كل همّ فرجًا، ومن كل ضيق مخرجًا، ورزقه من حيث لا يحتسب',
-      'source': 'رواه أبو داود وابن ماجه',
+      'ظ…ظ† ظ„ط²ظ… ط§ظ„ط§ط³طھط؛ظپط§ط± ط¬ط¹ظ„ ط§ظ„ظ„ظ‡ ظ„ظ‡ ظ…ظ† ظƒظ„ ظ‡ظ…ظ‘ ظپط±ط¬ظ‹ط§طŒ ظˆظ…ظ† ظƒظ„ ط¶ظٹظ‚ ظ…ط®ط±ط¬ظ‹ط§طŒ ظˆط±ط²ظ‚ظ‡ ظ…ظ† ط­ظٹط« ظ„ط§ ظٹط­طھط³ط¨',
+      'source': 'ط±ظˆط§ظ‡ ط£ط¨ظˆ ط¯ط§ظˆط¯ ظˆط§ط¨ظ† ظ…ط§ط¬ظ‡',
       'type': 'hasana',
-      'icon': '🤲',
+      'icon': 'ًں¤²',
       'target': 1,
       'hasanaValue': 10,
       'color': 0xFF8BC34A,
     },
     {
-      'title': 'قِرَاءَةُ آيَةِ الكُرْسِيِّ بعد كل صلاة',
-      'reward': 'لم يمنعه من دخول الجنة إلا أن يموت',
+      'title': 'ظ‚ظگط±ظژط§ط،ظژط©ظڈ ط¢ظٹظژط©ظگ ط§ظ„ظƒظڈط±ظ’ط³ظگظٹظگظ‘ ط¨ط¹ط¯ ظƒظ„ طµظ„ط§ط©',
+      'reward': 'ظ„ظ… ظٹظ…ظ†ط¹ظ‡ ظ…ظ† ط¯ط®ظˆظ„ ط§ظ„ط¬ظ†ط© ط¥ظ„ط§ ط£ظ† ظٹظ…ظˆطھ',
       'hadith':
-      'من قرأ آية الكرسي دبر كل صلاة مكتوبة لم يمنعه من دخول الجنة إلا أن يموت',
-      'source': 'رواه النسائي وصححه الألباني',
+      'ظ…ظ† ظ‚ط±ط£ ط¢ظٹط© ط§ظ„ظƒط±ط³ظٹ ط¯ط¨ط± ظƒظ„ طµظ„ط§ط© ظ…ظƒطھظˆط¨ط© ظ„ظ… ظٹظ…ظ†ط¹ظ‡ ظ…ظ† ط¯ط®ظˆظ„ ط§ظ„ط¬ظ†ط© ط¥ظ„ط§ ط£ظ† ظٹظ…ظˆطھ',
+      'source': 'ط±ظˆط§ظ‡ ط§ظ„ظ†ط³ط§ط¦ظٹ ظˆطµط­ط­ظ‡ ط§ظ„ط£ظ„ط¨ط§ظ†ظٹ',
       'type': 'door',
-      'icon': '🚪',
+      'icon': 'ًںڑھ',
       'target': 5,
       'color': 0xFF795548,
     },
     {
       'title':
-      'سُبْحَانَ اللَّهِ، وَالحَمْدُ لِلَّهِ، وَلَا إِلَهَ إِلَّا اللَّهُ، وَاللَّهُ أَكْبَرُ',
-      'reward': 'أحب الكلام إلى الله',
+      'ط³ظڈط¨ظ’ط­ظژط§ظ†ظژ ط§ظ„ظ„ظژظ‘ظ‡ظگطŒ ظˆظژط§ظ„ط­ظژظ…ظ’ط¯ظڈ ظ„ظگظ„ظژظ‘ظ‡ظگطŒ ظˆظژظ„ظژط§ ط¥ظگظ„ظژظ‡ظژ ط¥ظگظ„ظژظ‘ط§ ط§ظ„ظ„ظژظ‘ظ‡ظڈطŒ ظˆظژط§ظ„ظ„ظژظ‘ظ‡ظڈ ط£ظژظƒظ’ط¨ظژط±ظڈ',
+      'reward': 'ط£ط­ط¨ ط§ظ„ظƒظ„ط§ظ… ط¥ظ„ظ‰ ط§ظ„ظ„ظ‡',
       'hadith':
-      'أحب الكلام إلى الله أربع: سبحان الله، والحمد لله، ولا إله إلا الله، والله أكبر',
-      'source': 'رواه مسلم',
+      'ط£ط­ط¨ ط§ظ„ظƒظ„ط§ظ… ط¥ظ„ظ‰ ط§ظ„ظ„ظ‡ ط£ط±ط¨ط¹: ط³ط¨ط­ط§ظ† ط§ظ„ظ„ظ‡طŒ ظˆط§ظ„ط­ظ…ط¯ ظ„ظ„ظ‡طŒ ظˆظ„ط§ ط¥ظ„ظ‡ ط¥ظ„ط§ ط§ظ„ظ„ظ‡طŒ ظˆط§ظ„ظ„ظ‡ ط£ظƒط¨ط±',
+      'source': 'ط±ظˆط§ظ‡ ظ…ط³ظ„ظ…',
       'type': 'scale',
-      'icon': '⚖️',
+      'icon': 'âڑ–ï¸ڈ',
       'target': 1,
       'color': 0xFFE91E63,
     },
     {
       'title':
-      'سُبْحَانَ اللَّهِ (33) وَالحَمْدُ لِلَّهِ (33) وَاللَّهُ أَكْبَرُ (34)',
-      'reward': 'تُغفر ذنوبه وإن كانت مثل زبد البحر',
+      'ط³ظڈط¨ظ’ط­ظژط§ظ†ظژ ط§ظ„ظ„ظژظ‘ظ‡ظگ (33) ظˆظژط§ظ„ط­ظژظ…ظ’ط¯ظڈ ظ„ظگظ„ظژظ‘ظ‡ظگ (33) ظˆظژط§ظ„ظ„ظژظ‘ظ‡ظڈ ط£ظژظƒظ’ط¨ظژط±ظڈ (34)',
+      'reward': 'طھظڈط؛ظپط± ط°ظ†ظˆط¨ظ‡ ظˆط¥ظ† ظƒط§ظ†طھ ظ…ط«ظ„ ط²ط¨ط¯ ط§ظ„ط¨ط­ط±',
       'hadith':
-      'من سبّح الله في دبر كل صلاة ثلاثًا وثلاثين، وحمد الله ثلاثًا وثلاثين، وكبّر الله ثلاثًا وثلاثين',
-      'source': 'رواه مسلم',
+      'ظ…ظ† ط³ط¨ظ‘ط­ ط§ظ„ظ„ظ‡ ظپظٹ ط¯ط¨ط± ظƒظ„ طµظ„ط§ط© ط«ظ„ط§ط«ظ‹ط§ ظˆط«ظ„ط§ط«ظٹظ†طŒ ظˆط­ظ…ط¯ ط§ظ„ظ„ظ‡ ط«ظ„ط§ط«ظ‹ط§ ظˆط«ظ„ط§ط«ظٹظ†طŒ ظˆظƒط¨ظ‘ط± ط§ظ„ظ„ظ‡ ط«ظ„ط§ط«ظ‹ط§ ظˆط«ظ„ط§ط«ظٹظ†',
+      'source': 'ط±ظˆط§ظ‡ ظ…ط³ظ„ظ…',
       'type': 'hasana',
-      'icon': '📿',
+      'icon': 'ًں“؟',
       'target': 1,
       'hasanaValue': 50,
       'color': 0xFF3F51B5,
     },
     {
-      'title': 'لَا إِلَهَ إِلَّا اللَّهُ',
-      'reward': 'أفضل ما قاله النبيون',
+      'title': 'ظ„ظژط§ ط¥ظگظ„ظژظ‡ظژ ط¥ظگظ„ظژظ‘ط§ ط§ظ„ظ„ظژظ‘ظ‡ظڈ',
+      'reward': 'ط£ظپط¶ظ„ ظ…ط§ ظ‚ط§ظ„ظ‡ ط§ظ„ظ†ط¨ظٹظˆظ†',
       'hadith':
-      'أفضل الذكر لا إله إلا الله، وأفضل الدعاء الحمد لله',
-      'source': 'رواه الترمذي وابن ماجه',
+      'ط£ظپط¶ظ„ ط§ظ„ط°ظƒط± ظ„ط§ ط¥ظ„ظ‡ ط¥ظ„ط§ ط§ظ„ظ„ظ‡طŒ ظˆط£ظپط¶ظ„ ط§ظ„ط¯ط¹ط§ط، ط§ظ„ط­ظ…ط¯ ظ„ظ„ظ‡',
+      'source': 'ط±ظˆط§ظ‡ ط§ظ„طھط±ظ…ط°ظٹ ظˆط§ط¨ظ† ظ…ط§ط¬ظ‡',
       'type': 'light',
-      'icon': '🌟',
+      'icon': 'ًںŒں',
       'target': 1,
       'color': 0xFFFF5722,
     },
     {
-      'title': 'الحَمْدُ لِلَّهِ',
-      'reward': 'تملأ الميزان',
+      'title': 'ط§ظ„ط­ظژظ…ظ’ط¯ظڈ ظ„ظگظ„ظژظ‘ظ‡ظگ',
+      'reward': 'طھظ…ظ„ط£ ط§ظ„ظ…ظٹط²ط§ظ†',
       'hadith':
-      'الطهور شطر الإيمان، والحمد لله تملأ الميزان',
-      'source': 'رواه مسلم',
+      'ط§ظ„ط·ظ‡ظˆط± ط´ط·ط± ط§ظ„ط¥ظٹظ…ط§ظ†طŒ ظˆط§ظ„ط­ظ…ط¯ ظ„ظ„ظ‡ طھظ…ظ„ط£ ط§ظ„ظ…ظٹط²ط§ظ†',
+      'source': 'ط±ظˆط§ظ‡ ظ…ط³ظ„ظ…',
       'type': 'scale',
-      'icon': '⚖️',
+      'icon': 'âڑ–ï¸ڈ',
       'target': 1,
       'color': 0xFF607D8B,
     },
     {
       'title':
-      'بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ العَلِيمُ (3 مرات)',
-      'reward': 'حفظ من كل شر',
+      'ط¨ظگط³ظ’ظ…ظگ ط§ظ„ظ„ظژظ‘ظ‡ظگ ط§ظ„ظژظ‘ط°ظگظٹ ظ„ظژط§ ظٹظژط¶ظڈط±ظڈظ‘ ظ…ظژط¹ظژ ط§ط³ظ’ظ…ظگظ‡ظگ ط´ظژظٹظ’ط،ظŒ ظپظگظٹ ط§ظ„ط£ظژط±ظ’ط¶ظگ ظˆظژظ„ظژط§ ظپظگظٹ ط§ظ„ط³ظژظ‘ظ…ظژط§ط،ظگ ظˆظژظ‡ظڈظˆظژ ط§ظ„ط³ظژظ‘ظ…ظگظٹط¹ظڈ ط§ظ„ط¹ظژظ„ظگظٹظ…ظڈ (3 ظ…ط±ط§طھ)',
+      'reward': 'ط­ظپط¸ ظ…ظ† ظƒظ„ ط´ط±',
       'hadith':
-      'من قالها ثلاث مرات حين يُصبح وثلاث مرات حين يُمسي لم يضره شيء',
-      'source': 'رواه أبو داود والترمذي',
+      'ظ…ظ† ظ‚ط§ظ„ظ‡ط§ ط«ظ„ط§ط« ظ…ط±ط§طھ ط­ظٹظ† ظٹظڈطµط¨ط­ ظˆط«ظ„ط§ط« ظ…ط±ط§طھ ط­ظٹظ† ظٹظڈظ…ط³ظٹ ظ„ظ… ظٹط¶ط±ظ‡ ط´ظٹط،',
+      'source': 'ط±ظˆط§ظ‡ ط£ط¨ظˆ ط¯ط§ظˆط¯ ظˆط§ظ„طھط±ظ…ط°ظٹ',
       'type': 'shield',
-      'icon': '🛡️',
+      'icon': 'ًں›،ï¸ڈ',
       'target': 3,
       'color': 0xFF00695C,
     },
     {
-      'title': 'أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ (3 مرات)',
-      'reward': 'حفظ من كل أذى',
+      'title': 'ط£ظژط¹ظڈظˆط°ظڈ ط¨ظگظƒظژظ„ظگظ…ظژط§طھظگ ط§ظ„ظ„ظژظ‘ظ‡ظگ ط§ظ„طھظژظ‘ط§ظ…ظژظ‘ط§طھظگ ظ…ظگظ†ظ’ ط´ظژط±ظگظ‘ ظ…ظژط§ ط®ظژظ„ظژظ‚ظژ (3 ظ…ط±ط§طھ)',
+      'reward': 'ط­ظپط¸ ظ…ظ† ظƒظ„ ط£ط°ظ‰',
       'hadith':
-      'من قالها حين يُمسي ثلاث مرات لم تضره حُمة تلك الليلة',
-      'source': 'رواه مسلم',
+      'ظ…ظ† ظ‚ط§ظ„ظ‡ط§ ط­ظٹظ† ظٹظڈظ…ط³ظٹ ط«ظ„ط§ط« ظ…ط±ط§طھ ظ„ظ… طھط¶ط±ظ‡ ط­ظڈظ…ط© طھظ„ظƒ ط§ظ„ظ„ظٹظ„ط©',
+      'source': 'ط±ظˆط§ظ‡ ظ…ط³ظ„ظ…',
       'type': 'shield',
-      'icon': '🛡️',
+      'icon': 'ًں›،ï¸ڈ',
       'target': 3,
       'color': 0xFF37474F,
     },
@@ -355,10 +355,10 @@ class _HasanatScreenState extends State<HasanatScreen>
           backgroundColor: _bgCard,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
-            side: BorderSide(color: _gold.withOpacity(0.3)),
+            side: BorderSide(color: _gold.withValues(alpha: 0.3)),
           ),
           title: Text(
-            'إعادة تعيين',
+            'ط¥ط¹ط§ط¯ط© طھط¹ظٹظٹظ†',
             style: GoogleFonts.cairo(
               fontWeight: FontWeight.bold,
               color: Colors.white,
@@ -366,7 +366,7 @@ class _HasanatScreenState extends State<HasanatScreen>
             textAlign: TextAlign.center,
           ),
           content: Text(
-            'هل تريد تصفير جميع العدادات؟',
+            'ظ‡ظ„ طھط±ظٹط¯ طھطµظپظٹط± ط¬ظ…ظٹط¹ ط§ظ„ط¹ط¯ط§ط¯ط§طھطں',
             style: GoogleFonts.cairo(fontSize: 15, color: Colors.white70),
             textAlign: TextAlign.center,
           ),
@@ -374,7 +374,7 @@ class _HasanatScreenState extends State<HasanatScreen>
             TextButton(
               onPressed: () => Navigator.pop(ctx),
               child: Text(
-                'إلغاء',
+                'ط¥ظ„ط؛ط§ط،',
                 style: GoogleFonts.cairo(color: Colors.grey),
               ),
             ),
@@ -402,7 +402,7 @@ class _HasanatScreenState extends State<HasanatScreen>
                 Navigator.pop(ctx);
               },
               child: Text(
-                'تصفير',
+                'طھطµظپظٹط±',
                 style: GoogleFonts.cairo(
                   color: Colors.redAccent,
                   fontWeight: FontWeight.bold,
@@ -422,13 +422,13 @@ class _HasanatScreenState extends State<HasanatScreen>
   }
 
   String _getTypeFromTitle(String title) {
-    if (title.contains('نخل')) return 'palm';
-    if (title.contains('قصور')) return 'palace';
-    if (title.contains('كنوز')) return 'jewel';
-    if (title.contains('أنوار')) return 'light';
-    if (title.contains('أبواب')) return 'door';
-    if (title.contains('دروع')) return 'shield';
-    if (title.contains('موازين')) return 'scale';
+    if (title.contains('ظ†ط®ظ„')) return 'palm';
+    if (title.contains('ظ‚طµظˆط±')) return 'palace';
+    if (title.contains('ظƒظ†ظˆط²')) return 'jewel';
+    if (title.contains('ط£ظ†ظˆط§ط±')) return 'light';
+    if (title.contains('ط£ط¨ظˆط§ط¨')) return 'door';
+    if (title.contains('ط¯ط±ظˆط¹')) return 'shield';
+    if (title.contains('ظ…ظˆط§ط²ظٹظ†')) return 'scale';
     return 'hasana';
   }
 
@@ -453,7 +453,7 @@ class _HasanatScreenState extends State<HasanatScreen>
           title: FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
-              'حصاد الحسنات',
+              'ط­طµط§ط¯ ط§ظ„ط­ط³ظ†ط§طھ',
               style: GoogleFonts.cairo(
                 fontWeight: FontWeight.bold,
                 fontSize: 22,
@@ -465,8 +465,8 @@ class _HasanatScreenState extends State<HasanatScreen>
             margin: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               color: isDark
-                  ? Colors.white.withOpacity(0.1)
-                  : _gold.withOpacity(0.1),
+                  ? Colors.white.withValues(alpha: 0.1)
+                  : _gold.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(12),
             ),
             child: IconButton(
@@ -479,14 +479,14 @@ class _HasanatScreenState extends State<HasanatScreen>
             Container(
               margin: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: Colors.redAccent.withOpacity(0.1),
+                color: Colors.redAccent.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: IconButton(
                 icon: const Icon(Icons.refresh,
                     color: Colors.redAccent, size: 20),
                 onPressed: _resetAll,
-                tooltip: 'تصفير',
+                tooltip: 'طھطµظپظٹط±',
               ),
             ),
           ],
@@ -514,7 +514,7 @@ class _HasanatScreenState extends State<HasanatScreen>
                       const SizedBox(width: 10),
                       Expanded(
                         child: Text(
-                          'الأعمال والأجور',
+                          'ط§ظ„ط£ط¹ظ…ط§ظ„ ظˆط§ظ„ط£ط¬ظˆط±',
                           style: GoogleFonts.cairo(
                             fontSize: isSmall ? 18 : 20,
                             fontWeight: FontWeight.bold,
@@ -528,11 +528,11 @@ class _HasanatScreenState extends State<HasanatScreen>
                           vertical: 4,
                         ),
                         decoration: BoxDecoration(
-                          color: _gold.withOpacity(0.12),
+                          color: _gold.withValues(alpha: 0.12),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Text(
-                          '${deeds.length} ذكر',
+                          '${deeds.length} ط°ظƒط±',
                           style: GoogleFonts.cairo(
                             fontSize: 11,
                             color: _gold,
@@ -569,19 +569,19 @@ class _HasanatScreenState extends State<HasanatScreen>
 
   Widget _buildStatsSection(bool isDark, Color textColor, bool isSmall) {
     final stats = [
-      {'title': 'نخلات', 'count': palmTrees, 'icon': '🌴', 'color': Colors.green},
-      {'title': 'قصور', 'count': palaces, 'icon': '🏰', 'color': _gold},
-      {'title': 'كنوز', 'count': jewels, 'icon': '💎', 'color': Colors.blue},
-      {'title': 'أنوار', 'count': lights, 'icon': '✨', 'color': Colors.orange},
-      {'title': 'أبواب', 'count': doors, 'icon': '🚪', 'color': Colors.brown},
-      {'title': 'دروع', 'count': shields, 'icon': '🛡️', 'color': Colors.teal},
-      {'title': 'موازين', 'count': scales, 'icon': '⚖️', 'color': Colors.purple},
-      {'title': 'حسنات', 'count': hasanat, 'icon': '📿', 'color': Colors.cyan},
+      {'title': 'ظ†ط®ظ„ط§طھ', 'count': palmTrees, 'icon': 'ًںŒ´', 'color': Colors.green},
+      {'title': 'ظ‚طµظˆط±', 'count': palaces, 'icon': 'ًںڈ°', 'color': _gold},
+      {'title': 'ظƒظ†ظˆط²', 'count': jewels, 'icon': 'ًں’ژ', 'color': Colors.blue},
+      {'title': 'ط£ظ†ظˆط§ط±', 'count': lights, 'icon': 'âœ¨', 'color': Colors.orange},
+      {'title': 'ط£ط¨ظˆط§ط¨', 'count': doors, 'icon': 'ًںڑھ', 'color': Colors.brown},
+      {'title': 'ط¯ط±ظˆط¹', 'count': shields, 'icon': 'ًں›،ï¸ڈ', 'color': Colors.teal},
+      {'title': 'ظ…ظˆط§ط²ظٹظ†', 'count': scales, 'icon': 'âڑ–ï¸ڈ', 'color': Colors.purple},
+      {'title': 'ط­ط³ظ†ط§طھ', 'count': hasanat, 'icon': 'ًں“؟', 'color': Colors.cyan},
     ];
 
     final cardBg = isDark ? _bgCard : Colors.white;
     final borderColor =
-    isDark ? Colors.white.withOpacity(0.08) : _gold.withOpacity(0.15);
+    isDark ? Colors.white.withValues(alpha: 0.08) : _gold.withValues(alpha: 0.15);
 
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 8, 16, 0),
@@ -593,8 +593,8 @@ class _HasanatScreenState extends State<HasanatScreen>
         boxShadow: [
           BoxShadow(
             color: isDark
-                ? Colors.black.withOpacity(0.3)
-                : Colors.grey.withOpacity(0.08),
+                ? Colors.black.withValues(alpha: 0.3)
+                : Colors.grey.withValues(alpha: 0.08),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -632,10 +632,10 @@ class _HasanatScreenState extends State<HasanatScreen>
                     ),
                     decoration: BoxDecoration(
                       color:
-                      (stat['color'] as Color).withOpacity(isDark ? 0.1 : 0.06),
+                      (stat['color'] as Color).withValues(alpha: isDark ? 0.1 : 0.06),
                       borderRadius: BorderRadius.circular(14),
                       border: Border.all(
-                        color: (stat['color'] as Color).withOpacity(0.25),
+                        color: (stat['color'] as Color).withValues(alpha: 0.25),
                       ),
                     ),
                     child: Column(
@@ -700,7 +700,7 @@ class _HasanatScreenState extends State<HasanatScreen>
 
     final cardBg = isDark ? _bgCard : Colors.white;
     final borderColor =
-    isDark ? Colors.white.withOpacity(0.08) : accentColor.withOpacity(0.15);
+    isDark ? Colors.white.withValues(alpha: 0.08) : accentColor.withValues(alpha: 0.15);
 
     return TweenAnimationBuilder<double>(
       tween: Tween(begin: 0.0, end: 1.0),
@@ -724,8 +724,8 @@ class _HasanatScreenState extends State<HasanatScreen>
           boxShadow: [
             BoxShadow(
               color: isDark
-                  ? Colors.black.withOpacity(0.3)
-                  : Colors.grey.withOpacity(0.08),
+                  ? Colors.black.withValues(alpha: 0.3)
+                  : Colors.grey.withValues(alpha: 0.08),
               blurRadius: 12,
               offset: const Offset(0, 4),
             ),
@@ -734,7 +734,7 @@ class _HasanatScreenState extends State<HasanatScreen>
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // الجائزة
+            // ط§ظ„ط¬ط§ط¦ط²ط©
             Container(
               width: double.infinity,
               padding: EdgeInsets.symmetric(
@@ -742,14 +742,14 @@ class _HasanatScreenState extends State<HasanatScreen>
                 vertical: isSmall ? 8 : 10,
               ),
               decoration: BoxDecoration(
-                color: accentColor.withOpacity(isDark ? 0.12 : 0.06),
+                color: accentColor.withValues(alpha: isDark ? 0.12 : 0.06),
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(22),
                   topRight: Radius.circular(22),
                 ),
                 border: Border(
                   bottom: BorderSide(
-                    color: accentColor.withOpacity(0.15),
+                    color: accentColor.withValues(alpha: 0.15),
                   ),
                 ),
               ),
@@ -778,13 +778,13 @@ class _HasanatScreenState extends State<HasanatScreen>
               ),
             ),
 
-            // المحتوى
+            // ط§ظ„ظ…ط­طھظˆظ‰
             Padding(
               padding: EdgeInsets.all(isSmall ? 14 : 18),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // الذكر
+                  // ط§ظ„ط°ظƒط±
                   Text(
                     deed['title'] as String,
                     style: GoogleFonts.amiri(
@@ -797,19 +797,19 @@ class _HasanatScreenState extends State<HasanatScreen>
                   ),
                   const SizedBox(height: 14),
 
-                  // الحديث
+                  // ط§ظ„ط­ط¯ظٹط«
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       color: isDark
-                          ? Colors.white.withOpacity(0.04)
-                          : accentColor.withOpacity(0.04),
+                          ? Colors.white.withValues(alpha: 0.04)
+                          : accentColor.withValues(alpha: 0.04),
                       borderRadius: BorderRadius.circular(14),
                       border: Border.all(
                         color: isDark
-                            ? Colors.white.withOpacity(0.06)
-                            : accentColor.withOpacity(0.1),
+                            ? Colors.white.withValues(alpha: 0.06)
+                            : accentColor.withValues(alpha: 0.1),
                       ),
                     ),
                     child: Column(
@@ -831,7 +831,7 @@ class _HasanatScreenState extends State<HasanatScreen>
                             Icon(
                               Icons.menu_book_rounded,
                               size: 12,
-                              color: accentColor.withOpacity(0.7),
+                              color: accentColor.withValues(alpha: 0.7),
                             ),
                             const SizedBox(width: 4),
                             Flexible(
@@ -839,7 +839,7 @@ class _HasanatScreenState extends State<HasanatScreen>
                                 deed['source'] as String,
                                 style: GoogleFonts.cairo(
                                   fontSize: isSmall ? 10 : 11,
-                                  color: accentColor.withOpacity(0.8),
+                                  color: accentColor.withValues(alpha: 0.8),
                                   fontWeight: FontWeight.bold,
                                 ),
                                 maxLines: 1,
@@ -853,7 +853,7 @@ class _HasanatScreenState extends State<HasanatScreen>
                   ),
                   const SizedBox(height: 16),
 
-                  // التقدم والزر
+                  // ط§ظ„طھظ‚ط¯ظ… ظˆط§ظ„ط²ط±
                   Row(
                     children: [
                       if (target > 1) ...[
@@ -863,7 +863,7 @@ class _HasanatScreenState extends State<HasanatScreen>
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(
-                                'التقدم:',
+                                'ط§ظ„طھظ‚ط¯ظ…:',
                                 style: GoogleFonts.cairo(
                                   fontSize: isSmall ? 10 : 11,
                                   color: subColor,
@@ -907,10 +907,10 @@ class _HasanatScreenState extends State<HasanatScreen>
                             vertical: 10,
                           ),
                           decoration: BoxDecoration(
-                            color: accentColor.withOpacity(0.15),
+                            color: accentColor.withValues(alpha: 0.15),
                             borderRadius: BorderRadius.circular(14),
                             border: Border.all(
-                              color: accentColor.withOpacity(0.4),
+                              color: accentColor.withValues(alpha: 0.4),
                             ),
                           ),
                           child: Row(
@@ -925,7 +925,7 @@ class _HasanatScreenState extends State<HasanatScreen>
                                 const SizedBox(width: 6),
                                 FittedBox(
                                   child: Text(
-                                    'إضافة',
+                                    'ط¥ط¶ط§ظپط©',
                                     style: GoogleFonts.cairo(
                                       color: accentColor,
                                       fontWeight: FontWeight.bold,

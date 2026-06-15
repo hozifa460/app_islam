@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -14,16 +14,16 @@ class SocialLoginSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final auth = context.read<AuthService>();
-    final tr = context.tr; // ← الترجمة
+    final tr = context.tr; // â†گ ط§ظ„طھط±ط¬ظ…ط©
 
     return Column(
       children: [
-        // ═══ الفاصل ═══
+        // â•گâ•گâ•گ ط§ظ„ظپط§طµظ„ â•گâ•گâ•گ
         _Divider(isDark: isDark),
 
         const SizedBox(height: 22),
 
-        // ═══ أزرار Google و Apple ═══
+        // â•گâ•گâ•گ ط£ط²ط±ط§ط± Google ظˆ Apple â•گâ•گâ•گ
         Row(
           children: [
             Expanded(
@@ -50,7 +50,7 @@ class SocialLoginSection extends StatelessWidget {
 
         const SizedBox(height: 20),
 
-        // ═══ الدخول كزائر ═══
+        // â•گâ•گâ•گ ط§ظ„ط¯ط®ظˆظ„ ظƒط²ط§ط¦ط± â•گâ•گâ•گ
         TextButton(
           onPressed: () => auth.continueAsGuest(),
           child: Row(
@@ -60,21 +60,21 @@ class SocialLoginSection extends StatelessWidget {
                 Icons.person_outline_rounded,
                 size: 20,
                 color: isDark
-                    ? Colors.white.withOpacity(0.5)
+                    ? Colors.white.withValues(alpha: 0.5)
                     : Colors.grey.shade600,
               ),
               const SizedBox(width: 8),
               Text(
-                tr.loginAsGuest, // ← مترجم
+                tr.loginAsGuest, // â†گ ظ…طھط±ط¬ظ…
                 style: GoogleFonts.cairo(
                   fontSize: 14,
                   color: isDark
-                      ? Colors.white.withOpacity(0.5)
+                      ? Colors.white.withValues(alpha: 0.5)
                       : Colors.grey.shade600,
                   fontWeight: FontWeight.w600,
                   decoration: TextDecoration.underline,
                   decorationColor: isDark
-                      ? Colors.white.withOpacity(0.3)
+                      ? Colors.white.withValues(alpha: 0.3)
                       : Colors.grey.shade400,
                 ),
               ),
@@ -120,11 +120,11 @@ class _Divider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tr = context.tr; // ← الترجمة
+    final tr = context.tr; // â†گ ط§ظ„طھط±ط¬ظ…ط©
     final lc =
-    isDark ? Colors.white.withOpacity(0.1) : Colors.grey.shade300;
+    isDark ? Colors.white.withValues(alpha: 0.1) : Colors.grey.shade300;
     final tc =
-    isDark ? Colors.white.withOpacity(0.4) : Colors.grey.shade500;
+    isDark ? Colors.white.withValues(alpha: 0.4) : Colors.grey.shade500;
 
     return Row(
       children: [
@@ -132,7 +132,7 @@ class _Divider extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18),
           child: Text(
-            tr.orLoginWith, // ← مترجم
+            tr.orLoginWith, // â†گ ظ…طھط±ط¬ظ…
             style: GoogleFonts.cairo(
               fontSize: 13,
               color: tc,
@@ -174,13 +174,13 @@ class _SocialBtn extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
               color: isDark
-                  ? Colors.white.withOpacity(0.12)
+                  ? Colors.white.withValues(alpha: 0.12)
                   : Colors.grey.shade300,
               width: 1.4,
             ),
             color: isDark
-                ? Colors.white.withOpacity(0.04)
-                : Colors.white.withOpacity(0.8),
+                ? Colors.white.withValues(alpha: 0.04)
+                : Colors.white.withValues(alpha: 0.8),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,

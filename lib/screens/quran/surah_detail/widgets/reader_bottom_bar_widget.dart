@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../services/quran/audio_recitation_service.dart';
 
@@ -55,21 +55,21 @@ class ReaderBottomBarWidget extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // شريط الحفظ
+            // ط´ط±ظٹط· ط§ظ„ط­ظپط¸
             if (viewMode == 'memorize' && !isMicActive)
               Padding(
                 padding: const EdgeInsets.only(bottom: 6),
                 child: _buildHideControlBar(isSmall),
               ),
 
-            // حالة التسميع
+            // ط­ط§ظ„ط© ط§ظ„طھط³ظ…ظٹط¹
             if (isMicActive)
               Padding(
                 padding: const EdgeInsets.only(bottom: 6),
                 child: _buildMicStatusBar(),
               ),
 
-            // النص المنطوق
+            // ط§ظ„ظ†طµ ط§ظ„ظ…ظ†ط·ظˆظ‚
             if (isMicActive && recitationSpokenText.isNotEmpty)
               Padding(
                 padding: const EdgeInsets.only(bottom: 6),
@@ -77,7 +77,7 @@ class ReaderBottomBarWidget extends StatelessWidget {
                   width: double.infinity,
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.8),
+                    color: Colors.black.withValues(alpha: 0.8),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
@@ -95,11 +95,11 @@ class ReaderBottomBarWidget extends StatelessWidget {
                 ),
               ),
 
-            // الشريط الرئيسي + الميكروفون
+            // ط§ظ„ط´ط±ظٹط· ط§ظ„ط±ط¦ظٹط³ظٹ + ط§ظ„ظ…ظٹظƒط±ظˆظپظˆظ†
             Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                // الأزرار
+                // ط§ظ„ط£ط²ط±ط§ط±
                 Expanded(
                   child: Container(
                     height: isSmall ? 46 : 52,
@@ -109,7 +109,7 @@ class ReaderBottomBarWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(26),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.08),
+                          color: Colors.black.withValues(alpha: 0.08),
                           blurRadius: 12,
                           offset: const Offset(0, 3),
                         ),
@@ -129,7 +129,7 @@ class ReaderBottomBarWidget extends StatelessWidget {
                           icon: isAyahPlaying
                               ? Icons.pause_rounded
                               : Icons.play_arrow_rounded,
-                          label: isAyahPlaying ? 'وقف' : 'شغّل',
+                          label: isAyahPlaying ? 'ظˆظ‚ظپ' : 'ط´ط؛ظ‘ظ„',
                           isSmall: isSmall,
                           highlighted: isAyahPlaying,
                           onTap: onPlayPauseTap,
@@ -137,7 +137,7 @@ class ReaderBottomBarWidget extends StatelessWidget {
                         SizedBox(width: isSmall ? 2 : 3),
                         _buildPill(
                           icon: isTextHidden ? Icons.visibility : Icons.visibility_off,
-                          label: isTextHidden ? 'أظهر' : 'أخفِ',
+                          label: isTextHidden ? 'ط£ط¸ظ‡ط±' : 'ط£ط®ظپظگ',
                           isSmall: isSmall,
                           onTap: onHideToggleTap,
                         ),
@@ -148,7 +148,7 @@ class ReaderBottomBarWidget extends StatelessWidget {
 
                 SizedBox(width: isSmall ? 8 : 12),
 
-                // زر الميكروفون
+                // ط²ط± ط§ظ„ظ…ظٹظƒط±ظˆظپظˆظ†
                 GestureDetector(
                   onTap: onMicTap,
                   child: AnimatedContainer(
@@ -210,11 +210,11 @@ class ReaderBottomBarWidget extends StatelessWidget {
   String _getViewModeLabel() {
     switch (viewMode) {
       case 'text':
-        return 'نص';
+        return 'ظ†طµ';
       case 'memorize':
-        return 'حفظ';
+        return 'ط­ظپط¸';
       default:
-        return 'صور';
+        return 'طµظˆط±';
     }
   }
 
@@ -230,12 +230,12 @@ class ReaderBottomBarWidget extends StatelessWidget {
 
   Color _getMicShadowColor() {
     if (recitationState == RecitationState.processing) {
-      return Colors.orange.withOpacity(0.35);
+      return Colors.orange.withValues(alpha: 0.35);
     }
     if (isMicActive) {
-      return Colors.red.withOpacity(0.35);
+      return Colors.red.withValues(alpha: 0.35);
     }
-    return Colors.green.withOpacity(0.3);
+    return Colors.green.withValues(alpha: 0.3);
   }
 
   Widget _buildHideControlBar(bool isSmall) {
@@ -246,19 +246,19 @@ class ReaderBottomBarWidget extends StatelessWidget {
         color: isDark ? const Color(0xFF232323) : Colors.white,
         borderRadius: BorderRadius.circular(18),
         boxShadow: [
-          BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 8),
+          BoxShadow(color: Colors.black.withValues(alpha: 0.05), blurRadius: 8),
         ],
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'إخفاء:',
+            'ط¥ط®ظپط§ط،:',
             style: GoogleFonts.cairo(fontSize: 11, fontWeight: FontWeight.bold),
           ),
           const SizedBox(width: 4),
           ...List.generate(4, (i) {
-            final labels = ['٠', '١', '٢', '٣'];
+            final labels = ['ظ ', 'ظ،', 'ظ¢', 'ظ£'];
             return Padding(
               padding: const EdgeInsets.only(left: 3),
               child: GestureDetector(
@@ -267,7 +267,7 @@ class ReaderBottomBarWidget extends StatelessWidget {
                   width: 28,
                   height: 26,
                   decoration: BoxDecoration(
-                    color: hideLevel == i ? primary : primary.withOpacity(0.08),
+                    color: hideLevel == i ? primary : primary.withValues(alpha: 0.08),
                     borderRadius: BorderRadius.circular(7),
                   ),
                   child: Center(
@@ -297,13 +297,13 @@ class ReaderBottomBarWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
         color: isProcessing
-            ? Colors.orange.withOpacity(0.1)
-            : Colors.green.withOpacity(0.1),
+            ? Colors.orange.withValues(alpha: 0.1)
+            : Colors.green.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: isProcessing
-              ? Colors.orange.withOpacity(0.2)
-              : Colors.green.withOpacity(0.2),
+              ? Colors.orange.withValues(alpha: 0.2)
+              : Colors.green.withValues(alpha: 0.2),
         ),
       ),
       child: Row(
@@ -327,13 +327,13 @@ class ReaderBottomBarWidget extends StatelessWidget {
                 color: Colors.red,
                 shape: BoxShape.circle,
                 boxShadow: [
-                  BoxShadow(color: Colors.red.withOpacity(0.5), blurRadius: 4),
+                  BoxShadow(color: Colors.red.withValues(alpha: 0.5), blurRadius: 4),
                 ],
               ),
             ),
           const SizedBox(width: 8),
           Text(
-            isProcessing ? 'جاري التحليل...' : 'جاري التسجيل...',
+            isProcessing ? 'ط¬ط§ط±ظٹ ط§ظ„طھط­ظ„ظٹظ„...' : 'ط¬ط§ط±ظٹ ط§ظ„طھط³ط¬ظٹظ„...',
             style: GoogleFonts.cairo(
               fontSize: 11,
               fontWeight: FontWeight.bold,
@@ -358,7 +358,7 @@ class ReaderBottomBarWidget extends StatelessWidget {
     final bg = highlighted
         ? const Color(0xFFFFF4D6)
         : isDark
-        ? Colors.white.withOpacity(0.05)
+        ? Colors.white.withValues(alpha: 0.05)
         : const Color(0xFFF5F5F5);
 
     return Expanded(

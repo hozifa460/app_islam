@@ -1,4 +1,4 @@
-import 'dart:math' as math;
+﻿import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,68 +29,68 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen>
 
   int _factOffset = 0;
 
-  static const List<String> _weekDays = ['ن', 'ث', 'ر', 'خ', 'ج', 'س', 'ح'];
+  static const List<String> _weekDays = ['ظ†', 'ط«', 'ط±', 'ط®', 'ط¬', 'ط³', 'ط­'];
 
   static const List<String> _arabicMonths = [
-    'يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو',
-    'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر',
+    'ظٹظ†ط§ظٹط±', 'ظپط¨ط±ط§ظٹط±', 'ظ…ط§ط±ط³', 'ط£ط¨ط±ظٹظ„', 'ظ…ط§ظٹظˆ', 'ظٹظˆظ†ظٹظˆ',
+    'ظٹظˆظ„ظٹظˆ', 'ط£ط؛ط³ط·ط³', 'ط³ط¨طھظ…ط¨ط±', 'ط£ظƒطھظˆط¨ط±', 'ظ†ظˆظپظ…ط¨ط±', 'ط¯ظٹط³ظ…ط¨ط±',
   ];
 
   static const List<String> _hijriMonths = [
-    'محرم', 'صفر', 'ربيع الأول', 'ربيع الآخر',
-    'جمادى الأولى', 'جمادى الآخرة', 'رجب', 'شعبان',
-    'رمضان', 'شوال', 'ذو القعدة', 'ذو الحجة',
+    'ظ…ط­ط±ظ…', 'طµظپط±', 'ط±ط¨ظٹط¹ ط§ظ„ط£ظˆظ„', 'ط±ط¨ظٹط¹ ط§ظ„ط¢ط®ط±',
+    'ط¬ظ…ط§ط¯ظ‰ ط§ظ„ط£ظˆظ„ظ‰', 'ط¬ظ…ط§ط¯ظ‰ ط§ظ„ط¢ط®ط±ط©', 'ط±ط¬ط¨', 'ط´ط¹ط¨ط§ظ†',
+    'ط±ظ…ط¶ط§ظ†', 'ط´ظˆط§ظ„', 'ط°ظˆ ط§ظ„ظ‚ط¹ط¯ط©', 'ط°ظˆ ط§ظ„ط­ط¬ط©',
   ];
 
   static const List<String> _islamicFacts = [
-    'التقويم الهجري يبدأ من هجرة النبي ﷺ من مكة إلى المدينة.',
-    'شهر رمضان هو الشهر التاسع في التقويم الهجري.',
-    'الأشهر الحرم هي: ذو القعدة، ذو الحجة، محرم، رجب.',
-    'ليلة القدر خير من ألف شهر، وتلتمس في العشر الأواخر من رمضان.',
-    'يوم الجمعة هو خير أيام الأسبوع عند المسلمين.',
-    'صيام يوم عرفة يكفّر سنتين بإذن الله لغير الحاج.',
-    'يوم عاشوراء من الأيام المباركة ويستحب صيامه.',
-    'الزكاة والصيام والحج ترتبط في أحكامها بالتقويم الهجري.',
-    'رؤية الهلال من السنن المرتبطة ببداية الشهور الهجرية.',
-    'الأعياد الإسلامية تُحدد وفق التقويم الهجري وليس الميلادي.',
+    'ط§ظ„طھظ‚ظˆظٹظ… ط§ظ„ظ‡ط¬ط±ظٹ ظٹط¨ط¯ط£ ظ…ظ† ظ‡ط¬ط±ط© ط§ظ„ظ†ط¨ظٹ ï·؛ ظ…ظ† ظ…ظƒط© ط¥ظ„ظ‰ ط§ظ„ظ…ط¯ظٹظ†ط©.',
+    'ط´ظ‡ط± ط±ظ…ط¶ط§ظ† ظ‡ظˆ ط§ظ„ط´ظ‡ط± ط§ظ„طھط§ط³ط¹ ظپظٹ ط§ظ„طھظ‚ظˆظٹظ… ط§ظ„ظ‡ط¬ط±ظٹ.',
+    'ط§ظ„ط£ط´ظ‡ط± ط§ظ„ط­ط±ظ… ظ‡ظٹ: ط°ظˆ ط§ظ„ظ‚ط¹ط¯ط©طŒ ط°ظˆ ط§ظ„ط­ط¬ط©طŒ ظ…ط­ط±ظ…طŒ ط±ط¬ط¨.',
+    'ظ„ظٹظ„ط© ط§ظ„ظ‚ط¯ط± ط®ظٹط± ظ…ظ† ط£ظ„ظپ ط´ظ‡ط±طŒ ظˆطھظ„طھظ…ط³ ظپظٹ ط§ظ„ط¹ط´ط± ط§ظ„ط£ظˆط§ط®ط± ظ…ظ† ط±ظ…ط¶ط§ظ†.',
+    'ظٹظˆظ… ط§ظ„ط¬ظ…ط¹ط© ظ‡ظˆ ط®ظٹط± ط£ظٹط§ظ… ط§ظ„ط£ط³ط¨ظˆط¹ ط¹ظ†ط¯ ط§ظ„ظ…ط³ظ„ظ…ظٹظ†.',
+    'طµظٹط§ظ… ظٹظˆظ… ط¹ط±ظپط© ظٹظƒظپظ‘ط± ط³ظ†طھظٹظ† ط¨ط¥ط°ظ† ط§ظ„ظ„ظ‡ ظ„ط؛ظٹط± ط§ظ„ط­ط§ط¬.',
+    'ظٹظˆظ… ط¹ط§ط´ظˆط±ط§ط، ظ…ظ† ط§ظ„ط£ظٹط§ظ… ط§ظ„ظ…ط¨ط§ط±ظƒط© ظˆظٹط³طھط­ط¨ طµظٹط§ظ…ظ‡.',
+    'ط§ظ„ط²ظƒط§ط© ظˆط§ظ„طµظٹط§ظ… ظˆط§ظ„ط­ط¬ طھط±طھط¨ط· ظپظٹ ط£ط­ظƒط§ظ…ظ‡ط§ ط¨ط§ظ„طھظ‚ظˆظٹظ… ط§ظ„ظ‡ط¬ط±ظٹ.',
+    'ط±ط¤ظٹط© ط§ظ„ظ‡ظ„ط§ظ„ ظ…ظ† ط§ظ„ط³ظ†ظ† ط§ظ„ظ…ط±طھط¨ط·ط© ط¨ط¨ط¯ط§ظٹط© ط§ظ„ط´ظ‡ظˆط± ط§ظ„ظ‡ط¬ط±ظٹط©.',
+    'ط§ظ„ط£ط¹ظٹط§ط¯ ط§ظ„ط¥ط³ظ„ط§ظ…ظٹط© طھظڈط­ط¯ط¯ ظˆظپظ‚ ط§ظ„طھظ‚ظˆظٹظ… ط§ظ„ظ‡ط¬ط±ظٹ ظˆظ„ظٹط³ ط§ظ„ظ…ظٹظ„ط§ط¯ظٹ.',
   ];
 
   static const Map<String, Map<String, String>> _hijriEvents = {
-    '1-10': {'title': 'يوم عاشوراء', 'desc': 'من الأيام المستحب صيامها، وله فضل عظيم.'},
-    '3-12': {'title': 'المولد النبوي', 'desc': 'ذكرى مولد النبي ﷺ وفق بعض التواريخ المشهورة.'},
-    '7-27': {'title': 'الإسراء والمعراج', 'desc': 'ليلة مباركة ارتبطت بالإسراء والمعراج.'},
-    '8-15': {'title': 'ليلة النصف من شعبان', 'desc': 'ليلة مباركة يعتني بها كثير من المسلمين.'},
-    '9-1': {'title': 'بداية رمضان', 'desc': 'بداية شهر رمضان المبارك.'},
-    '9-27': {'title': 'ليلة القدر (مرجحة)', 'desc': 'من أعظم ليالي العام، وتُطلب في العشر الأواخر.'},
-    '10-1': {'title': 'عيد الفطر', 'desc': 'يوم فرح للمسلمين بعد تمام صيام رمضان.'},
-    '12-9': {'title': 'يوم عرفة', 'desc': 'من أفضل أيام السنة، ويستحب صيامه لغير الحاج.'},
-    '12-10': {'title': 'عيد الأضحى', 'desc': 'يوم النحر وأحد أعظم أيام المسلمين.'},
+    '1-10': {'title': 'ظٹظˆظ… ط¹ط§ط´ظˆط±ط§ط،', 'desc': 'ظ…ظ† ط§ظ„ط£ظٹط§ظ… ط§ظ„ظ…ط³طھط­ط¨ طµظٹط§ظ…ظ‡ط§طŒ ظˆظ„ظ‡ ظپط¶ظ„ ط¹ط¸ظٹظ….'},
+    '3-12': {'title': 'ط§ظ„ظ…ظˆظ„ط¯ ط§ظ„ظ†ط¨ظˆظٹ', 'desc': 'ط°ظƒط±ظ‰ ظ…ظˆظ„ط¯ ط§ظ„ظ†ط¨ظٹ ï·؛ ظˆظپظ‚ ط¨ط¹ط¶ ط§ظ„طھظˆط§ط±ظٹط® ط§ظ„ظ…ط´ظ‡ظˆط±ط©.'},
+    '7-27': {'title': 'ط§ظ„ط¥ط³ط±ط§ط، ظˆط§ظ„ظ…ط¹ط±ط§ط¬', 'desc': 'ظ„ظٹظ„ط© ظ…ط¨ط§ط±ظƒط© ط§ط±طھط¨ط·طھ ط¨ط§ظ„ط¥ط³ط±ط§ط، ظˆط§ظ„ظ…ط¹ط±ط§ط¬.'},
+    '8-15': {'title': 'ظ„ظٹظ„ط© ط§ظ„ظ†طµظپ ظ…ظ† ط´ط¹ط¨ط§ظ†', 'desc': 'ظ„ظٹظ„ط© ظ…ط¨ط§ط±ظƒط© ظٹط¹طھظ†ظٹ ط¨ظ‡ط§ ظƒط«ظٹط± ظ…ظ† ط§ظ„ظ…ط³ظ„ظ…ظٹظ†.'},
+    '9-1': {'title': 'ط¨ط¯ط§ظٹط© ط±ظ…ط¶ط§ظ†', 'desc': 'ط¨ط¯ط§ظٹط© ط´ظ‡ط± ط±ظ…ط¶ط§ظ† ط§ظ„ظ…ط¨ط§ط±ظƒ.'},
+    '9-27': {'title': 'ظ„ظٹظ„ط© ط§ظ„ظ‚ط¯ط± (ظ…ط±ط¬ط­ط©)', 'desc': 'ظ…ظ† ط£ط¹ط¸ظ… ظ„ظٹط§ظ„ظٹ ط§ظ„ط¹ط§ظ…طŒ ظˆطھظڈط·ظ„ط¨ ظپظٹ ط§ظ„ط¹ط´ط± ط§ظ„ط£ظˆط§ط®ط±.'},
+    '10-1': {'title': 'ط¹ظٹط¯ ط§ظ„ظپط·ط±', 'desc': 'ظٹظˆظ… ظپط±ط­ ظ„ظ„ظ…ط³ظ„ظ…ظٹظ† ط¨ط¹ط¯ طھظ…ط§ظ… طµظٹط§ظ… ط±ظ…ط¶ط§ظ†.'},
+    '12-9': {'title': 'ظٹظˆظ… ط¹ط±ظپط©', 'desc': 'ظ…ظ† ط£ظپط¶ظ„ ط£ظٹط§ظ… ط§ظ„ط³ظ†ط©طŒ ظˆظٹط³طھط­ط¨ طµظٹط§ظ…ظ‡ ظ„ط؛ظٹط± ط§ظ„ط­ط§ط¬.'},
+    '12-10': {'title': 'ط¹ظٹط¯ ط§ظ„ط£ط¶ط­ظ‰', 'desc': 'ظٹظˆظ… ط§ظ„ظ†ط­ط± ظˆط£ط­ط¯ ط£ط¹ط¸ظ… ط£ظٹط§ظ… ط§ظ„ظ…ط³ظ„ظ…ظٹظ†.'},
   };
 
   static const Map<String, Map<String, String>> _hijriNotes = {
-    '1-10': {'title': 'معلومة شرعية', 'desc': 'يستحب صيام يوم عاشوراء، ويُسن أن يُضم إليه يوم قبله أو بعده.'},
-    '9-1': {'title': 'معلومة شرعية', 'desc': 'رمضان شهر الصيام والقيام وتلاوة القرآن.'},
-    '9-27': {'title': 'معلومة شرعية', 'desc': 'ليلة القدر تُلتمس في العشر الأواخر، وهي خير من ألف شهر.'},
-    '10-1': {'title': 'معلومة شرعية', 'desc': 'يوم العيد يوم فرح وشكر، ويُسن فيه إظهار السرور.'},
-    '12-9': {'title': 'معلومة شرعية', 'desc': 'صيام يوم عرفة لغير الحاج يكفّر سنتين.'},
-    '12-10': {'title': 'معلومة شرعية', 'desc': 'عيد الأضحى من أعظم الأيام، وتُشرع فيه الأضحية.'},
+    '1-10': {'title': 'ظ…ط¹ظ„ظˆظ…ط© ط´ط±ط¹ظٹط©', 'desc': 'ظٹط³طھط­ط¨ طµظٹط§ظ… ظٹظˆظ… ط¹ط§ط´ظˆط±ط§ط،طŒ ظˆظٹظڈط³ظ† ط£ظ† ظٹظڈط¶ظ… ط¥ظ„ظٹظ‡ ظٹظˆظ… ظ‚ط¨ظ„ظ‡ ط£ظˆ ط¨ط¹ط¯ظ‡.'},
+    '9-1': {'title': 'ظ…ط¹ظ„ظˆظ…ط© ط´ط±ط¹ظٹط©', 'desc': 'ط±ظ…ط¶ط§ظ† ط´ظ‡ط± ط§ظ„طµظٹط§ظ… ظˆط§ظ„ظ‚ظٹط§ظ… ظˆطھظ„ط§ظˆط© ط§ظ„ظ‚ط±ط¢ظ†.'},
+    '9-27': {'title': 'ظ…ط¹ظ„ظˆظ…ط© ط´ط±ط¹ظٹط©', 'desc': 'ظ„ظٹظ„ط© ط§ظ„ظ‚ط¯ط± طھظڈظ„طھظ…ط³ ظپظٹ ط§ظ„ط¹ط´ط± ط§ظ„ط£ظˆط§ط®ط±طŒ ظˆظ‡ظٹ ط®ظٹط± ظ…ظ† ط£ظ„ظپ ط´ظ‡ط±.'},
+    '10-1': {'title': 'ظ…ط¹ظ„ظˆظ…ط© ط´ط±ط¹ظٹط©', 'desc': 'ظٹظˆظ… ط§ظ„ط¹ظٹط¯ ظٹظˆظ… ظپط±ط­ ظˆط´ظƒط±طŒ ظˆظٹظڈط³ظ† ظپظٹظ‡ ط¥ط¸ظ‡ط§ط± ط§ظ„ط³ط±ظˆط±.'},
+    '12-9': {'title': 'ظ…ط¹ظ„ظˆظ…ط© ط´ط±ط¹ظٹط©', 'desc': 'طµظٹط§ظ… ظٹظˆظ… ط¹ط±ظپط© ظ„ط؛ظٹط± ط§ظ„ط­ط§ط¬ ظٹظƒظپظ‘ط± ط³ظ†طھظٹظ†.'},
+    '12-10': {'title': 'ظ…ط¹ظ„ظˆظ…ط© ط´ط±ط¹ظٹط©', 'desc': 'ط¹ظٹط¯ ط§ظ„ط£ط¶ط­ظ‰ ظ…ظ† ط£ط¹ط¸ظ… ط§ظ„ط£ظٹط§ظ…طŒ ظˆطھظڈط´ط±ط¹ ظپظٹظ‡ ط§ظ„ط£ط¶ط­ظٹط©.'},
   };
 
-  // الحصول على أقرب مناسبة قادمة
+  // ط§ظ„ط­طµظˆظ„ ط¹ظ„ظ‰ ط£ظ‚ط±ط¨ ظ…ظ†ط§ط³ط¨ط© ظ‚ط§ط¯ظ…ط©
   Map<String, dynamic>? _getNextEvent(DateTime currentDate) {
     final hijriNow = HijriCalendar.fromDate(currentDate);
 
-    // قائمة المناسبات مرتبة
+    // ظ‚ط§ط¦ظ…ط© ط§ظ„ظ…ظ†ط§ط³ط¨ط§طھ ظ…ط±طھط¨ط©
     final events = [
-      {'month': 1, 'day': 10, 'title': 'يوم عاشوراء'},
-      {'month': 3, 'day': 12, 'title': 'المولد النبوي'},
-      {'month': 7, 'day': 27, 'title': 'الإسراء والمعراج'},
-      {'month': 8, 'day': 15, 'title': 'ليلة النصف من شعبان'},
-      {'month': 9, 'day': 1, 'title': 'بداية رمضان'},
-      {'month': 9, 'day': 27, 'title': 'ليلة القدر'},
-      {'month': 10, 'day': 1, 'title': 'عيد الفطر'},
-      {'month': 12, 'day': 9, 'title': 'يوم عرفة'},
-      {'month': 12, 'day': 10, 'title': 'عيد الأضحى'},
+      {'month': 1, 'day': 10, 'title': 'ظٹظˆظ… ط¹ط§ط´ظˆط±ط§ط،'},
+      {'month': 3, 'day': 12, 'title': 'ط§ظ„ظ…ظˆظ„ط¯ ط§ظ„ظ†ط¨ظˆظٹ'},
+      {'month': 7, 'day': 27, 'title': 'ط§ظ„ط¥ط³ط±ط§ط، ظˆط§ظ„ظ…ط¹ط±ط§ط¬'},
+      {'month': 8, 'day': 15, 'title': 'ظ„ظٹظ„ط© ط§ظ„ظ†طµظپ ظ…ظ† ط´ط¹ط¨ط§ظ†'},
+      {'month': 9, 'day': 1, 'title': 'ط¨ط¯ط§ظٹط© ط±ظ…ط¶ط§ظ†'},
+      {'month': 9, 'day': 27, 'title': 'ظ„ظٹظ„ط© ط§ظ„ظ‚ط¯ط±'},
+      {'month': 10, 'day': 1, 'title': 'ط¹ظٹط¯ ط§ظ„ظپط·ط±'},
+      {'month': 12, 'day': 9, 'title': 'ظٹظˆظ… ط¹ط±ظپط©'},
+      {'month': 12, 'day': 10, 'title': 'ط¹ظٹط¯ ط§ظ„ط£ط¶ط­ظ‰'},
     ];
 
     int minDays = 366;
@@ -104,13 +104,13 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen>
 
       if (eventMonth > hijriNow.hMonth ||
           (eventMonth == hijriNow.hMonth && eventDay > hijriNow.hDay)) {
-        // المناسبة في نفس السنة
+        // ط§ظ„ظ…ظ†ط§ط³ط¨ط© ظپظٹ ظ†ظپط³ ط§ظ„ط³ظ†ط©
         daysUntil = _calculateHijriDaysDifference(
           hijriNow.hMonth, hijriNow.hDay,
           eventMonth, eventDay,
         );
       } else {
-        // المناسبة في السنة القادمة
+        // ط§ظ„ظ…ظ†ط§ط³ط¨ط© ظپظٹ ط§ظ„ط³ظ†ط© ط§ظ„ظ‚ط§ط¯ظ…ط©
         daysUntil = _calculateHijriDaysDifference(
           hijriNow.hMonth, hijriNow.hDay,
           eventMonth + 12, eventDay,
@@ -130,7 +130,7 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen>
   }
 
   int _calculateHijriDaysDifference(int fromMonth, int fromDay, int toMonth, int toDay) {
-    // تقريب بسيط: كل شهر هجري ≈ 29.5 يوم
+    // طھظ‚ط±ظٹط¨ ط¨ط³ظٹط·: ظƒظ„ ط´ظ‡ط± ظ‡ط¬ط±ظٹ â‰ˆ 29.5 ظٹظˆظ…
     const daysPerMonth = 29.5;
     final fromTotal = (fromMonth * daysPerMonth) + fromDay;
     final toTotal = (toMonth * daysPerMonth) + toDay;
@@ -182,16 +182,16 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen>
     super.dispose();
   }
 
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   // Helper Functions
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   String _toArabicNum(int n) {
-    const nums = {'0': '٠', '1': '١', '2': '٢', '3': '٣', '4': '٤', '5': '٥', '6': '٦', '7': '٧', '8': '٨', '9': '٩'};
+    const nums = {'0': 'ظ ', '1': 'ظ،', '2': 'ظ¢', '3': 'ظ£', '4': 'ظ¤', '5': 'ظ¥', '6': 'ظ¦', '7': 'ظ§', '8': 'ظ¨', '9': 'ظ©'};
     return n.toString().split('').map((e) => nums[e] ?? e).join();
   }
 
   String _getWeekday(DateTime date) {
-    const days = ['الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت', 'الأحد'];
+    const days = ['ط§ظ„ط§ط«ظ†ظٹظ†', 'ط§ظ„ط«ظ„ط§ط«ط§ط،', 'ط§ظ„ط£ط±ط¨ط¹ط§ط،', 'ط§ظ„ط®ظ…ظٹط³', 'ط§ظ„ط¬ظ…ط¹ط©', 'ط§ظ„ط³ط¨طھ', 'ط§ظ„ط£ط­ط¯'];
     return days[(date.weekday - 1) % 7];
   }
 
@@ -233,14 +233,14 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen>
   }
 
   Future<void> _shareEvent(Map<String, String> e, HijriCalendar h) async {
-    await Share.share('${e['title']}\n\n${e['desc']}\n\nالتاريخ: ${_toArabicNum(h.hDay)} ${_hijriMonths[h.hMonth - 1]} ${_toArabicNum(h.hYear)}');
+    await Share.share('${e['title']}\n\n${e['desc']}\n\nط§ظ„طھط§ط±ظٹط®: ${_toArabicNum(h.hDay)} ${_hijriMonths[h.hMonth - 1]} ${_toArabicNum(h.hYear)}');
   }
 
-  Future<void> _shareFact(String f) async => await Share.share('هل تعلم؟\n\n$f');
+  Future<void> _shareFact(String f) async => await Share.share('ظ‡ظ„ طھط¹ظ„ظ…طں\n\n$f');
 
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   // BUILD
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context);
@@ -275,9 +275,9 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen>
         body: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
-            // ═══════════════════════════════════
+            // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
             // ENHANCED HEADER WITH DECORATIONS
-            // ═══════════════════════════════════
+            // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
             SliverAppBar(
               expandedHeight: h * 0.38,
               pinned: true,
@@ -297,7 +297,7 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen>
                   pulseController: _pulseController,
                   starController: _starController,
                   event: event,
-                  nextEvent: _getNextEvent(_selectedDate), // ✅ أضف هذا
+                  nextEvent: _getNextEvent(_selectedDate), // âœ… ط£ط¶ظپ ظ‡ط°ط§
                   hijriMonths: _hijriMonths,
                   toArabicNum: _toArabicNum,
                   getWeekday: _getWeekday,
@@ -305,9 +305,9 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen>
               ),
             ),
 
-            // ═══════════════════════════════════
+            // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
             // CONTENT
-            // ═══════════════════════════════════
+            // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
             SliverPadding(
               padding: EdgeInsets.fromLTRB(padH, 16, padH, 100),
               sliver: SliverList(
@@ -419,7 +419,7 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen>
     return Padding(
       padding: const EdgeInsets.all(8),
       child: Material(
-        color: Colors.white.withOpacity(0.15),
+        color: Colors.white.withValues(alpha: 0.15),
         borderRadius: BorderRadius.circular(12),
         child: InkWell(
           borderRadius: BorderRadius.circular(12),
@@ -435,9 +435,9 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen>
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 // ENHANCED HERO HEADER WITH ISLAMIC DECORATIONS
-// ═══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _EnhancedHeroHeader extends StatelessWidget {
   final HijriCalendar hijri;
   final DateTime selectedDate;
@@ -448,7 +448,7 @@ class _EnhancedHeroHeader extends StatelessWidget {
   final AnimationController pulseController;
   final AnimationController starController;
   final Map<String, String>? event;
-  final Map<String, dynamic>? nextEvent; // ✅ أضف هذا
+  final Map<String, dynamic>? nextEvent; // âœ… ط£ط¶ظپ ظ‡ط°ط§
   final List<String> hijriMonths;
   final String Function(int) toArabicNum;
   final String Function(DateTime) getWeekday;
@@ -463,7 +463,7 @@ class _EnhancedHeroHeader extends StatelessWidget {
     required this.pulseController,
     required this.starController,
     required this.event,
-    required this.nextEvent, // ✅ أضف هذا
+    required this.nextEvent, // âœ… ط£ط¶ظپ ظ‡ط°ط§
     required this.hijriMonths,
     required this.toArabicNum,
     required this.getWeekday,
@@ -488,22 +488,22 @@ class _EnhancedHeroHeader extends StatelessWidget {
         fit: StackFit.expand,
         clipBehavior: Clip.hardEdge,
         children: [
-          // ═══════════════════════════════════
-          // النقش الإسلامي الهندسي
-          // ═══════════════════════════════════
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+          // ط§ظ„ظ†ظ‚ط´ ط§ظ„ط¥ط³ظ„ط§ظ…ظٹ ط§ظ„ظ‡ظ†ط¯ط³ظٹ
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
           Positioned.fill(
             child: CustomPaint(
               painter: _IslamicPatternPainter(
-                color: Colors.white.withOpacity(0.03),
+                color: Colors.white.withValues(alpha: 0.03),
                 lineWidth: 0.5,
               ),
             ),
           ),
 
-          // ═══════════════════════════════════
-          // الدوائر الزخرفية المتوهجة
-          // ═══════════════════════════════════
-          // دائرة كبيرة أعلى اليمين
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+          // ط§ظ„ط¯ظˆط§ط¦ط± ط§ظ„ط²ط®ط±ظپظٹط© ط§ظ„ظ…طھظˆظ‡ط¬ط©
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+          // ط¯ط§ط¦ط±ط© ظƒط¨ظٹط±ط© ط£ط¹ظ„ظ‰ ط§ظ„ظٹظ…ظٹظ†
           Positioned(
             top: -80,
             right: -60,
@@ -518,8 +518,8 @@ class _EnhancedHeroHeader extends StatelessWidget {
                     shape: BoxShape.circle,
                     gradient: RadialGradient(
                       colors: [
-                        gold.withOpacity(0.12),
-                        gold.withOpacity(0.05),
+                        gold.withValues(alpha: 0.12),
+                        gold.withValues(alpha: 0.05),
                         Colors.transparent,
                       ],
                     ),
@@ -529,7 +529,7 @@ class _EnhancedHeroHeader extends StatelessWidget {
             ),
           ),
 
-          // دائرة متوسطة أسفل اليسار
+          // ط¯ط§ط¦ط±ط© ظ…طھظˆط³ط·ط© ط£ط³ظپظ„ ط§ظ„ظٹط³ط§ط±
           Positioned(
             bottom: -50,
             left: -40,
@@ -544,8 +544,8 @@ class _EnhancedHeroHeader extends StatelessWidget {
                     shape: BoxShape.circle,
                     gradient: RadialGradient(
                       colors: [
-                        Colors.white.withOpacity(0.06),
-                        Colors.white.withOpacity(0.02),
+                        Colors.white.withValues(alpha: 0.06),
+                        Colors.white.withValues(alpha: 0.02),
                         Colors.transparent,
                       ],
                     ),
@@ -555,7 +555,7 @@ class _EnhancedHeroHeader extends StatelessWidget {
             ),
           ),
 
-          // دائرة صغيرة في الوسط
+          // ط¯ط§ط¦ط±ط© طµط؛ظٹط±ط© ظپظٹ ط§ظ„ظˆط³ط·
           Positioned(
             top: compact ? 100 : 120,
             right: compact ? 80 : 100,
@@ -570,7 +570,7 @@ class _EnhancedHeroHeader extends StatelessWidget {
                     shape: BoxShape.circle,
                     gradient: RadialGradient(
                       colors: [
-                        gold.withOpacity(0.15),
+                        gold.withValues(alpha: 0.15),
                         Colors.transparent,
                       ],
                     ),
@@ -580,9 +580,9 @@ class _EnhancedHeroHeader extends StatelessWidget {
             ),
           ),
 
-          // ═══════════════════════════════════
-          // الهلال الكبير المزخرف
-          // ═══════════════════════════════════
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+          // ط§ظ„ظ‡ظ„ط§ظ„ ط§ظ„ظƒط¨ظٹط± ط§ظ„ظ…ط²ط®ط±ظپ
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
           Positioned(
             top: compact ? 50 : 60,
             left: compact ? 20 : tablet ? 40 : 28,
@@ -595,23 +595,23 @@ class _EnhancedHeroHeader extends StatelessWidget {
             ),
           ),
 
-          // ═══════════════════════════════════
-          // النجوم المتلألئة
-          // ═══════════════════════════════════
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+          // ط§ظ„ظ†ط¬ظˆظ… ط§ظ„ظ…طھظ„ط£ظ„ط¦ط©
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
           ..._buildStars(),
 
-          // ═══════════════════════════════════
-          // الزخارف الهندسية الجانبية
-          // ═══════════════════════════════════
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+          // ط§ظ„ط²ط®ط§ط±ظپ ط§ظ„ظ‡ظ†ط¯ط³ظٹط© ط§ظ„ط¬ط§ظ†ط¨ظٹط©
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
           Positioned(
             top: compact ? 55 : 65,
             right: compact ? 15 : 25,
             child: _buildGeometricDecoration(),
           ),
 
-          // ═══════════════════════════════════
-          // المحتوى الرئيسي
-          // ═══════════════════════════════════
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+          // ط§ظ„ظ…ط­طھظˆظ‰ ط§ظ„ط±ط¦ظٹط³ظٹ
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
           Positioned(
             left: 16,
             right: 16,
@@ -621,9 +621,9 @@ class _EnhancedHeroHeader extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // ═══════════════════════════════════
-// المناسبة القادمة
-// ═══════════════════════════════════
+                  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط§ظ„ظ…ظ†ط§ط³ط¨ط© ط§ظ„ظ‚ط§ط¯ظ…ط©
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
                   if (nextEvent != null) ...[
                     Container(
                       padding: EdgeInsets.symmetric(
@@ -633,13 +633,13 @@ class _EnhancedHeroHeader extends StatelessWidget {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            gold.withOpacity(0.2),
-                            gold.withOpacity(0.08),
+                            gold.withValues(alpha: 0.2),
+                            gold.withValues(alpha: 0.08),
                           ],
                         ),
                         borderRadius: BorderRadius.circular(16),
                         border: Border.all(
-                          color: gold.withOpacity(0.3),
+                          color: gold.withValues(alpha: 0.3),
                           width: 1,
                         ),
                       ),
@@ -654,10 +654,10 @@ class _EnhancedHeroHeader extends StatelessWidget {
                           SizedBox(width: compact ? 4 : 6),
                           Flexible(
                             child: Text(
-                              'القادم: ${nextEvent!['title']}',
+                              'ط§ظ„ظ‚ط§ط¯ظ…: ${nextEvent!['title']}',
                               overflow: TextOverflow.ellipsis,
                               style: GoogleFonts.cairo(
-                                color: Colors.white.withOpacity(0.9),
+                                color: Colors.white.withValues(alpha: 0.9),
                                 fontSize: compact ? 9 : 10,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -670,11 +670,11 @@ class _EnhancedHeroHeader extends StatelessWidget {
                               vertical: 2,
                             ),
                             decoration: BoxDecoration(
-                              color: gold.withOpacity(0.25),
+                              color: gold.withValues(alpha: 0.25),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Text(
-                              'بعد ${toArabicNum(nextEvent!['daysLeft'])} يوم',
+                              'ط¨ط¹ط¯ ${toArabicNum(nextEvent!['daysLeft'])} ظٹظˆظ…',
                               style: GoogleFonts.cairo(
                                 color: gold,
                                 fontSize: compact ? 8 : 9,
@@ -687,7 +687,7 @@ class _EnhancedHeroHeader extends StatelessWidget {
                     ),
                     SizedBox(height: compact ? 8 : 10),
                   ],
-                  // اسم اليوم
+                  // ط§ط³ظ… ط§ظ„ظٹظˆظ…
                   Container(
                     padding: EdgeInsets.symmetric(
                       horizontal: compact ? 14 : 18,
@@ -696,13 +696,13 @@ class _EnhancedHeroHeader extends StatelessWidget {
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          Colors.white.withOpacity(0.12),
-                          Colors.white.withOpacity(0.06),
+                          Colors.white.withValues(alpha: 0.12),
+                          Colors.white.withValues(alpha: 0.06),
                         ],
                       ),
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
-                        color: Colors.white.withOpacity(0.1),
+                        color: Colors.white.withValues(alpha: 0.1),
                       ),
                     ),
                     child: Row(
@@ -710,14 +710,14 @@ class _EnhancedHeroHeader extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.wb_sunny_outlined,
-                          color: gold.withOpacity(0.8),
+                          color: gold.withValues(alpha: 0.8),
                           size: compact ? 12 : 14,
                         ),
                         SizedBox(width: compact ? 4 : 6),
                         Text(
                           getWeekday(selectedDate),
                           style: GoogleFonts.cairo(
-                            color: Colors.white.withOpacity(0.9),
+                            color: Colors.white.withValues(alpha: 0.9),
                             fontSize: compact ? 11 : 13,
                             fontWeight: FontWeight.w600,
                           ),
@@ -727,7 +727,7 @@ class _EnhancedHeroHeader extends StatelessWidget {
                   ),
                   SizedBox(height: compact ? 12 : 16),
 
-                  // التاريخ الهجري
+                  // ط§ظ„طھط§ط±ظٹط® ط§ظ„ظ‡ط¬ط±ظٹ
                   AnimatedSwitcher(
                     duration: const Duration(milliseconds: 400),
                     transitionBuilder: (child, animation) {
@@ -749,10 +749,10 @@ class _EnhancedHeroHeader extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          // زخرفة يسار
+                          // ط²ط®ط±ظپط© ظٹط³ط§ط±
                           _buildSideDecoration(isLeft: true),
                           SizedBox(width: compact ? 8 : 12),
-                          // التاريخ
+                          // ط§ظ„طھط§ط±ظٹط®
                           Text(
                             '${toArabicNum(hijri.hDay)} ${hijriMonths[hijri.hMonth - 1]} ${toArabicNum(hijri.hYear)}',
                             textAlign: TextAlign.center,
@@ -763,7 +763,7 @@ class _EnhancedHeroHeader extends StatelessWidget {
                               height: 1.2,
                               shadows: [
                                 Shadow(
-                                  color: Colors.black.withOpacity(0.3),
+                                  color: Colors.black.withValues(alpha: 0.3),
                                   blurRadius: 10,
                                   offset: const Offset(0, 3),
                                 ),
@@ -771,7 +771,7 @@ class _EnhancedHeroHeader extends StatelessWidget {
                             ),
                           ),
                           SizedBox(width: compact ? 8 : 12),
-                          // زخرفة يمين
+                          // ط²ط®ط±ظپط© ظٹظ…ظٹظ†
                           _buildSideDecoration(isLeft: false),
                         ],
                       ),
@@ -779,7 +779,7 @@ class _EnhancedHeroHeader extends StatelessWidget {
                   ),
                   const SizedBox(height: 6),
 
-                  // التاريخ الميلادي
+                  // ط§ظ„طھط§ط±ظٹط® ط§ظ„ظ…ظٹظ„ط§ط¯ظٹ
                   AnimatedSwitcher(
                     duration: const Duration(milliseconds: 350),
                     child: Row(
@@ -794,7 +794,7 @@ class _EnhancedHeroHeader extends StatelessWidget {
                             gradient: LinearGradient(
                               colors: [
                                 Colors.transparent,
-                                gold.withOpacity(0.4),
+                                gold.withValues(alpha: 0.4),
                               ],
                             ),
                           ),
@@ -804,7 +804,7 @@ class _EnhancedHeroHeader extends StatelessWidget {
                           child: Text(
                             DateFormat('dd MMMM yyyy', 'ar').format(selectedDate),
                             style: GoogleFonts.cairo(
-                              color: Colors.white.withOpacity(0.7),
+                              color: Colors.white.withValues(alpha: 0.7),
                               fontSize: compact ? 11 : 13,
                               letterSpacing: 0.5,
                             ),
@@ -816,7 +816,7 @@ class _EnhancedHeroHeader extends StatelessWidget {
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [
-                                gold.withOpacity(0.4),
+                                gold.withValues(alpha: 0.4),
                                 Colors.transparent,
                               ],
                             ),
@@ -826,7 +826,7 @@ class _EnhancedHeroHeader extends StatelessWidget {
                     ),
                   ),
 
-                  // وسم المناسبة
+                  // ظˆط³ظ… ط§ظ„ظ…ظ†ط§ط³ط¨ط©
                   if (event != null) ...[
                     SizedBox(height: compact ? 10 : 14),
                     AnimatedBuilder(
@@ -843,15 +843,15 @@ class _EnhancedHeroHeader extends StatelessWidget {
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [
-                              gold.withOpacity(0.25),
-                              gold.withOpacity(0.1),
+                              gold.withValues(alpha: 0.25),
+                              gold.withValues(alpha: 0.1),
                             ],
                           ),
                           borderRadius: BorderRadius.circular(18),
-                          border: Border.all(color: gold.withOpacity(0.4)),
+                          border: Border.all(color: gold.withValues(alpha: 0.4)),
                           boxShadow: [
                             BoxShadow(
-                              color: gold.withOpacity(0.2),
+                              color: gold.withValues(alpha: 0.2),
                               blurRadius: 12,
                               spreadRadius: 1,
                             ),
@@ -883,9 +883,9 @@ class _EnhancedHeroHeader extends StatelessWidget {
             ),
           ),
 
-          // ═══════════════════════════════════
-          // التدرج السفلي
-          // ═══════════════════════════════════
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+          // ط§ظ„طھط¯ط±ط¬ ط§ظ„ط³ظپظ„ظٹ
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
           Positioned(
             bottom: 0,
             left: 0,
@@ -898,7 +898,7 @@ class _EnhancedHeroHeader extends StatelessWidget {
                   end: Alignment.bottomCenter,
                   colors: [
                     Colors.transparent,
-                    Color.lerp(primaryColor, const Color(0xFF0A0E17), 0.5)!.withOpacity(0.6),
+                    Color.lerp(primaryColor, const Color(0xFF0A0E17), 0.5)!.withValues(alpha: 0.6),
                   ],
                 ),
               ),
@@ -909,9 +909,9 @@ class _EnhancedHeroHeader extends StatelessWidget {
     );
   }
 
-  // ═══════════════════════════════════
-  // الهلال المحسّن
-  // ═══════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ظ‡ظ„ط§ظ„ ط§ظ„ظ…ط­ط³ظ‘ظ†
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildEnhancedCrescent() {
     final s = compact ? 55.0 : tablet ? 75.0 : 65.0;
     return SizedBox(
@@ -919,7 +919,7 @@ class _EnhancedHeroHeader extends StatelessWidget {
       height: s,
       child: Stack(
         children: [
-          // توهج خارجي
+          // طھظˆظ‡ط¬ ط®ط§ط±ط¬ظٹ
           Container(
             width: s,
             height: s,
@@ -927,14 +927,14 @@ class _EnhancedHeroHeader extends StatelessWidget {
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: gold.withOpacity(0.3),
+                  color: gold.withValues(alpha: 0.3),
                   blurRadius: 25,
                   spreadRadius: 5,
                 ),
               ],
             ),
           ),
-          // الهلال الرئيسي
+          // ط§ظ„ظ‡ظ„ط§ظ„ ط§ظ„ط±ط¦ظٹط³ظٹ
           Container(
             width: s,
             height: s,
@@ -943,18 +943,18 @@ class _EnhancedHeroHeader extends StatelessWidget {
               gradient: RadialGradient(
                 center: const Alignment(-0.3, -0.3),
                 colors: [
-                  gold.withOpacity(0.5),
-                  gold.withOpacity(0.25),
-                  gold.withOpacity(0.1),
+                  gold.withValues(alpha: 0.5),
+                  gold.withValues(alpha: 0.25),
+                  gold.withValues(alpha: 0.1),
                 ],
               ),
               border: Border.all(
-                color: gold.withOpacity(0.3),
+                color: gold.withValues(alpha: 0.3),
                 width: 1,
               ),
             ),
           ),
-          // القطع الداخلي للهلال
+          // ط§ظ„ظ‚ط·ط¹ ط§ظ„ط¯ط§ط®ظ„ظٹ ظ„ظ„ظ‡ظ„ط§ظ„
           Positioned(
             left: s * 0.22,
             top: s * 0.05,
@@ -967,7 +967,7 @@ class _EnhancedHeroHeader extends StatelessWidget {
               ),
             ),
           ),
-          // نجمة صغيرة بجانب الهلال
+          // ظ†ط¬ظ…ط© طµط؛ظٹط±ط© ط¨ط¬ط§ظ†ط¨ ط§ظ„ظ‡ظ„ط§ظ„
           Positioned(
             right: s * 0.05,
             bottom: s * 0.25,
@@ -991,9 +991,9 @@ class _EnhancedHeroHeader extends StatelessWidget {
     );
   }
 
-  // ═══════════════════════════════════
-  // النجوم المتلألئة
-  // ═══════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ظ†ط¬ظˆظ… ط§ظ„ظ…طھظ„ط£ظ„ط¦ط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   List<Widget> _buildStars() {
     final starData = [
       {'top': 70.0, 'right': 50.0, 'size': 3.0, 'delay': 0.0},
@@ -1026,7 +1026,7 @@ class _EnhancedHeroHeader extends StatelessWidget {
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                        color: gold.withOpacity(0.6),
+                        color: gold.withValues(alpha: 0.6),
                         blurRadius: 6,
                         spreadRadius: 1,
                       ),
@@ -1041,9 +1041,9 @@ class _EnhancedHeroHeader extends StatelessWidget {
     }).toList();
   }
 
-  // ═══════════════════════════════════
-  // الزخرفة الهندسية
-  // ═══════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ط²ط®ط±ظپط© ط§ظ„ظ‡ظ†ط¯ط³ظٹط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildGeometricDecoration() {
     final size = compact ? 35.0 : 45.0;
     return AnimatedBuilder(
@@ -1061,9 +1061,9 @@ class _EnhancedHeroHeader extends StatelessWidget {
     );
   }
 
-  // ═══════════════════════════════════
-  // الزخارف الجانبية للتاريخ
-  // ═══════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ط²ط®ط§ط±ظپ ط§ظ„ط¬ط§ظ†ط¨ظٹط© ظ„ظ„طھط§ط±ظٹط®
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildSideDecoration({required bool isLeft}) {
     return Row(
       mainAxisSize: MainAxisSize.min,
@@ -1074,7 +1074,7 @@ class _EnhancedHeroHeader extends StatelessWidget {
             height: 4,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: gold.withOpacity(0.6),
+              color: gold.withValues(alpha: 0.6),
             ),
           ),
           const SizedBox(width: 4),
@@ -1086,8 +1086,8 @@ class _EnhancedHeroHeader extends StatelessWidget {
             borderRadius: BorderRadius.circular(1),
             gradient: LinearGradient(
               colors: isLeft
-                  ? [Colors.transparent, gold.withOpacity(0.5)]
-                  : [gold.withOpacity(0.5), Colors.transparent],
+                  ? [Colors.transparent, gold.withValues(alpha: 0.5)]
+                  : [gold.withValues(alpha: 0.5), Colors.transparent],
             ),
           ),
         ),
@@ -1098,7 +1098,7 @@ class _EnhancedHeroHeader extends StatelessWidget {
             height: 4,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: gold.withOpacity(0.6),
+              color: gold.withValues(alpha: 0.6),
             ),
           ),
         ],
@@ -1107,9 +1107,9 @@ class _EnhancedHeroHeader extends StatelessWidget {
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// النقش الإسلامي الهندسي
-// ═══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط§ظ„ظ†ظ‚ط´ ط§ظ„ط¥ط³ظ„ط§ظ…ظٹ ط§ظ„ظ‡ظ†ط¯ط³ظٹ
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _IslamicPatternPainter extends CustomPainter {
   final Color color;
   final double lineWidth;
@@ -1130,7 +1130,7 @@ class _IslamicPatternPainter extends CustomPainter {
         final cx = x + step / 2;
         final cy = y + step / 2;
 
-        // رسم شكل ثماني
+        // ط±ط³ظ… ط´ظƒظ„ ط«ظ…ط§ظ†ظٹ
         final path = Path();
         for (int i = 0; i < 8; i++) {
           final angle = (math.pi / 4) * i - math.pi / 8;
@@ -1146,7 +1146,7 @@ class _IslamicPatternPainter extends CustomPainter {
         path.close();
         canvas.drawPath(path, paint);
 
-        // خطوط متقاطعة
+        // ط®ط·ظˆط· ظ…طھظ‚ط§ط·ط¹ط©
         canvas.drawLine(
           Offset(cx - step * 0.2, cy),
           Offset(cx + step * 0.2, cy),
@@ -1166,9 +1166,9 @@ class _IslamicPatternPainter extends CustomPainter {
       oldDelegate.color != color;
 }
 
-// ═══════════════════════════════════════════════════════════════
-// رسام النجمة
-// ═══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط±ط³ط§ظ… ط§ظ„ظ†ط¬ظ…ط©
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _StarPainter extends CustomPainter {
   final Color color;
 
@@ -1206,9 +1206,9 @@ class _StarPainter extends CustomPainter {
       oldDelegate.color != color;
 }
 
-// ═══════════════════════════════════════════════════════════════
-// رسام الزخرفة الهندسية
-// ═══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط±ط³ط§ظ… ط§ظ„ط²ط®ط±ظپط© ط§ظ„ظ‡ظ†ط¯ط³ظٹط©
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _GeometricDecorationPainter extends CustomPainter {
   final Color color;
 
@@ -1225,7 +1225,7 @@ class _GeometricDecorationPainter extends CustomPainter {
     final cy = size.height / 2;
     final r = size.width / 2;
 
-    // مربع خارجي مائل
+    // ظ…ط±ط¨ط¹ ط®ط§ط±ط¬ظٹ ظ…ط§ط¦ظ„
     canvas.save();
     canvas.translate(cx, cy);
     canvas.rotate(math.pi / 4);
@@ -1235,10 +1235,10 @@ class _GeometricDecorationPainter extends CustomPainter {
     );
     canvas.restore();
 
-    // دائرة داخلية
+    // ط¯ط§ط¦ط±ط© ط¯ط§ط®ظ„ظٹط©
     canvas.drawCircle(Offset(cx, cy), r * 0.6, paint);
 
-    // نقطة مركزية
+    // ظ†ظ‚ط·ط© ظ…ط±ظƒط²ظٹط©
     final fillPaint = Paint()
       ..color = color
       ..style = PaintingStyle.fill;
@@ -1250,9 +1250,9 @@ class _GeometricDecorationPainter extends CustomPainter {
       oldDelegate.color != color;
 }
 
-// ═══════════════════════════════════════════════════════════════
-// باقي الـ Widgets (نفس الكود السابق)
-// ═══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط¨ط§ظ‚ظٹ ط§ظ„ظ€ Widgets (ظ†ظپط³ ط§ظ„ظƒظˆط¯ ط§ظ„ط³ط§ط¨ظ‚)
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
 class _InfoRow extends StatelessWidget {
   final HijriCalendar hijri;
@@ -1277,9 +1277,9 @@ class _InfoRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = [
-      {'title': 'اليوم', 'value': toArabicNum(hijri.hDay), 'icon': Icons.today_rounded},
-      {'title': 'الشهر', 'value': hijriMonths[hijri.hMonth - 1], 'icon': Icons.calendar_month_rounded},
-      {'title': 'السنة', 'value': toArabicNum(hijri.hYear), 'icon': Icons.date_range_rounded},
+      {'title': 'ط§ظ„ظٹظˆظ…', 'value': toArabicNum(hijri.hDay), 'icon': Icons.today_rounded},
+      {'title': 'ط§ظ„ط´ظ‡ط±', 'value': hijriMonths[hijri.hMonth - 1], 'icon': Icons.calendar_month_rounded},
+      {'title': 'ط§ظ„ط³ظ†ط©', 'value': toArabicNum(hijri.hYear), 'icon': Icons.date_range_rounded},
     ];
 
     return Row(
@@ -1291,8 +1291,8 @@ class _InfoRow extends StatelessWidget {
             decoration: BoxDecoration(
               color: card,
               borderRadius: BorderRadius.circular(18),
-              border: Border.all(color: isDark ? Colors.white10 : primaryColor.withOpacity(0.06)),
-              boxShadow: [BoxShadow(color: primaryColor.withOpacity(isDark ? 0.08 : 0.04), blurRadius: 12, offset: const Offset(0, 4))],
+              border: Border.all(color: isDark ? Colors.white10 : primaryColor.withValues(alpha: 0.06)),
+              boxShadow: [BoxShadow(color: primaryColor.withValues(alpha: isDark ? 0.08 : 0.04), blurRadius: 12, offset: const Offset(0, 4))],
             ),
             child: Column(
               children: [
@@ -1300,7 +1300,7 @@ class _InfoRow extends StatelessWidget {
                   width: compact ? 32 : 38,
                   height: compact ? 32 : 38,
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(colors: [primaryColor.withOpacity(0.12), primaryColor.withOpacity(0.04)]),
+                    gradient: LinearGradient(colors: [primaryColor.withValues(alpha: 0.12), primaryColor.withValues(alpha: 0.04)]),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Icon(item['icon'] as IconData, color: primaryColor, size: compact ? 15 : 17),
@@ -1349,10 +1349,10 @@ class _EventCard extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
-          colors: [primaryColor.withOpacity(isDark ? 0.15 : 0.08), gold.withOpacity(isDark ? 0.08 : 0.03)],
+          colors: [primaryColor.withValues(alpha: isDark ? 0.15 : 0.08), gold.withValues(alpha: isDark ? 0.08 : 0.03)],
         ),
         borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: gold.withOpacity(0.2)),
+        border: Border.all(color: gold.withValues(alpha: 0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -1364,7 +1364,7 @@ class _EventCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  _Badge(text: 'مناسبة اليوم', color: gold),
+                  _Badge(text: 'ظ…ظ†ط§ط³ط¨ط© ط§ظ„ظٹظˆظ…', color: gold),
                   const SizedBox(height: 6),
                   Row(
                     mainAxisSize: MainAxisSize.min,
@@ -1411,7 +1411,7 @@ class _NoteCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: card,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: isDark ? Colors.white10 : primaryColor.withOpacity(0.08)),
+        border: Border.all(color: isDark ? Colors.white10 : primaryColor.withValues(alpha: 0.08)),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1431,7 +1431,7 @@ class _NoteCard extends StatelessWidget {
             width: compact ? 38 : 44,
             height: compact ? 38 : 44,
             decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [primaryColor.withOpacity(0.12), primaryColor.withOpacity(0.04)]),
+              gradient: LinearGradient(colors: [primaryColor.withValues(alpha: 0.12), primaryColor.withValues(alpha: 0.04)]),
               borderRadius: BorderRadius.circular(14),
             ),
             child: Icon(Icons.lightbulb_outline_rounded, color: primaryColor, size: compact ? 20 : 22),
@@ -1458,7 +1458,7 @@ class _FactCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: card,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: gold.withOpacity(0.12)),
+        border: Border.all(color: gold.withValues(alpha: 0.12)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -1469,13 +1469,13 @@ class _FactCard extends StatelessWidget {
               const SizedBox(width: 8),
               _IconBtn(icon: Icons.refresh_rounded, color: gold, onTap: onRefresh),
               const Spacer(),
-              Text('هل تعلم؟', style: GoogleFonts.cairo(fontSize: compact ? 13 : 15, fontWeight: FontWeight.bold, color: gold)),
+              Text('ظ‡ظ„ طھط¹ظ„ظ…طں', style: GoogleFonts.cairo(fontSize: compact ? 13 : 15, fontWeight: FontWeight.bold, color: gold)),
               const SizedBox(width: 8),
               Container(
                 width: compact ? 36 : 42,
                 height: compact ? 36 : 42,
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [gold.withOpacity(0.12), gold.withOpacity(0.04)]),
+                  gradient: LinearGradient(colors: [gold.withValues(alpha: 0.12), gold.withValues(alpha: 0.04)]),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Icon(Icons.auto_awesome_rounded, color: gold, size: compact ? 16 : 20),
@@ -1544,15 +1544,15 @@ class _CalendarCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: card,
         borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: isDark ? Colors.white10 : primaryColor.withOpacity(0.05)),
-        boxShadow: [BoxShadow(color: Colors.black.withOpacity(isDark ? 0.15 : 0.04), blurRadius: 15, offset: const Offset(0, 5))],
+        border: Border.all(color: isDark ? Colors.white10 : primaryColor.withValues(alpha: 0.05)),
+        boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: isDark ? 0.15 : 0.04), blurRadius: 15, offset: const Offset(0, 5))],
       ),
       child: Column(
         children: [
           Container(
             padding: EdgeInsets.symmetric(vertical: compact ? 8 : 12, horizontal: compact ? 4 : 8),
             decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [primaryColor.withOpacity(0.06), primaryColor.withOpacity(0.02)]),
+              gradient: LinearGradient(colors: [primaryColor.withValues(alpha: 0.06), primaryColor.withValues(alpha: 0.02)]),
               borderRadius: BorderRadius.circular(16),
             ),
             child: Row(
@@ -1586,12 +1586,12 @@ class _CalendarCard extends StatelessWidget {
           SizedBox(height: compact ? 12 : 16),
           Row(
             children: weekDays.map((d) {
-              final isFri = d == 'ج';
+              final isFri = d == 'ط¬';
               return Expanded(
                 child: Center(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 4),
-                    child: Text(d, style: GoogleFonts.cairo(fontWeight: FontWeight.w800, color: isFri ? gold : primaryColor.withOpacity(0.6), fontSize: compact ? 10 : 12)),
+                    child: Text(d, style: GoogleFonts.cairo(fontWeight: FontWeight.w800, color: isFri ? gold : primaryColor.withValues(alpha: 0.6), fontSize: compact ? 10 : 12)),
                   ),
                 ),
               );
@@ -1624,10 +1624,10 @@ class _CalendarCard extends StatelessWidget {
                     duration: const Duration(milliseconds: 250),
                     decoration: BoxDecoration(
                       gradient: isSelected ? LinearGradient(colors: [primaryColor, Color.lerp(primaryColor, Colors.black, 0.25)!]) : null,
-                      color: !isSelected ? (isToday ? gold.withOpacity(0.1) : hasEv ? primaryColor.withOpacity(0.04) : null) : null,
+                      color: !isSelected ? (isToday ? gold.withValues(alpha: 0.1) : hasEv ? primaryColor.withValues(alpha: 0.04) : null) : null,
                       borderRadius: BorderRadius.circular(compact ? 10 : 12),
-                      border: isToday && !isSelected ? Border.all(color: gold.withOpacity(0.5), width: 1.5) : hasEv && !isSelected ? Border.all(color: primaryColor.withOpacity(0.15)) : null,
-                      boxShadow: isSelected ? [BoxShadow(color: primaryColor.withOpacity(0.3), blurRadius: 8, offset: const Offset(0, 3))] : null,
+                      border: isToday && !isSelected ? Border.all(color: gold.withValues(alpha: 0.5), width: 1.5) : hasEv && !isSelected ? Border.all(color: primaryColor.withValues(alpha: 0.15)) : null,
+                      boxShadow: isSelected ? [BoxShadow(color: primaryColor.withValues(alpha: 0.3), blurRadius: 8, offset: const Offset(0, 3))] : null,
                     ),
                     child: Stack(
                       alignment: Alignment.center,
@@ -1641,7 +1641,7 @@ class _CalendarCard extends StatelessWidget {
                               style: GoogleFonts.cairo(
                                 fontSize: compact ? 11 : 13,
                                 fontWeight: isSelected || isToday ? FontWeight.bold : FontWeight.w600,
-                                color: isSelected ? Colors.white : !isCurrent ? subText.withOpacity(0.3) : isFri ? gold : text,
+                                color: isSelected ? Colors.white : !isCurrent ? subText.withValues(alpha: 0.3) : isFri ? gold : text,
                               ),
                             ),
                           ),
@@ -1655,8 +1655,8 @@ class _CalendarCard extends StatelessWidget {
                               height: compact ? 6 : 8,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                gradient: RadialGradient(colors: [isSelected ? Colors.white : gold, (isSelected ? Colors.white : gold).withOpacity(0.6)]),
-                                boxShadow: [BoxShadow(color: (isSelected ? Colors.white : gold).withOpacity(0.5), blurRadius: 3)],
+                                gradient: RadialGradient(colors: [isSelected ? Colors.white : gold, (isSelected ? Colors.white : gold).withValues(alpha: 0.6)]),
+                                boxShadow: [BoxShadow(color: (isSelected ? Colors.white : gold).withValues(alpha: 0.5), blurRadius: 3)],
                               ),
                             ),
                           ),
@@ -1679,14 +1679,14 @@ class _CalendarCard extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [primaryColor.withOpacity(0.1), primaryColor.withOpacity(0.04)]),
+                  gradient: LinearGradient(colors: [primaryColor.withValues(alpha: 0.1), primaryColor.withValues(alpha: 0.04)]),
                   borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: primaryColor.withOpacity(0.12)),
+                  border: Border.all(color: primaryColor.withValues(alpha: 0.12)),
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text('العودة لليوم', style: GoogleFonts.cairo(color: primaryColor, fontSize: 12, fontWeight: FontWeight.bold)),
+                    Text('ط§ظ„ط¹ظˆط¯ط© ظ„ظ„ظٹظˆظ…', style: GoogleFonts.cairo(color: primaryColor, fontSize: 12, fontWeight: FontWeight.bold)),
                     const SizedBox(width: 6),
                     Icon(Icons.today_rounded, color: primaryColor, size: 16),
                   ],
@@ -1699,9 +1699,9 @@ class _CalendarCard extends StatelessWidget {
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 // SHARED WIDGETS
-// ═══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _IconBtn extends StatelessWidget {
   final IconData icon;
   final Color color;
@@ -1716,7 +1716,7 @@ class _IconBtn extends StatelessWidget {
       child: Container(
         width: 36,
         height: 36,
-        decoration: BoxDecoration(color: color.withOpacity(0.1), borderRadius: BorderRadius.circular(10)),
+        decoration: BoxDecoration(color: color.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(10)),
         child: Icon(icon, color: color, size: 16),
       ),
     );
@@ -1740,7 +1740,7 @@ class _MonthArrow extends StatelessWidget {
       child: Container(
         width: 38,
         height: 38,
-        decoration: BoxDecoration(color: color.withOpacity(0.08), borderRadius: BorderRadius.circular(10)),
+        decoration: BoxDecoration(color: color.withValues(alpha: 0.08), borderRadius: BorderRadius.circular(10)),
         child: Icon(icon, color: color, size: 22),
       ),
     );
@@ -1757,7 +1757,7 @@ class _Badge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-      decoration: BoxDecoration(color: color.withOpacity(0.12), borderRadius: BorderRadius.circular(10), border: Border.all(color: color.withOpacity(0.2))),
+      decoration: BoxDecoration(color: color.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(10), border: Border.all(color: color.withValues(alpha: 0.2))),
       child: Text(text, style: GoogleFonts.cairo(fontSize: 9, fontWeight: FontWeight.bold, color: color)),
     );
   }
@@ -1772,7 +1772,7 @@ class _Divider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 1,
-      decoration: BoxDecoration(gradient: LinearGradient(colors: [Colors.transparent, color.withOpacity(0.2), Colors.transparent])),
+      decoration: BoxDecoration(gradient: LinearGradient(colors: [Colors.transparent, color.withValues(alpha: 0.2), Colors.transparent])),
     );
   }
 }

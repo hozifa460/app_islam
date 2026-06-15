@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -65,7 +65,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
             onPressed: () => Navigator.pop(context),
           ),
           title: Text(
-            'المفضلة',
+            'ط§ظ„ظ…ظپط¶ظ„ط©',
             style: GoogleFonts.cairo(
               fontSize: 20,
               fontWeight: FontWeight.w700,
@@ -121,7 +121,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
               children: [
                 const Icon(Icons.favorite_rounded, size: 16),
                 const SizedBox(width: 6),
-                Text('المفضلة (${_favManager?.favoriteVideosCount ?? 0})'),
+                Text('ط§ظ„ظ…ظپط¶ظ„ط© (${_favManager?.favoriteVideosCount ?? 0})'),
               ],
             ),
           ),
@@ -131,7 +131,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
               children: [
                 const Icon(Icons.watch_later_rounded, size: 16),
                 const SizedBox(width: 6),
-                Text('لاحقاً (${_favManager?.watchLaterCount ?? 0})'),
+                Text('ظ„ط§ط­ظ‚ط§ظ‹ (${_favManager?.watchLaterCount ?? 0})'),
               ],
             ),
           ),
@@ -141,7 +141,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
               children: [
                 Icon(Icons.history_rounded, size: 16),
                 SizedBox(width: 6),
-                Text('السجل'),
+                Text('ط§ظ„ط³ط¬ظ„'),
               ],
             ),
           ),
@@ -158,8 +158,8 @@ class _FavoritesScreenState extends State<FavoritesScreen>
         theme,
         w,
         Icons.favorite_border_rounded,
-        'لا توجد فيديوهات مفضلة',
-        'اضغط على ❤️ لإضافة فيديو للمفضلة',
+        'ظ„ط§ طھظˆط¬ط¯ ظپظٹط¯ظٹظˆظ‡ط§طھ ظ…ظپط¶ظ„ط©',
+        'ط§ط¶ط؛ط· ط¹ظ„ظ‰ â‌¤ï¸ڈ ظ„ط¥ط¶ط§ظپط© ظپظٹط¯ظٹظˆ ظ„ظ„ظ…ظپط¶ظ„ط©',
       );
     }
 
@@ -188,14 +188,14 @@ class _FavoritesScreenState extends State<FavoritesScreen>
         theme,
         w,
         Icons.watch_later_outlined,
-        'قائمة المشاهدة لاحقاً فارغة',
-        'احفظ فيديوهات لمشاهدتها لاحقاً',
+        'ظ‚ط§ط¦ظ…ط© ط§ظ„ظ…ط´ط§ظ‡ط¯ط© ظ„ط§ط­ظ‚ط§ظ‹ ظپط§ط±ط؛ط©',
+        'ط§ط­ظپط¸ ظپظٹط¯ظٹظˆظ‡ط§طھ ظ„ظ…ط´ط§ظ‡ط¯طھظ‡ط§ ظ„ط§ط­ظ‚ط§ظ‹',
       );
     }
 
     return Column(
       children: [
-        // زر تشغيل الكل
+        // ط²ط± طھط´ط؛ظٹظ„ ط§ظ„ظƒظ„
         Padding(
           padding: EdgeInsets.fromLTRB(w * 0.04, w * 0.03, w * 0.04, 0),
           child: Row(
@@ -210,7 +210,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
                   },
                   icon: const Icon(Icons.play_arrow_rounded, size: 20),
                   label: Text(
-                    'تشغيل الكل',
+                    'طھط´ط؛ظٹظ„ ط§ظ„ظƒظ„',
                     style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
                   ),
                   style: ElevatedButton.styleFrom(
@@ -228,8 +228,8 @@ class _FavoritesScreenState extends State<FavoritesScreen>
                 onPressed: () => _showClearConfirmation(
                   context,
                   theme,
-                  'مسح القائمة',
-                  'هل تريد مسح قائمة المشاهدة لاحقاً؟',
+                  'ظ…ط³ط­ ط§ظ„ظ‚ط§ط¦ظ…ط©',
+                  'ظ‡ظ„ طھط±ظٹط¯ ظ…ط³ط­ ظ‚ط§ط¦ظ…ط© ط§ظ„ظ…ط´ط§ظ‡ط¯ط© ظ„ط§ط­ظ‚ط§ظ‹طں',
                       () => _favManager?.clearWatchLater(),
                 ),
                 icon: Icon(
@@ -270,14 +270,14 @@ class _FavoritesScreenState extends State<FavoritesScreen>
         theme,
         w,
         Icons.history_rounded,
-        'سجل المشاهدة فارغ',
-        'ستظهر هنا الفيديوهات التي شاهدتها',
+        'ط³ط¬ظ„ ط§ظ„ظ…ط´ط§ظ‡ط¯ط© ظپط§ط±ط؛',
+        'ط³طھط¸ظ‡ط± ظ‡ظ†ط§ ط§ظ„ظپظٹط¯ظٹظˆظ‡ط§طھ ط§ظ„طھظٹ ط´ط§ظ‡ط¯طھظ‡ط§',
       );
     }
 
     return Column(
       children: [
-        // زر مسح السجل
+        // ط²ط± ظ…ط³ط­ ط§ظ„ط³ط¬ظ„
         Padding(
           padding: EdgeInsets.fromLTRB(w * 0.04, w * 0.03, w * 0.04, 0),
           child: Row(
@@ -287,8 +287,8 @@ class _FavoritesScreenState extends State<FavoritesScreen>
                 onPressed: () => _showClearConfirmation(
                   context,
                   theme,
-                  'مسح السجل',
-                  'هل تريد مسح سجل المشاهدة؟',
+                  'ظ…ط³ط­ ط§ظ„ط³ط¬ظ„',
+                  'ظ‡ظ„ طھط±ظٹط¯ ظ…ط³ط­ ط³ط¬ظ„ ط§ظ„ظ…ط´ط§ظ‡ط¯ط©طں',
                       () => _favManager?.clearHistory(),
                 ),
                 icon: Icon(
@@ -297,7 +297,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
                   color: theme.captionColor,
                 ),
                 label: Text(
-                  'مسح السجل',
+                  'ظ…ط³ط­ ط§ظ„ط³ط¬ظ„',
                   style: GoogleFonts.cairo(
                     fontSize: 13,
                     color: theme.captionColor,
@@ -354,7 +354,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
             child: Icon(
               icon,
               size: (w * 0.12).clamp(40.0, 60.0),
-              color: theme.captionColor.withOpacity(0.5),
+              color: theme.captionColor.withValues(alpha: 0.5),
             ),
           ),
           SizedBox(height: w * 0.04),
@@ -381,7 +381,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
   }
 
   void _openVideo(YoutubeVideo video) {
-    // إضافة للسجل
+    // ط¥ط¶ط§ظپط© ظ„ظ„ط³ط¬ظ„
     _favManager?.addToHistory(video);
 
     Navigator.push(
@@ -426,7 +426,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(
-              'إلغاء',
+              'ط¥ظ„ط؛ط§ط،',
               style: GoogleFonts.cairo(color: theme.subtitleColor),
             ),
           ),
@@ -436,7 +436,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
               onConfirm();
             },
             child: Text(
-              'مسح',
+              'ظ…ط³ط­',
               style: GoogleFonts.cairo(
                 color: const Color(0xFFEF4444),
                 fontWeight: FontWeight.w700,
@@ -450,17 +450,17 @@ class _FavoritesScreenState extends State<FavoritesScreen>
 
   String _timeAgo(DateTime dt) {
     final diff = DateTime.now().difference(dt);
-    if (diff.inDays > 365) return 'منذ ${diff.inDays ~/ 365} سنة';
-    if (diff.inDays > 30) return 'منذ ${diff.inDays ~/ 30} شهر';
-    if (diff.inDays > 0) return 'منذ ${diff.inDays} يوم';
-    if (diff.inHours > 0) return 'منذ ${diff.inHours} ساعة';
-    return 'الآن';
+    if (diff.inDays > 365) return 'ظ…ظ†ط° ${diff.inDays ~/ 365} ط³ظ†ط©';
+    if (diff.inDays > 30) return 'ظ…ظ†ط° ${diff.inDays ~/ 30} ط´ظ‡ط±';
+    if (diff.inDays > 0) return 'ظ…ظ†ط° ${diff.inDays} ظٹظˆظ…';
+    if (diff.inHours > 0) return 'ظ…ظ†ط° ${diff.inHours} ط³ط§ط¹ط©';
+    return 'ط§ظ„ط¢ظ†';
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-//  بطاقة فيديو مفضل
-// ═══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+//  ط¨ط·ط§ظ‚ط© ظپظٹط¯ظٹظˆ ظ…ظپط¶ظ„
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _FavoriteVideoCard extends StatelessWidget {
   final YoutubeVideo video;
   final ChannelsTheme theme;
@@ -508,7 +508,7 @@ class _FavoriteVideoCard extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // الصورة
+                // ط§ظ„طµظˆط±ط©
                 ClipRRect(
                   borderRadius: const BorderRadius.only(
                     topRight: Radius.circular(14),
@@ -539,7 +539,7 @@ class _FavoriteVideoCard extends StatelessWidget {
                               vertical: 2,
                             ),
                             decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.8),
+                              color: Colors.black.withValues(alpha: 0.8),
                               borderRadius: BorderRadius.circular(4),
                             ),
                             child: Text(
@@ -556,7 +556,7 @@ class _FavoriteVideoCard extends StatelessWidget {
                   ),
                 ),
 
-                // المعلومات
+                // ط§ظ„ظ…ط¹ظ„ظˆظ…ط§طھ
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.all(w * 0.025),
@@ -589,7 +589,7 @@ class _FavoriteVideoCard extends StatelessWidget {
                           children: [
                             if (video.viewCount != '0') ...[
                               Text(
-                                '${YoutubeService.formatViews(video.viewCount)} مشاهدة',
+                                '${YoutubeService.formatViews(video.viewCount)} ظ…ط´ط§ظ‡ط¯ط©',
                                 style: GoogleFonts.cairo(
                                   fontSize: (w * 0.024).clamp(9.0, 11.0),
                                   color: theme.captionColor,
@@ -603,7 +603,7 @@ class _FavoriteVideoCard extends StatelessWidget {
                   ),
                 ),
 
-                // زر الإزالة
+                // ط²ط± ط§ظ„ط¥ط²ط§ظ„ط©
                 IconButton(
                   onPressed: () {
                     HapticFeedback.lightImpact();
@@ -624,9 +624,9 @@ class _FavoriteVideoCard extends StatelessWidget {
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-//  بطاقة فيديو السجل مع مؤشر التقدم
-// ═══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+//  ط¨ط·ط§ظ‚ط© ظپظٹط¯ظٹظˆ ط§ظ„ط³ط¬ظ„ ظ…ط¹ ظ…ط¤ط´ط± ط§ظ„طھظ‚ط¯ظ…
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _HistoryVideoCard extends StatelessWidget {
   final YoutubeVideo video;
   final double? progress;
@@ -649,10 +649,10 @@ class _HistoryVideoCard extends StatelessWidget {
   String _formatWatchedAt() {
     if (watchedAt == null) return '';
     final diff = DateTime.now().difference(watchedAt!);
-    if (diff.inMinutes < 60) return 'منذ ${diff.inMinutes} دقيقة';
-    if (diff.inHours < 24) return 'منذ ${diff.inHours} ساعة';
-    if (diff.inDays < 7) return 'منذ ${diff.inDays} يوم';
-    return 'منذ ${diff.inDays ~/ 7} أسبوع';
+    if (diff.inMinutes < 60) return 'ظ…ظ†ط° ${diff.inMinutes} ط¯ظ‚ظٹظ‚ط©';
+    if (diff.inHours < 24) return 'ظ…ظ†ط° ${diff.inHours} ط³ط§ط¹ط©';
+    if (diff.inDays < 7) return 'ظ…ظ†ط° ${diff.inDays} ظٹظˆظ…';
+    return 'ظ…ظ†ط° ${diff.inDays ~/ 7} ط£ط³ط¨ظˆط¹';
   }
 
   @override
@@ -673,7 +673,7 @@ class _HistoryVideoCard extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // الصورة
+                  // ط§ظ„طµظˆط±ط©
                   ClipRRect(
                     borderRadius: const BorderRadius.only(
                       topRight: Radius.circular(14),
@@ -696,7 +696,7 @@ class _HistoryVideoCard extends StatelessWidget {
                                 vertical: 2,
                               ),
                               decoration: BoxDecoration(
-                                color: Colors.black.withOpacity(0.8),
+                                color: Colors.black.withValues(alpha: 0.8),
                                 borderRadius: BorderRadius.circular(4),
                               ),
                               child: Text(
@@ -713,7 +713,7 @@ class _HistoryVideoCard extends StatelessWidget {
                     ),
                   ),
 
-                  // المعلومات
+                  // ط§ظ„ظ…ط¹ظ„ظˆظ…ط§طھ
                   Expanded(
                     child: Padding(
                       padding: EdgeInsets.all(w * 0.025),
@@ -764,7 +764,7 @@ class _HistoryVideoCard extends StatelessWidget {
                     ),
                   ),
 
-                  // زر الإزالة
+                  // ط²ط± ط§ظ„ط¥ط²ط§ظ„ط©
                   IconButton(
                     onPressed: onRemove,
                     icon: Icon(
@@ -776,7 +776,7 @@ class _HistoryVideoCard extends StatelessWidget {
                 ],
               ),
 
-              // شريط التقدم
+              // ط´ط±ظٹط· ط§ظ„طھظ‚ط¯ظ…
               if (progress != null && progress! > 0)
                 ClipRRect(
                   borderRadius: const BorderRadius.only(

@@ -1,4 +1,4 @@
-import 'dart:io';
+﻿import 'dart:io';
 import 'package:flutter/material.dart';
 
 import '../../more/data/muezzin_catalog.dart';
@@ -21,7 +21,7 @@ class MuezzinImageWidget extends StatelessWidget {
             fit: StackFit.expand,
             children: [
               Image.file(File(localPath), fit: BoxFit.cover),
-              Container(color: Colors.black.withOpacity(0.25)),
+              Container(color: Colors.black.withValues(alpha: 0.25)),
             ],
           );
         }
@@ -42,7 +42,7 @@ class MuezzinImageWidget extends StatelessWidget {
                 );
               },
             ),
-            Container(color: Colors.black.withOpacity(0.25)),
+            Container(color: Colors.black.withValues(alpha: 0.25)),
           ],
         );
       },

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SheetWidgets {
@@ -14,7 +14,7 @@ class SheetWidgets {
           width: 38,
           height: 4,
           decoration: BoxDecoration(
-            color: Colors.grey.withOpacity(0.35),
+            color: Colors.grey.withValues(alpha: 0.35),
             borderRadius: BorderRadius.circular(10),
           ),
         ),
@@ -35,7 +35,7 @@ class SheetWidgets {
           ),
         ],
         const SizedBox(height: 10),
-        Divider(height: 1, color: Colors.grey.withOpacity(0.2)),
+        Divider(height: 1, color: Colors.grey.withValues(alpha: 0.2)),
         const SizedBox(height: 8),
       ],
     );
@@ -86,9 +86,9 @@ class SheetWidgets {
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: primary.withOpacity(0.06),
+          color: primary.withValues(alpha: 0.06),
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: primary.withOpacity(0.12)),
+          border: Border.all(color: primary.withValues(alpha: 0.12)),
         ),
         child: Row(
           children: [
@@ -137,8 +137,8 @@ class SheetWidgets {
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: isSelected
-              ? primary.withOpacity(0.15)
-              : Colors.grey.withOpacity(0.1),
+              ? primary.withValues(alpha: 0.15)
+              : Colors.grey.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Icon(icon, color: isSelected ? primary : Colors.grey, size: 24),
@@ -175,7 +175,7 @@ class SheetWidgets {
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
+              color: color.withValues(alpha: 0.1),
               shape: BoxShape.circle,
             ),
             child: Icon(icon, color: color, size: 24),

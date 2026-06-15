@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:share_plus/share_plus.dart';
@@ -20,14 +20,14 @@ class DuaCategoryScreen extends StatelessWidget {
   });
 
   void _copyDua(BuildContext context, Dua dua) {
-    final text = '${dua.title}\n\n${dua.text}\n\n📖 ${dua.source}'
-        '${dua.reward.isNotEmpty ? '\n\n⭐ ${dua.reward}' : ''}';
+    final text = '${dua.title}\n\n${dua.text}\n\nًں“– ${dua.source}'
+        '${dua.reward.isNotEmpty ? '\n\nâ­گ ${dua.reward}' : ''}';
 
     Clipboard.setData(ClipboardData(text: text));
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('تم نسخ الدعاء', style: GoogleFonts.cairo()),
+        content: Text('طھظ… ظ†ط³ط® ط§ظ„ط¯ط¹ط§ط،', style: GoogleFonts.cairo()),
         backgroundColor: Colors.green,
         duration: const Duration(seconds: 2),
       ),
@@ -35,9 +35,9 @@ class DuaCategoryScreen extends StatelessWidget {
   }
 
   void _shareDua(Dua dua) {
-    final text = '${dua.title}\n\n${dua.text}\n\n📖 ${dua.source}'
-        '${dua.reward.isNotEmpty ? '\n\n⭐ ${dua.reward}' : ''}'
-        '\n\n— تطبيق طريق الإسلام';
+    final text = '${dua.title}\n\n${dua.text}\n\nًں“– ${dua.source}'
+        '${dua.reward.isNotEmpty ? '\n\nâ­گ ${dua.reward}' : ''}'
+        '\n\nâ€” طھط·ط¨ظٹظ‚ ط·ط±ظٹظ‚ ط§ظ„ط¥ط³ظ„ط§ظ…';
 
     Share.share(text);
   }
@@ -96,7 +96,7 @@ class DuaCategoryScreen extends StatelessWidget {
             gradient: LinearGradient(
               colors: [
                 catColor,
-                catColor.withOpacity(0.7),
+                catColor.withValues(alpha: 0.7),
               ],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
@@ -141,7 +141,7 @@ class DuaCategoryScreen extends StatelessWidget {
   }
 }
 
-/// كارد عنصر الدعاء
+/// ظƒط§ط±ط¯ ط¹ظ†طµط± ط§ظ„ط¯ط¹ط§ط،
 class _DuaItemCard extends StatelessWidget {
   final Dua dua;
   final int index;
@@ -170,14 +170,14 @@ class _DuaItemCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(22),
         border: Border.all(
           color: theme.isDark
-              ? Colors.white.withOpacity(0.08)
-              : catColor.withOpacity(0.15),
+              ? Colors.white.withValues(alpha: 0.08)
+              : catColor.withValues(alpha: 0.15),
         ),
         boxShadow: [
           BoxShadow(
             color: theme.isDark
-                ? Colors.black.withOpacity(0.3)
-                : Colors.grey.withOpacity(0.08),
+                ? Colors.black.withValues(alpha: 0.3)
+                : Colors.grey.withValues(alpha: 0.08),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -194,7 +194,7 @@ class _DuaItemCard extends StatelessWidget {
           ),
           childrenPadding: EdgeInsets.zero,
           iconColor: catColor,
-          collapsedIconColor: catColor.withOpacity(0.6),
+          collapsedIconColor: catColor.withValues(alpha: 0.6),
           leading: DuaNumberBox(number: index + 1, color: catColor),
           title: Text(
             dua.title,
@@ -212,7 +212,7 @@ class _DuaItemCard extends StatelessWidget {
               dua.source,
               style: GoogleFonts.cairo(
                 fontSize: isSmall ? 10 : 11,
-                color: catColor.withOpacity(0.8),
+                color: catColor.withValues(alpha: 0.8),
               ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
@@ -235,8 +235,8 @@ class _DuaItemCard extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 0, 16, 6),
       child: Divider(
         color: theme.isDark
-            ? Colors.white.withOpacity(0.08)
-            : Colors.grey.withOpacity(0.15),
+            ? Colors.white.withValues(alpha: 0.08)
+            : Colors.grey.withValues(alpha: 0.15),
         height: 1,
       ),
     );

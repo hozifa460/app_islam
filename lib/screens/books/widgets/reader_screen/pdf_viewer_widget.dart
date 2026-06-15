@@ -1,13 +1,13 @@
-import 'dart:io';
+﻿import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../theme/books_theme.dart';
 
-/// ═══════════════════════════════════════════════════════════════════════════
-/// ويدجت عارض PDF الذكي
-/// ═══════════════════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ظˆظٹط¯ط¬طھ ط¹ط§ط±ط¶ PDF ط§ظ„ط°ظƒظٹ
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class PdfViewerWidget extends StatelessWidget {
   final String? filePath;
   final String? networkUrl;
@@ -54,9 +54,9 @@ class PdfViewerWidget extends StatelessWidget {
   }
 }
 
-/// ═══════════════════════════════════════════════════════════════════════════
-/// عارض PDF المحلي (نفس الشكل القديم بالضبط)
-/// ═══════════════════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ط¹ط§ط±ط¶ PDF ط§ظ„ظ…ط­ظ„ظٹ (ظ†ظپط³ ط§ظ„ط´ظƒظ„ ط§ظ„ظ‚ط¯ظٹظ… ط¨ط§ظ„ط¶ط¨ط·)
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _LocalPdfViewer extends StatefulWidget {
   final String filePath;
   final bool isLocked;
@@ -103,7 +103,7 @@ class _LocalPdfViewerState extends State<_LocalPdfViewer> {
             widget.onPageChanged?.call(page, total);
           },
         ),
-        // طبقة اللمس للتحكم في UI
+        // ط·ط¨ظ‚ط© ط§ظ„ظ„ظ…ط³ ظ„ظ„طھط­ظƒظ… ظپظٹ UI
         Positioned.fill(
           child: GestureDetector(
             behavior: HitTestBehavior.translucent,
@@ -116,9 +116,9 @@ class _LocalPdfViewerState extends State<_LocalPdfViewer> {
   }
 }
 
-/// ═══════════════════════════════════════════════════════════════════════════
-/// عارض PDF الأونلاين (WebView - تحميل تدريجي)
-/// ═══════════════════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ط¹ط§ط±ط¶ PDF ط§ظ„ط£ظˆظ†ظ„ط§ظٹظ† (WebView - طھط­ظ…ظٹظ„ طھط¯ط±ظٹط¬ظٹ)
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _OnlinePdfViewer extends StatefulWidget {
   final String pdfUrl;
   final VoidCallback onTap;
@@ -207,9 +207,9 @@ class _OnlinePdfViewerState extends State<_OnlinePdfViewer>
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // ═══════════════════════════════════════════
+        // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
         // WebView
-        // ═══════════════════════════════════════════
+        // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
         if (!_hasError)
           GestureDetector(
             onTap: widget.onTap,
@@ -225,9 +225,9 @@ class _OnlinePdfViewerState extends State<_OnlinePdfViewer>
             ),
           ),
 
-        // ═══════════════════════════════════════════
-        // شاشة الخطأ
-        // ═══════════════════════════════════════════
+        // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+        // ط´ط§ط´ط© ط§ظ„ط®ط·ط£
+        // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
         if (_hasError)
           GestureDetector(
             onTap: widget.onTap,
@@ -242,9 +242,9 @@ class _OnlinePdfViewerState extends State<_OnlinePdfViewer>
             ),
           ),
 
-        // ═══════════════════════════════════════════
-        // مؤشر التحميل (لا يحجب المحتوى)
-        // ═══════════════════════════════════════════
+        // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+        // ظ…ط¤ط´ط± ط§ظ„طھط­ظ…ظٹظ„ (ظ„ط§ ظٹط­ط¬ط¨ ط§ظ„ظ…ط­طھظˆظ‰)
+        // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
         if (_isPageLoading && !_hasError)
           Positioned(
             bottom: 40,
@@ -253,9 +253,9 @@ class _OnlinePdfViewerState extends State<_OnlinePdfViewer>
             child: _InlineLoader(progress: _loadingProgress),
           ),
 
-        // ═══════════════════════════════════════════
-        // شريط التقدم العلوي
-        // ═══════════════════════════════════════════
+        // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+        // ط´ط±ظٹط· ط§ظ„طھظ‚ط¯ظ… ط§ظ„ط¹ظ„ظˆظٹ
+        // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
         if (_isPageLoading && !_hasError)
           Positioned(
             top: 0,
@@ -279,9 +279,9 @@ class _OnlinePdfViewerState extends State<_OnlinePdfViewer>
   }
 }
 
-// ═══════════════════════════════════════════
-// مؤشر تحميل مصغر
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ظ…ط¤ط´ط± طھط­ظ…ظٹظ„ ظ…طµط؛ط±
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _InlineLoader extends StatefulWidget {
   final int progress;
 
@@ -328,11 +328,11 @@ class _InlineLoaderState extends State<_InlineLoader>
           padding: const EdgeInsets.symmetric(
               horizontal: 20, vertical: 10),
           decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.75),
+            color: Colors.black.withValues(alpha: 0.75),
             borderRadius: BorderRadius.circular(25),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.2),
+                color: Colors.black.withValues(alpha: 0.2),
                 blurRadius: 10,
                 offset: const Offset(0, 4),
               ),
@@ -352,7 +352,7 @@ class _InlineLoaderState extends State<_InlineLoader>
               ),
               const SizedBox(width: 12),
               Text(
-                'جاري تحميل الصفحات',
+                'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط§ظ„طµظپط­ط§طھ',
                 style: GoogleFonts.cairo(
                   color: Colors.white,
                   fontSize: 12,
@@ -376,9 +376,9 @@ class _InlineLoaderState extends State<_InlineLoader>
   }
 }
 
-// ═══════════════════════════════════════════
-// شاشة الخطأ
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط´ط§ط´ط© ط§ظ„ط®ط·ط£
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _ErrorView extends StatelessWidget {
   final VoidCallback onRetry;
 
@@ -396,10 +396,10 @@ class _ErrorView extends StatelessWidget {
               width: 90,
               height: 90,
               decoration: BoxDecoration(
-                color: Colors.red.withOpacity(0.08),
+                color: Colors.red.withValues(alpha: 0.08),
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: Colors.red.withOpacity(0.2),
+                  color: Colors.red.withValues(alpha: 0.2),
                   width: 2,
                 ),
               ),
@@ -411,7 +411,7 @@ class _ErrorView extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             Text(
-              'تعذر تحميل الكتاب',
+              'طھط¹ط°ط± طھط­ظ…ظٹظ„ ط§ظ„ظƒطھط§ط¨',
               style: GoogleFonts.cairo(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -420,7 +420,7 @@ class _ErrorView extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              'تأكد من اتصالك بالإنترنت\nأو حمّل الكتاب للقراءة بدون إنترنت',
+              'طھط£ظƒط¯ ظ…ظ† ط§طھطµط§ظ„ظƒ ط¨ط§ظ„ط¥ظ†طھط±ظ†طھ\nط£ظˆ ط­ظ…ظ‘ظ„ ط§ظ„ظƒطھط§ط¨ ظ„ظ„ظ‚ط±ط§ط،ط© ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ',
               textAlign: TextAlign.center,
               style: GoogleFonts.cairo(
                 fontSize: 13,
@@ -439,7 +439,7 @@ class _ErrorView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: BooksTheme.gold.withOpacity(0.3),
+                      color: BooksTheme.gold.withValues(alpha: 0.3),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),
@@ -452,7 +452,7 @@ class _ErrorView extends StatelessWidget {
                         color: Colors.white, size: 20),
                     const SizedBox(width: 10),
                     Text(
-                      'إعادة المحاولة',
+                      'ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط©',
                       style: GoogleFonts.cairo(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,

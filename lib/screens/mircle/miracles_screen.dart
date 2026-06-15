@@ -1,4 +1,4 @@
-import 'dart:convert';
+﻿import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -31,7 +31,7 @@ class MiraclesScreen extends StatefulWidget {
 
 class _MiraclesScreenState extends State<MiraclesScreen>
     with TickerProviderStateMixin {
-  // ── State ─────────────────────────────────────
+  // â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   final TextEditingController _searchController = TextEditingController();
   String _searchQuery       = '';
   String _selectedFilter    = 'all';
@@ -43,7 +43,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
   Set<int>                   _favorites = {};
   bool                       _loading   = true;
 
-  // ── Animation Controllers ─────────────────────
+  // â”€â”€ Animation Controllers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   late AnimationController _animController;
   late Animation<double>   _fadeAnim;
   late AnimationController _particleController;
@@ -52,7 +52,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
   late AnimationController _featuredController;
   late Animation<double>   _featuredAnim;
 
-  // ── Particles ─────────────────────────────────
+  // â”€â”€ Particles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   final List<StarParticle> _particles = [];
   final _rng = Random();
 
@@ -108,7 +108,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
     super.dispose();
   }
 
-  // ── Persistence ───────────────────────────────
+  // â”€â”€ Persistence â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Future<void> _loadFavorites() async {
     try {
       final prefs   = await SharedPreferences.getInstance();
@@ -146,7 +146,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
     _saveFavorites();
   }
 
-  // ── Data ──────────────────────────────────────
+  // â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Future<void> _loadMiracles() async {
     try {
       final raw  = await rootBundle.loadString('assets/mircle/miracles.json');
@@ -164,7 +164,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
     }
   }
 
-  // ── Computed ──────────────────────────────────
+  // â”€â”€ Computed â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   List<String> get _categories {
     return _miracles
         .map((m) => (m['category'] ?? '').toString())
@@ -212,7 +212,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
     return hr.isNotEmpty ? hr.first : _miracles.first;
   }
 
-  // ── Navigation ────────────────────────────────
+  // â”€â”€ Navigation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   void _toDetail(Map<String, dynamic> item) async {
     final id       = item['id'] ?? 0;
     final provider = context.read<MiracleColorProvider>();
@@ -274,7 +274,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
     if (mounted) _loadFavorites();
   }
 
-  // ── Theme Helper ──────────────────────────────
+  // â”€â”€ Theme Helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   MiracleThemeColors _getTheme(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     try {
@@ -285,7 +285,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
     }
   }
 
-  // ── BUILD ─────────────────────────────────────
+  // â”€â”€ BUILD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // miracles_screen.dart - build()
   @override
   Widget build(BuildContext context) {
@@ -300,11 +300,11 @@ class _MiraclesScreenState extends State<MiraclesScreen>
       child: Material(
         color: Colors.transparent,
         child: Container(
-          // ← هذا يغطي خلفية main.dart
+          // â†گ ظ‡ط°ط§ ظٹط؛ط·ظٹ ط®ظ„ظپظٹط© main.dart
           color: t.bg1,
           child: Stack(
             children: [
-              // ── خلفية ملونة متحركة ──
+              // â”€â”€ ط®ظ„ظپظٹط© ظ…ظ„ظˆظ†ط© ظ…طھط­ط±ظƒط© â”€â”€
               Positioned.fill(
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 400),
@@ -312,7 +312,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
                 ),
               ),
 
-              // ── النجوم ──
+              // â”€â”€ ط§ظ„ظ†ط¬ظˆظ… â”€â”€
               Positioned.fill(
                 child: AnimatedBuilder(
                   animation: _particleController,
@@ -327,9 +327,9 @@ class _MiraclesScreenState extends State<MiraclesScreen>
                 ),
               ),
 
-              // ── المحتوى ──
+              // â”€â”€ ط§ظ„ظ…ط­طھظˆظ‰ â”€â”€
               Scaffold(
-                backgroundColor: Colors.transparent, // ← شفاف!
+                backgroundColor: Colors.transparent, // â†گ ط´ظپط§ظپ!
                 body: FadeTransition(
                   opacity: _fadeAnim,
                   child: CustomScrollView(
@@ -422,9 +422,9 @@ class _MiraclesScreenState extends State<MiraclesScreen>
     );
   }
 
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   //  APP BAR
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildAppBar(MiracleThemeColors t) {
     final expandedH = MediaQuery.of(context).size.height * 0.25;
 
@@ -433,7 +433,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
       floating:       false,
       pinned:         true,
       elevation:      0,
-      backgroundColor: t.bg1.withOpacity(0.95),
+      backgroundColor: t.bg1.withValues(alpha: 0.95),
 
       leading: Padding(
         padding: const EdgeInsets.all(8),
@@ -455,7 +455,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
       ),
 
       actions: [
-        // 1. زر البحث في القرآن والسنة
+        // 1. ط²ط± ط§ظ„ط¨ط­ط« ظپظٹ ط§ظ„ظ‚ط±ط¢ظ† ظˆط§ظ„ط³ظ†ط©
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 2),
           child: Center(
@@ -477,7 +477,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
           ),
         ),
 
-        // 2. زر تغيير اللون
+        // 2. ط²ط± طھط؛ظٹظٹط± ط§ظ„ظ„ظˆظ†
         _AppBarIconBtn(
           t:    t,
           onTap: () => ColorPickerSheet.show(context),
@@ -492,7 +492,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
                   color: t.neonBlue,
                   boxShadow: [
                     BoxShadow(
-                      color:     t.neonBlue.withOpacity(0.5),
+                      color:     t.neonBlue.withValues(alpha: 0.5),
                       blurRadius: 6,
                     ),
                   ],
@@ -504,7 +504,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
           ),
         ),
 
-        // 3. زر المفضلة
+        // 3. ط²ط± ط§ظ„ظ…ظپط¶ظ„ط©
         _AppBarIconBtn(
           t:    t,
           onTap: () =>
@@ -520,7 +520,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
           ),
         ),
 
-        // 4. زر البحث النصي
+        // 4. ط²ط± ط§ظ„ط¨ط­ط« ط§ظ„ظ†طµظٹ
         _AppBarIconBtn(
           t:    t,
           onTap: () => setState(() => _showSearch = !_showSearch),
@@ -543,14 +543,14 @@ class _MiraclesScreenState extends State<MiraclesScreen>
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'الإعجاز العلمي',
+              'ط§ظ„ط¥ط¹ط¬ط§ط² ط§ظ„ط¹ظ„ظ…ظٹ',
               style: GoogleFonts.cairo(
                 color:      Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize:   16,
                 shadows: [
                   Shadow(
-                    color:     t.neonBlue.withOpacity(0.6),
+                    color:     t.neonBlue.withValues(alpha: 0.6),
                     blurRadius: 12,
                   ),
                 ],
@@ -559,7 +559,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
             Text(
               'Scientific Miracles in Islam',
               style: GoogleFonts.poppins(
-                color:        t.neonBlue.withOpacity(0.8),
+                color:        t.neonBlue.withValues(alpha: 0.8),
                 fontSize:     7,
                 letterSpacing: 1.2,
               ),
@@ -574,9 +574,9 @@ class _MiraclesScreenState extends State<MiraclesScreen>
     );
   }
 
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   //  LOADING SCREEN
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildLoader(MiracleThemeColors t) {
     return Directionality(
       textDirection: TextDirection.rtl,
@@ -611,7 +611,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           gradient: RadialGradient(colors: [
-                            t.neonBlue.withOpacity(
+                            t.neonBlue.withValues(alpha: 
                                 0.25 * _pulseAnim.value),
                             Colors.transparent,
                           ]),
@@ -624,12 +624,12 @@ class _MiraclesScreenState extends State<MiraclesScreen>
                               shape:  BoxShape.circle,
                               color:  t.glass,
                               border: Border.all(
-                                color: t.neonBlue.withOpacity(0.5),
+                                color: t.neonBlue.withValues(alpha: 0.5),
                                 width: 2,
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: t.neonBlue.withOpacity(
+                                  color: t.neonBlue.withValues(alpha: 
                                       0.3 * _pulseAnim.value),
                                   blurRadius:   20,
                                   spreadRadius: 5,
@@ -652,12 +652,12 @@ class _MiraclesScreenState extends State<MiraclesScreen>
                       child: CircularProgressIndicator(
                         color:           t.neonBlue,
                         strokeWidth:     2.5,
-                        backgroundColor: t.neonBlue.withOpacity(0.1),
+                        backgroundColor: t.neonBlue.withValues(alpha: 0.1),
                       ),
                     ),
                     const SizedBox(height: 18),
                     Text(
-                      'جاري تحميل المعجزات...',
+                      'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط§ظ„ظ…ط¹ط¬ط²ط§طھ...',
                       style: GoogleFonts.cairo(
                         color:      Colors.white70,
                         fontSize:   15,
@@ -668,7 +668,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
                     Text(
                       'Loading Scientific Miracles...',
                       style: GoogleFonts.poppins(
-                        color:        t.neonBlue.withOpacity(0.5),
+                        color:        t.neonBlue.withValues(alpha: 0.5),
                         fontSize:     11,
                         letterSpacing: 1.0,
                       ),
@@ -683,9 +683,9 @@ class _MiraclesScreenState extends State<MiraclesScreen>
     );
   }
 
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   //  SEARCH BAR
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildSearchBar(MiracleThemeColors t) {
     return Container(
       margin:  const EdgeInsets.fromLTRB(16, 0, 16, 10),
@@ -693,10 +693,10 @@ class _MiraclesScreenState extends State<MiraclesScreen>
       decoration: BoxDecoration(
         color:        t.glass,
         borderRadius: BorderRadius.circular(16),
-        border:       Border.all(color: t.neonBlue.withOpacity(0.25)),
+        border:       Border.all(color: t.neonBlue.withValues(alpha: 0.25)),
         boxShadow: [
           BoxShadow(
-            color:      t.neonBlue.withOpacity(0.06),
+            color:      t.neonBlue.withValues(alpha: 0.06),
             blurRadius: 12,
             offset:     const Offset(0, 4),
           ),
@@ -708,14 +708,14 @@ class _MiraclesScreenState extends State<MiraclesScreen>
         style:       GoogleFonts.cairo(color: Colors.white, fontSize: 14),
         cursorColor: t.neonBlue,
         decoration: InputDecoration(
-          hintText:  'ابحث في المعجزات...',
+          hintText:  'ط§ط¨ط­ط« ظپظٹ ط§ظ„ظ…ط¹ط¬ط²ط§طھ...',
           hintStyle: GoogleFonts.cairo(
             color: Colors.white38, fontSize: 13,
           ),
           border: InputBorder.none,
           icon: Icon(
             Icons.search_rounded,
-            color: t.neonBlue.withOpacity(0.7),
+            color: t.neonBlue.withValues(alpha: 0.7),
           ),
           suffixIcon: _searchQuery.isNotEmpty
               ? IconButton(
@@ -732,9 +732,9 @@ class _MiraclesScreenState extends State<MiraclesScreen>
     );
   }
 
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   //  RESULTS HEADER
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildResultsHeader(MiracleThemeColors t) {
     final hasFilters = _selectedCategory  != 'all' ||
         _selectedFilter  != 'all' ||
@@ -753,7 +753,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
               borderRadius: BorderRadius.circular(2),
               boxShadow: [
                 BoxShadow(
-                  color:     t.neonBlue.withOpacity(0.4),
+                  color:     t.neonBlue.withValues(alpha: 0.4),
                   blurRadius: 6,
                 ),
               ],
@@ -763,8 +763,8 @@ class _MiraclesScreenState extends State<MiraclesScreen>
           Expanded(
             child: Text(
               _showFavoritesOnly
-                  ? 'المفضلة (${_filteredMiracles.length})'
-                  : 'النتائج (${_filteredMiracles.length})',
+                  ? 'ط§ظ„ظ…ظپط¶ظ„ط© (${_filteredMiracles.length})'
+                  : 'ط§ظ„ظ†طھط§ط¦ط¬ (${_filteredMiracles.length})',
               style: GoogleFonts.cairo(
                 fontSize:   14,
                 fontWeight: FontWeight.bold,
@@ -786,10 +786,10 @@ class _MiraclesScreenState extends State<MiraclesScreen>
                 padding: const EdgeInsets.symmetric(
                     horizontal: 10, vertical: 5),
                 decoration: BoxDecoration(
-                  color: MiracleThemeColors.neonRed.withOpacity(0.1),
+                  color: MiracleThemeColors.neonRed.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    color: MiracleThemeColors.neonRed.withOpacity(0.25),
+                    color: MiracleThemeColors.neonRed.withValues(alpha: 0.25),
                   ),
                 ),
                 child: Row(
@@ -798,14 +798,14 @@ class _MiraclesScreenState extends State<MiraclesScreen>
                     Icon(
                       Icons.clear_all_rounded,
                       size:  14,
-                      color: MiracleThemeColors.neonRed.withOpacity(0.8),
+                      color: MiracleThemeColors.neonRed.withValues(alpha: 0.8),
                     ),
                     const SizedBox(width: 4),
                     Text(
-                      'مسح',
+                      'ظ…ط³ط­',
                       style: GoogleFonts.cairo(
                         fontSize:   10,
-                        color: MiracleThemeColors.neonRed.withOpacity(0.8),
+                        color: MiracleThemeColors.neonRed.withValues(alpha: 0.8),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -818,9 +818,9 @@ class _MiraclesScreenState extends State<MiraclesScreen>
     );
   }
 
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   //  EMPTY STATE
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildEmptyState() {
     return Center(
       child: Padding(
@@ -833,7 +833,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
               height: 76,
               decoration: BoxDecoration(
                 shape:  BoxShape.circle,
-                color:  Colors.white.withOpacity(0.06),
+                color:  Colors.white.withValues(alpha: 0.06),
                 border: Border.all(color: Colors.white12),
               ),
               child: Icon(
@@ -847,8 +847,8 @@ class _MiraclesScreenState extends State<MiraclesScreen>
             const SizedBox(height: 18),
             Text(
               _showFavoritesOnly
-                  ? 'لا توجد معجزات في المفضلة'
-                  : 'لا توجد نتائج مطابقة',
+                  ? 'ظ„ط§ طھظˆط¬ط¯ ظ…ط¹ط¬ط²ط§طھ ظپظٹ ط§ظ„ظ…ظپط¶ظ„ط©'
+                  : 'ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬ ظ…ط·ط§ط¨ظ‚ط©',
               style: GoogleFonts.cairo(
                 color:      Colors.white60,
                 fontSize:   16,
@@ -859,8 +859,8 @@ class _MiraclesScreenState extends State<MiraclesScreen>
             const SizedBox(height: 8),
             Text(
               _showFavoritesOnly
-                  ? 'اضغط على ❤️ لإضافة معجزات'
-                  : 'جرّب تغيير البحث أو الفلاتر',
+                  ? 'ط§ط¶ط؛ط· ط¹ظ„ظ‰ â‌¤ï¸ڈ ظ„ط¥ط¶ط§ظپط© ظ…ط¹ط¬ط²ط§طھ'
+                  : 'ط¬ط±ظ‘ط¨ طھط؛ظٹظٹط± ط§ظ„ط¨ط­ط« ط£ظˆ ط§ظ„ظپظ„ط§طھط±',
               style: GoogleFonts.cairo(
                 color:    Colors.white30,
                 fontSize: 13,
@@ -874,9 +874,9 @@ class _MiraclesScreenState extends State<MiraclesScreen>
   }
 }
 
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 //  APP BAR ICON BUTTON
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _AppBarIconBtn extends StatelessWidget {
   final MiracleThemeColors t;
   final VoidCallback       onTap;
@@ -910,9 +910,9 @@ class _AppBarIconBtn extends StatelessWidget {
   }
 }
 
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 //  APP BAR BACKGROUND
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _AppBarBackground extends StatelessWidget {
   final MiracleThemeColors t;
   final Animation<double>  pulseAnim;
@@ -943,7 +943,7 @@ class _AppBarBackground extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: RadialGradient(colors: [
-                  t.neonBlue.withOpacity(0.07),
+                  t.neonBlue.withValues(alpha: 0.07),
                   Colors.transparent,
                 ]),
               ),
@@ -958,7 +958,7 @@ class _AppBarBackground extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: RadialGradient(colors: [
-                  MiracleThemeColors.neonGold.withOpacity(0.05),
+                  MiracleThemeColors.neonGold.withValues(alpha: 0.05),
                   Colors.transparent,
                 ]),
               ),
@@ -979,7 +979,7 @@ class _AppBarBackground extends StatelessWidget {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         gradient: RadialGradient(colors: [
-                          t.neonBlue.withOpacity(
+                          t.neonBlue.withValues(alpha: 
                               0.15 * pulseAnim.value),
                           Colors.transparent,
                         ]),
@@ -990,14 +990,14 @@ class _AppBarBackground extends StatelessWidget {
                       height: 58,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.white.withOpacity(0.07),
+                        color: Colors.white.withValues(alpha: 0.07),
                         border: Border.all(
-                          color: t.neonBlue.withOpacity(0.5),
+                          color: t.neonBlue.withValues(alpha: 0.5),
                           width: 1.5,
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: t.neonBlue.withOpacity(
+                            color: t.neonBlue.withValues(alpha: 
                                 0.25 * pulseAnim.value),
                             blurRadius:   20,
                             spreadRadius: 4,

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'qibla_theme.dart';
 
@@ -22,20 +22,20 @@ class QiblaInfoCards extends StatelessWidget {
   Widget build(BuildContext context) {
     final cards = [
       (
-      label: 'القبلة\nمن الشمال',
-      value: '${qiblaAngle.toStringAsFixed(1)}°',
+      label: 'ط§ظ„ظ‚ط¨ظ„ط©\nظ…ظ† ط§ظ„ط´ظ…ط§ظ„',
+      value: '${qiblaAngle.toStringAsFixed(1)}آ°',
       icon: Icons.explore_rounded,
       color: QiblaTheme.gold,
       ),
       (
-      label: 'اتجاه\nهاتفك',
-      value: '${compassHeading.toStringAsFixed(1)}°',
+      label: 'ط§طھط¬ط§ظ‡\nظ‡ط§طھظپظƒ',
+      value: '${compassHeading.toStringAsFixed(1)}آ°',
       icon: Icons.screen_rotation_rounded,
       color: QiblaTheme.blue,
       ),
       (
-      label: 'الانحراف\nعن القبلة',
-      value: '${deviation.abs().toStringAsFixed(1)}°',
+      label: 'ط§ظ„ط§ظ†ط­ط±ط§ظپ\nط¹ظ† ط§ظ„ظ‚ط¨ظ„ط©',
+      value: '${deviation.abs().toStringAsFixed(1)}آ°',
       icon: Icons.swap_horiz_rounded,
       color: guidance,
       ),
@@ -53,7 +53,7 @@ class QiblaInfoCards extends StatelessWidget {
               decoration: BoxDecoration(
                 color: theme.cardBg,
                 borderRadius: BorderRadius.circular(15),
-                border: Border.all(color: c.color.withOpacity(0.2)),
+                border: Border.all(color: c.color.withValues(alpha: 0.2)),
                 boxShadow: theme.cardShadow,
               ),
               child: Column(
@@ -64,7 +64,7 @@ class QiblaInfoCards extends StatelessWidget {
                     height: 32,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: c.color.withOpacity(0.11),
+                      color: c.color.withValues(alpha: 0.11),
                     ),
                     child: Icon(c.icon, color: c.color, size: 17),
                   ),
@@ -81,7 +81,7 @@ class QiblaInfoCards extends StatelessWidget {
                   Text(c.label,
                       style: GoogleFonts.cairo(
                         fontSize: 9.5,
-                        color: theme.textColor.withOpacity(0.48),
+                        color: theme.textColor.withValues(alpha: 0.48),
                         height: 1.35,
                       ),
                       textAlign: TextAlign.center,

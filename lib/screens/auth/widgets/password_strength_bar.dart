@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PasswordStrengthBar extends StatefulWidget {
@@ -46,7 +46,7 @@ class _PasswordStrengthBarState extends State<PasswordStrengthBar> {
             child: LinearProgressIndicator(
               value: strength,
               minHeight: 4,
-              backgroundColor: Colors.grey.withOpacity(0.15),
+              backgroundColor: Colors.grey.withValues(alpha: 0.15),
               valueColor: AlwaysStoppedAnimation(color),
             ),
           ),
@@ -83,9 +83,9 @@ class _PasswordStrengthBarState extends State<PasswordStrengthBar> {
   }
 
   String _label(double s) {
-    if (s < 0.3) return 'ضعيفة';
-    if (s < 0.6) return 'متوسطة';
-    if (s < 0.85) return 'جيدة';
-    return 'قوية 💪';
+    if (s < 0.3) return 'ط¶ط¹ظٹظپط©';
+    if (s < 0.6) return 'ظ…طھظˆط³ط·ط©';
+    if (s < 0.85) return 'ط¬ظٹط¯ط©';
+    return 'ظ‚ظˆظٹط© ًں’ھ';
   }
 }

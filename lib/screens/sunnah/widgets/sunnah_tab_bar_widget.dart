@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../services/sunnah_service.dart';
 import 'sunnah_theme.dart';
 
@@ -28,7 +28,7 @@ class SunnahTabBarWidget extends StatelessWidget {
         border: Border.all(color: theme.divider, width: 1),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(theme.isDark ? 0.3 : 0.06),
+            color: Colors.black.withValues(alpha: theme.isDark ? 0.3 : 0.06),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -41,7 +41,7 @@ class SunnahTabBarWidget extends StatelessWidget {
           gradient: SunnahTheme.emeraldGradient,
           boxShadow: [
             BoxShadow(
-              color: SunnahTheme.emerald.withOpacity(0.35),
+              color: SunnahTheme.emerald.withValues(alpha: 0.35),
               blurRadius: 8,
             ),
           ],
@@ -62,11 +62,11 @@ class SunnahTabBarWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text('⏰', style: TextStyle(fontSize: 14)),
+                const Text('âڈ°', style: TextStyle(fontSize: 14)),
                 const SizedBox(width: 5),
                 const Flexible(
                   child:
-                  Text('سنن الآن', overflow: TextOverflow.ellipsis),
+                  Text('ط³ظ†ظ† ط§ظ„ط¢ظ†', overflow: TextOverflow.ellipsis),
                 ),
                 const SizedBox(width: 4),
                 _buildTabBadge(
@@ -81,10 +81,10 @@ class SunnahTabBarWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text('📋', style: TextStyle(fontSize: 14)),
+                const Text('ًں“‹', style: TextStyle(fontSize: 14)),
                 const SizedBox(width: 5),
                 const Flexible(
-                  child: Text('جميع السنن',
+                  child: Text('ط¬ظ…ظٹط¹ ط§ظ„ط³ظ†ظ†',
                       overflow: TextOverflow.ellipsis),
                 ),
                 const SizedBox(width: 4),
@@ -104,7 +104,7 @@ class SunnahTabBarWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.15),
+        color: color.withValues(alpha: 0.15),
         borderRadius: BorderRadius.circular(SunnahTheme.badgeRadius),
       ),
       child: Text(

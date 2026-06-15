@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../../../languages/app_localizations.dart';
 import '../../../models/inheritance_models.dart';
 
@@ -18,9 +18,9 @@ class InheritanceResultsWidget extends StatelessWidget {
 
   String _getCaseTypeName(BuildContext context, String caseType) {
     switch (caseType) {
-      case 'عول':
+      case 'ط¹ظˆظ„':
         return context.tr.awlCase;
-      case 'رد':
+      case 'ط±ط¯':
         return context.tr.raddCase;
       default:
         return context.tr.normalCase;
@@ -103,20 +103,20 @@ class InheritanceResultsWidget extends StatelessWidget {
     String caseEmoji;
 
     switch (result.caseType) {
-      case 'عول':
+      case 'ط¹ظˆظ„':
         caseColor = Colors.orange.shade700;
         caseIcon = Icons.trending_up_rounded;
-        caseEmoji = '📈';
+        caseEmoji = 'ًں“ˆ';
         break;
-      case 'رد':
+      case 'ط±ط¯':
         caseColor = Colors.blue.shade700;
         caseIcon = Icons.trending_down_rounded;
-        caseEmoji = '📉';
+        caseEmoji = 'ًں“‰';
         break;
       default:
         caseColor = primaryColor;
         caseIcon = Icons.check_circle_rounded;
-        caseEmoji = '✅';
+        caseEmoji = 'âœ…';
     }
 
     final cardColor = isDarkMode ? const Color(0xFF151B26) : Colors.white;
@@ -126,10 +126,10 @@ class InheritanceResultsWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: cardColor,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: caseColor.withOpacity(0.3)),
+        border: Border.all(color: caseColor.withValues(alpha: 0.3)),
         boxShadow: [
           BoxShadow(
-            color: caseColor.withOpacity(0.15),
+            color: caseColor.withValues(alpha: 0.15),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -142,12 +142,12 @@ class InheritanceResultsWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [caseColor, caseColor.withOpacity(0.8)],
+                colors: [caseColor, caseColor.withValues(alpha: 0.8)],
               ),
               borderRadius: BorderRadius.circular(30),
               boxShadow: [
                 BoxShadow(
-                  color: caseColor.withOpacity(0.3),
+                  color: caseColor.withValues(alpha: 0.3),
                   blurRadius: 10,
                   offset: const Offset(0, 4),
                 ),
@@ -175,7 +175,7 @@ class InheritanceResultsWidget extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: caseColor.withOpacity(isDarkMode ? 0.1 : 0.05),
+              color: caseColor.withValues(alpha: isDarkMode ? 0.1 : 0.05),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
@@ -197,7 +197,7 @@ class InheritanceResultsWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: caseColor.withOpacity(0.1),
+                  color: caseColor.withValues(alpha: 0.1),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(Icons.pie_chart_rounded, color: caseColor, size: 20),
@@ -244,10 +244,10 @@ class InheritanceResultsWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: cardColor,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: moneyColor.withOpacity(0.2)),
+        border: Border.all(color: moneyColor.withValues(alpha: 0.2)),
         boxShadow: [
           BoxShadow(
-            color: isDarkMode ? Colors.black.withOpacity(0.2) : Colors.black.withOpacity(0.05),
+            color: isDarkMode ? Colors.black.withValues(alpha: 0.2) : Colors.black.withValues(alpha: 0.05),
             blurRadius: 15,
             offset: const Offset(0, 5),
           ),
@@ -312,12 +312,12 @@ class InheritanceResultsWidget extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            const Color(0xFF2E7D32).withOpacity(isDarkMode ? 0.1 : 0.05),
-            const Color(0xFF2E7D32).withOpacity(isDarkMode ? 0.05 : 0.02),
+            const Color(0xFF2E7D32).withValues(alpha: isDarkMode ? 0.1 : 0.05),
+            const Color(0xFF2E7D32).withValues(alpha: isDarkMode ? 0.05 : 0.02),
           ],
         ),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: const Color(0xFF2E7D32).withOpacity(0.15)),
+        border: Border.all(color: const Color(0xFF2E7D32).withValues(alpha: 0.15)),
       ),
       child: Column(
         children: [
@@ -326,7 +326,7 @@ class InheritanceResultsWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: primaryColor.withOpacity(0.1),
+                  color: primaryColor.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Icon(Icons.person, color: primaryColor, size: 18),
@@ -348,7 +348,7 @@ class InheritanceResultsWidget extends StatelessWidget {
                       heir.shareDescription,
                       style: TextStyle(
                         fontSize: 11,
-                        color: textColor.withOpacity(0.6),
+                        color: textColor.withValues(alpha: 0.6),
                       ),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
@@ -370,7 +370,7 @@ class InheritanceResultsWidget extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF2E7D32).withOpacity(0.1),
+                      color: const Color(0xFF2E7D32).withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: Text(
@@ -392,7 +392,7 @@ class InheritanceResultsWidget extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: const Color(0xFF1565C0).withOpacity(isDarkMode ? 0.15 : 0.08),
+                color: const Color(0xFF1565C0).withValues(alpha: isDarkMode ? 0.15 : 0.08),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Row(
@@ -427,10 +427,10 @@ class InheritanceResultsWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: cardColor,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: landColor.withOpacity(0.2)),
+        border: Border.all(color: landColor.withValues(alpha: 0.2)),
         boxShadow: [
           BoxShadow(
-            color: isDarkMode ? Colors.black.withOpacity(0.2) : Colors.black.withOpacity(0.05),
+            color: isDarkMode ? Colors.black.withValues(alpha: 0.2) : Colors.black.withValues(alpha: 0.05),
             blurRadius: 15,
             offset: const Offset(0, 5),
           ),
@@ -489,12 +489,12 @@ class InheritanceResultsWidget extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            const Color(0xFF795548).withOpacity(isDarkMode ? 0.1 : 0.05),
-            const Color(0xFF795548).withOpacity(isDarkMode ? 0.05 : 0.02),
+            const Color(0xFF795548).withValues(alpha: isDarkMode ? 0.1 : 0.05),
+            const Color(0xFF795548).withValues(alpha: isDarkMode ? 0.05 : 0.02),
           ],
         ),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: const Color(0xFF795548).withOpacity(0.15)),
+        border: Border.all(color: const Color(0xFF795548).withValues(alpha: 0.15)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -516,7 +516,7 @@ class InheritanceResultsWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF795548).withOpacity(0.15),
+                  color: const Color(0xFF795548).withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(
@@ -535,10 +535,10 @@ class InheritanceResultsWidget extends StatelessWidget {
             spacing: 8,
             runSpacing: 8,
             children: [
-              _buildLandChip('🌾', context.tr.feddan, '${share.landShare.feddans}', const Color(0xFF2E7D32)),
-              _buildLandChip('📐', context.tr.qirat, '${share.landShare.qirats}', const Color(0xFF795548)),
-              _buildLandChip('📏', context.tr.sahm, '${share.landShare.sahms}', const Color(0xFFE65100)),
-              _buildLandChip('📍', 'م²', share.landShare.totalInMeters.toStringAsFixed(1), const Color(0xFF1565C0)),
+              _buildLandChip('ًںŒ¾', context.tr.feddan, '${share.landShare.feddans}', const Color(0xFF2E7D32)),
+              _buildLandChip('ًں“گ', context.tr.qirat, '${share.landShare.qirats}', const Color(0xFF795548)),
+              _buildLandChip('ًں“ڈ', context.tr.sahm, '${share.landShare.sahms}', const Color(0xFFE65100)),
+              _buildLandChip('ًں“چ', 'ظ…آ²', share.landShare.totalInMeters.toStringAsFixed(1), const Color(0xFF1565C0)),
             ],
           ),
           if (share.count > 1) ...[
@@ -547,13 +547,13 @@ class InheritanceResultsWidget extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: const Color(0xFF1565C0).withOpacity(isDarkMode ? 0.15 : 0.08),
+                color: const Color(0xFF1565C0).withValues(alpha: isDarkMode ? 0.15 : 0.08),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('👤', style: TextStyle(fontSize: 14)),
+                  const Text('ًں‘¤', style: TextStyle(fontSize: 14)),
                   const SizedBox(width: 6),
                   Text(
                     '${context.tr.sharePerPerson}: ${share.perPersonShare.formatted}',
@@ -576,9 +576,9 @@ class InheritanceResultsWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       decoration: BoxDecoration(
-        color: color.withOpacity(isDarkMode ? 0.15 : 0.08),
+        color: color.withValues(alpha: isDarkMode ? 0.15 : 0.08),
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: color.withOpacity(0.2)),
+        border: Border.all(color: color.withValues(alpha: 0.2)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -609,10 +609,10 @@ class InheritanceResultsWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: cardColor,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.red.withOpacity(0.2)),
+        border: Border.all(color: Colors.red.withValues(alpha: 0.2)),
         boxShadow: [
           BoxShadow(
-            color: isDarkMode ? Colors.black.withOpacity(0.2) : Colors.black.withOpacity(0.05),
+            color: isDarkMode ? Colors.black.withValues(alpha: 0.2) : Colors.black.withValues(alpha: 0.05),
             blurRadius: 15,
             offset: const Offset(0, 5),
           ),
@@ -624,7 +624,7 @@ class InheritanceResultsWidget extends StatelessWidget {
         leading: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: Colors.red.withOpacity(0.1),
+            color: Colors.red.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(10),
           ),
           child: const Icon(Icons.person_off_rounded, color: Colors.red, size: 20),
@@ -662,9 +662,9 @@ class InheritanceResultsWidget extends StatelessWidget {
           margin: const EdgeInsets.only(bottom: 8),
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Colors.red.withOpacity(isDarkMode ? 0.1 : 0.05),
+            color: Colors.red.withValues(alpha: isDarkMode ? 0.1 : 0.05),
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.red.withOpacity(0.2)),
+            border: Border.all(color: Colors.red.withValues(alpha: 0.2)),
           ),
           child: Row(
             children: [

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:islamic_app/screens/sunnah/widgets/sunnah_empty_state.dart';
 import '../model/sunnah_model.dart';
 import '../services/sunnah_service.dart';
@@ -92,24 +92,24 @@ class SunnahCurrentTab extends StatelessWidget {
           gradient: LinearGradient(
             colors: theme.isDark
                 ? [
-              SunnahTheme.emerald.withOpacity(0.15),
-              SunnahTheme.blue.withOpacity(0.08),
+              SunnahTheme.emerald.withValues(alpha: 0.15),
+              SunnahTheme.blue.withValues(alpha: 0.08),
             ]
                 : [
-              SunnahTheme.emerald.withOpacity(0.1),
-              SunnahTheme.emerald.withOpacity(0.04),
+              SunnahTheme.emerald.withValues(alpha: 0.1),
+              SunnahTheme.emerald.withValues(alpha: 0.04),
             ],
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
           ),
           border: Border.all(
-            color: SunnahTheme.emerald.withOpacity(0.25),
+            color: SunnahTheme.emerald.withValues(alpha: 0.25),
             width: 1,
           ),
           boxShadow: [
             BoxShadow(
               color: SunnahTheme.emerald
-                  .withOpacity(theme.isDark ? 0.08 : 0.05),
+                  .withValues(alpha: theme.isDark ? 0.08 : 0.05),
               blurRadius: 12,
               offset: const Offset(0, 4),
             ),
@@ -128,14 +128,14 @@ class SunnahCurrentTab extends StatelessWidget {
                   boxShadow: [
                     BoxShadow(
                       color: SunnahTheme.emerald
-                          .withOpacity(0.3 * pulseAnim.value),
+                          .withValues(alpha: 0.3 * pulseAnim.value),
                       blurRadius: 10,
                       spreadRadius: 2,
                     ),
                   ],
                 ),
                 child: const Center(
-                  child: Text('⏰', style: TextStyle(fontSize: 22)),
+                  child: Text('âڈ°', style: TextStyle(fontSize: 22)),
                 ),
               ),
             ),
@@ -155,8 +155,8 @@ class SunnahCurrentTab extends StatelessWidget {
                   const SizedBox(height: 3),
                   Text(
                     remaining > 0
-                        ? 'تبقى لك $remaining سنة لم تكتمل بعد'
-                        : '✨ ممتاز! أتممت جميع سنن هذا الوقت',
+                        ? 'طھط¨ظ‚ظ‰ ظ„ظƒ $remaining ط³ظ†ط© ظ„ظ… طھظƒطھظ…ظ„ ط¨ط¹ط¯'
+                        : 'âœ¨ ظ…ظ…طھط§ط²! ط£طھظ…ظ…طھ ط¬ظ…ظٹط¹ ط³ظ†ظ† ظ‡ط°ط§ ط§ظ„ظˆظ‚طھ',
                     style: TextStyle(
                       color: theme.textSecondary,
                       fontSize: size.width * 0.03,
@@ -175,7 +175,7 @@ class SunnahCurrentTab extends StatelessWidget {
                 gradient: SunnahTheme.emeraldGradient,
               ),
               child: Text(
-                '${sunnahs.length} سنة',
+                '${sunnahs.length} ط³ظ†ط©',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: size.width * 0.03,

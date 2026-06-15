@@ -1,4 +1,4 @@
-// widgets/voice_search_button.dart
+﻿// widgets/voice_search_button.dart
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -67,7 +67,7 @@ class _VoiceSearchButtonState extends State<VoiceSearchButton>
         _animController.stop();
         _animController.reset();
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('خطأ: $error')),
+          SnackBar(content: Text('ط®ط·ط£: $error')),
         );
       },
     );
@@ -93,7 +93,7 @@ class _VoiceSearchButtonState extends State<VoiceSearchButton>
                 boxShadow: _isListening
                     ? [
                   BoxShadow(
-                    color: Colors.red.withOpacity(0.4),
+                    color: Colors.red.withValues(alpha: 0.4),
                     blurRadius: 12,
                     spreadRadius: 4,
                   ),

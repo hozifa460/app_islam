@@ -1,4 +1,4 @@
-import 'dart:math';
+﻿import 'dart:math';
 import 'package:flutter/material.dart';
 
 class AuthBackground extends StatelessWidget {
@@ -40,7 +40,7 @@ class AuthBackground extends StatelessWidget {
               right: -s.width * 0.1,
               child: _Glow(
                 d: s.width * 0.7,
-                c: _gold.withOpacity(isDark ? 0.07 : 0.05),
+                c: _gold.withValues(alpha: isDark ? 0.07 : 0.05),
               ),
             ),
             Positioned(
@@ -48,7 +48,7 @@ class AuthBackground extends StatelessWidget {
               left: -s.width * 0.15,
               child: _Glow(
                 d: s.width * 0.55,
-                c: _gold.withOpacity(isDark ? 0.05 : 0.04),
+                c: _gold.withValues(alpha: isDark ? 0.05 : 0.04),
               ),
             ),
             Positioned(
@@ -56,13 +56,13 @@ class AuthBackground extends StatelessWidget {
               left: -s.width * 0.08,
               child: _Glow(
                 d: s.width * 0.35,
-                c: _gold.withOpacity(isDark ? 0.04 : 0.03),
+                c: _gold.withValues(alpha: isDark ? 0.04 : 0.03),
               ),
             ),
             Positioned.fill(
               child: CustomPaint(
                 painter: _PatternPainter(
-                  _gold.withOpacity(isDark ? 0.015 : 0.025),
+                  _gold.withValues(alpha: isDark ? 0.015 : 0.025),
                 ),
               ),
             ),

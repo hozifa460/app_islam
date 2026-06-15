@@ -1,4 +1,4 @@
-import 'dart:math' as math;
+﻿import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import '../../languages/app_localizations.dart';
@@ -429,9 +429,9 @@ class _InheritanceScreenState extends State<InheritanceScreen>
         padding: const EdgeInsets.all(8),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.15),
+            color: Colors.white.withValues(alpha: 0.15),
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.white.withOpacity(0.2)),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
           ),
           child: IconButton(
             icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white, size: 18),
@@ -462,7 +462,7 @@ class _InheritanceScreenState extends State<InheritanceScreen>
                     color: Colors.white,
                     shadows: [
                       Shadow(
-                        color: Colors.black.withOpacity(0.3),
+                        color: Colors.black.withValues(alpha: 0.3),
                         blurRadius: 4,
                       ),
                     ],
@@ -482,8 +482,8 @@ class _InheritanceScreenState extends State<InheritanceScreen>
                       end: Alignment.bottomRight,
                       colors: [
                         _primary,
-                        _primary.withOpacity(0.85),
-                        isDarkMode ? const Color(0xFF0D3B2E) : _primary.withOpacity(0.95),
+                        _primary.withValues(alpha: 0.85),
+                        isDarkMode ? const Color(0xFF0D3B2E) : _primary.withValues(alpha: 0.95),
                       ],
                     ),
                   ),
@@ -493,7 +493,7 @@ class _InheritanceScreenState extends State<InheritanceScreen>
                 Opacity(
                   opacity: expandRatio,
                   child: CustomPaint(
-                    painter: _IslamicPatternPainter(color: Colors.white.withOpacity(0.03)),
+                    painter: _IslamicPatternPainter(color: Colors.white.withValues(alpha: 0.03)),
                   ),
                 ),
 
@@ -510,9 +510,9 @@ class _InheritanceScreenState extends State<InheritanceScreen>
                           Container(
                             padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
-                              color: _gold.withOpacity(0.2),
+                              color: _gold.withValues(alpha: 0.2),
                               shape: BoxShape.circle,
-                              border: Border.all(color: _gold.withOpacity(0.3)),
+                              border: Border.all(color: _gold.withValues(alpha: 0.3)),
                             ),
                             child: Icon(
                               Icons.balance_rounded,
@@ -577,11 +577,11 @@ class _InheritanceScreenState extends State<InheritanceScreen>
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           gradient: LinearGradient(
-            colors: [_primary, _primary.withOpacity(0.8)],
+            colors: [_primary, _primary.withValues(alpha: 0.8)],
           ),
           boxShadow: [
             BoxShadow(
-              color: _primary.withOpacity(0.4),
+              color: _primary.withValues(alpha: 0.4),
               blurRadius: 15,
               offset: const Offset(0, 6),
             ),
@@ -601,7 +601,7 @@ class _InheritanceScreenState extends State<InheritanceScreen>
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
+                  color: Colors.white.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Icon(Icons.calculate_rounded, color: Colors.white, size: 22),

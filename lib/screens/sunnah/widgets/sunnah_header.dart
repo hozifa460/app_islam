@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../services/sunnah_service.dart';
 import 'sunnah_theme.dart';
@@ -48,13 +48,13 @@ class SunnahHeader extends StatelessWidget {
             top: -40,
             left: -40,
             child: _buildOrbDecoration(
-                size.width * 0.45, SunnahTheme.emerald.withOpacity(0.06)),
+                size.width * 0.45, SunnahTheme.emerald.withValues(alpha: 0.06)),
           ),
           Positioned(
             bottom: -30,
             right: -30,
             child: _buildOrbDecoration(
-                size.width * 0.35, SunnahTheme.gold.withOpacity(0.05)),
+                size.width * 0.35, SunnahTheme.gold.withValues(alpha: 0.05)),
           ),
           SafeArea(
             bottom: false,
@@ -109,7 +109,7 @@ class SunnahHeader extends StatelessWidget {
                     colors: [Colors.white, Color(0xFFD1FAE5)],
                   ).createShader(b),
                   child: Text(
-                    'متتبع السنن النبوية',
+                    'ظ…طھطھط¨ط¹ ط§ظ„ط³ظ†ظ† ط§ظ„ظ†ط¨ظˆظٹط©',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: size.width * 0.055,
@@ -121,9 +121,9 @@ class SunnahHeader extends StatelessWidget {
               ),
               SizedBox(height: isSmall ? 2 : 4),
               Text(
-                'احرص على سنة نبيك ﷺ',
+                'ط§ط­ط±طµ ط¹ظ„ظ‰ ط³ظ†ط© ظ†ط¨ظٹظƒ ï·؛',
                 style: TextStyle(
-                  color: Colors.white.withOpacity(0.65),
+                  color: Colors.white.withValues(alpha: 0.65),
                   fontSize: size.width * 0.032,
                 ),
               ),
@@ -157,7 +157,7 @@ class SunnahHeader extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                   color: SunnahTheme.emeraldLight
-                      .withOpacity(pulseAnim.value - 0.5),
+                      .withValues(alpha: pulseAnim.value - 0.5),
                   blurRadius: 6,
                   spreadRadius: 2,
                 ),
@@ -188,13 +188,13 @@ class SunnahHeader extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(14),
-          color: Colors.white.withOpacity(0.1),
+          color: Colors.white.withValues(alpha: 0.1),
           border:
-          Border.all(color: Colors.white.withOpacity(0.15), width: 1),
+          Border.all(color: Colors.white.withValues(alpha: 0.15), width: 1),
           boxShadow: [
             BoxShadow(
               color:
-              SunnahTheme.emerald.withOpacity(0.08 * pulseAnim.value),
+              SunnahTheme.emerald.withValues(alpha: 0.08 * pulseAnim.value),
               blurRadius: 12,
             ),
           ],
@@ -215,7 +215,7 @@ class SunnahHeader extends StatelessWidget {
             Text(
               SunnahTheme.getDayName(now.weekday),
               style: TextStyle(
-                color: SunnahTheme.emeraldLight.withOpacity(0.85),
+                color: SunnahTheme.emeraldLight.withValues(alpha: 0.85),
                 fontSize: size.width * 0.026,
               ),
             ),
@@ -236,9 +236,9 @@ class SunnahHeader extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Colors.white.withOpacity(0.1),
+          color: Colors.white.withValues(alpha: 0.1),
           border:
-          Border.all(color: Colors.white.withOpacity(0.15), width: 1),
+          Border.all(color: Colors.white.withValues(alpha: 0.15), width: 1),
         ),
         child: Icon(
           theme.isDark ? Icons.light_mode_rounded : Icons.dark_mode_rounded,
@@ -257,24 +257,24 @@ class SunnahHeader extends StatelessWidget {
       children: [
         _buildStatCard(
           value: '$completed/$total',
-          label: 'سنة الوقت',
-          emoji: '⏰',
+          label: 'ط³ظ†ط© ط§ظ„ظˆظ‚طھ',
+          emoji: 'âڈ°',
           color: SunnahTheme.emerald,
           isSmall: isSmall,
         ),
         SizedBox(width: size.width * 0.025),
         _buildStatCard(
           value: '$globalCompleted/$globalTotal',
-          label: 'إجمالي اليوم',
-          emoji: '📿',
+          label: 'ط¥ط¬ظ…ط§ظ„ظٹ ط§ظ„ظٹظˆظ…',
+          emoji: 'ًں“؟',
           color: SunnahTheme.goldLight,
           isSmall: isSmall,
         ),
         SizedBox(width: size.width * 0.025),
         _buildStatCard(
           value: '${globalTotal - globalCompleted}',
-          label: 'متبقي',
-          emoji: '🎯',
+          label: 'ظ…طھط¨ظ‚ظٹ',
+          emoji: 'ًںژ¯',
           color: SunnahTheme.blueLight,
           isSmall: isSmall,
         ),
@@ -297,8 +297,8 @@ class SunnahHeader extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(14),
-          color: Colors.white.withOpacity(0.08),
-          border: Border.all(color: color.withOpacity(0.25), width: 1),
+          color: Colors.white.withValues(alpha: 0.08),
+          border: Border.all(color: color.withValues(alpha: 0.25), width: 1),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -319,7 +319,7 @@ class SunnahHeader extends StatelessWidget {
             Text(
               label,
               style: TextStyle(
-                color: Colors.white.withOpacity(0.6),
+                color: Colors.white.withValues(alpha: 0.6),
                 fontSize: isSmall ? 9 : 10,
               ),
               maxLines: 1,
@@ -340,9 +340,9 @@ class SunnahHeader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'تقدم الوقت الحالي',
+              'طھظ‚ط¯ظ… ط§ظ„ظˆظ‚طھ ط§ظ„ط­ط§ظ„ظٹ',
               style: TextStyle(
-                color: Colors.white.withOpacity(0.7),
+                color: Colors.white.withValues(alpha: 0.7),
                 fontSize: size.width * 0.03,
               ),
             ),
@@ -377,7 +377,7 @@ class SunnahHeader extends StatelessWidget {
               height: SunnahTheme.progressHeight,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Colors.white.withOpacity(0.1),
+                color: Colors.white.withValues(alpha: 0.1),
               ),
             ),
             AnimatedFractionallySizedBox(
@@ -392,7 +392,7 @@ class SunnahHeader extends StatelessWidget {
                   gradient: SunnahTheme.emeraldLightGradient,
                   boxShadow: [
                     BoxShadow(
-                      color: SunnahTheme.emerald.withOpacity(0.6),
+                      color: SunnahTheme.emerald.withValues(alpha: 0.6),
                       blurRadius: 6,
                     ),
                   ],
@@ -406,14 +406,14 @@ class SunnahHeader extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('🎉', style: TextStyle(fontSize: 13)),
+              const Text('ًںژ‰', style: TextStyle(fontSize: 13)),
               const SizedBox(width: 6),
               ShaderMask(
                 shaderCallback: (b) => const LinearGradient(
                   colors: [SunnahTheme.goldLight, SunnahTheme.gold],
                 ).createShader(b),
                 child: const Text(
-                  'أحسنت! أتممت سنن هذا الوقت',
+                  'ط£ط­ط³ظ†طھ! ط£طھظ…ظ…طھ ط³ظ†ظ† ظ‡ط°ط§ ط§ظ„ظˆظ‚طھ',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 12,

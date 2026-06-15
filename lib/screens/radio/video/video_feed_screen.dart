@@ -1,4 +1,4 @@
-// lib/screens/radio/video/video_feed_screen.dart
+﻿// lib/screens/radio/video/video_feed_screen.dart
 
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -46,7 +46,7 @@ class _VideoFeedScreenState extends State<VideoFeedScreen>
     super.initState();
     WidgetsBinding.instance.addObserver(this);
 
-    // ✅ هيئه أولاً
+    // âœ… ظ‡ظٹط¦ظ‡ ط£ظˆظ„ط§ظ‹
     _videoDownloadService = context.read<VideoDownloadService>();
 
     _currentIndex = widget.initialIndex;
@@ -72,9 +72,9 @@ class _VideoFeedScreenState extends State<VideoFeedScreen>
     }
   }
 
-  // ══════════════════════════════════════════════════════
-  // preload حول العنصر الحالي
-  // ══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // preload ط­ظˆظ„ ط§ظ„ط¹ظ†طµط± ط§ظ„ط­ط§ظ„ظٹ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Future<void> _preloadAround(int index) async {
     final start = (index - _preloadRange).clamp(0, widget.videos.length - 1);
@@ -94,14 +94,14 @@ class _VideoFeedScreenState extends State<VideoFeedScreen>
 
       VideoPlayerController controller;
 
-      // ✅ إذا محمّل: استخدم controller محلي
+      // âœ… ط¥ط°ط§ ظ…ط­ظ…ظ‘ظ„: ط§ط³طھط®ط¯ظ… controller ظ…ط­ظ„ظٹ
       if (localPath != null && File(localPath).existsSync()) {
         controller = await _cacheManager.ensureLocalController(
           localPath,
           restorePosition: savedPos,
         );
       } else {
-        // ✅ غير محمّل: استخدم الشبكة
+        // âœ… ط؛ظٹط± ظ…ط­ظ…ظ‘ظ„: ط§ط³طھط®ط¯ظ… ط§ظ„ط´ط¨ظƒط©
         controller = await _cacheManager.ensureController(videoUrl);
 
         if (savedPos != null && savedPos.inSeconds > 0) {
@@ -147,10 +147,10 @@ class _VideoFeedScreenState extends State<VideoFeedScreen>
     final localPath = _videoDownloadService.getLocalPath(videoId);
     final isLocal = localPath != null && File(localPath).existsSync();
 
-    // ✅ المفتاح الفعلي الذي سيُستخدم للتشغيل
+    // âœ… ط§ظ„ظ…ظپطھط§ط­ ط§ظ„ظپط¹ظ„ظٹ ط§ظ„ط°ظٹ ط³ظٹظڈط³طھط®ط¯ظ… ظ„ظ„طھط´ط؛ظٹظ„
     final playKey = isLocal ? localPath! : videoUrl;
 
-    // ✅ إذا كان هناك Controller جاهز لنفس المصدر فشغّله فوراً
+    // âœ… ط¥ط°ط§ ظƒط§ظ† ظ‡ظ†ط§ظƒ Controller ط¬ط§ظ‡ط² ظ„ظ†ظپط³ ط§ظ„ظ…طµط¯ط± ظپط´ط؛ظ‘ظ„ظ‡ ظپظˆط±ط§ظ‹
     final cachedController = _cacheManager.getController(playKey);
     if (cachedController != null && _cacheManager.isInitialized(playKey)) {
       if (!cachedController.value.isPlaying) {
@@ -160,13 +160,13 @@ class _VideoFeedScreenState extends State<VideoFeedScreen>
       return;
     }
 
-    // ✅ إذا سنشغل المحلي، أوقف أي نسخة شبكية قديمة لنفس الفيديو
+    // âœ… ط¥ط°ط§ ط³ظ†ط´ط؛ظ„ ط§ظ„ظ…ط­ظ„ظٹطŒ ط£ظˆظ‚ظپ ط£ظٹ ظ†ط³ط®ط© ط´ط¨ظƒظٹط© ظ‚ط¯ظٹظ…ط© ظ„ظ†ظپط³ ط§ظ„ظپظٹط¯ظٹظˆ
     if (isLocal) {
       final oldNetworkController = _cacheManager.getController(videoUrl);
       oldNetworkController?.pause();
     }
 
-    // ✅ التهيئة حسب المصدر
+    // âœ… ط§ظ„طھظ‡ظٹط¦ط© ط­ط³ط¨ ط§ظ„ظ…طµط¯ط±
     final future = isLocal
         ? _cacheManager.ensureLocalController(localPath!)
         : _cacheManager.ensureController(videoUrl);
@@ -174,7 +174,7 @@ class _VideoFeedScreenState extends State<VideoFeedScreen>
     future.then((controller) {
       if (!mounted) return;
 
-      // ✅ تأكد أن المستخدم ما زال على نفس الفيديو
+      // âœ… طھط£ظƒط¯ ط£ظ† ط§ظ„ظ…ط³طھط®ط¯ظ… ظ…ط§ ط²ط§ظ„ ط¹ظ„ظ‰ ظ†ظپط³ ط§ظ„ظپظٹط¯ظٹظˆ
       final currentItem = widget.videos[_currentIndex];
       final currentVideoUrl = currentItem.videoUrl ?? '';
       final currentVideoId = VideoDownloadService.videoIdFromUrl(currentVideoUrl);
@@ -234,7 +234,7 @@ class _VideoFeedScreenState extends State<VideoFeedScreen>
       final url = _getPlayUrl(widget.videos[i]);
       if (url == null) continue;
 
-      // ✅ تهيئة في الخلفية فقط - بدون تشغيل
+      // âœ… طھظ‡ظٹط¦ط© ظپظٹ ط§ظ„ط®ظ„ظپظٹط© ظپظ‚ط· - ط¨ط¯ظˆظ† طھط´ط؛ظٹظ„
       _cacheManager.ensureController(url);
     }
   }
@@ -244,7 +244,7 @@ class _VideoFeedScreenState extends State<VideoFeedScreen>
     final oldItem = widget.videos[_currentIndex];
 
     try {
-      // ✅ أوقف الشبكي والمحلي معًا
+      // âœ… ط£ظˆظ‚ظپ ط§ظ„ط´ط¨ظƒظٹ ظˆط§ظ„ظ…ط­ظ„ظٹ ظ…ط¹ظ‹ط§
       await _saveAndPauseControllersForItem(oldItem);
 
       if (seq != _pageChangeSeq || !mounted) return;
@@ -288,7 +288,7 @@ class _VideoFeedScreenState extends State<VideoFeedScreen>
 
       if (mounted) setState(() {});
     } catch (e) {
-      debugPrint('⚠️ _onPageChanged error: $e');
+      debugPrint('âڑ ï¸ڈ _onPageChanged error: $e');
       if (mounted) setState(() {});
     }
   }
@@ -317,7 +317,7 @@ class _VideoFeedScreenState extends State<VideoFeedScreen>
           backgroundColor: Colors.black,
           body: Stack(
             children: [
-              // ✅ الفيد العمودي
+              // âœ… ط§ظ„ظپظٹط¯ ط§ظ„ط¹ظ…ظˆط¯ظٹ
               PageView.builder(
                 controller: _pageController,
                 scrollDirection: Axis.vertical,
@@ -341,7 +341,7 @@ class _VideoFeedScreenState extends State<VideoFeedScreen>
                 },
               ),
 
-              // ✅ الهيدر العلوي للفيد
+              // âœ… ط§ظ„ظ‡ظٹط¯ط± ط§ظ„ط¹ظ„ظˆظٹ ظ„ظ„ظپظٹط¯
               Positioned(
                 top: 0,
                 left: 0,
@@ -371,7 +371,7 @@ class _VideoFeedScreenState extends State<VideoFeedScreen>
                           width: 38,
                           height: 38,
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.15),
+                            color: Colors.white.withValues(alpha: 0.15),
                             shape: BoxShape.circle,
                           ),
                           child: const Icon(
@@ -400,7 +400,7 @@ class _VideoFeedScreenState extends State<VideoFeedScreen>
                           vertical: 4,
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.15),
+                          color: Colors.white.withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Text(

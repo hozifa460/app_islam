@@ -1,4 +1,4 @@
-// lib/screens/radio/widgets/station_image_widget.dart
+﻿// lib/screens/radio/widgets/station_image_widget.dart
 
 import 'package:flutter/material.dart';
 
@@ -52,12 +52,12 @@ class StationImageWidget extends StatelessWidget {
             gradient: LinearGradient(
               colors: isActive
                   ? [
-                primaryColor.withOpacity(0.35),
-                goldColor.withOpacity(0.22),
+                primaryColor.withValues(alpha: 0.35),
+                goldColor.withValues(alpha: 0.22),
               ]
                   : [
-                primaryColor.withOpacity(0.16),
-                primaryColor.withOpacity(0.05),
+                primaryColor.withValues(alpha: 0.16),
+                primaryColor.withValues(alpha: 0.05),
               ],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
@@ -92,14 +92,14 @@ class StationImageWidget extends StatelessWidget {
 
   Widget _buildLoadingPlaceholder() {
     return Container(
-      color: primaryColor.withOpacity(0.08),
+      color: primaryColor.withValues(alpha: 0.08),
       child: Center(
         child: SizedBox(
           width: 18,
           height: 18,
           child: CircularProgressIndicator(
             strokeWidth: 1.8,
-            color: primaryColor.withOpacity(0.45),
+            color: primaryColor.withValues(alpha: 0.45),
           ),
         ),
       ),
@@ -112,12 +112,12 @@ class StationImageWidget extends StatelessWidget {
         gradient: LinearGradient(
           colors: isActive
               ? [
-            primaryColor.withOpacity(0.28),
-            goldColor.withOpacity(0.18),
+            primaryColor.withValues(alpha: 0.28),
+            goldColor.withValues(alpha: 0.18),
           ]
               : [
-            primaryColor.withOpacity(0.14),
-            goldColor.withOpacity(0.08),
+            primaryColor.withValues(alpha: 0.14),
+            goldColor.withValues(alpha: 0.08),
           ],
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,

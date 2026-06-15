@@ -1,4 +1,4 @@
-import 'dart:math' as math;
+﻿import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 class AsmaIslamicPatternPainter extends CustomPainter {
@@ -38,10 +38,10 @@ class AsmaIslamicPatternPainter extends CustomPainter {
         path.close();
         canvas.drawPath(path, paint);
 
-        // نقطة/نجمة مركزية
+        // ظ†ظ‚ط·ط©/ظ†ط¬ظ…ط© ظ…ط±ظƒط²ظٹط©
         if (sides == 6) {
           final starPaint = Paint()
-            ..color = color.withOpacity(0.5)
+            ..color = color.withValues(alpha: 0.5)
             ..style = PaintingStyle.fill;
           final starPath = Path();
           for (int i = 0; i < 12; i++) {
@@ -59,7 +59,7 @@ class AsmaIslamicPatternPainter extends CustomPainter {
           canvas.drawPath(starPath, starPaint);
         } else {
           final dotPaint = Paint()
-            ..color = color.withOpacity(0.5)
+            ..color = color.withValues(alpha: 0.5)
             ..style = PaintingStyle.fill;
           canvas.drawCircle(Offset(cx, cy), step * 0.05, dotPaint);
         }
@@ -88,7 +88,7 @@ class AsmaGlowRingsPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = gold.withOpacity(opacity)
+      ..color = gold.withValues(alpha: opacity)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.5
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4);

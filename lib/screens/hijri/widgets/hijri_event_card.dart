@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../languages/app_localizations.dart';
 import 'hijri_theme.dart';
@@ -30,12 +30,12 @@ class HijriEventCard extends StatelessWidget {
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
           colors: [
-            theme.primaryColor.withOpacity(theme.isDark ? 0.15 : 0.08),
-            HijriTheme.gold.withOpacity(theme.isDark ? 0.08 : 0.03),
+            theme.primaryColor.withValues(alpha: theme.isDark ? 0.15 : 0.08),
+            HijriTheme.gold.withValues(alpha: theme.isDark ? 0.08 : 0.03),
           ],
         ),
         borderRadius: BorderRadius.circular(HijriTheme.cardRadius),
-        border: Border.all(color: HijriTheme.gold.withOpacity(0.2)),
+        border: Border.all(color: HijriTheme.gold.withValues(alpha: 0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -51,7 +51,7 @@ class HijriEventCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  HijriBadge(text: context.tr.todaysEvent, color: HijriTheme.gold), // 👈 تمت الترجمة
+                  HijriBadge(text: context.tr.todaysEvent, color: HijriTheme.gold), // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
                   const SizedBox(height: 6),
                   Row(
                     mainAxisSize: MainAxisSize.min,

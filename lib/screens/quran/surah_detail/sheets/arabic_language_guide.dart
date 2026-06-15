@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -34,14 +34,14 @@ class ArabicLanguageGuide {
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: Colors.orange.withOpacity(0.1),
+                  color: Colors.orange.withValues(alpha: 0.1),
                   shape: BoxShape.circle,
                 ),
                 child: const Icon(Icons.language, color: Colors.orange, size: 40),
               ),
               const SizedBox(height: 16),
               Text(
-                'تحميل اللغة العربية مطلوب',
+                'طھط­ظ…ظٹظ„ ط§ظ„ظ„ط؛ط© ط§ظ„ط¹ط±ط¨ظٹط© ظ…ط·ظ„ظˆط¨',
                 style: GoogleFonts.cairo(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -49,7 +49,7 @@ class ArabicLanguageGuide {
               ),
               const SizedBox(height: 8),
               Text(
-                'لتفعيل التسميع بالعربية، تحتاج تحميل حزمة التعرف على الكلام العربية.',
+                'ظ„طھظپط¹ظٹظ„ ط§ظ„طھط³ظ…ظٹط¹ ط¨ط§ظ„ط¹ط±ط¨ظٹط©طŒ طھط­طھط§ط¬ طھط­ظ…ظٹظ„ ط­ط²ظ…ط© ط§ظ„طھط¹ط±ظپ ط¹ظ„ظ‰ ط§ظ„ظƒظ„ط§ظ… ط§ظ„ط¹ط±ط¨ظٹط©.',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.cairo(
                   fontSize: 13,
@@ -59,14 +59,14 @@ class ArabicLanguageGuide {
               ),
               const SizedBox(height: 20),
 
-              // الطريقة 1
+              // ط§ظ„ط·ط±ظٹظ‚ط© 1
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(14),
                 decoration: BoxDecoration(
-                  color: Colors.green.withOpacity(0.05),
+                  color: Colors.green.withValues(alpha: 0.05),
                   borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: Colors.green.withOpacity(0.15)),
+                  border: Border.all(color: Colors.green.withValues(alpha: 0.15)),
                 ),
                 child: Column(
                   children: [
@@ -75,7 +75,7 @@ class ArabicLanguageGuide {
                         Icon(Icons.looks_one, color: Colors.green.shade700, size: 20),
                         const SizedBox(width: 8),
                         Text(
-                          'الطريقة الأسهل:',
+                          'ط§ظ„ط·ط±ظٹظ‚ط© ط§ظ„ط£ط³ظ‡ظ„:',
                           style: GoogleFonts.cairo(
                             fontSize: 13,
                             fontWeight: FontWeight.bold,
@@ -86,11 +86,11 @@ class ArabicLanguageGuide {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      '١. افتح تطبيق Google على هاتفك\n'
-                          '٢. اضغط على الميكروفون 🎤\n'
-                          '٣. تحدث بالعربية (مثلاً: بسم الله)\n'
-                          '٤. إذا طلب تحميل اللغة → وافق\n'
-                          '٥. ارجع وجرب مرة أخرى',
+                      'ظ،. ط§ظپطھط­ طھط·ط¨ظٹظ‚ Google ط¹ظ„ظ‰ ظ‡ط§طھظپظƒ\n'
+                          'ظ¢. ط§ط¶ط؛ط· ط¹ظ„ظ‰ ط§ظ„ظ…ظٹظƒط±ظˆظپظˆظ† ًںژ¤\n'
+                          'ظ£. طھط­ط¯ط« ط¨ط§ظ„ط¹ط±ط¨ظٹط© (ظ…ط«ظ„ط§ظ‹: ط¨ط³ظ… ط§ظ„ظ„ظ‡)\n'
+                          'ظ¤. ط¥ط°ط§ ط·ظ„ط¨ طھط­ظ…ظٹظ„ ط§ظ„ظ„ط؛ط© â†’ ظˆط§ظپظ‚\n'
+                          'ظ¥. ط§ط±ط¬ط¹ ظˆط¬ط±ط¨ ظ…ط±ط© ط£ط®ط±ظ‰',
                       style: GoogleFonts.cairo(fontSize: 12, height: 1.6),
                     ),
                   ],
@@ -98,14 +98,14 @@ class ArabicLanguageGuide {
               ),
               const SizedBox(height: 12),
 
-              // الطريقة 2
+              // ط§ظ„ط·ط±ظٹظ‚ط© 2
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(14),
                 decoration: BoxDecoration(
-                  color: Colors.blue.withOpacity(0.05),
+                  color: Colors.blue.withValues(alpha: 0.05),
                   borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: Colors.blue.withOpacity(0.15)),
+                  border: Border.all(color: Colors.blue.withValues(alpha: 0.15)),
                 ),
                 child: Column(
                   children: [
@@ -114,7 +114,7 @@ class ArabicLanguageGuide {
                         Icon(Icons.looks_two, color: Colors.blue.shade700, size: 20),
                         const SizedBox(width: 8),
                         Text(
-                          'من الإعدادات:',
+                          'ظ…ظ† ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ:',
                           style: GoogleFonts.cairo(
                             fontSize: 13,
                             fontWeight: FontWeight.bold,
@@ -125,9 +125,9 @@ class ArabicLanguageGuide {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'الإعدادات → النظام → اللغة والإدخال\n'
-                          '→ التعرف على الكلام بلا إنترنت\n'
-                          '→ تحميل "العربية"',
+                      'ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ â†’ ط§ظ„ظ†ط¸ط§ظ… â†’ ط§ظ„ظ„ط؛ط© ظˆط§ظ„ط¥ط¯ط®ط§ظ„\n'
+                          'â†’ ط§ظ„طھط¹ط±ظپ ط¹ظ„ظ‰ ط§ظ„ظƒظ„ط§ظ… ط¨ظ„ط§ ط¥ظ†طھط±ظ†طھ\n'
+                          'â†’ طھط­ظ…ظٹظ„ "ط§ظ„ط¹ط±ط¨ظٹط©"',
                       style: GoogleFonts.cairo(fontSize: 12, height: 1.6),
                     ),
                   ],
@@ -135,7 +135,7 @@ class ArabicLanguageGuide {
               ),
               const SizedBox(height: 20),
 
-              // الأزرار
+              // ط§ظ„ط£ط²ط±ط§ط±
               Row(
                 children: [
                   Expanded(
@@ -148,7 +148,7 @@ class ArabicLanguageGuide {
                       ),
                       onPressed: () => Navigator.pop(ctx),
                       icon: const Icon(Icons.close, size: 18),
-                      label: Text('لاحقاً', style: GoogleFonts.cairo()),
+                      label: Text('ظ„ط§ط­ظ‚ط§ظ‹', style: GoogleFonts.cairo()),
                     ),
                   ),
                   const SizedBox(width: 10),
@@ -168,7 +168,7 @@ class ArabicLanguageGuide {
                       },
                       icon: const Icon(Icons.settings, size: 18),
                       label: Text(
-                        'فتح الإعدادات',
+                        'ظپطھط­ ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ',
                         style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -177,7 +177,7 @@ class ArabicLanguageGuide {
               ),
               const SizedBox(height: 8),
 
-              // زر Google
+              // ط²ط± Google
               SizedBox(
                 width: double.infinity,
                 child: TextButton.icon(
@@ -197,7 +197,7 @@ class ArabicLanguageGuide {
                   },
                   icon: Icon(Icons.open_in_new, size: 16, color: Colors.blue.shade700),
                   label: Text(
-                    'فتح تطبيق Google في المتجر',
+                    'ظپطھط­ طھط·ط¨ظٹظ‚ Google ظپظٹ ط§ظ„ظ…طھط¬ط±',
                     style: GoogleFonts.cairo(
                       fontSize: 12,
                       color: Colors.blue.shade700,

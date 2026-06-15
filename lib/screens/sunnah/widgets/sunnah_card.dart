@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../model/sunnah_model.dart';
 import '../services/sunnah_service.dart';
@@ -47,7 +47,7 @@ class SunnahCard extends StatelessWidget {
             gradient: sunnah.isCompleted
                 ? LinearGradient(colors: [
               SunnahTheme.emerald
-                  .withOpacity(theme.isDark ? 0.07 : 0.05),
+                  .withValues(alpha: theme.isDark ? 0.07 : 0.05),
               theme.card,
             ])
                 : LinearGradient(
@@ -61,7 +61,7 @@ class SunnahCard extends StatelessWidget {
             ),
             border: Border.all(
               color: sunnah.isCompleted
-                  ? SunnahTheme.emerald.withOpacity(0.25)
+                  ? SunnahTheme.emerald.withValues(alpha: 0.25)
                   : theme.divider,
               width: 1,
             ),
@@ -86,7 +86,7 @@ class SunnahCard extends StatelessWidget {
                       end: Alignment.bottomCenter,
                       colors: sunnah.isCompleted
                           ? [SunnahTheme.emeraldLight, SunnahTheme.emeraldDark]
-                          : [cardColor, cardColor.withOpacity(0.2)],
+                          : [cardColor, cardColor.withValues(alpha: 0.2)],
                     ),
                   ),
                 ),
@@ -178,19 +178,19 @@ class SunnahCard extends StatelessWidget {
         gradient: sunnah.isCompleted
             ? SunnahTheme.emeraldGradient
             : LinearGradient(colors: [
-          color.withOpacity(theme.isDark ? 0.2 : 0.12),
-          color.withOpacity(theme.isDark ? 0.06 : 0.04),
+          color.withValues(alpha: theme.isDark ? 0.2 : 0.12),
+          color.withValues(alpha: theme.isDark ? 0.06 : 0.04),
         ]),
         border: Border.all(
           color: sunnah.isCompleted
-              ? SunnahTheme.emerald.withOpacity(0.4)
-              : color.withOpacity(0.2),
+              ? SunnahTheme.emerald.withValues(alpha: 0.4)
+              : color.withValues(alpha: 0.2),
           width: 1,
         ),
         boxShadow: [
           BoxShadow(
             color: (sunnah.isCompleted ? SunnahTheme.emerald : color)
-                .withOpacity(0.15),
+                .withValues(alpha: 0.15),
             blurRadius: 8,
           ),
         ],
@@ -210,7 +210,7 @@ class SunnahCard extends StatelessWidget {
         buildMiniTag(sunnah.type, cardColor, size, theme),
         if (sunnah.rakaat > 0) ...[
           SizedBox(width: size.width * 0.015),
-          buildMiniTag('${sunnah.rakaat} ركعات', SunnahTheme.blue, size, theme),
+          buildMiniTag('${sunnah.rakaat} ط±ظƒط¹ط§طھ', SunnahTheme.blue, size, theme),
         ],
         const Spacer(),
         _buildCompleteBtn(cardColor),
@@ -241,7 +241,7 @@ class SunnahCard extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: (sunnah.isCompleted ? Colors.grey : cardColor)
-                  .withOpacity(0.25),
+                  .withValues(alpha: 0.25),
               blurRadius: 6,
               offset: const Offset(0, 2),
             ),
@@ -259,7 +259,7 @@ class SunnahCard extends StatelessWidget {
             ),
             SizedBox(width: size.width * 0.015),
             Text(
-              sunnah.isCompleted ? 'إلغاء' : 'أكمل',
+              sunnah.isCompleted ? 'ط¥ظ„ط؛ط§ط،' : 'ط£ظƒظ…ظ„',
               style: TextStyle(
                 color: sunnah.isCompleted
                     ? (theme.isDark ? theme.textSecondary : Colors.black54)
@@ -274,10 +274,10 @@ class SunnahCard extends StatelessWidget {
     );
   }
 
-  // ✅ Static helpers used by other widgets too
+  // âœ… Static helpers used by other widgets too
   static Widget buildImportanceBadge(
       String importance, Size size, SunnahTheme theme) {
-    final isHigh = importance == 'مؤكدة';
+    final isHigh = importance == 'ظ…ط¤ظƒط¯ط©';
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: size.width * 0.02,
@@ -291,13 +291,13 @@ class SunnahCard extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: (isHigh ? SunnahTheme.purple : SunnahTheme.blue)
-                .withOpacity(0.25),
+                .withValues(alpha: 0.25),
             blurRadius: 4,
           ),
         ],
       ),
       child: Text(
-        isHigh ? '★ مؤكدة' : '◆ مستحبة',
+        isHigh ? 'âک… ظ…ط¤ظƒط¯ط©' : 'â—† ظ…ط³طھط­ط¨ط©',
         style: TextStyle(
           color: Colors.white,
           fontSize: size.width * 0.024,
@@ -316,8 +316,8 @@ class SunnahCard extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(SunnahTheme.badgeRadius),
-        color: color.withOpacity(theme.isDark ? 0.12 : 0.08),
-        border: Border.all(color: color.withOpacity(0.2), width: 1),
+        color: color.withValues(alpha: theme.isDark ? 0.12 : 0.08),
+        border: Border.all(color: color.withValues(alpha: 0.2), width: 1),
       ),
       child: Text(
         text,

@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../data/models/prayer_record.dart';
 import '../../data/sources/spiritual_content.dart';
 import '../../domain/controllers/prayer_journey_controller.dart';
 
-/// فتح شاشة تسجيل الصلاة
+/// ظپطھط­ ط´ط§ط´ط© طھط³ط¬ظٹظ„ ط§ظ„طµظ„ط§ط©
 Future<LogPrayerResult?> showPrayerLogSheet(
     BuildContext context, {
       required String prayerKey,
@@ -47,7 +47,7 @@ class PrayerLogSheet extends StatefulWidget {
 }
 
 class _PrayerLogSheetState extends State<PrayerLogSheet> {
-  // الحالة
+  // ط§ظ„ط­ط§ظ„ط©
   PrayerTiming _timing = PrayerTiming.withinTime;
   PrayerQuality _quality = PrayerQuality.normal;
   PrayerLocation _location = PrayerLocation.home;
@@ -98,7 +98,7 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
       decoration: BoxDecoration(
         color: bgColor,
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: _gold.withOpacity(0.3)),
+        border: Border.all(color: _gold.withValues(alpha: 0.3)),
       ),
       child: SafeArea(
         top: false,
@@ -112,7 +112,7 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
                 width: 42,
                 height: 4,
                 decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.35),
+                  color: Colors.grey.withValues(alpha: 0.35),
                   borderRadius: BorderRadius.circular(4),
                 ),
               ),
@@ -122,7 +122,7 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
               _buildHeader(textColor, subColor),
               const SizedBox(height: 16),
 
-              // إذا كان فجر، أظهر حديث
+              // ط¥ط°ط§ ظƒط§ظ† ظپط¬ط±طŒ ط£ط¸ظ‡ط± ط­ط¯ظٹط«
               if (widget.prayerKey == 'Fajr') ...[
                 _buildQuoteCard(_content!.hadiths.first, textColor, subColor),
                 const SizedBox(height: 16),
@@ -163,7 +163,7 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
         Icon(Icons.mosque, color: widget.primaryColor, size: 40),
         const SizedBox(height: 12),
         Text(
-          'تسجيل صلاة ${widget.prayerName}',
+          'طھط³ط¬ظٹظ„ طµظ„ط§ط© ${widget.prayerName}',
           style: GoogleFonts.cairo(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -186,14 +186,14 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: _gold.withOpacity(0.08),
+        color: _gold.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: _gold.withOpacity(0.2)),
+        border: Border.all(color: _gold.withValues(alpha: 0.2)),
       ),
       child: Column(
         children: [
           Text(
-            '❝ ${quote.text} ❞',
+            'â‌‌ ${quote.text} â‌‍',
             textAlign: TextAlign.center,
             style: GoogleFonts.amiri(
               fontSize: 14,
@@ -220,7 +220,7 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'متى صليت؟',
+          'ظ…طھظ‰ طµظ„ظٹطھطں',
           style: GoogleFonts.cairo(
             fontSize: 14,
             fontWeight: FontWeight.bold,
@@ -249,7 +249,7 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'أين صليت؟',
+          'ط£ظٹظ† طµظ„ظٹطھطں',
           style: GoogleFonts.cairo(
             fontSize: 14,
             fontWeight: FontWeight.bold,
@@ -284,7 +284,7 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'كيف كانت صلاتك؟',
+          'ظƒظٹظپ ظƒط§ظ†طھ طµظ„ط§طھظƒطں',
           style: GoogleFonts.cairo(
             fontSize: 14,
             fontWeight: FontWeight.bold,
@@ -317,7 +317,7 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
   Widget _buildAdvancedSection(Color textColor, Color subColor) {
     return ExpansionTile(
       title: Text(
-        'تفاصيل إضافية',
+        'طھظپط§طµظٹظ„ ط¥ط¶ط§ظپظٹط©',
         style: GoogleFonts.cairo(
           fontWeight: FontWeight.bold,
           color: textColor,
@@ -325,32 +325,32 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
       ),
       children: [
         _ToggleOption(
-          title: 'صليت السنة القبلية',
+          title: 'طµظ„ظٹطھ ط§ظ„ط³ظ†ط© ط§ظ„ظ‚ط¨ظ„ظٹط©',
           value: _prayedSunnahBefore,
           onChanged: (v) => setState(() => _prayedSunnahBefore = v),
           color: Colors.purple,
         ),
         _ToggleOption(
-          title: 'صليت السنة البعدية',
+          title: 'طµظ„ظٹطھ ط§ظ„ط³ظ†ط© ط§ظ„ط¨ط¹ط¯ظٹط©',
           value: _prayedSunnahAfter,
           onChanged: (v) => setState(() => _prayedSunnahAfter = v),
           color: Colors.purple,
         ),
         _ToggleOption(
-          title: 'قلت أذكار ما بعد الصلاة',
+          title: 'ظ‚ظ„طھ ط£ط°ظƒط§ط± ظ…ط§ ط¨ط¹ط¯ ط§ظ„طµظ„ط§ط©',
           value: _saidAdhkar,
           onChanged: (v) => setState(() => _saidAdhkar = v),
           color: Colors.teal,
         ),
         if (_location != PrayerLocation.mosque)
           _ToggleOption(
-            title: 'صليت جماعة',
+            title: 'طµظ„ظٹطھ ط¬ظ…ط§ط¹ط©',
             value: _prayedWithJamaa,
             onChanged: (v) => setState(() => _prayedWithJamaa = v),
             color: Colors.blue,
           ),
         _ToggleOption(
-          title: 'شعرت بالخشوع',
+          title: 'ط´ط¹ط±طھ ط¨ط§ظ„ط®ط´ظˆط¹',
           value: _feltKhushu,
           onChanged: (v) => setState(() => _feltKhushu = v),
           color: Colors.red,
@@ -372,12 +372,12 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                _gold.withOpacity(0.15),
-                _gold.withOpacity(0.05),
+                _gold.withValues(alpha: 0.15),
+                _gold.withValues(alpha: 0.05),
               ],
             ),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: _gold.withOpacity(0.3)),
+            border: Border.all(color: _gold.withValues(alpha: 0.3)),
           ),
           child: Column(
             children: [
@@ -387,7 +387,7 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
                   Icon(Icons.auto_awesome, color: _gold),
                   const SizedBox(width: 8),
                   Text(
-                    'نقاط النور المتوقعة',
+                    'ظ†ظ‚ط§ط· ط§ظ„ظ†ظˆط± ط§ظ„ظ…طھظˆظ‚ط¹ط©',
                     style: GoogleFonts.cairo(
                       color: textColor,
                       fontWeight: FontWeight.w600,
@@ -412,11 +412,11 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
                     vertical: 6,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.green.withOpacity(0.15),
+                    color: Colors.green.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Text(
-                    noor > 300 ? '🌟 صلاة مثالية!' : '✨ أجر مضاعف!',
+                    noor > 300 ? 'ًںŒں طµظ„ط§ط© ظ…ط«ط§ظ„ظٹط©!' : 'âœ¨ ط£ط¬ط± ظ…ط¶ط§ط¹ظپ!',
                     style: GoogleFonts.cairo(
                       color: Colors.green,
                       fontWeight: FontWeight.bold,
@@ -472,7 +472,7 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
             const Icon(Icons.check_circle, size: 22),
             const SizedBox(width: 10),
             Text(
-              'تسجيل الصلاة',
+              'طھط³ط¬ظٹظ„ ط§ظ„طµظ„ط§ط©',
               style: GoogleFonts.cairo(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
@@ -485,7 +485,7 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
   }
 }
 
-// ──────────────── Custom Chips ──────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Custom Chips â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 class _TimingChip extends StatelessWidget {
   final PrayerTiming timing;
@@ -509,7 +509,7 @@ class _TimingChip extends StatelessWidget {
           vertical: 10,
         ),
         decoration: BoxDecoration(
-          color: selected ? timing.color.withOpacity(0.15) : Colors.grey.withOpacity(0.1),
+          color: selected ? timing.color.withValues(alpha: 0.15) : Colors.grey.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: selected ? timing.color : Colors.transparent,
@@ -559,7 +559,7 @@ class _LocationChip extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 4),
         padding: const EdgeInsets.symmetric(vertical: 12),
         decoration: BoxDecoration(
-          color: selected ? Colors.blue.withOpacity(0.1) : Colors.grey.withOpacity(0.05),
+          color: selected ? Colors.blue.withValues(alpha: 0.1) : Colors.grey.withValues(alpha: 0.05),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: selected ? Colors.blue : Colors.transparent,
@@ -590,11 +590,11 @@ class _LocationChip extends StatelessWidget {
                   vertical: 2,
                 ),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFE6B325).withOpacity(0.2),
+                  color: const Color(0xFFE6B325).withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(
-                  '×27',
+                  'أ—27',
                   style: GoogleFonts.cairo(
                     fontSize: 10,
                     color: const Color(0xFFE6B325),
@@ -629,7 +629,7 @@ class _QualityChip extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 4),
         padding: const EdgeInsets.symmetric(vertical: 14),
         decoration: BoxDecoration(
-          color: selected ? quality.color.withOpacity(0.15) : Colors.grey.withOpacity(0.05),
+          color: selected ? quality.color.withValues(alpha: 0.15) : Colors.grey.withValues(alpha: 0.05),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: selected ? quality.color : Colors.transparent,

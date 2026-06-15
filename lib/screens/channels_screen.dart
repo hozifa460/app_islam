@@ -1,4 +1,4 @@
-import 'dart:convert';
+﻿import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,7 +21,7 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
   bool _loading          = true;
 
   List<Map<String, dynamic>> _scholars   = [];
-  List<String>               _categories = ['الكل'];
+  List<String>               _categories = ['ط§ظ„ظƒظ„'];
 
   @override
   void initState() {
@@ -37,7 +37,7 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
       final scholars =
       data.map((e) => Map<String, dynamic>.from(e)).toList();
 
-      final cats = <String>{'الكل'};
+      final cats = <String>{'ط§ظ„ظƒظ„'};
       for (final s in scholars) {
         cats.add(s['category'] as String);
       }
@@ -82,7 +82,7 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
     } catch (_) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('لا يمكن فتح الرابط',
+          content: Text('ظ„ط§ ظٹظ…ظƒظ† ظپطھط­ ط§ظ„ط±ط§ط¨ط·',
               style: GoogleFonts.cairo()),
           backgroundColor: Colors.red,
         ));
@@ -96,7 +96,7 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
     final size      = MediaQuery.of(context).size;
     final textColor = isDark ? Colors.white : const Color(0xFF1A1A2E);
 
-    // ✅ أحجام متجاوبة
+    // âœ… ط£ط­ط¬ط§ظ… ظ…طھط¬ط§ظˆط¨ط©
     final w = size.width;
 
     return Directionality(
@@ -105,7 +105,7 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
         backgroundColor: isDark ? _bgDark : _bgLight,
         body: Stack(
           children: [
-            // خلفية
+            // ط®ظ„ظپظٹط©
             Positioned.fill(
               child: Container(
                 decoration: BoxDecoration(
@@ -141,7 +141,7 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
     );
   }
 
-  // ── تحميل ──
+  // â”€â”€ طھط­ظ…ظٹظ„ â”€â”€
   Widget _buildLoading(bool isDark) {
     return Center(
       child: Column(
@@ -149,7 +149,7 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
         children: [
           CircularProgressIndicator(color: _gold, strokeWidth: 3),
           const SizedBox(height: 14),
-          Text('جارٍ تحميل البيانات...',
+          Text('ط¬ط§ط±ظچ طھط­ظ…ظٹظ„ ط§ظ„ط¨ظٹط§ظ†ط§طھ...',
               style: GoogleFonts.cairo(
                 color: isDark ? Colors.white60 : Colors.black54,
                 fontSize: 13,
@@ -159,24 +159,24 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
     );
   }
 
-  // ── هيدر ──
+  // â”€â”€ ظ‡ظٹط¯ط± â”€â”€
   Widget _buildHeader(bool isDark, Color textColor, double w) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
           w * 0.04, w * 0.02, w * 0.04, 0),
       child: Row(
         children: [
-          // زر الرجوع
+          // ط²ط± ط§ظ„ط±ط¬ظˆط¹
           Container(
             decoration: BoxDecoration(
               color: isDark
-                  ? Colors.white.withOpacity(0.08)
-                  : Colors.white.withOpacity(0.9),
+                  ? Colors.white.withValues(alpha: 0.08)
+                  : Colors.white.withValues(alpha: 0.9),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
                 color: isDark
-                    ? Colors.white.withOpacity(0.1)
-                    : _gold.withOpacity(0.25),
+                    ? Colors.white.withValues(alpha: 0.1)
+                    : _gold.withValues(alpha: 0.25),
               ),
             ),
             child: IconButton(
@@ -192,14 +192,14 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
 
           SizedBox(width: w * 0.03),
 
-          // العنوان
+          // ط§ظ„ط¹ظ†ظˆط§ظ†
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'قنوات العلماء والدعاة',
+                  'ظ‚ظ†ظˆط§طھ ط§ظ„ط¹ظ„ظ…ط§ط، ظˆط§ظ„ط¯ط¹ط§ط©',
                   style: GoogleFonts.cairo(
                     fontSize: (w * 0.048).clamp(15.0, 22.0),
                     fontWeight: FontWeight.w800,
@@ -209,17 +209,17 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  '${_scholars.length} شيخ وعالم',
+                  '${_scholars.length} ط´ظٹط® ظˆط¹ط§ظ„ظ…',
                   style: GoogleFonts.cairo(
                     fontSize: (w * 0.028).clamp(10.0, 13.0),
-                    color: textColor.withOpacity(0.48),
+                    color: textColor.withValues(alpha: 0.48),
                   ),
                 ),
               ],
             ),
           ),
 
-          // شارة LIVE
+          // ط´ط§ط±ط© LIVE
           _LiveBadge(
             dotSize:  (w * 0.022).clamp(7.0, 10.0),
             fontSize: (w * 0.028).clamp(10.0, 13.0),
@@ -231,7 +231,7 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
     );
   }
 
-  // ── فلتر التصنيفات ──
+  // â”€â”€ ظپظ„طھط± ط§ظ„طھطµظ†ظٹظپط§طھ â”€â”€
   Widget _buildCategoryFilter(
       bool isDark, Color textColor, double w) {
     return SizedBox(
@@ -255,20 +255,20 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
                 color: active
                     ? _gold
                     : (isDark
-                    ? Colors.white.withOpacity(0.07)
-                    : Colors.white.withOpacity(0.88)),
+                    ? Colors.white.withValues(alpha: 0.07)
+                    : Colors.white.withValues(alpha: 0.88)),
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
                   color: active
                       ? _gold
                       : (isDark
-                      ? Colors.white.withOpacity(0.1)
-                      : _gold.withOpacity(0.2)),
+                      ? Colors.white.withValues(alpha: 0.1)
+                      : _gold.withValues(alpha: 0.2)),
                 ),
                 boxShadow: active
                     ? [
                   BoxShadow(
-                    color: _gold.withOpacity(0.28),
+                    color: _gold.withValues(alpha: 0.28),
                     blurRadius: 8,
                     offset: const Offset(0, 2),
                   ),
@@ -282,7 +282,7 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
                   fontWeight: FontWeight.w700,
                   color: active
                       ? Colors.white
-                      : textColor.withOpacity(0.65),
+                      : textColor.withValues(alpha: 0.65),
                 ),
               ),
             ),
@@ -292,16 +292,16 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
     );
   }
 
-  // ── القائمة ──
+  // â”€â”€ ط§ظ„ظ‚ط§ط¦ظ…ط© â”€â”€
   Widget _buildList(
       bool isDark, Color textColor, double w) {
     final list = _filtered;
     if (list.isEmpty) {
       return Center(
         child: Text(
-          'لا يوجد علماء في هذا التصنيف',
+          'ظ„ط§ ظٹظˆط¬ط¯ ط¹ظ„ظ…ط§ط، ظپظٹ ظ‡ط°ط§ ط§ظ„طھطµظ†ظٹظپ',
           style: GoogleFonts.cairo(
-              color: textColor.withOpacity(0.5),
+              color: textColor.withValues(alpha: 0.5),
               fontSize: (w * 0.035).clamp(12.0, 16.0)),
         ),
       );
@@ -340,9 +340,9 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
   }
 }
 
-// ══════════════════════════════════════════════════════════════
-//  بطاقة الشيخ - محمية بالكامل من الـ Overflow
-// ══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+//  ط¨ط·ط§ظ‚ط© ط§ظ„ط´ظٹط® - ظ…ط­ظ…ظٹط© ط¨ط§ظ„ظƒط§ظ…ظ„ ظ…ظ† ط§ظ„ظ€ Overflow
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _ScholarCard extends StatelessWidget {
   final Map<String, dynamic> scholar;
   final bool     isDark;
@@ -377,17 +377,17 @@ class _ScholarCard extends StatelessWidget {
       margin: EdgeInsets.only(bottom: w * 0.035),
       decoration: BoxDecoration(
         color: isDark
-            ? Colors.white.withOpacity(0.05)
-            : Colors.white.withOpacity(0.93),
+            ? Colors.white.withValues(alpha: 0.05)
+            : Colors.white.withValues(alpha: 0.93),
         borderRadius: BorderRadius.circular((w * 0.05).clamp(14.0, 22.0)),
         border: Border.all(
           color: isDark
-              ? Colors.white.withOpacity(0.08)
-              : gold.withOpacity(0.14),
+              ? Colors.white.withValues(alpha: 0.08)
+              : gold.withValues(alpha: 0.14),
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(isDark ? 0.14 : 0.05),
+            color: Colors.black.withValues(alpha: isDark ? 0.14 : 0.05),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -400,8 +400,8 @@ class _ScholarCard extends StatelessWidget {
           Divider(
             height: 1,
             color: isDark
-                ? Colors.white.withOpacity(0.06)
-                : Colors.black.withOpacity(0.05),
+                ? Colors.white.withValues(alpha: 0.06)
+                : Colors.black.withValues(alpha: 0.05),
           ),
           _buildPlatformsSection(),
         ],
@@ -409,7 +409,7 @@ class _ScholarCard extends StatelessWidget {
     );
   }
 
-  // ── رأس البطاقة ──
+  // â”€â”€ ط±ط£ط³ ط§ظ„ط¨ط·ط§ظ‚ط© â”€â”€
   Widget _buildHeader(bool hasLive) {
     final avatarSize = (w * 0.15).clamp(52.0, 68.0);
     final nameFontSize = (w * 0.038).clamp(13.0, 17.0);
@@ -421,18 +421,18 @@ class _ScholarCard extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // ── الأفاتار ──
+          // â”€â”€ ط§ظ„ط£ظپط§طھط§ط± â”€â”€
           _buildAvatar(avatarSize),
 
           SizedBox(width: w * 0.03),
 
-          // ── المعلومات ──
+          // â”€â”€ ط§ظ„ظ…ط¹ظ„ظˆظ…ط§طھ â”€â”€
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                // الاسم + LIVE
+                // ط§ظ„ط§ط³ظ… + LIVE
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -462,12 +462,12 @@ class _ScholarCard extends StatelessWidget {
 
                 SizedBox(height: w * 0.01),
 
-                // الوصف
+                // ط§ظ„ظˆطµظپ
                 Text(
                   scholar['title'] as String,
                   style: GoogleFonts.cairo(
                     fontSize: subFontSize,
-                    color: textColor.withOpacity(0.52),
+                    color: textColor.withValues(alpha: 0.52),
                     height: 1.35,
                   ),
                   maxLines: 2,
@@ -476,22 +476,22 @@ class _ScholarCard extends StatelessWidget {
 
                 SizedBox(height: w * 0.018),
 
-                // التصنيف + الدولة
+                // ط§ظ„طھطµظ†ظٹظپ + ط§ظ„ط¯ظˆظ„ط©
                 Wrap(
                   spacing: w * 0.015,
                   runSpacing: w * 0.01,
                   children: [
-                    // التصنيف
+                    // ط§ظ„طھطµظ†ظٹظپ
                     Container(
                       padding: EdgeInsets.symmetric(
                         horizontal: w * 0.022,
                         vertical: w * 0.008,
                       ),
                       decoration: BoxDecoration(
-                        color: gold.withOpacity(0.1),
+                        color: gold.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
-                            color: gold.withOpacity(0.25)),
+                            color: gold.withValues(alpha: 0.25)),
                       ),
                       child: Text(
                         scholar['category'] as String,
@@ -503,7 +503,7 @@ class _ScholarCard extends StatelessWidget {
                       ),
                     ),
 
-                    // الدولة
+                    // ط§ظ„ط¯ظˆظ„ط©
                     Container(
                       padding: EdgeInsets.symmetric(
                         horizontal: w * 0.022,
@@ -511,13 +511,13 @@ class _ScholarCard extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         color: isDark
-                            ? Colors.white.withOpacity(0.06)
-                            : Colors.grey.withOpacity(0.08),
+                            ? Colors.white.withValues(alpha: 0.06)
+                            : Colors.grey.withValues(alpha: 0.08),
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
                           color: isDark
-                              ? Colors.white.withOpacity(0.1)
-                              : Colors.grey.withOpacity(0.15),
+                              ? Colors.white.withValues(alpha: 0.1)
+                              : Colors.grey.withValues(alpha: 0.15),
                         ),
                       ),
                       child: Row(
@@ -536,7 +536,7 @@ class _ScholarCard extends StatelessWidget {
                                 fontSize: tagFontSize,
                                 fontWeight: FontWeight.w600,
                                 color:
-                                textColor.withOpacity(0.6),
+                                textColor.withValues(alpha: 0.6),
                               ),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
@@ -555,7 +555,7 @@ class _ScholarCard extends StatelessWidget {
     );
   }
 
-  // ── الأفاتار مع أعلام المنصات ──
+  // â”€â”€ ط§ظ„ط£ظپط§طھط§ط± ظ…ط¹ ط£ط¹ظ„ط§ظ… ط§ظ„ظ…ظ†طµط§طھ â”€â”€
   Widget _buildAvatar(double avatarSize) {
     final visible = _platforms.take(3).toList();
     final flagSize = (avatarSize * 0.34).clamp(14.0, 22.0);
@@ -566,7 +566,7 @@ class _ScholarCard extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          // صورة الشيخ
+          // طµظˆط±ط© ط§ظ„ط´ظٹط®
           Positioned(
             top: 0,
             right: 0,
@@ -576,12 +576,12 @@ class _ScholarCard extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: gold.withOpacity(0.45),
+                  color: gold.withValues(alpha: 0.45),
                   width: 2,
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: gold.withOpacity(0.15),
+                    color: gold.withValues(alpha: 0.15),
                     blurRadius: 8,
                     spreadRadius: 1,
                   ),
@@ -594,7 +594,7 @@ class _ScholarCard extends StatelessWidget {
                   loadingBuilder: (_, child, progress) {
                     if (progress == null) return child;
                     return Container(
-                      color: gold.withOpacity(0.08),
+                      color: gold.withValues(alpha: 0.08),
                       child: Center(
                         child: SizedBox(
                           width: avatarSize * 0.35,
@@ -612,7 +612,7 @@ class _ScholarCard extends StatelessWidget {
                     );
                   },
                   errorBuilder: (_, __, ___) => Container(
-                    color: gold.withOpacity(0.08),
+                    color: gold.withValues(alpha: 0.08),
                     child: Icon(Icons.person_rounded,
                         color: gold, size: avatarSize * 0.45),
                   ),
@@ -621,7 +621,7 @@ class _ScholarCard extends StatelessWidget {
             ),
           ),
 
-          // أعلام المنصات في الأسفل
+          // ط£ط¹ظ„ط§ظ… ط§ظ„ظ…ظ†طµط§طھ ظپظٹ ط§ظ„ط£ط³ظپظ„
           Positioned(
             bottom: 0,
             right: 0,
@@ -646,10 +646,10 @@ class _ScholarCard extends StatelessWidget {
                             : Colors.white,
                         width: 1.5,
                       ),
-                      color: pColor.withOpacity(0.15),
+                      color: pColor.withValues(alpha: 0.15),
                       boxShadow: [
                         BoxShadow(
-                          color: pColor.withOpacity(0.18),
+                          color: pColor.withValues(alpha: 0.18),
                           blurRadius: 4,
                         ),
                       ],
@@ -677,7 +677,7 @@ class _ScholarCard extends StatelessWidget {
   Widget _iconFallback(
       Color pColor, Map<String, dynamic> p, double size) {
     return Container(
-      color: pColor.withOpacity(0.15),
+      color: pColor.withValues(alpha: 0.15),
       child: Icon(
         iconFor(p['icon'] as String),
         color: pColor,
@@ -686,7 +686,7 @@ class _ScholarCard extends StatelessWidget {
     );
   }
 
-  // ── قسم المنصات ──
+  // â”€â”€ ظ‚ط³ظ… ط§ظ„ظ…ظ†طµط§طھ â”€â”€
   Widget _buildPlatformsSection() {
     final labelFontSize = (w * 0.027).clamp(9.5, 12.0);
 
@@ -702,15 +702,15 @@ class _ScholarCard extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'المنصات المتاحة:',
+            'ط§ظ„ظ…ظ†طµط§طھ ط§ظ„ظ…طھط§ط­ط©:',
             style: GoogleFonts.cairo(
               fontSize: labelFontSize,
-              color: textColor.withOpacity(0.42),
+              color: textColor.withValues(alpha: 0.42),
               fontWeight: FontWeight.w600,
             ),
           ),
           SizedBox(height: w * 0.02),
-          // ✅ Wrap يمنع الـ Overflow تلقائياً
+          // âœ… Wrap ظٹظ…ظ†ط¹ ط§ظ„ظ€ Overflow طھظ„ظ‚ط§ط¦ظٹط§ظ‹
           Wrap(
             spacing: w * 0.02,
             runSpacing: w * 0.02,
@@ -734,9 +734,9 @@ class _ScholarCard extends StatelessWidget {
   }
 }
 
-// ══════════════════════════════════════════════════════════════
-//  عنصر المنصة - مستقل وآمن من الـ Overflow
-// ══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+//  ط¹ظ†طµط± ط§ظ„ظ…ظ†طµط© - ظ…ط³طھظ‚ظ„ ظˆط¢ظ…ظ† ظ…ظ† ط§ظ„ظ€ Overflow
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _PlatformItem extends StatelessWidget {
   final Map<String, dynamic>           platform;
   final Map<String, dynamic>           scholar;
@@ -775,7 +775,7 @@ class _PlatformItem extends StatelessWidget {
       spacing: w * 0.018,
       runSpacing: w * 0.015,
       children: [
-        // ── زر المنصة ──
+        // â”€â”€ ط²ط± ط§ظ„ظ…ظ†طµط© â”€â”€
         GestureDetector(
           onTap: () => onOpen(platform['url'] as String),
           child: Container(
@@ -784,30 +784,30 @@ class _PlatformItem extends StatelessWidget {
               vertical: w * 0.018,
             ),
             decoration: BoxDecoration(
-              color: pColor.withOpacity(isDark ? 0.13 : 0.07),
+              color: pColor.withValues(alpha: isDark ? 0.13 : 0.07),
               borderRadius:
               BorderRadius.circular((w * 0.03).clamp(10.0, 14.0)),
-              border: Border.all(color: pColor.withOpacity(0.3)),
+              border: Border.all(color: pColor.withValues(alpha: 0.3)),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                // ── صورة القناة + علم الدولة ──
+                // â”€â”€ طµظˆط±ط© ط§ظ„ظ‚ظ†ط§ط© + ط¹ظ„ظ… ط§ظ„ط¯ظˆظ„ط© â”€â”€
                 SizedBox(
                   width: imgSize + flagSize * 0.5,
                   height: imgSize,
                   child: Stack(
                     clipBehavior: Clip.none,
                     children: [
-                      // صورة القناة
+                      // طµظˆط±ط© ط§ظ„ظ‚ظ†ط§ط©
                       Container(
                         width: imgSize,
                         height: imgSize,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: pColor.withOpacity(0.15),
+                          color: pColor.withValues(alpha: 0.15),
                           border: Border.all(
-                            color: pColor.withOpacity(0.3),
+                            color: pColor.withValues(alpha: 0.3),
                             width: 1.5,
                           ),
                         ),
@@ -823,7 +823,7 @@ class _PlatformItem extends StatelessWidget {
                         ),
                       ),
 
-                      // علم الدولة
+                      // ط¹ظ„ظ… ط§ظ„ط¯ظˆظ„ط©
                       Positioned(
                         bottom: -flagSize * 0.2,
                         left: -flagSize * 0.1,
@@ -837,8 +837,8 @@ class _PlatformItem extends StatelessWidget {
                                 : Colors.white,
                             border: Border.all(
                               color: isDark
-                                  ? Colors.white.withOpacity(0.12)
-                                  : Colors.grey.withOpacity(0.22),
+                                  ? Colors.white.withValues(alpha: 0.12)
+                                  : Colors.grey.withValues(alpha: 0.22),
                               width: 1,
                             ),
                           ),
@@ -857,7 +857,7 @@ class _PlatformItem extends StatelessWidget {
 
                 SizedBox(width: w * 0.022),
 
-                // النصوص
+                // ط§ظ„ظ†طµظˆطµ
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
@@ -877,7 +877,7 @@ class _PlatformItem extends StatelessWidget {
                           platform['handle'] as String,
                           style: GoogleFonts.cairo(
                             fontSize: subFontSize,
-                            color: textColor.withOpacity(0.45),
+                            color: textColor.withValues(alpha: 0.45),
                           ),
                         ),
                         if (subscribers.isNotEmpty) ...[
@@ -887,7 +887,7 @@ class _PlatformItem extends StatelessWidget {
                             height: 3,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: textColor.withOpacity(0.28),
+                              color: textColor.withValues(alpha: 0.28),
                             ),
                           ),
                           SizedBox(width: w * 0.01),
@@ -896,7 +896,7 @@ class _PlatformItem extends StatelessWidget {
                             style: GoogleFonts.cairo(
                               fontSize: subFontSize,
                               fontWeight: FontWeight.w700,
-                              color: pColor.withOpacity(0.8),
+                              color: pColor.withValues(alpha: 0.8),
                             ),
                           ),
                         ],
@@ -909,7 +909,7 @@ class _PlatformItem extends StatelessWidget {
           ),
         ),
 
-        // ── زر البث المباشر ──
+        // â”€â”€ ط²ط± ط§ظ„ط¨ط« ط§ظ„ظ…ط¨ط§ط´ط± â”€â”€
         if (isLive)
           GestureDetector(
             onTap: () {
@@ -923,11 +923,11 @@ class _PlatformItem extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                 color: Colors.red
-                    .withOpacity(isDark ? 0.15 : 0.08),
+                    .withValues(alpha: isDark ? 0.15 : 0.08),
                 borderRadius: BorderRadius.circular(
                     (w * 0.03).clamp(10.0, 14.0)),
                 border: Border.all(
-                    color: Colors.red.withOpacity(0.32)),
+                    color: Colors.red.withValues(alpha: 0.32)),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -936,7 +936,7 @@ class _PlatformItem extends StatelessWidget {
                       size: (w * 0.02).clamp(6.0, 9.0)),
                   SizedBox(width: w * 0.014),
                   Text(
-                    'بث مباشر',
+                    'ط¨ط« ظ…ط¨ط§ط´ط±',
                     style: GoogleFonts.cairo(
                       fontSize: nameFontSize,
                       fontWeight: FontWeight.w700,
@@ -953,7 +953,7 @@ class _PlatformItem extends StatelessWidget {
 
   Widget _fallback(Color pColor, double size) {
     return Container(
-      color: pColor.withOpacity(0.15),
+      color: pColor.withValues(alpha: 0.15),
       child: Icon(
         iconFor(platform['icon'] as String),
         color: pColor,
@@ -963,9 +963,9 @@ class _PlatformItem extends StatelessWidget {
   }
 }
 
-// ══════════════════════════════════════════════════════════════
-//  نقطة البث المتحركة
-// ══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+//  ظ†ظ‚ط·ط© ط§ظ„ط¨ط« ط§ظ„ظ…طھط­ط±ظƒط©
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _PulsingDot extends StatefulWidget {
   final double size;
   const _PulsingDot({required this.size});
@@ -1006,10 +1006,10 @@ class _PulsingDotState extends State<_PulsingDot>
         height: widget.size,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: Colors.red.withOpacity(_anim.value),
+          color: Colors.red.withValues(alpha: _anim.value),
           boxShadow: [
             BoxShadow(
-              color: Colors.red.withOpacity(_anim.value * 0.4),
+              color: Colors.red.withValues(alpha: _anim.value * 0.4),
               blurRadius: widget.size,
               spreadRadius: widget.size * 0.2,
             ),
@@ -1020,9 +1020,9 @@ class _PulsingDotState extends State<_PulsingDot>
   }
 }
 
-// ══════════════════════════════════════════════════════════════
-//  شارة LIVE
-// ══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+//  ط´ط§ط±ط© LIVE
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _LiveBadge extends StatelessWidget {
   final double dotSize;
   final double fontSize;
@@ -1041,9 +1041,9 @@ class _LiveBadge extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: px, vertical: py),
       decoration: BoxDecoration(
-        color: Colors.red.withOpacity(0.12),
+        color: Colors.red.withValues(alpha: 0.12),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.red.withOpacity(0.3)),
+        border: Border.all(color: Colors.red.withValues(alpha: 0.3)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,

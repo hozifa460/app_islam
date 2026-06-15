@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'qibla_theme.dart';
 
-// ── الإبرة ──
+// â”€â”€ ط§ظ„ط¥ط¨ط±ط© â”€â”€
 class QiblaNeedle extends StatelessWidget {
   final double height;
   final bool isFacing;
@@ -17,8 +17,8 @@ class QiblaNeedle extends StatelessWidget {
   Widget build(BuildContext context) {
     final top = isFacing ? QiblaTheme.green : const Color(0xFF27AE60);
     final bottom = isFacing
-        ? QiblaTheme.green.withOpacity(0.3)
-        : Colors.grey.withOpacity(0.38);
+        ? QiblaTheme.green.withValues(alpha: 0.3)
+        : Colors.grey.withValues(alpha: 0.38);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -43,7 +43,7 @@ class QiblaNeedle extends StatelessWidget {
                     color: Colors.white,
                     border: Border.all(color: top, width: 1.5),
                     boxShadow: [
-                      BoxShadow(color: top.withOpacity(0.3), blurRadius: 4),
+                      BoxShadow(color: top.withValues(alpha: 0.3), blurRadius: 4),
                     ],
                   ),
                   child: Icon(Icons.mosque_rounded, size: 10, color: top),
@@ -64,7 +64,7 @@ class QiblaNeedle extends StatelessWidget {
   }
 }
 
-// ── المركز ──
+// â”€â”€ ط§ظ„ظ…ط±ظƒط² â”€â”€
 class QiblaCenterDot extends StatelessWidget {
   final QiblaTheme theme;
   final bool isFacing;
@@ -102,7 +102,7 @@ class QiblaCenterDot extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: (isFacing ? QiblaTheme.green : QiblaTheme.gold)
-                .withOpacity(0.35),
+                .withValues(alpha: 0.35),
             blurRadius: 10,
             spreadRadius: 2,
           ),
@@ -119,7 +119,7 @@ class QiblaCenterDot extends StatelessWidget {
   }
 }
 
-// ── مؤشر الهاتف ──
+// â”€â”€ ظ…ط¤ط´ط± ط§ظ„ظ‡ط§طھظپ â”€â”€
 class QiblaPhoneIndicator extends StatelessWidget {
   final QiblaTheme theme;
   final bool isFacing;
@@ -139,19 +139,19 @@ class QiblaPhoneIndicator extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
           decoration: BoxDecoration(
             color: isFacing
-                ? QiblaTheme.green.withOpacity(0.13)
+                ? QiblaTheme.green.withValues(alpha: 0.13)
                 : (theme.isDark
-                ? Colors.white.withOpacity(0.09)
-                : Colors.white.withOpacity(0.95)),
+                ? Colors.white.withValues(alpha: 0.09)
+                : Colors.white.withValues(alpha: 0.95)),
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
               color: isFacing
-                  ? QiblaTheme.green.withOpacity(0.45)
-                  : QiblaTheme.gold.withOpacity(0.32),
+                  ? QiblaTheme.green.withValues(alpha: 0.45)
+                  : QiblaTheme.gold.withValues(alpha: 0.32),
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.06),
+                color: Colors.black.withValues(alpha: 0.06),
                 blurRadius: 5,
                 offset: const Offset(0, 2),
               ),
@@ -169,7 +169,7 @@ class QiblaPhoneIndicator extends StatelessWidget {
               ),
               const SizedBox(width: 4),
               Text(
-                isFacing ? 'القبلة ✓' : 'موقعك',
+                isFacing ? 'ط§ظ„ظ‚ط¨ظ„ط© âœ“' : 'ظ…ظˆظ‚ط¹ظƒ',
                 style: GoogleFonts.cairo(
                   fontSize: 10,
                   fontWeight: FontWeight.w700,
@@ -191,7 +191,7 @@ class QiblaPhoneIndicator extends StatelessWidget {
   }
 }
 
-// ── سهم الدوران ──
+// â”€â”€ ط³ظ‡ظ… ط§ظ„ط¯ظˆط±ط§ظ† â”€â”€
 class QiblaRotationHint extends StatelessWidget {
   final QiblaTheme theme;
   final double deviation;
@@ -209,13 +209,13 @@ class QiblaRotationHint extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 6),
       decoration: BoxDecoration(
         color: theme.isDark
-            ? Colors.white.withOpacity(0.07)
-            : Colors.white.withOpacity(0.9),
+            ? Colors.white.withValues(alpha: 0.07)
+            : Colors.white.withValues(alpha: 0.9),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: QiblaTheme.gold.withOpacity(0.28)),
+        border: Border.all(color: QiblaTheme.gold.withValues(alpha: 0.28)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.06),
+            color: Colors.black.withValues(alpha: 0.06),
             blurRadius: 7,
             offset: const Offset(0, 2),
           ),
@@ -233,7 +233,7 @@ class QiblaRotationHint extends StatelessWidget {
           ),
           const SizedBox(width: 5),
           Text(
-            goLeft ? 'دوّر لليسار' : 'دوّر لليمين',
+            goLeft ? 'ط¯ظˆظ‘ط± ظ„ظ„ظٹط³ط§ط±' : 'ط¯ظˆظ‘ط± ظ„ظ„ظٹظ…ظٹظ†',
             style: GoogleFonts.cairo(
               fontSize: 11,
               fontWeight: FontWeight.w700,
@@ -254,7 +254,7 @@ class QiblaRotationHint extends StatelessWidget {
   }
 }
 
-// ── رسام المثلث ──
+// â”€â”€ ط±ط³ط§ظ… ط§ظ„ظ…ط«ظ„ط« â”€â”€
 class TrianglePainter extends CustomPainter {
   final Color color;
   final bool pointUp;
@@ -278,7 +278,7 @@ class TrianglePainter extends CustomPainter {
         path,
         Paint()
           ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4)
-          ..color = color.withOpacity(0.22));
+          ..color = color.withValues(alpha: 0.22));
 
     canvas.drawPath(
         path,
@@ -287,9 +287,9 @@ class TrianglePainter extends CustomPainter {
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
             colors: [
-              color.withOpacity(0.72),
+              color.withValues(alpha: 0.72),
               color,
-              color.withOpacity(0.72),
+              color.withValues(alpha: 0.72),
             ],
           ).createShader(Rect.fromLTWH(0, 0, size.width, size.height)));
   }

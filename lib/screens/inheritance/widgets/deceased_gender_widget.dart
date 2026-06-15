@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 
 import '../../../languages/app_localizations.dart';
 
@@ -20,7 +20,7 @@ class DeceasedGenderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final cardColor = isDarkMode ? const Color(0xFF151B26) : Colors.white;
     final textColor = isDarkMode ? Colors.white : const Color(0xFF2D2D2D);
-    final borderColor = isDarkMode ? Colors.white.withOpacity(0.08) : Colors.grey.withOpacity(0.15);
+    final borderColor = isDarkMode ? Colors.white.withValues(alpha: 0.08) : Colors.grey.withValues(alpha: 0.15);
 
     return Container(
       padding: const EdgeInsets.all(16),
@@ -30,7 +30,7 @@ class DeceasedGenderWidget extends StatelessWidget {
         border: Border.all(color: borderColor),
         boxShadow: [
           BoxShadow(
-            color: isDarkMode ? Colors.black.withOpacity(0.2) : Colors.black.withOpacity(0.05),
+            color: isDarkMode ? Colors.black.withValues(alpha: 0.2) : Colors.black.withValues(alpha: 0.05),
             blurRadius: 15,
             offset: const Offset(0, 5),
           ),
@@ -44,7 +44,7 @@ class DeceasedGenderWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: primaryColor.withOpacity(0.1),
+                  color: primaryColor.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Icon(Icons.person_outline, color: primaryColor, size: 22),
@@ -66,7 +66,7 @@ class DeceasedGenderWidget extends StatelessWidget {
                       context.tr.selectDeceasedGender,
                       style: TextStyle(
                         fontSize: 11,
-                        color: textColor.withOpacity(0.6),
+                        color: textColor.withValues(alpha: 0.6),
                       ),
                     ),
                   ],
@@ -120,9 +120,9 @@ class DeceasedGenderWidget extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 14),
         decoration: BoxDecoration(
           gradient: isSelected
-              ? LinearGradient(colors: [color, color.withOpacity(0.8)])
+              ? LinearGradient(colors: [color, color.withValues(alpha: 0.8)])
               : null,
-          color: isSelected ? null : (isDarkMode ? Colors.white.withOpacity(0.05) : Colors.grey.shade100),
+          color: isSelected ? null : (isDarkMode ? Colors.white.withValues(alpha: 0.05) : Colors.grey.shade100),
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
             color: isSelected ? color : Colors.transparent,
@@ -131,7 +131,7 @@ class DeceasedGenderWidget extends StatelessWidget {
           boxShadow: isSelected
               ? [
             BoxShadow(
-              color: color.withOpacity(0.3),
+              color: color.withValues(alpha: 0.3),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),

@@ -1,13 +1,13 @@
-// lib/screens/radio/widgets_surah_player/sp_progress_bar.dart
+﻿// lib/screens/radio/widgets_surah_player/sp_progress_bar.dart
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islamic_app/screens/radio/widgets_surah_player_screen/theme/sp_colors.dart';
 import 'package:islamic_app/screens/radio/widgets_surah_player_screen/theme/sp_shapes.dart';
 
-/// ══════════════════════════════════════════════════════════════
-/// شريط التقدم مع الوقت
-/// ══════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ط´ط±ظٹط· ط§ظ„طھظ‚ط¯ظ… ظ…ط¹ ط§ظ„ظˆظ‚طھ
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class SpProgressBar extends StatelessWidget {
   final Duration position;
   final Duration duration;
@@ -52,7 +52,7 @@ class SpProgressBar extends StatelessWidget {
       ),
       child: Column(
         children: [
-          // ══ Slider ══
+          // â•گâ•گ Slider â•گâ•گ
           SliderTheme(
             data: SliderThemeData(
               trackHeight: SpSizes.trackHeight(isTablet),
@@ -63,9 +63,9 @@ class SpProgressBar extends StatelessWidget {
                 overlayRadius: SpSizes.overlayRadius(isTablet),
               ),
               activeTrackColor: primary,
-              inactiveTrackColor: primary.withOpacity(0.18),
+              inactiveTrackColor: primary.withValues(alpha: 0.18),
               thumbColor: primary,
-              overlayColor: primary.withOpacity(0.15),
+              overlayColor: primary.withValues(alpha: 0.15),
             ),
             child: Slider(
               value: progress,
@@ -78,7 +78,7 @@ class SpProgressBar extends StatelessWidget {
             ),
           ),
 
-          // ══ الوقت ══
+          // â•گâ•گ ط§ظ„ظˆظ‚طھ â•گâ•گ
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Row(
@@ -102,14 +102,14 @@ class SpProgressBar extends StatelessWidget {
         Icon(
           Icons.wifi_rounded,
           size: 12,
-          color: Colors.blue.withOpacity(0.5),
+          color: Colors.blue.withValues(alpha: 0.5),
         ),
         const SizedBox(width: 3),
         Text(
-          'مباشر',
+          'ظ…ط¨ط§ط´ط±',
           style: GoogleFonts.cairo(
             fontSize: 10,
-            color: Colors.blue.withOpacity(0.5),
+            color: Colors.blue.withValues(alpha: 0.5),
           ),
         ),
       ],

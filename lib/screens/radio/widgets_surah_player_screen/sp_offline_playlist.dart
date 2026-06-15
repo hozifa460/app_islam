@@ -1,4 +1,4 @@
-// lib/screens/radio/widgets_surah_player_screen/sp_offline_playlist.dart
+﻿// lib/screens/radio/widgets_surah_player_screen/sp_offline_playlist.dart
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -68,7 +68,7 @@ class SpOfflinePlaylist extends StatelessWidget {
       child: Row(
         children: [
           Text(
-            'السور المحملة',
+            'ط§ظ„ط³ظˆط± ط§ظ„ظ…ط­ظ…ظ„ط©',
             style: GoogleFonts.cairo(
               fontSize: SpSizes.playlistTitleSize(isTablet),
               fontWeight: FontWeight.w700,
@@ -77,10 +77,10 @@ class SpOfflinePlaylist extends StatelessWidget {
           ),
           const Spacer(),
           Text(
-            '$count سورة',
+            '$count ط³ظˆط±ط©',
             style: GoogleFonts.cairo(
               fontSize: SpSizes.playlistCountSize(isTablet),
-              color: primary.withOpacity(0.7),
+              color: primary.withValues(alpha: 0.7),
             ),
           ),
         ],

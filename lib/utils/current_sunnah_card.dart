@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'dart:convert';
 
-// ── نموذج السنة ──────────────────────────────────────────
+// â”€â”€ ظ†ظ…ظˆط°ط¬ ط§ظ„ط³ظ†ط© â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 class _SunnahItem {
   final int id;
   final String name;
@@ -44,7 +44,7 @@ class _SunnahItem {
   );
 }
 
-// ── فئة السنن المُجمَّعة ──────────────────────────────────
+// â”€â”€ ظپط¦ط© ط§ظ„ط³ظ†ظ† ط§ظ„ظ…ظڈط¬ظ…ظژظ‘ط¹ط© â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 class _SunnahGroup {
   final String groupKey;   // 'current' | 'always' | 'weekly' | 'monthly' | 'yearly'
   final String title;
@@ -63,7 +63,7 @@ class _SunnahGroup {
   });
 }
 
-// ══════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class CurrentSunnahCard extends StatefulWidget {
   final Color deepGreen;
   final Color gold;
@@ -84,41 +84,41 @@ class CurrentSunnahCard extends StatefulWidget {
 
 class _CurrentSunnahCardState extends State<CurrentSunnahCard>
     with TickerProviderStateMixin {
-  // ── بيانات ───────────────────────────────────────────────
+  // â”€â”€ ط¨ظٹط§ظ†ط§طھ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   List<_SunnahItem> _all = [];
   List<_SunnahGroup> _groups = [];
   bool _isLoading = true;
 
-  // ── حالة التبويبات ────────────────────────────────────────
+  // â”€â”€ ط­ط§ظ„ط© ط§ظ„طھط¨ظˆظٹط¨ط§طھ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   int _activeGroupIndex = 0;
   int _itemIndex = 0;
 
-  // ── أنيميشن ───────────────────────────────────────────────
+  // â”€â”€ ط£ظ†ظٹظ…ظٹط´ظ† â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   late AnimationController _fadeCtrl;
   late Animation<double> _fadeAnim;
   late AnimationController _slideCtrl;
   late Animation<Offset> _slideAnim;
 
-  // ── ثوابت ────────────────────────────────────────────────
+  // â”€â”€ ط«ظˆط§ط¨طھ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   static const Map<String, String> _catIcons = {
-    'fajr': '🌙',       'morning_adhkar': '🌅', 'duha': '☀️',
-    'dhuhr': '🌞',      'asr': '🌤️',            'evening_adhkar': '🌆',
-    'maghrib': '🌇',    'isha': '🌃',            'witr': '⭐',
-    'tahajjud': '🌟',   'sleep': '😴',           'always': '♾️',
-    'weekly_fast': '📅','monthly_fast': '🌕',    'friday': '🕌',
-    'yearly_fast': '🗓️','yearly_prayer': '🎊',
+    'fajr': 'ًںŒ™',       'morning_adhkar': 'ًںŒ…', 'duha': 'âک€ï¸ڈ',
+    'dhuhr': 'ًںŒ‍',      'asr': 'ًںŒ¤ï¸ڈ',            'evening_adhkar': 'ًںŒ†',
+    'maghrib': 'ًںŒ‡',    'isha': 'ًںŒƒ',            'witr': 'â­گ',
+    'tahajjud': 'ًںŒں',   'sleep': 'ًںک´',           'always': 'â™¾ï¸ڈ',
+    'weekly_fast': 'ًں“…','monthly_fast': 'ًںŒ•',    'friday': 'ًں•Œ',
+    'yearly_fast': 'ًں—“ï¸ڈ','yearly_prayer': 'ًںژٹ',
   };
 
   static const Map<String, String> _catLabels = {
-    'fajr': 'الفجر',             'morning_adhkar': 'أذكار الصباح',
-    'duha': 'الضحى',             'dhuhr': 'الظهر',
-    'asr': 'العصر',              'evening_adhkar': 'أذكار المساء',
-    'maghrib': 'المغرب',         'isha': 'العشاء',
-    'witr': 'الوتر',             'tahajjud': 'قيام الليل',
-    'sleep': 'النوم',            'always': 'دائمة',
-    'weekly_fast': 'أسبوعية',    'monthly_fast': 'شهرية',
-    'friday': 'الجمعة',          'yearly_fast': 'سنوية',
-    'yearly_prayer': 'سنوية',
+    'fajr': 'ط§ظ„ظپط¬ط±',             'morning_adhkar': 'ط£ط°ظƒط§ط± ط§ظ„طµط¨ط§ط­',
+    'duha': 'ط§ظ„ط¶ط­ظ‰',             'dhuhr': 'ط§ظ„ط¸ظ‡ط±',
+    'asr': 'ط§ظ„ط¹طµط±',              'evening_adhkar': 'ط£ط°ظƒط§ط± ط§ظ„ظ…ط³ط§ط،',
+    'maghrib': 'ط§ظ„ظ…ط؛ط±ط¨',         'isha': 'ط§ظ„ط¹ط´ط§ط،',
+    'witr': 'ط§ظ„ظˆطھط±',             'tahajjud': 'ظ‚ظٹط§ظ… ط§ظ„ظ„ظٹظ„',
+    'sleep': 'ط§ظ„ظ†ظˆظ…',            'always': 'ط¯ط§ط¦ظ…ط©',
+    'weekly_fast': 'ط£ط³ط¨ظˆط¹ظٹط©',    'monthly_fast': 'ط´ظ‡ط±ظٹط©',
+    'friday': 'ط§ظ„ط¬ظ…ط¹ط©',          'yearly_fast': 'ط³ظ†ظˆظٹط©',
+    'yearly_prayer': 'ط³ظ†ظˆظٹط©',
   };
 
   @override
@@ -152,7 +152,7 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
     super.dispose();
   }
 
-  // ── تحميل JSON ───────────────────────────────────────────
+  // â”€â”€ طھط­ظ…ظٹظ„ JSON â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Future<void> _loadData() async {
     try {
       final raw = await DefaultAssetBundle.of(context)
@@ -190,156 +190,156 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
     });
   }
 
-  // ══════════════════════════════════════════════════════════
-  // ── بناء المجموعات ────────────────────────────────────────
-  // ══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // â”€â”€ ط¨ظ†ط§ط، ط§ظ„ظ…ط¬ظ…ظˆط¹ط§طھ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   List<_SunnahGroup> _buildGroups(List<_SunnahItem> all) {
     final now = DateTime.now();
     final hijri = HijriCalendar.fromDate(now);
     final groups = <_SunnahGroup>[];
 
-    // ① سنن الوقت الحالي
+    // â‘  ط³ظ†ظ† ط§ظ„ظˆظ‚طھ ط§ظ„ط­ط§ظ„ظٹ
     final current = all.where((s) => _isCurrentTime(s, now, hijri)).toList();
     if (current.isNotEmpty) {
       groups.add(_SunnahGroup(
         groupKey: 'current',
-        title: 'سنن ${_getPeriodLabel(now)}',
-        subtitle: 'وقتك الآن',
+        title: 'ط³ظ†ظ† ${_getPeriodLabel(now)}',
+        subtitle: 'ظˆظ‚طھظƒ ط§ظ„ط¢ظ†',
         emoji: _getPeriodEmoji(now),
         color: widget.deepGreen,
         items: current,
       ));
     }
 
-    // ② السنن الدائمة
+    // â‘، ط§ظ„ط³ظ†ظ† ط§ظ„ط¯ط§ط¦ظ…ط©
     final always = all.where((s) => s.timeCategory == 'always').toList();
     if (always.isNotEmpty) {
       groups.add(_SunnahGroup(
         groupKey: 'always',
-        title: 'السنن الدائمة',
-        subtitle: 'في كل وقت',
-        emoji: '♾️',
+        title: 'ط§ظ„ط³ظ†ظ† ط§ظ„ط¯ط§ط¦ظ…ط©',
+        subtitle: 'ظپظٹ ظƒظ„ ظˆظ‚طھ',
+        emoji: 'â™¾ï¸ڈ',
         color: const Color(0xFF0277BD),
         items: always,
       ));
     }
 
-    // ③ سنن يوم الجمعة
+    // â‘¢ ط³ظ†ظ† ظٹظˆظ… ط§ظ„ط¬ظ…ط¹ط©
     if (now.weekday == DateTime.friday) {
       final friday = all.where((s) => s.timeCategory == 'friday').toList();
       if (friday.isNotEmpty) {
         groups.add(_SunnahGroup(
           groupKey: 'friday',
-          title: 'سنن الجمعة',
-          subtitle: 'يوم الجمعة المبارك',
-          emoji: '🕌',
+          title: 'ط³ظ†ظ† ط§ظ„ط¬ظ…ط¹ط©',
+          subtitle: 'ظٹظˆظ… ط§ظ„ط¬ظ…ط¹ط© ط§ظ„ظ…ط¨ط§ط±ظƒ',
+          emoji: 'ًں•Œ',
           color: const Color(0xFF2E7D32),
           items: friday,
         ));
       }
     }
 
-    // ④ صيام الاثنين والخميس
+    // â‘£ طµظٹط§ظ… ط§ظ„ط§ط«ظ†ظٹظ† ظˆط§ظ„ط®ظ…ظٹط³
     if (now.weekday == DateTime.monday || now.weekday == DateTime.thursday) {
       final weeklyFast = all.where((s) => s.timeCategory == 'weekly_fast').toList();
       if (weeklyFast.isNotEmpty) {
-        final dayName = now.weekday == DateTime.monday ? 'الاثنين' : 'الخميس';
+        final dayName = now.weekday == DateTime.monday ? 'ط§ظ„ط§ط«ظ†ظٹظ†' : 'ط§ظ„ط®ظ…ظٹط³';
         groups.add(_SunnahGroup(
           groupKey: 'weekly',
-          title: 'صيام يوم $dayName',
-          subtitle: 'سنة أسبوعية',
-          emoji: '📅',
+          title: 'طµظٹط§ظ… ظٹظˆظ… $dayName',
+          subtitle: 'ط³ظ†ط© ط£ط³ط¨ظˆط¹ظٹط©',
+          emoji: 'ًں“…',
           color: const Color(0xFF00695C),
           items: weeklyFast,
         ));
       }
     }
 
-    // ⑤ أيام البيض الهجرية (13، 14، 15)
+    // â‘¤ ط£ظٹط§ظ… ط§ظ„ط¨ظٹط¶ ط§ظ„ظ‡ط¬ط±ظٹط© (13طŒ 14طŒ 15)
     final hDay = hijri.hDay;
     if (hDay == 13 || hDay == 14 || hDay == 15) {
       final monthlyFast = all.where((s) => s.timeCategory == 'monthly_fast').toList();
       if (monthlyFast.isNotEmpty) {
         groups.add(_SunnahGroup(
           groupKey: 'monthly',
-          title: 'أيام البيض',
-          subtitle: 'اليوم ${_arabicDay(hDay)} من الشهر',
-          emoji: '🌕',
+          title: 'ط£ظٹط§ظ… ط§ظ„ط¨ظٹط¶',
+          subtitle: 'ط§ظ„ظٹظˆظ… ${_arabicDay(hDay)} ظ…ظ† ط§ظ„ط´ظ‡ط±',
+          emoji: 'ًںŒ•',
           color: const Color(0xFF004D40),
           items: monthlyFast,
         ));
       }
     }
 
-    // ⑥ السنن السنوية - عاشوراء (10 محرم)
+    // â‘¥ ط§ظ„ط³ظ†ظ† ط§ظ„ط³ظ†ظˆظٹط© - ط¹ط§ط´ظˆط±ط§ط، (10 ظ…ط­ط±ظ…)
     if (hijri.hMonth == 1 && (hijri.hDay == 9 || hijri.hDay == 10 || hijri.hDay == 11)) {
       final ashura = all.where((s) =>
       s.timeCategory == 'yearly_fast' &&
-          s.name.contains('عاشوراء')).toList();
+          s.name.contains('ط¹ط§ط´ظˆط±ط§ط،')).toList();
       if (ashura.isNotEmpty) {
         groups.add(_SunnahGroup(
           groupKey: 'yearly_ashura',
-          title: 'صيام عاشوراء',
-          subtitle: '${hDay == 10 ? "اليوم العاشر" : "قريباً"} من محرم',
-          emoji: '🌙',
+          title: 'طµظٹط§ظ… ط¹ط§ط´ظˆط±ط§ط،',
+          subtitle: '${hDay == 10 ? "ط§ظ„ظٹظˆظ… ط§ظ„ط¹ط§ط´ط±" : "ظ‚ط±ظٹط¨ط§ظ‹"} ظ…ظ† ظ…ط­ط±ظ…',
+          emoji: 'ًںŒ™',
           color: const Color(0xFF37474F),
           items: ashura,
         ));
       }
     }
 
-    // ⑦ عشر ذي الحجة (1-9)
+    // â‘¦ ط¹ط´ط± ط°ظٹ ط§ظ„ط­ط¬ط© (1-9)
     if (hijri.hMonth == 12 && hijri.hDay >= 1 && hijri.hDay <= 9) {
       final dhulHijja = all.where((s) =>
       s.timeCategory == 'yearly_fast' &&
-          s.name.contains('الحجة')).toList();
+          s.name.contains('ط§ظ„ط­ط¬ط©')).toList();
       if (dhulHijja.isNotEmpty) {
         groups.add(_SunnahGroup(
           groupKey: 'yearly_dhulhijja',
-          title: 'عشر ذي الحجة',
-          subtitle: 'اليوم $hDay من ذي الحجة',
-          emoji: '✨',
+          title: 'ط¹ط´ط± ط°ظٹ ط§ظ„ط­ط¬ط©',
+          subtitle: 'ط§ظ„ظٹظˆظ… $hDay ظ…ظ† ط°ظٹ ط§ظ„ط­ط¬ط©',
+          emoji: 'âœ¨',
           color: const Color(0xFF6D4C41),
           items: dhulHijja,
         ));
       }
     }
 
-    // ⑧ يوم عرفة (9 ذي الحجة)
+    // â‘§ ظٹظˆظ… ط¹ط±ظپط© (9 ط°ظٹ ط§ظ„ط­ط¬ط©)
     if (hijri.hMonth == 12 && hijri.hDay == 9) {
       final arafa = all.where((s) =>
       s.timeCategory == 'yearly_fast' &&
-          s.name.contains('عرفة')).toList();
+          s.name.contains('ط¹ط±ظپط©')).toList();
       if (arafa.isNotEmpty) {
         groups.add(_SunnahGroup(
           groupKey: 'yearly_arafa',
-          title: 'يوم عرفة',
-          subtitle: '٩ ذو الحجة',
-          emoji: '🏔️',
+          title: 'ظٹظˆظ… ط¹ط±ظپط©',
+          subtitle: 'ظ© ط°ظˆ ط§ظ„ط­ط¬ط©',
+          emoji: 'ًںڈ”ï¸ڈ',
           color: const Color(0xFF4E342E),
           items: arafa,
         ));
       }
     }
 
-    // ⑨ شوال - ستة أيام (1-26 شوال)
+    // â‘¨ ط´ظˆط§ظ„ - ط³طھط© ط£ظٹط§ظ… (1-26 ط´ظˆط§ظ„)
     if (hijri.hMonth == 10 && hijri.hDay >= 2 && hijri.hDay <= 26) {
       final shawwal = all.where((s) =>
       s.timeCategory == 'yearly_fast' &&
-          s.name.contains('شوال')).toList();
+          s.name.contains('ط´ظˆط§ظ„')).toList();
       if (shawwal.isNotEmpty) {
         groups.add(_SunnahGroup(
           groupKey: 'yearly_shawwal',
-          title: 'ست من شوال',
-          subtitle: 'شهر شوال المبارك',
-          emoji: '🌙',
+          title: 'ط³طھ ظ…ظ† ط´ظˆط§ظ„',
+          subtitle: 'ط´ظ‡ط± ط´ظˆط§ظ„ ط§ظ„ظ…ط¨ط§ط±ظƒ',
+          emoji: 'ًںŒ™',
           color: const Color(0xFF5D4037),
           items: shawwal,
         ));
       }
     }
 
-    // ⑩ أيام العيدين (1 شوال / 10 ذي الحجة)
+    // â‘© ط£ظٹط§ظ… ط§ظ„ط¹ظٹط¯ظٹظ† (1 ط´ظˆط§ظ„ / 10 ط°ظٹ ط§ظ„ط­ط¬ط©)
     final isEid = (hijri.hMonth == 10 && hijri.hDay == 1) ||
         (hijri.hMonth == 12 && hijri.hDay == 10);
     if (isEid) {
@@ -347,9 +347,9 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
       if (eid.isNotEmpty) {
         groups.add(_SunnahGroup(
           groupKey: 'yearly_eid',
-          title: 'سنن العيد',
-          subtitle: hijri.hMonth == 10 ? 'عيد الفطر' : 'عيد الأضحى',
-          emoji: '🎉',
+          title: 'ط³ظ†ظ† ط§ظ„ط¹ظٹط¯',
+          subtitle: hijri.hMonth == 10 ? 'ط¹ظٹط¯ ط§ظ„ظپط·ط±' : 'ط¹ظٹط¯ ط§ظ„ط£ط¶ط­ظ‰',
+          emoji: 'ًںژ‰',
           color: const Color(0xFFE65100),
           items: eid,
         ));
@@ -359,7 +359,7 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
     return groups;
   }
 
-  // ── هل السنة تنطبق على الوقت الحالي؟ ────────────────────
+  // â”€â”€ ظ‡ظ„ ط§ظ„ط³ظ†ط© طھظ†ط·ط¨ظ‚ ط¹ظ„ظ‰ ط§ظ„ظˆظ‚طھ ط§ظ„ط­ط§ظ„ظٹطں â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   bool _isCurrentTime(_SunnahItem s, DateTime now, HijriCalendar hijri) {
     final h = now.hour;
     switch (s.timeCategory) {
@@ -378,41 +378,41 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
     }
   }
 
-  // ── الوقت الحالي ──────────────────────────────────────────
+  // â”€â”€ ط§ظ„ظˆظ‚طھ ط§ظ„ط­ط§ظ„ظٹ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   String _getPeriodLabel(DateTime now) {
     final h = now.hour;
-    if (h >= 4 && h < 6)  return 'الفجر';
-    if (h >= 6 && h < 8)  return 'الصباح';
-    if (h >= 8 && h < 12) return 'الضحى';
-    if (h >= 12 && h < 14)return 'الظهر';
-    if (h >= 14 && h < 17)return 'العصر';
-    if (h >= 17 && h < 20)return 'المغرب';
-    if (h >= 20 && h < 23)return 'العشاء';
-    return 'الليل';
+    if (h >= 4 && h < 6)  return 'ط§ظ„ظپط¬ط±';
+    if (h >= 6 && h < 8)  return 'ط§ظ„طµط¨ط§ط­';
+    if (h >= 8 && h < 12) return 'ط§ظ„ط¶ط­ظ‰';
+    if (h >= 12 && h < 14)return 'ط§ظ„ط¸ظ‡ط±';
+    if (h >= 14 && h < 17)return 'ط§ظ„ط¹طµط±';
+    if (h >= 17 && h < 20)return 'ط§ظ„ظ…ط؛ط±ط¨';
+    if (h >= 20 && h < 23)return 'ط§ظ„ط¹ط´ط§ط،';
+    return 'ط§ظ„ظ„ظٹظ„';
   }
 
   String _getPeriodEmoji(DateTime now) {
     final h = now.hour;
-    if (h >= 4 && h < 6)  return '🌙';
-    if (h >= 6 && h < 8)  return '🌅';
-    if (h >= 8 && h < 12) return '☀️';
-    if (h >= 12 && h < 14)return '🌞';
-    if (h >= 14 && h < 17)return '🌤️';
-    if (h >= 17 && h < 20)return '🌇';
-    if (h >= 20 && h < 23)return '🌃';
-    return '🌟';
+    if (h >= 4 && h < 6)  return 'ًںŒ™';
+    if (h >= 6 && h < 8)  return 'ًںŒ…';
+    if (h >= 8 && h < 12) return 'âک€ï¸ڈ';
+    if (h >= 12 && h < 14)return 'ًںŒ‍';
+    if (h >= 14 && h < 17)return 'ًںŒ¤ï¸ڈ';
+    if (h >= 17 && h < 20)return 'ًںŒ‡';
+    if (h >= 20 && h < 23)return 'ًںŒƒ';
+    return 'ًںŒں';
   }
 
   String _arabicDay(int d) {
     const map = {
-      13: 'الثالث عشر', 14: 'الرابع عشر', 15: 'الخامس عشر',
+      13: 'ط§ظ„ط«ط§ظ„ط« ط¹ط´ط±', 14: 'ط§ظ„ط±ط§ط¨ط¹ ط¹ط´ط±', 15: 'ط§ظ„ط®ط§ظ…ط³ ط¹ط´ط±',
     };
     return map[d] ?? '$d';
   }
 
-  // ══════════════════════════════════════════════════════════
-  // ── Build ─────────────────────────────────────────────────
-  // ══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // â”€â”€ Build â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -429,17 +429,17 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
         color: widget.isDark ? const Color(0xFF13211D) : Colors.white,
         borderRadius: BorderRadius.circular(22),
         border: Border.all(
-          color: group.color.withOpacity(0.18),
+          color: group.color.withValues(alpha: 0.18),
           width: 1,
         ),
         boxShadow: [
           BoxShadow(
-            color: group.color.withOpacity(0.08),
+            color: group.color.withValues(alpha: 0.08),
             blurRadius: 14,
             offset: const Offset(0, 6),
           ),
           BoxShadow(
-            color: widget.isDark ? Color(0xFF063B30).withOpacity(0.9) : Colors.grey.withOpacity(0.8),
+            color: widget.isDark ? Color(0xFF063B30).withValues(alpha: 0.9) : Colors.grey.withValues(alpha: 0.8),
             blurRadius: 18,
             offset: const Offset(0, 5),
           ),
@@ -448,13 +448,13 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // ① Header
+          // â‘  Header
           _buildHeader(group, w),
 
-          // ② Group Tabs
+          // â‘، Group Tabs
           if (_groups.length > 1) _buildGroupTabs(w),
 
-          // ③ Content
+          // â‘¢ Content
           if (item != null)
             Padding(
               padding: EdgeInsets.fromLTRB(
@@ -473,7 +473,7 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
     );
   }
 
-  // ── Header ───────────────────────────────────────────────
+  // â”€â”€ Header â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _buildHeader(_SunnahGroup group, double w) {
     final small = w < 360;
 
@@ -484,7 +484,7 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
       ),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [group.color, group.color.withOpacity(0.75)],
+          colors: [group.color, group.color.withValues(alpha: 0.75)],
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
         ),
@@ -502,7 +502,7 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
               vertical: 4,
             ),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.15),
+              color: Colors.white.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(20),
             ),
             child: Text(
@@ -559,7 +559,7 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
         height: w * 0.07,
         constraints: const BoxConstraints(maxWidth: 32, maxHeight: 32),
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.15),
+          color: Colors.white.withValues(alpha: 0.15),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Icon(icon, color: Colors.white, size: w * 0.045),
@@ -567,15 +567,15 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
     );
   }
 
-  // ── Group Tabs ────────────────────────────────────────────
+  // â”€â”€ Group Tabs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _buildGroupTabs(double w) {
     final small = w < 360;
 
     return Container(
       width: double.infinity,
       color: widget.isDark
-          ? Colors.white.withOpacity(0.03)
-          : Colors.black.withOpacity(0.02),
+          ? Colors.white.withValues(alpha: 0.03)
+          : Colors.black.withValues(alpha: 0.02),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         padding: EdgeInsets.symmetric(
@@ -601,27 +601,27 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
                 decoration: BoxDecoration(
                   gradient: active
                       ? LinearGradient(
-                    colors: [g.color, g.color.withOpacity(0.75)],
+                    colors: [g.color, g.color.withValues(alpha: 0.75)],
                   )
                       : null,
                   color: active
                       ? null
                       : (widget.isDark
-                      ? Colors.white.withOpacity(0.06)
-                      : Colors.black.withOpacity(0.05)),
+                      ? Colors.white.withValues(alpha: 0.06)
+                      : Colors.black.withValues(alpha: 0.05)),
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
                     color: active
                         ? Colors.transparent
                         : (widget.isDark
-                        ? Colors.white.withOpacity(0.08)
-                        : Colors.black.withOpacity(0.08)),
+                        ? Colors.white.withValues(alpha: 0.08)
+                        : Colors.black.withValues(alpha: 0.08)),
                     width: 1,
                   ),
                   boxShadow: active
                       ? [
                     BoxShadow(
-                      color: g.color.withOpacity(0.3),
+                      color: g.color.withValues(alpha: 0.3),
                       blurRadius: 6,
                     )
                   ]
@@ -658,7 +658,7 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
     );
   }
 
-  // ── Item Content ─────────────────────────────────────────
+  // â”€â”€ Item Content â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _buildItemContent(
       _SunnahItem item, _SunnahGroup group, double w) {
     final small = w < 360;
@@ -675,7 +675,7 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
         children: [
           SizedBox(height: w * 0.03),
 
-          // ── Name Row ──
+          // â”€â”€ Name Row â”€â”€
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -707,19 +707,19 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
                       children: [
                         _chip(
                           item.importance,
-                          item.importance == 'مؤكدة'
+                          item.importance == 'ظ…ط¤ظƒط¯ط©'
                               ? group.color
                               : widget.gold,
                           small,
                           bold: true,
-                          icon: item.importance == 'مؤكدة'
+                          icon: item.importance == 'ظ…ط¤ظƒط¯ط©'
                               ? Icons.star_rounded
                               : Icons.star_outline_rounded,
                         ),
                         if (item.rakaat > 0) ...[
                           const SizedBox(width: 5),
                           _chip(
-                            '${item.rakaat} ركعات',
+                            '${item.rakaat} ط±ظƒط¹ط§طھ',
                             const Color(0xFF1565C0),
                             small,
                           ),
@@ -734,29 +734,29 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
 
           SizedBox(height: w * 0.025),
 
-          // ── Description ──
+          // â”€â”€ Description â”€â”€
           _descBox(item.description, group.color, w, small),
 
           SizedBox(height: w * 0.025),
 
-          // ── Hadith ──
+          // â”€â”€ Hadith â”€â”€
           _hadithBox(item.hadith, w, small),
 
           SizedBox(height: w * 0.025),
 
-          // ── Footer ──
+          // â”€â”€ Footer â”€â”€
           _buildFooter(item, group, w, small),
 
           SizedBox(height: w * 0.02),
 
-          // ── Dots ──
+          // â”€â”€ Dots â”€â”€
           if (group.items.length > 1) _buildDots(group, w),
         ],
       ),
     );
   }
 
-  // ── Icon Box ─────────────────────────────────────────────
+  // â”€â”€ Icon Box â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _itemIconBox(
       _SunnahItem item, Color cardColor, double w, bool small) {
     final boxSize = (w * 0.14).clamp(48.0, 64.0);
@@ -764,15 +764,15 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
       width: boxSize,
       height: boxSize,
       decoration: BoxDecoration(
-        color: cardColor.withOpacity(widget.isDark ? 0.18 : 0.1),
+        color: cardColor.withValues(alpha: widget.isDark ? 0.18 : 0.1),
         borderRadius: BorderRadius.circular(boxSize * 0.3),
         border: Border.all(
-          color: cardColor.withOpacity(0.25),
+          color: cardColor.withValues(alpha: 0.25),
           width: 1.5,
         ),
         boxShadow: [
           BoxShadow(
-            color: cardColor.withOpacity(0.65),
+            color: cardColor.withValues(alpha: 0.65),
             blurRadius: 8,
           ),
         ],
@@ -786,15 +786,15 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
     );
   }
 
-  // ── Description Box ───────────────────────────────────────
+  // â”€â”€ Description Box â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _descBox(String text, Color color, double w, bool small) {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(w * 0.032),
       decoration: BoxDecoration(
-        color: color.withOpacity(widget.isDark ? 0.07 : 0.05),
+        color: color.withValues(alpha: widget.isDark ? 0.07 : 0.05),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: color.withOpacity(0.15), width: 1),
+        border: Border.all(color: color.withValues(alpha: 0.15), width: 1),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -820,16 +820,16 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
     );
   }
 
-  // ── Hadith Box ────────────────────────────────────────────
+  // â”€â”€ Hadith Box â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _hadithBox(String text, double w, bool small) {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(w * 0.032),
       decoration: BoxDecoration(
-        color: widget.gold.withOpacity(widget.isDark ? 0.07 : 0.05),
+        color: widget.gold.withValues(alpha: widget.isDark ? 0.07 : 0.05),
         borderRadius: BorderRadius.circular(14),
         border: Border.all(
-          color: widget.gold.withOpacity(0.2),
+          color: widget.gold.withValues(alpha: 0.2),
           width: 1,
         ),
       ),
@@ -853,20 +853,20 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
             ),
           ),
           const SizedBox(width: 8),
-          Text('📖', style: TextStyle(fontSize: small ? 14 : 16)),
+          Text('ًں“–', style: TextStyle(fontSize: small ? 14 : 16)),
         ],
       ),
     );
   }
 
-  // ── Footer ───────────────────────────────────────────────
+  // â”€â”€ Footer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _buildFooter(
       _SunnahItem item, _SunnahGroup group, double w, bool small) {
     return Row(
       children: [
-        // زر عرض الكل
+        // ط²ط± ط¹ط±ط¶ ط§ظ„ظƒظ„
         _actionBtn(
-          label: 'عرض الكل',
+          label: 'ط¹ط±ط¶ ط§ظ„ظƒظ„',
           icon: Icons.arrow_back_ios_rounded,
           color: group.color,
           w: w,
@@ -874,10 +874,10 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
           onTap: widget.onNavigateToTracker ?? () {},
         ),
         const Spacer(),
-        // التصنيف
+        // ط§ظ„طھطµظ†ظٹظپ
         _chip(
           _catLabels[item.timeCategory] ?? item.type,
-          group.color.withOpacity(0.85),
+          group.color.withValues(alpha: 0.85),
           small,
         ),
       ],
@@ -904,12 +904,12 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
         ),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [color, color.withOpacity(0.75)],
+            colors: [color, color.withValues(alpha: 0.75)],
           ),
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: color.withOpacity(0.25),
+              color: color.withValues(alpha: 0.25),
               blurRadius: 6,
               offset: const Offset(0, 2),
             ),
@@ -934,7 +934,7 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
     );
   }
 
-  // ── Dots ─────────────────────────────────────────────────
+  // â”€â”€ Dots â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _buildDots(_SunnahGroup group, double w) {
     final count = group.items.length;
     final visible = count.clamp(0, 7);
@@ -947,9 +947,9 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           if (start > 0)
-            Text('…',
+            Text('â€¦',
                 style: TextStyle(
-                    color: group.color.withOpacity(0.35), fontSize: 10)),
+                    color: group.color.withValues(alpha: 0.35), fontSize: 10)),
           ...List.generate(end - start, (i) {
             final ri = start + i;
             final active = ri == _itemIndex;
@@ -961,21 +961,21 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
               decoration: BoxDecoration(
                 color: active
                     ? group.color
-                    : group.color.withOpacity(0.22),
+                    : group.color.withValues(alpha: 0.22),
                 borderRadius: BorderRadius.circular(4),
               ),
             );
           }),
           if (end < count)
-            Text('…',
+            Text('â€¦',
                 style: TextStyle(
-                    color: group.color.withOpacity(0.35), fontSize: 10)),
+                    color: group.color.withValues(alpha: 0.35), fontSize: 10)),
         ],
       ),
     );
   }
 
-  // ── Chip ─────────────────────────────────────────────────
+  // â”€â”€ Chip â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _chip(String text, Color color, bool small,
       {bool bold = false, IconData? icon}) {
     return Container(
@@ -984,9 +984,9 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
         vertical: 4,
       ),
       decoration: BoxDecoration(
-        color: color.withOpacity(widget.isDark ? 0.12 : 0.08),
+        color: color.withValues(alpha: widget.isDark ? 0.12 : 0.08),
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: color.withOpacity(0.22), width: 1),
+        border: Border.all(color: color.withValues(alpha: 0.22), width: 1),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -1008,7 +1008,7 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
     );
   }
 
-  // ── Navigation ───────────────────────────────────────────
+  // â”€â”€ Navigation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   void _nextItem() {
     final group = _groups[_activeGroupIndex];
     if (group.items.length <= 1) return;
@@ -1026,7 +1026,7 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
     });
   }
 
-  // ── Helpers ───────────────────────────────────────────────
+  // â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Color _hexColor(String hex) =>
       Color(int.parse(hex.replaceFirst('#', '0xFF')));
 
@@ -1038,21 +1038,21 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
     return w * 0.034;
   }
 
-  // ── Skeleton ──────────────────────────────────────────────
+  // â”€â”€ Skeleton â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _skeleton(double w) {
     return Container(
       height: w * 0.5,
       decoration: BoxDecoration(
         color: widget.isDark ? const Color(0xFF13211D) : Colors.white,
         borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: widget.deepGreen.withOpacity(0.1)),
+        border: Border.all(color: widget.deepGreen.withValues(alpha: 0.1)),
       ),
       child: Column(
         children: [
           Container(
             height: w * 0.12,
             decoration: BoxDecoration(
-              color: widget.deepGreen.withOpacity(0.2),
+              color: widget.deepGreen.withValues(alpha: 0.2),
               borderRadius: const BorderRadius.only(
                 topRight: Radius.circular(22),
                 topLeft: Radius.circular(22),
@@ -1093,28 +1093,28 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
     width: width,
     height: height,
     decoration: BoxDecoration(
-      color: widget.deepGreen.withOpacity(0.07),
+      color: widget.deepGreen.withValues(alpha: 0.07),
       borderRadius: BorderRadius.circular(8),
     ),
   );
 
-  // ── Empty ─────────────────────────────────────────────────
+  // â”€â”€ Empty â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _emptyState(double w) {
     return Container(
       padding: EdgeInsets.all(w * 0.04),
       decoration: BoxDecoration(
         color: widget.isDark ? const Color(0xFF13211D) : Colors.white,
         borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: widget.deepGreen.withOpacity(0.1)),
+        border: Border.all(color: widget.deepGreen.withValues(alpha: 0.1)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('🌙', style: TextStyle(fontSize: 22)),
+          const Text('ًںŒ™', style: TextStyle(fontSize: 22)),
           const SizedBox(width: 10),
           Flexible(
             child: Text(
-              'لا توجد سنن خاصة بهذا الوقت',
+              'ظ„ط§ طھظˆط¬ط¯ ط³ظ†ظ† ط®ط§طµط© ط¨ظ‡ط°ط§ ط§ظ„ظˆظ‚طھ',
               maxLines: 2,
               style: GoogleFonts.cairo(
                 color: widget.isDark ? Colors.white54 : Colors.black45,

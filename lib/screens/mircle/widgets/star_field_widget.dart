@@ -1,4 +1,4 @@
-// star_field_widget.dart - الكامل المُصلح
+﻿// star_field_widget.dart - ط§ظ„ظƒط§ظ…ظ„ ط§ظ„ظ…ظڈطµظ„ط­
 import 'dart:math';
 import 'package:flutter/material.dart';
 
@@ -29,7 +29,7 @@ class StarFieldWidget extends StatelessWidget {
   final double             animValue;
   final double             starOpacityFactor;
   final double             nebulaOpacityFactor;
-  // ← اللون الأساسي من الـ provider
+  // â†گ ط§ظ„ظ„ظˆظ† ط§ظ„ط£ط³ط§ط³ظٹ ظ…ظ† ط§ظ„ظ€ provider
   final Color              primaryColor;
   final Color              bg1;
 
@@ -80,7 +80,7 @@ class _StarFieldPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     if (size.isEmpty) return;
 
-    // ── رسم النجوم ──
+    // â”€â”€ ط±ط³ظ… ط§ظ„ظ†ط¬ظˆظ… â”€â”€
     for (final p in particles) {
       final animY   = (p.y + animValue * p.speed) % 1.0;
       final twinkle =
@@ -92,30 +92,30 @@ class _StarFieldPainter extends CustomPainter {
       final dx = p.x * size.width;
       final dy = animY * size.height;
 
-      // نجمة أساسية
+      // ظ†ط¬ظ…ط© ط£ط³ط§ط³ظٹط©
       canvas.drawCircle(
         Offset(dx, dy),
         p.size,
         Paint()
-          ..color      = Colors.white.withOpacity(opacity)
+          ..color      = Colors.white.withValues(alpha: opacity)
           ..maskFilter = MaskFilter.blur(BlurStyle.normal, p.size * 0.5),
       );
 
-      // توهج بلون الـ primary
+      // طھظˆظ‡ط¬ ط¨ظ„ظˆظ† ط§ظ„ظ€ primary
       if (p.size > 1.5) {
         canvas.drawCircle(
           Offset(dx, dy),
           p.size * 3.0,
           Paint()
             ..color = primaryColor
-                .withOpacity((opacity * 0.18).clamp(0.0, 1.0))
+                .withValues(alpha: (opacity * 0.18).clamp(0.0, 1.0))
             ..maskFilter =
             MaskFilter.blur(BlurStyle.normal, p.size * 5),
         );
       }
     }
 
-    // ── رسم السدم بألوان الـ primary ──
+    // â”€â”€ ط±ط³ظ… ط§ظ„ط³ط¯ظ… ط¨ط£ظ„ظˆط§ظ† ط§ظ„ظ€ primary â”€â”€
     _paintNebulae(canvas, size);
   }
 
@@ -123,24 +123,24 @@ class _StarFieldPainter extends CustomPainter {
     final pulse = (sin(animValue * 2 * pi * 0.2) + 1) / 2;
     final f     = nebulaOpacityFactor;
 
-    // نستخرج HSL من primaryColor لعمل ألوان مكملة
+    // ظ†ط³طھط®ط±ط¬ HSL ظ…ظ† primaryColor ظ„ط¹ظ…ظ„ ط£ظ„ظˆط§ظ† ظ…ظƒظ…ظ„ط©
     final hsl        = HSLColor.fromColor(primaryColor);
-    // لون مكمل (180 درجة)
+    // ظ„ظˆظ† ظ…ظƒظ…ظ„ (180 ط¯ط±ط¬ط©)
     final complement = hsl
         .withHue((hsl.hue + 180) % 360)
         .withLightness(0.5)
         .toColor();
-    // لون ثالث (120 درجة)
+    // ظ„ظˆظ† ط«ط§ظ„ط« (120 ط¯ط±ط¬ط©)
     final triadic = hsl
         .withHue((hsl.hue + 120) % 360)
         .withLightness(0.45)
         .toColor();
-    // لون أفتح من الأصلي
+    // ظ„ظˆظ† ط£ظپطھط­ ظ…ظ† ط§ظ„ط£طµظ„ظٹ
     final lighter = hsl
         .withLightness((hsl.lightness + 0.2).clamp(0.2, 0.8))
         .toColor();
 
-    // سديم أعلى اليمين - اللون الأساسي
+    // ط³ط¯ظٹظ… ط£ط¹ظ„ظ‰ ط§ظ„ظٹظ…ظٹظ† - ط§ظ„ظ„ظˆظ† ط§ظ„ط£ط³ط§ط³ظٹ
     _drawNebula(
       canvas:  canvas,
       center:  Offset(size.width * 0.85, size.height * 0.10),
@@ -150,7 +150,7 @@ class _StarFieldPainter extends CustomPainter {
       blur:    size.width * 0.32,
     );
 
-    // سديم اليسار - اللون المكمل
+    // ط³ط¯ظٹظ… ط§ظ„ظٹط³ط§ط± - ط§ظ„ظ„ظˆظ† ط§ظ„ظ…ظƒظ…ظ„
     _drawNebula(
       canvas:  canvas,
       center:  Offset(size.width * 0.08, size.height * 0.40),
@@ -160,7 +160,7 @@ class _StarFieldPainter extends CustomPainter {
       blur:    size.width * 0.28,
     );
 
-    // سديم أسفل المنتصف - اللون الثالث
+    // ط³ط¯ظٹظ… ط£ط³ظپظ„ ط§ظ„ظ…ظ†طھطµظپ - ط§ظ„ظ„ظˆظ† ط§ظ„ط«ط§ظ„ط«
     _drawNebula(
       canvas:  canvas,
       center:  Offset(size.width * 0.50, size.height * 0.90),
@@ -170,7 +170,7 @@ class _StarFieldPainter extends CustomPainter {
       blur:    size.width * 0.24,
     );
 
-    // سديم أسفل اليسار - الأفتح
+    // ط³ط¯ظٹظ… ط£ط³ظپظ„ ط§ظ„ظٹط³ط§ط± - ط§ظ„ط£ظپطھط­
     _drawNebula(
       canvas:  canvas,
       center:  Offset(size.width * 0.18, size.height * 0.80),
@@ -180,7 +180,7 @@ class _StarFieldPainter extends CustomPainter {
       blur:    size.width * 0.20,
     );
 
-    // سديم أعلى اليسار - Primary خفيف
+    // ط³ط¯ظٹظ… ط£ط¹ظ„ظ‰ ط§ظ„ظٹط³ط§ط± - Primary ط®ظپظٹظپ
     _drawNebula(
       canvas:  canvas,
       center:  Offset(size.width * 0.25, size.height * 0.05),
@@ -203,7 +203,7 @@ class _StarFieldPainter extends CustomPainter {
       center,
       radius,
       Paint()
-        ..color      = color.withOpacity(opacity.clamp(0.0, 1.0))
+        ..color      = color.withValues(alpha: opacity.clamp(0.0, 1.0))
         ..maskFilter = MaskFilter.blur(BlurStyle.normal, blur),
     );
   }

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../data/models/user_profile.dart';
@@ -29,8 +29,8 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
   int streak = 0;
   int today = 0;
   double noor = 0;
-  String rankEmoji = "🌱";
-  String rankName = "الباحث";
+  String rankEmoji = "ًںŒ±";
+  String rankName = "ط§ظ„ط¨ط§ط­ط«";
 
   late AnimationController _heroController;
   late Animation<double> _heroScale;
@@ -96,7 +96,7 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
           padding: const EdgeInsets.symmetric(horizontal: 16),
           children: [
 
-            /// 🔥 HERO
+            /// ًں”¥ HERO
             ScaleTransition(
               scale: _heroScale,
               child: _heroCard(cardBg, textColor),
@@ -104,19 +104,19 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
 
             const SizedBox(height: 24),
 
-            /// ✅ PROGRESS RING
+            /// âœ… PROGRESS RING
             _progressSection(cardBg, textColor),
 
             const SizedBox(height: 24),
 
-            /// 📱 QUICK ACTIONS (Glass)
+            /// ًں“± QUICK ACTIONS (Glass)
             _glassCard(
               child: Column(
                 children: [
                   _actionRow(
                     icon: Icons.route,
-                    title: "رحلتك",
-                    subtitle: "اليوم 7 من 30",
+                    title: "ط±ط­ظ„طھظƒ",
+                    subtitle: "ط§ظ„ظٹظˆظ… 7 ظ…ظ† 30",
                     onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -127,8 +127,8 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
                   const Divider(height: 1),
                   _actionRow(
                     icon: Icons.group,
-                    title: "رفيق الصلاة",
-                    subtitle: "أحمد ينتظرك",
+                    title: "ط±ظپظٹظ‚ ط§ظ„طµظ„ط§ط©",
+                    subtitle: "ط£ط­ظ…ط¯ ظٹظ†طھط¸ط±ظƒ",
                     onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -139,8 +139,8 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
                   const Divider(height: 1),
                   _actionRow(
                     icon: Icons.leaderboard,
-                    title: "الترتيب",
-                    subtitle: "أنت #12",
+                    title: "ط§ظ„طھط±طھظٹط¨",
+                    subtitle: "ط£ظ†طھ #12",
                     onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -154,19 +154,19 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
 
             const SizedBox(height: 24),
 
-            /// 🗺 HEATMAP
-            _sectionHeader("نشاطك الأخير", Icons.grid_view, textColor),
+            /// ًں—؛ HEATMAP
+            _sectionHeader("ظ†ط´ط§ط·ظƒ ط§ظ„ط£ط®ظٹط±", Icons.grid_view, textColor),
             const SizedBox(height: 12),
             const PrayerHeatmap(),
 
             const SizedBox(height: 24),
 
-            /// 🤖 AI COACH
+            /// ًں¤– AI COACH
             _glassCard(
               child: ListTile(
                 leading: const Icon(Icons.psychology, color: Colors.blue),
                 title: Text("AI Coach", style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
-                subtitle: Text("استعد لنصيحة ذكية", style: GoogleFonts.cairo(fontSize: 12)),
+                subtitle: Text("ط§ط³طھط¹ط¯ ظ„ظ†طµظٹط­ط© ط°ظƒظٹط©", style: GoogleFonts.cairo(fontSize: 12)),
                 trailing: const Icon(Icons.arrow_forward_ios, size: 16),
                 onTap: () => Navigator.push(
                   context,
@@ -179,8 +179,8 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
 
             const SizedBox(height: 24),
 
-            /// 📊 STATS
-            _sectionHeader("إحصائياتك", Icons.analytics, textColor),
+            /// ًں“ٹ STATS
+            _sectionHeader("ط¥ط­طµط§ط¦ظٹط§طھظƒ", Icons.analytics, textColor),
             const SizedBox(height: 12),
             _statsGrid(cardBg, textColor),
 
@@ -191,18 +191,18 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
     );
   }
 
-  /// 🔥 HERO CARD
+  /// ًں”¥ HERO CARD
   Widget _heroCard(Color cardBg, Color textColor) {
     return Container(
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [widget.primary, widget.primary.withOpacity(0.85)],
+          colors: [widget.primary, widget.primary.withValues(alpha: 0.85)],
         ),
         borderRadius: BorderRadius.circular(28),
         boxShadow: [
           BoxShadow(
-            color: widget.primary.withOpacity(0.4),
+            color: widget.primary.withValues(alpha: 0.4),
             blurRadius: 20,
             offset: const Offset(0, 10),
           ),
@@ -224,7 +224,7 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  "🔥 $streak يوم متواصل",
+                  "ًں”¥ $streak ظٹظˆظ… ظ…طھظˆط§طµظ„",
                   style: GoogleFonts.cairo(
                     fontSize: 16,
                     color: Colors.white70,
@@ -237,7 +237,7 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
             width: 60,
             height: 60,
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.2),
+              color: Colors.white.withValues(alpha: 0.2),
               shape: BoxShape.circle,
             ),
             child: Center(
@@ -256,7 +256,7 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
     );
   }
 
-  /// ✅ PROGRESS RING
+  /// âœ… PROGRESS RING
   Widget _progressSection(Color cardBg, Color textColor) {
     return Container(
       padding: const EdgeInsets.all(20),
@@ -265,7 +265,7 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -274,7 +274,7 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
       child: Column(
         children: [
           Text(
-            "تقدم اليوم",
+            "طھظ‚ط¯ظ… ط§ظ„ظٹظˆظ…",
             style: GoogleFonts.cairo(
               fontSize: 16,
               fontWeight: FontWeight.bold,
@@ -295,7 +295,7 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
                     return CircularProgressIndicator(
                       value: value,
                       strokeWidth: 10,
-                      backgroundColor: Colors.grey.withOpacity(0.2),
+                      backgroundColor: Colors.grey.withValues(alpha: 0.2),
                       valueColor: AlwaysStoppedAnimation(widget.primary),
                     );
                   },
@@ -315,7 +315,7 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
     );
   }
 
-  /// 🎯 STATS GRID
+  /// ًںژ¯ STATS GRID
   Widget _statsGrid(Color cardBg, Color textColor) {
     return GridView.count(
       shrinkWrap: true,
@@ -323,9 +323,9 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
       mainAxisSpacing: 12,
       crossAxisSpacing: 12,
       children: [
-        _statCard("✨", noor.toInt().toString(), "نور", cardBg, textColor),
-        _statCard("🕌", "12", "مسجد", cardBg, textColor),
-        _statCard("✅", "5", "أيام كاملة", cardBg, textColor),
+        _statCard("âœ¨", noor.toInt().toString(), "ظ†ظˆط±", cardBg, textColor),
+        _statCard("ًں•Œ", "12", "ظ…ط³ط¬ط¯", cardBg, textColor),
+        _statCard("âœ…", "5", "ط£ظٹط§ظ… ظƒط§ظ…ظ„ط©", cardBg, textColor),
       ],
     );
   }
@@ -352,22 +352,22 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
           ),
           Text(
             label,
-            style: GoogleFonts.cairo(fontSize: 11, color: text.withOpacity(0.7)),
+            style: GoogleFonts.cairo(fontSize: 11, color: text.withValues(alpha: 0.7)),
           ),
         ],
       ),
     );
   }
 
-  /// 🔷 GLASS CARD
+  /// ًں”· GLASS CARD
   Widget _glassCard({required Widget child}) {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.08),
+        color: Colors.white.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: Colors.white.withOpacity(0.1),
+          color: Colors.white.withValues(alpha: 0.1),
           width: 1,
         ),
       ),
@@ -375,7 +375,7 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
     );
   }
 
-  /// 🔷 ACTION ROW
+  /// ًں”· ACTION ROW
   Widget _actionRow({
     required IconData icon,
     required String title,
@@ -388,7 +388,7 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
         width: 40,
         height: 40,
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.1),
+          color: Colors.white.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Icon(icon, color: Colors.white, size: 20),
@@ -413,7 +413,7 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
     );
   }
 
-  /// 🔷 SECTION HEADER
+  /// ًں”· SECTION HEADER
   Widget _sectionHeader(String title, IconData icon, Color text) {
     return Row(
       children: [

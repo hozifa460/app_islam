@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class QiblaTheme {
@@ -6,7 +6,7 @@ class QiblaTheme {
   QiblaTheme({required this.isDark});
 
   // ==============================
-  // 🎨 Colors
+  // ًںژ¨ Colors
   // ==============================
   static const Color bgDark = Color(0xFF0A0E17);
   static const Color bgLight = Color(0xFFF0F4FF);
@@ -21,26 +21,26 @@ class QiblaTheme {
   Color get textColor => isDark ? Colors.white : const Color(0xFF1A1A2E);
 
   // ==============================
-  // 🎨 Card & Surface Colors
+  // ًںژ¨ Card & Surface Colors
   // ==============================
   Color get cardBg => isDark
-      ? Colors.white.withOpacity(0.05)
-      : Colors.white.withOpacity(0.9);
+      ? Colors.white.withValues(alpha: 0.05)
+      : Colors.white.withValues(alpha: 0.9);
 
   Color get cardBorder => isDark
-      ? Colors.white.withOpacity(0.07)
-      : gold.withOpacity(0.16);
+      ? Colors.white.withValues(alpha: 0.07)
+      : gold.withValues(alpha: 0.16);
 
   Color get backBtnBg => isDark
-      ? Colors.white.withOpacity(0.08)
-      : Colors.white.withOpacity(0.9);
+      ? Colors.white.withValues(alpha: 0.08)
+      : Colors.white.withValues(alpha: 0.9);
 
   Color get backBtnBorder => isDark
-      ? Colors.white.withOpacity(0.1)
-      : gold.withOpacity(0.25);
+      ? Colors.white.withValues(alpha: 0.1)
+      : gold.withValues(alpha: 0.25);
 
   // ==============================
-  // 🎨 Background Gradients
+  // ًںژ¨ Background Gradients
   // ==============================
   List<Color> facingGradient(bool isFacing) => isDark
       ? [
@@ -53,7 +53,7 @@ class QiblaTheme {
   ];
 
   // ==============================
-  // 📐 Dimensions
+  // ًں“گ Dimensions
   // ==============================
   static const double cardRadius = 18.0;
   static const double bannerRadius = 20.0;
@@ -70,11 +70,11 @@ class QiblaTheme {
   static const double centerDotSize = 38.0;
 
   // ==============================
-  // 📦 Shadows
+  // ًں“¦ Shadows
   // ==============================
   List<BoxShadow> get cardShadow => [
     BoxShadow(
-      color: Colors.black.withOpacity(isDark ? 0.10 : 0.04),
+      color: Colors.black.withValues(alpha: isDark ? 0.10 : 0.04),
       blurRadius: 7,
       offset: const Offset(0, 2),
     ),
@@ -82,14 +82,14 @@ class QiblaTheme {
 
   List<BoxShadow> get accuracyShadow => [
     BoxShadow(
-      color: Colors.black.withOpacity(isDark ? 0.10 : 0.04),
+      color: Colors.black.withValues(alpha: isDark ? 0.10 : 0.04),
       blurRadius: 8,
       offset: const Offset(0, 2),
     ),
   ];
 
   // ==============================
-  // 🔤 Text Styles
+  // ًں”¤ Text Styles
   // ==============================
   TextStyle get titleStyle => GoogleFonts.cairo(
   fontSize: 20,
@@ -99,7 +99,7 @@ class QiblaTheme {
 
   TextStyle get subtitleStyle => GoogleFonts.cairo(
   fontSize: 10,
-  color: textColor.withOpacity(0.45),
+  color: textColor.withValues(alpha: 0.45),
   );
 
   TextStyle labelStyle(double fontSize) => GoogleFonts.cairo(
@@ -114,7 +114,7 @@ class QiblaTheme {
   );
 
   // ==============================
-  // 🔧 Guidance Helpers
+  // ًں”§ Guidance Helpers
   // ==============================
   static Color getGuidanceColor(double deviation) {
   final abs = deviation.abs();
@@ -126,11 +126,11 @@ class QiblaTheme {
   static String getDirectionLabel(double deviation) {
   final d = deviation;
   final abs = d.abs();
-  if (abs < 5) return '✓  القبلة أمامك مباشرة';
-  if (abs < 20) return d > 0 ? 'دوّر قليلاً لليسار' : 'دوّر قليلاً لليمين';
-  if (abs < 60) return d > 0 ? 'دوّر لليسار' : 'دوّر لليمين';
-  if (abs < 120) return d > 0 ? 'القبلة على يسارك' : 'القبلة على يمينك';
-  return 'القبلة خلفك، استدر';
+  if (abs < 5) return 'âœ“  ط§ظ„ظ‚ط¨ظ„ط© ط£ظ…ط§ظ…ظƒ ظ…ط¨ط§ط´ط±ط©';
+  if (abs < 20) return d > 0 ? 'ط¯ظˆظ‘ط± ظ‚ظ„ظٹظ„ط§ظ‹ ظ„ظ„ظٹط³ط§ط±' : 'ط¯ظˆظ‘ط± ظ‚ظ„ظٹظ„ط§ظ‹ ظ„ظ„ظٹظ…ظٹظ†';
+  if (abs < 60) return d > 0 ? 'ط¯ظˆظ‘ط± ظ„ظ„ظٹط³ط§ط±' : 'ط¯ظˆظ‘ط± ظ„ظ„ظٹظ…ظٹظ†';
+  if (abs < 120) return d > 0 ? 'ط§ظ„ظ‚ط¨ظ„ط© ط¹ظ„ظ‰ ظٹط³ط§ط±ظƒ' : 'ط§ظ„ظ‚ط¨ظ„ط© ط¹ظ„ظ‰ ظٹظ…ظٹظ†ظƒ';
+  return 'ط§ظ„ظ‚ط¨ظ„ط© ط®ظ„ظپظƒطŒ ط§ط³طھط¯ط±';
   }
 
   static IconData getDirectionIcon(double deviation) {
@@ -143,9 +143,9 @@ class QiblaTheme {
   }
 
   static String getAccuracyText(int accuracy) {
-  if (accuracy >= 95) return '✓ ممتاز — أنت تواجه القبلة بدقة عالية';
-  if (accuracy >= 70) return 'قريب — استمر في الدوران قليلاً';
-  if (accuracy >= 40) return 'متوسط — دوّر نحو الإبرة الخضراء';
-  return 'بعيد — دوّر هاتفك نحو الإبرة الخضراء';
+  if (accuracy >= 95) return 'âœ“ ظ…ظ…طھط§ط² â€” ط£ظ†طھ طھظˆط§ط¬ظ‡ ط§ظ„ظ‚ط¨ظ„ط© ط¨ط¯ظ‚ط© ط¹ط§ظ„ظٹط©';
+  if (accuracy >= 70) return 'ظ‚ط±ظٹط¨ â€” ط§ط³طھظ…ط± ظپظٹ ط§ظ„ط¯ظˆط±ط§ظ† ظ‚ظ„ظٹظ„ط§ظ‹';
+  if (accuracy >= 40) return 'ظ…طھظˆط³ط· â€” ط¯ظˆظ‘ط± ظ†ط­ظˆ ط§ظ„ط¥ط¨ط±ط© ط§ظ„ط®ط¶ط±ط§ط،';
+  return 'ط¨ط¹ظٹط¯ â€” ط¯ظˆظ‘ط± ظ‡ط§طھظپظƒ ظ†ط­ظˆ ط§ظ„ط¥ط¨ط±ط© ط§ظ„ط®ط¶ط±ط§ط،';
   }
 }

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../Constants/sunnah_theme.dart';
 
 class SunnahAppBar extends StatelessWidget {
@@ -49,7 +49,7 @@ class SunnahAppBar extends StatelessWidget {
   }
 }
 
-// ─── زر تبديل الثيم ────────────────────────────────────────────────────────
+// â”€â”€â”€ ط²ط± طھط¨ط¯ظٹظ„ ط§ظ„ط«ظٹظ… â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 class _ThemeToggleButton extends StatelessWidget {
   final bool isDark;
@@ -60,7 +60,7 @@ class _ThemeToggleButton extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Colors.white.withOpacity(0.15),
+        color: Colors.white.withValues(alpha: 0.15),
       ),
       child: IconButton(
         icon: AnimatedSwitcher(
@@ -75,14 +75,14 @@ class _ThemeToggleButton extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          // يمكن ربطها بمزود الثيم في تطبيقك
+          // ظٹظ…ظƒظ† ط±ط¨ط·ظ‡ط§ ط¨ظ…ط²ظˆط¯ ط§ظ„ط«ظٹظ… ظپظٹ طھط·ط¨ظٹظ‚ظƒ
         },
       ),
     );
   }
 }
 
-// ─── خلفية الهيدر ──────────────────────────────────────────────────────────
+// â”€â”€â”€ ط®ظ„ظپظٹط© ط§ظ„ظ‡ظٹط¯ط± â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 class _AppBarBackground extends StatefulWidget {
   final bool isDark;
@@ -126,9 +126,9 @@ class _AppBarBackgroundState extends State<_AppBarBackground>
       ),
       child: Stack(
         children: [
-          // نجوم متناثرة
+          // ظ†ط¬ظˆظ… ظ…طھظ†ط§ط«ط±ط©
           ..._Stars.build(size),
-          // دائرة ذهبية خلفية
+          // ط¯ط§ط¦ط±ط© ط°ظ‡ط¨ظٹط© ط®ظ„ظپظٹط©
           Positioned(
             top: -40,
             right: -40,
@@ -137,7 +137,7 @@ class _AppBarBackgroundState extends State<_AppBarBackground>
               height: 180,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: SunnahTheme.gold.withOpacity(0.05),
+                color: SunnahTheme.gold.withValues(alpha: 0.05),
               ),
             ),
           ),
@@ -149,11 +149,11 @@ class _AppBarBackgroundState extends State<_AppBarBackground>
               height: 120,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: SunnahTheme.gold.withOpacity(0.04),
+                color: SunnahTheme.gold.withValues(alpha: 0.04),
               ),
             ),
           ),
-          // المحتوى الرئيسي
+          // ط§ظ„ظ…ط­طھظˆظ‰ ط§ظ„ط±ط¦ظٹط³ظٹ
           SafeArea(
             bottom: false,
             child: Padding(
@@ -162,14 +162,14 @@ class _AppBarBackgroundState extends State<_AppBarBackground>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 20),
-                  // أيقونة بها هالة
+                  // ط£ظٹظ‚ظˆظ†ط© ط¨ظ‡ط§ ظ‡ط§ظ„ط©
                   _GlowingIcon(),
                   const SizedBox(height: 16),
-                  // العنوان
+                  // ط§ظ„ط¹ظ†ظˆط§ظ†
                   FittedBox(
                     fit: BoxFit.scaleDown,
                     child: const Text(
-                      'ماذا كان يفعل ﷺ',
+                      'ظ…ط§ط°ط§ ظƒط§ظ† ظٹظپط¹ظ„ ï·؛',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: SunnahTheme.gold,
@@ -187,13 +187,13 @@ class _AppBarBackgroundState extends State<_AppBarBackground>
                     ),
                   ),
                   const SizedBox(height: 8),
-                  // الوصف
+                  // ط§ظ„ظˆطµظپ
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: FittedBox(
                       fit: BoxFit.scaleDown,
                       child: const Text(
-                        'سنن نبوية موثقة من الصحاح والمسانيد',
+                        'ط³ظ†ظ† ظ†ط¨ظˆظٹط© ظ…ظˆط«ظ‚ط© ظ…ظ† ط§ظ„طµط­ط§ط­ ظˆط§ظ„ظ…ط³ط§ظ†ظٹط¯',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white60,
@@ -204,7 +204,7 @@ class _AppBarBackgroundState extends State<_AppBarBackground>
                     ),
                   ),
                   const SizedBox(height: 12),
-                  // خط ذهبي
+                  // ط®ط· ط°ظ‡ط¨ظٹ
                   _GoldenDivider(),
                   const SizedBox(height: 8),
                 ],
@@ -217,7 +217,7 @@ class _AppBarBackgroundState extends State<_AppBarBackground>
   }
 }
 
-// ─── أيقونة متوهجة ─────────────────────────────────────────────────────────
+// â”€â”€â”€ ط£ظٹظ‚ظˆظ†ط© ظ…طھظˆظ‡ط¬ط© â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 class _GlowingIcon extends StatefulWidget {
   @override
@@ -260,7 +260,7 @@ class _GlowingIconState extends State<_GlowingIcon>
           boxShadow: [
             BoxShadow(
               color: SunnahTheme.gold
-                  .withOpacity(0.3 + _glowAnim.value * 0.35),
+                  .withValues(alpha: 0.3 + _glowAnim.value * 0.35),
               blurRadius: 16 + _glowAnim.value * 16,
               spreadRadius: 2 + _glowAnim.value * 4,
             ),
@@ -276,7 +276,7 @@ class _GlowingIconState extends State<_GlowingIcon>
   }
 }
 
-// ─── خط ذهبي ───────────────────────────────────────────────────────────────
+// â”€â”€â”€ ط®ط· ط°ظ‡ط¨ظٹ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 class _GoldenDivider extends StatelessWidget {
   @override
@@ -316,7 +316,7 @@ class _GoldenDivider extends StatelessWidget {
   }
 }
 
-// ─── نجوم خلفية ────────────────────────────────────────────────────────────
+// â”€â”€â”€ ظ†ط¬ظˆظ… ط®ظ„ظپظٹط© â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 class _Stars {
   static const _positions = [
@@ -338,10 +338,10 @@ class _Stars {
           height: p[2],
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: Colors.white.withOpacity(opacity),
+            color: Colors.white.withValues(alpha: opacity),
             boxShadow: [
               BoxShadow(
-                color: Colors.white.withOpacity(opacity * 0.5),
+                color: Colors.white.withValues(alpha: opacity * 0.5),
                 blurRadius: 3,
               ),
             ],
@@ -352,7 +352,7 @@ class _Stars {
   }
 }
 
-// ─── شريط البحث ─────────────────────────────────────────────────────────────
+// â”€â”€â”€ ط´ط±ظٹط· ط§ظ„ط¨ط­ط« â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 class _SearchBarWidget extends StatelessWidget {
   final TextEditingController controller;
@@ -384,9 +384,9 @@ class _SearchBarWidget extends StatelessWidget {
           fontSize: 14,
         ),
         decoration: InputDecoration(
-          hintText: 'ابحث عن سنة نبوية...',
+          hintText: 'ط§ط¨ط­ط« ط¹ظ† ط³ظ†ط© ظ†ط¨ظˆظٹط©...',
           hintStyle: TextStyle(
-            color: Colors.white.withOpacity(0.4),
+            color: Colors.white.withValues(alpha: 0.4),
             fontSize: 14,
           ),
           prefixIcon: const Icon(
@@ -399,7 +399,7 @@ class _SearchBarWidget extends StatelessWidget {
             builder: (_, value, __) => value.text.isNotEmpty
                 ? IconButton(
               icon: Icon(Icons.close_rounded,
-                  color: Colors.white.withOpacity(0.5), size: 18),
+                  color: Colors.white.withValues(alpha: 0.5), size: 18),
               onPressed: () {
                 controller.clear();
                 onSearch('');
@@ -408,7 +408,7 @@ class _SearchBarWidget extends StatelessWidget {
                 : const SizedBox.shrink(),
           ),
           filled: true,
-          fillColor: Colors.white.withOpacity(0.1),
+          fillColor: Colors.white.withValues(alpha: 0.1),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(14),
             borderSide: BorderSide.none,
@@ -416,7 +416,7 @@ class _SearchBarWidget extends StatelessWidget {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(14),
             borderSide: BorderSide(
-              color: Colors.white.withOpacity(0.15),
+              color: Colors.white.withValues(alpha: 0.15),
               width: 1,
             ),
           ),

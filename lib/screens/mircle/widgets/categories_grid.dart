@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../color_control/miracle_color_provider.dart';
@@ -38,7 +38,7 @@ class CategoriesGrid extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SectionTitle(
-            title:       'استكشف الأقسام',
+            title:       'ط§ط³طھظƒط´ظپ ط§ظ„ط£ظ‚ط³ط§ظ…',
             subtitle:    'Categories',
             accentColor: MiracleTheme.neonBlue,
             t:           t,
@@ -135,21 +135,21 @@ class _CategoryCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(18),
             border: Border.all(
               color: isSelected
-                  ? catColor.withOpacity(0.7)
-                  : catColor.withOpacity(0.15),
+                  ? catColor.withValues(alpha: 0.7)
+                  : catColor.withValues(alpha: 0.15),
               width: isSelected ? 2 : 1,
             ),
             boxShadow: isSelected
                 ? [
               BoxShadow(
-                color:        catColor.withOpacity(0.25),
+                color:        catColor.withValues(alpha: 0.25),
                 blurRadius:   18,
                 spreadRadius: 2,
               ),
             ]
                 : [
               BoxShadow(
-                color:      Colors.black.withOpacity(0.15),
+                color:      Colors.black.withValues(alpha: 0.15),
                 blurRadius: 8,
                 offset:     const Offset(0, 4),
               ),
@@ -159,7 +159,7 @@ class _CategoryCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(18),
             child: Stack(
               children: [
-                // ── Gradient background ──
+                // â”€â”€ Gradient background â”€â”€
                 Positioned.fill(
                   child: Container(
                     decoration: BoxDecoration(
@@ -167,15 +167,15 @@ class _CategoryCard extends StatelessWidget {
                         begin:  Alignment.topLeft,
                         end:    Alignment.bottomRight,
                         colors: [
-                          catColor.withOpacity(isSelected ? 0.28 : 0.14),
-                          t.bg3.withOpacity(0.95),
+                          catColor.withValues(alpha: isSelected ? 0.28 : 0.14),
+                          t.bg3.withValues(alpha: 0.95),
                         ],
                       ),
                     ),
                   ),
                 ),
 
-                // ── Emoji watermark ──
+                // â”€â”€ Emoji watermark â”€â”€
                 Positioned(
                   bottom: -8, right: -4,
                   child: Text(
@@ -183,12 +183,12 @@ class _CategoryCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 48,
                       color: Colors.white
-                          .withOpacity(isSelected ? 0.22 : 0.12),
+                          .withValues(alpha: isSelected ? 0.22 : 0.12),
                     ),
                   ),
                 ),
 
-                // ── Glow orb ──
+                // â”€â”€ Glow orb â”€â”€
                 Positioned(
                   top: -16, left: -16,
                   child: Container(
@@ -197,7 +197,7 @@ class _CategoryCard extends StatelessWidget {
                       shape: BoxShape.circle,
                       gradient: RadialGradient(
                         colors: [
-                          catColor.withOpacity(isSelected ? 0.18 : 0.07),
+                          catColor.withValues(alpha: isSelected ? 0.18 : 0.07),
                           Colors.transparent,
                         ],
                       ),
@@ -205,7 +205,7 @@ class _CategoryCard extends StatelessWidget {
                   ),
                 ),
 
-                // ── Content ──
+                // â”€â”€ Content â”€â”€
                 Padding(
                   padding: const EdgeInsets.fromLTRB(12, 10, 10, 10),
                   child: Column(
@@ -219,14 +219,14 @@ class _CategoryCard extends StatelessWidget {
                             width:  34,
                             height: 34,
                             decoration: BoxDecoration(
-                              color: catColor.withOpacity(0.15),
+                              color: catColor.withValues(alpha: 0.15),
                               borderRadius: BorderRadius.circular(10),
                               border: Border.all(
-                                  color: catColor.withOpacity(0.3)),
+                                  color: catColor.withValues(alpha: 0.3)),
                               boxShadow: isSelected
                                   ? [
                                 BoxShadow(
-                                  color:     catColor.withOpacity(0.25),
+                                  color:     catColor.withValues(alpha: 0.25),
                                   blurRadius: 10,
                                 ),
                               ]
@@ -239,10 +239,10 @@ class _CategoryCard extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 7, vertical: 3),
                             decoration: BoxDecoration(
-                              color: catColor.withOpacity(0.12),
+                              color: catColor.withValues(alpha: 0.12),
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(
-                                  color: catColor.withOpacity(0.2)),
+                                  color: catColor.withValues(alpha: 0.2)),
                             ),
                             child: Text(
                               '$count',
@@ -267,7 +267,7 @@ class _CategoryCard extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           shadows: [
                             Shadow(
-                              color:     Colors.black.withOpacity(0.5),
+                              color:     Colors.black.withValues(alpha: 0.5),
                               blurRadius: 4,
                             ),
                           ],
@@ -280,7 +280,7 @@ class _CategoryCard extends StatelessWidget {
                       Text(
                         engName,
                         style: GoogleFonts.poppins(
-                          color:    catColor.withOpacity(0.75),
+                          color:    catColor.withValues(alpha: 0.75),
                           fontSize: 9,
                         ),
                         maxLines:  1,
@@ -290,7 +290,7 @@ class _CategoryCard extends StatelessWidget {
                   ),
                 ),
 
-                // ── Selected checkmark ──
+                // â”€â”€ Selected checkmark â”€â”€
                 if (isSelected)
                   Positioned(
                     top: 7, left: 7,
@@ -301,7 +301,7 @@ class _CategoryCard extends StatelessWidget {
                         shape:  BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color:     catColor.withOpacity(0.4),
+                            color:     catColor.withValues(alpha: 0.4),
                             blurRadius: 6,
                           ),
                         ],
@@ -311,21 +311,21 @@ class _CategoryCard extends StatelessWidget {
                     ),
                   ),
 
-                // ── Arrow indicator (navigate hint) ──
+                // â”€â”€ Arrow indicator (navigate hint) â”€â”€
                 Positioned(
                   bottom: 10, left: 10,
                   child: Container(
                     width: 22, height: 22,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: catColor.withOpacity(0.1),
+                      color: catColor.withValues(alpha: 0.1),
                       border: Border.all(
-                          color: catColor.withOpacity(0.2)),
+                          color: catColor.withValues(alpha: 0.2)),
                     ),
                     child: Icon(
                       Icons.arrow_forward_ios_rounded,
                       size:  10,
-                      color: catColor.withOpacity(0.6),
+                      color: catColor.withValues(alpha: 0.6),
                     ),
                   ),
                 ),

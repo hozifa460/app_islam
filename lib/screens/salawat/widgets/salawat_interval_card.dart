@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../languages/app_localizations.dart';
@@ -33,7 +33,7 @@ class SalawatIntervalCard extends StatelessWidget {
                 width: SalawatTheme.smallIconSize,
                 height: SalawatTheme.smallIconSize,
                 decoration: BoxDecoration(
-                  color: theme.accentGold.withOpacity(0.15),
+                  color: theme.accentGold.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Icon(

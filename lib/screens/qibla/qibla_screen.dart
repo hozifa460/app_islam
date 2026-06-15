@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -29,23 +29,23 @@ class QiblaScreen extends StatefulWidget {
 class _QiblaScreenState extends State<QiblaScreen>
     with TickerProviderStateMixin {
 
-  // ═══════════════════════════════════════════════════════
-  // الثوابت
-  // ═══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ط«ظˆط§ط¨طھ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static const double _facingThreshold = 5.0;
 
-  // ─── EMA Filter ───
-  // alpha صغير = أنعم لكن أبطأ استجابة
-  // alpha كبير = أسرع لكن أكثر اهتزاز
+  // â”€â”€â”€ EMA Filter â”€â”€â”€
+  // alpha طµط؛ظٹط± = ط£ظ†ط¹ظ… ظ„ظƒظ† ط£ط¨ط·ط£ ط§ط³طھط¬ط§ط¨ط©
+  // alpha ظƒط¨ظٹط± = ط£ط³ط±ط¹ ظ„ظƒظ† ط£ظƒط«ط± ط§ظ‡طھط²ط§ط²
   static const double _alphaCompass = 0.15;
   static const double _alphaGps     = 0.20;
 
-  // ─── GPS Heading: نحتاج سرعة > هذا لنثق بـ GPS heading ───
-  static const double _minSpeedForGpsHeading = 0.8; // m/s ≈ 3 km/h
+  // â”€â”€â”€ GPS Heading: ظ†ط­طھط§ط¬ ط³ط±ط¹ط© > ظ‡ط°ط§ ظ„ظ†ط«ظ‚ ط¨ظ€ GPS heading â”€â”€â”€
+  static const double _minSpeedForGpsHeading = 0.8; // m/s â‰ˆ 3 km/h
 
-  // ═══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   // State
-  // ═══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   double? _userLat;
   double? _userLng;
   double  _locationAccuracyMeters = 999;
@@ -54,40 +54,40 @@ class _QiblaScreenState extends State<QiblaScreen>
   bool    _locationServiceDisabled  = false;
   bool    _permissionDeniedForever  = false;
 
-  double _qiblaAngle       = 0; // True bearing إلى الكعبة
+  double _qiblaAngle       = 0; // True bearing ط¥ظ„ظ‰ ط§ظ„ظƒط¹ط¨ط©
   double _distanceToKaaba  = 0;
 
-  // ─── Heading الحالي (True North) ───
-  double _displayHeading   = 0; // ما يُعرض للمستخدم
-  double _compassHeading   = 0; // من البوصلة (بعد WMM)
-  double _gpsHeading       = 0; // من GPS
-  bool   _usingGpsHeading  = false; // هل نستخدم GPS heading؟
+  // â”€â”€â”€ Heading ط§ظ„ط­ط§ظ„ظٹ (True North) â”€â”€â”€
+  double _displayHeading   = 0; // ظ…ط§ ظٹظڈط¹ط±ط¶ ظ„ظ„ظ…ط³طھط®ط¯ظ…
+  double _compassHeading   = 0; // ظ…ظ† ط§ظ„ط¨ظˆطµظ„ط© (ط¨ط¹ط¯ WMM)
+  double _gpsHeading       = 0; // ظ…ظ† GPS
+  bool   _usingGpsHeading  = false; // ظ‡ظ„ ظ†ط³طھط®ط¯ظ… GPS headingطں
 
-  // ─── WMM Declination ───
+  // â”€â”€â”€ WMM Declination â”€â”€â”€
   double _declination      = 0;
   bool   _declinationReady = false;
 
-  // ─── حالة الحركة ───
+  // â”€â”€â”€ ط­ط§ظ„ط© ط§ظ„ط­ط±ظƒط© â”€â”€â”€
   double _currentSpeed     = 0;
   bool   _isMoving         = false;
 
-  // ─── EMA state ───
+  // â”€â”€â”€ EMA state â”€â”€â”€
   double _emaSin = 0, _emaCos = 1;
   bool   _emaInit = false;
 
-  // ─── معايرة البوصلة ───
+  // â”€â”€â”€ ظ…ط¹ط§ظٹط±ط© ط§ظ„ط¨ظˆطµظ„ط© â”€â”€â”€
   double _compassAccuracy  = -1;
   bool   _needsCalibration = false;
 
-  // ═══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   // Subscriptions
-  // ═══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   StreamSubscription<CompassEvent>? _compassSub;
   StreamSubscription<Position>?     _positionSub;
 
-  // ═══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   // Animations
-  // ═══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   late AnimationController _glowCtrl;
   late AnimationController _pulseCtrl;
   late AnimationController _successCtrl;
@@ -134,9 +134,9 @@ class _QiblaScreenState extends State<QiblaScreen>
     super.dispose();
   }
 
-  // ═══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   // Permissions
-  // ═══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Future<void> _checkPermissionsAndStart() async {
     if (!mounted) return;
     setState(() {
@@ -195,27 +195,27 @@ class _QiblaScreenState extends State<QiblaScreen>
     if (mounted) setState(() => _loading = false);
   }
 
-  // ═══════════════════════════════════════════════════════
-  // ✅ تحديث الموقع - القلب الأساسي
-  // ═══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // âœ… طھط­ط¯ظٹط« ط§ظ„ظ…ظˆظ‚ط¹ - ط§ظ„ظ‚ظ„ط¨ ط§ظ„ط£ط³ط§ط³ظٹ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Future<void> _updatePosition(Position pos) async {
-    // ─── حساب اتجاه القبلة ───
+    // â”€â”€â”€ ط­ط³ط§ط¨ ط§طھط¬ط§ظ‡ ط§ظ„ظ‚ط¨ظ„ط© â”€â”€â”€
     final qibla   = QiblaCalculator.calculate(pos.latitude, pos.longitude);
     final dist    = QiblaCalculator.distanceToKaaba(pos.latitude, pos.longitude);
     final speed   = pos.speed < 0 ? 0.0 : pos.speed;
     final isMoving = speed > _minSpeedForGpsHeading;
 
-    // ─── GPS Heading ───
-    // GPS يعطي True Bearing للحركة - دقيق 100% بدون بوصلة
+    // â”€â”€â”€ GPS Heading â”€â”€â”€
+    // GPS ظٹط¹ط·ظٹ True Bearing ظ„ظ„ط­ط±ظƒط© - ط¯ظ‚ظٹظ‚ 100% ط¨ط¯ظˆظ† ط¨ظˆطµظ„ط©
     double gpsH = _gpsHeading;
     bool usingGps = false;
 
     if (isMoving && pos.heading >= 0) {
-      // GPS heading موثوق فقط عند السرعة الكافية
-      gpsH = pos.heading; // هذا True North مباشرة
+      // GPS heading ظ…ظˆط«ظˆظ‚ ظپظ‚ط· ط¹ظ†ط¯ ط§ظ„ط³ط±ط¹ط© ط§ظ„ظƒط§ظپظٹط©
+      gpsH = pos.heading; // ظ‡ط°ط§ True North ظ…ط¨ط§ط´ط±ط©
       usingGps = true;
 
-      // EMA على GPS heading
+      // EMA ط¹ظ„ظ‰ GPS heading
       final rad = gpsH * math.pi / 180.0;
       if (!_emaInit) {
         _emaSin = math.sin(rad);
@@ -228,7 +228,7 @@ class _QiblaScreenState extends State<QiblaScreen>
       gpsH = (math.atan2(_emaSin, _emaCos) * 180 / math.pi + 360) % 360;
     }
 
-    // ─── WMM Declination (مرة واحدة أو عند تغيير الموقع) ───
+    // â”€â”€â”€ WMM Declination (ظ…ط±ط© ظˆط§ط­ط¯ط© ط£ظˆ ط¹ظ†ط¯ طھط؛ظٹظٹط± ط§ظ„ظ…ظˆظ‚ط¹) â”€â”€â”€
     if (!_declinationReady ||
         _lastPosition == null ||
         Geolocator.distanceBetween(
@@ -254,27 +254,27 @@ class _QiblaScreenState extends State<QiblaScreen>
 
     _updateDisplayHeading();
 
-    debugPrint('📍 ${pos.latitude.toStringAsFixed(5)}, '
+    debugPrint('ًں“چ ${pos.latitude.toStringAsFixed(5)}, '
         '${pos.longitude.toStringAsFixed(5)} '
-        '| 🕋 Qibla: ${qibla.toStringAsFixed(1)}° '
-        '| 🧲 Dec: ${_declination.toStringAsFixed(1)}° '
-        '| 📡 GPS-H: ${pos.heading.toStringAsFixed(1)}° '
-        '| 🚶 ${speed.toStringAsFixed(1)}m/s');
+        '| ًں•‹ Qibla: ${qibla.toStringAsFixed(1)}آ° '
+        '| ًں§² Dec: ${_declination.toStringAsFixed(1)}آ° '
+        '| ًں“، GPS-H: ${pos.heading.toStringAsFixed(1)}آ° '
+        '| ًںڑ¶ ${speed.toStringAsFixed(1)}m/s');
   }
 
-  // ═══════════════════════════════════════════════════════
-  // ✅ تحديد Heading المعروض
-  // الأولوية: GPS (عند الحركة) > البوصلة (عند الوقوف)
-  // ═══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // âœ… طھط­ط¯ظٹط¯ Heading ط§ظ„ظ…ط¹ط±ظˆط¶
+  // ط§ظ„ط£ظˆظ„ظˆظٹط©: GPS (ط¹ظ†ط¯ ط§ظ„ط­ط±ظƒط©) > ط§ظ„ط¨ظˆطµظ„ط© (ط¹ظ†ط¯ ط§ظ„ظˆظ‚ظˆظپ)
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   void _updateDisplayHeading() {
     if (!mounted) return;
 
     double heading;
     if (_usingGpsHeading && _isMoving) {
-      // ✅ GPS True Heading - الأدق
+      // âœ… GPS True Heading - ط§ظ„ط£ط¯ظ‚
       heading = _gpsHeading;
     } else {
-      // ✅ البوصلة + WMM تعويض
+      // âœ… ط§ظ„ط¨ظˆطµظ„ط© + WMM طھط¹ظˆظٹط¶
       heading = _compassHeading;
     }
 
@@ -299,9 +299,9 @@ class _QiblaScreenState extends State<QiblaScreen>
     _wasFacingQibla = isFacing;
   }
 
-  // ═══════════════════════════════════════════════════════
-  // ✅ البوصلة مع WMM تعويض
-  // ═══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // âœ… ط§ظ„ط¨ظˆطµظ„ط© ظ…ط¹ WMM طھط¹ظˆظٹط¶
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   void _startCompass() {
     _compassSub = FlutterCompass.events?.listen((event) {
       if (!mounted) return;
@@ -311,10 +311,10 @@ class _QiblaScreenState extends State<QiblaScreen>
       final accuracy = event.accuracy ?? -1.0;
       final magnetic = (raw + 360.0) % 360.0;
 
-      // ✅ تحويل Magnetic → True North
+      // âœ… طھط­ظˆظٹظ„ Magnetic â†’ True North
       final trueH = (magnetic + _declination + 360.0) % 360.0;
 
-      // ✅ EMA Filter
+      // âœ… EMA Filter
       final rad   = trueH * math.pi / 180.0;
       final alpha = _isMoving ? _alphaGps : _alphaCompass;
 
@@ -336,7 +336,7 @@ class _QiblaScreenState extends State<QiblaScreen>
         _needsCalibration = accuracy < 0 || accuracy > 20;
       });
 
-      // عند الوقوف: استخدم البوصلة
+      // ط¹ظ†ط¯ ط§ظ„ظˆظ‚ظˆظپ: ط§ط³طھط®ط¯ظ… ط§ظ„ط¨ظˆطµظ„ط©
       if (!_usingGpsHeading) {
         setState(() => _displayHeading = smoothed);
         _checkFacingQibla();
@@ -344,9 +344,9 @@ class _QiblaScreenState extends State<QiblaScreen>
     });
   }
 
-  // ═══════════════════════════════════════════════════════
-  // ✅ GPS Stream
-  // ═══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // âœ… GPS Stream
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   void _startLocationStream() {
     _positionSub?.cancel();
     _positionSub = QiblaLocationService.getPositionStream().listen(
@@ -358,10 +358,10 @@ class _QiblaScreenState extends State<QiblaScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════
-  // ✅ WMM2020 - حساب الانحراف المغناطيسي
-  // معاملات رسمية من NOAA
-  // ═══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // âœ… WMM2020 - ط­ط³ط§ط¨ ط§ظ„ط§ظ†ط­ط±ط§ظپ ط§ظ„ظ…ط؛ظ†ط§ط·ظٹط³ظٹ
+  // ظ…ط¹ط§ظ…ظ„ط§طھ ط±ط³ظ…ظٹط© ظ…ظ† NOAA
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   double _computeWMM(double latDeg, double lngDeg) {
     // WMM2020 Coefficients (NOAA official, n=1..12)
     const g = [
@@ -442,7 +442,7 @@ class _QiblaScreenState extends State<QiblaScreen>
     final latR = latDeg * math.pi / 180.0;
     final lngR = lngDeg * math.pi / 180.0;
 
-    // Geodetic → Spherical
+    // Geodetic â†’ Spherical
     final cosLat = math.cos(latR);
     final sinLat = math.sin(latR);
     final a2 = a * a, b2 = b * b;
@@ -506,7 +506,7 @@ class _QiblaScreenState extends State<QiblaScreen>
       }
     }
 
-    // Spherical → Geodetic
+    // Spherical â†’ Geodetic
     final diff   = theta - (math.pi / 2.0 - latR);
     final bx     = -bTheta * math.cos(diff) - bR * math.sin(diff);
     final by     = bPhi;
@@ -514,9 +514,9 @@ class _QiblaScreenState extends State<QiblaScreen>
     return math.atan2(by, bx) * 180.0 / math.pi;
   }
 
-  // ═══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   // Getters
-  // ═══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   double get _needleAngle {
     double diff = _qiblaAngle - _displayHeading;
     diff = ((diff + 180.0) % 360.0) - 180.0;
@@ -536,9 +536,9 @@ class _QiblaScreenState extends State<QiblaScreen>
   int get _accuracy =>
       ((1.0 - _deviation.abs().clamp(0.0, 180.0) / 180.0) * 100).round();
 
-  // ═══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   // Build
-  // ═══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
@@ -565,9 +565,9 @@ class _QiblaScreenState extends State<QiblaScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   // Main UI
-  // ═══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildMainUI(QiblaTheme theme, Size size) {
     final isFacing = _isFacingQibla;
     final guidance = QiblaTheme.getGuidanceColor(_deviation);
@@ -627,7 +627,7 @@ class _QiblaScreenState extends State<QiblaScreen>
           SliverToBoxAdapter(
             child: Column(
               children: [
-                // ─── شريط الحالة ─────────────────────────
+                // â”€â”€â”€ ط´ط±ظٹط· ط§ظ„ط­ط§ظ„ط© â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                 _buildStatusBar(theme),
                 if (_needsCalibration) _buildCalibrationWarning(theme),
                 SizedBox(height: size.height * 0.015),
@@ -689,7 +689,7 @@ class _QiblaScreenState extends State<QiblaScreen>
                 size: 48,
                 color: theme.isDark ? Colors.white38 : Colors.black26),
             const SizedBox(height: 12),
-            Text('جارٍ تحديد موقعك...', style: theme.labelStyle(15)),
+            Text('ط¬ط§ط±ظچ طھط­ط¯ظٹط¯ ظ…ظˆظ‚ط¹ظƒ...', style: theme.labelStyle(15)),
           ],
         ),
       );
@@ -720,24 +720,24 @@ class _QiblaScreenState extends State<QiblaScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════
-  // ✅ شريط الحالة - يوضح مصدر الـ Heading
-  // ═══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // âœ… ط´ط±ظٹط· ط§ظ„ط­ط§ظ„ط© - ظٹظˆط¶ط­ ظ…طµط¯ط± ط§ظ„ظ€ Heading
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildStatusBar(QiblaTheme theme) {
     final isGps = _usingGpsHeading && _isMoving;
     final color = isGps ? Colors.blue.shade400 : QiblaTheme.green;
     final icon  = isGps ? Icons.gps_fixed_rounded : Icons.explore_rounded;
     final label = isGps
-        ? 'GPS · ${_currentSpeed.toStringAsFixed(1)} م/ث · دقيق ١٠٠٪'
-        : 'بوصلة · انحراف ${_declination.toStringAsFixed(1)}° معوض';
+        ? 'GPS آ· ${_currentSpeed.toStringAsFixed(1)} ظ…/ط« آ· ط¯ظ‚ظٹظ‚ ظ،ظ ظ ظھ'
+        : 'ط¨ظˆطµظ„ط© آ· ط§ظ†ط­ط±ط§ظپ ${_declination.toStringAsFixed(1)}آ° ظ…ط¹ظˆط¶';
 
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 8, 16, 0),
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: color.withOpacity(0.3)),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -753,11 +753,11 @@ class _QiblaScreenState extends State<QiblaScreen>
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.15),
+              color: color.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(6),
             ),
             child: Text(
-              '±${_locationAccuracyMeters.toStringAsFixed(0)}م GPS',
+              'آ±${_locationAccuracyMeters.toStringAsFixed(0)}ظ… GPS',
               style: theme.labelStyle(10).copyWith(color: color),
             ),
           ),
@@ -771,9 +771,9 @@ class _QiblaScreenState extends State<QiblaScreen>
       margin: const EdgeInsets.fromLTRB(16, 6, 16, 0),
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
       decoration: BoxDecoration(
-        color: Colors.orange.withOpacity(0.1),
+        color: Colors.orange.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.orange.withOpacity(0.4)),
+        border: Border.all(color: Colors.orange.withValues(alpha: 0.4)),
       ),
       child: Row(
         children: [
@@ -782,7 +782,7 @@ class _QiblaScreenState extends State<QiblaScreen>
           const SizedBox(width: 8),
           Expanded(
             child: Text(
-              'حرّك الهاتف على شكل رقم 8 لمعايرة البوصلة',
+              'ط­ط±ظ‘ظƒ ط§ظ„ظ‡ط§طھظپ ط¹ظ„ظ‰ ط´ظƒظ„ ط±ظ‚ظ… 8 ظ„ظ…ط¹ط§ظٹط±ط© ط§ظ„ط¨ظˆطµظ„ط©',
               style: theme.labelStyle(12)
                   .copyWith(color: Colors.orange.shade700),
             ),
@@ -792,7 +792,7 @@ class _QiblaScreenState extends State<QiblaScreen>
     );
   }
 
-  // ─── Tab Bar ───────────────────────────────────────────
+  // â”€â”€â”€ Tab Bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _buildTabBar(QiblaTheme theme) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -800,22 +800,22 @@ class _QiblaScreenState extends State<QiblaScreen>
         height: 44,
         decoration: BoxDecoration(
           color: theme.isDark
-              ? Colors.white.withOpacity(0.07)
-              : Colors.white.withOpacity(0.85),
+              ? Colors.white.withValues(alpha: 0.07)
+              : Colors.white.withValues(alpha: 0.85),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: theme.isDark
-                ? Colors.white.withOpacity(0.1)
-                : QiblaTheme.gold.withOpacity(0.2),
+                ? Colors.white.withValues(alpha: 0.1)
+                : QiblaTheme.gold.withValues(alpha: 0.2),
           ),
         ),
         child: TabBar(
           controller: _tabController,
           indicator: BoxDecoration(
-            color: QiblaTheme.gold.withOpacity(0.18),
+            color: QiblaTheme.gold.withValues(alpha: 0.18),
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
-              color: QiblaTheme.gold.withOpacity(0.5),
+              color: QiblaTheme.gold.withValues(alpha: 0.5),
               width: 1.2,
             ),
           ),
@@ -835,7 +835,7 @@ class _QiblaScreenState extends State<QiblaScreen>
                 children: [
                   Icon(Icons.explore_rounded, size: 16),
                   SizedBox(width: 6),
-                  Text('البوصلة'),
+                  Text('ط§ظ„ط¨ظˆطµظ„ط©'),
                 ],
               ),
             ),
@@ -846,7 +846,7 @@ class _QiblaScreenState extends State<QiblaScreen>
                 children: [
                   Icon(Icons.map_rounded, size: 16),
                   SizedBox(width: 6),
-                  Text('الخريطة'),
+                  Text('ط§ظ„ط®ط±ظٹط·ط©'),
                 ],
               ),
             ),
@@ -856,15 +856,15 @@ class _QiblaScreenState extends State<QiblaScreen>
     );
   }
 
-  // ─── Info Screens ──────────────────────────────────────
+  // â”€â”€â”€ Info Screens â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _buildLocationServiceDisabled(QiblaTheme theme) =>
       _buildInfoScreen(
         theme: theme,
         icon: Icons.location_off_rounded,
         iconColor: Colors.orange,
-        title: 'خدمة الموقع معطلة',
-        subtitle: 'يرجى تفعيل GPS',
-        buttonText: 'فتح إعدادات الموقع',
+        title: 'ط®ط¯ظ…ط© ط§ظ„ظ…ظˆظ‚ط¹ ظ…ط¹ط·ظ„ط©',
+        subtitle: 'ظٹط±ط¬ظ‰ طھظپط¹ظٹظ„ GPS',
+        buttonText: 'ظپطھط­ ط¥ط¹ط¯ط§ط¯ط§طھ ط§ظ„ظ…ظˆظ‚ط¹',
         onButton: QiblaLocationService.openLocationSettings,
         onRetry: _checkPermissionsAndStart,
       );
@@ -874,9 +874,9 @@ class _QiblaScreenState extends State<QiblaScreen>
         theme: theme,
         icon: Icons.lock_rounded,
         iconColor: Colors.red,
-        title: 'الإذن مرفوض',
-        subtitle: 'يرجى تفعيل إذن الموقع من الإعدادات',
-        buttonText: 'فتح إعدادات التطبيق',
+        title: 'ط§ظ„ط¥ط°ظ† ظ…ط±ظپظˆط¶',
+        subtitle: 'ظٹط±ط¬ظ‰ طھظپط¹ظٹظ„ ط¥ط°ظ† ط§ظ„ظ…ظˆظ‚ط¹ ظ…ظ† ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ',
+        buttonText: 'ظپطھط­ ط¥ط¹ط¯ط§ط¯ط§طھ ط§ظ„طھط·ط¨ظٹظ‚',
         onButton: QiblaLocationService.openAppSettings,
         onRetry: _checkPermissionsAndStart,
       );
@@ -909,7 +909,7 @@ class _QiblaScreenState extends State<QiblaScreen>
             Container(
               width: 90, height: 90,
               decoration: BoxDecoration(
-                color: iconColor.withOpacity(0.12),
+                color: iconColor.withValues(alpha: 0.12),
                 shape: BoxShape.circle,
               ),
               child: Icon(icon, size: 44, color: iconColor),
@@ -944,12 +944,12 @@ class _QiblaScreenState extends State<QiblaScreen>
               child: OutlinedButton.icon(
                 onPressed: onRetry,
                 icon: const Icon(Icons.refresh_rounded, size: 20),
-                label: Text('إعادة المحاولة',
+                label: Text('ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط©',
                     style: theme.boldStyle(15, theme.textColor)),
                 style: OutlinedButton.styleFrom(
                   foregroundColor: theme.textColor,
                   side: BorderSide(
-                      color: theme.textColor.withOpacity(0.3)),
+                      color: theme.textColor.withValues(alpha: 0.3)),
                   shape: RoundedRectangleBorder(
                     borderRadius:
                     BorderRadius.circular(QiblaTheme.cardRadius),

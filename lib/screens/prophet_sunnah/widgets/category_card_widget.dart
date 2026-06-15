@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../Constants/sunnah_theme.dart';
 import '../models/sunnah_category.dart';
@@ -97,7 +97,7 @@ class _CategoryCardWidgetState extends State<CategoryCardWidget>
   }
 }
 
-// ─── محتوى البطاقة ──────────────────────────────────────────────────────────
+// â”€â”€â”€ ظ…ط­طھظˆظ‰ ط§ظ„ط¨ط·ط§ظ‚ط© â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 class _CardContent extends StatefulWidget {
   final SunnahCategory category;
@@ -138,14 +138,14 @@ class _CardContentState extends State<_CardContent> {
             color: bgColor,
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: widget.color.withOpacity(0.2),
+              color: widget.color.withValues(alpha: 0.2),
               width: 1,
             ),
             boxShadow: [
               BoxShadow(
                 color: widget.isDark
-                    ? Colors.black.withOpacity(0.3)
-                    : widget.color.withOpacity(0.1),
+                    ? Colors.black.withValues(alpha: 0.3)
+                    : widget.color.withValues(alpha: 0.1),
                 blurRadius: 12,
                 offset: const Offset(0, 4),
               ),
@@ -155,7 +155,7 @@ class _CardContentState extends State<_CardContent> {
             borderRadius: BorderRadius.circular(20),
             child: Stack(
               children: [
-                // شريط جانبي ملون
+                // ط´ط±ظٹط· ط¬ط§ظ†ط¨ظٹ ظ…ظ„ظˆظ†
                 Positioned(
                   right: 0,
                   top: 0,
@@ -168,32 +168,32 @@ class _CardContentState extends State<_CardContent> {
                         end: Alignment.bottomCenter,
                         colors: [
                           widget.color,
-                          widget.color.withOpacity(0.3),
+                          widget.color.withValues(alpha: 0.3),
                         ],
                       ),
                     ),
                   ),
                 ),
-                // المحتوى
+                // ط§ظ„ظ…ط­طھظˆظ‰
                 Padding(
                   padding: const EdgeInsets.fromLTRB(16, 16, 20, 16),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      // سهم
+                      // ط³ظ‡ظ…
                       Icon(
                         Icons.arrow_back_ios_new_rounded,
-                        color: widget.color.withOpacity(0.6),
+                        color: widget.color.withValues(alpha: 0.6),
                         size: 16,
                       ),
                       const SizedBox(width: 8),
-                      // عداد
+                      // ط¹ط¯ط§ط¯
                       _CountBadge(
                         count: widget.category.sunnahs.length,
                         color: widget.color,
                       ),
                       const SizedBox(width: 14),
-                      // النص
+                      // ط§ظ„ظ†طµ
                       Expanded(
                         child: _CardText(
                           category: widget.category,
@@ -202,7 +202,7 @@ class _CardContentState extends State<_CardContent> {
                         ),
                       ),
                       const SizedBox(width: 10),
-                      // أيقونة
+                      // ط£ظٹظ‚ظˆظ†ط©
                       _CategoryIcon(color: widget.color),
                     ],
                   ),
@@ -228,8 +228,8 @@ class _CountBadge extends StatelessWidget {
       height: 38,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: color.withOpacity(0.12),
-        border: Border.all(color: color.withOpacity(0.35), width: 1.5),
+        color: color.withValues(alpha: 0.12),
+        border: Border.all(color: color.withValues(alpha: 0.35), width: 1.5),
       ),
       alignment: Alignment.center,
       child: FittedBox(
@@ -282,7 +282,7 @@ class _CardText extends StatelessWidget {
           children: [
             Flexible(
               child: Text(
-                '${category.sunnahs.length} سنة نبوية موثقة',
+                '${category.sunnahs.length} ط³ظ†ط© ظ†ط¨ظˆظٹط© ظ…ظˆط«ظ‚ط©',
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   color: isDark ? Colors.white38 : const Color(0xFF9A9AB0),
@@ -291,7 +291,7 @@ class _CardText extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 5),
-            Icon(Icons.verified_rounded, size: 11, color: color.withOpacity(0.7)),
+            Icon(Icons.verified_rounded, size: 11, color: color.withValues(alpha: 0.7)),
           ],
         ),
       ],
@@ -313,9 +313,9 @@ class _CategoryIcon extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [color.withOpacity(0.25), color.withOpacity(0.08)],
+          colors: [color.withValues(alpha: 0.25), color.withValues(alpha: 0.08)],
         ),
-        border: Border.all(color: color.withOpacity(0.3)),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
       ),
       child: Icon(Icons.menu_book_rounded, color: color, size: 24),
     );

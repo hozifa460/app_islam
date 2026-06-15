@@ -1,4 +1,4 @@
-import 'dart:io';
+﻿import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
@@ -50,7 +50,7 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
     super.dispose();
   }
 
-  // ═══ اختيار صورة ═══
+  // â•گâ•گâ•گ ط§ط®طھظٹط§ط± طµظˆط±ط© â•گâ•گâ•گ
   Future<void> _pickImage(ImageSource source) async {
     try {
       final picked = await ImagePicker().pickImage(
@@ -61,25 +61,25 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
       );
       if (picked == null || !mounted) return;
 
-      // ═══ امسح كاش الصورة القديمة ═══
+      // â•گâ•گâ•گ ط§ظ…ط³ط­ ظƒط§ط´ ط§ظ„طµظˆط±ط© ط§ظ„ظ‚ط¯ظٹظ…ط© â•گâ•گâ•گ
       final provider = context.read<ProfileImageProvider>();
       if (provider.imagePath != null) {
         await FileImage(File(provider.imagePath!)).evict();
       }
 
-      // ═══ أظهر فوراً ═══
+      // â•گâ•گâ•گ ط£ط¸ظ‡ط± ظپظˆط±ط§ظ‹ â•گâ•گâ•گ
       provider.setImageImmediately(picked.path);
 
-      // ═══ احفظ في الخلفية ═══
+      // â•گâ•گâ•گ ط§ط­ظپط¸ ظپظٹ ط§ظ„ط®ظ„ظپظٹط© â•گâ•گâ•گ
       provider.updateImage(picked.path);
 
       widget.onImageChanged?.call(picked.path);
     } catch (e) {
-      debugPrint('❌ خطأ: $e');
+      debugPrint('â‌Œ ط®ط·ط£: $e');
     }
   }
 
-  // ═══ حذف الصورة ═══
+  // â•گâ•گâ•گ ط­ط°ظپ ط§ظ„طµظˆط±ط© â•گâ•گâ•گ
   Future<void> _removeImage() async {
     if (!mounted) return;
     final provider = context.read<ProfileImageProvider>();
@@ -87,7 +87,7 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
     widget.onImageChanged?.call('');
   }
 
-  // ═══ عرض خيارات ═══
+  // â•گâ•گâ•گ ط¹ط±ط¶ ط®ظٹط§ط±ط§طھ â•گâ•گâ•گ
   void showImagePicker(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final hasImage =
@@ -117,13 +117,13 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(2),
                 color: isDark
-                    ? Colors.white.withOpacity(0.2)
+                    ? Colors.white.withValues(alpha: 0.2)
                     : Colors.grey.shade300,
               ),
             ),
             const SizedBox(height: 18),
             Text(
-              'تغيير الصورة الشخصية',
+              'طھط؛ظٹظٹط± ط§ظ„طµظˆط±ط© ط§ظ„ط´ط®طµظٹط©',
               style: GoogleFonts.cairo(
                 fontSize: 17,
                 fontWeight: FontWeight.w700,
@@ -135,7 +135,7 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
               children: [
                 _SheetBtn(
                   icon: Icons.camera_alt_rounded,
-                  label: 'الكاميرا',
+                  label: 'ط§ظ„ظƒط§ظ…ظٹط±ط§',
                   color: _gold,
                   isDark: isDark,
                   onTap: () {
@@ -146,7 +146,7 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
                 const SizedBox(width: 12),
                 _SheetBtn(
                   icon: Icons.photo_library_rounded,
-                  label: 'المعرض',
+                  label: 'ط§ظ„ظ…ط¹ط±ط¶',
                   color: Colors.blue,
                   isDark: isDark,
                   onTap: () {
@@ -158,7 +158,7 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
                   const SizedBox(width: 12),
                   _SheetBtn(
                     icon: Icons.delete_outline_rounded,
-                    label: 'إزالة',
+                    label: 'ط¥ط²ط§ظ„ط©',
                     color: Colors.red,
                     isDark: isDark,
                     onTap: () {
@@ -183,7 +183,7 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
 
 
 
-    // ═══ استمع للتغييرات ═══
+    // â•گâ•گâ•گ ط§ط³طھظ…ط¹ ظ„ظ„طھط؛ظٹظٹط±ط§طھ â•گâ•گâ•گ
     final provider = context.watch<ProfileImageProvider>();
     final imagePath = context.watch<ProfileImageProvider>().imagePath;
     final isUploading = provider.isUploading;
@@ -196,7 +196,7 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
         child: Stack(
           alignment: Alignment.center,
           children: [
-            // الحلقة المتوهجة
+            // ط§ظ„ط­ظ„ظ‚ط© ط§ظ„ظ…طھظˆظ‡ط¬ط©
             AnimatedBuilder(
               animation: _pulseCtrl,
               builder: (_, __) {
@@ -208,16 +208,16 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
                     shape: BoxShape.circle,
                     gradient: SweepGradient(
                       colors: [
-                        _gold.withOpacity(0.6),
-                        _goldD.withOpacity(0.2),
-                        _gold.withOpacity(0.8),
-                        _goldD.withOpacity(0.2),
-                        _gold.withOpacity(0.6),
+                        _gold.withValues(alpha: 0.6),
+                        _goldD.withValues(alpha: 0.2),
+                        _gold.withValues(alpha: 0.8),
+                        _goldD.withValues(alpha: 0.2),
+                        _gold.withValues(alpha: 0.6),
                       ],
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: _gold.withOpacity(0.25 + v * 0.15),
+                        color: _gold.withValues(alpha: 0.25 + v * 0.15),
                         blurRadius: 20 + v * 10,
                         spreadRadius: v * 3,
                       ),
@@ -227,7 +227,7 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
               },
             ),
 
-            // الصورة
+            // ط§ظ„طµظˆط±ط©
             Container(
               width: s,
               height: s,
@@ -246,7 +246,7 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
               ),
             ),
 
-            // زر التعديل
+            // ط²ط± ط§ظ„طھط¹ط¯ظٹظ„
             if (widget.editable)
               Positioned(
                 bottom: 2,
@@ -267,7 +267,7 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: _gold.withOpacity(0.4),
+                        color: _gold.withValues(alpha: 0.4),
                         blurRadius: 6,
                       ),
                     ],
@@ -280,7 +280,7 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
                 ),
               ),
 
-            // شارة الطريقة
+            // ط´ط§ط±ط© ط§ظ„ط·ط±ظٹظ‚ط©
             Positioned(
               top: 2,
               right: 2,
@@ -292,10 +292,10 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
     );
   }
 
-// ═══ مؤشر الرفع ═══
+// â•گâ•گâ•گ ظ…ط¤ط´ط± ط§ظ„ط±ظپط¹ â•گâ•گâ•گ
   Widget _buildUploading(double s) {
     return Container(
-      color: _gold.withOpacity(0.1),
+      color: _gold.withValues(alpha: 0.1),
       child: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -310,7 +310,7 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
             ),
             const SizedBox(height: 4),
             Text(
-              'جاري الحفظ',
+              'ط¬ط§ط±ظٹ ط§ظ„ط­ظپط¸',
               style: GoogleFonts.cairo(
                 fontSize: s * 0.1,
                 color: _gold,
@@ -323,20 +323,20 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
     );
   }
 
-// ═══ بناء الصورة ═══
+// â•گâ•گâ•گ ط¨ظ†ط§ط، ط§ظ„طµظˆط±ط© â•گâ•گâ•گ
   Widget _buildImage(double s, String? imagePath) {
     if (imagePath != null && File(imagePath).existsSync()) {
-      // ═══ امسح الكاش القديم وأظهر الجديدة ═══
+      // â•گâ•گâ•گ ط§ظ…ط³ط­ ط§ظ„ظƒط§ط´ ط§ظ„ظ‚ط¯ظٹظ… ظˆط£ط¸ظ‡ط± ط§ظ„ط¬ط¯ظٹط¯ط© â•گâ•گâ•گ
       final file = File(imagePath);
       final image = FileImage(file);
-      image.evict(); // ← يمسح الكاش
+      image.evict(); // â†گ ظٹظ…ط³ط­ ط§ظ„ظƒط§ط´
 
       return Image(
         image: FileImage(file),
         fit: BoxFit.cover,
         width: s,
         height: s,
-        key: UniqueKey(), // ← يجبر Flutter على إعادة البناء
+        key: UniqueKey(), // â†گ ظٹط¬ط¨ط± Flutter ط¹ظ„ظ‰ ط¥ط¹ط§ط¯ط© ط§ظ„ط¨ظ†ط§ط،
       );
     }
     if (widget.photoUrl != null && widget.photoUrl!.isNotEmpty) {
@@ -353,7 +353,7 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
 
   Widget _buildInitials(double s) {
     final letters = widget.name.trim().isEmpty
-        ? '؟'
+        ? 'طں'
         : widget.name
         .trim()
         .split(' ')
@@ -363,7 +363,7 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
         .join();
 
     return Container(
-      color: _gold.withOpacity(0.12),
+      color: _gold.withValues(alpha: 0.12),
       child: Center(
         child: Text(
           letters,
@@ -395,8 +395,8 @@ class _MethodBadge extends StatelessWidget {
       height: 26,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: color.withOpacity(0.15),
-        border: Border.all(color: color.withOpacity(0.4), width: 1.5),
+        color: color.withValues(alpha: 0.15),
+        border: Border.all(color: color.withValues(alpha: 0.4), width: 1.5),
       ),
       child: Icon(icon, color: color, size: 14),
     );
@@ -427,8 +427,8 @@ class _SheetBtn extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 16),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            color: color.withOpacity(0.1),
-            border: Border.all(color: color.withOpacity(0.2)),
+            color: color.withValues(alpha: 0.1),
+            border: Border.all(color: color.withValues(alpha: 0.2)),
           ),
           child: Column(
             children: [

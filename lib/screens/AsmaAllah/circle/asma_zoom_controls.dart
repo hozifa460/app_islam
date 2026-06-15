@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../widgets/asma_theme.dart';
 
 class AsmaZoomControls extends StatelessWidget {
@@ -24,14 +24,14 @@ class AsmaZoomControls extends StatelessWidget {
             vertical: isSmall ? 6 : 8,
           ),
           decoration: BoxDecoration(
-            color: isDark ? Colors.black.withOpacity(0.6) : Colors.white.withOpacity(0.9),
+            color: isDark ? Colors.black.withValues(alpha: 0.6) : Colors.white.withValues(alpha: 0.9),
             borderRadius: BorderRadius.circular(30),
             border: Border.all(
-              color: isDark ? AsmaTheme.gold.withOpacity(0.3) : AsmaTheme.gold.withOpacity(0.4),
+              color: isDark ? AsmaTheme.gold.withValues(alpha: 0.3) : AsmaTheme.gold.withValues(alpha: 0.4),
             ),
             boxShadow: [
               BoxShadow(
-                color: isDark ? Colors.black.withOpacity(0.3) : AsmaTheme.gold.withOpacity(0.15),
+                color: isDark ? Colors.black.withValues(alpha: 0.3) : AsmaTheme.gold.withValues(alpha: 0.15),
                 blurRadius: 12,
                 offset: const Offset(0, 3),
               ),
@@ -77,7 +77,7 @@ class AsmaZoomControls extends StatelessWidget {
     return Container(
       width: 1,
       height: isSmall ? 20 : 24,
-      color: AsmaTheme.gold.withOpacity(isDark ? 0.3 : 0.25),
+      color: AsmaTheme.gold.withValues(alpha: isDark ? 0.3 : 0.25),
       margin: EdgeInsets.symmetric(horizontal: isSmall ? 4 : 8),
     );
   }

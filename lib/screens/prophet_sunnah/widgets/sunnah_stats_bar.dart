@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../Constants/sunnah_theme.dart';
 
 class SunnahStatsBar extends StatelessWidget {
@@ -22,13 +22,13 @@ class SunnahStatsBar extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              SunnahTheme.gold.withOpacity(isDark ? 0.15 : 0.12),
-              SunnahTheme.gold.withOpacity(isDark ? 0.05 : 0.04),
+              SunnahTheme.gold.withValues(alpha: isDark ? 0.15 : 0.12),
+              SunnahTheme.gold.withValues(alpha: isDark ? 0.05 : 0.04),
             ],
           ),
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: SunnahTheme.gold.withOpacity(0.25),
+            color: SunnahTheme.gold.withValues(alpha: 0.25),
           ),
         ),
         child: Row(
@@ -36,7 +36,7 @@ class SunnahStatsBar extends StatelessWidget {
             Expanded(
               child: _StatItem(
                 value: '$totalSunnahs',
-                label: 'سنة نبوية',
+                label: 'ط³ظ†ط© ظ†ط¨ظˆظٹط©',
                 icon: Icons.format_list_bulleted_rounded,
                 isDark: isDark,
               ),
@@ -44,12 +44,12 @@ class SunnahStatsBar extends StatelessWidget {
             Container(
               width: 1,
               height: 36,
-              color: SunnahTheme.gold.withOpacity(0.3),
+              color: SunnahTheme.gold.withValues(alpha: 0.3),
             ),
             Expanded(
               child: _StatItem(
                 value: '$totalCategories',
-                label: 'فئة',
+                label: 'ظپط¦ط©',
                 icon: Icons.category_rounded,
                 isDark: isDark,
               ),
@@ -57,12 +57,12 @@ class SunnahStatsBar extends StatelessWidget {
             Container(
               width: 1,
               height: 36,
-              color: SunnahTheme.gold.withOpacity(0.3),
+              color: SunnahTheme.gold.withValues(alpha: 0.3),
             ),
             Expanded(
               child: _StatItem(
                 value: '100%',
-                label: 'موثقة',
+                label: 'ظ…ظˆط«ظ‚ط©',
                 icon: Icons.verified_rounded,
                 isDark: isDark,
               ),

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'qibla_theme.dart';
 import 'qibla_compass_dial.dart';
@@ -32,18 +32,18 @@ class QiblaCompassSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // تعليمة
+        // طھط¹ظ„ظٹظ…ط©
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
           decoration: BoxDecoration(
             color: theme.isDark
-                ? Colors.white.withOpacity(0.06)
-                : Colors.white.withOpacity(0.85),
+                ? Colors.white.withValues(alpha: 0.06)
+                : Colors.white.withValues(alpha: 0.85),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: theme.isDark
-                  ? Colors.white.withOpacity(0.1)
-                  : QiblaTheme.gold.withOpacity(0.2),
+                  ? Colors.white.withValues(alpha: 0.1)
+                  : QiblaTheme.gold.withValues(alpha: 0.2),
             ),
           ),
           child: Row(
@@ -54,7 +54,7 @@ class QiblaCompassSection extends StatelessWidget {
                   color: theme.isDark ? Colors.white54 : Colors.black45),
               const SizedBox(width: 6),
               Text(
-                'أمسك الهاتف أفقياً ودوّر حتى تشير الإبرة ▲ للأعلى',
+                'ط£ظ…ط³ظƒ ط§ظ„ظ‡ط§طھظپ ط£ظپظ‚ظٹط§ظ‹ ظˆط¯ظˆظ‘ط± ط­طھظ‰ طھط´ظٹط± ط§ظ„ط¥ط¨ط±ط© â–² ظ„ظ„ط£ط¹ظ„ظ‰',
                 style: GoogleFonts.cairo(
                   fontSize: 11,
                   color: theme.isDark ? Colors.white60 : Colors.black54,
@@ -65,14 +65,14 @@ class QiblaCompassSection extends StatelessWidget {
         ),
         const SizedBox(height: 14),
 
-        // البوصلة
+        // ط§ظ„ط¨ظˆطµظ„ط©
         SizedBox(
           width: compassSize + 44,
           height: compassSize + 44,
           child: Stack(
             alignment: Alignment.center,
             children: [
-              // توهج
+              // طھظˆظ‡ط¬
               if (glowAnim.value > 0)
                 Container(
                   width: compassSize + 34,
@@ -82,7 +82,7 @@ class QiblaCompassSection extends StatelessWidget {
                     boxShadow: [
                       BoxShadow(
                         color: QiblaTheme.green
-                            .withOpacity(0.38 * glowAnim.value),
+                            .withValues(alpha: 0.38 * glowAnim.value),
                         blurRadius: 38,
                         spreadRadius: 10,
                       ),
@@ -90,7 +90,7 @@ class QiblaCompassSection extends StatelessWidget {
                   ),
                 ),
 
-              // حلقة خارجية
+              // ط­ظ„ظ‚ط© ط®ط§ط±ط¬ظٹط©
               Transform.scale(
                 scale: isFacing ? pulseAnim.value : 1.0,
                 child: Container(
@@ -100,18 +100,18 @@ class QiblaCompassSection extends StatelessWidget {
                     shape: BoxShape.circle,
                     gradient: SweepGradient(
                       colors: [
-                        guidance.withOpacity(0.85),
-                        guidance.withOpacity(0.08),
-                        guidance.withOpacity(0.85),
-                        guidance.withOpacity(0.08),
-                        guidance.withOpacity(0.85),
+                        guidance.withValues(alpha: 0.85),
+                        guidance.withValues(alpha: 0.08),
+                        guidance.withValues(alpha: 0.85),
+                        guidance.withValues(alpha: 0.08),
+                        guidance.withValues(alpha: 0.85),
                       ],
                     ),
                   ),
                 ),
               ),
 
-              // القرص
+              // ط§ظ„ظ‚ط±طµ
               Transform.rotate(
                 angle: dialAngle,
                 child: QiblaCompassDial(
@@ -120,7 +120,7 @@ class QiblaCompassSection extends StatelessWidget {
                 ),
               ),
 
-              // الإبرة
+              // ط§ظ„ط¥ط¨ط±ط©
               Transform.rotate(
                 angle: needleAngle,
                 child: QiblaNeedle(
@@ -129,16 +129,16 @@ class QiblaCompassSection extends StatelessWidget {
                 ),
               ),
 
-              // المركز
+              // ط§ظ„ظ…ط±ظƒط²
               QiblaCenterDot(theme: theme, isFacing: isFacing),
 
-              // مؤشر الهاتف
+              // ظ…ط¤ط´ط± ط§ظ„ظ‡ط§طھظپ
               Positioned(
                 top: 0,
                 child: QiblaPhoneIndicator(theme: theme, isFacing: isFacing),
               ),
 
-              // سهم الدوران
+              // ط³ظ‡ظ… ط§ظ„ط¯ظˆط±ط§ظ†
               if (!isFacing)
                 Positioned(
                   bottom: 2,
@@ -150,15 +150,15 @@ class QiblaCompassSection extends StatelessWidget {
         ),
         const SizedBox(height: 6),
 
-        // الانحراف
+        // ط§ظ„ط§ظ†ط­ط±ط§ظپ
         AnimatedSwitcher(
           duration: const Duration(milliseconds: 250),
           child: Text(
             key: ValueKey(isFacing),
             isFacing
-                ? '🕋  أنت تواجه الكعبة المشرفة'
-                : 'انحراف: ${deviation.abs().toStringAsFixed(1)}°'
-                ' ${deviation > 0 ? "يساراً" : "يميناً"}',
+                ? 'ًں•‹  ط£ظ†طھ طھظˆط§ط¬ظ‡ ط§ظ„ظƒط¹ط¨ط© ط§ظ„ظ…ط´ط±ظپط©'
+                : 'ط§ظ†ط­ط±ط§ظپ: ${deviation.abs().toStringAsFixed(1)}آ°'
+                ' ${deviation > 0 ? "ظٹط³ط§ط±ط§ظ‹" : "ظٹظ…ظٹظ†ط§ظ‹"}',
             style: GoogleFonts.cairo(
               fontSize: 13,
               fontWeight: FontWeight.w700,

@@ -1,4 +1,4 @@
-import 'dart:convert';
+﻿import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,9 +13,9 @@ class GlobalSearchDelegate extends SearchDelegate<Map<String, dynamic>?> {
 
   bool _isDataLoaded = false;
   bool _isError = false;
-  String _statusMsg = 'جاري تحضير المكتبة...';
+  String _statusMsg = 'ط¬ط§ط±ظٹ طھط­ط¶ظٹط± ط§ظ„ظ…ظƒطھط¨ط©...';
 
-  // قائمة الكتب التي سيتم البحث في ملفاتها المحلية
+  // ظ‚ط§ط¦ظ…ط© ط§ظ„ظƒطھط¨ ط§ظ„طھظٹ ط³ظٹطھظ… ط§ظ„ط¨ط­ط« ظپظٹ ظ…ظ„ظپط§طھظ‡ط§ ط§ظ„ظ…ط­ظ„ظٹط©
   final List<String> _bookIds = [
     'bukhari', 'muslim', 'tirmidhi', 'abudawud',
     'nasai', 'ibnmajah', 'riyadussalihin', 'forty'
@@ -26,25 +26,25 @@ class GlobalSearchDelegate extends SearchDelegate<Map<String, dynamic>?> {
   }
 
   @override
-  String get searchFieldLabel => 'ابحث في القرآن والسنة...';
+  String get searchFieldLabel => 'ط§ط¨ط­ط« ظپظٹ ط§ظ„ظ‚ط±ط¢ظ† ظˆط§ظ„ط³ظ†ط©...';
 
   String _normalize(String text) {
     if (text.isEmpty) return "";
     return text
         .replaceAll(RegExp(r'[\u064B-\u065F\u0610-\u061A\u06D6-\u06DC\u06DF-\u06E8\u06EA-\u06ED]'), '')
-        .replaceAll(RegExp(r'[أإآاٱٰ]'), 'ا')
-        .replaceAll(RegExp(r'[يىئ]'), 'ي')
-        .replaceAll(RegExp(r'[ةه]'), 'ه')
-        .replaceAll('ؤ', 'و')
-        .replaceAll(RegExp(r'<[^>]*>'), '') // إزالة HTML
+        .replaceAll(RegExp(r'[ط£ط¥ط¢ط§ظ±ظ°]'), 'ط§')
+        .replaceAll(RegExp(r'[ظٹظ‰ط¦]'), 'ظٹ')
+        .replaceAll(RegExp(r'[ط©ظ‡]'), 'ظ‡')
+        .replaceAll('ط¤', 'ظˆ')
+        .replaceAll(RegExp(r'<[^>]*>'), '') // ط¥ط²ط§ظ„ط© HTML
         .trim();
   }
-  // ✅ جلب البيانات من الملفات المحلية (بدون إنترنت) وتصحيح أسماء الكتب
+  // âœ… ط¬ظ„ط¨ ط§ظ„ط¨ظٹط§ظ†ط§طھ ظ…ظ† ط§ظ„ظ…ظ„ظپط§طھ ط§ظ„ظ…ط­ظ„ظٹط© (ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ) ظˆطھطµط­ظٹط­ ط£ط³ظ…ط§ط، ط§ظ„ظƒطھط¨
   Future<void> _loadAllOfflineData() async {
     try {
       final dir = await getApplicationDocumentsDirectory();
 
-      // 1. قراءة المصحف (محمي بـ try-catch داخلي)
+      // 1. ظ‚ط±ط§ط،ط© ط§ظ„ظ…طµط­ظپ (ظ…ط­ظ…ظٹ ط¨ظ€ try-catch ط¯ط§ط®ظ„ظٹ)
       try {
         final quranFile = File('${dir.path}/quran_uthmani_v1.json');
         if (await quranFile.exists()) {
@@ -55,7 +55,7 @@ class GlobalSearchDelegate extends SearchDelegate<Map<String, dynamic>?> {
                 'type': 'quran',
                 'text': ayah['text'],
                 'searchableText': _normalize(ayah['text']),
-                'surahName': surah['name'].toString().replaceAll('سورة ', ''),
+                'surahName': surah['name'].toString().replaceAll('ط³ظˆط±ط© ', ''),
                 'surahNumber': surah['number'],
                 'numberInSurah': ayah['numberInSurah'],
                 'page': ayah['page'],
@@ -63,7 +63,7 @@ class GlobalSearchDelegate extends SearchDelegate<Map<String, dynamic>?> {
             }
           }
         } else {
-          // إذا لم يجد القرآن محلياً، يحاول جلبه من الإنترنت للبحث
+          // ط¥ط°ط§ ظ„ظ… ظٹط¬ط¯ ط§ظ„ظ‚ط±ط¢ظ† ظ…ط­ظ„ظٹط§ظ‹طŒ ظٹط­ط§ظˆظ„ ط¬ظ„ط¨ظ‡ ظ…ظ† ط§ظ„ط¥ظ†طھط±ظ†طھ ظ„ظ„ط¨ط­ط«
           final response = await http.get(Uri.parse('https://api.alquran.cloud/v1/quran/quran-uthmani')).timeout(const Duration(seconds: 5));
           if (response.statusCode == 200) {
             await quranFile.writeAsString(response.body);
@@ -74,7 +74,7 @@ class GlobalSearchDelegate extends SearchDelegate<Map<String, dynamic>?> {
                   'type': 'quran',
                   'text': ayah['text'],
                   'searchableText': _normalize(ayah['text']),
-                  'surahName': surah['name'].toString().replaceAll('سورة ', ''),
+                  'surahName': surah['name'].toString().replaceAll('ط³ظˆط±ط© ', ''),
                   'surahNumber': surah['number'],
                   'numberInSurah': ayah['numberInSurah'],
                   'page': ayah['page'],
@@ -87,7 +87,7 @@ class GlobalSearchDelegate extends SearchDelegate<Map<String, dynamic>?> {
         print("Quran Error: $e");
       }
 
-      // 2. قراءة كتب الأحاديث المتوفرة فقط وتعيين الاسم الصحيح
+      // 2. ظ‚ط±ط§ط،ط© ظƒطھط¨ ط§ظ„ط£ط­ط§ط¯ظٹط« ط§ظ„ظ…طھظˆظپط±ط© ظپظ‚ط· ظˆطھط¹ظٹظٹظ† ط§ظ„ط§ط³ظ… ط§ظ„طµط­ظٹط­
       for (String bookId in _bookIds) {
         try {
           final hadithFile = File('${dir.path}/hadith_${bookId}_v1.json');
@@ -111,7 +111,7 @@ class GlobalSearchDelegate extends SearchDelegate<Map<String, dynamic>?> {
                   'searchableText': _normalize(cleanText),
                   'number': h['hadithnumber'],
                   'bookId': bookId,
-                  'book': _getBookName(bookId), // ✅ هنا حل المشكلة: تعيين اسم الكتاب
+                  'book': _getBookName(bookId), // âœ… ظ‡ظ†ط§ ط­ظ„ ط§ظ„ظ…ط´ظƒظ„ط©: طھط¹ظٹظٹظ† ط§ط³ظ… ط§ظ„ظƒطھط§ط¨
                   'grade': (h['grades'] as List?)?.isNotEmpty == true ? h['grades'][0]['grade'] : '',
                 });
               }
@@ -122,10 +122,10 @@ class GlobalSearchDelegate extends SearchDelegate<Map<String, dynamic>?> {
         }
       }
 
-      // إضافة الأربعين النووية من الذاكرة لضمان وجود نتائج دائماً
+      // ط¥ط¶ط§ظپط© ط§ظ„ط£ط±ط¨ط¹ظٹظ† ط§ظ„ظ†ظˆظˆظٹط© ظ…ظ† ط§ظ„ط°ط§ظƒط±ط© ظ„ط¶ظ…ط§ظ† ظˆط¬ظˆط¯ ظ†طھط§ط¦ط¬ ط¯ط§ط¦ظ…ط§ظ‹
       _hadithDatabase.addAll(_localFortyNawawi);
 
-      // تحديث حالة الواجهة
+      // طھط­ط¯ظٹط« ط­ط§ظ„ط© ط§ظ„ظˆط§ط¬ظ‡ط©
       _isDataLoaded = true;
       if (query.isNotEmpty) {
         showResults(null!);
@@ -133,20 +133,20 @@ class GlobalSearchDelegate extends SearchDelegate<Map<String, dynamic>?> {
 
     } catch (e) {
       _isError = true;
-      _statusMsg = 'حدث خطأ غير متوقع.';
+      _statusMsg = 'ط­ط¯ط« ط®ط·ط£ ط؛ظٹط± ظ…طھظˆظ‚ط¹.';
     }
   }
   String _getBookName(String id) {
     switch(id) {
-      case 'bukhari': return 'صحيح البخاري';
-      case 'muslim': return 'صحيح مسلم';
-      case 'tirmidhi': return 'سنن الترمذي';
-      case 'abudawud': return 'سنن أبي داود';
-      case 'nasai': return 'سنن النسائي';
-      case 'ibnmajah': return 'سنن ابن ماجه';
-      case 'riyadussalihin': return 'رياض الصالحين';
-      case 'forty': return 'الأربعون النووية';
-      default: return 'كتاب حديث';
+      case 'bukhari': return 'طµط­ظٹط­ ط§ظ„ط¨ط®ط§ط±ظٹ';
+      case 'muslim': return 'طµط­ظٹط­ ظ…ط³ظ„ظ…';
+      case 'tirmidhi': return 'ط³ظ†ظ† ط§ظ„طھط±ظ…ط°ظٹ';
+      case 'abudawud': return 'ط³ظ†ظ† ط£ط¨ظٹ ط¯ط§ظˆط¯';
+      case 'nasai': return 'ط³ظ†ظ† ط§ظ„ظ†ط³ط§ط¦ظٹ';
+      case 'ibnmajah': return 'ط³ظ†ظ† ط§ط¨ظ† ظ…ط§ط¬ظ‡';
+      case 'riyadussalihin': return 'ط±ظٹط§ط¶ ط§ظ„طµط§ظ„ط­ظٹظ†';
+      case 'forty': return 'ط§ظ„ط£ط±ط¨ط¹ظˆظ† ط§ظ„ظ†ظˆظˆظٹط©';
+      default: return 'ظƒطھط§ط¨ ط­ط¯ظٹط«';
     }
   }
 
@@ -163,7 +163,7 @@ class GlobalSearchDelegate extends SearchDelegate<Map<String, dynamic>?> {
   Widget buildSuggestions(BuildContext context) => _buildBody(context);
 
   Widget _buildBody(BuildContext context) {
-    if (_isError) return Center(child: Text('عذراً، حدث خطأ في التحميل', style: GoogleFonts.cairo(color: Colors.red)));
+    if (_isError) return Center(child: Text('ط¹ط°ط±ط§ظ‹طŒ ط­ط¯ط« ط®ط·ط£ ظپظٹ ط§ظ„طھط­ظ…ظٹظ„', style: GoogleFonts.cairo(color: Colors.red)));
 
     if (query.trim().isEmpty) {
       return Center(
@@ -172,7 +172,7 @@ class GlobalSearchDelegate extends SearchDelegate<Map<String, dynamic>?> {
           children: [
             Icon(Icons.search, size: 80, color: Colors.grey.shade300),
             const SizedBox(height: 10),
-            Text('اكتب أي كلمة للبحث في القرآن والسنة', style: GoogleFonts.cairo(color: Colors.grey)),
+            Text('ط§ظƒطھط¨ ط£ظٹ ظƒظ„ظ…ط© ظ„ظ„ط¨ط­ط« ظپظٹ ط§ظ„ظ‚ط±ط¢ظ† ظˆط§ظ„ط³ظ†ط©', style: GoogleFonts.cairo(color: Colors.grey)),
           ],
         ),
       );
@@ -185,18 +185,18 @@ class GlobalSearchDelegate extends SearchDelegate<Map<String, dynamic>?> {
           children: [
             CircularProgressIndicator(color: primaryColor),
             const SizedBox(height: 10),
-            Text('جاري تجهيز المكتبة للبحث...', style: GoogleFonts.cairo(color: Colors.grey)),
+            Text('ط¬ط§ط±ظٹ طھط¬ظ‡ظٹط² ط§ظ„ظ…ظƒطھط¨ط© ظ„ظ„ط¨ط­ط«...', style: GoogleFonts.cairo(color: Colors.grey)),
           ],
         ),
       );
     }
 
     // ==========================================
-    // عملية البحث السريعة
+    // ط¹ظ…ظ„ظٹط© ط§ظ„ط¨ط­ط« ط§ظ„ط³ط±ظٹط¹ط©
     // ==========================================
     final normalizedQuery = _normalize(query);
 
-    // فلترة (حد أقصى 50 نتيجة للسرعة ومنع التعليق)
+    // ظپظ„طھط±ط© (ط­ط¯ ط£ظ‚طµظ‰ 50 ظ†طھظٹط¬ط© ظ„ظ„ط³ط±ط¹ط© ظˆظ…ظ†ط¹ ط§ظ„طھط¹ظ„ظٹظ‚)
     var quranResults = _quranAyahs.where((a) => a['searchableText'].contains(normalizedQuery)).take(50).toList();
     var hadithResults = _hadithDatabase.where((h) {
       final hText = h['searchableText'] ?? '';
@@ -204,7 +204,7 @@ class GlobalSearchDelegate extends SearchDelegate<Map<String, dynamic>?> {
     }).take(50).toList();
 
     if (quranResults.isEmpty && hadithResults.isEmpty) {
-      return Center(child: Text('لا توجد نتائج مطابقة', style: GoogleFonts.cairo(color: Colors.grey)));
+      return Center(child: Text('ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬ ظ…ط·ط§ط¨ظ‚ط©', style: GoogleFonts.cairo(color: Colors.grey)));
     }
 
     return Directionality(
@@ -212,15 +212,15 @@ class GlobalSearchDelegate extends SearchDelegate<Map<String, dynamic>?> {
       child: ListView(
         padding: const EdgeInsets.all(12),
         children: [
-          // 📖 عرض نتائج القرآن
+          // ًں“– ط¹ط±ط¶ ظ†طھط§ط¦ط¬ ط§ظ„ظ‚ط±ط¢ظ†
           if (quranResults.isNotEmpty) ...[
-            Padding(padding: const EdgeInsets.all(8), child: Text('📖 القرآن الكريم (${quranResults.length})', style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 16, color: primaryColor))),
+            Padding(padding: const EdgeInsets.all(8), child: Text('ًں“– ط§ظ„ظ‚ط±ط¢ظ† ط§ظ„ظƒط±ظٹظ… (${quranResults.length})', style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 16, color: primaryColor))),
             ...quranResults.map((q) => _buildQuranCard(q, context)).toList(),
           ],
 
-          // 📚 عرض نتائج الأحاديث
+          // ًں“ڑ ط¹ط±ط¶ ظ†طھط§ط¦ط¬ ط§ظ„ط£ط­ط§ط¯ظٹط«
           if (hadithResults.isNotEmpty) ...[
-            Padding(padding: const EdgeInsets.all(8), child: Text('📚 الأحاديث (${hadithResults.length})', style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.brown))),
+            Padding(padding: const EdgeInsets.all(8), child: Text('ًں“ڑ ط§ظ„ط£ط­ط§ط¯ظٹط« (${hadithResults.length})', style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.brown))),
             ...hadithResults.map((h) => _buildHadithCard(h, context)).toList(),
           ],
         ],
@@ -234,19 +234,19 @@ class GlobalSearchDelegate extends SearchDelegate<Map<String, dynamic>?> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: ListTile(
         contentPadding: const EdgeInsets.all(12),
-        title: Text('${quran['text']} ﴿${quran['numberInSurah']}﴾', style: GoogleFonts.amiri(fontSize: 20, height: 1.8), textAlign: TextAlign.justify),
+        title: Text('${quran['text']} ï´؟${quran['numberInSurah']}ï´¾', style: GoogleFonts.amiri(fontSize: 20, height: 1.8), textAlign: TextAlign.justify),
         subtitle: Padding(
           padding: const EdgeInsets.only(top: 8.0),
           child: Row(
             children: [
-              Container(padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4), decoration: BoxDecoration(color: primaryColor.withOpacity(0.1), borderRadius: BorderRadius.circular(6)), child: Text('سورة ${quran['surahName']}', style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.bold, color: primaryColor))),
+              Container(padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4), decoration: BoxDecoration(color: primaryColor.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(6)), child: Text('ط³ظˆط±ط© ${quran['surahName']}', style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.bold, color: primaryColor))),
               const Spacer(),
-              Text('صفحة: ${quran['page']}', style: GoogleFonts.cairo(fontSize: 12, color: Colors.grey)),
+              Text('طµظپط­ط©: ${quran['page']}', style: GoogleFonts.cairo(fontSize: 12, color: Colors.grey)),
             ],
           ),
         ),
         onTap: () {
-          quran['keyword'] = query; // لتلوين البحث لاحقاً
+          quran['keyword'] = query; // ظ„طھظ„ظˆظٹظ† ط§ظ„ط¨ط­ط« ظ„ط§ط­ظ‚ط§ظ‹
           close(context, quran);
         },
       ),
@@ -264,25 +264,25 @@ class GlobalSearchDelegate extends SearchDelegate<Map<String, dynamic>?> {
           padding: const EdgeInsets.only(top: 12.0),
           child: Row(
             children: [
-              Container(padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4), decoration: BoxDecoration(color: Colors.brown.withOpacity(0.1), borderRadius: BorderRadius.circular(8)), child: Text('📚 ${hadith['book']} #${hadith['number']}', style: GoogleFonts.cairo(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.brown))),
+              Container(padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4), decoration: BoxDecoration(color: Colors.brown.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(8)), child: Text('ًں“ڑ ${hadith['book']} #${hadith['number']}', style: GoogleFonts.cairo(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.brown))),
               const Spacer(),
-              if (hadith['grade'].toString().isNotEmpty) Text('الدرجة: ${hadith['grade']}', style: GoogleFonts.cairo(fontSize: 11, color: Colors.green)),
+              if (hadith['grade'].toString().isNotEmpty) Text('ط§ظ„ط¯ط±ط¬ط©: ${hadith['grade']}', style: GoogleFonts.cairo(fontSize: 11, color: Colors.green)),
             ],
           ),
         ),
         onTap: () {
-          hadith['keyword'] = query; // لتلوين البحث لاحقاً
+          hadith['keyword'] = query; // ظ„طھظ„ظˆظٹظ† ط§ظ„ط¨ط­ط« ظ„ط§ط­ظ‚ط§ظ‹
           close(context, hadith);
         },
       ),
     );
   }
 
-  // قاعدة بيانات أوفلاين للأربعين النووية (ضمانة عمل البحث دائماً)
+  // ظ‚ط§ط¹ط¯ط© ط¨ظٹط§ظ†ط§طھ ط£ظˆظپظ„ط§ظٹظ† ظ„ظ„ط£ط±ط¨ط¹ظٹظ† ط§ظ„ظ†ظˆظˆظٹط© (ط¶ظ…ط§ظ†ط© ط¹ظ…ظ„ ط§ظ„ط¨ط­ط« ط¯ط§ط¦ظ…ط§ظ‹)
   final List<Map<String, dynamic>> _localFortyNawawi = [
-    {'type': 'hadith', 'number': 1, 'book': 'الأربعون النووية', 'text': 'إنما الأعمال بالنيات، وإنما لكل امرئ ما نوى...', 'searchableText': 'انما الاعمال بالنيات وانما لكل امرئ ما نوي'},
-    {'type': 'hadith', 'number': 2, 'book': 'الأربعون النووية', 'text': 'بينما نحن جلوس عند رسول الله صلى الله عليه وسلم...', 'searchableText': 'بينما نحن جلوس عند رسول الله صلي الله عليه وسلم'},
-    {'type': 'hadith', 'number': 3, 'book': 'الأربعون النووية', 'text': 'بني الإسلام على خمس: شهادة أن لا إله إلا الله...', 'searchableText': 'بني الاسلام علي خمس شهاده ان لا اله الا الله'},
-    {'type': 'hadith', 'number': 7, 'book': 'الأربعون النووية', 'text': 'الدين النصيحة. قلنا: لمن؟ قال: لله، ولكتابه، ولرسوله...', 'searchableText': 'الدين النصيحه قلنا لمن قال لله ولكتابه ولرسوله'},
+    {'type': 'hadith', 'number': 1, 'book': 'ط§ظ„ط£ط±ط¨ط¹ظˆظ† ط§ظ„ظ†ظˆظˆظٹط©', 'text': 'ط¥ظ†ظ…ط§ ط§ظ„ط£ط¹ظ…ط§ظ„ ط¨ط§ظ„ظ†ظٹط§طھطŒ ظˆط¥ظ†ظ…ط§ ظ„ظƒظ„ ط§ظ…ط±ط¦ ظ…ط§ ظ†ظˆظ‰...', 'searchableText': 'ط§ظ†ظ…ط§ ط§ظ„ط§ط¹ظ…ط§ظ„ ط¨ط§ظ„ظ†ظٹط§طھ ظˆط§ظ†ظ…ط§ ظ„ظƒظ„ ط§ظ…ط±ط¦ ظ…ط§ ظ†ظˆظٹ'},
+    {'type': 'hadith', 'number': 2, 'book': 'ط§ظ„ط£ط±ط¨ط¹ظˆظ† ط§ظ„ظ†ظˆظˆظٹط©', 'text': 'ط¨ظٹظ†ظ…ط§ ظ†ط­ظ† ط¬ظ„ظˆط³ ط¹ظ†ط¯ ط±ط³ظˆظ„ ط§ظ„ظ„ظ‡ طµظ„ظ‰ ط§ظ„ظ„ظ‡ ط¹ظ„ظٹظ‡ ظˆط³ظ„ظ…...', 'searchableText': 'ط¨ظٹظ†ظ…ط§ ظ†ط­ظ† ط¬ظ„ظˆط³ ط¹ظ†ط¯ ط±ط³ظˆظ„ ط§ظ„ظ„ظ‡ طµظ„ظٹ ط§ظ„ظ„ظ‡ ط¹ظ„ظٹظ‡ ظˆط³ظ„ظ…'},
+    {'type': 'hadith', 'number': 3, 'book': 'ط§ظ„ط£ط±ط¨ط¹ظˆظ† ط§ظ„ظ†ظˆظˆظٹط©', 'text': 'ط¨ظ†ظٹ ط§ظ„ط¥ط³ظ„ط§ظ… ط¹ظ„ظ‰ ط®ظ…ط³: ط´ظ‡ط§ط¯ط© ط£ظ† ظ„ط§ ط¥ظ„ظ‡ ط¥ظ„ط§ ط§ظ„ظ„ظ‡...', 'searchableText': 'ط¨ظ†ظٹ ط§ظ„ط§ط³ظ„ط§ظ… ط¹ظ„ظٹ ط®ظ…ط³ ط´ظ‡ط§ط¯ظ‡ ط§ظ† ظ„ط§ ط§ظ„ظ‡ ط§ظ„ط§ ط§ظ„ظ„ظ‡'},
+    {'type': 'hadith', 'number': 7, 'book': 'ط§ظ„ط£ط±ط¨ط¹ظˆظ† ط§ظ„ظ†ظˆظˆظٹط©', 'text': 'ط§ظ„ط¯ظٹظ† ط§ظ„ظ†طµظٹط­ط©. ظ‚ظ„ظ†ط§: ظ„ظ…ظ†طں ظ‚ط§ظ„: ظ„ظ„ظ‡طŒ ظˆظ„ظƒطھط§ط¨ظ‡طŒ ظˆظ„ط±ط³ظˆظ„ظ‡...', 'searchableText': 'ط§ظ„ط¯ظٹظ† ط§ظ„ظ†طµظٹط­ظ‡ ظ‚ظ„ظ†ط§ ظ„ظ…ظ† ظ‚ط§ظ„ ظ„ظ„ظ‡ ظˆظ„ظƒطھط§ط¨ظ‡ ظˆظ„ط±ط³ظˆظ„ظ‡'},
   ];
 }

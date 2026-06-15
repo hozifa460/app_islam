@@ -1,12 +1,12 @@
-// lib/screens/radio/widgets_surah_player/sp_background.dart
+﻿// lib/screens/radio/widgets_surah_player/sp_background.dart
 
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'sp_colors.dart';
 
-/// ══════════════════════════════════════════════════════════════
-/// الخلفية المتحركة
-/// ══════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ط§ظ„ط®ظ„ظپظٹط© ط§ظ„ظ…طھط­ط±ظƒط©
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class SpBackground extends StatelessWidget {
   final AnimationController controller;
   final Color primary;
@@ -69,7 +69,7 @@ class _BgPainter extends CustomPainter {
       final r = 100.0 + 60.0 * sin(phase * pi + i);
       paint.shader = RadialGradient(
         colors: [
-          (i.isEven ? primary : gold).withOpacity(isDark ? 0.06 : 0.04),
+          (i.isEven ? primary : gold).withValues(alpha: isDark ? 0.06 : 0.04),
           Colors.transparent,
         ],
       ).createShader(Rect.fromCircle(center: Offset(x, y), radius: r));

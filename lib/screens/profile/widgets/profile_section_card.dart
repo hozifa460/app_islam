@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfileSectionCard extends StatelessWidget {
@@ -32,7 +32,7 @@ class ProfileSectionCard extends StatelessWidget {
                 fontSize: 12.5,
                 fontWeight: FontWeight.w600,
                 color: isDark
-                    ? Colors.white.withOpacity(0.35)
+                    ? Colors.white.withValues(alpha: 0.35)
                     : Colors.grey.shade500,
                 letterSpacing: 0.3,
               ),
@@ -43,18 +43,18 @@ class ProfileSectionCard extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(18),
             color: isDark
-                ? Colors.white.withOpacity(0.035)
+                ? Colors.white.withValues(alpha: 0.035)
                 : Colors.white,
             border: Border.all(
               color: isDark
-                  ? Colors.white.withOpacity(0.05)
+                  ? Colors.white.withValues(alpha: 0.05)
                   : Colors.grey.shade200,
             ),
             boxShadow: [
               BoxShadow(
                 color: isDark
-                    ? Colors.black.withOpacity(0.12)
-                    : Colors.black.withOpacity(0.03),
+                    ? Colors.black.withValues(alpha: 0.12)
+                    : Colors.black.withValues(alpha: 0.03),
                 blurRadius: 12,
                 offset: const Offset(0, 3),
               ),

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AuthButton extends StatefulWidget {
@@ -76,7 +76,7 @@ class _AuthButtonState extends State<AuthButton>
               ),
               boxShadow: [
                 BoxShadow(
-                  color: _gold.withOpacity(0.4),
+                  color: _gold.withValues(alpha: 0.4),
                   blurRadius: 16,
                   offset: const Offset(0, 6),
                 ),

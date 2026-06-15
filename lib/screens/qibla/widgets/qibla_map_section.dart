@@ -1,4 +1,4 @@
-import 'dart:math' as math;
+﻿import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
@@ -89,8 +89,8 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
     return ((d + 180.0) % 360.0) - 180.0;
   }
 
-  // ✅ زاوية الإبرة = اتجاه القبلة الحقيقي بالراديان
-  // لأن الخريطة تدور مع الهاتف، نستخدم الزاوية المطلقة للقبلة
+  // âœ… ط²ط§ظˆظٹط© ط§ظ„ط¥ط¨ط±ط© = ط§طھط¬ط§ظ‡ ط§ظ„ظ‚ط¨ظ„ط© ط§ظ„ط­ظ‚ظٹظ‚ظٹ ط¨ط§ظ„ط±ط§ط¯ظٹط§ظ†
+  // ظ„ط£ظ† ط§ظ„ط®ط±ظٹط·ط© طھط¯ظˆط± ظ…ط¹ ط§ظ„ظ‡ط§طھظپطŒ ظ†ط³طھط®ط¯ظ… ط§ظ„ط²ط§ظˆظٹط© ط§ظ„ظ…ط·ظ„ظ‚ط© ظ„ظ„ظ‚ط¨ظ„ط©
   double get _needleAngleOnMap {
     return widget.qiblaAngle * math.pi / 180.0;
   }
@@ -107,10 +107,10 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
 
   String _getCardinalDirection(double angle) {
     const dirs = [
-      'شمال', 'ش.ش.غ', 'شمال غرب', 'غ.ش.غ',
-      'غرب', 'غ.ج.غ', 'جنوب غرب', 'ج.ج.غ',
-      'جنوب', 'ج.ج.ش', 'جنوب شرق', 'ش.ج.ش',
-      'شرق', 'ش.ش.غ', 'شمال شرق', 'غ.ش.غ',
+      'ط´ظ…ط§ظ„', 'ط´.ط´.ط؛', 'ط´ظ…ط§ظ„ ط؛ط±ط¨', 'ط؛.ط´.ط؛',
+      'ط؛ط±ط¨', 'ط؛.ط¬.ط؛', 'ط¬ظ†ظˆط¨ ط؛ط±ط¨', 'ط¬.ط¬.ط؛',
+      'ط¬ظ†ظˆط¨', 'ط¬.ط¬.ط´', 'ط¬ظ†ظˆط¨ ط´ط±ظ‚', 'ط´.ط¬.ط´',
+      'ط´ط±ظ‚', 'ط´.ط´.ط؛', 'ط´ظ…ط§ظ„ ط´ط±ظ‚', 'ط؛.ط´.ط؛',
     ];
     return dirs[((angle + 11.25) / 22.5).floor() % 16];
   }
@@ -152,7 +152,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
                     height: mapHeight,
                     child: Stack(
                       children: [
-                        // ✅ FlutterMap يحتوي على كل العناصر الجغرافية
+                        // âœ… FlutterMap ظٹط­طھظˆظٹ ط¹ظ„ظ‰ ظƒظ„ ط§ظ„ط¹ظ†ط§طµط± ط§ظ„ط¬ط؛ط±ط§ظپظٹط©
                         FlutterMap(
                           mapController: _mapController,
                           options: MapOptions(
@@ -165,7 +165,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
                             ),
                           ),
                           children: [
-                            // طبقة الخريطة
+                            // ط·ط¨ظ‚ط© ط§ظ„ط®ط±ظٹط·ط©
                             TileLayer(
                               urlTemplate: theme.isDark
                                   ? 'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png'
@@ -175,7 +175,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
                               maxZoom: 19,
                             ),
 
-                            // طبقة labels
+                            // ط·ط¨ظ‚ط© labels
                             TileLayer(
                               urlTemplate: theme.isDark
                                   ? 'https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png'
@@ -185,8 +185,8 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
                               maxZoom: 19,
                             ),
 
-                            // ✅ دائرة دقة الموقع داخل FlutterMap
-                            // تبقى مع موقع المستخدم الجغرافي دائماً
+                            // âœ… ط¯ط§ط¦ط±ط© ط¯ظ‚ط© ط§ظ„ظ…ظˆظ‚ط¹ ط¯ط§ط®ظ„ FlutterMap
+                            // طھط¨ظ‚ظ‰ ظ…ط¹ ظ…ظˆظ‚ط¹ ط§ظ„ظ…ط³طھط®ط¯ظ… ط§ظ„ط¬ط؛ط±ط§ظپظٹ ط¯ط§ط¦ظ…ط§ظ‹
                             CircleLayer(
                               circles: [
                                 CircleMarker(
@@ -197,36 +197,36 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
                                   color: (widget.isFacing
                                       ? QiblaTheme.green
                                       : QiblaTheme.blue)
-                                      .withOpacity(0.07),
+                                      .withValues(alpha: 0.07),
                                   borderColor: (widget.isFacing
                                       ? QiblaTheme.green
                                       : QiblaTheme.blue)
-                                      .withOpacity(0.25),
+                                      .withValues(alpha: 0.25),
                                   borderStrokeWidth: 1.2,
                                 ),
                               ],
                             ),
 
-                            // خط القبلة
+                            // ط®ط· ط§ظ„ظ‚ط¨ظ„ط©
                             PolylineLayer(
                               polylines: [
                                 Polyline(
                                   points: [_userPosition, _kaabaPosition],
                                   strokeWidth: 2.0,
-                                  color: QiblaTheme.gold.withOpacity(0.65),
+                                  color: QiblaTheme.gold.withValues(alpha: 0.65),
                                   isDotted: true,
                                 ),
                               ],
                             ),
 
-                            // ✅ MarkerLayer يحتوي علامة المستخدم والكعبة
-                            // كلاهما مرتبط بالإحداثيات الجغرافية
-                            // لكن rotate: false يمنع دوران المحتوى مع الخريطة
+                            // âœ… MarkerLayer ظٹط­طھظˆظٹ ط¹ظ„ط§ظ…ط© ط§ظ„ظ…ط³طھط®ط¯ظ… ظˆط§ظ„ظƒط¹ط¨ط©
+                            // ظƒظ„ط§ظ‡ظ…ط§ ظ…ط±طھط¨ط· ط¨ط§ظ„ط¥ط­ط¯ط§ط«ظٹط§طھ ط§ظ„ط¬ط؛ط±ط§ظپظٹط©
+                            // ظ„ظƒظ† rotate: false ظٹظ…ظ†ط¹ ط¯ظˆط±ط§ظ† ط§ظ„ظ…ط­طھظˆظ‰ ظ…ط¹ ط§ظ„ط®ط±ظٹط·ط©
                             MarkerLayer(
                               rotate: true,
                               markers: [
-                                // ✅ علامة المستخدم - rotate:true تعني
-                                // أن الـ widget لا يدور مع الخريطة
+                                // âœ… ط¹ظ„ط§ظ…ط© ط§ظ„ظ…ط³طھط®ط¯ظ… - rotate:true طھط¹ظ†ظٹ
+                                // ط£ظ† ط§ظ„ظ€ widget ظ„ط§ ظٹط¯ظˆط± ظ…ط¹ ط§ظ„ط®ط±ظٹط·ط©
                                 Marker(
                                   point: _userPosition,
                                   width: 90,
@@ -238,7 +238,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
                                   ),
                                 ),
 
-                                // علامة الكعبة
+                                // ط¹ظ„ط§ظ…ط© ط§ظ„ظƒط¹ط¨ط©
                                 Marker(
                                   point: _kaabaPosition,
                                   width: 52,
@@ -250,14 +250,14 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
                           ],
                         ),
 
-                        // مؤشر الشمال
+                        // ظ…ط¤ط´ط± ط§ظ„ط´ظ…ط§ظ„
                         Positioned(
                           top: 10,
                           right: 10,
                           child: _buildNorthIndicator(theme),
                         ),
 
-                        // شريط الحالة
+                        // ط´ط±ظٹط· ط§ظ„ط­ط§ظ„ط©
                         Positioned(
                           bottom: 0,
                           left: 0,
@@ -282,21 +282,21 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
   }
 
   // =========================================================
-  // ✅ علامة المستخدم داخل MarkerLayer
-  // rotate: true في MarkerLayer يعني الـ widget لا يدور مع الخريطة
-  // لكن موقعه الجغرافي يبقى ثابتاً
+  // âœ… ط¹ظ„ط§ظ…ط© ط§ظ„ظ…ط³طھط®ط¯ظ… ط¯ط§ط®ظ„ MarkerLayer
+  // rotate: true ظپظٹ MarkerLayer ظٹط¹ظ†ظٹ ط§ظ„ظ€ widget ظ„ط§ ظٹط¯ظˆط± ظ…ط¹ ط§ظ„ط®ط±ظٹط·ط©
+  // ظ„ظƒظ† ظ…ظˆظ‚ط¹ظ‡ ط§ظ„ط¬ط؛ط±ط§ظپظٹ ظٹط¨ظ‚ظ‰ ط«ط§ط¨طھط§ظ‹
   // =========================================================
   Widget _buildUserMarker() {
-    // ✅ الإبرة تشير للقبلة بالزاوية المطلقة
-    // لأن rotate:true يُلغي دوران الخريطة على الـ marker
-    // نحتاج إضافة دوران الخريطة لتصحيح اتجاه الإبرة
+    // âœ… ط§ظ„ط¥ط¨ط±ط© طھط´ظٹط± ظ„ظ„ظ‚ط¨ظ„ط© ط¨ط§ظ„ط²ط§ظˆظٹط© ط§ظ„ظ…ط·ظ„ظ‚ط©
+    // ظ„ط£ظ† rotate:true ظٹظڈظ„ط؛ظٹ ط¯ظˆط±ط§ظ† ط§ظ„ط®ط±ظٹط·ط© ط¹ظ„ظ‰ ط§ظ„ظ€ marker
+    // ظ†ط­طھط§ط¬ ط¥ط¶ط§ظپط© ط¯ظˆط±ط§ظ† ط§ظ„ط®ط±ظٹط·ط© ظ„طھطµط­ظٹط­ ط§طھط¬ط§ظ‡ ط§ظ„ط¥ط¨ط±ط©
     final correctedAngle = _needleAngleOnMap +
         (-widget.compassHeading * math.pi / 180.0);
 
     return Stack(
       alignment: Alignment.center,
       children: [
-        // حلقة نبض عند المواجهة
+        // ط­ظ„ظ‚ط© ظ†ط¨ط¶ ط¹ظ†ط¯ ط§ظ„ظ…ظˆط§ط¬ظ‡ط©
         if (widget.isFacing)
           Transform.scale(
             scale: _pulseAnim.value,
@@ -305,16 +305,16 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
               height: 84,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: QiblaTheme.green.withOpacity(0.1),
+                color: QiblaTheme.green.withValues(alpha: 0.1),
                 border: Border.all(
-                  color: QiblaTheme.green.withOpacity(0.3),
+                  color: QiblaTheme.green.withValues(alpha: 0.3),
                   width: 1.5,
                 ),
               ),
             ),
           ),
 
-        // ✅ الإبرة تدور بالزاوية الصحيحة
+        // âœ… ط§ظ„ط¥ط¨ط±ط© طھط¯ظˆط± ط¨ط§ظ„ط²ط§ظˆظٹط© ط§ظ„طµط­ظٹط­ط©
         Transform.rotate(
           angle: correctedAngle,
           child: _MapNeedle(
@@ -323,7 +323,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
           ),
         ),
 
-        // نقطة الموقع المركزية
+        // ظ†ظ‚ط·ط© ط§ظ„ظ…ظˆظ‚ط¹ ط§ظ„ظ…ط±ظƒط²ظٹط©
         Container(
           width: 18,
           height: 18,
@@ -340,7 +340,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
                 color: (widget.isFacing
                     ? QiblaTheme.green
                     : QiblaTheme.blue)
-                    .withOpacity(0.55),
+                    .withValues(alpha: 0.55),
                 blurRadius: 8,
                 spreadRadius: 2,
               ),
@@ -369,13 +369,13 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
             borderRadius: BorderRadius.circular(12),
             boxShadow: [
               BoxShadow(
-                color: QiblaTheme.gold.withOpacity(0.55),
+                color: QiblaTheme.gold.withValues(alpha: 0.55),
                 blurRadius: 10,
                 spreadRadius: 2,
               ),
             ],
           ),
-          child: const Text('🕋', style: TextStyle(fontSize: 22)),
+          child: const Text('ًں•‹', style: TextStyle(fontSize: 22)),
         ),
         Container(
           width: 2.5,
@@ -386,7 +386,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
               end: Alignment.bottomCenter,
               colors: [
                 QiblaTheme.gold,
-                QiblaTheme.gold.withOpacity(0),
+                QiblaTheme.gold.withValues(alpha: 0),
               ],
             ),
           ),
@@ -396,7 +396,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
   }
 
   // =========================================================
-  // مؤشر الشمال
+  // ظ…ط¤ط´ط± ط§ظ„ط´ظ…ط§ظ„
   // =========================================================
   Widget _buildNorthIndicator(QiblaTheme theme) {
     return Container(
@@ -404,17 +404,17 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
       height: 36,
       decoration: BoxDecoration(
         color: theme.isDark
-            ? Colors.black.withOpacity(0.65)
-            : Colors.white.withOpacity(0.9),
+            ? Colors.black.withValues(alpha: 0.65)
+            : Colors.white.withValues(alpha: 0.9),
         shape: BoxShape.circle,
         border: Border.all(
           color: theme.isDark
-              ? Colors.white.withOpacity(0.15)
-              : Colors.black.withOpacity(0.1),
+              ? Colors.white.withValues(alpha: 0.15)
+              : Colors.black.withValues(alpha: 0.1),
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.15),
+            color: Colors.black.withValues(alpha: 0.15),
             blurRadius: 6,
           ),
         ],
@@ -432,7 +432,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
             ),
           ),
           const Text(
-            '↑',
+            'â†‘',
             style: TextStyle(
               fontSize: 10,
               color: Colors.red,
@@ -445,7 +445,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
   }
 
   // =========================================================
-  // شريط الحالة
+  // ط´ط±ظٹط· ط§ظ„ط­ط§ظ„ط©
   // =========================================================
   Widget _buildMapStatusBar(QiblaTheme theme, Color guidance) {
     final deviation = _qiblaDeviation;
@@ -456,13 +456,13 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
         color: theme.isDark
-            ? Colors.black.withOpacity(0.72)
-            : Colors.white.withOpacity(0.88),
+            ? Colors.black.withValues(alpha: 0.72)
+            : Colors.white.withValues(alpha: 0.88),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: guidance.withOpacity(0.35)),
+        border: Border.all(color: guidance.withValues(alpha: 0.35)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.12),
+            color: Colors.black.withValues(alpha: 0.12),
             blurRadius: 8,
           ),
         ],
@@ -486,11 +486,11 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
               padding:
               const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
               decoration: BoxDecoration(
-                color: guidance.withOpacity(0.15),
+                color: guidance.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Text(
-                '${deviation.abs().toStringAsFixed(1)}°',
+                '${deviation.abs().toStringAsFixed(1)}آ°',
                 style: theme.boldStyle(11, guidance),
               ),
             ),
@@ -511,7 +511,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
           Container(
             padding: const EdgeInsets.all(7),
             decoration: BoxDecoration(
-              color: QiblaTheme.gold.withOpacity(0.13),
+              color: QiblaTheme.gold.withValues(alpha: 0.13),
               borderRadius: BorderRadius.circular(9),
             ),
             child: const Icon(Icons.map_rounded,
@@ -522,10 +522,10 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('خريطة القبلة',
+                Text('ط®ط±ظٹط·ط© ط§ظ„ظ‚ط¨ظ„ط©',
                     style: theme.boldStyle(14, theme.textColor)),
                 Text(
-                  'الخريطة والإبرة تدوران مع الهاتف',
+                  'ط§ظ„ط®ط±ظٹط·ط© ظˆط§ظ„ط¥ط¨ط±ط© طھط¯ظˆط±ط§ظ† ظ…ط¹ ط§ظ„ظ‡ط§طھظپ',
                   style: theme.labelStyle(10),
                 ),
               ],
@@ -538,7 +538,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
   }
 
   // =========================================================
-  // بطاقات المعلومات
+  // ط¨ط·ط§ظ‚ط§طھ ط§ظ„ظ…ط¹ظ„ظˆظ…ط§طھ
   // =========================================================
   Widget _buildInfoRow(QiblaTheme theme, Color guidance) {
     return Row(
@@ -546,7 +546,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
         _buildInfoCard(
           theme: theme,
           icon: Icons.straighten_rounded,
-          label: 'المسافة',
+          label: 'ط§ظ„ظ…ط³ط§ظپط©',
           value: QiblaCalculator.formatDistance(widget.distanceToKaaba),
           color: QiblaTheme.blue,
         ),
@@ -554,9 +554,9 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
         _buildInfoCard(
           theme: theme,
           icon: Icons.explore_rounded,
-          label: 'الاتجاه',
+          label: 'ط§ظ„ط§طھط¬ط§ظ‡',
           value:
-          '${widget.qiblaAngle.toStringAsFixed(1)}° ${_getCardinalDirection(widget.qiblaAngle)}',
+          '${widget.qiblaAngle.toStringAsFixed(1)}آ° ${_getCardinalDirection(widget.qiblaAngle)}',
           color: QiblaTheme.gold,
         ),
         const SizedBox(width: 8),
@@ -565,10 +565,10 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
           icon: widget.isFacing
               ? Icons.check_circle_rounded
               : Icons.adjust_rounded,
-          label: 'الحالة',
+          label: 'ط§ظ„ط­ط§ظ„ط©',
           value: widget.isFacing
-              ? 'مواجه ✓'
-              : '${_qiblaDeviation.abs().toStringAsFixed(1)}° انحراف',
+              ? 'ظ…ظˆط§ط¬ظ‡ âœ“'
+              : '${_qiblaDeviation.abs().toStringAsFixed(1)}آ° ط§ظ†ط­ط±ط§ظپ',
           color: widget.isFacing ? QiblaTheme.green : QiblaTheme.red,
         ),
       ],
@@ -586,9 +586,9 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 6),
         decoration: BoxDecoration(
-          color: color.withOpacity(0.07),
+          color: color.withValues(alpha: 0.07),
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: color.withOpacity(0.2)),
+          border: Border.all(color: color.withValues(alpha: 0.2)),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -619,7 +619,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
   }
 
   // =========================================================
-  // أزرار التحكم
+  // ط£ط²ط±ط§ط± ط§ظ„طھط­ظƒظ…
   // =========================================================
   Widget _buildControlButtons(QiblaTheme theme) {
     return Padding(
@@ -630,7 +630,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
             child: _buildMapButton(
               theme: theme,
               icon: Icons.my_location_rounded,
-              label: 'موقعي',
+              label: 'ظ…ظˆظ‚ط¹ظٹ',
               onTap: () =>
                   _mapController.move(_userPosition, _calculateZoom()),
             ),
@@ -640,7 +640,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
             child: _buildMapButton(
               theme: theme,
               icon: Icons.zoom_out_map_rounded,
-              label: 'المسار الكامل',
+              label: 'ط§ظ„ظ…ط³ط§ط± ط§ظ„ظƒط§ظ…ظ„',
               onTap: () {
                 final midLat =
                     (widget.userLat + QiblaCalculator.kaabeLat) / 2;
@@ -655,7 +655,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
             child: _buildMapButton(
               theme: theme,
               icon: Icons.location_on_rounded,
-              label: 'الكعبة',
+              label: 'ط§ظ„ظƒط¹ط¨ط©',
               onTap: () => _mapController.move(_kaabaPosition, 14.0),
             ),
           ),
@@ -676,8 +676,8 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
         padding: const EdgeInsets.symmetric(vertical: 9),
         decoration: BoxDecoration(
           color: theme.isDark
-              ? Colors.white.withOpacity(0.06)
-              : Colors.white.withOpacity(0.9),
+              ? Colors.white.withValues(alpha: 0.06)
+              : Colors.white.withValues(alpha: 0.9),
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: theme.cardBorder),
         ),
@@ -700,7 +700,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
   }
 
   // =========================================================
-  // Badge الدقة
+  // Badge ط§ظ„ط¯ظ‚ط©
   // =========================================================
   Widget _buildAccuracyBadge(QiblaTheme theme) {
     final acc = widget.locationAccuracy;
@@ -711,14 +711,14 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
         : isMed
         ? QiblaTheme.orange
         : QiblaTheme.red;
-    final label = isGood ? 'GPS دقيق' : isMed ? 'متوسط' : 'ضعيف';
+    final label = isGood ? 'GPS ط¯ظ‚ظٹظ‚' : isMed ? 'ظ…طھظˆط³ط·' : 'ط¶ط¹ظٹظپ';
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: color.withOpacity(0.3)),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -739,7 +739,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
   }
 
   // =========================================================
-  // مفتاح الخريطة
+  // ظ…ظپطھط§ط­ ط§ظ„ط®ط±ظٹط·ط©
   // =========================================================
   Widget _buildLegend(QiblaTheme theme) {
     return Wrap(
@@ -747,10 +747,10 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
       spacing: 14,
       runSpacing: 4,
       children: [
-        _legendItem(theme, '🕋', null, 'الكعبة المشرفة'),
-        _legendItem(theme, null, Icons.circle, 'موقعك الحالي',
+        _legendItem(theme, 'ًں•‹', null, 'ط§ظ„ظƒط¹ط¨ط© ط§ظ„ظ…ط´ط±ظپط©'),
+        _legendItem(theme, null, Icons.circle, 'ظ…ظˆظ‚ط¹ظƒ ط§ظ„ط­ط§ظ„ظٹ',
             color: QiblaTheme.blue),
-        _legendItem(theme, null, Icons.navigation_rounded, 'اتجاه القبلة',
+        _legendItem(theme, null, Icons.navigation_rounded, 'ط§طھط¬ط§ظ‡ ط§ظ„ظ‚ط¨ظ„ط©',
             color: QiblaTheme.gold),
       ],
     );
@@ -778,7 +778,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
 }
 
 // =========================================================
-// إبرة الخريطة المصغرة
+// ط¥ط¨ط±ط© ط§ظ„ط®ط±ظٹط·ط© ط§ظ„ظ…طµط؛ط±ط©
 // =========================================================
 class _MapNeedle extends StatelessWidget {
   final bool isFacing;
@@ -790,8 +790,8 @@ class _MapNeedle extends StatelessWidget {
   Widget build(BuildContext context) {
     final topColor = isFacing ? QiblaTheme.green : const Color(0xFF27AE60);
     final bottomColor = isFacing
-        ? QiblaTheme.green.withOpacity(0.28)
-        : Colors.grey.withOpacity(0.33);
+        ? QiblaTheme.green.withValues(alpha: 0.28)
+        : Colors.grey.withValues(alpha: 0.33);
     final w = size * 0.36;
     final hTop = size * 0.52 * 0.56;
     final hBot = size * 0.52 * 0.44;
@@ -817,7 +817,7 @@ class _MapNeedle extends StatelessWidget {
                   border: Border.all(color: topColor, width: 1.2),
                   boxShadow: [
                     BoxShadow(
-                      color: topColor.withOpacity(0.35),
+                      color: topColor.withValues(alpha: 0.35),
                       blurRadius: 3,
                     ),
                   ],

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islamic_app/screens/fatwa/services/local_search_service.dart';
 import 'package:islamic_app/screens/fatwa/services/unified_fatwa_assistant.dart';
@@ -31,10 +31,10 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
     try {
       await LocalSearchService.loadFatawa();
       setState(() {
-        _fatawa = []; // LocalSearchService يحمل كل شيء داخلياً
+        _fatawa = []; // LocalSearchService ظٹط­ظ…ظ„ ظƒظ„ ط´ظٹط، ط¯ط§ط®ظ„ظٹط§ظ‹
       });
     } catch (e) {
-      print('❌ تحميل: $e');
+      print('â‌Œ طھط­ظ…ظٹظ„: $e');
     }
   }
 
@@ -87,7 +87,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'مساعد الفتاوى',
+                'ظ…ط³ط§ط¹ط¯ ط§ظ„ظپطھط§ظˆظ‰',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
@@ -96,7 +96,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
                 ),
               ),
               Text(
-                'يبحث في آلاف الفتاوى',
+                'ظٹط¨ط­ط« ظپظٹ ط¢ظ„ط§ظپ ط§ظ„ظپطھط§ظˆظ‰',
                 style: TextStyle(
                   color: Colors.white70,
                   fontSize: 12,
@@ -213,7 +213,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
               ),
               const SizedBox(width: 10),
               Text(
-                'جاري البحث...',
+                'ط¬ط§ط±ظٹ ط§ظ„ط¨ط­ط«...',
                 style: TextStyle(color: Colors.grey[600], fontFamily: 'Cairo'),
               ),
             ],
@@ -231,9 +231,9 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
         child: Container(
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
-            color: Colors.orange.withOpacity(0.08),
+            color: Colors.orange.withValues(alpha: 0.08),
             borderRadius: BorderRadius.circular(18),
-            border: Border.all(color: Colors.orange.withOpacity(0.3)),
+            border: Border.all(color: Colors.orange.withValues(alpha: 0.3)),
           ),
           child: Text(
             msg.introText,
@@ -284,7 +284,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
             color: Colors.white,
             borderRadius: BorderRadius.circular(18),
             boxShadow: [
-              BoxShadow(color: Colors.grey.withOpacity(0.1), blurRadius: 8),
+              BoxShadow(color: Colors.grey.withValues(alpha: 0.1), blurRadius: 8),
             ],
           ),
           child: Column(
@@ -351,7 +351,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: const Text(
-                              'تم النسخ',
+                              'طھظ… ط§ظ„ظ†ط³ط®',
                               style: TextStyle(fontFamily: 'Cairo'),
                             ),
                             backgroundColor: const Color(0xFF2E7D32),
@@ -368,7 +368,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
                           vertical: 4,
                         ),
                         decoration: BoxDecoration(
-                          color: const Color(0xFF2E7D32).withOpacity(0.08),
+                          color: const Color(0xFF2E7D32).withValues(alpha: 0.08),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: const Row(
@@ -380,7 +380,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
                             ),
                             SizedBox(width: 4),
                             Text(
-                              'نسخ',
+                              'ظ†ط³ط®',
                               style: TextStyle(
                                 fontSize: 11,
                                 fontFamily: 'Cairo',
@@ -392,17 +392,17 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
                       ),
                     ),
 
-                    // بعد زر النسخ أضف هذا
+                    // ط¨ط¹ط¯ ط²ط± ط§ظ„ظ†ط³ط® ط£ط¶ظپ ظ‡ط°ط§
                     if (msg.sourceFatwa != null && msg.sourceFatwa!.hasAudio)
                       Padding(
                         padding: const EdgeInsets.only(right: 8),
                         child: InkWell(
                           onTap: () {
-                            // يمكنك تشغيل الصوت هنا لاحقاً
+                            // ظٹظ…ظƒظ†ظƒ طھط´ط؛ظٹظ„ ط§ظ„طµظˆطھ ظ‡ظ†ط§ ظ„ط§ط­ظ‚ط§ظ‹
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  'رابط الصوت: ${msg.sourceFatwa!.audio}',
+                                  'ط±ط§ط¨ط· ط§ظ„طµظˆطھ: ${msg.sourceFatwa!.audio}',
                                   style: const TextStyle(fontFamily: 'Cairo'),
                                 ),
                                 backgroundColor: const Color(0xFF1565C0),
@@ -416,7 +416,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
                           child: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                             decoration: BoxDecoration(
-                              color: const Color(0xFF1565C0).withOpacity(0.08),
+                              color: const Color(0xFF1565C0).withValues(alpha: 0.08),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: const Row(
@@ -424,7 +424,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
                               children: [
                                 Icon(Icons.headphones, size: 14, color: Color(0xFF1565C0)),
                                 SizedBox(width: 4),
-                                Text('صوتي', style: TextStyle(fontSize: 11, fontFamily: 'Cairo', color: Color(0xFF1565C0))),
+                                Text('طµظˆطھظٹ', style: TextStyle(fontSize: 11, fontFamily: 'Cairo', color: Color(0xFF1565C0))),
                               ],
                             ),
                           ),
@@ -443,17 +443,17 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
 
   Widget _chooseSourceBubble(ChatMessage msg) {
     final sourceColors = {
-      'إسلام سؤال وجواب': const Color(0xFF1565C0),
-      'فتاوى ابن باز': const Color(0xFF6A1B9A),
-      'الدرر السنية': const Color(0xFF00695C),
-      'إسلام ويب': const Color(0xFF2E7D32),
+      'ط¥ط³ظ„ط§ظ… ط³ط¤ط§ظ„ ظˆط¬ظˆط§ط¨': const Color(0xFF1565C0),
+      'ظپطھط§ظˆظ‰ ط§ط¨ظ† ط¨ط§ط²': const Color(0xFF6A1B9A),
+      'ط§ظ„ط¯ط±ط± ط§ظ„ط³ظ†ظٹط©': const Color(0xFF00695C),
+      'ط¥ط³ظ„ط§ظ… ظˆظٹط¨': const Color(0xFF2E7D32),
     };
 
     final sourceIcons = {
-      'إسلام سؤال وجواب': Icons.menu_book,
-      'فتاوى ابن باز': Icons.person,
-      'الدرر السنية': Icons.auto_stories,
-      'إسلام ويب': Icons.language,
+      'ط¥ط³ظ„ط§ظ… ط³ط¤ط§ظ„ ظˆط¬ظˆط§ط¨': Icons.menu_book,
+      'ظپطھط§ظˆظ‰ ط§ط¨ظ† ط¨ط§ط²': Icons.person,
+      'ط§ظ„ط¯ط±ط± ط§ظ„ط³ظ†ظٹط©': Icons.auto_stories,
+      'ط¥ط³ظ„ط§ظ… ظˆظٹط¨': Icons.language,
     };
 
     return Padding(
@@ -465,7 +465,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
             color: Colors.white,
             borderRadius: BorderRadius.circular(18),
             boxShadow: [
-              BoxShadow(color: Colors.grey.withOpacity(0.1), blurRadius: 8),
+              BoxShadow(color: Colors.grey.withValues(alpha: 0.1), blurRadius: 8),
             ],
           ),
           child: Column(
@@ -499,9 +499,9 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
                     child: Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: color.withOpacity(0.06),
+                        color: color.withValues(alpha: 0.06),
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: color.withOpacity(0.3)),
+                        border: Border.all(color: color.withValues(alpha: 0.3)),
                       ),
                       child: Row(
                         children: [
@@ -509,7 +509,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
                             width: 36,
                             height: 36,
                             decoration: BoxDecoration(
-                              color: color.withOpacity(0.12),
+                              color: color.withValues(alpha: 0.12),
                               shape: BoxShape.circle,
                             ),
                             child: Icon(icon, color: color, size: 18),
@@ -568,7 +568,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
           decoration: BoxDecoration(
             color: Colors.grey[50],
             borderRadius: BorderRadius.circular(14),
-            border: Border.all(color: Colors.grey.withOpacity(0.2)),
+            border: Border.all(color: Colors.grey.withValues(alpha: 0.2)),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -578,7 +578,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
                   Icon(Icons.info_outline, size: 16, color: Colors.grey[600]),
                   const SizedBox(width: 6),
                   Text(
-                    'نتائج من مصادر أخرى:',
+                    'ظ†طھط§ط¦ط¬ ظ…ظ† ظ…طµط§ط¯ط± ط£ط®ط±ظ‰:',
                     style: TextStyle(
                       fontSize: 12,
                       fontFamily: 'Cairo',
@@ -615,7 +615,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: Colors.grey.withOpacity(0.15),
+                          color: Colors.grey.withValues(alpha: 0.15),
                         ),
                       ),
                       child: Row(
@@ -638,7 +638,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
                             ),
                           ),
                           const Text(
-                            'عرض',
+                            'ط¹ط±ط¶',
                             style: TextStyle(
                               fontSize: 11,
                               fontFamily: 'Cairo',
@@ -686,7 +686,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.15),
+            color: Colors.grey.withValues(alpha: 0.15),
             blurRadius: 10,
             offset: const Offset(0, -3),
           ),
@@ -707,7 +707,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
                 minLines: 1,
                 style: const TextStyle(fontFamily: 'Cairo', fontSize: 15),
                 decoration: InputDecoration(
-                  hintText: 'اكتب سؤالك...',
+                  hintText: 'ط§ظƒطھط¨ ط³ط¤ط§ظ„ظƒ...',
                   hintStyle: TextStyle(
                     color: Colors.grey[400],
                     fontFamily: 'Cairo',

@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'tasbih_theme.dart';
 
-/// ✅ خرز مسبحة فخم (يعبّر عن النسبة)
+/// âœ… ط®ط±ط² ظ…ط³ط¨ط­ط© ظپط®ظ… (ظٹط¹ط¨ظ‘ط± ط¹ظ† ط§ظ„ظ†ط³ط¨ط©)
 class CurvedBeadsProgress extends StatelessWidget {
   final double progress;
   final int beadCount;
@@ -58,7 +58,7 @@ class _CurvedBeadsPainter extends CustomPainter {
     final c1 = Offset(size.width * 0.35, size.height * 0.95);
     final c2 = Offset(size.width * 0.65, size.height * 0.05);
 
-    // خيط المسبحة
+    // ط®ظٹط· ط§ظ„ظ…ط³ط¨ط­ط©
     final stringPaint = Paint()
       ..color = TasbihTheme.stringColor
       ..strokeWidth = 2
@@ -92,7 +92,7 @@ class _CurvedBeadsPainter extends CustomPainter {
 
       if (active) {
         final shadowPaint = Paint()
-          ..color = beadColor.withOpacity(0.28)
+          ..color = beadColor.withValues(alpha: 0.28)
           ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8);
         canvas.drawCircle(p.translate(0, 4), r, shadowPaint);
       }
@@ -102,9 +102,9 @@ class _CurvedBeadsPainter extends CustomPainter {
         center: const Alignment(-0.35, -0.35),
         radius: 0.9,
         colors: [
-          Colors.white.withOpacity(active ? 0.65 : 0.40),
-          base.withOpacity(active ? 0.95 : 0.85),
-          base.withOpacity(active ? 0.70 : 0.65),
+          Colors.white.withValues(alpha: active ? 0.65 : 0.40),
+          base.withValues(alpha: active ? 0.95 : 0.85),
+          base.withValues(alpha: active ? 0.70 : 0.65),
         ],
         stops: const [0.0, 0.55, 1.0],
       );
@@ -116,7 +116,7 @@ class _CurvedBeadsPainter extends CustomPainter {
       canvas.drawCircle(p, r, beadPaint);
 
       final highlightPaint = Paint()
-        ..color = Colors.white.withOpacity(active ? 0.55 : 0.35);
+        ..color = Colors.white.withValues(alpha: active ? 0.55 : 0.35);
       canvas.drawCircle(
           p.translate(-r * 0.35, -r * 0.35), r * 0.20, highlightPaint);
     }

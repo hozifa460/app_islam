@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../theme/books_theme.dart';
 import '../../animations/books_animations.dart';
 
-/// ═══════════════════════════════════════════════════════════════════════════
-/// ويدجت التقدم في تحميل المجلدات
-/// ═══════════════════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ظˆظٹط¯ط¬طھ ط§ظ„طھظ‚ط¯ظ… ظپظٹ طھط­ظ…ظٹظ„ ط§ظ„ظ…ط¬ظ„ط¯ط§طھ
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class DownloadProgressWidget extends StatelessWidget {
   final int downloadedCount;
   final int totalCount;
@@ -41,11 +41,11 @@ class DownloadProgressWidget extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BooksTheme.getProgressContainerDecoration(
         isDark,
-        BooksTheme.gold.withOpacity(0.16),
+        BooksTheme.gold.withValues(alpha: 0.16),
       ),
       child: Column(
         children: [
-          // الرأس
+          // ط§ظ„ط±ط£ط³
           _ProgressHeader(
             downloadedCount: downloadedCount,
             totalCount: totalCount,
@@ -55,7 +55,7 @@ class DownloadProgressWidget extends StatelessWidget {
             onStop: onStop,
           ),
           const SizedBox(height: 14),
-          // التفاصيل
+          // ط§ظ„طھظپط§طµظٹظ„
           if (isDownloading) ...[
             _OverallProgress(
               progress: downloadProgress,
@@ -72,7 +72,7 @@ class DownloadProgressWidget extends StatelessWidget {
                 isDark: isDark,
               ),
           ],
-          // رسالة الإيقاف
+          // ط±ط³ط§ظ„ط© ط§ظ„ط¥ظٹظ‚ط§ظپ
           if (wasDownloadStopped && !isDownloading)
             _StoppedMessage(),
         ],
@@ -81,9 +81,9 @@ class DownloadProgressWidget extends StatelessWidget {
   }
 }
 
-// ═══════════════════════════════════════════
-// رأس التقدم
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط±ط£ط³ ط§ظ„طھظ‚ط¯ظ…
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _ProgressHeader extends StatelessWidget {
   final int downloadedCount;
   final int totalCount;
@@ -105,7 +105,7 @@ class _ProgressHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        // شارة العدد
+        // ط´ط§ط±ط© ط§ظ„ط¹ط¯ط¯
         TweenAnimationBuilder<double>(
           tween: Tween(begin: 0.8, end: 1.0),
           duration: const Duration(milliseconds: 300),
@@ -117,7 +117,7 @@ class _ProgressHeader extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             decoration: BooksTheme.getBadgeDecoration(BooksTheme.gold),
             child: Text(
-              '$downloadedCount / $totalCount محمّل',
+              '$downloadedCount / $totalCount ظ…ط­ظ…ظ‘ظ„',
               style: GoogleFonts.cairo(
                 color: BooksTheme.gold,
                 fontSize: 11.5,
@@ -127,7 +127,7 @@ class _ProgressHeader extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        // زر التحميل/الإيقاف
+        // ط²ط± ط§ظ„طھط­ظ…ظٹظ„/ط§ظ„ط¥ظٹظ‚ط§ظپ
         _AnimatedActionButton(
           isDownloading: isDownloading,
           primaryColor: primaryColor,
@@ -215,7 +215,7 @@ class _AnimatedActionButtonState extends State<_AnimatedActionButton>
               ),
               const SizedBox(width: 6),
               Text(
-                widget.isDownloading ? 'إيقاف' : 'تحميل الكل',
+                widget.isDownloading ? 'ط¥ظٹظ‚ط§ظپ' : 'طھط­ظ…ظٹظ„ ط§ظ„ظƒظ„',
                 style: GoogleFonts.cairo(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -230,9 +230,9 @@ class _AnimatedActionButtonState extends State<_AnimatedActionButton>
   }
 }
 
-// ═══════════════════════════════════════════
-// التقدم الإجمالي
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط§ظ„طھظ‚ط¯ظ… ط§ظ„ط¥ط¬ظ…ط§ظ„ظٹ
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _OverallProgress extends StatelessWidget {
   final double progress;
   final int downloadedCount;
@@ -261,7 +261,7 @@ class _OverallProgress extends StatelessWidget {
             builder: (context, value, child) => LinearProgressIndicator(
               value: value,
               minHeight: 7,
-              backgroundColor: Colors.grey.withOpacity(0.15),
+              backgroundColor: Colors.grey.withValues(alpha: 0.15),
               valueColor: AlwaysStoppedAnimation<Color>(primaryColor),
             ),
           ),
@@ -279,7 +279,7 @@ class _OverallProgress extends StatelessWidget {
             ),
             const Spacer(),
             Text(
-              '$downloadedCount من $totalCount مجلد',
+              '$downloadedCount ظ…ظ† $totalCount ظ…ط¬ظ„ط¯',
               style: GoogleFonts.cairo(
                 fontSize: 11.5,
                 color: BooksTheme.getSubTextColor(isDark),
@@ -293,9 +293,9 @@ class _OverallProgress extends StatelessWidget {
   }
 }
 
-// ═══════════════════════════════════════════
-// تقدم الملف الحالي
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// طھظ‚ط¯ظ… ط§ظ„ظ…ظ„ظپ ط§ظ„ط­ط§ظ„ظٹ
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _CurrentFileProgress extends StatelessWidget {
   final String title;
   final double progress;
@@ -313,7 +313,7 @@ class _CurrentFileProgress extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Text(
-          'جاري تحميل: $title',
+          'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„: $title',
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: GoogleFonts.cairo(
@@ -331,7 +331,7 @@ class _CurrentFileProgress extends StatelessWidget {
             builder: (context, value, child) => LinearProgressIndicator(
               value: value,
               minHeight: 5,
-              backgroundColor: Colors.grey.withOpacity(0.12),
+              backgroundColor: Colors.grey.withValues(alpha: 0.12),
               valueColor: AlwaysStoppedAnimation<Color>(BooksTheme.gold),
             ),
           ),
@@ -353,9 +353,9 @@ class _CurrentFileProgress extends StatelessWidget {
   }
 }
 
-// ═══════════════════════════════════════════
-// رسالة الإيقاف
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط±ط³ط§ظ„ط© ط§ظ„ط¥ظٹظ‚ط§ظپ
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _StoppedMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -381,7 +381,7 @@ class _StoppedMessage extends StatelessWidget {
             const SizedBox(width: 6),
             Expanded(
               child: Text(
-                'تم إيقاف التحميل سابقًا، ويمكنك استكماله بالضغط على تحميل الكل',
+                'طھظ… ط¥ظٹظ‚ط§ظپ ط§ظ„طھط­ظ…ظٹظ„ ط³ط§ط¨ظ‚ظ‹ط§طŒ ظˆظٹظ…ظƒظ†ظƒ ط§ط³طھظƒظ…ط§ظ„ظ‡ ط¨ط§ظ„ط¶ط؛ط· ط¹ظ„ظ‰ طھط­ظ…ظٹظ„ ط§ظ„ظƒظ„',
                 style: GoogleFonts.cairo(
                   fontSize: 11,
                   color: Colors.orange,

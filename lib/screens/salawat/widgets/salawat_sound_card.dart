@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../languages/app_localizations.dart';
@@ -33,7 +33,7 @@ class SalawatSoundCard extends StatelessWidget {
                 width: SalawatTheme.smallIconSize,
                 height: SalawatTheme.smallIconSize,
                 decoration: BoxDecoration(
-                  color: theme.deepGreen.withOpacity(0.12),
+                  color: theme.deepGreen.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Icon(

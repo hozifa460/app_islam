@@ -1,4 +1,4 @@
-// lib/screens/radio/video/video_player_screen.dart
+﻿// lib/screens/radio/video/video_player_screen.dart
 
 import 'dart:async';
 import 'package:chewie/chewie.dart';
@@ -69,7 +69,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           playedColor: widget.primary,
           handleColor: widget.primary,
           backgroundColor: Colors.white24,
-          bufferedColor: widget.primary.withOpacity(0.3),
+          bufferedColor: widget.primary.withValues(alpha: 0.3),
         ),
         placeholder: Container(color: Colors.black),
         errorBuilder: (_, errorMessage) => _buildError(),
@@ -77,7 +77,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
       setState(() => _initialized = true);
     } catch (e) {
-      debugPrint('❌ Video error: $e');
+      debugPrint('â‌Œ Video error: $e');
       if (mounted) setState(() => _hasError = true);
     }
   }
@@ -103,7 +103,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           else
             _buildLoading(),
 
-          // ✅ زر الرجوع + عنوان
+          // âœ… ط²ط± ط§ظ„ط±ط¬ظˆط¹ + ط¹ظ†ظˆط§ظ†
           Positioned(
             top: 0,
             left: 0,
@@ -130,7 +130,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                       width: 38,
                       height: 38,
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.15),
+                        color: Colors.white.withValues(alpha: 0.15),
                         shape: BoxShape.circle,
                       ),
                       child: const Icon(
@@ -183,7 +183,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           CircularProgressIndicator(color: widget.primary),
           const SizedBox(height: 16),
           Text(
-            'جاري تحميل الفيديو...',
+            'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط§ظ„ظپظٹط¯ظٹظˆ...',
             style: GoogleFonts.cairo(color: Colors.white70, fontSize: 14),
           ),
         ],
@@ -199,7 +199,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           const Icon(Icons.error_outline, color: Colors.red, size: 48),
           const SizedBox(height: 12),
           Text(
-            'فشل تحميل الفيديو',
+            'ظپط´ظ„ طھط­ظ…ظٹظ„ ط§ظ„ظپظٹط¯ظٹظˆ',
             style: GoogleFonts.cairo(color: Colors.white70, fontSize: 16),
           ),
           const SizedBox(height: 12),
@@ -225,7 +225,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Text(
-                'إعادة المحاولة',
+                'ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط©',
                 style: GoogleFonts.cairo(
                   color: Colors.white,
                   fontWeight: FontWeight.w700,

@@ -1,4 +1,4 @@
-import 'dart:math';
+﻿import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,7 +30,7 @@ class CategoryMiraclesScreen extends StatefulWidget {
 
 class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
     with TickerProviderStateMixin {
-  // ── Controllers ───────────────────────────────
+  // â”€â”€ Controllers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   final TextEditingController _searchController = TextEditingController();
 
   late AnimationController _animController;
@@ -41,7 +41,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
   late AnimationController _headerController;
   late Animation<double> _headerAnim;
 
-  // ── State ─────────────────────────────────────
+  // â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   String _searchQuery = '';
   String _selectedFilter = 'all'; // all / quran / sunnah
   bool _showSearch = false;
@@ -51,7 +51,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
   final List<StarParticle> _particles = [];
   final _rng = Random();
 
-  // ── Init ──────────────────────────────────────
+  // â”€â”€ Init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   @override
   void initState() {
     super.initState();
@@ -108,7 +108,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
     super.dispose();
   }
 
-  // ── Favorites ─────────────────────────────────
+  // â”€â”€ Favorites â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   void _toggleFavorite(int id) async {
     setState(() {
       _favorites.contains(id) ? _favorites.remove(id) : _favorites.add(id);
@@ -124,7 +124,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
     }
   }
 
-  // ── Computed ──────────────────────────────────
+  // â”€â”€ Computed â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // Miracles of this category only
   List<Map<String, dynamic>> get _categoryMiracles =>
       widget.miracles
@@ -165,7 +165,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
     }).toList();
   }
 
-  // ── Navigation ────────────────────────────────
+  // â”€â”€ Navigation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   void _toDetail(Map<String, dynamic> item) async {
     final id = item['id'] ?? 0;
     await Navigator.push(
@@ -197,7 +197,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
     setState(() {});
   }
 
-  // ── Build ─────────────────────────────────────
+  // â”€â”€ Build â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
@@ -216,14 +216,14 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
           color: t.bg1,
           child: Stack(
             children: [
-              // خلفية متحركة
+              // ط®ظ„ظپظٹط© ظ…طھط­ط±ظƒط©
               Positioned.fill(
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 400),
                   color: t.bg1,
                 ),
               ),
-              // نجوم
+              // ظ†ط¬ظˆظ…
               Positioned.fill(
                 child: AnimatedBuilder(
                   animation: _particleController,
@@ -238,12 +238,12 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
                       ),
                 ),
               ),
-              // Scaffold شفاف للـ AppBar فقط
+              // Scaffold ط´ظپط§ظپ ظ„ظ„ظ€ AppBar ظپظ‚ط·
               Scaffold(
                 backgroundColor: Colors.transparent,
                 body: Stack(
                   children: [
-                    // ── Star field ──
+                    // â”€â”€ Star field â”€â”€
                     AnimatedBuilder(
                       animation: _particleController,
                       builder:
@@ -257,35 +257,35 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
                           ),
                     ),
 
-                    // ── Main content ──
+                    // â”€â”€ Main content â”€â”€
                     FadeTransition(
                       opacity: _fadeAnim,
                       child: CustomScrollView(
                         physics: const BouncingScrollPhysics(),
                         slivers: [
-                          // ── App Bar ──
+                          // â”€â”€ App Bar â”€â”€
                           _buildAppBar(t, catColor, catIcon, emoji, engName),
 
-                          // ── Stats row ──
+                          // â”€â”€ Stats row â”€â”€
                           SliverToBoxAdapter(
                             child: _buildStatsRow(t, catColor),
                           ),
 
-                          // ── Filter chips ──
+                          // â”€â”€ Filter chips â”€â”€
                           SliverToBoxAdapter(
                             child: _buildFilterRow(t, catColor),
                           ),
 
-                          // ── Search bar ──
+                          // â”€â”€ Search bar â”€â”€
                           if (_showSearch)
                             SliverToBoxAdapter(child: _buildSearchBar(t)),
 
-                          // ── Results header ──
+                          // â”€â”€ Results header â”€â”€
                           SliverToBoxAdapter(
                             child: _buildResultsHeader(t, catColor),
                           ),
 
-                          // ── Cards ──
+                          // â”€â”€ Cards â”€â”€
                           _filtered.isEmpty
                               ? SliverFillRemaining(
                                 child: _buildEmptyState(t, catColor),
@@ -328,9 +328,9 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
     );
   }
 
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   //  APP BAR
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildAppBar(
     MiracleThemeColors t,
     Color catColor,
@@ -345,7 +345,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
       floating: false,
       pinned: true,
       elevation: 0,
-      backgroundColor: t.bg1.withOpacity(0.95),
+      backgroundColor: t.bg1.withValues(alpha: 0.95),
 
       // Back button
       leading: Padding(
@@ -396,7 +396,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
                 fontWeight: FontWeight.bold,
                 fontSize: 15,
                 shadows: [
-                  Shadow(color: catColor.withOpacity(0.6), blurRadius: 12),
+                  Shadow(color: catColor.withValues(alpha: 0.6), blurRadius: 12),
                 ],
               ),
               maxLines: 1,
@@ -405,7 +405,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
             Text(
               engName,
               style: GoogleFonts.poppins(
-                color: catColor.withOpacity(0.85),
+                color: catColor.withValues(alpha: 0.85),
                 fontSize: 8,
                 fontWeight: FontWeight.w400,
                 letterSpacing: 1.2,
@@ -427,9 +427,9 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
     );
   }
 
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   //  STATS ROW
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildStatsRow(MiracleThemeColors t, Color catColor) {
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 14, 16, 12),
@@ -438,7 +438,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
           Expanded(
             child: _StatCard(
               icon: Icons.menu_book_rounded,
-              label: 'القرآن',
+              label: 'ط§ظ„ظ‚ط±ط¢ظ†',
               sublabel: 'Quran',
               count: _quranCount,
               color: const Color(0xFF4FC3F7),
@@ -456,7 +456,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
           Expanded(
             child: _StatCard(
               icon: Icons.auto_awesome_rounded,
-              label: 'السنة',
+              label: 'ط§ظ„ط³ظ†ط©',
               sublabel: 'Sunnah',
               count: _sunnahCount,
               color: MiracleTheme.neonGold,
@@ -474,7 +474,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
           Expanded(
             child: _StatCard(
               icon: Icons.favorite_rounded,
-              label: 'المفضلة',
+              label: 'ط§ظ„ظ…ظپط¶ظ„ط©',
               sublabel: 'Favorites',
               count: _favCount,
               color: MiracleTheme.neonRed,
@@ -487,7 +487,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
           Expanded(
             child: _StatCard(
               icon: Icons.library_books_rounded,
-              label: 'الإجمالي',
+              label: 'ط§ظ„ط¥ط¬ظ…ط§ظ„ظٹ',
               sublabel: 'Total',
               count: _categoryMiracles.length,
               color: MiracleTheme.neonGreen,
@@ -500,9 +500,9 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
     );
   }
 
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   //  FILTER ROW
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildFilterRow(MiracleThemeColors t, Color catColor) {
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 0, 16, 10),
@@ -510,7 +510,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
         children: [
           Expanded(
             child: _FilterChip(
-              label: 'الكل',
+              label: 'ط§ظ„ظƒظ„',
               icon: Icons.apps_rounded,
               selected: _selectedFilter == 'all',
               color: catColor,
@@ -521,7 +521,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
           const SizedBox(width: 8),
           Expanded(
             child: _FilterChip(
-              label: 'القرآن',
+              label: 'ط§ظ„ظ‚ط±ط¢ظ†',
               icon: Icons.menu_book_rounded,
               selected: _selectedFilter == 'quran',
               color: const Color(0xFF4FC3F7),
@@ -532,7 +532,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
           const SizedBox(width: 8),
           Expanded(
             child: _FilterChip(
-              label: 'السنة',
+              label: 'ط§ظ„ط³ظ†ط©',
               icon: Icons.auto_awesome_rounded,
               selected: _selectedFilter == 'sunnah',
               color: MiracleTheme.neonGold,
@@ -545,9 +545,9 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
     );
   }
 
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   //  SEARCH BAR
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildSearchBar(MiracleThemeColors t) {
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 0, 16, 10),
@@ -555,10 +555,10 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
       decoration: BoxDecoration(
         color: t.glass,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: MiracleTheme.neonBlue.withOpacity(0.25)),
+        border: Border.all(color: MiracleTheme.neonBlue.withValues(alpha: 0.25)),
         boxShadow: [
           BoxShadow(
-            color: MiracleTheme.neonBlue.withOpacity(0.06),
+            color: MiracleTheme.neonBlue.withValues(alpha: 0.06),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -570,12 +570,12 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
         style: GoogleFonts.cairo(color: Colors.white, fontSize: 14),
         cursorColor: MiracleTheme.neonBlue,
         decoration: InputDecoration(
-          hintText: 'ابحث في ${widget.categoryName}...',
+          hintText: 'ط§ط¨ط­ط« ظپظٹ ${widget.categoryName}...',
           hintStyle: GoogleFonts.cairo(color: Colors.white38, fontSize: 13),
           border: InputBorder.none,
           icon: Icon(
             Icons.search_rounded,
-            color: MiracleTheme.neonBlue.withOpacity(0.7),
+            color: MiracleTheme.neonBlue.withValues(alpha: 0.7),
           ),
           suffixIcon:
               _searchQuery.isNotEmpty
@@ -596,9 +596,9 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
     );
   }
 
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   //  RESULTS HEADER
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildResultsHeader(MiracleThemeColors t, Color catColor) {
     final hasFilters =
         _selectedFilter != 'all' || _searchQuery.isNotEmpty || _showFavOnly;
@@ -614,7 +614,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
               color: catColor,
               borderRadius: BorderRadius.circular(2),
               boxShadow: [
-                BoxShadow(color: catColor.withOpacity(0.4), blurRadius: 6),
+                BoxShadow(color: catColor.withValues(alpha: 0.4), blurRadius: 6),
               ],
             ),
           ),
@@ -622,8 +622,8 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
           Expanded(
             child: Text(
               _showFavOnly
-                  ? 'المفضلة (${_filtered.length})'
-                  : 'المعجزات (${_filtered.length})',
+                  ? 'ط§ظ„ظ…ظپط¶ظ„ط© (${_filtered.length})'
+                  : 'ط§ظ„ظ…ط¹ط¬ط²ط§طھ (${_filtered.length})',
               style: GoogleFonts.cairo(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
@@ -647,10 +647,10 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
                   vertical: 5,
                 ),
                 decoration: BoxDecoration(
-                  color: MiracleTheme.neonRed.withOpacity(0.1),
+                  color: MiracleTheme.neonRed.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    color: MiracleTheme.neonRed.withOpacity(0.25),
+                    color: MiracleTheme.neonRed.withValues(alpha: 0.25),
                   ),
                 ),
                 child: Row(
@@ -659,14 +659,14 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
                     Icon(
                       Icons.clear_all_rounded,
                       size: 14,
-                      color: MiracleTheme.neonRed.withOpacity(0.8),
+                      color: MiracleTheme.neonRed.withValues(alpha: 0.8),
                     ),
                     const SizedBox(width: 4),
                     Text(
-                      'مسح',
+                      'ظ…ط³ط­',
                       style: GoogleFonts.cairo(
                         fontSize: 10,
-                        color: MiracleTheme.neonRed.withOpacity(0.8),
+                        color: MiracleTheme.neonRed.withValues(alpha: 0.8),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -679,9 +679,9 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
     );
   }
 
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   //  EMPTY STATE
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildEmptyState(MiracleThemeColors t, Color catColor) {
     return Center(
       child: Padding(
@@ -694,10 +694,10 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
               height: 80,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: catColor.withOpacity(0.08),
-                border: Border.all(color: catColor.withOpacity(0.2)),
+                color: catColor.withValues(alpha: 0.08),
+                border: Border.all(color: catColor.withValues(alpha: 0.2)),
                 boxShadow: [
-                  BoxShadow(color: catColor.withOpacity(0.1), blurRadius: 20),
+                  BoxShadow(color: catColor.withValues(alpha: 0.1), blurRadius: 20),
                 ],
               ),
               child: Icon(
@@ -705,14 +705,14 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
                     ? Icons.favorite_border_rounded
                     : Icons.search_off_rounded,
                 size: 36,
-                color: catColor.withOpacity(0.5),
+                color: catColor.withValues(alpha: 0.5),
               ),
             ),
             const SizedBox(height: 20),
             Text(
               _showFavOnly
-                  ? 'لا توجد معجزات في المفضلة'
-                  : 'لا توجد نتائج مطابقة',
+                  ? 'ظ„ط§ طھظˆط¬ط¯ ظ…ط¹ط¬ط²ط§طھ ظپظٹ ط§ظ„ظ…ظپط¶ظ„ط©'
+                  : 'ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬ ظ…ط·ط§ط¨ظ‚ط©',
               style: GoogleFonts.cairo(
                 color: Colors.white70,
                 fontSize: 16,
@@ -723,8 +723,8 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
             const SizedBox(height: 8),
             Text(
               _showFavOnly
-                  ? 'اضغط على ❤️ لإضافة معجزات إلى المفضلة'
-                  : 'جرّب تغيير البحث أو الفلاتر',
+                  ? 'ط§ط¶ط؛ط· ط¹ظ„ظ‰ â‌¤ï¸ڈ ظ„ط¥ط¶ط§ظپط© ظ…ط¹ط¬ط²ط§طھ ط¥ظ„ظ‰ ط§ظ„ظ…ظپط¶ظ„ط©'
+                  : 'ط¬ط±ظ‘ط¨ طھط؛ظٹظٹط± ط§ظ„ط¨ط­ط« ط£ظˆ ط§ظ„ظپظ„ط§طھط±',
               style: GoogleFonts.cairo(color: Colors.white38, fontSize: 13),
               textAlign: TextAlign.center,
             ),
@@ -735,9 +735,9 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
   }
 }
 
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 //  APP BAR BACKGROUND
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _AppBarBackground extends StatelessWidget {
   final MiracleThemeColors t;
   final Color catColor;
@@ -766,7 +766,7 @@ class _AppBarBackground extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [catColor.withOpacity(0.25), t.bg2, t.bg1],
+          colors: [catColor.withValues(alpha: 0.25), t.bg2, t.bg1],
         ),
       ),
       child: Stack(
@@ -779,7 +779,7 @@ class _AppBarBackground extends StatelessWidget {
               emoji,
               style: TextStyle(
                 fontSize: 160,
-                color: Colors.white.withOpacity(0.06),
+                color: Colors.white.withValues(alpha: 0.06),
               ),
             ),
           ),
@@ -794,7 +794,7 @@ class _AppBarBackground extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: RadialGradient(
-                  colors: [catColor.withOpacity(0.12), Colors.transparent],
+                  colors: [catColor.withValues(alpha: 0.12), Colors.transparent],
                 ),
               ),
             ),
@@ -809,7 +809,7 @@ class _AppBarBackground extends StatelessWidget {
                 shape: BoxShape.circle,
                 gradient: RadialGradient(
                   colors: [
-                    MiracleTheme.neonBlue.withOpacity(0.08),
+                    MiracleTheme.neonBlue.withValues(alpha: 0.08),
                     Colors.transparent,
                   ],
                 ),
@@ -841,7 +841,7 @@ class _AppBarBackground extends StatelessWidget {
                                   shape: BoxShape.circle,
                                   gradient: RadialGradient(
                                     colors: [
-                                      catColor.withOpacity(
+                                      catColor.withValues(alpha: 
                                         0.18 * pulseAnim.value,
                                       ),
                                       Colors.transparent,
@@ -855,14 +855,14 @@ class _AppBarBackground extends StatelessWidget {
                                 height: 66,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: Colors.white.withOpacity(0.07),
+                                  color: Colors.white.withValues(alpha: 0.07),
                                   border: Border.all(
-                                    color: catColor.withOpacity(0.5),
+                                    color: catColor.withValues(alpha: 0.5),
                                     width: 1.5,
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: catColor.withOpacity(
+                                      color: catColor.withValues(alpha: 
                                         0.3 * pulseAnim.value,
                                       ),
                                       blurRadius: 22,
@@ -885,18 +885,18 @@ class _AppBarBackground extends StatelessWidget {
                         vertical: 5,
                       ),
                       decoration: BoxDecoration(
-                        color: catColor.withOpacity(0.15),
+                        color: catColor.withValues(alpha: 0.15),
                         borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: catColor.withOpacity(0.35)),
+                        border: Border.all(color: catColor.withValues(alpha: 0.35)),
                         boxShadow: [
                           BoxShadow(
-                            color: catColor.withOpacity(0.15),
+                            color: catColor.withValues(alpha: 0.15),
                             blurRadius: 10,
                           ),
                         ],
                       ),
                       child: Text(
-                        '$totalCount معجزة',
+                        '$totalCount ظ…ط¹ط¬ط²ط©',
                         style: GoogleFonts.cairo(
                           color: catColor,
                           fontSize: 12,
@@ -915,9 +915,9 @@ class _AppBarBackground extends StatelessWidget {
   }
 }
 
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 //  SMALL WIDGETS
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
 class _AppBarBtn extends StatelessWidget {
   final IconData icon;
@@ -982,17 +982,17 @@ class _StatCard extends StatelessWidget {
         duration: const Duration(milliseconds: 280),
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 4),
         decoration: BoxDecoration(
-          color: highlighted ? color.withOpacity(0.15) : t.glass,
+          color: highlighted ? color.withValues(alpha: 0.15) : t.glass,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: highlighted ? color.withOpacity(0.5) : t.glassBorder,
+            color: highlighted ? color.withValues(alpha: 0.5) : t.glassBorder,
             width: highlighted ? 1.5 : 1,
           ),
           boxShadow:
               highlighted
                   ? [
                     BoxShadow(
-                      color: color.withOpacity(0.2),
+                      color: color.withValues(alpha: 0.2),
                       blurRadius: 14,
                       spreadRadius: 2,
                     ),
@@ -1007,9 +1007,9 @@ class _StatCard extends StatelessWidget {
               height: 32,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: color.withOpacity(0.12),
+                color: color.withValues(alpha: 0.12),
                 boxShadow: [
-                  BoxShadow(color: color.withOpacity(0.15), blurRadius: 8),
+                  BoxShadow(color: color.withValues(alpha: 0.15), blurRadius: 8),
                 ],
               ),
               child: Icon(icon, color: color, size: 15),
@@ -1032,7 +1032,7 @@ class _StatCard extends StatelessWidget {
                 label,
                 style: GoogleFonts.cairo(
                   fontSize: 10,
-                  color: Colors.white.withOpacity(0.75),
+                  color: Colors.white.withValues(alpha: 0.75),
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -1043,7 +1043,7 @@ class _StatCard extends StatelessWidget {
                 sublabel,
                 style: GoogleFonts.poppins(
                   fontSize: 8,
-                  color: color.withOpacity(0.55),
+                  color: color.withValues(alpha: 0.55),
                 ),
               ),
             ),
@@ -1079,15 +1079,15 @@ class _FilterChip extends StatelessWidget {
         duration: const Duration(milliseconds: 260),
         padding: const EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
-          color: selected ? color.withOpacity(0.15) : t.glass,
+          color: selected ? color.withValues(alpha: 0.15) : t.glass,
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
-            color: selected ? color.withOpacity(0.5) : t.glassBorder,
+            color: selected ? color.withValues(alpha: 0.5) : t.glassBorder,
             width: selected ? 1.5 : 1,
           ),
           boxShadow:
               selected
-                  ? [BoxShadow(color: color.withOpacity(0.2), blurRadius: 10)]
+                  ? [BoxShadow(color: color.withValues(alpha: 0.2), blurRadius: 10)]
                   : [],
         ),
         child: Row(

@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -88,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen>
     0.0,
   );
 
-  // ══ FIX #1: تقليل AnimationControllers — دمج الأنيميشنات ══
+  // â•گâ•گ FIX #1: طھظ‚ظ„ظٹظ„ AnimationControllers â€” ط¯ظ…ط¬ ط§ظ„ط£ظ†ظٹظ…ظٹط´ظ†ط§طھ â•گâ•گ
   late AnimationController _animController;
   late AnimationController _pulseController;
   late Animation<double> _pulseAnim;
@@ -120,13 +120,13 @@ class _HomeScreenState extends State<HomeScreen>
   List<Map<String, dynamic>> _azkarCategories = [];
   bool _azkarLoaded = false;
 
-  // ══ FIX #2: إزالة تكرار البيانات — استخدام Provider مباشرة ══
+  // â•گâ•گ FIX #2: ط¥ط²ط§ظ„ط© طھظƒط±ط§ط± ط§ظ„ط¨ظٹط§ظ†ط§طھ â€” ط§ط³طھط®ط¯ط§ظ… Provider ظ…ط¨ط§ط´ط±ط© â•گâ•گ
   String _nextPrayerName = '...';
   String _timeLeft = '';
   bool _isSchedulingNotifications = false;
 
   late PageController _heroPageController;
-  // ══ FIX #11: استخدام ValueNotifier بدل setState للـ PageView ══
+  // â•گâ•گ FIX #11: ط§ط³طھط®ط¯ط§ظ… ValueNotifier ط¨ط¯ظ„ setState ظ„ظ„ظ€ PageView â•گâ•گ
   final ValueNotifier<int> _currentHeroNotifier = ValueNotifier<int>(0);
   Timer? _heroTimer;
 
@@ -144,29 +144,29 @@ class _HomeScreenState extends State<HomeScreen>
   Map<String, String> currentVerseOfDay = {'verse': '', 'surah': ''};
   Map<String, String> currentHadithOfDay = {'text': '', 'source': ''};
 
-  // ══ FIX #12: كاش للقوائم المتكررة ══
+  // â•گâ•گ FIX #12: ظƒط§ط´ ظ„ظ„ظ‚ظˆط§ط¦ظ… ط§ظ„ظ…طھظƒط±ط±ط© â•گâ•گ
   List<Map<String, dynamic>>? _cachedFeatures;
   List<Map<String, dynamic>>? _cachedPrayerInfo;
   String? _lastFeaturesLocale;
   String? _lastPrayerInfoLocale;
 
   static const List<Map<String, dynamic>> _featureIcons = [
-    {'icon': Icons.menu_book_rounded, 'badge': '📖'},
-    {'icon': Icons.access_time_filled_rounded, 'badge': '🕌'},
-    {'icon': Icons.auto_awesome_rounded, 'badge': '✨'},
-    {'icon': Icons.touch_app_rounded, 'badge': '📿'},
-    {'icon': Icons.format_quote_rounded, 'badge': '📜'},
-    {'icon': Icons.emoji_events_rounded, 'badge': '🏰'},
-    {'icon': Icons.track_changes, 'badge': '🎯'},
-    {'icon': Icons.live_tv_rounded, 'badge': '🔴'},
-    {'icon': Icons.explore_rounded, 'badge': '🧭'},
-    {'icon': Icons.favorite_rounded, 'badge': '🤲'},
-    {'icon': Icons.local_library_rounded, 'badge': '📚'},
-    {'icon': Icons.volume_up_rounded, 'badge': '🎙️'},
-    {'icon': Icons.volume_up_rounded, 'badge': '📜'},
-    {'icon': Icons.volume_up_rounded, 'badge': '📜'},
-    {'icon': Icons.military_tech_rounded, 'badge': '🏛️'},
-    {'icon': Icons.settings_rounded, 'badge': '⚙️'},
+    {'icon': Icons.menu_book_rounded, 'badge': 'ًں“–'},
+    {'icon': Icons.access_time_filled_rounded, 'badge': 'ًں•Œ'},
+    {'icon': Icons.auto_awesome_rounded, 'badge': 'âœ¨'},
+    {'icon': Icons.touch_app_rounded, 'badge': 'ًں“؟'},
+    {'icon': Icons.format_quote_rounded, 'badge': 'ًں“œ'},
+    {'icon': Icons.emoji_events_rounded, 'badge': 'ًںڈ°'},
+    {'icon': Icons.track_changes, 'badge': 'ًںژ¯'},
+    {'icon': Icons.live_tv_rounded, 'badge': 'ًں”´'},
+    {'icon': Icons.explore_rounded, 'badge': 'ًں§­'},
+    {'icon': Icons.favorite_rounded, 'badge': 'ًں¤²'},
+    {'icon': Icons.local_library_rounded, 'badge': 'ًں“ڑ'},
+    {'icon': Icons.volume_up_rounded, 'badge': 'ًںژ™ï¸ڈ'},
+    {'icon': Icons.volume_up_rounded, 'badge': 'ًں“œ'},
+    {'icon': Icons.volume_up_rounded, 'badge': 'ًں“œ'},
+    {'icon': Icons.military_tech_rounded, 'badge': 'ًںڈ›ï¸ڈ'},
+    {'icon': Icons.settings_rounded, 'badge': 'âڑ™ï¸ڈ'},
   ];
 
   final List<Map<String, dynamic>> _prayerInfo = [
@@ -180,39 +180,39 @@ class _HomeScreenState extends State<HomeScreen>
 
   final List<Map<String, String>> dailyVerses = const [
     {
-      'verse': 'وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا',
-      'surah': 'الطلاق - ٢',
+      'verse': 'ظˆظژظ…ظژظ† ظٹظژطھظژظ‘ظ‚ظگ ط§ظ„ظ„ظژظ‘ظ‡ظژ ظٹظژط¬ظ’ط¹ظژظ„ ظ„ظژظ‘ظ‡ظڈ ظ…ظژط®ظ’ط±ظژط¬ظ‹ط§',
+      'surah': 'ط§ظ„ط·ظ„ط§ظ‚ - ظ¢',
     },
-    {'verse': 'فَإِنَّ مَعَ الْعُسْرِ يُسْرًا', 'surah': 'الشرح - ٥'},
+    {'verse': 'ظپظژط¥ظگظ†ظژظ‘ ظ…ظژط¹ظژ ط§ظ„ظ’ط¹ظڈط³ظ’ط±ظگ ظٹظڈط³ظ’ط±ظ‹ط§', 'surah': 'ط§ظ„ط´ط±ط­ - ظ¥'},
     {
-      'verse': 'لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا',
-      'surah': 'البقرة - ٢٨٦',
+      'verse': 'ظ„ظژط§ ظٹظڈظƒظژظ„ظگظ‘ظپظڈ ط§ظ„ظ„ظژظ‘ظ‡ظڈ ظ†ظژظپظ’ط³ظ‹ط§ ط¥ظگظ„ظژظ‘ط§ ظˆظڈط³ظ’ط¹ظژظ‡ظژط§',
+      'surah': 'ط§ظ„ط¨ظ‚ط±ط© - ظ¢ظ¨ظ¦',
     },
-    {'verse': 'وَقُل رَّبِّ زِدْنِي عِلْمًا', 'surah': 'طه - ١١٤'},
+    {'verse': 'ظˆظژظ‚ظڈظ„ ط±ظژظ‘ط¨ظگظ‘ ط²ظگط¯ظ’ظ†ظگظٹ ط¹ظگظ„ظ’ظ…ظ‹ط§', 'surah': 'ط·ظ‡ - ظ،ظ،ظ¤'},
     {
-      'verse': 'أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ',
-      'surah': 'الرعد - ٢٨',
+      'verse': 'ط£ظژظ„ظژط§ ط¨ظگط°ظگظƒظ’ط±ظگ ط§ظ„ظ„ظژظ‘ظ‡ظگ طھظژط·ظ’ظ…ظژط¦ظگظ†ظڈظ‘ ط§ظ„ظ’ظ‚ظڈظ„ظڈظˆط¨ظڈ',
+      'surah': 'ط§ظ„ط±ط¹ط¯ - ظ¢ظ¨',
     },
   ];
 
   final List<Map<String, String>> dailyHadiths = const [
     {
-      'text': '« إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ »',
-      'source': 'رواه البخاري',
+      'text': 'آ« ط¥ظگظ†ظژظ‘ظ…ظژط§ ط§ظ„ظ’ط£ظژط¹ظ’ظ…ظژط§ظ„ظڈ ط¨ظگط§ظ„ظ†ظگظ‘ظٹظژظ‘ط§طھظگ آ»',
+      'source': 'ط±ظˆط§ظ‡ ط§ظ„ط¨ط®ط§ط±ظٹ',
     },
-    {'text': '« الدِّينُ النَّصِيحَةُ »', 'source': 'رواه مسلم'},
-    {'text': '« الْكَلِمَةُ الطَّيِّبَةُ صَدَقَةٌ »', 'source': 'رواه البخاري'},
+    {'text': 'آ« ط§ظ„ط¯ظگظ‘ظٹظ†ظڈ ط§ظ„ظ†ظژظ‘طµظگظٹط­ظژط©ظڈ آ»', 'source': 'ط±ظˆط§ظ‡ ظ…ط³ظ„ظ…'},
+    {'text': 'آ« ط§ظ„ظ’ظƒظژظ„ظگظ…ظژط©ظڈ ط§ظ„ط·ظژظ‘ظٹظگظ‘ط¨ظژط©ظڈ طµظژط¯ظژظ‚ظژط©ظŒ آ»', 'source': 'ط±ظˆط§ظ‡ ط§ظ„ط¨ط®ط§ط±ظٹ'},
     {
-      'text': '« تَبَسُّمُكَ فِي وَجْهِ أَخِيكَ لَكَ صَدَقَةٌ »',
-      'source': 'رواه الترمذي',
+      'text': 'آ« طھظژط¨ظژط³ظڈظ‘ظ…ظڈظƒظژ ظپظگظٹ ظˆظژط¬ظ’ظ‡ظگ ط£ظژط®ظگظٹظƒظژ ظ„ظژظƒظژ طµظژط¯ظژظ‚ظژط©ظŒ آ»',
+      'source': 'ط±ظˆط§ظ‡ ط§ظ„طھط±ظ…ط°ظٹ',
     },
     {
-      'text': '« خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ »',
-      'source': 'رواه البخاري',
+      'text': 'آ« ط®ظژظٹظ’ط±ظڈظƒظڈظ…ظ’ ظ…ظژظ†ظ’ طھظژط¹ظژظ„ظژظ‘ظ…ظژ ط§ظ„ظ’ظ‚ظڈط±ظ’ط¢ظ†ظژ ظˆظژط¹ظژظ„ظژظ‘ظ…ظژظ‡ظڈ آ»',
+      'source': 'ط±ظˆط§ظ‡ ط§ظ„ط¨ط®ط§ط±ظٹ',
     },
   ];
 
-  // ══ FIX #12: كاش Features و PrayerInfo ══
+  // â•گâ•گ FIX #12: ظƒط§ط´ Features ظˆ PrayerInfo â•گâ•گ
   List<Map<String, dynamic>> _buildFeatures(AppLocalizations tr) {
     final locale = "tr.localeName";
     if (_cachedFeatures != null && _lastFeaturesLocale == locale) {
@@ -307,9 +307,9 @@ class _HomeScreenState extends State<HomeScreen>
       CurvedAnimation(parent: _prayerPulseController, curve: Curves.easeInOut),
     );
 
-    // ══ FIX #9: إيقاف الأنيميشنات المتكررة عندما تكتمل الدخول ══
-    // _pulseController و _prayerPulseController يبقون لأنهم visual feedback
-    // لكن _animController يتوقف بعد انتهاء الدخول (forward فقط)
+    // â•گâ•گ FIX #9: ط¥ظٹظ‚ط§ظپ ط§ظ„ط£ظ†ظٹظ…ظٹط´ظ†ط§طھ ط§ظ„ظ…طھظƒط±ط±ط© ط¹ظ†ط¯ظ…ط§ طھظƒطھظ…ظ„ ط§ظ„ط¯ط®ظˆظ„ â•گâ•گ
+    // _pulseController ظˆ _prayerPulseController ظٹط¨ظ‚ظˆظ† ظ„ط£ظ†ظ‡ظ… visual feedback
+    // ظ„ظƒظ† _animController ظٹطھظˆظ‚ظپ ط¨ط¹ط¯ ط§ظ†طھظ‡ط§ط، ط§ظ„ط¯ط®ظˆظ„ (forward ظپظ‚ط·)
 
     _fadeMiracle = CurvedAnimation(
       parent: _animController,
@@ -363,7 +363,7 @@ class _HomeScreenState extends State<HomeScreen>
     _slideSunnah = _buildSlide(0.38, 0.65);
   }
 
-  // ══ FIX: تقليل التكرار في بناء الأنيميشنات ══
+  // â•گâ•گ FIX: طھظ‚ظ„ظٹظ„ ط§ظ„طھظƒط±ط§ط± ظپظٹ ط¨ظ†ط§ط، ط§ظ„ط£ظ†ظٹظ…ظٹط´ظ†ط§طھ â•گâ•گ
   Animation<Offset> _buildSlide(double begin, double end) {
     return Tween<Offset>(
       begin: const Offset(0, 0.06),
@@ -397,7 +397,7 @@ class _HomeScreenState extends State<HomeScreen>
       _initLocationAndPrayersSafe();
     });
 
-    // ══ FIX #1: Timer أذكى — فقط يحدّث إذا تغير شيء ══
+    // â•گâ•گ FIX #1: Timer ط£ط°ظƒظ‰ â€” ظپظ‚ط· ظٹط­ط¯ظ‘ط« ط¥ط°ط§ طھط؛ظٹط± ط´ظٹط، â•گâ•گ
     _timer = Timer.periodic(const Duration(seconds: 30), (_) {
       if (!mounted) return;
       final prayerController = context.read<PrayerTimesController>();
@@ -410,7 +410,7 @@ class _HomeScreenState extends State<HomeScreen>
         final oldLeft = _timeLeft;
         _calculateNextPrayer(newPrayerTimes);
 
-        // ══ FIX: فقط setState إذا تغير شيء فعلاً ══
+        // â•گâ•گ FIX: ظپظ‚ط· setState ط¥ط°ط§ طھط؛ظٹط± ط´ظٹط، ظپط¹ظ„ط§ظ‹ â•گâ•گ
         if (oldNext != _nextPrayerName || oldLeft != _timeLeft) {
           setState(() {});
         }
@@ -455,7 +455,7 @@ class _HomeScreenState extends State<HomeScreen>
       await HijriData.loadData(langCode);
       if (mounted) setState(() => _hijriDataLoaded = true);
     } catch (e) {
-      debugPrint('خطأ تحميل الهجري: $e');
+      debugPrint('ط®ط·ط£ طھط­ظ…ظٹظ„ ط§ظ„ظ‡ط¬ط±ظٹ: $e');
       if (mounted) setState(() => _hijriDataLoaded = true);
     }
   }
@@ -481,7 +481,7 @@ class _HomeScreenState extends State<HomeScreen>
         });
       }
     } catch (e) {
-      debugPrint('❌ خطأ تحميل معجزة اليوم: $e');
+      debugPrint('â‌Œ ط®ط·ط£ طھط­ظ…ظٹظ„ ظ…ط¹ط¬ط²ط© ط§ظ„ظٹظˆظ…: $e');
     }
   }
 
@@ -511,7 +511,7 @@ class _HomeScreenState extends State<HomeScreen>
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            'تم حفظ ترتيب البطاقات ✓',
+            'طھظ… ط­ظپط¸ طھط±طھظٹط¨ ط§ظ„ط¨ط·ط§ظ‚ط§طھ âœ“',
             style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
           ),
           backgroundColor: _primary,
@@ -541,7 +541,7 @@ class _HomeScreenState extends State<HomeScreen>
           child: _animatedSection(
             fade: _fadeHeader,
             slide: _slideHeader,
-            // ══ FIX #11: ValueListenableBuilder بدل setState ══
+            // â•گâ•گ FIX #11: ValueListenableBuilder ط¨ط¯ظ„ setState â•گâ•گ
             child: ValueListenableBuilder<int>(
               valueListenable: _currentHeroNotifier,
               builder: (_, currentIndex, __) {
@@ -714,7 +714,7 @@ class _HomeScreenState extends State<HomeScreen>
     }
   }
 
-  // ══ FIX #8: إزالة clearCache الغير ضروري ══
+  // â•گâ•گ FIX #8: ط¥ط²ط§ظ„ط© clearCache ط§ظ„ط؛ظٹط± ط¶ط±ظˆط±ظٹ â•گâ•گ
   Future<void> _loadGreatMuslims() async {
     try {
       final data = await GreatMuslimsService.load();
@@ -725,7 +725,7 @@ class _HomeScreenState extends State<HomeScreen>
         });
       }
     } catch (e) {
-      debugPrint('❌ HomeScreen خطأ: $e');
+      debugPrint('â‌Œ HomeScreen ط®ط·ط£: $e');
     }
   }
 
@@ -744,14 +744,14 @@ class _HomeScreenState extends State<HomeScreen>
     }
   }
 
-  // ══ FIX #7: كاش المحتوى اليومي ══
+  // â•گâ•گ FIX #7: ظƒط§ط´ ط§ظ„ظ…ط­طھظˆظ‰ ط§ظ„ظٹظˆظ…ظٹ â•گâ•گ
   void _setDailyContent() async {
     final now = DateTime.now();
     final daySeed = now.year * 10000 + now.month * 100 + now.day;
     final verseIndex = daySeed % dailyVerses.length;
     final hadithIndex = daySeed % dailyHadiths.length;
 
-    // تعيين المحتوى الافتراضي فوراً بدون setState لأنه قبل أول build
+    // طھط¹ظٹظٹظ† ط§ظ„ظ…ط­طھظˆظ‰ ط§ظ„ط§ظپطھط±ط§ط¶ظٹ ظپظˆط±ط§ظ‹ ط¨ط¯ظˆظ† setState ظ„ط£ظ†ظ‡ ظ‚ط¨ظ„ ط£ظˆظ„ build
     currentVerseOfDay = dailyVerses[verseIndex];
     currentHadithOfDay = dailyHadiths[hadithIndex];
 
@@ -771,9 +771,9 @@ class _HomeScreenState extends State<HomeScreen>
               'verse':
                   ayah['text']
                       .toString()
-                      .replaceAll('بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ', '')
+                      .replaceAll('ط¨ظگط³ظ’ظ…ظگ ظ±ظ„ظ„ظژظ‘ظ‡ظگ ظ±ظ„ط±ظژظ‘ط­ظ’ظ…ظژظ°ظ†ظگ ظ±ظ„ط±ظژظ‘ط­ظگظٹظ…ظگ', '')
                       .trim(),
-              'surah': '${surah['name']} - آية ${ayah['numberInSurah']}',
+              'surah': '${surah['name']} - ط¢ظٹط© ${ayah['numberInSurah']}',
             };
           });
         }
@@ -793,7 +793,7 @@ class _HomeScreenState extends State<HomeScreen>
                       .toString()
                       .replaceAll(RegExp(r'<[^>]*>'), '')
                       .trim(),
-              'source': 'رقم الحديث: ${hadith['hadithnumber']}',
+              'source': 'ط±ظ‚ظ… ط§ظ„ط­ط¯ظٹط«: ${hadith['hadithnumber']}',
             };
           });
         }
@@ -805,7 +805,7 @@ class _HomeScreenState extends State<HomeScreen>
     final now = DateTime.now();
     final hour =
         now.hour > 12 ? now.hour - 12 : (now.hour == 0 ? 12 : now.hour);
-    final period = now.hour >= 12 ? 'م' : 'ص';
+    final period = now.hour >= 12 ? 'ظ…' : 'طµ';
     _currentTime = '$hour:${now.minute.toString().padLeft(2, '0')} $period';
   }
 
@@ -911,7 +911,7 @@ class _HomeScreenState extends State<HomeScreen>
         }
       }
     } catch (e) {
-      debugPrint('❌ خطأ أثناء الجدولة: $e');
+      debugPrint('â‌Œ ط®ط·ط£ ط£ط«ظ†ط§ط، ط§ظ„ط¬ط¯ظˆظ„ط©: $e');
     } finally {
       _isSchedulingNotifications = false;
     }
@@ -1020,7 +1020,7 @@ class _HomeScreenState extends State<HomeScreen>
       await prefs.setBool('reminder_enabled', offset > 0);
       await _schedulePrayerNotifications();
     } catch (e) {
-      debugPrint('❌ apply reminder offset error: $e');
+      debugPrint('â‌Œ apply reminder offset error: $e');
     }
   }
 
@@ -1140,7 +1140,7 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   Map<String, dynamic>? _getCurrentAzkarCategoryFromJson() {
-    final targetTitle = _isMorningAzkarTime() ? 'أذكار الصباح' : 'أذكار المساء';
+    final targetTitle = _isMorningAzkarTime() ? 'ط£ط°ظƒط§ط± ط§ظ„طµط¨ط§ط­' : 'ط£ط°ظƒط§ط± ط§ظ„ظ…ط³ط§ط،';
     try {
       return _azkarCategories.firstWhere((c) => c['title'] == targetTitle);
     } catch (_) {
@@ -1182,7 +1182,7 @@ class _HomeScreenState extends State<HomeScreen>
         textDirection: tr.textDirection,
         child: Stack(
           children: [
-            // الخلفية
+            // ط§ظ„ط®ظ„ظپظٹط©
             Positioned.fill(
               child: ValueListenableBuilder<double>(
                 valueListenable: _scrollOffsetNotifier,
@@ -1197,7 +1197,7 @@ class _HomeScreenState extends State<HomeScreen>
               ),
             ),
 
-            // المحتوى
+            // ط§ظ„ظ…ط­طھظˆظ‰
             SafeArea(
               child: Selector<PrayerTimesController, _PrayerSnapshot>(
                 selector: (_, ctrl) => _PrayerSnapshot(
@@ -1222,7 +1222,7 @@ class _HomeScreenState extends State<HomeScreen>
                   final visibleCards =
                   rawCards.where((c) => c.isVisible).toList();
 
-                  // fallback أمان: إذا أصبحت كل البطاقات مخفية لأي سبب
+                  // fallback ط£ظ…ط§ظ†: ط¥ط°ط§ ط£طµط¨ط­طھ ظƒظ„ ط§ظ„ط¨ط·ط§ظ‚ط§طھ ظ…ط®ظپظٹط© ظ„ط£ظٹ ط³ط¨ط¨
                   final orderedCards = visibleCards.isNotEmpty
                       ? visibleCards
                       : HomeCardsOrderService.defaultCards
@@ -1243,7 +1243,7 @@ class _HomeScreenState extends State<HomeScreen>
                     ),
                     padding: const EdgeInsets.fromLTRB(16, 8, 16, 120),
                     children: [
-                      // الشريط العلوي
+                      // ط§ظ„ط´ط±ظٹط· ط§ظ„ط¹ظ„ظˆظٹ
                       Padding(
                         padding: const EdgeInsets.only(bottom: 14),
                         child: ValueListenableBuilder<double>(
@@ -1259,14 +1259,14 @@ class _HomeScreenState extends State<HomeScreen>
                               decoration: BoxDecoration(
                                 color: elevated
                                     ? (isDark
-                                    ? const Color(0xFF0E1714).withOpacity(0.30)
-                                    : Colors.white.withOpacity(0.35))
+                                    ? const Color(0xFF0E1714).withValues(alpha: 0.30)
+                                    : Colors.white.withValues(alpha: 0.35))
                                     : Colors.transparent,
                                 borderRadius: BorderRadius.circular(18),
                                 boxShadow: elevated
                                     ? [
                                   BoxShadow(
-                                    color: Colors.black.withOpacity(
+                                    color: Colors.black.withValues(alpha: 
                                       isDark ? 0.18 : 0.06,
                                     ),
                                     blurRadius: 10,
@@ -1302,7 +1302,7 @@ class _HomeScreenState extends State<HomeScreen>
                         ),
                       ),
 
-                      // البطاقات
+                      // ط§ظ„ط¨ط·ط§ظ‚ط§طھ
                       ...orderedCards.asMap().entries.map((entry) {
                         final index = entry.key;
                         final card = entry.value;
@@ -1345,18 +1345,18 @@ class _HomeScreenState extends State<HomeScreen>
       monthName = HijriData.hijriMonths[hijri.hMonth - 1];
     } else {
       const fallbackMonths = [
-        'محرم',
-        'صفر',
-        'ربيع الأول',
-        'ربيع الآخر',
-        'جمادى الأولى',
-        'جمادى الآخرة',
-        'رجب',
-        'شعبان',
-        'رمضان',
-        'شوال',
-        'ذو القعدة',
-        'ذو الحجة',
+        'ظ…ط­ط±ظ…',
+        'طµظپط±',
+        'ط±ط¨ظٹط¹ ط§ظ„ط£ظˆظ„',
+        'ط±ط¨ظٹط¹ ط§ظ„ط¢ط®ط±',
+        'ط¬ظ…ط§ط¯ظ‰ ط§ظ„ط£ظˆظ„ظ‰',
+        'ط¬ظ…ط§ط¯ظ‰ ط§ظ„ط¢ط®ط±ط©',
+        'ط±ط¬ط¨',
+        'ط´ط¹ط¨ط§ظ†',
+        'ط±ظ…ط¶ط§ظ†',
+        'ط´ظˆط§ظ„',
+        'ط°ظˆ ط§ظ„ظ‚ط¹ط¯ط©',
+        'ط°ظˆ ط§ظ„ط­ط¬ط©',
       ];
       monthName = fallbackMonths[hijri.hMonth - 1];
     }
@@ -1368,11 +1368,11 @@ class _HomeScreenState extends State<HomeScreen>
 
     final dateText = '${hijri.hDay} $monthName ${hijri.hYear}';
 
-    // ══ FIX #13: كاش ألوان بدل withOpacity متكرر ══
+    // â•گâ•گ FIX #13: ظƒط§ط´ ط£ظ„ظˆط§ظ† ط¨ط¯ظ„ withOpacity ظ…طھظƒط±ط± â•گâ•گ
     final borderColor =
         todayEvent != null
-            ? _gold.withOpacity(0.5)
-            : _primary.withOpacity(0.12);
+            ? _gold.withValues(alpha: 0.5)
+            : _primary.withValues(alpha: 0.12);
     final borderWidth = todayEvent != null ? 1.2 : 0.8;
 
     return GestureDetector(
@@ -1388,12 +1388,12 @@ class _HomeScreenState extends State<HomeScreen>
         constraints: const BoxConstraints(maxHeight: 52),
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
         decoration: BoxDecoration(
-          color: cardColor.withOpacity(0.92),
+          color: cardColor.withValues(alpha: 0.92),
           borderRadius: BorderRadius.circular(16),
           border: Border.all(color: borderColor, width: borderWidth),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(isDark ? 0.2 : 0.05),
+              color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.05),
               blurRadius: 8,
               offset: const Offset(0, 2),
             ),
@@ -1431,11 +1431,11 @@ class _HomeScreenState extends State<HomeScreen>
               const SizedBox(height: 1),
               Flexible(
                 child: Text(
-                  '✨ ${todayEvent['title'] ?? ''}',
+                  'âœ¨ ${todayEvent['title'] ?? ''}',
                   style: GoogleFonts.cairo(
                     fontSize: 9,
                     fontWeight: FontWeight.w600,
-                    color: _gold.withOpacity(0.9),
+                    color: _gold.withValues(alpha: 0.9),
                     height: 1.2,
                   ),
                   maxLines: 1,
@@ -1463,10 +1463,10 @@ class _HomeScreenState extends State<HomeScreen>
         height: 42,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: cardColor.withOpacity(0.9),
+          color: cardColor.withValues(alpha: 0.9),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(isDark ? 0.2 : 0.06),
+              color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.06),
               blurRadius: 8,
               offset: const Offset(0, 2),
             ),
@@ -1478,7 +1478,7 @@ class _HomeScreenState extends State<HomeScreen>
   }
 }
 
-// ══ FIX #2: Snapshot class لـ Selector ══
+// â•گâ•گ FIX #2: Snapshot class ظ„ظ€ Selector â•گâ•گ
 class _PrayerSnapshot {
   final Map<String, String> prayerTimes;
   final String cityName;
@@ -1512,8 +1512,8 @@ class _PrayerSnapshot {
 }
 
 
-/// ══ بطاقة تدخل بشكل متدرج ══
-/// ══ بطاقة تتحرك فقط عندما تظهر على الشاشة ══
+/// â•گâ•گ ط¨ط·ط§ظ‚ط© طھط¯ط®ظ„ ط¨ط´ظƒظ„ ظ…طھط¯ط±ط¬ â•گâ•گ
+/// â•گâ•گ ط¨ط·ط§ظ‚ط© طھطھط­ط±ظƒ ظپظ‚ط· ط¹ظ†ط¯ظ…ط§ طھط¸ظ‡ط± ط¹ظ„ظ‰ ط§ظ„ط´ط§ط´ط© â•گâ•گ
 class _StaggeredCard extends StatefulWidget {
   final int index;
   final Widget child;
@@ -1554,7 +1554,7 @@ class _StaggeredCardState extends State<_StaggeredCard>
       CurvedAnimation(parent: _ctrl, curve: Curves.easeOutCubic),
     );
 
-    // البطاقات الأولى (0-3) تبدأ مباشرة لأنها مرئية
+    // ط§ظ„ط¨ط·ط§ظ‚ط§طھ ط§ظ„ط£ظˆظ„ظ‰ (0-3) طھط¨ط¯ط£ ظ…ط¨ط§ط´ط±ط© ظ„ط£ظ†ظ‡ط§ ظ…ط±ط¦ظٹط©
     if (widget.index < 4) {
       Future.delayed(Duration(milliseconds: widget.index * 80), () {
         if (mounted && !_hasAnimated) {
@@ -1574,7 +1574,7 @@ class _StaggeredCardState extends State<_StaggeredCard>
   void _onVisible() {
     if (!_hasAnimated && mounted) {
       _hasAnimated = true;
-      // تأخير بسيط لإحساس طبيعي
+      // طھط£ط®ظٹط± ط¨ط³ظٹط· ظ„ط¥ط­ط³ط§ط³ ط·ط¨ظٹط¹ظٹ
       Future.delayed(const Duration(milliseconds: 50), () {
         if (mounted) _ctrl.forward();
       });
@@ -1596,7 +1596,7 @@ class _StaggeredCardState extends State<_StaggeredCard>
   }
 }
 
-/// ══ يكشف متى يظهر الويدجت على الشاشة — بدون مكتبات خارجية ══
+/// â•گâ•گ ظٹظƒط´ظپ ظ…طھظ‰ ظٹط¸ظ‡ط± ط§ظ„ظˆظٹط¯ط¬طھ ط¹ظ„ظ‰ ط§ظ„ط´ط§ط´ط© â€” ط¨ط¯ظˆظ† ظ…ظƒطھط¨ط§طھ ط®ط§ط±ط¬ظٹط© â•گâ•گ
 class _VisibilityTrigger extends StatefulWidget {
   final VoidCallback onVisible;
   final Widget child;
@@ -1617,7 +1617,7 @@ class _VisibilityTriggerState extends State<_VisibilityTrigger> {
   @override
   void initState() {
     super.initState();
-    // نفحص بعد أول frame
+    // ظ†ظپط­طµ ط¨ط¹ط¯ ط£ظˆظ„ frame
     WidgetsBinding.instance.addPostFrameCallback((_) => _check());
   }
 
@@ -1626,12 +1626,12 @@ class _VisibilityTriggerState extends State<_VisibilityTrigger> {
 
     final renderObject = _key.currentContext?.findRenderObject();
     if (renderObject == null || !renderObject.attached) {
-      // نعيد المحاولة في الفريم التالي
+      // ظ†ط¹ظٹط¯ ط§ظ„ظ…ط­ط§ظˆظ„ط© ظپظٹ ط§ظ„ظپط±ظٹظ… ط§ظ„طھط§ظ„ظٹ
       WidgetsBinding.instance.addPostFrameCallback((_) => _check());
       return;
     }
 
-    // نتحقق هل الويدجت مرئي في الـ viewport
+    // ظ†طھط­ظ‚ظ‚ ظ‡ظ„ ط§ظ„ظˆظٹط¯ط¬طھ ظ…ط±ط¦ظٹ ظپظٹ ط§ظ„ظ€ viewport
     final viewport = RenderAbstractViewport.of(renderObject);
     final offset = viewport.getOffsetToReveal(renderObject, 0.0);
     final scrollableState = Scrollable.maybeOf(_key.currentContext!);
@@ -1641,7 +1641,7 @@ class _VisibilityTriggerState extends State<_VisibilityTrigger> {
       final viewportHeight = scrollPosition.viewportDimension;
       final scrollOffset = scrollPosition.pixels;
 
-      // الويدجت مرئي إذا كان offset داخل نطاق الشاشة
+      // ط§ظ„ظˆظٹط¯ط¬طھ ظ…ط±ط¦ظٹ ط¥ط°ط§ ظƒط§ظ† offset ط¯ط§ط®ظ„ ظ†ط·ط§ظ‚ ط§ظ„ط´ط§ط´ط©
       if (offset.offset < scrollOffset + viewportHeight + 50) {
         _triggered = true;
         widget.onVisible();
@@ -1649,7 +1649,7 @@ class _VisibilityTriggerState extends State<_VisibilityTrigger> {
       }
     }
 
-    // إذا لم يظهر بعد — نراقب السكرول
+    // ط¥ط°ط§ ظ„ظ… ظٹط¸ظ‡ط± ط¨ط¹ط¯ â€” ظ†ط±ط§ظ‚ط¨ ط§ظ„ط³ظƒط±ظˆظ„
     _listenToScroll();
   }
 

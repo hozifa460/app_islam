@@ -1,4 +1,4 @@
-// screens/prayer_guide_screen.dart
+﻿// screens/prayer_guide_screen.dart
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../services/prayer_guide_repo.dart';
@@ -65,7 +65,7 @@ class _PrayerGuideScreenState extends State<PrayerGuideScreen> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          'دليل الصلاة',
+          'ط¯ظ„ظٹظ„ ط§ظ„طµظ„ط§ط©',
           style: GoogleFonts.cairo(
             fontWeight: FontWeight.bold,
             fontSize: 24,
@@ -76,7 +76,7 @@ class _PrayerGuideScreenState extends State<PrayerGuideScreen> {
           Container(
             margin: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.1),
+              color: Colors.white.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(12),
             ),
             child: IconButton(
@@ -88,7 +88,7 @@ class _PrayerGuideScreenState extends State<PrayerGuideScreen> {
         leading: Container(
           margin: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.1),
+            color: Colors.white.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(12),
           ),
           child:  IconButton(
@@ -105,33 +105,33 @@ class _PrayerGuideScreenState extends State<PrayerGuideScreen> {
         child: Column(
           children: [
             const SizedBox(height: 20),
-            // البحث
+            // ط§ظ„ط¨ط­ط«
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.05),
+                  color: Colors.white.withValues(alpha: 0.05),
                   borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: Colors.white.withOpacity(0.1)),
+                  border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
                 ),
                 child: TextField(
                   onChanged: (v) => setState(() => _query = v),
                   style: GoogleFonts.cairo(color: Colors.white),
                   decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'ابحث في الدليل...',
-                    hintStyle: GoogleFonts.cairo(color: Colors.white.withOpacity(0.4)),
+                    hintText: 'ط§ط¨ط­ط« ظپظٹ ط§ظ„ط¯ظ„ظٹظ„...',
+                    hintStyle: GoogleFonts.cairo(color: Colors.white.withValues(alpha: 0.4)),
                     icon: Icon(Icons.search, color: _gold),
                   ),
                 ),
               ),
             ),
             const SizedBox(height: 20),
-            // التصنيفات
+            // ط§ظ„طھطµظ†ظٹظپط§طھ
             _buildCategories(),
             const SizedBox(height: 20),
-            // المحتوى
+            // ط§ظ„ظ…ط­طھظˆظ‰
             Expanded(
               child: RefreshIndicator(
                 color: _gold,
@@ -151,21 +151,21 @@ class _PrayerGuideScreenState extends State<PrayerGuideScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.wifi_off, size: 70, color: Colors.white.withOpacity(0.3)),
+          Icon(Icons.wifi_off, size: 70, color: Colors.white.withValues(alpha: 0.3)),
           const SizedBox(height: 16),
           Text(
-            'لا يمكن تحميل المحتوى',
+            'ظ„ط§ ظٹظ…ظƒظ† طھط­ظ…ظٹظ„ ط§ظ„ظ…ط­طھظˆظ‰',
             style: GoogleFonts.cairo(
               fontSize: 18,
-              color: Colors.white.withOpacity(0.7),
+              color: Colors.white.withValues(alpha: 0.7),
             ),
           ),
           const SizedBox(height: 8),
           Text(
-            'تأكد من الاتصال بالإنترنت',
+            'طھط£ظƒط¯ ظ…ظ† ط§ظ„ط§طھطµط§ظ„ ط¨ط§ظ„ط¥ظ†طھط±ظ†طھ',
             style: GoogleFonts.cairo(
               fontSize: 14,
-              color: Colors.white.withOpacity(0.5),
+              color: Colors.white.withValues(alpha: 0.5),
             ),
           ),
           const SizedBox(height: 20),
@@ -177,7 +177,7 @@ class _PrayerGuideScreenState extends State<PrayerGuideScreen> {
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             ),
             onPressed: _loadSmart,
-            child: Text('إعادة المحاولة', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
+            child: Text('ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط©', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
           ),
         ],
       ),
@@ -204,12 +204,12 @@ class _PrayerGuideScreenState extends State<PrayerGuideScreen> {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: isSel
-                      ? [_gold.withOpacity(0.3), _gold.withOpacity(0.1)]
-                      : [Colors.white.withOpacity(0.05), Colors.white.withOpacity(0.02)],
+                      ? [_gold.withValues(alpha: 0.3), _gold.withValues(alpha: 0.1)]
+                      : [Colors.white.withValues(alpha: 0.05), Colors.white.withValues(alpha: 0.02)],
                 ),
                 borderRadius: BorderRadius.circular(25),
                 border: Border.all(
-                  color: isSel ? _gold.withOpacity(0.5) : Colors.white.withOpacity(0.1),
+                  color: isSel ? _gold.withValues(alpha: 0.5) : Colors.white.withValues(alpha: 0.1),
                 ),
               ),
               child: Center(
@@ -218,7 +218,7 @@ class _PrayerGuideScreenState extends State<PrayerGuideScreen> {
                   style: GoogleFonts.cairo(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
-                    color: isSel ? _gold : Colors.white.withOpacity(0.7),
+                    color: isSel ? _gold : Colors.white.withValues(alpha: 0.7),
                   ),
                 ),
               ),
@@ -261,12 +261,12 @@ class _PrayerGuideScreenState extends State<PrayerGuideScreen> {
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.white.withOpacity(0.08), Colors.white.withOpacity(0.02)],
+                colors: [Colors.white.withValues(alpha: 0.08), Colors.white.withValues(alpha: 0.02)],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: Colors.white.withOpacity(0.1)),
+              border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -301,7 +301,7 @@ class _PrayerGuideScreenState extends State<PrayerGuideScreen> {
                     style: GoogleFonts.cairo(
                       fontSize: 15,
                       height: 1.8,
-                      color: Colors.white.withOpacity(0.8),
+                      color: Colors.white.withValues(alpha: 0.8),
                     ),
                   ),
                 ],
@@ -319,7 +319,7 @@ class _PrayerGuideScreenState extends State<PrayerGuideScreen> {
                             b.toString(),
                             style: GoogleFonts.cairo(
                               fontSize: 14,
-                              color: Colors.white.withOpacity(0.7),
+                              color: Colors.white.withValues(alpha: 0.7),
                               height: 1.6,
                             ),
                           ),

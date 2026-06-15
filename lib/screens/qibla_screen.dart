@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'dart:math' show pi, sin, cos, atan2;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,21 +24,21 @@ class _QiblaScreenState extends State<QiblaScreen>
   static const _darkGreen = Color(0xFF1A6B3A);
   static const _red       = Color(0xFFE74C3C);
 
-  // ── الكعبة المشرفة ──
+  // â”€â”€ ط§ظ„ظƒط¹ط¨ط© ط§ظ„ظ…ط´ط±ظپط© â”€â”€
   static const _kaabeLat = 21.422487;
   static const _kaabeLng = 39.826206;
 
-  // ── الحالة ──
+  // â”€â”€ ط§ظ„ط­ط§ظ„ط© â”€â”€
   double? _userLat;
   double? _userLng;
   bool    _loading        = true;
   bool    _hasPermissions = false;
-  double  _qiblaAngle     = 0; // زاوية القبلة من الشمال
-  double  _compassHeading = 0; // اتجاه الهاتف الحالي
+  double  _qiblaAngle     = 0; // ط²ط§ظˆظٹط© ط§ظ„ظ‚ط¨ظ„ط© ظ…ظ† ط§ظ„ط´ظ…ط§ظ„
+  double  _compassHeading = 0; // ط§طھط¬ط§ظ‡ ط§ظ„ظ‡ط§طھظپ ط§ظ„ط­ط§ظ„ظٹ
 
   StreamSubscription<CompassEvent>? _compassSub;
 
-  // ── أنيميشن ──
+  // â”€â”€ ط£ظ†ظٹظ…ظٹط´ظ† â”€â”€
   late AnimationController _glowCtrl;
   late AnimationController _pulseCtrl;
   late AnimationController _successCtrl;
@@ -89,9 +89,9 @@ class _QiblaScreenState extends State<QiblaScreen>
     super.dispose();
   }
 
-  // ══════════════════════════════════════════
-  //  الصلاحيات والموقع
-  // ══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  ط§ظ„طµظ„ط§ط­ظٹط§طھ ظˆط§ظ„ظ…ظˆظ‚ط¹
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Future<void> _checkPermissionsAndStart() async {
     setState(() => _loading = true);
     try {
@@ -129,9 +129,9 @@ class _QiblaScreenState extends State<QiblaScreen>
     if (mounted) setState(() => _loading = false);
   }
 
-  // ══════════════════════════════════════════
-  //  حساب زاوية القبلة رياضياً
-  // ══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  ط­ط³ط§ط¨ ط²ط§ظˆظٹط© ط§ظ„ظ‚ط¨ظ„ط© ط±ظٹط§ط¶ظٹط§ظ‹
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   double _calculateQiblaAngle(double lat, double lng) {
     final lat1  = lat       * pi / 180;
     final lat2  = _kaabeLat * pi / 180;
@@ -145,9 +145,9 @@ class _QiblaScreenState extends State<QiblaScreen>
     return (angle + 360) % 360;
   }
 
-  // ══════════════════════════════════════════
-  //  تشغيل البوصلة
-  // ══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  طھط´ط؛ظٹظ„ ط§ظ„ط¨ظˆطµظ„ط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   void _startCompass() {
     _compassSub = FlutterCompass.events?.listen((event) {
       if (!mounted) return;
@@ -158,7 +158,7 @@ class _QiblaScreenState extends State<QiblaScreen>
         _compassHeading = (heading + 360) % 360;
       });
 
-      // فحص مواجهة القبلة
+      // ظپط­طµ ظ…ظˆط§ط¬ظ‡ط© ط§ظ„ظ‚ط¨ظ„ط©
       final isFacing = _isFacingQibla;
       if (isFacing && !_wasFacingQibla) {
         HapticFeedback.mediumImpact();
@@ -172,20 +172,20 @@ class _QiblaScreenState extends State<QiblaScreen>
     });
   }
 
-  // ══════════════════════════════════════════
-  //  حسابات مساعدة
-  // ══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  ط­ط³ط§ط¨ط§طھ ظ…ط³ط§ط¹ط¯ط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
-  // ✅ زاوية دوران الإبرة نحو القبلة
+  // âœ… ط²ط§ظˆظٹط© ط¯ظˆط±ط§ظ† ط§ظ„ط¥ط¨ط±ط© ظ†ط­ظˆ ط§ظ„ظ‚ط¨ظ„ط©
   double get _needleAngle {
     double angle = _qiblaAngle - _compassHeading;
-    // أقصر مسار للدوران
+    // ط£ظ‚طµط± ظ…ط³ط§ط± ظ„ظ„ط¯ظˆط±ط§ظ†
     while (angle > 180)  angle -= 360;
     while (angle < -180) angle += 360;
     return angle * pi / 180;
   }
 
-  // ✅ زاوية دوران القرص عكس الهاتف
+  // âœ… ط²ط§ظˆظٹط© ط¯ظˆط±ط§ظ† ط§ظ„ظ‚ط±طµ ط¹ظƒط³ ط§ظ„ظ‡ط§طھظپ
   double get _dialAngle => -(_compassHeading * pi / 180);
 
   double get _deviation {
@@ -211,11 +211,11 @@ class _QiblaScreenState extends State<QiblaScreen>
   String get _directionLabel {
     final d   = _deviation;
     final abs = d.abs();
-    if (abs < 5)   return '✓  القبلة أمامك مباشرة';
-    if (abs < 20)  return d > 0 ? 'دوّر قليلاً لليسار'   : 'دوّر قليلاً لليمين';
-    if (abs < 60)  return d > 0 ? 'دوّر لليسار'           : 'دوّر لليمين';
-    if (abs < 120) return d > 0 ? 'القبلة على يسارك'      : 'القبلة على يمينك';
-    return 'القبلة خلفك، استدر';
+    if (abs < 5)   return 'âœ“  ط§ظ„ظ‚ط¨ظ„ط© ط£ظ…ط§ظ…ظƒ ظ…ط¨ط§ط´ط±ط©';
+    if (abs < 20)  return d > 0 ? 'ط¯ظˆظ‘ط± ظ‚ظ„ظٹظ„ط§ظ‹ ظ„ظ„ظٹط³ط§ط±'   : 'ط¯ظˆظ‘ط± ظ‚ظ„ظٹظ„ط§ظ‹ ظ„ظ„ظٹظ…ظٹظ†';
+    if (abs < 60)  return d > 0 ? 'ط¯ظˆظ‘ط± ظ„ظ„ظٹط³ط§ط±'           : 'ط¯ظˆظ‘ط± ظ„ظ„ظٹظ…ظٹظ†';
+    if (abs < 120) return d > 0 ? 'ط§ظ„ظ‚ط¨ظ„ط© ط¹ظ„ظ‰ ظٹط³ط§ط±ظƒ'      : 'ط§ظ„ظ‚ط¨ظ„ط© ط¹ظ„ظ‰ ظٹظ…ظٹظ†ظƒ';
+    return 'ط§ظ„ظ‚ط¨ظ„ط© ط®ظ„ظپظƒطŒ ط§ط³طھط¯ط±';
   }
 
   IconData get _directionIcon {
@@ -227,9 +227,9 @@ class _QiblaScreenState extends State<QiblaScreen>
     return Icons.sync_rounded;
   }
 
-  // ══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   //  BUILD
-  // ══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
@@ -257,7 +257,7 @@ class _QiblaScreenState extends State<QiblaScreen>
     return Stack(
       fit: StackFit.expand,
       children: [
-        // ── خلفية ──
+        // â”€â”€ ط®ظ„ظپظٹط© â”€â”€
         AnimatedContainer(
           duration: const Duration(milliseconds: 700),
           decoration: BoxDecoration(
@@ -316,7 +316,7 @@ class _QiblaScreenState extends State<QiblaScreen>
     );
   }
 
-  // ── AppBar ──
+  // â”€â”€ AppBar â”€â”€
   Widget _buildAppBar(bool isDark) {
     final textColor = isDark ? Colors.white : const Color(0xFF1A1A2E);
     return Padding(
@@ -326,13 +326,13 @@ class _QiblaScreenState extends State<QiblaScreen>
           Container(
             decoration: BoxDecoration(
               color: isDark
-                  ? Colors.white.withOpacity(0.08)
-                  : Colors.white.withOpacity(0.9),
+                  ? Colors.white.withValues(alpha: 0.08)
+                  : Colors.white.withValues(alpha: 0.9),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
                 color: isDark
-                    ? Colors.white.withOpacity(0.1)
-                    : _gold.withOpacity(0.25),
+                    ? Colors.white.withValues(alpha: 0.1)
+                    : _gold.withValues(alpha: 0.25),
               ),
             ),
             child: IconButton(
@@ -348,7 +348,7 @@ class _QiblaScreenState extends State<QiblaScreen>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'اتجاه القبلة',
+                  'ط§طھط¬ط§ظ‡ ط§ظ„ظ‚ط¨ظ„ط©',
                   style: GoogleFonts.cairo(
                     fontSize: 20,
                     fontWeight: FontWeight.w800,
@@ -357,11 +357,11 @@ class _QiblaScreenState extends State<QiblaScreen>
                 ),
                 if (_userLat != null)
                   Text(
-                    'القبلة: ${_qiblaAngle.toStringAsFixed(1)}° '
-                        '| هاتفك: ${_compassHeading.toStringAsFixed(1)}°',
+                    'ط§ظ„ظ‚ط¨ظ„ط©: ${_qiblaAngle.toStringAsFixed(1)}آ° '
+                        '| ظ‡ط§طھظپظƒ: ${_compassHeading.toStringAsFixed(1)}آ°',
                     style: GoogleFonts.cairo(
                       fontSize: 10,
-                      color: textColor.withOpacity(0.45),
+                      color: textColor.withValues(alpha: 0.45),
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -374,8 +374,8 @@ class _QiblaScreenState extends State<QiblaScreen>
             height: 40,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: _gold.withOpacity(0.12),
-              border: Border.all(color: _gold.withOpacity(0.3)),
+              color: _gold.withValues(alpha: 0.12),
+              border: Border.all(color: _gold.withValues(alpha: 0.3)),
             ),
             child: const Icon(
                 Icons.mosque_rounded, color: _gold, size: 20),
@@ -385,7 +385,7 @@ class _QiblaScreenState extends State<QiblaScreen>
     );
   }
 
-  // ── لافتة الإرشاد ──
+  // â”€â”€ ظ„ط§ظپطھط© ط§ظ„ط¥ط±ط´ط§ط¯ â”€â”€
   Widget _buildGuidanceBanner(
       bool isDark, bool isFacing, Color guidance) {
     return AnimatedBuilder(
@@ -399,18 +399,18 @@ class _QiblaScreenState extends State<QiblaScreen>
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                guidance.withOpacity(isDark ? 0.22 : 0.10),
-                guidance.withOpacity(isDark ? 0.06 : 0.03),
+                guidance.withValues(alpha: isDark ? 0.22 : 0.10),
+                guidance.withValues(alpha: isDark ? 0.06 : 0.03),
               ],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
             ),
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-                color: guidance.withOpacity(0.42), width: 2),
+                color: guidance.withValues(alpha: 0.42), width: 2),
             boxShadow: [
               BoxShadow(
-                color: guidance.withOpacity(0.12),
+                color: guidance.withValues(alpha: 0.12),
                 blurRadius: 14,
                 offset: const Offset(0, 4),
               ),
@@ -426,9 +426,9 @@ class _QiblaScreenState extends State<QiblaScreen>
                   height: 48,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: guidance.withOpacity(0.14),
+                    color: guidance.withValues(alpha: 0.14),
                     border: Border.all(
-                        color: guidance.withOpacity(0.35)),
+                        color: guidance.withValues(alpha: 0.35)),
                   ),
                   child: Icon(_directionIcon,
                       color: guidance, size: 26),
@@ -454,13 +454,13 @@ class _QiblaScreenState extends State<QiblaScreen>
                     const SizedBox(height: 3),
                     Text(
                       isFacing
-                          ? 'يمكنك الآن أداء الصلاة في هذا الاتجاه'
-                          : 'وجّه هاتفك حتى تشير الإبرة الخضراء للأعلى',
+                          ? 'ظٹظ…ظƒظ†ظƒ ط§ظ„ط¢ظ† ط£ط¯ط§ط، ط§ظ„طµظ„ط§ط© ظپظٹ ظ‡ط°ط§ ط§ظ„ط§طھط¬ط§ظ‡'
+                          : 'ظˆط¬ظ‘ظ‡ ظ‡ط§طھظپظƒ ط­طھظ‰ طھط´ظٹط± ط§ظ„ط¥ط¨ط±ط© ط§ظ„ط®ط¶ط±ط§ط، ظ„ظ„ط£ط¹ظ„ظ‰',
                       style: GoogleFonts.cairo(
                         fontSize: 11,
                         color: isDark
-                            ? Colors.white.withOpacity(0.58)
-                            : Colors.black.withOpacity(0.50),
+                            ? Colors.white.withValues(alpha: 0.58)
+                            : Colors.black.withValues(alpha: 0.50),
                         height: 1.45,
                       ),
                     ),
@@ -474,9 +474,9 @@ class _QiblaScreenState extends State<QiblaScreen>
     );
   }
 
-  // ══════════════════════════════════════════
-  //  قسم البوصلة
-  // ══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  ظ‚ط³ظ… ط§ظ„ط¨ظˆطµظ„ط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildCompassSection(
       bool isDark,
       double compassSize,
@@ -485,19 +485,19 @@ class _QiblaScreenState extends State<QiblaScreen>
       ) {
     return Column(
       children: [
-        // تعليمة
+        // طھط¹ظ„ظٹظ…ط©
         Container(
           padding: const EdgeInsets.symmetric(
               horizontal: 12, vertical: 5),
           decoration: BoxDecoration(
             color: isDark
-                ? Colors.white.withOpacity(0.06)
-                : Colors.white.withOpacity(0.85),
+                ? Colors.white.withValues(alpha: 0.06)
+                : Colors.white.withValues(alpha: 0.85),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: isDark
-                  ? Colors.white.withOpacity(0.1)
-                  : _gold.withOpacity(0.2),
+                  ? Colors.white.withValues(alpha: 0.1)
+                  : _gold.withValues(alpha: 0.2),
             ),
           ),
           child: Row(
@@ -508,7 +508,7 @@ class _QiblaScreenState extends State<QiblaScreen>
                   color: isDark ? Colors.white54 : Colors.black45),
               const SizedBox(width: 6),
               Text(
-                'أمسك الهاتف أفقياً ودوّر حتى تشير الإبرة ▲ للأعلى',
+                'ط£ظ…ط³ظƒ ط§ظ„ظ‡ط§طھظپ ط£ظپظ‚ظٹط§ظ‹ ظˆط¯ظˆظ‘ط± ط­طھظ‰ طھط´ظٹط± ط§ظ„ط¥ط¨ط±ط© â–² ظ„ظ„ط£ط¹ظ„ظ‰',
                 style: GoogleFonts.cairo(
                   fontSize: 11,
                   color:
@@ -521,7 +521,7 @@ class _QiblaScreenState extends State<QiblaScreen>
 
         const SizedBox(height: 14),
 
-        // ── البوصلة ──
+        // â”€â”€ ط§ظ„ط¨ظˆطµظ„ط© â”€â”€
         AnimatedBuilder(
           animation:
           Listenable.merge([_pulseAnim, _glowAnim]),
@@ -532,7 +532,7 @@ class _QiblaScreenState extends State<QiblaScreen>
               child: Stack(
                 alignment: Alignment.center,
                 children: [
-                  // توهج القبلة
+                  // طھظˆظ‡ط¬ ط§ظ„ظ‚ط¨ظ„ط©
                   if (_glowAnim.value > 0)
                     Container(
                       width: compassSize + 34,
@@ -541,7 +541,7 @@ class _QiblaScreenState extends State<QiblaScreen>
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color: _green.withOpacity(
+                            color: _green.withValues(alpha: 
                                 0.38 * _glowAnim.value),
                             blurRadius: 38,
                             spreadRadius: 10,
@@ -550,7 +550,7 @@ class _QiblaScreenState extends State<QiblaScreen>
                       ),
                     ),
 
-                  // حلقة خارجية متحركة
+                  // ط­ظ„ظ‚ط© ط®ط§ط±ط¬ظٹط© ظ…طھط­ط±ظƒط©
                   Transform.scale(
                     scale: isFacing ? _pulseAnim.value : 1.0,
                     child: Container(
@@ -560,18 +560,18 @@ class _QiblaScreenState extends State<QiblaScreen>
                         shape: BoxShape.circle,
                         gradient: SweepGradient(
                           colors: [
-                            guidance.withOpacity(0.85),
-                            guidance.withOpacity(0.08),
-                            guidance.withOpacity(0.85),
-                            guidance.withOpacity(0.08),
-                            guidance.withOpacity(0.85),
+                            guidance.withValues(alpha: 0.85),
+                            guidance.withValues(alpha: 0.08),
+                            guidance.withValues(alpha: 0.85),
+                            guidance.withValues(alpha: 0.08),
+                            guidance.withValues(alpha: 0.85),
                           ],
                         ),
                       ),
                     ),
                   ),
 
-                  // ✅ القرص يدور مع الهاتف
+                  // âœ… ط§ظ„ظ‚ط±طµ ظٹط¯ظˆط± ظ…ط¹ ط§ظ„ظ‡ط§طھظپ
                   Transform.rotate(
                     angle: _dialAngle,
                     child: _CompassDial(
@@ -581,24 +581,24 @@ class _QiblaScreenState extends State<QiblaScreen>
                     ),
                   ),
 
-                  // ✅ الإبرة تشير للقبلة دائماً
+                  // âœ… ط§ظ„ط¥ط¨ط±ط© طھط´ظٹط± ظ„ظ„ظ‚ط¨ظ„ط© ط¯ط§ط¦ظ…ط§ظ‹
                   Transform.rotate(
                     angle: _needleAngle,
                     child: _buildNeedle(
                         compassSize * 0.50, isFacing),
                   ),
 
-                  // المركز
+                  // ط§ظ„ظ…ط±ظƒط²
                   _buildCenterDot(isDark, isFacing),
 
-                  // مؤشر هاتفك (ثابت أعلى)
+                  // ظ…ط¤ط´ط± ظ‡ط§طھظپظƒ (ط«ط§ط¨طھ ط£ط¹ظ„ظ‰)
                   Positioned(
                     top: 0,
                     child: _buildPhoneIndicator(
                         isDark, isFacing),
                   ),
 
-                  // سهم الدوران (أسفل)
+                  // ط³ظ‡ظ… ط§ظ„ط¯ظˆط±ط§ظ† (ط£ط³ظپظ„)
                   if (!isFacing)
                     Positioned(
                       bottom: 2,
@@ -612,15 +612,15 @@ class _QiblaScreenState extends State<QiblaScreen>
 
         const SizedBox(height: 6),
 
-        // الانحراف
+        // ط§ظ„ط§ظ†ط­ط±ط§ظپ
         AnimatedSwitcher(
           duration: const Duration(milliseconds: 250),
           child: Text(
             key: ValueKey(isFacing),
             isFacing
-                ? '🕋  أنت تواجه الكعبة المشرفة'
-                : 'انحراف: ${_deviation.abs().toStringAsFixed(1)}°'
-                ' ${_deviation > 0 ? "يساراً" : "يميناً"}',
+                ? 'ًں•‹  ط£ظ†طھ طھظˆط§ط¬ظ‡ ط§ظ„ظƒط¹ط¨ط© ط§ظ„ظ…ط´ط±ظپط©'
+                : 'ط§ظ†ط­ط±ط§ظپ: ${_deviation.abs().toStringAsFixed(1)}آ°'
+                ' ${_deviation > 0 ? "ظٹط³ط§ط±ط§ظ‹" : "ظٹظ…ظٹظ†ط§ظ‹"}',
             style: GoogleFonts.cairo(
               fontSize: 13,
               fontWeight: FontWeight.w700,
@@ -634,12 +634,12 @@ class _QiblaScreenState extends State<QiblaScreen>
     );
   }
 
-  // ── الإبرة ──
+  // â”€â”€ ط§ظ„ط¥ط¨ط±ط© â”€â”€
   Widget _buildNeedle(double height, bool isFacing) {
     final top    = isFacing ? _green : const Color(0xFF27AE60);
     final bottom = isFacing
-        ? _green.withOpacity(0.3)
-        : Colors.grey.withOpacity(0.38);
+        ? _green.withValues(alpha: 0.3)
+        : Colors.grey.withValues(alpha: 0.38);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -666,7 +666,7 @@ class _QiblaScreenState extends State<QiblaScreen>
                     border: Border.all(color: top, width: 1.5),
                     boxShadow: [
                       BoxShadow(
-                        color: top.withOpacity(0.3),
+                        color: top.withValues(alpha: 0.3),
                         blurRadius: 4,
                       ),
                     ],
@@ -690,7 +690,7 @@ class _QiblaScreenState extends State<QiblaScreen>
     );
   }
 
-  // ── المركز ──
+  // â”€â”€ ط§ظ„ظ…ط±ظƒط² â”€â”€
   Widget _buildCenterDot(bool isDark, bool isFacing) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 400),
@@ -715,7 +715,7 @@ class _QiblaScreenState extends State<QiblaScreen>
         boxShadow: [
           BoxShadow(
             color:
-            (isFacing ? _green : _gold).withOpacity(0.35),
+            (isFacing ? _green : _gold).withValues(alpha: 0.35),
             blurRadius: 10,
             spreadRadius: 2,
           ),
@@ -731,7 +731,7 @@ class _QiblaScreenState extends State<QiblaScreen>
     );
   }
 
-  // ── مؤشر الهاتف ──
+  // â”€â”€ ظ…ط¤ط´ط± ط§ظ„ظ‡ط§طھظپ â”€â”€
   Widget _buildPhoneIndicator(bool isDark, bool isFacing) {
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -741,19 +741,19 @@ class _QiblaScreenState extends State<QiblaScreen>
               horizontal: 10, vertical: 4),
           decoration: BoxDecoration(
             color: isFacing
-                ? _green.withOpacity(0.13)
+                ? _green.withValues(alpha: 0.13)
                 : (isDark
-                ? Colors.white.withOpacity(0.09)
-                : Colors.white.withOpacity(0.95)),
+                ? Colors.white.withValues(alpha: 0.09)
+                : Colors.white.withValues(alpha: 0.95)),
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
               color: isFacing
-                  ? _green.withOpacity(0.45)
-                  : _gold.withOpacity(0.32),
+                  ? _green.withValues(alpha: 0.45)
+                  : _gold.withValues(alpha: 0.32),
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.06),
+                color: Colors.black.withValues(alpha: 0.06),
                 blurRadius: 5,
                 offset: const Offset(0, 2),
               ),
@@ -771,7 +771,7 @@ class _QiblaScreenState extends State<QiblaScreen>
               ),
               const SizedBox(width: 4),
               Text(
-                isFacing ? 'القبلة ✓' : 'موقعك',
+                isFacing ? 'ط§ظ„ظ‚ط¨ظ„ط© âœ“' : 'ظ…ظˆظ‚ط¹ظƒ',
                 style: GoogleFonts.cairo(
                   fontSize: 10,
                   fontWeight: FontWeight.w700,
@@ -792,7 +792,7 @@ class _QiblaScreenState extends State<QiblaScreen>
     );
   }
 
-  // ── سهم الدوران ──
+  // â”€â”€ ط³ظ‡ظ… ط§ظ„ط¯ظˆط±ط§ظ† â”€â”€
   Widget _buildRotationHint(bool isDark) {
     final goLeft = _deviation > 0;
     return Container(
@@ -800,13 +800,13 @@ class _QiblaScreenState extends State<QiblaScreen>
           horizontal: 13, vertical: 6),
       decoration: BoxDecoration(
         color: isDark
-            ? Colors.white.withOpacity(0.07)
-            : Colors.white.withOpacity(0.9),
+            ? Colors.white.withValues(alpha: 0.07)
+            : Colors.white.withValues(alpha: 0.9),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: _gold.withOpacity(0.28)),
+        border: Border.all(color: _gold.withValues(alpha: 0.28)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.06),
+            color: Colors.black.withValues(alpha: 0.06),
             blurRadius: 7,
             offset: const Offset(0, 2),
           ),
@@ -824,7 +824,7 @@ class _QiblaScreenState extends State<QiblaScreen>
           ),
           const SizedBox(width: 5),
           Text(
-            goLeft ? 'دوّر لليسار' : 'دوّر لليمين',
+            goLeft ? 'ط¯ظˆظ‘ط± ظ„ظ„ظٹط³ط§ط±' : 'ط¯ظˆظ‘ط± ظ„ظ„ظٹظ…ظٹظ†',
             style: GoogleFonts.cairo(
               fontSize: 11,
               fontWeight: FontWeight.w700,
@@ -844,7 +844,7 @@ class _QiblaScreenState extends State<QiblaScreen>
     );
   }
 
-  // ── شريط الدقة ──
+  // â”€â”€ ط´ط±ظٹط· ط§ظ„ط¯ظ‚ط© â”€â”€
   Widget _buildAccuracyBar(
       bool isDark, int accuracy, bool isFacing, Color guidance) {
     final textColor =
@@ -855,18 +855,18 @@ class _QiblaScreenState extends State<QiblaScreen>
         padding: const EdgeInsets.fromLTRB(16, 12, 16, 13),
         decoration: BoxDecoration(
           color: isDark
-              ? Colors.white.withOpacity(0.05)
-              : Colors.white.withOpacity(0.9),
+              ? Colors.white.withValues(alpha: 0.05)
+              : Colors.white.withValues(alpha: 0.9),
           borderRadius: BorderRadius.circular(18),
           border: Border.all(
             color: isDark
-                ? Colors.white.withOpacity(0.07)
-                : _gold.withOpacity(0.16),
+                ? Colors.white.withValues(alpha: 0.07)
+                : _gold.withValues(alpha: 0.16),
           ),
           boxShadow: [
             BoxShadow(
               color: Colors.black
-                  .withOpacity(isDark ? 0.10 : 0.04),
+                  .withValues(alpha: isDark ? 0.10 : 0.04),
               blurRadius: 8,
               offset: const Offset(0, 2),
             ),
@@ -883,7 +883,7 @@ class _QiblaScreenState extends State<QiblaScreen>
                       color: guidance, size: 15),
                   const SizedBox(width: 6),
                   Text(
-                    'دقة الاتجاه',
+                    'ط¯ظ‚ط© ط§ظ„ط§طھط¬ط§ظ‡',
                     style: GoogleFonts.cairo(
                       fontSize: 12.5,
                       fontWeight: FontWeight.w700,
@@ -907,8 +907,8 @@ class _QiblaScreenState extends State<QiblaScreen>
               child: LinearProgressIndicator(
                 value: accuracy / 100,
                 backgroundColor: isDark
-                    ? Colors.white.withOpacity(0.08)
-                    : Colors.grey.withOpacity(0.13),
+                    ? Colors.white.withValues(alpha: 0.08)
+                    : Colors.grey.withValues(alpha: 0.13),
                 valueColor:
                 AlwaysStoppedAnimation<Color>(guidance),
                 minHeight: 10,
@@ -917,15 +917,15 @@ class _QiblaScreenState extends State<QiblaScreen>
             const SizedBox(height: 6),
             Text(
               accuracy >= 95
-                  ? '✓ ممتاز — أنت تواجه القبلة بدقة عالية'
+                  ? 'âœ“ ظ…ظ…طھط§ط² â€” ط£ظ†طھ طھظˆط§ط¬ظ‡ ط§ظ„ظ‚ط¨ظ„ط© ط¨ط¯ظ‚ط© ط¹ط§ظ„ظٹط©'
                   : accuracy >= 70
-                  ? 'قريب — استمر في الدوران قليلاً'
+                  ? 'ظ‚ط±ظٹط¨ â€” ط§ط³طھظ…ط± ظپظٹ ط§ظ„ط¯ظˆط±ط§ظ† ظ‚ظ„ظٹظ„ط§ظ‹'
                   : accuracy >= 40
-                  ? 'متوسط — دوّر نحو الإبرة الخضراء'
-                  : 'بعيد — دوّر هاتفك نحو الإبرة الخضراء',
+                  ? 'ظ…طھظˆط³ط· â€” ط¯ظˆظ‘ط± ظ†ط­ظˆ ط§ظ„ط¥ط¨ط±ط© ط§ظ„ط®ط¶ط±ط§ط،'
+                  : 'ط¨ط¹ظٹط¯ â€” ط¯ظˆظ‘ط± ظ‡ط§طھظپظƒ ظ†ط­ظˆ ط§ظ„ط¥ط¨ط±ط© ط§ظ„ط®ط¶ط±ط§ط،',
               style: GoogleFonts.cairo(
                 fontSize: 10.5,
-                color: textColor.withOpacity(0.52),
+                color: textColor.withValues(alpha: 0.52),
                 height: 1.4,
               ),
             ),
@@ -935,26 +935,26 @@ class _QiblaScreenState extends State<QiblaScreen>
     );
   }
 
-  // ── بطاقات المعلومات ──
+  // â”€â”€ ط¨ط·ط§ظ‚ط§طھ ط§ظ„ظ…ط¹ظ„ظˆظ…ط§طھ â”€â”€
   Widget _buildInfoCards(bool isDark) {
     final textColor =
     isDark ? Colors.white : const Color(0xFF1A1A2E);
     final cards = [
       (
-      label: 'القبلة\nمن الشمال',
-      value: '${_qiblaAngle.toStringAsFixed(1)}°',
+      label: 'ط§ظ„ظ‚ط¨ظ„ط©\nظ…ظ† ط§ظ„ط´ظ…ط§ظ„',
+      value: '${_qiblaAngle.toStringAsFixed(1)}آ°',
       icon: Icons.explore_rounded,
       color: _gold,
       ),
       (
-      label: 'اتجاه\nهاتفك',
-      value: '${_compassHeading.toStringAsFixed(1)}°',
+      label: 'ط§طھط¬ط§ظ‡\nظ‡ط§طھظپظƒ',
+      value: '${_compassHeading.toStringAsFixed(1)}آ°',
       icon: Icons.screen_rotation_rounded,
       color: const Color(0xFF3498DB),
       ),
       (
-      label: 'الانحراف\nعن القبلة',
-      value: '${_deviation.abs().toStringAsFixed(1)}°',
+      label: 'ط§ظ„ط§ظ†ط­ط±ط§ظپ\nط¹ظ† ط§ظ„ظ‚ط¨ظ„ط©',
+      value: '${_deviation.abs().toStringAsFixed(1)}آ°',
       icon: Icons.swap_horiz_rounded,
       color: _guidanceColor,
       ),
@@ -971,15 +971,15 @@ class _QiblaScreenState extends State<QiblaScreen>
                   vertical: 11, horizontal: 5),
               decoration: BoxDecoration(
                 color: isDark
-                    ? Colors.white.withOpacity(0.05)
-                    : Colors.white.withOpacity(0.9),
+                    ? Colors.white.withValues(alpha: 0.05)
+                    : Colors.white.withValues(alpha: 0.9),
                 borderRadius: BorderRadius.circular(15),
                 border: Border.all(
-                    color: c.color.withOpacity(0.2)),
+                    color: c.color.withValues(alpha: 0.2)),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black
-                        .withOpacity(isDark ? 0.10 : 0.04),
+                        .withValues(alpha: isDark ? 0.10 : 0.04),
                     blurRadius: 7,
                     offset: const Offset(0, 2),
                   ),
@@ -993,7 +993,7 @@ class _QiblaScreenState extends State<QiblaScreen>
                     height: 32,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: c.color.withOpacity(0.11),
+                      color: c.color.withValues(alpha: 0.11),
                     ),
                     child: Icon(c.icon,
                         color: c.color, size: 17),
@@ -1014,7 +1014,7 @@ class _QiblaScreenState extends State<QiblaScreen>
                     c.label,
                     style: GoogleFonts.cairo(
                       fontSize: 9.5,
-                      color: textColor.withOpacity(0.48),
+                      color: textColor.withValues(alpha: 0.48),
                       height: 1.35,
                     ),
                     textAlign: TextAlign.center,
@@ -1029,7 +1029,7 @@ class _QiblaScreenState extends State<QiblaScreen>
     );
   }
 
-  // ── كيف تستخدم ──
+  // â”€â”€ ظƒظٹظپ طھط³طھط®ط¯ظ… â”€â”€
   Widget _buildHowToUse(bool isDark) {
     final textColor =
     isDark ? Colors.white : const Color(0xFF1A1A2E);
@@ -1037,22 +1037,22 @@ class _QiblaScreenState extends State<QiblaScreen>
       (
       icon: Icons.phone_android_rounded,
       color: const Color(0xFF3498DB),
-      title: 'أمسك الهاتف أفقياً',
-      desc: 'ضع الهاتف موازياً للأرض للحصول على أفضل دقة',
+      title: 'ط£ظ…ط³ظƒ ط§ظ„ظ‡ط§طھظپ ط£ظپظ‚ظٹط§ظ‹',
+      desc: 'ط¶ط¹ ط§ظ„ظ‡ط§طھظپ ظ…ظˆط§ط²ظٹط§ظ‹ ظ„ظ„ط£ط±ط¶ ظ„ظ„ط­طµظˆظ„ ط¹ظ„ظ‰ ط£ظپط¶ظ„ ط¯ظ‚ط©',
       ),
       (
       icon: Icons.rotate_right_rounded,
       color: _gold,
-      title: 'دوّر جسمك ببطء',
+      title: 'ط¯ظˆظ‘ط± ط¬ط³ظ…ظƒ ط¨ط¨ط·ط،',
       desc:
-      'استدر ببطء حتى تشير الإبرة الخضراء ▲ للأعلى',
+      'ط§ط³طھط¯ط± ط¨ط¨ط·ط، ط­طھظ‰ طھط´ظٹط± ط§ظ„ط¥ط¨ط±ط© ط§ظ„ط®ط¶ط±ط§ط، â–² ظ„ظ„ط£ط¹ظ„ظ‰',
       ),
       (
       icon: Icons.check_circle_rounded,
       color: _green,
-      title: 'الدقة 95%+ = القبلة',
+      title: 'ط§ظ„ط¯ظ‚ط© 95%+ = ط§ظ„ظ‚ط¨ظ„ط©',
       desc:
-      'ستشعر باهتزاز الهاتف عند مواجهة القبلة بدقة',
+      'ط³طھط´ط¹ط± ط¨ط§ظ‡طھط²ط§ط² ط§ظ„ظ‡ط§طھظپ ط¹ظ†ط¯ ظ…ظˆط§ط¬ظ‡ط© ط§ظ„ظ‚ط¨ظ„ط© ط¨ط¯ظ‚ط©',
       ),
     ];
 
@@ -1062,13 +1062,13 @@ class _QiblaScreenState extends State<QiblaScreen>
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
           color: isDark
-              ? Colors.white.withOpacity(0.04)
-              : Colors.white.withOpacity(0.85),
+              ? Colors.white.withValues(alpha: 0.04)
+              : Colors.white.withValues(alpha: 0.85),
           borderRadius: BorderRadius.circular(18),
           border: Border.all(
             color: isDark
-                ? Colors.white.withOpacity(0.07)
-                : _gold.withOpacity(0.16),
+                ? Colors.white.withValues(alpha: 0.07)
+                : _gold.withValues(alpha: 0.16),
           ),
         ),
         child: Column(
@@ -1079,7 +1079,7 @@ class _QiblaScreenState extends State<QiblaScreen>
                   color: _gold, size: 17),
               const SizedBox(width: 7),
               Text(
-                'كيف تستخدم البوصلة؟',
+                'ظƒظٹظپ طھط³طھط®ط¯ظ… ط§ظ„ط¨ظˆطµظ„ط©طں',
                 style: GoogleFonts.cairo(
                   fontSize: 13.5,
                   fontWeight: FontWeight.w800,
@@ -1102,9 +1102,9 @@ class _QiblaScreenState extends State<QiblaScreen>
                       height: 24,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: s.color.withOpacity(0.13),
+                        color: s.color.withValues(alpha: 0.13),
                         border: Border.all(
-                            color: s.color.withOpacity(0.38)),
+                            color: s.color.withValues(alpha: 0.38)),
                       ),
                       child: Center(
                         child: Text(
@@ -1133,7 +1133,7 @@ class _QiblaScreenState extends State<QiblaScreen>
                               style: GoogleFonts.cairo(
                                 fontSize: 10.5,
                                 color: textColor
-                                    .withOpacity(0.52),
+                                    .withValues(alpha: 0.52),
                                 height: 1.4,
                               )),
                         ],
@@ -1149,7 +1149,7 @@ class _QiblaScreenState extends State<QiblaScreen>
     );
   }
 
-  // ── معايرة ──
+  // â”€â”€ ظ…ط¹ط§ظٹط±ط© â”€â”€
   Widget _buildCalibrationHint(bool isDark) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -1158,11 +1158,11 @@ class _QiblaScreenState extends State<QiblaScreen>
             horizontal: 13, vertical: 10),
         decoration: BoxDecoration(
           color: isDark
-              ? Colors.orange.withOpacity(0.07)
-              : Colors.orange.withOpacity(0.06),
+              ? Colors.orange.withValues(alpha: 0.07)
+              : Colors.orange.withValues(alpha: 0.06),
           borderRadius: BorderRadius.circular(13),
           border:
-          Border.all(color: Colors.orange.withOpacity(0.22)),
+          Border.all(color: Colors.orange.withValues(alpha: 0.22)),
         ),
         child: Row(
           children: [
@@ -1171,8 +1171,8 @@ class _QiblaScreenState extends State<QiblaScreen>
             const SizedBox(width: 9),
             Expanded(
               child: Text(
-                'إذا كانت النتيجة غير دقيقة: حرّك هاتفك على شكل ∞ '
-                    'عدة مرات، ثم ابتعد عن الأجسام المعدنية والكهربائية',
+                'ط¥ط°ط§ ظƒط§ظ†طھ ط§ظ„ظ†طھظٹط¬ط© ط؛ظٹط± ط¯ظ‚ظٹظ‚ط©: ط­ط±ظ‘ظƒ ظ‡ط§طھظپظƒ ط¹ظ„ظ‰ ط´ظƒظ„ âˆ‍ '
+                    'ط¹ط¯ط© ظ…ط±ط§طھطŒ ط«ظ… ط§ط¨طھط¹ط¯ ط¹ظ† ط§ظ„ط£ط¬ط³ط§ظ… ط§ظ„ظ…ط¹ط¯ظ†ظٹط© ظˆط§ظ„ظƒظ‡ط±ط¨ط§ط¦ظٹط©',
                 style: GoogleFonts.cairo(
                   fontSize: 10.5,
                   color: isDark
@@ -1188,7 +1188,7 @@ class _QiblaScreenState extends State<QiblaScreen>
     );
   }
 
-  // ── تحميل ──
+  // â”€â”€ طھط­ظ…ظٹظ„ â”€â”€
   Widget _buildLoading(bool isDark) {
     return Center(
       child: Column(
@@ -1197,7 +1197,7 @@ class _QiblaScreenState extends State<QiblaScreen>
           CircularProgressIndicator(color: _gold, strokeWidth: 3),
           const SizedBox(height: 16),
           Text(
-            'جارٍ تحديد موقعك...',
+            'ط¬ط§ط±ظچ طھط­ط¯ظٹط¯ ظ…ظˆظ‚ط¹ظƒ...',
             style: GoogleFonts.cairo(
               color: isDark ? Colors.white60 : Colors.black54,
               fontSize: 14,
@@ -1208,7 +1208,7 @@ class _QiblaScreenState extends State<QiblaScreen>
     );
   }
 
-  // ── لا إذن ──
+  // â”€â”€ ظ„ط§ ط¥ط°ظ† â”€â”€
   Widget _buildPermissionScreen(bool isDark) {
     final textColor =
     isDark ? Colors.white : const Color(0xFF1A1A2E);
@@ -1223,15 +1223,15 @@ class _QiblaScreenState extends State<QiblaScreen>
               height: 86,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: _gold.withOpacity(0.1),
-                border: Border.all(color: _gold.withOpacity(0.3)),
+                color: _gold.withValues(alpha: 0.1),
+                border: Border.all(color: _gold.withValues(alpha: 0.3)),
               ),
               child: const Icon(Icons.location_off_rounded,
                   color: _gold, size: 40),
             ),
             const SizedBox(height: 18),
             Text(
-              'الموقع مطلوب',
+              'ط§ظ„ظ…ظˆظ‚ط¹ ظ…ط·ظ„ظˆط¨',
               style: GoogleFonts.cairo(
                 fontSize: 20,
                 fontWeight: FontWeight.w800,
@@ -1240,10 +1240,10 @@ class _QiblaScreenState extends State<QiblaScreen>
             ),
             const SizedBox(height: 8),
             Text(
-              'يُرجى تفعيل خدمة الموقع لتحديد اتجاه القبلة بدقة',
+              'ظٹظڈط±ط¬ظ‰ طھظپط¹ظٹظ„ ط®ط¯ظ…ط© ط§ظ„ظ…ظˆظ‚ط¹ ظ„طھط­ط¯ظٹط¯ ط§طھط¬ط§ظ‡ ط§ظ„ظ‚ط¨ظ„ط© ط¨ط¯ظ‚ط©',
               style: GoogleFonts.cairo(
                 fontSize: 13.5,
-                color: textColor.withOpacity(0.58),
+                color: textColor.withValues(alpha: 0.58),
                 height: 1.6,
               ),
               textAlign: TextAlign.center,
@@ -1262,7 +1262,7 @@ class _QiblaScreenState extends State<QiblaScreen>
               onPressed: _checkPermissionsAndStart,
               icon: const Icon(Icons.location_on_rounded, size: 17),
               label: Text(
-                'السماح بالموقع',
+                'ط§ظ„ط³ظ…ط§ط­ ط¨ط§ظ„ظ…ظˆظ‚ط¹',
                 style: GoogleFonts.cairo(
                   fontWeight: FontWeight.w700,
                   fontSize: 14,
@@ -1276,9 +1276,9 @@ class _QiblaScreenState extends State<QiblaScreen>
   }
 }
 
-// ══════════════════════════════════════════════════════════════
-//  قرص البوصلة
-// ══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+//  ظ‚ط±طµ ط§ظ„ط¨ظˆطµظ„ط©
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _CompassDial extends StatelessWidget {
   final double size;
   final bool   isDark;
@@ -1306,7 +1306,7 @@ class _DialPainter extends CustomPainter {
     final c = Offset(size.width / 2, size.height / 2);
     final r = size.width / 2;
 
-    // خلفية
+    // ط®ظ„ظپظٹط©
     canvas.drawCircle(
       c, r,
       Paint()
@@ -1317,20 +1317,20 @@ class _DialPainter extends CustomPainter {
         ).createShader(Rect.fromCircle(center: c, radius: r)),
     );
 
-    // حلقات
+    // ط­ظ„ظ‚ط§طھ
     canvas.drawCircle(c, r - 2,
         Paint()
-          ..color = gold.withOpacity(0.3)
+          ..color = gold.withValues(alpha: 0.3)
           ..style = PaintingStyle.stroke
           ..strokeWidth = 2);
     canvas.drawCircle(c, r - 9,
         Paint()
           ..color = (isDark ? Colors.white : Colors.black)
-              .withOpacity(0.05)
+              .withValues(alpha: 0.05)
           ..style = PaintingStyle.stroke
           ..strokeWidth = 1);
 
-    // خطوط الدرجات
+    // ط®ط·ظˆط· ط§ظ„ط¯ط±ط¬ط§طھ
     for (int i = 0; i < 360; i += 5) {
       final a   = i * pi / 180;
       final iM  = i % 90 == 0;
@@ -1346,22 +1346,22 @@ class _DialPainter extends CustomPainter {
               ? Colors.red
               : iM ? gold
               : (isDark ? Colors.white : Colors.black)
-              .withOpacity(im ? 0.5 : 0.18)
+              .withValues(alpha: im ? 0.5 : 0.18)
           ..strokeWidth = iM ? 2.5 : im ? 1.5 : 1.0
           ..strokeCap = StrokeCap.round,
       );
     }
 
-    // الحروف الاتجاهية
+    // ط§ظ„ط­ط±ظˆظپ ط§ظ„ط§طھط¬ط§ظ‡ظٹط©
     for (final d in [
       (t: 'N',  a: 0.0,      c2: Colors.red,  fs: 21.0, b: true),
       (t: 'S',  a: pi,       c2: gold,         fs: 16.0, b: true),
       (t: 'E',  a: pi/2,     c2: gold,         fs: 16.0, b: true),
       (t: 'W',  a: -pi/2,    c2: gold,         fs: 16.0, b: true),
-      (t: 'NE', a: pi/4,     c2: (isDark ? Colors.white : Colors.black).withOpacity(0.38), fs: 10.5, b: false),
-      (t: 'SE', a: 3*pi/4,   c2: (isDark ? Colors.white : Colors.black).withOpacity(0.38), fs: 10.5, b: false),
-      (t: 'SW', a: -3*pi/4,  c2: (isDark ? Colors.white : Colors.black).withOpacity(0.38), fs: 10.5, b: false),
-      (t: 'NW', a: -pi/4,    c2: (isDark ? Colors.white : Colors.black).withOpacity(0.38), fs: 10.5, b: false),
+      (t: 'NE', a: pi/4,     c2: (isDark ? Colors.white : Colors.black).withValues(alpha: 0.38), fs: 10.5, b: false),
+      (t: 'SE', a: 3*pi/4,   c2: (isDark ? Colors.white : Colors.black).withValues(alpha: 0.38), fs: 10.5, b: false),
+      (t: 'SW', a: -3*pi/4,  c2: (isDark ? Colors.white : Colors.black).withValues(alpha: 0.38), fs: 10.5, b: false),
+      (t: 'NW', a: -pi/4,    c2: (isDark ? Colors.white : Colors.black).withValues(alpha: 0.38), fs: 10.5, b: false),
     ]) {
       final p = Offset(
         c.dx + r * 0.72 * sin(d.a),
@@ -1381,12 +1381,12 @@ class _DialPainter extends CustomPainter {
       tp.paint(canvas, p - Offset(tp.width/2, tp.height/2));
     }
 
-    // دوائر داخلية
+    // ط¯ظˆط§ط¦ط± ط¯ط§ط®ظ„ظٹط©
     for (final rr in [r*0.44, r*0.27]) {
       canvas.drawCircle(c, rr,
           Paint()
             ..color = (isDark ? Colors.white : Colors.black)
-                .withOpacity(0.04)
+                .withValues(alpha: 0.04)
             ..style = PaintingStyle.stroke
             ..strokeWidth = 1);
     }
@@ -1396,7 +1396,7 @@ class _DialPainter extends CustomPainter {
   bool shouldRepaint(_DialPainter o) => o.isDark != isDark;
 }
 
-// ── رسام الإبرة ──
+// â”€â”€ ط±ط³ط§ظ… ط§ظ„ط¥ط¨ط±ط© â”€â”€
 class _TrianglePainter extends CustomPainter {
   final Color color;
   final bool  pointUp;
@@ -1420,7 +1420,7 @@ class _TrianglePainter extends CustomPainter {
     canvas.drawPath(path,
         Paint()
           ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4)
-          ..color = color.withOpacity(0.22));
+          ..color = color.withValues(alpha: 0.22));
 
     canvas.drawPath(path,
         Paint()
@@ -1428,9 +1428,9 @@ class _TrianglePainter extends CustomPainter {
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
             colors: [
-              color.withOpacity(0.72),
+              color.withValues(alpha: 0.72),
               color,
-              color.withOpacity(0.72),
+              color.withValues(alpha: 0.72),
             ],
           ).createShader(
               Rect.fromLTWH(0, 0, size.width, size.height)));

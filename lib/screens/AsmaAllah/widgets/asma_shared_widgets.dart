@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'asma_theme.dart';
 
@@ -28,16 +28,16 @@ class AsmaAppBarIconButton extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                AsmaTheme.gold.withOpacity(isDecorative ? 0.1 : 0.15),
-                AsmaTheme.gold.withOpacity(isDecorative ? 0.05 : 0.08),
+                AsmaTheme.gold.withValues(alpha: isDecorative ? 0.1 : 0.15),
+                AsmaTheme.gold.withValues(alpha: isDecorative ? 0.05 : 0.08),
               ],
             ),
             borderRadius: BorderRadius.circular(14),
-            border: Border.all(color: AsmaTheme.gold.withOpacity(0.3)),
+            border: Border.all(color: AsmaTheme.gold.withValues(alpha: 0.3)),
           ),
           child: Icon(
             icon,
-            color: isDecorative ? AsmaTheme.gold.withOpacity(0.5) : AsmaTheme.gold,
+            color: isDecorative ? AsmaTheme.gold.withValues(alpha: 0.5) : AsmaTheme.gold,
             size: 20,
           ),
         ),
@@ -58,7 +58,7 @@ class AsmaMiniDot extends StatelessWidget {
         color: AsmaTheme.gold,
         shape: BoxShape.circle,
         boxShadow: [
-          BoxShadow(color: AsmaTheme.gold.withOpacity(0.5), blurRadius: 4),
+          BoxShadow(color: AsmaTheme.gold.withValues(alpha: 0.5), blurRadius: 4),
         ],
       ),
     );
@@ -81,7 +81,7 @@ class AsmaDecorativeDivider extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
                   Colors.transparent,
-                  AsmaTheme.gold.withOpacity(0.5),
+                  AsmaTheme.gold.withValues(alpha: 0.5),
                   AsmaTheme.gold,
                 ]),
               ),
@@ -95,7 +95,7 @@ class AsmaDecorativeDivider extends StatelessWidget {
               color: AsmaTheme.gold,
               shape: BoxShape.circle,
               boxShadow: [
-                BoxShadow(color: AsmaTheme.gold.withOpacity(0.5), blurRadius: 8),
+                BoxShadow(color: AsmaTheme.gold.withValues(alpha: 0.5), blurRadius: 8),
               ],
             ),
           ),
@@ -105,7 +105,7 @@ class AsmaDecorativeDivider extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
                   AsmaTheme.gold,
-                  AsmaTheme.gold.withOpacity(0.5),
+                  AsmaTheme.gold.withValues(alpha: 0.5),
                   Colors.transparent,
                 ]),
               ),

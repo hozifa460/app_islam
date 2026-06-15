@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -55,16 +55,16 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
       final pm = Map<String, dynamic>.from(p);
       if (pm['icon'] == 'youtube') {
         try {
-          // ← استخدام الدالة الجديدة
+          // â†گ ط§ط³طھط®ط¯ط§ظ… ط§ظ„ط¯ط§ظ„ط© ط§ظ„ط¬ط¯ظٹط¯ط©
           final vids = await YoutubeService.getAllChannelVideos(
             channelUrl: pm['url'] ?? '',
             handle: pm['handle'],
-            maxResults: 150, // زيادة الحد
+            maxResults: 150, // ط²ظٹط§ط¯ط© ط§ظ„ط­ط¯
           );
 
-          debugPrint('📥 Loaded ${vids.length} videos for ${widget.scholar['name']}');
+          debugPrint('ًں“¥ Loaded ${vids.length} videos for ${widget.scholar['name']}');
 
-          // جلب معلومات القناة
+          // ط¬ظ„ط¨ ظ…ط¹ظ„ظˆظ…ط§طھ ط§ظ„ظ‚ظ†ط§ط©
           final channelUrl = pm['url']?.toString() ?? '';
           if (channelUrl.contains('/channel/')) {
             final parts = channelUrl.split('/channel/');
@@ -86,7 +86,7 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
           }
           break;
         } catch (e) {
-          debugPrint('❌ Load error: $e');
+          debugPrint('â‌Œ Load error: $e');
         }
       }
     }
@@ -113,11 +113,11 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
       for (final p in platforms) {
         final pm = Map<String, dynamic>.from(p);
         if (pm['icon'] == 'youtube') {
-          // جلب دفعة جديدة
+          // ط¬ظ„ط¨ ط¯ظپط¹ط© ط¬ط¯ظٹط¯ط©
           final moreVids = await YoutubeService.getAllChannelVideos(
             channelUrl: pm['url'] ?? '',
             handle: pm['handle'],
-            maxResults: 200, // زيادة أكثر
+            maxResults: 200, // ط²ظٹط§ط¯ط© ط£ظƒط«ط±
           );
 
           final existingIds = _videos.map((v) => v.id).toSet();
@@ -129,15 +129,15 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
               _videos.addAll(uniqueVids);
               _currentPage++;
             });
-            debugPrint('➕ Added ${uniqueVids.length} more videos');
+            debugPrint('â‍• Added ${uniqueVids.length} more videos');
           } else {
-            debugPrint('⚠️ No new videos found');
+            debugPrint('âڑ ï¸ڈ No new videos found');
           }
           break;
         }
       }
     } catch (e) {
-      debugPrint('❌ Load more error: $e');
+      debugPrint('â‌Œ Load more error: $e');
     }
 
     if (mounted) {
@@ -184,20 +184,20 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
     final diff = DateTime.now().difference(dt);
     if (diff.inDays > 365) {
       final y = diff.inDays ~/ 365;
-      return 'منذ $y ${y == 1 ? 'سنة' : 'سنوات'}';
+      return 'ظ…ظ†ط° $y ${y == 1 ? 'ط³ظ†ط©' : 'ط³ظ†ظˆط§طھ'}';
     }
     if (diff.inDays > 30) {
       final m = diff.inDays ~/ 30;
-      return 'منذ $m ${m == 1 ? 'شهر' : 'أشهر'}';
+      return 'ظ…ظ†ط° $m ${m == 1 ? 'ط´ظ‡ط±' : 'ط£ط´ظ‡ط±'}';
     }
     if (diff.inDays > 7) {
       final w = diff.inDays ~/ 7;
-      return 'منذ $w ${w == 1 ? 'أسبوع' : 'أسابيع'}';
+      return 'ظ…ظ†ط° $w ${w == 1 ? 'ط£ط³ط¨ظˆط¹' : 'ط£ط³ط§ط¨ظٹط¹'}';
     }
-    if (diff.inDays > 0) return 'منذ ${diff.inDays} ${diff.inDays == 1 ? 'يوم' : 'أيام'}';
-    if (diff.inHours > 0) return 'منذ ${diff.inHours} ${diff.inHours == 1 ? 'ساعة' : 'ساعات'}';
-    if (diff.inMinutes > 0) return 'منذ ${diff.inMinutes} دقيقة';
-    return 'الآن';
+    if (diff.inDays > 0) return 'ظ…ظ†ط° ${diff.inDays} ${diff.inDays == 1 ? 'ظٹظˆظ…' : 'ط£ظٹط§ظ…'}';
+    if (diff.inHours > 0) return 'ظ…ظ†ط° ${diff.inHours} ${diff.inHours == 1 ? 'ط³ط§ط¹ط©' : 'ط³ط§ط¹ط§طھ'}';
+    if (diff.inMinutes > 0) return 'ظ…ظ†ط° ${diff.inMinutes} ط¯ظ‚ظٹظ‚ط©';
+    return 'ط§ظ„ط¢ظ†';
   }
 
   @override
@@ -229,9 +229,9 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
             controller: _scrollController,
             headerSliverBuilder: (context, innerBoxIsScrolled) {
               return [
-                // ══════════════════════════════
-                //  الهيدر المتحرك
-                // ══════════════════════════════
+                // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+                //  ط§ظ„ظ‡ظٹط¯ط± ط§ظ„ظ…طھط­ط±ظƒ
+                // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
                 SliverAppBar(
                   expandedHeight: w * 0.7,
                   floating: false,
@@ -241,7 +241,7 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
                     icon: Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.5),
+                        color: Colors.black.withValues(alpha: 0.5),
                         shape: BoxShape.circle,
                       ),
                       child: const Icon(Icons.arrow_back_ios_new_rounded,
@@ -253,7 +253,7 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
                     background: Stack(
                       fit: StackFit.expand,
                       children: [
-                        // الخلفية المتدرجة
+                        // ط§ظ„ط®ظ„ظپظٹط© ط§ظ„ظ…طھط¯ط±ط¬ط©
                         Container(
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
@@ -272,13 +272,13 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
                               end: Alignment.bottomCenter,
                               colors: [
                                 Colors.transparent,
-                                Colors.black.withOpacity(0.7),
+                                Colors.black.withValues(alpha: 0.7),
                               ],
                             ),
                           ),
                         ),
 
-                        // المحتوى
+                        // ط§ظ„ظ…ط­طھظˆظ‰
                         Positioned(
                           bottom: w * 0.05,
                           left: w * 0.05,
@@ -286,7 +286,7 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              // الصورة
+                              // ط§ظ„طµظˆط±ط©
                               Container(
                                 width: (w * 0.28).clamp(90.0, 130.0),
                                 height: (w * 0.28).clamp(90.0, 130.0),
@@ -296,7 +296,7 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
                                   border: Border.all(color: Colors.white, width: 3),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.black.withOpacity(0.4),
+                                      color: Colors.black.withValues(alpha: 0.4),
                                       blurRadius: 20,
                                       offset: const Offset(0, 8),
                                     ),
@@ -315,7 +315,7 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
                               ),
                               SizedBox(height: w * 0.03),
 
-                              // الاسم
+                              // ط§ظ„ط§ط³ظ…
                               Text(
                                 name,
                                 style: GoogleFonts.cairo(
@@ -324,7 +324,7 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
                                   color: Colors.white,
                                   shadows: [
                                     Shadow(
-                                      color: Colors.black.withOpacity(0.5),
+                                      color: Colors.black.withValues(alpha: 0.5),
                                       blurRadius: 10,
                                     ),
                                   ],
@@ -338,10 +338,10 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
                                   title,
                                   style: GoogleFonts.cairo(
                                     fontSize: (w * 0.032).clamp(12.0, 16.0),
-                                    color: Colors.white.withOpacity(0.9),
+                                    color: Colors.white.withValues(alpha: 0.9),
                                     shadows: [
                                       Shadow(
-                                        color: Colors.black.withOpacity(0.5),
+                                        color: Colors.black.withValues(alpha: 0.5),
                                         blurRadius: 8,
                                       ),
                                     ],
@@ -352,7 +352,7 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
 
                               SizedBox(height: w * 0.02),
 
-                              // البلد والتصنيف
+                              // ط§ظ„ط¨ظ„ط¯ ظˆط§ظ„طھطµظ†ظٹظپ
                               Wrap(
                                 alignment: WrapAlignment.center,
                                 spacing: w * 0.02,
@@ -360,21 +360,21 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
                                   if (flag.isNotEmpty && country.isNotEmpty)
                                     _infoChip(
                                       '$flag $country',
-                                      Colors.white.withOpacity(0.2),
+                                      Colors.white.withValues(alpha: 0.2),
                                       Colors.white,
                                       w,
                                     ),
                                   if (category.isNotEmpty)
                                     _infoChip(
                                       category,
-                                      Colors.white.withOpacity(0.3),
+                                      Colors.white.withValues(alpha: 0.3),
                                       Colors.white,
                                       w,
                                     ),
                                 ],
                               ),
 
-                              // معلومات القناة
+                              // ظ…ط¹ظ„ظˆظ…ط§طھ ط§ظ„ظ‚ظ†ط§ط©
                               if (_channelInfo != null) ...[
                                 SizedBox(height: w * 0.02),
                                 Row(
@@ -383,20 +383,20 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
                                     _statBox(
                                       YoutubeService.formatCount(
                                           _channelInfo!.subscriberCount),
-                                      'مشترك',
+                                      'ظ…ط´طھط±ظƒ',
                                       w,
                                     ),
                                     SizedBox(width: w * 0.04),
                                     _statBox(
                                       YoutubeService.formatCount(
                                           _channelInfo!.videoCount),
-                                      'فيديو',
+                                      'ظپظٹط¯ظٹظˆ',
                                       w,
                                     ),
                                     SizedBox(width: w * 0.04),
                                     _statBox(
                                       '${_videos.length}',
-                                      'محمّل',
+                                      'ظ…ط­ظ…ظ‘ظ„',
                                       w,
                                     ),
                                   ],
@@ -410,9 +410,9 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
                   ),
                 ),
 
-                // ══════════════════════════════
-                //  التبويبات الثابتة
-                // ══════════════════════════════
+                // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+                //  ط§ظ„طھط¨ظˆظٹط¨ط§طھ ط§ظ„ط«ط§ط¨طھط©
+                // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
                 SliverPersistentHeader(
                   pinned: true,
                   delegate: _SliverTabBarDelegate(
@@ -431,8 +431,8 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
                         fontWeight: FontWeight.w500,
                       ),
                       tabs: const [
-                        Tab(text: 'الفيديوهات'),
-                        Tab(text: 'المنصات'),
+                        Tab(text: 'ط§ظ„ظپظٹط¯ظٹظˆظ‡ط§طھ'),
+                        Tab(text: 'ط§ظ„ظ…ظ†طµط§طھ'),
                       ],
                     ),
                     theme.cardBg,
@@ -443,14 +443,14 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
             body: TabBarView(
               controller: _tabController,
               children: [
-                // ══════════════════════════════
-                //  تبويب الفيديوهات
-                // ══════════════════════════════
+                // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+                //  طھط¨ظˆظٹط¨ ط§ظ„ظپظٹط¯ظٹظˆظ‡ط§طھ
+                // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
                 _buildVideosTab(theme, w),
 
-                // ══════════════════════════════
-                //  تبويب المنصات
-                // ══════════════════════════════
+                // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+                //  طھط¨ظˆظٹط¨ ط§ظ„ظ…ظ†طµط§طھ
+                // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
                 _buildPlatformsTab(theme, w, platforms),
               ],
             ),
@@ -460,9 +460,9 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
     );
   }
 
-  // ══════════════════════════════════════════
-  //  تبويب الفيديوهات
-  // ══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  طھط¨ظˆظٹط¨ ط§ظ„ظپظٹط¯ظٹظˆظ‡ط§طھ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildVideosTab(ChannelsTheme theme, double w) {
     if (_loadingVideos) {
       return Center(
@@ -472,7 +472,7 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
             CircularProgressIndicator(color: theme.primaryColor),
             SizedBox(height: w * 0.03),
             Text(
-              'جاري التحميل...',
+              'ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„...',
               style: GoogleFonts.cairo(
                 fontSize: (w * 0.035).clamp(12.0, 15.0),
                 color: theme.subtitleColor,
@@ -490,10 +490,10 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
           children: [
             Icon(Icons.video_library_outlined,
                 size: (w * 0.15).clamp(50.0, 70.0),
-                color: theme.captionColor.withOpacity(0.3)),
+                color: theme.captionColor.withValues(alpha: 0.3)),
             SizedBox(height: w * 0.03),
             Text(
-              'لا توجد فيديوهات',
+              'ظ„ط§ طھظˆط¬ط¯ ظپظٹط¯ظٹظˆظ‡ط§طھ',
               style: GoogleFonts.cairo(
                 fontSize: (w * 0.04).clamp(14.0, 18.0),
                 fontWeight: FontWeight.w700,
@@ -548,15 +548,15 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
     );
   }
 
-  // ══════════════════════════════════════════
-  //  تبويب المنصات
-  // ══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  طھط¨ظˆظٹط¨ ط§ظ„ظ…ظ†طµط§طھ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildPlatformsTab(
       ChannelsTheme theme, double w, List<Map<String, dynamic>> platforms) {
     if (platforms.isEmpty) {
       return Center(
         child: Text(
-          'لا توجد منصات',
+          'ظ„ط§ طھظˆط¬ط¯ ظ…ظ†طµط§طھ',
           style: GoogleFonts.cairo(
             fontSize: (w * 0.035).clamp(12.0, 15.0),
             color: theme.subtitleColor,
@@ -592,9 +592,9 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
     );
   }
 
-  // ══════════════════════════════════════════
-  //  عناصر مساعدة
-  // ══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  ط¹ظ†ط§طµط± ظ…ط³ط§ط¹ط¯ط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _avatarFallback(String name, ChannelsTheme theme, double w) {
     return Container(
       decoration: BoxDecoration(
@@ -606,7 +606,7 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
       ),
       child: Center(
         child: Text(
-          name.isNotEmpty ? name[0] : '؟',
+          name.isNotEmpty ? name[0] : 'طں',
           style: GoogleFonts.cairo(
             fontSize: (w * 0.1).clamp(32.0, 50.0),
             fontWeight: FontWeight.w700,
@@ -623,7 +623,7 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
       decoration: BoxDecoration(
         color: bg,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.white.withOpacity(0.2)),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
       ),
       child: Text(
         text,
@@ -652,7 +652,7 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
           label,
           style: GoogleFonts.cairo(
             fontSize: (w * 0.026).clamp(9.0, 12.0),
-            color: Colors.white.withOpacity(0.7),
+            color: Colors.white.withValues(alpha: 0.7),
           ),
         ),
       ],
@@ -660,9 +660,9 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
   }
 }
 
-// ══════════════════════════════════════════════════
-//  بطاقة الفيديو
-// ══════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+//  ط¨ط·ط§ظ‚ط© ط§ظ„ظپظٹط¯ظٹظˆ
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _VideoItemCard extends StatelessWidget {
   final YoutubeVideo video;
   final ChannelsTheme theme;
@@ -678,10 +678,10 @@ class _VideoItemCard extends StatelessWidget {
 
   String _timeAgo(DateTime dt) {
     final diff = DateTime.now().difference(dt);
-    if (diff.inDays > 30) return 'منذ ${diff.inDays ~/ 30} شهر';
-    if (diff.inDays > 0) return 'منذ ${diff.inDays} يوم';
-    if (diff.inHours > 0) return 'منذ ${diff.inHours} ساعة';
-    return 'الآن';
+    if (diff.inDays > 30) return 'ظ…ظ†ط° ${diff.inDays ~/ 30} ط´ظ‡ط±';
+    if (diff.inDays > 0) return 'ظ…ظ†ط° ${diff.inDays} ظٹظˆظ…';
+    if (diff.inHours > 0) return 'ظ…ظ†ط° ${diff.inHours} ط³ط§ط¹ط©';
+    return 'ط§ظ„ط¢ظ†';
   }
 
   @override
@@ -722,7 +722,7 @@ class _VideoItemCard extends StatelessWidget {
                       ),
                     ),
 
-                    // المدة
+                    // ط§ظ„ظ…ط¯ط©
                     if (video.duration.isNotEmpty)
                       Positioned(
                         bottom: 6,
@@ -731,7 +731,7 @@ class _VideoItemCard extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 6, vertical: 2),
                           decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.8),
+                            color: Colors.black.withValues(alpha: 0.8),
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Text(
@@ -748,7 +748,7 @@ class _VideoItemCard extends StatelessWidget {
                 ),
               ),
 
-              // المعلومات
+              // ط§ظ„ظ…ط¹ظ„ظˆظ…ط§طھ
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.all(w * 0.025),
@@ -769,7 +769,7 @@ class _VideoItemCard extends StatelessWidget {
                       ),
                       SizedBox(height: w * 0.015),
 
-                      // المشاهدات والتاريخ
+                      // ط§ظ„ظ…ط´ط§ظ‡ط¯ط§طھ ظˆط§ظ„طھط§ط±ظٹط®
                       Row(
                         children: [
                           if (video.viewCount != '0') ...[
@@ -814,9 +814,9 @@ class _VideoItemCard extends StatelessWidget {
   }
 }
 
-// ══════════════════════════════════════════════════
-//  بطاقة المنصة
-// ══════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+//  ط¨ط·ط§ظ‚ط© ط§ظ„ظ…ظ†طµط©
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _PlatformCard extends StatelessWidget {
   final Map<String, dynamic> platform;
   final ChannelsTheme theme;
@@ -885,7 +885,7 @@ class _PlatformCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(14),
                   boxShadow: [
                     BoxShadow(
-                      color: color.withOpacity(0.3),
+                      color: color.withValues(alpha: 0.3),
                       blurRadius: 12,
                       offset: const Offset(0, 4),
                     ),
@@ -912,7 +912,7 @@ class _PlatformCard extends StatelessWidget {
                     if (subs.isNotEmpty) ...[
                       SizedBox(height: w * 0.005),
                       Text(
-                        '$subs متابع',
+                        '$subs ظ…طھط§ط¨ط¹',
                         style: GoogleFonts.cairo(
                           fontSize: (w * 0.028).clamp(10.0, 13.0),
                           color: theme.subtitleColor,
@@ -933,9 +933,9 @@ class _PlatformCard extends StatelessWidget {
   }
 }
 
-// ══════════════════════════════════════════════════
-//  Delegate للتبويبات الثابتة
-// ══════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+//  Delegate ظ„ظ„طھط¨ظˆظٹط¨ط§طھ ط§ظ„ط«ط§ط¨طھط©
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
   final TabBar tabBar;
   final Color bgColor;

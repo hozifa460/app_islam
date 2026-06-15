@@ -1,4 +1,4 @@
-import 'dart:io';
+﻿import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
@@ -55,7 +55,7 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
   }
 
   void _stopDownloadAll() {
-    debugPrint('⛔ Stop download requested');
+    debugPrint('â›” Stop download requested');
     _downloadClient?.close();
     setState(() {
       _cancelDownloadAll = true;
@@ -107,8 +107,8 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
           SnackBar(
             content: Text(
               _cancelDownloadAll
-                  ? 'تم إيقاف التحميل، ويمكنك استكماله لاحقًا'
-                  : 'تم تحميل/فحص جميع المجلدات بنجاح',
+                  ? 'طھظ… ط¥ظٹظ‚ط§ظپ ط§ظ„طھط­ظ…ظٹظ„طŒ ظˆظٹظ…ظƒظ†ظƒ ط§ط³طھظƒظ…ط§ظ„ظ‡ ظ„ط§ط­ظ‚ظ‹ط§'
+                  : 'طھظ… طھط­ظ…ظٹظ„/ظپط­طµ ط¬ظ…ظٹط¹ ط§ظ„ظ…ط¬ظ„ط¯ط§طھ ط¨ظ†ط¬ط§ط­',
               style: GoogleFonts.cairo(),
             ),
             backgroundColor: _cancelDownloadAll ? Colors.orange : Colors.green,
@@ -120,7 +120,7 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('حدث خطأ أثناء تحميل المجلدات',
+            content: Text('ط­ط¯ط« ط®ط·ط£ ط£ط«ظ†ط§ط، طھط­ظ…ظٹظ„ ط§ظ„ظ…ط¬ظ„ط¯ط§طھ',
                 style: GoogleFonts.cairo()),
             backgroundColor: Colors.red,
           ),
@@ -157,7 +157,7 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
     try {
       if (mounted) {
         setState(() {
-          _currentDownloadingTitle = volume['title']?.toString() ?? 'مجلد';
+          _currentDownloadingTitle = volume['title']?.toString() ?? 'ظ…ط¬ظ„ط¯';
           _currentFileProgress = 0.0;
         });
       }
@@ -170,7 +170,7 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
           .timeout(const Duration(seconds: 30));
 
       if (response.statusCode != 200) {
-        throw Exception('فشل تحميل الملف');
+        throw Exception('ظپط´ظ„ طھط­ظ…ظٹظ„ ط§ظ„ظ…ظ„ظپ');
       }
 
       final totalBytes = response.contentLength ?? 0;
@@ -182,7 +182,7 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
         if (_cancelDownloadAll) {
           await sink.close();
           if (await file.exists()) await file.delete();
-          debugPrint('⛔ Download canceled أثناء تحميل $id');
+          debugPrint('â›” Download canceled ط£ط«ظ†ط§ط، طھط­ظ…ظٹظ„ $id');
           return;
         }
 
@@ -203,9 +203,9 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
         setState(() => _currentFileProgress = 1.0);
       }
 
-      debugPrint('✅ Finished downloading $id');
+      debugPrint('âœ… Finished downloading $id');
     } catch (e) {
-      debugPrint('❌ Download single volume error for $id: $e');
+      debugPrint('â‌Œ Download single volume error for $id: $e');
       if (await file.exists()) await file.delete();
     } finally {
       _downloadClient?.close();
@@ -278,7 +278,7 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
         backgroundColor: bgColor,
         appBar: AnimatedGradientHeader(
           title: widget.title,
-          subtitle: 'اختر المجلد الذي يناسبك للقراءة',
+          subtitle: 'ط§ط®طھط± ط§ظ„ظ…ط¬ظ„ط¯ ط§ظ„ط°ظٹ ظٹظ†ط§ط³ط¨ظƒ ظ„ظ„ظ‚ط±ط§ط،ط©',
           primaryColor: widget.primaryColor,
           icon: Icons.library_books_rounded,
           onBack: () => Navigator.pop(context),
@@ -301,7 +301,7 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    // رأس المعلومات
+                    // ط±ط£ط³ ط§ظ„ظ…ط¹ظ„ظˆظ…ط§طھ
                     _InfoHeader(
                       isDark: isDark,
                       textColor: textColor,
@@ -309,7 +309,7 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
                     ),
                     const SizedBox(height: 14),
 
-                    // قسم التحميل
+                    // ظ‚ط³ظ… ط§ظ„طھط­ظ…ظٹظ„
                     DownloadProgressWidget(
                       downloadedCount: downloadedCount,
                       totalCount: totalCount,
@@ -325,7 +325,7 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
                     ),
                     const SizedBox(height: 16),
 
-                    // شبكة المجلدات
+                    // ط´ط¨ظƒط© ط§ظ„ظ…ط¬ظ„ط¯ط§طھ
                     GridView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
@@ -365,9 +365,9 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
   }
 }
 
-// ═══════════════════════════════════════════
-// رأس المعلومات
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط±ط£ط³ ط§ظ„ظ…ط¹ظ„ظˆظ…ط§طھ
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _InfoHeader extends StatefulWidget {
   final bool isDark;
   final Color textColor;
@@ -430,12 +430,12 @@ class _InfoHeaderState extends State<_InfoHeader>
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                BooksTheme.gold.withOpacity(0.10),
-                BooksTheme.gold.withOpacity(0.05),
+                BooksTheme.gold.withValues(alpha: 0.10),
+                BooksTheme.gold.withValues(alpha: 0.05),
               ],
             ),
             borderRadius: BorderRadius.circular(22),
-            border: Border.all(color: BooksTheme.gold.withOpacity(0.18)),
+            border: Border.all(color: BooksTheme.gold.withValues(alpha: 0.18)),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -450,7 +450,7 @@ class _InfoHeaderState extends State<_InfoHeader>
                   const SizedBox(width: 12),
                   Expanded(
                     child: Text(
-                      'المجلدات المتاحة',
+                      'ط§ظ„ظ…ط¬ظ„ط¯ط§طھ ط§ظ„ظ…طھط§ط­ط©',
                       style: GoogleFonts.cairo(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -462,7 +462,7 @@ class _InfoHeaderState extends State<_InfoHeader>
               ),
               const SizedBox(height: 6),
               Text(
-                'اختر المجلد الذي تريد قراءته أو تحميله',
+                'ط§ط®طھط± ط§ظ„ظ…ط¬ظ„ط¯ ط§ظ„ط°ظٹ طھط±ظٹط¯ ظ‚ط±ط§ط،طھظ‡ ط£ظˆ طھط­ظ…ظٹظ„ظ‡',
                 style: GoogleFonts.cairo(
                   fontSize: 12,
                   color: widget.subTextColor,

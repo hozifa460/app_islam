@@ -1,4 +1,4 @@
-import 'dart:io';
+﻿import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -65,7 +65,7 @@ class MushafPageWidget extends StatelessWidget {
                 color: bgColor,
                 alignment: Alignment.center,
                 child: Text(
-                  'تعذر تحميل الصفحة ${SurahConstants.toArabicNum(page)}',
+                  'طھط¹ط°ط± طھط­ظ…ظٹظ„ ط§ظ„طµظپط­ط© ${SurahConstants.toArabicNum(page)}',
                   style: GoogleFonts.cairo(
                     color: primary,
                     fontSize: 22,
@@ -115,7 +115,7 @@ class MushafPageWidget extends StatelessWidget {
                                 ),
                                 const Spacer(),
                                 Text(
-                                  'جزء ${SurahConstants.toArabicNum(juz)}',
+                                  'ط¬ط²ط، ${SurahConstants.toArabicNum(juz)}',
                                   style: GoogleFonts.cairo(
                                     fontSize: 17.5,
                                     fontWeight: FontWeight.w600,
@@ -126,7 +126,7 @@ class MushafPageWidget extends StatelessWidget {
                                 _buildHizbProgressCircle(),
                                 const SizedBox(width: 8),
                                 Text(
-                                  'حزب ${SurahConstants.toArabicNum(hizb)}',
+                                  'ط­ط²ط¨ ${SurahConstants.toArabicNum(hizb)}',
                                   style: GoogleFonts.cairo(
                                     fontSize: 17.5,
                                     fontWeight: FontWeight.w600,
@@ -170,8 +170,8 @@ class MushafPageWidget extends StatelessWidget {
           quarter: currentQuarterInHizb,
           activeColor: primary,
           inactiveColor: isDark
-              ? Colors.white.withOpacity(0.14)
-              : Colors.black.withOpacity(0.10),
+              ? Colors.white.withValues(alpha: 0.14)
+              : Colors.black.withValues(alpha: 0.10),
         ),
         child: Center(
           child: Container(

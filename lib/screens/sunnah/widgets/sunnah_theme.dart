@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 
 class SunnahTheme {
   final bool isDark;
   SunnahTheme({required this.isDark});
 
   // ==============================
-  // 🎨 Dark Mode Colors
+  // ًںژ¨ Dark Mode Colors
   // ==============================
   static const Color darkBg = Color(0xFF0A0E1A);
   static const Color darkCard = Color(0xFF111827);
@@ -14,7 +14,7 @@ class SunnahTheme {
   static const Color darkTextSecondary = Color(0xFF9CA3AF);
 
   // ==============================
-  // 🎨 Light Mode Colors
+  // ًںژ¨ Light Mode Colors
   // ==============================
   static const Color lightBg = Color(0xFFF0F4F8);
   static const Color lightCard = Color(0xFFFFFFFF);
@@ -23,7 +23,7 @@ class SunnahTheme {
   static const Color lightTextSecondary = Color(0xFF6B7280);
 
   // ==============================
-  // 🎨 Shared Accent Colors
+  // ًںژ¨ Shared Accent Colors
   // ==============================
   static const Color emerald = Color(0xFF10B981);
   static const Color emeraldDark = Color(0xFF059669);
@@ -35,7 +35,7 @@ class SunnahTheme {
   static const Color blueLight = Color(0xFF3B82F6);
 
   // ==============================
-  // 🎯 Dynamic Getters
+  // ًںژ¯ Dynamic Getters
   // ==============================
   Color get bg => isDark ? darkBg : lightBg;
   Color get card => isDark ? darkCard : lightCard;
@@ -44,7 +44,7 @@ class SunnahTheme {
   Color get textSecondary => isDark ? darkTextSecondary : lightTextSecondary;
 
   // ==============================
-  // 📐 Dimensions
+  // ًں“گ Dimensions
   // ==============================
   static const double cardRadius = 18.0;
   static const double headerRadius = 0.0;
@@ -56,7 +56,7 @@ class SunnahTheme {
   static const double accentLineWidth = 3.0;
 
   // ==============================
-  // 🎭 Header Gradients
+  // ًںژ­ Header Gradients
   // ==============================
   List<Color> get headerGradient => isDark
       ? [const Color(0xFF0D2818), const Color(0xFF0A1520), const Color(0xFF0A0E1A)]
@@ -71,14 +71,14 @@ class SunnahTheme {
       : [const Color(0xFF064E3B), const Color(0xFF065F46)];
 
   // ==============================
-  // 🎭 Tab Bar
+  // ًںژ­ Tab Bar
   // ==============================
   static const LinearGradient tabIndicatorGradient = LinearGradient(
     colors: [emerald, emeraldDark],
   );
 
   // ==============================
-  // 🎭 Emerald Gradients
+  // ًںژ­ Emerald Gradients
   // ==============================
   static const LinearGradient emeraldGradient = LinearGradient(
     colors: [emerald, emeraldDark],
@@ -89,7 +89,7 @@ class SunnahTheme {
   );
 
   // ==============================
-  // 🎭 Importance Gradients
+  // ًںژ­ Importance Gradients
   // ==============================
   static const LinearGradient highImportanceGradient = LinearGradient(
     colors: [Color(0xFF7C3AED), Color(0xFF6D28D9)],
@@ -100,30 +100,30 @@ class SunnahTheme {
   );
 
   // ==============================
-  // 📦 Shadows
+  // ًں“¦ Shadows
   // ==============================
   List<BoxShadow> get headerShadow => [
     BoxShadow(
-      color: emerald.withOpacity(0.15),
+      color: emerald.withValues(alpha: 0.15),
       blurRadius: 20,
       offset: const Offset(0, 8),
     ),
   ];
 
   BoxShadow cardShadow(Color color) => BoxShadow(
-    color: color.withOpacity(isDark ? 0.08 : 0.05),
+    color: color.withValues(alpha: isDark ? 0.08 : 0.05),
     blurRadius: 10,
     offset: const Offset(0, 4),
   );
 
   BoxShadow get cardShadow2 => BoxShadow(
-    color: Colors.black.withOpacity(isDark ? 0.2 : 0.04),
+    color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.04),
     blurRadius: 6,
     offset: const Offset(0, 2),
   );
 
   // ==============================
-  // 🎯 Complete Button Styles
+  // ًںژ¯ Complete Button Styles
   // ==============================
   LinearGradient completedBtnGradient() => LinearGradient(
   colors: isDark
@@ -132,43 +132,43 @@ class SunnahTheme {
   );
 
   // ==============================
-  // 🔧 Category Icons
+  // ًں”§ Category Icons
   // ==============================
   static const Map<String, String> categoryIcons = {
-  'fajr': '🌙',
-  'morning_adhkar': '🌅',
-  'duha': '☀️',
-  'dhuhr': '🌞',
-  'asr': '🌤️',
-  'evening_adhkar': '🌆',
-  'maghrib': '🌇',
-  'isha': '🌃',
-  'witr': '⭐',
-  'tahajjud': '🌟',
-  'sleep': '😴',
-  'always': '♾️',
-  'weekly_fast': '📅',
-  'monthly_fast': '🌕',
-  'friday': '🕌',
-  'yearly_fast': '🗓️',
-  'yearly_prayer': '🎊',
+  'fajr': 'ًںŒ™',
+  'morning_adhkar': 'ًںŒ…',
+  'duha': 'âک€ï¸ڈ',
+  'dhuhr': 'ًںŒ‍',
+  'asr': 'ًںŒ¤ï¸ڈ',
+  'evening_adhkar': 'ًںŒ†',
+  'maghrib': 'ًںŒ‡',
+  'isha': 'ًںŒƒ',
+  'witr': 'â­گ',
+  'tahajjud': 'ًںŒں',
+  'sleep': 'ًںک´',
+  'always': 'â™¾ï¸ڈ',
+  'weekly_fast': 'ًں“…',
+  'monthly_fast': 'ًںŒ•',
+  'friday': 'ًں•Œ',
+  'yearly_fast': 'ًں—“ï¸ڈ',
+  'yearly_prayer': 'ًںژٹ',
   };
 
   // ==============================
-  // 🔧 Day Names
+  // ًں”§ Day Names
   // ==============================
   static const Map<int, String> dayNames = {
-  1: 'الاثنين',
-  2: 'الثلاثاء',
-  3: 'الأربعاء',
-  4: 'الخميس',
-  5: 'الجمعة',
-  6: 'السبت',
-  7: 'الأحد',
+  1: 'ط§ظ„ط§ط«ظ†ظٹظ†',
+  2: 'ط§ظ„ط«ظ„ط§ط«ط§ط،',
+  3: 'ط§ظ„ط£ط±ط¨ط¹ط§ط،',
+  4: 'ط§ظ„ط®ظ…ظٹط³',
+  5: 'ط§ظ„ط¬ظ…ط¹ط©',
+  6: 'ط§ظ„ط³ط¨طھ',
+  7: 'ط§ظ„ط£ط­ط¯',
   };
 
   // ==============================
-  // 🔧 Helpers
+  // ًں”§ Helpers
   // ==============================
   static Color hexToColor(String hex) =>
   Color(int.parse(hex.replaceFirst('#', '0xFF')));

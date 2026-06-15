@@ -1,4 +1,4 @@
-import 'dart:math';
+﻿import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -6,9 +6,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'great_muslims_styled_widgets.dart';
 
-// ═══════════════════════════════════════════════════════════
-//                  الجسيمات المتحركة
-// ═══════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+//                  ط§ظ„ط¬ط³ظٹظ…ط§طھ ط§ظ„ظ…طھط­ط±ظƒط©
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class FloatingParticles extends StatelessWidget {
   final AnimationController controller;
   final Color color;
@@ -40,7 +40,7 @@ class FloatingParticles extends StatelessWidget {
                 width: size,
                 height: size,
                 decoration: BoxDecoration(
-                  color: color.withOpacity(opacity),
+                  color: color.withValues(alpha: opacity),
                   shape: BoxShape.circle,
                 ),
               ),
@@ -52,9 +52,9 @@ class FloatingParticles extends StatelessWidget {
   }
 }
 
-// ═══════════════════════════════════════════════════════════
-//               ويدجت الظهور التدريجي
-// ═══════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+//               ظˆظٹط¯ط¬طھ ط§ظ„ط¸ظ‡ظˆط± ط§ظ„طھط¯ط±ظٹط¬ظٹ
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class AnimatedRevealWidget extends StatelessWidget {
   final AnimationController controller;
   final double delay;
@@ -90,9 +90,9 @@ class AnimatedRevealWidget extends StatelessWidget {
   }
 }
 
-// ═══════════════════════════════════════════════════════════
-//               الإطار الذهبي النابض
-// ═══════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+//               ط§ظ„ط¥ط·ط§ط± ط§ظ„ط°ظ‡ط¨ظٹ ط§ظ„ظ†ط§ط¨ط¶
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class PulsingGoldenBorder extends StatelessWidget {
   final AnimationController controller;
 
@@ -109,7 +109,7 @@ class PulsingGoldenBorder extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(0),
             border: Border.all(
-              color: GreatMuslimsColors.gold.withOpacity(0.1 + v * 0.15),
+              color: GreatMuslimsColors.gold.withValues(alpha: 0.1 + v * 0.15),
               width: 1,
             ),
           ),
@@ -119,9 +119,9 @@ class PulsingGoldenBorder extends StatelessWidget {
   }
 }
 
-// ═══════════════════════════════════════════════════════════
-//               شارة متحركة بالنبض
-// ═══════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+//               ط´ط§ط±ط© ظ…طھط­ط±ظƒط© ط¨ط§ظ„ظ†ط¨ط¶
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class AnimatedPulseBadge extends StatelessWidget {
   final AnimationController controller;
   final String text;
@@ -152,13 +152,13 @@ class AnimatedPulseBadge extends StatelessWidget {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      GreatMuslimsColors.gold.withOpacity(0.3),
-                      GreatMuslimsColors.gold.withOpacity(0.15),
+                      GreatMuslimsColors.gold.withValues(alpha: 0.3),
+                      GreatMuslimsColors.gold.withValues(alpha: 0.15),
                     ],
                   ),
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
-                    color: GreatMuslimsColors.gold.withOpacity(0.5),
+                    color: GreatMuslimsColors.gold.withValues(alpha: 0.5),
                   ),
                 ),
                 child: Row(

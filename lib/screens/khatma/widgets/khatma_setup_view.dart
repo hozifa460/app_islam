@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../languages/app_localizations.dart';
@@ -31,7 +31,7 @@ class KhatmaSetupView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final tr = context.tr; // ← الترجمة
+    final tr = context.tr; // â†گ ط§ظ„طھط±ط¬ظ…ط©
 
     int daysToFinish = (totalPages / setupPages).ceil();
     final bgCard = isDark ? const Color(0xFF1E1E2C) : Colors.white;
@@ -62,9 +62,9 @@ class KhatmaSetupView extends StatelessWidget {
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // Header - محمي من الـ Overflow
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // Header - ظ…ط­ظ…ظٹ ظ…ظ† ط§ظ„ظ€ Overflow
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildHeader(BuildContext context, AppLocalizations tr) {
     return SliverAppBar(
       expandedHeight: 200,
@@ -113,7 +113,7 @@ class KhatmaSetupView extends StatelessWidget {
                             child: Container(
                               padding: EdgeInsets.all(isSmall ? 12 : 20),
                               decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.15),
+                                color: Colors.white.withValues(alpha: 0.15),
                                 shape: BoxShape.circle,
                               ),
                               child: Icon(Icons.auto_stories_rounded,
@@ -123,7 +123,7 @@ class KhatmaSetupView extends StatelessWidget {
                           ),
                           const SizedBox(height: 10),
                           Text(
-                            tr.khatmaSetupTitle, // ← مترجم
+                            tr.khatmaSetupTitle, // â†گ ظ…طھط±ط¬ظ…
                             style: GoogleFonts.cairo(
                               fontSize: 22,
                               fontWeight: FontWeight.bold,
@@ -134,10 +134,10 @@ class KhatmaSetupView extends StatelessWidget {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            tr.khatmaSetupSubtitle, // ← مترجم
+                            tr.khatmaSetupSubtitle, // â†گ ظ…طھط±ط¬ظ…
                             style: GoogleFonts.cairo(
                               fontSize: 14,
-                              color: Colors.white.withOpacity(0.8),
+                              color: Colors.white.withValues(alpha: 0.8),
                             ),
                             textAlign: TextAlign.center,
                             maxLines: 1,
@@ -155,9 +155,9 @@ class KhatmaSetupView extends StatelessWidget {
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // الخطط السريعة - محمية من الـ Overflow
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ط®ط·ط· ط§ظ„ط³ط±ظٹط¹ط© - ظ…ط­ظ…ظٹط© ظ…ظ† ط§ظ„ظ€ Overflow
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildPresetsSection(
       bool isDark, Color bgCard, AppLocalizations tr) {
     return Column(
@@ -166,7 +166,7 @@ class KhatmaSetupView extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 4),
           child: Text(
-            tr.khatmaQuickPlans, // ← مترجم
+            tr.khatmaQuickPlans, // â†گ ظ…طھط±ط¬ظ…
             style: GoogleFonts.cairo(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -206,7 +206,7 @@ class KhatmaSetupView extends StatelessWidget {
                       boxShadow: [
                         if (isSelected)
                           BoxShadow(
-                            color: primaryColor.withOpacity(0.3),
+                            color: primaryColor.withValues(alpha: 0.3),
                             blurRadius: 12,
                             offset: const Offset(0, 4),
                           ),
@@ -228,7 +228,7 @@ class KhatmaSetupView extends StatelessWidget {
                           FittedBox(
                             fit: BoxFit.scaleDown,
                             child: Text(
-                              preset['label'], // ← مترجم من presets
+                              preset['label'], // â†گ ظ…طھط±ط¬ظ… ظ…ظ† presets
                               style: GoogleFonts.cairo(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -245,7 +245,7 @@ class KhatmaSetupView extends StatelessWidget {
                           FittedBox(
                             fit: BoxFit.scaleDown,
                             child: Text(
-                              tr.khatmaPagesPerDay(pages), // ← مترجم
+                              tr.khatmaPagesPerDay(pages), // â†گ ظ…طھط±ط¬ظ…
                               style: GoogleFonts.cairo(
                                 fontSize: 12,
                                 color: isSelected
@@ -268,9 +268,9 @@ class KhatmaSetupView extends StatelessWidget {
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // التخصيص اليدوي - محمي من الـ Overflow
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„طھط®طµظٹطµ ط§ظ„ظٹط¯ظˆظٹ - ظ…ط­ظ…ظٹ ظ…ظ† ط§ظ„ظ€ Overflow
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildManualConfig(
       BuildContext context, bool isDark, Color bgCard, AppLocalizations tr) {
     return Container(
@@ -280,7 +280,7 @@ class KhatmaSetupView extends StatelessWidget {
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -297,7 +297,7 @@ class KhatmaSetupView extends StatelessWidget {
                   fit: BoxFit.scaleDown,
                   alignment: AlignmentDirectional.centerStart,
                   child: Text(
-                    tr.khatmaCustomize, // ← مترجم
+                    tr.khatmaCustomize, // â†گ ظ…طھط±ط¬ظ…
                     style: GoogleFonts.cairo(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -346,7 +346,7 @@ class KhatmaSetupView extends StatelessWidget {
                         FittedBox(
                           fit: BoxFit.scaleDown,
                           child: Text(
-                            tr.kharmaPagesDaily, // ← مترجم
+                            tr.kharmaPagesDaily, // â†گ ظ…طھط±ط¬ظ…
                             style: GoogleFonts.cairo(
                                 color: Colors.grey,
                                 fontSize: isSmall ? 11 : 13),
@@ -368,9 +368,9 @@ class KhatmaSetupView extends StatelessWidget {
           SliderTheme(
             data: SliderTheme.of(context).copyWith(
               activeTrackColor: primaryColor,
-              inactiveTrackColor: primaryColor.withOpacity(0.15),
+              inactiveTrackColor: primaryColor.withValues(alpha: 0.15),
               thumbColor: primaryColor,
-              overlayColor: primaryColor.withOpacity(0.12),
+              overlayColor: primaryColor.withValues(alpha: 0.12),
               trackHeight: 6,
               thumbShape:
               const RoundSliderThumbShape(enabledThumbRadius: 10),
@@ -387,19 +387,19 @@ class KhatmaSetupView extends StatelessWidget {
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // ملخص الخطة - محمي من الـ Overflow
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ظ…ظ„ط®طµ ط§ظ„ط®ط·ط© - ظ…ط­ظ…ظٹ ظ…ظ† ط§ظ„ظ€ Overflow
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildPlanSummary(int daysToFinish, AppLocalizations tr) {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         gradient: LinearGradient(colors: [
-          primaryColor.withOpacity(0.1),
-          primaryColor.withOpacity(0.05),
+          primaryColor.withValues(alpha: 0.1),
+          primaryColor.withValues(alpha: 0.05),
         ]),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: primaryColor.withOpacity(0.2)),
+        border: Border.all(color: primaryColor.withValues(alpha: 0.2)),
       ),
       child: Column(
         children: [
@@ -412,7 +412,7 @@ class KhatmaSetupView extends StatelessWidget {
                   fit: BoxFit.scaleDown,
                   alignment: AlignmentDirectional.centerStart,
                   child: Text(
-                    tr.khatmaPlanSummary, // ← مترجم
+                    tr.khatmaPlanSummary, // â†گ ظ…طھط±ط¬ظ…
                     style: GoogleFonts.cairo(
                         fontWeight: FontWeight.bold, color: primaryColor),
                   ),
@@ -423,22 +423,22 @@ class KhatmaSetupView extends StatelessWidget {
           const SizedBox(height: 16),
           KhatmaSummaryRow(
             icon: Icons.calendar_today,
-            label: tr.khatmaDuration, // ← مترجم
-            value: tr.khatmaDays(daysToFinish), // ← مترجم
+            label: tr.khatmaDuration, // â†گ ظ…طھط±ط¬ظ…
+            value: tr.khatmaDays(daysToFinish), // â†گ ظ…طھط±ط¬ظ…
             primaryColor: primaryColor,
           ),
           const SizedBox(height: 10),
           KhatmaSummaryRow(
             icon: Icons.timer_outlined,
-            label: tr.khatmaDailyTime, // ← مترجم
-            value: tr.khatmaMinutes(setupPages), // ← مترجم
+            label: tr.khatmaDailyTime, // â†گ ظ…طھط±ط¬ظ…
+            value: tr.khatmaMinutes(setupPages), // â†گ ظ…طھط±ط¬ظ…
             primaryColor: primaryColor,
           ),
           const SizedBox(height: 10),
           KhatmaSummaryRow(
             icon: Icons.auto_stories,
-            label: tr.khatmaTotalPages, // ← مترجم
-            value: tr.khatma604Pages, // ← مترجم
+            label: tr.khatmaTotalPages, // â†گ ظ…طھط±ط¬ظ…
+            value: tr.khatma604Pages, // â†گ ظ…طھط±ط¬ظ…
             primaryColor: primaryColor,
           ),
         ],
@@ -446,9 +446,9 @@ class KhatmaSetupView extends StatelessWidget {
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // زر البدء - محمي من الـ Overflow
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط²ط± ط§ظ„ط¨ط¯ط، - ظ…ط­ظ…ظٹ ظ…ظ† ط§ظ„ظ€ Overflow
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildStartButton(AppLocalizations tr) {
     return SizedBox(
       width: double.infinity,
@@ -459,7 +459,7 @@ class KhatmaSetupView extends StatelessWidget {
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18)),
           elevation: 4,
-          shadowColor: primaryColor.withOpacity(0.4),
+          shadowColor: primaryColor.withValues(alpha: 0.4),
         ),
         onPressed: () => onStartKhatma(setupPages, false),
         child: LayoutBuilder(
@@ -477,7 +477,7 @@ class KhatmaSetupView extends StatelessWidget {
                   child: FittedBox(
                     fit: BoxFit.scaleDown,
                     child: Text(
-                      tr.khatmaStartNow, // ← مترجم
+                      tr.khatmaStartNow, // â†گ ظ…طھط±ط¬ظ…
                       style: GoogleFonts.cairo(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,

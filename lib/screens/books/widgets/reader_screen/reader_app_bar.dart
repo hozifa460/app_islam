@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../theme/books_theme.dart';
 
-/// ═══════════════════════════════════════════════════════════════════════════
-/// شريط التطبيق لقارئ PDF - نفس الشكل القديم
-/// ═══════════════════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ط´ط±ظٹط· ط§ظ„طھط·ط¨ظٹظ‚ ظ„ظ‚ط§ط±ط¦ PDF - ظ†ظپط³ ط§ظ„ط´ظƒظ„ ط§ظ„ظ‚ط¯ظٹظ…
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class ReaderAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final int currentPage;
@@ -64,9 +64,9 @@ class ReaderAppBar extends StatelessWidget implements PreferredSizeWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
-          // ═══════════════════════════════════════════
-          // عداد الصفحات أو حالة أونلاين
-          // ═══════════════════════════════════════════
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+          // ط¹ط¯ط§ط¯ ط§ظ„طµظپط­ط§طھ ط£ظˆ ط­ط§ظ„ط© ط£ظˆظ†ظ„ط§ظٹظ†
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
           AnimatedSwitcher(
             duration: const Duration(milliseconds: 200),
             transitionBuilder: (child, anim) => FadeTransition(
@@ -81,10 +81,10 @@ class ReaderAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             child: isOnline
                 ? Text(
-              'قراءة أونلاين 🌐',
+              'ظ‚ط±ط§ط،ط© ط£ظˆظ†ظ„ط§ظٹظ† ًںŒگ',
               key: const ValueKey('online'),
               style: GoogleFonts.cairo(
-                color: Colors.white.withOpacity(0.82),
+                color: Colors.white.withValues(alpha: 0.82),
                 fontSize: 11,
               ),
             )
@@ -92,7 +92,7 @@ class ReaderAppBar extends StatelessWidget implements PreferredSizeWidget {
               'page ${currentPage + 1} / ${totalPages == 0 ? "..." : totalPages}',
               key: ValueKey(currentPage),
               style: GoogleFonts.cairo(
-                color: Colors.white.withOpacity(0.82),
+                color: Colors.white.withValues(alpha: 0.82),
                 fontSize: 11,
               ),
               textDirection: TextDirection.ltr,

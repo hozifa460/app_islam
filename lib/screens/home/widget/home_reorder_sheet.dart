@@ -1,4 +1,4 @@
-// lib/screens/home/widget/home_reorder_sheet.dart
+﻿// lib/screens/home/widget/home_reorder_sheet.dart
 
 import 'dart:ui';
 import 'package:flutter/material.dart';
@@ -19,7 +19,7 @@ class HomeReorderSheet extends StatefulWidget {
     required this.isDark,
   });
 
-  /// يعرض الشيت ويرجع القائمة الجديدة أو null إن تم الإلغاء
+  /// ظٹط¹ط±ط¶ ط§ظ„ط´ظٹطھ ظˆظٹط±ط¬ط¹ ط§ظ„ظ‚ط§ط¦ظ…ط© ط§ظ„ط¬ط¯ظٹط¯ط© ط£ظˆ null ط¥ظ† طھظ… ط§ظ„ط¥ظ„ط؛ط§ط،
   static Future<List<HomeCard>?> show(
       BuildContext context, {
         required List<HomeCard> cards,
@@ -94,7 +94,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'إعادة الترتيب الافتراضي',
+                  'ط¥ط¹ط§ط¯ط© ط§ظ„طھط±طھظٹط¨ ط§ظ„ط§ظپطھط±ط§ط¶ظٹ',
                   style: GoogleFonts.cairo(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
@@ -104,14 +104,14 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
             ],
           ),
           content: Text(
-            'سيتم إعادة ترتيب البطاقات وإظهارها جميعاً كما كانت.\nهل تريد المتابعة؟',
+            'ط³ظٹطھظ… ط¥ط¹ط§ط¯ط© طھط±طھظٹط¨ ط§ظ„ط¨ط·ط§ظ‚ط§طھ ظˆط¥ط¸ظ‡ط§ط±ظ‡ط§ ط¬ظ…ظٹط¹ط§ظ‹ ظƒظ…ط§ ظƒط§ظ†طھ.\nظ‡ظ„ طھط±ظٹط¯ ط§ظ„ظ…طھط§ط¨ط¹ط©طں',
             style: GoogleFonts.cairo(fontSize: 13.5, height: 1.6),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(ctx, false),
               child: Text(
-                'إلغاء',
+                'ط¥ظ„ط؛ط§ط،',
                 style: GoogleFonts.cairo(
                   color: widget.isDark ? Colors.white60 : Colors.black54,
                   fontWeight: FontWeight.bold,
@@ -129,7 +129,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
               ),
               onPressed: () => Navigator.pop(ctx, true),
               child: Text(
-                'إعادة تعيين',
+                'ط¥ط¹ط§ط¯ط© طھط¹ظٹظٹظ†',
                 style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
               ),
             ),
@@ -175,20 +175,20 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
         ),
         child: Column(
           children: [
-            // ─── المقبض ───
+            // â”€â”€â”€ ط§ظ„ظ…ظ‚ط¨ط¶ â”€â”€â”€
             Center(
               child: Container(
                 width: 40,
                 height: 4,
                 margin: const EdgeInsets.only(top: 12, bottom: 8),
                 decoration: BoxDecoration(
-                  color: subTextColor.withOpacity(0.3),
+                  color: subTextColor.withValues(alpha: 0.3),
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),
             ),
 
-            // ─── الهيدر ───
+            // â”€â”€â”€ ط§ظ„ظ‡ظٹط¯ط± â”€â”€â”€
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 8, 20, 4),
               child: Row(
@@ -198,7 +198,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                     height: 42,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: widget.primary.withOpacity(0.1),
+                      color: widget.primary.withValues(alpha: 0.1),
                     ),
                     child: Icon(
                       Icons.dashboard_customize_rounded,
@@ -212,7 +212,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'ترتيب البطاقات',
+                          'طھط±طھظٹط¨ ط§ظ„ط¨ط·ط§ظ‚ط§طھ',
                           style: GoogleFonts.cairo(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -220,7 +220,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                           ),
                         ),
                         Text(
-                          '$visibleCount من ${_cards.length} بطاقة ظاهرة',
+                          '$visibleCount ظ…ظ† ${_cards.length} ط¨ط·ط§ظ‚ط© ط¸ط§ظ‡ط±ط©',
                           style: GoogleFonts.cairo(
                             fontSize: 12,
                             color: subTextColor,
@@ -231,7 +231,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                   ),
                   IconButton(
                     onPressed: _resetToDefault,
-                    tooltip: 'إعادة الترتيب الافتراضي',
+                    tooltip: 'ط¥ط¹ط§ط¯ط© ط§ظ„طھط±طھظٹط¨ ط§ظ„ط§ظپطھط±ط§ط¶ظٹ',
                     icon: Icon(
                       Icons.restore_rounded,
                       color: subTextColor,
@@ -242,7 +242,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
               ),
             ),
 
-            // ─── تعليمات ───
+            // â”€â”€â”€ طھط¹ظ„ظٹظ…ط§طھ â”€â”€â”€
             Container(
               margin: const EdgeInsets.fromLTRB(20, 8, 20, 12),
               padding: const EdgeInsets.symmetric(
@@ -250,10 +250,10 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                 vertical: 10,
               ),
               decoration: BoxDecoration(
-                color: widget.primary.withOpacity(0.06),
+                color: widget.primary.withValues(alpha: 0.06),
                 borderRadius: BorderRadius.circular(14),
                 border: Border.all(
-                  color: widget.primary.withOpacity(0.12),
+                  color: widget.primary.withValues(alpha: 0.12),
                 ),
               ),
               child: Row(
@@ -266,10 +266,10 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                   const SizedBox(width: 10),
                   Expanded(
                     child: Text(
-                      'اسحب البطاقة لتغيير ترتيبها، أو اضغط على العين لإخفائها',
+                      'ط§ط³ط­ط¨ ط§ظ„ط¨ط·ط§ظ‚ط© ظ„طھط؛ظٹظٹط± طھط±طھظٹط¨ظ‡ط§طŒ ط£ظˆ ط§ط¶ط؛ط· ط¹ظ„ظ‰ ط§ظ„ط¹ظٹظ† ظ„ط¥ط®ظپط§ط¦ظ‡ط§',
                       style: GoogleFonts.cairo(
                         fontSize: 11.5,
-                        color: widget.primary.withOpacity(0.8),
+                        color: widget.primary.withValues(alpha: 0.8),
                         height: 1.4,
                       ),
                     ),
@@ -278,7 +278,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
               ),
             ),
 
-            // ─── قائمة البطاقات ───
+            // â”€â”€â”€ ظ‚ط§ط¦ظ…ط© ط§ظ„ط¨ط·ط§ظ‚ط§طھ â”€â”€â”€
             Expanded(
               child: ReorderableListView.builder(
                 padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
@@ -289,7 +289,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                     elevation: lerpDouble(0, 8, animation.value)!,
                     color: Colors.transparent,
                     borderRadius: BorderRadius.circular(18),
-                    shadowColor: widget.primary.withOpacity(0.3),
+                    shadowColor: widget.primary.withValues(alpha: 0.3),
                     child: Transform.scale(
                       scale: lerpDouble(1, 1.03, animation.value)!,
                       child: child,
@@ -306,16 +306,16 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                     decoration: BoxDecoration(
                       color: isVisible
                           ? cardColor
-                          : cardColor.withOpacity(0.5),
+                          : cardColor.withValues(alpha: 0.5),
                       borderRadius: BorderRadius.circular(18),
                       border: Border.all(
                         color: isVisible
-                            ? widget.primary.withOpacity(0.12)
-                            : subTextColor.withOpacity(0.1),
+                            ? widget.primary.withValues(alpha: 0.12)
+                            : subTextColor.withValues(alpha: 0.1),
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(
+                          color: Colors.black.withValues(alpha: 
                             widget.isDark ? 0.15 : 0.04,
                           ),
                           blurRadius: 6,
@@ -334,8 +334,8 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: isVisible
-                              ? widget.primary.withOpacity(0.08)
-                              : subTextColor.withOpacity(0.06),
+                              ? widget.primary.withValues(alpha: 0.08)
+                              : subTextColor.withValues(alpha: 0.06),
                         ),
                         child: Center(
                           child: Text(
@@ -356,12 +356,12 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                         ),
                       ),
                       subtitle: Text(
-                        isVisible ? 'ظاهرة' : 'مخفية',
+                        isVisible ? 'ط¸ط§ظ‡ط±ط©' : 'ظ…ط®ظپظٹط©',
                         style: GoogleFonts.cairo(
                           fontSize: 11,
                           color: isVisible
-                              ? widget.primary.withOpacity(0.7)
-                              : Colors.redAccent.withOpacity(0.6),
+                              ? widget.primary.withValues(alpha: 0.7)
+                              : Colors.redAccent.withValues(alpha: 0.6),
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -377,8 +377,8 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: isVisible
-                                    ? widget.primary.withOpacity(0.1)
-                                    : Colors.redAccent.withOpacity(0.1),
+                                    ? widget.primary.withValues(alpha: 0.1)
+                                    : Colors.redAccent.withValues(alpha: 0.1),
                               ),
                               child: Icon(
                                 isVisible
@@ -399,7 +399,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                               height: 36,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: subTextColor.withOpacity(0.08),
+                                color: subTextColor.withValues(alpha: 0.08),
                               ),
                               child: Icon(
                                 Icons.drag_handle_rounded,
@@ -416,14 +416,14 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
               ),
             ),
 
-            // ─── أزرار الحفظ ───
+            // â”€â”€â”€ ط£ط²ط±ط§ط± ط§ظ„ط­ظپط¸ â”€â”€â”€
             Container(
               padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
               decoration: BoxDecoration(
                 color: cardColor,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(
+                    color: Colors.black.withValues(alpha: 
                       widget.isDark ? 0.3 : 0.08,
                     ),
                     blurRadius: 10,
@@ -441,7 +441,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: _hasChanges
                                 ? widget.primary
-                                : widget.primary.withOpacity(0.5),
+                                : widget.primary.withValues(alpha: 0.5),
                             foregroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(14),
@@ -451,7 +451,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                           onPressed: _hasChanges ? _saveAndClose : null,
                           icon: const Icon(Icons.check_rounded, size: 20),
                           label: Text(
-                            'حفظ التغييرات',
+                            'ط­ظپط¸ ط§ظ„طھط؛ظٹظٹط±ط§طھ',
                             style: GoogleFonts.cairo(
                               fontWeight: FontWeight.bold,
                               fontSize: 14,
@@ -467,7 +467,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                         style: OutlinedButton.styleFrom(
                           foregroundColor: subTextColor,
                           side: BorderSide(
-                            color: subTextColor.withOpacity(0.2),
+                            color: subTextColor.withValues(alpha: 0.2),
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(14),
@@ -475,7 +475,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                         ),
                         onPressed: () => Navigator.pop(context),
                         child: Text(
-                          'إلغاء',
+                          'ط¥ظ„ط؛ط§ط،',
                           style: GoogleFonts.cairo(
                             fontWeight: FontWeight.bold,
                             fontSize: 14,

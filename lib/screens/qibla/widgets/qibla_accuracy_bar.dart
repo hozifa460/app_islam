@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'qibla_theme.dart';
 
@@ -37,7 +37,7 @@ class QiblaAccuracyBar extends StatelessWidget {
                 Row(children: [
                   Icon(Icons.gps_fixed_rounded, color: guidance, size: 15),
                   const SizedBox(width: 6),
-                  Text('دقة الاتجاه',
+                  Text('ط¯ظ‚ط© ط§ظ„ط§طھط¬ط§ظ‡',
                       style: GoogleFonts.cairo(
                         fontSize: 12.5,
                         fontWeight: FontWeight.w700,
@@ -58,8 +58,8 @@ class QiblaAccuracyBar extends StatelessWidget {
               child: LinearProgressIndicator(
                 value: accuracy / 100,
                 backgroundColor: theme.isDark
-                    ? Colors.white.withOpacity(0.08)
-                    : Colors.grey.withOpacity(0.13),
+                    ? Colors.white.withValues(alpha: 0.08)
+                    : Colors.grey.withValues(alpha: 0.13),
                 valueColor: AlwaysStoppedAnimation<Color>(guidance),
                 minHeight: 10,
               ),
@@ -69,7 +69,7 @@ class QiblaAccuracyBar extends StatelessWidget {
               QiblaTheme.getAccuracyText(accuracy),
               style: GoogleFonts.cairo(
                 fontSize: 10.5,
-                color: theme.textColor.withOpacity(0.52),
+                color: theme.textColor.withValues(alpha: 0.52),
                 height: 1.4,
               ),
             ),

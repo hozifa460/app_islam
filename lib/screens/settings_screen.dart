@@ -1,4 +1,4 @@
-// lib/screens/settings_screen.dart
+﻿// lib/screens/settings_screen.dart
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -36,20 +36,20 @@ class _SettingsScreenState extends State<SettingsScreen>
   static const _cardDark = Color(0xFF151B26);
   static const _cardLight = Color(0xFFFFFFFF);
 
-  // أيقونات لكل لون
+  // ط£ظٹظ‚ظˆظ†ط§طھ ظ„ظƒظ„ ظ„ظˆظ†
   static const List<IconData> _colorIcons = [
-    Icons.mosque_rounded,        // أخضر إسلامي
-    Icons.park_rounded,          // أخضر زمردي
-    Icons.cloud_rounded,         // أزرق سماوي
-    Icons.auto_awesome_rounded,  // بنفسجي
-    Icons.favorite_rounded,      // وردي غامق
-    Icons.water_rounded,         // تيل
-    Icons.wb_sunny_rounded,      // برتقالي
-    Icons.nights_stay_rounded,   // نيلي
-    Icons.landscape_rounded,     // بني
-    Icons.filter_drama_rounded,  // رمادي فحمي
-    Icons.local_fire_department_rounded, // أحمر
-    Icons.sailing_rounded,       // أخضر بحري
+    Icons.mosque_rounded,        // ط£ط®ط¶ط± ط¥ط³ظ„ط§ظ…ظٹ
+    Icons.park_rounded,          // ط£ط®ط¶ط± ط²ظ…ط±ط¯ظٹ
+    Icons.cloud_rounded,         // ط£ط²ط±ظ‚ ط³ظ…ط§ظˆظٹ
+    Icons.auto_awesome_rounded,  // ط¨ظ†ظپط³ط¬ظٹ
+    Icons.favorite_rounded,      // ظˆط±ط¯ظٹ ط؛ط§ظ…ظ‚
+    Icons.water_rounded,         // طھظٹظ„
+    Icons.wb_sunny_rounded,      // ط¨ط±طھظ‚ط§ظ„ظٹ
+    Icons.nights_stay_rounded,   // ظ†ظٹظ„ظٹ
+    Icons.landscape_rounded,     // ط¨ظ†ظٹ
+    Icons.filter_drama_rounded,  // ط±ظ…ط§ط¯ظٹ ظپط­ظ…ظٹ
+    Icons.local_fire_department_rounded, // ط£ط­ظ…ط±
+    Icons.sailing_rounded,       // ط£ط®ط¶ط± ط¨ط­ط±ظٹ
   ];
 
   late bool _isDark;
@@ -79,10 +79,10 @@ class _SettingsScreenState extends State<SettingsScreen>
     super.dispose();
   }
 
-  /// اللون الرئيسي الحالي
+  /// ط§ظ„ظ„ظˆظ† ط§ظ„ط±ط¦ظٹط³ظٹ ط§ظ„ط­ط§ظ„ظٹ
   Color get _currentPrimary => widget.appColors[_selectedColor];
 
-  /// لون ذهبي يتكيف مع اللون المختار
+  /// ظ„ظˆظ† ط°ظ‡ط¨ظٹ ظٹطھظƒظٹظپ ظ…ط¹ ط§ظ„ظ„ظˆظ† ط§ظ„ظ…ط®طھط§ط±
   Color get _accent => _gold;
 
   void _toggleTheme(bool val) {
@@ -130,19 +130,19 @@ class _SettingsScreenState extends State<SettingsScreen>
                       ),
                       sliver: SliverList(
                         delegate: SliverChildListDelegate([
-                          // ── قسم المظهر ──
+                          // â”€â”€ ظ‚ط³ظ… ط§ظ„ظ…ط¸ظ‡ط± â”€â”€
                           _buildSectionLabel(
-                              'المظهر', Icons.palette_rounded, w, textColor),
+                              'ط§ظ„ظ…ط¸ظ‡ط±', Icons.palette_rounded, w, textColor),
                           SizedBox(height: (w * 0.02).clamp(6.0, 12.0)),
                           _buildThemeCard(w, textColor),
 
                           SizedBox(height: (w * 0.05).clamp(16.0, 28.0)),
 
-                          // ══════════════════════════════════════
-                          //  ★ قسم الألوان الجديد ★
-                          // ══════════════════════════════════════
+                          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+                          //  âک… ظ‚ط³ظ… ط§ظ„ط£ظ„ظˆط§ظ† ط§ظ„ط¬ط¯ظٹط¯ âک…
+                          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
                           _buildSectionLabel(
-                              'لون التطبيق', Icons.color_lens_rounded, w, textColor),
+                              'ظ„ظˆظ† ط§ظ„طھط·ط¨ظٹظ‚', Icons.color_lens_rounded, w, textColor),
                           SizedBox(height: (w * 0.015).clamp(4.0, 8.0)),
                           _buildColorSubtitle(w, textColor),
                           SizedBox(height: (w * 0.02).clamp(6.0, 12.0)),
@@ -150,28 +150,28 @@ class _SettingsScreenState extends State<SettingsScreen>
 
                           SizedBox(height: (w * 0.03).clamp(10.0, 18.0)),
 
-                          // ── معاينة اللون المختار ──
+                          // â”€â”€ ظ…ط¹ط§ظٹظ†ط© ط§ظ„ظ„ظˆظ† ط§ظ„ظ…ط®طھط§ط± â”€â”€
                           _buildColorPreviewCard(w, textColor),
 
                           SizedBox(height: (w * 0.05).clamp(16.0, 28.0)),
 
-                          // ── التطبيق ──
+                          // â”€â”€ ط§ظ„طھط·ط¨ظٹظ‚ â”€â”€
                           _buildSectionLabel(
-                              'التطبيق', Icons.info_outline_rounded, w, textColor),
+                              'ط§ظ„طھط·ط¨ظٹظ‚', Icons.info_outline_rounded, w, textColor),
                           SizedBox(height: (w * 0.02).clamp(6.0, 12.0)),
                           _buildAppInfoCard(w, textColor),
 
                           SizedBox(height: (w * 0.05).clamp(16.0, 28.0)),
 
-                          // ── التواصل ──
+                          // â”€â”€ ط§ظ„طھظˆط§طµظ„ â”€â”€
                           _buildSectionLabel(
-                              'التواصل والدعم', Icons.support_agent_rounded, w, textColor),
+                              'ط§ظ„طھظˆط§طµظ„ ظˆط§ظ„ط¯ط¹ظ…', Icons.support_agent_rounded, w, textColor),
                           SizedBox(height: (w * 0.02).clamp(6.0, 12.0)),
                           _buildContactCard(w, textColor),
 
                           SizedBox(height: (w * 0.05).clamp(16.0, 28.0)),
 
-                          // ── حول التطبيق ──
+                          // â”€â”€ ط­ظˆظ„ ط§ظ„طھط·ط¨ظٹظ‚ â”€â”€
                           _buildAboutCard(w, textColor),
 
                           SizedBox(height: (w * 0.08).clamp(24.0, 48.0)),
@@ -188,9 +188,9 @@ class _SettingsScreenState extends State<SettingsScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  //  الخلفية
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  ط§ظ„ط®ظ„ظپظٹط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildBackground(double w, double h) {
     return Positioned.fill(
       child: Stack(
@@ -214,7 +214,7 @@ class _SettingsScreenState extends State<SettingsScreen>
               ),
             ),
           ),
-          // بقعة ضوئية بلون التطبيق المختار
+          // ط¨ظ‚ط¹ط© ط¶ظˆط¦ظٹط© ط¨ظ„ظˆظ† ط§ظ„طھط·ط¨ظٹظ‚ ط§ظ„ظ…ط®طھط§ط±
           Positioned(
             top: -w * 0.3,
             right: -w * 0.2,
@@ -225,7 +225,7 @@ class _SettingsScreenState extends State<SettingsScreen>
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: RadialGradient(colors: [
-                  _currentPrimary.withOpacity(_isDark ? 0.08 : 0.06),
+                  _currentPrimary.withValues(alpha: _isDark ? 0.08 : 0.06),
                   Colors.transparent,
                 ]),
               ),
@@ -241,7 +241,7 @@ class _SettingsScreenState extends State<SettingsScreen>
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: RadialGradient(colors: [
-                  _currentPrimary.withOpacity(_isDark ? 0.05 : 0.04),
+                  _currentPrimary.withValues(alpha: _isDark ? 0.05 : 0.04),
                   Colors.transparent,
                 ]),
               ),
@@ -252,9 +252,9 @@ class _SettingsScreenState extends State<SettingsScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  //  الهيدر
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  ط§ظ„ظ‡ظٹط¯ط±
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildHeader(double w, Color textColor) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
@@ -278,7 +278,7 @@ class _SettingsScreenState extends State<SettingsScreen>
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'الإعدادات',
+                  'ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ',
                   style: GoogleFonts.cairo(
                     fontSize: (w * 0.055).clamp(18.0, 26.0),
                     fontWeight: FontWeight.w800,
@@ -286,24 +286,24 @@ class _SettingsScreenState extends State<SettingsScreen>
                   ),
                 ),
                 Text(
-                  'تخصيص تجربتك',
+                  'طھط®طµظٹطµ طھط¬ط±ط¨طھظƒ',
                   style: GoogleFonts.cairo(
                     fontSize: (w * 0.03).clamp(10.0, 13.0),
-                    color: textColor.withOpacity(0.45),
+                    color: textColor.withValues(alpha: 0.45),
                   ),
                 ),
               ],
             ),
           ),
-          // أيقونة الإعدادات بلون التطبيق
+          // ط£ظٹظ‚ظˆظ†ط© ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ ط¨ظ„ظˆظ† ط§ظ„طھط·ط¨ظٹظ‚
           AnimatedContainer(
             duration: const Duration(milliseconds: 400),
             width: (w * 0.11).clamp(38.0, 50.0),
             height: (w * 0.11).clamp(38.0, 50.0),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: _currentPrimary.withOpacity(0.12),
-              border: Border.all(color: _currentPrimary.withOpacity(0.3)),
+              color: _currentPrimary.withValues(alpha: 0.12),
+              border: Border.all(color: _currentPrimary.withValues(alpha: 0.3)),
             ),
             child: Icon(
               Icons.settings_rounded,
@@ -329,13 +329,13 @@ class _SettingsScreenState extends State<SettingsScreen>
         height: (w * 0.1).clamp(36.0, 46.0),
         decoration: BoxDecoration(
           color: _isDark
-              ? Colors.white.withOpacity(0.08)
-              : Colors.white.withOpacity(0.9),
+              ? Colors.white.withValues(alpha: 0.08)
+              : Colors.white.withValues(alpha: 0.9),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: _isDark
-                ? Colors.white.withOpacity(0.1)
-                : _currentPrimary.withOpacity(0.22),
+                ? Colors.white.withValues(alpha: 0.1)
+                : _currentPrimary.withValues(alpha: 0.22),
           ),
         ),
         child: Icon(icon,
@@ -344,7 +344,7 @@ class _SettingsScreenState extends State<SettingsScreen>
     );
   }
 
-  // ── عنوان القسم ──
+  // â”€â”€ ط¹ظ†ظˆط§ظ† ط§ظ„ظ‚ط³ظ… â”€â”€
   Widget _buildSectionLabel(
       String label, IconData icon, double w, Color textColor) {
     return Row(
@@ -355,8 +355,8 @@ class _SettingsScreenState extends State<SettingsScreen>
           height: (w * 0.07).clamp(24.0, 32.0),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: _currentPrimary.withOpacity(0.12),
-            border: Border.all(color: _currentPrimary.withOpacity(0.25)),
+            color: _currentPrimary.withValues(alpha: 0.12),
+            border: Border.all(color: _currentPrimary.withValues(alpha: 0.25)),
           ),
           child: Icon(icon,
               color: _currentPrimary, size: (w * 0.035).clamp(12.0, 16.0)),
@@ -377,7 +377,7 @@ class _SettingsScreenState extends State<SettingsScreen>
             height: 1,
             decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
-                _currentPrimary.withOpacity(0.3),
+                _currentPrimary.withValues(alpha: 0.3),
                 Colors.transparent,
               ]),
             ),
@@ -387,25 +387,25 @@ class _SettingsScreenState extends State<SettingsScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  //  نص فرعي لقسم الألوان
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  ظ†طµ ظپط±ط¹ظٹ ظ„ظ‚ط³ظ… ط§ظ„ط£ظ„ظˆط§ظ†
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildColorSubtitle(double w, Color textColor) {
     return Padding(
       padding: EdgeInsets.only(right: (w * 0.1).clamp(32.0, 46.0)),
       child: Text(
-        'اختر اللون الرئيسي لتخصيص مظهر التطبيق بالكامل',
+        'ط§ط®طھط± ط§ظ„ظ„ظˆظ† ط§ظ„ط±ط¦ظٹط³ظٹ ظ„طھط®طµظٹطµ ظ…ط¸ظ‡ط± ط§ظ„طھط·ط¨ظٹظ‚ ط¨ط§ظ„ظƒط§ظ…ظ„',
         style: GoogleFonts.cairo(
           fontSize: (w * 0.028).clamp(10.0, 12.5),
-          color: textColor.withOpacity(0.45),
+          color: textColor.withValues(alpha: 0.45),
         ),
       ),
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  //  ★★★ بطاقة اختيار الألوان ★★★
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  âک…âک…âک… ط¨ط·ط§ظ‚ط© ط§ط®طھظٹط§ط± ط§ظ„ط£ظ„ظˆط§ظ† âک…âک…âک…
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildColorSelectionCard(double w, Color textColor) {
     return _Card(
       isDark: _isDark,
@@ -439,16 +439,16 @@ class _SettingsScreenState extends State<SettingsScreen>
                 decoration: BoxDecoration(
                   color: isSelected
                       ? color
-                      : color.withOpacity(_isDark ? 0.12 : 0.08),
+                      : color.withValues(alpha: _isDark ? 0.12 : 0.08),
                   borderRadius: BorderRadius.circular(14),
                   border: Border.all(
-                    color: isSelected ? color : color.withOpacity(0.3),
+                    color: isSelected ? color : color.withValues(alpha: 0.3),
                     width: isSelected ? 2.5 : 1,
                   ),
                   boxShadow: isSelected
                       ? [
                     BoxShadow(
-                      color: color.withOpacity(0.45),
+                      color: color.withValues(alpha: 0.45),
                       blurRadius: 14,
                       offset: const Offset(0, 5),
                     ),
@@ -458,7 +458,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // أيقونة أو علامة صح
+                    // ط£ظٹظ‚ظˆظ†ط© ط£ظˆ ط¹ظ„ط§ظ…ط© طµط­
                     AnimatedSwitcher(
                       duration: const Duration(milliseconds: 300),
                       transitionBuilder: (child, anim) => ScaleTransition(
@@ -480,7 +480,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                       ),
                     ),
                     SizedBox(height: (w * 0.012).clamp(3.0, 6.0)),
-                    // اسم اللون
+                    // ط§ط³ظ… ط§ظ„ظ„ظˆظ†
                     Flexible(
                       child: Text(
                         name,
@@ -508,9 +508,9 @@ class _SettingsScreenState extends State<SettingsScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  //  ★★★ معاينة اللون المختار ★★★
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  âک…âک…âک… ظ…ط¹ط§ظٹظ†ط© ط§ظ„ظ„ظˆظ† ط§ظ„ظ…ط®طھط§ط± âک…âک…âک…
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildColorPreviewCard(double w, Color textColor) {
     final iconIndex = _selectedColor < _colorIcons.length
         ? _selectedColor
@@ -533,7 +533,7 @@ class _SettingsScreenState extends State<SettingsScreen>
         borderRadius: BorderRadius.circular((w * 0.05).clamp(14.0, 22.0)),
         boxShadow: [
           BoxShadow(
-            color: _currentPrimary.withOpacity(0.35),
+            color: _currentPrimary.withValues(alpha: 0.35),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -543,16 +543,16 @@ class _SettingsScreenState extends State<SettingsScreen>
         children: [
           Row(
             children: [
-              // أيقونة اللون
+              // ط£ظٹظ‚ظˆظ†ط© ط§ظ„ظ„ظˆظ†
               AnimatedContainer(
                 duration: const Duration(milliseconds: 400),
                 width: (w * 0.14).clamp(48.0, 62.0),
                 height: (w * 0.14).clamp(48.0, 62.0),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.white.withOpacity(0.18),
+                  color: Colors.white.withValues(alpha: 0.18),
                   border: Border.all(
-                    color: Colors.white.withOpacity(0.25),
+                    color: Colors.white.withValues(alpha: 0.25),
                     width: 2,
                   ),
                 ),
@@ -576,7 +576,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'اللون الحالي',
+                      'ط§ظ„ظ„ظˆظ† ط§ظ„ط­ط§ظ„ظٹ',
                       style: GoogleFonts.cairo(
                         fontSize: (w * 0.03).clamp(10.0, 13.0),
                         color: Colors.white70,
@@ -602,7 +602,7 @@ class _SettingsScreenState extends State<SettingsScreen>
 
           SizedBox(height: (w * 0.04).clamp(12.0, 20.0)),
 
-          // صف المعاينة
+          // طµظپ ط§ظ„ظ…ط¹ط§ظٹظ†ط©
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
             child: BackdropFilter(
@@ -613,19 +613,19 @@ class _SettingsScreenState extends State<SettingsScreen>
                   vertical: (w * 0.03).clamp(10.0, 14.0),
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.12),
+                  color: Colors.white.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
-                    color: Colors.white.withOpacity(0.15),
+                    color: Colors.white.withValues(alpha: 0.15),
                   ),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    _previewElement('الأزرار', Icons.touch_app_rounded, w),
-                    _previewElement('البطاقات', Icons.credit_card_rounded, w),
-                    _previewElement('الأيقونات', Icons.star_rounded, w),
-                    _previewElement('الشريط', Icons.linear_scale_rounded, w),
+                    _previewElement('ط§ظ„ط£ط²ط±ط§ط±', Icons.touch_app_rounded, w),
+                    _previewElement('ط§ظ„ط¨ط·ط§ظ‚ط§طھ', Icons.credit_card_rounded, w),
+                    _previewElement('ط§ظ„ط£ظٹظ‚ظˆظ†ط§طھ', Icons.star_rounded, w),
+                    _previewElement('ط§ظ„ط´ط±ظٹط·', Icons.linear_scale_rounded, w),
                   ],
                 ),
               ),
@@ -634,7 +634,7 @@ class _SettingsScreenState extends State<SettingsScreen>
 
           SizedBox(height: (w * 0.03).clamp(10.0, 16.0)),
 
-          // شريط ألوان مصغر
+          // ط´ط±ظٹط· ط£ظ„ظˆط§ظ† ظ…طµط؛ط±
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(
@@ -647,7 +647,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                 decoration: BoxDecoration(
                   color: i == _selectedColor
                       ? Colors.white
-                      : Colors.white.withOpacity(0.3),
+                      : Colors.white.withValues(alpha: 0.3),
                   borderRadius: BorderRadius.circular(3),
                 ),
               ),
@@ -675,9 +675,9 @@ class _SettingsScreenState extends State<SettingsScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  //  بطاقة المظهر (داكن/فاتح) - بدون تغيير كبير
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  ط¨ط·ط§ظ‚ط© ط§ظ„ظ…ط¸ظ‡ط± (ط¯ط§ظƒظ†/ظپط§طھط­) - ط¨ط¯ظˆظ† طھط؛ظٹظٹط± ظƒط¨ظٹط±
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildThemeCard(double w, Color textColor) {
     return _Card(
       isDark: _isDark,
@@ -718,14 +718,14 @@ class _SettingsScreenState extends State<SettingsScreen>
               ),
               border: Border.all(
                 color: _isDark
-                    ? Colors.white.withOpacity(0.15)
-                    : _accent.withOpacity(0.4),
+                    ? Colors.white.withValues(alpha: 0.15)
+                    : _accent.withValues(alpha: 0.4),
                 width: 2,
               ),
               boxShadow: [
                 BoxShadow(
                   color:
-                  (_isDark ? Colors.blue : _accent).withOpacity(0.2),
+                  (_isDark ? Colors.blue : _accent).withValues(alpha: 0.2),
                   blurRadius: 12,
                   spreadRadius: 2,
                 ),
@@ -753,7 +753,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                   duration: const Duration(milliseconds: 300),
                   child: Text(
                     key: ValueKey(_isDark),
-                    _isDark ? 'الوضع الداكن' : 'الوضع الفاتح',
+                    _isDark ? 'ط§ظ„ظˆط¶ط¹ ط§ظ„ط¯ط§ظƒظ†' : 'ط§ظ„ظˆط¶ط¹ ط§ظ„ظپط§طھط­',
                     style: GoogleFonts.cairo(
                       fontSize: titleSize,
                       fontWeight: FontWeight.w700,
@@ -763,11 +763,11 @@ class _SettingsScreenState extends State<SettingsScreen>
                 ),
                 Text(
                   _isDark
-                      ? 'مريح للعيون في الإضاءة المنخفضة'
-                      : 'مناسب للإضاءة العالية',
+                      ? 'ظ…ط±ظٹط­ ظ„ظ„ط¹ظٹظˆظ† ظپظٹ ط§ظ„ط¥ط¶ط§ط،ط© ط§ظ„ظ…ظ†ط®ظپط¶ط©'
+                      : 'ظ…ظ†ط§ط³ط¨ ظ„ظ„ط¥ط¶ط§ط،ط© ط§ظ„ط¹ط§ظ„ظٹط©',
                   style: GoogleFonts.cairo(
                     fontSize: subSize,
-                    color: textColor.withOpacity(0.5),
+                    color: textColor.withValues(alpha: 0.5),
                     height: 1.4,
                   ),
                   maxLines: 2,
@@ -795,12 +795,12 @@ class _SettingsScreenState extends State<SettingsScreen>
           color: value
               ? _currentPrimary
               : (_isDark
-              ? Colors.white.withOpacity(0.15)
-              : Colors.grey.withOpacity(0.25)),
+              ? Colors.white.withValues(alpha: 0.15)
+              : Colors.grey.withValues(alpha: 0.25)),
           boxShadow: value
               ? [
             BoxShadow(
-              color: _currentPrimary.withOpacity(0.35),
+              color: _currentPrimary.withValues(alpha: 0.35),
               blurRadius: 8,
               spreadRadius: 1,
             ),
@@ -821,7 +821,7 @@ class _SettingsScreenState extends State<SettingsScreen>
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.15),
+                  color: Colors.black.withValues(alpha: 0.15),
                   blurRadius: 4,
                   offset: const Offset(0, 1),
                 ),
@@ -855,10 +855,10 @@ class _SettingsScreenState extends State<SettingsScreen>
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'معاينة الوضع الحالي',
+            'ظ…ط¹ط§ظٹظ†ط© ط§ظ„ظˆط¶ط¹ ط§ظ„ط­ط§ظ„ظٹ',
             style: GoogleFonts.cairo(
               fontSize: previewSize,
-              color: textColor.withOpacity(0.45),
+              color: textColor.withValues(alpha: 0.45),
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -868,7 +868,7 @@ class _SettingsScreenState extends State<SettingsScreen>
               _buildThemePreviewBox(
                 isDark: true,
                 isActive: _isDark,
-                label: 'داكن',
+                label: 'ط¯ط§ظƒظ†',
                 w: w,
                 onTap: () => _toggleTheme(true),
               ),
@@ -876,7 +876,7 @@ class _SettingsScreenState extends State<SettingsScreen>
               _buildThemePreviewBox(
                 isDark: false,
                 isActive: !_isDark,
-                label: 'فاتح',
+                label: 'ظپط§طھط­',
                 w: w,
                 onTap: () => _toggleTheme(false),
               ),
@@ -915,7 +915,7 @@ class _SettingsScreenState extends State<SettingsScreen>
             boxShadow: isActive
                 ? [
               BoxShadow(
-                color: _currentPrimary.withOpacity(0.2),
+                color: _currentPrimary.withValues(alpha: 0.2),
                 blurRadius: 10,
                 spreadRadius: 1,
               ),
@@ -944,7 +944,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                                 height: boxH * 0.15,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: _currentPrimary.withOpacity(0.3),
+                                  color: _currentPrimary.withValues(alpha: 0.3),
                                 ),
                               ),
                               SizedBox(width: boxH * 0.06),
@@ -958,8 +958,8 @@ class _SettingsScreenState extends State<SettingsScreen>
                                     height: 4,
                                     decoration: BoxDecoration(
                                       color: isDark
-                                          ? Colors.white.withOpacity(0.4)
-                                          : Colors.black.withOpacity(0.2),
+                                          ? Colors.white.withValues(alpha: 0.4)
+                                          : Colors.black.withValues(alpha: 0.2),
                                       borderRadius:
                                       BorderRadius.circular(2),
                                     ),
@@ -970,8 +970,8 @@ class _SettingsScreenState extends State<SettingsScreen>
                                     height: 3,
                                     decoration: BoxDecoration(
                                       color: isDark
-                                          ? Colors.white.withOpacity(0.2)
-                                          : Colors.black.withOpacity(0.1),
+                                          ? Colors.white.withValues(alpha: 0.2)
+                                          : Colors.black.withValues(alpha: 0.1),
                                       borderRadius:
                                       BorderRadius.circular(2),
                                     ),
@@ -996,8 +996,8 @@ class _SettingsScreenState extends State<SettingsScreen>
                                   margin: const EdgeInsets.all(2),
                                   decoration: BoxDecoration(
                                     color: isDark
-                                        ? Colors.white.withOpacity(0.06)
-                                        : Colors.white.withOpacity(0.8),
+                                        ? Colors.white.withValues(alpha: 0.06)
+                                        : Colors.white.withValues(alpha: 0.8),
                                     borderRadius: BorderRadius.circular(6),
                                   ),
                                 ),
@@ -1022,7 +1022,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                         color: _currentPrimary,
                         boxShadow: [
                           BoxShadow(
-                            color: _currentPrimary.withOpacity(0.4),
+                            color: _currentPrimary.withValues(alpha: 0.4),
                             blurRadius: 6,
                           ),
                         ],
@@ -1039,28 +1039,28 @@ class _SettingsScreenState extends State<SettingsScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  //  بطاقة معلومات التطبيق
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  ط¨ط·ط§ظ‚ط© ظ…ط¹ظ„ظˆظ…ط§طھ ط§ظ„طھط·ط¨ظٹظ‚
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildAppInfoCard(double w, Color textColor) {
     final items = [
       (
       icon: Icons.mosque_rounded,
       color: _currentPrimary,
-      title: 'طريق الإسلام',
-      sub: 'رفيقك في العبادة اليومية',
+      title: 'ط·ط±ظٹظ‚ ط§ظ„ط¥ط³ظ„ط§ظ…',
+      sub: 'ط±ظپظٹظ‚ظƒ ظپظٹ ط§ظ„ط¹ط¨ط§ط¯ط© ط§ظ„ظٹظˆظ…ظٹط©',
       ),
       (
       icon: Icons.verified_rounded,
       color: const Color(0xFF2ECC71),
-      title: 'الإصدار 1.0.0',
-      sub: 'آخر تحديث: 2025',
+      title: 'ط§ظ„ط¥طµط¯ط§ط± 1.0.0',
+      sub: 'ط¢ط®ط± طھط­ط¯ظٹط«: 2025',
       ),
       (
       icon: Icons.language_rounded,
       color: const Color(0xFF3498DB),
-      title: 'اللغة',
-      sub: 'العربية',
+      title: 'ط§ظ„ظ„ط؛ط©',
+      sub: 'ط§ظ„ط¹ط±ط¨ظٹط©',
       ),
     ];
 
@@ -1092,34 +1092,34 @@ class _SettingsScreenState extends State<SettingsScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  //  بطاقة التواصل
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  ط¨ط·ط§ظ‚ط© ط§ظ„طھظˆط§طµظ„
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildContactCard(double w, Color textColor) {
     final items = [
       (
       icon: Icons.star_rounded,
       color: const Color(0xFFFFB800),
-      title: 'قيّم التطبيق',
-      sub: 'ساعدنا في التحسين',
+      title: 'ظ‚ظٹظ‘ظ… ط§ظ„طھط·ط¨ظٹظ‚',
+      sub: 'ط³ط§ط¹ط¯ظ†ط§ ظپظٹ ط§ظ„طھط­ط³ظٹظ†',
       onTap: () {},
       showArrow: true,
       ),
       (
       icon: Icons.share_rounded,
       color: const Color(0xFF2ECC71),
-      title: 'شارك التطبيق',
-      sub: 'انشر الخير مع أحبائك',
+      title: 'ط´ط§ط±ظƒ ط§ظ„طھط·ط¨ظٹظ‚',
+      sub: 'ط§ظ†ط´ط± ط§ظ„ط®ظٹط± ظ…ط¹ ط£ط­ط¨ط§ط¦ظƒ',
       onTap: () {
-        Share.share('طريق الإسلام - رفيقك في العبادة اليومية');
+        Share.share('ط·ط±ظٹظ‚ ط§ظ„ط¥ط³ظ„ط§ظ… - ط±ظپظٹظ‚ظƒ ظپظٹ ط§ظ„ط¹ط¨ط§ط¯ط© ط§ظ„ظٹظˆظ…ظٹط©');
       },
       showArrow: true,
       ),
       (
       icon: Icons.bug_report_rounded,
       color: const Color(0xFFE74C3C),
-      title: 'الإبلاغ عن مشكلة',
-      sub: 'ساعدنا في إصلاح الأخطاء',
+      title: 'ط§ظ„ط¥ط¨ظ„ط§ط؛ ط¹ظ† ظ…ط´ظƒظ„ط©',
+      sub: 'ط³ط§ط¹ط¯ظ†ط§ ظپظٹ ط¥طµظ„ط§ط­ ط§ظ„ط£ط®ط·ط§ط،',
       onTap: () {},
       showArrow: true,
       ),
@@ -1155,9 +1155,9 @@ class _SettingsScreenState extends State<SettingsScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  //  بطاقة حول التطبيق
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  ط¨ط·ط§ظ‚ط© ط­ظˆظ„ ط§ظ„طھط·ط¨ظٹظ‚
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildAboutCard(double w, Color textColor) {
     final subSize = (w * 0.032).clamp(11.0, 14.0);
 
@@ -1168,15 +1168,15 @@ class _SettingsScreenState extends State<SettingsScreen>
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            _currentPrimary.withOpacity(_isDark ? 0.15 : 0.08),
-            _currentPrimary.withOpacity(_isDark ? 0.05 : 0.03),
+            _currentPrimary.withValues(alpha: _isDark ? 0.15 : 0.08),
+            _currentPrimary.withValues(alpha: _isDark ? 0.05 : 0.03),
           ],
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
         ),
         borderRadius:
         BorderRadius.circular((w * 0.05).clamp(14.0, 22.0)),
-        border: Border.all(color: _currentPrimary.withOpacity(0.25)),
+        border: Border.all(color: _currentPrimary.withValues(alpha: 0.25)),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -1188,14 +1188,14 @@ class _SettingsScreenState extends State<SettingsScreen>
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               gradient: RadialGradient(colors: [
-                _currentPrimary.withOpacity(0.2),
-                _currentPrimary.withOpacity(0.05),
+                _currentPrimary.withValues(alpha: 0.2),
+                _currentPrimary.withValues(alpha: 0.05),
               ]),
               border: Border.all(
-                  color: _currentPrimary.withOpacity(0.4), width: 2),
+                  color: _currentPrimary.withValues(alpha: 0.4), width: 2),
               boxShadow: [
                 BoxShadow(
-                  color: _currentPrimary.withOpacity(0.2),
+                  color: _currentPrimary.withValues(alpha: 0.2),
                   blurRadius: 16,
                   spreadRadius: 2,
                 ),
@@ -1209,7 +1209,7 @@ class _SettingsScreenState extends State<SettingsScreen>
           ),
           SizedBox(height: (w * 0.03).clamp(10.0, 16.0)),
           Text(
-            'طريق الإسلام',
+            'ط·ط±ظٹظ‚ ط§ظ„ط¥ط³ظ„ط§ظ…',
             style: GoogleFonts.amiri(
               fontSize: (w * 0.055).clamp(18.0, 26.0),
               fontWeight: FontWeight.bold,
@@ -1218,10 +1218,10 @@ class _SettingsScreenState extends State<SettingsScreen>
           ),
           SizedBox(height: (w * 0.015).clamp(5.0, 10.0)),
           Text(
-            'رفيقك في العبادة اليومية',
+            'ط±ظپظٹظ‚ظƒ ظپظٹ ط§ظ„ط¹ط¨ط§ط¯ط© ط§ظ„ظٹظˆظ…ظٹط©',
             style: GoogleFonts.cairo(
               fontSize: subSize,
-              color: textColor.withOpacity(0.6),
+              color: textColor.withValues(alpha: 0.6),
             ),
             textAlign: TextAlign.center,
           ),
@@ -1233,15 +1233,15 @@ class _SettingsScreenState extends State<SettingsScreen>
               vertical: (w * 0.025).clamp(8.0, 14.0),
             ),
             decoration: BoxDecoration(
-              color: _currentPrimary.withOpacity(0.08),
+              color: _currentPrimary.withValues(alpha: 0.08),
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: _currentPrimary.withOpacity(0.2)),
+              border: Border.all(color: _currentPrimary.withValues(alpha: 0.2)),
             ),
             child: Text(
-              '﴿ وَاذْكُرُوا اللَّهَ كَثِيرًا لَعَلَّكُمْ تُفْلِحُونَ ﴾',
+              'ï´؟ ظˆظژط§ط°ظ’ظƒظڈط±ظڈظˆط§ ط§ظ„ظ„ظژظ‘ظ‡ظژ ظƒظژط«ظگظٹط±ظ‹ط§ ظ„ظژط¹ظژظ„ظژظ‘ظƒظڈظ…ظ’ طھظڈظپظ’ظ„ظگط­ظڈظˆظ†ظژ ï´¾',
               style: GoogleFonts.amiri(
                 fontSize: (w * 0.038).clamp(13.0, 17.0),
-                color: _currentPrimary.withOpacity(0.85),
+                color: _currentPrimary.withValues(alpha: 0.85),
                 height: 1.6,
               ),
               textAlign: TextAlign.center,
@@ -1249,10 +1249,10 @@ class _SettingsScreenState extends State<SettingsScreen>
           ),
           SizedBox(height: (w * 0.025).clamp(8.0, 14.0)),
           Text(
-            'جميع الحقوق محفوظة © 2025',
+            'ط¬ظ…ظٹط¹ ط§ظ„ط­ظ‚ظˆظ‚ ظ…ط­ظپظˆط¸ط© آ© 2025',
             style: GoogleFonts.cairo(
               fontSize: (w * 0.028).clamp(9.5, 12.0),
-              color: textColor.withOpacity(0.35),
+              color: textColor.withValues(alpha: 0.35),
             ),
             textAlign: TextAlign.center,
           ),
@@ -1261,7 +1261,7 @@ class _SettingsScreenState extends State<SettingsScreen>
     );
   }
 
-  // ── صف المعلومات ──
+  // â”€â”€ طµظپ ط§ظ„ظ…ط¹ظ„ظˆظ…ط§طھ â”€â”€
   Widget _buildInfoRow({
     required IconData icon,
     required Color color,
@@ -1286,8 +1286,8 @@ class _SettingsScreenState extends State<SettingsScreen>
             height: iconBoxSize,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: color.withOpacity(0.12),
-              border: Border.all(color: color.withOpacity(0.25)),
+              color: color.withValues(alpha: 0.12),
+              border: Border.all(color: color.withValues(alpha: 0.25)),
             ),
             child: Icon(icon,
                 color: color, size: (w * 0.048).clamp(16.0, 22.0)),
@@ -1309,7 +1309,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                 Text(sub,
                     style: GoogleFonts.cairo(
                       fontSize: subSize,
-                      color: textColor.withOpacity(0.5),
+                      color: textColor.withValues(alpha: 0.5),
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis),
@@ -1321,7 +1321,7 @@ class _SettingsScreenState extends State<SettingsScreen>
     );
   }
 
-  // ── صف الإجراء ──
+  // â”€â”€ طµظپ ط§ظ„ط¥ط¬ط±ط§ط، â”€â”€
   Widget _buildActionRow({
     required IconData icon,
     required Color color,
@@ -1354,8 +1354,8 @@ class _SettingsScreenState extends State<SettingsScreen>
               height: iconBoxSize,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: color.withOpacity(0.12),
-                border: Border.all(color: color.withOpacity(0.25)),
+                color: color.withValues(alpha: 0.12),
+                border: Border.all(color: color.withValues(alpha: 0.25)),
               ),
               child: Icon(icon,
                   color: color, size: (w * 0.048).clamp(16.0, 22.0)),
@@ -1377,7 +1377,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                   Text(sub,
                       style: GoogleFonts.cairo(
                         fontSize: subSize,
-                        color: textColor.withOpacity(0.5),
+                        color: textColor.withValues(alpha: 0.5),
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis),
@@ -1388,7 +1388,7 @@ class _SettingsScreenState extends State<SettingsScreen>
               Icon(
                 Icons.arrow_forward_ios_rounded,
                 size: (w * 0.035).clamp(12.0, 16.0),
-                color: textColor.withOpacity(0.3),
+                color: textColor.withValues(alpha: 0.3),
               ),
           ],
         ),
@@ -1402,15 +1402,15 @@ class _SettingsScreenState extends State<SettingsScreen>
       indent: 16,
       endIndent: 16,
       color: _isDark
-          ? Colors.white.withOpacity(0.06)
-          : Colors.black.withOpacity(0.05),
+          ? Colors.white.withValues(alpha: 0.06)
+          : Colors.black.withValues(alpha: 0.05),
     );
   }
 }
 
-// ══════════════════════════════════════════════════════════════
-//  بطاقة عامة - محدّثة لتدعم borderColor ديناميكي
-// ══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+//  ط¨ط·ط§ظ‚ط© ط¹ط§ظ…ط© - ظ…ط­ط¯ظ‘ط«ط© ظ„طھط¯ط¹ظ… borderColor ط¯ظٹظ†ط§ظ…ظٹظƒظٹ
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _Card extends StatelessWidget {
   final bool isDark;
   final Color borderColor;
@@ -1432,17 +1432,17 @@ class _Card extends StatelessWidget {
       decoration: BoxDecoration(
         color: isDark
             ? const Color(0xFF151B26)
-            : Colors.white.withOpacity(0.95),
+            : Colors.white.withValues(alpha: 0.95),
         borderRadius:
         BorderRadius.circular((w * 0.05).clamp(14.0, 22.0)),
         border: Border.all(
           color: isDark
-              ? Colors.white.withOpacity(0.07)
-              : borderColor.withOpacity(0.14),
+              ? Colors.white.withValues(alpha: 0.07)
+              : borderColor.withValues(alpha: 0.14),
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(isDark ? 0.2 : 0.06),
+            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.06),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),
@@ -1457,9 +1457,9 @@ class _Card extends StatelessWidget {
   }
 }
 
-// ── Share بسيط ──
+// â”€â”€ Share ط¨ط³ظٹط· â”€â”€
 class Share {
   static void share(String text) {
-    // استخدم share_plus في مشروعك الفعلي
+    // ط§ط³طھط®ط¯ظ… share_plus ظپظٹ ظ…ط´ط±ظˆط¹ظƒ ط§ظ„ظپط¹ظ„ظٹ
   }
 }

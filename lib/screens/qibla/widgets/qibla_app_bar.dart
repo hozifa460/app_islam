@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'qibla_theme.dart';
 
@@ -40,11 +40,11 @@ class QiblaAppBar extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('اتجاه القبلة', style: theme.titleStyle),
+                Text('ط§طھط¬ط§ظ‡ ط§ظ„ظ‚ط¨ظ„ط©', style: theme.titleStyle),
                 if (qiblaAngle != null)
                   Text(
-                    'القبلة: ${qiblaAngle!.toStringAsFixed(1)}° '
-                        '| هاتفك: ${compassHeading.toStringAsFixed(1)}°',
+                    'ط§ظ„ظ‚ط¨ظ„ط©: ${qiblaAngle!.toStringAsFixed(1)}آ° '
+                        '| ظ‡ط§طھظپظƒ: ${compassHeading.toStringAsFixed(1)}آ°',
                     style: theme.subtitleStyle,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -57,8 +57,8 @@ class QiblaAppBar extends StatelessWidget {
             height: 40,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: QiblaTheme.gold.withOpacity(0.12),
-              border: Border.all(color: QiblaTheme.gold.withOpacity(0.3)),
+              color: QiblaTheme.gold.withValues(alpha: 0.12),
+              border: Border.all(color: QiblaTheme.gold.withValues(alpha: 0.3)),
             ),
             child: const Icon(Icons.mosque_rounded,
                 color: QiblaTheme.gold, size: 20),

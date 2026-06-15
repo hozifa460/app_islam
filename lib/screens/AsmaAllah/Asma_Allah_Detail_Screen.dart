@@ -1,4 +1,4 @@
-// lib/screens/asma_allah/asma_allah_detail_screen.dart
+﻿// lib/screens/asma_allah/asma_allah_detail_screen.dart
 
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
@@ -14,8 +14,8 @@ import 'widgets/asma_painters.dart';
 import 'widgets/asma_shared_widgets.dart';
 
 class AsmaAllahDetailScreen extends StatefulWidget {
-  final String fullName;     // ✅ الاسم الكامل من JSON
-  final String displayName;  // ✅ الاسم القصير
+  final String fullName;     // âœ… ط§ظ„ط§ط³ظ… ط§ظ„ظƒط§ظ…ظ„ ظ…ظ† JSON
+  final String displayName;  // âœ… ط§ظ„ط§ط³ظ… ط§ظ„ظ‚طµظٹط±
   final String meaning;
   final Color primaryColor;
   final int order;
@@ -144,8 +144,8 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
         PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 300),
           pageBuilder: (_, __, ___) => AsmaAllahDetailScreen(
-            fullName: data['fullName'] as String,        // ✅
-            displayName: data['displayName'] as String,  // ✅
+            fullName: data['fullName'] as String,        // âœ…
+            displayName: data['displayName'] as String,  // âœ…
             meaning: data['meaning'] as String,
             primaryColor: widget.primaryColor,
             order: newIndex,
@@ -228,8 +228,8 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
       child: CustomPaint(
         painter: AsmaIslamicPatternPainter(
           color: isDark
-              ? AsmaTheme.gold.withOpacity(0.03)
-              : AsmaTheme.gold.withOpacity(0.05),
+              ? AsmaTheme.gold.withValues(alpha: 0.03)
+              : AsmaTheme.gold.withValues(alpha: 0.05),
           step: 60,
           sides: 8,
         ),
@@ -247,10 +247,10 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
           colors: [
             isDark
                 ? const Color(0xFF1A2540)
-                : const Color(0xFFEEB742).withOpacity(0.95),
+                : const Color(0xFFEEB742).withValues(alpha: 0.95),
             isDark
                 ? const Color(0xFF0F1628)
-                : const Color(0xFF9D7A2E).withOpacity(0.85),
+                : const Color(0xFF9D7A2E).withValues(alpha: 0.85),
           ],
         ),
         borderRadius: const BorderRadius.only(
@@ -260,8 +260,8 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
         boxShadow: [
           BoxShadow(
             color: isDark
-                ? Colors.black.withOpacity(0.3)
-                : widget.primaryColor.withOpacity(0.3),
+                ? Colors.black.withValues(alpha: 0.3)
+                : widget.primaryColor.withValues(alpha: 0.3),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -299,7 +299,7 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
                 ],
               ),
               SizedBox(height: isSmall ? 12 : 16),
-              // ✅ عرض الاسم الكامل في AppBar
+              // âœ… ط¹ط±ط¶ ط§ظ„ط§ط³ظ… ط§ظ„ظƒط§ظ…ظ„ ظپظٹ AppBar
               _buildFullNameDisplay(isSmall, isDark),
               SizedBox(height: isSmall ? 8 : 12),
               _buildProgressIndicator(isSmall),
@@ -317,7 +317,7 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
     required bool isSmall,
   }) {
     return Material(
-      color: Colors.white.withOpacity(isDark ? 0.08 : 0.15),
+      color: Colors.white.withValues(alpha: isDark ? 0.08 : 0.15),
       borderRadius: BorderRadius.circular(14),
       child: InkWell(
         borderRadius: BorderRadius.circular(14),
@@ -338,11 +338,11 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
       ),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-            colors: [AsmaTheme.gold.withOpacity(0.9), AsmaTheme.goldDark]),
+            colors: [AsmaTheme.gold.withValues(alpha: 0.9), AsmaTheme.goldDark]),
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-              color: AsmaTheme.gold.withOpacity(0.4),
+              color: AsmaTheme.gold.withValues(alpha: 0.4),
               blurRadius: 8,
               offset: const Offset(0, 2)),
         ],
@@ -366,7 +366,7 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
     );
   }
 
-  /// ✅ عرض الاسم الكامل من JSON في AppBar
+  /// âœ… ط¹ط±ط¶ ط§ظ„ط§ط³ظ… ط§ظ„ظƒط§ظ…ظ„ ظ…ظ† JSON ظپظٹ AppBar
   Widget _buildFullNameDisplay(bool isSmall, bool isDark) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -377,7 +377,7 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
           child: FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
-              widget.fullName, // ✅ الاسم الكامل هنا
+              widget.fullName, // âœ… ط§ظ„ط§ط³ظ… ط§ظ„ظƒط§ظ…ظ„ ظ‡ظ†ط§
               textAlign: TextAlign.center,
               style: GoogleFonts.amiri(
                 color: Colors.white,
@@ -385,7 +385,7 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
                 fontWeight: FontWeight.bold,
                 shadows: [
                   Shadow(
-                      color: Colors.black.withOpacity(0.3), blurRadius: 10)
+                      color: Colors.black.withValues(alpha: 0.3), blurRadius: 10)
                 ],
               ),
             ),
@@ -408,7 +408,7 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
             height: 2,
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                  colors: [AsmaTheme.gold.withOpacity(0.1), AsmaTheme.gold]),
+                  colors: [AsmaTheme.gold.withValues(alpha: 0.1), AsmaTheme.gold]),
               borderRadius: BorderRadius.circular(1),
             ),
           ),
@@ -421,7 +421,7 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                    color: AsmaTheme.gold.withOpacity(0.5), blurRadius: 6)
+                    color: AsmaTheme.gold.withValues(alpha: 0.5), blurRadius: 6)
               ],
             ),
           ),
@@ -437,7 +437,7 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
         Container(
           height: isSmall ? 4 : 5,
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.15),
+            color: Colors.white.withValues(alpha: 0.15),
             borderRadius: BorderRadius.circular(3),
           ),
           child: LayoutBuilder(
@@ -456,7 +456,7 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
                       borderRadius: BorderRadius.circular(3),
                       boxShadow: [
                         BoxShadow(
-                            color: AsmaTheme.gold.withOpacity(0.5),
+                            color: AsmaTheme.gold.withValues(alpha: 0.5),
                             blurRadius: 6)
                       ],
                     ),
@@ -470,7 +470,7 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
         Text(
           context.tr.nameOfTotalNames(widget.order),
           style: GoogleFonts.cairo(
-            color: Colors.white.withOpacity(0.7),
+            color: Colors.white.withValues(alpha: 0.7),
             fontSize: isSmall ? 10 : 12,
           ),
         ),
@@ -533,7 +533,7 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
     );
   }
 
-  /// ✅ عرض الاسم القصير في الدائرة
+  /// âœ… ط¹ط±ط¶ ط§ظ„ط§ط³ظ… ط§ظ„ظ‚طµظٹط± ظپظٹ ط§ظ„ط¯ط§ط¦ط±ط©
   Widget _buildNameCircle(bool isDark, bool isSmall) {
     final size = isSmall ? 110.0 : 130.0;
     return Hero(
@@ -553,14 +553,14 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
             border: Border.all(color: AsmaTheme.gold, width: 3),
             boxShadow: [
               BoxShadow(
-                color: AsmaTheme.gold.withOpacity(isDark ? 0.3 : 0.25),
+                color: AsmaTheme.gold.withValues(alpha: isDark ? 0.3 : 0.25),
                 blurRadius: 25,
                 spreadRadius: 5,
               ),
               BoxShadow(
                 color: isDark
-                    ? Colors.black.withOpacity(0.3)
-                    : AsmaTheme.gold.withOpacity(0.1),
+                    ? Colors.black.withValues(alpha: 0.3)
+                    : AsmaTheme.gold.withValues(alpha: 0.1),
                 blurRadius: 40,
                 spreadRadius: 10,
               ),
@@ -575,7 +575,7 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
-                      color: AsmaTheme.gold.withOpacity(0.3), width: 1.5),
+                      color: AsmaTheme.gold.withValues(alpha: 0.3), width: 1.5),
                 ),
               ),
               FittedBox(
@@ -583,7 +583,7 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
                 child: Padding(
                   padding: EdgeInsets.all(size * 0.12),
                   child: Text(
-                      widget.displayName, // ✅ الاسم القصير هنا
+                      widget.displayName, // âœ… ط§ظ„ط§ط³ظ… ط§ظ„ظ‚طµظٹط± ظ‡ظ†ط§
                     textAlign: TextAlign.center,
                     style: GoogleFonts.amiri(
                       fontSize: size * 0.26,
@@ -591,7 +591,7 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
                       color: isDark ? AsmaTheme.gold : AsmaTheme.goldDark,
                       shadows: [
                         Shadow(
-                            color: AsmaTheme.gold.withOpacity(0.3),
+                            color: AsmaTheme.gold.withValues(alpha: 0.3),
                             blurRadius: 10)
                       ],
                     ),
@@ -610,7 +610,7 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
                     borderRadius: BorderRadius.circular(12),
                     boxShadow: [
                       BoxShadow(
-                          color: AsmaTheme.gold.withOpacity(0.4), blurRadius: 8)
+                          color: AsmaTheme.gold.withValues(alpha: 0.4), blurRadius: 8)
                     ],
                   ),
                   child: Text('${widget.order}',
@@ -650,7 +650,7 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: AsmaTheme.gold.withOpacity(0.15),
+                  color: AsmaTheme.gold.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Icon(Icons.menu_book_rounded,
@@ -675,9 +675,9 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
           Container(
             padding: EdgeInsets.all(isSmall ? 12 : 14),
             decoration: BoxDecoration(
-              color: AsmaTheme.gold.withOpacity(isDark ? 0.1 : 0.08),
+              color: AsmaTheme.gold.withValues(alpha: isDark ? 0.1 : 0.08),
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: AsmaTheme.gold.withOpacity(0.2)),
+              border: Border.all(color: AsmaTheme.gold.withValues(alpha: 0.2)),
             ),
             child: Row(
               children: [
@@ -712,19 +712,19 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
           end: Alignment.bottomRight,
           colors: isDark
               ? [
-            AsmaTheme.gold.withOpacity(0.12),
-            const Color(0xFF1A2438).withOpacity(0.9)
+            AsmaTheme.gold.withValues(alpha: 0.12),
+            const Color(0xFF1A2438).withValues(alpha: 0.9)
           ]
-              : [AsmaTheme.gold.withOpacity(0.08), const Color(0xFFFFF8E8)],
+              : [AsmaTheme.gold.withValues(alpha: 0.08), const Color(0xFFFFF8E8)],
         ),
         borderRadius: BorderRadius.circular(AsmaTheme.cardRadius),
         border: Border.all(
-          color: AsmaTheme.gold.withOpacity(isDark ? 0.35 : 0.3),
+          color: AsmaTheme.gold.withValues(alpha: isDark ? 0.35 : 0.3),
           width: 1.5,
         ),
         boxShadow: [
           BoxShadow(
-            color: AsmaTheme.gold.withOpacity(isDark ? 0.15 : 0.1),
+            color: AsmaTheme.gold.withValues(alpha: isDark ? 0.15 : 0.1),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -751,7 +751,7 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
           ),
           SizedBox(height: isSmall ? 16 : 20),
           Icon(Icons.format_quote_rounded,
-              color: AsmaTheme.gold.withOpacity(0.4), size: isSmall ? 30 : 36),
+              color: AsmaTheme.gold.withValues(alpha: 0.4), size: isSmall ? 30 : 36),
           SizedBox(height: isSmall ? 8 : 12),
           _isLoading
               ? Center(
@@ -774,7 +774,7 @@ class _AsmaAllahDetailScreenState extends State<AsmaAllahDetailScreen>
           Transform.rotate(
             angle: math.pi,
             child: Icon(Icons.format_quote_rounded,
-                color: AsmaTheme.gold.withOpacity(0.4), size: isSmall ? 30 : 36),
+                color: AsmaTheme.gold.withValues(alpha: 0.4), size: isSmall ? 30 : 36),
           ),
         ],
       ),

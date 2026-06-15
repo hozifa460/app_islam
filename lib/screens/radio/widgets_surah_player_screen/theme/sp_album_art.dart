@@ -1,4 +1,4 @@
-// lib/screens/radio/widgets_surah_player/sp_album_art.dart
+﻿// lib/screens/radio/widgets_surah_player/sp_album_art.dart
 
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -7,9 +7,9 @@ import 'package:islamic_app/screens/radio/models/surah_model.dart';
 import '../sp_equalizer.dart';
 import 'sp_shapes.dart';
 
-/// ══════════════════════════════════════════════════════════════
-/// غلاف الألبوم الدائري
-/// ══════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ط؛ظ„ط§ظپ ط§ظ„ط£ظ„ط¨ظˆظ… ط§ظ„ط¯ط§ط¦ط±ظٹ
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class SpAlbumArt extends StatelessWidget {
   final AnimationController albumArtController;
   final AnimationController equalizerController;
@@ -53,7 +53,7 @@ class SpAlbumArt extends StatelessWidget {
             child: Stack(
               alignment: Alignment.center,
               children: [
-                // ══ دوائر زخرفية ══
+                // â•گâ•گ ط¯ظˆط§ط¦ط± ط²ط®ط±ظپظٹط© â•گâ•گ
                 ...List.generate(3, (i) {
                   final ratio = 0.38 + i * 0.18;
                   return Container(
@@ -63,7 +63,7 @@ class SpAlbumArt extends StatelessWidget {
                   );
                 }),
 
-                // ══ المحتوى المركزي ══
+                // â•گâ•گ ط§ظ„ظ…ط­طھظˆظ‰ ط§ظ„ظ…ط±ظƒط²ظٹ â•گâ•گ
                 Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -83,17 +83,17 @@ class SpAlbumArt extends StatelessWidget {
                     ),
                     const SizedBox(height: 6),
                     Text(
-                      '${surah.versesCount} آية',
+                      '${surah.versesCount} ط¢ظٹط©',
                       style: GoogleFonts.cairo(
                         fontSize: artSize * 0.055,
-                        color: primary.withOpacity(0.7),
+                        color: primary.withValues(alpha: 0.7),
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                   ],
                 ),
 
-                // ══ Equalizer ══
+                // â•گâ•گ Equalizer â•گâ•گ
                 if (isPlaying)
                   Positioned(
                     bottom: artSize * 0.1,

@@ -1,4 +1,4 @@
-import 'dart:math';
+﻿import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,12 +16,12 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
 
-  // ═══ Animation Controllers ═══
+  // â•گâ•گâ•گ Animation Controllers â•گâ•گâ•گ
   late AnimationController _mainController;
   late AnimationController _pulseController;
   late AnimationController _particleController;
 
-  // ═══ Animations ═══
+  // â•گâ•گâ•گ Animations â•گâ•گâ•گ
   late Animation<double> _logoScale;
   late Animation<double> _logoOpacity;
   late Animation<double> _logoRotation;
@@ -40,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   bool _navigated = false;
 
-  // ═══ ألوان ═══
+  // â•گâ•گâ•گ ط£ظ„ظˆط§ظ† â•گâ•گâ•گ
   static const Color _gold = Color(0xFFD4AF37);
   static const Color _goldLight = Color(0xFFE6C866);
   static const Color _goldDark = Color(0xFFB8860B);
@@ -196,7 +196,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final tr = context.tr; // ← الترجمة
+    final tr = context.tr; // â†گ ط§ظ„طھط±ط¬ظ…ط©
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -228,7 +228,7 @@ class _SplashScreenState extends State<SplashScreen>
                 isDark, width, height,
                 logoSize, ring1Size, ring2Size, ring3Size,
                 isSmallDevice, isMediumDevice,
-                tr, // ← تمرير الترجمة
+                tr, // â†گ طھظ…ط±ظٹط± ط§ظ„طھط±ط¬ظ…ط©
               ),
               _buildBottomSection(isDark, width, height, isSmallDevice, tr),
             ],
@@ -282,7 +282,7 @@ class _SplashScreenState extends State<SplashScreen>
           left: width * 0.15,
           child: _buildGlowCircle(
             width * 0.7,
-            _gold.withOpacity(isDark ? 0.06 : 0.05),
+            _gold.withValues(alpha: isDark ? 0.06 : 0.05),
           ),
         ),
         Positioned(
@@ -290,7 +290,7 @@ class _SplashScreenState extends State<SplashScreen>
           right: -width * 0.15,
           child: _buildGlowCircle(
             width * 0.6,
-            _goldLight.withOpacity(isDark ? 0.04 : 0.03),
+            _goldLight.withValues(alpha: isDark ? 0.04 : 0.03),
           ),
         ),
         Positioned(
@@ -298,13 +298,13 @@ class _SplashScreenState extends State<SplashScreen>
           right: -width * 0.1,
           child: _buildGlowCircle(
             width * 0.4,
-            _goldDark.withOpacity(isDark ? 0.03 : 0.02),
+            _goldDark.withValues(alpha: isDark ? 0.03 : 0.02),
           ),
         ),
         Positioned.fill(
           child: CustomPaint(
             painter: _IslamicPatternPainter(
-              color: _gold.withOpacity(isDark ? 0.015 : 0.025),
+              color: _gold.withValues(alpha: isDark ? 0.015 : 0.025),
             ),
           ),
         ),
@@ -344,9 +344,9 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // المحتوى الرئيسي - مع حماية من الـ Overflow
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ظ…ط­طھظˆظ‰ ط§ظ„ط±ط¦ظٹط³ظٹ - ظ…ط¹ ط­ظ…ط§ظٹط© ظ…ظ† ط§ظ„ظ€ Overflow
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildMainContent(
       bool isDark,
       double width,
@@ -361,10 +361,10 @@ class _SplashScreenState extends State<SplashScreen>
       ) {
     final textColor = isDark ? Colors.white : const Color(0xFF2C1810);
     final subtitleColor = isDark
-        ? Colors.white.withOpacity(0.65)
-        : const Color(0xFF5D4E37).withOpacity(0.75);
+        ? Colors.white.withValues(alpha: 0.65)
+        : const Color(0xFF5D4E37).withValues(alpha: 0.75);
 
-    // ═══ حساب المساحة المتاحة ═══
+    // â•گâ•گâ•گ ط­ط³ط§ط¨ ط§ظ„ظ…ط³ط§ط­ط© ط§ظ„ظ…طھط§ط­ط© â•گâ•گâ•گ
     final topPadding = MediaQuery.of(context).padding.top;
     final bottomPadding = MediaQuery.of(context).padding.bottom;
     final availableHeight = height - topPadding - bottomPadding - 100;
@@ -376,10 +376,10 @@ class _SplashScreenState extends State<SplashScreen>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // ═══ مساحة مرنة علوية ═══
+            // â•گâ•گâ•گ ظ…ط³ط§ط­ط© ظ…ط±ظ†ط© ط¹ظ„ظˆظٹط© â•گâ•گâ•گ
             Flexible(flex: 1, child: const SizedBox()),
 
-            // ═══ الشعار مع الحلقات ═══
+            // â•گâ•گâ•گ ط§ظ„ط´ط¹ط§ط± ظ…ط¹ ط§ظ„ط­ظ„ظ‚ط§طھ â•گâ•گâ•گ
             Flexible(
               flex: 4,
               child: _buildLogoSection(
@@ -391,27 +391,27 @@ class _SplashScreenState extends State<SplashScreen>
               ),
             ),
 
-            // ═══ مساحة بين الشعار والنص ═══
+            // â•گâ•گâ•گ ظ…ط³ط§ط­ط© ط¨ظٹظ† ط§ظ„ط´ط¹ط§ط± ظˆط§ظ„ظ†طµ â•گâ•گâ•گ
             SizedBox(height: (height * 0.03).clamp(12.0, 30.0)),
 
-            // ═══ العنوان ═══
+            // â•گâ•گâ•گ ط§ظ„ط¹ظ†ظˆط§ظ† â•گâ•گâ•گ
             Flexible(
               flex: 1,
               child: _buildTitle(textColor, width, isSmall, tr),
             ),
 
-            // ═══ الفاصل ═══
+            // â•گâ•گâ•گ ط§ظ„ظپط§طµظ„ â•گâ•گâ•گ
             SizedBox(height: (height * 0.015).clamp(8.0, 18.0)),
             _buildDivider(width, isSmall),
             SizedBox(height: (height * 0.012).clamp(6.0, 15.0)),
 
-            // ═══ الوصف ═══
+            // â•گâ•گâ•گ ط§ظ„ظˆطµظپ â•گâ•گâ•گ
             Flexible(
               flex: 1,
               child: _buildSubtitle(subtitleColor, width, isSmall, tr),
             ),
 
-            // ═══ مساحة مرنة سفلية ═══
+            // â•گâ•گâ•گ ظ…ط³ط§ط­ط© ظ…ط±ظ†ط© ط³ظپظ„ظٹط© â•گâ•گâ•گ
             Flexible(flex: 2, child: const SizedBox()),
           ],
         ),
@@ -419,9 +419,9 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // قسم الشعار مع 3 حلقات
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ظ‚ط³ظ… ط§ظ„ط´ط¹ط§ط± ظ…ط¹ 3 ط­ظ„ظ‚ط§طھ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildLogoSection(
       bool isDark,
       double logoSize,
@@ -439,7 +439,7 @@ class _SplashScreenState extends State<SplashScreen>
             child: Stack(
               alignment: Alignment.center,
               children: [
-                // ═══ الحلقة الثالثة ═══
+                // â•گâ•گâ•گ ط§ظ„ط­ظ„ظ‚ط© ط§ظ„ط«ط§ظ„ط«ط© â•گâ•گâ•گ
                 Opacity(
                   opacity: _ring3Opacity.value,
                   child: Transform.scale(
@@ -450,7 +450,7 @@ class _SplashScreenState extends State<SplashScreen>
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: _gold.withOpacity(isDark ? 0.1 : 0.08),
+                          color: _gold.withValues(alpha: isDark ? 0.1 : 0.08),
                           width: 1.2,
                         ),
                       ),
@@ -458,7 +458,7 @@ class _SplashScreenState extends State<SplashScreen>
                   ),
                 ),
 
-                // ═══ الحلقة الثانية ═══
+                // â•گâ•گâ•گ ط§ظ„ط­ظ„ظ‚ط© ط§ظ„ط«ط§ظ†ظٹط© â•گâ•گâ•گ
                 Opacity(
                   opacity: _ring2Opacity.value,
                   child: Transform.scale(
@@ -469,7 +469,7 @@ class _SplashScreenState extends State<SplashScreen>
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: _gold.withOpacity(isDark ? 0.18 : 0.15),
+                          color: _gold.withValues(alpha: isDark ? 0.18 : 0.15),
                           width: 1.5,
                         ),
                       ),
@@ -477,7 +477,7 @@ class _SplashScreenState extends State<SplashScreen>
                   ),
                 ),
 
-                // ═══ الحلقة الأولى ═══
+                // â•گâ•گâ•گ ط§ظ„ط­ظ„ظ‚ط© ط§ظ„ط£ظˆظ„ظ‰ â•گâ•گâ•گ
                 Opacity(
                   opacity: _ring1Opacity.value,
                   child: Transform.scale(
@@ -488,7 +488,7 @@ class _SplashScreenState extends State<SplashScreen>
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: _gold.withOpacity(isDark ? 0.3 : 0.25),
+                          color: _gold.withValues(alpha: isDark ? 0.3 : 0.25),
                           width: 2,
                         ),
                       ),
@@ -496,7 +496,7 @@ class _SplashScreenState extends State<SplashScreen>
                   ),
                 ),
 
-                // ═══ الشعار ═══
+                // â•گâ•گâ•گ ط§ظ„ط´ط¹ط§ط± â•گâ•گâ•گ
                 Opacity(
                   opacity: _logoOpacity.value,
                   child: Transform.scale(
@@ -522,14 +522,14 @@ class _SplashScreenState extends State<SplashScreen>
                           border: Border.all(color: _gold, width: 2.8),
                           boxShadow: [
                             BoxShadow(
-                              color: _gold.withOpacity(isDark ? 0.35 : 0.25),
+                              color: _gold.withValues(alpha: isDark ? 0.35 : 0.25),
                               blurRadius: 35,
                               spreadRadius: 5,
                             ),
                             BoxShadow(
                               color: isDark
-                                  ? Colors.black.withOpacity(0.4)
-                                  : _gold.withOpacity(0.12),
+                                  ? Colors.black.withValues(alpha: 0.4)
+                                  : _gold.withValues(alpha: 0.12),
                               blurRadius: 25,
                               offset: const Offset(0, 12),
                             ),
@@ -559,11 +559,11 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // العنوان - محمي من الـ Overflow
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ط¹ظ†ظˆط§ظ† - ظ…ط­ظ…ظٹ ظ…ظ† ط§ظ„ظ€ Overflow
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildTitle(Color textColor, double width, bool isSmall, AppLocalizations tr) {
-    // ═══ حجم الخط المتكيف ═══
+    // â•گâ•گâ•گ ط­ط¬ظ… ط§ظ„ط®ط· ط§ظ„ظ…طھظƒظٹظپ â•گâ•گâ•گ
     final baseFontSize = isSmall ? 28.0 : 38.0;
     final maxWidth = width * 0.85;
 
@@ -593,7 +593,7 @@ class _SplashScreenState extends State<SplashScreen>
                 child: FittedBox(
                   fit: BoxFit.scaleDown,
                   child: Text(
-                    tr.splashTitle, // ← مترجم
+                    tr.splashTitle, // â†گ ظ…طھط±ط¬ظ…
                     style: GoogleFonts.amiri(
                       fontSize: baseFontSize,
                       fontWeight: FontWeight.bold,
@@ -613,9 +613,9 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // الفاصل الزخرفي
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ظپط§طµظ„ ط§ظ„ط²ط®ط±ظپظٹ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildDivider(double width, bool isSmall) {
     return AnimatedBuilder(
       animation: _mainController,
@@ -635,7 +635,7 @@ class _SplashScreenState extends State<SplashScreen>
                   opacity: progress,
                   child: Icon(
                     Icons.auto_awesome_rounded,
-                    color: _gold.withOpacity(0.85),
+                    color: _gold.withValues(alpha: 0.85),
                     size: isSmall ? 10 : 12,
                   ),
                 ),
@@ -652,18 +652,18 @@ class _SplashScreenState extends State<SplashScreen>
                       gradient: LinearGradient(
                         colors: [
                           Colors.transparent,
-                          _goldDark.withOpacity(0.6),
+                          _goldDark.withValues(alpha: 0.6),
                           _gold,
                           _goldLight,
                           _gold,
-                          _goldDark.withOpacity(0.6),
+                          _goldDark.withValues(alpha: 0.6),
                           Colors.transparent,
                         ],
                       ),
                       borderRadius: BorderRadius.circular(2),
                       boxShadow: [
                         BoxShadow(
-                          color: _gold.withOpacity(0.3),
+                          color: _gold.withValues(alpha: 0.3),
                           blurRadius: 8,
                         ),
                       ],
@@ -678,7 +678,7 @@ class _SplashScreenState extends State<SplashScreen>
                   opacity: progress,
                   child: Icon(
                     Icons.auto_awesome_rounded,
-                    color: _gold.withOpacity(0.85),
+                    color: _gold.withValues(alpha: 0.85),
                     size: isSmall ? 10 : 12,
                   ),
                 ),
@@ -690,9 +690,9 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // الوصف - محمي من الـ Overflow
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ظˆطµظپ - ظ…ط­ظ…ظٹ ظ…ظ† ط§ظ„ظ€ Overflow
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildSubtitle(Color color, double width, bool isSmall, AppLocalizations tr) {
     final fontSize = isSmall ? 13.0 : 16.0;
 
@@ -707,7 +707,7 @@ class _SplashScreenState extends State<SplashScreen>
             child: FittedBox(
               fit: BoxFit.scaleDown,
               child: Text(
-                tr.splashSubtitle, // ← مترجم
+                tr.splashSubtitle, // â†گ ظ…طھط±ط¬ظ…
                 style: GoogleFonts.cairo(
                   fontSize: fontSize,
                   fontWeight: FontWeight.w600,
@@ -725,9 +725,9 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // القسم السفلي - محمي من الـ Overflow
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ظ‚ط³ظ… ط§ظ„ط³ظپظ„ظٹ - ظ…ط­ظ…ظٹ ظ…ظ† ط§ظ„ظ€ Overflow
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildBottomSection(
       bool isDark,
       double width,
@@ -736,8 +736,8 @@ class _SplashScreenState extends State<SplashScreen>
       AppLocalizations tr,
       ) {
     final verseColor = isDark
-        ? _gold.withOpacity(0.75)
-        : _goldDark.withOpacity(0.85);
+        ? _gold.withValues(alpha: 0.75)
+        : _goldDark.withValues(alpha: 0.85);
 
     final bottomPadding = MediaQuery.of(context).padding.bottom;
     final verseFontSize = isSmall ? 12.0 : 15.0;
@@ -765,7 +765,7 @@ class _SplashScreenState extends State<SplashScreen>
                     _LoadingDots(color: _gold),
                     SizedBox(height: isSmall ? 12 : 18),
 
-                    // ═══ الآية - محمية من الـ Overflow ═══
+                    // â•گâ•گâ•گ ط§ظ„ط¢ظٹط© - ظ…ط­ظ…ظٹط© ظ…ظ† ط§ظ„ظ€ Overflow â•گâ•گâ•گ
                     ConstrainedBox(
                       constraints: BoxConstraints(
                         maxWidth: width * 0.85,
@@ -774,7 +774,7 @@ class _SplashScreenState extends State<SplashScreen>
                       child: FittedBox(
                         fit: BoxFit.scaleDown,
                         child: Text(
-                          tr.splashVerse, // ← مترجم
+                          tr.splashVerse, // â†گ ظ…طھط±ط¬ظ…
                           style: GoogleFonts.amiri(
                             fontSize: verseFontSize,
                             color: verseColor,
@@ -798,9 +798,9 @@ class _SplashScreenState extends State<SplashScreen>
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// رسام الجسيمات (بدون تغيير)
-// ═══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط±ط³ط§ظ… ط§ظ„ط¬ط³ظٹظ…ط§طھ (ط¨ط¯ظˆظ† طھط؛ظٹظٹط±)
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _ParticlePainter extends CustomPainter {
   final double progress;
   final Color color;
@@ -839,7 +839,7 @@ class _ParticlePainter extends CustomPainter {
       final x = centerX + cos(angle) * radius;
       final y = centerY + sin(angle) * radius;
 
-      paint.color = color.withOpacity(
+      paint.color = color.withValues(alpha: 
         isDark ? particle.opacity : particle.opacity * 0.65,
       );
 
@@ -869,9 +869,9 @@ class _Particle {
   });
 }
 
-// ═══════════════════════════════════════════════════════════════
-// رسام النقوش الإسلامية (بدون تغيير)
-// ═══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط±ط³ط§ظ… ط§ظ„ظ†ظ‚ظˆط´ ط§ظ„ط¥ط³ظ„ط§ظ…ظٹط© (ط¨ط¯ظˆظ† طھط؛ظٹظٹط±)
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _IslamicPatternPainter extends CustomPainter {
   final Color color;
 
@@ -915,9 +915,9 @@ class _IslamicPatternPainter extends CustomPainter {
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// النقاط المتحركة (بدون تغيير)
-// ═══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط§ظ„ظ†ظ‚ط§ط· ط§ظ„ظ…طھط­ط±ظƒط© (ط¨ط¯ظˆظ† طھط؛ظٹظٹط±)
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _LoadingDots extends StatefulWidget {
   final Color color;
   const _LoadingDots({required this.color});
@@ -978,13 +978,13 @@ class _LoadingDotsState extends State<_LoadingDots>
                 shape: BoxShape.circle,
                 gradient: RadialGradient(
                   colors: [
-                    widget.color.withOpacity(0.5 + value * 0.5),
-                    widget.color.withOpacity(0.3 + value * 0.4),
+                    widget.color.withValues(alpha: 0.5 + value * 0.5),
+                    widget.color.withValues(alpha: 0.3 + value * 0.4),
                   ],
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: widget.color.withOpacity(value * 0.5),
+                    color: widget.color.withValues(alpha: value * 0.5),
                     blurRadius: 6 + value * 6,
                   ),
                 ],

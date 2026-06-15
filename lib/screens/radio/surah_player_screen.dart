@@ -1,4 +1,4 @@
-// lib/screens/radio/surah_player_screen.dart
+﻿// lib/screens/radio/surah_player_screen.dart
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -51,7 +51,7 @@ class _SurahPlayerScreenState extends State<SurahPlayerScreen>
   late SurahModel _surah;
   bool _isInitialized = false;
 
-  // ✅ Cache الـ itemId لتجنب إعادة الحساب
+  // âœ… Cache ط§ظ„ظ€ itemId ظ„طھط¬ظ†ط¨ ط¥ط¹ط§ط¯ط© ط§ظ„ط­ط³ط§ط¨
   late final String? _surahUrl;
   late final String? _itemId;
   late final RecitationItem? _tempItem;
@@ -66,7 +66,7 @@ class _SurahPlayerScreenState extends State<SurahPlayerScreen>
       _surah = QuranData.surahs.first;
     }
 
-    // ✅ حساب مرة واحدة
+    // âœ… ط­ط³ط§ط¨ ظ…ط±ط© ظˆط§ط­ط¯ط©
     _surahUrl = widget.station.surahStreamUrl(widget.surahNumber);
     if (_surahUrl != null) {
       _tempItem = RecitationItem(
@@ -173,7 +173,7 @@ class _SurahPlayerScreenState extends State<SurahPlayerScreen>
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'جاري تحميل سورة ${_surah.name}... ✓',
+          'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط³ظˆط±ط© ${_surah.name}... âœ“',
           style: GoogleFonts.cairo(),
           textDirection: TextDirection.rtl,
         ),
@@ -198,7 +198,7 @@ class _SurahPlayerScreenState extends State<SurahPlayerScreen>
         backgroundColor: Colors.transparent,
         body: Stack(
           children: [
-            // ══ الخلفية ══
+            // â•گâ•گ ط§ظ„ط®ظ„ظپظٹط© â•گâ•گ
             Positioned.fill(
               child: RepaintBoundary(
                 child: SpBackground(
@@ -209,7 +209,7 @@ class _SurahPlayerScreenState extends State<SurahPlayerScreen>
               ),
             ),
 
-            // ══ المحتوى ══
+            // â•گâ•گ ط§ظ„ظ…ط­طھظˆظ‰ â•گâ•گ
             SafeArea(
               child: _PlayerContent(
                 station: widget.station,
@@ -233,9 +233,9 @@ class _SurahPlayerScreenState extends State<SurahPlayerScreen>
   }
 }
 
-// ══════════════════════════════════════════════════════════════
-// ✅ Widget مستقل للمحتوى - يقلل إعادة بناء الـ Stack
-// ══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// âœ… Widget ظ…ط³طھظ‚ظ„ ظ„ظ„ظ…ط­طھظˆظ‰ - ظٹظ‚ظ„ظ„ ط¥ط¹ط§ط¯ط© ط¨ظ†ط§ط، ط§ظ„ظ€ Stack
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _PlayerContent extends StatelessWidget {
   final IslamicRadioStation station;
   final SurahModel surah;
@@ -269,7 +269,7 @@ class _PlayerContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // ══ AppBar - ثابت لا يتغير ══
+        // â•گâ•گ AppBar - ط«ط§ط¨طھ ظ„ط§ ظٹطھط؛ظٹط± â•گâ•گ
         _StaticAppBar(
           station: station,
           surah: surah,
@@ -282,7 +282,7 @@ class _PlayerContent extends StatelessWidget {
 
         const Spacer(),
 
-        // ══ بادج الوضع ══
+        // â•گâ•گ ط¨ط§ط¯ط¬ ط§ظ„ظˆط¶ط¹ â•گâ•گ
         SpModeBadge(
           isOnline: isOnline,
           primary: primary,
@@ -291,7 +291,7 @@ class _PlayerContent extends StatelessWidget {
 
         const SizedBox(height: 16),
 
-        // ══ غلاف الألبوم - يتحدث مع isPlaying فقط ══
+        // â•گâ•گ ط؛ظ„ط§ظپ ط§ظ„ط£ظ„ط¨ظˆظ… - ظٹطھط­ط¯ط« ظ…ط¹ isPlaying ظپظ‚ط· â•گâ•گ
         _AlbumArtSection(
           animHelper: animHelper,
           surah: surah,
@@ -303,7 +303,7 @@ class _PlayerContent extends StatelessWidget {
 
         const SizedBox(height: 28),
 
-        // ══ معلومات السورة ══
+        // â•گâ•گ ظ…ط¹ظ„ظˆظ…ط§طھ ط§ظ„ط³ظˆط±ط© â•گâ•گ
         SpSurahInfo(
           surah: surah,
           isDark: isDark,
@@ -315,7 +315,7 @@ class _PlayerContent extends StatelessWidget {
 
         const SizedBox(height: 20),
 
-        // ══ شريط التقدم - يتحدث بشكل مستقل ══
+        // â•گâ•گ ط´ط±ظٹط· ط§ظ„طھظ‚ط¯ظ… - ظٹطھط­ط¯ط« ط¨ط´ظƒظ„ ظ…ط³طھظ‚ظ„ â•گâ•گ
         _ProgressSection(
           primary: primary,
           isDark: isDark,
@@ -325,7 +325,7 @@ class _PlayerContent extends StatelessWidget {
 
         const SizedBox(height: 18),
 
-        // ══ أزرار التحكم ══
+        // â•گâ•گ ط£ط²ط±ط§ط± ط§ظ„طھط­ظƒظ… â•گâ•گ
         _ControlsSection(
           primary: primary,
           isDark: isDark,
@@ -338,7 +338,7 @@ class _PlayerContent extends StatelessWidget {
 
         const SizedBox(height: 14),
 
-        // ══ أزرار إضافية ══
+        // â•گâ•گ ط£ط²ط±ط§ط± ط¥ط¶ط§ظپظٹط© â•گâ•گ
         SpExtraControls(
           isDark: isDark,
           isTablet: isTablet,
@@ -355,7 +355,7 @@ class _PlayerContent extends StatelessWidget {
           onRadioMode: null,
         ),
 
-        // ══ قسم التحميل ══
+        // â•گâ•گ ظ‚ط³ظ… ط§ظ„طھط­ظ…ظٹظ„ â•گâ•گ
         if (itemId != null)
           _DownloadSectionWidget(
             surah: surah,
@@ -370,7 +370,7 @@ class _PlayerContent extends StatelessWidget {
 
         const Spacer(),
 
-        // ══ Playlist / Online Info ══
+        // â•گâ•گ Playlist / Online Info â•گâ•گ
         if (!isOnline)
           Consumer<AudioCoordinator>(
             builder: (_, coordinator, __) => SpOfflinePlaylist(
@@ -395,7 +395,7 @@ class _PlayerContent extends StatelessWidget {
   }
 }
 
-// ══ AppBar ثابت ══
+// â•گâ•گ AppBar ط«ط§ط¨طھ â•گâ•گ
 class _StaticAppBar extends StatelessWidget {
   final IslamicRadioStation station;
   final SurahModel surah;
@@ -437,7 +437,7 @@ class _StaticAppBar extends StatelessWidget {
   }
 }
 
-// ══ Album Art - يراقب isPlaying فقط ══
+// â•گâ•گ Album Art - ظٹط±ط§ظ‚ط¨ isPlaying ظپظ‚ط· â•گâ•گ
 class _AlbumArtSection extends StatelessWidget {
   final SpAnimationHelper animHelper;
   final SurahModel surah;
@@ -457,7 +457,7 @@ class _AlbumArtSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ✅ Selector يراقب isPlaying فقط
+    // âœ… Selector ظٹط±ط§ظ‚ط¨ isPlaying ظپظ‚ط·
     return Selector<RadioIntillegence, bool>(
       selector: (_, r) => r.isPlaying,
       builder: (_, isPlaying, __) => SpAlbumArt(
@@ -473,7 +473,7 @@ class _AlbumArtSection extends StatelessWidget {
   }
 }
 
-// ══ Progress Bar - يراقب position و duration فقط ══
+// â•گâ•گ Progress Bar - ظٹط±ط§ظ‚ط¨ position ظˆ duration ظپظ‚ط· â•گâ•گ
 class _ProgressSection extends StatelessWidget {
   final Color primary;
   final bool isDark;
@@ -489,7 +489,7 @@ class _ProgressSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ✅ Selector يراقب position و duration فقط
+    // âœ… Selector ظٹط±ط§ظ‚ط¨ position ظˆ duration ظپظ‚ط·
     return Selector<RadioIntillegence, ({Duration position, Duration duration})>(
       selector: (_, r) => (
       position: r.player.position,
@@ -509,7 +509,7 @@ class _ProgressSection extends StatelessWidget {
   }
 }
 
-// ══ Controls - يراقب isPlaying و isLoading فقط ══
+// â•گâ•گ Controls - ظٹط±ط§ظ‚ط¨ isPlaying ظˆ isLoading ظپظ‚ط· â•گâ•گ
 class _ControlsSection extends StatelessWidget {
   final Color primary;
   final bool isDark;
@@ -561,7 +561,7 @@ class _ControlsSection extends StatelessWidget {
   }
 }
 
-// ══ Download Section - يراقب حالة التحميل فقط ══
+// â•گâ•گ Download Section - ظٹط±ط§ظ‚ط¨ ط­ط§ظ„ط© ط§ظ„طھط­ظ…ظٹظ„ ظپظ‚ط· â•گâ•گ
 class _DownloadSectionWidget extends StatelessWidget {
   final SurahModel surah;
   final IslamicRadioStation station;
@@ -631,7 +631,7 @@ class _DownloadSectionWidget extends StatelessWidget {
   }
 }
 
-// ══ Download Invite ══
+// â•گâ•گ Download Invite â•گâ•گ
 class _DownloadInviteCard extends StatelessWidget {
   final String surahName;
   final String stationName;
@@ -652,15 +652,15 @@ class _DownloadInviteCard extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.blue.withOpacity(isDark ? 0.08 : 0.06),
+        color: Colors.blue.withValues(alpha: isDark ? 0.08 : 0.06),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: Colors.blue.withOpacity(0.15)),
+        border: Border.all(color: Colors.blue.withValues(alpha: 0.15)),
       ),
       child: Row(
         children: [
           Icon(
             Icons.cloud_download_rounded,
-            color: Colors.blue.withOpacity(0.7),
+            color: Colors.blue.withValues(alpha: 0.7),
             size: 20,
           ),
           const SizedBox(width: 10),
@@ -670,7 +670,7 @@ class _DownloadInviteCard extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'حمّل سورة $surahName للاستماع بدون إنترنت',
+                  'ط­ظ…ظ‘ظ„ ط³ظˆط±ط© $surahName ظ„ظ„ط§ط³طھظ…ط§ط¹ ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ',
                   style: GoogleFonts.cairo(
                     fontSize: 11,
                     fontWeight: FontWeight.w700,
@@ -678,10 +678,10 @@ class _DownloadInviteCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'ستُحفظ في: تلاوات/$stationName/',
+                  'ط³طھظڈط­ظپط¸ ظپظٹ: طھظ„ط§ظˆط§طھ/$stationName/',
                   style: GoogleFonts.cairo(
                     fontSize: 9,
-                    color: Colors.blue.withOpacity(0.6),
+                    color: Colors.blue.withValues(alpha: 0.6),
                   ),
                 ),
               ],
@@ -694,10 +694,10 @@ class _DownloadInviteCard extends StatelessWidget {
               padding:
               const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
               decoration: BoxDecoration(
-                color: Colors.blue.withOpacity(0.15),
+                color: Colors.blue.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(10),
                 border:
-                Border.all(color: Colors.blue.withOpacity(0.25)),
+                Border.all(color: Colors.blue.withValues(alpha: 0.25)),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -706,7 +706,7 @@ class _DownloadInviteCard extends StatelessWidget {
                       size: 14, color: Colors.blue),
                   const SizedBox(width: 4),
                   Text(
-                    'تحميل',
+                    'طھط­ظ…ظٹظ„',
                     style: GoogleFonts.cairo(
                       fontSize: 11,
                       fontWeight: FontWeight.w700,
@@ -723,7 +723,7 @@ class _DownloadInviteCard extends StatelessWidget {
   }
 }
 
-// ══ Download Progress ══
+// â•گâ•گ Download Progress â•گâ•گ
 class _DownloadProgressCard extends StatelessWidget {
   final String surahName;
   final double progress;
@@ -742,9 +742,9 @@ class _DownloadProgressCard extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.orange.withOpacity(0.08),
+        color: Colors.orange.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: Colors.orange.withOpacity(0.2)),
+        border: Border.all(color: Colors.orange.withValues(alpha: 0.2)),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -756,7 +756,7 @@ class _DownloadProgressCard extends StatelessWidget {
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'جاري تحميل سورة $surahName...',
+                  'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط³ظˆط±ط© $surahName...',
                   style: GoogleFonts.cairo(
                     fontSize: 11,
                     fontWeight: FontWeight.w700,
@@ -785,7 +785,7 @@ class _DownloadProgressCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(4),
             child: LinearProgressIndicator(
               value: progress > 0 ? progress : null,
-              backgroundColor: Colors.orange.withOpacity(0.15),
+              backgroundColor: Colors.orange.withValues(alpha: 0.15),
               valueColor: const AlwaysStoppedAnimation(Colors.orange),
               minHeight: 4,
             ),
@@ -796,7 +796,7 @@ class _DownloadProgressCard extends StatelessWidget {
   }
 }
 
-// ══ Save Path Card ══
+// â•گâ•گ Save Path Card â•گâ•گ
 class _SavePathCard extends StatelessWidget {
   final String surahName;
   final String localPath;
@@ -828,9 +828,9 @@ class _SavePathCard extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.green.withOpacity(isDark ? 0.08 : 0.06),
+        color: Colors.green.withValues(alpha: isDark ? 0.08 : 0.06),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: Colors.green.withOpacity(0.2)),
+        border: Border.all(color: Colors.green.withValues(alpha: 0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -842,7 +842,7 @@ class _SavePathCard extends StatelessWidget {
                   color: Colors.green, size: 14),
               const SizedBox(width: 6),
               Text(
-                'محفوظ في الجهاز',
+                'ظ…ط­ظپظˆط¸ ظپظٹ ط§ظ„ط¬ظ‡ط§ط²',
                 style: GoogleFonts.cairo(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -850,14 +850,14 @@ class _SavePathCard extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              // ✅ FutureBuilder منفصل
+              // âœ… FutureBuilder ظ…ظ†ظپطµظ„
               FutureBuilder<String>(
                 future: service.getFileSize(itemId),
                 builder: (_, snap) => Text(
                   snap.data ?? '...',
                   style: GoogleFonts.cairo(
                     fontSize: 11,
-                    color: Colors.green.withOpacity(0.7),
+                    color: Colors.green.withValues(alpha: 0.7),
                   ),
                 ),
               ),
@@ -885,7 +885,7 @@ class _SavePathCard extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
-                    color: Colors.red.withOpacity(0.1),
+                    color: Colors.red.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Row(
@@ -895,7 +895,7 @@ class _SavePathCard extends StatelessWidget {
                           color: Colors.red, size: 12),
                       const SizedBox(width: 3),
                       Text(
-                        'حذف',
+                        'ط­ط°ظپ',
                         style: GoogleFonts.cairo(
                           fontSize: 10,
                           color: Colors.red,
@@ -923,7 +923,7 @@ class _SavePathCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20)),
         title: Text(
-          'حذف التحميل',
+          'ط­ط°ظپ ط§ظ„طھط­ظ…ظٹظ„',
           style: GoogleFonts.cairo(
             fontWeight: FontWeight.w800,
             color: isDark ? Colors.white : Colors.black87,
@@ -931,7 +931,7 @@ class _SavePathCard extends StatelessWidget {
           textDirection: TextDirection.rtl,
         ),
         content: Text(
-          'هل تريد حذف سورة $surahName من الجهاز؟',
+          'ظ‡ظ„ طھط±ظٹط¯ ط­ط°ظپ ط³ظˆط±ط© $surahName ظ…ظ† ط§ظ„ط¬ظ‡ط§ط²طں',
           style: GoogleFonts.cairo(
             color: isDark ? Colors.white60 : Colors.black54,
           ),
@@ -940,7 +940,7 @@ class _SavePathCard extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('إلغاء',
+            child: Text('ط¥ظ„ط؛ط§ط،',
                 style: GoogleFonts.cairo(color: Colors.grey)),
           ),
           ElevatedButton(
@@ -954,7 +954,7 @@ class _SavePathCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12)),
             ),
             child: Text(
-              'حذف',
+              'ط­ط°ظپ',
               style: GoogleFonts.cairo(
                 color: Colors.white,
                 fontWeight: FontWeight.w700,

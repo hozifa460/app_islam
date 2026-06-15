@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+﻿import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,14 +10,14 @@ class RadioMiniPlayer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ✅ كشف الوضع الحالي
+    // âœ… ظƒط´ظپ ط§ظ„ظˆط¶ط¹ ط§ظ„ط­ط§ظ„ظٹ
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    // ✅ ألوان ديناميكية
-    final bgColor = isDark ? Colors.white.withOpacity(0.05) : Colors.black.withOpacity(0.05);
+    // âœ… ط£ظ„ظˆط§ظ† ط¯ظٹظ†ط§ظ…ظٹظƒظٹط©
+    final bgColor = isDark ? Colors.white.withValues(alpha: 0.05) : Colors.black.withValues(alpha: 0.05);
     final textColor = isDark ? Colors.white : const Color(0xFF1A1A1A);
     final subTextColor = isDark ? Colors.white70 : Colors.black54;
-    final borderColor = gold.withOpacity(isDark ? 0.3 : 0.6); // حدود أوضح في الوضع الفاتح
+    final borderColor = gold.withValues(alpha: isDark ? 0.3 : 0.6); // ط­ط¯ظˆط¯ ط£ظˆط¶ط­ ظپظٹ ط§ظ„ظˆط¶ط¹ ط§ظ„ظپط§طھط­
 
     return StreamBuilder<bool>(
       stream: RadioService.player.playingStream,
@@ -35,16 +35,16 @@ class RadioMiniPlayer extends StatelessWidget {
                 ? const Icon(Icons.stop_circle, color: Colors.red, size: 32)
                 : Icon(Icons.play_circle_fill, color: gold, size: 32),
             title: Text(
-              'إذاعة القرآن الكريم',
+              'ط¥ط°ط§ط¹ط© ط§ظ„ظ‚ط±ط¢ظ† ط§ظ„ظƒط±ظٹظ…',
               style: GoogleFonts.cairo(
-                color: textColor, // نص ديناميكي
+                color: textColor, // ظ†طµ ط¯ظٹظ†ط§ظ…ظٹظƒظٹ
                 fontWeight: FontWeight.bold,
               ),
             ),
             subtitle: Text(
-              isPlaying ? 'جاري البث المباشر...' : 'اضغط للاستماع',
+              isPlaying ? 'ط¬ط§ط±ظٹ ط§ظ„ط¨ط« ط§ظ„ظ…ط¨ط§ط´ط±...' : 'ط§ط¶ط؛ط· ظ„ظ„ط§ط³طھظ…ط§ط¹',
               style: GoogleFonts.cairo(
-                color: subTextColor, // نص ثانوي ديناميكي
+                color: subTextColor, // ظ†طµ ط«ط§ظ†ظˆظٹ ط¯ظٹظ†ط§ظ…ظٹظƒظٹ
                 fontSize: 12,
               ),
             ),

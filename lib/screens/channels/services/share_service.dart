@@ -1,25 +1,25 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../services/youtube_service.dart';
 
-/// ═══════════════════════════════════════════════════════════════
-///  خدمة المشاركة المتقدمة
-/// ═══════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+///  ط®ط¯ظ…ط© ط§ظ„ظ…ط´ط§ط±ظƒط© ط§ظ„ظ…طھظ‚ط¯ظ…ط©
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class ShareService {
 
-  /// مشاركة فيديو
+  /// ظ…ط´ط§ط±ظƒط© ظپظٹط¯ظٹظˆ
   static Future<void> shareVideo(YoutubeVideo video, {BuildContext? context}) async {
     final text = '''
-🎬 ${video.title}
+ًںژ¬ ${video.title}
 
-📺 ${video.channelTitle}
-👁️ ${YoutubeService.formatViews(video.viewCount)} مشاهدة
+ًں“؛ ${video.channelTitle}
+ًں‘پï¸ڈ ${YoutubeService.formatViews(video.viewCount)} ظ…ط´ط§ظ‡ط¯ط©
 
-🔗 ${video.url}
+ًں”— ${video.url}
 
-— تم المشاركة من تطبيق القنوات العلمية
+â€” طھظ… ط§ظ„ظ…ط´ط§ط±ظƒط© ظ…ظ† طھط·ط¨ظٹظ‚ ط§ظ„ظ‚ظ†ظˆط§طھ ط§ظ„ط¹ظ„ظ…ظٹط©
 ''';
 
     await Share.share(
@@ -28,18 +28,18 @@ class ShareService {
     );
   }
 
-  /// مشاركة قناة
+  /// ظ…ط´ط§ط±ظƒط© ظ‚ظ†ط§ط©
   static Future<void> shareChannel(Map<String, dynamic> channel) async {
     final name = channel['name'] ?? '';
     final url = channel['url'] ?? '';
     final title = channel['title'] ?? '';
 
     final text = '''
-📺 $name
-${title.isNotEmpty ? '📝 $title\n' : ''}
-🔗 $url
+ًں“؛ $name
+${title.isNotEmpty ? 'ًں“‌ $title\n' : ''}
+ًں”— $url
 
-— تم المشاركة من تطبيق القنوات العلمية
+â€” طھظ… ط§ظ„ظ…ط´ط§ط±ظƒط© ظ…ظ† طھط·ط¨ظٹظ‚ ط§ظ„ظ‚ظ†ظˆط§طھ ط§ظ„ط¹ظ„ظ…ظٹط©
 ''';
 
     await Share.share(
@@ -48,7 +48,7 @@ ${title.isNotEmpty ? '📝 $title\n' : ''}
     );
   }
 
-  /// نسخ الرابط
+  /// ظ†ط³ط® ط§ظ„ط±ط§ط¨ط·
   static Future<void> copyLink(String url, {BuildContext? context}) async {
     await Clipboard.setData(ClipboardData(text: url));
 
@@ -59,7 +59,7 @@ ${title.isNotEmpty ? '📝 $title\n' : ''}
             children: [
               const Icon(Icons.check_circle_rounded, color: Colors.white, size: 20),
               const SizedBox(width: 12),
-              const Text('تم نسخ الرابط'),
+              const Text('طھظ… ظ†ط³ط® ط§ظ„ط±ط§ط¨ط·'),
             ],
           ),
           backgroundColor: const Color(0xFF10B981),
@@ -71,7 +71,7 @@ ${title.isNotEmpty ? '📝 $title\n' : ''}
     }
   }
 
-  /// مشاركة عبر واتساب
+  /// ظ…ط´ط§ط±ظƒط© ط¹ط¨ط± ظˆط§طھط³ط§ط¨
   static Future<void> shareToWhatsApp(String text) async {
     final encoded = Uri.encodeComponent(text);
     final url = 'whatsapp://send?text=$encoded';
@@ -85,7 +85,7 @@ ${title.isNotEmpty ? '📝 $title\n' : ''}
     }
   }
 
-  /// مشاركة عبر تليجرام
+  /// ظ…ط´ط§ط±ظƒط© ط¹ط¨ط± طھظ„ظٹط¬ط±ط§ظ…
   static Future<void> shareToTelegram(String text) async {
     final encoded = Uri.encodeComponent(text);
     final url = 'https://t.me/share/url?url=$encoded';
@@ -93,7 +93,7 @@ ${title.isNotEmpty ? '📝 $title\n' : ''}
     await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
   }
 
-  /// مشاركة عبر تويتر
+  /// ظ…ط´ط§ط±ظƒط© ط¹ط¨ط± طھظˆظٹطھط±
   static Future<void> shareToTwitter(String text, {String? url}) async {
     final encodedText = Uri.encodeComponent(text);
     final encodedUrl = url != null ? Uri.encodeComponent(url) : '';
@@ -103,7 +103,7 @@ ${title.isNotEmpty ? '📝 $title\n' : ''}
     await launchUrl(Uri.parse(twitterUrl), mode: LaunchMode.externalApplication);
   }
 
-  /// فتح خيارات المشاركة المتقدمة
+  /// ظپطھط­ ط®ظٹط§ط±ط§طھ ط§ظ„ظ…ط´ط§ط±ظƒط© ط§ظ„ظ…طھظ‚ط¯ظ…ط©
   static void showShareOptions({
     required BuildContext context,
     required YoutubeVideo video,
@@ -121,9 +121,9 @@ ${title.isNotEmpty ? '📝 $title\n' : ''}
   }
 }
 
-/// ═══════════════════════════════════════════════════════════════
-///  شاشة خيارات المشاركة
-/// ═══════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+///  ط´ط§ط´ط© ط®ظٹط§ط±ط§طھ ط§ظ„ظ…ط´ط§ط±ظƒط©
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _ShareOptionsSheet extends StatelessWidget {
   final YoutubeVideo video;
   final bool isDark;
@@ -149,18 +149,18 @@ class _ShareOptionsSheet extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // المقبض
+            // ط§ظ„ظ…ظ‚ط¨ط¶
             Container(
               width: 40,
               height: 4,
               margin: const EdgeInsets.symmetric(vertical: 12),
               decoration: BoxDecoration(
-                color: subColor.withOpacity(0.3),
+                color: subColor.withValues(alpha: 0.3),
                 borderRadius: BorderRadius.circular(2),
               ),
             ),
 
-            // العنوان
+            // ط§ظ„ط¹ظ†ظˆط§ظ†
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
@@ -169,7 +169,7 @@ class _ShareOptionsSheet extends StatelessWidget {
                   const SizedBox(width: 12),
                   Expanded(
                     child: Text(
-                      'مشاركة الفيديو',
+                      'ظ…ط´ط§ط±ظƒط© ط§ظ„ظپظٹط¯ظٹظˆ',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w700,
@@ -183,7 +183,7 @@ class _ShareOptionsSheet extends StatelessWidget {
 
             const SizedBox(height: 20),
 
-            // خيارات المشاركة
+            // ط®ظٹط§ط±ط§طھ ط§ظ„ظ…ط´ط§ط±ظƒط©
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
@@ -191,7 +191,7 @@ class _ShareOptionsSheet extends StatelessWidget {
                 children: [
                   _ShareButton(
                     icon: Icons.copy_rounded,
-                    label: 'نسخ',
+                    label: 'ظ†ط³ط®',
                     color: const Color(0xFF64748B),
                     onTap: () {
                       Navigator.pop(context);
@@ -200,7 +200,7 @@ class _ShareOptionsSheet extends StatelessWidget {
                   ),
                   _ShareButton(
                     icon: Icons.message_rounded,
-                    label: 'واتساب',
+                    label: 'ظˆط§طھط³ط§ط¨',
                     color: const Color(0xFF25D366),
                     onTap: () {
                       Navigator.pop(context);
@@ -211,7 +211,7 @@ class _ShareOptionsSheet extends StatelessWidget {
                   ),
                   _ShareButton(
                     icon: Icons.send_rounded,
-                    label: 'تليجرام',
+                    label: 'طھظ„ظٹط¬ط±ط§ظ…',
                     color: const Color(0xFF0088CC),
                     onTap: () {
                       Navigator.pop(context);
@@ -222,7 +222,7 @@ class _ShareOptionsSheet extends StatelessWidget {
                   ),
                   _ShareButton(
                     icon: Icons.tag_rounded,
-                    label: 'تويتر',
+                    label: 'طھظˆظٹطھط±',
                     color: const Color(0xFF1DA1F2),
                     onTap: () {
                       Navigator.pop(context);
@@ -238,7 +238,7 @@ class _ShareOptionsSheet extends StatelessWidget {
 
             const SizedBox(height: 16),
 
-            // زر المشاركة العامة
+            // ط²ط± ط§ظ„ظ…ط´ط§ط±ظƒط© ط§ظ„ط¹ط§ظ…ط©
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: SizedBox(
@@ -249,7 +249,7 @@ class _ShareOptionsSheet extends StatelessWidget {
                     ShareService.shareVideo(video, context: context);
                   },
                   icon: const Icon(Icons.share_rounded, size: 20),
-                  label: const Text('المزيد من الخيارات'),
+                  label: const Text('ط§ظ„ظ…ط²ظٹط¯ ظ…ظ† ط§ظ„ط®ظٹط§ط±ط§طھ'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF0D9488),
                     foregroundColor: Colors.white,
@@ -297,9 +297,9 @@ class _ShareButton extends StatelessWidget {
             width: 56,
             height: 56,
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
+              color: color.withValues(alpha: 0.1),
               shape: BoxShape.circle,
-              border: Border.all(color: color.withOpacity(0.2)),
+              border: Border.all(color: color.withValues(alpha: 0.2)),
             ),
             child: Icon(icon, color: color, size: 26),
           ),

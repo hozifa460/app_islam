@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -127,14 +127,14 @@ class _OTPScreenState extends State<OTPScreen>
                       children: [
                         const SizedBox(height: 50),
 
-                        // ═══ أيقونة ═══
+                        // â•گâ•گâ•گ ط£ظٹظ‚ظˆظ†ط© â•گâ•گâ•گ
                         _buildIcon(isDark),
 
                         const SizedBox(height: 32),
 
-                        // ═══ عنوان ═══
+                        // â•گâ•گâ•گ ط¹ظ†ظˆط§ظ† â•گâ•گâ•گ
                         Text(
-                          'تأكيد البريد الإلكتروني',
+                          'طھط£ظƒظٹط¯ ط§ظ„ط¨ط±ظٹط¯ ط§ظ„ط¥ظ„ظƒطھط±ظˆظ†ظٹ',
                           style: GoogleFonts.cairo(
                             fontSize: 24,
                             fontWeight: FontWeight.w700,
@@ -145,11 +145,11 @@ class _OTPScreenState extends State<OTPScreen>
                         const SizedBox(height: 12),
 
                         Text(
-                          'أدخل الرمز المكون من 6 أرقام المُرسل إلى',
+                          'ط£ط¯ط®ظ„ ط§ظ„ط±ظ…ط² ط§ظ„ظ…ظƒظˆظ† ظ…ظ† 6 ط£ط±ظ‚ط§ظ… ط§ظ„ظ…ظڈط±ط³ظ„ ط¥ظ„ظ‰',
                           style: GoogleFonts.cairo(
                             fontSize: 14,
                             color: isDark
-                                ? Colors.white.withOpacity(0.6)
+                                ? Colors.white.withValues(alpha: 0.6)
                                 : Colors.grey.shade600,
                           ),
                           textAlign: TextAlign.center,
@@ -157,15 +157,15 @@ class _OTPScreenState extends State<OTPScreen>
 
                         const SizedBox(height: 8),
 
-                        // ═══ البريد ═══
+                        // â•گâ•گâ•گ ط§ظ„ط¨ط±ظٹط¯ â•گâ•گâ•گ
                         Container(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 18, vertical: 10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
-                            color: _gold.withOpacity(isDark ? 0.12 : 0.08),
+                            color: _gold.withValues(alpha: isDark ? 0.12 : 0.08),
                             border: Border.all(
-                                color: _gold.withOpacity(0.2)),
+                                color: _gold.withValues(alpha: 0.2)),
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -190,20 +190,20 @@ class _OTPScreenState extends State<OTPScreen>
 
                         const SizedBox(height: 32),
 
-                        // ═══ حقول OTP ═══
+                        // â•گâ•گâ•گ ط­ظ‚ظˆظ„ OTP â•گâ•گâ•گ
                         _buildOTPFields(isDark),
 
-                        // ═══ خطأ ═══
+                        // â•گâ•گâ•گ ط®ط·ط£ â•گâ•گâ•گ
                         if (_error != null) ...[
                           const SizedBox(height: 16),
                           Container(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 14, vertical: 10),
                             decoration: BoxDecoration(
-                              color: Colors.red.withOpacity(0.1),
+                              color: Colors.red.withValues(alpha: 0.1),
                               borderRadius: BorderRadius.circular(12),
                               border: Border.all(
-                                  color: Colors.red.withOpacity(0.25)),
+                                  color: Colors.red.withValues(alpha: 0.25)),
                             ),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
@@ -225,7 +225,7 @@ class _OTPScreenState extends State<OTPScreen>
 
                         const SizedBox(height: 28),
 
-                        // ═══ زر تأكيد ═══
+                        // â•گâ•گâ•گ ط²ط± طھط£ظƒظٹط¯ â•گâ•گâ•گ
                         SizedBox(
                           width: double.infinity,
                           height: 54,
@@ -235,12 +235,12 @@ class _OTPScreenState extends State<OTPScreen>
                               backgroundColor: _gold,
                               foregroundColor: Colors.white,
                               disabledBackgroundColor:
-                              _gold.withOpacity(0.5),
+                              _gold.withValues(alpha: 0.5),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(16),
                               ),
                               elevation: 4,
-                              shadowColor: _gold.withOpacity(0.4),
+                              shadowColor: _gold.withValues(alpha: 0.4),
                             ),
                             child: auth.isLoading
                                 ? const SizedBox(
@@ -262,7 +262,7 @@ class _OTPScreenState extends State<OTPScreen>
                                     size: 22),
                                 const SizedBox(width: 10),
                                 Text(
-                                  'تأكيد وإنشاء الحساب',
+                                  'طھط£ظƒظٹط¯ ظˆط¥ظ†ط´ط§ط، ط§ظ„ط­ط³ط§ط¨',
                                   style: GoogleFonts.cairo(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w700,
@@ -275,19 +275,19 @@ class _OTPScreenState extends State<OTPScreen>
 
                         const SizedBox(height: 20),
 
-                        // ═══ إعادة إرسال ═══
+                        // â•گâ•گâ•گ ط¥ط¹ط§ط¯ط© ط¥ط±ط³ط§ظ„ â•گâ•گâ•گ
                         TextButton(
                           onPressed: _cooldown <= 0 ? _resend : null,
                           child: Text(
                             _cooldown <= 0
-                                ? 'إعادة إرسال الرمز'
-                                : 'إعادة الإرسال بعد $_cooldown ثانية',
+                                ? 'ط¥ط¹ط§ط¯ط© ط¥ط±ط³ط§ظ„ ط§ظ„ط±ظ…ط²'
+                                : 'ط¥ط¹ط§ط¯ط© ط§ظ„ط¥ط±ط³ط§ظ„ ط¨ط¹ط¯ $_cooldown ط«ط§ظ†ظٹط©',
                             style: GoogleFonts.cairo(
                               fontSize: 14,
                               color: _cooldown <= 0
-                                  ? _gold.withOpacity(0.85)
+                                  ? _gold.withValues(alpha: 0.85)
                                   : (isDark
-                                  ? Colors.white.withOpacity(0.3)
+                                  ? Colors.white.withValues(alpha: 0.3)
                                   : Colors.grey.shade400),
                               fontWeight: FontWeight.w600,
                             ),
@@ -296,7 +296,7 @@ class _OTPScreenState extends State<OTPScreen>
 
                         const SizedBox(height: 10),
 
-                        // ═══ رجوع ═══
+                        // â•گâ•گâ•گ ط±ط¬ظˆط¹ â•گâ•گâ•گ
                         TextButton.icon(
                           onPressed: () =>
                               context.read<AuthService>().signOut(),
@@ -304,15 +304,15 @@ class _OTPScreenState extends State<OTPScreen>
                             Icons.arrow_back_ios_rounded,
                             size: 16,
                             color: isDark
-                                ? Colors.white.withOpacity(0.4)
+                                ? Colors.white.withValues(alpha: 0.4)
                                 : Colors.grey.shade500,
                           ),
                           label: Text(
-                            'العودة لتسجيل الدخول',
+                            'ط§ظ„ط¹ظˆط¯ط© ظ„طھط³ط¬ظٹظ„ ط§ظ„ط¯ط®ظˆظ„',
                             style: GoogleFonts.cairo(
                               fontSize: 13,
                               color: isDark
-                                  ? Colors.white.withOpacity(0.4)
+                                  ? Colors.white.withValues(alpha: 0.4)
                                   : Colors.grey.shade500,
                             ),
                           ),
@@ -321,10 +321,10 @@ class _OTPScreenState extends State<OTPScreen>
                         const SizedBox(height: 40),
 
                         Text(
-                          '﴿ رَبِّ اشْرَحْ لِي صَدْرِي وَيَسِّرْ لِي أَمْرِي ﴾',
+                          'ï´؟ ط±ظژط¨ظگظ‘ ط§ط´ظ’ط±ظژط­ظ’ ظ„ظگظٹ طµظژط¯ظ’ط±ظگظٹ ظˆظژظٹظژط³ظگظ‘ط±ظ’ ظ„ظگظٹ ط£ظژظ…ظ’ط±ظگظٹ ï´¾',
                           style: GoogleFonts.amiri(
                             fontSize: 16,
-                            color: _gold.withOpacity(isDark ? 0.5 : 0.6),
+                            color: _gold.withValues(alpha: isDark ? 0.5 : 0.6),
                             fontWeight: FontWeight.w700,
                           ),
                           textAlign: TextAlign.center,
@@ -363,7 +363,7 @@ class _OTPScreenState extends State<OTPScreen>
           border: Border.all(color: _gold, width: 2.5),
           boxShadow: [
             BoxShadow(
-              color: _gold.withOpacity(isDark ? 0.35 : 0.2),
+              color: _gold.withValues(alpha: isDark ? 0.35 : 0.2),
               blurRadius: 30,
               spreadRadius: 4,
             ),
@@ -386,7 +386,7 @@ class _OTPScreenState extends State<OTPScreen>
             height: 56,
             margin: EdgeInsets.only(
               left: 3,
-              right: i == 2 ? 10 : 3,  // فراغ بين النصفين
+              right: i == 2 ? 10 : 3,  // ظپط±ط§ط؛ ط¨ظٹظ† ط§ظ„ظ†طµظپظٹظ†
             ),
             child: TextField(
               controller: _controllers[i],
@@ -408,19 +408,19 @@ class _OTPScreenState extends State<OTPScreen>
                 const EdgeInsets.symmetric(vertical: 12),
                 filled: true,
                 fillColor: isDark
-                    ? Colors.white.withOpacity(0.06)
+                    ? Colors.white.withValues(alpha: 0.06)
                     : Colors.grey.shade50,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(14),
                   borderSide: BorderSide(
-                      color: _gold.withOpacity(0.3)),
+                      color: _gold.withValues(alpha: 0.3)),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(14),
                   borderSide: BorderSide(
                     color: isDark
-                        ? Colors.white.withOpacity(0.1)
-                        : _gold.withOpacity(0.2),
+                        ? Colors.white.withValues(alpha: 0.1)
+                        : _gold.withValues(alpha: 0.2),
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
@@ -453,7 +453,7 @@ class _OTPScreenState extends State<OTPScreen>
   Future<void> _verify() async {
     final code = _otpCode;
     if (code.length != _otpLength) {
-      setState(() => _error = 'أدخل الرمز كاملاً');
+      setState(() => _error = 'ط£ط¯ط®ظ„ ط§ظ„ط±ظ…ط² ظƒط§ظ…ظ„ط§ظ‹');
       return;
     }
 
@@ -476,8 +476,8 @@ class _OTPScreenState extends State<OTPScreen>
         SnackBar(
           content: Text(
             success
-                ? '✅ تم إرسال رمز جديد'
-                : '❌ فشل الإرسال',
+                ? 'âœ… طھظ… ط¥ط±ط³ط§ظ„ ط±ظ…ط² ط¬ط¯ظٹط¯'
+                : 'â‌Œ ظپط´ظ„ ط§ظ„ط¥ط±ط³ط§ظ„',
             style: GoogleFonts.cairo(),
           ),
           backgroundColor:

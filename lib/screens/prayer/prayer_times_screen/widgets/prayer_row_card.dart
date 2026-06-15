@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:path/path.dart';
 
@@ -28,7 +28,7 @@ class PrayerRowCard extends StatelessWidget {
 
   Color _getPrayerCardAccentColor() {
     if (!isDefaultMuezzin) {
-      return gold.withOpacity(isDark ? 0.16 : 0.9);
+      return gold.withValues(alpha: isDark ? 0.16 : 0.9);
     }
     return Colors.transparent;
   }
@@ -38,10 +38,10 @@ class PrayerRowCard extends StatelessWidget {
     final textColor = isDark ? Colors.white : const Color(0xFF1A1A1A);
     final subTextColor = isDark ? Colors.white70 : Colors.black54;
     final listCardGradient = isDark
-        ? [Colors.white.withOpacity(0.05), Colors.white.withOpacity(0.02)]
+        ? [Colors.white.withValues(alpha: 0.05), Colors.white.withValues(alpha: 0.02)]
         : [Colors.white, Colors.white];
     final listCardBorder =
-    isDark ? Colors.white.withOpacity(0.1) : gold.withOpacity(0.2);
+    isDark ? Colors.white.withValues(alpha: 0.1) : gold.withValues(alpha: 0.2);
 
     final isCurrent = row.isCurrent;
     final isNext = row.isNext;
@@ -55,27 +55,27 @@ class PrayerRowCard extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: isCurrent
-                ? [gold.withOpacity(0.15), gold.withOpacity(0.05)]
+                ? [gold.withValues(alpha: 0.15), gold.withValues(alpha: 0.05)]
                 : isNext
-                ? [gold.withOpacity(0.10), gold.withOpacity(0.03)]
+                ? [gold.withValues(alpha: 0.10), gold.withValues(alpha: 0.03)]
                 : listCardGradient,
           ),
           color: _getPrayerCardAccentColor(),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: isCurrent
-                ? gold.withOpacity(0.9)
+                ? gold.withValues(alpha: 0.9)
                 : !isDefaultMuezzin
-                ? gold.withOpacity(0.45)
+                ? gold.withValues(alpha: 0.45)
                 : isNext
-                ? gold.withOpacity(0.55)
+                ? gold.withValues(alpha: 0.55)
                 : listCardBorder,
             width: isCurrent ? 2.0 : (!isDefaultMuezzin ? 1.4 : 1.0),
           ),
           boxShadow: isNext
               ? [
             BoxShadow(
-              color: gold.withOpacity(0.25),
+              color: gold.withValues(alpha: 0.25),
               blurRadius: 16,
               offset: const Offset(0, 8),
             ),
@@ -83,8 +83,8 @@ class PrayerRowCard extends StatelessWidget {
               : [
             BoxShadow(
               color: isDark
-                  ? Colors.black.withOpacity(0.2)
-                  : Colors.grey.withOpacity(0.05),
+                  ? Colors.black.withValues(alpha: 0.2)
+                  : Colors.grey.withValues(alpha: 0.05),
               blurRadius: 5,
               offset: const Offset(0, 2),
             ),
@@ -126,11 +126,11 @@ class PrayerRowCard extends StatelessWidget {
       height: 50,
       decoration: BoxDecoration(
         color: isPast
-            ? Colors.grey.withOpacity(0.2)
-            : gold.withOpacity(isCurrent || isNext ? 0.25 : 0.10),
+            ? Colors.grey.withValues(alpha: 0.2)
+            : gold.withValues(alpha: isCurrent || isNext ? 0.25 : 0.10),
         borderRadius: BorderRadius.circular(15),
         border: (isCurrent || isNext)
-            ? Border.all(color: gold.withOpacity(0.8), width: 1.5)
+            ? Border.all(color: gold.withValues(alpha: 0.8), width: 1.5)
             : null,
       ),
       child: Stack(
@@ -155,7 +155,7 @@ class PrayerRowCard extends StatelessWidget {
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: gold.withOpacity(0.8),
+                      color: gold.withValues(alpha: 0.8),
                       blurRadius: 6,
                       spreadRadius: 1,
                     ),
@@ -186,7 +186,7 @@ class PrayerRowCard extends StatelessWidget {
               row.name,
               style: GoogleFonts.amiri(
                 fontSize: 22,
-                color: isPast ? subTextColor.withOpacity(0.5) : textColor,
+                color: isPast ? subTextColor.withValues(alpha: 0.5) : textColor,
                 fontWeight: isCurrent ? FontWeight.bold : FontWeight.normal,
               ),
             ),
@@ -195,9 +195,9 @@ class PrayerRowCard extends StatelessWidget {
             if (isNext && !isCurrent)
               PrayerBadge(
                 text: context.tr.prayerNext,
-                bg: gold.withOpacity(0.2),
+                bg: gold.withValues(alpha: 0.2),
                 fg: gold,
-                border: gold.withOpacity(0.5),
+                border: gold.withValues(alpha: 0.5),
               ),
           ],
         ),
@@ -208,7 +208,7 @@ class PrayerRowCard extends StatelessWidget {
             fontSize: 11.5,
             color: row.noAdhan == true
                 ? Colors.orange
-                : subTextColor.withOpacity(0.75),
+                : subTextColor.withValues(alpha: 0.75),
           ),
         ),
       ],
@@ -233,7 +233,7 @@ class PrayerRowCard extends StatelessWidget {
             style: GoogleFonts.cairo(
               fontSize: 18,
               color: isPast
-                  ? subTextColor.withOpacity(0.4)
+                  ? subTextColor.withValues(alpha: 0.4)
                   : (isCurrent || isNext ? gold : textColor),
               fontWeight: FontWeight.bold,
             ),
@@ -244,7 +244,7 @@ class PrayerRowCard extends StatelessWidget {
             context.tr.noAdhan,
             style: GoogleFonts.cairo(
               fontSize: 11,
-              color: subTextColor.withOpacity(0.5),
+              color: subTextColor.withValues(alpha: 0.5),
             ),
           ),
       ],
@@ -257,13 +257,13 @@ class PrayerRowCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
         color: isDark
-            ? Colors.white.withOpacity(0.05)
-            : Colors.black.withOpacity(0.03),
+            ? Colors.white.withValues(alpha: 0.05)
+            : Colors.black.withValues(alpha: 0.03),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: isDark
-              ? Colors.white.withOpacity(0.06)
-              : Colors.black.withOpacity(0.05),
+              ? Colors.white.withValues(alpha: 0.06)
+              : Colors.black.withValues(alpha: 0.05),
         ),
       ),
       child: Row(
@@ -283,8 +283,8 @@ class PrayerRowCard extends StatelessWidget {
               style: GoogleFonts.cairo(
                 fontSize: 13,
                 color: row.noAdhan == true
-                    ? subTextColor.withOpacity(0.6)
-                    : gold.withOpacity(0.95),
+                    ? subTextColor.withValues(alpha: 0.6)
+                    : gold.withValues(alpha: 0.95),
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -293,7 +293,7 @@ class PrayerRowCard extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               decoration: BoxDecoration(
-                color: gold.withOpacity(0.12),
+                color: gold.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Text(

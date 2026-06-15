@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../languages/app_localizations.dart';
@@ -10,7 +10,7 @@ class HijriTheme {
   HijriTheme({required this.isDark, required this.primaryColor});
 
   // ==============================
-  // 🎨 Colors
+  // ًںژ¨ Colors
   // ==============================
   static const Color gold = Color(0xFFD4A843);
 
@@ -19,17 +19,17 @@ class HijriTheme {
   Color get text => isDark ? Colors.white : const Color(0xFF1A1A1A);
   Color get subText => isDark ? Colors.white60 : Colors.black45;
 
-  Color get cardBorder => isDark ? Colors.white10 : primaryColor.withOpacity(0.06);
+  Color get cardBorder => isDark ? Colors.white10 : primaryColor.withValues(alpha: 0.06);
 
   // ==============================
-  // 📐 Dimensions
+  // ًں“گ Dimensions
   // ==============================
   static const double cardRadius = 22.0;
   static const double infoCardRadius = 18.0;
   static const double badgeRadius = 10.0;
 
   // ==============================
-  // 📐 Responsive Helpers
+  // ًں“گ Responsive Helpers
   // ==============================
   double padH(double w) {
     if (w < 360) return 12.0;
@@ -41,11 +41,11 @@ class HijriTheme {
   bool isTablet(double w) => w > 600;
 
   // ==============================
-  // 📦 Shadows
+  // ًں“¦ Shadows
   // ==============================
   List<BoxShadow> get cardShadow => [
     BoxShadow(
-      color: primaryColor.withOpacity(isDark ? 0.08 : 0.04),
+      color: primaryColor.withValues(alpha: isDark ? 0.08 : 0.04),
       blurRadius: 12,
       offset: const Offset(0, 4),
     ),
@@ -53,14 +53,14 @@ class HijriTheme {
 
   List<BoxShadow> get calendarShadow => [
     BoxShadow(
-      color: Colors.black.withOpacity(isDark ? 0.15 : 0.04),
+      color: Colors.black.withValues(alpha: isDark ? 0.15 : 0.04),
       blurRadius: 15,
       offset: const Offset(0, 5),
     ),
   ];
 
   // ==============================
-  // 🎭 Gradients
+  // ًںژ­ Gradients
   // ==============================
   LinearGradient get headerGradient => LinearGradient(
     begin: Alignment.topLeft,
@@ -73,7 +73,7 @@ class HijriTheme {
   );
 
   // ==============================
-  // 🔤 Text Styles
+  // ًں”¤ Text Styles
   // ==============================
   TextStyle hijriDateStyle(bool compact, bool tablet) => GoogleFonts.amiri(
     color: Colors.white,
@@ -82,7 +82,7 @@ class HijriTheme {
     height: 1.2,
     shadows: [
       Shadow(
-        color: Colors.black.withOpacity(0.3),
+        color: Colors.black.withValues(alpha: 0.3),
         blurRadius: 10,
         offset: const Offset(0, 3),
       ),
@@ -102,20 +102,20 @@ class HijriTheme {
   );
 
   // ==============================
-  // 🔧 Helpers
+  // ًں”§ Helpers
   // ==============================
   static String formatNum(int n, BuildContext context) {
-    // إذا لم تكن اللغة عربية، أرجع الأرقام الإنجليزية العادية
+    // ط¥ط°ط§ ظ„ظ… طھظƒظ† ط§ظ„ظ„ط؛ط© ط¹ط±ط¨ظٹط©طŒ ط£ط±ط¬ط¹ ط§ظ„ط£ط±ظ‚ط§ظ… ط§ظ„ط¥ظ†ط¬ظ„ظٹط²ظٹط© ط§ظ„ط¹ط§ط¯ظٹط©
     if (context.tr.locale.languageCode != 'ar') return n.toString();
 
     const nums = {
-      '0': '٠', '1': '١', '2': '٢', '3': '٣', '4': '٤',
-      '5': '٥', '6': '٦', '7': '٧', '8': '٨', '9': '٩'
+      '0': 'ظ ', '1': 'ظ،', '2': 'ظ¢', '3': 'ظ£', '4': 'ظ¤',
+      '5': 'ظ¥', '6': 'ظ¦', '7': 'ظ§', '8': 'ظ¨', '9': 'ظ©'
     };
     return n.toString().split('').map((e) => nums[e] ?? e).join();
   }
 
-  static String getWeekday(DateTime date, BuildContext context) { // 👈 تمت إضافة context هنا
+  static String getWeekday(DateTime date, BuildContext context) { // ًں‘ˆ طھظ…طھ ط¥ط¶ط§ظپط© context ظ‡ظ†ط§
     final days = [
       context.tr.dayMonday,
       context.tr.dayTuesday,

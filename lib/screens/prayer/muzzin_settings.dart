@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islamic_app/utils/radio_widget.dart';
 
@@ -18,14 +18,14 @@ class MuezzinSettingsScreen extends StatelessWidget {
 
     final bgColor = isDark ? const Color(0xFF0A0E17) : const Color(0xFFF5F5F5);
     final cardGradient = isDark
-        ? [Colors.white.withOpacity(0.08), Colors.white.withOpacity(0.02)]
+        ? [Colors.white.withValues(alpha: 0.08), Colors.white.withValues(alpha: 0.02)]
         : [Colors.white, Colors.white];
     final textColor = isDark ? Colors.white : const Color(0xFF1A1A1A);
     final subTextColor = isDark ? Colors.white70 : Colors.black54;
     final borderColor =
-    isDark ? Colors.white.withOpacity(0.1) : Colors.black.withOpacity(0.1);
+    isDark ? Colors.white.withValues(alpha: 0.1) : Colors.black.withValues(alpha: 0.1);
     final shadowColor =
-    isDark ? Colors.black.withOpacity(0.3) : Colors.grey.withOpacity(0.2);
+    isDark ? Colors.black.withValues(alpha: 0.3) : Colors.grey.withValues(alpha: 0.2);
 
     return Scaffold(
       backgroundColor: bgColor,
@@ -35,7 +35,7 @@ class MuezzinSettingsScreen extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          'اختيار المؤذن',
+          'ط§ط®طھظٹط§ط± ط§ظ„ظ…ط¤ط°ظ†',
           style: GoogleFonts.cairo(
             fontWeight: FontWeight.bold,
             fontSize: 24,
@@ -46,13 +46,13 @@ class MuezzinSettingsScreen extends StatelessWidget {
           margin: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: isDark
-                ? Colors.white.withOpacity(0.1)
-                : Colors.black.withOpacity(0.1),
+                ? Colors.white.withValues(alpha: 0.1)
+                : Colors.black.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: isDark
-                  ? Colors.white.withOpacity(0.1)
-                  : Colors.black.withOpacity(0.1),
+                  ? Colors.white.withValues(alpha: 0.1)
+                  : Colors.black.withValues(alpha: 0.1),
             ),
           ),
           child: IconButton(
@@ -72,7 +72,7 @@ class MuezzinSettingsScreen extends StatelessWidget {
                   children: [
                     const SizedBox(height: 20),
                     Text(
-                      'اختر القسم',
+                      'ط§ط®طھط± ط§ظ„ظ‚ط³ظ…',
                       style: GoogleFonts.cairo(color: subTextColor, fontSize: 16),
                     ),
                     const SizedBox(height: 30),
@@ -104,13 +104,13 @@ class MuezzinSettingsScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
                                 colors: isSheikhs
-                                    ? [_gold.withOpacity(0.2), _gold.withOpacity(0.05)]
+                                    ? [_gold.withValues(alpha: 0.2), _gold.withValues(alpha: 0.05)]
                                     : cardGradient,
                               ),
                               borderRadius: BorderRadius.circular(24),
                               border: Border.all(
                                 color: isSheikhs
-                                    ? _gold.withOpacity(0.5)
+                                    ? _gold.withValues(alpha: 0.5)
                                     : borderColor,
                                 width: isSheikhs ? 2 : 1,
                               ),
@@ -137,7 +137,7 @@ class MuezzinSettingsScreen extends StatelessWidget {
                                         as ImageProvider,
                                         fit: BoxFit.cover,
                                         colorFilter: ColorFilter.mode(
-                                          Colors.black.withOpacity(0.3),
+                                          Colors.black.withValues(alpha: 0.3),
                                           BlendMode.darken,
                                         ),
 
@@ -179,15 +179,15 @@ class MuezzinSettingsScreen extends StatelessWidget {
                                               vertical: 6,
                                             ),
                                             decoration: BoxDecoration(
-                                              color: _gold.withOpacity(0.2),
+                                              color: _gold.withValues(alpha: 0.2),
                                               borderRadius:
                                               BorderRadius.circular(20),
                                               border: Border.all(
-                                                color: _gold.withOpacity(0.4),
+                                                color: _gold.withValues(alpha: 0.4),
                                               ),
                                             ),
                                             child: Text(
-                                              'مشايخ',
+                                              'ظ…ط´ط§ظٹط®',
                                               style: GoogleFonts.cairo(
                                                 color: _gold,
                                                 fontSize: 12,

@@ -1,4 +1,4 @@
-// lib/screens/radio/widgets_radio_screen/station_card_widget.dart
+﻿// lib/screens/radio/widgets_radio_screen/station_card_widget.dart
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -45,7 +45,7 @@ class StationCardWidget extends StatelessWidget {
         );
       },
       builder: (_, state, __) {
-        // ✅ حساب العرض من الصورة بشكل ثابت
+        // âœ… ط­ط³ط§ط¨ ط§ظ„ط¹ط±ط¶ ظ…ظ† ط§ظ„طµظˆط±ط© ط¨ط´ظƒظ„ ط«ط§ط¨طھ
         final contentW = imgH * (16 / 9);
 
         return GestureDetector(
@@ -99,7 +99,7 @@ class StationCardWidget extends StatelessWidget {
       height: imgH,
       child: Stack(
         children: [
-          // ✅ استخدام RadioImageWidget
+          // âœ… ط§ط³طھط®ط¯ط§ظ… RadioImageWidget
           Positioned.fill(
             child: ClipRRect(
               borderRadius: RadioShapes.borderRadiusMedium,
@@ -115,7 +115,7 @@ class StationCardWidget extends StatelessWidget {
             ),
           ),
 
-          // تدرج سفلي
+          // طھط¯ط±ط¬ ط³ظپظ„ظٹ
           Positioned(
             bottom: 0,
             left: 0,
@@ -137,7 +137,7 @@ class StationCardWidget extends StatelessWidget {
             ),
           ),
 
-          // زر التشغيل
+          // ط²ط± ط§ظ„طھط´ط؛ظٹظ„
           Positioned(
             bottom: 7,
             right: 7,
@@ -155,14 +155,14 @@ class StationCardWidget extends StatelessWidget {
               ),
             ),
 
-          // المفضلة
+          // ط§ظ„ظ…ظپط¶ظ„ط©
           Positioned(
             top: 7,
             right: 7,
             child: _buildFavoriteButton(context, state.isFav),
           ),
 
-          // ✅ استخدام LiveBadgeWidget
+          // âœ… ط§ط³طھط®ط¯ط§ظ… LiveBadgeWidget
           Positioned(
             top: 7,
             left: 7,
@@ -184,7 +184,7 @@ class StationCardWidget extends StatelessWidget {
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-            color: primary.withOpacity(0.4),
+            color: primary.withValues(alpha: 0.4),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),

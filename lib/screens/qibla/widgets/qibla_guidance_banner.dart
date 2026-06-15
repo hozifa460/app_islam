@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'qibla_theme.dart';
 
@@ -35,17 +35,17 @@ class QiblaGuidanceBanner extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                guidance.withOpacity(theme.isDark ? 0.22 : 0.10),
-                guidance.withOpacity(theme.isDark ? 0.06 : 0.03),
+                guidance.withValues(alpha: theme.isDark ? 0.22 : 0.10),
+                guidance.withValues(alpha: theme.isDark ? 0.06 : 0.03),
               ],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
             ),
             borderRadius: BorderRadius.circular(QiblaTheme.bannerRadius),
-            border: Border.all(color: guidance.withOpacity(0.42), width: 2),
+            border: Border.all(color: guidance.withValues(alpha: 0.42), width: 2),
             boxShadow: [
               BoxShadow(
-                color: guidance.withOpacity(0.12),
+                color: guidance.withValues(alpha: 0.12),
                 blurRadius: 14,
                 offset: const Offset(0, 4),
               ),
@@ -61,8 +61,8 @@ class QiblaGuidanceBanner extends StatelessWidget {
                   height: 48,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: guidance.withOpacity(0.14),
-                    border: Border.all(color: guidance.withOpacity(0.35)),
+                    color: guidance.withValues(alpha: 0.14),
+                    border: Border.all(color: guidance.withValues(alpha: 0.35)),
                   ),
                   child: Icon(icon, color: guidance, size: 26),
                 ),
@@ -87,13 +87,13 @@ class QiblaGuidanceBanner extends StatelessWidget {
                     const SizedBox(height: 3),
                     Text(
                       isFacing
-                          ? 'يمكنك الآن أداء الصلاة في هذا الاتجاه'
-                          : 'وجّه هاتفك حتى تشير الإبرة الخضراء للأعلى',
+                          ? 'ظٹظ…ظƒظ†ظƒ ط§ظ„ط¢ظ† ط£ط¯ط§ط، ط§ظ„طµظ„ط§ط© ظپظٹ ظ‡ط°ط§ ط§ظ„ط§طھط¬ط§ظ‡'
+                          : 'ظˆط¬ظ‘ظ‡ ظ‡ط§طھظپظƒ ط­طھظ‰ طھط´ظٹط± ط§ظ„ط¥ط¨ط±ط© ط§ظ„ط®ط¶ط±ط§ط، ظ„ظ„ط£ط¹ظ„ظ‰',
                       style: GoogleFonts.cairo(
                         fontSize: 11,
                         color: theme.isDark
-                            ? Colors.white.withOpacity(0.58)
-                            : Colors.black.withOpacity(0.50),
+                            ? Colors.white.withValues(alpha: 0.58)
+                            : Colors.black.withValues(alpha: 0.50),
                         height: 1.45,
                       ),
                     ),

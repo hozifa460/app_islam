@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../../../languages/app_localizations.dart';
 import '../../../models/inheritance_models.dart';
 
@@ -18,7 +18,7 @@ class EstateTypeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final cardColor = isDarkMode ? const Color(0xFF151B26) : Colors.white;
     final textColor = isDarkMode ? Colors.white : const Color(0xFF2D2D2D);
-    final borderColor = isDarkMode ? Colors.white.withOpacity(0.08) : Colors.grey.withOpacity(0.15);
+    final borderColor = isDarkMode ? Colors.white.withValues(alpha: 0.08) : Colors.grey.withValues(alpha: 0.15);
 
     return Container(
       padding: const EdgeInsets.all(16),
@@ -28,7 +28,7 @@ class EstateTypeWidget extends StatelessWidget {
         border: Border.all(color: borderColor),
         boxShadow: [
           BoxShadow(
-            color: isDarkMode ? Colors.black.withOpacity(0.2) : Colors.black.withOpacity(0.05),
+            color: isDarkMode ? Colors.black.withValues(alpha: 0.2) : Colors.black.withValues(alpha: 0.05),
             blurRadius: 15,
             offset: const Offset(0, 5),
           ),
@@ -42,7 +42,7 @@ class EstateTypeWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF1565C0).withOpacity(0.1),
+                  color: const Color(0xFF1565C0).withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Icon(Icons.category_rounded, color: Color(0xFF1565C0), size: 22),
@@ -64,7 +64,7 @@ class EstateTypeWidget extends StatelessWidget {
                       context.tr.selectEstateType,
                       style: TextStyle(
                         fontSize: 11,
-                        color: textColor.withOpacity(0.6),
+                        color: textColor.withValues(alpha: 0.6),
                       ),
                     ),
                   ],
@@ -112,18 +112,18 @@ class EstateTypeWidget extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
         decoration: BoxDecoration(
           gradient: isSelected
-              ? LinearGradient(colors: [color, color.withOpacity(0.8)])
+              ? LinearGradient(colors: [color, color.withValues(alpha: 0.8)])
               : null,
-          color: isSelected ? null : (isDarkMode ? Colors.white.withOpacity(0.05) : Colors.grey.shade50),
+          color: isSelected ? null : (isDarkMode ? Colors.white.withValues(alpha: 0.05) : Colors.grey.shade50),
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: isSelected ? color : (isDarkMode ? Colors.white.withOpacity(0.1) : Colors.grey.shade200),
+            color: isSelected ? color : (isDarkMode ? Colors.white.withValues(alpha: 0.1) : Colors.grey.shade200),
             width: isSelected ? 2 : 1,
           ),
           boxShadow: isSelected
               ? [
             BoxShadow(
-              color: color.withOpacity(0.35),
+              color: color.withValues(alpha: 0.35),
               blurRadius: 12,
               offset: const Offset(0, 4),
             ),
@@ -136,7 +136,7 @@ class EstateTypeWidget extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: isSelected ? Colors.white.withOpacity(0.2) : color.withOpacity(0.1),
+                color: isSelected ? Colors.white.withValues(alpha: 0.2) : color.withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
               child: Icon(

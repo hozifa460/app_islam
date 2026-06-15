@@ -1,4 +1,4 @@
-// lib/screens/radio/widgets_recitations_screen/rec_item_player_screen.dart
+﻿// lib/screens/radio/widgets_recitations_screen/rec_item_player_screen.dart
 
 import 'dart:async';
 import 'dart:math';
@@ -99,10 +99,10 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
     _activePlayer = radio.player;
     _isLive = !widget.isLocal && widget.station.url.startsWith('http');
 
-    // ══ إلغاء أي listeners قديمة ══
+    // â•گâ•گ ط¥ظ„ط؛ط§ط، ط£ظٹ listeners ظ‚ط¯ظٹظ…ط© â•گâ•گ
     _cancelListeners();
 
-    // ══ الاستماع للوقت ══
+    // â•گâ•گ ط§ظ„ط§ط³طھظ…ط§ط¹ ظ„ظ„ظˆظ‚طھ â•گâ•گ
     _positionSub = _activePlayer?.positionStream.listen((pos) {
       if (mounted) setState(() => _positionNotifier.value = pos);
     });
@@ -147,9 +147,9 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
     final key = widget.item.audioUrl ?? widget.station.url;
     final pos = _positionNotifier.value;
     if (pos.inSeconds > 0) {
-      // ✅ حفظ في الكاش السريع
+      // âœ… ط­ظپط¸ ظپظٹ ط§ظ„ظƒط§ط´ ط§ظ„ط³ط±ظٹط¹
       VideoCacheManager().savePosition(key, pos);
-      // ✅ وفي SharedPreferences
+      // âœ… ظˆظپظٹ SharedPreferences
       PlaybackPositionService().savePosition(key, pos);
     }
 
@@ -190,18 +190,18 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
       }
     });
 
-    // ✅ استعادة الموضع
+    // âœ… ط§ط³طھط¹ط§ط¯ط© ط§ظ„ظ…ظˆط¶ط¹
     _restoreSavedPosition();
   }
 
   Future<void> _restoreSavedPosition() async {
     final key = widget.item.audioUrl ?? widget.station.url;
 
-    // ✅ أولاً من الكاش السريع
+    // âœ… ط£ظˆظ„ط§ظ‹ ظ…ظ† ط§ظ„ظƒط§ط´ ط§ظ„ط³ط±ظٹط¹
     final cacheManager = VideoCacheManager();
     final cachedPos = cacheManager.getSavedPosition(key);
     if (cachedPos != null && cachedPos.inSeconds > 3) {
-      // ✅ انتظر المشغل
+      // âœ… ط§ظ†طھط¸ط± ط§ظ„ظ…ط´ط؛ظ„
       for (int i = 0; i < 20; i++) {
         await Future.delayed(const Duration(milliseconds: 200));
         if (!mounted) return;
@@ -214,7 +214,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
       return;
     }
 
-    // ✅ ثانياً من SharedPreferences
+    // âœ… ط«ط§ظ†ظٹط§ظ‹ ظ…ظ† SharedPreferences
     final savedPos = await PlaybackPositionService().getPositionAsync(key);
     if (savedPos.inSeconds > 3 && mounted && _activePlayer != null) {
       for (int i = 0; i < 20; i++) {
@@ -457,9 +457,9 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
     );
   }
 
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   // AppBar
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildAppBar(bool isTablet) {
     return Padding(
@@ -490,7 +490,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'يستمع الآن',
+                'ظٹط³طھظ…ط¹ ط§ظ„ط¢ظ†',
                 style: GoogleFonts.cairo(
                   fontSize: 11,
                   color: RecColors.textSecondary(context),
@@ -515,20 +515,20 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
     );
   }
 
-  // ══════════════════════════════════════════════════════════════
-  // شارة الحالة (أونلاين / أوفلاين)
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط´ط§ط±ط© ط§ظ„ط­ط§ظ„ط© (ط£ظˆظ†ظ„ط§ظٹظ† / ط£ظˆظپظ„ط§ظٹظ†)
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildStatusBadge() {
     if (widget.isLocal) {
-      // ══ أوفلاين ══
+      // â•گâ•گ ط£ظˆظپظ„ط§ظٹظ† â•گâ•گ
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
         decoration: BoxDecoration(
-          color: Colors.green.withOpacity(0.12),
+          color: Colors.green.withValues(alpha: 0.12),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: Colors.green.withOpacity(0.3),
+            color: Colors.green.withValues(alpha: 0.3),
             width: 0.8,
           ),
         ),
@@ -542,7 +542,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
             ),
             const SizedBox(width: 6),
             Text(
-              'يعمل بدون إنترنت',
+              'ظٹط¹ظ…ظ„ ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ',
               style: GoogleFonts.cairo(
                 fontSize: 11,
                 fontWeight: FontWeight.w700,
@@ -554,7 +554,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
       );
     }
 
-    // ══ أونلاين ══
+    // â•گâ•گ ط£ظˆظ†ظ„ط§ظٹظ† â•گâ•گ
     return AnimatedBuilder(
       animation: _equalizerController,
       builder: (_, __) {
@@ -563,10 +563,10 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
           decoration: BoxDecoration(
-            color: Colors.blue.withOpacity(0.1),
+            color: Colors.blue.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: Colors.blue.withOpacity(opacity * 0.4),
+              color: Colors.blue.withValues(alpha: opacity * 0.4),
               width: 0.8,
             ),
           ),
@@ -576,11 +576,11 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
               Icon(
                 Icons.wifi_rounded,
                 size: 14,
-                color: Colors.blue.withOpacity(opacity),
+                color: Colors.blue.withValues(alpha: opacity),
               ),
               const SizedBox(width: 6),
               Text(
-                'يعمل عبر الإنترنت',
+                'ظٹط¹ظ…ظ„ ط¹ط¨ط± ط§ظ„ط¥ظ†طھط±ظ†طھ',
                 style: GoogleFonts.cairo(
                   fontSize: 11,
                   fontWeight: FontWeight.w700,
@@ -588,12 +588,12 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                 ),
               ),
               const SizedBox(width: 8),
-              // نقطة بث
+              // ظ†ظ‚ط·ط© ط¨ط«
               Container(
                 width: 6,
                 height: 6,
                 decoration: BoxDecoration(
-                  color: Colors.blue.withOpacity(opacity),
+                  color: Colors.blue.withValues(alpha: opacity),
                   shape: BoxShape.circle,
                 ),
               ),
@@ -604,9 +604,9 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
     );
   }
 
-  // ══════════════════════════════════════════════════════════════
-  // غلاف الألبوم
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط؛ظ„ط§ظپ ط§ظ„ط£ظ„ط¨ظˆظ…
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildAlbumArt(
       bool isPlaying,
@@ -782,9 +782,9 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
     );
   }
 
-  // ══════════════════════════════════════════════════════════════
-  // معلومات
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ظ…ط¹ظ„ظˆظ…ط§طھ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildInfo(bool isTablet) {
     return Consumer<PlaylistService>(
@@ -804,7 +804,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // ══ اسم القائمة ══
+              // â•گâ•گ ط§ط³ظ… ط§ظ„ظ‚ط§ط¦ظ…ط© â•گâ•گ
               if (hasPlaylist) ...[
                 Text(
                   playlist.playlistName,
@@ -817,7 +817,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                 const SizedBox(height: 4),
               ],
 
-              // ══ اسم التلاوة ══
+              // â•گâ•گ ط§ط³ظ… ط§ظ„طھظ„ط§ظˆط© â•گâ•گ
               Text(
                 title,
                 style: GoogleFonts.cairo(
@@ -844,7 +844,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                 overflow: TextOverflow.ellipsis,
               ),
 
-              // ══ رقم التلاوة في القائمة ══
+              // â•گâ•گ ط±ظ‚ظ… ط§ظ„طھظ„ط§ظˆط© ظپظٹ ط§ظ„ظ‚ط§ط¦ظ…ط© â•گâ•گ
               if (hasPlaylist) ...[
                 const SizedBox(height: 4),
                 Text(
@@ -882,7 +882,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
         borderRadius: BorderRadius.circular(8),
       ),
       child: Text(
-        '$percent% مكتمل',
+        '$percent% ظ…ظƒطھظ…ظ„',
         style: GoogleFonts.cairo(
           fontSize: 10,
           fontWeight: FontWeight.w600,
@@ -892,9 +892,9 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
     );
   }
 
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   // Progress Bar
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildProgressBar(
       bool isTablet,
@@ -987,7 +987,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
           ),
           const SizedBox(width: 4),
           Text(
-            'متبقي ${_formatDuration(remaining)}',
+            'ظ…طھط¨ظ‚ظٹ ${_formatDuration(remaining)}',
             style: GoogleFonts.cairo(
               fontSize: 10,
               color: RecColors.textHint(context),
@@ -1010,10 +1010,10 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
             vertical: 6,
           ),
           decoration: BoxDecoration(
-            color: Colors.red.withOpacity(0.12),
+            color: Colors.red.withValues(alpha: 0.12),
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: Colors.red.withOpacity(opacity),
+              color: Colors.red.withValues(alpha: opacity),
               width: 0.8,
             ),
           ),
@@ -1024,13 +1024,13 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                 width: 7,
                 height: 7,
                 decoration: BoxDecoration(
-                  color: Colors.red.withOpacity(opacity),
+                  color: Colors.red.withValues(alpha: opacity),
                   shape: BoxShape.circle,
                 ),
               ),
               const SizedBox(width: 8),
               Text(
-                'بث مباشر',
+                'ط¨ط« ظ…ط¨ط§ط´ط±',
                 style: GoogleFonts.cairo(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -1044,9 +1044,9 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
     );
   }
 
-  // ══════════════════════════════════════════════════════════════
-  // أزرار التحكم
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط£ط²ط±ط§ط± ط§ظ„طھط­ظƒظ…
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildControls(
       RadioIntillegence radio,
@@ -1065,7 +1065,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // ══ الصف الرئيسي ══
+              // â•گâ•گ ط§ظ„طµظپ ط§ظ„ط±ط¦ظٹط³ظٹ â•گâ•گ
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -1177,10 +1177,10 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
 
               const SizedBox(height: 16),
 
-              // ══ صف الأدوات ══
+              // â•گâ•گ طµظپ ط§ظ„ط£ط¯ظˆط§طھ â•گâ•گ
               _buildToolsRow(playlist, isTablet),
 
-              // ══ قائمة التلاوات (إن وجدت) ══
+              // â•گâ•گ ظ‚ط§ط¦ظ…ط© ط§ظ„طھظ„ط§ظˆط§طھ (ط¥ظ† ظˆط¬ط¯طھ) â•گâ•گ
               if (playlist.hasPlaylist && playlist.totalItems > 1) ...[
                 const SizedBox(height: 16),
                 _buildPlaylistPreview(playlist, coordinator),
@@ -1225,9 +1225,9 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
     );
   }
 
-  // ══════════════════════════════════════════════════════════════
-  // صف الأدوات
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // طµظپ ط§ظ„ط£ط¯ظˆط§طھ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildToolsRow(PlaylistService playlist, bool isTablet) {
     return SingleChildScrollView(
@@ -1236,21 +1236,21 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
       padding: const EdgeInsets.symmetric(horizontal: 4),
       child: Row(
         children: [
-          // راديو
+          // ط±ط§ط¯ظٹظˆ
           _toolBtn(
             icon: Icons.radio_rounded,
-            label: playlist.isRadioMode ? 'راديو ✓' : 'راديو',
+            label: playlist.isRadioMode ? 'ط±ط§ط¯ظٹظˆ âœ“' : 'ط±ط§ط¯ظٹظˆ',
             isActive: playlist.isRadioMode,
             onTap: () => _openRadioModeSelector(),
           ),
 
           const SizedBox(width: 8),
 
-          // قائمة التشغيل
+          // ظ‚ط§ط¦ظ…ط© ط§ظ„طھط´ط؛ظٹظ„
           if (playlist.hasPlaylist && playlist.totalItems > 1)
             _toolBtn(
               icon: Icons.queue_music_rounded,
-              label: 'القائمة (${playlist.totalItems})',
+              label: 'ط§ظ„ظ‚ط§ط¦ظ…ط© (${playlist.totalItems})',
               isActive: false,
               onTap: () => _openFullPlaylist(),
             ),
@@ -1258,7 +1258,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
           if (playlist.hasPlaylist && playlist.totalItems > 1)
             const SizedBox(width: 8),
 
-          // السرعة
+          // ط§ظ„ط³ط±ط¹ط©
           _toolBtn(
             icon: Icons.speed_rounded,
             label: _getSpeedLabel(),
@@ -1268,13 +1268,13 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
 
           const SizedBox(width: 8),
 
-          // في _buildToolsRow أضف هذا الزر في أول القائمة بعد زر الراديو
+          // ظپظٹ _buildToolsRow ط£ط¶ظپ ظ‡ط°ط§ ط§ظ„ط²ط± ظپظٹ ط£ظˆظ„ ط§ظ„ظ‚ط§ط¦ظ…ط© ط¨ط¹ط¯ ط²ط± ط§ظ„ط±ط§ط¯ظٹظˆ
 
           _toolBtn(
             icon: _autoPlay
                 ? Icons.playlist_play_rounded
                 : Icons.playlist_remove_rounded,
-            label: _autoPlay ? 'تالي تلقائي ✓' : 'تالي تلقائي',
+            label: _autoPlay ? 'طھط§ظ„ظٹ طھظ„ظ‚ط§ط¦ظٹ âœ“' : 'طھط§ظ„ظٹ طھظ„ظ‚ط§ط¦ظٹ',
             isActive: _autoPlay,
             onTap: () {
               setState(() => _autoPlay = !_autoPlay);
@@ -1282,8 +1282,8 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                 SnackBar(
                   content: Text(
                     _autoPlay
-                        ? 'التشغيل التلقائي: مفعّل ▶'
-                        : 'التشغيل التلقائي: متوقف ■',
+                        ? 'ط§ظ„طھط´ط؛ظٹظ„ ط§ظ„طھظ„ظ‚ط§ط¦ظٹ: ظ…ظپط¹ظ‘ظ„ â–¶'
+                        : 'ط§ظ„طھط´ط؛ظٹظ„ ط§ظ„طھظ„ظ‚ط§ط¦ظٹ: ظ…طھظˆظ‚ظپ â– ',
                     style: GoogleFonts.cairo(),
                     textDirection: TextDirection.rtl,
                   ),
@@ -1300,21 +1300,21 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
 
           const SizedBox(width: 8),
 
-          // المؤقت
+          // ط§ظ„ظ…ط¤ظ‚طھ
           _toolBtn(
             icon: Icons.timer_rounded,
-            label: _sleepTimer != null ? _getSleepTimerLabel() : 'مؤقت',
+            label: _sleepTimer != null ? _getSleepTimerLabel() : 'ظ…ط¤ظ‚طھ',
             isActive: _sleepTimer != null,
             onTap: () => _openSleepTimer(),
           ),
 
           const SizedBox(width: 8),
 
-          // من البداية
+          // ظ…ظ† ط§ظ„ط¨ط¯ط§ظٹط©
           if (!_isLive)
             _toolBtn(
               icon: Icons.replay_rounded,
-              label: 'من البداية',
+              label: 'ظ…ظ† ط§ظ„ط¨ط¯ط§ظٹط©',
               isActive: false,
               onTap: () {
                 _activePlayer?.seek(Duration.zero);
@@ -1324,11 +1324,11 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
 
           if (!_isLive) const SizedBox(width: 8),
 
-          // +30 ثانية
+          // +30 ط«ط§ظ†ظٹط©
           if (!_isLive)
             _toolBtn(
               icon: Icons.forward_30_rounded,
-              label: '+30 ث',
+              label: '+30 ط«',
               isActive: false,
               onTap: () {
                 final newPos = _positionNotifier.value + const Duration(seconds: 30);
@@ -1340,10 +1340,10 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
 
           if (!_isLive) const SizedBox(width: 8),
 
-          // مشاركة
+          // ظ…ط´ط§ط±ظƒط©
           _toolBtn(
             icon: Icons.share_rounded,
-            label: 'مشاركة',
+            label: 'ظ…ط´ط§ط±ظƒط©',
             isActive: false,
             onTap: () => _shareCurrentTrack(),
           ),
@@ -1365,8 +1365,8 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
         SnackBar(
           content: Text(
             offlineOnly
-                ? 'لا توجد ملفات محمّلة لتشغيلها كراديو'
-                : 'لا توجد عناصر متاحة',
+                ? 'ظ„ط§ طھظˆط¬ط¯ ظ…ظ„ظپط§طھ ظ…ط­ظ…ظ‘ظ„ط© ظ„طھط´ط؛ظٹظ„ظ‡ط§ ظƒط±ط§ط¯ظٹظˆ'
+                : 'ظ„ط§ طھظˆط¬ط¯ ط¹ظ†ط§طµط± ظ…طھط§ط­ط©',
             style: GoogleFonts.cairo(),
             textDirection: TextDirection.rtl,
           ),
@@ -1411,7 +1411,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                   const SizedBox(height: 16),
 
                   Text(
-                    'اختيار تلاوات وضع الراديو',
+                    'ط§ط®طھظٹط§ط± طھظ„ط§ظˆط§طھ ظˆط¶ط¹ ط§ظ„ط±ط§ط¯ظٹظˆ',
                     style: GoogleFonts.cairo(
                       fontSize: 16,
                       fontWeight: FontWeight.w800,
@@ -1421,8 +1421,8 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                   const SizedBox(height: 6),
                   Text(
                     offlineOnly
-                        ? 'يتم عرض التلاوات المحمّلة فقط'
-                        : 'يتم عرض كل التلاوات المتاحة',
+                        ? 'ظٹطھظ… ط¹ط±ط¶ ط§ظ„طھظ„ط§ظˆط§طھ ط§ظ„ظ…ط­ظ…ظ‘ظ„ط© ظپظ‚ط·'
+                        : 'ظٹطھظ… ط¹ط±ط¶ ظƒظ„ ط§ظ„طھظ„ط§ظˆط§طھ ط§ظ„ظ…طھط§ط­ط©',
                     style: GoogleFonts.cairo(
                       fontSize: 11,
                       color: RecColors.textSecondary(context),
@@ -1430,7 +1430,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                   ),
                   const SizedBox(height: 12),
 
-                  // أزرار تحديد سريع
+                  // ط£ط²ط±ط§ط± طھط­ط¯ظٹط¯ ط³ط±ظٹط¹
                   Row(
                     children: [
                       Expanded(
@@ -1450,7 +1450,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                               ),
                             ),
                             child: Text(
-                              'تحديد الكل',
+                              'طھط­ط¯ظٹط¯ ط§ظ„ظƒظ„',
                               style: GoogleFonts.cairo(
                                 fontSize: 11,
                                 fontWeight: FontWeight.w700,
@@ -1479,7 +1479,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                               ),
                             ),
                             child: Text(
-                              'إلغاء الكل',
+                              'ط¥ظ„ط؛ط§ط، ط§ظ„ظƒظ„',
                               style: GoogleFonts.cairo(
                                 fontSize: 11,
                                 fontWeight: FontWeight.w700,
@@ -1609,7 +1609,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
 
                   const SizedBox(height: 12),
 
-                  // زر التفعيل
+                  // ط²ط± ط§ظ„طھظپط¹ظٹظ„
                   GestureDetector(
                     onTap: () {
                       if (selected.isEmpty) return;
@@ -1637,7 +1637,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(
-                            'تم تفعيل وضع الراديو (${selectedList.length} تلاوة) 🔄',
+                            'طھظ… طھظپط¹ظٹظ„ ظˆط¶ط¹ ط§ظ„ط±ط§ط¯ظٹظˆ (${selectedList.length} طھظ„ط§ظˆط©) ًں”„',
                             style: GoogleFonts.cairo(),
                             textDirection: TextDirection.rtl,
                           ),
@@ -1679,8 +1679,8 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                           const SizedBox(width: 8),
                           Text(
                             selected.isNotEmpty
-                                ? 'تشغيل ${selected.length} كراديو'
-                                : 'اختر تلاوات أولاً',
+                                ? 'طھط´ط؛ظٹظ„ ${selected.length} ظƒط±ط§ط¯ظٹظˆ'
+                                : 'ط§ط®طھط± طھظ„ط§ظˆط§طھ ط£ظˆظ„ط§ظ‹',
                             style: GoogleFonts.cairo(
                               fontSize: 14,
                               fontWeight: FontWeight.w800,
@@ -1694,7 +1694,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                     ),
                   ),
 
-                  // إلغاء وضع الراديو
+                  // ط¥ظ„ط؛ط§ط، ظˆط¶ط¹ ط§ظ„ط±ط§ط¯ظٹظˆ
                   if (playlistService.isRadioMode) ...[
                     const SizedBox(height: 8),
                     GestureDetector(
@@ -1704,7 +1704,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
-                              'تم إيقاف وضع الراديو',
+                              'طھظ… ط¥ظٹظ‚ط§ظپ ظˆط¶ط¹ ط§ظ„ط±ط§ط¯ظٹظˆ',
                               style: GoogleFonts.cairo(),
                               textDirection: TextDirection.rtl,
                             ),
@@ -1718,14 +1718,14 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                         padding:
                         const EdgeInsets.symmetric(vertical: 12),
                         decoration: BoxDecoration(
-                          color: Colors.red.withOpacity(0.1),
+                          color: Colors.red.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(14),
                           border: Border.all(
-                            color: Colors.red.withOpacity(0.2),
+                            color: Colors.red.withValues(alpha: 0.2),
                           ),
                         ),
                         child: Text(
-                          'إيقاف وضع الراديو',
+                          'ط¥ظٹظ‚ط§ظپ ظˆط¶ط¹ ط§ظ„ط±ط§ط¯ظٹظˆ',
                           style: GoogleFonts.cairo(
                             fontSize: 13,
                             fontWeight: FontWeight.w700,
@@ -1789,9 +1789,9 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
     );
   }
 
-  // ══════════════════════════════════════════════════════════════
-  // معاينة قائمة التشغيل (مصغّرة)
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ظ…ط¹ط§ظٹظ†ط© ظ‚ط§ط¦ظ…ط© ط§ظ„طھط´ط؛ظٹظ„ (ظ…طµط؛ظ‘ط±ط©)
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildPlaylistPreview(
       PlaylistService playlist,
@@ -1815,7 +1815,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // العنوان
+          // ط§ظ„ط¹ظ†ظˆط§ظ†
           Row(
             children: [
               Icon(
@@ -1839,7 +1839,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
               GestureDetector(
                 onTap: () => _openFullPlaylist(),
                 child: Text(
-                  'عرض الكل',
+                  'ط¹ط±ط¶ ط§ظ„ظƒظ„',
                   style: GoogleFonts.cairo(
                     fontSize: 10,
                     fontWeight: FontWeight.w600,
@@ -1851,7 +1851,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
           ),
           const SizedBox(height: 8),
 
-          // العناصر
+          // ط§ظ„ط¹ظ†ط§طµط±
           ...visible.asMap().entries.map((entry) {
             final idx = startOffset + entry.key;
             final item = entry.value;
@@ -1929,9 +1929,9 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
     );
   }
 
-  // ══════════════════════════════════════════════════════════════
-  // قائمة التشغيل الكاملة
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ظ‚ط§ط¦ظ…ط© ط§ظ„طھط´ط؛ظٹظ„ ط§ظ„ظƒط§ظ…ظ„ط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   void _openFullPlaylist() {
     final playlist = context.read<PlaylistService>();
@@ -1963,7 +1963,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
               children: [
                 Expanded(
                   child: Text(
-                    '${playlist.playlistName} • ${playlist.totalItems} تلاوة',
+                    '${playlist.playlistName} â€¢ ${playlist.totalItems} طھظ„ط§ظˆط©',
                     style: GoogleFonts.cairo(
                       fontSize: 15,
                       fontWeight: FontWeight.w800,
@@ -1984,7 +1984,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
-                      '🔄 راديو',
+                      'ًں”„ ط±ط§ط¯ظٹظˆ',
                       style: GoogleFonts.cairo(
                         fontSize: 10,
                         color: widget.primary,
@@ -2101,14 +2101,14 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
     );
   }
 
-  // ══════════════════════════════════════════════════════════════
-  // تغيير سرعة التشغيل
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // طھط؛ظٹظٹط± ط³ط±ط¹ط© ط§ظ„طھط´ط؛ظٹظ„
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   static const List<double> _speeds = [0.5, 0.75, 1.0, 1.25, 1.5, 2.0];
 
   String _getSpeedLabel() {
-    if (_currentSpeed == 1.0) return 'سرعة';
+    if (_currentSpeed == 1.0) return 'ط³ط±ط¹ط©';
     return '${_currentSpeed}x';
   }
 
@@ -2135,7 +2135,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
             ),
             const SizedBox(height: 16),
             Text(
-              'سرعة التشغيل',
+              'ط³ط±ط¹ط© ط§ظ„طھط´ط؛ظٹظ„',
               style: GoogleFonts.cairo(
                 fontSize: 16,
                 fontWeight: FontWeight.w800,
@@ -2191,15 +2191,15 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
     );
   }
 
-  // ══════════════════════════════════════════════════════════════
-  // مؤقت النوم
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ظ…ط¤ظ‚طھ ط§ظ„ظ†ظˆظ…
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   String _getSleepTimerLabel() {
-    if (_sleepTimer == null) return 'مؤقت';
+    if (_sleepTimer == null) return 'ظ…ط¤ظ‚طھ';
     final remaining = _sleepTimer!.difference(DateTime.now());
-    if (remaining.isNegative) return 'مؤقت';
-    return '${remaining.inMinutes} د';
+    if (remaining.isNegative) return 'ظ…ط¤ظ‚طھ';
+    return '${remaining.inMinutes} ط¯';
   }
 
   void _openSleepTimer() {
@@ -2227,7 +2227,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
             ),
             const SizedBox(height: 16),
             Text(
-              'مؤقت الإيقاف التلقائي',
+              'ظ…ط¤ظ‚طھ ط§ظ„ط¥ظٹظ‚ط§ظپ ط§ظ„طھظ„ظ‚ط§ط¦ظٹ',
               style: GoogleFonts.cairo(
                 fontSize: 16,
                 fontWeight: FontWeight.w800,
@@ -2236,7 +2236,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
             ),
             const SizedBox(height: 6),
             Text(
-              'سيتوقف التشغيل تلقائياً بعد المدة المحددة',
+              'ط³ظٹطھظˆظ‚ظپ ط§ظ„طھط´ط؛ظٹظ„ طھظ„ظ‚ط§ط¦ظٹط§ظ‹ ط¨ط¹ط¯ ط§ظ„ظ…ط¯ط© ط§ظ„ظ…ط­ط¯ط¯ط©',
               style: GoogleFonts.cairo(
                 fontSize: 11,
                 color: RecColors.textSecondary(context),
@@ -2264,7 +2264,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                       ),
                     ),
                     child: Text(
-                      '$min د',
+                      '$min ط¯',
                       style: GoogleFonts.cairo(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
@@ -2285,7 +2285,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(
-                        'تم إلغاء المؤقت',
+                        'طھظ… ط¥ظ„ط؛ط§ط، ط§ظ„ظ…ط¤ظ‚طھ',
                         style: GoogleFonts.cairo(),
                         textDirection: TextDirection.rtl,
                       ),
@@ -2298,14 +2298,14 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                   width: double.infinity,
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   decoration: BoxDecoration(
-                    color: Colors.red.withOpacity(0.1),
+                    color: Colors.red.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: Colors.red.withOpacity(0.2),
+                      color: Colors.red.withValues(alpha: 0.2),
                     ),
                   ),
                   child: Text(
-                    'إلغاء المؤقت الحالي',
+                    'ط¥ظ„ط؛ط§ط، ط§ظ„ظ…ط¤ظ‚طھ ط§ظ„ط­ط§ظ„ظٹ',
                     style: GoogleFonts.cairo(
                       fontSize: 13,
                       fontWeight: FontWeight.w700,
@@ -2341,7 +2341,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            'تم إيقاف التشغيل تلقائياً ⏰',
+            'طھظ… ط¥ظٹظ‚ط§ظپ ط§ظ„طھط´ط؛ظٹظ„ طھظ„ظ‚ط§ط¦ظٹط§ظ‹ âڈ°',
             style: GoogleFonts.cairo(),
             textDirection: TextDirection.rtl,
           ),
@@ -2357,7 +2357,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'سيتوقف التشغيل بعد $minutes دقيقة ⏰',
+          'ط³ظٹطھظˆظ‚ظپ ط§ظ„طھط´ط؛ظٹظ„ ط¨ط¹ط¯ $minutes ط¯ظ‚ظٹظ‚ط© âڈ°',
           style: GoogleFonts.cairo(),
           textDirection: TextDirection.rtl,
         ),
@@ -2371,9 +2371,9 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
     );
   }
 
-  // ══════════════════════════════════════════════════════════════
-  // المشاركة
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ظ…ط´ط§ط±ظƒط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   void _shareCurrentTrack() {
     final playlist = context.read<PlaylistService>();
@@ -2403,7 +2403,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
             ),
             const SizedBox(height: 16),
             Text(
-              'مشاركة',
+              'ظ…ط´ط§ط±ظƒط©',
               style: GoogleFonts.cairo(
                 fontSize: 16,
                 fontWeight: FontWeight.w800,
@@ -2425,7 +2425,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '🎧 أستمع الآن إلى:',
+                    'ًںژ§ ط£ط³طھظ…ط¹ ط§ظ„ط¢ظ† ط¥ظ„ظ‰:',
                     style: GoogleFonts.cairo(
                       fontSize: 12,
                       color: RecColors.textSecondary(context),
@@ -2457,7 +2457,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
-                      'تم نسخ المعلومات',
+                      'طھظ… ظ†ط³ط® ط§ظ„ظ…ط¹ظ„ظˆظ…ط§طھ',
                       style: GoogleFonts.cairo(),
                       textDirection: TextDirection.rtl,
                     ),
@@ -2488,7 +2488,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                     ),
                     const SizedBox(width: 8),
                     Text(
-                      'نسخ المعلومات',
+                      'ظ†ط³ط® ط§ظ„ظ…ط¹ظ„ظˆظ…ط§طھ',
                       style: GoogleFonts.cairo(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
@@ -2506,9 +2506,9 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
     );
   }
 
-  // ══════════════════════════════════════════════════════════════
-  // قسم التحميل
-  // ══════════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ظ‚ط³ظ… ط§ظ„طھط­ظ…ظٹظ„
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildDownloadSection(bool isTablet) {
     final itemId =
@@ -2524,7 +2524,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // ══ إذا أونلاين وغير محمّل: اعرض دعوة للتحميل ══
+              // â•گâ•گ ط¥ط°ط§ ط£ظˆظ†ظ„ط§ظٹظ† ظˆط؛ظٹط± ظ…ط­ظ…ظ‘ظ„: ط§ط¹ط±ط¶ ط¯ط¹ظˆط© ظ„ظ„طھط­ظ…ظٹظ„ â•گâ•گ
                 if (!widget.isLocal && !isDownloaded) ...[
                   _AudioDownloadInvite(
                     item: widget.item,
@@ -2533,7 +2533,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                   ),
                 ],
 
-              // ══ محمّل: اعرض مسار الحفظ ══
+              // â•گâ•گ ظ…ط­ظ…ظ‘ظ„: ط§ط¹ط±ط¶ ظ…ط³ط§ط± ط§ظ„ط­ظپط¸ â•گâ•گ
               if (isDownloaded && localPath != null) ...[
                 _buildSavePath(localPath, service, itemId, isTablet),
               ],
@@ -2556,9 +2556,9 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
       width: double.infinity,
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.green.withOpacity(0.08),
+        color: Colors.green.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.green.withOpacity(0.2)),
+        border: Border.all(color: Colors.green.withValues(alpha: 0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -2573,7 +2573,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
               ),
               const SizedBox(width: 6),
               Text(
-                'محفوظ في الجهاز',
+                'ظ…ط­ظپظˆط¸ ظپظٹ ط§ظ„ط¬ظ‡ط§ط²',
                 style: GoogleFonts.cairo(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -2587,7 +2587,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                   snap.data ?? '...',
                   style: GoogleFonts.cairo(
                     fontSize: 11,
-                    color: Colors.green.withOpacity(0.7),
+                    color: Colors.green.withValues(alpha: 0.7),
                   ),
                 ),
               ),
@@ -2617,7 +2617,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                     vertical: 4,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.red.withOpacity(0.1),
+                    color: Colors.red.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Row(
@@ -2630,7 +2630,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                       ),
                       const SizedBox(width: 3),
                       Text(
-                        'حذف',
+                        'ط­ط°ظپ',
                         style: GoogleFonts.cairo(
                           fontSize: 10,
                           color: Colors.red,
@@ -2665,7 +2665,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
           borderRadius: BorderRadius.circular(20),
         ),
         title: Text(
-          'حذف التحميل',
+          'ط­ط°ظپ ط§ظ„طھط­ظ…ظٹظ„',
           style: GoogleFonts.cairo(
             fontWeight: FontWeight.w800,
             color: RecColors.textPrimary(context),
@@ -2673,7 +2673,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
           textDirection: TextDirection.rtl,
         ),
         content: Text(
-          'هل تريد حذف "${widget.item.title}" من الجهاز؟',
+          'ظ‡ظ„ طھط±ظٹط¯ ط­ط°ظپ "${widget.item.title}" ظ…ظ† ط§ظ„ط¬ظ‡ط§ط²طں',
           style: GoogleFonts.cairo(color: RecColors.textSecondary(context)),
           textDirection: TextDirection.rtl,
         ),
@@ -2681,7 +2681,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(
-              'إلغاء',
+              'ط¥ظ„ط؛ط§ط،',
               style: GoogleFonts.cairo(color: Colors.grey),
             ),
           ),
@@ -2697,7 +2697,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
               ),
             ),
             child: Text(
-              'حذف',
+              'ط­ط°ظپ',
               style: GoogleFonts.cairo(
                 color: Colors.white,
                 fontWeight: FontWeight.w700,
@@ -2717,9 +2717,9 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
   }
 }
 
-// ══════════════════════════════════════════════════════════════
-// رسام الخلفية
-// ══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط±ط³ط§ظ… ط§ظ„ط®ظ„ظپظٹط©
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
 class _PlayerBgPainter extends CustomPainter {
   final double progress;
@@ -2757,7 +2757,7 @@ class _PlayerBgPainter extends CustomPainter {
 
       glow.shader = RadialGradient(
         colors: [
-          (i.isEven ? primary : gold).withOpacity(0.06),
+          (i.isEven ? primary : gold).withValues(alpha: 0.06),
           Colors.transparent,
         ],
       ).createShader(
@@ -2837,15 +2837,15 @@ class _AudioDownloadInviteState extends State<_AudioDownloadInvite> {
       width: double.infinity,
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.blue.withOpacity(0.08),
+        color: Colors.blue.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: Colors.blue.withOpacity(0.15)),
+        border: Border.all(color: Colors.blue.withValues(alpha: 0.15)),
       ),
       child: Row(
         children: [
           Icon(
             Icons.cloud_download_rounded,
-            color: Colors.blue.withOpacity(0.7),
+            color: Colors.blue.withValues(alpha: 0.7),
             size: 20,
           ),
           const SizedBox(width: 10),
@@ -2855,7 +2855,7 @@ class _AudioDownloadInviteState extends State<_AudioDownloadInvite> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'حمّل للاستماع بدون إنترنت',
+                  'ط­ظ…ظ‘ظ„ ظ„ظ„ط§ط³طھظ…ط§ط¹ ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ',
                   style: GoogleFonts.cairo(
                     fontSize: 12,
                     fontWeight: FontWeight.w700,
@@ -2865,20 +2865,20 @@ class _AudioDownloadInviteState extends State<_AudioDownloadInvite> {
                 Row(
                   children: [
                     Text(
-                      'الحجم: ',
+                      'ط§ظ„ط­ط¬ظ…: ',
                       style: GoogleFonts.cairo(
                         fontSize: 10,
-                        color: Colors.blue.withOpacity(0.6),
+                        color: Colors.blue.withValues(alpha: 0.6),
                       ),
                     ),
                     Text(
                       _size != null
                           ? VideoSizeService.formatBytes(_size)
-                          : 'جاري التحقق...',
+                          : 'ط¬ط§ط±ظٹ ط§ظ„طھط­ظ‚ظ‚...',
                       style: GoogleFonts.cairo(
                         fontSize: 10,
                         fontWeight: FontWeight.w600,
-                        color: Colors.blue.withOpacity(0.8),
+                        color: Colors.blue.withValues(alpha: 0.8),
                       ),
                     ),
                   ],

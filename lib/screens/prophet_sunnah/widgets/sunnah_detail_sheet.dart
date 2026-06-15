@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../models/sunnah_category.dart';
 import 'sunnah_item_card.dart';
 
@@ -58,7 +58,7 @@ class _SunnahDetailSheetState extends State<SunnahDetailSheet>
           borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.3),
+              color: Colors.black.withValues(alpha: 0.3),
               blurRadius: 30,
               offset: const Offset(0, -5),
             ),
@@ -75,7 +75,7 @@ class _SunnahDetailSheetState extends State<SunnahDetailSheet>
               color: widget.categoryColor,
               isDark: widget.isDark,
             ),
-            // القائمة
+            // ط§ظ„ظ‚ط§ط¦ظ…ط©
             Expanded(
               child: ListView.builder(
                 physics: const BouncingScrollPhysics(),
@@ -117,7 +117,7 @@ class _SheetHandle extends StatelessWidget {
         width: 44,
         height: 4,
         decoration: BoxDecoration(
-          color: color.withOpacity(0.4),
+          color: color.withValues(alpha: 0.4),
           borderRadius: BorderRadius.circular(10),
         ),
       ),
@@ -145,10 +145,10 @@ class _SheetHeader extends StatelessWidget {
       decoration: BoxDecoration(
         color: cardColor,
         borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: color.withOpacity(0.25)),
+        border: Border.all(color: color.withValues(alpha: 0.25)),
         boxShadow: [
           BoxShadow(
-            color: color.withOpacity(0.08),
+            color: color.withValues(alpha: 0.08),
             blurRadius: 12,
             offset: const Offset(0, 3),
           ),
@@ -156,26 +156,26 @@ class _SheetHeader extends StatelessWidget {
       ),
       child: Row(
         children: [
-          // سهم الإغلاق
+          // ط³ظ‡ظ… ط§ظ„ط¥ط؛ظ„ط§ظ‚
           GestureDetector(
             onTap: () => Navigator.pop(context),
             child: Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: color.withOpacity(0.1),
+                color: color.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Icon(Icons.close_rounded, color: color, size: 18),
             ),
           ),
           const SizedBox(width: 12),
-          // عداد
+          // ط¹ط¯ط§ط¯
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.12),
+              color: color.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: color.withOpacity(0.3)),
+              border: Border.all(color: color.withValues(alpha: 0.3)),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -189,9 +189,9 @@ class _SheetHeader extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'سنة',
+                  'ط³ظ†ط©',
                   style: TextStyle(
-                    color: color.withOpacity(0.7),
+                    color: color.withValues(alpha: 0.7),
                     fontSize: 10,
                   ),
                 ),
@@ -199,7 +199,7 @@ class _SheetHeader extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 12),
-          // العنوان
+          // ط§ظ„ط¹ظ†ظˆط§ظ†
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -218,7 +218,7 @@ class _SheetHeader extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'اضغط على السنة لعرض التفاصيل',
+                  'ط§ط¶ط؛ط· ط¹ظ„ظ‰ ط§ظ„ط³ظ†ط© ظ„ط¹ط±ط¶ ط§ظ„طھظپط§طµظٹظ„',
                   textAlign: TextAlign.right,
                   style: TextStyle(
                     color: isDark ? Colors.white38 : const Color(0xFF9A9AB0),

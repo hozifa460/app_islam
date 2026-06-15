@@ -1,14 +1,14 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 
-/// ═══════════════════════════════════════════════════════════════════════════
-/// BooksTheme - المسؤول عن جميع الألوان والتدرجات والأنماط البصرية
-/// ═══════════════════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// BooksTheme - ط§ظ„ظ…ط³ط¤ظˆظ„ ط¹ظ† ط¬ظ…ظٹط¹ ط§ظ„ط£ظ„ظˆط§ظ† ظˆط§ظ„طھط¯ط±ط¬ط§طھ ظˆط§ظ„ط£ظ†ظ…ط§ط· ط§ظ„ط¨طµط±ظٹط©
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class BooksTheme {
   BooksTheme._();
 
-  // ═══════════════════════════════════════════
-  // الألوان الأساسية
-  // ═══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ط£ظ„ظˆط§ظ† ط§ظ„ط£ط³ط§ط³ظٹط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static const Color gold = Color(0xFFE6B325);
   static const Color bgDark = Color(0xFF0A0E17);
   static const Color bgLight = Color(0xFFF5F7FA);
@@ -20,9 +20,9 @@ class BooksTheme {
   static const Color subtextLight = Colors.black54;
   static const Color pdfBg = Color(0xFFFDF8EE);
 
-  // ═══════════════════════════════════════════
-  // الحصول على لون الخلفية
-  // ═══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ط­طµظˆظ„ ط¹ظ„ظ‰ ظ„ظˆظ† ط§ظ„ط®ظ„ظپظٹط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static Color getBackgroundColor(bool isDark) {
     return isDark ? bgDark : bgLight;
   }
@@ -39,17 +39,17 @@ class BooksTheme {
     return isDark ? subtextDark : subtextLight;
   }
 
-  // ═══════════════════════════════════════════
-  // تنسيقات البطاقات
-  // ═══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // طھظ†ط³ظٹظ‚ط§طھ ط§ظ„ط¨ط·ط§ظ‚ط§طھ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static BoxDecoration getCardDecoration(bool isDark) {
     return BoxDecoration(
       color: getCardColor(isDark),
       borderRadius: BorderRadius.circular(18),
-      border: Border.all(color: gold.withOpacity(0.18)),
+      border: Border.all(color: gold.withValues(alpha: 0.18)),
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(isDark ? 0.18 : 0.05),
+          color: Colors.black.withValues(alpha: isDark ? 0.18 : 0.05),
           blurRadius: 10,
           offset: const Offset(0, 4),
         ),
@@ -57,21 +57,21 @@ class BooksTheme {
     );
   }
 
-  // ═══════════════════════════════════════════
-  // تنسيق شريط البحث
-  // ═══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // طھظ†ط³ظٹظ‚ ط´ط±ظٹط· ط§ظ„ط¨ط­ط«
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static BoxDecoration getSearchBarDecoration(bool isDark) {
     return BoxDecoration(
-      color: isDark ? Colors.white.withOpacity(0.05) : Colors.white,
+      color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white,
       borderRadius: BorderRadius.circular(16),
       border: Border.all(
-        color: isDark ? Colors.white.withOpacity(0.1) : gold.withOpacity(0.2),
+        color: isDark ? Colors.white.withValues(alpha: 0.1) : gold.withValues(alpha: 0.2),
       ),
       boxShadow: isDark
           ? []
           : [
         BoxShadow(
-          color: Colors.black.withOpacity(0.05),
+          color: Colors.black.withValues(alpha: 0.05),
           blurRadius: 10,
           offset: const Offset(0, 5),
         ),
@@ -79,31 +79,31 @@ class BooksTheme {
     );
   }
 
-  // ═══════════════════════════════════════════
-  // تنسيق الفلاتر
-  // ═══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // طھظ†ط³ظٹظ‚ ط§ظ„ظپظ„ط§طھط±
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static BoxDecoration getFilterChipDecoration({
     required bool isSelected,
     required bool isDark,
   }) {
     return BoxDecoration(
       color: isSelected
-          ? gold.withOpacity(isDark ? 0.2 : 0.8)
-          : (isDark ? Colors.white.withOpacity(0.05) : Colors.white),
+          ? gold.withValues(alpha: isDark ? 0.2 : 0.8)
+          : (isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white),
       borderRadius: BorderRadius.circular(20),
       border: Border.all(
         color: isSelected
-            ? gold.withOpacity(isDark ? 0.5 : 1.0)
+            ? gold.withValues(alpha: isDark ? 0.5 : 1.0)
             : (isDark
-            ? Colors.white.withOpacity(0.1)
-            : Colors.grey.withOpacity(0.3)),
+            ? Colors.white.withValues(alpha: 0.1)
+            : Colors.grey.withValues(alpha: 0.3)),
       ),
     );
   }
 
-  // ═══════════════════════════════════════════
-  // تنسيق البانر اليومي
-  // ═══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // طھظ†ط³ظٹظ‚ ط§ظ„ط¨ط§ظ†ط± ط§ظ„ظٹظˆظ…ظٹ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static BoxDecoration getBannerDecoration(
       List<Color> gradientColors,
       bool isDark,
@@ -116,11 +116,11 @@ class BooksTheme {
         end: Alignment.bottomRight,
       ),
       border: Border.all(
-        color: isDark ? Colors.white.withOpacity(0.1) : Colors.transparent,
+        color: isDark ? Colors.white.withValues(alpha: 0.1) : Colors.transparent,
       ),
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(isDark ? 0.3 : 0.1),
+          color: Colors.black.withValues(alpha: isDark ? 0.3 : 0.1),
           blurRadius: 15,
           offset: const Offset(0, 8),
         ),
@@ -128,20 +128,20 @@ class BooksTheme {
     );
   }
 
-  // ═══════════════════════════════════════════
-  // تنسيق أيقونة التحميل
-  // ═══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // طھظ†ط³ظٹظ‚ ط£ظٹظ‚ظˆظ†ط© ط§ظ„طھط­ظ…ظٹظ„
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static BoxDecoration getDownloadIconDecoration(Color statusColor) {
     return BoxDecoration(
-      color: statusColor.withOpacity(0.9),
+      color: statusColor.withValues(alpha: 0.9),
       shape: BoxShape.circle,
-      border: Border.all(color: Colors.white.withOpacity(0.2)),
+      border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
     );
   }
 
-  // ═══════════════════════════════════════════
-  // ألوان حالة التحميل
-  // ═══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط£ظ„ظˆط§ظ† ط­ط§ظ„ط© ط§ظ„طھط­ظ…ظٹظ„
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static Color downloadStatusColor(String status) {
     switch (status) {
       case 'full':
@@ -149,7 +149,7 @@ class BooksTheme {
       case 'partial':
         return Colors.orange;
       default:
-        return Colors.black.withOpacity(0.7);
+        return Colors.black.withValues(alpha: 0.7);
     }
   }
 
@@ -167,11 +167,11 @@ class BooksTheme {
   static String downloadStatusLabel(String status) {
     switch (status) {
       case 'full':
-        return 'محمّل بالكامل';
+        return 'ظ…ط­ظ…ظ‘ظ„ ط¨ط§ظ„ظƒط§ظ…ظ„';
       case 'partial':
-        return 'محمّل جزئيًا';
+        return 'ظ…ط­ظ…ظ‘ظ„ ط¬ط²ط¦ظٹظ‹ط§';
       default:
-        return 'غير محمّل';
+        return 'ط؛ظٹط± ظ…ط­ظ…ظ‘ظ„';
     }
   }
 
@@ -186,9 +186,9 @@ class BooksTheme {
     }
   }
 
-  // ═══════════════════════════════════════════
-  // تنسيق الهيدر المتدرج
-  // ═══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // طھظ†ط³ظٹظ‚ ط§ظ„ظ‡ظٹط¯ط± ط§ظ„ظ…طھط¯ط±ط¬
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static BoxDecoration getGradientHeaderDecoration(Color primaryColor) {
     return BoxDecoration(
       gradient: LinearGradient(
@@ -196,7 +196,7 @@ class BooksTheme {
         end: Alignment.bottomRight,
         colors: [
           primaryColor,
-          primaryColor.withOpacity(0.78),
+          primaryColor.withValues(alpha: 0.78),
         ],
       ),
       borderRadius: const BorderRadius.only(
@@ -205,7 +205,7 @@ class BooksTheme {
       ),
       boxShadow: [
         BoxShadow(
-          color: primaryColor.withOpacity(0.18),
+          color: primaryColor.withValues(alpha: 0.18),
           blurRadius: 18,
           offset: const Offset(0, 6),
         ),
@@ -213,24 +213,24 @@ class BooksTheme {
     );
   }
 
-  // ═══════════════════════════════════════════
-  // تنسيق زر الرجوع
-  // ═══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // طھظ†ط³ظٹظ‚ ط²ط± ط§ظ„ط±ط¬ظˆط¹
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static BoxDecoration getBackButtonDecoration(bool isDark) {
     return BoxDecoration(
       color: isDark
-          ? Colors.white.withOpacity(0.1)
-          : gold.withOpacity(0.1),
+          ? Colors.white.withValues(alpha: 0.1)
+          : gold.withValues(alpha: 0.1),
       borderRadius: BorderRadius.circular(12),
       border: Border.all(
-        color: isDark ? Colors.white.withOpacity(0.1) : Colors.transparent,
+        color: isDark ? Colors.white.withValues(alpha: 0.1) : Colors.transparent,
       ),
     );
   }
 
-  // ═══════════════════════════════════════════
-  // تنسيق شريط التقدم
-  // ═══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // طھظ†ط³ظٹظ‚ ط´ط±ظٹط· ط§ظ„طھظ‚ط¯ظ…
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static BoxDecoration getProgressContainerDecoration(
       bool isDark,
       Color borderColor,
@@ -241,7 +241,7 @@ class BooksTheme {
       border: Border.all(color: borderColor),
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(isDark ? 0.18 : 0.05),
+          color: Colors.black.withValues(alpha: isDark ? 0.18 : 0.05),
           blurRadius: 8,
           offset: const Offset(0, 3),
         ),
@@ -249,20 +249,20 @@ class BooksTheme {
     );
   }
 
-  // ═══════════════════════════════════════════
-  // تنسيق شارة العدد
-  // ═══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // طھظ†ط³ظٹظ‚ ط´ط§ط±ط© ط§ظ„ط¹ط¯ط¯
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static BoxDecoration getBadgeDecoration(Color color) {
     return BoxDecoration(
-      color: color.withOpacity(0.10),
+      color: color.withValues(alpha: 0.10),
       borderRadius: BorderRadius.circular(12),
-      border: Border.all(color: color.withOpacity(0.20)),
+      border: Border.all(color: color.withValues(alpha: 0.20)),
     );
   }
 
-  // ═══════════════════════════════════════════
-  // تنسيق أزرار التحكم في القارئ
-  // ═══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // طھظ†ط³ظٹظ‚ ط£ط²ط±ط§ط± ط§ظ„طھط­ظƒظ… ظپظٹ ط§ظ„ظ‚ط§ط±ط¦
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static BoxDecoration getLockButtonDecoration() {
     return BoxDecoration(
       color: Colors.white,
@@ -275,9 +275,9 @@ class BooksTheme {
   }
 }
 
-/// ═══════════════════════════════════════════════════════════════════════════
-/// BooksSizes - المقاسات والأبعاد المتجاوبة
-/// ═══════════════════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// BooksSizes - ط§ظ„ظ…ظ‚ط§ط³ط§طھ ظˆط§ظ„ط£ط¨ط¹ط§ط¯ ط§ظ„ظ…طھط¬ط§ظˆط¨ط©
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class BooksSizes {
   final Size screenSize;
 

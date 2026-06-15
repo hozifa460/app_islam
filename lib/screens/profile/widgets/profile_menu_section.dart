@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfileMenuSection extends StatelessWidget {
@@ -28,7 +28,7 @@ class ProfileMenuSection extends StatelessWidget {
               fontSize: 13,
               fontWeight: FontWeight.w600,
               color: isDark
-                  ? Colors.white.withOpacity(0.4)
+                  ? Colors.white.withValues(alpha: 0.4)
                   : Colors.grey.shade500,
               letterSpacing: 0.5,
             ),
@@ -39,18 +39,18 @@ class ProfileMenuSection extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(18),
             color: isDark
-                ? Colors.white.withOpacity(0.04)
-                : Colors.white.withOpacity(0.9),
+                ? Colors.white.withValues(alpha: 0.04)
+                : Colors.white.withValues(alpha: 0.9),
             border: Border.all(
               color: isDark
-                  ? Colors.white.withOpacity(0.06)
+                  ? Colors.white.withValues(alpha: 0.06)
                   : Colors.grey.shade200,
             ),
             boxShadow: [
               BoxShadow(
                 color: isDark
-                    ? Colors.black.withOpacity(0.15)
-                    : Colors.black.withOpacity(0.04),
+                    ? Colors.black.withValues(alpha: 0.15)
+                    : Colors.black.withValues(alpha: 0.04),
                 blurRadius: 15,
                 offset: const Offset(0, 4),
               ),

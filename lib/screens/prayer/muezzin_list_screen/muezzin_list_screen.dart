@@ -1,4 +1,4 @@
-import 'dart:io';
+﻿import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -191,15 +191,15 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
     isDark ? Colors.white : const Color(0xFF1A1A1A);
     final textColorSub = isDark ? Colors.white70 : Colors.black54;
     final borderColor = isDark
-        ? Colors.white.withOpacity(0.1)
-        : _gold.withOpacity(0.2);
+        ? Colors.white.withValues(alpha: 0.1)
+        : _gold.withValues(alpha: 0.2);
     final shadowColor = isDark
-        ? Colors.black.withOpacity(0.4)
-        : Colors.grey.withOpacity(0.4);
+        ? Colors.black.withValues(alpha: 0.4)
+        : Colors.grey.withValues(alpha: 0.4);
     final cardGradient = isDark
         ? [
-      Colors.white.withOpacity(0.08),
-      Colors.white.withOpacity(0.02)
+      Colors.white.withValues(alpha: 0.08),
+      Colors.white.withValues(alpha: 0.02)
     ]
         : [Colors.white, Colors.white];
 
@@ -222,12 +222,12 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
           margin: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: isDark
-                ? Colors.white.withOpacity(0.1)
-                : _gold.withOpacity(0.1),
+                ? Colors.white.withValues(alpha: 0.1)
+                : _gold.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: isDark
-                  ? Colors.white.withOpacity(0.1)
+                  ? Colors.white.withValues(alpha: 0.1)
                   : Colors.transparent,
             ),
           ),

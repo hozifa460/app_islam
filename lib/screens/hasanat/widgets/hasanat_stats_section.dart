@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../languages/app_localizations.dart';
@@ -42,10 +42,10 @@ class HasanatStatsSection extends StatelessWidget {
     required this.deeds,
   });
 
-  String _getTypeFromTitle(BuildContext context, String title) { // 👈 تم إضافة context هنا
-    if (title.contains(context.tr.statPalmTrees)) return 'palm';     // 👈 يبحث عن الترجمة الحالية
+  String _getTypeFromTitle(BuildContext context, String title) { // ًں‘ˆ طھظ… ط¥ط¶ط§ظپط© context ظ‡ظ†ط§
+    if (title.contains(context.tr.statPalmTrees)) return 'palm';     // ًں‘ˆ ظٹط¨ط­ط« ط¹ظ† ط§ظ„طھط±ط¬ظ…ط© ط§ظ„ط­ط§ظ„ظٹط©
     if (title.contains(context.tr.statPalaces)) return 'palace';
-    if (title.contains(context.tr.statTreasures)) return 'jewel';    // استخدمنا كنوز (Treasures)
+    if (title.contains(context.tr.statTreasures)) return 'jewel';    // ط§ط³طھط®ط¯ظ…ظ†ط§ ظƒظ†ظˆط² (Treasures)
     if (title.contains(context.tr.statLights)) return 'light';
     if (title.contains(context.tr.statDoors)) return 'door';
     if (title.contains(context.tr.statShields)) return 'shield';
@@ -57,58 +57,58 @@ class HasanatStatsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final stats = [
       {
-        'title': context.tr.statPalmTrees, // 👈 تمت الترجمة
+        'title': context.tr.statPalmTrees, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
         'count': palmTrees,
-        'icon': '🌴',
+        'icon': 'ًںŒ´',
         'color': Colors.green
       },
       {
-        'title': context.tr.statPalaces, // 👈 تمت الترجمة
+        'title': context.tr.statPalaces, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
         'count': palaces,
-        'icon': '🏰',
+        'icon': 'ًںڈ°',
         'color': gold
       },
       {
-        'title': context.tr.statTreasures, // 👈 تمت الترجمة
+        'title': context.tr.statTreasures, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
         'count': jewels,
-        'icon': '💎',
+        'icon': 'ًں’ژ',
         'color': Colors.blue
       },
       {
-        'title': context.tr.statLights, // 👈 تمت الترجمة
+        'title': context.tr.statLights, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
         'count': lights,
-        'icon': '✨',
+        'icon': 'âœ¨',
         'color': Colors.orange
       },
       {
-        'title': context.tr.statDoors, // 👈 تمت الترجمة
+        'title': context.tr.statDoors, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
         'count': doors,
-        'icon': '🚪',
+        'icon': 'ًںڑھ',
         'color': Colors.brown
       },
       {
-        'title': context.tr.statShields, // 👈 تمت الترجمة
+        'title': context.tr.statShields, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
         'count': shields,
-        'icon': '🛡️',
+        'icon': 'ًں›،ï¸ڈ',
         'color': Colors.teal
       },
       {
-        'title': context.tr.statScales, // 👈 تمت الترجمة
+        'title': context.tr.statScales, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
         'count': scales,
-        'icon': '⚖️',
+        'icon': 'âڑ–ï¸ڈ',
         'color': Colors.purple
       },
       {
-        'title': context.tr.statHasanat, // 👈 تمت الترجمة
+        'title': context.tr.statHasanat, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
         'count': hasanat,
-        'icon': '📿',
+        'icon': 'ًں“؟',
         'color': Colors.cyan
       },
     ];
 
     final cardBg = isDark ? bgCard : Colors.white;
     final borderColor =
-    isDark ? Colors.white.withOpacity(0.08) : gold.withOpacity(0.15);
+    isDark ? Colors.white.withValues(alpha: 0.08) : gold.withValues(alpha: 0.15);
 
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 8, 16, 0),
@@ -120,8 +120,8 @@ class HasanatStatsSection extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: isDark
-                ? Colors.black.withOpacity(0.3)
-                : Colors.grey.withOpacity(0.08),
+                ? Colors.black.withValues(alpha: 0.3)
+                : Colors.grey.withValues(alpha: 0.08),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -199,10 +199,10 @@ class _StatItem extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             color: (stat['color'] as Color)
-                .withOpacity(isDark ? 0.1 : 0.06),
+                .withValues(alpha: isDark ? 0.1 : 0.06),
             borderRadius: BorderRadius.circular(14),
             border: Border.all(
-              color: (stat['color'] as Color).withOpacity(0.25),
+              color: (stat['color'] as Color).withValues(alpha: 0.25),
             ),
           ),
           child: Column(

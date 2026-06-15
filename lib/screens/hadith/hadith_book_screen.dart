@@ -1,4 +1,4 @@
-import 'dart:convert';
+﻿import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -37,7 +37,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
   bool _isLoading = true;
   bool _isDownloading = false;
   bool _hasError = false;
-  String _statusMessage = 'جاري التهيئة...';
+  String _statusMessage = 'ط¬ط§ط±ظٹ ط§ظ„طھظ‡ظٹط¦ط©...';
 
   int _currentMax = 20;
   final ItemScrollController _itemScrollController = ItemScrollController();
@@ -141,10 +141,10 @@ class _HadithBookScreenState extends State<HadithBookScreen>
     if (text.isEmpty) return "";
     return text
         .replaceAll(RegExp(r'[\u064B-\u065F\u0610-\u061A\u06D6-\u06DC\u06DF-\u06E8\u06EA-\u06ED]'), '')
-        .replaceAll(RegExp(r'[أإآاٱٰ]'), 'ا')
-        .replaceAll(RegExp(r'[يىئ]'), 'ي')
-        .replaceAll(RegExp(r'[ةه]'), 'ه')
-        .replaceAll('ؤ', 'و')
+        .replaceAll(RegExp(r'[ط£ط¥ط¢ط§ظ±ظ°]'), 'ط§')
+        .replaceAll(RegExp(r'[ظٹظ‰ط¦]'), 'ظٹ')
+        .replaceAll(RegExp(r'[ط©ظ‡]'), 'ظ‡')
+        .replaceAll('ط¤', 'ظˆ')
         .replaceAll(RegExp(r'<[^>]*>'), '')
         .trim();
   }
@@ -167,7 +167,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
             fontSize: 20,
             height: 1.9,
             color: Colors.black87,
-            backgroundColor: _gold.withOpacity(0.4),
+            backgroundColor: _gold.withValues(alpha: 0.4),
             fontWeight: FontWeight.bold,
           ),
         ));
@@ -192,14 +192,14 @@ class _HadithBookScreenState extends State<HadithBookScreen>
 
       if (await file.exists()) {
         setState(() {
-          _statusMessage = 'جاري فتح الكتاب...';
+          _statusMessage = 'ط¬ط§ط±ظٹ ظپطھط­ ط§ظ„ظƒطھط§ط¨...';
         });
         final jsonString = await file.readAsString();
         _processData(json.decode(jsonString));
       } else {
         setState(() {
           _isDownloading = true;
-          _statusMessage = 'جاري تنزيل الكتاب لأول مرة...\nسيعمل بدون إنترنت لاحقاً.';
+          _statusMessage = 'ط¬ط§ط±ظٹ طھظ†ط²ظٹظ„ ط§ظ„ظƒطھط§ط¨ ظ„ط£ظˆظ„ ظ…ط±ط©...\nط³ظٹط¹ظ…ظ„ ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ ظ„ط§ط­ظ‚ط§ظ‹.';
         });
 
         final url = Uri.parse('https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-$apiId.json');
@@ -210,7 +210,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
           await file.writeAsString(decodedBody);
           _processData(json.decode(decodedBody));
         } else {
-          throw Exception('فشل في التحميل');
+          throw Exception('ظپط´ظ„ ظپظٹ ط§ظ„طھط­ظ…ظٹظ„');
         }
       }
     } catch (e) {
@@ -219,7 +219,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
           _isLoading = false;
           _isDownloading = false;
           _hasError = true;
-          _statusMessage = 'تأكد من اتصالك بالإنترنت في المرة الأولى';
+          _statusMessage = 'طھط£ظƒط¯ ظ…ظ† ط§طھطµط§ظ„ظƒ ط¨ط§ظ„ط¥ظ†طھط±ظ†طھ ظپظٹ ط§ظ„ظ…ط±ط© ط§ظ„ط£ظˆظ„ظ‰';
         });
       }
     }
@@ -308,10 +308,10 @@ class _HadithBookScreenState extends State<HadithBookScreen>
         body: CustomScrollView(
           physics: const NeverScrollableScrollPhysics(),
           slivers: [
-            // ─── Header ───
+            // â”€â”€â”€ Header â”€â”€â”€
             _buildSliverAppBar(isDark, bgColor),
 
-            // ─── Body ───
+            // â”€â”€â”€ Body â”€â”€â”€
             SliverFillRemaining(
               child: _buildBody(isDark, textColor, bgColor),
             ),
@@ -332,7 +332,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
         padding: const EdgeInsets.all(8),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.15),
+            color: Colors.white.withValues(alpha: 0.15),
             borderRadius: BorderRadius.circular(12),
           ),
           child: IconButton(
@@ -347,7 +347,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
           padding: const EdgeInsets.only(left: 8),
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.15),
+              color: Colors.white.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(12),
             ),
             child: IconButton(
@@ -382,7 +382,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
             // Background pattern
             CustomPaint(
               painter: _HeaderPatternPainter(
-                color: Colors.white.withOpacity(0.03),
+                color: Colors.white.withValues(alpha: 0.03),
               ),
             ),
 
@@ -399,9 +399,9 @@ class _HadithBookScreenState extends State<HadithBookScreen>
                         Container(
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                            color: _gold.withOpacity(0.2),
+                            color: _gold.withValues(alpha: 0.2),
                             borderRadius: BorderRadius.circular(12),
-                            border: Border.all(color: _gold.withOpacity(0.3)),
+                            border: Border.all(color: _gold.withValues(alpha: 0.3)),
                           ),
                           child: Icon(
                             Icons.auto_stories_rounded,
@@ -433,11 +433,11 @@ class _HadithBookScreenState extends State<HadithBookScreen>
                                         vertical: 2,
                                       ),
                                       decoration: BoxDecoration(
-                                        color: Colors.white.withOpacity(0.15),
+                                        color: Colors.white.withValues(alpha: 0.15),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                       child: Text(
-                                        '${_allHadiths.length} حديث',
+                                        '${_allHadiths.length} ط­ط¯ظٹط«',
                                         style: GoogleFonts.cairo(
                                           fontSize: 11,
                                           color: _gold,
@@ -453,11 +453,11 @@ class _HadithBookScreenState extends State<HadithBookScreen>
                                           vertical: 2,
                                         ),
                                         decoration: BoxDecoration(
-                                          color: _gold.withOpacity(0.2),
+                                          color: _gold.withValues(alpha: 0.2),
                                           borderRadius: BorderRadius.circular(8),
                                         ),
                                         child: Text(
-                                          '${_displayedHadiths.length} نتيجة',
+                                          '${_displayedHadiths.length} ظ†طھظٹط¬ط©',
                                           style: GoogleFonts.cairo(
                                             fontSize: 11,
                                             color: Colors.white,
@@ -519,9 +519,9 @@ class _HadithBookScreenState extends State<HadithBookScreen>
     return Container(
       height: 44,
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.15),
+        color: Colors.white.withValues(alpha: 0.15),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.white.withOpacity(0.1)),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
       ),
       child: TextField(
         controller: _searchController,
@@ -529,7 +529,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
         onChanged: _filterHadiths,
         style: GoogleFonts.cairo(color: Colors.white, fontSize: 14),
         decoration: InputDecoration(
-          hintText: 'ابحث بالكلمة أو رقم الحديث...',
+          hintText: 'ط§ط¨ط­ط« ط¨ط§ظ„ظƒظ„ظ…ط© ط£ظˆ ط±ظ‚ظ… ط§ظ„ط­ط¯ظٹط«...',
           hintStyle: GoogleFonts.cairo(color: Colors.white54, fontSize: 13),
           prefixIcon: Icon(Icons.search, color: _gold, size: 20),
           suffixIcon: _searchController.text.isNotEmpty
@@ -610,7 +610,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: widget.primaryColor.withOpacity(0.2),
+                          color: widget.primaryColor.withValues(alpha: 0.2),
                           width: 3,
                         ),
                       ),
@@ -627,7 +627,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
                     width: 50,
                     height: 50,
                     decoration: BoxDecoration(
-                      color: widget.primaryColor.withOpacity(0.1),
+                      color: widget.primaryColor.withValues(alpha: 0.1),
                       shape: BoxShape.circle,
                     ),
                     child: Icon(
@@ -656,7 +656,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
             SizedBox(
               width: 200,
               child: LinearProgressIndicator(
-                backgroundColor: widget.primaryColor.withOpacity(0.1),
+                backgroundColor: widget.primaryColor.withValues(alpha: 0.1),
                 valueColor: AlwaysStoppedAnimation(widget.primaryColor),
                 borderRadius: BorderRadius.circular(4),
               ),
@@ -678,18 +678,18 @@ class _HadithBookScreenState extends State<HadithBookScreen>
               width: 100,
               height: 100,
               decoration: BoxDecoration(
-                color: Colors.red.withOpacity(0.1),
+                color: Colors.red.withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
               child: Icon(
                 Icons.wifi_off_rounded,
                 size: 50,
-                color: Colors.red.withOpacity(0.7),
+                color: Colors.red.withValues(alpha: 0.7),
               ),
             ),
             const SizedBox(height: 24),
             Text(
-              'تعذر تحميل الكتاب',
+              'طھط¹ط°ط± طھط­ظ…ظٹظ„ ط§ظ„ظƒطھط§ط¨',
               style: GoogleFonts.cairo(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -702,7 +702,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
               textAlign: TextAlign.center,
               style: GoogleFonts.cairo(
                 fontSize: 14,
-                color: textColor.withOpacity(0.6),
+                color: textColor.withValues(alpha: 0.6),
               ),
             ),
             const SizedBox(height: 24),
@@ -717,7 +717,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
               ),
               onPressed: _initOfflineBook,
               icon: const Icon(Icons.refresh_rounded),
-              label: Text('إعادة المحاولة', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
+              label: Text('ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط©', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
             ),
           ],
         ),
@@ -734,7 +734,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
             width: 80,
             height: 80,
             decoration: BoxDecoration(
-              color: _gold.withOpacity(0.1),
+              color: _gold.withValues(alpha: 0.1),
               shape: BoxShape.circle,
             ),
             child: Icon(
@@ -745,7 +745,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
           ),
           const SizedBox(height: 16),
           Text(
-            'لا توجد نتائج',
+            'ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬',
             style: GoogleFonts.cairo(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -754,7 +754,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
           ),
           const SizedBox(height: 8),
           Text(
-            'جرّب البحث بكلمات مختلفة',
+            'ط¬ط±ظ‘ط¨ ط§ظ„ط¨ط­ط« ط¨ظƒظ„ظ…ط§طھ ظ…ط®طھظ„ظپط©',
             style: GoogleFonts.cairo(
               fontSize: 14,
               color: isDark ? Colors.white54 : Colors.grey,
@@ -778,8 +778,8 @@ class _HadithBookScreenState extends State<HadithBookScreen>
     List grades = hadith['grades'] ?? [];
 
     String narrator = '';
-    if (body.startsWith('عن') || body.startsWith('حدثنا')) {
-      int firstComma = body.indexOf('،');
+    if (body.startsWith('ط¹ظ†') || body.startsWith('ط­ط¯ط«ظ†ط§')) {
+      int firstComma = body.indexOf('طŒ');
       int firstColon = body.indexOf(':');
       int splitIndex = -1;
 
@@ -802,11 +802,11 @@ class _HadithBookScreenState extends State<HadithBookScreen>
         color: cardColor,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: isDark ? Colors.white.withOpacity(0.06) : Colors.grey.withOpacity(0.1),
+          color: isDark ? Colors.white.withValues(alpha: 0.06) : Colors.grey.withValues(alpha: 0.1),
         ),
         boxShadow: [
           BoxShadow(
-            color: isDark ? Colors.black.withOpacity(0.2) : Colors.black.withOpacity(0.04),
+            color: isDark ? Colors.black.withValues(alpha: 0.2) : Colors.black.withValues(alpha: 0.04),
             blurRadius: 15,
             offset: const Offset(0, 5),
           ),
@@ -821,8 +821,8 @@ class _HadithBookScreenState extends State<HadithBookScreen>
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: isDark
-                    ? [widget.primaryColor.withOpacity(0.15), widget.primaryColor.withOpacity(0.05)]
-                    : [widget.primaryColor.withOpacity(0.08), widget.primaryColor.withOpacity(0.02)],
+                    ? [widget.primaryColor.withValues(alpha: 0.15), widget.primaryColor.withValues(alpha: 0.05)]
+                    : [widget.primaryColor.withValues(alpha: 0.08), widget.primaryColor.withValues(alpha: 0.02)],
               ),
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(20),
@@ -836,12 +836,12 @@ class _HadithBookScreenState extends State<HadithBookScreen>
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
-                      colors: [widget.primaryColor, widget.primaryColor.withOpacity(0.8)],
+                      colors: [widget.primaryColor, widget.primaryColor.withValues(alpha: 0.8)],
                     ),
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(
-                        color: widget.primaryColor.withOpacity(0.3),
+                        color: widget.primaryColor.withValues(alpha: 0.3),
                         blurRadius: 8,
                         offset: const Offset(0, 2),
                       ),
@@ -883,10 +883,10 @@ class _HadithBookScreenState extends State<HadithBookScreen>
                 _buildActionButton(
                   icon: Icons.copy_rounded,
                   onTap: () {
-                    Clipboard.setData(ClipboardData(text: '$body\n\n[${widget.bookTitle} - رقم: $hadithNumber]'));
+                    Clipboard.setData(ClipboardData(text: '$body\n\n[${widget.bookTitle} - ط±ظ‚ظ…: $hadithNumber]'));
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text('تم نسخ الحديث', style: GoogleFonts.cairo()),
+                        content: Text('طھظ… ظ†ط³ط® ط§ظ„ط­ط¯ظٹط«', style: GoogleFonts.cairo()),
                         backgroundColor: widget.primaryColor,
                         behavior: SnackBarBehavior.floating,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -899,7 +899,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
                 _buildActionButton(
                   icon: Icons.share_rounded,
                   onTap: () {
-                    Share.share('$body\n\n[${widget.bookTitle} - رقم: $hadithNumber]');
+                    Share.share('$body\n\n[${widget.bookTitle} - ط±ظ‚ظ…: $hadithNumber]');
                   },
                   isDark: isDark,
                 ),
@@ -925,7 +925,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
                     ),
                   ..._buildHighlightedHadithText(
                     narrator.isNotEmpty
-                        ? body.substring(narrator.length).trim().replaceFirst(RegExp(r'^[،:]'), '').trim()
+                        ? body.substring(narrator.length).trim().replaceFirst(RegExp(r'^[طŒ:]'), '').trim()
                         : body,
                     _searchController.text,
                     textColor,
@@ -945,7 +945,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Divider(
-                    color: isDark ? Colors.white.withOpacity(0.06) : Colors.grey.withOpacity(0.15),
+                    color: isDark ? Colors.white.withValues(alpha: 0.06) : Colors.grey.withValues(alpha: 0.15),
                   ),
                   const SizedBox(height: 8),
                   Wrap(
@@ -976,7 +976,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
         child: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: isDark ? Colors.white.withOpacity(0.05) : Colors.white.withOpacity(0.5),
+            color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white.withValues(alpha: 0.5),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Icon(
@@ -1001,17 +1001,17 @@ class _HadithBookScreenState extends State<HadithBookScreen>
       chipBg = isDark ? const Color(0xFF0D3B2E) : Colors.green.shade50;
       chipText = isDark ? Colors.green.shade300 : Colors.green.shade700;
       gradeIcon = Icons.verified_rounded;
-      gradeText = 'صحيح';
+      gradeText = 'طµط­ظٹط­';
     } else if (gradeText.toLowerCase().contains('hasan')) {
       chipBg = isDark ? const Color(0xFF1E3A5F) : Colors.blue.shade50;
       chipText = isDark ? Colors.blue.shade300 : Colors.blue.shade700;
       gradeIcon = Icons.check_circle_rounded;
-      gradeText = 'حسن';
+      gradeText = 'ط­ط³ظ†';
     } else if (gradeText.toLowerCase().contains('daif')) {
       chipBg = isDark ? const Color(0xFF4A2C00) : Colors.orange.shade50;
       chipText = isDark ? Colors.orange.shade300 : Colors.orange.shade700;
       gradeIcon = Icons.info_rounded;
-      gradeText = 'ضعيف';
+      gradeText = 'ط¶ط¹ظٹظپ';
     } else {
       chipBg = isDark ? Colors.grey.shade800 : Colors.grey.shade100;
       chipText = isDark ? Colors.grey.shade300 : Colors.grey.shade700;
@@ -1023,7 +1023,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
       decoration: BoxDecoration(
         color: chipBg,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: chipText.withOpacity(0.2)),
+        border: Border.all(color: chipText.withValues(alpha: 0.2)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -1077,7 +1077,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
   }
 }
 
-// ─── Header Pattern Painter ───
+// â”€â”€â”€ Header Pattern Painter â”€â”€â”€
 class _HeaderPatternPainter extends CustomPainter {
   final Color color;
 
@@ -1119,7 +1119,7 @@ class _HeaderPatternPainter extends CustomPainter {
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
 
-// ─── Arc Painter for Loading ───
+// â”€â”€â”€ Arc Painter for Loading â”€â”€â”€
 class _ArcPainter extends CustomPainter {
   final Color color;
   final double strokeWidth;

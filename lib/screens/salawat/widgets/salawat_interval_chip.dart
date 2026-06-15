@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'salawat_theme.dart';
@@ -43,7 +43,7 @@ class SalawatIntervalChip extends StatelessWidget {
             boxShadow: isSelected
                 ? [
               BoxShadow(
-                color: theme.deepGreen.withOpacity(0.3),
+                color: theme.deepGreen.withValues(alpha: 0.3),
                 blurRadius: 10,
                 offset: const Offset(0, 3),
               ),

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../models/sunnah_item.dart';
 import 'hadith_source_badge.dart';
@@ -41,23 +41,23 @@ class SunnahItemCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: isExpanded
-                ? color.withOpacity(0.45)
+                ? color.withValues(alpha: 0.45)
                 : (isDark
-                ? Colors.white.withOpacity(0.07)
-                : Colors.black.withOpacity(0.07)),
+                ? Colors.white.withValues(alpha: 0.07)
+                : Colors.black.withValues(alpha: 0.07)),
             width: 1.2,
           ),
           boxShadow: isExpanded
               ? [
             BoxShadow(
-              color: color.withOpacity(0.12),
+              color: color.withValues(alpha: 0.12),
               blurRadius: 16,
               offset: const Offset(0, 4),
             ),
           ]
               : [
             BoxShadow(
-              color: Colors.black.withOpacity(isDark ? 0.2 : 0.05),
+              color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.05),
               blurRadius: 6,
               offset: const Offset(0, 2),
             ),
@@ -67,7 +67,7 @@ class SunnahItemCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // العنوان
+            // ط§ظ„ط¹ظ†ظˆط§ظ†
             _ItemHeader(
               item: item,
               index: index,
@@ -75,7 +75,7 @@ class SunnahItemCard extends StatelessWidget {
               color: color,
               isDark: isDark,
             ),
-            // التفاصيل
+            // ط§ظ„طھظپط§طµظٹظ„
             AnimatedCrossFade(
               firstChild: const SizedBox(width: double.infinity),
               secondChild: _ItemDetails(
@@ -96,7 +96,7 @@ class SunnahItemCard extends StatelessWidget {
   }
 }
 
-// ─── هيدر البطاقة ──────────────────────────────────────────────────────────
+// â”€â”€â”€ ظ‡ظٹط¯ط± ط§ظ„ط¨ط·ط§ظ‚ط© â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 class _ItemHeader extends StatelessWidget {
   final SunnahItem item;
@@ -120,7 +120,7 @@ class _ItemHeader extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // مؤشر الرقم / السهم
+          // ظ…ط¤ط´ط± ط§ظ„ط±ظ‚ظ… / ط§ظ„ط³ظ‡ظ…
           AnimatedContainer(
             duration: const Duration(milliseconds: 300),
             width: 34,
@@ -128,13 +128,13 @@ class _ItemHeader extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: isExpanded
-                  ? color.withOpacity(0.2)
+                  ? color.withValues(alpha: 0.2)
                   : (isDark
-                  ? Colors.white.withOpacity(0.06)
-                  : Colors.black.withOpacity(0.05)),
+                  ? Colors.white.withValues(alpha: 0.06)
+                  : Colors.black.withValues(alpha: 0.05)),
               border: Border.all(
                 color: isExpanded
-                    ? color.withOpacity(0.5)
+                    ? color.withValues(alpha: 0.5)
                     : Colors.transparent,
               ),
             ),
@@ -148,7 +148,7 @@ class _ItemHeader extends StatelessWidget {
                 child: Text(
                   '${index + 1}',
                   style: TextStyle(
-                    color: color.withOpacity(0.8),
+                    color: color.withValues(alpha: 0.8),
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
                   ),
@@ -157,7 +157,7 @@ class _ItemHeader extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 12),
-          // العنوان
+          // ط§ظ„ط¹ظ†ظˆط§ظ†
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -199,7 +199,7 @@ class _ItemHeader extends StatelessWidget {
   }
 }
 
-// ─── تفاصيل البطاقة ────────────────────────────────────────────────────────
+// â”€â”€â”€ طھظپط§طµظٹظ„ ط§ظ„ط¨ط·ط§ظ‚ط© â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 class _ItemDetails extends StatelessWidget {
   final SunnahItem item;
@@ -220,7 +220,7 @@ class _ItemDetails extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.min,
         children: [
-          // فاصل
+          // ظپط§طµظ„
           Container(
             height: 1,
             margin: const EdgeInsets.only(bottom: 14),
@@ -228,19 +228,19 @@ class _ItemDetails extends StatelessWidget {
               gradient: LinearGradient(
                 colors: [
                   Colors.transparent,
-                  color.withOpacity(0.5),
+                  color.withValues(alpha: 0.5),
                   Colors.transparent,
                 ],
               ),
             ),
           ),
-          // الوصف
+          // ط§ظ„ظˆطµظپ
           _DescriptionBox(text: item.description, isDark: isDark),
           const SizedBox(height: 12),
-          // الحديث
+          // ط§ظ„ط­ط¯ظٹط«
           _HadithBox(hadith: item.hadith, color: color, isDark: isDark),
           const SizedBox(height: 12),
-          // الراوي
+          // ط§ظ„ط±ط§ظˆظٹ
           _NarratorRow(narrator: item.narrator, isDark: isDark),
           const SizedBox(height: 12),
           // Footer
@@ -263,8 +263,8 @@ class _DescriptionBox extends StatelessWidget {
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: isDark
-            ? Colors.white.withOpacity(0.04)
-            : Colors.black.withOpacity(0.03),
+            ? Colors.white.withValues(alpha: 0.04)
+            : Colors.black.withValues(alpha: 0.03),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -285,8 +285,8 @@ class _DescriptionBox extends StatelessWidget {
           Icon(
             Icons.info_outline_rounded,
             color: isDark
-                ? Colors.white.withOpacity(0.2)
-                : Colors.black.withOpacity(0.2),
+                ? Colors.white.withValues(alpha: 0.2)
+                : Colors.black.withValues(alpha: 0.2),
             size: 15,
           ),
         ],
@@ -311,10 +311,10 @@ class _HadithBox extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
-          colors: [color.withOpacity(0.12), color.withOpacity(0.04)],
+          colors: [color.withValues(alpha: 0.12), color.withValues(alpha: 0.04)],
         ),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: color.withOpacity(0.22)),
+        border: Border.all(color: color.withValues(alpha: 0.22)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -325,7 +325,7 @@ class _HadithBox extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'الحديث الشريف',
+                'ط§ظ„ط­ط¯ظٹط« ط§ظ„ط´ط±ظٹظپ',
                 style: TextStyle(
                   color: isDark ? Colors.white38 : const Color(0xFF9A9AB0),
                   fontSize: 10,
@@ -333,7 +333,7 @@ class _HadithBox extends StatelessWidget {
               ),
               const SizedBox(width: 6),
               Icon(Icons.format_quote_rounded,
-                  color: color.withOpacity(0.6), size: 14),
+                  color: color.withValues(alpha: 0.6), size: 14),
             ],
           ),
           const SizedBox(height: 10),
@@ -375,7 +375,7 @@ class _NarratorRow extends StatelessWidget {
         ),
         const SizedBox(width: 6),
         Text(
-          'رواه:',
+          'ط±ظˆط§ظ‡:',
           style: TextStyle(
             color: isDark ? Colors.white38 : const Color(0xFF9A9AB0),
             fontSize: 12,
@@ -400,8 +400,8 @@ class _CardFooter extends StatelessWidget {
   void _copy(BuildContext context) {
     final text = '${item.title}\n\n'
         '"${item.hadith}"\n\n'
-        'رواه: ${item.narrator}\n'
-        'المصدر: ${item.source} | رقم: ${item.hadithNumber}';
+        'ط±ظˆط§ظ‡: ${item.narrator}\n'
+        'ط§ظ„ظ…طµط¯ط±: ${item.source} | ط±ظ‚ظ…: ${item.hadithNumber}';
     Clipboard.setData(ClipboardData(text: text));
     HapticFeedback.mediumImpact();
     ScaffoldMessenger.of(context).showSnackBar(
@@ -409,11 +409,11 @@ class _CardFooter extends StatelessWidget {
         content: const Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Text('تم نسخ الحديث ✓',
+            Text('طھظ… ظ†ط³ط® ط§ظ„ط­ط¯ظٹط« âœ“',
                 style: TextStyle(color: Colors.white, fontSize: 14)),
           ],
         ),
-        backgroundColor: color.withOpacity(0.85),
+        backgroundColor: color.withValues(alpha: 0.85),
         behavior: SnackBarBehavior.floating,
         shape:
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -429,20 +429,20 @@ class _CardFooter extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        // زر النسخ
+        // ط²ط± ط§ظ„ظ†ط³ط®
         GestureDetector(
           onTap: () => _copy(context),
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
+              color: color.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: color.withOpacity(0.3)),
+              border: Border.all(color: color.withValues(alpha: 0.3)),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('نسخ',
+                Text('ظ†ط³ط®',
                     style: TextStyle(color: color, fontSize: 12)),
                 const SizedBox(width: 5),
                 Icon(Icons.copy_rounded, color: color, size: 13),
@@ -450,7 +450,7 @@ class _CardFooter extends StatelessWidget {
             ),
           ),
         ),
-        // الشارة
+        // ط§ظ„ط´ط§ط±ط©
         Flexible(
           child: HadithSourceBadge(
             source: item.source,

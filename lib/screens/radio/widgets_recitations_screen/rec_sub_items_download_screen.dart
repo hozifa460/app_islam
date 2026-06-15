@@ -1,4 +1,4 @@
-// lib/screens/radio/widgets_recitations_screen/rec_sub_items_download_screen.dart
+﻿// lib/screens/radio/widgets_recitations_screen/rec_sub_items_download_screen.dart
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -150,7 +150,7 @@ class _RecSubItemsDownloadScreenState
           const SizedBox(width: 14),
           Expanded(
             child: Text(
-              'تحميل التلاوات',
+              'طھط­ظ…ظٹظ„ ط§ظ„طھظ„ط§ظˆط§طھ',
               style: GoogleFonts.cairo(
                 fontSize: 20,
                 fontWeight: FontWeight.w800,
@@ -172,7 +172,7 @@ class _RecSubItemsDownloadScreenState
                 ),
               ),
               child: Text(
-                '${_selectedIndices.length} تلاوة',
+                '${_selectedIndices.length} طھظ„ط§ظˆط©',
                 style: GoogleFonts.cairo(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -253,7 +253,7 @@ class _RecSubItemsDownloadScreenState
                       ),
                       const SizedBox(width: 3),
                       Text(
-                        '$downloadedCount/${_subItems.length} محملة',
+                        '$downloadedCount/${_subItems.length} ظ…ط­ظ…ظ„ط©',
                         style: GoogleFonts.cairo(
                           fontSize: 11,
                           color: Colors.green,
@@ -262,7 +262,7 @@ class _RecSubItemsDownloadScreenState
                       ),
                     ] else
                       Text(
-                        '${_subItems.length} تلاوة متاحة',
+                        '${_subItems.length} طھظ„ط§ظˆط© ظ…طھط§ط­ط©',
                         style: GoogleFonts.cairo(
                           fontSize: 11,
                           color: RecColors.textSecondary(context),
@@ -284,7 +284,7 @@ class _RecSubItemsDownloadScreenState
       child: Row(
         children: [
           _quickBtn(
-            label: 'تحديد الكل',
+            label: 'طھط­ط¯ظٹط¯ ط§ظ„ظƒظ„',
             icon: Icons.select_all_rounded,
             onTap: () {
               setState(() {
@@ -299,7 +299,7 @@ class _RecSubItemsDownloadScreenState
           ),
           const SizedBox(width: 8),
           _quickBtn(
-            label: 'إلغاء الكل',
+            label: 'ط¥ظ„ط؛ط§ط، ط§ظ„ظƒظ„',
             icon: Icons.deselect_rounded,
             onTap: () => setState(() => _selectedIndices.clear()),
           ),
@@ -379,14 +379,14 @@ class _RecSubItemsDownloadScreenState
               color: isSelected
                   ? RecColors.primary(widget.primary, 0.1)
                   : isDownloaded
-                  ? Colors.green.withOpacity(0.06)
+                  ? Colors.green.withValues(alpha: 0.06)
                   : RecColors.cardBackground(context),
               borderRadius: BorderRadius.circular(14),
               border: Border.all(
                 color: isSelected
                     ? RecColors.primary(widget.primary, 0.35)
                     : isDownloaded
-                    ? Colors.green.withOpacity(0.2)
+                    ? Colors.green.withValues(alpha: 0.2)
                     : RecColors.primary(widget.primary, 0.06),
                 width: isSelected ? 1.2 : 0.6,
               ),
@@ -403,7 +403,7 @@ class _RecSubItemsDownloadScreenState
                         color: isSelected
                             ? RecColors.primary(widget.primary, 0.15)
                             : isDownloaded
-                            ? Colors.green.withOpacity(0.12)
+                            ? Colors.green.withValues(alpha: 0.12)
                             : RecColors.iconBackground(context),
                         shape: BoxShape.circle,
                       ),
@@ -450,7 +450,7 @@ class _RecSubItemsDownloadScreenState
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
-                            '${sub.subtitle}${sub.durationStr.isNotEmpty ? ' • ${sub.durationStr}' : ''}',
+                            '${sub.subtitle}${sub.durationStr.isNotEmpty ? ' â€¢ ${sub.durationStr}' : ''}',
                             style: GoogleFonts.cairo(
                               fontSize: 10,
                               color: RecColors.textHint(context),
@@ -460,7 +460,7 @@ class _RecSubItemsDownloadScreenState
                       ),
                     ),
                     Text(
-                      isDownloaded ? '✓' : '',
+                      isDownloaded ? 'âœ“' : '',
                       style: GoogleFonts.cairo(
                         fontSize: 11,
                         fontWeight: FontWeight.w600,
@@ -553,8 +553,8 @@ class _RecSubItemsDownloadScreenState
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   _summaryItem(
-                    'سيُحمَّل',
-                    '$actualSelected تلاوة',
+                    'ط³ظٹظڈط­ظ…ظژظ‘ظ„',
+                    '$actualSelected طھظ„ط§ظˆط©',
                     widget.primary,
                   ),
                 ],
@@ -564,14 +564,14 @@ class _RecSubItemsDownloadScreenState
           ],
           if (anyDownloading)
             _actionBtn(
-              label: 'جاري التحميل...',
+              label: 'ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„...',
               icon: Icons.hourglass_top_rounded,
               color: Colors.orange,
               onTap: () {},
             )
           else if (actualSelected > 0)
             _actionBtn(
-              label: 'تحميل $actualSelected تلاوة',
+              label: 'طھط­ظ…ظٹظ„ $actualSelected طھظ„ط§ظˆط©',
               icon: Icons.download_rounded,
               color: widget.primary,
               onTap: _startDownload,
@@ -585,7 +585,7 @@ class _RecSubItemsDownloadScreenState
               ),
               child: Center(
                 child: Text(
-                  'اختر تلاوات للتحميل',
+                  'ط§ط®طھط± طھظ„ط§ظˆط§طھ ظ„ظ„طھط­ظ…ظٹظ„',
                   style: GoogleFonts.cairo(
                     fontSize: 14,
                     color: RecColors.textHint(context),
@@ -634,7 +634,7 @@ class _RecSubItemsDownloadScreenState
         width: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [color, color.withOpacity(0.8)],
+            colors: [color, color.withValues(alpha: 0.8)],
           ),
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
@@ -731,7 +731,7 @@ class _DlBgPainter extends CustomPainter {
     final glow = Paint()..style = PaintingStyle.fill;
     glow.shader = RadialGradient(
       colors: [
-        primary.withOpacity(0.06),
+        primary.withValues(alpha: 0.06),
         Colors.transparent,
       ],
     ).createShader(

@@ -1,4 +1,4 @@
-import 'dart:ui';
+﻿import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,7 +17,7 @@ class HomeDrawer extends StatelessWidget {
     required this.onFeatureTap,
   });
 
-  // ─── ألوان حسب الوضع ───
+  // â”€â”€â”€ ط£ظ„ظˆط§ظ† ط­ط³ط¨ ط§ظ„ظˆط¶ط¹ â”€â”€â”€
   Color get _bg => isDark
       ? const Color(0xFF0E1714)
       : const Color(0xFFF7F3EA);
@@ -35,16 +35,16 @@ class HomeDrawer extends StatelessWidget {
       : Colors.black54;
 
   Color get _divider => isDark
-      ? Colors.white.withOpacity(0.06)
-      : Colors.black.withOpacity(0.06);
+      ? Colors.white.withValues(alpha: 0.06)
+      : Colors.black.withValues(alpha: 0.06);
 
   Color get _itemBg => isDark
-      ? Colors.white.withOpacity(0.04)
-      : Colors.black.withOpacity(0.02);
+      ? Colors.white.withValues(alpha: 0.04)
+      : Colors.black.withValues(alpha: 0.02);
 
   Color get _itemHover => isDark
-      ? primary.withOpacity(0.12)
-      : primary.withOpacity(0.07);
+      ? primary.withValues(alpha: 0.12)
+      : primary.withValues(alpha: 0.07);
 
   @override
   Widget build(BuildContext context) {
@@ -53,10 +53,10 @@ class HomeDrawer extends StatelessWidget {
       elevation: 0,
       child: Column(
         children: [
-          // ── الهيدر ──
+          // â”€â”€ ط§ظ„ظ‡ظٹط¯ط± â”€â”€
           _buildHeader(),
 
-          // ── الفاصل ──
+          // â”€â”€ ط§ظ„ظپط§طµظ„ â”€â”€
           Container(
             height: 1,
             margin: const EdgeInsets.symmetric(horizontal: 16),
@@ -64,14 +64,14 @@ class HomeDrawer extends StatelessWidget {
               gradient: LinearGradient(
                 colors: [
                   Colors.transparent,
-                  primary.withOpacity(0.3),
+                  primary.withValues(alpha: 0.3),
                   Colors.transparent,
                 ],
               ),
             ),
           ),
 
-          // ── القائمة ──
+          // â”€â”€ ط§ظ„ظ‚ط§ط¦ظ…ط© â”€â”€
           Expanded(
             child: ListView.builder(
               padding: const EdgeInsets.fromLTRB(12, 10, 12, 20),
@@ -82,14 +82,14 @@ class HomeDrawer extends StatelessWidget {
             ),
           ),
 
-          // ── الفوتر ──
+          // â”€â”€ ط§ظ„ظپظˆطھط± â”€â”€
           _buildFooter(),
         ],
       ),
     );
   }
 
-  // ─── الهيدر ───
+  // â”€â”€â”€ ط§ظ„ظ‡ظٹط¯ط± â”€â”€â”€
   Widget _buildHeader() {
     return Container(
       width: double.infinity,
@@ -107,20 +107,20 @@ class HomeDrawer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // الأيقونة
+          // ط§ظ„ط£ظٹظ‚ظˆظ†ط©
           Container(
             width: 72,
             height: 72,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Colors.white.withOpacity(0.15),
+              color: Colors.white.withValues(alpha: 0.15),
               border: Border.all(
-                color: Colors.white.withOpacity(0.25),
+                color: Colors.white.withValues(alpha: 0.25),
                 width: 1,
               ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.15),
+                  color: Colors.black.withValues(alpha: 0.15),
                   blurRadius: 12,
                   offset: const Offset(0, 4),
                 ),
@@ -143,9 +143,9 @@ class HomeDrawer extends StatelessWidget {
           ),
           const SizedBox(height: 14),
 
-          // الاسم
+          // ط§ظ„ط§ط³ظ…
           Text(
-            'طريق الإسلام',
+            'ط·ط±ظٹظ‚ ط§ظ„ط¥ط³ظ„ط§ظ…',
             style: GoogleFonts.amiri(
               fontSize: 22,
               fontWeight: FontWeight.bold,
@@ -155,21 +155,21 @@ class HomeDrawer extends StatelessWidget {
           ),
           const SizedBox(height: 4),
 
-          // الوصف
+          // ط§ظ„ظˆطµظپ
           Container(
             padding: const EdgeInsets.symmetric(
               horizontal: 10,
               vertical: 3,
             ),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.12),
+              color: Colors.white.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(20),
             ),
             child: Text(
-              'رفيقك الإسلامي اليومي ✨',
+              'ط±ظپظٹظ‚ظƒ ط§ظ„ط¥ط³ظ„ط§ظ…ظٹ ط§ظ„ظٹظˆظ…ظٹ âœ¨',
               style: GoogleFonts.cairo(
                 fontSize: 11,
-                color: Colors.white.withOpacity(0.85),
+                color: Colors.white.withValues(alpha: 0.85),
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -179,7 +179,7 @@ class HomeDrawer extends StatelessWidget {
     );
   }
 
-  // ─── عنصر القائمة ───
+  // â”€â”€â”€ ط¹ظ†طµط± ط§ظ„ظ‚ط§ط¦ظ…ط© â”€â”€â”€
   Widget _buildItem(BuildContext context, int index) {
     final feature = features[index];
     final title = feature['title'] as String;
@@ -197,8 +197,8 @@ class HomeDrawer extends StatelessWidget {
             Navigator.pop(context);
             onFeatureTap(index);
           },
-          splashColor: primary.withOpacity(0.10),
-          highlightColor: primary.withOpacity(0.06),
+          splashColor: primary.withValues(alpha: 0.10),
+          highlightColor: primary.withValues(alpha: 0.06),
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
             padding: const EdgeInsets.symmetric(
@@ -210,19 +210,19 @@ class HomeDrawer extends StatelessWidget {
               borderRadius: BorderRadius.circular(14),
               border: Border.all(
                 color: isDark
-                    ? Colors.white.withOpacity(0.04)
-                    : Colors.black.withOpacity(0.04),
+                    ? Colors.white.withValues(alpha: 0.04)
+                    : Colors.black.withValues(alpha: 0.04),
                 width: 0.8,
               ),
             ),
             child: Row(
               children: [
-                // أيقونة مع خلفية
+                // ط£ظٹظ‚ظˆظ†ط© ظ…ط¹ ط®ظ„ظپظٹط©
                 Container(
                   width: 38,
                   height: 38,
                   decoration: BoxDecoration(
-                    color: primary.withOpacity(
+                    color: primary.withValues(alpha: 
                       isDark ? 0.12 : 0.08,
                     ),
                     borderRadius: BorderRadius.circular(11),
@@ -235,7 +235,7 @@ class HomeDrawer extends StatelessWidget {
                 ),
                 const SizedBox(width: 12),
 
-                // العنوان
+                // ط§ظ„ط¹ظ†ظˆط§ظ†
                 Expanded(
                   child: Text(
                     title,
@@ -249,7 +249,7 @@ class HomeDrawer extends StatelessWidget {
                   ),
                 ),
 
-                // الرمز التعبيري
+                // ط§ظ„ط±ظ…ط² ط§ظ„طھط¹ط¨ظٹط±ظٹ
                 if (badge.isNotEmpty) ...[
                   Text(
                     badge,
@@ -258,11 +258,11 @@ class HomeDrawer extends StatelessWidget {
                   const SizedBox(width: 6),
                 ],
 
-                // السهم
+                // ط§ظ„ط³ظ‡ظ…
                 Icon(
                   Icons.arrow_forward_ios_rounded,
                   size: 12,
-                  color: _textSecondary.withOpacity(0.5),
+                  color: _textSecondary.withValues(alpha: 0.5),
                 ),
               ],
             ),
@@ -272,7 +272,7 @@ class HomeDrawer extends StatelessWidget {
     );
   }
 
-  // ─── الفوتر ───
+  // â”€â”€â”€ ط§ظ„ظپظˆطھط± â”€â”€â”€
   Widget _buildFooter() {
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 12, 20, 28),
@@ -298,11 +298,11 @@ class HomeDrawer extends StatelessWidget {
               Icon(
                 Icons.favorite_rounded,
                 size: 12,
-                color: primary.withOpacity(0.5),
+                color: primary.withValues(alpha: 0.5),
               ),
               const SizedBox(width: 6),
               Text(
-                'بسم الله الرحمن الرحيم',
+                'ط¨ط³ظ… ط§ظ„ظ„ظ‡ ط§ظ„ط±ط­ظ…ظ† ط§ظ„ط±ط­ظٹظ…',
                 style: GoogleFonts.amiri(
                   fontSize: 12,
                   color: _textSecondary,
@@ -313,7 +313,7 @@ class HomeDrawer extends StatelessWidget {
               Icon(
                 Icons.favorite_rounded,
                 size: 12,
-                color: primary.withOpacity(0.5),
+                color: primary.withValues(alpha: 0.5),
               ),
             ],
           ),

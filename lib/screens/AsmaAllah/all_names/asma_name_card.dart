@@ -1,4 +1,4 @@
-// lib/screens/asma_allah/all_names/asma_name_card.dart
+﻿// lib/screens/asma_allah/all_names/asma_name_card.dart
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -41,8 +41,8 @@ class AsmaNameCard extends StatelessWidget {
             end: Alignment.bottomRight,
             colors: isDark
                 ? [
-              const Color(0xFF1A2438).withOpacity(0.9),
-              const Color(0xFF0F1628).withOpacity(0.9),
+              const Color(0xFF1A2438).withValues(alpha: 0.9),
+              const Color(0xFF0F1628).withValues(alpha: 0.9),
             ]
                 : [
               Colors.white,
@@ -51,14 +51,14 @@ class AsmaNameCard extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: AsmaTheme.gold.withOpacity(isDark ? 0.3 : 0.25),
+            color: AsmaTheme.gold.withValues(alpha: isDark ? 0.3 : 0.25),
             width: 1.5,
           ),
           boxShadow: [
             BoxShadow(
               color: isDark
-                  ? Colors.black.withOpacity(0.3)
-                  : AsmaTheme.gold.withOpacity(0.12),
+                  ? Colors.black.withValues(alpha: 0.3)
+                  : AsmaTheme.gold.withValues(alpha: 0.12),
               blurRadius: 12,
               offset: const Offset(0, 4),
             ),
@@ -74,7 +74,7 @@ class AsmaNameCard extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // ═══════════ الدائرة الذهبية مع Hero ═══════════
+                  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ ط§ظ„ط¯ط§ط¦ط±ط© ط§ظ„ط°ظ‡ط¨ظٹط© ظ…ط¹ Hero â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
                   Hero(
                     tag: 'asma_name_$order',
                     child: Material(
@@ -97,13 +97,13 @@ class AsmaNameCard extends StatelessWidget {
                           ),
                           border: Border.all(
                             color: AsmaTheme.gold
-                                .withOpacity(isDark ? 0.6 : 0.7),
+                                .withValues(alpha: isDark ? 0.6 : 0.7),
                             width: 2,
                           ),
                           boxShadow: [
                             BoxShadow(
                               color: AsmaTheme.gold
-                                  .withOpacity(isDark ? 0.2 : 0.15),
+                                  .withValues(alpha: isDark ? 0.2 : 0.15),
                               blurRadius: 10,
                               spreadRadius: 1,
                             ),
@@ -120,7 +120,7 @@ class AsmaNameCard extends StatelessWidget {
 
                   SizedBox(height: isSmall ? 10 : 14),
 
-                  // ═══════════ الاسم المترجم ═══════════
+                  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ ط§ظ„ط§ط³ظ… ط§ظ„ظ…طھط±ط¬ظ… â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
                   FittedBox(
                     fit: BoxFit.scaleDown,
                     child: Text(
@@ -134,7 +134,7 @@ class AsmaNameCard extends StatelessWidget {
                     ),
                   ),
 
-                  // ═══════════ الاسم العربي ═══════════
+                  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ ط§ظ„ط§ط³ظ… ط§ظ„ط¹ط±ط¨ظٹ â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
                   if (showArabic) ...[
                     const SizedBox(height: 2),
                     FittedBox(
@@ -145,8 +145,8 @@ class AsmaNameCard extends StatelessWidget {
                         style: GoogleFonts.amiri(
                           fontSize: isSmall ? 13 : 15,
                           color: isDark
-                              ? Colors.white.withOpacity(0.6)
-                              : AsmaTheme.brownSub.withOpacity(0.8),
+                              ? Colors.white.withValues(alpha: 0.6)
+                              : AsmaTheme.brownSub.withValues(alpha: 0.8),
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -155,7 +155,7 @@ class AsmaNameCard extends StatelessWidget {
 
                   SizedBox(height: isSmall ? 6 : 10),
 
-                  // ═══════════ المعنى ═══════════
+                  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ ط§ظ„ظ…ط¹ظ†ظ‰ â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
                   Expanded(
                     child: Text(
                       _truncateMeaning(meaning),
@@ -165,7 +165,7 @@ class AsmaNameCard extends StatelessWidget {
                       style: GoogleFonts.cairo(
                         fontSize: isSmall ? 11 : 13,
                         color: isDark
-                            ? Colors.white.withOpacity(0.55)
+                            ? Colors.white.withValues(alpha: 0.55)
                             : AsmaTheme.brownSub,
                         height: 1.4,
                       ),
@@ -175,7 +175,7 @@ class AsmaNameCard extends StatelessWidget {
               ),
             ),
 
-            // ═══════════ رقم الترتيب ═══════════
+            // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ ط±ظ‚ظ… ط§ظ„طھط±طھظٹط¨ â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
             Positioned(
               top: 10,
               left: 10,
@@ -191,7 +191,7 @@ class AsmaNameCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
-                      color: AsmaTheme.gold.withOpacity(0.3),
+                      color: AsmaTheme.gold.withValues(alpha: 0.3),
                       blurRadius: 4,
                       offset: const Offset(0, 2),
                     ),
@@ -208,14 +208,14 @@ class AsmaNameCard extends StatelessWidget {
               ),
             ),
 
-            // ═══════════ سهم الانتقال ═══════════
+            // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ ط³ظ‡ظ… ط§ظ„ط§ظ†طھظ‚ط§ظ„ â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
             Positioned(
               bottom: 10,
               right: 10,
               child: Icon(
                 Icons.arrow_forward_ios_rounded,
                 size: isSmall ? 12 : 14,
-                color: AsmaTheme.gold.withOpacity(0.4),
+                color: AsmaTheme.gold.withValues(alpha: 0.4),
               ),
             ),
           ],

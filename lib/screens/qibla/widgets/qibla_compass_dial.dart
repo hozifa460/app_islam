@@ -1,4 +1,4 @@
-import 'dart:math' show pi, sin, cos;
+﻿import 'dart:math' show pi, sin, cos;
 import 'package:flutter/material.dart';
 import 'qibla_theme.dart';
 
@@ -47,7 +47,7 @@ class _DialPainter extends CustomPainter {
         c,
         r - 2,
         Paint()
-          ..color = gold.withOpacity(0.3)
+          ..color = gold.withValues(alpha: 0.3)
           ..style = PaintingStyle.stroke
           ..strokeWidth = 2);
     canvas.drawCircle(
@@ -55,7 +55,7 @@ class _DialPainter extends CustomPainter {
         r - 9,
         Paint()
           ..color =
-          (isDark ? Colors.white : Colors.black).withOpacity(0.05)
+          (isDark ? Colors.white : Colors.black).withValues(alpha: 0.05)
           ..style = PaintingStyle.stroke
           ..strokeWidth = 1);
 
@@ -77,7 +77,7 @@ class _DialPainter extends CustomPainter {
               : iM
               ? gold
               : (isDark ? Colors.white : Colors.black)
-              .withOpacity(im ? 0.5 : 0.18)
+              .withValues(alpha: im ? 0.5 : 0.18)
           ..strokeWidth = iM ? 2.5 : im ? 1.5 : 1.0
           ..strokeCap = StrokeCap.round,
       );
@@ -91,28 +91,28 @@ class _DialPainter extends CustomPainter {
       (
       t: 'NE',
       a: pi / 4,
-      c2: (isDark ? Colors.white : Colors.black).withOpacity(0.38),
+      c2: (isDark ? Colors.white : Colors.black).withValues(alpha: 0.38),
       fs: 10.5,
       b: false
       ),
       (
       t: 'SE',
       a: 3 * pi / 4,
-      c2: (isDark ? Colors.white : Colors.black).withOpacity(0.38),
+      c2: (isDark ? Colors.white : Colors.black).withValues(alpha: 0.38),
       fs: 10.5,
       b: false
       ),
       (
       t: 'SW',
       a: -3 * pi / 4,
-      c2: (isDark ? Colors.white : Colors.black).withOpacity(0.38),
+      c2: (isDark ? Colors.white : Colors.black).withValues(alpha: 0.38),
       fs: 10.5,
       b: false
       ),
       (
       t: 'NW',
       a: -pi / 4,
-      c2: (isDark ? Colors.white : Colors.black).withOpacity(0.38),
+      c2: (isDark ? Colors.white : Colors.black).withValues(alpha: 0.38),
       fs: 10.5,
       b: false
       ),
@@ -141,7 +141,7 @@ class _DialPainter extends CustomPainter {
           rr,
           Paint()
             ..color =
-            (isDark ? Colors.white : Colors.black).withOpacity(0.04)
+            (isDark ? Colors.white : Colors.black).withValues(alpha: 0.04)
             ..style = PaintingStyle.stroke
             ..strokeWidth = 1);
     }

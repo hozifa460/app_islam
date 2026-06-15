@@ -1,4 +1,4 @@
-import 'dart:math' as math;
+﻿import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'sunnah_theme.dart';
 
@@ -49,25 +49,25 @@ class SunnahSplash extends StatelessWidget {
                           shape: BoxShape.circle,
                           gradient: RadialGradient(
                             colors: [
-                              SunnahTheme.emeraldLight.withOpacity(0.3),
-                              SunnahTheme.emeraldDark.withOpacity(0.1),
+                              SunnahTheme.emeraldLight.withValues(alpha: 0.3),
+                              SunnahTheme.emeraldDark.withValues(alpha: 0.1),
                               Colors.transparent,
                             ],
                           ),
                           border: Border.all(
-                            color: SunnahTheme.emerald.withOpacity(0.4),
+                            color: SunnahTheme.emerald.withValues(alpha: 0.4),
                             width: 2,
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: SunnahTheme.emerald.withOpacity(0.3),
+                              color: SunnahTheme.emerald.withValues(alpha: 0.3),
                               blurRadius: 30,
                               spreadRadius: 8,
                             ),
                           ],
                         ),
                         child: Center(
-                          child: Text('🕌',
+                          child: Text('ًں•Œ',
                               style: TextStyle(fontSize: size.width * 0.12)),
                         ),
                       ),
@@ -83,7 +83,7 @@ class SunnahSplash extends StatelessWidget {
                       ],
                     ).createShader(b),
                     child: Text(
-                      'متتبع السنن النبوية',
+                      'ظ…طھطھط¨ط¹ ط§ظ„ط³ظ†ظ† ط§ظ„ظ†ط¨ظˆظٹط©',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: size.width * 0.06,
@@ -94,7 +94,7 @@ class SunnahSplash extends StatelessWidget {
                   ),
                   SizedBox(height: size.height * 0.01),
                   Text(
-                    'احرص على سننه ﷺ',
+                    'ط§ط­ط±طµ ط¹ظ„ظ‰ ط³ظ†ظ†ظ‡ ï·؛',
                     style: TextStyle(
                       color: theme.textSecondary,
                       fontSize: size.width * 0.038,

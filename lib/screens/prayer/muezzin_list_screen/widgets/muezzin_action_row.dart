@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../languages/app_localizations.dart';
@@ -62,9 +62,9 @@ class MuezzinActionRow extends StatelessWidget {
             padding:
             const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
-              color: gold.withOpacity(0.15),
+              color: gold.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: gold.withOpacity(0.4)),
+              border: Border.all(color: gold.withValues(alpha: 0.4)),
             ),
             child: Text(
               context.tr.readyStatus,
@@ -88,10 +88,10 @@ class MuezzinActionRow extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(
                     horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
-                  color: Colors.green.withOpacity(0.15),
+                  color: Colors.green.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(10),
                   border:
-                  Border.all(color: Colors.green.withOpacity(0.4)),
+                  Border.all(color: Colors.green.withValues(alpha: 0.4)),
                 ),
                 child: Text(
                   context.tr.offlineStatus,

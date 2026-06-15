@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -144,7 +144,7 @@ class _ShortsPlayerScreenState extends State<ShortsPlayerScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'تم نسخ الرابط',
+          'طھظ… ظ†ط³ط® ط§ظ„ط±ط§ط¨ط·',
           style: GoogleFonts.cairo(),
         ),
         behavior: SnackBarBehavior.floating,
@@ -182,7 +182,7 @@ class _ShortsPlayerScreenState extends State<ShortsPlayerScreen> {
                   Row(
                     children: [
                       Text(
-                        'التعليقات',
+                        'ط§ظ„طھط¹ظ„ظٹظ‚ط§طھ',
                         style: GoogleFonts.cairo(
                           color: Colors.white,
                           fontWeight: FontWeight.w800,
@@ -205,7 +205,7 @@ class _ShortsPlayerScreenState extends State<ShortsPlayerScreen> {
                   Expanded(
                     child: Center(
                       child: Text(
-                        'عرض التعليقات الكاملة يمكن ربطه لاحقاً\nحالياً هذه نافذة جاهزة للواجهة',
+                        'ط¹ط±ط¶ ط§ظ„طھط¹ظ„ظٹظ‚ط§طھ ط§ظ„ظƒط§ظ…ظ„ط© ظٹظ…ظƒظ† ط±ط¨ط·ظ‡ ظ„ط§ط­ظ‚ط§ظ‹\nط­ط§ظ„ظٹط§ظ‹ ظ‡ط°ظ‡ ظ†ط§ظپط°ط© ط¬ط§ظ‡ط²ط© ظ„ظ„ظˆط§ط¬ظ‡ط©',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.cairo(
                           color: Colors.white70,
@@ -242,7 +242,7 @@ class _ShortsPlayerScreenState extends State<ShortsPlayerScreen> {
                 ListTile(
                   leading: const Icon(Icons.copy_rounded, color: Colors.white),
                   title: Text(
-                    'نسخ الرابط',
+                    'ظ†ط³ط® ط§ظ„ط±ط§ط¨ط·',
                     style: GoogleFonts.cairo(color: Colors.white),
                   ),
                   onTap: () async {
@@ -253,7 +253,7 @@ class _ShortsPlayerScreenState extends State<ShortsPlayerScreen> {
                 ListTile(
                   leading: const Icon(Icons.open_in_new_rounded, color: Colors.white),
                   title: Text(
-                    'فتح في يوتيوب',
+                    'ظپطھط­ ظپظٹ ظٹظˆطھظٹظˆط¨',
                     style: GoogleFonts.cairo(color: Colors.white),
                   ),
                   onTap: () async {
@@ -264,7 +264,7 @@ class _ShortsPlayerScreenState extends State<ShortsPlayerScreen> {
                 ListTile(
                   leading: const Icon(Icons.person_rounded, color: Colors.white),
                   title: Text(
-                    'فتح القناة',
+                    'ظپطھط­ ط§ظ„ظ‚ظ†ط§ط©',
                     style: GoogleFonts.cairo(color: Colors.white),
                   ),
                   onTap: () async {
@@ -538,10 +538,10 @@ class _ShortPage extends StatelessWidget {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Colors.black.withOpacity(showOverlay ? 0.30 : 0.12),
+                      Colors.black.withValues(alpha: showOverlay ? 0.30 : 0.12),
                       Colors.transparent,
                       Colors.transparent,
-                      Colors.black.withOpacity(showOverlay ? 0.78 : 0.45),
+                      Colors.black.withValues(alpha: showOverlay ? 0.78 : 0.45),
                     ],
                     stops: const [0.0, 0.16, 0.54, 1.0],
                   ),
@@ -559,7 +559,7 @@ class _ShortPage extends StatelessWidget {
                 width: 84,
                 height: 84,
                 decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.42),
+                  color: Colors.black.withValues(alpha: 0.42),
                   shape: BoxShape.circle,
                 ),
                 child: const Icon(
@@ -600,7 +600,7 @@ class _ShortPage extends StatelessWidget {
                             decoration: BoxDecoration(
                               color: active
                                   ? Colors.white
-                                  : Colors.white.withOpacity(0.23),
+                                  : Colors.white.withValues(alpha: 0.23),
                               borderRadius: BorderRadius.circular(2),
                             ),
                           ),
@@ -614,7 +614,7 @@ class _ShortPage extends StatelessWidget {
                     child: LinearProgressIndicator(
                       value: progress,
                       minHeight: 2.8,
-                      backgroundColor: Colors.white.withOpacity(0.16),
+                      backgroundColor: Colors.white.withValues(alpha: 0.16),
                       valueColor:
                       const AlwaysStoppedAnimation<Color>(Colors.white),
                     ),
@@ -660,7 +660,7 @@ class _ShortPage extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.45),
+                  color: Colors.black.withValues(alpha: 0.45),
                   borderRadius: BorderRadius.circular(18),
                 ),
                 child: Text(
@@ -704,7 +704,7 @@ class _ShortPage extends StatelessWidget {
                   const SizedBox(height: 18),
                   _sideAction(
                     icon: Icons.share_rounded,
-                    label: 'مشاركة',
+                    label: 'ظ…ط´ط§ط±ظƒط©',
                     onTap: onShare,
                   ),
                   const SizedBox(height: 18),
@@ -740,14 +740,14 @@ class _ShortPage extends StatelessWidget {
                             color: Colors.white24,
                             shape: BoxShape.circle,
                             border: Border.all(
-                              color: Colors.white.withOpacity(0.2),
+                              color: Colors.white.withValues(alpha: 0.2),
                             ),
                           ),
                           child: Center(
                             child: Text(
                               video.channelTitle.isNotEmpty
                                   ? video.channelTitle[0]
-                                  : '؟',
+                                  : 'طں',
                               style: GoogleFonts.cairo(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w700,
@@ -780,14 +780,14 @@ class _ShortPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(18),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(0.18),
+                                color: Colors.black.withValues(alpha: 0.18),
                                 blurRadius: 8,
                                 offset: const Offset(0, 2),
                               ),
                             ],
                           ),
                           child: Text(
-                            'اشتراك',
+                            'ط§ط´طھط±ط§ظƒ',
                             style: GoogleFonts.cairo(
                               color: Colors.black,
                               fontWeight: FontWeight.w800,
@@ -816,7 +816,7 @@ class _ShortPage extends StatelessWidget {
                       if (video.viewCount.isNotEmpty && video.viewCount != '0')
                         Flexible(
                           child: Text(
-                            '${YoutubeService.formatViews(video.viewCount)} مشاهدة',
+                            '${YoutubeService.formatViews(video.viewCount)} ظ…ط´ط§ظ‡ط¯ط©',
                             style: GoogleFonts.cairo(
                               color: Colors.white70,
                               fontSize: 12,
@@ -830,10 +830,10 @@ class _ShortPage extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.10),
+                      color: Colors.white.withValues(alpha: 0.10),
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
-                        color: Colors.white.withOpacity(0.08),
+                        color: Colors.white.withValues(alpha: 0.08),
                       ),
                     ),
                     child: Row(
@@ -848,8 +848,8 @@ class _ShortPage extends StatelessWidget {
                         Flexible(
                           child: Text(
                             video.channelTitle.isNotEmpty
-                                ? '${video.channelTitle} • الصوت الأصلي'
-                                : 'الصوت الأصلي',
+                                ? '${video.channelTitle} â€¢ ط§ظ„طµظˆطھ ط§ظ„ط£طµظ„ظٹ'
+                                : 'ط§ظ„طµظˆطھ ط§ظ„ط£طµظ„ظٹ',
                             style: GoogleFonts.cairo(
                               color: Colors.white,
                               fontSize: 11,
@@ -881,10 +881,10 @@ class _ShortPage extends StatelessWidget {
           width: 42,
           height: 42,
           decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.46),
+            color: Colors.black.withValues(alpha: 0.46),
             shape: BoxShape.circle,
             border: Border.all(
-              color: Colors.white.withOpacity(0.08),
+              color: Colors.white.withValues(alpha: 0.08),
             ),
           ),
           child: Icon(
@@ -913,12 +913,12 @@ class _ShortPage extends StatelessWidget {
             decoration: BoxDecoration(
               color: active
                   ? const Color(0xFFFF0000)
-                  : Colors.black.withOpacity(0.42),
+                  : Colors.black.withValues(alpha: 0.42),
               shape: BoxShape.circle,
               border: Border.all(
                 color: active
                     ? const Color(0xFFFF0000)
-                    : Colors.white.withOpacity(0.08),
+                    : Colors.white.withValues(alpha: 0.08),
               ),
             ),
             child: Icon(

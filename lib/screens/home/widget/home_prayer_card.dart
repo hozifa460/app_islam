@@ -1,4 +1,4 @@
-import 'dart:math';
+﻿import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -85,9 +85,9 @@ class _HomePrayerCardState extends State<HomePrayerCard>
     super.dispose();
   }
 
-  // ════════════════════════════════════════════
-  // حسابات
-  // ════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط­ط³ط§ط¨ط§طھ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   double _calculateProgress() {
     if (widget.prayerTimes.isEmpty) return 0.0;
@@ -137,7 +137,7 @@ class _HomePrayerCardState extends State<HomePrayerCard>
       final p = t24.split(' ')[0].split(':');
       int h = int.parse(p[0]);
       final m = int.parse(p[1]);
-      final period = h >= 12 ? 'م' : 'ص';
+      final period = h >= 12 ? 'ظ…' : 'طµ';
       if (h > 12) h -= 12;
       if (h == 0) h = 12;
       return '${h.toString().padLeft(2, '0')}:'
@@ -182,12 +182,12 @@ class _HomePrayerCardState extends State<HomePrayerCard>
     if (h >= 17 && h < 20) return Icons.wb_twilight_rounded;
     return Icons.nights_stay_rounded;
   }
-// ════════════════════════════════════════════
-// تحديد الفترة الحالية بناءً على مواقيت الصلاة
-// ════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// طھط­ط¯ظٹط¯ ط§ظ„ظپطھط±ط© ط§ظ„ط­ط§ظ„ظٹط© ط¨ظ†ط§ط،ظ‹ ط¹ظ„ظ‰ ظ…ظˆط§ظ‚ظٹطھ ط§ظ„طµظ„ط§ط©
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   String _getCurrentPeriod() {
     if (widget.prayerTimes.isEmpty) {
-      // fallback للوقت العام إذا لم تُحمل المواقيت بعد
+      // fallback ظ„ظ„ظˆظ‚طھ ط§ظ„ط¹ط§ظ… ط¥ط°ط§ ظ„ظ… طھظڈط­ظ…ظ„ ط§ظ„ظ…ظˆط§ظ‚ظٹطھ ط¨ط¹ط¯
       final h = DateTime.now().hour;
       if (h >= 4 && h < 7)  return 'fajr';
       if (h >= 7 && h < 12) return 'day';
@@ -206,13 +206,13 @@ class _HomePrayerCardState extends State<HomePrayerCard>
     final maghrib = _parseTime(widget.prayerTimes['Maghrib'] ?? '');
     final isha    = _parseTime(widget.prayerTimes['Isha']    ?? '');
 
-    // قبل الفجر = ليل
+    // ظ‚ط¨ظ„ ط§ظ„ظپط¬ط± = ظ„ظٹظ„
     if (now.isBefore(fajr)) return 'night';
 
-    // فجر → شروق
+    // ظپط¬ط± â†’ ط´ط±ظˆظ‚
     if (now.isAfter(fajr) && now.isBefore(sunrise)) return 'fajr';
 
-    // شروق → ظهر (نصف المسافة بين الشروق والظهر = ضحى)
+    // ط´ط±ظˆظ‚ â†’ ط¸ظ‡ط± (ظ†طµظپ ط§ظ„ظ…ط³ط§ظپط© ط¨ظٹظ† ط§ظ„ط´ط±ظˆظ‚ ظˆط§ظ„ط¸ظ‡ط± = ط¶ط­ظ‰)
     if (now.isAfter(sunrise) && now.isBefore(dhuhr)) {
       final midMorning = sunrise.add(
         Duration(
@@ -222,12 +222,12 @@ class _HomePrayerCardState extends State<HomePrayerCard>
       return now.isBefore(midMorning) ? 'day' : 'noon_before';
     }
 
-    // ظهر → عصر
+    // ط¸ظ‡ط± â†’ ط¹طµط±
     if (now.isAfter(dhuhr) && now.isBefore(asr)) return 'noon';
 
-    // عصر → مغرب
+    // ط¹طµط± â†’ ظ…ط؛ط±ط¨
     if (now.isAfter(asr) && now.isBefore(maghrib)) {
-      // نصف المسافة بين العصر والمغرب = لحظة قريبة من الغروب
+      // ظ†طµظپ ط§ظ„ظ…ط³ط§ظپط© ط¨ظٹظ† ط§ظ„ط¹طµط± ظˆط§ظ„ظ…ط؛ط±ط¨ = ظ„ط­ط¸ط© ظ‚ط±ظٹط¨ط© ظ…ظ† ط§ظ„ط؛ط±ظˆط¨
       final midEvening = asr.add(
         Duration(
           minutes: maghrib.difference(asr).inMinutes ~/ 2,
@@ -236,16 +236,16 @@ class _HomePrayerCardState extends State<HomePrayerCard>
       return now.isBefore(midEvening) ? 'asr' : 'dusk_before';
     }
 
-    // مغرب → عشاء
+    // ظ…ط؛ط±ط¨ â†’ ط¹ط´ط§ط،
     if (now.isAfter(maghrib) && now.isBefore(isha)) return 'dusk';
 
-    // بعد العشاء = ليل
+    // ط¨ط¹ط¯ ط§ظ„ط¹ط´ط§ط، = ظ„ظٹظ„
     return 'night';
   }
 
-// ════════════════════════════════════════════
-// صورة الخلفية حسب مواقيت الصلاة الفعلية
-// ════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// طµظˆط±ط© ط§ظ„ط®ظ„ظپظٹط© ط­ط³ط¨ ظ…ظˆط§ظ‚ظٹطھ ط§ظ„طµظ„ط§ط© ط§ظ„ظپط¹ظ„ظٹط©
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   String _bgImage() {
     final period = _getCurrentPeriod();
     switch (period) {
@@ -267,104 +267,104 @@ class _HomePrayerCardState extends State<HomePrayerCard>
     }
   }
 
-// ════════════════════════════════════════════
-// الـ overlay حسب مواقيت الصلاة الفعلية
-// ════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط§ظ„ظ€ overlay ط­ط³ط¨ ظ…ظˆط§ظ‚ظٹطھ ط§ظ„طµظ„ط§ط© ط§ظ„ظپط¹ظ„ظٹط©
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   List<Color> _overlayColors() {
     final period = _getCurrentPeriod();
 
     if (!widget.isDark) {
-      // Light Mode: ألوان ثابتة حسب الفترة
+      // Light Mode: ط£ظ„ظˆط§ظ† ط«ط§ط¨طھط© ط­ط³ط¨ ط§ظ„ظپطھط±ط©
       switch (period) {
         case 'fajr':
           return [
-            const Color(0xFF1A237E).withOpacity(0.40),
-            const Color(0xFF1A237E).withOpacity(0.35),
-            const Color(0xFF1A237E).withOpacity(0.50),
+            const Color(0xFF1A237E).withValues(alpha: 0.40),
+            const Color(0xFF1A237E).withValues(alpha: 0.35),
+            const Color(0xFF1A237E).withValues(alpha: 0.50),
           ];
         case 'day':
         case 'noon_before':
           return [
-            const Color(0xFF0D47A1).withOpacity(0.35),
-            const Color(0xFF0D47A1).withOpacity(0.30),
-            const Color(0xFF0D47A1).withOpacity(0.45),
+            const Color(0xFF0D47A1).withValues(alpha: 0.35),
+            const Color(0xFF0D47A1).withValues(alpha: 0.30),
+            const Color(0xFF0D47A1).withValues(alpha: 0.45),
           ];
         case 'noon':
           return [
-            const Color(0xFF01579B).withOpacity(0.35),
-            const Color(0xFF01579B).withOpacity(0.30),
-            const Color(0xFF01579B).withOpacity(0.45),
+            const Color(0xFF01579B).withValues(alpha: 0.35),
+            const Color(0xFF01579B).withValues(alpha: 0.30),
+            const Color(0xFF01579B).withValues(alpha: 0.45),
           ];
         case 'asr':
           return [
-            const Color(0xFF4A148C).withOpacity(0.38),
-            const Color(0xFF8B5E3C).withOpacity(0.35),
-            const Color(0xFF4A148C).withOpacity(0.50),
+            const Color(0xFF4A148C).withValues(alpha: 0.38),
+            const Color(0xFF8B5E3C).withValues(alpha: 0.35),
+            const Color(0xFF4A148C).withValues(alpha: 0.50),
           ];
         case 'dusk_before':
         case 'dusk':
           return [
-            const Color(0xFF880E4F).withOpacity(0.40),
-            const Color(0xFF8B3A1A).withOpacity(0.35),
-            const Color(0xFF880E4F).withOpacity(0.55),
+            const Color(0xFF880E4F).withValues(alpha: 0.40),
+            const Color(0xFF8B3A1A).withValues(alpha: 0.35),
+            const Color(0xFF880E4F).withValues(alpha: 0.55),
           ];
         case 'night':
         default:
           return [
-            const Color(0xFF0D1B2A).withOpacity(0.45),
-            const Color(0xFF0D1B2A).withOpacity(0.40),
-            const Color(0xFF0D1B2A).withOpacity(0.55),
+            const Color(0xFF0D1B2A).withValues(alpha: 0.45),
+            const Color(0xFF0D1B2A).withValues(alpha: 0.40),
+            const Color(0xFF0D1B2A).withValues(alpha: 0.55),
           ];
       }
     } else {
-      // Dark Mode: ألوان غامقة حسب الفترة
+      // Dark Mode: ط£ظ„ظˆط§ظ† ط؛ط§ظ…ظ‚ط© ط­ط³ط¨ ط§ظ„ظپطھط±ط©
       switch (period) {
         case 'fajr':
           return [
-            const Color(0xFF0A0F1E).withOpacity(0.85),
-            const Color(0xFF1B1F4A).withOpacity(0.80),
-            const Color(0xFF2D1B69).withOpacity(0.90),
+            const Color(0xFF0A0F1E).withValues(alpha: 0.85),
+            const Color(0xFF1B1F4A).withValues(alpha: 0.80),
+            const Color(0xFF2D1B69).withValues(alpha: 0.90),
           ];
         case 'day':
         case 'noon_before':
           return [
-            const Color(0xFF0D1B2A).withOpacity(0.82),
-            const Color(0xFF1A3A5C).withOpacity(0.78),
-            const Color(0xFF1E4D7B).withOpacity(0.88),
+            const Color(0xFF0D1B2A).withValues(alpha: 0.82),
+            const Color(0xFF1A3A5C).withValues(alpha: 0.78),
+            const Color(0xFF1E4D7B).withValues(alpha: 0.88),
           ];
         case 'noon':
           return [
-            const Color(0xFF0D1B2A).withOpacity(0.82),
-            const Color(0xFF1E3A5F).withOpacity(0.78),
-            const Color(0xFF2A5E8C).withOpacity(0.88),
+            const Color(0xFF0D1B2A).withValues(alpha: 0.82),
+            const Color(0xFF1E3A5F).withValues(alpha: 0.78),
+            const Color(0xFF2A5E8C).withValues(alpha: 0.88),
           ];
         case 'asr':
           return [
-            const Color(0xFF1A1205).withOpacity(0.83),
-            const Color(0xFF3D2C0A).withOpacity(0.80),
-            const Color(0xFF5A3A0F).withOpacity(0.90),
+            const Color(0xFF1A1205).withValues(alpha: 0.83),
+            const Color(0xFF3D2C0A).withValues(alpha: 0.80),
+            const Color(0xFF5A3A0F).withValues(alpha: 0.90),
           ];
         case 'dusk_before':
         case 'dusk':
           return [
-            const Color(0xFF0D0810).withOpacity(0.83),
-            const Color(0xFF3D1030).withOpacity(0.80),
-            const Color(0xFF7A2010).withOpacity(0.90),
+            const Color(0xFF0D0810).withValues(alpha: 0.83),
+            const Color(0xFF3D1030).withValues(alpha: 0.80),
+            const Color(0xFF7A2010).withValues(alpha: 0.90),
           ];
         case 'night':
         default:
           return [
-            const Color(0xFF020508).withOpacity(0.88),
-            const Color(0xFF080C14).withOpacity(0.85),
-            const Color(0xFF0F1520).withOpacity(0.92),
+            const Color(0xFF020508).withValues(alpha: 0.88),
+            const Color(0xFF080C14).withValues(alpha: 0.85),
+            const Color(0xFF0F1520).withValues(alpha: 0.92),
           ];
       }
     }
   }
 
-// ════════════════════════════════════════════
-// النجوم تظهر حسب مواقيت الصلاة الفعلية
-// ════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط§ظ„ظ†ط¬ظˆظ… طھط¸ظ‡ط± ط­ط³ط¨ ظ…ظˆط§ظ‚ظٹطھ ط§ظ„طµظ„ط§ط© ط§ظ„ظپط¹ظ„ظٹط©
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   bool _showStars() {
     final period = _getCurrentPeriod();
     return period == 'night' || period == 'fajr';
@@ -388,9 +388,9 @@ class _HomePrayerCardState extends State<HomePrayerCard>
     }
   }
 
-  // ════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   // BUILD
-  // ════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   @override
   Widget build(BuildContext context) {
@@ -429,8 +429,8 @@ class _HomePrayerCardState extends State<HomePrayerCard>
               boxShadow: [
                 BoxShadow(
                   color: widget.isDark
-                      ? Colors.black.withOpacity(0.50)
-                      : widget.primary.withOpacity(0.18),
+                      ? Colors.black.withValues(alpha: 0.50)
+                      : widget.primary.withValues(alpha: 0.18),
                   blurRadius: widget.isDark ? 20 : 14,
                   offset: const Offset(0, 6),
                 ),
@@ -460,9 +460,9 @@ class _HomePrayerCardState extends State<HomePrayerCard>
     );
   }
 
-  // ════════════════════════════════════════════
-  // خلفية + overlay
-  // ════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط®ظ„ظپظٹط© + overlay
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildBackground() {
     return Positioned.fill(
@@ -473,7 +473,7 @@ class _HomePrayerCardState extends State<HomePrayerCard>
         errorBuilder: (_, __, ___) {
           final fallbackColors = widget.isDark
               ? [const Color(0xFF080C14), const Color(0xFF1B2838)]
-              : [widget.primary.withOpacity(0.8), widget.primary];
+              : [widget.primary.withValues(alpha: 0.8), widget.primary];
           return DecoratedBox(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -488,9 +488,9 @@ class _HomePrayerCardState extends State<HomePrayerCard>
     );
   }
 
-  // ════════════════════════════════════════════
-  // المحتوى — مسافات مُقلّصة
-  // ════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ظ…ط­طھظˆظ‰ â€” ظ…ط³ط§ظپط§طھ ظ…ظڈظ‚ظ„ظ‘طµط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildContent(
       AppLocalizations tr,
@@ -504,34 +504,34 @@ class _HomePrayerCardState extends State<HomePrayerCard>
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // الموقع + أيقونة
+          // ط§ظ„ظ…ظˆظ‚ط¹ + ط£ظٹظ‚ظˆظ†ط©
           _buildTopRow(accent),
           const SizedBox(height: 10),
 
-          // اسم الصلاة + العداد
+          // ط§ط³ظ… ط§ظ„طµظ„ط§ط© + ط§ظ„ط¹ط¯ط§ط¯
           _buildMainSection(tr, accent),
           const SizedBox(height: 10),
 
-          // شريط التقدم
+          // ط´ط±ظٹط· ط§ظ„طھظ‚ط¯ظ…
           _buildProgressBar(progress, accent),
           const SizedBox(height: 8),
 
-          // الصلاة التالية
+          // ط§ظ„طµظ„ط§ط© ط§ظ„طھط§ظ„ظٹط©
           if (after.name.isNotEmpty) ...[
             _buildAfterNext(tr, accent, after),
             const SizedBox(height: 8),
           ],
 
-          // صف واحد لأوقات الصلوات بدل صفين
+          // طµظپ ظˆط§ط­ط¯ ظ„ط£ظˆظ‚ط§طھ ط§ظ„طµظ„ظˆط§طھ ط¨ط¯ظ„ طµظپظٹظ†
           _buildPrayerRow6(accent),
         ],
       ),
     );
   }
 
-  // ════════════════════════════════════════════
-  // الموقع + أيقونة — أصغر
-  // ════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ظ…ظˆظ‚ط¹ + ط£ظٹظ‚ظˆظ†ط© â€” ط£طµط؛ط±
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildTopRow(Color accent) {
     return Row(
@@ -548,13 +548,13 @@ class _HomePrayerCardState extends State<HomePrayerCard>
                 ),
                 decoration: BoxDecoration(
                   color: widget.isDark
-                      ? Colors.white.withOpacity(0.08)
-                      : Colors.white.withOpacity(0.25),
+                      ? Colors.white.withValues(alpha: 0.08)
+                      : Colors.white.withValues(alpha: 0.25),
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
                     color: widget.isDark
-                        ? Colors.white.withOpacity(0.12)
-                        : Colors.white.withOpacity(0.40),
+                        ? Colors.white.withValues(alpha: 0.12)
+                        : Colors.white.withValues(alpha: 0.40),
                     width: 0.8,
                   ),
                 ),
@@ -568,7 +568,7 @@ class _HomePrayerCardState extends State<HomePrayerCard>
                       child: Text(
                         widget.cityName,
                         style: GoogleFonts.cairo(
-                          color: Colors.white.withOpacity(0.95),
+                          color: Colors.white.withValues(alpha: 0.95),
                           fontSize: 11,
                           fontWeight: FontWeight.w600,
                         ),
@@ -587,11 +587,11 @@ class _HomePrayerCardState extends State<HomePrayerCard>
           padding: const EdgeInsets.all(6),
           decoration: BoxDecoration(
             color: widget.isDark
-                ? Colors.white.withOpacity(0.08)
-                : Colors.white.withOpacity(0.20),
+                ? Colors.white.withValues(alpha: 0.08)
+                : Colors.white.withValues(alpha: 0.20),
             shape: BoxShape.circle,
             border: Border.all(
-              color: accent.withOpacity(0.35),
+              color: accent.withValues(alpha: 0.35),
               width: 0.8,
             ),
           ),
@@ -601,15 +601,15 @@ class _HomePrayerCardState extends State<HomePrayerCard>
     );
   }
 
-  // ════════════════════════════════════════════
-  // الصلاة التالية + العداد — في صف واحد مُدمج
-  // ════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„طµظ„ط§ط© ط§ظ„طھط§ظ„ظٹط© + ط§ظ„ط¹ط¯ط§ط¯ â€” ظپظٹ طµظپ ظˆط§ط­ط¯ ظ…ظڈط¯ظ…ط¬
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildMainSection(AppLocalizations tr, Color accent) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        // اسم الصلاة
+        // ط§ط³ظ… ط§ظ„طµظ„ط§ط©
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -618,7 +618,7 @@ class _HomePrayerCardState extends State<HomePrayerCard>
               Text(
                 tr.nextPrayerLabel,
                 style: GoogleFonts.cairo(
-                  color: Colors.white.withOpacity(0.65),
+                  color: Colors.white.withValues(alpha: 0.65),
                   fontSize: 11,
                   fontWeight: FontWeight.w500,
                 ),
@@ -643,7 +643,7 @@ class _HomePrayerCardState extends State<HomePrayerCard>
         ),
         const SizedBox(width: 8),
 
-        // عداد مُدمج أصغر
+        // ط¹ط¯ط§ط¯ ظ…ظڈط¯ظ…ط¬ ط£طµط؛ط±
         _buildTimerBadge(accent),
       ],
     );
@@ -658,13 +658,13 @@ class _HomePrayerCardState extends State<HomePrayerCard>
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
           decoration: BoxDecoration(
             color: widget.isDark
-                ? accent.withOpacity(0.12)
-                : Colors.white.withOpacity(0.25),
+                ? accent.withValues(alpha: 0.12)
+                : Colors.white.withValues(alpha: 0.25),
             borderRadius: BorderRadius.circular(14),
             border: Border.all(
               color: widget.isDark
-                  ? accent.withOpacity(0.28)
-                  : Colors.white.withOpacity(0.45),
+                  ? accent.withValues(alpha: 0.28)
+                  : Colors.white.withValues(alpha: 0.45),
               width: 0.8,
             ),
           ),
@@ -688,9 +688,9 @@ class _HomePrayerCardState extends State<HomePrayerCard>
     );
   }
 
-  // ════════════════════════════════════════════
-  // شريط التقدم — أنحف
-  // ════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط´ط±ظٹط· ط§ظ„طھظ‚ط¯ظ… â€” ط£ظ†ط­ظپ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildProgressBar(double progress, Color accent) {
     return TweenAnimationBuilder<double>(
@@ -719,7 +719,7 @@ class _HomePrayerCardState extends State<HomePrayerCard>
                     height: barH,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.white.withOpacity(0.15),
+                      color: Colors.white.withValues(alpha: 0.15),
                     ),
                   ),
                 ),
@@ -735,20 +735,20 @@ class _HomePrayerCardState extends State<HomePrayerCard>
                         borderRadius: BorderRadius.circular(10),
                         gradient: LinearGradient(
                           colors: [
-                            Colors.white.withOpacity(0.60),
+                            Colors.white.withValues(alpha: 0.60),
                             Colors.white,
                           ],
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.white.withOpacity(0.20),
+                            color: Colors.white.withValues(alpha: 0.20),
                             blurRadius: 4,
                           ),
                         ],
                       ),
                     ),
                   ),
-                // نقطة
+                // ظ†ظ‚ط·ط©
                 if (val > 0.03)
                   Positioned(
                     left: (fillW - dotSize / 2)
@@ -761,7 +761,7 @@ class _HomePrayerCardState extends State<HomePrayerCard>
                         color: Colors.white,
                         boxShadow: [
                           BoxShadow(
-                            color: accent.withOpacity(0.35),
+                            color: accent.withValues(alpha: 0.35),
                             blurRadius: 6,
                             spreadRadius: 0.5,
                           ),
@@ -777,9 +777,9 @@ class _HomePrayerCardState extends State<HomePrayerCard>
     );
   }
 
-  // ════════════════════════════════════════════
-  // الصلاة التالية — أصغر
-  // ════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„طµظ„ط§ط© ط§ظ„طھط§ظ„ظٹط© â€” ط£طµط؛ط±
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildAfterNext(
       AppLocalizations tr,
@@ -794,13 +794,13 @@ class _HomePrayerCardState extends State<HomePrayerCard>
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
           decoration: BoxDecoration(
             color: widget.isDark
-                ? Colors.white.withOpacity(0.06)
-                : Colors.white.withOpacity(0.20),
+                ? Colors.white.withValues(alpha: 0.06)
+                : Colors.white.withValues(alpha: 0.20),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: widget.isDark
-                  ? Colors.white.withOpacity(0.08)
-                  : Colors.white.withOpacity(0.30),
+                  ? Colors.white.withValues(alpha: 0.08)
+                  : Colors.white.withValues(alpha: 0.30),
               width: 0.8,
             ),
           ),
@@ -808,7 +808,7 @@ class _HomePrayerCardState extends State<HomePrayerCard>
             children: [
               Icon(
                 Icons.skip_next_rounded,
-                color: Colors.white.withOpacity(0.50),
+                color: Colors.white.withValues(alpha: 0.50),
                 size: 14,
               ),
               const SizedBox(width: 5),
@@ -816,7 +816,7 @@ class _HomePrayerCardState extends State<HomePrayerCard>
                 child: Text(
                   '${after.name} ${tr.willStartAt}',
                   style: GoogleFonts.cairo(
-                    color: Colors.white.withOpacity(0.65),
+                    color: Colors.white.withValues(alpha: 0.65),
                     fontSize: 10,
                     fontWeight: FontWeight.w500,
                   ),
@@ -831,10 +831,10 @@ class _HomePrayerCardState extends State<HomePrayerCard>
                   vertical: 3,
                 ),
                 decoration: BoxDecoration(
-                  color: accent.withOpacity(0.22),
+                  color: accent.withValues(alpha: 0.22),
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(
-                    color: accent.withOpacity(0.35),
+                    color: accent.withValues(alpha: 0.35),
                     width: 0.8,
                   ),
                 ),
@@ -854,9 +854,9 @@ class _HomePrayerCardState extends State<HomePrayerCard>
     );
   }
 
-  // ════════════════════════════════════════════
-  // ✅ صف واحد لكل الصلوات الستة — بدون overflow
-  // ════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // âœ… طµظپ ظˆط§ط­ط¯ ظ„ظƒظ„ ط§ظ„طµظ„ظˆط§طھ ط§ظ„ط³طھط© â€” ط¨ط¯ظˆظ† overflow
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildPrayerRow6(Color accent) {
     return Row(
@@ -894,13 +894,13 @@ class _HomePrayerCardState extends State<HomePrayerCard>
       padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 2),
       decoration: BoxDecoration(
         color: isNext
-            ? accent.withOpacity(widget.isDark ? 0.16 : 0.20)
-            : Colors.white.withOpacity(widget.isDark ? 0.05 : 0.12),
+            ? accent.withValues(alpha: widget.isDark ? 0.16 : 0.20)
+            : Colors.white.withValues(alpha: widget.isDark ? 0.05 : 0.12),
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           color: isNext
-              ? accent.withOpacity(widget.isDark ? 0.35 : 0.40)
-              : Colors.white.withOpacity(widget.isDark ? 0.06 : 0.20),
+              ? accent.withValues(alpha: widget.isDark ? 0.35 : 0.40)
+              : Colors.white.withValues(alpha: widget.isDark ? 0.06 : 0.20),
           width: isNext ? 1 : 0.6,
         ),
       ),
@@ -912,7 +912,7 @@ class _HomePrayerCardState extends State<HomePrayerCard>
             size: 13,
             color: isNext
                 ? accent
-                : Colors.white.withOpacity(0.55),
+                : Colors.white.withValues(alpha: 0.55),
           ),
           const SizedBox(height: 2),
           FittedBox(
@@ -924,7 +924,7 @@ class _HomePrayerCardState extends State<HomePrayerCard>
                 fontWeight: FontWeight.w700,
                 color: isNext
                     ? Colors.white
-                    : Colors.white.withOpacity(0.65),
+                    : Colors.white.withValues(alpha: 0.65),
               ),
               maxLines: 1,
             ),
@@ -939,7 +939,7 @@ class _HomePrayerCardState extends State<HomePrayerCard>
                 fontWeight: FontWeight.w600,
                 color: isNext
                     ? accent
-                    : Colors.white.withOpacity(0.50),
+                    : Colors.white.withValues(alpha: 0.50),
               ),
               maxLines: 1,
             ),
@@ -949,9 +949,9 @@ class _HomePrayerCardState extends State<HomePrayerCard>
     );
   }
 
-  // ════════════════════════════════════════════
-  // التحميل
-  // ════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„طھط­ظ…ظٹظ„
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildSkeleton() {
     return HomeCardSkeleton(
@@ -964,9 +964,9 @@ class _HomePrayerCardState extends State<HomePrayerCard>
 
 }
 
-// ════════════════════════════════════════════
-// رسام النجوم
-// ════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط±ط³ط§ظ… ط§ظ„ظ†ط¬ظˆظ…
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
 class _StarData {
   final double x, y, size, phase;
@@ -992,7 +992,7 @@ class _StarsPainter extends CustomPainter {
         Offset(s.x * size.width, s.y * size.height),
         s.size,
         Paint()
-          ..color = Colors.white.withOpacity(o)
+          ..color = Colors.white.withValues(alpha: o)
           ..maskFilter =
           MaskFilter.blur(BlurStyle.normal, s.size * 0.5),
       );

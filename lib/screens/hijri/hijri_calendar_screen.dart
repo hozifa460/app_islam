@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:share_plus/share_plus.dart';
@@ -35,7 +35,7 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen>
   late Animation<Offset> _slideAnimation;
 
   int _factOffset = 0;
-  bool _isLoading = true; // 👈 أضف هذا المتغير
+  bool _isLoading = true; // ًں‘ˆ ط£ط¶ظپ ظ‡ط°ط§ ط§ظ„ظ…طھط؛ظٹط±
 
   @override
   void initState() {
@@ -82,7 +82,7 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen>
     super.dispose();
   }
 
-  // 👈 استخدمنا didChangeDependencies لأننا نحتاج الوصول للغة عبر context
+  // ًں‘ˆ ط§ط³طھط®ط¯ظ…ظ†ط§ didChangeDependencies ظ„ط£ظ†ظ†ط§ ظ†ط­طھط§ط¬ ط§ظ„ظˆطµظˆظ„ ظ„ظ„ط؛ط© ط¹ط¨ط± context
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -92,20 +92,20 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen>
   }
 
   Future<void> _loadHijriData() async {
-    final langCode = context.tr.locale.languageCode; // جلب لغة الهاتف
+    final langCode = context.tr.locale.languageCode; // ط¬ظ„ط¨ ظ„ط؛ط© ط§ظ„ظ‡ط§طھظپ
     await HijriData.loadData(langCode);
     if (mounted) {
       setState(() {
-        _isLoading = false; // البيانات جاهزة، نعرض الشاشة
+        _isLoading = false; // ط§ظ„ط¨ظٹط§ظ†ط§طھ ط¬ط§ظ‡ط²ط©طŒ ظ†ط¹ط±ط¶ ط§ظ„ط´ط§ط´ط©
       });
     }
   }
 
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   // Helper Functions
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   String _getFact(DateTime date) {
-    // 👈 حماية: إذا كانت القائمة فارغة، نُرجع نصاً فارغاً مؤقتاً
+    // ًں‘ˆ ط­ظ…ط§ظٹط©: ط¥ط°ط§ ظƒط§ظ†طھ ط§ظ„ظ‚ط§ط¦ظ…ط© ظپط§ط±ط؛ط©طŒ ظ†ظڈط±ط¬ط¹ ظ†طµط§ظ‹ ظپط§ط±ط؛ط§ظ‹ ظ…ط¤ظ‚طھط§ظ‹
     if (HijriData.islamicFacts.isEmpty) return '';
 
     final seed = date.year * 10000 + date.month * 100 + date.day + _factOffset;
@@ -192,12 +192,12 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen>
   Future<void> _shareFact(String f) async =>
       await Share.share(context.tr.shareFactTitle(f));
 
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   // BUILD
-  // ═══════════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   @override
   Widget build(BuildContext context) {
-    // 👈 يجب أن يكون هذا الشرط في الأعلى تماماً قبل أي حسابات!
+    // ًں‘ˆ ظٹط¬ط¨ ط£ظ† ظٹظƒظˆظ† ظ‡ط°ط§ ط§ظ„ط´ط±ط· ظپظٹ ط§ظ„ط£ط¹ظ„ظ‰ طھظ…ط§ظ…ط§ظ‹ ظ‚ط¨ظ„ ط£ظٹ ط­ط³ط§ط¨ط§طھ!
     if (_isLoading || HijriData.weekDays.isEmpty) {
       return Scaffold(
         backgroundColor: Theme.of(context).brightness == Brightness.dark
@@ -207,7 +207,7 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen>
       );
     }
 
-    // بعد أن نتأكد أن التحميل انتهى، نكمل باقي الكود بشكل طبيعي
+    // ط¨ط¹ط¯ ط£ظ† ظ†طھط£ظƒط¯ ط£ظ† ط§ظ„طھط­ظ…ظٹظ„ ط§ظ†طھظ‡ظ‰طŒ ظ†ظƒظ…ظ„ ط¨ط§ظ‚ظٹ ط§ظ„ظƒظˆط¯ ط¨ط´ظƒظ„ ط·ط¨ظٹط¹ظٹ
     final mq = MediaQuery.of(context);
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final w = mq.size.width;
@@ -230,7 +230,7 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen>
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.light,
       ),
-        child: Directionality( // 👈 إضافة دعم اللغات LTR و RTL
+        child: Directionality( // ًں‘ˆ ط¥ط¶ط§ظپط© ط¯ط¹ظ… ط§ظ„ظ„ط؛ط§طھ LTR ظˆ RTL
           textDirection: context.tr.textDirection,
           child: Scaffold(
         backgroundColor: theme.bg,
@@ -357,7 +357,7 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen>
     return Padding(
       padding: const EdgeInsets.all(8),
       child: Material(
-        color: Colors.white.withOpacity(0.15),
+        color: Colors.white.withValues(alpha: 0.15),
         borderRadius: BorderRadius.circular(12),
         child: InkWell(
           borderRadius: BorderRadius.circular(12),

@@ -1,15 +1,15 @@
-// lib/screens/radio/widgets_surah_player/sp_shapes.dart
+﻿// lib/screens/radio/widgets_surah_player/sp_shapes.dart
 
 import 'package:flutter/material.dart';
 import 'sp_colors.dart';
 
-/// ══════════════════════════════════════════════════════════════
-/// أشكال وديكورات مشغل السورة
-/// ══════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ط£ط´ظƒط§ظ„ ظˆط¯ظٹظƒظˆط±ط§طھ ظ…ط´ط؛ظ„ ط§ظ„ط³ظˆط±ط©
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class SpShapes {
   SpShapes._();
 
-  // ══ أزرار دائرية ══
+  // â•گâ•گ ط£ط²ط±ط§ط± ط¯ط§ط¦ط±ظٹط© â•گâ•گ
   static BoxDecoration circleBtn({
     required Color color,
     List<BoxShadow>? shadows,
@@ -22,36 +22,36 @@ class SpShapes {
         border: border,
       );
 
-  // ══ زر AppBar ══
+  // â•گâ•گ ط²ط± AppBar â•گâ•گ
   static BoxDecoration appBarBtn(bool isDark) => circleBtn(
     color: SpColors.btnBg(isDark),
     shadows: [BoxShadow(color: SpColors.black(0.08), blurRadius: 8)],
   );
 
-  // ══ زر التحكم الصغير ══
+  // â•گâ•گ ط²ط± ط§ظ„طھط­ظƒظ… ط§ظ„طµط؛ظٹط± â•گâ•گ
   static BoxDecoration controlBtn(bool isDark) => circleBtn(
     color: SpColors.controlBtnBg(isDark),
     shadows: [BoxShadow(color: SpColors.black(0.07), blurRadius: 8)],
   );
 
-  // ══ زر التشغيل الرئيسي ══
+  // â•گâ•گ ط²ط± ط§ظ„طھط´ط؛ظٹظ„ ط§ظ„ط±ط¦ظٹط³ظٹ â•گâ•گ
   static BoxDecoration mainPlayBtn(Color primary) => BoxDecoration(
     gradient: LinearGradient(
-      colors: [primary, primary.withOpacity(0.75)],
+      colors: [primary, primary.withValues(alpha: 0.75)],
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
     ),
     shape: BoxShape.circle,
     boxShadow: [
       BoxShadow(
-        color: primary.withOpacity(0.4),
+        color: primary.withValues(alpha: 0.4),
         blurRadius: 22,
         offset: const Offset(0, 6),
       ),
     ],
   );
 
-  // ══ زر التكرار ══
+  // â•گâ•گ ط²ط± ط§ظ„طھظƒط±ط§ط± â•گâ•گ
   static BoxDecoration loopBtn({
     required bool isLooping,
     required Color primary,
@@ -59,14 +59,14 @@ class SpShapes {
   }) =>
       BoxDecoration(
         color: isLooping
-            ? primary.withOpacity(0.15)
+            ? primary.withValues(alpha: 0.15)
             : SpColors.controlBtnBg(isDark),
         shape: BoxShape.circle,
         border:
-        isLooping ? Border.all(color: primary.withOpacity(0.3)) : null,
+        isLooping ? Border.all(color: primary.withValues(alpha: 0.3)) : null,
       );
 
-  // ══ زر إضافي ══
+  // â•گâ•گ ط²ط± ط¥ط¶ط§ظپظٹ â•گâ•گ
   static BoxDecoration extraBtn({
     required bool isActive,
     required Color primary,
@@ -74,27 +74,27 @@ class SpShapes {
   }) =>
       BoxDecoration(
         color: isActive
-            ? primary.withOpacity(0.15)
+            ? primary.withValues(alpha: 0.15)
             : SpColors.extraBtnBg(isDark),
         shape: BoxShape.circle,
         border:
-        isActive ? Border.all(color: primary.withOpacity(0.3)) : null,
+        isActive ? Border.all(color: primary.withValues(alpha: 0.3)) : null,
       );
 
-  // ══ بادج الوضع ══
+  // â•گâ•گ ط¨ط§ط¯ط¬ ط§ظ„ظˆط¶ط¹ â•گâ•گ
   static BoxDecoration modeBadge(bool isOnline) => BoxDecoration(
     color: SpColors.modeBgColor(isOnline),
     borderRadius: BorderRadius.circular(20),
     border: Border.all(color: SpColors.modeBorderColor(isOnline)),
   );
 
-  // ══ زر تحميل في البادج ══
+  // â•گâ•گ ط²ط± طھط­ظ…ظٹظ„ ظپظٹ ط§ظ„ط¨ط§ط¯ط¬ â•گâ•گ
   static BoxDecoration downloadBadgeBtn(Color primary) => BoxDecoration(
-    color: primary.withOpacity(0.15),
+    color: primary.withValues(alpha: 0.15),
     borderRadius: BorderRadius.circular(10),
   );
 
-  // ══ غلاف الألبوم ══
+  // â•گâ•گ ط؛ظ„ط§ظپ ط§ظ„ط£ظ„ط¨ظˆظ… â•گâ•گ
   static BoxDecoration albumArt({
     required Color primary,
     required bool isPlaying,
@@ -103,14 +103,14 @@ class SpShapes {
         shape: BoxShape.circle,
         gradient: RadialGradient(
           colors: [
-            primary.withOpacity(0.25),
-            primary.withOpacity(0.12),
+            primary.withValues(alpha: 0.25),
+            primary.withValues(alpha: 0.12),
             SpColors.goldOp(0.08),
           ],
         ),
         boxShadow: [
           BoxShadow(
-            color: primary.withOpacity(isPlaying ? 0.3 : 0.15),
+            color: primary.withValues(alpha: isPlaying ? 0.3 : 0.15),
             blurRadius: isPlaying ? 50 : 30,
             spreadRadius: isPlaying ? 5 : 0,
           ),
@@ -121,21 +121,21 @@ class SpShapes {
           ),
         ],
         border: Border.all(
-          color: primary.withOpacity(0.2),
+          color: primary.withValues(alpha: 0.2),
           width: 1.5,
         ),
       );
 
-  // ══ دائرة زخرفية داخل الألبوم ══
+  // â•گâ•گ ط¯ط§ط¦ط±ط© ط²ط®ط±ظپظٹط© ط¯ط§ط®ظ„ ط§ظ„ط£ظ„ط¨ظˆظ… â•گâ•گ
   static BoxDecoration albumDecorCircle(Color primary, int index) =>
       BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
-          color: primary.withOpacity(0.07 - index * 0.02),
+          color: primary.withValues(alpha: 0.07 - index * 0.02),
         ),
       );
 
-  // ══ حاوية قائمة السور ══
+  // â•گâ•گ ط­ط§ظˆظٹط© ظ‚ط§ط¦ظ…ط© ط§ظ„ط³ظˆط± â•گâ•گ
   static BoxDecoration playlistContainer({
     required Color primary,
     required bool isDark,
@@ -143,10 +143,10 @@ class SpShapes {
       BoxDecoration(
         color: SpColors.cardBg(isDark),
         borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: primary.withOpacity(0.1)),
+        border: Border.all(color: primary.withValues(alpha: 0.1)),
       );
 
-  // ══ عنصر سورة في القائمة ══
+  // â•گâ•گ ط¹ظ†طµط± ط³ظˆط±ط© ظپظٹ ط§ظ„ظ‚ط§ط¦ظ…ط© â•گâ•گ
   static BoxDecoration playlistItem({
     required bool isCurrent,
     required Color primary,
@@ -154,18 +154,18 @@ class SpShapes {
       BoxDecoration(
         gradient: isCurrent
             ? LinearGradient(
-          colors: [primary, primary.withOpacity(0.8)],
+          colors: [primary, primary.withValues(alpha: 0.8)],
         )
             : null,
-        color: isCurrent ? null : primary.withOpacity(0.08),
+        color: isCurrent ? null : primary.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isCurrent ? primary : primary.withOpacity(0.12),
+          color: isCurrent ? primary : primary.withValues(alpha: 0.12),
         ),
         boxShadow: isCurrent
             ? [
           BoxShadow(
-            color: primary.withOpacity(0.25),
+            color: primary.withValues(alpha: 0.25),
             blurRadius: 6,
             offset: const Offset(0, 2),
           ),
@@ -173,47 +173,47 @@ class SpShapes {
             : null,
       );
 
-  // ══ حاوية المعلومات أونلاين ══
+  // â•گâ•گ ط­ط§ظˆظٹط© ط§ظ„ظ…ط¹ظ„ظˆظ…ط§طھ ط£ظˆظ†ظ„ط§ظٹظ† â•گâ•گ
   static BoxDecoration onlineInfoBox(bool isDark) => BoxDecoration(
-    color: Colors.blue.withOpacity(isDark ? 0.08 : 0.05),
+    color: Colors.blue.withValues(alpha: isDark ? 0.08 : 0.05),
     borderRadius: BorderRadius.circular(16),
-    border: Border.all(color: Colors.blue.withOpacity(0.15)),
+    border: Border.all(color: Colors.blue.withValues(alpha: 0.15)),
   );
 
-  // ══ Options Sheet ══
+  // â•گâ•گ Options Sheet â•گâ•گ
   static BoxDecoration optionsSheet(bool isDark) => BoxDecoration(
     color: isDark ? SpColors.darkSheet : Colors.white,
     borderRadius:
     const BorderRadius.vertical(top: Radius.circular(24)),
   );
 
-  // ══ عنصر خيار ══
+  // â•گâ•گ ط¹ظ†طµط± ط®ظٹط§ط± â•گâ•گ
   static BoxDecoration optionItem(Color color) => BoxDecoration(
-    color: color.withOpacity(0.07),
+    color: color.withValues(alpha: 0.07),
     borderRadius: BorderRadius.circular(14),
-    border: Border.all(color: color.withOpacity(0.12)),
+    border: Border.all(color: color.withValues(alpha: 0.12)),
   );
 
-  // ══ مقبض الـ Sheet ══
+  // â•گâ•گ ظ…ظ‚ط¨ط¶ ط§ظ„ظ€ Sheet â•گâ•گ
   static BoxDecoration sheetHandle() => BoxDecoration(
     color: SpColors.grey(0.3),
     borderRadius: BorderRadius.circular(2),
   );
 }
 
-/// ══ أحجام متجاوبة ══
+/// â•گâ•گ ط£ط­ط¬ط§ظ… ظ…طھط¬ط§ظˆط¨ط© â•گâ•گ
 class SpSizes {
   SpSizes._();
 
-  // ══ غلاف الألبوم ══
+  // â•گâ•گ ط؛ظ„ط§ظپ ط§ظ„ط£ظ„ط¨ظˆظ… â•گâ•گ
   static double albumArtSize(double screenWidth, bool isTablet) =>
       isTablet ? screenWidth * 0.5 : screenWidth * 0.62;
 
-  // ══ أزرار AppBar ══
+  // â•گâ•گ ط£ط²ط±ط§ط± AppBar â•گâ•گ
   static double appBarBtnSize(bool isTablet) => isTablet ? 44.0 : 38.0;
   static double appBarIconSize(bool isTablet) => isTablet ? 26.0 : 22.0;
 
-  // ══ أزرار التحكم ══
+  // â•گâ•گ ط£ط²ط±ط§ط± ط§ظ„طھط­ظƒظ… â•گâ•گ
   static double mainPlayBtnSize(bool isTablet) => isTablet ? 72.0 : 64.0;
   static double mainPlayIconSize(bool isTablet) => isTablet ? 36.0 : 32.0;
   static double skipBtnSize(bool isTablet) => isTablet ? 50.0 : 44.0;
@@ -221,18 +221,18 @@ class SpSizes {
   static double seekBtnSize(bool isTablet) => isTablet ? 46.0 : 40.0;
   static double seekIconSize(bool isTablet) => isTablet ? 22.0 : 19.0;
 
-  // ══ زر التكرار ══
+  // â•گâ•گ ط²ط± ط§ظ„طھظƒط±ط§ط± â•گâ•گ
   static double loopBtnSize(bool isTablet) => isTablet ? 42.0 : 38.0;
   static double loopIconSize(bool isTablet) => isTablet ? 20.0 : 18.0;
 
-  // ══ أزرار إضافية ══
+  // â•گâ•گ ط£ط²ط±ط§ط± ط¥ط¶ط§ظپظٹط© â•گâ•گ
   static double extraBtnSize(bool isTablet) => isTablet ? 48.0 : 42.0;
   static double extraIconSize(bool isTablet) => isTablet ? 22.0 : 19.0;
 
-  // ══ ارتفاع Playlist ══
+  // â•گâ•گ ط§ط±طھظپط§ط¹ Playlist â•گâ•گ
   static double playlistHeight(bool isTablet) => isTablet ? 90.0 : 78.0;
 
-  // ══ فونت ══
+  // â•گâ•گ ظپظˆظ†طھ â•گâ•گ
   static double surahNameSize(bool isTablet) => isTablet ? 24.0 : 20.0;
   static double surahDetailSize(bool isTablet) => isTablet ? 13.0 : 11.0;
   static double appBarTitleSize(bool isTablet) => isTablet ? 14.0 : 12.0;
@@ -245,7 +245,7 @@ class SpSizes {
   static double onlineInfoSize(bool isTablet) => isTablet ? 12.0 : 11.0;
   static double onlineIconSize(bool isTablet) => isTablet ? 20.0 : 17.0;
 
-  // ══ Padding ══
+  // â•گâ•گ Padding â•گâ•گ
   static double horizontalPadding(bool isTablet) => isTablet ? 32.0 : 24.0;
   static double controlsPadding(bool isTablet) => isTablet ? 28.0 : 20.0;
   static double progressPadding(bool isTablet) => isTablet ? 28.0 : 22.0;
@@ -253,7 +253,7 @@ class SpSizes {
   static double appBarTopPadding(bool isTablet) => isTablet ? 14.0 : 10.0;
   static double playlistMargin(bool isTablet) => isTablet ? 20.0 : 14.0;
 
-  // ══ Slider ══
+  // â•گâ•گ Slider â•گâ•گ
   static double trackHeight(bool isTablet) => isTablet ? 5.0 : 4.0;
   static double thumbRadius(bool isTablet) => isTablet ? 7.0 : 6.0;
   static double overlayRadius(bool isTablet) => isTablet ? 16.0 : 14.0;

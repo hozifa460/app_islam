@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProgressRing extends StatelessWidget {
-  final double progress; // 0.0 → 1.0
+  final double progress; // 0.0 â†’ 1.0
   final String label;
   final Color color;
   final double size;
@@ -28,7 +28,7 @@ class ProgressRing extends StatelessWidget {
               CircularProgressIndicator(
                 value: progress,
                 strokeWidth: 8,
-                backgroundColor: color.withOpacity(0.2),
+                backgroundColor: color.withValues(alpha: 0.2),
                 valueColor: AlwaysStoppedAnimation(color),
               ),
               Text(

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'sunnah_theme.dart';
 
 class SunnahEmptyState extends StatelessWidget {
@@ -37,29 +37,29 @@ class SunnahEmptyState extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   gradient: RadialGradient(colors: [
-                    SunnahTheme.emerald.withOpacity(0.15),
+                    SunnahTheme.emerald.withValues(alpha: 0.15),
                     Colors.transparent,
                   ]),
                   border: Border.all(
-                    color: SunnahTheme.emerald.withOpacity(0.3),
+                    color: SunnahTheme.emerald.withValues(alpha: 0.3),
                     width: 2,
                   ),
                 ),
                 child: Center(
-                  child: Text('🌙',
+                  child: Text('ًںŒ™',
                       style: TextStyle(fontSize: size.width * 0.14)),
                 ),
               ),
             ),
             SizedBox(height: size.height * 0.03),
-            Text('لا توجد سنن لهذا الوقت',
+            Text('ظ„ط§ طھظˆط¬ط¯ ط³ظ†ظ† ظ„ظ‡ط°ط§ ط§ظ„ظˆظ‚طھ',
                 style: TextStyle(
                   color: theme.textPrimary,
                   fontSize: size.width * 0.048,
                   fontWeight: FontWeight.bold,
                 )),
             SizedBox(height: size.height * 0.01),
-            Text('تفضل بمشاهدة جميع السنن\nمن التبويب الثاني',
+            Text('طھظپط¶ظ„ ط¨ظ…ط´ط§ظ‡ط¯ط© ط¬ظ…ظٹط¹ ط§ظ„ط³ظ†ظ†\nظ…ظ† ط§ظ„طھط¨ظˆظٹط¨ ط§ظ„ط«ط§ظ†ظٹ',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: theme.textSecondary,
@@ -79,7 +79,7 @@ class SunnahEmptyState extends StatelessWidget {
                   gradient: SunnahTheme.emeraldGradient,
                   boxShadow: [
                     BoxShadow(
-                      color: SunnahTheme.emerald.withOpacity(0.4),
+                      color: SunnahTheme.emerald.withValues(alpha: 0.4),
                       blurRadius: 12,
                       offset: const Offset(0, 4),
                     ),
@@ -88,9 +88,9 @@ class SunnahEmptyState extends StatelessWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text('📋', style: TextStyle(fontSize: 16)),
+                    const Text('ًں“‹', style: TextStyle(fontSize: 16)),
                     SizedBox(width: size.width * 0.02),
-                    Text('جميع السنن',
+                    Text('ط¬ظ…ظٹط¹ ط§ظ„ط³ظ†ظ†',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: size.width * 0.038,

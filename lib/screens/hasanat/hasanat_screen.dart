@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islamic_app/screens/hasanat/services/deeds_service.dart';
@@ -66,7 +66,7 @@ class _HasanatScreenState extends State<HasanatScreen>
   @override
   void dispose() {
     _bounceController.dispose();
-    _scaffoldMessenger = null; // نظّف المرجع
+    _scaffoldMessenger = null; // ظ†ط¸ظ‘ظپ ط§ظ„ظ…ط±ط¬ط¹
     super.dispose();
   }
 
@@ -75,7 +75,7 @@ class _HasanatScreenState extends State<HasanatScreen>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // احفظ مرجع ScaffoldMessenger هنا بأمان
+    // ط§ط­ظپط¸ ظ…ط±ط¬ط¹ ScaffoldMessenger ظ‡ظ†ط§ ط¨ط£ظ…ط§ظ†
     _scaffoldMessenger = ScaffoldMessenger.of(context);
 
     if (!_dataLoaded) {
@@ -85,12 +85,12 @@ class _HasanatScreenState extends State<HasanatScreen>
   }
 
   Future<void> _initData() async {
-    // 1. جلب لغة التطبيق الحالية (تأكد من وجود استدعاء ملف الترجمة أعلى الشاشة)
+    // 1. ط¬ظ„ط¨ ظ„ط؛ط© ط§ظ„طھط·ط¨ظٹظ‚ ط§ظ„ط­ط§ظ„ظٹط© (طھط£ظƒط¯ ظ…ظ† ظˆط¬ظˆط¯ ط§ط³طھط¯ط¹ط§ط، ظ…ظ„ظپ ط§ظ„طھط±ط¬ظ…ط© ط£ط¹ظ„ظ‰ ط§ظ„ط´ط§ط´ط©)
     final String currentLang = context.tr.locale.languageCode;
 
     final prefs = await SharedPreferences.getInstance();
 
-    // ═══ حمّل محلياً أولاً ═══
+    // â•گâ•گâ•گ ط­ظ…ظ‘ظ„ ظ…ط­ظ„ظٹط§ظ‹ ط£ظˆظ„ط§ظ‹ â•گâ•گâ•گ
     setState(() {
       palmTrees = prefs.getInt('palmTrees') ?? 0;
       palaces = prefs.getInt('palaces') ?? 0;
@@ -105,18 +105,18 @@ class _HasanatScreenState extends State<HasanatScreen>
       }
     });
 
-    // ═══ حمّل الأعمال + أظهر الشاشة فوراً ═══
-    // 2. نمرر اللغة الحالية لخدمة البيانات هنا 👇
+    // â•گâ•گâ•گ ط­ظ…ظ‘ظ„ ط§ظ„ط£ط¹ظ…ط§ظ„ + ط£ط¸ظ‡ط± ط§ظ„ط´ط§ط´ط© ظپظˆط±ط§ظ‹ â•گâ•گâ•گ
+    // 2. ظ†ظ…ط±ط± ط§ظ„ظ„ط؛ط© ط§ظ„ط­ط§ظ„ظٹط© ظ„ط®ط¯ظ…ط© ط§ظ„ط¨ظٹط§ظ†ط§طھ ظ‡ظ†ط§ ًں‘‡
     final loadedDeeds = await DeedsService.loadDeeds(currentLang);
 
     if (!mounted) return;
 
     setState(() {
       deeds = loadedDeeds;
-      _isLoading = false; // ← أظهر الشاشة فوراً
+      _isLoading = false; // â†گ ط£ط¸ظ‡ط± ط§ظ„ط´ط§ط´ط© ظپظˆط±ط§ظ‹
     });
 
-    // ═══ حمّل من السحابة في الخلفية ═══
+    // â•گâ•گâ•گ ط­ظ…ظ‘ظ„ ظ…ظ† ط§ظ„ط³ط­ط§ط¨ط© ظپظٹ ط§ظ„ط®ظ„ظپظٹط© â•گâ•گâ•گ
     _loadFromCloud();
   }
 
@@ -156,7 +156,7 @@ class _HasanatScreenState extends State<HasanatScreen>
     } catch (_) {}
   }
 
-// ═══ حفظ محلي ═══
+// â•گâ•گâ•گ ط­ظپط¸ ظ…ط­ظ„ظٹ â•گâ•گâ•گ
   Future<void> _saveLocal(SharedPreferences prefs) async {
     await prefs.setInt('palmTrees', palmTrees);
     await prefs.setInt('palaces', palaces);
@@ -171,12 +171,12 @@ class _HasanatScreenState extends State<HasanatScreen>
     }
   }
 
-// ═══ حفظ محلي + سحابي ═══
+// â•گâ•گâ•گ ط­ظپط¸ ظ…ط­ظ„ظٹ + ط³ط­ط§ط¨ظٹ â•گâ•گâ•گ
   Future<void> _saveData() async {
     final prefs = await SharedPreferences.getInstance();
     await _saveLocal(prefs);
 
-    // السحابة
+    // ط§ظ„ط³ط­ط§ط¨ط©
     if (!mounted) return;
     final auth = context.read<AuthService>();
     if (auth.user?.isGuest ?? true) return;
@@ -237,7 +237,7 @@ class _HasanatScreenState extends State<HasanatScreen>
 
     _saveData();
 
-    // ✅ الحل الصحيح - بعد Frame وبدون context
+    // âœ… ط§ظ„ط­ظ„ ط§ظ„طµط­ظٹط­ - ط¨ط¹ط¯ Frame ظˆط¨ط¯ظˆظ† context
     if (rewardMessage != null) {
       final msg = rewardMessage!;
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -273,7 +273,7 @@ class _HasanatScreenState extends State<HasanatScreen>
   }
 
   void _showCompletionSnackbar(String message) {
-    // ✅ استخدم المرجع المحفوظ بدلاً من context
+    // âœ… ط§ط³طھط®ط¯ظ… ط§ظ„ظ…ط±ط¬ط¹ ط§ظ„ظ…ط­ظپظˆط¸ ط¨ط¯ظ„ط§ظ‹ ظ…ظ† context
     final messenger = _scaffoldMessenger;
     if (messenger == null) return;
 
@@ -323,7 +323,7 @@ class _HasanatScreenState extends State<HasanatScreen>
             'scale': 0,
           };
         });
-        await _saveData(); // يحفظ الصفر محلياً وسحابياً
+        await _saveData(); // ظٹط­ظپط¸ ط§ظ„طµظپط± ظ…ط­ظ„ظٹط§ظ‹ ظˆط³ط­ط§ط¨ظٹط§ظ‹
       },
     );
   }
@@ -345,7 +345,7 @@ class _HasanatScreenState extends State<HasanatScreen>
     final isSmall = screenWidth < 360;
 
     return Directionality(
-      textDirection: context.tr.textDirection, // 👈 تمت الإضافة ليدعم LTR
+      textDirection: context.tr.textDirection, // ًں‘ˆ طھظ…طھ ط§ظ„ط¥ط¶ط§ظپط© ظ„ظٹط¯ط¹ظ… LTR
       child: Scaffold(
         backgroundColor: bgColor,
         extendBodyBehindAppBar: true,
@@ -356,7 +356,7 @@ class _HasanatScreenState extends State<HasanatScreen>
           title: FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
-              context.tr.hasanatHarvestTitle, // 👈 تمت الترجمة
+              context.tr.hasanatHarvestTitle, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
               style: GoogleFonts.cairo(
                 fontWeight: FontWeight.bold,
                 fontSize: 22,
@@ -368,8 +368,8 @@ class _HasanatScreenState extends State<HasanatScreen>
             margin: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               color: isDark
-                  ? Colors.white.withOpacity(0.1)
-                  : _gold.withOpacity(0.1),
+                  ? Colors.white.withValues(alpha: 0.1)
+                  : _gold.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(12),
             ),
             child: IconButton(
@@ -382,7 +382,7 @@ class _HasanatScreenState extends State<HasanatScreen>
             Container(
               margin: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: Colors.redAccent.withOpacity(0.1),
+                color: Colors.redAccent.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: IconButton(
@@ -398,7 +398,7 @@ class _HasanatScreenState extends State<HasanatScreen>
           child: CustomScrollView(
             physics: const BouncingScrollPhysics(),
             slivers: [
-              // ✅ قسم الإحصائيات
+              // âœ… ظ‚ط³ظ… ط§ظ„ط¥ط­طµط§ط¦ظٹط§طھ
               SliverToBoxAdapter(
                 child: HasanatStatsSection(
                   isDark: isDark,
@@ -420,7 +420,7 @@ class _HasanatScreenState extends State<HasanatScreen>
                 ),
               ),
 
-              // ✅ عنوان القسم
+              // âœ… ط¹ظ†ظˆط§ظ† ط§ظ„ظ‚ط³ظ…
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(20, 16, 20, 10),
@@ -437,7 +437,7 @@ class _HasanatScreenState extends State<HasanatScreen>
                       const SizedBox(width: 10),
                       Expanded(
                         child: Text(
-                          context.tr.deedsAndRewards, // 👈 تمت الترجمة
+                          context.tr.deedsAndRewards, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
                           style: GoogleFonts.cairo(
                             fontSize: isSmall ? 18 : 20,
                             fontWeight: FontWeight.bold,
@@ -451,11 +451,11 @@ class _HasanatScreenState extends State<HasanatScreen>
                           vertical: 4,
                         ),
                         decoration: BoxDecoration(
-                          color: _gold.withOpacity(0.12),
+                          color: _gold.withValues(alpha: 0.12),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Text(
-                          context.tr.azkarCount(deeds.length), // 👈 تمت الترجمة
+                          context.tr.azkarCount(deeds.length), // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
                           style: GoogleFonts.cairo(
                             fontSize: 11,
                             color: _gold,
@@ -468,7 +468,7 @@ class _HasanatScreenState extends State<HasanatScreen>
                 ),
               ),
 
-              // ✅ قائمة الأعمال
+              // âœ… ظ‚ط§ط¦ظ…ط© ط§ظ„ط£ط¹ظ…ط§ظ„
               SliverPadding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 sliver: SliverList(

@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../languages/app_localizations.dart';
 
-/// ══ FIX #4: إزالة BackdropFilter ══
+/// â•گâ•گ FIX #4: ط¥ط²ط§ظ„ط© BackdropFilter â•گâ•گ
 class HomeHadithCard extends StatelessWidget {
   final Color primary;
   final bool isDark;
@@ -20,10 +20,10 @@ class HomeHadithCard extends StatelessWidget {
     final tr = context.tr;
 
     final bgColor = isDark
-        ? Colors.white.withOpacity(0.05)
-        : Colors.white.withOpacity(0.85);
-    final borderColor = primary.withOpacity(0.18);
-    final shadowColor = Colors.black.withOpacity(isDark ? 0.08 : 0.03);
+        ? Colors.white.withValues(alpha: 0.05)
+        : Colors.white.withValues(alpha: 0.85);
+    final borderColor = primary.withValues(alpha: 0.18);
+    final shadowColor = Colors.black.withValues(alpha: isDark ? 0.08 : 0.03);
     final iconColor = isDark ? Colors.white70 : primary;
     final textColor = isDark ? Colors.white : const Color(0xFF2E2415);
 
@@ -50,7 +50,7 @@ class HomeHadithCard extends StatelessWidget {
               child: Icon(
                 Icons.format_quote_rounded,
                 size: 44,
-                color: iconColor.withOpacity(0.10),
+                color: iconColor.withValues(alpha: 0.10),
               ),
             ),
             Column(
@@ -74,7 +74,7 @@ class HomeHadithCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
                   decoration: BoxDecoration(
-                    color: primary.withOpacity(0.08),
+                    color: primary.withValues(alpha: 0.08),
                     borderRadius: BorderRadius.circular(14),
                   ),
                   child: Text(

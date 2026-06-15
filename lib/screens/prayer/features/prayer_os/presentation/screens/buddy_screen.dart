@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BuddyScreen extends StatefulWidget {
@@ -11,7 +11,7 @@ class BuddyScreen extends StatefulWidget {
 }
 
 class _BuddyScreenState extends State<BuddyScreen> {
-  String buddyName = "أحمد";
+  String buddyName = "ط£ط­ظ…ط¯";
   int buddyStreak = 12;
   int buddyToday = 3;
 
@@ -25,7 +25,7 @@ class _BuddyScreenState extends State<BuddyScreen> {
     return Scaffold(
       backgroundColor: bgColor,
       appBar: AppBar(
-        title: const Text("رفيق الصلاة"),
+        title: const Text("ط±ظپظٹظ‚ ط§ظ„طµظ„ط§ط©"),
         backgroundColor: widget.primary,
       ),
       body: Padding(
@@ -33,7 +33,7 @@ class _BuddyScreenState extends State<BuddyScreen> {
         child: Column(
           children: [
             Text(
-              "👥 رفيقك: $buddyName",
+              "ًں‘¥ ط±ظپظٹظ‚ظƒ: $buddyName",
               style: GoogleFonts.cairo(
                   fontSize: 18, fontWeight: FontWeight.bold),
             ),
@@ -42,18 +42,18 @@ class _BuddyScreenState extends State<BuddyScreen> {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: widget.primary.withOpacity(0.1),
+                color: widget.primary.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Column(
                 children: [
-                  Text("🔥 $buddyStreak يوم متواصل"),
+                  Text("ًں”¥ $buddyStreak ظٹظˆظ… ظ…طھظˆط§طµظ„"),
                   const SizedBox(height: 8),
                   LinearProgressIndicator(
                     value: buddyToday / 5,
                   ),
                   const SizedBox(height: 8),
-                  Text("$buddyToday / 5 صلوات اليوم"),
+                  Text("$buddyToday / 5 طµظ„ظˆط§طھ ط§ظ„ظٹظˆظ…"),
                 ],
               ),
             ),
@@ -62,7 +62,7 @@ class _BuddyScreenState extends State<BuddyScreen> {
 
             ElevatedButton(
               onPressed: () {},
-              child: const Text("ذكّر رفيقك بالصلاة"),
+              child: const Text("ط°ظƒظ‘ط± ط±ظپظٹظ‚ظƒ ط¨ط§ظ„طµظ„ط§ط©"),
             )
           ],
         ),

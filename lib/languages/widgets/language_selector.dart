@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -11,34 +11,34 @@ class LanguageButton extends StatelessWidget {
   static const _gold = Color(0xFFD4AF37);
 
   static const Map<String, String> _flags = {
-    'ar': '🇸🇦',
-    'en': '🇺🇸',
-    'fr': '🇫🇷',
-    'de': '🇩🇪',
-    'es': '🇪🇸',
-    'it': '🇮🇹',
-    'pt': '🇧🇷',
-    'nl': '🇳🇱',
-    'ru': '🇷🇺',
-    'tr': '🇹🇷',
-    'ur': '🇵🇰',
-    'id': '🇮🇩',
-    'ms': '🇲🇾',
-    'hi': '🇮🇳',
-    'ja': '🇯🇵',
-    'zh': '🇨🇳',
-    'uz': '🇺🇿',
-    'sw': '🇹🇿',
-    'ha': '🇳🇬',
-    'am': '🇪🇹',
-    'so': '🇸🇴',
+    'ar': 'ًں‡¸ًں‡¦',
+    'en': 'ًں‡؛ًں‡¸',
+    'fr': 'ًں‡«ًں‡·',
+    'de': 'ًں‡©ًں‡ھ',
+    'es': 'ًں‡ھًں‡¸',
+    'it': 'ًں‡®ًں‡¹',
+    'pt': 'ًں‡§ًں‡·',
+    'nl': 'ًں‡³ًں‡±',
+    'ru': 'ًں‡·ًں‡؛',
+    'tr': 'ًں‡¹ًں‡·',
+    'ur': 'ًں‡µًں‡°',
+    'id': 'ًں‡®ًں‡©',
+    'ms': 'ًں‡²ًں‡¾',
+    'hi': 'ًں‡®ًں‡³',
+    'ja': 'ًں‡¯ًں‡µ',
+    'zh': 'ًں‡¨ًں‡³',
+    'uz': 'ًں‡؛ًں‡؟',
+    'sw': 'ًں‡¹ًں‡؟',
+    'ha': 'ًں‡³ًں‡¬',
+    'am': 'ًں‡ھًں‡¹',
+    'so': 'ًں‡¸ًں‡´',
   };
 
   @override
   Widget build(BuildContext context) {
     final localeProvider = context.watch<LocaleProvider>();
     final currentCode = localeProvider.locale.languageCode;
-    final flag = _flags[currentCode] ?? '🌐';
+    final flag = _flags[currentCode] ?? 'ًںŒگ';
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Material(
@@ -54,16 +54,16 @@ class LanguageButton extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(14),
             color: isDark
-                ? Colors.white.withOpacity(0.08)
-                : Colors.white.withOpacity(0.7),
+                ? Colors.white.withValues(alpha: 0.08)
+                : Colors.white.withValues(alpha: 0.7),
             border: Border.all(
               color: isDark
-                  ? Colors.white.withOpacity(0.12)
-                  : _gold.withOpacity(0.2),
+                  ? Colors.white.withValues(alpha: 0.12)
+                  : _gold.withValues(alpha: 0.2),
             ),
             boxShadow: [
               BoxShadow(
-                color: _gold.withOpacity(isDark ? 0.1 : 0.08),
+                color: _gold.withValues(alpha: isDark ? 0.1 : 0.08),
                 blurRadius: 8,
                 offset: const Offset(0, 2),
               ),
@@ -87,7 +87,7 @@ class LanguageButton extends StatelessWidget {
                 Icons.keyboard_arrow_down_rounded,
                 size: 20,
                 color: isDark
-                    ? Colors.white.withOpacity(0.5)
+                    ? Colors.white.withValues(alpha: 0.5)
                     : Colors.grey.shade600,
               ),
             ],

@@ -1,4 +1,4 @@
-// lib/screens/radio/widgets/modern_bottom_player.dart
+﻿// lib/screens/radio/widgets/modern_bottom_player.dart
 
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -25,7 +25,7 @@ class ModernBottomPlayer extends StatelessWidget {
   final EdgeInsets safePadding;
   final AnimationController equalizerController;
 
-  // ✅ أبقيناها اختيارية للتوافق مع الاستدعاءات القديمة
+  // âœ… ط£ط¨ظ‚ظٹظ†ط§ظ‡ط§ ط§ط®طھظٹط§ط±ظٹط© ظ„ظ„طھظˆط§ظپظ‚ ظ…ط¹ ط§ظ„ط§ط³طھط¯ط¹ط§ط،ط§طھ ط§ظ„ظ‚ط¯ظٹظ…ط©
   final RadioIntillegence? onlineService;
   final OfflineRadioService? offlineService;
   final OnlineSurahService? onlineSurahService;
@@ -46,7 +46,7 @@ class ModernBottomPlayer extends StatelessWidget {
     return Selector3<RadioIntillegence, OfflineRadioService, OnlineSurahService,
         _BottomPlayerState?>(
       selector: (_, online, offline, onlineSurah) {
-        // ✅ الأولوية: online radio ثم online surah ثم offline
+        // âœ… ط§ظ„ط£ظˆظ„ظˆظٹط©: online radio ط«ظ… online surah ط«ظ… offline
         if (online.currentStation != null) {
           return _BottomPlayerState(
             source: _BottomPlayerSource.online,
@@ -65,7 +65,7 @@ class ModernBottomPlayer extends StatelessWidget {
           return _BottomPlayerState(
             source: _BottomPlayerSource.onlineSurah,
             name: onlineSurah.currentSurahName,
-            emoji: onlineSurah.currentStation?.iconEmoji ?? '🎵',
+            emoji: onlineSurah.currentStation?.iconEmoji ?? 'ًںژµ',
             subtitle: onlineSurah.currentStation?.name ?? '',
             imageUrl: onlineSurah.currentStation?.imageUrl,
             imageAsset: onlineSurah.currentStation?.imageAsset,
@@ -81,7 +81,7 @@ class ModernBottomPlayer extends StatelessWidget {
             name: offline.currentSurahName.isNotEmpty
                 ? offline.currentSurahName
                 : offline.currentStation?.name ?? '',
-            emoji: offline.currentStation?.iconEmoji ?? '🎵',
+            emoji: offline.currentStation?.iconEmoji ?? 'ًںژµ',
             subtitle: offline.currentStation?.name ?? '',
             imageUrl: offline.currentStation?.imageUrl,
             imageAsset: offline.currentStation?.imageAsset,
@@ -110,7 +110,7 @@ class ModernBottomPlayer extends StatelessWidget {
             decoration: RadioShapes.bottomPlayerDecoration(context),
             child: Row(
               children: [
-                // ══ صورة المشغل ══
+                // â•گâ•گ طµظˆط±ط© ط§ظ„ظ…ط´ط؛ظ„ â•گâ•گ
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: SizedBox(
@@ -129,7 +129,7 @@ class ModernBottomPlayer extends StatelessWidget {
 
                 const SizedBox(width: 12),
 
-                // ══ المعلومات ══
+                // â•گâ•گ ط§ظ„ظ…ط¹ظ„ظˆظ…ط§طھ â•گâ•گ
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -166,7 +166,7 @@ class ModernBottomPlayer extends StatelessWidget {
 
                 const SizedBox(width: 10),
 
-                // ══ الأزرار ══
+                // â•گâ•گ ط§ظ„ط£ط²ط±ط§ط± â•گâ•گ
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -293,7 +293,7 @@ class _BottomPlayerState {
   );
 }
 
-/// ══ مؤشر البث المباشر ══
+/// â•گâ•گ ظ…ط¤ط´ط± ط§ظ„ط¨ط« ط§ظ„ظ…ط¨ط§ط´ط± â•گâ•گ
 class _LiveIndicator extends StatelessWidget {
   final AnimationController controller;
   final bool isOnline;
@@ -315,11 +315,11 @@ class _LiveIndicator extends StatelessWidget {
         final liveColor = isOnline ? RadioColors.gold : Colors.green;
 
         return Text(
-          isOnline ? '● LIVE' : '◉ أوفلاين',
+          isOnline ? 'â—ڈ LIVE' : 'â—‰ ط£ظˆظپظ„ط§ظٹظ†',
           style: GoogleFonts.poppins(
             fontSize: 9,
             fontWeight: FontWeight.w800,
-            color: liveColor.withOpacity(op),
+            color: liveColor.withValues(alpha: op),
             letterSpacing: 0.5,
           ),
         );
@@ -328,7 +328,7 @@ class _LiveIndicator extends StatelessWidget {
   }
 }
 
-/// ══ زر التشغيل الرئيسي ══
+/// â•گâ•گ ط²ط± ط§ظ„طھط´ط؛ظٹظ„ ط§ظ„ط±ط¦ظٹط³ظٹ â•گâ•گ
 class _MainPlayButton extends StatelessWidget {
   final bool isPlaying;
   final bool isBuffering;

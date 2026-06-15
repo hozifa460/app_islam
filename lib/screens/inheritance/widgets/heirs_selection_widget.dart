@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../../../languages/app_localizations.dart';
 import '../../../models/inheritance_models.dart';
 
@@ -116,7 +116,7 @@ class _HeirsSelectionWidgetState extends State<HeirsSelectionWidget> {
   Widget build(BuildContext context) {
     final cardColor = widget.isDarkMode ? const Color(0xFF151B26) : Colors.white;
     final textColor = widget.isDarkMode ? Colors.white : const Color(0xFF2D2D2D);
-    final borderColor = widget.isDarkMode ? Colors.white.withOpacity(0.08) : Colors.grey.withOpacity(0.15);
+    final borderColor = widget.isDarkMode ? Colors.white.withValues(alpha: 0.08) : Colors.grey.withValues(alpha: 0.15);
     final categories = _categorizeHeirs(context);
 
     return Container(
@@ -126,7 +126,7 @@ class _HeirsSelectionWidgetState extends State<HeirsSelectionWidget> {
         border: Border.all(color: borderColor),
         boxShadow: [
           BoxShadow(
-            color: widget.isDarkMode ? Colors.black.withOpacity(0.2) : Colors.black.withOpacity(0.05),
+            color: widget.isDarkMode ? Colors.black.withValues(alpha: 0.2) : Colors.black.withValues(alpha: 0.05),
             blurRadius: 15,
             offset: const Offset(0, 5),
           ),
@@ -143,8 +143,8 @@ class _HeirsSelectionWidgetState extends State<HeirsSelectionWidget> {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    widget.primaryColor.withOpacity(widget.isDarkMode ? 0.15 : 0.08),
-                    widget.primaryColor.withOpacity(widget.isDarkMode ? 0.08 : 0.03),
+                    widget.primaryColor.withValues(alpha: widget.isDarkMode ? 0.15 : 0.08),
+                    widget.primaryColor.withValues(alpha: widget.isDarkMode ? 0.08 : 0.03),
                   ],
                 ),
                 borderRadius: BorderRadius.vertical(
@@ -158,12 +158,12 @@ class _HeirsSelectionWidgetState extends State<HeirsSelectionWidget> {
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [widget.primaryColor, widget.primaryColor.withOpacity(0.7)],
+                        colors: [widget.primaryColor, widget.primaryColor.withValues(alpha: 0.7)],
                       ),
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
-                          color: widget.primaryColor.withOpacity(0.3),
+                          color: widget.primaryColor.withValues(alpha: 0.3),
                           blurRadius: 8,
                           offset: const Offset(0, 3),
                         ),
@@ -192,7 +192,7 @@ class _HeirsSelectionWidgetState extends State<HeirsSelectionWidget> {
                                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
                                 decoration: BoxDecoration(
                                   gradient: LinearGradient(
-                                    colors: [widget.primaryColor, widget.primaryColor.withOpacity(0.8)],
+                                    colors: [widget.primaryColor, widget.primaryColor.withValues(alpha: 0.8)],
                                   ),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
@@ -218,9 +218,9 @@ class _HeirsSelectionWidgetState extends State<HeirsSelectionWidget> {
                                 margin: const EdgeInsets.only(left: 4),
                                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                                 decoration: BoxDecoration(
-                                  color: widget.primaryColor.withOpacity(0.1),
+                                  color: widget.primaryColor.withValues(alpha: 0.1),
                                   borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(color: widget.primaryColor.withOpacity(0.2)),
+                                  border: Border.all(color: widget.primaryColor.withValues(alpha: 0.2)),
                                 ),
                                 child: Text(
                                   '${_getHeirName(context, h.type)}${h.count > 1 ? " (${h.count})" : ""}',
@@ -239,7 +239,7 @@ class _HeirsSelectionWidgetState extends State<HeirsSelectionWidget> {
                             context.tr.clickToSelectHeirs,
                             style: TextStyle(
                               fontSize: 12,
-                              color: textColor.withOpacity(0.5),
+                              color: textColor.withValues(alpha: 0.5),
                             ),
                           ),
                       ],
@@ -251,7 +251,7 @@ class _HeirsSelectionWidgetState extends State<HeirsSelectionWidget> {
                     child: Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: widget.primaryColor.withOpacity(0.1),
+                        color: widget.primaryColor.withValues(alpha: 0.1),
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
@@ -307,12 +307,12 @@ class _HeirsSelectionWidgetState extends State<HeirsSelectionWidget> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  color.withOpacity(widget.isDarkMode ? 0.2 : 0.1),
-                  color.withOpacity(widget.isDarkMode ? 0.1 : 0.05),
+                  color.withValues(alpha: widget.isDarkMode ? 0.2 : 0.1),
+                  color.withValues(alpha: widget.isDarkMode ? 0.1 : 0.05),
                 ],
               ),
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: color.withOpacity(0.2)),
+              border: Border.all(color: color.withValues(alpha: 0.2)),
             ),
             child: Row(
               children: [
@@ -339,7 +339,7 @@ class _HeirsSelectionWidgetState extends State<HeirsSelectionWidget> {
                   '${indices.where((i) => widget.availableHeirs[i].isSelected).length}/${indices.length}',
                   style: TextStyle(
                     fontSize: 11,
-                    color: color.withOpacity(0.7),
+                    color: color.withValues(alpha: 0.7),
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -362,13 +362,13 @@ class _HeirsSelectionWidgetState extends State<HeirsSelectionWidget> {
       margin: const EdgeInsets.symmetric(vertical: 3),
       decoration: BoxDecoration(
         color: heir.isSelected
-            ? widget.primaryColor.withOpacity(widget.isDarkMode ? 0.12 : 0.06)
-            : (widget.isDarkMode ? Colors.white.withOpacity(0.03) : Colors.grey.shade50),
+            ? widget.primaryColor.withValues(alpha: widget.isDarkMode ? 0.12 : 0.06)
+            : (widget.isDarkMode ? Colors.white.withValues(alpha: 0.03) : Colors.grey.shade50),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: heir.isSelected
-              ? widget.primaryColor.withOpacity(0.4)
-              : (widget.isDarkMode ? Colors.white.withOpacity(0.08) : Colors.grey.shade200),
+              ? widget.primaryColor.withValues(alpha: 0.4)
+              : (widget.isDarkMode ? Colors.white.withValues(alpha: 0.08) : Colors.grey.shade200),
           width: heir.isSelected ? 1.5 : 1,
         ),
       ),
@@ -393,7 +393,7 @@ class _HeirsSelectionWidgetState extends State<HeirsSelectionWidget> {
                 decoration: BoxDecoration(
                   gradient: heir.isSelected
                       ? LinearGradient(
-                    colors: [widget.primaryColor, widget.primaryColor.withOpacity(0.8)],
+                    colors: [widget.primaryColor, widget.primaryColor.withValues(alpha: 0.8)],
                   )
                       : null,
                   color: heir.isSelected ? null : Colors.transparent,
@@ -442,7 +442,7 @@ class _HeirsSelectionWidgetState extends State<HeirsSelectionWidget> {
                       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [widget.primaryColor, widget.primaryColor.withOpacity(0.8)],
+                          colors: [widget.primaryColor, widget.primaryColor.withValues(alpha: 0.8)],
                         ),
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -485,10 +485,10 @@ class _HeirsSelectionWidgetState extends State<HeirsSelectionWidget> {
       child: Container(
         padding: const EdgeInsets.all(6),
         decoration: BoxDecoration(
-          color: enabled ? color.withOpacity(0.1) : Colors.grey.withOpacity(0.1),
+          color: enabled ? color.withValues(alpha: 0.1) : Colors.grey.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
-            color: enabled ? color.withOpacity(0.3) : Colors.grey.withOpacity(0.2),
+            color: enabled ? color.withValues(alpha: 0.3) : Colors.grey.withValues(alpha: 0.2),
           ),
         ),
         child: Icon(

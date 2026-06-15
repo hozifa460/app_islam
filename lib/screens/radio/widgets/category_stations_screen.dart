@@ -1,4 +1,4 @@
-// lib/screens/radio/category_stations_screen.dart
+﻿// lib/screens/radio/category_stations_screen.dart
 
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -43,13 +43,13 @@ class _CategoryStationsScreenState extends State<CategoryStationsScreen>
   static const Color _gold = Color(0xFFC8A44D);
 
   static const Map<String, List<Color>> _catColors = {
-    'القرآن الكريم': [Color(0xFF2D1B69), Color(0xFF7C3AED)],
-    'الحرمين الشريفين': [Color(0xFF1A3A2A), Color(0xFF16A34A)],
-    'إذاعات رسمية': [Color(0xFF1E3A5F), Color(0xFF2563EB)],
-    'تفسير وعلوم': [Color(0xFF3B1F00), Color(0xFFC2700C)],
-    'رقية وأدعية': [Color(0xFF2D1A3A), Color(0xFF9333EA)],
-    'تلاوات خاشعة': [Color(0xFF1A1A2E), Color(0xFF6366F1)],
-    'ترجمات القرآن': [Color(0xFF064E3B), Color(0xFF059669)],
+    'ط§ظ„ظ‚ط±ط¢ظ† ط§ظ„ظƒط±ظٹظ…': [Color(0xFF2D1B69), Color(0xFF7C3AED)],
+    'ط§ظ„ط­ط±ظ…ظٹظ† ط§ظ„ط´ط±ظٹظپظٹظ†': [Color(0xFF1A3A2A), Color(0xFF16A34A)],
+    'ط¥ط°ط§ط¹ط§طھ ط±ط³ظ…ظٹط©': [Color(0xFF1E3A5F), Color(0xFF2563EB)],
+    'طھظپط³ظٹط± ظˆط¹ظ„ظˆظ…': [Color(0xFF3B1F00), Color(0xFFC2700C)],
+    'ط±ظ‚ظٹط© ظˆط£ط¯ط¹ظٹط©': [Color(0xFF2D1A3A), Color(0xFF9333EA)],
+    'طھظ„ط§ظˆط§طھ ط®ط§ط´ط¹ط©': [Color(0xFF1A1A2E), Color(0xFF6366F1)],
+    'طھط±ط¬ظ…ط§طھ ط§ظ„ظ‚ط±ط¢ظ†': [Color(0xFF064E3B), Color(0xFF059669)],
   };
 
   @override
@@ -214,9 +214,9 @@ class _CategoryStationsScreenState extends State<CategoryStationsScreen>
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.1),
+                color: Colors.white.withValues(alpha: 0.1),
                 shape: BoxShape.circle,
-                border: Border.all(color: Colors.white.withOpacity(0.15)),
+                border: Border.all(color: Colors.white.withValues(alpha: 0.15)),
               ),
               child: const Icon(
                 Icons.arrow_back_ios_new_rounded,
@@ -242,10 +242,10 @@ class _CategoryStationsScreenState extends State<CategoryStationsScreen>
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  '${widget.stations.length} محطة',
+                  '${widget.stations.length} ظ…ط­ط·ط©',
                   style: GoogleFonts.cairo(
                     fontSize: 11,
-                    color: Colors.white.withOpacity(0.5),
+                    color: Colors.white.withValues(alpha: 0.5),
                   ),
                 ),
               ],
@@ -266,13 +266,13 @@ class _CategoryStationsScreenState extends State<CategoryStationsScreen>
               height: 40,
               decoration: BoxDecoration(
                 color: _showSearch
-                    ? widget.primaryColor.withOpacity(0.2)
-                    : Colors.white.withOpacity(0.1),
+                    ? widget.primaryColor.withValues(alpha: 0.2)
+                    : Colors.white.withValues(alpha: 0.1),
                 shape: BoxShape.circle,
                 border: Border.all(
                   color: _showSearch
-                      ? widget.primaryColor.withOpacity(0.4)
-                      : Colors.white.withOpacity(0.15),
+                      ? widget.primaryColor.withValues(alpha: 0.4)
+                      : Colors.white.withValues(alpha: 0.15),
                 ),
               ),
               child: Icon(
@@ -293,9 +293,9 @@ class _CategoryStationsScreenState extends State<CategoryStationsScreen>
       child: Container(
         height: 42,
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.08),
+          color: Colors.white.withValues(alpha: 0.08),
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: widget.primaryColor.withOpacity(0.2)),
+          border: Border.all(color: widget.primaryColor.withValues(alpha: 0.2)),
         ),
         child: TextField(
           controller: _searchController,
@@ -306,14 +306,14 @@ class _CategoryStationsScreenState extends State<CategoryStationsScreen>
             color: Colors.white,
           ),
           decoration: InputDecoration(
-            hintText: 'ابحث...',
+            hintText: 'ط§ط¨ط­ط«...',
             hintStyle: GoogleFonts.cairo(
               color: Colors.white38,
               fontSize: 12,
             ),
             prefixIcon: Icon(
               Icons.search_rounded,
-              color: widget.primaryColor.withOpacity(0.5),
+              color: widget.primaryColor.withValues(alpha: 0.5),
               size: 18,
             ),
             border: InputBorder.none,
@@ -329,10 +329,10 @@ class _CategoryStationsScreenState extends State<CategoryStationsScreen>
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('🔍', style: TextStyle(fontSize: 44)),
+          const Text('ًں”چ', style: TextStyle(fontSize: 44)),
           const SizedBox(height: 12),
           Text(
-            'لا توجد نتائج',
+            'ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬',
             style: GoogleFonts.cairo(
               fontSize: 16,
               fontWeight: FontWeight.w700,
@@ -427,7 +427,7 @@ class _CategoryStationCard extends StatelessWidget {
                               end: Alignment.bottomCenter,
                               colors: [
                                 Colors.transparent,
-                                Colors.black.withOpacity(0.6),
+                                Colors.black.withValues(alpha: 0.6),
                               ],
                             ),
                           ),
@@ -445,7 +445,7 @@ class _CategoryStationCard extends StatelessWidget {
                           shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withOpacity(0.3),
+                              color: Colors.black.withValues(alpha: 0.3),
                               blurRadius: 6,
                             ),
                           ],
@@ -488,7 +488,7 @@ class _CategoryStationCard extends StatelessWidget {
                           width: 26,
                           height: 26,
                           decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.4),
+                            color: Colors.black.withValues(alpha: 0.4),
                             shape: BoxShape.circle,
                           ),
                           child: Icon(
@@ -532,7 +532,7 @@ class _CategoryStationCard extends StatelessWidget {
                 station.description,
                 style: GoogleFonts.cairo(
                   fontSize: isTablet ? 9.5 : 9,
-                  color: Colors.white.withOpacity(0.45),
+                  color: Colors.white.withValues(alpha: 0.45),
                   height: 1.2,
                 ),
                 maxLines: 1,
@@ -642,7 +642,7 @@ class _CatBgPainter extends CustomPainter {
 
       glowPaint.shader = RadialGradient(
         colors: [
-          (i.isEven ? primary : gold).withOpacity(0.08),
+          (i.isEven ? primary : gold).withValues(alpha: 0.08),
           Colors.transparent,
         ],
       ).createShader(Rect.fromCircle(center: Offset(x, y), radius: r));

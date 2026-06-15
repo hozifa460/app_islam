@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../languages/app_localizations.dart';
 
@@ -54,15 +54,15 @@ class HomeQuickGrid extends StatelessWidget {
               decoration: BoxDecoration(
                 color: isDark ? const Color(0xFF13211D) : Colors.white,
                 borderRadius: BorderRadius.circular(24),
-                border: Border.all(color: primary.withOpacity(0.10)),
-                boxShadow: [BoxShadow(color: Colors.black.withOpacity(isDark ? 0.14 : 0.05), blurRadius: 14, offset: const Offset(0, 6))],
+                border: Border.all(color: primary.withValues(alpha: 0.10)),
+                boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: isDark ? 0.14 : 0.05), blurRadius: 14, offset: const Offset(0, 6))],
               ),
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: small ? 6 : 8, vertical: small ? 8 : 10),
                 child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Container(
                     width: small ? 44 : 52, height: small ? 44 : 52,
-                    decoration: BoxDecoration(color: primary.withOpacity(0.08), borderRadius: BorderRadius.circular(16)),
+                    decoration: BoxDecoration(color: primary.withValues(alpha: 0.08), borderRadius: BorderRadius.circular(16)),
                     child: Icon(item['icon'] as IconData, color: isDark ? Colors.white70 : primary, size: small ? 24 : 28),
                   ),
                   SizedBox(height: small ? 8 : 10),

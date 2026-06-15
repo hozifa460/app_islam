@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islamic_app/screens/fatwa/services/advanced_search_service.dart';
 import 'package:islamic_app/screens/fatwa/services/fatwa_search_service.dart';
@@ -22,32 +22,32 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
   bool _hasSearched = false;
   bool _isDataLoaded = false;
 
-  // فلاتر
+  // ظپظ„ط§طھط±
   String? _selectedScholar;
   String? _selectedCategory;
 
-  // تصنيفات سريعة
+  // طھطµظ†ظٹظپط§طھ ط³ط±ظٹط¹ط©
   final List<Map<String, dynamic>> _quickCategories = [
-    {'name': 'صلاة', 'icon': Icons.mosque, 'color': Colors.green},
-    {'name': 'زكاة', 'icon': Icons.volunteer_activism, 'color': Colors.amber},
-    {'name': 'صيام', 'icon': Icons.nights_stay, 'color': Colors.indigo},
-    {'name': 'حج', 'icon': Icons.location_city, 'color': Colors.brown},
-    {'name': 'طهارة', 'icon': Icons.water_drop, 'color': Colors.blue},
-    {'name': 'بيوع', 'icon': Icons.store, 'color': Colors.orange},
-    {'name': 'نكاح', 'icon': Icons.favorite, 'color': Colors.pink},
-    {'name': 'عقيدة', 'icon': Icons.star, 'color': Colors.purple},
-    {'name': 'أذكار', 'icon': Icons.auto_stories, 'color': Colors.teal},
-    {'name': 'جنائز', 'icon': Icons.sentiment_very_dissatisfied, 'color': Colors.grey},
+    {'name': 'طµظ„ط§ط©', 'icon': Icons.mosque, 'color': Colors.green},
+    {'name': 'ط²ظƒط§ط©', 'icon': Icons.volunteer_activism, 'color': Colors.amber},
+    {'name': 'طµظٹط§ظ…', 'icon': Icons.nights_stay, 'color': Colors.indigo},
+    {'name': 'ط­ط¬', 'icon': Icons.location_city, 'color': Colors.brown},
+    {'name': 'ط·ظ‡ط§ط±ط©', 'icon': Icons.water_drop, 'color': Colors.blue},
+    {'name': 'ط¨ظٹظˆط¹', 'icon': Icons.store, 'color': Colors.orange},
+    {'name': 'ظ†ظƒط§ط­', 'icon': Icons.favorite, 'color': Colors.pink},
+    {'name': 'ط¹ظ‚ظٹط¯ط©', 'icon': Icons.star, 'color': Colors.purple},
+    {'name': 'ط£ط°ظƒط§ط±', 'icon': Icons.auto_stories, 'color': Colors.teal},
+    {'name': 'ط¬ظ†ط§ط¦ط²', 'icon': Icons.sentiment_very_dissatisfied, 'color': Colors.grey},
   ];
 
-  // أسئلة مقترحة
+  // ط£ط³ط¦ظ„ط© ظ…ظ‚طھط±ط­ط©
   final List<String> _suggestedQuestions = [
-    'ما حكم الصلاة جالساً للمريض؟',
-    'هل يجوز الإفطار في السفر؟',
-    'كيف أحسب زكاة المال؟',
-    'ما حكم صلاة التراويح؟',
-    'هل يجوز قراءة القرآن بدون وضوء؟',
-    'ما حكم الربا في البنوك؟',
+    'ظ…ط§ ط­ظƒظ… ط§ظ„طµظ„ط§ط© ط¬ط§ظ„ط³ط§ظ‹ ظ„ظ„ظ…ط±ظٹط¶طں',
+    'ظ‡ظ„ ظٹط¬ظˆط² ط§ظ„ط¥ظپط·ط§ط± ظپظٹ ط§ظ„ط³ظپط±طں',
+    'ظƒظٹظپ ط£ط­ط³ط¨ ط²ظƒط§ط© ط§ظ„ظ…ط§ظ„طں',
+    'ظ…ط§ ط­ظƒظ… طµظ„ط§ط© ط§ظ„طھط±ط§ظˆظٹط­طں',
+    'ظ‡ظ„ ظٹط¬ظˆط² ظ‚ط±ط§ط،ط© ط§ظ„ظ‚ط±ط¢ظ† ط¨ط¯ظˆظ† ظˆط¶ظˆط،طں',
+    'ظ…ط§ ط­ظƒظ… ط§ظ„ط±ط¨ط§ ظپظٹ ط§ظ„ط¨ظ†ظˆظƒطں',
   ];
 
   @override
@@ -56,9 +56,9 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
     _loadFatawa();
   }
 
-  // ══════════════════════════════════════
-  // تحميل الفتاوى من كل الملفات
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // طھط­ظ…ظٹظ„ ط§ظ„ظپطھط§ظˆظ‰ ظ…ظ† ظƒظ„ ط§ظ„ظ…ظ„ظپط§طھ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Future<void> _loadFatawa() async {
     try {
       await LocalSearchService.loadFatawa();
@@ -69,9 +69,9 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
         _isDataLoaded = true;
       });
 
-      print('✅ تم تحميل ${LocalSearchService.allFatawa.length} فتوى في شاشة البحث');
+      print('âœ… طھظ… طھط­ظ…ظٹظ„ ${LocalSearchService.allFatawa.length} ظپطھظˆظ‰ ظپظٹ ط´ط§ط´ط© ط§ظ„ط¨ط­ط«');
     } catch (e) {
-      print('❌ خطأ في تحميل الفتاوى: $e');
+      print('â‌Œ ط®ط·ط£ ظپظٹ طھط­ظ…ظٹظ„ ط§ظ„ظپطھط§ظˆظ‰: $e');
       if (mounted) {
         setState(() {
           _isDataLoaded = true;
@@ -80,9 +80,9 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
     }
   }
 
-  // ══════════════════════════════════════
-  // البحث
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ط¨ط­ط«
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Future<void> _performSearch(String query) async {
     if (query.trim().isEmpty) return;
 
@@ -105,7 +105,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
         _isLoading = false;
       });
     } catch (e) {
-      print('❌ خطأ في البحث: $e');
+      print('â‌Œ ط®ط·ط£ ظپظٹ ط§ظ„ط¨ط­ط«: $e');
       setState(() {
         _isLoading = false;
         _hasSearched = true;
@@ -114,9 +114,9 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
     }
   }
 
-  // ══════════════════════════════════════
-  // الواجهة الرئيسية
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ظˆط§ط¬ظ‡ط© ط§ظ„ط±ط¦ظٹط³ظٹط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
@@ -139,7 +139,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
                       children: [
                         CircularProgressIndicator(color: Color(0xFF2E7D32)),
                         SizedBox(height: 16),
-                        Text('جاري تحميل الفتاوى...',
+                        Text('ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط§ظ„ظپطھط§ظˆظ‰...',
                             style: TextStyle(fontFamily: 'Cairo', fontSize: 14)),
                       ],
                     ),
@@ -160,9 +160,9 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
     );
   }
 
-  // ══════════════════════════════════════
-  // الهيدر
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ظ‡ظٹط¯ط±
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildHeader(bool isDark) {
     return Container(
       padding: const EdgeInsets.all(20),
@@ -176,7 +176,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.green.withOpacity(0.3),
+            color: Colors.green.withValues(alpha: 0.3),
             blurRadius: 10,
             offset: const Offset(0, 5),
           ),
@@ -192,7 +192,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
               ),
               const Expanded(
                 child: Text(
-                  'البحث في الفتاوى',
+                  'ط§ظ„ط¨ط­ط« ظپظٹ ط§ظ„ظپطھط§ظˆظ‰',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 22,
@@ -210,9 +210,9 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
           ),
           const SizedBox(height: 5),
           Text(
-            '${LocalSearchService.allFatawa.length} فتوى من عدة مصادر',
+            '${LocalSearchService.allFatawa.length} ظپطھظˆظ‰ ظ…ظ† ط¹ط¯ط© ظ…طµط§ط¯ط±',
             style: TextStyle(
-              color: Colors.white.withOpacity(0.8),
+              color: Colors.white.withValues(alpha: 0.8),
               fontSize: 13,
               fontFamily: 'Cairo',
             ),
@@ -222,9 +222,9 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
     );
   }
 
-  // ══════════════════════════════════════
-  // شريط البحث
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط´ط±ظٹط· ط§ظ„ط¨ط­ط«
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildSearchBar(bool isDark) {
     return Padding(
       padding: const EdgeInsets.all(16),
@@ -234,7 +234,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
           borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(isDark ? 0.1 : 0.2),
+              color: Colors.grey.withValues(alpha: isDark ? 0.1 : 0.2),
               blurRadius: 10,
               offset: const Offset(0, 3),
             ),
@@ -251,7 +251,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
             color: isDark ? Colors.white : Colors.black,
           ),
           decoration: InputDecoration(
-            hintText: 'ابحث عن فتوى...',
+            hintText: 'ط§ط¨ط­ط« ط¹ظ† ظپطھظˆظ‰...',
             hintStyle: TextStyle(
               color: isDark ? Colors.grey[500] : Colors.grey[400],
               fontFamily: 'Cairo',
@@ -281,9 +281,9 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
     );
   }
 
-  // ══════════════════════════════════════
-  // الحالة الابتدائية (قبل البحث)
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ط­ط§ظ„ط© ط§ظ„ط§ط¨طھط¯ط§ط¦ظٹط© (ظ‚ط¨ظ„ ط§ظ„ط¨ط­ط«)
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildInitialState(bool isDark) {
     final textColor = isDark ? Colors.white : const Color(0xFF1A1A1A);
 
@@ -292,8 +292,8 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // التصنيفات
-          Text('تصفح حسب الموضوع',
+          // ط§ظ„طھطµظ†ظٹظپط§طھ
+          Text('طھطµظپط­ ط­ط³ط¨ ط§ظ„ظ…ظˆط¶ظˆط¹',
               style: TextStyle(
                 fontSize: 18, fontWeight: FontWeight.bold,
                 fontFamily: 'Cairo', color: textColor,
@@ -318,8 +318,8 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
           ),
           const SizedBox(height: 24),
 
-          // أسئلة مقترحة
-          Text('أسئلة شائعة',
+          // ط£ط³ط¦ظ„ط© ظ…ظ‚طھط±ط­ط©
+          Text('ط£ط³ط¦ظ„ط© ط´ط§ط¦ط¹ط©',
               style: TextStyle(
                 fontSize: 18, fontWeight: FontWeight.bold,
                 fontFamily: 'Cairo', color: textColor,
@@ -332,9 +332,9 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
     );
   }
 
-  // ══════════════════════════════════════
-  // تصنيف واحد
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // طھطµظ†ظٹظپ ظˆط§ط­ط¯
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildCategoryChip(String name, IconData icon, Color color, bool isDark) {
     return InkWell(
       onTap: () {
@@ -343,9 +343,9 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: color.withOpacity(isDark ? 0.15 : 0.1),
+          color: color.withValues(alpha: isDark ? 0.15 : 0.1),
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: color.withOpacity(0.3)),
+          border: Border.all(color: color.withValues(alpha: 0.3)),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -363,9 +363,9 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
     );
   }
 
-  // ══════════════════════════════════════
-  // سؤال مقترح
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط³ط¤ط§ظ„ ظ…ظ‚طھط±ط­
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildSuggestedQuestion(String question, bool isDark) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
@@ -381,7 +381,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
             color: isDark ? const Color(0xFF1C2520) : Colors.white,
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: isDark ? Colors.grey.withOpacity(0.1) : Colors.grey.withOpacity(0.2),
+              color: isDark ? Colors.grey.withValues(alpha: 0.1) : Colors.grey.withValues(alpha: 0.2),
             ),
           ),
           child: Row(
@@ -404,9 +404,9 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
     );
   }
 
-  // ══════════════════════════════════════
-  // حالة التحميل
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط­ط§ظ„ط© ط§ظ„طھط­ظ…ظٹظ„
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildLoadingState() {
     return const Center(
       child: Column(
@@ -414,16 +414,16 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
         children: [
           CircularProgressIndicator(color: Color(0xFF2E7D32)),
           SizedBox(height: 16),
-          Text('جاري البحث في الفتاوى...',
+          Text('ط¬ط§ط±ظٹ ط§ظ„ط¨ط­ط« ظپظٹ ط§ظ„ظپطھط§ظˆظ‰...',
               style: TextStyle(fontFamily: 'Cairo', fontSize: 16)),
         ],
       ),
     );
   }
 
-  // ══════════════════════════════════════
-  // نتائج البحث
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ظ†طھط§ط¦ط¬ ط§ظ„ط¨ط­ط«
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildSearchResults(bool isDark) {
     if (_results.isEmpty) return _buildEmptyResults(isDark);
 
@@ -433,7 +433,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Row(
             children: [
-              Text('${_results.length} نتيجة',
+              Text('${_results.length} ظ†طھظٹط¬ط©',
                   style: TextStyle(
                     color: isDark ? Colors.grey[400] : Colors.grey[600],
                     fontSize: 14, fontFamily: 'Cairo',
@@ -442,7 +442,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
               if (_selectedScholar != null || _selectedCategory != null)
                 TextButton.icon(
                   icon: const Icon(Icons.clear, size: 16),
-                  label: const Text('مسح الفلتر',
+                  label: const Text('ظ…ط³ط­ ط§ظ„ظپظ„طھط±',
                       style: TextStyle(fontFamily: 'Cairo', fontSize: 12)),
                   onPressed: () {
                     setState(() {
@@ -470,9 +470,9 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
     );
   }
 
-  // ══════════════════════════════════════
-  // كارت فتوى واحدة
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ظƒط§ط±طھ ظپطھظˆظ‰ ظˆط§ط­ط¯ط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildFatwaCard(FatwaSearchResult result, int index, bool isDark) {
     final fatwa = result.fatwa;
     final cardBg = isDark ? const Color(0xFF1C2520) : Colors.white;
@@ -490,7 +490,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(isDark ? 0.05 : 0.1),
+                color: Colors.grey.withValues(alpha: isDark ? 0.05 : 0.1),
                 blurRadius: 8,
                 offset: const Offset(0, 2),
               ),
@@ -499,11 +499,11 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // الهيدر
+              // ط§ظ„ظ‡ظٹط¯ط±
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF2E7D32).withOpacity(isDark ? 0.1 : 0.05),
+                  color: const Color(0xFF2E7D32).withValues(alpha: isDark ? 0.1 : 0.05),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(16),
                     topRight: Radius.circular(16),
@@ -529,7 +529,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF2E7D32).withOpacity(0.1),
+                        color: const Color(0xFF2E7D32).withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(fatwa.category,
@@ -545,7 +545,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
                 ),
               ),
 
-              // السؤال
+              // ط§ظ„ط³ط¤ط§ظ„
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
                 child: Text(
@@ -559,7 +559,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
                 ),
               ),
 
-              // معاينة الجواب
+              // ظ…ط¹ط§ظٹظ†ط© ط§ظ„ط¬ظˆط§ط¨
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
                 child: Text(
@@ -573,13 +573,13 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
                 ),
               ),
 
-              // المصدر
+              // ط§ظ„ظ…طµط¯ط±
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                 decoration: BoxDecoration(
                   border: Border(
                     top: BorderSide(
-                      color: isDark ? Colors.grey.withOpacity(0.1) : Colors.grey.withOpacity(0.15),
+                      color: isDark ? Colors.grey.withValues(alpha: 0.1) : Colors.grey.withValues(alpha: 0.15),
                     ),
                   ),
                 ),
@@ -613,9 +613,9 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
     );
   }
 
-  // ══════════════════════════════════════
-  // لا توجد نتائج
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildEmptyResults(bool isDark) {
     return Center(
       child: Column(
@@ -624,13 +624,13 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
           Icon(Icons.search_off, size: 80,
               color: isDark ? Colors.grey[700] : Colors.grey[300]),
           const SizedBox(height: 16),
-          Text('لم يتم العثور على نتائج',
+          Text('ظ„ظ… ظٹطھظ… ط§ظ„ط¹ط«ظˆط± ط¹ظ„ظ‰ ظ†طھط§ط¦ط¬',
               style: TextStyle(
                 color: isDark ? Colors.grey[400] : Colors.grey[600],
                 fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'Cairo',
               )),
           const SizedBox(height: 8),
-          Text('جرب البحث بكلمات مختلفة',
+          Text('ط¬ط±ط¨ ط§ظ„ط¨ط­ط« ط¨ظƒظ„ظ…ط§طھ ظ…ط®طھظ„ظپط©',
               style: TextStyle(
                 color: isDark ? Colors.grey[600] : Colors.grey[400],
                 fontSize: 14, fontFamily: 'Cairo',
@@ -645,7 +645,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
               });
             },
             icon: const Icon(Icons.refresh),
-            label: const Text('بحث جديد',
+            label: const Text('ط¨ط­ط« ط¬ط¯ظٹط¯',
                 style: TextStyle(fontFamily: 'Cairo')),
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFF2E7D32),
@@ -660,9 +660,9 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
     );
   }
 
-  // ══════════════════════════════════════
-  // تفاصيل الفتوى
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // طھظپط§طµظٹظ„ ط§ظ„ظپطھظˆظ‰
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   void _showFatwaDetail(Fatwa fatwa) {
     showModalBottomSheet(
       context: context,
@@ -719,9 +719,9 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
                       ),
                     ),
 
-                    Divider(height: 1, color: Colors.grey.withOpacity(0.2)),
+                    Divider(height: 1, color: Colors.grey.withValues(alpha: 0.2)),
 
-                    // المحتوى
+                    // ط§ظ„ظ…ط­طھظˆظ‰
                     Expanded(
                       child: SingleChildScrollView(
                         controller: scrollController,
@@ -729,7 +729,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // معلومات
+                            // ظ…ط¹ظ„ظˆظ…ط§طھ
                             Wrap(
                               spacing: 8,
                               runSpacing: 8,
@@ -746,11 +746,11 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
 
                             const SizedBox(height: 16),
 
-                            // السؤال
+                            // ط§ظ„ط³ط¤ط§ظ„
                             Container(
                               padding: const EdgeInsets.all(14),
                               decoration: BoxDecoration(
-                                color: const Color(0xFF2E7D32).withOpacity(isDark ? 0.1 : 0.05),
+                                color: const Color(0xFF2E7D32).withValues(alpha: isDark ? 0.1 : 0.05),
                                 borderRadius: BorderRadius.circular(12),
                                 border: const Border(
                                   right: BorderSide(color: Color(0xFF2E7D32), width: 4),
@@ -759,7 +759,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text('السؤال:',
+                                  const Text('ط§ظ„ط³ط¤ط§ظ„:',
                                       style: TextStyle(
                                         fontSize: 13, fontFamily: 'Cairo',
                                         fontWeight: FontWeight.bold,
@@ -777,19 +777,19 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
 
                             const SizedBox(height: 16),
 
-                            // الجواب
+                            // ط§ظ„ط¬ظˆط§ط¨
                             Container(
                               padding: const EdgeInsets.all(14),
                               decoration: BoxDecoration(
                                 color: isDark
-                                    ? Colors.grey.withOpacity(0.05)
+                                    ? Colors.grey.withValues(alpha: 0.05)
                                     : const Color(0xFFF9FBF9),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text('الجواب:',
+                                  const Text('ط§ظ„ط¬ظˆط§ط¨:',
                                       style: TextStyle(
                                         fontSize: 13, fontFamily: 'Cairo',
                                         fontWeight: FontWeight.bold,
@@ -807,7 +807,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
 
                             const SizedBox(height: 16),
 
-                            // أزرار
+                            // ط£ط²ط±ط§ط±
                             Row(
                               children: [
                                 Expanded(
@@ -815,13 +815,13 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
                                     onPressed: () {
                                       Clipboard.setData(
                                         ClipboardData(
-                                          text: '${fatwa.question}\n\n${fatwa.answer}\n\nالمصدر: ${fatwa.scholar} - ${fatwa.book}',
+                                          text: '${fatwa.question}\n\n${fatwa.answer}\n\nط§ظ„ظ…طµط¯ط±: ${fatwa.scholar} - ${fatwa.book}',
                                         ),
                                       );
                                       Navigator.pop(context);
                                       ScaffoldMessenger.of(context).showSnackBar(
                                         SnackBar(
-                                          content: const Text('تم النسخ',
+                                          content: const Text('طھظ… ط§ظ„ظ†ط³ط®',
                                               style: TextStyle(fontFamily: 'Cairo')),
                                           backgroundColor: const Color(0xFF2E7D32),
                                           behavior: SnackBarBehavior.floating,
@@ -831,7 +831,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
                                       );
                                     },
                                     icon: const Icon(Icons.copy, size: 16),
-                                    label: const Text('نسخ',
+                                    label: const Text('ظ†ط³ط®',
                                         style: TextStyle(fontFamily: 'Cairo')),
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: const Color(0xFF2E7D32),
@@ -848,7 +848,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
                                       onPressed: () {
                                         ScaffoldMessenger.of(context).showSnackBar(
                                           SnackBar(
-                                            content: Text('الصوت: ${fatwa.audio}',
+                                            content: Text('ط§ظ„طµظˆطھ: ${fatwa.audio}',
                                                 style: const TextStyle(fontFamily: 'Cairo')),
                                             backgroundColor: const Color(0xFF1565C0),
                                             behavior: SnackBarBehavior.floating,
@@ -856,7 +856,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
                                         );
                                       },
                                       icon: const Icon(Icons.headphones, size: 16),
-                                      label: const Text('استماع',
+                                      label: const Text('ط§ط³طھظ…ط§ط¹',
                                           style: TextStyle(fontFamily: 'Cairo')),
                                       style: OutlinedButton.styleFrom(
                                         foregroundColor: const Color(0xFF1565C0),
@@ -889,7 +889,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       decoration: BoxDecoration(
-        color: const Color(0xFF2E7D32).withOpacity(0.08),
+        color: const Color(0xFF2E7D32).withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
@@ -907,13 +907,13 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
     );
   }
 
-  // ══════════════════════════════════════
-  // الفلترة
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ظپظ„طھط±ط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   void _showFilterSheet() {
     final allFatawa = LocalSearchService.allFatawa;
 
-    // استخراج العلماء والتصنيفات من البيانات
+    // ط§ط³طھط®ط±ط§ط¬ ط§ظ„ط¹ظ„ظ…ط§ط، ظˆط§ظ„طھطµظ†ظٹظپط§طھ ظ…ظ† ط§ظ„ط¨ظٹط§ظ†ط§طھ
     final scholars = allFatawa
         .map((f) => f.scholar)
         .where((s) => s.isNotEmpty)
@@ -923,7 +923,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
 
     final categories = allFatawa
         .map((f) => f.category)
-        .where((c) => c.isNotEmpty && c != 'عام')
+        .where((c) => c.isNotEmpty && c != 'ط¹ط§ظ…')
         .toSet()
         .toList()
       ..sort();
@@ -961,7 +961,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
                 ),
                 const SizedBox(height: 20),
 
-                const Text('العالم / المصدر',
+                const Text('ط§ظ„ط¹ط§ظ„ظ… / ط§ظ„ظ…طµط¯ط±',
                     style: TextStyle(
                       fontSize: 16, fontWeight: FontWeight.bold,
                       fontFamily: 'Cairo', color: Color(0xFF2E7D32),
@@ -972,7 +972,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
                   spacing: 8,
                   runSpacing: 8,
                   children: [
-                    _filterChip('الكل', _selectedScholar == null, () {
+                    _filterChip('ط§ظ„ظƒظ„', _selectedScholar == null, () {
                       setState(() => _selectedScholar = null);
                       Navigator.pop(context);
                       if (_searchController.text.isNotEmpty) {
@@ -993,7 +993,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
 
                 const SizedBox(height: 20),
 
-                const Text('التصنيف',
+                const Text('ط§ظ„طھطµظ†ظٹظپ',
                     style: TextStyle(
                       fontSize: 16, fontWeight: FontWeight.bold,
                       fontFamily: 'Cairo', color: Color(0xFF2E7D32),
@@ -1004,7 +1004,7 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
                   spacing: 8,
                   runSpacing: 8,
                   children: [
-                    _filterChip('الكل', _selectedCategory == null, () {
+                    _filterChip('ط§ظ„ظƒظ„', _selectedCategory == null, () {
                       setState(() => _selectedCategory = null);
                       Navigator.pop(context);
                       if (_searchController.text.isNotEmpty) {
@@ -1040,12 +1040,12 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
         decoration: BoxDecoration(
           color: isSelected
               ? const Color(0xFF2E7D32)
-              : Colors.grey.withOpacity(0.1),
+              : Colors.grey.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: isSelected
                 ? const Color(0xFF2E7D32)
-                : Colors.grey.withOpacity(0.3),
+                : Colors.grey.withValues(alpha: 0.3),
           ),
         ),
         child: Text(label,

@@ -1,4 +1,4 @@
-// lib/screens/radio/video/video_feed_tab.dart
+﻿// lib/screens/radio/video/video_feed_tab.dart
 
 import 'dart:io';
 
@@ -45,7 +45,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
   void initState() {
     super.initState();
 
-    // ✅ أجّل كل شيء ثقيل حتى بعد رسم الشاشة
+    // âœ… ط£ط¬ظ‘ظ„ ظƒظ„ ط´ظٹط، ط«ظ‚ظٹظ„ ط­طھظ‰ ط¨ط¹ط¯ ط±ط³ظ… ط§ظ„ط´ط§ط´ط©
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
       _categories = RecitationCategoriesData.build();
@@ -58,9 +58,9 @@ class _VideoFeedTabState extends State<VideoFeedTab>
   void _buildContent() {
     _sections = [];
 
-    // ══════════════════════════════════════════════════════
-    // 1) بناء الأقسام العادية
-    // ══════════════════════════════════════════════════════
+    // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+    // 1) ط¨ظ†ط§ط، ط§ظ„ط£ظ‚ط³ط§ظ… ط§ظ„ط¹ط§ط¯ظٹط©
+    // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
     for (final cat in _categories) {
       final videoItems = <_VideoEntry>[];
@@ -91,7 +91,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
           if (sub.hasVideo) {
             videoItems.add(_VideoEntry(
               title: sub.title,
-              subtitle: '${item.title} • ${sub.subtitle}',
+              subtitle: '${item.title} â€¢ ${sub.subtitle}',
               emoji: sub.emoji,
               imageUrl: sub.imageUrl ?? item.imageUrl,
               videoUrl: sub.videoUrl!,
@@ -112,9 +112,9 @@ class _VideoFeedTabState extends State<VideoFeedTab>
       }
     }
 
-    // ══════════════════════════════════════════════════════
-    // 2) بناء "لك" بالتوصيات الذكية
-    // ══════════════════════════════════════════════════════
+    // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+    // 2) ط¨ظ†ط§ط، "ظ„ظƒ" ط¨ط§ظ„طھظˆطµظٹط§طھ ط§ظ„ط°ظƒظٹط©
+    // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
     _buildForYou();
 
@@ -141,7 +141,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
   }
 
   void _preloadFirstVideos() {
-    // ✅ جمع أول 3 فيديوهات مباشرة من كل الأقسام
+    // âœ… ط¬ظ…ط¹ ط£ظˆظ„ 3 ظپظٹط¯ظٹظˆظ‡ط§طھ ظ…ط¨ط§ط´ط±ط© ظ…ظ† ظƒظ„ ط§ظ„ط£ظ‚ط³ط§ظ…
     final urls = <String>[];
 
     for (final section in _sections) {
@@ -152,7 +152,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
       if (urls.length >= 3) break;
     }
 
-    // ✅ أضف أول 2 من "لك" إذا لم نصل 3
+    // âœ… ط£ط¶ظپ ط£ظˆظ„ 2 ظ…ظ† "ظ„ظƒ" ط¥ط°ط§ ظ„ظ… ظ†طµظ„ 3
     for (final video in _forYouVideos) {
       if (urls.length >= 3) break;
       if (video.videoUrl != null &&
@@ -163,11 +163,11 @@ class _VideoFeedTabState extends State<VideoFeedTab>
       }
     }
 
-    // ✅ حمّلهم في الخلفية بدون انتظار
+    // âœ… ط­ظ…ظ‘ظ„ظ‡ظ… ظپظٹ ط§ظ„ط®ظ„ظپظٹط© ط¨ط¯ظˆظ† ط§ظ†طھط¸ط§ط±
     final cacheManager = VideoCacheManager();
     for (final url in urls) {
       cacheManager.ensureController(url).catchError((e) {
-        debugPrint('⚠️ Preload failed: $e');
+        debugPrint('âڑ ï¸ڈ Preload failed: $e');
       });
     }
   }
@@ -193,24 +193,24 @@ class _VideoFeedTabState extends State<VideoFeedTab>
         ),
         padding: const EdgeInsets.only(bottom: 120),
         children: [
-          // ══════════════════════════════════════════════════
-          // ✅ قسم "لك" - التوصيات الذكية
-          // ══════════════════════════════════════════════════
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+          // âœ… ظ‚ط³ظ… "ظ„ظƒ" - ط§ظ„طھظˆطµظٹط§طھ ط§ظ„ط°ظƒظٹط©
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
           if (_forYouVideos.isNotEmpty) ...[
             const SizedBox(height: 16),
             _buildForYouSection(isDark),
           ],
 
-          // ══════════════════════════════════════════════════
-          // ✅ شاهد الكل كـ Feed
-          // ══════════════════════════════════════════════════
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+          // âœ… ط´ط§ظ‡ط¯ ط§ظ„ظƒظ„ ظƒظ€ Feed
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
           if (_forYouVideos.length > 3) ...[
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
               child: GestureDetector(
                 onTap: () {
                   HapticFeedback.lightImpact();
-                  _openFeed(_forYouVideos, 'مقترحة لك');
+                  _openFeed(_forYouVideos, 'ظ…ظ‚طھط±ط­ط© ظ„ظƒ');
                 },
                 child: Container(
                   width: double.infinity,
@@ -219,13 +219,13 @@ class _VideoFeedTabState extends State<VideoFeedTab>
                     gradient: LinearGradient(
                       colors: [
                         widget.primary,
-                        widget.primary.withOpacity(0.8),
+                        widget.primary.withValues(alpha: 0.8),
                       ],
                     ),
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(
-                        color: widget.primary.withOpacity(0.3),
+                        color: widget.primary.withValues(alpha: 0.3),
                         blurRadius: 12,
                         offset: const Offset(0, 4),
                       ),
@@ -241,7 +241,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        'شاهد الكل (${_forYouVideos.length})',
+                        'ط´ط§ظ‡ط¯ ط§ظ„ظƒظ„ (${_forYouVideos.length})',
                         style: GoogleFonts.cairo(
                           fontSize: 14,
                           fontWeight: FontWeight.w800,
@@ -255,18 +255,18 @@ class _VideoFeedTabState extends State<VideoFeedTab>
             ),
           ],
 
-          // ══════════════════════════════════════════════════
-          // ✅ الأقسام
-          // ══════════════════════════════════════════════════
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+          // âœ… ط§ظ„ط£ظ‚ط³ط§ظ…
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
           ..._sections.map((s) => _buildSection(s, isDark)),
         ],
       ),
     );
   }
 
-  // ══════════════════════════════════════════════════════
-  // ✅ قسم "لك"
-  // ══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // âœ… ظ‚ط³ظ… "ظ„ظƒ"
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildForYouSection(bool isDark) {
     final displayVideos = _forYouVideos.take(6).toList();
@@ -274,7 +274,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // ✅ عنوان القسم
+        // âœ… ط¹ظ†ظˆط§ظ† ط§ظ„ظ‚ط³ظ…
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 0, 16, 10),
           child: Row(
@@ -284,12 +284,12 @@ class _VideoFeedTabState extends State<VideoFeedTab>
                 height: 36,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [widget.primary, widget.primary.withOpacity(0.6)],
+                    colors: [widget.primary, widget.primary.withValues(alpha: 0.6)],
                   ),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Center(
-                  child: Text('✨', style: TextStyle(fontSize: 18)),
+                  child: Text('âœ¨', style: TextStyle(fontSize: 18)),
                 ),
               ),
               const SizedBox(width: 10),
@@ -298,7 +298,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'مقترحة لك',
+                      'ظ…ظ‚طھط±ط­ط© ظ„ظƒ',
                       style: GoogleFonts.cairo(
                         fontSize: 14,
                         fontWeight: FontWeight.w800,
@@ -306,7 +306,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
                       ),
                     ),
                     Text(
-                      'بناءً على اهتماماتك',
+                      'ط¨ظ†ط§ط،ظ‹ ط¹ظ„ظ‰ ط§ظ‡طھظ…ط§ظ…ط§طھظƒ',
                       style: GoogleFonts.cairo(
                         fontSize: 10,
                         color: isDark ? Colors.white38 : Colors.black38,
@@ -315,13 +315,13 @@ class _VideoFeedTabState extends State<VideoFeedTab>
                   ],
                 ),
               ),
-              // ✅ زر تحديث
+              // âœ… ط²ط± طھط­ط¯ظٹط«
               GestureDetector(
                 onTap: _refreshForYou,
                 child: Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: widget.primary.withOpacity(0.1),
+                    color: widget.primary.withValues(alpha: 0.1),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
@@ -335,7 +335,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
           ),
         ),
 
-        // ✅ الفيديوهات
+        // âœ… ط§ظ„ظپظٹط¯ظٹظˆظ‡ط§طھ
         SizedBox(
           height: 220,
           child: ListView.builder(
@@ -350,7 +350,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
               isDark: isDark,
               allVideos: _forYouVideos,
               indexInList: i,
-              sectionTitle: 'مقترحة لك',
+              sectionTitle: 'ظ…ظ‚طھط±ط­ط© ظ„ظƒ',
             ),
           ),
         ),
@@ -358,9 +358,9 @@ class _VideoFeedTabState extends State<VideoFeedTab>
     );
   }
 
-  // ══════════════════════════════════════════════════════
-  // ✅ قسم عادي
-  // ══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // âœ… ظ‚ط³ظ… ط¹ط§ط¯ظٹ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildSection(_VideoSection section, bool isDark) {
     return Column(
@@ -369,7 +369,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
       children: [
         const SizedBox(height: 20),
 
-        // ✅ عنوان
+        // âœ… ط¹ظ†ظˆط§ظ†
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 0, 16, 10),
           child: Row(
@@ -402,7 +402,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
                       ),
                     ),
                     Text(
-                      '${section.videos.length} مقطع مرئي',
+                      '${section.videos.length} ظ…ظ‚ط·ط¹ ظ…ط±ط¦ظٹ',
                       style: GoogleFonts.cairo(
                         fontSize: 10,
                         color: isDark ? Colors.white38 : Colors.black38,
@@ -426,10 +426,10 @@ class _VideoFeedTabState extends State<VideoFeedTab>
                       vertical: 4,
                     ),
                     decoration: BoxDecoration(
-                      color: widget.primary.withOpacity(0.1),
+                      color: widget.primary.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(
-                        color: widget.primary.withOpacity(0.2),
+                        color: widget.primary.withValues(alpha: 0.2),
                       ),
                     ),
                     child: Row(
@@ -442,7 +442,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
                         ),
                         const SizedBox(width: 4),
                         Text(
-                          'شاهد الكل',
+                          'ط´ط§ظ‡ط¯ ط§ظ„ظƒظ„',
                           style: GoogleFonts.cairo(
                             fontSize: 10,
                             fontWeight: FontWeight.w700,
@@ -457,7 +457,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
           ),
         ),
 
-        // ✅ البطاقات
+        // âœ… ط§ظ„ط¨ط·ط§ظ‚ط§طھ
         SizedBox(
           height: 220,
           child: ListView.builder(
@@ -506,10 +506,10 @@ class _VideoFeedTabState extends State<VideoFeedTab>
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('🎬', style: TextStyle(fontSize: 48)),
+          const Text('ًںژ¬', style: TextStyle(fontSize: 48)),
           const SizedBox(height: 14),
           Text(
-            'لا توجد مقاطع مرئية حالياً',
+            'ظ„ط§ طھظˆط¬ط¯ ظ…ظ‚ط§ط·ط¹ ظ…ط±ط¦ظٹط© ط­ط§ظ„ظٹط§ظ‹',
             style: GoogleFonts.cairo(
               fontSize: 16,
               fontWeight: FontWeight.w700,
@@ -518,7 +518,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
           ),
           const SizedBox(height: 6),
           Text(
-            'سيتم إضافة تلاوات مرئية قريباً',
+            'ط³ظٹطھظ… ط¥ط¶ط§ظپط© طھظ„ط§ظˆط§طھ ظ…ط±ط¦ظٹط© ظ‚ط±ظٹط¨ط§ظ‹',
             style: GoogleFonts.cairo(
               fontSize: 12,
               color: isDark ? Colors.white38 : Colors.black38,
@@ -530,9 +530,9 @@ class _VideoFeedTabState extends State<VideoFeedTab>
   }
 }
 
-// ══════════════════════════════════════════════════════
-// ✅ بطاقة فيديو
-// ══════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// âœ… ط¨ط·ط§ظ‚ط© ظپظٹط¯ظٹظˆ
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
 class _VideoCard extends StatelessWidget {
   final RecitationSubItem subItem;
@@ -603,19 +603,19 @@ class _VideoCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // ✅ الصورة
+            // âœ… ط§ظ„طµظˆط±ط©
             Expanded(
               child: Stack(
                 children: [
-                  // الصورة
+                  // ط§ظ„طµظˆط±ط©
                   ClipRRect(
                     borderRadius: BorderRadius.circular(14),
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: isDark
-                            ? Colors.white.withOpacity(0.06)
-                            : Colors.black.withOpacity(0.04),
+                            ? Colors.white.withValues(alpha: 0.06)
+                            : Colors.black.withValues(alpha: 0.04),
                       ),
                       child: SmartVideoThumbnail(
                         imageUrl: subItem.imageUrl,
@@ -629,7 +629,7 @@ class _VideoCard extends StatelessWidget {
                     ),
                   ),
 
-                  // تدرج
+                  // طھط¯ط±ط¬
                   Positioned(
                     bottom: 0,
                     left: 0,
@@ -646,7 +646,7 @@ class _VideoCard extends StatelessWidget {
                             end: Alignment.bottomCenter,
                             colors: [
                               Colors.transparent,
-                              Colors.black.withOpacity(0.6),
+                              Colors.black.withValues(alpha: 0.6),
                             ],
                           ),
                         ),
@@ -654,7 +654,7 @@ class _VideoCard extends StatelessWidget {
                     ),
                   ),
 
-                  // ✅ زر التشغيل
+                  // âœ… ط²ط± ط§ظ„طھط´ط؛ظٹظ„
                   Positioned(
                     bottom: 8,
                     right: 8,
@@ -666,7 +666,7 @@ class _VideoCard extends StatelessWidget {
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color: primary.withOpacity(0.4),
+                            color: primary.withValues(alpha: 0.4),
                             blurRadius: 8,
                           ),
                         ],
@@ -679,7 +679,7 @@ class _VideoCard extends StatelessWidget {
                     ),
                   ),
 
-                  // ✅ شارة النوع
+                  // âœ… ط´ط§ط±ط© ط§ظ„ظ†ظˆط¹
                   Positioned(
                     top: 8,
                     left: 8,
@@ -689,7 +689,7 @@ class _VideoCard extends StatelessWidget {
                         vertical: 3,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.6),
+                        color: Colors.black.withValues(alpha: 0.6),
                         borderRadius: BorderRadius.circular(6),
                       ),
                       child: Row(
@@ -704,7 +704,7 @@ class _VideoCard extends StatelessWidget {
                           ),
                           const SizedBox(width: 3),
                           Text(
-                            subItem.isYouTube ? 'YouTube' : 'مرئي',
+                            subItem.isYouTube ? 'YouTube' : 'ظ…ط±ط¦ظٹ',
                             style: const TextStyle(
                               fontSize: 8,
                               fontWeight: FontWeight.w700,
@@ -716,7 +716,7 @@ class _VideoCard extends StatelessWidget {
                     ),
                   ),
 
-                  // ✅ شارة محمّل
+                  // âœ… ط´ط§ط±ط© ظ…ط­ظ…ظ‘ظ„
                   Selector<VideoDownloadService, bool>(
                     selector: (_, dl) => dl.isDownloaded(videoId),
                     builder: (_, isDownloaded, __) {
@@ -731,7 +731,7 @@ class _VideoCard extends StatelessWidget {
                             vertical: 2,
                           ),
                           decoration: BoxDecoration(
-                            color: Colors.green.withOpacity(0.85),
+                            color: Colors.green.withValues(alpha: 0.85),
                             borderRadius: BorderRadius.circular(6),
                           ),
                           child: const Row(
@@ -744,7 +744,7 @@ class _VideoCard extends StatelessWidget {
                               ),
                               SizedBox(width: 2),
                               Text(
-                                'محمّل',
+                                'ظ…ط­ظ…ظ‘ظ„',
                                 style: TextStyle(
                                   fontSize: 7,
                                   fontWeight: FontWeight.w700,
@@ -763,7 +763,7 @@ class _VideoCard extends StatelessWidget {
 
             const SizedBox(height: 6),
 
-            // ✅ العنوان
+            // âœ… ط§ظ„ط¹ظ†ظˆط§ظ†
             Text(
               subItem.title,
               style: GoogleFonts.cairo(
@@ -798,8 +798,8 @@ class _VideoCard extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            primary.withOpacity(0.2),
-            primary.withOpacity(0.05),
+            primary.withValues(alpha: 0.2),
+            primary.withValues(alpha: 0.05),
           ],
         ),
       ),
@@ -811,7 +811,7 @@ class _VideoCard extends StatelessWidget {
             const SizedBox(height: 4),
             Icon(
               Icons.videocam_rounded,
-              color: primary.withOpacity(0.5),
+              color: primary.withValues(alpha: 0.5),
               size: 18,
             ),
           ],
@@ -868,7 +868,7 @@ class _VideoThumbnailState extends State<_VideoThumbnail> {
 
     final cacheManager = VideoCacheManager();
 
-    // ✅ 1. من الكاش (فوري)
+    // âœ… 1. ظ…ظ† ط§ظ„ظƒط§ط´ (ظپظˆط±ظٹ)
     if (cacheManager.isInitialized(url)) {
       final controller = cacheManager.getController(url);
       if (controller != null && mounted) {
@@ -880,7 +880,7 @@ class _VideoThumbnailState extends State<_VideoThumbnail> {
       return;
     }
 
-    // ✅ 2. حدد المصدر (محلي أو شبكة)
+    // âœ… 2. ط­ط¯ط¯ ط§ظ„ظ…طµط¯ط± (ظ…ط­ظ„ظٹ ط£ظˆ ط´ط¨ظƒط©)
     final localPath = _getLocalPath(url);
     VideoPlayerController controller;
 
@@ -900,14 +900,14 @@ class _VideoThumbnailState extends State<_VideoThumbnail> {
       await controller.initialize();
       if (!mounted) { controller.dispose(); return; }
 
-      // ✅ 3. اذهب للثانية 3 بدل أول frame (لتجنب الشاشة السوداء)
+      // âœ… 3. ط§ط°ظ‡ط¨ ظ„ظ„ط«ط§ظ†ظٹط© 3 ط¨ط¯ظ„ ط£ظˆظ„ frame (ظ„طھط¬ظ†ط¨ ط§ظ„ط´ط§ط´ط© ط§ظ„ط³ظˆط¯ط§ط،)
       final targetPos = controller.value.duration.inSeconds > 5
           ? const Duration(seconds: 6)
           : Duration(milliseconds: (controller.value.duration.inMilliseconds * 0.1).toInt());
 
       await controller.seekTo(targetPos);
 
-      // ✅ 4. انتظر لحظة حتى يرسم الـ frame
+      // âœ… 4. ط§ظ†طھط¸ط± ظ„ط­ط¸ط© ط­طھظ‰ ظٹط±ط³ظ… ط§ظ„ظ€ frame
       await Future.delayed(const Duration(milliseconds: 200));
 
       await controller.pause();
@@ -940,7 +940,7 @@ class _VideoThumbnailState extends State<_VideoThumbnail> {
 
   @override
   Widget build(BuildContext context) {
-    // ✅ إذا يوجد صورة مخصصة
+    // âœ… ط¥ط°ط§ ظٹظˆط¬ط¯ طµظˆط±ط© ظ…ط®طµطµط©
     if (widget.imageUrl != null && widget.imageUrl!.isNotEmpty) {
       return RadioImageWidget(
         imageUrl: widget.imageUrl,
@@ -952,7 +952,7 @@ class _VideoThumbnailState extends State<_VideoThumbnail> {
       );
     }
 
-    // ✅ إذا الفيديو جاهز، اعرض أول frame
+    // âœ… ط¥ط°ط§ ط§ظ„ظپظٹط¯ظٹظˆ ط¬ط§ظ‡ط²طŒ ط§ط¹ط±ط¶ ط£ظˆظ„ frame
     if (_ready && _thumbController != null) {
       return ClipRRect(
         borderRadius: BorderRadius.circular(14),
@@ -969,13 +969,13 @@ class _VideoThumbnailState extends State<_VideoThumbnail> {
       );
     }
 
-    // ✅ Fallback
+    // âœ… Fallback
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            widget.primary.withOpacity(0.2),
-            widget.primary.withOpacity(0.05),
+            widget.primary.withValues(alpha: 0.2),
+            widget.primary.withValues(alpha: 0.05),
           ],
         ),
         borderRadius: BorderRadius.circular(14),
@@ -988,7 +988,7 @@ class _VideoThumbnailState extends State<_VideoThumbnail> {
             const SizedBox(height: 4),
             Icon(
               Icons.videocam_rounded,
-              color: widget.primary.withOpacity(0.5),
+              color: widget.primary.withValues(alpha: 0.5),
               size: 18,
             ),
           ],
@@ -998,9 +998,9 @@ class _VideoThumbnailState extends State<_VideoThumbnail> {
   }
 }
 
-// ══════════════════════════════════════════════════════
-// Models داخلية
-// ══════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// Models ط¯ط§ط®ظ„ظٹط©
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
 class _VideoSection {
   final String title;

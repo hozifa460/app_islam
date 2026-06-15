@@ -1,4 +1,4 @@
-import 'dart:ui' show lerpDouble;
+﻿import 'dart:ui' show lerpDouble;
 import 'package:flutter/material.dart';
 
 class HomeCardSkeleton extends StatefulWidget {
@@ -88,9 +88,9 @@ class _HomeCardSkeletonState extends State<HomeCardSkeleton>
                                 begin: Alignment.centerLeft,
                                 end: Alignment.centerRight,
                                 colors: [
-                                  baseColor.withOpacity(0.0),
-                                  highlightColor.withOpacity(0.95),
-                                  baseColor.withOpacity(0.0),
+                                  baseColor.withValues(alpha: 0.0),
+                                  highlightColor.withValues(alpha: 0.95),
+                                  baseColor.withValues(alpha: 0.0),
                                 ],
                                 stops: const [0.0, 0.5, 1.0],
                               ),

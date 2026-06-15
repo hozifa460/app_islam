@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfileMenuItem extends StatelessWidget {
@@ -43,7 +43,7 @@ class ProfileMenuItem extends StatelessWidget {
                   horizontal: 16, vertical: 13),
               child: Row(
                 children: [
-                  // أيقونة
+                  // ط£ظٹظ‚ظˆظ†ط©
                   Container(
                     width: 40,
                     height: 40,
@@ -52,7 +52,7 @@ class ProfileMenuItem extends StatelessWidget {
                       color: (isDestructive
                           ? Colors.red
                           : iconColor)
-                          .withOpacity(0.12),
+                          .withValues(alpha: 0.12),
                     ),
                     child: Icon(
                       icon,
@@ -64,7 +64,7 @@ class ProfileMenuItem extends StatelessWidget {
                   ),
                   const SizedBox(width: 14),
 
-                  // النص
+                  // ط§ظ„ظ†طµ
                   Expanded(
                     child: Column(
                       crossAxisAlignment:
@@ -86,7 +86,7 @@ class ProfileMenuItem extends StatelessWidget {
                             style: GoogleFonts.cairo(
                               fontSize: 12,
                               color: isDark
-                                  ? Colors.white.withOpacity(0.4)
+                                  ? Colors.white.withValues(alpha: 0.4)
                                   : Colors.grey.shade500,
                             ),
                             maxLines: 1,
@@ -103,7 +103,7 @@ class ProfileMenuItem extends StatelessWidget {
                         Icons.arrow_forward_ios_rounded,
                         size: 16,
                         color: isDark
-                            ? Colors.white.withOpacity(0.3)
+                            ? Colors.white.withValues(alpha: 0.3)
                             : Colors.grey.shade400,
                       ),
                 ],
@@ -118,7 +118,7 @@ class ProfileMenuItem extends StatelessWidget {
             indent: 70,
             endIndent: 16,
             color: isDark
-                ? Colors.white.withOpacity(0.05)
+                ? Colors.white.withValues(alpha: 0.05)
                 : Colors.grey.shade100,
           ),
       ],

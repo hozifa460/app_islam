@@ -1,4 +1,4 @@
-import 'dart:math';
+﻿import 'dart:math';
 import 'package:flutter/material.dart';
 
 class HomeBackground extends StatefulWidget {
@@ -64,28 +64,28 @@ class _HomeBackgroundState extends State<HomeBackground>
         builder: (_, __) {
           return Stack(
             children: [
-              // ══════════════════════════════════════
-              // 1. الخلفية الأساسية
-              // ══════════════════════════════════════
+              // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+              // 1. ط§ظ„ط®ظ„ظپظٹط© ط§ظ„ط£ط³ط§ط³ظٹط©
+              // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
               Positioned.fill(
                 child: _buildBase(),
               ),
 
-              // ══════════════════════════════════════
-              // 2. عناصر زخرفية خفيفة جداً
-              // ══════════════════════════════════════
+              // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+              // 2. ط¹ظ†ط§طµط± ط²ط®ط±ظپظٹط© ط®ظپظٹظپط© ط¬ط¯ط§ظ‹
+              // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
               Opacity(
                 opacity: fadeOpacity,
                 child: Stack(
                   children: [
-                    // الهلال - أعلى اليسار
+                    // ط§ظ„ظ‡ظ„ط§ظ„ - ط£ط¹ظ„ظ‰ ط§ظ„ظٹط³ط§ط±
                     Positioned(
                       top: -20 + scrollShift,
                       left: -30,
                       child: _buildCrescent(),
                     ),
 
-                    // دائرة ضوئية - أعلى اليمين
+                    // ط¯ط§ط¦ط±ط© ط¶ظˆط¦ظٹط© - ط£ط¹ظ„ظ‰ ط§ظ„ظٹظ…ظٹظ†
                     Positioned(
                       top: -30 + scrollShift,
                       right: -50,
@@ -96,7 +96,7 @@ class _HomeBackgroundState extends State<HomeBackground>
                       ),
                     ),
 
-                    // دائرة ضوئية - المنتصف اليسار
+                    // ط¯ط§ط¦ط±ط© ط¶ظˆط¦ظٹط© - ط§ظ„ظ…ظ†طھطµظپ ط§ظ„ظٹط³ط§ط±
                     Positioned(
                       top: 300 + scrollShift * 0.5,
                       left: -60,
@@ -107,7 +107,7 @@ class _HomeBackgroundState extends State<HomeBackground>
                       ),
                     ),
 
-                    // دائرة ضوئية - الأسفل اليمين
+                    // ط¯ط§ط¦ط±ط© ط¶ظˆط¦ظٹط© - ط§ظ„ط£ط³ظپظ„ ط§ظ„ظٹظ…ظٹظ†
                     Positioned(
                       bottom: 200,
                       right: -40,
@@ -118,7 +118,7 @@ class _HomeBackgroundState extends State<HomeBackground>
                       ),
                     ),
 
-                    // نجوم صغيرة - Dark فقط
+                    // ظ†ط¬ظˆظ… طµط؛ظٹط±ط© - Dark ظپظ‚ط·
                     if (widget.isDark)
                       Positioned.fill(
                         child: CustomPaint(
@@ -131,7 +131,7 @@ class _HomeBackgroundState extends State<HomeBackground>
                         ),
                       ),
 
-                    // نجيمات أيقونة - خفيفة جداً
+                    // ظ†ط¬ظٹظ…ط§طھ ط£ظٹظ‚ظˆظ†ط© - ط®ظپظٹظپط© ط¬ط¯ط§ظ‹
                     ..._buildIconStars(scrollShift, fadeOpacity),
                   ],
                 ),
@@ -143,15 +143,15 @@ class _HomeBackgroundState extends State<HomeBackground>
     );
   }
 
-  // ══════════════════════════════════════
-  // الخلفية الأساسية
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ط®ظ„ظپظٹط© ط§ظ„ط£ط³ط§ط³ظٹط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildBase() {
     if (widget.isDark) {
-      // Dark: تدرج من أخضر غامق جداً في الأعلى
-      // إلى أخضر غامق أكثر في الأسفل
-      // ← هذا يجعل البطاقات الخضراء الغامقة تندمج بسلاسة
+      // Dark: طھط¯ط±ط¬ ظ…ظ† ط£ط®ط¶ط± ط؛ط§ظ…ظ‚ ط¬ط¯ط§ظ‹ ظپظٹ ط§ظ„ط£ط¹ظ„ظ‰
+      // ط¥ظ„ظ‰ ط£ط®ط¶ط± ط؛ط§ظ…ظ‚ ط£ظƒط«ط± ظپظٹ ط§ظ„ط£ط³ظپظ„
+      // â†گ ظ‡ط°ط§ ظٹط¬ط¹ظ„ ط§ظ„ط¨ط·ط§ظ‚ط§طھ ط§ظ„ط®ط¶ط±ط§ط، ط§ظ„ط؛ط§ظ…ظ‚ط© طھظ†ط¯ظ…ط¬ ط¨ط³ظ„ط§ط³ط©
       return DecoratedBox(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -159,16 +159,16 @@ class _HomeBackgroundState extends State<HomeBackground>
             end: Alignment.bottomCenter,
             stops: const [0.0, 0.4, 1.0],
             colors: [
-              const Color(0xFF0A1210), // أخضر غامق جداً في الأعلى
-              const Color(0xFF0E1714), // اللون الأساسي للخلفية
-              const Color(0xFF0B1411), // أغمق قليلاً في الأسفل
+              const Color(0xFF0A1210), // ط£ط®ط¶ط± ط؛ط§ظ…ظ‚ ط¬ط¯ط§ظ‹ ظپظٹ ط§ظ„ط£ط¹ظ„ظ‰
+              const Color(0xFF0E1714), // ط§ظ„ظ„ظˆظ† ط§ظ„ط£ط³ط§ط³ظٹ ظ„ظ„ط®ظ„ظپظٹط©
+              const Color(0xFF0B1411), // ط£ط؛ظ…ظ‚ ظ‚ظ„ظٹظ„ط§ظ‹ ظپظٹ ط§ظ„ط£ط³ظپظ„
             ],
           ),
         ),
       );
     } else {
-      // Light: أبيض نقي في الأعلى ← يتوافق مع البطاقات البيضاء
-      // تدرج خفيف جداً نحو الكريمي في الأسفل
+      // Light: ط£ط¨ظٹط¶ ظ†ظ‚ظٹ ظپظٹ ط§ظ„ط£ط¹ظ„ظ‰ â†گ ظٹطھظˆط§ظپظ‚ ظ…ط¹ ط§ظ„ط¨ط·ط§ظ‚ط§طھ ط§ظ„ط¨ظٹط¶ط§ط،
+      // طھط¯ط±ط¬ ط®ظپظٹظپ ط¬ط¯ط§ظ‹ ظ†ط­ظˆ ط§ظ„ظƒط±ظٹظ…ظٹ ظپظٹ ط§ظ„ط£ط³ظپظ„
       return DecoratedBox(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -176,9 +176,9 @@ class _HomeBackgroundState extends State<HomeBackground>
             end: Alignment.bottomCenter,
             stops: const [0.0, 0.35, 1.0],
             colors: [
-              const Color(0xFFFAF8F4), // شبه أبيض في الأعلى
-              const Color(0xFFF5F1E8), // كريمي خفيف في المنتصف
-              const Color(0xFFF0EBE0), // كريمي في الأسفل
+              const Color(0xFFFAF8F4), // ط´ط¨ظ‡ ط£ط¨ظٹط¶ ظپظٹ ط§ظ„ط£ط¹ظ„ظ‰
+              const Color(0xFFF5F1E8), // ظƒط±ظٹظ…ظٹ ط®ظپظٹظپ ظپظٹ ط§ظ„ظ…ظ†طھطµظپ
+              const Color(0xFFF0EBE0), // ظƒط±ظٹظ…ظٹ ظپظٹ ط§ظ„ط£ط³ظپظ„
             ],
           ),
         ),
@@ -186,12 +186,12 @@ class _HomeBackgroundState extends State<HomeBackground>
     }
   }
 
-  // ══════════════════════════════════════
-  // الهلال
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ظ‡ظ„ط§ظ„
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildCrescent() {
-    // الهلال بسيط وخفيف جداً لا يزعج العين
+    // ط§ظ„ظ‡ظ„ط§ظ„ ط¨ط³ظٹط· ظˆط®ظپظٹظپ ط¬ط¯ط§ظ‹ ظ„ط§ ظٹط²ط¹ط¬ ط§ظ„ط¹ظٹظ†
     const outerSize = 150.0;
     const innerSize = 122.0;
     const innerLeft = 34.0;
@@ -199,7 +199,7 @@ class _HomeBackgroundState extends State<HomeBackground>
 
     final outerOpacity = widget.isDark ? 0.08 : 0.05;
 
-    // لون الهلال يتوافق مع الخلفية لإخفاء الجزء الداخلي
+    // ظ„ظˆظ† ط§ظ„ظ‡ظ„ط§ظ„ ظٹطھظˆط§ظپظ‚ ظ…ط¹ ط§ظ„ط®ظ„ظپظٹط© ظ„ط¥ط®ظپط§ط، ط§ظ„ط¬ط²ط، ط§ظ„ط¯ط§ط®ظ„ظٹ
     final innerColor = widget.isDark
         ? const Color(0xFF0A1210)
         : const Color(0xFFFAF8F4);
@@ -214,7 +214,7 @@ class _HomeBackgroundState extends State<HomeBackground>
             height: outerSize,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: widget.gold.withOpacity(outerOpacity),
+              color: widget.gold.withValues(alpha: outerOpacity),
             ),
           ),
           Positioned(
@@ -234,16 +234,16 @@ class _HomeBackgroundState extends State<HomeBackground>
     );
   }
 
-  // ══════════════════════════════════════
-  // دائرة ضوئية
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط¯ط§ط¦ط±ط© ط¶ظˆط¦ظٹط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildGlowCircle({
     required double size,
     required Color color,
     required double opacity,
   }) {
-    // نبض خفيف جداً
+    // ظ†ط¨ط¶ ط®ظپظٹظپ ط¬ط¯ط§ظ‹
     final pulsedOpacity =
         opacity * (0.7 + 0.3 * sin(_anim.value * pi));
 
@@ -254,24 +254,24 @@ class _HomeBackgroundState extends State<HomeBackground>
         shape: BoxShape.circle,
         gradient: RadialGradient(
           colors: [
-            color.withOpacity(pulsedOpacity),
-            color.withOpacity(0),
+            color.withValues(alpha: pulsedOpacity),
+            color.withValues(alpha: 0),
           ],
         ),
       ),
     );
   }
 
-  // ══════════════════════════════════════
-  // نجيمات أيقونة
-  // ══════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ظ†ط¬ظٹظ…ط§طھ ط£ظٹظ‚ظˆظ†ط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   List<Widget> _buildIconStars(
       double scrollShift, double fadeOpacity) {
-    // opacity خفيفة جداً في كلا الوضعين
+    // opacity ط®ظپظٹظپط© ط¬ط¯ط§ظ‹ ظپظٹ ظƒظ„ط§ ط§ظ„ظˆط¶ط¹ظٹظ†
     final baseOpacity = widget.isDark ? 0.10 : 0.06;
 
-    // تلألؤ بطيء
+    // طھظ„ط£ظ„ط¤ ط¨ط·ظٹط،
     final twinkled =
         baseOpacity * (0.5 + 0.5 * sin(_anim.value * pi));
 
@@ -301,16 +301,16 @@ class _HomeBackgroundState extends State<HomeBackground>
               ? Icons.auto_awesome_rounded
               : Icons.star_rounded,
           size: s.size,
-          color: widget.gold.withOpacity(twinkled),
+          color: widget.gold.withValues(alpha: twinkled),
         ),
       );
     }).toList();
   }
 }
 
-// ══════════════════════════════════════
-// بيانات مساعدة
-// ══════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط¨ظٹط§ظ†ط§طھ ظ…ط³ط§ط¹ط¯ط©
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
 class _BgStar {
   final double x, y, size, phase;
@@ -335,9 +335,9 @@ class _IconStar {
   });
 }
 
-// ══════════════════════════════════════
-// رسام النجوم (Dark فقط)
-// ══════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط±ط³ط§ظ… ط§ظ„ظ†ط¬ظˆظ… (Dark ظپظ‚ط·)
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
 class _StarsPainter extends CustomPainter {
   final List<_BgStar> stars;
@@ -366,7 +366,7 @@ class _StarsPainter extends CustomPainter {
         Offset(s.x * size.width, dy),
         s.size,
         Paint()
-          ..color = color.withOpacity(opacity)
+          ..color = color.withValues(alpha: opacity)
           ..maskFilter =
           MaskFilter.blur(BlurStyle.normal, s.size * 0.6),
       );

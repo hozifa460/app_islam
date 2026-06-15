@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../prayer/more/data/quran_roots_data.dart';
 
@@ -12,17 +12,17 @@ class QuranRootsScreen extends StatefulWidget {
 class _QuranRootsScreenState extends State<QuranRootsScreen> {
   final TextEditingController _searchController = TextEditingController();
 
-  // ✅ نسخة حقيقية من القائمة
+  // âœ… ظ†ط³ط®ط© ط­ظ‚ظٹظ‚ظٹط© ظ…ظ† ط§ظ„ظ‚ط§ط¦ظ…ط©
   late List<QuranRoot> _filtered;
   String _searchQuery = '';
 
   @override
   void initState() {
     super.initState();
-    // ✅ تهيئة القائمة هنا وليس في التعريف
+    // âœ… طھظ‡ظٹط¦ط© ط§ظ„ظ‚ط§ط¦ظ…ط© ظ‡ظ†ط§ ظˆظ„ظٹط³ ظپظٹ ط§ظ„طھط¹ط±ظٹظپ
     _filtered = List.from(quranRoots);
-    debugPrint('✅ عدد الجذور: ${quranRoots.length}'); // كم يطبع؟
-    debugPrint('✅ filtered: ${_filtered.length}');
+    debugPrint('âœ… ط¹ط¯ط¯ ط§ظ„ط¬ط°ظˆط±: ${quranRoots.length}'); // ظƒظ… ظٹط·ط¨ط¹طں
+    debugPrint('âœ… filtered: ${_filtered.length}');
   }
 
   @override
@@ -35,7 +35,7 @@ class _QuranRootsScreenState extends State<QuranRootsScreen> {
     setState(() {
       _searchQuery = query;
       if (query.isEmpty) {
-        // ✅ إذا البحث فارغ أرجع كل القائمة
+        // âœ… ط¥ط°ط§ ط§ظ„ط¨ط­ط« ظپط§ط±ط؛ ط£ط±ط¬ط¹ ظƒظ„ ط§ظ„ظ‚ط§ط¦ظ…ط©
         _filtered = List.from(quranRoots);
       } else {
         _filtered = quranRoots.where((r) {
@@ -51,18 +51,18 @@ class _QuranRootsScreenState extends State<QuranRootsScreen> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // ✅ شريط البحث
+        // âœ… ط´ط±ظٹط· ط§ظ„ط¨ط­ط«
         Container(
           margin: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
-              color: const Color(0xFF8B4513).withOpacity(0.3),
+              color: const Color(0xFF8B4513).withValues(alpha: 0.3),
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.05),
+                color: Colors.black.withValues(alpha: 0.05),
                 blurRadius: 10,
               ),
             ],
@@ -73,7 +73,7 @@ class _QuranRootsScreenState extends State<QuranRootsScreen> {
             textDirection: TextDirection.rtl,
             style: GoogleFonts.cairo(fontSize: 16),
             decoration: InputDecoration(
-              hintText: 'ابحث عن جذر أو معنى...',
+              hintText: 'ط§ط¨ط­ط« ط¹ظ† ط¬ط°ط± ط£ظˆ ظ…ط¹ظ†ظ‰...',
               hintStyle: GoogleFonts.cairo(
                 color: Colors.grey[400],
                 fontSize: 14,
@@ -100,7 +100,7 @@ class _QuranRootsScreenState extends State<QuranRootsScreen> {
           ),
         ),
 
-        // ✅ عداد النتائج
+        // âœ… ط¹ط¯ط§ط¯ ط§ظ„ظ†طھط§ط¦ط¬
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Row(
@@ -111,11 +111,11 @@ class _QuranRootsScreenState extends State<QuranRootsScreen> {
                   vertical: 6,
                 ),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF8B4513).withOpacity(0.1),
+                  color: const Color(0xFF8B4513).withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
-                  '${_filtered.length} جذر',
+                  '${_filtered.length} ط¬ط°ط±',
                   style: GoogleFonts.cairo(
                     fontSize: 13,
                     color: const Color(0xFF8B4513),
@@ -129,7 +129,7 @@ class _QuranRootsScreenState extends State<QuranRootsScreen> {
 
         const SizedBox(height: 8),
 
-        // ✅ القائمة
+        // âœ… ط§ظ„ظ‚ط§ط¦ظ…ط©
         Expanded(
           child: _filtered.isEmpty
               ? Center(
@@ -139,7 +139,7 @@ class _QuranRootsScreenState extends State<QuranRootsScreen> {
                 Icon(Icons.search_off, size: 60, color: Colors.grey[300]),
                 const SizedBox(height: 12),
                 Text(
-                  'لا توجد نتائج',
+                  'ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬',
                   style: GoogleFonts.cairo(
                     fontSize: 16,
                     color: Colors.grey[400],
@@ -180,11 +180,11 @@ class _RootCardState extends State<_RootCard> {
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: const Color(0xFF8B4513).withOpacity(0.15),
+          color: const Color(0xFF8B4513).withValues(alpha: 0.15),
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: Colors.black.withValues(alpha: 0.04),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -199,7 +199,7 @@ class _RootCardState extends State<_RootCard> {
               padding: const EdgeInsets.all(16),
               child: Row(
                 children: [
-                  // أيقونة الجذر
+                  // ط£ظٹظ‚ظˆظ†ط© ط§ظ„ط¬ط°ط±
                   Container(
                     width: 52,
                     height: 52,
@@ -213,7 +213,7 @@ class _RootCardState extends State<_RootCard> {
                     ),
                     child: Center(
                       child: Text(
-                        '√',
+                        'âˆڑ',
                         style: GoogleFonts.amiri(
                           color: Colors.white,
                           fontSize: 22,
@@ -255,11 +255,11 @@ class _RootCardState extends State<_RootCard> {
                           vertical: 4,
                         ),
                         decoration: BoxDecoration(
-                          color: const Color(0xFFD4AF37).withOpacity(0.15),
+                          color: const Color(0xFFD4AF37).withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Text(
-                          '${widget.root.occurrences}×',
+                          '${widget.root.occurrences}أ—',
                           style: GoogleFonts.cairo(
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
@@ -273,7 +273,7 @@ class _RootCardState extends State<_RootCard> {
                         duration: const Duration(milliseconds: 300),
                         child: Icon(
                           Icons.keyboard_arrow_down,
-                          color: const Color(0xFF8B4513).withOpacity(0.5),
+                          color: const Color(0xFF8B4513).withValues(alpha: 0.5),
                         ),
                       ),
                     ],
@@ -302,10 +302,10 @@ class _RootCardState extends State<_RootCard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Divider(color: const Color(0xFF8B4513).withOpacity(0.1)),
+          Divider(color: const Color(0xFF8B4513).withValues(alpha: 0.1)),
           const SizedBox(height: 8),
           Text(
-            'أمثلة من الكلمات المشتقة:',
+            'ط£ظ…ط«ظ„ط© ظ…ظ† ط§ظ„ظƒظ„ظ…ط§طھ ط§ظ„ظ…ط´طھظ‚ط©:',
             style: GoogleFonts.cairo(
               fontSize: 13,
               fontWeight: FontWeight.bold,
@@ -352,7 +352,7 @@ class _RootCardState extends State<_RootCard> {
               const SizedBox(width: 4),
               Expanded(
                 child: Text(
-                  'ورد هذا الجذر ${widget.root.occurrences} مرة في القرآن الكريم',
+                  'ظˆط±ط¯ ظ‡ط°ط§ ط§ظ„ط¬ط°ط± ${widget.root.occurrences} ظ…ط±ط© ظپظٹ ط§ظ„ظ‚ط±ط¢ظ† ط§ظ„ظƒط±ظٹظ…',
                   style: GoogleFonts.cairo(
                     fontSize: 12,
                     color: Colors.grey[500],

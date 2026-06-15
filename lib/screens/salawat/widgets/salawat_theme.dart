@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 
 class SalawatTheme {
   final bool isDark;
@@ -42,22 +42,22 @@ class SalawatTheme {
     cardColor = isDark ? const Color(0xFF141C2B) : Colors.white;
     textColor = isDark ? Colors.white : const Color(0xFF1A1A1A);
     subtitleColor =
-    isDark ? Colors.white.withOpacity(0.6) : const Color(0xFF7A7A7A);
+    isDark ? Colors.white.withValues(alpha: 0.6) : const Color(0xFF7A7A7A);
     accentGold = const Color(0xFFD4A847);
     deepGreen = primaryColor;
 
     cardBorderColor = isDark
-        ? Colors.white.withOpacity(0.06)
-        : Colors.grey.withOpacity(0.12);
+        ? Colors.white.withValues(alpha: 0.06)
+        : Colors.grey.withValues(alpha: 0.12);
 
-    activeBorderColor = deepGreen.withOpacity(0.3);
+    activeBorderColor = deepGreen.withValues(alpha: 0.3);
     inactiveBorderColor = cardBorderColor;
 
     cardShadow = [
       BoxShadow(
         color: isDark
-            ? Colors.black.withOpacity(0.2)
-            : Colors.black.withOpacity(0.04),
+            ? Colors.black.withValues(alpha: 0.2)
+            : Colors.black.withValues(alpha: 0.04),
         blurRadius: 16,
         offset: const Offset(0, 4),
       ),
@@ -68,15 +68,15 @@ class SalawatTheme {
       end: Alignment.bottomRight,
       colors: [
         deepGreen,
-        deepGreen.withOpacity(0.85),
+        deepGreen.withValues(alpha: 0.85),
         const Color(0xFF0D3B2E),
       ],
     );
 
     enabledStatusGradient = LinearGradient(
       colors: [
-        deepGreen.withOpacity(0.15),
-        accentGold.withOpacity(0.08),
+        deepGreen.withValues(alpha: 0.15),
+        accentGold.withValues(alpha: 0.08),
       ],
       begin: Alignment.topRight,
       end: Alignment.bottomLeft,
@@ -84,54 +84,54 @@ class SalawatTheme {
 
     hadithGradient = LinearGradient(
       colors: [
-        accentGold.withOpacity(0.1),
-        accentGold.withOpacity(0.03),
+        accentGold.withValues(alpha: 0.1),
+        accentGold.withValues(alpha: 0.03),
       ],
       begin: Alignment.topRight,
       end: Alignment.bottomLeft,
     );
   }
 
-  // ─── Helper: chip colors ───
+  // â”€â”€â”€ Helper: chip colors â”€â”€â”€
   Color chipBgColor(bool isSelected) {
     if (isSelected) return deepGreen;
     return isDark
-        ? Colors.white.withOpacity(0.05)
-        : Colors.grey.withOpacity(0.08);
+        ? Colors.white.withValues(alpha: 0.05)
+        : Colors.grey.withValues(alpha: 0.08);
   }
 
   Color chipBorderColor(bool isSelected) {
     if (isSelected) return deepGreen;
     return isDark
-        ? Colors.white.withOpacity(0.08)
-        : Colors.grey.withOpacity(0.15);
+        ? Colors.white.withValues(alpha: 0.08)
+        : Colors.grey.withValues(alpha: 0.15);
   }
 
   Color chipTextColor(bool isSelected) {
     if (isSelected) return Colors.white;
-    return textColor.withOpacity(0.7);
+    return textColor.withValues(alpha: 0.7);
   }
 
-  // ─── Helper: sound option colors ───
+  // â”€â”€â”€ Helper: sound option colors â”€â”€â”€
   Color soundOptionBg(bool isSelected) {
-    if (isSelected) return deepGreen.withOpacity(0.1);
+    if (isSelected) return deepGreen.withValues(alpha: 0.1);
     return isDark
-        ? Colors.white.withOpacity(0.03)
-        : Colors.grey.withOpacity(0.05);
+        ? Colors.white.withValues(alpha: 0.03)
+        : Colors.grey.withValues(alpha: 0.05);
   }
 
   Color soundOptionBorder(bool isSelected) {
-    if (isSelected) return deepGreen.withOpacity(0.4);
+    if (isSelected) return deepGreen.withValues(alpha: 0.4);
     return isDark
-        ? Colors.white.withOpacity(0.06)
-        : Colors.grey.withOpacity(0.1);
+        ? Colors.white.withValues(alpha: 0.06)
+        : Colors.grey.withValues(alpha: 0.1);
   }
 
-  // ─── Convenience: gradient for selected chip ───
+  // â”€â”€â”€ Convenience: gradient for selected chip â”€â”€â”€
   LinearGradient? chipGradient(bool isSelected) {
     if (!isSelected) return null;
     return LinearGradient(
-      colors: [deepGreen, deepGreen.withOpacity(0.8)],
+      colors: [deepGreen, deepGreen.withValues(alpha: 0.8)],
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
     );
@@ -141,8 +141,8 @@ class SalawatTheme {
     if (!isSelected) return null;
     return LinearGradient(
       colors: [
-        deepGreen.withOpacity(0.1),
-        deepGreen.withOpacity(0.03),
+        deepGreen.withValues(alpha: 0.1),
+        deepGreen.withValues(alpha: 0.03),
       ],
       begin: Alignment.centerRight,
       end: Alignment.centerLeft,

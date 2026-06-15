@@ -1,4 +1,4 @@
-// lib/screens/radio/widgets_recitations_screen/theme/rec_detail_background.dart
+﻿// lib/screens/radio/widgets_recitations_screen/theme/rec_detail_background.dart
 
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -52,7 +52,7 @@ class _RecDetailBgPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    // ══ الخلفية ══
+    // â•گâ•گ ط§ظ„ط®ظ„ظپظٹط© â•گâ•گ
     final bg = Paint();
     bg.shader = LinearGradient(
       colors: [topColor, bottomColor],
@@ -61,7 +61,7 @@ class _RecDetailBgPainter extends CustomPainter {
     ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
     canvas.drawRect(Rect.fromLTWH(0, 0, size.width, size.height), bg);
 
-    // ══ الدوائر الضوئية ══
+    // â•گâ•گ ط§ظ„ط¯ظˆط§ط¦ط± ط§ظ„ط¶ظˆط¦ظٹط© â•گâ•گ
     final glow = Paint()..style = PaintingStyle.fill;
     for (int i = 0; i < 2; i++) {
       final phase = (progress + i * 0.5) % 1.0;
@@ -70,7 +70,7 @@ class _RecDetailBgPainter extends CustomPainter {
       final r = 130.0 + 40.0 * sin(phase * pi);
       glow.shader = RadialGradient(
         colors: [
-          colors[i % colors.length].withOpacity(isDark ? 0.1 : 0.06),
+          colors[i % colors.length].withValues(alpha: isDark ? 0.1 : 0.06),
           Colors.transparent,
         ],
       ).createShader(Rect.fromCircle(center: Offset(x, y), radius: r));

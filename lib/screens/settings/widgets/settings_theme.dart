@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SettingsTheme {
@@ -30,23 +30,23 @@ class SettingsTheme {
 
   Color get bg => isDark ? bgDark : bgLight;
   Color get textColor => isDark ? Colors.white : const Color(0xFF1A1A2E);
-  Color get cardBg => isDark ? cardDark : Colors.white.withOpacity(0.95);
+  Color get cardBg => isDark ? cardDark : Colors.white.withValues(alpha: 0.95);
 
   Color get cardBorder => isDark
-      ? Colors.white.withOpacity(0.07)
-      : currentPrimary.withOpacity(0.14);
+      ? Colors.white.withValues(alpha: 0.07)
+      : currentPrimary.withValues(alpha: 0.14);
 
   Color get dividerColor => isDark
-      ? Colors.white.withOpacity(0.06)
-      : Colors.black.withOpacity(0.05);
+      ? Colors.white.withValues(alpha: 0.06)
+      : Colors.black.withValues(alpha: 0.05);
 
   Color get backBtnBg => isDark
-      ? Colors.white.withOpacity(0.08)
-      : Colors.white.withOpacity(0.9);
+      ? Colors.white.withValues(alpha: 0.08)
+      : Colors.white.withValues(alpha: 0.9);
 
   Color get backBtnBorder => isDark
-      ? Colors.white.withOpacity(0.1)
-      : currentPrimary.withOpacity(0.22);
+      ? Colors.white.withValues(alpha: 0.1)
+      : currentPrimary.withValues(alpha: 0.22);
 
   List<Color> get bgGradient => isDark
       ? [const Color(0xFF0D1520), bgDark, const Color(0xFF0A0E17)]
@@ -56,7 +56,7 @@ class SettingsTheme {
 
   List<BoxShadow> get cardShadow => [
     BoxShadow(
-      color: Colors.black.withOpacity(isDark ? 0.2 : 0.06),
+      color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.06),
       blurRadius: 16,
       offset: const Offset(0, 4),
     ),
@@ -70,7 +70,7 @@ class SettingsTheme {
 
   TextStyle subtitleStyle(double w) => GoogleFonts.cairo(
     fontSize: (w * 0.03).clamp(10.0, 13.0),
-    color: textColor.withOpacity(0.45),
+    color: textColor.withValues(alpha: 0.45),
   );
 
   TextStyle sectionLabelStyle(double w) => GoogleFonts.cairo(

@@ -1,4 +1,4 @@
-// lib/screens/radio/widgets_recitations/rec_item_card.dart
+﻿// lib/screens/radio/widgets_recitations/rec_item_card.dart
 
 import 'dart:io';
 
@@ -19,9 +19,9 @@ import 'package:provider/provider.dart';
 import '../widgets/cached_image_widget.dart';
 import 'models/downloadable_item.dart';
 
-/// ══════════════════════════════════════════════════════════════
-/// بطاقة العنصر الأفقية
-/// ══════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ط¨ط·ط§ظ‚ط© ط§ظ„ط¹ظ†طµط± ط§ظ„ط£ظپظ‚ظٹط©
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class RecItemCard extends StatelessWidget {
   final RecitationItem item;
   final Color primary;
@@ -81,12 +81,12 @@ class RecItemCard extends StatelessWidget {
     );
   }
 
-  // ══════════════════════════════════════════════════════
-  // منطق الضغط
-  // ══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ظ…ظ†ط·ظ‚ ط§ظ„ط¶ط؛ط·
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   void _handleTap(BuildContext context, ItemDownloadService downloadService) {
-    // ══ 1. القارئ العادي ══
+    // â•گâ•گ 1. ط§ظ„ظ‚ط§ط±ط¦ ط§ظ„ط¹ط§ط¯ظٹ â•گâ•گ
     if (_isStation) {
       Navigator.push(
         context,
@@ -101,7 +101,7 @@ class RecItemCard extends StatelessWidget {
       return;
     }
 
-    // ══ 2. تلاوات متعددة ══
+    // â•گâ•گ 2. طھظ„ط§ظˆط§طھ ظ…طھط¹ط¯ط¯ط© â•گâ•گ
     if (item.hasSubItems) {
       Navigator.push(
         context,
@@ -112,7 +112,7 @@ class RecItemCard extends StatelessWidget {
       return;
     }
 
-    // ══ 3. تلاوة واحدة محمّلة ══
+    // â•گâ•گ 3. طھظ„ط§ظˆط© ظˆط§ط­ط¯ط© ظ…ط­ظ…ظ‘ظ„ط© â•گâ•گ
     final itemId = ItemDownloadService.itemIdFromRecitationItem(item);
     final localPath = downloadService.getLocalPath(itemId);
 
@@ -121,17 +121,17 @@ class RecItemCard extends StatelessWidget {
       return;
     }
 
-    // ══ 4. تلاوة واحدة أونلاين ══
+    // â•گâ•گ 4. طھظ„ط§ظˆط© ظˆط§ط­ط¯ط© ط£ظˆظ†ظ„ط§ظٹظ† â•گâ•گ
     if (_hasAudio) {
       _playOnline(context);
       return;
     }
 
-    // ══ 5. لا يوجد رابط ══
+    // â•گâ•گ 5. ظ„ط§ ظٹظˆط¬ط¯ ط±ط§ط¨ط· â•گâ•گ
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'الرابط غير متاح حالياً',
+          'ط§ظ„ط±ط§ط¨ط· ط؛ظٹط± ظ…طھط§ط­ ط­ط§ظ„ظٹط§ظ‹',
           style: GoogleFonts.cairo(),
           textDirection: TextDirection.rtl,
         ),
@@ -152,7 +152,7 @@ class RecItemCard extends StatelessWidget {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              'الملف غير موجود، أعد تحميله',
+              'ط§ظ„ظ…ظ„ظپ ط؛ظٹط± ظ…ظˆط¬ظˆط¯طŒ ط£ط¹ط¯ طھط­ظ…ظٹظ„ظ‡',
               style: GoogleFonts.cairo(),
               textDirection: TextDirection.rtl,
             ),
@@ -172,9 +172,9 @@ class RecItemCard extends StatelessWidget {
         name: item.title,
         nameEn: item.title,
         url: localPath,
-        category: 'تلاوات',
+        category: 'طھظ„ط§ظˆط§طھ',
         categoryEn: 'Recitations',
-        description: '${item.subtitle} • أوفلاين',
+        description: '${item.subtitle} â€¢ ط£ظˆظپظ„ط§ظٹظ†',
         descriptionEn: item.subtitle,
         iconEmoji: item.emoji,
         imageUrl: item.imageUrl,
@@ -197,12 +197,12 @@ class RecItemCard extends StatelessWidget {
         );
       }
     } catch (e) {
-      debugPrint('❌ خطأ تشغيل محلي من RecItemCard: $e');
+      debugPrint('â‌Œ ط®ط·ط£ طھط´ط؛ظٹظ„ ظ…ط­ظ„ظٹ ظ…ظ† RecItemCard: $e');
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              'فشل تشغيل الملف',
+              'ظپط´ظ„ طھط´ط؛ظٹظ„ ط§ظ„ظ…ظ„ظپ',
               style: GoogleFonts.cairo(),
               textDirection: TextDirection.rtl,
             ),
@@ -222,7 +222,7 @@ class RecItemCard extends StatelessWidget {
       name: item.title,
       nameEn: item.title,
       url: item.audioUrl!,
-      category: 'تلاوات',
+      category: 'طھظ„ط§ظˆط§طھ',
       categoryEn: 'Recitations',
       description: item.subtitle,
       descriptionEn: item.subtitle,
@@ -246,9 +246,9 @@ class RecItemCard extends StatelessWidget {
     );
   }
 
-  // ══════════════════════════════════════════════════════
-  // الصورة
-  // ══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„طµظˆط±ط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildImageStack(
     BuildContext context,
@@ -260,7 +260,7 @@ class RecItemCard extends StatelessWidget {
   ) {
     return Stack(
       children: [
-        // ══ الصورة ══
+        // â•گâ•گ ط§ظ„طµظˆط±ط© â•گâ•گ
         ClipRRect(
           borderRadius: RecShapes.radiusCard,
           child: SizedBox(
@@ -270,7 +270,7 @@ class RecItemCard extends StatelessWidget {
           ),
         ),
 
-        // ══ تدرج سفلي ══
+        // â•گâ•گ طھط¯ط±ط¬ ط³ظپظ„ظٹ â•گâ•گ
         Positioned(
           bottom: 0,
           left: 0,
@@ -284,7 +284,7 @@ class RecItemCard extends StatelessWidget {
           ),
         ),
 
-        // ══ زر التشغيل ══
+        // â•گâ•گ ط²ط± ط§ظ„طھط´ط؛ظٹظ„ â•گâ•گ
         Positioned(
           bottom: 8,
           right: 8,
@@ -312,7 +312,7 @@ class RecItemCard extends StatelessWidget {
           ),
         ),
 
-        // ══ زر التحميل للعناصر الأخرى ══
+        // â•گâ•گ ط²ط± ط§ظ„طھط­ظ…ظٹظ„ ظ„ظ„ط¹ظ†ط§طµط± ط§ظ„ط£ط®ط±ظ‰ â•گâ•گ
         if (!_isStation && _hasAudio)
           Positioned(
             top: 8,
@@ -325,7 +325,7 @@ class RecItemCard extends StatelessWidget {
             ),
           ),
 
-        // ══ شارة أوفلاين ══
+        // â•گâ•گ ط´ط§ط±ط© ط£ظˆظپظ„ط§ظٹظ† â•گâ•گ
         if (isDownloaded && !_isStation)
           Positioned(
             top: 8,
@@ -333,11 +333,11 @@ class RecItemCard extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
               decoration: BoxDecoration(
-                color: Colors.green.withOpacity(0.9),
+                color: Colors.green.withValues(alpha: 0.9),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Text(
-                'أوفلاين',
+                'ط£ظˆظپظ„ط§ظٹظ†',
                 style: GoogleFonts.cairo(
                   fontSize: 9,
                   fontWeight: FontWeight.w700,
@@ -347,7 +347,7 @@ class RecItemCard extends StatelessWidget {
             ),
           ),
 
-        // ══ شارة عناصر متعددة ══
+        // â•گâ•گ ط´ط§ط±ط© ط¹ظ†ط§طµط± ظ…طھط¹ط¯ط¯ط© â•گâ•گ
         if (item.hasSubItems)
           Positioned(
             bottom: 8,
@@ -422,7 +422,7 @@ class RecItemCard extends StatelessWidget {
           border: Border.all(
             color:
                 isDownloaded
-                    ? Colors.green.withOpacity(0.5)
+                    ? Colors.green.withValues(alpha: 0.5)
                     : RecColors.primary(primary, 0.35),
           ),
         ),
@@ -447,9 +447,9 @@ class RecItemCard extends StatelessWidget {
     );
   }
 
-  // ══════════════════════════════════════════════════════
-  // النص
-  // ══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ظ†طµ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildTextContent(
     BuildContext context,
@@ -477,9 +477,9 @@ class RecItemCard extends StatelessWidget {
           const SizedBox(height: 3),
           Text(
             isDownloading
-                ? 'جاري التحميل...'
+                ? 'ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„...'
                 : isDownloaded
-                ? 'محمّل على الجهاز'
+                ? 'ظ…ط­ظ…ظ‘ظ„ ط¹ظ„ظ‰ ط§ظ„ط¬ظ‡ط§ط²'
                 : item.subtitle,
             style: GoogleFonts.cairo(
               fontSize: (cardW * 0.075).clamp(8.0, 11.0),
@@ -499,9 +499,9 @@ class RecItemCard extends StatelessWidget {
     );
   }
 
-  // ══════════════════════════════════════════════════════
-  // الصورة
-  // ══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„طµظˆط±ط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Widget _buildImage(double w, double h) {
     if (item.imageUrl != null &&

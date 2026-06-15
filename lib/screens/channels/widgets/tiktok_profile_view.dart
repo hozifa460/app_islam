@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -76,7 +76,7 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
               ),
               SizedBox(height: w * 0.04),
               Text(
-                'جاري تحميل TikTok...',
+                'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ TikTok...',
                 style: GoogleFonts.cairo(
                   fontSize: (w * 0.035).clamp(13.0, 16.0),
                   color: Colors.white70,
@@ -99,7 +99,7 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
                   size: 60, color: Colors.white38),
               SizedBox(height: w * 0.03),
               Text(
-                'تعذر تحميل البيانات',
+                'طھط¹ط°ط± طھط­ظ…ظٹظ„ ط§ظ„ط¨ظٹط§ظ†ط§طھ',
                 style: GoogleFonts.cairo(
                   fontSize: (w * 0.038).clamp(14.0, 17.0),
                   color: Colors.white70,
@@ -114,7 +114,7 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFEE1D52),
                 ),
-                child: Text('إعادة المحاولة',
+                child: Text('ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط©',
                     style: GoogleFonts.cairo(fontWeight: FontWeight.w700)),
               ),
             ],
@@ -138,16 +138,16 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
       child: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
-          // ══════════════════════════════════════
-          //  الهيدر مع الصورة والمعلومات
-          // ══════════════════════════════════════
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+          //  ط§ظ„ظ‡ظٹط¯ط± ظ…ط¹ ط§ظ„طµظˆط±ط© ظˆط§ظ„ظ…ط¹ظ„ظˆظ…ط§طھ
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
           SliverToBoxAdapter(
             child: _buildHeader(theme, w),
           ),
 
-          // ══════════════════════════════════════
-          //  التبويبات
-          // ══════════════════════════════════════
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+          //  ط§ظ„طھط¨ظˆظٹط¨ط§طھ
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
           SliverPersistentHeader(
             pinned: true,
             delegate: _TikTokTabBarDelegate(
@@ -164,20 +164,20 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
                 tabs: [
                   Tab(
                     icon: Icon(Icons.grid_on_rounded, size: 20),
-                    text: 'الفيديوهات',
+                    text: 'ط§ظ„ظپظٹط¯ظٹظˆظ‡ط§طھ',
                   ),
                   Tab(
                     icon: Icon(Icons.favorite_border_rounded, size: 20),
-                    text: 'المفضلة',
+                    text: 'ط§ظ„ظ…ظپط¶ظ„ط©',
                   ),
                 ],
               ),
             ),
           ),
 
-          // ══════════════════════════════════════
-          //  المحتوى
-          // ══════════════════════════════════════
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+          //  ط§ظ„ظ…ط­طھظˆظ‰
+          // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
           SliverFillRemaining(
             child: TabBarView(
               controller: _tabController,
@@ -192,9 +192,9 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
     );
   }
 
-  // ══════════════════════════════════════════
-  //  الهيدر
-  // ══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  ط§ظ„ظ‡ظٹط¯ط±
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildHeader(ChannelsTheme theme, double w) {
     final p = _profile!;
 
@@ -202,7 +202,7 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
       padding: EdgeInsets.fromLTRB(w * 0.04, w * 0.03, w * 0.04, w * 0.04),
       child: Column(
         children: [
-          // الصورة
+          // ط§ظ„طµظˆط±ط©
           Container(
             padding: const EdgeInsets.all(3),
             decoration: BoxDecoration(
@@ -241,7 +241,7 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
 
           SizedBox(height: w * 0.03),
 
-          // الاسم
+          // ط§ظ„ط§ط³ظ…
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -277,15 +277,15 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
 
           SizedBox(height: w * 0.025),
 
-          // الإحصائيات
+          // ط§ظ„ط¥ط­طµط§ط¦ظٹط§طھ
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _statItem('متابِع', p.following, w),
+              _statItem('ظ…طھط§ط¨ظگط¹', p.following, w),
               _divider(w),
-              _statItem('متابِعون', p.followers, w),
+              _statItem('ظ…طھط§ط¨ظگط¹ظˆظ†', p.followers, w),
               _divider(w),
-              _statItem('إعجاب', p.likes, w),
+              _statItem('ط¥ط¹ط¬ط§ط¨', p.likes, w),
             ],
           ),
 
@@ -307,11 +307,11 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
 
           SizedBox(height: w * 0.03),
 
-          // أزرار
+          // ط£ط²ط±ط§ط±
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // زر المتابعة
+              // ط²ط± ط§ظ„ظ…طھط§ط¨ط¹ط©
               Expanded(
                 flex: 3,
                 child: ElevatedButton(
@@ -332,7 +332,7 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
                       Icon(Icons.person_add_rounded, size: 18),
                       SizedBox(width: w * 0.015),
                       Text(
-                        'متابعة',
+                        'ظ…طھط§ط¨ط¹ط©',
                         style: GoogleFonts.cairo(
                           fontSize: (w * 0.035).clamp(13.0, 16.0),
                           fontWeight: FontWeight.w800,
@@ -345,7 +345,7 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
 
               SizedBox(width: w * 0.02),
 
-              // زر TikTok
+              // ط²ط± TikTok
               Expanded(
                 child: OutlinedButton(
                   onPressed: () => _openUrl(
@@ -364,7 +364,7 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
 
               SizedBox(width: w * 0.02),
 
-              // زر المشاركة
+              // ط²ط± ط§ظ„ظ…ط´ط§ط±ظƒط©
               Expanded(
                 child: OutlinedButton(
                   onPressed: () {},
@@ -418,9 +418,9 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
     );
   }
 
-  // ══════════════════════════════════════════
-  //  Grid الفيديوهات
-  // ══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  Grid ط§ظ„ظپظٹط¯ظٹظˆظ‡ط§طھ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildVideosGrid(ChannelsTheme theme, double w) {
     final videos = _profile!.videos;
 
@@ -432,7 +432,7 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
             Icon(Icons.video_library_outlined,
                 size: 60, color: Colors.white24),
             SizedBox(height: w * 0.03),
-            Text('لا توجد فيديوهات',
+            Text('ظ„ط§ طھظˆط¬ط¯ ظپظٹط¯ظٹظˆظ‡ط§طھ',
                 style: GoogleFonts.cairo(
                   fontSize: (w * 0.035).clamp(13.0, 16.0),
                   color: Colors.white38,
@@ -467,7 +467,7 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
         children: [
           Icon(Icons.lock_outline_rounded, size: 60, color: Colors.white24),
           SizedBox(height: w * 0.03),
-          Text('المفضلة خاصة',
+          Text('ط§ظ„ظ…ظپط¶ظ„ط© ط®ط§طµط©',
               style: GoogleFonts.cairo(
                 fontSize: (w * 0.035).clamp(13.0, 16.0),
                 color: Colors.white38,
@@ -482,7 +482,7 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
       color: const Color(0xFF1A1A1A),
       child: Center(
         child: Text(
-          name.isNotEmpty ? name[0] : '؟',
+          name.isNotEmpty ? name[0] : 'طں',
           style: GoogleFonts.cairo(
             fontSize: (w * 0.08).clamp(28.0, 40.0),
             fontWeight: FontWeight.w700,
@@ -494,9 +494,9 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
   }
 }
 
-// ══════════════════════════════════════════════════
-//  Thumbnail الفيديو
-// ══════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+//  Thumbnail ط§ظ„ظپظٹط¯ظٹظˆ
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _TikTokVideoThumbnail extends StatelessWidget {
   final TikTokVideo video;
   final double w;
@@ -515,7 +515,7 @@ class _TikTokVideoThumbnail extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          // الصورة
+          // ط§ظ„طµظˆط±ط©
           video.cover.isNotEmpty
               ? CachedNetworkImage(
             imageUrl: video.cover,
@@ -540,13 +540,13 @@ class _TikTokVideoThumbnail extends StatelessWidget {
                 end: Alignment.bottomCenter,
                 colors: [
                   Colors.transparent,
-                  Colors.black.withOpacity(0.5),
+                  Colors.black.withValues(alpha: 0.5),
                 ],
               ),
             ),
           ),
 
-          // المشاهدات
+          // ط§ظ„ظ…ط´ط§ظ‡ط¯ط§طھ
           Positioned(
             bottom: 6,
             left: 6,
@@ -562,7 +562,7 @@ class _TikTokVideoThumbnail extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                     shadows: [
                       Shadow(
-                        color: Colors.black.withOpacity(0.6),
+                        color: Colors.black.withValues(alpha: 0.6),
                         blurRadius: 4,
                       ),
                     ],
@@ -577,9 +577,9 @@ class _TikTokVideoThumbnail extends StatelessWidget {
   }
 }
 
-// ══════════════════════════════════════════════════
-//  Delegate التبويبات
-// ══════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+//  Delegate ط§ظ„طھط¨ظˆظٹط¨ط§طھ
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _TikTokTabBarDelegate extends SliverPersistentHeaderDelegate {
   final TabBar tabBar;
 
@@ -598,7 +598,7 @@ class _TikTokTabBarDelegate extends SliverPersistentHeaderDelegate {
       decoration: BoxDecoration(
         color: Colors.black,
         border: Border(
-          bottom: BorderSide(color: Colors.white.withOpacity(0.1)),
+          bottom: BorderSide(color: Colors.white.withValues(alpha: 0.1)),
         ),
       ),
       child: tabBar,

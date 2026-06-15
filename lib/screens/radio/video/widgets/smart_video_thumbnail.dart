@@ -1,4 +1,4 @@
-// lib/screens/radio/video/widgets/smart_video_thumbnail.dart
+﻿// lib/screens/radio/video/widgets/smart_video_thumbnail.dart
 
 import 'dart:io';
 import 'dart:typed_data';
@@ -8,7 +8,7 @@ import 'package:video_thumbnail/video_thumbnail.dart';
 import '../../widgets/radio_image_widget.dart';
 import '../services/video_download_service.dart';
 
-// ✅ كاش في الذاكرة فقط - لا قرص - لا مساحة
+// âœ… ظƒط§ط´ ظپظٹ ط§ظ„ط°ط§ظƒط±ط© ظپظ‚ط· - ظ„ط§ ظ‚ط±طµ - ظ„ط§ ظ…ط³ط§ط­ط©
 class ThumbnailMemoryCache {
   static final ThumbnailMemoryCache _instance =
   ThumbnailMemoryCache._internal();
@@ -39,11 +39,11 @@ class ThumbnailMemoryCache {
 
   bool has(String url) => _cache.containsKey(url);
 
-  // ✅ يُمسح عند الخروج من RadioScreen
+  // âœ… ظٹظڈظ…ط³ط­ ط¹ظ†ط¯ ط§ظ„ط®ط±ظˆط¬ ظ…ظ† RadioScreen
   void clear() {
     _cache.clear();
     _accessOrder.clear();
-    debugPrint('🗑️ ThumbnailMemoryCache: cleared');
+    debugPrint('ًں—‘ï¸ڈ ThumbnailMemoryCache: cleared');
   }
 
   int get count => _cache.length;
@@ -96,20 +96,20 @@ class _SmartVideoThumbnailState extends State<SmartVideoThumbnail> {
   }
 
   void _resolve() {
-    // ✅ imageUrl يدوي له الأولوية
+    // âœ… imageUrl ظٹط¯ظˆظٹ ظ„ظ‡ ط§ظ„ط£ظˆظ„ظˆظٹط©
     if (widget.imageUrl != null && widget.imageUrl!.isNotEmpty) return;
 
     final url = widget.videoUrl;
     if (url == null || url.isEmpty) return;
 
-    // ✅ من الكاش في الذاكرة - فوري
+    // âœ… ظ…ظ† ط§ظ„ظƒط§ط´ ظپظٹ ط§ظ„ط°ط§ظƒط±ط© - ظپظˆط±ظٹ
     final cached = ThumbnailMemoryCache().get(url);
     if (cached != null) {
       _thumbBytes = cached;
       return;
     }
 
-    // ✅ ولّد في الخلفية
+    // âœ… ظˆظ„ظ‘ط¯ ظپظٹ ط§ظ„ط®ظ„ظپظٹط©
     _generate(url);
   }
 
@@ -118,7 +118,7 @@ class _SmartVideoThumbnailState extends State<SmartVideoThumbnail> {
     _generating = true;
 
     try {
-      // ✅ 1. حاول من الملف المحلي أولاً (بدون إنترنت)
+      // âœ… 1. ط­ط§ظˆظ„ ظ…ظ† ط§ظ„ظ…ظ„ظپ ط§ظ„ظ…ط­ظ„ظٹ ط£ظˆظ„ط§ظ‹ (ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ)
       final localPath = _getLocalPath(videoUrl);
       final source = localPath ?? videoUrl;
 
@@ -131,7 +131,7 @@ class _SmartVideoThumbnailState extends State<SmartVideoThumbnail> {
       );
 
       if (bytes != null && bytes.isNotEmpty) {
-        // ✅ احفظ في الكاش
+        // âœ… ط§ط­ظپط¸ ظپظٹ ط§ظ„ظƒط§ط´
         ThumbnailMemoryCache().set(videoUrl, bytes);
 
         if (mounted) {
@@ -156,7 +156,7 @@ class _SmartVideoThumbnailState extends State<SmartVideoThumbnail> {
 
   @override
   Widget build(BuildContext context) {
-    // ✅ 1. imageUrl يدوي
+    // âœ… 1. imageUrl ظٹط¯ظˆظٹ
     if (widget.imageUrl != null && widget.imageUrl!.isNotEmpty) {
       return RadioImageWidget(
         imageUrl: widget.imageUrl,
@@ -168,7 +168,7 @@ class _SmartVideoThumbnailState extends State<SmartVideoThumbnail> {
       );
     }
 
-    // ✅ 2. صورة مصغرة مولدة
+    // âœ… 2. طµظˆط±ط© ظ…طµط؛ط±ط© ظ…ظˆظ„ط¯ط©
     if (_thumbBytes != null) {
       return ClipRRect(
         borderRadius: widget.borderRadius,
@@ -183,7 +183,7 @@ class _SmartVideoThumbnailState extends State<SmartVideoThumbnail> {
       );
     }
 
-    // ✅ 3. Fallback
+    // âœ… 3. Fallback
     return _fallback();
   }
 
@@ -194,8 +194,8 @@ class _SmartVideoThumbnailState extends State<SmartVideoThumbnail> {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            widget.primary.withOpacity(0.2),
-            widget.primary.withOpacity(0.05),
+            widget.primary.withValues(alpha: 0.2),
+            widget.primary.withValues(alpha: 0.05),
           ],
         ),
         borderRadius: widget.borderRadius,
@@ -208,7 +208,7 @@ class _SmartVideoThumbnailState extends State<SmartVideoThumbnail> {
             const SizedBox(height: 4),
             Icon(
               Icons.videocam_rounded,
-              color: widget.primary.withOpacity(0.5),
+              color: widget.primary.withValues(alpha: 0.5),
               size: 18,
             ),
           ],

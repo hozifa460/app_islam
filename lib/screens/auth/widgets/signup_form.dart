@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -35,7 +35,7 @@ class _SignupFormState extends State<SignupForm> {
   @override
   Widget build(BuildContext context) {
     final auth = context.watch<AuthService>();
-    final tr = context.tr; // ← الترجمة
+    final tr = context.tr; // â†گ ط§ظ„طھط±ط¬ظ…ط©
 
     return Form(
       key: _key,
@@ -44,7 +44,7 @@ class _SignupFormState extends State<SignupForm> {
         children: [
           _SignupError(error: _error),
 
-          // ═══ الاسم ═══
+          // â•گâ•گâ•گ ط§ظ„ط§ط³ظ… â•گâ•گâ•گ
           AuthTextField(
             controller: _name,
             label: tr.fullName,
@@ -57,7 +57,7 @@ class _SignupFormState extends State<SignupForm> {
 
           const SizedBox(height: 14),
 
-          // ═══ البريد ═══
+          // â•گâ•گâ•گ ط§ظ„ط¨ط±ظٹط¯ â•گâ•گâ•گ
           AuthTextField(
             controller: _email,
             label: tr.email,
@@ -74,7 +74,7 @@ class _SignupFormState extends State<SignupForm> {
 
           const SizedBox(height: 14),
 
-          // ═══ كلمة المرور ═══
+          // â•گâ•گâ•گ ظƒظ„ظ…ط© ط§ظ„ظ…ط±ظˆط± â•گâ•گâ•گ
           AuthTextField(
             controller: _pass,
             label: tr.password,
@@ -92,7 +92,7 @@ class _SignupFormState extends State<SignupForm> {
           PasswordStrengthBar(controller: _pass),
           const SizedBox(height: 14),
 
-          // ═══ تأكيد كلمة المرور ═══
+          // â•گâ•گâ•گ طھط£ظƒظٹط¯ ظƒظ„ظ…ط© ط§ظ„ظ…ط±ظˆط± â•گâ•گâ•گ
           AuthTextField(
             controller: _confirm,
             label: tr.confirmPassword,
@@ -109,9 +109,9 @@ class _SignupFormState extends State<SignupForm> {
 
           const SizedBox(height: 26),
 
-          // ═══ زر إنشاء الحساب ═══
+          // â•گâ•گâ•گ ط²ط± ط¥ظ†ط´ط§ط، ط§ظ„ط­ط³ط§ط¨ â•گâ•گâ•گ
           AuthButton(
-            text: tr.createAccount, // ← مترجم
+            text: tr.createAccount, // â†گ ظ…طھط±ط¬ظ…
             isLoading: auth.isLoading,
             onPressed: _submit,
           ),
@@ -147,9 +147,9 @@ class _SignupError extends StatelessWidget {
         padding: const EdgeInsets.symmetric(
             horizontal: 14, vertical: 12),
         decoration: BoxDecoration(
-          color: Colors.red.withOpacity(0.1),
+          color: Colors.red.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: Colors.red.withOpacity(0.25)),
+          border: Border.all(color: Colors.red.withValues(alpha: 0.25)),
         ),
         child: Row(
           children: [

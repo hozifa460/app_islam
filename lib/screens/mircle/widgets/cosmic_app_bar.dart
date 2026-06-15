@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../utils/global_search_action_button.dart';
 import '../color_control/miracle_theme.dart';
@@ -34,7 +34,7 @@ class CosmicAppBar extends StatelessWidget {
       floating:  false,
       pinned:    true,
       elevation: 0,
-      backgroundColor: t.bg1.withOpacity(0.95),
+      backgroundColor: t.bg1.withValues(alpha: 0.95),
       leading: Padding(
         padding: const EdgeInsets.all(8),
         child: GestureDetector(
@@ -84,7 +84,7 @@ class CosmicAppBar extends StatelessWidget {
   }
 }
 
-// ── Small action button ───────────────────────────────────────────────────────
+// â”€â”€ Small action button â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 class _ActionBtn extends StatelessWidget {
   final IconData icon;
   final Color    color;
@@ -120,7 +120,7 @@ class _ActionBtn extends StatelessWidget {
   }
 }
 
-// ── Title (two lines: Arabic + English) ──────────────────────────────────────
+// â”€â”€ Title (two lines: Arabic + English) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 class _AppBarTitle extends StatelessWidget {
   final MiracleThemeColors t;
   const _AppBarTitle({required this.t});
@@ -131,14 +131,14 @@ class _AppBarTitle extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          'الإعجاز العلمي',
+          'ط§ظ„ط¥ط¹ط¬ط§ط² ط§ظ„ط¹ظ„ظ…ظٹ',
           style: GoogleFonts.cairo(
             color:      Colors.white,
             fontWeight: FontWeight.bold,
             fontSize:   17,
             shadows: [
               Shadow(
-                color:     MiracleTheme.neonBlue.withOpacity(0.6),
+                color:     MiracleTheme.neonBlue.withValues(alpha: 0.6),
                 blurRadius: 12,
               ),
             ],
@@ -147,7 +147,7 @@ class _AppBarTitle extends StatelessWidget {
         Text(
           'Scientific Miracles in Islam',
           style: GoogleFonts.poppins(
-            color:        MiracleTheme.neonBlue.withOpacity(0.8),
+            color:        MiracleTheme.neonBlue.withValues(alpha: 0.8),
             fontSize:     8,
             fontWeight:   FontWeight.w400,
             letterSpacing: 1.5,
@@ -158,7 +158,7 @@ class _AppBarTitle extends StatelessWidget {
   }
 }
 
-// ── Flexible background with cosmic orbs + pulsing icon ──────────────────────
+// â”€â”€ Flexible background with cosmic orbs + pulsing icon â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 class _AppBarBackground extends StatelessWidget {
   final MiracleThemeColors t;
   final Animation<double>  pulseAnim;
@@ -180,15 +180,15 @@ class _AppBarBackground extends StatelessWidget {
           // Orbs
           Positioned(
             top: -50, right: -50,
-            child: _Orb(size: 180, color: MiracleTheme.neonBlue.withOpacity(0.07)),
+            child: _Orb(size: 180, color: MiracleTheme.neonBlue.withValues(alpha: 0.07)),
           ),
           Positioned(
             top: 20, left: -40,
-            child: _Orb(size: 120, color: MiracleTheme.neonPurple.withOpacity(0.08)),
+            child: _Orb(size: 120, color: MiracleTheme.neonPurple.withValues(alpha: 0.08)),
           ),
           Positioned(
             bottom: 20, right: 60,
-            child: _Orb(size: 70, color: MiracleTheme.neonGold.withOpacity(0.06)),
+            child: _Orb(size: 70, color: MiracleTheme.neonGold.withValues(alpha: 0.06)),
           ),
 
           // Centre pulsing icon
@@ -206,7 +206,7 @@ class _AppBarBackground extends StatelessWidget {
                         shape: BoxShape.circle,
                         gradient: RadialGradient(colors: [
                           MiracleTheme.neonBlue
-                              .withOpacity(0.15 * pulseAnim.value),
+                              .withValues(alpha: 0.15 * pulseAnim.value),
                           Colors.transparent,
                         ]),
                       ),
@@ -215,15 +215,15 @@ class _AppBarBackground extends StatelessWidget {
                       width: 58, height: 58,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.white.withOpacity(0.07),
+                        color: Colors.white.withValues(alpha: 0.07),
                         border: Border.all(
-                          color: MiracleTheme.neonBlue.withOpacity(0.5),
+                          color: MiracleTheme.neonBlue.withValues(alpha: 0.5),
                           width: 1.5,
                         ),
                         boxShadow: [
                           BoxShadow(
                             color: MiracleTheme.neonBlue
-                                .withOpacity(0.25 * pulseAnim.value),
+                                .withValues(alpha: 0.25 * pulseAnim.value),
                             blurRadius: 20,
                             spreadRadius: 4,
                           ),

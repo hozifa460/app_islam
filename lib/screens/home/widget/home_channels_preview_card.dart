@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
@@ -13,8 +13,8 @@ import 'package:islamic_app/screens/channels/services/feed_cache_service.dart';
 import 'package:islamic_app/screens/channels/services/video_history_service.dart';
 import 'package:islamic_app/screens/channels/services/youtube_service.dart';
 import 'package:islamic_app/screens/channels/video_player_screen.dart';
-// ❌ أزلنا: import 'package:visibility_detector/visibility_detector.dart';
-// ❌ أزلنا: import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+// â‌Œ ط£ط²ظ„ظ†ط§: import 'package:visibility_detector/visibility_detector.dart';
+// â‌Œ ط£ط²ظ„ظ†ط§: import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../services/home_preview_cache_service.dart';
 import '../services/home_preview_settings_service.dart';
@@ -51,7 +51,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
 
   bool _previewEnabled = true;
 
-  String _selectionReason = 'اقتراح لك';
+  String _selectionReason = 'ط§ظ‚طھط±ط§ط­ ظ„ظƒ';
   String? _thumbnailLocalPath;
 
   @override
@@ -87,9 +87,9 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
     super.dispose();
   }
 
-  // ══════════════════════════════════════════════
-  // تحميل الفيديو (نفس المنطق بدون تغيير)
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // طھط­ظ…ظٹظ„ ط§ظ„ظپظٹط¯ظٹظˆ (ظ†ظپط³ ط§ظ„ظ…ظ†ط·ظ‚ ط¨ط¯ظˆظ† طھط؛ظٹظٹط±)
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Future<void> _loadPreviewVideo({bool forceNew = false}) async {
     try {
       await VideoHistoryService.init();
@@ -164,7 +164,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
           _loading = false;
           _hasError = false;
           _offlineThumbnailOnly = true;
-          _selectionReason = 'من آخر معاينة محفوظة';
+          _selectionReason = 'ظ…ظ† ط¢ط®ط± ظ…ط¹ط§ظٹظ†ط© ظ…ط­ظپظˆط¸ط©';
         });
       } else {
         setState(() {
@@ -206,7 +206,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
       if (fallback != null) {
         setState(() {
           _selectedVideo = fallback;
-          _selectionReason = 'من آخر معاينة محفوظة';
+          _selectionReason = 'ظ…ظ† ط¢ط®ط± ظ…ط¹ط§ظٹظ†ط© ظ…ط­ظپظˆط¸ط©';
           _loading = false;
           _hasError = false;
           _offlineThumbnailOnly = true;
@@ -233,7 +233,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
       if (fallback != null) {
         setState(() {
           _selectedVideo = fallback;
-          _selectionReason = 'من آخر معاينة محفوظة';
+          _selectionReason = 'ظ…ظ† ط¢ط®ط± ظ…ط¹ط§ظٹظ†ط© ظ…ط­ظپظˆط¸ط©';
           _loading = false;
           _hasError = false;
           _offlineThumbnailOnly = true;
@@ -459,12 +459,12 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
 
     final days = DateTime.now().difference(video.publishedAt).inDays;
 
-    if (isWatchLater) return 'من المشاهدة لاحقًا';
-    if (partial || (progress > 0 && progress < 0.9)) return 'أكمل المشاهدة';
-    if (isFavorite) return 'من المفضلة';
-    if (!shown && days <= 7) return 'فيديو جديد لك';
-    if (!shown) return 'اقتراح جديد لك';
-    return 'اقتراح لك';
+    if (isWatchLater) return 'ظ…ظ† ط§ظ„ظ…ط´ط§ظ‡ط¯ط© ظ„ط§ط­ظ‚ظ‹ط§';
+    if (partial || (progress > 0 && progress < 0.9)) return 'ط£ظƒظ…ظ„ ط§ظ„ظ…ط´ط§ظ‡ط¯ط©';
+    if (isFavorite) return 'ظ…ظ† ط§ظ„ظ…ظپط¶ظ„ط©';
+    if (!shown && days <= 7) return 'ظپظٹط¯ظٹظˆ ط¬ط¯ظٹط¯ ظ„ظƒ';
+    if (!shown) return 'ط§ظ‚طھط±ط§ط­ ط¬ط¯ظٹط¯ ظ„ظƒ';
+    return 'ط§ظ‚طھط±ط§ط­ ظ„ظƒ';
   }
 
   void _openFullVideo() {
@@ -475,7 +475,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            'لا يوجد اتصال بالإنترنت، هذه معاينة محفوظة فقط',
+            'ظ„ط§ ظٹظˆط¬ط¯ ط§طھطµط§ظ„ ط¨ط§ظ„ط¥ظ†طھط±ظ†طھطŒ ظ‡ط°ظ‡ ظ…ط¹ط§ظٹظ†ط© ظ…ط­ظپظˆط¸ط© ظپظ‚ط·',
             style: GoogleFonts.cairo(),
           ),
           behavior: SnackBarBehavior.floating,
@@ -522,7 +522,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
                       width: 42,
                       height: 4,
                       decoration: BoxDecoration(
-                        color: Colors.grey.withOpacity(0.35),
+                        color: Colors.grey.withValues(alpha: 0.35),
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
@@ -536,7 +536,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
                         ),
                         const SizedBox(width: 10),
                         Text(
-                          'إعدادات المعاينة',
+                          'ط¥ط¹ط¯ط§ط¯ط§طھ ط§ظ„ظ…ط¹ط§ظٹظ†ط©',
                           style: GoogleFonts.cairo(
                             fontSize: 16,
                             fontWeight: FontWeight.w800,
@@ -552,7 +552,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
                         setModalState(() => enabled = v);
                       },
                       title: Text(
-                        'إظهار بطاقة المعاينة',
+                        'ط¥ط¸ظ‡ط§ط± ط¨ط·ط§ظ‚ط© ط§ظ„ظ…ط¹ط§ظٹظ†ط©',
                         style:
                         GoogleFonts.cairo(fontWeight: FontWeight.w600),
                       ),
@@ -584,7 +584,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
                           ),
                         ),
                         child: Text(
-                          'تطبيق الإعدادات',
+                          'طھط·ط¨ظٹظ‚ ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ',
                           style: GoogleFonts.cairo(
                             fontWeight: FontWeight.w800,
                           ),
@@ -601,9 +601,9 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
     );
   }
 
-  // ══════════════════════════════════════════════
-  // ✅ الصورة المصغرة عالية الجودة
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // âœ… ط§ظ„طµظˆط±ط© ط§ظ„ظ…طµط؛ط±ط© ط¹ط§ظ„ظٹط© ط§ظ„ط¬ظˆط¯ط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   String _getMaxResThumbnail(String videoId) {
     return 'https://img.youtube.com/vi/$videoId/maxresdefault.jpg';
   }
@@ -613,7 +613,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
   }
 
   Widget _buildThumbnail(YoutubeVideo video) {
-    // ═══ محفوظ محلياً ═══
+    // â•گâ•گâ•گ ظ…ط­ظپظˆط¸ ظ…ط­ظ„ظٹط§ظ‹ â•گâ•گâ•گ
     if (_offlineThumbnailOnly &&
         _thumbnailLocalPath != null &&
         File(_thumbnailLocalPath!).existsSync()) {
@@ -625,7 +625,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
       );
     }
 
-    // ═══ صورة بأعلى جودة من YouTube ═══
+    // â•گâ•گâ•گ طµظˆط±ط© ط¨ط£ط¹ظ„ظ‰ ط¬ظˆط¯ط© ظ…ظ† YouTube â•گâ•گâ•گ
     final maxResUrl = _getMaxResThumbnail(video.id);
     final hqUrl = _getHqThumbnail(video.id);
 
@@ -679,7 +679,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
   }
 
   Widget _buildHeader(Color textColor, Color subColor) {
-    // هيدر مُدمج صغير جداً
+    // ظ‡ظٹط¯ط± ظ…ظڈط¯ظ…ط¬ طµط؛ظٹط± ط¬ط¯ط§ظ‹
     return Padding(
       padding: const EdgeInsets.fromLTRB(12, 10, 12, 6),
       child: Row(
@@ -701,7 +701,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
           ),
           const SizedBox(width: 7),
           Text(
-            'اقتراح ذكي',
+            'ط§ظ‚طھط±ط§ط­ ط°ظƒظٹ',
             style: GoogleFonts.cairo(
               fontSize: 12,
               fontWeight: FontWeight.w800,
@@ -716,11 +716,11 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
                 vertical: 2,
               ),
               decoration: BoxDecoration(
-                color: subColor.withOpacity(0.15),
+                color: subColor.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(6),
               ),
               child: Text(
-                'بدون إنترنت',
+                'ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ',
                 style: GoogleFonts.cairo(
                   fontSize: 9,
                   color: subColor,
@@ -740,7 +740,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
     if (!_previewEnabled) return const SizedBox.shrink();
 
     final borderColor = widget.isDark
-        ? Colors.white.withOpacity(0.08)
+        ? Colors.white.withValues(alpha: 0.08)
         : const Color(0xFFE6DED0);
 
     final textColor =
@@ -768,7 +768,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
 
     final video = _selectedVideo!;
 
-    // ── بيانات الفيديو ──
+    // â”€â”€ ط¨ظٹط§ظ†ط§طھ ط§ظ„ظپظٹط¯ظٹظˆ â”€â”€
     final views = int.tryParse(video.viewCount) ?? 0;
     final viewsStr = views > 0
         ? YoutubeService.formatViews(video.viewCount)
@@ -776,16 +776,16 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
     final days =
         DateTime.now().difference(video.publishedAt).inDays;
     final timeAgo = days == 0
-        ? 'اليوم'
+        ? 'ط§ظ„ظٹظˆظ…'
         : days == 1
-        ? 'أمس'
+        ? 'ط£ظ…ط³'
         : days < 7
-        ? 'منذ $days أيام'
+        ? 'ظ…ظ†ط° $days ط£ظٹط§ظ…'
         : days < 30
-        ? 'منذ ${(days / 7).floor()} أسابيع'
+        ? 'ظ…ظ†ط° ${(days / 7).floor()} ط£ط³ط§ط¨ظٹط¹'
         : days < 365
-        ? 'منذ ${(days / 30).floor()} أشهر'
-        : 'منذ ${(days / 365).floor()} سنوات';
+        ? 'ظ…ظ†ط° ${(days / 30).floor()} ط£ط´ظ‡ط±'
+        : 'ظ…ظ†ط° ${(days / 365).floor()} ط³ظ†ظˆط§طھ';
 
     return Container(
       decoration: BoxDecoration(
@@ -795,7 +795,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
         boxShadow: [
           BoxShadow(
             color: Colors.black
-                .withOpacity(widget.isDark ? 0.16 : 0.06),
+                .withValues(alpha: widget.isDark ? 0.16 : 0.06),
             blurRadius: 10,
             offset: const Offset(0, 3),
           ),
@@ -808,20 +808,20 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
-            // ══════════════════════════════════════
-            // ✅ الصورة - بدون هيدر فوقها
-            // ══════════════════════════════════════
+            // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+            // âœ… ط§ظ„طµظˆط±ط© - ط¨ط¯ظˆظ† ظ‡ظٹط¯ط± ظپظˆظ‚ظ‡ط§
+            // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
             GestureDetector(
               onTap: _openFullVideo,
               child: Stack(
                 children: [
-                  // الصورة
+                  // ط§ظ„طµظˆط±ط©
                   AspectRatio(
                     aspectRatio: 16 / 9,
                     child: _buildThumbnail(video),
                   ),
 
-                  // تدرج سفلي
+                  // طھط¯ط±ط¬ ط³ظپظ„ظٹ
                   Positioned.fill(
                     child: DecoratedBox(
                       decoration: BoxDecoration(
@@ -831,7 +831,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
                           colors: [
                             Colors.transparent,
                             Colors.transparent,
-                            Colors.black.withOpacity(0.28),
+                            Colors.black.withValues(alpha: 0.28),
                           ],
                           stops: const [0.0, 0.6, 1.0],
                         ),
@@ -839,7 +839,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
                     ),
                   ),
 
-                  // ── زر الإعدادات - أعلى يسار ──
+                  // â”€â”€ ط²ط± ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ - ط£ط¹ظ„ظ‰ ظٹط³ط§ط± â”€â”€
                   if (!_offlineThumbnailOnly)
                     Positioned(
                       top: 8,
@@ -852,7 +852,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
                           child: Container(
                             padding: const EdgeInsets.all(5),
                             decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.55),
+                              color: Colors.black.withValues(alpha: 0.55),
                               shape: BoxShape.circle,
                             ),
                             child: const Icon(
@@ -865,7 +865,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
                       ),
                     ),
 
-                  // ── بادج أعلى يمين ──
+                  // â”€â”€ ط¨ط§ط¯ط¬ ط£ط¹ظ„ظ‰ ظٹظ…ظٹظ† â”€â”€
                   Positioned(
                     top: 8,
                     right: 8,
@@ -876,14 +876,14 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
                       ),
                       decoration: BoxDecoration(
                         color: _offlineThumbnailOnly
-                            ? Colors.black.withOpacity(0.72)
-                            : Colors.red.withOpacity(0.88),
+                            ? Colors.black.withValues(alpha: 0.72)
+                            : Colors.red.withValues(alpha: 0.88),
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: Text(
                         _offlineThumbnailOnly
-                            ? 'محفوظ'
-                            : 'اقتراح ذكي',
+                            ? 'ظ…ط­ظپظˆط¸'
+                            : 'ط§ظ‚طھط±ط§ط­ ط°ظƒظٹ',
                         style: GoogleFonts.cairo(
                           color: Colors.white,
                           fontSize: 9.5,
@@ -893,17 +893,17 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
                     ),
                   ),
 
-                  // ── زر تشغيل في المنتصف ──
+                  // â”€â”€ ط²ط± طھط´ط؛ظٹظ„ ظپظٹ ط§ظ„ظ…ظ†طھطµظپ â”€â”€
                   Positioned.fill(
                     child: Center(
                       child: Container(
                         width: 46,
                         height: 46,
                         decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.52),
+                          color: Colors.black.withValues(alpha: 0.52),
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: Colors.white.withOpacity(0.30),
+                            color: Colors.white.withValues(alpha: 0.30),
                             width: 1.5,
                           ),
                         ),
@@ -916,7 +916,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
                     ),
                   ),
 
-                  // ── مدة/نوع - أسفل يمين (يوتيوب ستايل) ──
+                  // â”€â”€ ظ…ط¯ط©/ظ†ظˆط¹ - ط£ط³ظپظ„ ظٹظ…ظٹظ† (ظٹظˆطھظٹظˆط¨ ط³طھط§ظٹظ„) â”€â”€
                   Positioned(
                     bottom: 7,
                     right: 7,
@@ -926,11 +926,11 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
                         vertical: 2,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.82),
+                        color: Colors.black.withValues(alpha: 0.82),
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text(
-                        _offlineThumbnailOnly ? 'محفوظ' : '▶ شاهد',
+                        _offlineThumbnailOnly ? 'ظ…ط­ظپظˆط¸' : 'â–¶ ط´ط§ظ‡ط¯',
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 9.5,
@@ -943,16 +943,16 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
               ),
             ),
 
-            // ══════════════════════════════════════
-            // ✅ معلومات الفيديو - يوتيوب ستايل بالضبط
-            // ══════════════════════════════════════
+            // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+            // âœ… ظ…ط¹ظ„ظˆظ…ط§طھ ط§ظ„ظپظٹط¯ظٹظˆ - ظٹظˆطھظٹظˆط¨ ط³طھط§ظٹظ„ ط¨ط§ظ„ط¶ط¨ط·
+            // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
 
-                  // ── صورة القناة الدائرية ──
+                  // â”€â”€ طµظˆط±ط© ط§ظ„ظ‚ظ†ط§ط© ط§ظ„ط¯ط§ط¦ط±ظٹط© â”€â”€
                   GestureDetector(
                     onTap: _openFullVideo,
                     child: Container(
@@ -970,7 +970,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
                         child: Text(
                           video.channelTitle.isNotEmpty
                               ? video.channelTitle[0].toUpperCase()
-                              : '؟',
+                              : 'طں',
                           style: GoogleFonts.cairo(
                             color: Colors.white,
                             fontSize: 13,
@@ -983,7 +983,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
 
                   const SizedBox(width: 9),
 
-                  // ── العنوان + المعلومات الثانوية ──
+                  // â”€â”€ ط§ظ„ط¹ظ†ظˆط§ظ† + ط§ظ„ظ…ط¹ظ„ظˆظ…ط§طھ ط§ظ„ط«ط§ظ†ظˆظٹط© â”€â”€
                   Expanded(
                     child: GestureDetector(
                       onTap: _openFullVideo,
@@ -992,7 +992,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
                         mainAxisSize: MainAxisSize.min,
                         children: [
 
-                          // عنوان الفيديو
+                          // ط¹ظ†ظˆط§ظ† ط§ظ„ظپظٹط¯ظٹظˆ
                           Text(
                             video.title,
                             maxLines: 2,
@@ -1007,14 +1007,14 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
 
                           const SizedBox(height: 3),
 
-                          // ── المعلومات الثانوية - يوتيوب ستايل ──
+                          // â”€â”€ ط§ظ„ظ…ط¹ظ„ظˆظ…ط§طھ ط§ظ„ط«ط§ظ†ظˆظٹط© - ظٹظˆطھظٹظˆط¨ ط³طھط§ظٹظ„ â”€â”€
                           Text(
                             [
                               video.channelTitle,
                               if (viewsStr.isNotEmpty)
-                                '$viewsStr مشاهدة',
+                                '$viewsStr ظ…ط´ط§ظ‡ط¯ط©',
                               timeAgo,
-                            ].join(' • '),
+                            ].join(' â€¢ '),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: GoogleFonts.cairo(
@@ -1030,7 +1030,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
 
                   const SizedBox(width: 4),
 
-                  // ── ثلاث نقاط ──
+                  // â”€â”€ ط«ظ„ط§ط« ظ†ظ‚ط§ط· â”€â”€
                   GestureDetector(
                     onTap: () => _loadPreviewVideo(forceNew: true),
                     child: Padding(
@@ -1054,9 +1054,9 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
 
 }
 
-// ══════════════════════════════════════════════
-// الكلاسات المساعدة (بدون تغيير)
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط§ظ„ظƒظ„ط§ط³ط§طھ ط§ظ„ظ…ط³ط§ط¹ط¯ط© (ط¨ط¯ظˆظ† طھط؛ظٹظٹط±)
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
 class _SmartPreviewPick {
   final YoutubeVideo video;
@@ -1097,19 +1097,19 @@ class _HomePreviewSkeleton extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // الصورة skeleton
+            // ط§ظ„طµظˆط±ط© skeleton
             AspectRatio(
               aspectRatio: 16 / 9,
               child: Container(color: shimmer),
             ),
 
-            // معلومات skeleton - يوتيوب ستايل
+            // ظ…ط¹ظ„ظˆظ…ط§طھ skeleton - ظٹظˆطھظٹظˆط¨ ط³طھط§ظٹظ„
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // دائرة القناة
+                  // ط¯ط§ط¦ط±ط© ط§ظ„ظ‚ظ†ط§ط©
                   Container(
                     width: 34,
                     height: 34,
@@ -1204,7 +1204,7 @@ class _HomePreviewErrorCard extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'تعذر تحميل المعاينة',
+                  'طھط¹ط°ط± طھط­ظ…ظٹظ„ ط§ظ„ظ…ط¹ط§ظٹظ†ط©',
                   style: GoogleFonts.cairo(
                     fontSize: 13,
                     fontWeight: FontWeight.w700,
@@ -1212,7 +1212,7 @@ class _HomePreviewErrorCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'يمكنك المحاولة مرة أخرى',
+                  'ظٹظ…ظƒظ†ظƒ ط§ظ„ظ…ط­ط§ظˆظ„ط© ظ…ط±ط© ط£ط®ط±ظ‰',
                   style: GoogleFonts.cairo(
                     fontSize: 11,
                     color: subColor,
@@ -1224,7 +1224,7 @@ class _HomePreviewErrorCard extends StatelessWidget {
           TextButton(
             onPressed: onRetry,
             child: Text(
-              'إعادة',
+              'ط¥ط¹ط§ط¯ط©',
               style: GoogleFonts.cairo(fontWeight: FontWeight.w800),
             ),
           ),

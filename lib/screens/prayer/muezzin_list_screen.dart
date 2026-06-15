@@ -1,4 +1,4 @@
-import 'dart:io';
+﻿import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -104,7 +104,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          path != null ? 'تم تحميل ${m.name} بنجاح' : 'فشل تحميل ${m.name}',
+          path != null ? 'طھظ… طھط­ظ…ظٹظ„ ${m.name} ط¨ظ†ط¬ط§ط­' : 'ظپط´ظ„ طھط­ظ…ظٹظ„ ${m.name}',
           style: GoogleFonts.cairo(),
         ),
         backgroundColor: path != null ? Colors.green : Colors.red,
@@ -121,7 +121,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('تم حذف ${m.name} من الهاتف', style: GoogleFonts.cairo()),
+        content: Text('طھظ… ط­ط°ظپ ${m.name} ظ…ظ† ط§ظ„ظ‡ط§طھظپ', style: GoogleFonts.cairo()),
         backgroundColor: Colors.orange,
       ),
     );
@@ -176,7 +176,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
         });
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('تعذر تشغيل المعاينة', style: GoogleFonts.cairo()),
+            content: Text('طھط¹ط°ط± طھط´ط؛ظٹظ„ ط§ظ„ظ…ط¹ط§ظٹظ†ط©', style: GoogleFonts.cairo()),
             backgroundColor: Colors.red,
           ),
         );
@@ -198,7 +198,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'تم اختيار ${m.name} كمؤذن افتراضي لكل الصلوات',
+          'طھظ… ط§ط®طھظٹط§ط± ${m.name} ظƒظ…ط¤ط°ظ† ط§ظپطھط±ط§ط¶ظٹ ظ„ظƒظ„ ط§ظ„طµظ„ظˆط§طھ',
           style: GoogleFonts.cairo(),
         ),
         backgroundColor: _gold,
@@ -213,14 +213,14 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final bgColor = isDark ? _bgDark : const Color(0xFFF5F7FA);
     final cardGradient = isDark
-        ? [Colors.white.withOpacity(0.08), Colors.white.withOpacity(0.02)]
+        ? [Colors.white.withValues(alpha: 0.08), Colors.white.withValues(alpha: 0.02)]
         : [Colors.white, Colors.white];
     final textColorMain = isDark ? Colors.white : const Color(0xFF1A1A1A);
     final textColorSub = isDark ? Colors.white70 : Colors.black54;
     final borderColor =
-    isDark ? Colors.white.withOpacity(0.1) : _gold.withOpacity(0.2);
+    isDark ? Colors.white.withValues(alpha: 0.1) : _gold.withValues(alpha: 0.2);
     final shadowColor =
-    isDark ? Colors.black.withOpacity(0.4) : Colors.grey.withOpacity(0.4);
+    isDark ? Colors.black.withValues(alpha: 0.4) : Colors.grey.withValues(alpha: 0.4);
 
     return Scaffold(
       backgroundColor: bgColor,
@@ -241,12 +241,12 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
           margin: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: isDark
-                ? Colors.white.withOpacity(0.1)
-                : _gold.withOpacity(0.1),
+                ? Colors.white.withValues(alpha: 0.1)
+                : _gold.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: isDark
-                  ? Colors.white.withOpacity(0.1)
+                  ? Colors.white.withValues(alpha: 0.1)
                   : Colors.transparent,
             ),
           ),
@@ -325,12 +325,12 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
         ),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: isPlaying ? _gold.withOpacity(0.5) : borderColor,
+          color: isPlaying ? _gold.withValues(alpha: 0.5) : borderColor,
           width: isPlaying ? 1.5 : 1,
         ),
         boxShadow: [
           BoxShadow(
-            color: isPlaying ? _gold.withOpacity(0.2) : shadowColor,
+            color: isPlaying ? _gold.withValues(alpha: 0.2) : shadowColor,
             blurRadius: 14,
             offset: const Offset(0, 5),
           ),
@@ -399,17 +399,17 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
                         child: ElevatedButton(
                           onPressed: () => _selectAsDefault(m),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: _gold.withOpacity(0.2),
+                            backgroundColor: _gold.withValues(alpha: 0.2),
                             foregroundColor: _gold,
                             elevation: 0,
                             padding: EdgeInsets.zero,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
-                              side: BorderSide(color: _gold.withOpacity(0.3)),
+                              side: BorderSide(color: _gold.withValues(alpha: 0.3)),
                             ),
                           ),
                           child: Text(
-                            'اختيار',
+                            'ط§ط®طھظٹط§ط±',
                             style: GoogleFonts.cairo(
                               fontSize: 11.5,
                               fontWeight: FontWeight.bold,
@@ -450,12 +450,12 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
         ),
         borderRadius: BorderRadius.circular(22),
         border: Border.all(
-          color: isPlaying ? _gold.withOpacity(0.5) : borderColor,
+          color: isPlaying ? _gold.withValues(alpha: 0.5) : borderColor,
           width: isPlaying ? 1.5 : 1,
         ),
         boxShadow: [
           BoxShadow(
-            color: isPlaying ? _gold.withOpacity(0.2) : shadowColor,
+            color: isPlaying ? _gold.withValues(alpha: 0.2) : shadowColor,
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -522,17 +522,17 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
                     child: ElevatedButton(
                       onPressed: () => _selectAsDefault(m),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: _gold.withOpacity(0.2),
+                        backgroundColor: _gold.withValues(alpha: 0.2),
                         foregroundColor: _gold,
                         elevation: 0,
                         padding: EdgeInsets.zero,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
-                          side: BorderSide(color: _gold.withOpacity(0.3)),
+                          side: BorderSide(color: _gold.withValues(alpha: 0.3)),
                         ),
                       ),
                       child: Text(
-                        'اختيار',
+                        'ط§ط®طھظٹط§ط±',
                         style: GoogleFonts.cairo(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
@@ -570,12 +570,12 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
         ),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: isPlaying ? _gold.withOpacity(0.5) : borderColor,
+          color: isPlaying ? _gold.withValues(alpha: 0.5) : borderColor,
           width: isPlaying ? 1.5 : 1,
         ),
         boxShadow: [
           BoxShadow(
-            color: isPlaying ? _gold.withOpacity(0.2) : shadowColor,
+            color: isPlaying ? _gold.withValues(alpha: 0.2) : shadowColor,
             blurRadius: 14,
             offset: const Offset(0, 5),
           ),
@@ -658,17 +658,17 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
                   child: ElevatedButton(
                     onPressed: () => _selectAsDefault(m),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: _gold.withOpacity(0.2),
+                      backgroundColor: _gold.withValues(alpha: 0.2),
                       foregroundColor: _gold,
                       elevation: 0,
                       padding: EdgeInsets.zero,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
-                        side: BorderSide(color: _gold.withOpacity(0.3)),
+                        side: BorderSide(color: _gold.withValues(alpha: 0.3)),
                       ),
                     ),
                     child: Text(
-                      'اختيار',
+                      'ط§ط®طھظٹط§ط±',
                       style: GoogleFonts.cairo(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
@@ -761,17 +761,17 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
                   child: ElevatedButton(
                     onPressed: () => _selectAsDefault(m),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: _gold.withOpacity(0.2),
+                      backgroundColor: _gold.withValues(alpha: 0.2),
                       foregroundColor: _gold,
                       elevation: 0,
                       padding: EdgeInsets.zero,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
-                        side: BorderSide(color: _gold.withOpacity(0.3)),
+                        side: BorderSide(color: _gold.withValues(alpha: 0.3)),
                       ),
                     ),
                     child: Text(
-                      'اختيار',
+                      'ط§ط®طھظٹط§ط±',
                       style: GoogleFonts.cairo(
                         fontSize: 11.5,
                         fontWeight: FontWeight.bold,
@@ -802,7 +802,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
                 fit: BoxFit.cover,
               ),
               Container(
-                color: Colors.black.withOpacity(0.25),
+                color: Colors.black.withValues(alpha: 0.25),
               ),
             ],
           );
@@ -824,7 +824,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
               },
             ),
             Container(
-              color: Colors.black.withOpacity(0.25),
+              color: Colors.black.withValues(alpha: 0.25),
             ),
           ],
         );
@@ -844,7 +844,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
       mainAxisSize: MainAxisSize.min,
       children: [
         IconButton(
-          tooltip: 'معاينة',
+          tooltip: 'ظ…ط¹ط§ظٹظ†ط©',
           onPressed: () => _previewMuezzin(m),
           icon: _previewLoading && _playingPreviewId == m.id
               ? SizedBox(
@@ -868,12 +868,12 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
-              color: _gold.withOpacity(0.15),
+              color: _gold.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: _gold.withOpacity(0.4)),
+              border: Border.all(color: _gold.withValues(alpha: 0.4)),
             ),
             child: Text(
-              'جاهز',
+              'ط¬ط§ظ‡ط²',
               style: GoogleFonts.cairo(
                 color: _gold,
                 fontSize: 10,
@@ -893,9 +893,9 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
-                  color: Colors.green.withOpacity(0.15),
+                  color: Colors.green.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.green.withOpacity(0.4)),
+                  border: Border.all(color: Colors.green.withValues(alpha: 0.4)),
                 ),
                 child: Text(
                   'Offline',
@@ -909,7 +909,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
             )
           else
             IconButton(
-              tooltip: 'تحميل',
+              tooltip: 'طھط­ظ…ظٹظ„',
               onPressed: () => _downloadMuezzin(m),
               icon: Icon(Icons.download_rounded, color: textColorSub, size: 22),
             ),

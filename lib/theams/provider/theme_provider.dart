@@ -1,37 +1,37 @@
-// lib/providers/theme_provider.dart
+﻿// lib/providers/theme_provider.dart
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeProvider extends ChangeNotifier {
-  // ─── الألوان المتاحة ───
+  // â”€â”€â”€ ط§ظ„ط£ظ„ظˆط§ظ† ط§ظ„ظ…طھط§ط­ط© â”€â”€â”€
   static const List<Color> appColors = [
-    Color(0xFF1B5E20), // أخضر إسلامي
-    Color(0xFF0D47A1), // أزرق سماوي
-    Color(0xFF4A148C), // بنفسجي
-    Color(0xFF880E4F), // وردي
-    Color(0xFF006064), // تيل
-    Color(0xFFE65100), // برتقالي
-    Color(0xFF1A237E), // نيلي
-    Color(0xFF3E2723), // بني
-    Color(0xFF263238), // رمادي
-    Color(0xFFB71C1C), // أحمر
-    Color(0xFF00695C), // أخضر زمردي
-    Color(0xFF4E342E), // بني شوكولاتة
+    Color(0xFF1B5E20), // ط£ط®ط¶ط± ط¥ط³ظ„ط§ظ…ظٹ
+    Color(0xFF0D47A1), // ط£ط²ط±ظ‚ ط³ظ…ط§ظˆظٹ
+    Color(0xFF4A148C), // ط¨ظ†ظپط³ط¬ظٹ
+    Color(0xFF880E4F), // ظˆط±ط¯ظٹ
+    Color(0xFF006064), // طھظٹظ„
+    Color(0xFFE65100), // ط¨ط±طھظ‚ط§ظ„ظٹ
+    Color(0xFF1A237E), // ظ†ظٹظ„ظٹ
+    Color(0xFF3E2723), // ط¨ظ†ظٹ
+    Color(0xFF263238), // ط±ظ…ط§ط¯ظٹ
+    Color(0xFFB71C1C), // ط£ط­ظ…ط±
+    Color(0xFF00695C), // ط£ط®ط¶ط± ط²ظ…ط±ط¯ظٹ
+    Color(0xFF4E342E), // ط¨ظ†ظٹ ط´ظˆظƒظˆظ„ط§طھط©
   ];
 
   static const List<String> colorNames = [
-    'أخضر إسلامي',
-    'أزرق سماوي',
-    'بنفسجي',
-    'وردي',
-    'تيل',
-    'برتقالي',
-    'نيلي',
-    'بني',
-    'رمادي',
-    'أحمر',
-    'أخضر زمردي',
-    'بني شوكولاتة',
+    'ط£ط®ط¶ط± ط¥ط³ظ„ط§ظ…ظٹ',
+    'ط£ط²ط±ظ‚ ط³ظ…ط§ظˆظٹ',
+    'ط¨ظ†ظپط³ط¬ظٹ',
+    'ظˆط±ط¯ظٹ',
+    'طھظٹظ„',
+    'ط¨ط±طھظ‚ط§ظ„ظٹ',
+    'ظ†ظٹظ„ظٹ',
+    'ط¨ظ†ظٹ',
+    'ط±ظ…ط§ط¯ظٹ',
+    'ط£ط­ظ…ط±',
+    'ط£ط®ط¶ط± ط²ظ…ط±ط¯ظٹ',
+    'ط¨ظ†ظٹ ط´ظˆظƒظˆظ„ط§طھط©',
   ];
 
   static const List<IconData> colorIcons = [
@@ -49,7 +49,7 @@ class ThemeProvider extends ChangeNotifier {
     Icons.coffee_rounded,
   ];
 
-  // ─── الخلفيات ───
+  // â”€â”€â”€ ط§ظ„ط®ظ„ظپظٹط§طھ â”€â”€â”€
   static const Color bgDark = Color(0xFF0A0E17);
   static const Color bgLight = Color(0xFFF0F4FF);
   static const Color cardDark = Color(0xFF111827);
@@ -57,12 +57,12 @@ class ThemeProvider extends ChangeNotifier {
   static const Color surfaceDark = Color(0xFF1A2332);
   static const Color surfaceLight = Color(0xFFF8FAFF);
 
-  // ─── الحالة ───
+  // â”€â”€â”€ ط§ظ„ط­ط§ظ„ط© â”€â”€â”€
   bool _isDarkMode = true;
   int _selectedColorIndex = 0;
   bool _isLoaded = false;
 
-  // ─── Getters ───
+  // â”€â”€â”€ Getters â”€â”€â”€
   bool get isDarkMode => _isDarkMode;
   int get selectedColorIndex => _selectedColorIndex;
   bool get isLoaded => _isLoaded;
@@ -85,16 +85,16 @@ class ThemeProvider extends ChangeNotifier {
   Color get dividerColor =>
       _isDarkMode ? Colors.white12 : Colors.black12;
 
-  Color get primaryLight => primaryColor.withOpacity(0.15);
-  Color get primaryMedium => primaryColor.withOpacity(0.3);
+  Color get primaryLight => primaryColor.withValues(alpha: 0.15);
+  Color get primaryMedium => primaryColor.withValues(alpha: 0.3);
 
-  // ─── ألوان مشتقة مفيدة ───
+  // â”€â”€â”€ ط£ظ„ظˆط§ظ† ظ…ط´طھظ‚ط© ظ…ظپظٹط¯ط© â”€â”€â”€
   Color get successColor => const Color(0xFF4CAF50);
   Color get warningColor => const Color(0xFFFFA726);
   Color get errorColor => const Color(0xFFEF5350);
   Color get infoColor => const Color(0xFF42A5F5);
 
-  // ─── Gradient الرئيسي ───
+  // â”€â”€â”€ Gradient ط§ظ„ط±ط¦ظٹط³ظٹ â”€â”€â”€
   LinearGradient get primaryGradient => LinearGradient(
     colors: [
       primaryColor,
@@ -107,12 +107,12 @@ class ThemeProvider extends ChangeNotifier {
   LinearGradient get cardGradient => LinearGradient(
     colors: _isDarkMode
         ? [
-      primaryColor.withOpacity(0.08),
-      primaryColor.withOpacity(0.02),
+      primaryColor.withValues(alpha: 0.08),
+      primaryColor.withValues(alpha: 0.02),
     ]
         : [
-      primaryColor.withOpacity(0.06),
-      primaryColor.withOpacity(0.01),
+      primaryColor.withValues(alpha: 0.06),
+      primaryColor.withValues(alpha: 0.01),
     ],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
@@ -127,16 +127,16 @@ class ThemeProvider extends ChangeNotifier {
     end: Alignment.bottomRight,
   );
 
-  // ─── BoxDecoration جاهزة ───
+  // â”€â”€â”€ BoxDecoration ط¬ط§ظ‡ط²ط© â”€â”€â”€
   BoxDecoration get cardDecoration => BoxDecoration(
     color: cardColor,
     borderRadius: BorderRadius.circular(16),
     border: Border.all(
-      color: primaryColor.withOpacity(_isDarkMode ? 0.1 : 0.08),
+      color: primaryColor.withValues(alpha: _isDarkMode ? 0.1 : 0.08),
     ),
     boxShadow: [
       BoxShadow(
-        color: primaryColor.withOpacity(_isDarkMode ? 0.05 : 0.08),
+        color: primaryColor.withValues(alpha: _isDarkMode ? 0.05 : 0.08),
         blurRadius: 12,
         offset: const Offset(0, 4),
       ),
@@ -147,11 +147,11 @@ class ThemeProvider extends ChangeNotifier {
     gradient: cardGradient,
     borderRadius: BorderRadius.circular(20),
     border: Border.all(
-      color: primaryColor.withOpacity(0.15),
+      color: primaryColor.withValues(alpha: 0.15),
     ),
     boxShadow: [
       BoxShadow(
-        color: primaryColor.withOpacity(0.1),
+        color: primaryColor.withValues(alpha: 0.1),
         blurRadius: 20,
         offset: const Offset(0, 8),
       ),
@@ -159,15 +159,15 @@ class ThemeProvider extends ChangeNotifier {
   );
 
   BoxDecoration get glassDecoration => BoxDecoration(
-    color: (_isDarkMode ? Colors.white : Colors.black).withOpacity(0.05),
+    color: (_isDarkMode ? Colors.white : Colors.black).withValues(alpha: 0.05),
     borderRadius: BorderRadius.circular(16),
     border: Border.all(
       color:
-      (_isDarkMode ? Colors.white : Colors.black).withOpacity(0.08),
+      (_isDarkMode ? Colors.white : Colors.black).withValues(alpha: 0.08),
     ),
   );
 
-  // ─── TextStyles جاهزة ───
+  // â”€â”€â”€ TextStyles ط¬ط§ظ‡ط²ط© â”€â”€â”€
   TextStyle get titleLarge => TextStyle(
     color: textPrimary,
     fontSize: 22,
@@ -207,7 +207,7 @@ class ThemeProvider extends ChangeNotifier {
     fontWeight: FontWeight.w600,
   );
 
-  // ─── تحميل الإعدادات ───
+  // â”€â”€â”€ طھط­ظ…ظٹظ„ ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ â”€â”€â”€
   Future<void> loadPreferences() async {
     final prefs = await SharedPreferences.getInstance();
     _isDarkMode = prefs.getBool('isDarkMode') ?? true;
@@ -217,14 +217,14 @@ class ThemeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // ─── حفظ الإعدادات ───
+  // â”€â”€â”€ ط­ظپط¸ ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ â”€â”€â”€
   Future<void> _savePreferences() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('isDarkMode', _isDarkMode);
     await prefs.setInt('colorIndex', _selectedColorIndex);
   }
 
-  // ─── تغيير الوضع ───
+  // â”€â”€â”€ طھط؛ظٹظٹط± ط§ظ„ظˆط¶ط¹ â”€â”€â”€
   void toggleTheme() {
     _isDarkMode = !_isDarkMode;
     _savePreferences();
@@ -238,7 +238,7 @@ class ThemeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // ─── تغيير اللون ───
+  // â”€â”€â”€ طھط؛ظٹظٹط± ط§ظ„ظ„ظˆظ† â”€â”€â”€
   void setColorIndex(int index) {
     if (index < 0 || index >= appColors.length) return;
     if (_selectedColorIndex == index) return;
@@ -247,7 +247,7 @@ class ThemeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // ─── ThemeData للتطبيق ───
+  // â”€â”€â”€ ThemeData ظ„ظ„طھط·ط¨ظٹظ‚ â”€â”€â”€
   ThemeData get lightTheme => ThemeData(
     colorScheme: ColorScheme.fromSeed(
       seedColor: primaryColor,

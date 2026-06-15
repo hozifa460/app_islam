@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-/// ثيم الألوان للأدعية
+/// ط«ظٹظ… ط§ظ„ط£ظ„ظˆط§ظ† ظ„ظ„ط£ط¯ط¹ظٹط©
 class DuaTheme {
   final bool isDark;
   final Color primary;
@@ -25,7 +25,7 @@ class DuaTheme {
   }
 }
 
-/// صندوق الأيقونة المزخرف
+/// طµظ†ط¯ظˆظ‚ ط§ظ„ط£ظٹظ‚ظˆظ†ط© ط§ظ„ظ…ط²ط®ط±ظپ
 class DuaIconBox extends StatelessWidget {
   final IconData icon;
   final Color color;
@@ -46,10 +46,10 @@ class DuaIconBox extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-        color: color.withOpacity(0.15),
+        color: color.withValues(alpha: 0.15),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: color.withOpacity(0.3),
+          color: color.withValues(alpha: 0.3),
         ),
       ),
       child: Icon(
@@ -61,7 +61,7 @@ class DuaIconBox extends StatelessWidget {
   }
 }
 
-/// صندوق العدد المزخرف
+/// طµظ†ط¯ظˆظ‚ ط§ظ„ط¹ط¯ط¯ ط§ظ„ظ…ط²ط®ط±ظپ
 class DuaCountBox extends StatelessWidget {
   final int count;
   final Color color;
@@ -80,11 +80,11 @@ class DuaCountBox extends StatelessWidget {
         vertical: 3,
       ),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.12),
+        color: color.withValues(alpha: 0.12),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Text(
-        '$count دعاء',
+        '$count ط¯ط¹ط§ط،',
         style: GoogleFonts.cairo(
           fontSize: 11,
           color: color,
@@ -95,7 +95,7 @@ class DuaCountBox extends StatelessWidget {
   }
 }
 
-/// كارد الفئة
+/// ظƒط§ط±ط¯ ط§ظ„ظپط¦ط©
 class DuaCategoryCard extends StatelessWidget {
   final String name;
   final IconData icon;
@@ -125,25 +125,25 @@ class DuaCategoryCard extends StatelessWidget {
           gradient: LinearGradient(
             colors: isDark
                 ? [
-              color.withOpacity(0.15),
-              color.withOpacity(0.05),
+              color.withValues(alpha: 0.15),
+              color.withValues(alpha: 0.05),
             ]
                 : [
               Colors.white,
-              color.withOpacity(0.05),
+              color.withValues(alpha: 0.05),
             ],
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
           ),
           borderRadius: BorderRadius.circular(24),
           border: Border.all(
-            color: color.withOpacity(isDark ? 0.3 : 0.2),
+            color: color.withValues(alpha: isDark ? 0.3 : 0.2),
           ),
           boxShadow: [
             BoxShadow(
               color: isDark
-                  ? Colors.black.withOpacity(0.3)
-                  : color.withOpacity(0.1),
+                  ? Colors.black.withValues(alpha: 0.3)
+                  : color.withValues(alpha: 0.1),
               blurRadius: 15,
               offset: const Offset(0, 5),
             ),
@@ -196,7 +196,7 @@ class DuaCategoryCard extends StatelessWidget {
   }
 }
 
-/// صندوق رقم الدعاء
+/// طµظ†ط¯ظˆظ‚ ط±ظ‚ظ… ط§ظ„ط¯ط¹ط§ط،
 class DuaNumberBox extends StatelessWidget {
   final int number;
   final Color color;
@@ -213,10 +213,10 @@ class DuaNumberBox extends StatelessWidget {
       width: 40,
       height: 40,
       decoration: BoxDecoration(
-        color: color.withOpacity(0.12),
+        color: color.withValues(alpha: 0.12),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: color.withOpacity(0.25),
+          color: color.withValues(alpha: 0.25),
         ),
       ),
       child: Center(
@@ -238,7 +238,7 @@ class DuaNumberBox extends StatelessWidget {
   }
 }
 
-/// صندوق معلومات (المصدر / الفضل)
+/// طµظ†ط¯ظˆظ‚ ظ…ط¹ظ„ظˆظ…ط§طھ (ط§ظ„ظ…طµط¯ط± / ط§ظ„ظپط¶ظ„)
 class DuaInfoBox extends StatelessWidget {
   final String text;
   final IconData icon;
@@ -261,10 +261,10 @@ class DuaInfoBox extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.08),
+        color: color.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: color.withOpacity(0.15),
+          color: color.withValues(alpha: 0.15),
         ),
       ),
       child: Row(
@@ -292,7 +292,7 @@ class DuaInfoBox extends StatelessWidget {
   }
 }
 
-/// صندوق الفضل
+/// طµظ†ط¯ظˆظ‚ ط§ظ„ظپط¶ظ„
 class DuaRewardBox extends StatelessWidget {
   final String text;
   final bool isDark;
@@ -312,11 +312,11 @@ class DuaRewardBox extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: isDark
-            ? Colors.amber.withOpacity(0.08)
-            : Colors.amber.withOpacity(0.06),
+            ? Colors.amber.withValues(alpha: 0.08)
+            : Colors.amber.withValues(alpha: 0.06),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: Colors.amber.withOpacity(0.2),
+          color: Colors.amber.withValues(alpha: 0.2),
         ),
       ),
       child: Row(
@@ -345,7 +345,7 @@ class DuaRewardBox extends StatelessWidget {
   }
 }
 
-/// زر العمل (نسخ / مشاركة)
+/// ط²ط± ط§ظ„ط¹ظ…ظ„ (ظ†ط³ط® / ظ…ط´ط§ط±ظƒط©)
 class DuaActionButton extends StatelessWidget {
   final String label;
   final IconData icon;
@@ -384,7 +384,7 @@ class DuaActionButton extends StatelessWidget {
         style: OutlinedButton.styleFrom(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           side: BorderSide(
-            color: color.withOpacity(0.3),
+            color: color.withValues(alpha: 0.3),
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
@@ -395,7 +395,7 @@ class DuaActionButton extends StatelessWidget {
   }
 }
 
-/// صف أزرار العمل
+/// طµظپ ط£ط²ط±ط§ط± ط§ظ„ط¹ظ…ظ„
 class DuaActionButtons extends StatelessWidget {
   final Color color;
   final VoidCallback onCopy;
@@ -414,7 +414,7 @@ class DuaActionButtons extends StatelessWidget {
       children: [
         Expanded(
           child: DuaActionButton(
-            label: 'نسخ',
+            label: 'ظ†ط³ط®',
             icon: Icons.copy_rounded,
             color: color,
             onPressed: onCopy,
@@ -423,7 +423,7 @@ class DuaActionButtons extends StatelessWidget {
         const SizedBox(width: 8),
         Expanded(
           child: DuaActionButton(
-            label: 'مشاركة',
+            label: 'ظ…ط´ط§ط±ظƒط©',
             icon: Icons.share_rounded,
             color: color,
             onPressed: onShare,
@@ -434,7 +434,7 @@ class DuaActionButtons extends StatelessWidget {
   }
 }
 
-/// نص الدعاء الرئيسي
+/// ظ†طµ ط§ظ„ط¯ط¹ط§ط، ط§ظ„ط±ط¦ظٹط³ظٹ
 class DuaTextWidget extends StatelessWidget {
   final String text;
   final bool isDark;
@@ -454,7 +454,7 @@ class DuaTextWidget extends StatelessWidget {
       style: GoogleFonts.amiri(
         fontSize: fontSize,
         height: 2.0,
-        color: isDark ? Colors.white.withOpacity(0.9) : Colors.black87,
+        color: isDark ? Colors.white.withValues(alpha: 0.9) : Colors.black87,
         fontWeight: FontWeight.bold,
       ),
       textAlign: TextAlign.center,
@@ -462,7 +462,7 @@ class DuaTextWidget extends StatelessWidget {
   }
 }
 
-/// زر الرجوع المخصص
+/// ط²ط± ط§ظ„ط±ط¬ظˆط¹ ط§ظ„ظ…ط®طµطµ
 class DuaBackButton extends StatelessWidget {
   final bool isDark;
   final Color? color;
@@ -479,10 +479,10 @@ class DuaBackButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final buttonColor = color ?? (isDark ? Colors.white : primary);
     final bgColor = color != null
-        ? Colors.white.withOpacity(0.2)
+        ? Colors.white.withValues(alpha: 0.2)
         : isDark
-        ? Colors.white.withOpacity(0.1)
-        : primary.withOpacity(0.1);
+        ? Colors.white.withValues(alpha: 0.1)
+        : primary.withValues(alpha: 0.1);
 
     return Container(
       margin: const EdgeInsets.all(8),

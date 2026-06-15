@@ -1,4 +1,4 @@
-import 'dart:convert';
+﻿import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -26,42 +26,42 @@ class BooksScreen extends StatefulWidget {
 }
 
 class _BooksScreenState extends State<BooksScreen> {
-  String _selectedCategory = 'الكل';
+  String _selectedCategory = 'ط§ظ„ظƒظ„';
   String _searchQuery = '';
   Map<String, String> _downloadedBooks = {};
   final TextEditingController _searchController = TextEditingController();
 
   final List<String> _categoriesList = [
-    'الكل',
-    'الحديث النبوي',
-    'التفسير وعلوم القرآن',
-    'العقيدة والتزكية',
-    'الفقه وأصوله',
-    'السيرة والتاريخ'
+    'ط§ظ„ظƒظ„',
+    'ط§ظ„ط­ط¯ظٹط« ط§ظ„ظ†ط¨ظˆظٹ',
+    'ط§ظ„طھظپط³ظٹط± ظˆط¹ظ„ظˆظ… ط§ظ„ظ‚ط±ط¢ظ†',
+    'ط§ظ„ط¹ظ‚ظٹط¯ط© ظˆط§ظ„طھط²ظƒظٹط©',
+    'ط§ظ„ظپظ‚ظ‡ ظˆط£طµظˆظ„ظ‡',
+    'ط§ظ„ط³ظٹط±ط© ظˆط§ظ„طھط§ط±ظٹط®'
   ];
 
   final List<Map<String, dynamic>> _dailyBanners = [
     {
-      'text': 'اتقوا الله\nفي النساء',
+      'text': 'ط§طھظ‚ظˆط§ ط§ظ„ظ„ظ‡\nظپظٹ ط§ظ„ظ†ط³ط§ط،',
       'colors': [const Color(0xFF151B26), const Color(0xFF0A0E17)]
     },
     {
-      'text': 'خيركم من تعلم\nالقرآن وعلمه',
+      'text': 'ط®ظٹط±ظƒظ… ظ…ظ† طھط¹ظ„ظ…\nط§ظ„ظ‚ط±ط¢ظ† ظˆط¹ظ„ظ…ظ‡',
       'colors': [
-        const Color(0xFFE6B325).withOpacity(0.4),
+        const Color(0xFFE6B325).withValues(alpha: 0.4),
         const Color(0xFF151B26)
       ]
     },
     {
-      'text': 'الدين\nالنصيحة',
+      'text': 'ط§ظ„ط¯ظٹظ†\nط§ظ„ظ†طµظٹط­ط©',
       'colors': [Colors.blueGrey.shade900, const Color(0xFF0A0E17)]
     },
     {
-      'text': 'الكلمة الطيبة\nصدقة',
+      'text': 'ط§ظ„ظƒظ„ظ…ط© ط§ظ„ط·ظٹط¨ط©\nطµط¯ظ‚ط©',
       'colors': [const Color(0xFF1E3C3B), const Color(0xFF0A0E17)]
     },
     {
-      'text': 'إنما الأعمال\nبالنيات',
+      'text': 'ط¥ظ†ظ…ط§ ط§ظ„ط£ط¹ظ…ط§ظ„\nط¨ط§ظ„ظ†ظٹط§طھ',
       'colors': [Colors.brown.shade900, const Color(0xFF151B26)]
     },
   ];
@@ -226,7 +226,7 @@ class _BooksScreenState extends State<BooksScreen> {
   Future<void> _downloadBookFile(Map<String, dynamic> book) async {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('بدأ تحميل كتاب ${book['title']}...',
+        content: Text('ط¨ط¯ط£ طھط­ظ…ظٹظ„ ظƒطھط§ط¨ ${book['title']}...',
             style: GoogleFonts.cairo()),
         backgroundColor: BooksTheme.gold,
         duration: const Duration(seconds: 2),
@@ -260,7 +260,7 @@ class _BooksScreenState extends State<BooksScreen> {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text('تم التحميل بنجاح!', style: GoogleFonts.cairo()),
+              content: Text('طھظ… ط§ظ„طھط­ظ…ظٹظ„ ط¨ظ†ط¬ط§ط­!', style: GoogleFonts.cairo()),
               backgroundColor: Colors.green,
             ),
           );
@@ -271,7 +271,7 @@ class _BooksScreenState extends State<BooksScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content:
-            Text('فشل التحميل. تأكد من الإنترنت.', style: GoogleFonts.cairo()),
+            Text('ظپط´ظ„ ط§ظ„طھط­ظ…ظٹظ„. طھط£ظƒط¯ ظ…ظ† ط§ظ„ط¥ظ†طھط±ظ†طھ.', style: GoogleFonts.cairo()),
             backgroundColor: Colors.red,
           ),
         );
@@ -286,10 +286,10 @@ class _BooksScreenState extends State<BooksScreen> {
         backgroundColor: BooksTheme.cardDark,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
-          side: BorderSide(color: BooksTheme.gold.withOpacity(0.3)),
+          side: BorderSide(color: BooksTheme.gold.withValues(alpha: 0.3)),
         ),
         title: Text(
-          'إدارة التنزيلات',
+          'ط¥ط¯ط§ط±ط© ط§ظ„طھظ†ط²ظٹظ„ط§طھ',
           style: GoogleFonts.cairo(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -297,14 +297,14 @@ class _BooksScreenState extends State<BooksScreen> {
         ),
         content: Text(
           downloadStatus == 'partial'
-              ? 'بعض أجزاء هذا الكتاب محمّلة. هل ترغب في حذف الملفات الحالية؟'
-              : 'هل ترغب في حذف هذا الكتاب لتوفير المساحة؟',
+              ? 'ط¨ط¹ط¶ ط£ط¬ط²ط§ط، ظ‡ط°ط§ ط§ظ„ظƒطھط§ط¨ ظ…ط­ظ…ظ‘ظ„ط©. ظ‡ظ„ طھط±ط؛ط¨ ظپظٹ ط­ط°ظپ ط§ظ„ظ…ظ„ظپط§طھ ط§ظ„ط­ط§ظ„ظٹط©طں'
+              : 'ظ‡ظ„ طھط±ط؛ط¨ ظپظٹ ط­ط°ظپ ظ‡ط°ط§ ط§ظ„ظƒطھط§ط¨ ظ„طھظˆظپظٹط± ط§ظ„ظ…ط³ط§ط­ط©طں',
           style: GoogleFonts.cairo(color: Colors.white70),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('إلغاء', style: GoogleFonts.cairo(color: Colors.grey)),
+            child: Text('ط¥ظ„ط؛ط§ط،', style: GoogleFonts.cairo(color: Colors.grey)),
           ),
           TextButton(
             onPressed: () {
@@ -312,7 +312,7 @@ class _BooksScreenState extends State<BooksScreen> {
               _deleteBookFile(book);
             },
             child: Text(
-              'حذف',
+              'ط­ط°ظپ',
               style: GoogleFonts.cairo(
                 color: Colors.redAccent,
                 fontWeight: FontWeight.bold,
@@ -360,7 +360,7 @@ class _BooksScreenState extends State<BooksScreen> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('تم حذف الكتاب.', style: GoogleFonts.cairo()),
+            content: Text('طھظ… ط­ط°ظپ ط§ظ„ظƒطھط§ط¨.', style: GoogleFonts.cairo()),
             backgroundColor: Colors.orange,
           ),
         );
@@ -394,7 +394,7 @@ class _BooksScreenState extends State<BooksScreen> {
           child: CustomScrollView(
             physics: const BouncingScrollPhysics(),
             slivers: [
-              // البحث والفلاتر
+              // ط§ظ„ط¨ط­ط« ظˆط§ظ„ظپظ„ط§طھط±
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
@@ -420,7 +420,7 @@ class _BooksScreenState extends State<BooksScreen> {
                 ),
               ),
 
-              // البانر اليومي
+              // ط§ظ„ط¨ط§ظ†ط± ط§ظ„ظٹظˆظ…ظٹ
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -433,12 +433,12 @@ class _BooksScreenState extends State<BooksScreen> {
 
               const SliverToBoxAdapter(child: SizedBox(height: 25)),
 
-              // قوائم الكتب
+              // ظ‚ظˆط§ط¦ظ… ط§ظ„ظƒطھط¨
               SliverList(
                 delegate: SliverChildBuilderDelegate(
                       (context, index) {
                     final entry = _libraryCategories.entries.elementAt(index);
-                    if (_selectedCategory != 'الكل' &&
+                    if (_selectedCategory != 'ط§ظ„ظƒظ„' &&
                         entry.key != _selectedCategory) {
                       return const SizedBox.shrink();
                     }
@@ -479,7 +479,7 @@ class _BooksScreenState extends State<BooksScreen> {
       elevation: 0,
       centerTitle: true,
       title: Text(
-        'المكتبة الإسلامية',
+        'ط§ظ„ظ…ظƒطھط¨ط© ط§ظ„ط¥ط³ظ„ط§ظ…ظٹط©',
         style: GoogleFonts.cairo(
           fontWeight: FontWeight.bold,
           fontSize: 24,

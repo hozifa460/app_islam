@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'hijri_theme.dart';
 
@@ -58,8 +58,8 @@ class HijriNoteCard extends StatelessWidget {
             height: compact ? 38 : 44,
             decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
-                theme.primaryColor.withOpacity(0.12),
-                theme.primaryColor.withOpacity(0.04),
+                theme.primaryColor.withValues(alpha: 0.12),
+                theme.primaryColor.withValues(alpha: 0.04),
               ]),
               borderRadius: BorderRadius.circular(14),
             ),

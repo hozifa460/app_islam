@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'dart:convert';
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -290,7 +290,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
     final looksLikeShort = title.contains('#shorts') ||
         title.contains('shorts') ||
         title.contains('#short') ||
-        title.contains('شورت');
+        title.contains('ط´ظˆط±طھ');
 
     if (mounted) {
       setState(() {
@@ -646,11 +646,11 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                     ListTile(
                       leading: const Icon(Icons.closed_caption_rounded),
                       title: Text(
-                        'الترجمة',
+                        'ط§ظ„طھط±ط¬ظ…ط©',
                         style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
                       ),
                       subtitle: Text(
-                        _captionsEnabled ? 'مفعلة' : 'متوقفة',
+                        _captionsEnabled ? 'ظ…ظپط¹ظ„ط©' : 'ظ…طھظˆظ‚ظپط©',
                         style: GoogleFonts.cairo(),
                       ),
                     ),
@@ -670,7 +670,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
-                              'تم حفظ إعداد الترجمة، وسيُطبق عند تشغيل الفيديو القادم أو عند إعادة فتح الفيديو',
+                              'طھظ… ط­ظپط¸ ط¥ط¹ط¯ط§ط¯ ط§ظ„طھط±ط¬ظ…ط©طŒ ظˆط³ظٹظڈط·ط¨ظ‚ ط¹ظ†ط¯ طھط´ط؛ظٹظ„ ط§ظ„ظپظٹط¯ظٹظˆ ط§ظ„ظ‚ط§ط¯ظ… ط£ظˆ ط¹ظ†ط¯ ط¥ط¹ط§ط¯ط© ظپطھط­ ط§ظ„ظپظٹط¯ظٹظˆ',
                               style: GoogleFonts.cairo(),
                             ),
                             behavior: SnackBarBehavior.floating,
@@ -682,18 +682,18 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                     ListTile(
                       leading: const Icon(Icons.high_quality_rounded),
                       title: Text(
-                        'الجودة',
+                        'ط§ظ„ط¬ظˆط¯ط©',
                         style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
                       ),
                       subtitle: Text(
                         _selectedQuality == 'auto'
-                            ? 'تلقائي'
+                            ? 'طھظ„ظ‚ط§ط¦ظٹ'
                             : _selectedQuality,
                         style: GoogleFonts.cairo(),
                       ),
                     ),
                     ...[
-                      ('auto', 'تلقائي'),
+                      ('auto', 'طھظ„ظ‚ط§ط¦ظٹ'),
                       ('1080p', '1080p'),
                       ('720p', '720p'),
                       ('480p', '480p'),
@@ -719,7 +719,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                'تم حفظ الجودة المفضلة، وستُستخدم مع الفيديو التالي أو عند إعادة فتح الفيديو',
+                                'طھظ… ط­ظپط¸ ط§ظ„ط¬ظˆط¯ط© ط§ظ„ظ…ظپط¶ظ„ط©طŒ ظˆط³طھظڈط³طھط®ط¯ظ… ظ…ط¹ ط§ظ„ظپظٹط¯ظٹظˆ ط§ظ„طھط§ظ„ظٹ ط£ظˆ ط¹ظ†ط¯ ط¥ط¹ط§ط¯ط© ظپطھط­ ط§ظ„ظپظٹط¯ظٹظˆ',
                                 style: GoogleFonts.cairo(),
                               ),
                               behavior: SnackBarBehavior.floating,
@@ -762,8 +762,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                       ? Icons.favorite_rounded
                       : Icons.favorite_border_rounded,
                   title: _isFavorite
-                      ? 'إزالة من المفضلة'
-                      : 'إضافة إلى المفضلة',
+                      ? 'ط¥ط²ط§ظ„ط© ظ…ظ† ط§ظ„ظ…ظپط¶ظ„ط©'
+                      : 'ط¥ط¶ط§ظپط© ط¥ظ„ظ‰ ط§ظ„ظ…ظپط¶ظ„ط©',
                   onTap: () async {
                     Navigator.pop(context);
                     await _toggleFavorite();
@@ -774,8 +774,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                       ? Icons.watch_later_rounded
                       : Icons.watch_later_outlined,
                   title: _isInWatchLater
-                      ? 'إزالة من المشاهدة لاحقًا'
-                      : 'إضافة إلى المشاهدة لاحقًا',
+                      ? 'ط¥ط²ط§ظ„ط© ظ…ظ† ط§ظ„ظ…ط´ط§ظ‡ط¯ط© ظ„ط§ط­ظ‚ظ‹ط§'
+                      : 'ط¥ط¶ط§ظپط© ط¥ظ„ظ‰ ط§ظ„ظ…ط´ط§ظ‡ط¯ط© ظ„ط§ط­ظ‚ظ‹ط§',
                   onTap: () async {
                     Navigator.pop(context);
                     await _toggleWatchLater();
@@ -783,7 +783,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                 ),
                 _sheetTile(
                   icon: Icons.share_rounded,
-                  title: 'مشاركة',
+                  title: 'ظ…ط´ط§ط±ظƒط©',
                   onTap: () async {
                     Navigator.pop(context);
                     await _shareCurrentVideo();
@@ -791,7 +791,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                 ),
                 _sheetTile(
                   icon: Icons.link_rounded,
-                  title: 'نسخ الرابط',
+                  title: 'ظ†ط³ط® ط§ظ„ط±ط§ط¨ط·',
                   onTap: () async {
                     Navigator.pop(context);
                     await _copyCurrentVideoLink();
@@ -799,7 +799,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                 ),
                 _sheetTile(
                   icon: Icons.open_in_new_rounded,
-                  title: 'فتح في يوتيوب',
+                  title: 'ظپطھط­ ظپظٹ ظٹظˆطھظٹظˆط¨',
                   onTap: () async {
                     Navigator.pop(context);
                     await _openUrl(_videoUrl);
@@ -854,7 +854,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                 ),
                 _sheetTile(
                   icon: Icons.play_arrow_rounded,
-                  title: 'تشغيل الآن',
+                  title: 'طھط´ط؛ظٹظ„ ط§ظ„ط¢ظ†',
                   onTap: () async {
                     Navigator.pop(context);
                     await _openSuggestedVideo(video);
@@ -865,8 +865,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                       ? Icons.favorite_rounded
                       : Icons.favorite_border_rounded,
                   title: isFavorite
-                      ? 'إزالة من المفضلة'
-                      : 'إضافة إلى المفضلة',
+                      ? 'ط¥ط²ط§ظ„ط© ظ…ظ† ط§ظ„ظ…ظپط¶ظ„ط©'
+                      : 'ط¥ط¶ط§ظپط© ط¥ظ„ظ‰ ط§ظ„ظ…ظپط¶ظ„ط©',
                   onTap: () async {
                     Navigator.pop(context);
                     if (_favoritesManager != null) {
@@ -882,8 +882,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                       ? Icons.watch_later_rounded
                       : Icons.watch_later_outlined,
                   title: isWatchLater
-                      ? 'إزالة من المشاهدة لاحقًا'
-                      : 'إضافة إلى المشاهدة لاحقًا',
+                      ? 'ط¥ط²ط§ظ„ط© ظ…ظ† ط§ظ„ظ…ط´ط§ظ‡ط¯ط© ظ„ط§ط­ظ‚ظ‹ط§'
+                      : 'ط¥ط¶ط§ظپط© ط¥ظ„ظ‰ ط§ظ„ظ…ط´ط§ظ‡ط¯ط© ظ„ط§ط­ظ‚ظ‹ط§',
                   onTap: () async {
                     Navigator.pop(context);
                     if (_favoritesManager != null) {
@@ -896,7 +896,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                 ),
                 _sheetTile(
                   icon: Icons.share_rounded,
-                  title: 'مشاركة',
+                  title: 'ظ…ط´ط§ط±ظƒط©',
                   onTap: () async {
                     Navigator.pop(context);
                     await ShareService.shareVideo(video, context: context);
@@ -904,7 +904,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                 ),
                 _sheetTile(
                   icon: Icons.link_rounded,
-                  title: 'نسخ الرابط',
+                  title: 'ظ†ط³ط® ط§ظ„ط±ط§ط¨ط·',
                   onTap: () async {
                     Navigator.pop(context);
                     await ShareService.copyLink(video.url, context: context);
@@ -932,7 +932,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
       subColor: isDark ? const Color(0xFFAAAAAA) : const Color(0xFF606060),
       capColor: isDark ? const Color(0xFF8A8A8A) : const Color(0xFF909090),
       borderColor:
-      isDark ? Colors.white.withOpacity(0.08) : const Color(0xFFE6E6E6),
+      isDark ? Colors.white.withValues(alpha: 0.08) : const Color(0xFFE6E6E6),
       primary: const Color(0xFFFF0000),
       chipBg: isDark ? const Color(0xFF272727) : const Color(0xFFF2F2F2),
       isDark: isDark,
@@ -969,14 +969,14 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                           child: Container(
                             padding: const EdgeInsets.all(12),
                             decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.82),
+                              color: Colors.black.withValues(alpha: 0.82),
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: Row(
                               children: [
                                 Expanded(
                                   child: Text(
-                                    'تشغيل التالي خلال $_autoplayCountdown ثوانٍ',
+                                    'طھط´ط؛ظٹظ„ ط§ظ„طھط§ظ„ظٹ ط®ظ„ط§ظ„ $_autoplayCountdown ط«ظˆط§ظ†ظچ',
                                     style: GoogleFonts.cairo(
                                       color: Colors.white,
                                       fontSize: 12,
@@ -987,7 +987,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                                 TextButton(
                                   onPressed: _cancelAutoplayCountdown,
                                   child: Text(
-                                    'إلغاء',
+                                    'ط¥ظ„ط؛ط§ط،',
                                     style: GoogleFonts.cairo(
                                       color: Colors.white,
                                       fontWeight: FontWeight.w700,
@@ -1009,7 +1009,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                                     elevation: 0,
                                   ),
                                   child: Text(
-                                    'تشغيل الآن',
+                                    'طھط´ط؛ظٹظ„ ط§ظ„ط¢ظ†',
                                     style: GoogleFonts.cairo(
                                       fontWeight: FontWeight.w800,
                                     ),
@@ -1081,7 +1081,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
       height: 4,
       margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-        color: Colors.grey.withOpacity(0.35),
+        color: Colors.grey.withValues(alpha: 0.35),
         borderRadius: BorderRadius.circular(10),
       ),
     );
@@ -1189,10 +1189,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Colors.black.withOpacity(0.30),
+                    Colors.black.withValues(alpha: 0.30),
                     Colors.transparent,
                     Colors.transparent,
-                    Colors.black.withOpacity(0.70),
+                    Colors.black.withValues(alpha: 0.70),
                   ],
                   stops: const [0.0, 0.18, 0.55, 1.0],
                 ),
@@ -1232,7 +1232,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                 height: 1.4,
                 shadows: [
                   Shadow(
-                    color: Colors.black.withOpacity(0.8),
+                    color: Colors.black.withValues(alpha: 0.8),
                     blurRadius: 12,
                   ),
                 ],
@@ -1294,10 +1294,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Colors.black.withOpacity(0.30),
+                      Colors.black.withValues(alpha: 0.30),
                       Colors.transparent,
                       Colors.transparent,
-                      Colors.black.withOpacity(0.42),
+                      Colors.black.withValues(alpha: 0.42),
                     ],
                     stops: const [0.0, 0.15, 0.75, 1.0],
                   ),
@@ -1326,7 +1326,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                     fontWeight: FontWeight.w700,
                     shadows: [
                       Shadow(
-                        color: Colors.black.withOpacity(0.85),
+                        color: Colors.black.withValues(alpha: 0.85),
                         blurRadius: 10,
                       ),
                     ],
@@ -1374,7 +1374,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                   width: 64,
                   height: 64,
                   decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.42),
+                    color: Colors.black.withValues(alpha: 0.42),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
@@ -1398,7 +1398,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                     vertical: 12,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.55),
+                    color: Colors.black.withValues(alpha: 0.55),
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: Row(
@@ -1413,7 +1413,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        '${_seekIndicatorSeconds} ثوان',
+                        '${_seekIndicatorSeconds} ط«ظˆط§ظ†',
                         style: GoogleFonts.cairo(
                           color: Colors.white,
                           fontSize: 13,
@@ -1441,7 +1441,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                     vertical: 8,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.28),
+                    color: Colors.black.withValues(alpha: 0.28),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Row(
@@ -1463,7 +1463,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                                 ? (_currentTime / _totalTime).clamp(0.0, 1.0)
                                 : 0.0,
                             minHeight: 4,
-                            backgroundColor: Colors.white.withOpacity(0.22),
+                            backgroundColor: Colors.white.withValues(alpha: 0.22),
                             valueColor: const AlwaysStoppedAnimation<Color>(
                               Color(0xFFFF0000),
                             ),
@@ -1519,7 +1519,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
         child: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.55),
+            color: Colors.black.withValues(alpha: 0.55),
             shape: BoxShape.circle,
           ),
           child: Icon(icon, color: Colors.white, size: size),
@@ -1555,7 +1555,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
             spacing: 8,
             runSpacing: 8,
             children: [
-              if (viewCount.isNotEmpty) _metaChip('$viewCount مشاهدة', c),
+              if (viewCount.isNotEmpty) _metaChip('$viewCount ظ…ط´ط§ظ‡ط¯ط©', c),
               if (publishText.isNotEmpty) _metaChip(publishText, c),
               if ((_videoDetails?.duration ?? '').isNotEmpty)
                 _metaChip(_videoDetails!.duration, c),
@@ -1587,8 +1587,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
   Widget _buildChannelBar(double w, _ScreenColors c) {
     final channelName = _channelInfo?.title ?? widget.channelTitle;
     final subscriberText = _channelInfo != null
-        ? '${YoutubeService.formatCount(_channelInfo!.subscriberCount)} مشترك'
-        : 'قناة يوتيوب';
+        ? '${YoutubeService.formatCount(_channelInfo!.subscriberCount)} ظ…ط´طھط±ظƒ'
+        : 'ظ‚ظ†ط§ط© ظٹظˆطھظٹظˆط¨';
 
     return Padding(
       padding: EdgeInsets.fromLTRB(w * 0.04, w * 0.03, w * 0.04, 0),
@@ -1664,7 +1664,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                 ),
               ),
               child: Text(
-                'اشتراك',
+                'ط§ط´طھط±ط§ظƒ',
                 style: GoogleFonts.cairo(
                   fontSize: 12,
                   fontWeight: FontWeight.w800,
@@ -1679,10 +1679,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
 
   Widget _channelFallback(_ScreenColors c, double w) {
     return Container(
-      color: c.primary.withOpacity(0.1),
+      color: c.primary.withValues(alpha: 0.1),
       child: Center(
         child: Text(
-          widget.channelTitle.isNotEmpty ? widget.channelTitle[0] : '؟',
+          widget.channelTitle.isNotEmpty ? widget.channelTitle[0] : 'طں',
           style: GoogleFonts.cairo(
             fontSize: 16,
             fontWeight: FontWeight.w700,
@@ -1707,7 +1707,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
               icon: _isFavorite
                   ? Icons.favorite_rounded
                   : Icons.favorite_border_rounded,
-              label: _isFavorite ? 'مفضل' : 'مفضلة',
+              label: _isFavorite ? 'ظ…ظپط¶ظ„' : 'ظ…ظپط¶ظ„ط©',
               c: c,
               filled: true,
               onTap: _toggleFavorite,
@@ -1715,7 +1715,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
             SizedBox(width: w * 0.02),
             _ytActionChip(
               icon: Icons.share_outlined,
-              label: 'مشاركة',
+              label: 'ظ…ط´ط§ط±ظƒط©',
               c: c,
               filled: true,
               onTap: _shareCurrentVideo,
@@ -1725,7 +1725,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
               icon: _isInWatchLater
                   ? Icons.watch_later_rounded
                   : Icons.watch_later_outlined,
-              label: _isInWatchLater ? 'لاحقًا ✓' : 'احفظ',
+              label: _isInWatchLater ? 'ظ„ط§ط­ظ‚ظ‹ط§ âœ“' : 'ط§ط­ظپط¸',
               c: c,
               filled: true,
               onTap: _toggleWatchLater,
@@ -1733,7 +1733,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
             SizedBox(width: w * 0.02),
             _ytActionChip(
               icon: Icons.link_rounded,
-              label: 'نسخ الرابط',
+              label: 'ظ†ط³ط® ط§ظ„ط±ط§ط¨ط·',
               c: c,
               filled: true,
               onTap: _copyCurrentVideoLink,
@@ -1757,7 +1757,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
             SizedBox(width: w * 0.02),
             _ytActionChip(
               icon: Icons.more_horiz_rounded,
-              label: 'المزيد',
+              label: 'ط§ظ„ظ…ط²ظٹط¯',
               c: c,
               filled: true,
               onTap: _showCurrentVideoActionsSheet,
@@ -1824,7 +1824,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
       child: Row(
         children: [
           Text(
-            'التشغيل التلقائي',
+            'ط§ظ„طھط´ط؛ظٹظ„ ط§ظ„طھظ„ظ‚ط§ط¦ظٹ',
             style: GoogleFonts.cairo(
               fontSize: 14,
               fontWeight: FontWeight.w700,
@@ -1888,7 +1888,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                               vertical: 2,
                             ),
                             decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.85),
+                              color: Colors.black.withValues(alpha: 0.85),
                               borderRadius: BorderRadius.circular(4),
                             ),
                             child: Text(
@@ -1910,7 +1910,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'التالي',
+                        'ط§ظ„طھط§ظ„ظٹ',
                         style: GoogleFonts.cairo(
                           fontSize: 11,
                           color: c.primary,
@@ -1989,7 +1989,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'الوصف',
+                'ط§ظ„ظˆطµظپ',
                 style: GoogleFonts.cairo(
                   fontSize: 13,
                   fontWeight: FontWeight.w800,
@@ -2026,7 +2026,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    _descriptionExpanded ? 'عرض أقل' : 'المزيد',
+                    _descriptionExpanded ? 'ط¹ط±ط¶ ط£ظ‚ظ„' : 'ط§ظ„ظ…ط²ظٹط¯',
                     style: GoogleFonts.cairo(
                       fontSize: 11,
                       color: c.primary,
@@ -2062,7 +2062,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
               padding:
               EdgeInsets.symmetric(horizontal: w * 0.022, vertical: 6),
               decoration: BoxDecoration(
-                color: c.primary.withOpacity(0.08),
+                color: c.primary.withValues(alpha: 0.08),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Text(
@@ -2087,7 +2087,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
       child: Row(
         children: [
           Text(
-            'مقترحات لك',
+            'ظ…ظ‚طھط±ط­ط§طھ ظ„ظƒ',
             style: GoogleFonts.cairo(
               fontSize: 15,
               fontWeight: FontWeight.w800,
@@ -2097,7 +2097,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
           const Spacer(),
           if (_suggestedVideos.isNotEmpty)
             Text(
-              '${_suggestedVideos.length} فيديو',
+              '${_suggestedVideos.length} ظپظٹط¯ظٹظˆ',
               style: GoogleFonts.cairo(
                 fontSize: 11,
                 color: c.capColor,
@@ -2164,7 +2164,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
           ),
           SizedBox(width: w * 0.015),
           Text(
-            'التعليقات',
+            'ط§ظ„طھط¹ظ„ظٹظ‚ط§طھ',
             style: GoogleFonts.cairo(
               fontSize: 15,
               fontWeight: FontWeight.w700,
@@ -2176,7 +2176,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
               decoration: BoxDecoration(
-                color: c.primary.withOpacity(0.1),
+                color: c.primary.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Text(
@@ -2212,7 +2212,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
           padding: EdgeInsets.all(w * 0.06),
           child: Center(
             child: Text(
-              'لا توجد تعليقات',
+              'ظ„ط§ طھظˆط¬ط¯ طھط¹ظ„ظٹظ‚ط§طھ',
               style: GoogleFonts.cairo(
                 fontSize: 13,
                 color: c.capColor,
@@ -2327,7 +2327,7 @@ class _SuggestedVideoCard extends StatelessWidget {
                           vertical: 2,
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.85),
+                          color: Colors.black.withValues(alpha: 0.85),
                           borderRadius: BorderRadius.circular(4),
                         ),
                         child: Text(
@@ -2348,7 +2348,7 @@ class _SuggestedVideoCard extends StatelessWidget {
                       child: LinearProgressIndicator(
                         value: progress,
                         minHeight: 3,
-                        backgroundColor: Colors.white.withOpacity(0.2),
+                        backgroundColor: Colors.white.withValues(alpha: 0.2),
                         valueColor: const AlwaysStoppedAnimation<Color>(
                           Color(0xFFFF0000),
                         ),
@@ -2364,11 +2364,11 @@ class _SuggestedVideoCard extends StatelessWidget {
                           vertical: 3,
                         ),
                         decoration: BoxDecoration(
-                          color: const Color(0xFF8B5CF6).withOpacity(0.92),
+                          color: const Color(0xFF8B5CF6).withValues(alpha: 0.92),
                           borderRadius: BorderRadius.circular(6),
                         ),
                         child: Text(
-                          'أكمل',
+                          'ط£ظƒظ…ظ„',
                           style: GoogleFonts.cairo(
                             fontSize: 9,
                             color: Colors.white,
@@ -2409,7 +2409,7 @@ class _SuggestedVideoCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 3),
                     Text(
-                      '${YoutubeService.formatViews(video.viewCount)} مشاهدة • ${TimeFormatHelper.shortTimeAgoArabic(video.publishedAt)}',
+                      '${YoutubeService.formatViews(video.viewCount)} ظ…ط´ط§ظ‡ط¯ط© â€¢ ${TimeFormatHelper.shortTimeAgoArabic(video.publishedAt)}',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.cairo(
@@ -2524,10 +2524,10 @@ class _CommentCard extends StatelessWidget {
 
   Widget _fallback() {
     return Container(
-      color: colors.primary.withOpacity(0.1),
+      color: colors.primary.withValues(alpha: 0.1),
       child: Center(
         child: Text(
-          comment.authorName.isNotEmpty ? comment.authorName[0] : '؟',
+          comment.authorName.isNotEmpty ? comment.authorName[0] : 'طں',
           style: GoogleFonts.cairo(
             fontSize: 14,
             fontWeight: FontWeight.w700,

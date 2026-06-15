@@ -1,4 +1,4 @@
-import 'dart:math';
+﻿import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'hadith_book_screen.dart';
@@ -12,14 +12,14 @@ class HadithScreen extends StatelessWidget {
   final Color _bgDark = const Color(0xFF0A0E17);
 
   final List<Map<String, dynamic>> hadithBooks = const [
-    {'title': 'صحيح البخاري', 'author': 'الإمام البخاري', 'id': 'bukhari', 'color': Color(0xFF1B5E20), 'icon': Icons.auto_stories_rounded, 'hadithCount': '7563'},
-    {'title': 'صحيح مسلم', 'author': 'الإمام مسلم', 'id': 'muslim', 'color': Color(0xFF0D47A1), 'icon': Icons.menu_book_rounded, 'hadithCount': '5362'},
-    {'title': 'سنن الترمذي', 'author': 'الإمام الترمذي', 'id': 'tirmidhi', 'color': Color(0xFFBF360C), 'icon': Icons.book_rounded, 'hadithCount': '3956'},
-    {'title': 'سنن النسائي', 'author': 'الإمام النسائي', 'id': 'nasai', 'color': Color(0xFF4A148C), 'icon': Icons.chrome_reader_mode_rounded, 'hadithCount': '5774'},
-    {'title': 'سنن أبي داود', 'author': 'الإمام أبو داود', 'id': 'abudawud', 'color': Color(0xFF006064), 'icon': Icons.library_books_rounded, 'hadithCount': '5274'},
-    {'title': 'سنن ابن ماجه', 'author': 'الإمام ابن ماجه', 'id': 'ibnmajah', 'color': Color(0xFF880E4F), 'icon': Icons.import_contacts_rounded, 'hadithCount': '4341'},
-    {'title': 'رياض الصالحين', 'author': 'الإمام النووي', 'id': 'riyad', 'color': Color(0xFF2E7D32), 'icon': Icons.local_library_rounded, 'hadithCount': '1896'},
-    {'title': 'الأربعون النووية', 'author': 'الإمام النووي', 'id': 'nawawi40', 'color': Color(0xFFF57F17), 'icon': Icons.bookmark_rounded, 'hadithCount': '42'},
+    {'title': 'طµط­ظٹط­ ط§ظ„ط¨ط®ط§ط±ظٹ', 'author': 'ط§ظ„ط¥ظ…ط§ظ… ط§ظ„ط¨ط®ط§ط±ظٹ', 'id': 'bukhari', 'color': Color(0xFF1B5E20), 'icon': Icons.auto_stories_rounded, 'hadithCount': '7563'},
+    {'title': 'طµط­ظٹط­ ظ…ط³ظ„ظ…', 'author': 'ط§ظ„ط¥ظ…ط§ظ… ظ…ط³ظ„ظ…', 'id': 'muslim', 'color': Color(0xFF0D47A1), 'icon': Icons.menu_book_rounded, 'hadithCount': '5362'},
+    {'title': 'ط³ظ†ظ† ط§ظ„طھط±ظ…ط°ظٹ', 'author': 'ط§ظ„ط¥ظ…ط§ظ… ط§ظ„طھط±ظ…ط°ظٹ', 'id': 'tirmidhi', 'color': Color(0xFFBF360C), 'icon': Icons.book_rounded, 'hadithCount': '3956'},
+    {'title': 'ط³ظ†ظ† ط§ظ„ظ†ط³ط§ط¦ظٹ', 'author': 'ط§ظ„ط¥ظ…ط§ظ… ط§ظ„ظ†ط³ط§ط¦ظٹ', 'id': 'nasai', 'color': Color(0xFF4A148C), 'icon': Icons.chrome_reader_mode_rounded, 'hadithCount': '5774'},
+    {'title': 'ط³ظ†ظ† ط£ط¨ظٹ ط¯ط§ظˆط¯', 'author': 'ط§ظ„ط¥ظ…ط§ظ… ط£ط¨ظˆ ط¯ط§ظˆط¯', 'id': 'abudawud', 'color': Color(0xFF006064), 'icon': Icons.library_books_rounded, 'hadithCount': '5274'},
+    {'title': 'ط³ظ†ظ† ط§ط¨ظ† ظ…ط§ط¬ظ‡', 'author': 'ط§ظ„ط¥ظ…ط§ظ… ط§ط¨ظ† ظ…ط§ط¬ظ‡', 'id': 'ibnmajah', 'color': Color(0xFF880E4F), 'icon': Icons.import_contacts_rounded, 'hadithCount': '4341'},
+    {'title': 'ط±ظٹط§ط¶ ط§ظ„طµط§ظ„ط­ظٹظ†', 'author': 'ط§ظ„ط¥ظ…ط§ظ… ط§ظ„ظ†ظˆظˆظٹ', 'id': 'riyad', 'color': Color(0xFF2E7D32), 'icon': Icons.local_library_rounded, 'hadithCount': '1896'},
+    {'title': 'ط§ظ„ط£ط±ط¨ط¹ظˆظ† ط§ظ„ظ†ظˆظˆظٹط©', 'author': 'ط§ظ„ط¥ظ…ط§ظ… ط§ظ„ظ†ظˆظˆظٹ', 'id': 'nawawi40', 'color': Color(0xFFF57F17), 'icon': Icons.bookmark_rounded, 'hadithCount': '42'},
   ];
 
   @override
@@ -39,7 +39,7 @@ class HadithScreen extends StatelessWidget {
         body: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
-            // ─── Header ───
+            // â”€â”€â”€ Header â”€â”€â”€
             SliverAppBar(
               expandedHeight: screenHeight * 0.28,
               pinned: true,
@@ -49,9 +49,9 @@ class HadithScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(8),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.15),
+                    color: Colors.white.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.white.withOpacity(0.2)),
+                    border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
                   ),
                   child: IconButton(
                     icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white, size: 18),
@@ -78,14 +78,14 @@ class HadithScreen extends StatelessWidget {
                               end: Alignment.bottomRight,
                               colors: isDark
                                   ? [const Color(0xFF111827), const Color(0xFF1E293B)]
-                                  : [primaryColor, primaryColor.withOpacity(0.8), const Color(0xFF0D3B2E)],
+                                  : [primaryColor, primaryColor.withValues(alpha: 0.8), const Color(0xFF0D3B2E)],
                             ),
                           ),
                         ),
                         // Pattern overlay
                         CustomPaint(
                           painter: _GeometricPatternPainter(
-                            color: Colors.white.withOpacity(0.035),
+                            color: Colors.white.withValues(alpha: 0.035),
                           ),
                         ),
                         // Content
@@ -104,14 +104,14 @@ class HadithScreen extends StatelessWidget {
                                   shape: BoxShape.circle,
                                   gradient: LinearGradient(
                                     colors: [
-                                      _gold.withOpacity(0.3),
-                                      _gold.withOpacity(0.1),
+                                      _gold.withValues(alpha: 0.3),
+                                      _gold.withValues(alpha: 0.1),
                                     ],
                                   ),
-                                  border: Border.all(color: _gold.withOpacity(0.5), width: 2),
+                                  border: Border.all(color: _gold.withValues(alpha: 0.5), width: 2),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: _gold.withOpacity(0.2),
+                                      color: _gold.withValues(alpha: 0.2),
                                       blurRadius: 20,
                                       spreadRadius: 3,
                                     ),
@@ -129,13 +129,13 @@ class HadithScreen extends StatelessWidget {
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 24),
                                   child: Text(
-                                    'كتب الحديث الشريف',
+                                    'ظƒطھط¨ ط§ظ„ط­ط¯ظٹط« ط§ظ„ط´ط±ظٹظپ',
                                     style: GoogleFonts.amiriQuran(
                                       fontSize: titleSize,
                                       color: Colors.white,
                                       fontWeight: FontWeight.w600,
                                       shadows: [
-                                        Shadow(color: Colors.black.withOpacity(0.3), blurRadius: 8),
+                                        Shadow(color: Colors.black.withValues(alpha: 0.3), blurRadius: 8),
                                       ],
                                     ),
                                   ),
@@ -147,14 +147,14 @@ class HadithScreen extends StatelessWidget {
                                 child: Container(
                                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
                                   decoration: BoxDecoration(
-                                    color: Colors.white.withOpacity(0.12),
+                                    color: Colors.white.withValues(alpha: 0.12),
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                   child: Text(
-                                    'أمهات الكتب الستة وغيرها',
+                                    'ط£ظ…ظ‡ط§طھ ط§ظ„ظƒطھط¨ ط§ظ„ط³طھط© ظˆط؛ظٹط±ظ‡ط§',
                                     style: GoogleFonts.cairo(
                                       fontSize: subSize,
-                                      color: _gold.withOpacity(0.9),
+                                      color: _gold.withValues(alpha: 0.9),
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
@@ -186,21 +186,21 @@ class HadithScreen extends StatelessWidget {
               ),
             ),
 
-            // ─── Stats Bar ───
+            // â”€â”€â”€ Stats Bar â”€â”€â”€
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   decoration: BoxDecoration(
-                    color: isDark ? Colors.white.withOpacity(0.05) : Colors.white,
+                    color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white,
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(
-                      color: isDark ? Colors.white.withOpacity(0.08) : _gold.withOpacity(0.15),
+                      color: isDark ? Colors.white.withValues(alpha: 0.08) : _gold.withValues(alpha: 0.15),
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: isDark ? Colors.black.withOpacity(0.2) : Colors.black.withOpacity(0.03),
+                        color: isDark ? Colors.black.withValues(alpha: 0.2) : Colors.black.withValues(alpha: 0.03),
                         blurRadius: 10,
                         offset: const Offset(0, 2),
                       ),
@@ -209,26 +209,26 @@ class HadithScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      _buildStatItem('${hadithBooks.length}', 'كتاب', Icons.menu_book_rounded, isDark, textColorMain, textColorSub),
+                      _buildStatItem('${hadithBooks.length}', 'ظƒطھط§ط¨', Icons.menu_book_rounded, isDark, textColorMain, textColorSub),
                       Container(
                         width: 1,
                         height: 30,
-                        color: isDark ? Colors.white.withOpacity(0.1) : Colors.grey.withOpacity(0.2),
+                        color: isDark ? Colors.white.withValues(alpha: 0.1) : Colors.grey.withValues(alpha: 0.2),
                       ),
-                      _buildStatItem('34,208', 'حديث', Icons.format_quote_rounded, isDark, textColorMain, textColorSub),
+                      _buildStatItem('34,208', 'ط­ط¯ظٹط«', Icons.format_quote_rounded, isDark, textColorMain, textColorSub),
                       Container(
                         width: 1,
                         height: 30,
-                        color: isDark ? Colors.white.withOpacity(0.1) : Colors.grey.withOpacity(0.2),
+                        color: isDark ? Colors.white.withValues(alpha: 0.1) : Colors.grey.withValues(alpha: 0.2),
                       ),
-                      _buildStatItem('8', 'مؤلف', Icons.person_rounded, isDark, textColorMain, textColorSub),
+                      _buildStatItem('8', 'ظ…ط¤ظ„ظپ', Icons.person_rounded, isDark, textColorMain, textColorSub),
                     ],
                   ),
                 ),
               ),
             ),
 
-            // ─── Grid ───
+            // â”€â”€â”€ Grid â”€â”€â”€
             SliverPadding(
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
               sliver: SliverGrid(
@@ -294,7 +294,7 @@ class HadithScreen extends StatelessWidget {
           width: 32,
           height: 32,
           decoration: BoxDecoration(
-            color: _gold.withOpacity(0.12),
+            color: _gold.withValues(alpha: 0.12),
             borderRadius: BorderRadius.circular(10),
           ),
           child: Icon(icon, size: 16, color: _gold),
@@ -326,7 +326,7 @@ class HadithScreen extends StatelessWidget {
   }
 }
 
-// ─── Book Card Widget ───
+// â”€â”€â”€ Book Card Widget â”€â”€â”€
 class _HadithBookCard extends StatefulWidget {
   final Map<String, dynamic> book;
   final Color gold;
@@ -383,7 +383,7 @@ class _HadithBookCardState extends State<_HadithBookCard> with SingleTickerProvi
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: widget.isDark
-                      ? [Colors.white.withOpacity(0.07), Colors.white.withOpacity(0.02)]
+                      ? [Colors.white.withValues(alpha: 0.07), Colors.white.withValues(alpha: 0.02)]
                       : [Colors.white, const Color(0xFFFCFBF9)],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -391,15 +391,15 @@ class _HadithBookCardState extends State<_HadithBookCard> with SingleTickerProvi
                 borderRadius: BorderRadius.circular(22),
                 border: Border.all(
                   color: widget.isDark
-                      ? bookColor.withOpacity(0.2)
-                      : widget.gold.withOpacity(0.18),
+                      ? bookColor.withValues(alpha: 0.2)
+                      : widget.gold.withValues(alpha: 0.18),
                   width: 1.2,
                 ),
                 boxShadow: [
                   BoxShadow(
                     color: widget.isDark
-                        ? Colors.black.withOpacity(0.3)
-                        : bookColor.withOpacity(0.08),
+                        ? Colors.black.withValues(alpha: 0.3)
+                        : bookColor.withValues(alpha: 0.08),
                     blurRadius: 16,
                     offset: const Offset(0, 6),
                   ),
@@ -418,8 +418,8 @@ class _HadithBookCardState extends State<_HadithBookCard> with SingleTickerProvi
                         gradient: LinearGradient(
                           colors: [
                             Colors.transparent,
-                            bookColor.withOpacity(0.6),
-                            widget.gold.withOpacity(0.6),
+                            bookColor.withValues(alpha: 0.6),
+                            widget.gold.withValues(alpha: 0.6),
                             Colors.transparent,
                           ],
                         ),
@@ -439,13 +439,13 @@ class _HadithBookCardState extends State<_HadithBookCard> with SingleTickerProvi
                       width: 20,
                       height: 20,
                       decoration: BoxDecoration(
-                        color: bookColor.withOpacity(widget.isDark ? 0.15 : 0.08),
+                        color: bookColor.withValues(alpha: widget.isDark ? 0.15 : 0.08),
                         borderRadius: BorderRadius.circular(6),
                       ),
                       child: Icon(
                         Icons.star_rounded,
                         size: 11,
-                        color: bookColor.withOpacity(0.5),
+                        color: bookColor.withValues(alpha: 0.5),
                       ),
                     ),
                   ),
@@ -470,18 +470,18 @@ class _HadithBookCardState extends State<_HadithBookCard> with SingleTickerProvi
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                               colors: [
-                                bookColor.withOpacity(widget.isDark ? 0.3 : 0.15),
-                                bookColor.withOpacity(widget.isDark ? 0.15 : 0.05),
+                                bookColor.withValues(alpha: widget.isDark ? 0.3 : 0.15),
+                                bookColor.withValues(alpha: widget.isDark ? 0.15 : 0.05),
                               ],
                             ),
                             shape: BoxShape.circle,
                             border: Border.all(
-                              color: bookColor.withOpacity(0.3),
+                              color: bookColor.withValues(alpha: 0.3),
                               width: 1.5,
                             ),
                             boxShadow: [
                               BoxShadow(
-                                color: bookColor.withOpacity(0.15),
+                                color: bookColor.withValues(alpha: 0.15),
                                 blurRadius: 12,
                                 offset: const Offset(0, 4),
                               ),
@@ -547,13 +547,13 @@ class _HadithBookCardState extends State<_HadithBookCard> with SingleTickerProvi
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
-                                    bookColor.withOpacity(widget.isDark ? 0.25 : 0.1),
-                                    widget.gold.withOpacity(widget.isDark ? 0.15 : 0.08),
+                                    bookColor.withValues(alpha: widget.isDark ? 0.25 : 0.1),
+                                    widget.gold.withValues(alpha: widget.isDark ? 0.15 : 0.08),
                                   ],
                                 ),
                                 borderRadius: BorderRadius.circular(20),
                                 border: Border.all(
-                                  color: bookColor.withOpacity(0.2),
+                                  color: bookColor.withValues(alpha: 0.2),
                                 ),
                               ),
                               child: Row(
@@ -566,7 +566,7 @@ class _HadithBookCardState extends State<_HadithBookCard> with SingleTickerProvi
                                   ),
                                   const SizedBox(width: 4),
                                   Text(
-                                    'تصفّح',
+                                    'طھطµظپظ‘ط­',
                                     style: GoogleFonts.cairo(
                                       fontSize: badgeSize,
                                       color: widget.isDark ? widget.gold : bookColor,
@@ -593,7 +593,7 @@ class _HadithBookCardState extends State<_HadithBookCard> with SingleTickerProvi
   }
 }
 
-// ─── Geometric Pattern Painter ───
+// â”€â”€â”€ Geometric Pattern Painter â”€â”€â”€
 class _GeometricPatternPainter extends CustomPainter {
   final Color color;
 

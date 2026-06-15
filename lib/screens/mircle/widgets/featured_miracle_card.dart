@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../color_control/miracle_theme.dart';
 import 'miracle_helpers.dart';
@@ -29,7 +29,7 @@ class FeaturedMiracleCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SectionTitle(
-            title:       'معجزة مميزة',
+            title:       'ظ…ط¹ط¬ط²ط© ظ…ظ…ظٹط²ط©',
             subtitle:    'Featured Miracle',
             accentColor: MiracleTheme.neonGold,
             t:           t,
@@ -43,11 +43,11 @@ class FeaturedMiracleCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(24),
                 border: Border.all(
-                  color: catColor.withOpacity(0.3), width: 1.5,
+                  color: catColor.withValues(alpha: 0.3), width: 1.5,
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color:  catColor.withOpacity(0.15),
+                    color:  catColor.withValues(alpha: 0.15),
                     blurRadius: 30,
                     offset: const Offset(0, 10),
                   ),
@@ -65,9 +65,9 @@ class FeaturedMiracleCard extends StatelessWidget {
                             begin:  Alignment.topLeft,
                             end:    Alignment.bottomRight,
                             colors: [
-                              catColor.withOpacity(0.25),
+                              catColor.withValues(alpha: 0.25),
                               t.bg3,
-                              MiracleTheme.neonPurple.withOpacity(0.15),
+                              MiracleTheme.neonPurple.withValues(alpha: 0.15),
                             ],
                           ),
                         ),
@@ -89,7 +89,7 @@ class FeaturedMiracleCard extends StatelessWidget {
                           gradient: RadialGradient(
                             colors: [
                               Colors.transparent,
-                              t.bg3.withOpacity(0.75),
+                              t.bg3.withValues(alpha: 0.75),
                             ],
                             center: Alignment.topLeft,
                             radius: 1.3,
@@ -106,7 +106,7 @@ class FeaturedMiracleCard extends StatelessWidget {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           gradient: RadialGradient(colors: [
-                            catColor.withOpacity(0.12),
+                            catColor.withValues(alpha: 0.12),
                             Colors.transparent,
                           ]),
                         ),
@@ -127,13 +127,13 @@ class FeaturedMiracleCard extends StatelessWidget {
                               Container(
                                 width: 46, height: 46,
                                 decoration: BoxDecoration(
-                                  color: catColor.withOpacity(0.15),
+                                  color: catColor.withValues(alpha: 0.15),
                                   borderRadius: BorderRadius.circular(14),
                                   border: Border.all(
-                                      color: catColor.withOpacity(0.3)),
+                                      color: catColor.withValues(alpha: 0.3)),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: catColor.withOpacity(0.2),
+                                      color: catColor.withValues(alpha: 0.2),
                                       blurRadius: 12,
                                     ),
                                   ],
@@ -154,16 +154,16 @@ class FeaturedMiracleCard extends StatelessWidget {
                                               horizontal: 8, vertical: 3),
                                           decoration: BoxDecoration(
                                             color: MiracleTheme.neonGold
-                                                .withOpacity(0.12),
+                                                .withValues(alpha: 0.12),
                                             borderRadius:
                                             BorderRadius.circular(8),
                                             border: Border.all(
                                               color: MiracleTheme.neonGold
-                                                  .withOpacity(0.3),
+                                                  .withValues(alpha: 0.3),
                                             ),
                                           ),
                                           child: Text(
-                                            '⭐ معجزة مميزة',
+                                            'â­گ ظ…ط¹ط¬ط²ط© ظ…ظ…ظٹط²ط©',
                                             style: GoogleFonts.cairo(
                                               color: MiracleTheme.neonGold,
                                               fontSize: 10,
@@ -177,7 +177,7 @@ class FeaturedMiracleCard extends StatelessWidget {
                                     Text(
                                       category,
                                       style: GoogleFonts.cairo(
-                                        color: catColor.withOpacity(0.9),
+                                        color: catColor.withValues(alpha: 0.9),
                                         fontSize: 11,
                                         fontWeight: FontWeight.w600,
                                       ),
@@ -218,7 +218,7 @@ class FeaturedMiracleCard extends StatelessWidget {
                               height:     1.3,
                               shadows: [
                                 Shadow(
-                                  color:     Colors.black.withOpacity(0.5),
+                                  color:     Colors.black.withValues(alpha: 0.5),
                                   blurRadius: 8,
                                 ),
                               ],

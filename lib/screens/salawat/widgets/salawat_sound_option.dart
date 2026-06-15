@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'salawat_theme.dart';
@@ -48,8 +48,8 @@ class SalawatSoundOption extends StatelessWidget {
               height: SalawatTheme.smallIconSize,
               decoration: BoxDecoration(
                 color: isSelected
-                    ? theme.deepGreen.withOpacity(0.15)
-                    : Colors.grey.withOpacity(0.08),
+                    ? theme.deepGreen.withValues(alpha: 0.15)
+                    : Colors.grey.withValues(alpha: 0.08),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Icon(
@@ -97,7 +97,7 @@ class SalawatSoundOption extends StatelessWidget {
                 border: Border.all(
                   color: isSelected
                       ? theme.deepGreen
-                      : theme.subtitleColor.withOpacity(0.4),
+                      : theme.subtitleColor.withValues(alpha: 0.4),
                   width: 2,
                 ),
               ),

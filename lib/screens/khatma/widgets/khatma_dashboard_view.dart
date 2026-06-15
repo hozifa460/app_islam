@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../languages/app_localizations.dart';
 import 'khatma_common_widgets.dart';
@@ -84,7 +84,7 @@ class KhatmaDashboardView extends StatelessWidget {
     );
   }
 
-  // ✅ AppBar مع دائرة التقدم
+  // âœ… AppBar ظ…ط¹ ط¯ط§ط¦ط±ط© ط§ظ„طھظ‚ط¯ظ…
   Widget _buildAppBar(BuildContext context, double progress,
       int currentJuz, int remainingPages) {
     final tr = context.tr;
@@ -196,7 +196,7 @@ class KhatmaDashboardView extends StatelessWidget {
     );
   }
 
-  // ✅ دائرة التقدم
+  // âœ… ط¯ط§ط¦ط±ط© ط§ظ„طھظ‚ط¯ظ…
   Widget _buildProgressCircle(
       BuildContext context,
       double progress, double circleSize, double percentFont,
@@ -219,7 +219,7 @@ class KhatmaDashboardView extends StatelessWidget {
                 child: CircularProgressIndicator(
                   value: 1.0,
                   strokeWidth: strokeW,
-                  backgroundColor: Colors.white.withOpacity(0.2),
+                  backgroundColor: Colors.white.withValues(alpha: 0.2),
                   color: Colors.transparent,
                 ),
               ),
@@ -251,7 +251,7 @@ class KhatmaDashboardView extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8, vertical: 2),
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
+                        color: Colors.white.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(
@@ -270,7 +270,7 @@ class KhatmaDashboardView extends StatelessWidget {
     );
   }
 
-  // ✅ بطاقة الورد اليومي
+  // âœ… ط¨ط·ط§ظ‚ط© ط§ظ„ظˆط±ط¯ ط§ظ„ظٹظˆظ…ظٹ
   Widget _buildWirdCard(
       BuildContext context, bool isDark, Color bgCard,
       Color textMain, int endPage, int currentSurahIdx, int endSurahIdx,
@@ -283,7 +283,7 @@ class KhatmaDashboardView extends StatelessWidget {
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: primaryColor.withOpacity(0.1),
+            color: primaryColor.withValues(alpha: 0.1),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -291,11 +291,11 @@ class KhatmaDashboardView extends StatelessWidget {
       ),
       child: Column(
         children: [
-          // العنوان
+          // ط§ظ„ط¹ظ†ظˆط§ظ†
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: primaryColor.withOpacity(0.08),
+              color: primaryColor.withValues(alpha: 0.08),
               borderRadius: const BorderRadius.vertical(
                   top: Radius.circular(24)),
             ),
@@ -307,7 +307,7 @@ class KhatmaDashboardView extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.all(isSmall ? 8 : 10),
                       decoration: BoxDecoration(
-                        color: primaryColor.withOpacity(0.15),
+                        color: primaryColor.withValues(alpha: 0.15),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Icon(Icons.menu_book,
@@ -333,7 +333,7 @@ class KhatmaDashboardView extends StatelessWidget {
                             fit: BoxFit.scaleDown,
                             alignment: AlignmentDirectional.centerStart,
                             child: Text(
-                              '$dailyPages ${tr.t('pageWord')} • ≈ ${getEstimatedMinutes()} ${tr.t('minuteWord')}',
+                              '$dailyPages ${tr.t('pageWord')} â€¢ â‰ˆ ${getEstimatedMinutes()} ${tr.t('minuteWord')}',
                               style: GoogleFonts.cairo(
                                   fontSize: isSmall ? 10 : 12,
                                   color: Colors.grey),
@@ -348,7 +348,7 @@ class KhatmaDashboardView extends StatelessWidget {
             ),
           ),
 
-          // تفاصيل الورد
+          // طھظپط§طµظٹظ„ ط§ظ„ظˆط±ط¯
           Padding(
             padding: const EdgeInsets.all(16),
             child: LayoutBuilder(
@@ -391,7 +391,7 @@ class KhatmaDashboardView extends StatelessWidget {
             ),
           ),
 
-          // الأزرار
+          // ط§ظ„ط£ط²ط±ط§ط±
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 20),
             child: LayoutBuilder(
@@ -477,7 +477,7 @@ class KhatmaDashboardView extends StatelessWidget {
     );
   }
 
-  // ✅ بطاقة الإحصائيات
+  // âœ… ط¨ط·ط§ظ‚ط© ط§ظ„ط¥ط­طµط§ط¦ظٹط§طھ
   Widget _buildStatsCard(
       BuildContext context, bool isDark, Color bgCard, Color textMain,
       int currentSurahIdx, int currentJuz,
@@ -491,7 +491,7 @@ class KhatmaDashboardView extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 15,
             offset: const Offset(0, 5),
           ),
@@ -522,7 +522,7 @@ class KhatmaDashboardView extends StatelessWidget {
           KhatmaStatRow(
             icon: Icons.auto_stories,
             label: tr.t('khatmaCurrentPage'),
-            value: '${toArabicNum(currentPage)} / ٦٠٤',
+            value: '${toArabicNum(currentPage)} / ظ¦ظ ظ¤',
             isDark: isDark,
             primaryColor: primaryColor,
           ),

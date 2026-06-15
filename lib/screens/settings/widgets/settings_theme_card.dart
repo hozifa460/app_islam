@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../languages/app_localizations.dart';
@@ -27,9 +27,9 @@ class SettingsThemeCard extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _buildToggle(context), // 👈 تمرير context
+          _buildToggle(context), // ًں‘ˆ طھظ…ط±ظٹط± context
           SettingsDivider(theme: theme),
-          _buildPreview(context), // 👈 تمرير context
+          _buildPreview(context), // ًں‘ˆ طھظ…ط±ظٹط± context
         ],
       ),
     );
@@ -53,14 +53,14 @@ class SettingsThemeCard extends StatelessWidget {
               ),
               border: Border.all(
                 color: isDark
-                    ? Colors.white.withOpacity(0.15)
-                    : SettingsTheme.gold.withOpacity(0.4),
+                    ? Colors.white.withValues(alpha: 0.15)
+                    : SettingsTheme.gold.withValues(alpha: 0.4),
                 width: 2,
               ),
               boxShadow: [
                 BoxShadow(
                   color: (isDark ? Colors.blue : SettingsTheme.gold)
-                      .withOpacity(0.2),
+                      .withValues(alpha: 0.2),
                   blurRadius: 12,
                   spreadRadius: 2,
                 ),
@@ -86,7 +86,7 @@ class SettingsThemeCard extends StatelessWidget {
                   duration: const Duration(milliseconds: 300),
                   child: Text(
                     key: ValueKey(isDark),
-                    isDark ? context.tr.darkModeLabel : context.tr.lightModeLabel, // 👈 تمت الترجمة
+                    isDark ? context.tr.darkModeLabel : context.tr.lightModeLabel, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
                     style: GoogleFonts.cairo(
                       fontSize: (w * 0.038).clamp(13.0, 16.0),
                       fontWeight: FontWeight.w700,
@@ -97,10 +97,10 @@ class SettingsThemeCard extends StatelessWidget {
                 Text(
                   isDark
                       ? context.tr.darkModeDesc
-                      : context.tr.lightModeDesc, // 👈 تمت الترجمة
+                      : context.tr.lightModeDesc, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
                   style: GoogleFonts.cairo(
                     fontSize: (w * 0.028).clamp(10.0, 12.5),
-                    color: theme.textColor.withOpacity(0.5),
+                    color: theme.textColor.withValues(alpha: 0.5),
                     height: 1.4,
                   ),
                   maxLines: 2,
@@ -127,17 +127,17 @@ class SettingsThemeCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(context.tr.previewCurrentMode, // 👈 تمت الترجمة
+          Text(context.tr.previewCurrentMode, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
               style: GoogleFonts.cairo(
                 fontSize: (w * 0.03).clamp(10.0, 13.0),
-                color: theme.textColor.withOpacity(0.45),
+                color: theme.textColor.withValues(alpha: 0.45),
                 fontWeight: FontWeight.w600,
               )),
           SizedBox(height: (w * 0.025).clamp(8.0, 14.0)),
           Row(children: [
-            _previewBox(isDarkPreview: true, isActive: isDark, label: context.tr.darkLabel), // 👈 تمت الترجمة
+            _previewBox(isDarkPreview: true, isActive: isDark, label: context.tr.darkLabel), // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
             SizedBox(width: (w * 0.03).clamp(8.0, 14.0)),
-            _previewBox(isDarkPreview: false, isActive: !isDark, label: context.tr.lightLabel), // 👈 تمت الترجمة
+            _previewBox(isDarkPreview: false, isActive: !isDark, label: context.tr.lightLabel), // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
           ]),
         ],
       ),
@@ -169,7 +169,7 @@ class SettingsThemeCard extends StatelessWidget {
               width: 2.5,
             ),
             boxShadow: isActive
-                ? [BoxShadow(color: theme.currentPrimary.withOpacity(0.2), blurRadius: 10, spreadRadius: 1)]
+                ? [BoxShadow(color: theme.currentPrimary.withValues(alpha: 0.2), blurRadius: 10, spreadRadius: 1)]
                 : [],
           ),
           child: ClipRRect(
@@ -187,14 +187,14 @@ class SettingsThemeCard extends StatelessWidget {
                           width: boxH * 0.15, height: boxH * 0.15,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: theme.currentPrimary.withOpacity(0.3),
+                            color: theme.currentPrimary.withValues(alpha: 0.3),
                           ),
                         ),
                         SizedBox(width: boxH * 0.06),
                         Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-                          Container(width: boxH * 0.4, height: 4, decoration: BoxDecoration(color: isDarkPreview ? Colors.white.withOpacity(0.4) : Colors.black.withOpacity(0.2), borderRadius: BorderRadius.circular(2))),
+                          Container(width: boxH * 0.4, height: 4, decoration: BoxDecoration(color: isDarkPreview ? Colors.white.withValues(alpha: 0.4) : Colors.black.withValues(alpha: 0.2), borderRadius: BorderRadius.circular(2))),
                           const SizedBox(height: 3),
-                          Container(width: boxH * 0.25, height: 3, decoration: BoxDecoration(color: isDarkPreview ? Colors.white.withOpacity(0.2) : Colors.black.withOpacity(0.1), borderRadius: BorderRadius.circular(2))),
+                          Container(width: boxH * 0.25, height: 3, decoration: BoxDecoration(color: isDarkPreview ? Colors.white.withValues(alpha: 0.2) : Colors.black.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(2))),
                         ]),
                       ],
                     ),
@@ -206,7 +206,7 @@ class SettingsThemeCard extends StatelessWidget {
                     padding: const EdgeInsets.all(6),
                     child: Row(children: List.generate(2, (_) => Expanded(
                       child: Container(margin: const EdgeInsets.all(2), decoration: BoxDecoration(
-                        color: isDarkPreview ? Colors.white.withOpacity(0.06) : Colors.white.withOpacity(0.8),
+                        color: isDarkPreview ? Colors.white.withValues(alpha: 0.06) : Colors.white.withValues(alpha: 0.8),
                         borderRadius: BorderRadius.circular(6),
                       )),
                     ))),
@@ -220,7 +220,7 @@ class SettingsThemeCard extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: theme.currentPrimary,
-                    boxShadow: [BoxShadow(color: theme.currentPrimary.withOpacity(0.4), blurRadius: 6)],
+                    boxShadow: [BoxShadow(color: theme.currentPrimary.withValues(alpha: 0.4), blurRadius: 6)],
                   ),
                   child: const Icon(Icons.check_rounded, color: Colors.white, size: 13),
                 )),

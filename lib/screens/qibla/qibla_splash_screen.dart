@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -64,12 +64,12 @@ class _QiblaSplashScreenState extends State<QiblaSplashScreen>
   }
 
   Future<void> _startLoadingProcess() async {
-    if (mounted) setState(() => _statusText = 'جارٍ التحقق من الأذونات...');
+    if (mounted) setState(() => _statusText = 'ط¬ط§ط±ظچ ط§ظ„طھط­ظ‚ظ‚ ظ…ظ† ط§ظ„ط£ط°ظˆظ†ط§طھ...');
     await Future.delayed(const Duration(milliseconds: 1800));
 
     var status = await QiblaLocationService.checkStatus();
     if (status == QiblaLocationStatus.permissionDenied && mounted) {
-      setState(() => _statusText = 'يرجى منح إذن الموقع...');
+      setState(() => _statusText = 'ظٹط±ط¬ظ‰ ظ…ظ†ط­ ط¥ط°ظ† ط§ظ„ظ…ظˆظ‚ط¹...');
       status = await QiblaLocationService.requestPermission();
     }
 
@@ -78,7 +78,7 @@ class _QiblaSplashScreenState extends State<QiblaSplashScreen>
       return;
     }
 
-    if (mounted) setState(() => _statusText = 'جارٍ تحديد موقعك بدقة...');
+    if (mounted) setState(() => _statusText = 'ط¬ط§ط±ظچ طھط­ط¯ظٹط¯ ظ…ظˆظ‚ط¹ظƒ ط¨ط¯ظ‚ط©...');
     await Future.delayed(const Duration(milliseconds: 800));
 
     final position = await QiblaLocationService.getAccuratePosition();
@@ -106,19 +106,19 @@ class _QiblaSplashScreenState extends State<QiblaSplashScreen>
     String message;
     switch (status) {
       case QiblaLocationStatus.serviceDisabled:
-        message = 'يرجى تفعيل خدمة الموقع (GPS) والمحاولة مرة أخرى.';
+        message = 'ظٹط±ط¬ظ‰ طھظپط¹ظٹظ„ ط®ط¯ظ…ط© ط§ظ„ظ…ظˆظ‚ط¹ (GPS) ظˆط§ظ„ظ…ط­ط§ظˆظ„ط© ظ…ط±ط© ط£ط®ط±ظ‰.';
         break;
       case QiblaLocationStatus.permissionDeniedForever:
-        message = 'تم رفض الإذن نهائياً. يرجى تفعيله من إعدادات التطبيق.';
+        message = 'طھظ… ط±ظپط¶ ط§ظ„ط¥ط°ظ† ظ†ظ‡ط§ط¦ظٹط§ظ‹. ظٹط±ط¬ظ‰ طھظپط¹ظٹظ„ظ‡ ظ…ظ† ط¥ط¹ط¯ط§ط¯ط§طھ ط§ظ„طھط·ط¨ظٹظ‚.';
         break;
       default:
-        message = 'لم يتم منح إذن الموقع. لا يمكن تحديد القبلة.';
+        message = 'ظ„ظ… ظٹطھظ… ظ…ظ†ط­ ط¥ط°ظ† ط§ظ„ظ…ظˆظ‚ط¹. ظ„ط§ ظٹظ…ظƒظ† طھط­ط¯ظٹط¯ ط§ظ„ظ‚ط¨ظ„ط©.';
     }
     _showErrorAndExit(message);
   }
 
   void _handleLocationError() {
-    _showErrorAndExit('لم نتمكن من تحديد موقعك. يرجى المحاولة مرة أخرى.');
+    _showErrorAndExit('ظ„ظ… ظ†طھظ…ظƒظ† ظ…ظ† طھط­ط¯ظٹط¯ ظ…ظˆظ‚ط¹ظƒ. ظٹط±ط¬ظ‰ ط§ظ„ظ…ط­ط§ظˆظ„ط© ظ…ط±ط© ط£ط®ط±ظ‰.');
   }
 
   void _showErrorAndExit(String message) {
@@ -147,10 +147,10 @@ class _QiblaSplashScreenState extends State<QiblaSplashScreen>
 
   @override
   Widget build(BuildContext context) {
-    // ✅ تحديد هل هو وضع داكن
+    // âœ… طھط­ط¯ظٹط¯ ظ‡ظ„ ظ‡ظˆ ظˆط¶ط¹ ط¯ط§ظƒظ†
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    // ✅ تحديد الألوان حسب الوضع
+    // âœ… طھط­ط¯ظٹط¯ ط§ظ„ط£ظ„ظˆط§ظ† ط­ط³ط¨ ط§ظ„ظˆط¶ط¹
     final bgColorLight = const Color(0xFFF8FAFF);
     final bgColorDark = const Color(0xFF0A0E17);
     final primaryColorLight = const Color(0xFF4A6FA5);
@@ -205,7 +205,7 @@ class _QiblaSplashScreenState extends State<QiblaSplashScreen>
   }
 
   // =========================================================
-  // ✅ الـ widgets معتمدة على الألوان
+  // âœ… ط§ظ„ظ€ widgets ظ…ط¹طھظ…ط¯ط© ط¹ظ„ظ‰ ط§ظ„ط£ظ„ظˆط§ظ†
   // =========================================================
 
   Widget _buildBackgroundDecorations(
@@ -249,7 +249,7 @@ class _QiblaSplashScreenState extends State<QiblaSplashScreen>
         letterSpacing: 1.5,
         shadows: [
           Shadow(
-            color: primaryColor.withOpacity(0.15),
+            color: primaryColor.withValues(alpha: 0.15),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -266,7 +266,7 @@ class _QiblaSplashScreenState extends State<QiblaSplashScreen>
         textAlign: TextAlign.center,
         style: GoogleFonts.playfairDisplay(
           fontSize: 15,
-          color: primaryColor.withOpacity(0.75),
+          color: primaryColor.withValues(alpha: 0.75),
           height: 1.6,
           letterSpacing: 0.5,
         ),
@@ -295,7 +295,7 @@ class _QiblaSplashScreenState extends State<QiblaSplashScreen>
               style: GoogleFonts.cairo(
                 fontSize: 15,
                 fontWeight: FontWeight.w600,
-                color: primaryColor.withOpacity(0.9),
+                color: primaryColor.withValues(alpha: 0.9),
               ),
               textAlign: TextAlign.center,
             ),
@@ -307,7 +307,7 @@ class _QiblaSplashScreenState extends State<QiblaSplashScreen>
 }
 
 // =========================================================
-// ✅ رسام الخلفية مع دعم الوضع الداكن
+// âœ… ط±ط³ط§ظ… ط§ظ„ط®ظ„ظپظٹط© ظ…ط¹ ط¯ط¹ظ… ط§ظ„ظˆط¶ط¹ ط§ظ„ط¯ط§ظƒظ†
 // =========================================================
 class _BackgroundPainter extends CustomPainter {
   final bool isDark;
@@ -339,10 +339,10 @@ class _BackgroundPainter extends CustomPainter {
 
   void _drawLantern(Canvas canvas, Size size, double x, double y, double scale, double opacity) {
     final paint = Paint()
-      ..color = primaryColor.withOpacity(opacity * scale)
+      ..color = primaryColor.withValues(alpha: opacity * scale)
       ..style = PaintingStyle.fill;
     final linePaint = Paint()
-      ..color = primaryColor.withOpacity(opacity * scale * 0.8)
+      ..color = primaryColor.withValues(alpha: opacity * scale * 0.8)
       ..strokeWidth = 1;
 
     canvas.drawLine(Offset(x, y - 20), Offset(x, y), linePaint);
@@ -356,7 +356,7 @@ class _BackgroundPainter extends CustomPainter {
   }
 
   void _drawStar(Canvas canvas, Size size, double x, double y, double r, double opacity) {
-    final paint = Paint()..color = primaryColor.withOpacity(opacity)..style = PaintingStyle.fill;
+    final paint = Paint()..color = primaryColor.withValues(alpha: opacity)..style = PaintingStyle.fill;
     final path = Path();
     for (int i = 0; i < 5; i++) {
       final angle = (i * 72 - 90) * math.pi / 180;
@@ -374,7 +374,7 @@ class _BackgroundPainter extends CustomPainter {
   }
 
   void _drawMoon(Canvas canvas, Size size, double x, double y, double opacity) {
-    final paint = Paint()..color = primaryColor.withOpacity(opacity)..style = PaintingStyle.fill;
+    final paint = Paint()..color = primaryColor.withValues(alpha: opacity)..style = PaintingStyle.fill;
     canvas.drawCircle(Offset(x, y), 28, paint);
     final erasePaint = Paint()..color = eraseColor..style = PaintingStyle.fill;
     canvas.drawCircle(Offset(x + 8, y - 2), 22, erasePaint);
@@ -386,7 +386,7 @@ class _BackgroundPainter extends CustomPainter {
 }
 
 // =========================================================
-// ✅ رسام البوصلة مع دعم الوضع الداكن
+// âœ… ط±ط³ط§ظ… ط§ظ„ط¨ظˆطµظ„ط© ظ…ط¹ ط¯ط¹ظ… ط§ظ„ظˆط¶ط¹ ط§ظ„ط¯ط§ظƒظ†
 // =========================================================
 class _CompassPainter extends CustomPainter {
   final bool isDark;
@@ -401,11 +401,11 @@ class _CompassPainter extends CustomPainter {
     final primaryColor = isDark ? const Color(0xFF6C96D4) : const Color(0xFF4A6FA5);
     final textColor = isDark ? Colors.white70 : const Color(0xFF4A6FA5);
 
-    // الدوائر الخارجية
-    canvas.drawCircle(center, radius - 5, Paint()..color = primaryColor.withOpacity(0.15)..style = PaintingStyle.stroke..strokeWidth = 2);
-    canvas.drawCircle(center, radius - 15, Paint()..color = primaryColor.withOpacity(0.08)..style = PaintingStyle.stroke..strokeWidth = 1);
+    // ط§ظ„ط¯ظˆط§ط¦ط± ط§ظ„ط®ط§ط±ط¬ظٹط©
+    canvas.drawCircle(center, radius - 5, Paint()..color = primaryColor.withValues(alpha: 0.15)..style = PaintingStyle.stroke..strokeWidth = 2);
+    canvas.drawCircle(center, radius - 15, Paint()..color = primaryColor.withValues(alpha: 0.08)..style = PaintingStyle.stroke..strokeWidth = 1);
 
-    // الدرجات
+    // ط§ظ„ط¯ط±ط¬ط§طھ
     for (int i = 0; i < 360; i += 5) {
       final angle = i * math.pi / 180;
       final isMain = i % 90 == 0;
@@ -417,27 +417,27 @@ class _CompassPainter extends CustomPainter {
         Offset(center.dx + outerR * math.sin(angle), center.dy - outerR * math.cos(angle)),
         Offset(center.dx + innerR * math.sin(angle), center.dy - innerR * math.cos(angle)),
         Paint()
-          ..color = i == 0 ? const Color(0xFFE74C3C) : isMain ? primaryColor : textColor.withOpacity(isMid ? 0.5 : 0.25)
+          ..color = i == 0 ? const Color(0xFFE74C3C) : isMain ? primaryColor : textColor.withValues(alpha: isMid ? 0.5 : 0.25)
           ..strokeWidth = isMain ? 2.5 : isMid ? 1.5 : 0.8
           ..strokeCap = StrokeCap.round,
       );
     }
 
-    // الأشرطة
+    // ط§ظ„ط£ط´ط±ط·ط©
     _drawLargeNeedle(canvas, center, radius, 0, const Color(0xFFE74C3C));
     _drawLargeNeedle(canvas, center, radius, math.pi, primaryColor);
     _drawLargeNeedle(canvas, center, radius, math.pi / 2, primaryColor);
     _drawLargeNeedle(canvas, center, radius, -math.pi / 2, primaryColor);
 
-    // الإبرة
+    // ط§ظ„ط¥ط¨ط±ط©
     _drawMainNeedle(canvas, center, radius);
 
-    // المركز
+    // ط§ظ„ظ…ط±ظƒط²
     canvas.drawCircle(center, 12, Paint()..color = isDark ? const Color(0xFF0F1521) : Colors.white);
     canvas.drawCircle(center, 12, Paint()..color = primaryColor..style = PaintingStyle.stroke..strokeWidth = 2.5);
     canvas.drawCircle(center, 5, Paint()..color = primaryColor);
 
-    // الحروف
+    // ط§ظ„ط­ط±ظˆظپ
     _drawLetter(canvas, center, radius, 'N', 0, const Color(0xFFE74C3C), 18);
     _drawLetter(canvas, center, radius, 'S', math.pi, textColor, 16);
     _drawLetter(canvas, center, radius, 'E', math.pi / 2, textColor, 16);
@@ -455,8 +455,8 @@ class _CompassPainter extends CustomPainter {
     path.lineTo(left.dx, left.dy);
     path.lineTo(right.dx, right.dy);
     path.close();
-    canvas.drawPath(path, Paint()..color = Colors.black.withOpacity(0.08)..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4));
-    canvas.drawPath(path, Paint()..shader = LinearGradient(colors: [color.withOpacity(0.8), color, color.withOpacity(0.8)]).createShader(Rect.fromPoints(outerTop, left.dy > right.dy ? left : right)));
+    canvas.drawPath(path, Paint()..color = Colors.black.withValues(alpha: 0.08)..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4));
+    canvas.drawPath(path, Paint()..shader = LinearGradient(colors: [color.withValues(alpha: 0.8), color, color.withValues(alpha: 0.8)]).createShader(Rect.fromPoints(outerTop, left.dy > right.dy ? left : right)));
   }
 
   void _drawMainNeedle(Canvas canvas, Offset center, double radius) {
@@ -465,11 +465,11 @@ class _CompassPainter extends CustomPainter {
     final width = 16.0;
 
     final northPath = Path()..moveTo(center.dx, center.dy - needleLength)..lineTo(center.dx - width / 2, center.dy)..lineTo(center.dx + width / 2, center.dy)..close();
-    canvas.drawPath(northPath, Paint()..color = Colors.black.withOpacity(0.15)..maskFilter = const MaskFilter.blur(BlurStyle.normal, 5));
+    canvas.drawPath(northPath, Paint()..color = Colors.black.withValues(alpha: 0.15)..maskFilter = const MaskFilter.blur(BlurStyle.normal, 5));
     canvas.drawPath(northPath, Paint()..shader = const LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Color(0xFF1A2A3A), Color(0xFF2C3E50), Color(0xFF1A2A3A)]).createShader(Rect.fromLTWH(center.dx - width / 2, center.dy - needleLength, width, needleLength)));
 
     final southPath = Path()..moveTo(center.dx, center.dy + tailLength)..lineTo(center.dx - width / 2, center.dy)..lineTo(center.dx + width / 2, center.dy)..close();
-    canvas.drawPath(southPath, Paint()..color = Colors.black.withOpacity(0.1)..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4));
+    canvas.drawPath(southPath, Paint()..color = Colors.black.withValues(alpha: 0.1)..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4));
     canvas.drawPath(southPath, Paint()..shader = const LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Color(0xFFC0392B), Color(0xFFE74C3C), Color(0xFFC0392B)]).createShader(Rect.fromLTWH(center.dx - width / 2, center.dy, width, tailLength)));
   }
 

@@ -1,4 +1,4 @@
-// lib/screens/radio/widgets_radio_screen/theme/night_sky_background.dart
+﻿// lib/screens/radio/widgets_radio_screen/theme/night_sky_background.dart
 
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -19,7 +19,7 @@ class NightSkyBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    // ══ الألوان حسب الوضع ══
+    // â•گâ•گ ط§ظ„ط£ظ„ظˆط§ظ† ط­ط³ط¨ ط§ظ„ظˆط¶ط¹ â•گâ•گ
     final skyTopColor = isDark
         ? const Color(0xFF060A14)
         : const Color(0xFFE8F4FD);
@@ -31,7 +31,7 @@ class NightSkyBackground extends StatelessWidget {
         : const Color(0xFFF5F8FA);
     final starColor = isDark
         ? Colors.white
-        : Colors.black.withOpacity(0.3);
+        : Colors.black.withValues(alpha: 0.3);
 
     return AnimatedBuilder(
       animation: controller,
@@ -78,7 +78,7 @@ class _NightSkyPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    // ══ الخلفية ══
+    // â•گâ•گ ط§ظ„ط®ظ„ظپظٹط© â•گâ•گ
     final bgPaint = Paint();
     bgPaint.shader = LinearGradient(
       colors: [skyTopColor, skyMiddleColor, skyBottomColor],
@@ -90,14 +90,14 @@ class _NightSkyPainter extends CustomPainter {
       bgPaint,
     );
 
-    // ══ النجوم (في الداك فقط) أو نقاط زخرفية في الفاتح ══
+    // â•گâ•گ ط§ظ„ظ†ط¬ظˆظ… (ظپظٹ ط§ظ„ط¯ط§ظƒ ظپظ‚ط·) ط£ظˆ ظ†ظ‚ط§ط· ط²ط®ط±ظپظٹط© ظپظٹ ط§ظ„ظپط§طھط­ â•گâ•گ
     for (int i = 0; i < _stars.length; i++) {
       final twinkle = RadioTwinkleValue.calculate(
         progress: progress,
         starIndex: i,
       );
       final starPaint = Paint()
-        ..color = starColor.withOpacity(
+        ..color = starColor.withValues(alpha: 
           isDark ? 0.5 * twinkle : 0.15 * twinkle,
         )
         ..style = PaintingStyle.fill;
@@ -111,7 +111,7 @@ class _NightSkyPainter extends CustomPainter {
       );
     }
 
-    // ══ دوائر ضوئية متحركة ══
+    // â•گâ•گ ط¯ظˆط§ط¦ط± ط¶ظˆط¦ظٹط© ظ…طھط­ط±ظƒط© â•گâ•گ
     final glowPaint = Paint()..style = PaintingStyle.fill;
     for (int i = 0; i < 3; i++) {
       final phase = (progress + i * 0.33) % 1.0;
@@ -120,7 +120,7 @@ class _NightSkyPainter extends CustomPainter {
       final r = 100.0 + 50.0 * sin(phase * pi + i);
       glowPaint.shader = RadialGradient(
         colors: [
-          (i.isEven ? primary : gold).withOpacity(
+          (i.isEven ? primary : gold).withValues(alpha: 
             isDark ? 0.07 : 0.05,
           ),
           Colors.transparent,

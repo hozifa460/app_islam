@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../color_control/miracle_theme.dart';
 
@@ -28,7 +28,7 @@ class StatsRowWidget extends StatelessWidget {
           Expanded(
             child: _StatCard(
               icon:     Icons.menu_book_rounded,
-              label:    'القرآن',
+              label:    'ط§ظ„ظ‚ط±ط¢ظ†',
               sublabel: 'Quran',
               count:    quranCount,
               color:    const Color(0xFF4FC3F7),
@@ -39,7 +39,7 @@ class StatsRowWidget extends StatelessWidget {
           Expanded(
             child: _StatCard(
               icon:     Icons.auto_awesome_rounded,
-              label:    'السنة',
+              label:    'ط§ظ„ط³ظ†ط©',
               sublabel: 'Sunnah',
               count:    sunnahCount,
               color:    MiracleTheme.neonGold,
@@ -52,7 +52,7 @@ class StatsRowWidget extends StatelessWidget {
               onTap: onFavoriteToggle,
               child: _StatCard(
                 icon:        Icons.favorite_rounded,
-                label:       'المفضلة',
+                label:       'ط§ظ„ظ…ظپط¶ظ„ط©',
                 sublabel:    'Favorites',
                 count:       favCount,
                 color:       MiracleTheme.neonRed,
@@ -65,7 +65,7 @@ class StatsRowWidget extends StatelessWidget {
           Expanded(
             child: _StatCard(
               icon:     Icons.library_books_rounded,
-              label:    'الإجمالي',
+              label:    'ط§ظ„ط¥ط¬ظ…ط§ظ„ظٹ',
               sublabel: 'Total',
               count:    totalCount,
               color:    MiracleTheme.neonGreen,
@@ -103,19 +103,19 @@ class _StatCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 4),
       decoration: BoxDecoration(
         color: highlighted
-            ? color.withOpacity(0.15)
+            ? color.withValues(alpha: 0.15)
             : t.glass,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: highlighted
-              ? color.withOpacity(0.5)
+              ? color.withValues(alpha: 0.5)
               : t.glassBorder,
           width: highlighted ? 1.5 : 1,
         ),
         boxShadow: highlighted
             ? [
           BoxShadow(
-            color:       color.withOpacity(0.2),
+            color:       color.withValues(alpha: 0.2),
             blurRadius:  14,
             spreadRadius: 2,
           ),
@@ -129,10 +129,10 @@ class _StatCard extends StatelessWidget {
             width: 32, height: 32,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: color.withOpacity(0.12),
+              color: color.withValues(alpha: 0.12),
               boxShadow: [
                 BoxShadow(
-                  color:     color.withOpacity(0.15),
+                  color:     color.withValues(alpha: 0.15),
                   blurRadius: 8,
                 ),
               ],
@@ -157,7 +157,7 @@ class _StatCard extends StatelessWidget {
               label,
               style: GoogleFonts.cairo(
                 fontSize:   10,
-                color:      Colors.white.withOpacity(0.75),
+                color:      Colors.white.withValues(alpha: 0.75),
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -168,7 +168,7 @@ class _StatCard extends StatelessWidget {
               sublabel,
               style: GoogleFonts.poppins(
                 fontSize: 8,
-                color:    color.withOpacity(0.55),
+                color:    color.withValues(alpha: 0.55),
               ),
             ),
           ),

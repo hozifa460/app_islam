@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../languages/app_localizations.dart';
@@ -32,14 +32,14 @@ class SalawatToggleCard extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: enabled
-                    ? [theme.deepGreen, theme.deepGreen.withOpacity(0.7)]
+                    ? [theme.deepGreen, theme.deepGreen.withValues(alpha: 0.7)]
                     : [Colors.grey.shade400, Colors.grey.shade300],
               ),
               borderRadius: BorderRadius.circular(16),
               boxShadow: enabled
                   ? [
                 BoxShadow(
-                  color: theme.deepGreen.withOpacity(0.3),
+                  color: theme.deepGreen.withValues(alpha: 0.3),
                   blurRadius: 12,
                   offset: const Offset(0, 4),
                 ),
@@ -85,9 +85,9 @@ class SalawatToggleCard extends StatelessWidget {
             child: Switch.adaptive(
               value: enabled,
               activeColor: theme.deepGreen,
-              activeTrackColor: theme.deepGreen.withOpacity(0.3),
+              activeTrackColor: theme.deepGreen.withValues(alpha: 0.3),
               inactiveThumbColor: Colors.grey.shade400,
-              inactiveTrackColor: Colors.grey.withOpacity(0.2),
+              inactiveTrackColor: Colors.grey.withValues(alpha: 0.2),
               onChanged: isDownloading ? null : onChanged,
             ),
           ),

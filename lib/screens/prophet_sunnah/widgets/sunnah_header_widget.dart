@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 
 class SunnahHeaderWidget extends StatelessWidget {
   final TextEditingController searchController;
@@ -47,15 +47,15 @@ class _HeaderBackground extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          // نجوم خلفية
+          // ظ†ط¬ظˆظ… ط®ظ„ظپظٹط©
           ..._buildStars(),
-          // المحتوى
+          // ط§ظ„ظ…ط­طھظˆظ‰
           Positioned.fill(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 40),
-                // أيقونة متحركة
+                // ط£ظٹظ‚ظˆظ†ط© ظ…طھط­ط±ظƒط©
                 Container(
                   width: 80,
                   height: 80,
@@ -66,7 +66,7 @@ class _HeaderBackground extends StatelessWidget {
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFFD4AF37).withOpacity(0.4),
+                        color: const Color(0xFFD4AF37).withValues(alpha: 0.4),
                         blurRadius: 20,
                         spreadRadius: 5,
                       ),
@@ -80,7 +80,7 @@ class _HeaderBackground extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 const Text(
-                  'ماذا كان يفعل ﷺ',
+                  'ظ…ط§ط°ط§ ظƒط§ظ† ظٹظپط¹ظ„ ï·؛',
                   style: TextStyle(
                     color: Color(0xFFD4AF37),
                     fontSize: 26,
@@ -93,7 +93,7 @@ class _HeaderBackground extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 40),
                   child: const Text(
-                    'سنن نبوية موثقة من الصحاح والمسانيد',
+                    'ط³ظ†ظ† ظ†ط¨ظˆظٹط© ظ…ظˆط«ظ‚ط© ظ…ظ† ط§ظ„طµط­ط§ط­ ظˆط§ظ„ظ…ط³ط§ظ†ظٹط¯',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white54,
@@ -102,7 +102,7 @@ class _HeaderBackground extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                // شريط ذهبي
+                // ط´ط±ظٹط· ط°ظ‡ط¨ظٹ
                 Container(
                   width: 60,
                   height: 2,
@@ -141,7 +141,7 @@ class _HeaderBackground extends StatelessWidget {
           height: size,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: Colors.white.withOpacity(0.4 + (i % 3) * 0.1),
+            color: Colors.white.withValues(alpha: 0.4 + (i % 3) * 0.1),
           ),
         ),
       );
@@ -172,7 +172,7 @@ class _SearchBar extends StatelessWidget {
         textAlign: TextAlign.right,
         style: const TextStyle(color: Colors.white),
         decoration: InputDecoration(
-          hintText: 'ابحث عن سنة...',
+          hintText: 'ط§ط¨ط­ط« ط¹ظ† ط³ظ†ط©...',
           hintStyle: const TextStyle(color: Colors.white38),
           prefixIcon: const Icon(Icons.search, color: Color(0xFFD4AF37)),
           suffixIcon: controller.text.isNotEmpty

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../languages/app_localizations.dart';
 import 'hijri_theme.dart';
@@ -28,7 +28,7 @@ class HijriFactCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: theme.card,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: HijriTheme.gold.withOpacity(0.12)),
+        border: Border.all(color: HijriTheme.gold.withValues(alpha: 0.12)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -48,7 +48,7 @@ class HijriFactCard extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                context.tr.didYouKnow, // 👈 تمت الترجمة
+                context.tr.didYouKnow, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
                 style: GoogleFonts.cairo(
                   fontSize: compact ? 13 : 15,
                   fontWeight: FontWeight.bold,
@@ -61,8 +61,8 @@ class HijriFactCard extends StatelessWidget {
                 height: compact ? 36 : 42,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(colors: [
-                    HijriTheme.gold.withOpacity(0.12),
-                    HijriTheme.gold.withOpacity(0.04),
+                    HijriTheme.gold.withValues(alpha: 0.12),
+                    HijriTheme.gold.withValues(alpha: 0.04),
                   ]),
                   borderRadius: BorderRadius.circular(12),
                 ),

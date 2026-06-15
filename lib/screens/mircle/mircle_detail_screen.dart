@@ -1,4 +1,4 @@
-import 'dart:math';
+﻿import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -32,14 +32,14 @@ class MiracleDetailScreen extends StatefulWidget {
 
 class _MiracleDetailScreenState extends State<MiracleDetailScreen>
     with TickerProviderStateMixin {
-  // ── Controllers ───────────────────────────────
+  // â”€â”€ Controllers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   late AnimationController _animController;
   late AnimationController _particleController;
   late AnimationController _pulseController;
   late Animation<double> _pulseAnim;
   late Animation<double> _fadeAnim;
 
-  // ── State ─────────────────────────────────────
+  // â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   late bool _isFav;
   final List<StarParticle> _particles = [];
   final _rng = Random();
@@ -86,9 +86,9 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
     super.dispose();
   }
 
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   //  ACTIONS
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Future<void> _openUrl(String url) async {
     final uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
@@ -99,41 +99,41 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
   void _shareContent() {
     final item = widget.item;
     final buffer = StringBuffer();
-    buffer.writeln('✨ ${item['title']}');
+    buffer.writeln('âœ¨ ${item['title']}');
     buffer.writeln('${item['subtitle']}');
     buffer.writeln();
-    buffer.writeln('📖 ${item['source']}');
-    buffer.writeln('📌 ${item['reference']}');
+    buffer.writeln('ًں“– ${item['source']}');
+    buffer.writeln('ًں“Œ ${item['reference']}');
     buffer.writeln();
-    buffer.writeln('📝 ${item['description']}');
+    buffer.writeln('ًں“‌ ${item['description']}');
 
     final sciExp = (item['scientificExplanation'] ?? '').toString();
     if (sciExp.isNotEmpty) {
       buffer.writeln();
-      buffer.writeln('🔬 $sciExp');
+      buffer.writeln('ًں”¬ $sciExp');
     }
 
     final scientist = (item['scientist'] ?? '').toString();
     final year = (item['discoveryYear'] ?? '').toString();
     if (scientist.isNotEmpty || year.isNotEmpty) {
       buffer.writeln();
-      if (scientist.isNotEmpty) buffer.writeln('👤 العالم: $scientist');
-      if (year.isNotEmpty) buffer.writeln('📅 سنة الاكتشاف: $year');
+      if (scientist.isNotEmpty) buffer.writeln('ًں‘¤ ط§ظ„ط¹ط§ظ„ظ…: $scientist');
+      if (year.isNotEmpty) buffer.writeln('ًں“… ط³ظ†ط© ط§ظ„ط§ظƒطھط´ط§ظپ: $year');
     }
 
     final sourcesList = item['sources'];
     if (sourcesList is List && sourcesList.isNotEmpty) {
       buffer.writeln();
-      buffer.writeln('📚 المصادر:');
+      buffer.writeln('ًں“ڑ ط§ظ„ظ…طµط§ط¯ط±:');
       for (final src in sourcesList) {
         if (src is Map) {
-          buffer.writeln('• ${src['name'] ?? ''}: ${src['url'] ?? ''}');
+          buffer.writeln('â€¢ ${src['name'] ?? ''}: ${src['url'] ?? ''}');
         }
       }
     }
 
     buffer.writeln();
-    buffer.writeln('— تطبيق الإعجاز العلمي');
+    buffer.writeln('â€” طھط·ط¨ظٹظ‚ ط§ظ„ط¥ط¹ط¬ط§ط² ط§ظ„ط¹ظ„ظ…ظٹ');
     Share.share(buffer.toString().trim());
   }
 
@@ -156,7 +156,7 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'تم النسخ بنجاح ✓',
+          'طھظ… ط§ظ„ظ†ط³ط® ط¨ظ†ط¬ط§ط­ âœ“',
           style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
         ),
         backgroundColor: MiracleTheme.neonBlue,
@@ -167,9 +167,9 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
     );
   }
 
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   //  BUILD
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
@@ -208,14 +208,14 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
           color: t.bg1,
           child: Stack(
             children: [
-              // خلفية متحركة
+              // ط®ظ„ظپظٹط© ظ…طھط­ط±ظƒط©
               Positioned.fill(
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 400),
                   color: t.bg1,
                 ),
               ),
-              // نجوم
+              // ظ†ط¬ظˆظ…
               Positioned.fill(
                 child: AnimatedBuilder(
                   animation: _particleController,
@@ -230,12 +230,12 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
                       ),
                 ),
               ),
-              // Scaffold شفاف للـ AppBar فقط
+              // Scaffold ط´ظپط§ظپ ظ„ظ„ظ€ AppBar ظپظ‚ط·
               Scaffold(
                 backgroundColor: Colors.transparent,
                 body: Stack(
                   children: [
-                    // ── Star field ──
+                    // â”€â”€ Star field â”€â”€
                     AnimatedBuilder(
                       animation: _particleController,
                       builder:
@@ -249,13 +249,13 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
                           ),
                     ),
 
-                    // ── Content ──
+                    // â”€â”€ Content â”€â”€
                     FadeTransition(
                       opacity: _fadeAnim,
                       child: CustomScrollView(
                         physics: const BouncingScrollPhysics(),
                         slivers: [
-                          // ── App Bar ──
+                          // â”€â”€ App Bar â”€â”€
                           _buildAppBar(
                             t: t,
                             catColor: catColor,
@@ -267,7 +267,7 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
                             item: item,
                           ),
 
-                          // ── Body ──
+                          // â”€â”€ Body â”€â”€
                           SliverToBoxAdapter(
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
@@ -306,7 +306,7 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
                                     delay: 160,
                                     child: _SectionCard(
                                       icon: Icons.description_rounded,
-                                      title: 'وجه الإعجاز',
+                                      title: 'ظˆط¬ظ‡ ط§ظ„ط¥ط¹ط¬ط§ط²',
                                       content:
                                           (item['description'] ?? '')
                                               .toString(),
@@ -322,7 +322,7 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
                                       delay: 240,
                                       child: _SectionCard(
                                         icon: Icons.science_rounded,
-                                        title: 'التفسير العلمي',
+                                        title: 'ط§ظ„طھظپط³ظٹط± ط§ظ„ط¹ظ„ظ…ظٹ',
                                         content: sciExp,
                                         color: const Color(0xFFCE93D8),
                                         t: t,
@@ -384,7 +384,7 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
                   ],
                 ),
 
-                // ── Bottom bar ──
+                // â”€â”€ Bottom bar â”€â”€
                 bottomNavigationBar: _BottomBar(
                   isFav: _isFav,
                   accentColor: accentColor,
@@ -404,9 +404,9 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
     );
   }
 
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   //  APP BAR
-  // ══════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildAppBar({
     required MiracleThemeColors t,
     required Color catColor,
@@ -424,7 +424,7 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
       floating: false,
       pinned: true,
       elevation: 0,
-      backgroundColor: t.bg1.withOpacity(0.95),
+      backgroundColor: t.bg1.withValues(alpha: 0.95),
 
       leading: Padding(
         padding: const EdgeInsets.all(8),
@@ -482,7 +482,7 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
               fontWeight: FontWeight.bold,
               fontSize: 13,
               shadows: [
-                Shadow(color: Colors.black.withOpacity(0.5), blurRadius: 8),
+                Shadow(color: Colors.black.withValues(alpha: 0.5), blurRadius: 8),
               ],
             ),
             maxLines: 1,
@@ -547,9 +547,9 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
   }
 }
 
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 //  APP BAR BACKGROUND
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _DetailAppBarBackground extends StatelessWidget {
   final MiracleThemeColors t;
   final Color catColor;
@@ -580,7 +580,7 @@ class _DetailAppBarBackground extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [catColor.withOpacity(0.3), t.bg2, t.bg1],
+          colors: [catColor.withValues(alpha: 0.3), t.bg2, t.bg1],
         ),
       ),
       child: Stack(
@@ -593,7 +593,7 @@ class _DetailAppBarBackground extends StatelessWidget {
               emoji,
               style: TextStyle(
                 fontSize: 150,
-                color: Colors.white.withOpacity(0.06),
+                color: Colors.white.withValues(alpha: 0.06),
               ),
             ),
           ),
@@ -608,7 +608,7 @@ class _DetailAppBarBackground extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: RadialGradient(
-                  colors: [catColor.withOpacity(0.12), Colors.transparent],
+                  colors: [catColor.withValues(alpha: 0.12), Colors.transparent],
                 ),
               ),
             ),
@@ -623,7 +623,7 @@ class _DetailAppBarBackground extends StatelessWidget {
                 shape: BoxShape.circle,
                 gradient: RadialGradient(
                   colors: [
-                    MiracleTheme.neonBlue.withOpacity(0.08),
+                    MiracleTheme.neonBlue.withValues(alpha: 0.08),
                     Colors.transparent,
                   ],
                 ),
@@ -652,7 +652,7 @@ class _DetailAppBarBackground extends StatelessWidget {
                                 shape: BoxShape.circle,
                                 gradient: RadialGradient(
                                   colors: [
-                                    catColor.withOpacity(
+                                    catColor.withValues(alpha: 
                                       0.18 * pulseAnim.value,
                                     ),
                                     Colors.transparent,
@@ -665,14 +665,14 @@ class _DetailAppBarBackground extends StatelessWidget {
                               height: 66,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Colors.white.withOpacity(0.07),
+                                color: Colors.white.withValues(alpha: 0.07),
                                 border: Border.all(
-                                  color: catColor.withOpacity(0.5),
+                                  color: catColor.withValues(alpha: 0.5),
                                   width: 1.5,
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: catColor.withOpacity(
+                                    color: catColor.withValues(alpha: 
                                       0.28 * pulseAnim.value,
                                     ),
                                     blurRadius: 22,
@@ -695,12 +695,12 @@ class _DetailAppBarBackground extends StatelessWidget {
                       vertical: 5,
                     ),
                     decoration: BoxDecoration(
-                      color: accentColor.withOpacity(0.15),
+                      color: accentColor.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: accentColor.withOpacity(0.35)),
+                      border: Border.all(color: accentColor.withValues(alpha: 0.35)),
                     ),
                     child: Text(
-                      isQuran ? '📖 القرآن الكريم' : '☪ السنة النبوية',
+                      isQuran ? 'ًں“– ط§ظ„ظ‚ط±ط¢ظ† ط§ظ„ظƒط±ظٹظ…' : 'âکھ ط§ظ„ط³ظ†ط© ط§ظ„ظ†ط¨ظˆظٹط©',
                       style: GoogleFonts.cairo(
                         color: accentColor,
                         fontSize: 11,
@@ -718,9 +718,9 @@ class _DetailAppBarBackground extends StatelessWidget {
   }
 }
 
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 //  TAGS ROW
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _TagsRow extends StatelessWidget {
   final Color catColor;
   final IconData catIcon;
@@ -751,9 +751,9 @@ class _TagsRow extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           decoration: BoxDecoration(
-            color: catColor.withOpacity(0.12),
+            color: catColor.withValues(alpha: 0.12),
             borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: catColor.withOpacity(0.2)),
+            border: Border.all(color: catColor.withValues(alpha: 0.2)),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -781,12 +781,12 @@ class _TagsRow extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           decoration: BoxDecoration(
-            color: accentColor.withOpacity(0.12),
+            color: accentColor.withValues(alpha: 0.12),
             borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: accentColor.withOpacity(0.2)),
+            border: Border.all(color: accentColor.withValues(alpha: 0.2)),
           ),
           child: Text(
-            isQuran ? '📖 القرآن الكريم' : '☪ السنة النبوية',
+            isQuran ? 'ًں“– ط§ظ„ظ‚ط±ط¢ظ† ط§ظ„ظƒط±ظٹظ…' : 'âکھ ط§ظ„ط³ظ†ط© ط§ظ„ظ†ط¨ظˆظٹط©',
             style: GoogleFonts.cairo(
               fontSize: 11,
               fontWeight: FontWeight.bold,
@@ -805,7 +805,7 @@ class _TagsRow extends StatelessWidget {
               color:
                   i < rating
                       ? MiracleTheme.neonGold
-                      : Colors.white.withOpacity(0.2),
+                      : Colors.white.withValues(alpha: 0.2),
               size: 16,
             ),
           ),
@@ -815,9 +815,9 @@ class _TagsRow extends StatelessWidget {
   }
 }
 
-// ══════════════════════════════════════════════
-//  SOURCE CARD  (آية / حديث)
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+//  SOURCE CARD  (ط¢ظٹط© / ط­ط¯ظٹط«)
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _SourceCard extends StatelessWidget {
   final Map<String, dynamic> item;
   final Color accentColor;
@@ -841,10 +841,10 @@ class _SourceCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: t.glass,
         borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: accentColor.withOpacity(0.25)),
+        border: Border.all(color: accentColor.withValues(alpha: 0.25)),
         boxShadow: [
           BoxShadow(
-            color: accentColor.withOpacity(0.06),
+            color: accentColor.withValues(alpha: 0.06),
             blurRadius: 16,
             offset: const Offset(0, 6),
           ),
@@ -860,9 +860,9 @@ class _SourceCard extends StatelessWidget {
                 width: 36,
                 height: 36,
                 decoration: BoxDecoration(
-                  color: accentColor.withOpacity(0.12),
+                  color: accentColor.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: accentColor.withOpacity(0.25)),
+                  border: Border.all(color: accentColor.withValues(alpha: 0.25)),
                 ),
                 child: Icon(
                   isQuran
@@ -874,7 +874,7 @@ class _SourceCard extends StatelessWidget {
               ),
               const SizedBox(width: 10),
               Text(
-                isQuran ? 'النص القرآني' : 'الحديث النبوي',
+                isQuran ? 'ط§ظ„ظ†طµ ط§ظ„ظ‚ط±ط¢ظ†ظٹ' : 'ط§ظ„ط­ط¯ظٹط« ط§ظ„ظ†ط¨ظˆظٹ',
                 style: GoogleFonts.cairo(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
@@ -890,9 +890,9 @@ class _SourceCard extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: accentColor.withOpacity(0.05),
+              color: accentColor.withValues(alpha: 0.05),
               borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: accentColor.withOpacity(0.12)),
+              border: Border.all(color: accentColor.withValues(alpha: 0.12)),
             ),
             child: Text(
               (item['source'] ?? '').toString(),
@@ -927,9 +927,9 @@ class _SourceCard extends StatelessWidget {
   }
 }
 
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 //  SECTION CARD  (description / scientific)
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _SectionCard extends StatelessWidget {
   final IconData icon;
   final String title;
@@ -953,10 +953,10 @@ class _SectionCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: t.glass,
         borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: color.withOpacity(0.2)),
+        border: Border.all(color: color.withValues(alpha: 0.2)),
         boxShadow: [
           BoxShadow(
-            color: color.withOpacity(0.05),
+            color: color.withValues(alpha: 0.05),
             blurRadius: 14,
             offset: const Offset(0, 5),
           ),
@@ -971,9 +971,9 @@ class _SectionCard extends StatelessWidget {
                 width: 36,
                 height: 36,
                 decoration: BoxDecoration(
-                  color: color.withOpacity(0.12),
+                  color: color.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: color.withOpacity(0.25)),
+                  border: Border.all(color: color.withValues(alpha: 0.25)),
                 ),
                 child: Icon(icon, color: color, size: 18),
               ),
@@ -995,7 +995,7 @@ class _SectionCard extends StatelessWidget {
             style: GoogleFonts.cairo(
               fontSize: 13.5,
               height: 1.95,
-              color: Colors.white.withOpacity(0.88),
+              color: Colors.white.withValues(alpha: 0.88),
             ),
           ),
         ],
@@ -1004,9 +1004,9 @@ class _SectionCard extends StatelessWidget {
   }
 }
 
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 //  DISCOVERY CARD
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _DiscoveryCard extends StatelessWidget {
   final String discoveryYear;
   final String scientist;
@@ -1026,10 +1026,10 @@ class _DiscoveryCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: t.glass,
         borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: MiracleTheme.neonGold.withOpacity(0.22)),
+        border: Border.all(color: MiracleTheme.neonGold.withValues(alpha: 0.22)),
         boxShadow: [
           BoxShadow(
-            color: MiracleTheme.neonGold.withOpacity(0.06),
+            color: MiracleTheme.neonGold.withValues(alpha: 0.06),
             blurRadius: 14,
             offset: const Offset(0, 5),
           ),
@@ -1045,10 +1045,10 @@ class _DiscoveryCard extends StatelessWidget {
                 width: 36,
                 height: 36,
                 decoration: BoxDecoration(
-                  color: MiracleTheme.neonGold.withOpacity(0.12),
+                  color: MiracleTheme.neonGold.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    color: MiracleTheme.neonGold.withOpacity(0.25),
+                    color: MiracleTheme.neonGold.withValues(alpha: 0.25),
                   ),
                 ),
                 child: const Icon(
@@ -1059,7 +1059,7 @@ class _DiscoveryCard extends StatelessWidget {
               ),
               const SizedBox(width: 10),
               Text(
-                'معلومات الاكتشاف',
+                'ظ…ط¹ظ„ظˆظ…ط§طھ ط§ظ„ط§ظƒطھط´ط§ظپ',
                 style: GoogleFonts.cairo(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
@@ -1073,18 +1073,18 @@ class _DiscoveryCard extends StatelessWidget {
           if (discoveryYear.isNotEmpty)
             _InfoRow(
               icon: Icons.calendar_today_rounded,
-              label: 'سنة الاكتشاف',
+              label: 'ط³ظ†ط© ط§ظ„ط§ظƒطھط´ط§ظپ',
               value: discoveryYear,
               color: MiracleTheme.neonGold,
             ),
 
           if (discoveryYear.isNotEmpty && scientist.isNotEmpty)
-            Divider(color: Colors.white.withOpacity(0.08), height: 20),
+            Divider(color: Colors.white.withValues(alpha: 0.08), height: 20),
 
           if (scientist.isNotEmpty)
             _InfoRow(
               icon: Icons.person_rounded,
-              label: 'العالم / المكتشف',
+              label: 'ط§ظ„ط¹ط§ظ„ظ… / ط§ظ„ظ…ظƒطھط´ظپ',
               value: scientist,
               color: MiracleTheme.neonGold,
             ),
@@ -1094,9 +1094,9 @@ class _DiscoveryCard extends StatelessWidget {
   }
 }
 
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 //  SOURCES CARD
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _SourcesCard extends StatelessWidget {
   final List<Map<String, dynamic>> sources;
   final MiracleThemeColors t;
@@ -1120,10 +1120,10 @@ class _SourcesCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: t.glass,
         borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: MiracleTheme.neonBlue.withOpacity(0.22)),
+        border: Border.all(color: MiracleTheme.neonBlue.withValues(alpha: 0.22)),
         boxShadow: [
           BoxShadow(
-            color: MiracleTheme.neonBlue.withOpacity(0.05),
+            color: MiracleTheme.neonBlue.withValues(alpha: 0.05),
             blurRadius: 14,
             offset: const Offset(0, 5),
           ),
@@ -1139,10 +1139,10 @@ class _SourcesCard extends StatelessWidget {
                 width: 36,
                 height: 36,
                 decoration: BoxDecoration(
-                  color: MiracleTheme.neonBlue.withOpacity(0.12),
+                  color: MiracleTheme.neonBlue.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    color: MiracleTheme.neonBlue.withOpacity(0.25),
+                    color: MiracleTheme.neonBlue.withValues(alpha: 0.25),
                   ),
                 ),
                 child: Icon(
@@ -1154,7 +1154,7 @@ class _SourcesCard extends StatelessWidget {
               const SizedBox(width: 10),
               Expanded(
                 child: Text(
-                  'المصادر والمراجع',
+                  'ط§ظ„ظ…طµط§ط¯ط± ظˆط§ظ„ظ…ط±ط§ط¬ط¹',
                   style: GoogleFonts.cairo(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
@@ -1166,7 +1166,7 @@ class _SourcesCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                 decoration: BoxDecoration(
-                  color: MiracleTheme.neonBlue.withOpacity(0.12),
+                  color: MiracleTheme.neonBlue.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(
@@ -1198,10 +1198,10 @@ class _SourcesCard extends StatelessWidget {
                     width: double.infinity,
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: MiracleTheme.neonBlue.withOpacity(0.05),
+                      color: MiracleTheme.neonBlue.withValues(alpha: 0.05),
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
-                        color: MiracleTheme.neonBlue.withOpacity(0.1),
+                        color: MiracleTheme.neonBlue.withValues(alpha: 0.1),
                       ),
                     ),
                     child: Row(
@@ -1212,9 +1212,9 @@ class _SourcesCard extends StatelessWidget {
                           height: 28,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: MiracleTheme.neonBlue.withOpacity(0.1),
+                            color: MiracleTheme.neonBlue.withValues(alpha: 0.1),
                             border: Border.all(
-                              color: MiracleTheme.neonBlue.withOpacity(0.2),
+                              color: MiracleTheme.neonBlue.withValues(alpha: 0.2),
                             ),
                           ),
                           child: Center(
@@ -1250,7 +1250,7 @@ class _SourcesCard extends StatelessWidget {
                                   url,
                                   style: GoogleFonts.poppins(
                                     fontSize: 9,
-                                    color: MiracleTheme.neonBlue.withOpacity(
+                                    color: MiracleTheme.neonBlue.withValues(alpha: 
                                       0.7,
                                     ),
                                   ),
@@ -1265,7 +1265,7 @@ class _SourcesCard extends StatelessWidget {
                           Icon(
                             Icons.open_in_new_rounded,
                             size: 14,
-                            color: MiracleTheme.neonBlue.withOpacity(0.7),
+                            color: MiracleTheme.neonBlue.withValues(alpha: 0.7),
                           ),
                       ],
                     ),
@@ -1281,9 +1281,9 @@ class _SourcesCard extends StatelessWidget {
   }
 }
 
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 //  VIDEO CARD
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _VideoCard extends StatelessWidget {
   final String youtubeUrl;
   final String videoUrl;
@@ -1307,10 +1307,10 @@ class _VideoCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: t.glass,
         borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: accentColor.withOpacity(0.2)),
+        border: Border.all(color: accentColor.withValues(alpha: 0.2)),
         boxShadow: [
           BoxShadow(
-            color: accentColor.withOpacity(0.05),
+            color: accentColor.withValues(alpha: 0.05),
             blurRadius: 14,
             offset: const Offset(0, 5),
           ),
@@ -1325,9 +1325,9 @@ class _VideoCard extends StatelessWidget {
                 width: 36,
                 height: 36,
                 decoration: BoxDecoration(
-                  color: accentColor.withOpacity(0.12),
+                  color: accentColor.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: accentColor.withOpacity(0.25)),
+                  border: Border.all(color: accentColor.withValues(alpha: 0.25)),
                 ),
                 child: Icon(
                   Icons.video_library_rounded,
@@ -1337,7 +1337,7 @@ class _VideoCard extends StatelessWidget {
               ),
               const SizedBox(width: 10),
               Text(
-                'محتوى مرئي مرتبط',
+                'ظ…ط­طھظˆظ‰ ظ…ط±ط¦ظٹ ظ…ط±طھط¨ط·',
                 style: GoogleFonts.cairo(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
@@ -1365,7 +1365,7 @@ class _VideoCard extends StatelessWidget {
                 onPressed: () => onOpenUrl(youtubeUrl),
                 icon: const Icon(Icons.play_circle_fill_rounded, size: 20),
                 label: Text(
-                  'مشاهدة على يوتيوب',
+                  'ظ…ط´ط§ظ‡ط¯ط© ط¹ظ„ظ‰ ظٹظˆطھظٹظˆط¨',
                   style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
                 ),
               ),
@@ -1382,7 +1382,7 @@ class _VideoCard extends StatelessWidget {
                 style: OutlinedButton.styleFrom(
                   foregroundColor: accentColor,
                   padding: const EdgeInsets.symmetric(vertical: 12),
-                  side: BorderSide(color: accentColor.withOpacity(0.3)),
+                  side: BorderSide(color: accentColor.withValues(alpha: 0.3)),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(14),
                   ),
@@ -1390,7 +1390,7 @@ class _VideoCard extends StatelessWidget {
                 onPressed: () => onOpenUrl(videoUrl),
                 icon: const Icon(Icons.video_library_rounded, size: 20),
                 label: Text(
-                  'مشاهدة الفيديو المباشر',
+                  'ظ…ط´ط§ظ‡ط¯ط© ط§ظ„ظپظٹط¯ظٹظˆ ط§ظ„ظ…ط¨ط§ط´ط±',
                   style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
                 ),
               ),
@@ -1401,9 +1401,9 @@ class _VideoCard extends StatelessWidget {
   }
 }
 
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 //  BOTTOM BAR
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _BottomBar extends StatelessWidget {
   final bool isFav;
   final Color accentColor;
@@ -1427,10 +1427,10 @@ class _BottomBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       decoration: BoxDecoration(
         color: t.bg2,
-        border: Border(top: BorderSide(color: Colors.white.withOpacity(0.06))),
+        border: Border(top: BorderSide(color: Colors.white.withValues(alpha: 0.06))),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.3),
+            color: Colors.black.withValues(alpha: 0.3),
             blurRadius: 12,
             offset: const Offset(0, -4),
           ),
@@ -1450,12 +1450,12 @@ class _BottomBar extends StatelessWidget {
                     height: 46,
                     child: ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: accentColor.withOpacity(0.15),
+                        backgroundColor: accentColor.withValues(alpha: 0.15),
                         foregroundColor: accentColor,
                         elevation: 0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(14),
-                          side: BorderSide(color: accentColor.withOpacity(0.3)),
+                          side: BorderSide(color: accentColor.withValues(alpha: 0.3)),
                         ),
                         padding: const EdgeInsets.symmetric(horizontal: 8),
                       ),
@@ -1464,7 +1464,7 @@ class _BottomBar extends StatelessWidget {
                       label: FittedBox(
                         fit: BoxFit.scaleDown,
                         child: Text(
-                          'مشاركة',
+                          'ظ…ط´ط§ط±ظƒط©',
                           style: GoogleFonts.cairo(
                             fontWeight: FontWeight.bold,
                             fontSize: isSmall ? 11 : 13,
@@ -1483,7 +1483,7 @@ class _BottomBar extends StatelessWidget {
                     height: 46,
                     child: ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: MiracleTheme.neonBlue.withOpacity(
+                        backgroundColor: MiracleTheme.neonBlue.withValues(alpha: 
                           0.12,
                         ),
                         foregroundColor: MiracleTheme.neonBlue,
@@ -1491,7 +1491,7 @@ class _BottomBar extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(14),
                           side: BorderSide(
-                            color: MiracleTheme.neonBlue.withOpacity(0.3),
+                            color: MiracleTheme.neonBlue.withValues(alpha: 0.3),
                           ),
                         ),
                         padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -1501,7 +1501,7 @@ class _BottomBar extends StatelessWidget {
                       label: FittedBox(
                         fit: BoxFit.scaleDown,
                         child: Text(
-                          'نسخ',
+                          'ظ†ط³ط®',
                           style: GoogleFonts.cairo(
                             fontWeight: FontWeight.bold,
                             fontSize: isSmall ? 11 : 13,
@@ -1523,21 +1523,21 @@ class _BottomBar extends StatelessWidget {
                     decoration: BoxDecoration(
                       color:
                           isFav
-                              ? MiracleTheme.neonRed.withOpacity(0.15)
+                              ? MiracleTheme.neonRed.withValues(alpha: 0.15)
                               : t.glass,
                       borderRadius: BorderRadius.circular(14),
                       border: Border.all(
                         color:
                             isFav
-                                ? MiracleTheme.neonRed.withOpacity(0.4)
-                                : Colors.white.withOpacity(0.15),
+                                ? MiracleTheme.neonRed.withValues(alpha: 0.4)
+                                : Colors.white.withValues(alpha: 0.15),
                         width: isFav ? 1.5 : 1,
                       ),
                       boxShadow:
                           isFav
                               ? [
                                 BoxShadow(
-                                  color: MiracleTheme.neonRed.withOpacity(0.2),
+                                  color: MiracleTheme.neonRed.withValues(alpha: 0.2),
                                   blurRadius: 10,
                                 ),
                               ]
@@ -1570,9 +1570,9 @@ class _BottomBar extends StatelessWidget {
   }
 }
 
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 //  SMALL REUSABLE WIDGETS
-// ══════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _GlassTag extends StatelessWidget {
   final String text;
   final Color color;
@@ -1586,9 +1586,9 @@ class _GlassTag extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: color.withOpacity(0.2)),
+        border: Border.all(color: color.withValues(alpha: 0.2)),
       ),
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 200),
@@ -1630,8 +1630,8 @@ class _InfoRow extends StatelessWidget {
           height: 36,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: color.withOpacity(0.1),
-            border: Border.all(color: color.withOpacity(0.2)),
+            color: color.withValues(alpha: 0.1),
+            border: Border.all(color: color.withValues(alpha: 0.2)),
           ),
           child: Icon(icon, color: color, size: 16),
         ),

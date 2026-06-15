@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'qibla_theme.dart';
 
@@ -25,17 +25,17 @@ class QiblaPermissionScreen extends StatelessWidget {
               width: 86, height: 86,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: QiblaTheme.gold.withOpacity(0.1),
-                border: Border.all(color: QiblaTheme.gold.withOpacity(0.3)),
+                color: QiblaTheme.gold.withValues(alpha: 0.1),
+                border: Border.all(color: QiblaTheme.gold.withValues(alpha: 0.3)),
               ),
               child: const Icon(Icons.location_off_rounded, color: QiblaTheme.gold, size: 40),
             ),
             const SizedBox(height: 18),
-            Text('الموقع مطلوب',
+            Text('ط§ظ„ظ…ظˆظ‚ط¹ ظ…ط·ظ„ظˆط¨',
                 style: GoogleFonts.cairo(fontSize: 20, fontWeight: FontWeight.w800, color: textColor)),
             const SizedBox(height: 8),
-            Text('يُرجى تفعيل خدمة الموقع لتحديد اتجاه القبلة بدقة',
-                style: GoogleFonts.cairo(fontSize: 13.5, color: textColor.withOpacity(0.58), height: 1.6),
+            Text('ظٹظڈط±ط¬ظ‰ طھظپط¹ظٹظ„ ط®ط¯ظ…ط© ط§ظ„ظ…ظˆظ‚ط¹ ظ„طھط­ط¯ظٹط¯ ط§طھط¬ط§ظ‡ ط§ظ„ظ‚ط¨ظ„ط© ط¨ط¯ظ‚ط©',
+                style: GoogleFonts.cairo(fontSize: 13.5, color: textColor.withValues(alpha: 0.58), height: 1.6),
                 textAlign: TextAlign.center),
             const SizedBox(height: 22),
             ElevatedButton.icon(
@@ -48,7 +48,7 @@ class QiblaPermissionScreen extends StatelessWidget {
               ),
               onPressed: onRequestPermission,
               icon: const Icon(Icons.location_on_rounded, size: 17),
-              label: Text('السماح بالموقع', style: GoogleFonts.cairo(fontWeight: FontWeight.w700, fontSize: 14)),
+              label: Text('ط§ظ„ط³ظ…ط§ط­ ط¨ط§ظ„ظ…ظˆظ‚ط¹', style: GoogleFonts.cairo(fontWeight: FontWeight.w700, fontSize: 14)),
             ),
           ],
         ),

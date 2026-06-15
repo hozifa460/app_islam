@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'theme/azkar_theme.dart';
 import 'widgets/azkar_counter_widget.dart';
 import 'animations/azkar_animations.dart';
 
-/// ═══════════════════════════════════════════════════════════════════════════
-/// شاشة تفاصيل الأذكار
-/// ═══════════════════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ط´ط§ط´ط© طھظپط§طµظٹظ„ ط§ظ„ط£ط°ظƒط§ط±
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class AzkarDetailScreen extends StatefulWidget {
   final String title;
   final List<Map<String, dynamic>> azkar;
@@ -103,13 +103,13 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
         margin: EdgeInsets.all(basePadding * 0.5),
         decoration: BoxDecoration(
           color: isDark
-              ? Colors.white.withOpacity(0.08)
-              : AzkarTheme.gold.withOpacity(0.1),
+              ? Colors.white.withValues(alpha: 0.08)
+              : AzkarTheme.gold.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: isDark
-                ? Colors.white.withOpacity(0.1)
-                : AzkarTheme.gold.withOpacity(0.2),
+                ? Colors.white.withValues(alpha: 0.1)
+                : AzkarTheme.gold.withValues(alpha: 0.2),
           ),
         ),
         child: TapScaleAnimationWidget(
@@ -161,7 +161,7 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // نص الذكر
+              // ظ†طµ ط§ظ„ط°ظƒط±
               Text(
                 zekr['text'],
                 style: GoogleFonts.amiri(
@@ -176,18 +176,18 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
               ),
               SizedBox(height: basePadding * 0.8),
 
-              // المصدر
+              // ط§ظ„ظ…طµط¯ط±
               if ((zekr['source'] ?? '').toString().isNotEmpty)
                 AzkarInfoBox(
                   icon: Icons.menu_book_rounded,
-                  text: 'المصدر: ${zekr['source']}',
+                  text: 'ط§ظ„ظ…طµط¯ط±: ${zekr['source']}',
                   color: AzkarTheme.gold,
                   isDark: isDark,
                   fontSize: infoFontSize,
                   padding: basePadding,
                 ),
 
-              // الفائدة
+              // ط§ظ„ظپط§ط¦ط¯ط©
               if ((zekr['benefit'] ?? '').toString().isNotEmpty)
                 AzkarInfoBox(
                   icon: Icons.lightbulb_outline_rounded,
@@ -201,7 +201,7 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
 
               SizedBox(height: basePadding * 0.6),
 
-              // العداد
+              // ط§ظ„ط¹ط¯ط§ط¯
               AzkarCounterWidget(
                 count: counters[index],
                 initialCount: initialCounts[index],

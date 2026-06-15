@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/surah_constants.dart';
 import 'sheet_widgets.dart';
@@ -38,7 +38,7 @@ class AdvancedIndexSheet extends StatelessWidget {
                 width: 38,
                 height: 4,
                 decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.35),
+                  color: Colors.grey.withValues(alpha: 0.35),
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
@@ -48,7 +48,7 @@ class AdvancedIndexSheet extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      'فهرس المصحف',
+                      'ظپظ‡ط±ط³ ط§ظ„ظ…طµط­ظپ',
                       style: GoogleFonts.cairo(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -60,10 +60,10 @@ class AdvancedIndexSheet extends StatelessWidget {
                         Expanded(
                           child: SheetWidgets.buildQuickJumpCard(
                             context: context,
-                            title: 'آخر موضع',
+                            title: 'ط¢ط®ط± ظ…ظˆط¶ط¹',
                             value: savedMeta['lastPage'] != null
-                                ? 'صفحة ${SurahConstants.toArabicNum(savedMeta['lastPage'])}'
-                                : 'غير متوفر',
+                                ? 'طµظپط­ط© ${SurahConstants.toArabicNum(savedMeta['lastPage'])}'
+                                : 'ط؛ظٹط± ظ…طھظˆظپط±',
                             icon: Icons.history_rounded,
                             onTap: () {
                               Navigator.pop(context);
@@ -75,10 +75,10 @@ class AdvancedIndexSheet extends StatelessWidget {
                         Expanded(
                           child: SheetWidgets.buildQuickJumpCard(
                             context: context,
-                            title: 'العلامة',
+                            title: 'ط§ظ„ط¹ظ„ط§ظ…ط©',
                             value: savedMeta['bookmarkPage'] != null
-                                ? 'صفحة ${SurahConstants.toArabicNum(savedMeta['bookmarkPage'])}'
-                                : 'غير متوفر',
+                                ? 'طµظپط­ط© ${SurahConstants.toArabicNum(savedMeta['bookmarkPage'])}'
+                                : 'ط؛ظٹط± ظ…طھظˆظپط±',
                             icon: Icons.bookmark_rounded,
                             onTap: () {
                               Navigator.pop(context);
@@ -101,10 +101,10 @@ class AdvancedIndexSheet extends StatelessWidget {
                   fontSize: 13,
                 ),
                 tabs: const [
-                  Tab(text: 'صفحات'),
-                  Tab(text: 'السور'),
-                  Tab(text: 'الأجزاء'),
-                  Tab(text: 'الأحزاب'),
+                  Tab(text: 'طµظپط­ط§طھ'),
+                  Tab(text: 'ط§ظ„ط³ظˆط±'),
+                  Tab(text: 'ط§ظ„ط£ط¬ط²ط§ط،'),
+                  Tab(text: 'ط§ظ„ط£ط­ط²ط§ط¨'),
                 ],
               ),
               const SizedBox(height: 6),
@@ -132,7 +132,7 @@ class AdvancedIndexSheet extends StatelessWidget {
   }
 }
 
-// ─── Pages Tab ───
+// â”€â”€â”€ Pages Tab â”€â”€â”€
 class _PagesTab extends StatelessWidget {
   final int currentPage;
   final Function(int) onPageSelected;
@@ -168,8 +168,8 @@ class _PagesTab extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               color: selected
-                  ? primary.withOpacity(0.12)
-                  : Colors.grey.withOpacity(0.06),
+                  ? primary.withValues(alpha: 0.12)
+                  : Colors.grey.withValues(alpha: 0.06),
               borderRadius: BorderRadius.circular(14),
               border: Border.all(
                 color: selected ? primary : Colors.transparent,
@@ -190,7 +190,7 @@ class _PagesTab extends StatelessWidget {
   }
 }
 
-// ─── Surahs Tab ───
+// â”€â”€â”€ Surahs Tab â”€â”€â”€
 class _SurahsTab extends StatelessWidget {
   final Function(int) onPageSelected;
 
@@ -214,7 +214,7 @@ class _SurahsTab extends StatelessWidget {
             style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
           ),
           subtitle: Text(
-            'تبدأ من صفحة ${SurahConstants.toArabicNum(page)}',
+            'طھط¨ط¯ط£ ظ…ظ† طµظپط­ط© ${SurahConstants.toArabicNum(page)}',
             style: GoogleFonts.cairo(fontSize: 12),
           ),
           trailing: Text(
@@ -234,7 +234,7 @@ class _SurahsTab extends StatelessWidget {
   }
 }
 
-// ─── Juz Tab ───
+// â”€â”€â”€ Juz Tab â”€â”€â”€
 class _JuzTab extends StatelessWidget {
   final Function(int) onPageSelected;
 
@@ -254,11 +254,11 @@ class _JuzTab extends StatelessWidget {
             borderRadius: BorderRadius.circular(14),
           ),
           title: Text(
-            'الجزء ${SurahConstants.toArabicNum(juz)}',
+            'ط§ظ„ط¬ط²ط، ${SurahConstants.toArabicNum(juz)}',
             style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
           ),
           subtitle: Text(
-            'يبدأ من صفحة ${SurahConstants.toArabicNum(page)}',
+            'ظٹط¨ط¯ط£ ظ…ظ† طµظپط­ط© ${SurahConstants.toArabicNum(page)}',
             style: GoogleFonts.cairo(fontSize: 12),
           ),
           onTap: () {
@@ -271,7 +271,7 @@ class _JuzTab extends StatelessWidget {
   }
 }
 
-// ─── Hizb Tab ───
+// â”€â”€â”€ Hizb Tab â”€â”€â”€
 class _HizbTab extends StatelessWidget {
   final Function(int) onPageSelected;
   final int Function(int) getPageForHizb;
@@ -295,11 +295,11 @@ class _HizbTab extends StatelessWidget {
             borderRadius: BorderRadius.circular(14),
           ),
           title: Text(
-            'الحزب ${SurahConstants.toArabicNum(hizb)}',
+            'ط§ظ„ط­ط²ط¨ ${SurahConstants.toArabicNum(hizb)}',
             style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
           ),
           subtitle: Text(
-            'يبدأ من صفحة ${SurahConstants.toArabicNum(page)}',
+            'ظٹط¨ط¯ط£ ظ…ظ† طµظپط­ط© ${SurahConstants.toArabicNum(page)}',
             style: GoogleFonts.cairo(fontSize: 12),
           ),
           onTap: () {

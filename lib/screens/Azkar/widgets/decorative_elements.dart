@@ -1,14 +1,14 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../theme/azkar_theme.dart';
 import '../animations/azkar_animations.dart';
 
-/// ═══════════════════════════════════════════════════════════════════════════
-/// العناصر الزخرفية المشتركة
-/// ═══════════════════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ط§ظ„ط¹ظ†ط§طµط± ط§ظ„ط²ط®ط±ظپظٹط© ط§ظ„ظ…ط´طھط±ظƒط©
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
-// ═══════════════════════════════════════════
-// الدائرة الزخرفية
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط§ظ„ط¯ط§ط¦ط±ط© ط§ظ„ط²ط®ط±ظپظٹط©
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class DecorativeCircle extends StatelessWidget {
   final double size;
   final Color color;
@@ -43,9 +43,9 @@ class DecorativeCircle extends StatelessWidget {
   }
 }
 
-// ═══════════════════════════════════════════
-// الدوائر الزخرفية العائمة
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط§ظ„ط¯ظˆط§ط¦ط± ط§ظ„ط²ط®ط±ظپظٹط© ط§ظ„ط¹ط§ط¦ظ…ط©
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class FloatingDecorativeCircles extends StatelessWidget {
   final Size size;
   final Color baseColor;
@@ -68,7 +68,7 @@ class FloatingDecorativeCircles extends StatelessWidget {
             duration: const Duration(seconds: 4),
             child: DecorativeCircle(
               size: size.width * 0.5,
-              color: baseColor.withOpacity(0.07),
+              color: baseColor.withValues(alpha: 0.07),
             ),
           ),
         ),
@@ -80,7 +80,7 @@ class FloatingDecorativeCircles extends StatelessWidget {
             duration: const Duration(seconds: 5),
             child: DecorativeCircle(
               size: size.width * 0.38,
-              color: baseColor.withOpacity(0.05),
+              color: baseColor.withValues(alpha: 0.05),
             ),
           ),
         ),
@@ -93,7 +93,7 @@ class FloatingDecorativeCircles extends StatelessWidget {
             duration: const Duration(seconds: 2),
             child: DecorativeCircle(
               size: size.width * 0.12,
-              color: baseColor.withOpacity(0.1),
+              color: baseColor.withValues(alpha: 0.1),
             ),
           ),
         ),
@@ -102,9 +102,9 @@ class FloatingDecorativeCircles extends StatelessWidget {
   }
 }
 
-// ═══════════════════════════════════════════
-// الشريط الجانبي الملون
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط§ظ„ط´ط±ظٹط· ط§ظ„ط¬ط§ظ†ط¨ظٹ ط§ظ„ظ…ظ„ظˆظ†
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class ColoredSideStrip extends StatelessWidget {
   final Color color;
   final double height;
@@ -126,8 +126,8 @@ class ColoredSideStrip extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              color.withOpacity(0.9),
-              color.withOpacity(0.15),
+              color.withValues(alpha: 0.9),
+              color.withValues(alpha: 0.15),
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -142,9 +142,9 @@ class ColoredSideStrip extends StatelessWidget {
   }
 }
 
-// ═══════════════════════════════════════════
-// خلفية الدوائر للبطاقة
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط®ظ„ظپظٹط© ط§ظ„ط¯ظˆط§ط¦ط± ظ„ظ„ط¨ط·ط§ظ‚ط©
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class CardBackgroundCircles extends StatelessWidget {
   final double cardHeight;
   final Color accent;
@@ -164,7 +164,7 @@ class CardBackgroundCircles extends StatelessWidget {
           top: -cardHeight * 0.3,
           child: DecorativeCircle(
             size: cardHeight * 0.9,
-            color: accent.withOpacity(0.06),
+            color: accent.withValues(alpha: 0.06),
           ),
         ),
         Positioned(
@@ -172,7 +172,7 @@ class CardBackgroundCircles extends StatelessWidget {
           top: 0,
           child: DecorativeCircle(
             size: cardHeight * 0.55,
-            color: accent.withOpacity(0.04),
+            color: accent.withValues(alpha: 0.04),
           ),
         ),
       ],
@@ -180,9 +180,9 @@ class CardBackgroundCircles extends StatelessWidget {
   }
 }
 
-// ═══════════════════════════════════════════
-// أيقونة الهيدر المتحركة
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط£ظٹظ‚ظˆظ†ط© ط§ظ„ظ‡ظٹط¯ط± ط§ظ„ظ…طھط­ط±ظƒط©
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class AnimatedHeaderIcon extends StatelessWidget {
   final double size;
   final Animation<double> animation;
@@ -206,14 +206,14 @@ class AnimatedHeaderIcon extends StatelessWidget {
           height: size,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: AzkarTheme.gold.withOpacity(0.12),
+            color: AzkarTheme.gold.withValues(alpha: 0.12),
             border: Border.all(
-              color: AzkarTheme.gold.withOpacity(0.4),
+              color: AzkarTheme.gold.withValues(alpha: 0.4),
               width: 2,
             ),
             boxShadow: [
               BoxShadow(
-                color: AzkarTheme.gold.withOpacity(0.2),
+                color: AzkarTheme.gold.withValues(alpha: 0.2),
                 blurRadius: 16,
                 spreadRadius: 2,
               ),

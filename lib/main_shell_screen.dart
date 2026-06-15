@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'dart:io';
 import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -106,7 +106,7 @@ class _MainShellScreenState extends State<MainShellScreen> {
       if (!mounted || _channelsTabWarmed) return;
 
       setState(() {
-        _visitedTabs.add(3); // تبويب القنوات
+        _visitedTabs.add(3); // طھط¨ظˆظٹط¨ ط§ظ„ظ‚ظ†ظˆط§طھ
         _channelsTabWarmed = true;
       });
     });
@@ -137,7 +137,7 @@ class _MainShellScreenState extends State<MainShellScreen> {
         } catch (_) {}
       }
     } catch (e) {
-      debugPrint('❌ _precacheChannelsFeedImages error: $e');
+      debugPrint('â‌Œ _precacheChannelsFeedImages error: $e');
     }
   }
 
@@ -156,7 +156,7 @@ class _MainShellScreenState extends State<MainShellScreen> {
 
     return Scaffold(
       backgroundColor: bg,
-      // ✅ أضف الزر العائم هنا
+      // âœ… ط£ط¶ظپ ط§ظ„ط²ط± ط§ظ„ط¹ط§ط¦ظ… ظ‡ظ†ط§
       floatingActionButton: _buildFatwaFAB(context, isDark),
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       body: Stack(
@@ -201,10 +201,10 @@ class _MainShellScreenState extends State<MainShellScreen> {
       mainAxisSize: MainAxisSize.min,
       children: [
         Gap(10),
-        // ═══ زر البحث في الفتاوى ═══
+        // â•گâ•گâ•گ ط²ط± ط§ظ„ط¨ط­ط« ظپظٹ ط§ظ„ظپطھط§ظˆظ‰ â•گâ•گâ•گ
         _FatwaFABButton(
           icon: Icons.search_rounded,
-          tooltip: 'البحث في الفتاوى',
+          tooltip: 'ط§ظ„ط¨ط­ط« ظپظٹ ط§ظ„ظپطھط§ظˆظ‰',
           color: const Color(0xFF2E7D32),
           isDark: isDark,
           onTap: () => _openScreen(context, const FatwaSearchScreen()),
@@ -212,10 +212,10 @@ class _MainShellScreenState extends State<MainShellScreen> {
 
         const SizedBox(height: 10),
 
-        // ═══ زر المساعد الذكي ═══
+        // â•گâ•گâ•گ ط²ط± ط§ظ„ظ…ط³ط§ط¹ط¯ ط§ظ„ط°ظƒظٹ â•گâ•گâ•گ
         _FatwaFABButton(
           icon: Icons.auto_awesome_rounded,
-          tooltip: 'مساعد الفتاوى',
+          tooltip: 'ظ…ط³ط§ط¹ط¯ ط§ظ„ظپطھط§ظˆظ‰',
           color: const Color(0xFF1565C0),
           isDark: isDark,
           onTap: () => _openScreen(context, const FatwaChatScreen()),
@@ -277,9 +277,9 @@ class _MainShellScreenState extends State<MainShellScreen> {
     ];
   }
 
-  // ══════════════════════════════════════════
-  //  تبويب المزيد — مترجم
-  // ══════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  //  طھط¨ظˆظٹط¨ ط§ظ„ظ…ط²ظٹط¯ â€” ظ…طھط±ط¬ظ…
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildMoreTab(BuildContext context, Color primary, bool isDark) {
     final tr = context.tr;
     final textColor = isDark ? Colors.white : const Color(0xFF1A1A1A);
@@ -377,9 +377,9 @@ class _MainShellScreenState extends State<MainShellScreen> {
                       height: size,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: isDark ? Colors.white.withOpacity(0.04) : Colors.white,
+                        color: isDark ? Colors.white.withValues(alpha: 0.04) : Colors.white,
                         border: Border.all(color: _gold, width: 2),
-                        boxShadow: [BoxShadow(color: _primary.withOpacity(0.10), blurRadius: 8, offset: const Offset(0, 3))],
+                        boxShadow: [BoxShadow(color: _primary.withValues(alpha: 0.10), blurRadius: 8, offset: const Offset(0, 3))],
                       ),
                       child: Icon(item['icon'] as IconData, color: isDark ? Colors.white70 : _primary, size: size * 0.40),
                     ),
@@ -413,7 +413,7 @@ class _MainShellScreenState extends State<MainShellScreen> {
                 padding: const EdgeInsets.fromLTRB(12, 16, 12, 120),
                 child: Column(
                   children: [
-                    // ═══ الهيدر ═══
+                    // â•گâ•گâ•گ ط§ظ„ظ‡ظٹط¯ط± â•گâ•گâ•گ
                     Row(
                       children: [
                         Consumer<ProfileImageProvider>(
@@ -435,14 +435,14 @@ class _MainShellScreenState extends State<MainShellScreen> {
                                 height: 40,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  border: Border.all(color: const Color(0xFFC8A44D).withOpacity(0.6), width: 2),
-                                  boxShadow: [BoxShadow(color: const Color(0xFFC8A44D).withOpacity(0.2), blurRadius: 8)],
+                                  border: Border.all(color: const Color(0xFFC8A44D).withValues(alpha: 0.6), width: 2),
+                                  boxShadow: [BoxShadow(color: const Color(0xFFC8A44D).withValues(alpha: 0.2), blurRadius: 8)],
                                 ),
                                 child: ClipOval(
                                   child: path != null && File(path).existsSync()
                                       ? Image.file(File(path), fit: BoxFit.cover, key: ValueKey(path))
                                       : Container(
-                                    color: isDark ? Colors.white.withOpacity(0.08) : _primary.withOpacity(0.08),
+                                    color: isDark ? Colors.white.withValues(alpha: 0.08) : _primary.withValues(alpha: 0.08),
                                     child: Icon(Icons.person_rounded, size: 22, color: isDark ? Colors.white70 : _primary),
                                   ),
                                 ),
@@ -452,13 +452,13 @@ class _MainShellScreenState extends State<MainShellScreen> {
                         ),
                         const Spacer(),
                         Text(
-                          tr.more, // ← مترجم
+                          tr.more, // â†گ ظ…طھط±ط¬ظ…
                           style: GoogleFonts.cairo(fontSize: 22, fontWeight: FontWeight.bold, color: textColor),
                         ),
                       ],
                     ),
 
-                    // ═══ الشبكة ═══
+                    // â•گâ•گâ•گ ط§ظ„ط´ط¨ظƒط© â•گâ•گâ•گ
                     buildRow([buildCircleItem(items[12], size: largeCircle)]),
                     const SizedBox(height: 18),
                     buildRow([buildCircleItem(items[0], size: smallCircle), buildCircleItem(items[1], size: smallCircle)]),
@@ -487,9 +487,9 @@ class _MainShellScreenState extends State<MainShellScreen> {
   }
 
   Widget _buildMoreSoftBackground(Color primary, bool isDark) {
-    final patternColor = isDark ? Colors.white.withOpacity(0.035) : primary.withOpacity(0.045);
-    final moonColor = isDark ? Colors.white.withOpacity(0.04) : _gold.withOpacity(0.10);
-    final starColor = isDark ? Colors.white.withOpacity(0.10) : _gold.withOpacity(0.18);
+    final patternColor = isDark ? Colors.white.withValues(alpha: 0.035) : primary.withValues(alpha: 0.045);
+    final moonColor = isDark ? Colors.white.withValues(alpha: 0.04) : _gold.withValues(alpha: 0.10);
+    final starColor = isDark ? Colors.white.withValues(alpha: 0.10) : _gold.withValues(alpha: 0.18);
     final bgColor = isDark ? const Color(0xFF0E1714) : const Color(0xFFF7F3EA);
 
     return IgnorePointer(
@@ -509,16 +509,16 @@ class _MainShellScreenState extends State<MainShellScreen> {
             ),
           ),
           Positioned(top: 84, left: 84, child: Icon(Icons.star_rounded, size: 10, color: starColor)),
-          Positioned(top: 108, left: 102, child: Icon(Icons.star_rounded, size: 7, color: starColor.withOpacity(0.85))),
+          Positioned(top: 108, left: 102, child: Icon(Icons.star_rounded, size: 7, color: starColor.withValues(alpha: 0.85))),
         ],
       ),
     );
   }
 }
 
-// ══════════════════════════════════════════════════════════════
-//  Glass Floating NavBar — مترجم
-// ══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+//  Glass Floating NavBar â€” ظ…طھط±ط¬ظ…
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _GlassNavBar extends StatefulWidget {
   final int currentIndex;
   final bool isDark;
@@ -542,7 +542,7 @@ class _GlassNavBarState extends State<_GlassNavBar>
     with SingleTickerProviderStateMixin {
   late AnimationController _enterCtrl;
 
-  // ═══ الأيقونات ثابتة، النصوص تأتي من الترجمة ═══
+  // â•گâ•گâ•گ ط§ظ„ط£ظٹظ‚ظˆظ†ط§طھ ط«ط§ط¨طھط©طŒ ط§ظ„ظ†طµظˆطµ طھط£طھظٹ ظ…ظ† ط§ظ„طھط±ط¬ظ…ط© â•گâ•گâ•گ
   static const _tabIcons = [
     _TabIcons(Icons.home_outlined, Icons.home_rounded),
     _TabIcons(Icons.track_changes_outlined, Icons.track_changes),
@@ -579,7 +579,7 @@ class _GlassNavBarState extends State<_GlassNavBar>
     final bottomPad = bottomSafe > 0 ? bottomSafe + 4 : 16.0;
     final radius = compact ? 24.0 : 28.0;
 
-    // ═══ النصوص المترجمة ═══
+    // â•گâ•گâ•گ ط§ظ„ظ†طµظˆطµ ط§ظ„ظ…طھط±ط¬ظ…ط© â•گâ•گâ•گ
     final tabLabels = [tr.navHome, tr.navKhatma, tr.navPrayer, tr.navLibrary, tr.navMore];
 
     return AnimatedBuilder(
@@ -604,8 +604,8 @@ class _GlassNavBarState extends State<_GlassNavBar>
                   height: barH,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(radius),
-                    color: widget.isDark ? const Color(0xFF1C2520).withOpacity(0.85) : Colors.white.withOpacity(0.75),
-                    boxShadow: [BoxShadow(color: Colors.black.withOpacity(widget.isDark ? 0.3 : 0.06), blurRadius: 20, offset: const Offset(0, 6))],
+                    color: widget.isDark ? const Color(0xFF1C2520).withValues(alpha: 0.85) : Colors.white.withValues(alpha: 0.75),
+                    boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: widget.isDark ? 0.3 : 0.06), blurRadius: 20, offset: const Offset(0, 6))],
                   ),
                   child: Row(
                     children: List.generate(_tabIcons.length, (i) {
@@ -631,16 +631,16 @@ class _GlassNavBarState extends State<_GlassNavBar>
   }
 }
 
-// ═══ أيقونات التبويب (بدون نص) ═══
+// â•گâ•گâ•گ ط£ظٹظ‚ظˆظ†ط§طھ ط§ظ„طھط¨ظˆظٹط¨ (ط¨ط¯ظˆظ† ظ†طµ) â•گâ•گâ•گ
 class _TabIcons {
   final IconData icon;
   final IconData activeIcon;
   const _TabIcons(this.icon, this.activeIcon);
 }
 
-// ══════════════════════════════════════════════════════════════
-//  عنصر التبويب (بدون تغيير — يأخذ label من _Tab)
-// ══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+//  ط¹ظ†طµط± ط§ظ„طھط¨ظˆظٹط¨ (ط¨ط¯ظˆظ† طھط؛ظٹظٹط± â€” ظٹط£ط®ط° label ظ…ظ† _Tab)
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _GlassTab extends StatefulWidget {
   final _Tab tab;
   final bool isActive;
@@ -770,7 +770,7 @@ class _GlassTabState extends State<_GlassTab>
   }
 }
 
-// ═══ بيانات التبويب ═══
+// â•گâ•گâ•گ ط¨ظٹط§ظ†ط§طھ ط§ظ„طھط¨ظˆظٹط¨ â•گâ•گâ•گ
 class _Tab {
   final IconData icon;
   final IconData activeIcon;
@@ -778,7 +778,7 @@ class _Tab {
   const _Tab(this.icon, this.activeIcon, this.label);
 }
 
-// ═══ LazyIndexedStack (بدون تغيير) ═══
+// â•گâ•گâ•گ LazyIndexedStack (ط¨ط¯ظˆظ† طھط؛ظٹظٹط±) â•گâ•گâ•گ
 class _LazyIndexedStack extends StatefulWidget {
   final int index;
   final Set<int> visitedTabs;
@@ -827,7 +827,7 @@ class _LazyIndexedStackState extends State<_LazyIndexedStack> {
   }
 }
 
-// ═══ Pattern Painter (بدون تغيير) ═══
+// â•گâ•گâ•گ Pattern Painter (ط¨ط¯ظˆظ† طھط؛ظٹظٹط±) â•گâ•گâ•گ
 class _MorePatternPainter extends CustomPainter {
   final Color color;
   const _MorePatternPainter(this.color);
@@ -859,9 +859,9 @@ class _MorePatternPainter extends CustomPainter {
   bool shouldRepaint(_MorePatternPainter old) => old.color != color;
 }
 
-// ═══════════════════════════════════════════
-// زر الفتاوى العائم
-// ═══════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط²ط± ط§ظ„ظپطھط§ظˆظ‰ ط§ظ„ط¹ط§ط¦ظ…
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _FatwaFABButton extends StatefulWidget {
   final IconData icon;
   final String tooltip;
@@ -931,7 +931,7 @@ class _FatwaFABButtonState extends State<_FatwaFABButton>
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: widget.color.withOpacity(0.4),
+                  color: widget.color.withValues(alpha: 0.4),
                   blurRadius: 12,
                   offset: const Offset(0, 4),
                 ),

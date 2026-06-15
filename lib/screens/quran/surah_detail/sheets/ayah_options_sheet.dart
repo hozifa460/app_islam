@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../services/quran/quran_text_service.dart';
@@ -38,7 +38,7 @@ class AyahOptionsSheet {
             mainAxisSize: MainAxisSize.min,
             children: [
               SheetWidgets.buildSheetHeader(
-                title: '$surahName - آية ${SurahConstants.toArabicNum(ayahNumber)}',
+                title: '$surahName - ط¢ظٹط© ${SurahConstants.toArabicNum(ayahNumber)}',
                 primary: primary,
                 icon: Icons.format_quote_rounded,
               ),
@@ -47,7 +47,7 @@ class AyahOptionsSheet {
                 padding: const EdgeInsets.all(16),
                 margin: const EdgeInsets.only(bottom: 16),
                 decoration: BoxDecoration(
-                  color: primary.withOpacity(0.05),
+                  color: primary.withValues(alpha: 0.05),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Text(
@@ -68,7 +68,7 @@ class AyahOptionsSheet {
                 children: [
                   SheetWidgets.buildAyahOptionBtn(
                     icon: Icons.play_circle_filled,
-                    label: 'تشغيل',
+                    label: 'طھط´ط؛ظٹظ„',
                     color: primary,
                     onTap: () {
                       Navigator.pop(ctx);
@@ -77,7 +77,7 @@ class AyahOptionsSheet {
                   ),
                   SheetWidgets.buildAyahOptionBtn(
                     icon: Icons.repeat,
-                    label: 'تكرار ×3',
+                    label: 'طھظƒط±ط§ط± أ—3',
                     color: Colors.teal,
                     onTap: () {
                       Navigator.pop(ctx);
@@ -86,7 +86,7 @@ class AyahOptionsSheet {
                   ),
                   SheetWidgets.buildAyahOptionBtn(
                     icon: Icons.mic,
-                    label: 'تسميع',
+                    label: 'طھط³ظ…ظٹط¹',
                     color: Colors.green,
                     onTap: () {
                       Navigator.pop(ctx);
@@ -95,21 +95,21 @@ class AyahOptionsSheet {
                   ),
                   SheetWidgets.buildAyahOptionBtn(
                     icon: Icons.copy,
-                    label: 'نسخ',
+                    label: 'ظ†ط³ط®',
                     color: Colors.blue,
                     onTap: () {
                       Navigator.pop(ctx);
                       Clipboard.setData(ClipboardData(text: text));
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text('تم النسخ', style: GoogleFonts.cairo()),
+                          content: Text('طھظ… ط§ظ„ظ†ط³ط®', style: GoogleFonts.cairo()),
                         ),
                       );
                     },
                   ),
                   SheetWidgets.buildAyahOptionBtn(
                     icon: Icons.bookmark_add,
-                    label: 'علامة',
+                    label: 'ط¹ظ„ط§ظ…ط©',
                     color: Colors.amber.shade700,
                     onTap: () {
                       Navigator.pop(ctx);
@@ -118,7 +118,7 @@ class AyahOptionsSheet {
                   ),
                   SheetWidgets.buildAyahOptionBtn(
                     icon: Icons.share,
-                    label: 'مشاركة',
+                    label: 'ظ…ط´ط§ط±ظƒط©',
                     color: Colors.purple,
                     onTap: () => Navigator.pop(ctx),
                   ),

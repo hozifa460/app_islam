@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/azkar_theme.dart';
 import '../animations/azkar_animations.dart';
 import 'decorative_elements.dart';
 
-/// ═══════════════════════════════════════════════════════════════════════════
-/// بطاقة تصنيف الأذكار
-/// ═══════════════════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ط¨ط·ط§ظ‚ط© طھطµظ†ظٹظپ ط§ظ„ط£ط°ظƒط§ط±
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class AzkarCategoryCard extends StatelessWidget {
   final Map<String, dynamic> category;
   final List<dynamic> azkarList;
@@ -49,17 +49,17 @@ class AzkarCategoryCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             child: Stack(
               children: [
-                // الدوائر الخلفية
+                // ط§ظ„ط¯ظˆط§ط¦ط± ط§ظ„ط®ظ„ظپظٹط©
                 CardBackgroundCircles(
                   cardHeight: sizes.cardHeight,
                   accent: accent,
                 ),
-                // الشريط الجانبي
+                // ط§ظ„ط´ط±ظٹط· ط§ظ„ط¬ط§ظ†ط¨ظٹ
                 ColoredSideStrip(
                   color: accent,
                   height: sizes.cardHeight,
                 ),
-                // المحتوى
+                // ط§ظ„ظ…ط­طھظˆظ‰
                 _buildCardContent(context, sizes, accent),
               ],
             ),
@@ -118,18 +118,18 @@ class AzkarCategoryCard extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
       children: [
-        // رقم التصنيف
+        // ط±ظ‚ظ… ط§ظ„طھطµظ†ظٹظپ
         Text(
           (index + 1).toString().padLeft(2, '0'),
           style: GoogleFonts.cairo(
             fontSize: sizes.subFontSize * 0.9,
-            color: accent.withOpacity(0.55),
+            color: accent.withValues(alpha: 0.55),
             fontWeight: FontWeight.w700,
             letterSpacing: 0.8,
           ),
         ),
         const SizedBox(height: 1),
-        // العنوان
+        // ط§ظ„ط¹ظ†ظˆط§ظ†
         Text(
           category['title'] as String,
           style: GoogleFonts.cairo(
@@ -142,7 +142,7 @@ class AzkarCategoryCard extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         const SizedBox(height: 6),
-        // عدد الأذكار
+        // ط¹ط¯ط¯ ط§ظ„ط£ط°ظƒط§ط±
         _buildAzkarCountBadge(sizes, accent),
       ],
     );
@@ -155,10 +155,10 @@ class AzkarCategoryCard extends StatelessWidget {
         vertical: 3,
       ),
       decoration: BoxDecoration(
-        color: accent.withOpacity(0.12),
+        color: accent.withValues(alpha: 0.12),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: accent.withOpacity(0.22),
+          color: accent.withValues(alpha: 0.22),
           width: 1,
         ),
       ),
@@ -172,7 +172,7 @@ class AzkarCategoryCard extends StatelessWidget {
           ),
           const SizedBox(width: 4),
           Text(
-            '${azkarList.length} ذكر',
+            '${azkarList.length} ط°ظƒط±',
             style: GoogleFonts.cairo(
               fontSize: sizes.subFontSize,
               color: accent,
@@ -189,10 +189,10 @@ class AzkarCategoryCard extends StatelessWidget {
       width: sizes.arrowContainerSize,
       height: sizes.arrowContainerSize,
       decoration: BoxDecoration(
-        color: accent.withOpacity(0.1),
+        color: accent.withValues(alpha: 0.1),
         shape: BoxShape.circle,
         border: Border.all(
-          color: accent.withOpacity(0.22),
+          color: accent.withValues(alpha: 0.22),
           width: 1,
         ),
       ),

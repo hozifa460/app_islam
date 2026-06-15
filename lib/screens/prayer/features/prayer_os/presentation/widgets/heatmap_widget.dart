@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 
 class PrayerHeatmap extends StatelessWidget {
   const PrayerHeatmap({super.key});
@@ -11,7 +11,7 @@ class PrayerHeatmap extends StatelessWidget {
         return Container(
           width: 14,
           height: 14,
-          color: Colors.green.withOpacity((i % 5) / 5),
+          color: Colors.green.withValues(alpha: (i % 5) / 5),
         );
       }),
     );

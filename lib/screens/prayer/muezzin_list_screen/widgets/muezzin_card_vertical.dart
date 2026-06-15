@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../languages/app_localizations.dart';
@@ -55,12 +55,12 @@ class MuezzinCardVertical extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: isPlaying ? gold.withOpacity(0.5) : borderColor,
+          color: isPlaying ? gold.withValues(alpha: 0.5) : borderColor,
           width: isPlaying ? 1.5 : 1,
         ),
         boxShadow: [
           BoxShadow(
-            color: isPlaying ? gold.withOpacity(0.2) : shadowColor,
+            color: isPlaying ? gold.withValues(alpha: 0.2) : shadowColor,
             blurRadius: 14,
             offset: const Offset(0, 5),
           ),
@@ -142,18 +142,18 @@ class MuezzinCardVertical extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: onSelect,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: gold.withOpacity(0.2),
+                        backgroundColor: gold.withValues(alpha: 0.2),
                         foregroundColor: gold,
                         elevation: 0,
                         padding: EdgeInsets.zero,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                           side: BorderSide(
-                              color: gold.withOpacity(0.3)),
+                              color: gold.withValues(alpha: 0.3)),
                         ),
                       ),
                       child: Text(
-                        context.tr.selectButton, // تمت الترجمة هنا
+                        context.tr.selectButton, // طھظ…طھ ط§ظ„طھط±ط¬ظ…ط© ظ‡ظ†ط§
                         style: GoogleFonts.cairo(
                           fontSize: 11.5,
                           fontWeight: FontWeight.bold,

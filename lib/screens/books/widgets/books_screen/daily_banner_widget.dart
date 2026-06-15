@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../theme/books_theme.dart';
 import '../../animations/books_animations.dart';
 
-/// ═══════════════════════════════════════════════════════════════════════════
-/// البانر اليومي المتحرك
-/// ═══════════════════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ط§ظ„ط¨ط§ظ†ط± ط§ظ„ظٹظˆظ…ظٹ ط§ظ„ظ…طھط­ط±ظƒ
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class DailyBannerWidget extends StatefulWidget {
   final List<Map<String, dynamic>> banners;
   final bool isDark;
@@ -86,9 +86,9 @@ class _DailyBannerWidgetState extends State<DailyBannerWidget>
           ),
           child: Stack(
             children: [
-              // خلفية زخرفية
+              // ط®ظ„ظپظٹط© ط²ط®ط±ظپظٹط©
               _buildDecorativeElements(),
-              // النص
+              // ط§ظ„ظ†طµ
               Center(
                 child: _AnimatedBannerText(text: _todayBanner['text']),
               ),
@@ -168,7 +168,7 @@ class _AnimatedBannerTextState extends State<_AnimatedBannerText>
           height: 1.3,
           shadows: [
             Shadow(
-              color: Colors.black.withOpacity(0.3),
+              color: Colors.black.withValues(alpha: 0.3),
               offset: const Offset(2, 2),
               blurRadius: 4,
             ),
@@ -228,7 +228,7 @@ class _FloatingCircleState extends State<_FloatingCircle>
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(
-            color: Colors.white.withOpacity(widget.opacity),
+            color: Colors.white.withValues(alpha: widget.opacity),
             width: 2,
           ),
         ),

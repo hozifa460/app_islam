@@ -1,4 +1,4 @@
-import 'dart:ui';
+﻿import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../languages/app_localizations.dart';
@@ -35,7 +35,7 @@ class SettingsColorPreview extends StatelessWidget {
           Color.lerp(theme.currentPrimary, Colors.black, 0.35)!,
         ], begin: Alignment.topRight, end: Alignment.bottomLeft),
         borderRadius: BorderRadius.circular((w * 0.05).clamp(14.0, 22.0)),
-        boxShadow: [BoxShadow(color: theme.currentPrimary.withOpacity(0.35), blurRadius: 20, offset: const Offset(0, 8))],
+        boxShadow: [BoxShadow(color: theme.currentPrimary.withValues(alpha: 0.35), blurRadius: 20, offset: const Offset(0, 8))],
       ),
       child: Column(children: [
         Row(children: [
@@ -45,8 +45,8 @@ class SettingsColorPreview extends StatelessWidget {
             height: (w * 0.14).clamp(48.0, 62.0),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Colors.white.withOpacity(0.18),
-              border: Border.all(color: Colors.white.withOpacity(0.25), width: 2),
+              color: Colors.white.withValues(alpha: 0.18),
+              border: Border.all(color: Colors.white.withValues(alpha: 0.25), width: 2),
             ),
             child: AnimatedSwitcher(
               duration: const Duration(milliseconds: 400),
@@ -59,13 +59,13 @@ class SettingsColorPreview extends StatelessWidget {
           SizedBox(width: (w * 0.04).clamp(12.0, 18.0)),
           Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(
-                context.tr.currentColorLabel, // 👈 تمت الترجمة
+                context.tr.currentColorLabel, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
                 style: GoogleFonts.cairo(fontSize: (w * 0.03).clamp(10.0, 13.0), color: Colors.white70)
             ),
             AnimatedSwitcher(
               duration: const Duration(milliseconds: 300),
               child: Text(
-                  colorNames[selectedColor], // 👈 هذا الاسم يفترض أنه يأتي مترجماً من المصدر الخارجي
+                  colorNames[selectedColor], // ًں‘ˆ ظ‡ط°ط§ ط§ظ„ط§ط³ظ… ظٹظپطھط±ط¶ ط£ظ†ظ‡ ظٹط£طھظٹ ظ…طھط±ط¬ظ…ط§ظ‹ ظ…ظ† ط§ظ„ظ…طµط¯ط± ط§ظ„ط®ط§ط±ط¬ظٹ
                   key: ValueKey('name_$selectedColor'),
                   style: GoogleFonts.cairo(fontSize: (w * 0.05).clamp(17.0, 22.0), fontWeight: FontWeight.w800, color: Colors.white)
               ),
@@ -83,17 +83,17 @@ class SettingsColorPreview extends StatelessWidget {
                 vertical: (w * 0.03).clamp(10.0, 14.0),
               ),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.12),
+                color: Colors.white.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.white.withOpacity(0.15)),
+                border: Border.all(color: Colors.white.withValues(alpha: 0.15)),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  _previewElement(context.tr.previewButtons, Icons.touch_app_rounded), // 👈 تمت الترجمة
-                  _previewElement(context.tr.previewCards, Icons.credit_card_rounded), // 👈 تمت الترجمة
-                  _previewElement(context.tr.previewIcons, Icons.star_rounded), // 👈 تمت الترجمة
-                  _previewElement(context.tr.previewBar, Icons.linear_scale_rounded), // 👈 تمت الترجمة
+                  _previewElement(context.tr.previewButtons, Icons.touch_app_rounded), // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
+                  _previewElement(context.tr.previewCards, Icons.credit_card_rounded), // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
+                  _previewElement(context.tr.previewIcons, Icons.star_rounded), // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
+                  _previewElement(context.tr.previewBar, Icons.linear_scale_rounded), // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
                 ],
               ),
             ),
@@ -107,7 +107,7 @@ class SettingsColorPreview extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 2),
             width: i == selectedColor ? 20 : 8, height: 5,
             decoration: BoxDecoration(
-              color: i == selectedColor ? Colors.white : Colors.white.withOpacity(0.3),
+              color: i == selectedColor ? Colors.white : Colors.white.withValues(alpha: 0.3),
               borderRadius: BorderRadius.circular(3),
             ),
           )),

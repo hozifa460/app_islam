@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../languages/app_localizations.dart';
@@ -36,8 +36,8 @@ class SalawatStatusCard extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: enabled
-                ? theme.deepGreen.withOpacity(0.08)
-                : Colors.black.withOpacity(0.03),
+                ? theme.deepGreen.withValues(alpha: 0.08)
+                : Colors.black.withValues(alpha: 0.03),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),
@@ -50,8 +50,8 @@ class SalawatStatusCard extends StatelessWidget {
             height: SalawatTheme.statusIconSize,
             decoration: BoxDecoration(
               color: enabled
-                  ? theme.deepGreen.withOpacity(0.15)
-                  : Colors.grey.withOpacity(0.1),
+                  ? theme.deepGreen.withValues(alpha: 0.15)
+                  : Colors.grey.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(14),
             ),
             child: Icon(

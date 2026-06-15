@@ -1,4 +1,4 @@
-// lib/screens/radio/radio_screen.dart
+﻿// lib/screens/radio/radio_screen.dart
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -38,12 +38,12 @@ class RadioScreen extends StatefulWidget {
 class _RadioScreenState extends State<RadioScreen>
     with TickerProviderStateMixin {
 
-  // ✅ Controllers
+  // âœ… Controllers
   late final AnimationController _equalizerController;
   late final AnimationController _bgController;
   late final AnimationController _headerController;
 
-  // ✅ Animations
+  // âœ… Animations
   late final Animation<double> _headerFadeAnim;
 
   late final Widget _radioTabPage;
@@ -53,13 +53,13 @@ class _RadioScreenState extends State<RadioScreen>
   final ScrollController _scrollController = ScrollController();
   late final TabController _tabController;
 
-  // ✅ Cache
+  // âœ… Cache
   late final List<RecitationCategory> _categories;
   late final List<String> _stationCategories;
 
   Widget? _recitationsScreen;
 
-  // ✅ Overlay styles محسوبة مرة واحدة
+  // âœ… Overlay styles ظ…ط­ط³ظˆط¨ط© ظ…ط±ط© ظˆط§ط­ط¯ط©
   static const _darkStyle = SystemUiOverlayStyle(
     statusBarBrightness: Brightness.dark,
     statusBarIconBrightness: Brightness.light,
@@ -82,7 +82,7 @@ class _RadioScreenState extends State<RadioScreen>
     _categories = RecitationCategoriesData.build();
     _stationCategories = RadioStationsData.categories;
 
-    // ✅ هيّئ الـ controllers أولاً
+    // âœ… ظ‡ظٹظ‘ط¦ ط§ظ„ظ€ controllers ط£ظˆظ„ط§ظ‹
     _equalizerController = RadioAnimationManager.createEqualizer(this);
     _bgController = RadioAnimationManager.createBackground(this);
     _headerController = RadioAnimationManager.createHeaderFade(this);
@@ -94,7 +94,7 @@ class _RadioScreenState extends State<RadioScreen>
 
     _tabController = TabController(length: 3, vsync: this);
 
-    // ✅ بعد ذلك أنشئ صفحات التبويبات
+    // âœ… ط¨ط¹ط¯ ط°ظ„ظƒ ط£ظ†ط´ط¦ طµظپط­ط§طھ ط§ظ„طھط¨ظˆظٹط¨ط§طھ
     _radioTabPage = _RadioTab(
       primary: _primary,
       isTablet: MediaQueryData.fromView(
@@ -147,7 +147,7 @@ class _RadioScreenState extends State<RadioScreen>
         backgroundColor: RadioColors.background(context),
         body: Stack(
           children: [
-            // ══ الخلفية ══
+            // â•گâ•گ ط§ظ„ط®ظ„ظپظٹط© â•گâ•گ
             Positioned.fill(
               child: RepaintBoundary(
                 child: NightSkyBackground(
@@ -157,12 +157,12 @@ class _RadioScreenState extends State<RadioScreen>
               ),
             ),
 
-            // ══ المحتوى ══
+            // â•گâ•گ ط§ظ„ظ…ط­طھظˆظ‰ â•گâ•گ
             Column(
               children: [
                 SizedBox(height: safePadding.top + 10),
 
-                // ══ زر الرجوع ══
+                // â•گâ•گ ط²ط± ط§ظ„ط±ط¬ظˆط¹ â•گâ•گ
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Row(
@@ -170,7 +170,7 @@ class _RadioScreenState extends State<RadioScreen>
                   ),
                 ),
 
-                // ══ الهيدر ══
+                // â•گâ•گ ط§ظ„ظ‡ظٹط¯ط± â•گâ•گ
                 RadioFadeSlideTransition(
                   animation: _headerFadeAnim,
                   child: HeroHeaderWidget(
@@ -179,17 +179,17 @@ class _RadioScreenState extends State<RadioScreen>
                   ),
                 ),
 
-                // ══ التبويبات ══
+                // â•گâ•گ ط§ظ„طھط¨ظˆظٹط¨ط§طھ â•گâ•گ
                 RadioTabBarWidget(
                   tabController: _tabController,
                   primary: _primary,
                   isTablet: isTablet,
                 ),
 
-                // ══ البحث ══
+                // â•گâ•گ ط§ظ„ط¨ط­ط« â•گâ•گ
                 _buildSearchBar(),
 
-                // ══ المحتوى ══
+                // â•گâ•گ ط§ظ„ظ…ط­طھظˆظ‰ â•گâ•گ
                 Expanded(
                   child: AnimatedBuilder(
                     animation: _tabController,
@@ -208,7 +208,7 @@ class _RadioScreenState extends State<RadioScreen>
               ],
             ),
 
-            // ══ المشغل السفلي ══
+            // â•گâ•گ ط§ظ„ظ…ط´ط؛ظ„ ط§ظ„ط³ظپظ„ظٹ â•گâ•گ
             Positioned(
               bottom: 0,
               left: 0,
@@ -267,11 +267,11 @@ class _RadioScreenState extends State<RadioScreen>
             Icon(
               Icons.search_rounded,
               size: 18,
-              color: _primary.withOpacity(0.5),
+              color: _primary.withValues(alpha: 0.5),
             ),
             const SizedBox(width: 8),
             Text(
-              'ابحث عن قارئ، سورة، حفلة...',
+              'ط§ط¨ط­ط« ط¹ظ† ظ‚ط§ط±ط¦طŒ ط³ظˆط±ط©طŒ ط­ظپظ„ط©...',
               style: GoogleFonts.cairo(
                 fontSize: 12,
                 color: RadioColors.searchHint(context),
@@ -323,8 +323,8 @@ class _TabContentState extends State<_TabContent> {
 
   @override
   Widget build(BuildContext context) {
-    // ✅ IndexedStack يبقي كلا التبويبين في الذاكرة
-    // ✅ لا يعيد بناء أي منهما عند التبديل
+    // âœ… IndexedStack ظٹط¨ظ‚ظٹ ظƒظ„ط§ ط§ظ„طھط¨ظˆظٹط¨ظٹظ† ظپظٹ ط§ظ„ط°ط§ظƒط±ط©
+    // âœ… ظ„ط§ ظٹط¹ظٹط¯ ط¨ظ†ط§ط، ط£ظٹ ظ…ظ†ظ‡ظ…ط§ ط¹ظ†ط¯ ط§ظ„طھط¨ط¯ظٹظ„
     return IndexedStack(
       index: _currentIndex,
       children: [

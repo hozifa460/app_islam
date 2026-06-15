@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../languages/app_localizations.dart';
@@ -21,7 +21,7 @@ class SalawatHadithCard extends StatelessWidget {
         gradient: theme.hadithGradient,
         borderRadius: BorderRadius.circular(SalawatTheme.cardRadius),
         border: Border.all(
-          color: theme.accentGold.withOpacity(0.25),
+          color: theme.accentGold.withValues(alpha: 0.25),
           width: 1,
         ),
       ),

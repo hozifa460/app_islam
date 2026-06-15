@@ -1,4 +1,4 @@
-// lib/screens/radio/video/audio_video_swiper.dart
+﻿// lib/screens/radio/video/audio_video_swiper.dart
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -63,7 +63,7 @@ class _AudioVideoSwiperState extends State<AudioVideoSwiper> {
     _saveTimer?.cancel();
     _saveCurrentPosition();
 
-    // ✅ أوقف الفيديو عند الخروج
+    // âœ… ط£ظˆظ‚ظپ ط§ظ„ظپظٹط¯ظٹظˆ ط¹ظ†ط¯ ط§ظ„ط®ط±ظˆط¬
     final url = widget.item.videoUrl;
     if (url != null && url.isNotEmpty) {
       final controller = _cacheManager.getController(url);
@@ -76,9 +76,9 @@ class _AudioVideoSwiperState extends State<AudioVideoSwiper> {
     super.dispose();
   }
 
-  // ══════════════════════════════════════════════════════
-  // حفظ الموضع
-  // ══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط­ظپط¸ ط§ظ„ظ…ظˆط¶ط¹
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   void _startPositionSaver() {
     _saveTimer = Timer.periodic(
@@ -103,15 +103,15 @@ class _AudioVideoSwiperState extends State<AudioVideoSwiper> {
     }
   }
 
-  // ══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   // Preload
-  // ══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   Future<void> _preloadVideo() async {
     final url = widget.item.videoUrl;
     if (url == null || url.isEmpty) return;
 
-    // ✅ لا تعيد التحميل إذا جاهز
+    // âœ… ظ„ط§ طھط¹ظٹط¯ ط§ظ„طھط­ظ…ظٹظ„ ط¥ط°ط§ ط¬ط§ظ‡ط²
     if (_cacheManager.isInitialized(url)) {
       setState(() {
         _videoReady = true;
@@ -141,9 +141,9 @@ class _AudioVideoSwiperState extends State<AudioVideoSwiper> {
     }
   }
 
-  // ══════════════════════════════════════════════════════
-  // التبديل
-  // ══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„طھط¨ط¯ظٹظ„
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   void _onPageChanged(int page) async {
     final wasAudio = _currentPage == 0;
@@ -157,7 +157,7 @@ class _AudioVideoSwiperState extends State<AudioVideoSwiper> {
   }
 
   Future<void> _switchToVideo() async {
-    // ✅ أوقف الصوت أولاً وانتظر فعلاً
+    // âœ… ط£ظˆظ‚ظپ ط§ظ„طµظˆطھ ط£ظˆظ„ط§ظ‹ ظˆط§ظ†طھط¸ط± ظپط¹ظ„ط§ظ‹
     await widget.onPauseAudio();
     await Future.delayed(const Duration(milliseconds: 100));
 
@@ -179,19 +179,19 @@ class _AudioVideoSwiperState extends State<AudioVideoSwiper> {
     final c = _cacheManager.getController(url);
     if (c == null) return;
 
-    // ✅ احفظ الوقت وأوقف الفيديو أولاً
+    // âœ… ط§ط­ظپط¸ ط§ظ„ظˆظ‚طھ ظˆط£ظˆظ‚ظپ ط§ظ„ظپظٹط¯ظٹظˆ ط£ظˆظ„ط§ظ‹
     final currentPos = c.value.position;
     await c.pause();
     await Future.delayed(const Duration(milliseconds: 100));
 
-    // ✅ ثم شغّل الصوت
+    // âœ… ط«ظ… ط´ط؛ظ‘ظ„ ط§ظ„طµظˆطھ
     await widget.onSeekAudio(currentPos);
     await widget.onResumeAudio();
   }
 
-  // ══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   // Build
-  // ══════════════════════════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   @override
   Widget build(BuildContext context) {
@@ -199,14 +199,14 @@ class _AudioVideoSwiperState extends State<AudioVideoSwiper> {
 
     return Column(
       children: [
-        // ✅ مؤشر الصفحة
+        // âœ… ظ…ط¤ط´ط± ط§ظ„طµظپط­ط©
         Container(
           padding: const EdgeInsets.symmetric(vertical: 8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _TabBtn(
-                label: '🎵 صوت',
+                label: 'ًںژµ طµظˆطھ',
                 isActive: _currentPage == 0,
                 primary: widget.primary,
                 isDark: isDark,
@@ -216,7 +216,7 @@ class _AudioVideoSwiperState extends State<AudioVideoSwiper> {
               ),
               const SizedBox(width: 8),
               _TabBtn(
-                label: _videoLoading ? '🎬 تحضير...' : '🎬 فيديو',
+                label: _videoLoading ? 'ًںژ¬ طھط­ط¶ظٹط±...' : 'ًںژ¬ ظپظٹط¯ظٹظˆ',
                 isActive: _currentPage == 1,
                 primary: widget.primary,
                 isDark: isDark,
@@ -229,16 +229,16 @@ class _AudioVideoSwiperState extends State<AudioVideoSwiper> {
           ),
         ),
 
-        // ✅ المحتوى
+        // âœ… ط§ظ„ظ…ط­طھظˆظ‰
         Expanded(
           child: PageView(
             controller: _pageController,
             onPageChanged: _onPageChanged,
             children: [
-              // ✅ صفحة الصوت
+              // âœ… طµظپط­ط© ط§ظ„طµظˆطھ
               widget.audioPlayerWidget,
 
-              // ✅ صفحة الفيديو - نفس VideoPageWidget من الفيد
+              // âœ… طµظپط­ط© ط§ظ„ظپظٹط¯ظٹظˆ - ظ†ظپط³ VideoPageWidget ظ…ظ† ط§ظ„ظپظٹط¯
               _buildVideoPage(),
             ],
           ),
@@ -257,7 +257,7 @@ class _AudioVideoSwiperState extends State<AudioVideoSwiper> {
             children: [
               const Icon(Icons.error_outline, color: Colors.red, size: 40),
               const SizedBox(height: 8),
-              Text('فشل تحميل الفيديو',
+              Text('ظپط´ظ„ طھط­ظ…ظٹظ„ ط§ظ„ظپظٹط¯ظٹظˆ',
                   style: GoogleFonts.cairo(color: Colors.white54)),
               const SizedBox(height: 12),
               GestureDetector(
@@ -272,7 +272,7 @@ class _AudioVideoSwiperState extends State<AudioVideoSwiper> {
                     color: widget.primary,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Text('إعادة',
+                  child: Text('ط¥ط¹ط§ط¯ط©',
                       style: GoogleFonts.cairo(
                           color: Colors.white,
                           fontWeight: FontWeight.w700)),
@@ -289,13 +289,13 @@ class _AudioVideoSwiperState extends State<AudioVideoSwiper> {
       return Container(
         color: Colors.black,
         child: Center(
-          child: Text('لا يوجد فيديو',
+          child: Text('ظ„ط§ ظٹظˆط¬ط¯ ظپظٹط¯ظٹظˆ',
               style: GoogleFonts.cairo(color: Colors.white54)),
         ),
       );
     }
 
-    // ✅ نفس VideoPageWidget المستخدم في الفيد
+    // âœ… ظ†ظپط³ VideoPageWidget ط§ظ„ظ…ط³طھط®ط¯ظ… ظپظٹ ط§ظ„ظپظٹط¯
     return VideoPageWidget(
       item: widget.item,
       primary: widget.primary,
@@ -308,7 +308,7 @@ class _AudioVideoSwiperState extends State<AudioVideoSwiper> {
   }
 }
 
-// ══════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _TabBtn extends StatelessWidget {
   final String label;
   final bool isActive;
@@ -335,17 +335,17 @@ class _TabBtn extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
         decoration: BoxDecoration(
           color: isActive
-              ? primary.withOpacity(0.15)
+              ? primary.withValues(alpha: 0.15)
               : (isDark
-              ? Colors.white.withOpacity(0.06)
-              : Colors.black.withOpacity(0.04)),
+              ? Colors.white.withValues(alpha: 0.06)
+              : Colors.black.withValues(alpha: 0.04)),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: isActive
-                ? primary.withOpacity(0.3)
+                ? primary.withValues(alpha: 0.3)
                 : (isDark
-                ? Colors.white.withOpacity(0.08)
-                : Colors.black.withOpacity(0.06)),
+                ? Colors.white.withValues(alpha: 0.08)
+                : Colors.black.withValues(alpha: 0.06)),
           ),
         ),
         child: Row(

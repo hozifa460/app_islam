@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'settings_theme.dart';
@@ -60,14 +60,14 @@ class SettingsColorSelection extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: isSelected
                       ? color
-                      : color.withOpacity(theme.isDark ? 0.12 : 0.08),
+                      : color.withValues(alpha: theme.isDark ? 0.12 : 0.08),
                   borderRadius: BorderRadius.circular(14),
                   border: Border.all(
-                    color: isSelected ? color : color.withOpacity(0.3),
+                    color: isSelected ? color : color.withValues(alpha: 0.3),
                     width: isSelected ? 2.5 : 1,
                   ),
                   boxShadow: isSelected
-                      ? [BoxShadow(color: color.withOpacity(0.45), blurRadius: 14, offset: const Offset(0, 5))]
+                      ? [BoxShadow(color: color.withValues(alpha: 0.45), blurRadius: 14, offset: const Offset(0, 5))]
                       : [],
                 ),
                 child: Column(

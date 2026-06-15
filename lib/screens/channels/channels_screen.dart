@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
 
@@ -35,9 +35,9 @@ class ChannelsScreen extends StatefulWidget {
 
 class _ChannelsScreenState extends State<ChannelsScreen>
     with TickerProviderStateMixin {
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // State
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   List<Map<String, dynamic>> _scholars = [];
   List<YoutubeVideo> _allVideos = [];
   List<YoutubeVideo> _shortsVideos = [];
@@ -66,21 +66,21 @@ class _ChannelsScreenState extends State<ChannelsScreen>
   bool _refreshInProgress = false;
   bool _suspendProgressiveUpdates = false;
 
-  List<String> _categories = ['الكل'];
+  List<String> _categories = ['ط§ظ„ظƒظ„'];
 
   List<Widget> _cachedFeedItems = [];
   int _cachedFeedVersion = -1;
 
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // Controllers
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   late TabController _tabController;
   final TextEditingController _searchController = TextEditingController();
   final ScrollController _feedScrollController = ScrollController();
 
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // Performance helpers
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   final ValueNotifier<int> _feedVersion = ValueNotifier<int>(0);
   Timer? _feedRebuildDebounce;
   Timer? _searchDebounce;
@@ -110,10 +110,10 @@ class _ChannelsScreenState extends State<ChannelsScreen>
         if (mounted) setState(() {});
       });
 
-    // ✅ محسّن - Throttle لمنع استدعاءات كثيرة
+    // âœ… ظ…ط­ط³ظ‘ظ† - Throttle ظ„ظ…ظ†ط¹ ط§ط³طھط¯ط¹ط§ط،ط§طھ ظƒط«ظٹط±ط©
     _feedScrollController.addListener(_onFeedScrollThrottled);
 
-    // ✅ إيقاف التحديثات أثناء التمرير
+    // âœ… ط¥ظٹظ‚ط§ظپ ط§ظ„طھط­ط¯ظٹط«ط§طھ ط£ط«ظ†ط§ط، ط§ظ„طھظ…ط±ظٹط±
     _feedScrollController.addListener(() {
       if (_feedScrollController.position.isScrollingNotifier.value) {
         _suspendProgressiveUpdates = true;
@@ -127,12 +127,12 @@ class _ChannelsScreenState extends State<ChannelsScreen>
     _initAndLoad();
   }
 
-// ✅ Throttle للـ scroll listener
+// âœ… Throttle ظ„ظ„ظ€ scroll listener
   DateTime _lastScrollCheck = DateTime.now();
 
   void _onFeedScrollThrottled() {
     final now = DateTime.now();
-    // تحقق كل 200ms فقط
+    // طھط­ظ‚ظ‚ ظƒظ„ 200ms ظپظ‚ط·
     if (now.difference(_lastScrollCheck).inMilliseconds < 200) return;
     _lastScrollCheck = now;
     _onFeedScroll();
@@ -142,7 +142,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
   void dispose() {
     _tabController.dispose();
     _searchController.dispose();
-    _feedScrollController.removeListener(_onFeedScrollThrottled); // ✅
+    _feedScrollController.removeListener(_onFeedScrollThrottled); // âœ…
     _feedScrollController.dispose();
     _searchDebounce?.cancel();
     _feedRebuildDebounce?.cancel();
@@ -171,19 +171,19 @@ class _ChannelsScreenState extends State<ChannelsScreen>
     return null;
   }
 
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // Init / Load
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Future<void> _initAndLoad() async {
     if (_screenInitialized) return;
     _screenInitialized = true;
 
-    // ✅ تهيئة متوازية
+    // âœ… طھظ‡ظٹط¦ط© ظ…طھظˆط§ط²ظٹط©
     await Future.wait([
       VideoHistoryService.init(),
       ChannelUsageService.init(),
       ChannelBackgroundSyncService.init(),
-      UserInterestService.init(),  // ✅ جديد
+      UserInterestService.init(),  // âœ… ط¬ط¯ظٹط¯
     ]);
 
     await _loadData();
@@ -195,7 +195,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
       final List<dynamic> data = json.decode(jsonStr);
       final scholars = data.map((e) => Map<String, dynamic>.from(e)).toList();
 
-      final cats = <String>{'الكل'};
+      final cats = <String>{'ط§ظ„ظƒظ„'};
       final tiktoks = <Map<String, dynamic>>[];
 
       for (final s in scholars) {
@@ -295,7 +295,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
 
       await _fetchAllVideos(scholars);
     } catch (e) {
-      debugPrint('❌ ChannelsScreen load error: $e');
+      debugPrint('â‌Œ ChannelsScreen load error: $e');
       if (!mounted) return;
       setState(() {
         _loading = false;
@@ -310,7 +310,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
   }) async {
     if (!mounted) return;
 
-    // ✅ فقط أول 5 فيديوهات و 2 shorts
+    // âœ… ظپظ‚ط· ط£ظˆظ„ 5 ظپظٹط¯ظٹظˆظ‡ط§طھ ظˆ 2 shorts
     final items = <YoutubeVideo>[
       ...videos.take(5),
       ...shorts.take(2),
@@ -332,9 +332,9 @@ class _ChannelsScreenState extends State<ChannelsScreen>
     }
   }
 
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // Background sync
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
   void _setDisplayedFeedFromPool({bool reset = false}) {
     final sourceVideos = List<YoutubeVideo>.from(_videoPool);
@@ -344,20 +344,20 @@ class _ChannelsScreenState extends State<ChannelsScreen>
         ? min(_initialFeedBatchSize, sourceVideos.length)
         : min(_allVideos.length + _nextFeedBatchSize, sourceVideos.length);
 
-    // ✅ إزالة مكررات
+    // âœ… ط¥ط²ط§ظ„ط© ظ…ظƒط±ط±ط§طھ
     final seenIds = <String>{};
     var rawVideos = sourceVideos
         .where((v) => v.id.isNotEmpty && seenIds.add(v.id))
         .take(targetCount)
         .toList();
 
-    // ✅ فرض التنوع والتوزيع
+    // âœ… ظپط±ط¶ ط§ظ„طھظ†ظˆط¹ ظˆط§ظ„طھظˆط²ظٹط¹
     rawVideos = _enforceChannelDiversityInDisplay(rawVideos);
 
-    // ✅ منع التتابع من نفس القناة
+    // âœ… ظ…ظ†ط¹ ط§ظ„طھطھط§ط¨ط¹ ظ…ظ† ظ†ظپط³ ط§ظ„ظ‚ظ†ط§ط©
     rawVideos = _preventConsecutiveSameChannel(rawVideos);
 
-    // شورتس
+    // ط´ظˆط±طھط³
     final seenShortIds = <String>{};
     final shortsCount = min(12, sourceShorts.length);
     var rawShorts = sourceShorts
@@ -375,7 +375,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
     _lastBuiltShorts = List<YoutubeVideo>.from(_shortsVideos);
     _notifyFeedChanged();
 
-    // تسجيل الظهور
+    // طھط³ط¬ظٹظ„ ط§ظ„ط¸ظ‡ظˆط±
     for (final v in rawVideos.take(10)) {
       UserInterestService.trackExposure(
         channelId: v.channelId,
@@ -385,19 +385,19 @@ class _ChannelsScreenState extends State<ChannelsScreen>
     unawaited(UserInterestService.saveExposures());
   }
 
-// ✅ فرض التنوع في العرض
+// âœ… ظپط±ط¶ ط§ظ„طھظ†ظˆط¹ ظپظٹ ط§ظ„ط¹ط±ط¶
   List<YoutubeVideo> _enforceChannelDiversityInDisplay(
       List<YoutubeVideo> videos) {
     if (videos.length <= 4) return videos;
 
-    // حساب حد كل قناة بناءً على عدد القنوات
+    // ط­ط³ط§ط¨ ط­ط¯ ظƒظ„ ظ‚ظ†ط§ط© ط¨ظ†ط§ط،ظ‹ ط¹ظ„ظ‰ ط¹ط¯ط¯ ط§ظ„ظ‚ظ†ظˆط§طھ
     final channelCount =
         videos.map((v) => v.channelId.isNotEmpty ? v.channelId : v.channelTitle)
             .toSet()
             .length;
 
     final maxPerChannel = max(2, (videos.length / max(1, channelCount)).ceil());
-    final effectiveMax = min(maxPerChannel, 3); // لا تتجاوز 3 لأي قناة
+    final effectiveMax = min(maxPerChannel, 3); // ظ„ط§ طھطھط¬ط§ظˆط² 3 ظ„ط£ظٹ ظ‚ظ†ط§ط©
 
     final counts = <String, int>{};
     final result = <YoutubeVideo>[];
@@ -415,13 +415,13 @@ class _ChannelsScreenState extends State<ChannelsScreen>
       }
     }
 
-    // أضف المؤجلة في نهاية القائمة
+    // ط£ط¶ظپ ط§ظ„ظ…ط¤ط¬ظ„ط© ظپظٹ ظ†ظ‡ط§ظٹط© ط§ظ„ظ‚ط§ط¦ظ…ط©
     result.addAll(deferred);
 
     return result;
   }
 
-  /// ✅ يمنع ظهور فيديوهين متتاليين من نفس القناة
+  /// âœ… ظٹظ…ظ†ط¹ ط¸ظ‡ظˆط± ظپظٹط¯ظٹظˆظ‡ظٹظ† ظ…طھطھط§ظ„ظٹظٹظ† ظ…ظ† ظ†ظپط³ ط§ظ„ظ‚ظ†ط§ط©
   List<YoutubeVideo> _preventConsecutiveSameChannel(List<YoutubeVideo> videos) {
     if (videos.length <= 2) return videos;
 
@@ -439,7 +439,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
       if (currCh == prevCh) {
         skipped.add(videos[i]);
       } else {
-        // قبل الإضافة، حاول إدخال واحد من المتخطين
+        // ظ‚ط¨ظ„ ط§ظ„ط¥ط¶ط§ظپط©طŒ ط­ط§ظˆظ„ ط¥ط¯ط®ط§ظ„ ظˆط§ط­ط¯ ظ…ظ† ط§ظ„ظ…طھط®ط·ظٹظ†
         if (skipped.isNotEmpty) {
           final insertable = skipped.indexWhere((s) {
             final sCh = s.channelId.isNotEmpty ? s.channelId : s.channelTitle;
@@ -454,9 +454,9 @@ class _ChannelsScreenState extends State<ChannelsScreen>
       }
     }
 
-    // أضف المتخطين في النهاية مع توزيع
+    // ط£ط¶ظپ ط§ظ„ظ…طھط®ط·ظٹظ† ظپظٹ ط§ظ„ظ†ظ‡ط§ظٹط© ظ…ط¹ طھظˆط²ظٹط¹
     for (final s in skipped) {
-      // ابحث عن مكان مناسب
+      // ط§ط¨ط­ط« ط¹ظ† ظ…ظƒط§ظ† ظ…ظ†ط§ط³ط¨
       bool inserted = false;
       final sCh = s.channelId.isNotEmpty ? s.channelId : s.channelTitle;
 
@@ -508,13 +508,13 @@ class _ChannelsScreenState extends State<ChannelsScreen>
       };
 
       final terms = [
-        '', 'محاضرة', 'درس', 'خطبة', 'تفسير', 'فتوى',
-        'شرح', 'فقه', 'حديث', 'قرآن', 'دعاء', 'موعظة',
+        '', 'ظ…ط­ط§ط¶ط±ط©', 'ط¯ط±ط³', 'ط®ط·ط¨ط©', 'طھظپط³ظٹط±', 'ظپطھظˆظ‰',
+        'ط´ط±ط­', 'ظپظ‚ظ‡', 'ط­ط¯ظٹط«', 'ظ‚ط±ط¢ظ†', 'ط¯ط¹ط§ط،', 'ظ…ظˆط¹ط¸ط©',
       ];
 
       final baseIndex = _loadAttempts % terms.length;
 
-      // ✅ تحميل متوازي بدفعات
+      // âœ… طھط­ظ…ظٹظ„ ظ…طھظˆط§ط²ظٹ ط¨ط¯ظپط¹ط§طھ
       final candidates = <Map<String, dynamic>>[];
       for (final scholar in shuffled) {
         final identity = _extractYoutubeChannelIdentity(scholar);
@@ -573,7 +573,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
         }
       }));
 
-      // ✅ ترتيب مع تنويع
+      // âœ… طھط±طھظٹط¨ ظ…ط¹ طھظ†ظˆظٹط¹
       nextRegular.sort((a, b) {
         final aScore = ChannelUsageService.getPriorityScore(
           a.channelId.isNotEmpty ? a.channelId : a.channelTitle,
@@ -587,7 +587,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
         return b.publishedAt.compareTo(a.publishedAt);
       });
 
-      // ✅ حد لكل قناة
+      // âœ… ط­ط¯ ظ„ظƒظ„ ظ‚ظ†ط§ط©
       _prefetchedRegularVideos = _limitPerChannel(
         nextRegular,
         maxPerChannel: 2,
@@ -597,7 +597,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
         maxPerChannel: 2,
       );
     } catch (e) {
-      debugPrint('❌ _prefetchNextBatch error: $e');
+      debugPrint('â‌Œ _prefetchNextBatch error: $e');
     } finally {
       _prefetchingNextBatch = false;
     }
@@ -606,14 +606,14 @@ class _ChannelsScreenState extends State<ChannelsScreen>
   Future<void> _consumePrefetchedBatch() async {
     if (_loadingMore) return;
 
-    // إذا الـ pool لديه المزيد، اعرضه أولاً
+    // ط¥ط°ط§ ط§ظ„ظ€ pool ظ„ط¯ظٹظ‡ ط§ظ„ظ…ط²ظٹط¯طŒ ط§ط¹ط±ط¶ظ‡ ط£ظˆظ„ط§ظ‹
     if (_allVideos.length < _videoPool.length) {
       _setDisplayedFeedFromPool(reset: false);
       unawaited(_prefetchNextBatch());
       return;
     }
 
-    // إذا لا يوجد prefetched، حمّل
+    // ط¥ط°ط§ ظ„ط§ ظٹظˆط¬ط¯ prefetchedطŒ ط­ظ…ظ‘ظ„
     if (_prefetchedRegularVideos.isEmpty &&
         _prefetchedShortsVideos.isEmpty) {
       await _loadMoreVideos();
@@ -629,7 +629,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
       _prefetchedRegularVideos = [];
       _prefetchedShortsVideos = [];
 
-      // ✅ إزالة مكررات مع الموجود
+      // âœ… ط¥ط²ط§ظ„ط© ظ…ظƒط±ط±ط§طھ ظ…ط¹ ط§ظ„ظ…ظˆط¬ظˆط¯
       final existingIds = {
         ..._loadedVideoIds,
         ..._allVideos.map((v) => v.id),
@@ -644,13 +644,13 @@ class _ChannelsScreenState extends State<ChannelsScreen>
           .toList();
 
       if (filteredRegular.isEmpty && filteredShorts.isEmpty) {
-        // لا يوجد جديد، اجلب المزيد
+        // ظ„ط§ ظٹظˆط¬ط¯ ط¬ط¯ظٹط¯طŒ ط§ط¬ظ„ط¨ ط§ظ„ظ…ط²ظٹط¯
         setState(() => _loadingMore = false);
         await _loadMoreVideos();
         return;
       }
 
-      // ✅ تنويع قبل الإضافة للـ pool
+      // âœ… طھظ†ظˆظٹط¹ ظ‚ط¨ظ„ ط§ظ„ط¥ط¶ط§ظپط© ظ„ظ„ظ€ pool
       final diversifiedRegular = _diversifyBeforeAdding(
         existing: _videoPool,
         newVideos: filteredRegular,
@@ -746,9 +746,9 @@ class _ChannelsScreenState extends State<ChannelsScreen>
     );
   }
 
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // Helpers
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   bool _sameVideoIds(List<YoutubeVideo> a, List<YoutubeVideo> b) {
     if (identical(a, b)) return true;
     if (a.length != b.length) return false;
@@ -760,7 +760,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
   }
 
   void _notifyFeedChanged() {
-    // ✅ أبطل الـ cache عند التغيير
+    // âœ… ط£ط¨ط·ظ„ ط§ظ„ظ€ cache ط¹ظ†ط¯ ط§ظ„طھط؛ظٹظٹط±
     _cachedFeedVersion = -1;
     _feedVersion.value++;
   }
@@ -774,17 +774,17 @@ class _ChannelsScreenState extends State<ChannelsScreen>
       return;
     }
 
-    // ✅ تأخير أطول لتجنب التعليق أثناء التمرير
+    // âœ… طھط£ط®ظٹط± ط£ط·ظˆظ„ ظ„طھط¬ظ†ط¨ ط§ظ„طھط¹ظ„ظٹظ‚ ط£ط«ظ†ط§ط، ط§ظ„طھظ…ط±ظٹط±
     final delay = immediate
         ? const Duration(milliseconds: 100)
         : const Duration(milliseconds: 800);
 
     _feedRebuildDebounce = Timer(delay, () {
       if (!mounted) return;
-      // ✅ تحقق أن المستخدم لا يتمرر
+      // âœ… طھط­ظ‚ظ‚ ط£ظ† ط§ظ„ظ…ط³طھط®ط¯ظ… ظ„ط§ ظٹطھظ…ط±ط±
       if (_feedScrollController.hasClients &&
           _feedScrollController.position.isScrollingNotifier.value) {
-        // أجّل إذا كان يتمرر
+        // ط£ط¬ظ‘ظ„ ط¥ط°ط§ ظƒط§ظ† ظٹطھظ…ط±ط±
         _scheduleRebuildFeed(immediate: false);
         return;
       }
@@ -795,7 +795,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
   Future<void> _applyBuiltFeed() async {
     if (_videoPool.isEmpty && _shortsPool.isEmpty) return;
 
-    // ✅ بناء الفيد في isolate منفصل بدون تعليق
+    // âœ… ط¨ظ†ط§ط، ط§ظ„ظپظٹط¯ ظپظٹ isolate ظ…ظ†ظپطµظ„ ط¨ط¯ظˆظ† طھط¹ظ„ظٹظ‚
     final feed = await compute(_buildFeedInBackground, {
       'videos': _videoPool.map((v) => v.id).toList(),
       'shorts': _shortsPool.map((v) => v.id).toList(),
@@ -847,7 +847,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
       ..clear()
       ..addAll(newShorts);
 
-    // ✅ تحديث في الـ next frame لتجنب التعليق
+    // âœ… طھط­ط¯ظٹط« ظپظٹ ط§ظ„ظ€ next frame ظ„طھط¬ظ†ط¨ ط§ظ„طھط¹ظ„ظٹظ‚
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
       setState(() {
@@ -866,7 +866,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
     ));
   }
 
-// ✅ دالة مساعدة للـ compute (يجب أن تكون top-level)
+// âœ… ط¯ط§ظ„ط© ظ…ط³ط§ط¹ط¯ط© ظ„ظ„ظ€ compute (ظٹط¬ط¨ ط£ظ† طھظƒظˆظ† top-level)
   static Map<String, dynamic> _buildFeedInBackground(
       Map<String, dynamic> _) {
     return {};
@@ -874,14 +874,14 @@ class _ChannelsScreenState extends State<ChannelsScreen>
 
   List<YoutubeVideo> _limitPerChannel(
       List<YoutubeVideo> videos, {
-        int maxPerChannel = 2, // ✅ كان 3 → 2
+        int maxPerChannel = 2, // âœ… ظƒط§ظ† 3 â†’ 2
       }) {
     final counts = <String, int>{};
     final seen = <String>{};
     final result = <YoutubeVideo>[];
 
     for (final video in videos) {
-      // ✅ إزالة المكررات
+      // âœ… ط¥ط²ط§ظ„ط© ط§ظ„ظ…ظƒط±ط±ط§طھ
       if (!seen.add(video.id)) continue;
 
       final channelKey =
@@ -934,15 +934,15 @@ class _ChannelsScreenState extends State<ChannelsScreen>
     return (scholar['name']?.toString() ?? '', null);
   }
 
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // Fetch: first paint / progressive / background
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Future<void> _fetchFirstPaintVideos(List<Map<String, dynamic>> scholars) async {
     final allVids = <YoutubeVideo>[];
     final shorts = <YoutubeVideo>[];
     final seenIds = <String>{};
 
-    // ✅ ترتيب حسب Usage Score
+    // âœ… طھط±طھظٹط¨ ط­ط³ط¨ Usage Score
     final prioritized = List<Map<String, dynamic>>.from(scholars)
       ..sort((a, b) {
         final aChannel = _extractYoutubeChannelIdentity(a);
@@ -952,10 +952,10 @@ class _ChannelsScreenState extends State<ChannelsScreen>
         return bScore.compareTo(aScore);
       });
 
-    // ✅ أخذ أعلى 3 قنوات فقط للسرعة القصوى
+    // âœ… ط£ط®ط° ط£ط¹ظ„ظ‰ 3 ظ‚ظ†ظˆط§طھ ظپظ‚ط· ظ„ظ„ط³ط±ط¹ط© ط§ظ„ظ‚طµظˆظ‰
     final topFew = prioritized.take(3).toList();
 
-    // ✅ تحميل متوازي بدل تسلسلي
+    // âœ… طھط­ظ…ظٹظ„ ظ…طھظˆط§ط²ظٹ ط¨ط¯ظ„ طھط³ظ„ط³ظ„ظٹ
     await Future.wait(topFew.map((scholar) async {
       final platforms = scholar['platforms'] as List<dynamic>? ?? [];
       for (final p in platforms) {
@@ -990,13 +990,13 @@ class _ChannelsScreenState extends State<ChannelsScreen>
     allVids.sort((a, b) => b.publishedAt.compareTo(a.publishedAt));
     shorts.sort((a, b) => b.publishedAt.compareTo(a.publishedAt));
 
-    // ✅ حد 2 فيديو لكل قناة
+    // âœ… ط­ط¯ 2 ظپظٹط¯ظٹظˆ ظ„ظƒظ„ ظ‚ظ†ط§ط©
     final limitedRegular = _limitPerChannel(allVids, maxPerChannel: 2);
     final limitedShorts = _limitPerChannel(shorts, maxPerChannel: 2);
 
     _updatePools(videos: limitedRegular, shorts: limitedShorts, ids: seenIds);
 
-    // ✅ استخدم buildFastFeed بدل buildSmartFeed للسرعة
+    // âœ… ط§ط³طھط®ط¯ظ… buildFastFeed ط¨ط¯ظ„ buildSmartFeed ظ„ظ„ط³ط±ط¹ط©
     final feed = await ChannelsFeedRecommenderService.buildFastFeed(
       pool: List.from(_videoPool),
       shortsPool: List.from(_shortsPool),
@@ -1018,7 +1018,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
 
     _notifyFeedChanged();
 
-    // ✅ precache في الخلفية
+    // âœ… precache ظپظٹ ط§ظ„ط®ظ„ظپظٹط©
     unawaited(_precacheInitialFeedImages(
       videos: feed.videos,
       shorts: feed.shorts,
@@ -1026,7 +1026,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
 
     unawaited(_prefetchNextBatch());
 
-    // ✅ Track
+    // âœ… Track
     unawaited(ChannelsFeedRecommenderService.trackTopFeedExposure(
       feed.videos.take(7).toList(),
     ));
@@ -1069,7 +1069,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
         return bScore.compareTo(aScore);
       });
 
-      // ✅ دفعات أكبر = طلبات شبكة أقل
+      // âœ… ط¯ظپط¹ط§طھ ط£ظƒط¨ط± = ط·ظ„ط¨ط§طھ ط´ط¨ظƒط© ط£ظ‚ظ„
       for (int i = 0; i < shuffled.length; i += 4) {
         final batch = shuffled.skip(i).take(4).toList();
 
@@ -1083,7 +1083,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
                   channelUrl: pm['url'] ?? '',
                   handle: pm['handle'],
                   channelId: pm['channelId']?.toString(),
-                  maxResults: 10, // ✅ كان 15 → 10
+                  maxResults: 10, // âœ… ظƒط§ظ† 15 â†’ 10
                 );
 
                 for (final v in vids) {
@@ -1102,7 +1102,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
           }
         }));
 
-        // ✅ ترتيب وتحديث كل 12 قناة بدل 9
+        // âœ… طھط±طھظٹط¨ ظˆطھط­ط¯ظٹط« ظƒظ„ 12 ظ‚ظ†ط§ط© ط¨ط¯ظ„ 9
         if (i > 0 && i % 12 == 0) {
           allVids.sort((a, b) => b.publishedAt.compareTo(a.publishedAt));
           shorts.sort((a, b) => b.publishedAt.compareTo(a.publishedAt));
@@ -1116,14 +1116,14 @@ class _ChannelsScreenState extends State<ChannelsScreen>
             ids: seenIds,
           );
 
-          // ✅ لا تحدّث إذا المستخدم يتمرر
+          // âœ… ظ„ط§ طھط­ط¯ظ‘ط« ط¥ط°ط§ ط§ظ„ظ…ط³طھط®ط¯ظ… ظٹطھظ…ط±ط±
           if (i > 0 && i % 12 == 0 && !_suspendProgressiveUpdates) {
             _scheduleRebuildFeed();
           }
 
         }
 
-        // ✅ تأخير أقل
+        // âœ… طھط£ط®ظٹط± ط£ظ‚ظ„
         await Future.delayed(const Duration(milliseconds: 50));
       }
 
@@ -1233,7 +1233,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
         }
       }
     } catch (e) {
-      debugPrint('❌ Background fetch error: $e');
+      debugPrint('â‌Œ Background fetch error: $e');
     }
   }
 
@@ -1294,9 +1294,9 @@ class _ChannelsScreenState extends State<ChannelsScreen>
     return (allVids, shorts, seenIds);
   }
 
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // Refresh / Load more
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Future<void> _refreshFeed() async {
     if (_refreshInProgress) return;
     _refreshInProgress = true;
@@ -1349,7 +1349,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
         minSame: 4,
       );
 
-      // ✅ لا تحدّث إذا التغيير طفيف
+      // âœ… ظ„ط§ طھط­ط¯ظ‘ط« ط¥ط°ط§ ط§ظ„طھط؛ظٹظٹط± ط·ظپظٹظپ
       if (similarMainFeed &&
           similarShortsFeed &&
           _showingRecent == built.showingRecent) {
@@ -1371,7 +1371,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
           ...built.shorts.map((e) => e.id),
         });
 
-      // ✅ تحديث في الـ next frame
+      // âœ… طھط­ط¯ظٹط« ظپظٹ ط§ظ„ظ€ next frame
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (!mounted) return;
         setState(() {
@@ -1401,7 +1401,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
         showingRecent: built.showingRecent,
       ));
     } catch (e) {
-      debugPrint('❌ refreshFeed error: $e');
+      debugPrint('â‌Œ refreshFeed error: $e');
     } finally {
       _refreshInProgress = false;
     }
@@ -1420,31 +1420,31 @@ class _ChannelsScreenState extends State<ChannelsScreen>
 
     final ratio = cur / max;
 
-    // ✅ Prefetch مبكر جداً عند 50%
+    // âœ… Prefetch ظ…ط¨ظƒط± ط¬ط¯ط§ظ‹ ط¹ظ†ط¯ 50%
     if (!_prefetchingNextBatch &&
         _prefetchedRegularVideos.isEmpty &&
         ratio >= 0.50) {
       unawaited(_prefetchNextBatch());
     }
 
-    // ✅ تحميل تلقائي عند 75% بدون ضغط
+    // âœ… طھط­ظ…ظٹظ„ طھظ„ظ‚ط§ط¦ظٹ ط¹ظ†ط¯ 75% ط¨ط¯ظˆظ† ط¶ط؛ط·
     if (!_loadingMore && _hasMoreVideos && ratio >= 0.75) {
       unawaited(_autoLoadMore());
     }
   }
 
-// ✅ تحميل تلقائي حقيقي
+// âœ… طھط­ظ…ظٹظ„ طھظ„ظ‚ط§ط¦ظٹ ط­ظ‚ظٹظ‚ظٹ
   Future<void> _autoLoadMore() async {
     if (_loadingMore || !_hasMoreVideos) return;
 
-    // أولاً استهلك ما تم جلبه مسبقاً
+    // ط£ظˆظ„ط§ظ‹ ط§ط³طھظ‡ظ„ظƒ ظ…ط§ طھظ… ط¬ظ„ط¨ظ‡ ظ…ط³ط¨ظ‚ط§ظ‹
     if (_prefetchedRegularVideos.isNotEmpty ||
         _prefetchedShortsVideos.isNotEmpty) {
       await _consumePrefetchedBatch();
       return;
     }
 
-    // إذا لا يوجد prefetch، حمّل مباشرة
+    // ط¥ط°ط§ ظ„ط§ ظٹظˆط¬ط¯ prefetchطŒ ط­ظ…ظ‘ظ„ ظ…ط¨ط§ط´ط±ط©
     await _loadMoreVideos();
   }
 
@@ -1467,10 +1467,10 @@ class _ChannelsScreenState extends State<ChannelsScreen>
         ..._allVideos.map((v) => v.id),
       };
 
-      // ✅ اختار قنوات متنوعة ذكياً
+      // âœ… ط§ط®طھط§ط± ظ‚ظ†ظˆط§طھ ظ…طھظ†ظˆط¹ط© ط°ظƒظٹط§ظ‹
       final selectedScholars = _selectDiverseScholars(count: 6);
 
-      // ✅ تحميل متوازي
+      // âœ… طھط­ظ…ظٹظ„ ظ…طھظˆط§ط²ظٹ
       await Future.wait(
         selectedScholars.asMap().entries.map((entry) async {
           final i = entry.key;
@@ -1483,8 +1483,8 @@ class _ChannelsScreenState extends State<ChannelsScreen>
 
             try {
               final terms = [
-                '', 'محاضرة', 'درس', 'تفسير', 'فتوى',
-                'شرح', 'حديث', 'قرآن', 'موعظة', 'سيرة',
+                '', 'ظ…ط­ط§ط¶ط±ط©', 'ط¯ط±ط³', 'طھظپط³ظٹط±', 'ظپطھظˆظ‰',
+                'ط´ط±ط­', 'ط­ط¯ظٹط«', 'ظ‚ط±ط¢ظ†', 'ظ…ظˆط¹ط¸ط©', 'ط³ظٹط±ط©',
               ];
               final term = terms[(_loadAttempts * 2 + i) % terms.length];
 
@@ -1534,7 +1534,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
 
       _loadAttempts = 0;
 
-      // ✅ تنويع قبل الإضافة
+      // âœ… طھظ†ظˆظٹط¹ ظ‚ط¨ظ„ ط§ظ„ط¥ط¶ط§ظپط©
       final diversified = _diversifyBeforeAdding(
         existing: _videoPool,
         newVideos: newRegular,
@@ -1560,22 +1560,22 @@ class _ChannelsScreenState extends State<ChannelsScreen>
         showingRecent: _showingRecent,
       ));
     } catch (e) {
-      debugPrint('❌ _loadMoreVideos error: $e');
+      debugPrint('â‌Œ _loadMoreVideos error: $e');
       _loadAttempts++;
     } finally {
       if (mounted) setState(() => _loadingMore = false);
     }
   }
 
-  // ✅ اختيار قنوات متنوعة ذكياً
+  // âœ… ط§ط®طھظٹط§ط± ظ‚ظ†ظˆط§طھ ظ…طھظ†ظˆط¹ط© ط°ظƒظٹط§ظ‹
   List<Map<String, dynamic>> _selectDiverseScholars({required int count}) {
     if (_scholars.isEmpty) return [];
 
-    // ترتيب عشوائي مع أولوية للاستخدام
+    // طھط±طھظٹط¨ ط¹ط´ظˆط§ط¦ظٹ ظ…ط¹ ط£ظˆظ„ظˆظٹط© ظ„ظ„ط§ط³طھط®ط¯ط§ظ…
     final shuffled = List<Map<String, dynamic>>.from(_scholars)
       ..shuffle(Random());
 
-    // فصل القنوات حسب الاستخدام
+    // ظپطµظ„ ط§ظ„ظ‚ظ†ظˆط§طھ ط­ط³ط¨ ط§ظ„ط§ط³طھط®ط¯ط§ظ…
     final highUsage = <Map<String, dynamic>>[];
     final mediumUsage = <Map<String, dynamic>>[];
     final lowUsage = <Map<String, dynamic>>[];
@@ -1593,8 +1593,8 @@ class _ChannelsScreenState extends State<ChannelsScreen>
       }
     }
 
-    // ✅ توزيع: 30% عالي + 40% متوسط + 30% منخفض
-    // يضمن التنوع ويمنع السيطرة
+    // âœ… طھظˆط²ظٹط¹: 30% ط¹ط§ظ„ظٹ + 40% ظ…طھظˆط³ط· + 30% ظ…ظ†ط®ظپط¶
+    // ظٹط¶ظ…ظ† ط§ظ„طھظ†ظˆط¹ ظˆظٹظ…ظ†ط¹ ط§ظ„ط³ظٹط·ط±ط©
     final result = <Map<String, dynamic>>[];
 
     final highCount = max(1, (count * 0.30).round());
@@ -1605,7 +1605,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
     result.addAll(mediumUsage.take(medCount));
     result.addAll(lowUsage.take(max(1, lowCount)));
 
-    // أكمل إذا لم يكتمل العدد
+    // ط£ظƒظ…ظ„ ط¥ط°ط§ ظ„ظ… ظٹظƒطھظ…ظ„ ط§ظ„ط¹ط¯ط¯
     if (result.length < count) {
       final remaining = [...highUsage, ...mediumUsage, ...lowUsage]
           .where((s) => !result.contains(s))
@@ -1613,7 +1613,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
       result.addAll(remaining);
     }
 
-    // ✅ أزل القنوات المسيطرة من آخر عرض
+    // âœ… ط£ط²ظ„ ط§ظ„ظ‚ظ†ظˆط§طھ ط§ظ„ظ…ط³ظٹط·ط±ط© ظ…ظ† ط¢ط®ط± ط¹ط±ط¶
     final recentChannels = _allVideos
         .take(6)
         .map((v) => v.channelId.isNotEmpty ? v.channelId : v.channelTitle)
@@ -1624,39 +1624,39 @@ class _ChannelsScreenState extends State<ChannelsScreen>
       final bId = _extractYoutubeChannelIdentity(b).$1;
       final aRecent = recentChannels.contains(aId) ? 1 : 0;
       final bRecent = recentChannels.contains(bId) ? 1 : 0;
-      return aRecent.compareTo(bRecent); // الأقل ظهوراً أولاً
+      return aRecent.compareTo(bRecent); // ط§ظ„ط£ظ‚ظ„ ط¸ظ‡ظˆط±ط§ظ‹ ط£ظˆظ„ط§ظ‹
     });
 
     return result.take(count).toList();
   }
 
-// ✅ تنويع الفيديوهات الجديدة مع الموجودة
+// âœ… طھظ†ظˆظٹط¹ ط§ظ„ظپظٹط¯ظٹظˆظ‡ط§طھ ط§ظ„ط¬ط¯ظٹط¯ط© ظ…ط¹ ط§ظ„ظ…ظˆط¬ظˆط¯ط©
   List<YoutubeVideo> _diversifyBeforeAdding({
     required List<YoutubeVideo> existing,
     required List<YoutubeVideo> newVideos,
   }) {
     if (newVideos.isEmpty) return [];
 
-    // حساب عدد الفيديوهات لكل قناة في الـ pool الحالي
+    // ط­ط³ط§ط¨ ط¹ط¯ط¯ ط§ظ„ظپظٹط¯ظٹظˆظ‡ط§طھ ظ„ظƒظ„ ظ‚ظ†ط§ط© ظپظٹ ط§ظ„ظ€ pool ط§ظ„ط­ط§ظ„ظٹ
     final channelCounts = <String, int>{};
     for (final v in existing) {
       final ch = v.channelId.isNotEmpty ? v.channelId : v.channelTitle;
       channelCounts[ch] = (channelCounts[ch] ?? 0) + 1;
     }
 
-    // ✅ الحد المسموح به حسب حجم الـ pool
+    // âœ… ط§ظ„ط­ط¯ ط§ظ„ظ…ط³ظ…ظˆط­ ط¨ظ‡ ط­ط³ط¨ ط­ط¬ظ… ط§ظ„ظ€ pool
     final poolSize = max(1, existing.length);
     final channelCount = max(1, channelCounts.keys.length);
     final idealMax = max(3, (poolSize / channelCount).ceil());
-    final hardMax = min(idealMax, 4); // حد مطلق 4
+    final hardMax = min(idealMax, 4); // ط­ط¯ ظ…ط·ظ„ظ‚ 4
 
-    // أولوية للقنوات الأقل تمثيلاً
+    // ط£ظˆظ„ظˆظٹط© ظ„ظ„ظ‚ظ†ظˆط§طھ ط§ظ„ط£ظ‚ظ„ طھظ…ط«ظٹظ„ط§ظ‹
     final sorted = List<YoutubeVideo>.from(newVideos)..sort((a, b) {
       final aCh = a.channelId.isNotEmpty ? a.channelId : a.channelTitle;
       final bCh = b.channelId.isNotEmpty ? b.channelId : b.channelTitle;
       final aCount = channelCounts[aCh] ?? 0;
       final bCount = channelCounts[bCh] ?? 0;
-      return aCount.compareTo(bCount); // الأقل أولاً
+      return aCount.compareTo(bCount); // ط§ظ„ط£ظ‚ظ„ ط£ظˆظ„ط§ظ‹
     });
 
     final result = <YoutubeVideo>[];
@@ -1673,7 +1673,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
       }
     }
 
-    // إذا لم يضف شيء (كل القنوات فاقت الحد)، أضف أقلها
+    // ط¥ط°ط§ ظ„ظ… ظٹط¶ظپ ط´ظٹط، (ظƒظ„ ط§ظ„ظ‚ظ†ظˆط§طھ ظپط§ظ‚طھ ط§ظ„ط­ط¯)طŒ ط£ط¶ظپ ط£ظ‚ظ„ظ‡ط§
     if (result.isEmpty && sorted.isNotEmpty) {
       result.add(sorted.first);
     }
@@ -1739,9 +1739,9 @@ class _ChannelsScreenState extends State<ChannelsScreen>
     }
   }
 
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // Search
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   void _onSearchChanged(String value) {
     if (!mounted) return;
     setState(() => _searchQuery = value);
@@ -1807,9 +1807,9 @@ class _ChannelsScreenState extends State<ChannelsScreen>
     }
   }
 
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // Resume watching
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   List<YoutubeVideo> _buildResumeWatchingVideos() {
     final resumeIds = VideoHistoryService.getResumeVideoIds(limit: 12);
     if (resumeIds.isEmpty) return [];
@@ -1840,11 +1840,11 @@ class _ChannelsScreenState extends State<ChannelsScreen>
     return items;
   }
 
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // Navigation
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Future<void> _openVideoPlayer(YoutubeVideo video) async {
-    // ✅ تسجيل الضغط في نظام الاهتمامات
+    // âœ… طھط³ط¬ظٹظ„ ط§ظ„ط¶ط؛ط· ظپظٹ ظ†ط¸ط§ظ… ط§ظ„ط§ظ‡طھظ…ط§ظ…ط§طھ
     unawaited(UserInterestService.trackVideoClick(
       videoId: video.id,
       channelId: video.channelId,
@@ -1905,9 +1905,9 @@ class _ChannelsScreenState extends State<ChannelsScreen>
     if (mounted && !_loadingVideos) setState(() {});
   }
 
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // Build
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
@@ -1972,9 +1972,9 @@ class _ChannelsScreenState extends State<ChannelsScreen>
     );
   }
 
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // Tabs
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Widget _buildYoutubeTab(ChannelsTheme t, double w) {
     if (_loadingVideos && _allVideos.isEmpty && _shortsVideos.isEmpty) {
       return _VideoShimmer(theme: t, w: w);
@@ -1992,10 +1992,10 @@ class _ChannelsScreenState extends State<ChannelsScreen>
     _searchQuery.isEmpty ? _buildResumeWatchingVideos() : <YoutubeVideo>[];
 
     if (videos.isEmpty && _shortsVideos.isEmpty) {
-      return _EmptyView(theme: t, w: w, title: 'لا توجد فيديوهات');
+      return _EmptyView(theme: t, w: w, title: 'ظ„ط§ طھظˆط¬ط¯ ظپظٹط¯ظٹظˆظ‡ط§طھ');
     }
 
-    // ✅ بناء قائمة مسطحة مرة واحدة
+    // âœ… ط¨ظ†ط§ط، ظ‚ط§ط¦ظ…ط© ظ…ط³ط·ط­ط© ظ…ط±ط© ظˆط§ط­ط¯ط©
     final flatItems = _buildFlatFeedList(videos, t, w);
 
     return RefreshIndicator(
@@ -2011,7 +2011,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
         cacheExtent: 800,
         slivers: [
 
-          // ═══ Header ═══
+          // â•گâ•گâ•گ Header â•گâ•گâ•گ
           SliverToBoxAdapter(
             child: _FeedHeader(
               theme: t,
@@ -2024,7 +2024,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
             ),
           ),
 
-          // ═══ Feed Items ═══
+          // â•گâ•گâ•گ Feed Items â•گâ•گâ•گ
           SliverList(
             delegate: SliverChildBuilderDelegate(
                   (context, index) {
@@ -2032,14 +2032,14 @@ class _ChannelsScreenState extends State<ChannelsScreen>
                 return flatItems[index];
               },
               childCount: flatItems.length,
-              // ✅ تقدير الارتفاع لتجنب الحسابات
+              // âœ… طھظ‚ط¯ظٹط± ط§ظ„ط§ط±طھظپط§ط¹ ظ„طھط¬ظ†ط¨ ط§ظ„ط­ط³ط§ط¨ط§طھ
               addAutomaticKeepAlives: false,
               addRepaintBoundaries: true,
               addSemanticIndexes: false,
             ),
           ),
 
-          // ═══ Footer ═══
+          // â•گâ•گâ•گ Footer â•گâ•گâ•گ
           SliverToBoxAdapter(
             child: _FeedFooter(
               isLoading: _loadingMore,
@@ -2063,21 +2063,21 @@ class _ChannelsScreenState extends State<ChannelsScreen>
     );
   }
 
-// ════════════════════════════════════════════════
-// ✅ بناء قائمة مسطحة - بدون نستد ودون إعادة بناء
-// ════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// âœ… ط¨ظ†ط§ط، ظ‚ط§ط¦ظ…ط© ظ…ط³ط·ط­ط© - ط¨ط¯ظˆظ† ظ†ط³طھط¯ ظˆط¯ظˆظ† ط¥ط¹ط§ط¯ط© ط¨ظ†ط§ط،
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   List<Widget> _buildFlatFeedList(
       List<YoutubeVideo> videos,
       ChannelsTheme t,
       double w,
       ) {
-    // ✅ استخدم الـ cache إذا لم يتغير الفيد
+    // âœ… ط§ط³طھط®ط¯ظ… ط§ظ„ظ€ cache ط¥ط°ط§ ظ„ظ… ظٹطھط؛ظٹط± ط§ظ„ظپظٹط¯
     if (_cachedFeedVersion == _feedVersion.value &&
         _cachedFeedItems.isNotEmpty) {
       return _cachedFeedItems;
     }
 
-    // إزالة المكررات
+    // ط¥ط²ط§ظ„ط© ط§ظ„ظ…ظƒط±ط±ط§طھ
     final seenIds = <String>{};
     final uniqueVideos = <YoutubeVideo>[];
     for (final v in videos) {
@@ -2154,7 +2154,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
       }
     }
 
-    // ✅ احفظ في الـ cache
+    // âœ… ط§ط­ظپط¸ ظپظٹ ط§ظ„ظ€ cache
     _cachedFeedItems = items;
     _cachedFeedVersion = _feedVersion.value;
 
@@ -2172,7 +2172,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
         .toList();
 
     if (list.isEmpty) {
-      return _EmptyView(theme: t, w: w, title: 'لا توجد حسابات');
+      return _EmptyView(theme: t, w: w, title: 'ظ„ط§ طھظˆط¬ط¯ ط­ط³ط§ط¨ط§طھ');
     }
 
     return ListView.separated(
@@ -2259,7 +2259,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
         SizedBox(height: w * 0.015),
         Expanded(
           child: list.isEmpty
-              ? _EmptyView(theme: t, w: w, title: 'لا توجد نتائج')
+              ? _EmptyView(theme: t, w: w, title: 'ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬')
               : ListView.separated(
             padding: EdgeInsets.symmetric(
               horizontal: w * 0.04,
@@ -2303,9 +2303,9 @@ class _ChannelsScreenState extends State<ChannelsScreen>
     );
   }
 
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // Feed items
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   List<Widget> _buildFeedItems(
       List<YoutubeVideo> videos,
       ChannelsTheme t,
@@ -2315,7 +2315,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
     int shortsIndex = 0;
     bool firstShortsShown = false;
 
-    // ✅ إزالة كل المكررات وضمان عدم التتابع
+    // âœ… ط¥ط²ط§ظ„ط© ظƒظ„ ط§ظ„ظ…ظƒط±ط±ط§طھ ظˆط¶ظ…ط§ظ† ط¹ط¯ظ… ط§ظ„طھطھط§ط¨ط¹
     final seenIds = <String>{};
     final cleanVideos = <YoutubeVideo>[];
     String lastChannelKey = '';
@@ -2325,17 +2325,17 @@ class _ChannelsScreenState extends State<ChannelsScreen>
 
       final ch = v.channelId.isNotEmpty ? v.channelId : v.channelTitle;
 
-      // ✅ إذا نفس القناة السابقة، أجّل
+      // âœ… ط¥ط°ط§ ظ†ظپط³ ط§ظ„ظ‚ظ†ط§ط© ط§ظ„ط³ط§ط¨ظ‚ط©طŒ ط£ط¬ظ‘ظ„
       if (ch == lastChannelKey && cleanVideos.length > 1) {
-        // ابحث عن مكان لاحق
-        continue; // سيتم إضافته لاحقاً عبر _preventConsecutiveSameChannel
+        // ط§ط¨ط­ط« ط¹ظ† ظ…ظƒط§ظ† ظ„ط§ط­ظ‚
+        continue; // ط³ظٹطھظ… ط¥ط¶ط§ظپطھظ‡ ظ„ط§ط­ظ‚ط§ظ‹ ط¹ط¨ط± _preventConsecutiveSameChannel
       }
 
       cleanVideos.add(v);
       lastChannelKey = ch;
     }
 
-    // ✅ شورتس نظيفة
+    // âœ… ط´ظˆط±طھط³ ظ†ط¸ظٹظپط©
     final seenShortIds = <String>{};
     final cleanShorts = <YoutubeVideo>[];
     for (final v in _shortsVideos) {
@@ -2403,9 +2403,9 @@ class _ChannelsScreenState extends State<ChannelsScreen>
 
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Widgets
-// ─────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 class _YTVideoCard extends StatelessWidget {
   final YoutubeVideo video;
@@ -2432,30 +2432,30 @@ class _YTVideoCard extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           onTap: onTap,
-          // ✅ بدون splash لأنه يسبب إعادة رسم
+          // âœ… ط¨ط¯ظˆظ† splash ظ„ط£ظ†ظ‡ ظٹط³ط¨ط¨ ط¥ط¹ط§ط¯ط© ط±ط³ظ…
           splashColor: Colors.transparent,
           highlightColor: theme.isDark
-              ? Colors.white.withOpacity(0.04)
-              : Colors.black.withOpacity(0.03),
+              ? Colors.white.withValues(alpha: 0.04)
+              : Colors.black.withValues(alpha: 0.03),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              // ═══ Thumbnail ═══
+              // â•گâ•گâ•گ Thumbnail â•گâ•گâ•گ
               SizedBox(
                 width: double.infinity,
                 height: thumbH,
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
-                    // ✅ Thumbnail محسّن
+                    // âœ… Thumbnail ظ…ط­ط³ظ‘ظ†
                     _VideoThumbnail(
                       url: video.thumbnail,
                       videoId: video.id,
                       theme: theme,
                     ),
 
-                    // ✅ مدة الفيديو
+                    // âœ… ظ…ط¯ط© ط§ظ„ظپظٹط¯ظٹظˆ
                     if (video.duration.isNotEmpty)
                       Positioned(
                         bottom: 8,
@@ -2466,7 +2466,7 @@ class _YTVideoCard extends StatelessWidget {
                 ),
               ),
 
-              // ═══ Info ═══
+              // â•گâ•گâ•گ Info â•گâ•گâ•گ
               Padding(
                 padding: EdgeInsets.fromLTRB(
                   w * 0.03, w * 0.025, w * 0.025, w * 0.03,
@@ -2536,7 +2536,7 @@ class _YTVideoCard extends StatelessWidget {
     if (video.channelTitle.isNotEmpty) parts.add(video.channelTitle);
 
     if (video.viewCount != '0' && video.viewCount.isNotEmpty) {
-      parts.add('${YoutubeService.formatViews(video.viewCount)} مشاهدة');
+      parts.add('${YoutubeService.formatViews(video.viewCount)} ظ…ط´ط§ظ‡ط¯ط©');
     }
 
     final progress = VideoHistoryService.getProgress(video.id);
@@ -2545,13 +2545,13 @@ class _YTVideoCard extends StatelessWidget {
     }
 
     parts.add(timeAgo(video.publishedAt));
-    return parts.join(' · ');
+    return parts.join(' آ· ');
   }
 }
 
-// ════════════════════════════════════════════════
-// ✅ Thumbnail منفصل - يُعاد استخدامه
-// ════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// âœ… Thumbnail ظ…ظ†ظپطµظ„ - ظٹظڈط¹ط§ط¯ ط§ط³طھط®ط¯ط§ظ…ظ‡
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _VideoThumbnail extends StatelessWidget {
   final String url;
   final String videoId;
@@ -2595,9 +2595,9 @@ class _VideoThumbnail extends StatelessWidget {
   }
 }
 
-// ════════════════════════════════════════════════
-// ✅ Duration Badge - const
-// ════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// âœ… Duration Badge - const
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _DurationBadge extends StatelessWidget {
   final String duration;
   final double w;
@@ -2609,7 +2609,7 @@ class _DurationBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.85),
+        color: Colors.black.withValues(alpha: 0.85),
         borderRadius: BorderRadius.circular(4),
       ),
       child: Text(
@@ -2624,9 +2624,9 @@ class _DurationBadge extends StatelessWidget {
   }
 }
 
-// ════════════════════════════════════════════════
-// ✅ Channel Avatar - const
-// ════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// âœ… Channel Avatar - const
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _ChannelAvatar extends StatelessWidget {
   final String channelTitle;
   final ChannelsTheme theme;
@@ -2650,7 +2650,7 @@ class _ChannelAvatar extends StatelessWidget {
       ),
       child: Center(
         child: Text(
-          channelTitle.isNotEmpty ? channelTitle[0] : '؟',
+          channelTitle.isNotEmpty ? channelTitle[0] : 'طں',
           style: GoogleFonts.cairo(
             fontSize: (w * 0.038).clamp(13.0, 16.0),
             fontWeight: FontWeight.w700,
@@ -2662,9 +2662,9 @@ class _ChannelAvatar extends StatelessWidget {
   }
 }
 
-// ════════════════════════════════════════════════
-// ✅ Feed Header - widget منفصل
-// ════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// âœ… Feed Header - widget ظ…ظ†ظپطµظ„
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _FeedHeader extends StatelessWidget {
   final ChannelsTheme theme;
   final double w;
@@ -2707,7 +2707,7 @@ class _FeedHeader extends StatelessWidget {
                 ),
                 SizedBox(width: w * 0.02),
                 Text(
-                  'جاري تحديث الفيديوهات...',
+                  'ط¬ط§ط±ظٹ طھط­ط¯ظٹط« ط§ظ„ظپظٹط¯ظٹظˆظ‡ط§طھ...',
                   style: GoogleFonts.cairo(
                     fontSize: (w * 0.028).clamp(10.0, 11.0),
                     color: theme.captionColor,
@@ -2736,9 +2736,9 @@ class _FeedHeader extends StatelessWidget {
   }
 }
 
-// ════════════════════════════════════════════════
-// ✅ Feed Footer - widget منفصل
-// ════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// âœ… Feed Footer - widget ظ…ظ†ظپطµظ„
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _FeedFooter extends StatelessWidget {
   final bool isLoading;
   final bool hasMore;
@@ -2766,16 +2766,16 @@ class _FeedFooter extends StatelessWidget {
       return _EndOfFeed(theme: theme, w: w, onRefresh: onRefresh);
     }
 
-    // ✅ Trigger التحميل التلقائي
+    // âœ… Trigger ط§ظ„طھط­ظ…ظٹظ„ ط§ظ„طھظ„ظ‚ط§ط¦ظٹ
     onLoadMore();
 
     return _LoadMoreIndicator(theme: theme, w: w);
   }
 }
 
-// ════════════════════════════════════════════════
-// _ShortsSection - محسّن بالكامل
-// ════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// _ShortsSection - ظ…ط­ط³ظ‘ظ† ط¨ط§ظ„ظƒط§ظ…ظ„
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _ShortsSection extends StatelessWidget {
   final List<YoutubeVideo> shorts;
   final ChannelsTheme theme;
@@ -2792,7 +2792,7 @@ class _ShortsSection extends StatelessWidget {
     required this.onVideoTap,
   });
 
-  // ✅ Gradient ثابت - يُحسب مرة واحدة فقط
+  // âœ… Gradient ط«ط§ط¨طھ - ظٹظڈط­ط³ط¨ ظ…ط±ط© ظˆط§ط­ط¯ط© ظپظ‚ط·
   static const _gradient = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
@@ -2815,7 +2815,7 @@ class _ShortsSection extends StatelessWidget {
     final hPad = w * 0.035;
     final gapW = w * 0.02;
 
-    // ✅ حساب الارتفاع مرة واحدة بدون AspectRatio
+    // âœ… ط­ط³ط§ط¨ ط§ظ„ط§ط±طھظپط§ط¹ ظ…ط±ط© ظˆط§ط­ط¯ط© ط¨ط¯ظˆظ† AspectRatio
     final cardW = (w - hPad * 2 - gapW) / 2;
     final cardH = cardW * 16 / 9;
 
@@ -2831,7 +2831,7 @@ class _ShortsSection extends StatelessWidget {
           Divider(height: 1, thickness: 0.5, color: dividerColor),
           SizedBox(height: w * 0.04),
 
-          // ═══ Header ═══
+          // â•گâ•گâ•گ Header â•گâ•گâ•گ
           Padding(
             padding: EdgeInsets.symmetric(horizontal: hPad),
             child: _ShortsSectionHeader(theme: theme, w: w),
@@ -2839,7 +2839,7 @@ class _ShortsSection extends StatelessWidget {
 
           SizedBox(height: w * 0.035),
 
-          // ═══ Cards ═══
+          // â•گâ•گâ•گ Cards â•گâ•گâ•گ
           Padding(
             padding: EdgeInsets.symmetric(horizontal: hPad),
             child: isGrid
@@ -2932,9 +2932,9 @@ class _ShortsSection extends StatelessWidget {
   }
 }
 
-// ════════════════════════════════════════════════
-// Header منفصل - يُعاد استخدامه
-// ════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// Header ظ…ظ†ظپطµظ„ - ظٹظڈط¹ط§ط¯ ط§ط³طھط®ط¯ط§ظ…ظ‡
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _ShortsSectionHeader extends StatelessWidget {
   final ChannelsTheme theme;
   final double w;
@@ -2986,9 +2986,9 @@ class _ShortsSectionHeader extends StatelessWidget {
   }
 }
 
-// ════════════════════════════════════════════════
-// _ShortCard - محسّن بالكامل
-// ════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// _ShortCard - ظ…ط­ط³ظ‘ظ† ط¨ط§ظ„ظƒط§ظ…ظ„
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _ShortCard extends StatelessWidget {
   final YoutubeVideo video;
   final ChannelsTheme theme;
@@ -3004,11 +3004,11 @@ class _ShortCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ✅ بدون LayoutBuilder - الحجم محسوب من الأب
+    // âœ… ط¨ط¯ظˆظ† LayoutBuilder - ط§ظ„ط­ط¬ظ… ظ…ط­ط³ظˆط¨ ظ…ظ† ط§ظ„ط£ط¨
     return RepaintBoundary(
       child: GestureDetector(
         onTap: () {
-          HapticFeedback.selectionClick(); // ✅ أخف من lightImpact
+          HapticFeedback.selectionClick(); // âœ… ط£ط®ظپ ظ…ظ† lightImpact
           onTap();
         },
         child: ClipRRect(
@@ -3016,13 +3016,13 @@ class _ShortCard extends StatelessWidget {
           child: Stack(
             fit: StackFit.expand,
             children: [
-              // ═══ Thumbnail ═══
+              // â•گâ•گâ•گ Thumbnail â•گâ•گâ•گ
               _ShortThumbnail(url: video.thumbnail, theme: theme),
 
-              // ═══ Gradient - ثابت من الأب ═══
+              // â•گâ•گâ•گ Gradient - ط«ط§ط¨طھ ظ…ظ† ط§ظ„ط£ط¨ â•گâ•گâ•گ
               DecoratedBox(decoration: gradient),
 
-              // ═══ New Badge ═══
+              // â•گâ•گâ•گ New Badge â•گâ•گâ•گ
               if (_isNew())
                 const Positioned(
                   top: 8,
@@ -3030,18 +3030,18 @@ class _ShortCard extends StatelessWidget {
                   child: _NewBadge(),
                 ),
 
-              // ═══ Menu Icon ═══
+              // â•گâ•گâ•گ Menu Icon â•گâ•گâ•گ
               Positioned(
                 top: 6,
                 right: 6,
                 child: Icon(
                   Icons.more_vert_rounded,
-                  color: Colors.white.withOpacity(0.9),
+                  color: Colors.white.withValues(alpha: 0.9),
                   size: 20,
                 ),
               ),
 
-              // ═══ Info ═══
+              // â•گâ•گâ•گ Info â•گâ•گâ•گ
               Positioned(
                 left: 8,
                 right: 8,
@@ -3059,9 +3059,9 @@ class _ShortCard extends StatelessWidget {
       DateTime.now().difference(video.publishedAt).inDays < 3;
 }
 
-// ════════════════════════════════════════════════
-// Thumbnail منفصل
-// ════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// Thumbnail ظ…ظ†ظپطµظ„
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _ShortThumbnail extends StatelessWidget {
   final String url;
   final ChannelsTheme theme;
@@ -3073,7 +3073,7 @@ class _ShortThumbnail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ✅ shortThumbnail المخصص بحجم ثابت
+    // âœ… shortThumbnail ط§ظ„ظ…ط®طµطµ ط¨ط­ط¬ظ… ط«ط§ط¨طھ
     return ImageCacheConfig.shortThumbnail(
       url: url,
       width: double.infinity,
@@ -3083,9 +3083,9 @@ class _ShortThumbnail extends StatelessWidget {
   }
 }
 
-// ════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 // New Badge - const
-// ════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _NewBadge extends StatelessWidget {
   const _NewBadge();
 
@@ -3111,9 +3111,9 @@ class _NewBadge extends StatelessWidget {
   }
 }
 
-// ════════════════════════════════════════════════
-// Short Card Info - منفصل
-// ════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// Short Card Info - ظ…ظ†ظپطµظ„
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _ShortCardInfo extends StatelessWidget {
   final YoutubeVideo video;
 
@@ -3143,7 +3143,7 @@ class _ShortCardInfo extends StatelessWidget {
         if (hasViews) ...[
           const SizedBox(height: 3),
           Text(
-            '${YoutubeService.formatViews(video.viewCount)} مشاهدة',
+            '${YoutubeService.formatViews(video.viewCount)} ظ…ط´ط§ظ‡ط¯ط©',
             style: const TextStyle(
               fontSize: 10,
               color: Color(0xCCFFFFFF),
@@ -3201,7 +3201,7 @@ class _Header extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'القنوات العلمية',
+                  'ط§ظ„ظ‚ظ†ظˆط§طھ ط§ظ„ط¹ظ„ظ…ظٹط©',
                   style: GoogleFonts.cairo(
                     fontSize: (w * 0.05).clamp(18.0, 26.0),
                     fontWeight: FontWeight.w800,
@@ -3211,7 +3211,7 @@ class _Header extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  '$count من العلماء والدعاة',
+                  '$count ظ…ظ† ط§ظ„ط¹ظ„ظ…ط§ط، ظˆط§ظ„ط¯ط¹ط§ط©',
                   style: GoogleFonts.cairo(
                     fontSize: (w * 0.028).clamp(10.0, 13.0),
                     color: theme.subtitleColor,
@@ -3300,7 +3300,7 @@ class _SearchBar extends StatelessWidget {
                     color: theme.textColor,
                   ),
                   decoration: InputDecoration(
-                    hintText: 'ابحث عن شيخ أو فيديو...',
+                    hintText: 'ط§ط¨ط­ط« ط¹ظ† ط´ظٹط® ط£ظˆ ظپظٹط¯ظٹظˆ...',
                     hintStyle: GoogleFonts.cairo(
                       fontSize: (w * 0.033).clamp(12.0, 15.0),
                       color: theme.searchHint,
@@ -3347,9 +3347,9 @@ class _TabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tabs = [
-      (Icons.play_circle_fill_rounded, 'يوتيوب', const Color(0xFFFF0000)),
-      (Icons.music_note_rounded, 'تيك توك', const Color(0xFFEE1D52)),
-      (Icons.people_alt_rounded, 'المشايخ', theme.primaryColor),
+      (Icons.play_circle_fill_rounded, 'ظٹظˆطھظٹظˆط¨', const Color(0xFFFF0000)),
+      (Icons.music_note_rounded, 'طھظٹظƒ طھظˆظƒ', const Color(0xFFEE1D52)),
+      (Icons.people_alt_rounded, 'ط§ظ„ظ…ط´ط§ظٹط®', theme.primaryColor),
     ];
 
     return Padding(
@@ -3367,7 +3367,7 @@ class _TabBar extends StatelessWidget {
             color: theme.cardBg,
             borderRadius: BorderRadius.circular(11),
             boxShadow: [
-              BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 6),
+              BoxShadow(color: Colors.black.withValues(alpha: 0.05), blurRadius: 6),
             ],
           ),
           indicatorSize: TabBarIndicatorSize.tab,
@@ -3506,7 +3506,7 @@ class _EmptyView extends StatelessWidget {
             Icon(
               Icons.search_off_rounded,
               size: (w * 0.12).clamp(40.0, 55.0),
-              color: theme.captionColor.withOpacity(0.3),
+              color: theme.captionColor.withValues(alpha: 0.3),
             ),
             SizedBox(height: w * 0.03),
             Text(
@@ -3570,11 +3570,11 @@ class _EndOfFeed extends StatelessWidget {
           Icon(
             Icons.check_circle_outline_rounded,
             size: (w * 0.07).clamp(24.0, 32.0),
-            color: theme.captionColor.withOpacity(0.4),
+            color: theme.captionColor.withValues(alpha: 0.4),
           ),
           SizedBox(height: w * 0.01),
           Text(
-            'تم عرض جميع الفيديوهات',
+            'طھظ… ط¹ط±ط¶ ط¬ظ…ظٹط¹ ط§ظ„ظپظٹط¯ظٹظˆظ‡ط§طھ',
             style: GoogleFonts.cairo(
               fontSize: (w * 0.03).clamp(11.0, 13.0),
               color: theme.captionColor,
@@ -3584,7 +3584,7 @@ class _EndOfFeed extends StatelessWidget {
           TextButton(
             onPressed: onRefresh,
             child: Text(
-              'تحديث',
+              'طھط­ط¯ظٹط«',
               style: GoogleFonts.cairo(
                 color: theme.primaryColor,
                 fontWeight: FontWeight.w600,
@@ -3700,11 +3700,11 @@ class _TiktokCard extends StatelessWidget {
                         vertical: 2,
                       ),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFEE1D52).withOpacity(0.1),
+                        color: const Color(0xFFEE1D52).withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(6),
                       ),
                       child: Text(
-                        '$subs متابع',
+                        '$subs ظ…طھط§ط¨ط¹',
                         style: GoogleFonts.cairo(
                           fontSize: (w * 0.024).clamp(8.0, 11.0),
                           fontWeight: FontWeight.w600,
@@ -3740,7 +3740,7 @@ class _TiktokCard extends StatelessWidget {
                     ),
                     SizedBox(width: w * 0.008),
                     Text(
-                      'فتح',
+                      'ظپطھط­',
                       style: GoogleFonts.cairo(
                         fontSize: (w * 0.026).clamp(9.0, 12.0),
                         fontWeight: FontWeight.w700,
@@ -3761,7 +3761,7 @@ class _TiktokCard extends StatelessWidget {
     color: theme.chipBg,
     child: Center(
       child: Text(
-        name.isNotEmpty ? name[0] : '؟',
+        name.isNotEmpty ? name[0] : 'طں',
         style: GoogleFonts.cairo(
           fontSize: (w * 0.055).clamp(18.0, 24.0),
           fontWeight: FontWeight.w700,
@@ -3901,7 +3901,7 @@ class _ScholarCard extends StatelessWidget {
                               : isTT
                               ? const Color(0xFFEE1D52)
                               : theme.primaryColor)
-                              .withOpacity(0.1),
+                              .withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Row(
@@ -3976,7 +3976,7 @@ class _ScholarCard extends StatelessWidget {
     ),
     child: Center(
       child: Text(
-        name.isNotEmpty ? name[0] : '؟',
+        name.isNotEmpty ? name[0] : 'طں',
         style: GoogleFonts.cairo(
           fontSize: (w * 0.055).clamp(18.0, 24.0),
           fontWeight: FontWeight.w700,
@@ -4014,13 +4014,13 @@ class _FeedModeBanner extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                 color: isRecent
-                    ? Colors.green.withOpacity(0.1)
-                    : Colors.orange.withOpacity(0.1),
+                    ? Colors.green.withValues(alpha: 0.1)
+                    : Colors.orange.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
                   color: isRecent
-                      ? Colors.green.withOpacity(0.3)
-                      : Colors.orange.withOpacity(0.3),
+                      ? Colors.green.withValues(alpha: 0.3)
+                      : Colors.orange.withValues(alpha: 0.3),
                 ),
               ),
               child: Row(
@@ -4036,7 +4036,7 @@ class _FeedModeBanner extends StatelessWidget {
                   SizedBox(width: w * 0.015),
                   Flexible(
                     child: Text(
-                      isRecent ? 'فيديوهات حديثة' : 'الأكثر مشاهدة',
+                      isRecent ? 'ظپظٹط¯ظٹظˆظ‡ط§طھ ط­ط¯ظٹط«ط©' : 'ط§ظ„ط£ظƒط«ط± ظ…ط´ط§ظ‡ط¯ط©',
                       style: GoogleFonts.cairo(
                         fontSize: (w * 0.03).clamp(11.0, 13.0),
                         fontWeight: FontWeight.w600,
@@ -4053,7 +4053,7 @@ class _FeedModeBanner extends StatelessWidget {
           if (watchedCount > 0) ...[
             SizedBox(width: w * 0.02),
             Text(
-              'شاهدت $watchedCount',
+              'ط´ط§ظ‡ط¯طھ $watchedCount',
               style: GoogleFonts.cairo(
                 fontSize: (w * 0.028).clamp(10.0, 12.0),
                 color: theme.captionColor,
@@ -4093,7 +4093,7 @@ class _ResumeWatchingSection extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'أكمل المشاهدة',
+            'ط£ظƒظ…ظ„ ط§ظ„ظ…ط´ط§ظ‡ط¯ط©',
             style: GoogleFonts.cairo(
               fontSize: (w * 0.04).clamp(14.0, 18.0),
               fontWeight: FontWeight.w800,
@@ -4148,7 +4148,7 @@ class _ResumeWatchingSection extends StatelessWidget {
                                       vertical: 2,
                                     ),
                                     decoration: BoxDecoration(
-                                      color: Colors.black.withOpacity(0.85),
+                                      color: Colors.black.withValues(alpha: 0.85),
                                       borderRadius: BorderRadius.circular(4),
                                     ),
                                     child: Text(
@@ -4191,7 +4191,7 @@ class _ResumeWatchingSection extends StatelessWidget {
                         ),
                         SizedBox(height: w * 0.005),
                         Text(
-                          '${(progress * 100).round()}% · ${video.channelTitle}',
+                          '${(progress * 100).round()}% آ· ${video.channelTitle}',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: GoogleFonts.cairo(

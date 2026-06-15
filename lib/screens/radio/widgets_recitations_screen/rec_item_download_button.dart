@@ -1,4 +1,4 @@
-// lib/screens/radio/widgets_recitations_screen/rec_item_download_button.dart
+﻿// lib/screens/radio/widgets_recitations_screen/rec_item_download_button.dart
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,7 +23,7 @@ class RecItemDownloadButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // فقط العناصر التي لديها رابط صوت
+    // ظپظ‚ط· ط§ظ„ط¹ظ†ط§طµط± ط§ظ„طھظٹ ظ„ط¯ظٹظ‡ط§ ط±ط§ط¨ط· طµظˆطھ
     if (item.audioUrl == null || item.audioUrl!.isEmpty) {
       return const SizedBox.shrink();
     }
@@ -51,7 +51,7 @@ class RecItemDownloadButton extends StatelessWidget {
       String itemId,
       ) {
     switch (status) {
-    // ══ غير محمّل ══
+    // â•گâ•گ ط؛ظٹط± ظ…ط­ظ…ظ‘ظ„ â•گâ•گ
       case ItemDownloadStatus.notDownloaded:
         return _DownloadWithSize(
           item: item,
@@ -59,14 +59,14 @@ class RecItemDownloadButton extends StatelessWidget {
           onTap: () => _handleTap(context, service, itemId, status),
         );
 
-    // ══ جاري التحميل ══
+    // â•گâ•گ ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„ â•گâ•گ
       case ItemDownloadStatus.downloading:
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           decoration: BoxDecoration(
-            color: Colors.orange.withOpacity(0.1),
+            color: Colors.orange.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: Colors.orange.withOpacity(0.25)),
+            border: Border.all(color: Colors.orange.withValues(alpha: 0.25)),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -104,16 +104,16 @@ class RecItemDownloadButton extends StatelessWidget {
           ),
         );
 
-    // ══ محمّل ══
+    // â•گâ•گ ظ…ط­ظ…ظ‘ظ„ â•گâ•گ
       case ItemDownloadStatus.downloaded:
         return GestureDetector(
           onTap: () => _showDownloadedOptions(context, service, itemId),
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
-              color: Colors.green.withOpacity(0.1),
+              color: Colors.green.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Colors.green.withOpacity(0.25)),
+              border: Border.all(color: Colors.green.withValues(alpha: 0.25)),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -125,7 +125,7 @@ class RecItemDownloadButton extends StatelessWidget {
                 ),
                 const SizedBox(width: 3),
                 Text(
-                  'محمّل',
+                  'ظ…ط­ظ…ظ‘ظ„',
                   style: GoogleFonts.cairo(
                     fontSize: 10,
                     fontWeight: FontWeight.w700,
@@ -137,14 +137,14 @@ class RecItemDownloadButton extends StatelessWidget {
           ),
         );
 
-    // ══ خطأ ══
+    // â•گâ•گ ط®ط·ط£ â•گâ•گ
       case ItemDownloadStatus.error:
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           decoration: BoxDecoration(
-            color: Colors.red.withOpacity(0.1),
+            color: Colors.red.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: Colors.red.withOpacity(0.25)),
+            border: Border.all(color: Colors.red.withValues(alpha: 0.25)),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -152,7 +152,7 @@ class RecItemDownloadButton extends StatelessWidget {
               const Icon(Icons.refresh_rounded, size: 12, color: Colors.red),
               const SizedBox(width: 3),
               Text(
-                'إعادة',
+                'ط¥ط¹ط§ط¯ط©',
                 style: GoogleFonts.cairo(
                   fontSize: 10,
                   fontWeight: FontWeight.w700,
@@ -197,7 +197,7 @@ class RecItemDownloadButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
         title: Text(
-          'تحميل للاستماع أوفلاين',
+          'طھط­ظ…ظٹظ„ ظ„ظ„ط§ط³طھظ…ط§ط¹ ط£ظˆظپظ„ط§ظٹظ†',
           style: GoogleFonts.cairo(
             fontWeight: FontWeight.w800,
             color: RecColors.textPrimary(context),
@@ -220,9 +220,9 @@ class RecItemDownloadButton extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              '• سيتم تحميل الملف الصوتي\n'
-                  '• يمكنك الاستماع بدون إنترنت\n'
-                  '• يمكن حذفه لاحقاً',
+              'â€¢ ط³ظٹطھظ… طھط­ظ…ظٹظ„ ط§ظ„ظ…ظ„ظپ ط§ظ„طµظˆطھظٹ\n'
+                  'â€¢ ظٹظ…ظƒظ†ظƒ ط§ظ„ط§ط³طھظ…ط§ط¹ ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ\n'
+                  'â€¢ ظٹظ…ظƒظ† ط­ط°ظپظ‡ ظ„ط§ط­ظ‚ط§ظ‹',
               style: GoogleFonts.cairo(
                 fontSize: 12,
                 color: RecColors.textSecondary(context),
@@ -236,7 +236,7 @@ class RecItemDownloadButton extends StatelessWidget {
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(
-              'إلغاء',
+              'ط¥ظ„ط؛ط§ط،',
               style: GoogleFonts.cairo(color: Colors.grey),
             ),
           ),
@@ -252,7 +252,7 @@ class RecItemDownloadButton extends StatelessWidget {
               ),
             ),
             child: Text(
-              'تحميل',
+              'طھط­ظ…ظٹظ„',
               style: GoogleFonts.cairo(
                 color: Colors.white,
                 fontWeight: FontWeight.w700,
@@ -302,7 +302,7 @@ class RecItemDownloadButton extends StatelessWidget {
             FutureBuilder<String>(
               future: service.getFileSize(itemId),
               builder: (_, snap) => Text(
-                'الحجم: ${snap.data ?? '...'}',
+                'ط§ظ„ط­ط¬ظ…: ${snap.data ?? '...'}',
                 style: GoogleFonts.cairo(
                   fontSize: 12,
                   color: RecColors.textSecondary(context),
@@ -311,7 +311,7 @@ class RecItemDownloadButton extends StatelessWidget {
             ),
             const SizedBox(height: 16),
 
-            // زر الحذف
+            // ط²ط± ط§ظ„ط­ط°ظپ
             GestureDetector(
               onTap: () {
                 Navigator.pop(context);
@@ -321,9 +321,9 @@ class RecItemDownloadButton extends StatelessWidget {
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(vertical: 13),
                 decoration: BoxDecoration(
-                  color: Colors.red.withOpacity(0.1),
+                  color: Colors.red.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: Colors.red.withOpacity(0.2)),
+                  border: Border.all(color: Colors.red.withValues(alpha: 0.2)),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -335,7 +335,7 @@ class RecItemDownloadButton extends StatelessWidget {
                     ),
                     const SizedBox(width: 8),
                     Text(
-                      'حذف التحميل',
+                      'ط­ط°ظپ ط§ظ„طھط­ظ…ظٹظ„',
                       style: GoogleFonts.cairo(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
@@ -410,7 +410,7 @@ class _DownloadWithSizeState extends State<_DownloadWithSize> {
             Text(
               _size != null
                   ? VideoSizeService.formatBytes(_size)
-                  : 'تحميل',
+                  : 'طھط­ظ…ظٹظ„',
               style: GoogleFonts.cairo(
                 fontSize: 10,
                 fontWeight: FontWeight.w700,

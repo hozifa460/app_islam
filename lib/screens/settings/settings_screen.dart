@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -82,9 +82,9 @@ class _SettingsScreenState extends State<SettingsScreen>
     final w = size.width;
     final theme =
     SettingsTheme(isDark: _isDark, currentPrimary: _currentPrimary);
-    final tr = context.tr; // ← استخدام الترجمة
+    final tr = context.tr; // â†گ ط§ط³طھط®ط¯ط§ظ… ط§ظ„طھط±ط¬ظ…ط©
 
-    // ═══ أسماء الألوان مترجمة ═══
+    // â•گâ•گâ•گ ط£ط³ظ…ط§ط، ط§ظ„ط£ظ„ظˆط§ظ† ظ…طھط±ط¬ظ…ط© â•گâ•گâ•گ
     final translatedColorNames = tr.colorNames;
 
     return Scaffold(
@@ -111,7 +111,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                   ),
                   sliver: SliverList(
                     delegate: SliverChildListDelegate([
-                      // ═══ المظهر ═══
+                      // â•گâ•گâ•گ ط§ظ„ظ…ط¸ظ‡ط± â•گâ•گâ•گ
                       SettingsSectionLabel(
                         label: tr.appearance,
                         icon: Icons.palette_rounded,
@@ -126,7 +126,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                         onToggle: _toggleTheme,
                       ),
 
-                      // ═══ اللغة ═══
+                      // â•گâ•گâ•گ ط§ظ„ظ„ط؛ط© â•گâ•گâ•گ
                       SizedBox(height: (w * 0.05).clamp(16.0, 28.0)),
                       SettingsSectionLabel(
                         label: tr.language,
@@ -137,7 +137,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                       SizedBox(height: (w * 0.02).clamp(6.0, 12.0)),
                       _LanguageCard(theme: theme, w: w),
 
-                      // ═══ لون التطبيق ═══
+                      // â•گâ•گâ•گ ظ„ظˆظ† ط§ظ„طھط·ط¨ظٹظ‚ â•گâ•گâ•گ
                       SizedBox(height: (w * 0.05).clamp(16.0, 28.0)),
                       SettingsSectionLabel(
                         label: tr.appColor,
@@ -153,7 +153,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                           tr.appColorDesc,
                           style: GoogleFonts.cairo(
                             fontSize: (w * 0.028).clamp(10.0, 12.5),
-                            color: theme.textColor.withOpacity(0.45),
+                            color: theme.textColor.withValues(alpha: 0.45),
                           ),
                         ),
                       ),
@@ -176,7 +176,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                         selectedColor: _selectedColor,
                       ),
 
-                      // ═══ التطبيق ═══
+                      // â•گâ•گâ•گ ط§ظ„طھط·ط¨ظٹظ‚ â•گâ•گâ•گ
                       SizedBox(height: (w * 0.05).clamp(16.0, 28.0)),
                       SettingsSectionLabel(
                         label: tr.theApp,
@@ -187,7 +187,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                       SizedBox(height: (w * 0.02).clamp(6.0, 12.0)),
                       SettingsAppInfoCard(theme: theme, w: w),
 
-                      // ═══ التواصل والدعم ═══
+                      // â•گâ•گâ•گ ط§ظ„طھظˆط§طµظ„ ظˆط§ظ„ط¯ط¹ظ… â•گâ•گâ•گ
                       SizedBox(height: (w * 0.05).clamp(16.0, 28.0)),
                       SettingsSectionLabel(
                         label: tr.contactSupport,
@@ -235,7 +235,7 @@ class _SettingsScreenState extends State<SettingsScreen>
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               gradient: RadialGradient(colors: [
-                _currentPrimary.withOpacity(_isDark ? 0.08 : 0.06),
+                _currentPrimary.withValues(alpha: _isDark ? 0.08 : 0.06),
                 Colors.transparent,
               ]),
             ),
@@ -251,7 +251,7 @@ class _SettingsScreenState extends State<SettingsScreen>
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               gradient: RadialGradient(colors: [
-                _currentPrimary.withOpacity(_isDark ? 0.05 : 0.04),
+                _currentPrimary.withValues(alpha: _isDark ? 0.05 : 0.04),
                 Colors.transparent,
               ]),
             ),
@@ -262,9 +262,9 @@ class _SettingsScreenState extends State<SettingsScreen>
   }
 }
 
-// ══════════════════════════════════════════════════════════
-//  ويدجت اختيار اللغة
-// ══════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+//  ظˆظٹط¯ط¬طھ ط§ط®طھظٹط§ط± ط§ظ„ظ„ط؛ط©
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _LanguageCard extends StatelessWidget {
   final dynamic theme;
   final double w;
@@ -281,16 +281,16 @@ class _LanguageCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular((w * 0.04).clamp(12.0, 20.0)),
         color: isDark
-            ? Colors.white.withOpacity(0.05)
-            : Colors.white.withOpacity(0.8),
+            ? Colors.white.withValues(alpha: 0.05)
+            : Colors.white.withValues(alpha: 0.8),
         border: Border.all(
           color: isDark
-              ? Colors.white.withOpacity(0.08)
-              : Colors.black.withOpacity(0.06),
+              ? Colors.white.withValues(alpha: 0.08)
+              : Colors.black.withValues(alpha: 0.06),
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(isDark ? 0.2 : 0.04),
+            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.04),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -298,7 +298,7 @@ class _LanguageCard extends StatelessWidget {
       ),
       child: Column(
         children: [
-          // ═══ اللغة الحالية ═══
+          // â•گâ•گâ•گ ط§ظ„ظ„ط؛ط© ط§ظ„ط­ط§ظ„ظٹط© â•گâ•گâ•گ
           Padding(
             padding: EdgeInsets.all((w * 0.04).clamp(12.0, 20.0)),
             child: Row(
@@ -310,8 +310,8 @@ class _LanguageCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                     gradient: LinearGradient(
                       colors: [
-                        Colors.blue.withOpacity(0.15),
-                        Colors.blue.withOpacity(0.05),
+                        Colors.blue.withValues(alpha: 0.15),
+                        Colors.blue.withValues(alpha: 0.05),
                       ],
                     ),
                   ),
@@ -361,11 +361,11 @@ class _LanguageCard extends StatelessWidget {
           Divider(
             height: 1,
             color: isDark
-                ? Colors.white.withOpacity(0.06)
-                : Colors.black.withOpacity(0.06),
+                ? Colors.white.withValues(alpha: 0.06)
+                : Colors.black.withValues(alpha: 0.06),
           ),
 
-          // ═══ قائمة اللغات ═══
+          // â•گâ•گâ•گ ظ‚ط§ط¦ظ…ط© ط§ظ„ظ„ط؛ط§طھ â•گâ•گâ•گ
           Padding(
             padding: EdgeInsets.all((w * 0.025).clamp(8.0, 14.0)),
             child: Wrap(
@@ -393,10 +393,10 @@ class _LanguageCard extends StatelessWidget {
                           ? Theme.of(context)
                           .colorScheme
                           .primary
-                          .withOpacity(0.15)
+                          .withValues(alpha: 0.15)
                           : isDark
-                          ? Colors.white.withOpacity(0.04)
-                          : Colors.grey.withOpacity(0.08),
+                          ? Colors.white.withValues(alpha: 0.04)
+                          : Colors.grey.withValues(alpha: 0.08),
                       border: Border.all(
                         color: isSelected
                             ? Theme.of(context).colorScheme.primary

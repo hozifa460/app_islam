@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../languages/app_localizations.dart';
 import '../../Azkar/azkar_detail_screen.dart';
@@ -52,8 +52,8 @@ class HomeAzkarCard extends StatelessWidget {
             decoration: BoxDecoration(
               color: isDark ? const Color(0xFF13211D) : Colors.white,
               borderRadius: BorderRadius.circular(24),
-              border: Border.all(color: primary.withOpacity(0.10)),
-              boxShadow: [BoxShadow(color: Colors.black.withOpacity(isDark ? 0.14 : 0.05), blurRadius: 14, offset: const Offset(0, 6))],
+              border: Border.all(color: primary.withValues(alpha: 0.10)),
+              boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: isDark ? 0.14 : 0.05), blurRadius: 14, offset: const Offset(0, 6))],
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -91,7 +91,7 @@ class HomeAzkarCard extends StatelessWidget {
                           const SizedBox(height: 10),
                           ClipRRect(
                             borderRadius: BorderRadius.circular(10),
-                            child: LinearProgressIndicator(value: isMorning ? 0.55 : 0.75, minHeight: small ? 5 : 6, backgroundColor: gold.withOpacity(0.15), valueColor: AlwaysStoppedAnimation<Color>(gold)),
+                            child: LinearProgressIndicator(value: isMorning ? 0.55 : 0.75, minHeight: small ? 5 : 6, backgroundColor: gold.withValues(alpha: 0.15), valueColor: AlwaysStoppedAnimation<Color>(gold)),
                           ),
                         ],
                       ),

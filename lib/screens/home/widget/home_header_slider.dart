@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../languages/app_localizations.dart';
 import '../../../services/great_muslims_service.dart';
@@ -130,7 +130,7 @@ class HomeHeaderSlider extends StatelessWidget {
                             borderRadius: BorderRadius.circular(24),
                             boxShadow: [
                               BoxShadow(
-                                color: primary.withOpacity(
+                                color: primary.withValues(alpha: 
                                     isActive ? 0.18 : 0.08),
                                 blurRadius: isActive ? 16 : 10,
                                 offset: const Offset(0, 8),
@@ -142,7 +142,7 @@ class HomeHeaderSlider extends StatelessWidget {
                             child: Stack(
                               fit: StackFit.expand,
                               children: [
-                                // ══ Parallax Effect ══
+                                // â•گâ•گ Parallax Effect â•گâ•گ
                                 _ParallaxImage(
                                   pageController: pageController,
                                   index: index,
@@ -156,9 +156,9 @@ class HomeHeaderSlider extends StatelessWidget {
                                       begin: Alignment.topCenter,
                                       end: Alignment.bottomCenter,
                                       colors: [
-                                        Colors.black.withOpacity(0.08),
-                                        Colors.black.withOpacity(0.18),
-                                        Colors.black.withOpacity(0.78),
+                                        Colors.black.withValues(alpha: 0.08),
+                                        Colors.black.withValues(alpha: 0.18),
+                                        Colors.black.withValues(alpha: 0.78),
                                       ],
                                     ),
                                   ),
@@ -172,7 +172,7 @@ class HomeHeaderSlider extends StatelessWidget {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 10, vertical: 5),
                                     decoration: BoxDecoration(
-                                      color: gold.withOpacity(0.18),
+                                      color: gold.withValues(alpha: 0.18),
                                       borderRadius:
                                       BorderRadius.circular(14),
                                     ),
@@ -187,7 +187,7 @@ class HomeHeaderSlider extends StatelessWidget {
                                   ),
                                 ),
 
-                                // معلومات الشخص
+                                // ظ…ط¹ظ„ظˆظ…ط§طھ ط§ظ„ط´ط®طµ
                                 Positioned(
                                   left: 14,
                                   right: 14,
@@ -196,7 +196,7 @@ class HomeHeaderSlider extends StatelessWidget {
                                     padding: const EdgeInsets.all(12),
                                     decoration: BoxDecoration(
                                       color:
-                                      Colors.black.withOpacity(0.24),
+                                      Colors.black.withValues(alpha: 0.24),
                                       borderRadius:
                                       BorderRadius.circular(18),
                                     ),
@@ -237,7 +237,7 @@ class HomeHeaderSlider extends StatelessWidget {
                                           overflow: TextOverflow.ellipsis,
                                           style: GoogleFonts.cairo(
                                             color: Colors.white
-                                                .withOpacity(0.92),
+                                                .withValues(alpha: 0.92),
                                             fontSize: descSize,
                                             fontWeight: FontWeight.w600,
                                           ),
@@ -271,7 +271,7 @@ class HomeHeaderSlider extends StatelessWidget {
                 width: active ? 18 : 8,
                 height: 8,
                 decoration: BoxDecoration(
-                  color: active ? gold : gold.withOpacity(0.28),
+                  color: active ? gold : gold.withValues(alpha: 0.28),
                   borderRadius: BorderRadius.circular(10),
                 ),
               );
@@ -283,7 +283,7 @@ class HomeHeaderSlider extends StatelessWidget {
   }
 }
 
-/// ══ Parallax Image Widget ══
+/// â•گâ•گ Parallax Image Widget â•گâ•گ
 class _ParallaxImage extends StatefulWidget {
   final PageController pageController;
   final int index;
@@ -318,7 +318,7 @@ class _ParallaxImageState extends State<_ParallaxImage> {
     if (!widget.pageController.hasClients) return;
     final page = widget.pageController.page ?? 0;
     final diff = (page - widget.index);
-    // ══ تحريك الصورة بشكل عكسي خفيف ══
+    // â•گâ•گ طھط­ط±ظٹظƒ ط§ظ„طµظˆط±ط© ط¨ط´ظƒظ„ ط¹ظƒط³ظٹ ط®ظپظٹظپ â•گâ•گ
     final newOffset = diff * 30;
     if ((newOffset - _offset).abs() > 0.5) {
       setState(() => _offset = newOffset);

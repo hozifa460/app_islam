@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 
 import '../../../languages/app_localizations.dart';
 
@@ -11,7 +11,7 @@ class ShariaWarningsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final cardColor = isDarkMode ? const Color(0xFF151B26) : Colors.white;
     final textColor = isDarkMode ? Colors.white : const Color(0xFF2D2D2D);
-    final borderColor = isDarkMode ? Colors.white.withOpacity(0.08) : Colors.grey.withOpacity(0.15);
+    final borderColor = isDarkMode ? Colors.white.withValues(alpha: 0.08) : Colors.grey.withValues(alpha: 0.15);
 
     return Container(
       decoration: BoxDecoration(
@@ -20,7 +20,7 @@ class ShariaWarningsWidget extends StatelessWidget {
         border: Border.all(color: borderColor),
         boxShadow: [
           BoxShadow(
-            color: isDarkMode ? Colors.black.withOpacity(0.2) : Colors.black.withOpacity(0.05),
+            color: isDarkMode ? Colors.black.withValues(alpha: 0.2) : Colors.black.withValues(alpha: 0.05),
             blurRadius: 15,
             offset: const Offset(0, 5),
           ),
@@ -51,13 +51,13 @@ class ShariaWarningsWidget extends StatelessWidget {
           context.tr.shariaWarningsCount,
           style: TextStyle(
             fontSize: 11,
-            color: textColor.withOpacity(0.5),
+            color: textColor.withValues(alpha: 0.5),
           ),
         ),
         children: [
           _buildWarningItem(
             context: context,
-            number: '١',
+            number: 'ظ،',
             icon: Icons.account_balance,
             title: context.tr.warning1Title,
             content: context.tr.warning1Content,
@@ -65,7 +65,7 @@ class ShariaWarningsWidget extends StatelessWidget {
           ),
           _buildWarningItem(
             context: context,
-            number: '٢',
+            number: 'ظ¢',
             icon: Icons.dangerous,
             title: context.tr.warning2Title,
             content: context.tr.warning2Content,
@@ -73,7 +73,7 @@ class ShariaWarningsWidget extends StatelessWidget {
           ),
           _buildWarningItem(
             context: context,
-            number: '٣',
+            number: 'ظ£',
             icon: Icons.compare_arrows,
             title: context.tr.warning3Title,
             content: context.tr.warning3Content,
@@ -81,7 +81,7 @@ class ShariaWarningsWidget extends StatelessWidget {
           ),
           _buildWarningItem(
             context: context,
-            number: '٤',
+            number: 'ظ¤',
             icon: Icons.link_off,
             title: context.tr.warning4Title,
             content: context.tr.warning4Content,
@@ -89,7 +89,7 @@ class ShariaWarningsWidget extends StatelessWidget {
           ),
           _buildWarningItem(
             context: context,
-            number: '٥',
+            number: 'ظ¥',
             icon: Icons.pregnant_woman,
             title: context.tr.warning5Title,
             content: context.tr.warning5Content,
@@ -97,7 +97,7 @@ class ShariaWarningsWidget extends StatelessWidget {
           ),
           _buildWarningItem(
             context: context,
-            number: '٦',
+            number: 'ظ¦',
             icon: Icons.person_search,
             title: context.tr.warning6Title,
             content: context.tr.warning6Content,
@@ -105,7 +105,7 @@ class ShariaWarningsWidget extends StatelessWidget {
           ),
           _buildWarningItem(
             context: context,
-            number: '٧',
+            number: 'ظ§',
             icon: Icons.help_outline,
             title: context.tr.warning7Title,
             content: context.tr.warning7Content,
@@ -113,7 +113,7 @@ class ShariaWarningsWidget extends StatelessWidget {
           ),
           _buildWarningItem(
             context: context,
-            number: '٨',
+            number: 'ظ¨',
             icon: Icons.description,
             title: context.tr.warning8Title,
             content: context.tr.warning8Content,
@@ -121,7 +121,7 @@ class ShariaWarningsWidget extends StatelessWidget {
           ),
           _buildWarningItem(
             context: context,
-            number: '٩',
+            number: 'ظ©',
             icon: Icons.gavel,
             title: context.tr.warning9Title,
             content: context.tr.warning9Content,
@@ -129,7 +129,7 @@ class ShariaWarningsWidget extends StatelessWidget {
           ),
           _buildWarningItem(
             context: context,
-            number: '١٠',
+            number: 'ظ،ظ ',
             icon: Icons.school,
             title: context.tr.warning10Title,
             content: context.tr.warning10Content,
@@ -156,8 +156,8 @@ class ShariaWarningsWidget extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: color.withOpacity(0.2)),
-        color: color.withOpacity(isDarkMode ? 0.08 : 0.03),
+        border: Border.all(color: color.withValues(alpha: 0.2)),
+        color: color.withValues(alpha: isDarkMode ? 0.08 : 0.03),
       ),
       child: ExpansionTile(
         tilePadding: const EdgeInsets.symmetric(horizontal: 12),
@@ -166,7 +166,7 @@ class ShariaWarningsWidget extends StatelessWidget {
           width: 36,
           height: 36,
           decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [color, color.withOpacity(0.8)]),
+            gradient: LinearGradient(colors: [color, color.withValues(alpha: 0.8)]),
             borderRadius: BorderRadius.circular(10),
           ),
           child: Center(
@@ -201,7 +201,7 @@ class ShariaWarningsWidget extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: isDarkMode ? Colors.white.withOpacity(0.05) : Colors.white,
+              color: isDarkMode ? Colors.white.withValues(alpha: 0.05) : Colors.white,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Text(
@@ -225,11 +225,11 @@ class ShariaWarningsWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         gradient: LinearGradient(
           colors: [
-            Colors.red.withOpacity(isDarkMode ? 0.15 : 0.08),
-            Colors.red.withOpacity(isDarkMode ? 0.08 : 0.03),
+            Colors.red.withValues(alpha: isDarkMode ? 0.15 : 0.08),
+            Colors.red.withValues(alpha: isDarkMode ? 0.08 : 0.03),
           ],
         ),
-        border: Border.all(color: Colors.red.withOpacity(0.2)),
+        border: Border.all(color: Colors.red.withValues(alpha: 0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -256,15 +256,15 @@ class ShariaWarningsWidget extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 14),
-          _buildBlockerRow(context, '١', context.tr.blocker1, context.tr.blocker1Desc),
-          _buildBlockerRow(context, '٢', context.tr.blocker2, context.tr.blocker2Desc),
-          _buildBlockerRow(context, '٣', context.tr.blocker3, context.tr.blocker3Desc),
+          _buildBlockerRow(context, 'ظ،', context.tr.blocker1, context.tr.blocker1Desc),
+          _buildBlockerRow(context, 'ظ¢', context.tr.blocker2, context.tr.blocker2Desc),
+          _buildBlockerRow(context, 'ظ£', context.tr.blocker3, context.tr.blocker3Desc),
           const SizedBox(height: 12),
           Container(
             width: double.infinity,
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: isDarkMode ? Colors.white.withOpacity(0.05) : Colors.white,
+              color: isDarkMode ? Colors.white.withValues(alpha: 0.05) : Colors.white,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Text(
@@ -341,11 +341,11 @@ class ShariaWarningsWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         gradient: LinearGradient(
           colors: [
-            greenColor.withOpacity(isDarkMode ? 0.15 : 0.08),
-            greenColor.withOpacity(isDarkMode ? 0.08 : 0.03),
+            greenColor.withValues(alpha: isDarkMode ? 0.15 : 0.08),
+            greenColor.withValues(alpha: isDarkMode ? 0.08 : 0.03),
           ],
         ),
-        border: Border.all(color: greenColor.withOpacity(0.2)),
+        border: Border.all(color: greenColor.withValues(alpha: 0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -372,16 +372,16 @@ class ShariaWarningsWidget extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 14),
-          _buildCondRow(context, '١', context.tr.condition1, context.tr.condition1Desc),
-          _buildCondRow(context, '٢', context.tr.condition2, context.tr.condition2Desc),
-          _buildCondRow(context, '٣', context.tr.condition3, context.tr.condition3Desc),
-          _buildCondRow(context, '٤', context.tr.condition4, context.tr.condition4Desc),
+          _buildCondRow(context, 'ظ،', context.tr.condition1, context.tr.condition1Desc),
+          _buildCondRow(context, 'ظ¢', context.tr.condition2, context.tr.condition2Desc),
+          _buildCondRow(context, 'ظ£', context.tr.condition3, context.tr.condition3Desc),
+          _buildCondRow(context, 'ظ¤', context.tr.condition4, context.tr.condition4Desc),
           const SizedBox(height: 12),
           Container(
             width: double.infinity,
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: isDarkMode ? Colors.white.withOpacity(0.05) : Colors.white,
+              color: isDarkMode ? Colors.white.withValues(alpha: 0.05) : Colors.white,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Column(

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'qibla_theme.dart';
 
@@ -13,9 +13,9 @@ class QiblaCalibrationHint extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 10),
         decoration: BoxDecoration(
-          color: QiblaTheme.orange.withOpacity(theme.isDark ? 0.07 : 0.06),
+          color: QiblaTheme.orange.withValues(alpha: theme.isDark ? 0.07 : 0.06),
           borderRadius: BorderRadius.circular(QiblaTheme.calibrationRadius),
-          border: Border.all(color: QiblaTheme.orange.withOpacity(0.22)),
+          border: Border.all(color: QiblaTheme.orange.withValues(alpha: 0.22)),
         ),
         child: Row(
           children: [
@@ -23,7 +23,7 @@ class QiblaCalibrationHint extends StatelessWidget {
             const SizedBox(width: 9),
             Expanded(
               child: Text(
-                'إذا كانت النتيجة غير دقيقة: حرّك هاتفك على شكل ∞ عدة مرات، ثم ابتعد عن الأجسام المعدنية والكهربائية',
+                'ط¥ط°ط§ ظƒط§ظ†طھ ط§ظ„ظ†طھظٹط¬ط© ط؛ظٹط± ط¯ظ‚ظٹظ‚ط©: ط­ط±ظ‘ظƒ ظ‡ط§طھظپظƒ ط¹ظ„ظ‰ ط´ظƒظ„ âˆ‍ ط¹ط¯ط© ظ…ط±ط§طھطŒ ط«ظ… ط§ط¨طھط¹ط¯ ط¹ظ† ط§ظ„ط£ط¬ط³ط§ظ… ط§ظ„ظ…ط¹ط¯ظ†ظٹط© ظˆط§ظ„ظƒظ‡ط±ط¨ط§ط¦ظٹط©',
                 style: GoogleFonts.cairo(
                   fontSize: 10.5,
                   color: theme.isDark ? Colors.orange.shade200 : Colors.orange.shade800,

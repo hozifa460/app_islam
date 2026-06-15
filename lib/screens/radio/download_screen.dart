@@ -1,4 +1,4 @@
-// lib/screens/radio/download_screen.dart
+﻿// lib/screens/radio/download_screen.dart
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,18 +30,18 @@ class _DownloadScreenState extends State<DownloadScreen>
   final Set<int> _selectedSurahs = {};
   int? _selectedJuz;
 
-  // ✅ ثوابت - لا تتغير
+  // âœ… ط«ظˆط§ط¨طھ - ظ„ط§ طھطھط؛ظٹط±
   static const bool _isDark = true;
   static const Color _gold = Color(0xFFC8A44D);
   static const Color _cardColor = Color(0xFF111827);
   static const Color _bgColor = Color(0xFF080C18);
 
-  // ✅ Cache السور وروابطها
+  // âœ… Cache ط§ظ„ط³ظˆط± ظˆط±ظˆط§ط¨ط·ظ‡ط§
   late final Map<int, String?> _surahUrlCache;
   late final Map<int, String> _surahItemIdCache;
   late final Map<int, RecitationItem> _surahItemCache;
 
-  // ✅ اسم المجلد محسوب مرة واحدة
+  // âœ… ط§ط³ظ… ط§ظ„ظ…ط¬ظ„ط¯ ظ…ط­ط³ظˆط¨ ظ…ط±ط© ظˆط§ط­ط¯ط©
   late final String _stationDirName;
 
   @override
@@ -51,7 +51,7 @@ class _DownloadScreenState extends State<DownloadScreen>
     _tabController = TabController(length: 2, vsync: this);
     _tabController.addListener(_onTabChanged);
 
-    // ✅ حساب Cache مرة واحدة
+    // âœ… ط­ط³ط§ط¨ Cache ظ…ط±ط© ظˆط§ط­ط¯ط©
     _buildCache();
 
     _stationDirName = widget.station.name
@@ -107,7 +107,7 @@ class _DownloadScreenState extends State<DownloadScreen>
         backgroundColor: _bgColor,
         body: Stack(
           children: [
-            // ══ الخلفية ══
+            // â•گâ•گ ط§ظ„ط®ظ„ظپظٹط© â•گâ•گ
             Positioned.fill(
               child: RepaintBoundary(
                 child: CustomPaint(
@@ -117,7 +117,7 @@ class _DownloadScreenState extends State<DownloadScreen>
               ),
             ),
 
-            // ══ المحتوى ══
+            // â•گâ•گ ط§ظ„ظ…ط­طھظˆظ‰ â•گâ•گ
             Column(
               children: [
                 SizedBox(height: safePadding.top),
@@ -206,10 +206,10 @@ class _DownloadScreenState extends State<DownloadScreen>
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.1),
+                color: Colors.white.withValues(alpha: 0.1),
                 shape: BoxShape.circle,
                 border:
-                Border.all(color: Colors.white.withOpacity(0.15)),
+                Border.all(color: Colors.white.withValues(alpha: 0.15)),
               ),
               child: const Icon(
                 Icons.arrow_back_ios_new_rounded,
@@ -221,7 +221,7 @@ class _DownloadScreenState extends State<DownloadScreen>
           const SizedBox(width: 14),
           Expanded(
             child: Text(
-              'تحميل التلاوات',
+              'طھط­ظ…ظٹظ„ ط§ظ„طھظ„ط§ظˆط§طھ',
               style: GoogleFonts.cairo(
                 fontSize: 20,
                 fontWeight: FontWeight.w800,
@@ -229,7 +229,7 @@ class _DownloadScreenState extends State<DownloadScreen>
               ),
             ),
           ),
-          // ✅ AnimatedSwitcher لعداد التحديد
+          // âœ… AnimatedSwitcher ظ„ط¹ط¯ط§ط¯ ط§ظ„طھط­ط¯ظٹط¯
           AnimatedSwitcher(
             duration: const Duration(milliseconds: 200),
             child: _selectedSurahs.isNotEmpty &&
@@ -239,13 +239,13 @@ class _DownloadScreenState extends State<DownloadScreen>
               padding: const EdgeInsets.symmetric(
                   horizontal: 10, vertical: 4),
               decoration: BoxDecoration(
-                color: widget.primary.withOpacity(0.2),
+                color: widget.primary.withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                    color: widget.primary.withOpacity(0.4)),
+                    color: widget.primary.withValues(alpha: 0.4)),
               ),
               child: Text(
-                '${_selectedSurahs.length} سورة',
+                '${_selectedSurahs.length} ط³ظˆط±ط©',
                 style: GoogleFonts.cairo(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -265,19 +265,19 @@ class _DownloadScreenState extends State<DownloadScreen>
       height: 44,
       margin: const EdgeInsets.fromLTRB(16, 0, 16, 8),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.06),
+        color: Colors.white.withValues(alpha: 0.06),
         borderRadius: BorderRadius.circular(14),
       ),
       child: TabBar(
         controller: _tabController,
         indicator: BoxDecoration(
           gradient: LinearGradient(
-            colors: [widget.primary, widget.primary.withOpacity(0.8)],
+            colors: [widget.primary, widget.primary.withValues(alpha: 0.8)],
           ),
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: widget.primary.withOpacity(0.3),
+              color: widget.primary.withValues(alpha: 0.3),
               blurRadius: 6,
               offset: const Offset(0, 2),
             ),
@@ -292,17 +292,17 @@ class _DownloadScreenState extends State<DownloadScreen>
         unselectedLabelStyle: GoogleFonts.cairo(
             fontSize: 13, fontWeight: FontWeight.w500),
         tabs: const [
-          Tab(text: '📖  السور'),
-          Tab(text: '📚  الأجزاء'),
+          Tab(text: 'ًں“–  ط§ظ„ط³ظˆط±'),
+          Tab(text: 'ًں“ڑ  ط§ظ„ط£ط¬ط²ط§ط،'),
         ],
       ),
     );
   }
 }
 
-// ══════════════════════════════════════════════════════════════
-// ✅ معلومات الشيخ - Widget مستقل مع Selector
-// ══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// âœ… ظ…ط¹ظ„ظˆظ…ط§طھ ط§ظ„ط´ظٹط® - Widget ظ…ط³طھظ‚ظ„ ظ…ط¹ Selector
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _StationInfoWidget extends StatelessWidget {
   final IslamicRadioStation station;
   final Color primary;
@@ -320,7 +320,7 @@ class _StationInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Selector<ItemDownloadService, int>(
-      // ✅ يعيد البناء فقط عند تغيير عدد المحملات
+      // âœ… ظٹط¹ظٹط¯ ط§ظ„ط¨ظ†ط§ط، ظپظ‚ط· ط¹ظ†ط¯ طھط؛ظٹظٹط± ط¹ط¯ط¯ ط§ظ„ظ…ط­ظ…ظ„ط§طھ
       selector: (_, service) {
         int count = 0;
         for (final itemId in surahItemIdCache.values) {
@@ -334,10 +334,10 @@ class _StationInfoWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color: _cardColor,
           borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: primary.withOpacity(0.1)),
+          border: Border.all(color: primary.withValues(alpha: 0.1)),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.15),
+              color: Colors.black.withValues(alpha: 0.15),
               blurRadius: 8,
               offset: const Offset(0, 2),
             ),
@@ -351,8 +351,8 @@ class _StationInfoWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    primary.withOpacity(0.2),
-                    _gold.withOpacity(0.15),
+                    primary.withValues(alpha: 0.2),
+                    _gold.withValues(alpha: 0.15),
                   ],
                 ),
                 borderRadius: BorderRadius.circular(16),
@@ -394,7 +394,7 @@ class _StationInfoWidget extends StatelessWidget {
                         ),
                         const SizedBox(width: 3),
                         Text(
-                          '$downloadedCount سورة محملة',
+                          '$downloadedCount ط³ظˆط±ط© ظ…ط­ظ…ظ„ط©',
                           style: GoogleFonts.cairo(
                             fontSize: 11,
                             color: Colors.green,
@@ -405,7 +405,7 @@ class _StationInfoWidget extends StatelessWidget {
                     )
                         : Text(
                       key: const ValueKey('none'),
-                      'لا توجد تحميلات',
+                      'ظ„ط§ طھظˆط¬ط¯ طھط­ظ…ظٹظ„ط§طھ',
                       style: GoogleFonts.cairo(
                         fontSize: 11,
                         color: Colors.white54,
@@ -422,9 +422,9 @@ class _StationInfoWidget extends StatelessWidget {
   }
 }
 
-// ══════════════════════════════════════════════════════════════
-// ✅ تبويب السور - Widget مستقل
-// ══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// âœ… طھط¨ظˆظٹط¨ ط§ظ„ط³ظˆط± - Widget ظ…ط³طھظ‚ظ„
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _SurahsTab extends StatelessWidget {
   final IslamicRadioStation station;
   final Color primary;
@@ -446,7 +446,7 @@ class _SurahsTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ✅ Selector يراقب Set المحملات فقط
+    // âœ… Selector ظٹط±ط§ظ‚ط¨ Set ط§ظ„ظ…ط­ظ…ظ„ط§طھ ظپظ‚ط·
     return Selector<ItemDownloadService, Set<int>>(
       selector: (_, service) {
         final downloaded = <int>{};
@@ -509,7 +509,7 @@ class _SurahsTab extends StatelessWidget {
   }
 }
 
-// ══ Quick Select Bar ══
+// â•گâ•گ Quick Select Bar â•گâ•گ
 class _QuickSelectBar extends StatelessWidget {
   final Color primary;
   final Set<int> downloadedSurahs;
@@ -532,21 +532,21 @@ class _QuickSelectBar extends StatelessWidget {
       child: Row(
         children: [
           _QuickBtn(
-            label: 'تحديد الكل',
+            label: 'طھط­ط¯ظٹط¯ ط§ظ„ظƒظ„',
             icon: Icons.select_all_rounded,
             primary: primary,
             onTap: onSelectAll,
           ),
           const SizedBox(width: 8),
           _QuickBtn(
-            label: 'إلغاء الكل',
+            label: 'ط¥ظ„ط؛ط§ط، ط§ظ„ظƒظ„',
             icon: Icons.deselect_rounded,
             primary: primary,
             onTap: onClearAll,
           ),
           const SizedBox(width: 8),
           _QuickBtn(
-            label: 'جزء عمّ',
+            label: 'ط¬ط²ط، ط¹ظ…ظ‘',
             icon: Icons.star_rounded,
             primary: primary,
             onTap: onSelectJuz30,
@@ -578,9 +578,9 @@ class _QuickBtn extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 8),
           decoration: BoxDecoration(
-            color: primary.withOpacity(0.08),
+            color: primary.withValues(alpha: 0.08),
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: primary.withOpacity(0.12)),
+            border: Border.all(color: primary.withValues(alpha: 0.12)),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -603,7 +603,7 @@ class _QuickBtn extends StatelessWidget {
   }
 }
 
-// ══ Surah Tile ══
+// â•گâ•گ Surah Tile â•گâ•گ
 class _SurahTile extends StatelessWidget {
   final SurahModel surah;
   final bool isDownloaded;
@@ -631,17 +631,17 @@ class _SurahTile extends StatelessWidget {
         const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
         decoration: BoxDecoration(
           color: isSelected
-              ? primary.withOpacity(0.1)
+              ? primary.withValues(alpha: 0.1)
               : isDownloaded
-              ? Colors.green.withOpacity(0.06)
+              ? Colors.green.withValues(alpha: 0.06)
               : _cardColor,
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
             color: isSelected
-                ? primary.withOpacity(0.35)
+                ? primary.withValues(alpha: 0.35)
                 : isDownloaded
-                ? Colors.green.withOpacity(0.2)
-                : primary.withOpacity(0.06),
+                ? Colors.green.withValues(alpha: 0.2)
+                : primary.withValues(alpha: 0.06),
             width: isSelected ? 1.2 : 0.6,
           ),
         ),
@@ -671,7 +671,7 @@ class _SurahTile extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '${surah.versesCount} آية • ${surah.isMakki ? 'مكية' : 'مدنية'} • الجزء ${surah.juzNumber}',
+                    '${surah.versesCount} ط¢ظٹط© â€¢ ${surah.isMakki ? 'ظ…ظƒظٹط©' : 'ظ…ط¯ظ†ظٹط©'} â€¢ ط§ظ„ط¬ط²ط، ${surah.juzNumber}',
                     style: GoogleFonts.cairo(
                       fontSize: 10,
                       color: Colors.white38,
@@ -681,7 +681,7 @@ class _SurahTile extends StatelessWidget {
               ),
             ),
             Text(
-              isDownloaded ? '✓' : surah.approximateSizeStr,
+              isDownloaded ? 'âœ“' : surah.approximateSizeStr,
               style: GoogleFonts.cairo(
                 fontSize: 11,
                 fontWeight: FontWeight.w600,
@@ -715,10 +715,10 @@ class _SurahNumberBadge extends StatelessWidget {
       height: 36,
       decoration: BoxDecoration(
         color: isSelected
-            ? primary.withOpacity(0.15)
+            ? primary.withValues(alpha: 0.15)
             : isDownloaded
-            ? Colors.green.withOpacity(0.12)
-            : Colors.white.withOpacity(0.06),
+            ? Colors.green.withValues(alpha: 0.12)
+            : Colors.white.withValues(alpha: 0.06),
         shape: BoxShape.circle,
       ),
       child: Center(
@@ -740,9 +740,9 @@ class _SurahNumberBadge extends StatelessWidget {
   }
 }
 
-// ══════════════════════════════════════════════════════════════
-// ✅ تبويب الأجزاء - Widget مستقل
-// ══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// âœ… طھط¨ظˆظٹط¨ ط§ظ„ط£ط¬ط²ط§ط، - Widget ظ…ط³طھظ‚ظ„
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _JuzTab extends StatelessWidget {
   final IslamicRadioStation station;
   final Color primary;
@@ -830,22 +830,22 @@ class _JuzTile extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 10),
         decoration: BoxDecoration(
           color: isSelected
-              ? primary.withOpacity(0.1)
+              ? primary.withValues(alpha: 0.1)
               : isFullyDownloaded
-              ? Colors.green.withOpacity(0.06)
+              ? Colors.green.withValues(alpha: 0.06)
               : _cardColor,
           borderRadius: BorderRadius.circular(18),
           border: Border.all(
             color: isSelected
-                ? primary.withOpacity(0.35)
+                ? primary.withValues(alpha: 0.35)
                 : isFullyDownloaded
-                ? Colors.green.withOpacity(0.2)
-                : primary.withOpacity(0.07),
+                ? Colors.green.withValues(alpha: 0.2)
+                : primary.withValues(alpha: 0.07),
             width: isSelected ? 1.3 : 0.6,
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withValues(alpha: 0.1),
               blurRadius: 6,
               offset: const Offset(0, 2),
             ),
@@ -882,7 +882,7 @@ class _JuzTile extends StatelessWidget {
                         ),
                         const SizedBox(height: 3),
                         Text(
-                          '${surahsInJuz.length} سورة',
+                          '${surahsInJuz.length} ط³ظˆط±ط©',
                           style: GoogleFonts.cairo(
                             fontSize: 11,
                             color: Colors.white54,
@@ -904,7 +904,7 @@ class _JuzTile extends StatelessWidget {
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        '$downloadedCount/${surahsInJuz.length} محمّل',
+                        '$downloadedCount/${surahsInJuz.length} ظ…ط­ظ…ظ‘ظ„',
                         style: GoogleFonts.cairo(
                           fontSize: 10,
                           color: downloadedCount > 0
@@ -926,7 +926,7 @@ class _JuzTile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(4),
                   child: LinearProgressIndicator(
                     value: downloadedCount / surahsInJuz.length,
-                    backgroundColor: Colors.green.withOpacity(0.1),
+                    backgroundColor: Colors.green.withValues(alpha: 0.1),
                     valueColor:
                     const AlwaysStoppedAnimation(Colors.green),
                     minHeight: 4,
@@ -962,17 +962,17 @@ class _JuzNumberBadge extends StatelessWidget {
         gradient: LinearGradient(
           colors: isFullyDownloaded
               ? [
-            Colors.green.withOpacity(0.2),
-            Colors.green.withOpacity(0.1),
+            Colors.green.withValues(alpha: 0.2),
+            Colors.green.withValues(alpha: 0.1),
           ]
               : isSelected
               ? [
-            primary.withOpacity(0.25),
-            primary.withOpacity(0.1),
+            primary.withValues(alpha: 0.25),
+            primary.withValues(alpha: 0.1),
           ]
               : [
-            primary.withOpacity(0.1),
-            primary.withOpacity(0.05),
+            primary.withValues(alpha: 0.1),
+            primary.withValues(alpha: 0.05),
           ],
         ),
         borderRadius: BorderRadius.circular(14),
@@ -1023,9 +1023,9 @@ class _JuzCheckBox extends StatelessWidget {
   }
 }
 
-// ══════════════════════════════════════════════════════════════
-// ✅ زر التحميل - Widget مستقل
-// ══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// âœ… ط²ط± ط§ظ„طھط­ظ…ظٹظ„ - Widget ظ…ط³طھظ‚ظ„
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _DownloadButton extends StatelessWidget {
   final IslamicRadioStation station;
   final Color primary;
@@ -1102,7 +1102,7 @@ class _DownloadButton extends StatelessWidget {
                   if (isDownloading)
                     Expanded(
                       child: _ActionButton(
-                        label: 'إلغاء التحميل',
+                        label: 'ط¥ظ„ط؛ط§ط، ط§ظ„طھط­ظ…ظٹظ„',
                         icon: Icons.close_rounded,
                         color: Colors.red,
                         onTap: () => download.cancelDownload(station.id),
@@ -1112,8 +1112,8 @@ class _DownloadButton extends StatelessWidget {
                     Expanded(
                       child: _ActionButton(
                         label: isSurahTab
-                            ? 'تحميل ${selectedSurahs.length} سورة'
-                            : 'تحميل ${QuranData.juzByNumber(selectedJuz!).name}',
+                            ? 'طھط­ظ…ظٹظ„ ${selectedSurahs.length} ط³ظˆط±ط©'
+                            : 'طھط­ظ…ظٹظ„ ${QuranData.juzByNumber(selectedJuz!).name}',
                         icon: Icons.download_rounded,
                         color: primary,
                         onTap: () =>
@@ -1125,14 +1125,14 @@ class _DownloadButton extends StatelessWidget {
                       child: Container(
                         height: 52,
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.04),
+                          color: Colors.white.withValues(alpha: 0.04),
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Center(
                           child: Text(
                             isSurahTab
-                                ? 'اختر سوراً للتحميل'
-                                : 'اختر جزءاً للتحميل',
+                                ? 'ط§ط®طھط± ط³ظˆط±ط§ظ‹ ظ„ظ„طھط­ظ…ظٹظ„'
+                                : 'ط§ط®طھط± ط¬ط²ط،ط§ظ‹ ظ„ظ„طھط­ظ…ظٹظ„',
                             style: GoogleFonts.cairo(
                               fontSize: 14,
                               color: Colors.white38,
@@ -1218,7 +1218,7 @@ class _DownloadProgressBar extends StatelessWidget {
                 borderRadius: BorderRadius.circular(6),
                 child: LinearProgressIndicator(
                   value: progress,
-                  backgroundColor: primary.withOpacity(0.1),
+                  backgroundColor: primary.withValues(alpha: 0.1),
                   valueColor: AlwaysStoppedAnimation(primary),
                   minHeight: 6,
                 ),
@@ -1237,7 +1237,7 @@ class _DownloadProgressBar extends StatelessWidget {
         ),
         const SizedBox(height: 6),
         Text(
-          'جاري تحميل $downloadedCount من $totalCount سورة',
+          'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ $downloadedCount ظ…ظ† $totalCount ط³ظˆط±ط©',
           style: GoogleFonts.cairo(
             fontSize: 11,
             color: Colors.white54,
@@ -1283,17 +1283,17 @@ class _SelectionSummary extends StatelessWidget {
       return Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: primary.withOpacity(0.06),
+          color: primary.withValues(alpha: 0.06),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            _SummaryItem('سيُحمَّل', '$newSurahs سورة', primary),
+            _SummaryItem('ط³ظٹظڈط­ظ…ظژظ‘ظ„', '$newSurahs ط³ظˆط±ط©', primary),
             if (alreadyHave > 0)
-              _SummaryItem('موجود', '$alreadyHave سورة', Colors.green),
+              _SummaryItem('ظ…ظˆط¬ظˆط¯', '$alreadyHave ط³ظˆط±ط©', Colors.green),
             _SummaryItem(
-              'الحجم',
+              'ط§ظ„ط­ط¬ظ…',
               '${totalSize.toStringAsFixed(0)} MB',
               Colors.orange,
             ),
@@ -1312,16 +1312,16 @@ class _SelectionSummary extends StatelessWidget {
       return Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: primary.withOpacity(0.06),
+          color: primary.withValues(alpha: 0.06),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            _SummaryItem('سيُحمَّل', '$newSurahs سورة', primary),
-            _SummaryItem('الجزء', '${juz.number}', primary),
+            _SummaryItem('ط³ظٹظڈط­ظ…ظژظ‘ظ„', '$newSurahs ط³ظˆط±ط©', primary),
+            _SummaryItem('ط§ظ„ط¬ط²ط،', '${juz.number}', primary),
             _SummaryItem(
-              'الحجم',
+              'ط§ظ„ط­ط¬ظ…',
               '${totalSize.toStringAsFixed(0)} MB',
               Colors.orange,
             ),
@@ -1385,12 +1385,12 @@ class _ActionButton extends StatelessWidget {
         height: 52,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [color, color.withOpacity(0.8)],
+            colors: [color, color.withValues(alpha: 0.8)],
           ),
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: color.withOpacity(0.3),
+              color: color.withValues(alpha: 0.3),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -1416,7 +1416,7 @@ class _ActionButton extends StatelessWidget {
   }
 }
 
-// ══ Background Painter ══
+// â•گâ•گ Background Painter â•گâ•گ
 class _DownloadBgPainter extends CustomPainter {
   final Color primary;
 
@@ -1439,7 +1439,7 @@ class _DownloadBgPainter extends CustomPainter {
 
     final glow = Paint()
       ..shader = RadialGradient(
-        colors: [primary.withOpacity(0.08), Colors.transparent],
+        colors: [primary.withValues(alpha: 0.08), Colors.transparent],
       ).createShader(
         Rect.fromCircle(
           center: Offset(size.width * 0.5, 0),

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class QuranLoadingView extends StatelessWidget {
@@ -38,7 +38,7 @@ class QuranLoadingView extends StatelessWidget {
                         value: progress > 0 && progress < 1 ? progress : null,
                         strokeWidth: 4,
                         color: primary,
-                        backgroundColor: primary.withOpacity(0.15),
+                        backgroundColor: primary.withValues(alpha: 0.15),
                       ),
                     ),
                     Icon(Icons.menu_book_rounded, color: primary, size: 24),
@@ -61,7 +61,7 @@ class QuranLoadingView extends StatelessWidget {
                 child: LinearProgressIndicator(
                   value: progress > 0 && progress <= 1 ? progress : null,
                   minHeight: 7,
-                  backgroundColor: primary.withOpacity(0.12),
+                  backgroundColor: primary.withValues(alpha: 0.12),
                   valueColor: AlwaysStoppedAnimation<Color>(primary),
                 ),
               ),

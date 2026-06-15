@@ -1,4 +1,4 @@
-// lib/widgets/quran_text_page.dart
+﻿// lib/widgets/quran_text_page.dart
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -54,7 +54,7 @@ class QuranTextPage extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               Text(
-                'جاري تحميل النص...',
+                'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط§ظ„ظ†طµ...',
                 style: GoogleFonts.cairo(color: Colors.grey, fontSize: 14),
               ),
             ],
@@ -63,7 +63,7 @@ class QuranTextPage extends StatelessWidget {
       );
     }
 
-    // ════ وضع التسميع ════
+    // â•گâ•گâ•گâ•گ ظˆط¶ط¹ ط§ظ„طھط³ظ…ظٹط¹ â•گâ•گâ•گâ•گ
     if (isReciting) {
       return _RecitationView(
         ayahs: ayahs,
@@ -75,7 +75,7 @@ class QuranTextPage extends StatelessWidget {
       );
     }
 
-    // ════ الوضع العادي ════
+    // â•گâ•گâ•گâ•گ ط§ظ„ظˆط¶ط¹ ط§ظ„ط¹ط§ط¯ظٹ â•گâ•گâ•گâ•گ
     return _NormalView(
       ayahs: ayahs,
       primaryColor: primaryColor,
@@ -91,9 +91,9 @@ class QuranTextPage extends StatelessWidget {
   }
 }
 
-// ══════════════════════════════════════
-// العرض العادي
-// ══════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط§ظ„ط¹ط±ط¶ ط§ظ„ط¹ط§ط¯ظٹ
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _NormalView extends StatelessWidget {
   final List<Map<String, dynamic>> ayahs;
   final Color primaryColor;
@@ -136,21 +136,21 @@ class _NormalView extends StatelessWidget {
             highlightedAyah == ayahNum;
         final isFirst = ayahNum == 1;
 
-        // النص المعروض
+        // ط§ظ„ظ†طµ ط§ظ„ظ…ط¹ط±ظˆط¶
         final effectiveHide = isHidden ? 3 : hideLevel;
         String display = effectiveHide > 0
             ? _hide(text, effectiveHide)
             : text;
 
         Color txtColor = effectiveHide > 0
-            ? Colors.grey.withOpacity(0.2)
+            ? Colors.grey.withValues(alpha: 0.2)
             : isHL
             ? primaryColor
             : (isDark ? Colors.white : Colors.black87);
 
         return Column(
           children: [
-            // عنوان السورة
+            // ط¹ظ†ظˆط§ظ† ط§ظ„ط³ظˆط±ط©
             if (isFirst && index > 0)
               const SizedBox(height: 20),
 
@@ -162,7 +162,7 @@ class _NormalView extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 8),
                 child: FittedBox(
                   child: Text(
-                    'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ',
+                    'ط¨ظگط³ظ’ظ…ظگ ظ±ظ„ظ„ظژظ‘ظ‡ظگ ظ±ظ„ط±ظژظ‘ط­ظ’ظ…ظژظ°ظ†ظگ ظ±ظ„ط±ظژظ‘ط­ظگظٹظ…ظگ',
                     style: GoogleFonts.amiri(
                       fontSize: fontSize * 0.75,
                       color: isDark ? Colors.white54 : Colors.black38,
@@ -171,7 +171,7 @@ class _NormalView extends StatelessWidget {
                 ),
               ),
 
-            // الآية
+            // ط§ظ„ط¢ظٹط©
             GestureDetector(
               onTap: () => onAyahTap?.call(surahNum, ayahNum),
               onLongPress: () => onAyahLongPress?.call(surahNum, ayahNum),
@@ -183,25 +183,25 @@ class _NormalView extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   color: isHL
-                      ? primaryColor.withOpacity(0.08)
+                      ? primaryColor.withValues(alpha: 0.08)
                       : Colors.transparent,
                   borderRadius: BorderRadius.circular(10),
                   border: isHL
                       ? Border.all(
-                    color: primaryColor.withOpacity(0.25),
+                    color: primaryColor.withValues(alpha: 0.25),
                   )
                       : null,
                 ),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // رقم الآية
+                    // ط±ظ‚ظ… ط§ظ„ط¢ظٹط©
                     Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 6, vertical: 2,
                       ),
                       decoration: BoxDecoration(
-                        color: primaryColor.withOpacity(0.1),
+                        color: primaryColor.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(6),
                       ),
                       child: Text(
@@ -214,7 +214,7 @@ class _NormalView extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 8),
-                    // النص
+                    // ط§ظ„ظ†طµ
                     Expanded(
                       child: Text(
                         display,
@@ -243,14 +243,14 @@ class _NormalView extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [primaryColor.withOpacity(0.85), primaryColor],
+          colors: [primaryColor.withValues(alpha: 0.85), primaryColor],
         ),
         borderRadius: BorderRadius.circular(12),
       ),
       child: FittedBox(
         fit: BoxFit.scaleDown,
         child: Text(
-          'سورة $name',
+          'ط³ظˆط±ط© $name',
           style: GoogleFonts.amiri(
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -264,24 +264,24 @@ class _NormalView extends StatelessWidget {
   String _hide(String text, int level) {
     final w = text.split(' ');
     switch (level) {
-      case 1: return w.asMap().entries.map((e) => e.key % 3 == 1 ? '●●' : e.value).join(' ');
-      case 2: return w.asMap().entries.map((e) => e.key.isEven ? '●●' : e.value).join(' ');
-      case 3: return w.map((_) => '●●').join(' ');
+      case 1: return w.asMap().entries.map((e) => e.key % 3 == 1 ? 'â—ڈâ—ڈ' : e.value).join(' ');
+      case 2: return w.asMap().entries.map((e) => e.key.isEven ? 'â—ڈâ—ڈ' : e.value).join(' ');
+      case 3: return w.map((_) => 'â—ڈâ—ڈ').join(' ');
       default: return text;
     }
   }
 
   String _ar(int n) {
-    const d = {'0':'٠','1':'١','2':'٢','3':'٣','4':'٤','5':'٥','6':'٦','7':'٧','8':'٨','9':'٩'};
+    const d = {'0':'ظ ','1':'ظ،','2':'ظ¢','3':'ظ£','4':'ظ¤','5':'ظ¥','6':'ظ¦','7':'ظ§','8':'ظ¨','9':'ظ©'};
     String s = n.toString();
     d.forEach((k, v) => s = s.replaceAll(k, v));
     return s;
   }
 }
 
-// ══════════════════════════════════════
-// عرض التسميع الذكي
-// ══════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط¹ط±ط¶ ط§ظ„طھط³ظ…ظٹط¹ ط§ظ„ط°ظƒظٹ
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _RecitationView extends StatelessWidget {
   final List<Map<String, dynamic>> ayahs;
   final Color primaryColor;
@@ -301,7 +301,7 @@ class _RecitationView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // تجميع كل الكلمات
+    // طھط¬ظ…ظٹط¹ ظƒظ„ ط§ظ„ظƒظ„ظ…ط§طھ
     List<_Word> allWords = [];
 
     for (final ayah in ayahs) {
@@ -330,14 +330,14 @@ class _RecitationView extends StatelessWidget {
         top: 90, bottom: 170, left: 14, right: 14,
       ),
       children: [
-        // ─── بانر التسميع ───
+        // â”€â”€â”€ ط¨ط§ظ†ط± ط§ظ„طھط³ظ…ظٹط¹ â”€â”€â”€
         Container(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
           margin: const EdgeInsets.only(bottom: 12),
           decoration: BoxDecoration(
-            color: Colors.green.withOpacity(0.1),
+            color: Colors.green.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(14),
-            border: Border.all(color: Colors.green.withOpacity(0.3)),
+            border: Border.all(color: Colors.green.withValues(alpha: 0.3)),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -346,7 +346,7 @@ class _RecitationView extends StatelessWidget {
               const SizedBox(width: 8),
               Flexible(
                 child: Text(
-                  'اقرأ بصوتك وستظهر الكلمات تلقائياً',
+                  'ط§ظ‚ط±ط£ ط¨طµظˆطھظƒ ظˆط³طھط¸ظ‡ط± ط§ظ„ظƒظ„ظ…ط§طھ طھظ„ظ‚ط§ط¦ظٹط§ظ‹',
                   style: GoogleFonts.cairo(
                     color: Colors.green.shade700,
                     fontWeight: FontWeight.bold,
@@ -359,7 +359,7 @@ class _RecitationView extends StatelessWidget {
           ),
         ),
 
-        // ─── شريط التقدم ───
+        // â”€â”€â”€ ط´ط±ظٹط· ط§ظ„طھظ‚ط¯ظ… â”€â”€â”€
         Padding(
           padding: const EdgeInsets.only(bottom: 12),
           child: Column(
@@ -369,13 +369,13 @@ class _RecitationView extends StatelessWidget {
                 child: LinearProgressIndicator(
                   value: progress,
                   minHeight: 5,
-                  backgroundColor: Colors.grey.withOpacity(0.12),
+                  backgroundColor: Colors.grey.withValues(alpha: 0.12),
                   valueColor: AlwaysStoppedAnimation(primaryColor),
                 ),
               ),
               const SizedBox(height: 4),
               Text(
-                '${_ar(revealedWordCount)} / ${_ar(allWords.length)} كلمة',
+                '${_ar(revealedWordCount)} / ${_ar(allWords.length)} ظƒظ„ظ…ط©',
                 style: GoogleFonts.cairo(
                   fontSize: 10,
                   color: Colors.grey,
@@ -385,7 +385,7 @@ class _RecitationView extends StatelessWidget {
           ),
         ),
 
-        // ─── الكلمات ───
+        // â”€â”€â”€ ط§ظ„ظƒظ„ظ…ط§طھ â”€â”€â”€
         Directionality(
           textDirection: TextDirection.rtl,
           child: Wrap(
@@ -406,7 +406,7 @@ class _RecitationView extends StatelessWidget {
 
               List<Widget> items = [];
 
-              // فاصل آية
+              // ظپط§طµظ„ ط¢ظٹط©
               if (word.isFirstInAyah && i > 0) {
                 items.add(
                   Container(
@@ -414,7 +414,7 @@ class _RecitationView extends StatelessWidget {
                     width: 22,
                     height: 22,
                     decoration: BoxDecoration(
-                      color: primaryColor.withOpacity(0.1),
+                      color: primaryColor.withValues(alpha: 0.1),
                       shape: BoxShape.circle,
                     ),
                     child: Center(
@@ -436,7 +436,7 @@ class _RecitationView extends StatelessWidget {
                 );
               }
 
-              // الكلمة
+              // ط§ظ„ظƒظ„ظ…ط©
               items.add(
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 250),
@@ -445,14 +445,14 @@ class _RecitationView extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     color: correct
-                        ? Colors.green.withOpacity(0.12)
+                        ? Colors.green.withValues(alpha: 0.12)
                         : wrong
-                        ? Colors.red.withOpacity(0.12)
+                        ? Colors.red.withValues(alpha: 0.12)
                         : null,
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Text(
-                    revealed ? word.text : '●●',
+                    revealed ? word.text : 'â—ڈâ—ڈ',
                     style: GoogleFonts.amiri(
                       fontSize: fontSize * 0.9,
                       height: 1.7,
@@ -460,7 +460,7 @@ class _RecitationView extends StatelessWidget {
                           ? Colors.green.shade700
                           : wrong
                           ? Colors.red.shade600
-                          : Colors.grey.withOpacity(0.2),
+                          : Colors.grey.withValues(alpha: 0.2),
                       fontWeight: revealed
                           ? FontWeight.w600
                           : FontWeight.normal,
@@ -483,7 +483,7 @@ class _RecitationView extends StatelessWidget {
   }
 
   String _ar(int n) {
-    const d = {'0':'٠','1':'١','2':'٢','3':'٣','4':'٤','5':'٥','6':'٦','7':'٧','8':'٨','9':'٩'};
+    const d = {'0':'ظ ','1':'ظ،','2':'ظ¢','3':'ظ£','4':'ظ¤','5':'ظ¥','6':'ظ¦','7':'ظ§','8':'ظ¨','9':'ظ©'};
     String s = n.toString();
     d.forEach((k, v) => s = s.replaceAll(k, v));
     return s;

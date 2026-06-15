@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../../../languages/app_localizations.dart';
 import '../../../models/inheritance_models.dart';
 import '../../../services/inheritance/land_calculator.dart';
@@ -39,7 +39,7 @@ class EstateInputWidget extends StatelessWidget {
   Widget _buildMoneyInput(BuildContext context) {
     final cardColor = isDarkMode ? const Color(0xFF151B26) : Colors.white;
     final textColor = isDarkMode ? Colors.white : const Color(0xFF2D2D2D);
-    final borderColor = isDarkMode ? Colors.white.withOpacity(0.08) : Colors.grey.withOpacity(0.15);
+    final borderColor = isDarkMode ? Colors.white.withValues(alpha: 0.08) : Colors.grey.withValues(alpha: 0.15);
     const moneyColor = Color(0xFF2E7D32);
 
     return Container(
@@ -50,7 +50,7 @@ class EstateInputWidget extends StatelessWidget {
         border: Border.all(color: borderColor),
         boxShadow: [
           BoxShadow(
-            color: isDarkMode ? Colors.black.withOpacity(0.2) : Colors.black.withOpacity(0.05),
+            color: isDarkMode ? Colors.black.withValues(alpha: 0.2) : Colors.black.withValues(alpha: 0.05),
             blurRadius: 15,
             offset: const Offset(0, 5),
           ),
@@ -65,7 +65,7 @@ class EstateInputWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [moneyColor, moneyColor.withOpacity(0.7)],
+                    colors: [moneyColor, moneyColor.withValues(alpha: 0.7)],
                   ),
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -88,7 +88,7 @@ class EstateInputWidget extends StatelessWidget {
                       context.tr.afterDebtsAndWills,
                       style: TextStyle(
                         fontSize: 11,
-                        color: textColor.withOpacity(0.6),
+                        color: textColor.withValues(alpha: 0.6),
                       ),
                     ),
                   ],
@@ -107,18 +107,18 @@ class EstateInputWidget extends StatelessWidget {
             ),
             decoration: InputDecoration(
               hintText: context.tr.enterTotalAmount,
-              hintStyle: TextStyle(color: textColor.withOpacity(0.4)),
+              hintStyle: TextStyle(color: textColor.withValues(alpha: 0.4)),
               prefixIcon: Container(
                 margin: const EdgeInsets.all(8),
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: moneyColor.withOpacity(0.1),
+                  color: moneyColor.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Icon(Icons.attach_money, color: moneyColor, size: 20),
               ),
               filled: true,
-              fillColor: isDarkMode ? Colors.white.withOpacity(0.05) : Colors.grey.shade50,
+              fillColor: isDarkMode ? Colors.white.withValues(alpha: 0.05) : Colors.grey.shade50,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(14),
                 borderSide: BorderSide.none,
@@ -138,7 +138,7 @@ class EstateInputWidget extends StatelessWidget {
   Widget _buildLandInput(BuildContext context) {
     final cardColor = isDarkMode ? const Color(0xFF151B26) : Colors.white;
     final textColor = isDarkMode ? Colors.white : const Color(0xFF2D2D2D);
-    final borderColor = isDarkMode ? Colors.white.withOpacity(0.08) : Colors.grey.withOpacity(0.15);
+    final borderColor = isDarkMode ? Colors.white.withValues(alpha: 0.08) : Colors.grey.withValues(alpha: 0.15);
     const landColor = Color(0xFF795548);
 
     return Container(
@@ -149,7 +149,7 @@ class EstateInputWidget extends StatelessWidget {
         border: Border.all(color: borderColor),
         boxShadow: [
           BoxShadow(
-            color: isDarkMode ? Colors.black.withOpacity(0.2) : Colors.black.withOpacity(0.05),
+            color: isDarkMode ? Colors.black.withValues(alpha: 0.2) : Colors.black.withValues(alpha: 0.05),
             blurRadius: 15,
             offset: const Offset(0, 5),
           ),
@@ -187,7 +187,7 @@ class EstateInputWidget extends StatelessWidget {
                       margin: const EdgeInsets.only(top: 4),
                       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                       decoration: BoxDecoration(
-                        color: landColor.withOpacity(0.1),
+                        color: landColor.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
@@ -208,7 +208,7 @@ class EstateInputWidget extends StatelessWidget {
                   context: context,
                   controller: feddanController,
                   label: context.tr.feddan,
-                  emoji: '🌾',
+                  emoji: 'ًںŒ¾',
                   hint: '0',
                   color: const Color(0xFF2E7D32),
                 ),
@@ -219,7 +219,7 @@ class EstateInputWidget extends StatelessWidget {
                   context: context,
                   controller: qiratController,
                   label: context.tr.qirat,
-                  emoji: '📐',
+                  emoji: 'ًں“گ',
                   hint: '0-23',
                   color: landColor,
                 ),
@@ -230,7 +230,7 @@ class EstateInputWidget extends StatelessWidget {
                   context: context,
                   controller: sahmController,
                   label: context.tr.sahm,
-                  emoji: '📏',
+                  emoji: 'ًں“ڈ',
                   hint: '0-23',
                   color: const Color(0xFFE65100),
                 ),
@@ -259,7 +259,7 @@ class EstateInputWidget extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           decoration: BoxDecoration(
-            color: color.withOpacity(0.1),
+            color: color.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Row(
@@ -292,17 +292,17 @@ class EstateInputWidget extends StatelessWidget {
           ),
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: TextStyle(color: color.withOpacity(0.3)),
+            hintStyle: TextStyle(color: color.withValues(alpha: 0.3)),
             filled: true,
-            fillColor: isDarkMode ? Colors.white.withOpacity(0.05) : color.withOpacity(0.05),
+            fillColor: isDarkMode ? Colors.white.withValues(alpha: 0.05) : color.withValues(alpha: 0.05),
             contentPadding: const EdgeInsets.symmetric(vertical: 14),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: color.withOpacity(0.3)),
+              borderSide: BorderSide(color: color.withValues(alpha: 0.3)),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: color.withOpacity(0.3)),
+              borderSide: BorderSide(color: color.withValues(alpha: 0.3)),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
@@ -329,25 +329,25 @@ class EstateInputWidget extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            const Color(0xFF795548).withOpacity(isDarkMode ? 0.15 : 0.08),
-            const Color(0xFF795548).withOpacity(isDarkMode ? 0.08 : 0.03),
+            const Color(0xFF795548).withValues(alpha: isDarkMode ? 0.15 : 0.08),
+            const Color(0xFF795548).withValues(alpha: isDarkMode ? 0.08 : 0.03),
           ],
         ),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: const Color(0xFF795548).withOpacity(0.2)),
+        border: Border.all(color: const Color(0xFF795548).withValues(alpha: 0.2)),
       ),
       child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.sync_alt, size: 14, color: const Color(0xFF795548).withOpacity(0.7)),
+              Icon(Icons.sync_alt, size: 14, color: const Color(0xFF795548).withValues(alpha: 0.7)),
               const SizedBox(width: 6),
               Text(
                 context.tr.liveConversion,
                 style: TextStyle(
                   fontSize: 11,
-                  color: const Color(0xFF795548).withOpacity(0.8),
+                  color: const Color(0xFF795548).withValues(alpha: 0.8),
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -359,10 +359,10 @@ class EstateInputWidget extends StatelessWidget {
             runSpacing: 8,
             alignment: WrapAlignment.center,
             children: [
-              _buildConvChip(context.tr.inQirats, '${estate.totalInQirats.toStringAsFixed(2)} ق', const Color(0xFF795548)),
-              _buildConvChip(context.tr.inSahms, '${estate.totalInSahms.toStringAsFixed(0)} س', const Color(0xFFE65100)),
-              _buildConvChip(context.tr.inMeters, '${estate.totalInMeters.toStringAsFixed(1)} م²', const Color(0xFF1565C0)),
-              _buildConvChip(context.tr.inFeddan, '${estate.totalInFeddans.toStringAsFixed(4)} ف', const Color(0xFF2E7D32)),
+              _buildConvChip(context.tr.inQirats, '${estate.totalInQirats.toStringAsFixed(2)} ظ‚', const Color(0xFF795548)),
+              _buildConvChip(context.tr.inSahms, '${estate.totalInSahms.toStringAsFixed(0)} ط³', const Color(0xFFE65100)),
+              _buildConvChip(context.tr.inMeters, '${estate.totalInMeters.toStringAsFixed(1)} ظ…آ²', const Color(0xFF1565C0)),
+              _buildConvChip(context.tr.inFeddan, '${estate.totalInFeddans.toStringAsFixed(4)} ظپ', const Color(0xFF2E7D32)),
             ],
           ),
         ],
@@ -374,9 +374,9 @@ class EstateInputWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       decoration: BoxDecoration(
-        color: isDarkMode ? color.withOpacity(0.15) : Colors.white,
+        color: isDarkMode ? color.withValues(alpha: 0.15) : Colors.white,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: color.withOpacity(0.3)),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -385,7 +385,7 @@ class EstateInputWidget extends StatelessWidget {
             label,
             style: TextStyle(
               fontSize: 9,
-              color: color.withOpacity(0.7),
+              color: color.withValues(alpha: 0.7),
             ),
           ),
           const SizedBox(height: 2),

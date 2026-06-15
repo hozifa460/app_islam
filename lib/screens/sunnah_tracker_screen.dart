@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
 import 'dart:math' as math;
@@ -37,7 +37,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
 
   late TabController _tabController;
   int _selectedFilterIndex = 0;
-  final List<String> _filters = ['الكل', 'مؤكدة', 'مستحبة', 'غير مكتملة'];
+  final List<String> _filters = ['ط§ظ„ظƒظ„', 'ظ…ط¤ظƒط¯ط©', 'ظ…ط³طھط­ط¨ط©', 'ط؛ظٹط± ظ…ظƒطھظ…ظ„ط©'];
 
   // ==================== Theme Colors ====================
   // Dark Mode
@@ -146,8 +146,8 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
 
   String _getDayName(int weekday) {
     const days = {
-      1: 'الاثنين', 2: 'الثلاثاء', 3: 'الأربعاء',
-      4: 'الخميس', 5: 'الجمعة', 6: 'السبت', 7: 'الأحد',
+      1: 'ط§ظ„ط§ط«ظ†ظٹظ†', 2: 'ط§ظ„ط«ظ„ط§ط«ط§ط،', 3: 'ط§ظ„ط£ط±ط¨ط¹ط§ط،',
+      4: 'ط§ظ„ط®ظ…ظٹط³', 5: 'ط§ظ„ط¬ظ…ط¹ط©', 6: 'ط§ظ„ط³ط¨طھ', 7: 'ط§ظ„ط£ط­ط¯',
     };
     return days[weekday] ?? '';
   }
@@ -208,18 +208,18 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                           shape: BoxShape.circle,
                           gradient: RadialGradient(
                             colors: [
-                              _emeraldLight.withOpacity(0.3),
-                              _emeraldDark.withOpacity(0.1),
+                              _emeraldLight.withValues(alpha: 0.3),
+                              _emeraldDark.withValues(alpha: 0.1),
                               Colors.transparent,
                             ],
                           ),
                           border: Border.all(
-                            color: _emerald.withOpacity(0.4),
+                            color: _emerald.withValues(alpha: 0.4),
                             width: 2,
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: _emerald.withOpacity(0.3),
+                              color: _emerald.withValues(alpha: 0.3),
                               blurRadius: 30,
                               spreadRadius: 8,
                             ),
@@ -227,7 +227,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                         ),
                         child: Center(
                           child: Text(
-                            '🕌',
+                            'ًں•Œ',
                             style: TextStyle(
                               fontSize: size.width * 0.12,
                             ),
@@ -242,7 +242,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                       colors: [_emeraldLight, _goldLight, _emeraldLight],
                     ).createShader(b),
                     child: Text(
-                      'متتبع السنن النبوية',
+                      'ظ…طھطھط¨ط¹ ط§ظ„ط³ظ†ظ† ط§ظ„ظ†ط¨ظˆظٹط©',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: size.width * 0.06,
@@ -253,7 +253,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                   ),
                   SizedBox(height: size.height * 0.01),
                   Text(
-                    'احرص على سننه ﷺ',
+                    'ط§ط­ط±طµ ط¹ظ„ظ‰ ط³ظ†ظ†ظ‡ ï·؛',
                     style: TextStyle(
                       color: _textSecondary,
                       fontSize: size.width * 0.038,
@@ -361,7 +361,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
         ),
         boxShadow: [
           BoxShadow(
-            color: _emerald.withOpacity(0.15),
+            color: _emerald.withValues(alpha: 0.15),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -375,7 +375,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
             left: -40,
             child: _buildOrbDecoration(
               size.width * 0.45,
-              _emerald.withOpacity(0.06),
+              _emerald.withValues(alpha: 0.06),
             ),
           ),
           Positioned(
@@ -383,7 +383,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
             right: -30,
             child: _buildOrbDecoration(
               size.width * 0.35,
-              _gold.withOpacity(0.05),
+              _gold.withValues(alpha: 0.05),
             ),
           ),
           // Content
@@ -422,7 +422,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                                       ],
                                     ).createShader(b),
                                 child: Text(
-                                  'متتبع السنن النبوية',
+                                  'ظ…طھطھط¨ط¹ ط§ظ„ط³ظ†ظ† ط§ظ„ظ†ط¨ظˆظٹط©',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: size.width * 0.055,
@@ -434,9 +434,9 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                             ),
                             SizedBox(height: isSmall ? 2 : 4),
                             Text(
-                              'احرص على سنة نبيك ﷺ',
+                              'ط§ط­ط±طµ ط¹ظ„ظ‰ ط³ظ†ط© ظ†ط¨ظٹظƒ ï·؛',
                               style: TextStyle(
-                                color: Colors.white.withOpacity(0.65),
+                                color: Colors.white.withValues(alpha: 0.65),
                                 fontSize: size.width * 0.032,
                               ),
                             ),
@@ -497,7 +497,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
               color: _emeraldLight,
               boxShadow: [
                 BoxShadow(
-                  color: _emeraldLight.withOpacity(_pulseAnim.value - 0.5),
+                  color: _emeraldLight.withValues(alpha: _pulseAnim.value - 0.5),
                   blurRadius: 6,
                   spreadRadius: 2,
                 ),
@@ -528,14 +528,14 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(14),
-          color: Colors.white.withOpacity(0.1),
+          color: Colors.white.withValues(alpha: 0.1),
           border: Border.all(
-            color: Colors.white.withOpacity(0.15),
+            color: Colors.white.withValues(alpha: 0.15),
             width: 1,
           ),
           boxShadow: [
             BoxShadow(
-              color: _emerald.withOpacity(0.08 * _pulseAnim.value),
+              color: _emerald.withValues(alpha: 0.08 * _pulseAnim.value),
               blurRadius: 12,
             ),
           ],
@@ -556,7 +556,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
             Text(
               _getDayName(now.weekday),
               style: TextStyle(
-                color: _emeraldLight.withOpacity(0.85),
+                color: _emeraldLight.withValues(alpha: 0.85),
                 fontSize: size.width * 0.026,
               ),
             ),
@@ -577,9 +577,9 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Colors.white.withOpacity(0.1),
+          color: Colors.white.withValues(alpha: 0.1),
           border: Border.all(
-            color: Colors.white.withOpacity(0.15),
+            color: Colors.white.withValues(alpha: 0.15),
             width: 1,
           ),
         ),
@@ -601,8 +601,8 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
       children: [
         _buildStatCard(
           value: '$completed/$total',
-          label: 'سنة الوقت',
-          emoji: '⏰',
+          label: 'ط³ظ†ط© ط§ظ„ظˆظ‚طھ',
+          emoji: 'âڈ°',
           color: _emerald,
           size: size,
           isSmall: isSmall,
@@ -610,8 +610,8 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
         SizedBox(width: size.width * 0.025),
         _buildStatCard(
           value: '$globalCompleted/$globalTotal',
-          label: 'إجمالي اليوم',
-          emoji: '📿',
+          label: 'ط¥ط¬ظ…ط§ظ„ظٹ ط§ظ„ظٹظˆظ…',
+          emoji: 'ًں“؟',
           color: _goldLight,
           size: size,
           isSmall: isSmall,
@@ -619,8 +619,8 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
         SizedBox(width: size.width * 0.025),
         _buildStatCard(
           value: '${globalTotal - globalCompleted}',
-          label: 'متبقي',
-          emoji: '🎯',
+          label: 'ظ…طھط¨ظ‚ظٹ',
+          emoji: 'ًںژ¯',
           color: _blueLight,
           size: size,
           isSmall: isSmall,
@@ -645,9 +645,9 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(14),
-          color: Colors.white.withOpacity(0.08),
+          color: Colors.white.withValues(alpha: 0.08),
           border: Border.all(
-            color: color.withOpacity(0.25),
+            color: color.withValues(alpha: 0.25),
             width: 1,
           ),
         ),
@@ -670,7 +670,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
             Text(
               label,
               style: TextStyle(
-                color: Colors.white.withOpacity(0.6),
+                color: Colors.white.withValues(alpha: 0.6),
                 fontSize: isSmall ? 9 : 10,
               ),
               maxLines: 1,
@@ -692,9 +692,9 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'تقدم الوقت الحالي',
+              'طھظ‚ط¯ظ… ط§ظ„ظˆظ‚طھ ط§ظ„ط­ط§ظ„ظٹ',
               style: TextStyle(
-                color: Colors.white.withOpacity(0.7),
+                color: Colors.white.withValues(alpha: 0.7),
                 fontSize: size.width * 0.03,
               ),
             ),
@@ -725,7 +725,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
               height: 8,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Colors.white.withOpacity(0.1),
+                color: Colors.white.withValues(alpha: 0.1),
               ),
             ),
             AnimatedFractionallySizedBox(
@@ -742,7 +742,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: _emerald.withOpacity(0.6),
+                      color: _emerald.withValues(alpha: 0.6),
                       blurRadius: 6,
                     ),
                   ],
@@ -756,14 +756,14 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('🎉', style: TextStyle(fontSize: 13)),
+              const Text('ًںژ‰', style: TextStyle(fontSize: 13)),
               const SizedBox(width: 6),
               ShaderMask(
                 shaderCallback: (b) => const LinearGradient(
                   colors: [_goldLight, _gold],
                 ).createShader(b),
                 child: const Text(
-                  'أحسنت! أتممت سنن هذا الوقت',
+                  'ط£ط­ط³ظ†طھ! ط£طھظ…ظ…طھ ط³ظ†ظ† ظ‡ط°ط§ ط§ظ„ظˆظ‚طھ',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 12,
@@ -793,7 +793,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
         border: Border.all(color: _divider, width: 1),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(_isDark ? 0.3 : 0.06),
+            color: Colors.black.withValues(alpha: _isDark ? 0.3 : 0.06),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -808,7 +808,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
           ),
           boxShadow: [
             BoxShadow(
-              color: _emerald.withOpacity(0.35),
+              color: _emerald.withValues(alpha: 0.35),
               blurRadius: 8,
             ),
           ],
@@ -829,10 +829,10 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text('⏰', style: TextStyle(fontSize: 14)),
+                const Text('âڈ°', style: TextStyle(fontSize: 14)),
                 const SizedBox(width: 5),
                 const Flexible(
-                  child: Text('سنن الآن', overflow: TextOverflow.ellipsis),
+                  child: Text('ط³ظ†ظ† ط§ظ„ط¢ظ†', overflow: TextOverflow.ellipsis),
                 ),
                 const SizedBox(width: 4),
                 _buildTabBadge(
@@ -847,10 +847,10 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text('📋', style: TextStyle(fontSize: 14)),
+                const Text('ًں“‹', style: TextStyle(fontSize: 14)),
                 const SizedBox(width: 5),
                 const Flexible(
-                  child: Text('جميع السنن', overflow: TextOverflow.ellipsis),
+                  child: Text('ط¬ظ…ظٹط¹ ط§ظ„ط³ظ†ظ†', overflow: TextOverflow.ellipsis),
                 ),
                 const SizedBox(width: 4),
                 _buildTabBadge(
@@ -869,7 +869,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.15),
+        color: color.withValues(alpha: 0.15),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Text(
@@ -925,23 +925,23 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
           gradient: LinearGradient(
             colors: _isDark
                 ? [
-              _emerald.withOpacity(0.15),
-              _blue.withOpacity(0.08),
+              _emerald.withValues(alpha: 0.15),
+              _blue.withValues(alpha: 0.08),
             ]
                 : [
-              _emerald.withOpacity(0.1),
-              _emerald.withOpacity(0.04),
+              _emerald.withValues(alpha: 0.1),
+              _emerald.withValues(alpha: 0.04),
             ],
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
           ),
           border: Border.all(
-            color: _emerald.withOpacity(0.25),
+            color: _emerald.withValues(alpha: 0.25),
             width: 1,
           ),
           boxShadow: [
             BoxShadow(
-              color: _emerald.withOpacity(_isDark ? 0.08 : 0.05),
+              color: _emerald.withValues(alpha: _isDark ? 0.08 : 0.05),
               blurRadius: 12,
               offset: const Offset(0, 4),
             ),
@@ -961,14 +961,14 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: _emerald.withOpacity(0.3 * _pulseAnim.value),
+                      color: _emerald.withValues(alpha: 0.3 * _pulseAnim.value),
                       blurRadius: 10,
                       spreadRadius: 2,
                     ),
                   ],
                 ),
                 child: const Center(
-                  child: Text('⏰', style: TextStyle(fontSize: 22)),
+                  child: Text('âڈ°', style: TextStyle(fontSize: 22)),
                 ),
               ),
             ),
@@ -988,8 +988,8 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                   const SizedBox(height: 3),
                   Text(
                     remaining > 0
-                        ? 'تبقى لك $remaining سنة لم تكتمل بعد'
-                        : '✨ ممتاز! أتممت جميع سنن هذا الوقت',
+                        ? 'طھط¨ظ‚ظ‰ ظ„ظƒ $remaining ط³ظ†ط© ظ„ظ… طھظƒطھظ…ظ„ ط¨ط¹ط¯'
+                        : 'âœ¨ ظ…ظ…طھط§ط²! ط£طھظ…ظ…طھ ط¬ظ…ظٹط¹ ط³ظ†ظ† ظ‡ط°ط§ ط§ظ„ظˆظ‚طھ',
                     style: TextStyle(
                       color: _textSecondary,
                       fontSize: size.width * 0.03,
@@ -1010,7 +1010,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                 ),
               ),
               child: Text(
-                '${sunnahs.length} سنة',
+                '${sunnahs.length} ط³ظ†ط©',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: size.width * 0.03,
@@ -1077,9 +1077,9 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
   List<SunnahModel> _applyFilter(List<SunnahModel> sunnahs) {
     switch (_selectedFilterIndex) {
       case 1:
-        return sunnahs.where((s) => s.importance == 'مؤكدة').toList();
+        return sunnahs.where((s) => s.importance == 'ظ…ط¤ظƒط¯ط©').toList();
       case 2:
-        return sunnahs.where((s) => s.importance == 'مستحبة').toList();
+        return sunnahs.where((s) => s.importance == 'ظ…ط³طھط­ط¨ط©').toList();
       case 3:
         return sunnahs.where((s) => !s.isCompleted).toList();
       default:
@@ -1102,7 +1102,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
         ),
         boxShadow: [
           BoxShadow(
-            color: _emerald.withOpacity(0.15),
+            color: _emerald.withValues(alpha: 0.15),
             blurRadius: 16,
             offset: const Offset(0, 6),
           ),
@@ -1123,7 +1123,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                   child: CircularProgressIndicator(
                     value: percentage / 100,
                     strokeWidth: 5,
-                    backgroundColor: Colors.white.withOpacity(0.1),
+                    backgroundColor: Colors.white.withValues(alpha: 0.1),
                     valueColor: AlwaysStoppedAnimation<Color>(
                       percentage == 100 ? _goldLight : _emeraldLight,
                     ),
@@ -1144,7 +1144,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                     Text(
                       '%',
                       style: TextStyle(
-                        color: Colors.white.withOpacity(0.6),
+                        color: Colors.white.withValues(alpha: 0.6),
                         fontSize: size.width * 0.025,
                       ),
                     ),
@@ -1163,7 +1163,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                     colors: [_emeraldLight, _goldLight],
                   ).createShader(b),
                   child: Text(
-                    'إنجازك اليوم',
+                    'ط¥ظ†ط¬ط§ط²ظƒ ط§ظ„ظٹظˆظ…',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: size.width * 0.045,
@@ -1173,21 +1173,21 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                 ),
                 SizedBox(height: size.height * 0.01),
                 _buildStatRow(
-                  '✅ أكملت',
+                  'âœ… ط£ظƒظ…ظ„طھ',
                   '${_service.completedToday}',
                   _emeraldLight,
                   size,
                 ),
                 SizedBox(height: size.height * 0.005),
                 _buildStatRow(
-                  '📋 المجموع',
+                  'ًں“‹ ط§ظ„ظ…ط¬ظ…ظˆط¹',
                   '${_service.totalSunnahs}',
                   _blueLight,
                   size,
                 ),
                 SizedBox(height: size.height * 0.005),
                 _buildStatRow(
-                  '⏳ المتبقي',
+                  'âڈ³ ط§ظ„ظ…طھط¨ظ‚ظٹ',
                   '${_service.totalSunnahs - _service.completedToday}',
                   _goldLight,
                   size,
@@ -1207,7 +1207,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
         Text(
           label,
           style: TextStyle(
-            color: Colors.white.withOpacity(0.65),
+            color: Colors.white.withValues(alpha: 0.65),
             fontSize: size.width * 0.03,
           ),
         ),
@@ -1218,9 +1218,9 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
             vertical: 3,
           ),
           decoration: BoxDecoration(
-            color: color.withOpacity(0.15),
+            color: color.withValues(alpha: 0.15),
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: color.withOpacity(0.3), width: 1),
+            border: Border.all(color: color.withValues(alpha: 0.3), width: 1),
           ),
           child: Text(
             value,
@@ -1238,8 +1238,8 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
   Widget _buildFilterChips(Size size, List<SunnahModel> allSunnahs) {
     final counts = [
       allSunnahs.length,
-      allSunnahs.where((s) => s.importance == 'مؤكدة').length,
-      allSunnahs.where((s) => s.importance == 'مستحبة').length,
+      allSunnahs.where((s) => s.importance == 'ظ…ط¤ظƒط¯ط©').length,
+      allSunnahs.where((s) => s.importance == 'ظ…ط³طھط­ط¨ط©').length,
       allSunnahs.where((s) => !s.isCompleted).length,
     ];
 
@@ -1279,13 +1279,13 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                 boxShadow: selected
                     ? [
                   BoxShadow(
-                    color: _emerald.withOpacity(0.35),
+                    color: _emerald.withValues(alpha: 0.35),
                     blurRadius: 8,
                   ),
                 ]
                     : [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.04),
+                    color: Colors.black.withValues(alpha: 0.04),
                     blurRadius: 4,
                     offset: const Offset(0, 2),
                   ),
@@ -1310,7 +1310,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                         horizontal: 6, vertical: 1),
                     decoration: BoxDecoration(
                       color: selected
-                          ? Colors.white.withOpacity(0.2)
+                          ? Colors.white.withValues(alpha: 0.2)
                           : _divider,
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -1340,12 +1340,12 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
     final completed = sunnahs.where((s) => s.isCompleted).length;
     final total = sunnahs.length;
     const icons = {
-      'fajr': '🌙', 'morning_adhkar': '🌅', 'duha': '☀️',
-      'dhuhr': '🌞', 'asr': '🌤️', 'evening_adhkar': '🌆',
-      'maghrib': '🌇', 'isha': '🌃', 'witr': '⭐',
-      'tahajjud': '🌟', 'sleep': '😴', 'always': '♾️',
-      'weekly_fast': '📅', 'monthly_fast': '🌕',
-      'friday': '🕌', 'yearly_fast': '🗓️', 'yearly_prayer': '🎊',
+      'fajr': 'ًںŒ™', 'morning_adhkar': 'ًںŒ…', 'duha': 'âک€ï¸ڈ',
+      'dhuhr': 'ًںŒ‍', 'asr': 'ًںŒ¤ï¸ڈ', 'evening_adhkar': 'ًںŒ†',
+      'maghrib': 'ًںŒ‡', 'isha': 'ًںŒƒ', 'witr': 'â­گ',
+      'tahajjud': 'ًںŒں', 'sleep': 'ًںک´', 'always': 'â™¾ï¸ڈ',
+      'weekly_fast': 'ًں“…', 'monthly_fast': 'ًںŒ•',
+      'friday': 'ًں•Œ', 'yearly_fast': 'ًں—“ï¸ڈ', 'yearly_prayer': 'ًںژٹ',
     };
     return Container(
       padding: EdgeInsets.symmetric(
@@ -1357,19 +1357,19 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
         gradient: isNow
             ? LinearGradient(
           colors: [
-            _emerald.withOpacity(_isDark ? 0.18 : 0.12),
-            _emerald.withOpacity(0.03),
+            _emerald.withValues(alpha: _isDark ? 0.18 : 0.12),
+            _emerald.withValues(alpha: 0.03),
           ],
         )
             : null,
         color: isNow ? null : _card,
         border: Border.all(
-          color: isNow ? _emerald.withOpacity(0.35) : _divider,
+          color: isNow ? _emerald.withValues(alpha: 0.35) : _divider,
           width: 1,
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(_isDark ? 0.2 : 0.04),
+            color: Colors.black.withValues(alpha: _isDark ? 0.2 : 0.04),
             blurRadius: 6,
             offset: const Offset(0, 2),
           ),
@@ -1378,7 +1378,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
       child: Row(
         children: [
           Text(
-            icons[category] ?? '📿',
+            icons[category] ?? 'ًں“؟',
             style: TextStyle(fontSize: size.width * 0.048),
           ),
           SizedBox(width: size.width * 0.025),
@@ -1407,13 +1407,13 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: _gold.withOpacity(0.25 * _pulseAnim.value),
+                      color: _gold.withValues(alpha: 0.25 * _pulseAnim.value),
                       blurRadius: 6,
                     ),
                   ],
                 ),
                 child: const Text(
-                  '● الآن',
+                  'â—ڈ ط§ظ„ط¢ظ†',
                   style: TextStyle(
                     color: Colors.black87,
                     fontSize: 10,
@@ -1480,11 +1480,11 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                 ? LinearGradient(
               colors: _isDark
                   ? [
-                _emerald.withOpacity(0.07),
+                _emerald.withValues(alpha: 0.07),
                 _card,
               ]
                   : [
-                _emerald.withOpacity(0.05),
+                _emerald.withValues(alpha: 0.05),
                 _card,
               ],
             )
@@ -1498,19 +1498,19 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
             ),
             border: Border.all(
               color: sunnah.isCompleted
-                  ? _emerald.withOpacity(0.25)
+                  ? _emerald.withValues(alpha: 0.25)
                   : _divider,
               width: 1,
             ),
             boxShadow: [
               BoxShadow(
                 color: (sunnah.isCompleted ? _emerald : cardColor)
-                    .withOpacity(_isDark ? 0.08 : 0.05),
+                    .withValues(alpha: _isDark ? 0.08 : 0.05),
                 blurRadius: 10,
                 offset: const Offset(0, 4),
               ),
               BoxShadow(
-                color: Colors.black.withOpacity(_isDark ? 0.2 : 0.04),
+                color: Colors.black.withValues(alpha: _isDark ? 0.2 : 0.04),
                 blurRadius: 6,
                 offset: const Offset(0, 2),
               ),
@@ -1534,7 +1534,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                           ? [_emeraldLight, _emeraldDark]
                           : [
                         cardColor,
-                        cardColor.withOpacity(0.2),
+                        cardColor.withValues(alpha: 0.2),
                       ],
                     ),
                   ),
@@ -1611,7 +1611,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                         if (sunnah.rakaat > 0) ...[
                           SizedBox(width: size.width * 0.015),
                           _buildMiniTag(
-                              '${sunnah.rakaat} ركعات', _blue, size),
+                              '${sunnah.rakaat} ط±ظƒط¹ط§طھ', _blue, size),
                         ],
                         const Spacer(),
                         _buildCompleteBtn(sunnah, cardColor, size),
@@ -1643,22 +1643,22 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
         )
             : LinearGradient(
           colors: [
-            color.withOpacity(_isDark ? 0.2 : 0.12),
-            color.withOpacity(_isDark ? 0.06 : 0.04),
+            color.withValues(alpha: _isDark ? 0.2 : 0.12),
+            color.withValues(alpha: _isDark ? 0.06 : 0.04),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         border: Border.all(
           color: sunnah.isCompleted
-              ? _emerald.withOpacity(0.4)
-              : color.withOpacity(0.2),
+              ? _emerald.withValues(alpha: 0.4)
+              : color.withValues(alpha: 0.2),
           width: 1,
         ),
         boxShadow: [
           BoxShadow(
             color: (sunnah.isCompleted ? _emerald : color)
-                .withOpacity(0.15),
+                .withValues(alpha: 0.15),
             blurRadius: 8,
           ),
         ],
@@ -1675,7 +1675,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
   }
 
   Widget _buildImportanceBadge(String importance, Size size) {
-    final isHigh = importance == 'مؤكدة';
+    final isHigh = importance == 'ظ…ط¤ظƒط¯ط©';
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: size.width * 0.02,
@@ -1692,13 +1692,13 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
         ),
         boxShadow: [
           BoxShadow(
-            color: (isHigh ? _purple : _blue).withOpacity(0.25),
+            color: (isHigh ? _purple : _blue).withValues(alpha: 0.25),
             blurRadius: 4,
           ),
         ],
       ),
       child: Text(
-        isHigh ? '★ مؤكدة' : '◆ مستحبة',
+        isHigh ? 'âک… ظ…ط¤ظƒط¯ط©' : 'â—† ظ…ط³طھط­ط¨ط©',
         style: TextStyle(
           color: Colors.white,
           fontSize: size.width * 0.024,
@@ -1716,9 +1716,9 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        color: color.withOpacity(_isDark ? 0.12 : 0.08),
+        color: color.withValues(alpha: _isDark ? 0.12 : 0.08),
         border: Border.all(
-          color: color.withOpacity(0.2),
+          color: color.withValues(alpha: 0.2),
           width: 1,
         ),
       ),
@@ -1763,7 +1763,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
           boxShadow: [
             BoxShadow(
               color: (sunnah.isCompleted ? Colors.grey : cardColor)
-                  .withOpacity(0.25),
+                  .withValues(alpha: 0.25),
               blurRadius: 6,
               offset: const Offset(0, 2),
             ),
@@ -1783,7 +1783,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
             ),
             SizedBox(width: size.width * 0.015),
             Text(
-              sunnah.isCompleted ? 'إلغاء' : 'أكمل',
+              sunnah.isCompleted ? 'ط¥ظ„ط؛ط§ط،' : 'ط£ظƒظ…ظ„',
               style: TextStyle(
                 color: sunnah.isCompleted
                     ? (_isDark ? _textSecondary : Colors.black54)
@@ -1819,18 +1819,18 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                   shape: BoxShape.circle,
                   gradient: RadialGradient(
                     colors: [
-                      _emerald.withOpacity(0.15),
+                      _emerald.withValues(alpha: 0.15),
                       Colors.transparent,
                     ],
                   ),
                   border: Border.all(
-                    color: _emerald.withOpacity(0.3),
+                    color: _emerald.withValues(alpha: 0.3),
                     width: 2,
                   ),
                 ),
                 child: Center(
                   child: Text(
-                    '🌙',
+                    'ًںŒ™',
                     style: TextStyle(fontSize: size.width * 0.14),
                   ),
                 ),
@@ -1838,7 +1838,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
             ),
             SizedBox(height: size.height * 0.03),
             Text(
-              'لا توجد سنن لهذا الوقت',
+              'ظ„ط§ طھظˆط¬ط¯ ط³ظ†ظ† ظ„ظ‡ط°ط§ ط§ظ„ظˆظ‚طھ',
               style: TextStyle(
                 color: _textPrimary,
                 fontSize: size.width * 0.048,
@@ -1847,7 +1847,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
             ),
             SizedBox(height: size.height * 0.01),
             Text(
-              'تفضل بمشاهدة جميع السنن\nمن التبويب الثاني',
+              'طھظپط¶ظ„ ط¨ظ…ط´ط§ظ‡ط¯ط© ط¬ظ…ظٹط¹ ط§ظ„ط³ظ†ظ†\nظ…ظ† ط§ظ„طھط¨ظˆظٹط¨ ط§ظ„ط«ط§ظ†ظٹ',
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: _textSecondary,
@@ -1870,7 +1870,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: _emerald.withOpacity(0.4),
+                      color: _emerald.withValues(alpha: 0.4),
                       blurRadius: 12,
                       offset: const Offset(0, 4),
                     ),
@@ -1879,10 +1879,10 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text('📋', style: TextStyle(fontSize: 16)),
+                    const Text('ًں“‹', style: TextStyle(fontSize: 16)),
                     SizedBox(width: size.width * 0.02),
                     Text(
-                      'جميع السنن',
+                      'ط¬ظ…ظٹط¹ ط§ظ„ط³ظ†ظ†',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: size.width * 0.038,
@@ -1920,12 +1920,12 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
               borderRadius:
               const BorderRadius.vertical(top: Radius.circular(28)),
               border: Border.all(
-                color: cardColor.withOpacity(0.2),
+                color: cardColor.withValues(alpha: 0.2),
                 width: 1,
               ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.3),
+                  color: Colors.black.withValues(alpha: 0.3),
                   blurRadius: 30,
                   offset: const Offset(0, -5),
                 ),
@@ -1955,8 +1955,8 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                         begin: Alignment.topRight,
                         end: Alignment.bottomLeft,
                         colors: [
-                          cardColor.withOpacity(_isDark ? 0.12 : 0.08),
-                          cardColor.withOpacity(0.02),
+                          cardColor.withValues(alpha: _isDark ? 0.12 : 0.08),
+                          cardColor.withValues(alpha: 0.02),
                         ],
                       ),
                     ),
@@ -1969,17 +1969,17 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                             borderRadius: BorderRadius.circular(22),
                             gradient: LinearGradient(
                               colors: [
-                                cardColor.withOpacity(0.25),
-                                cardColor.withOpacity(0.08),
+                                cardColor.withValues(alpha: 0.25),
+                                cardColor.withValues(alpha: 0.08),
                               ],
                             ),
                             border: Border.all(
-                              color: cardColor.withOpacity(0.35),
+                              color: cardColor.withValues(alpha: 0.35),
                               width: 1.5,
                             ),
                             boxShadow: [
                               BoxShadow(
-                                color: cardColor.withOpacity(0.25),
+                                color: cardColor.withValues(alpha: 0.25),
                                 blurRadius: 20,
                                 spreadRadius: 2,
                               ),
@@ -2013,7 +2013,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                             _buildImportanceBadge(sunnah.importance, size),
                             if (sunnah.rakaat > 0)
                               _buildMiniTag(
-                                  '${sunnah.rakaat} ركعات', _blue, size),
+                                  '${sunnah.rakaat} ط±ظƒط¹ط§طھ', _blue, size),
                           ],
                         ),
                       ],
@@ -2026,16 +2026,16 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         _buildDetailCard(
-                          icon: '📝',
-                          title: 'الوصف',
+                          icon: 'ًں“‌',
+                          title: 'ط§ظ„ظˆطµظپ',
                           content: sunnah.description,
                           color: cardColor,
                           size: size,
                         ),
                         SizedBox(height: size.height * 0.014),
                         _buildDetailCard(
-                          icon: '📖',
-                          title: 'الدليل من السنة',
+                          icon: 'ًں“–',
+                          title: 'ط§ظ„ط¯ظ„ظٹظ„ ظ…ظ† ط§ظ„ط³ظ†ط©',
                           content: sunnah.hadith,
                           color: _gold,
                           size: size,
@@ -2047,8 +2047,8 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                               child: _buildInfoTile(
                                 _service.getCategoryLabel(
                                     sunnah.timeCategory),
-                                'وقت السنة',
-                                '🕐',
+                                'ظˆظ‚طھ ط§ظ„ط³ظ†ط©',
+                                'ًں•گ',
                                 cardColor,
                                 size,
                               ),
@@ -2057,11 +2057,11 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                             Expanded(
                               child: _buildInfoTile(
                                 sunnah.importance,
-                                'الأهمية',
-                                sunnah.importance == 'مؤكدة'
-                                    ? '⭐'
-                                    : '💫',
-                                sunnah.importance == 'مؤكدة'
+                                'ط§ظ„ط£ظ‡ظ…ظٹط©',
+                                sunnah.importance == 'ظ…ط¤ظƒط¯ط©'
+                                    ? 'â­گ'
+                                    : 'ًں’«',
+                                sunnah.importance == 'ظ…ط¤ظƒط¯ط©'
                                     ? _gold
                                     : _blue,
                                 size,
@@ -2107,7 +2107,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                                     color: (sunnah.isCompleted
                                         ? Colors.grey
                                         : _emerald)
-                                        .withOpacity(0.35),
+                                        .withValues(alpha: 0.35),
                                     blurRadius: 14,
                                     offset: const Offset(0, 4),
                                   ),
@@ -2131,8 +2131,8 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                                   SizedBox(width: size.width * 0.025),
                                   Text(
                                     sunnah.isCompleted
-                                        ? 'إلغاء الإكمال'
-                                        : '✨ علّم كمكتمل',
+                                        ? 'ط¥ظ„ط؛ط§ط، ط§ظ„ط¥ظƒظ…ط§ظ„'
+                                        : 'âœ¨ ط¹ظ„ظ‘ظ… ظƒظ…ظƒطھظ…ظ„',
                                     style: TextStyle(
                                       color: sunnah.isCompleted
                                           ? (_isDark
@@ -2153,7 +2153,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
                           child: TextButton(
                             onPressed: () => Navigator.pop(context),
                             child: Text(
-                              'إغلاق',
+                              'ط¥ط؛ظ„ط§ظ‚',
                               style: TextStyle(
                                 color: _textSecondary,
                                 fontSize: size.width * 0.035,
@@ -2186,7 +2186,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: _isDark ? _darkBg : const Color(0xFFF9FAFB),
-        border: Border.all(color: color.withOpacity(0.2), width: 1),
+        border: Border.all(color: color.withValues(alpha: 0.2), width: 1),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -2231,7 +2231,7 @@ class _SunnahTrackerScreenState extends State<SunnahTrackerScreen>
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: _isDark ? _darkBg : const Color(0xFFF9FAFB),
-        border: Border.all(color: color.withOpacity(0.2), width: 1),
+        border: Border.all(color: color.withValues(alpha: 0.2), width: 1),
       ),
       child: Column(
         children: [

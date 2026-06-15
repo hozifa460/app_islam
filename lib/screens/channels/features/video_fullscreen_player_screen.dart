@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -295,13 +295,13 @@ class _VideoFullscreenPlayerScreenState
                           ),
                           leading: const Icon(Icons.closed_caption_rounded),
                           title: Text(
-                            'الترجمة',
+                            'ط§ظ„طھط±ط¬ظ…ط©',
                             style: GoogleFonts.cairo(
                               fontWeight: FontWeight.w700,
                             ),
                           ),
                           subtitle: Text(
-                            _captionsEnabled ? 'مفعلة' : 'متوقفة',
+                            _captionsEnabled ? 'ظ…ظپط¹ظ„ط©' : 'ظ…طھظˆظ‚ظپط©',
                             style: GoogleFonts.cairo(),
                           ),
                         ),
@@ -321,7 +321,7 @@ class _VideoFullscreenPlayerScreenState
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  'تم حفظ إعداد الترجمة، وسيُطبق عند تشغيل الفيديو القادم أو عند إعادة فتح الفيديو',
+                                  'طھظ… ط­ظپط¸ ط¥ط¹ط¯ط§ط¯ ط§ظ„طھط±ط¬ظ…ط©طŒ ظˆط³ظٹظڈط·ط¨ظ‚ ط¹ظ†ط¯ طھط´ط؛ظٹظ„ ط§ظ„ظپظٹط¯ظٹظˆ ط§ظ„ظ‚ط§ط¯ظ… ط£ظˆ ط¹ظ†ط¯ ط¥ط¹ط§ط¯ط© ظپطھط­ ط§ظ„ظپظٹط¯ظٹظˆ',
                                   style: GoogleFonts.cairo(),
                                 ),
                                 behavior: SnackBarBehavior.floating,
@@ -337,20 +337,20 @@ class _VideoFullscreenPlayerScreenState
                           ),
                           leading: const Icon(Icons.high_quality_rounded),
                           title: Text(
-                            'الجودة',
+                            'ط§ظ„ط¬ظˆط¯ط©',
                             style: GoogleFonts.cairo(
                               fontWeight: FontWeight.w700,
                             ),
                           ),
                           subtitle: Text(
                             _selectedQuality == 'auto'
-                                ? 'تلقائي'
+                                ? 'طھظ„ظ‚ط§ط¦ظٹ'
                                 : _selectedQuality,
                             style: GoogleFonts.cairo(),
                           ),
                         ),
                         ...[
-                          ('auto', 'تلقائي'),
+                          ('auto', 'طھظ„ظ‚ط§ط¦ظٹ'),
                           ('1080p', '1080p'),
                           ('720p', '720p'),
                           ('480p', '480p'),
@@ -381,7 +381,7 @@ class _VideoFullscreenPlayerScreenState
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
-                                    'تم حفظ الجودة المفضلة، وستُستخدم مع الفيديو التالي أو عند إعادة فتح الفيديو',
+                                    'طھظ… ط­ظپط¸ ط§ظ„ط¬ظˆط¯ط© ط§ظ„ظ…ظپط¶ظ„ط©طŒ ظˆط³طھظڈط³طھط®ط¯ظ… ظ…ط¹ ط§ظ„ظپظٹط¯ظٹظˆ ط§ظ„طھط§ظ„ظٹ ط£ظˆ ط¹ظ†ط¯ ط¥ط¹ط§ط¯ط© ظپطھط­ ط§ظ„ظپظٹط¯ظٹظˆ',
                                     style: GoogleFonts.cairo(),
                                   ),
                                   behavior: SnackBarBehavior.floating,
@@ -437,8 +437,8 @@ class _VideoFullscreenPlayerScreenState
                               : Icons.favorite_border_rounded,
                       title:
                           _isFavorite
-                              ? 'إزالة من المفضلة'
-                              : 'إضافة إلى المفضلة',
+                              ? 'ط¥ط²ط§ظ„ط© ظ…ظ† ط§ظ„ظ…ظپط¶ظ„ط©'
+                              : 'ط¥ط¶ط§ظپط© ط¥ظ„ظ‰ ط§ظ„ظ…ظپط¶ظ„ط©',
                       onTap: () async {
                         Navigator.pop(context);
                         await _toggleFavorite();
@@ -451,8 +451,8 @@ class _VideoFullscreenPlayerScreenState
                               : Icons.watch_later_outlined,
                       title:
                           _isInWatchLater
-                              ? 'إزالة من المشاهدة لاحقًا'
-                              : 'إضافة إلى المشاهدة لاحقًا',
+                              ? 'ط¥ط²ط§ظ„ط© ظ…ظ† ط§ظ„ظ…ط´ط§ظ‡ط¯ط© ظ„ط§ط­ظ‚ظ‹ط§'
+                              : 'ط¥ط¶ط§ظپط© ط¥ظ„ظ‰ ط§ظ„ظ…ط´ط§ظ‡ط¯ط© ظ„ط§ط­ظ‚ظ‹ط§',
                       onTap: () async {
                         Navigator.pop(context);
                         await _toggleWatchLater();
@@ -460,7 +460,7 @@ class _VideoFullscreenPlayerScreenState
                     ),
                     _sheetTile(
                       icon: Icons.share_rounded,
-                      title: 'مشاركة',
+                      title: 'ظ…ط´ط§ط±ظƒط©',
                       onTap: () async {
                         Navigator.pop(context);
                         await _shareCurrentVideo();
@@ -468,7 +468,7 @@ class _VideoFullscreenPlayerScreenState
                     ),
                     _sheetTile(
                       icon: Icons.link_rounded,
-                      title: 'نسخ الرابط',
+                      title: 'ظ†ط³ط® ط§ظ„ط±ط§ط¨ط·',
                       onTap: () async {
                         Navigator.pop(context);
                         await _copyCurrentVideoLink();
@@ -476,7 +476,7 @@ class _VideoFullscreenPlayerScreenState
                     ),
                     _sheetTile(
                       icon: Icons.open_in_new_rounded,
-                      title: 'فتح في يوتيوب',
+                      title: 'ظپطھط­ ظپظٹ ظٹظˆطھظٹظˆط¨',
                       onTap: () async {
                         Navigator.pop(context);
                         await _openUrl(_videoUrl);
@@ -599,10 +599,10 @@ class _VideoFullscreenPlayerScreenState
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
                                   colors: [
-                                    Colors.black.withOpacity(0.30),
+                                    Colors.black.withValues(alpha: 0.30),
                                     Colors.transparent,
                                     Colors.transparent,
-                                    Colors.black.withOpacity(0.38),
+                                    Colors.black.withValues(alpha: 0.38),
                                   ],
                                   stops: const [0.0, 0.16, 0.75, 1.0],
                                 ),
@@ -632,7 +632,7 @@ class _VideoFullscreenPlayerScreenState
                                   fontWeight: FontWeight.w700,
                                   shadows: [
                                     Shadow(
-                                      color: Colors.black.withOpacity(0.85),
+                                      color: Colors.black.withValues(alpha: 0.85),
                                       blurRadius: 10,
                                     ),
                                   ],
@@ -657,7 +657,7 @@ class _VideoFullscreenPlayerScreenState
                                   width: 42,
                                   height: 42,
                                   decoration: BoxDecoration(
-                                    color: Colors.black.withOpacity(0.48),
+                                    color: Colors.black.withValues(alpha: 0.48),
                                     shape: BoxShape.circle,
                                   ),
                                   child: const Icon(
@@ -686,7 +686,7 @@ class _VideoFullscreenPlayerScreenState
                                   width: 42,
                                   height: 42,
                                   decoration: BoxDecoration(
-                                    color: Colors.black.withOpacity(0.48),
+                                    color: Colors.black.withValues(alpha: 0.48),
                                     shape: BoxShape.circle,
                                   ),
                                   child: const Icon(
@@ -710,7 +710,7 @@ class _VideoFullscreenPlayerScreenState
                                 width: 68,
                                 height: 68,
                                 decoration: BoxDecoration(
-                                  color: Colors.black.withOpacity(0.42),
+                                  color: Colors.black.withValues(alpha: 0.42),
                                   shape: BoxShape.circle,
                                 ),
                                 child: Icon(
@@ -734,7 +734,7 @@ class _VideoFullscreenPlayerScreenState
                                   vertical: 12,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: Colors.black.withOpacity(0.55),
+                                  color: Colors.black.withValues(alpha: 0.55),
                                   borderRadius: BorderRadius.circular(30),
                                 ),
                                 child: Row(
@@ -750,7 +750,7 @@ class _VideoFullscreenPlayerScreenState
                                     const SizedBox(width: 8),
                                     Flexible(
                                       child: Text(
-                                        '$_seekSeconds ثوان',
+                                        '$_seekSeconds ط«ظˆط§ظ†',
                                         style: GoogleFonts.cairo(
                                           color: Colors.white,
                                           fontSize: 13,
@@ -785,7 +785,7 @@ class _VideoFullscreenPlayerScreenState
                                         vertical: 8,
                                       ),
                                       decoration: BoxDecoration(
-                                        color: Colors.black.withOpacity(0.28),
+                                        color: Colors.black.withValues(alpha: 0.28),
                                         borderRadius: BorderRadius.circular(12),
                                       ),
                                       child: Column(
@@ -817,7 +817,7 @@ class _VideoFullscreenPlayerScreenState
                                                     minHeight: 4,
                                                     backgroundColor: Colors
                                                         .white
-                                                        .withOpacity(0.22),
+                                                        .withValues(alpha: 0.22),
                                                     valueColor:
                                                         const AlwaysStoppedAnimation<
                                                           Color
@@ -881,7 +881,7 @@ class _VideoFullscreenPlayerScreenState
                                       vertical: 8,
                                     ),
                                     decoration: BoxDecoration(
-                                      color: Colors.black.withOpacity(0.28),
+                                      color: Colors.black.withValues(alpha: 0.28),
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                     child: Row(
@@ -925,7 +925,7 @@ class _VideoFullscreenPlayerScreenState
                                                       : 0.0,
                                               minHeight: 4,
                                               backgroundColor: Colors.white
-                                                  .withOpacity(0.22),
+                                                  .withValues(alpha: 0.22),
                                               valueColor:
                                                   const AlwaysStoppedAnimation<
                                                     Color
@@ -983,7 +983,7 @@ class _VideoFullscreenPlayerScreenState
       height: 4,
       margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-        color: Colors.grey.withOpacity(0.35),
+        color: Colors.grey.withValues(alpha: 0.35),
         borderRadius: BorderRadius.circular(10),
       ),
     );

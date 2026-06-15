@@ -1,17 +1,17 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/azkar_theme.dart';
 import '../animations/azkar_animations.dart';
 
-/// ═══════════════════════════════════════════════════════════════════════════
-/// ويدجت التحميل المحسنة
-/// ═══════════════════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ظˆظٹط¯ط¬طھ ط§ظ„طھط­ظ…ظٹظ„ ط§ظ„ظ…ط­ط³ظ†ط©
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class AzkarLoadingWidget extends StatefulWidget {
   final String message;
 
   const AzkarLoadingWidget({
     super.key,
-    this.message = 'جاري تحميل الأذكار...',
+    this.message = 'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط§ظ„ط£ط°ظƒط§ط±...',
   });
 
   @override
@@ -60,7 +60,7 @@ class _AzkarLoadingWidgetState extends State<AzkarLoadingWidget>
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // أيقونة التحميل المتحركة
+            // ط£ظٹظ‚ظˆظ†ط© ط§ظ„طھط­ظ…ظٹظ„ ط§ظ„ظ…طھط­ط±ظƒط©
             AnimatedBuilder(
               animation: _pulseAnimation,
               builder: (context, child) => Transform.scale(
@@ -68,7 +68,7 @@ class _AzkarLoadingWidgetState extends State<AzkarLoadingWidget>
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
-                    // الدائرة الخارجية المتحركة
+                    // ط§ظ„ط¯ط§ط¦ط±ط© ط§ظ„ط®ط§ط±ط¬ظٹط© ط§ظ„ظ…طھط­ط±ظƒط©
                     RotationTransition(
                       turns: _rotationController,
                       child: Container(
@@ -77,7 +77,7 @@ class _AzkarLoadingWidgetState extends State<AzkarLoadingWidget>
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: AzkarTheme.gold.withOpacity(0.3),
+                            color: AzkarTheme.gold.withValues(alpha: 0.3),
                             width: 2,
                           ),
                         ),
@@ -99,13 +99,13 @@ class _AzkarLoadingWidgetState extends State<AzkarLoadingWidget>
                         ),
                       ),
                     ),
-                    // الأيقونة المركزية
+                    // ط§ظ„ط£ظٹظ‚ظˆظ†ط© ط§ظ„ظ…ط±ظƒط²ظٹط©
                     Container(
                       width: 50,
                       height: 50,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: AzkarTheme.gold.withOpacity(0.1),
+                        color: AzkarTheme.gold.withValues(alpha: 0.1),
                       ),
                       child: Icon(
                         Icons.auto_awesome_rounded,
@@ -118,9 +118,9 @@ class _AzkarLoadingWidgetState extends State<AzkarLoadingWidget>
               ),
             ),
             const SizedBox(height: 24),
-            // نص التحميل المتحرك
+            // ظ†طµ ط§ظ„طھط­ظ…ظٹظ„ ط§ظ„ظ…طھط­ط±ظƒ
             ShimmerAnimationWidget(
-              baseColor: AzkarTheme.gold.withOpacity(0.5),
+              baseColor: AzkarTheme.gold.withValues(alpha: 0.5),
               highlightColor: AzkarTheme.gold,
               child: Text(
                 widget.message,
@@ -132,7 +132,7 @@ class _AzkarLoadingWidgetState extends State<AzkarLoadingWidget>
               ),
             ),
             const SizedBox(height: 8),
-            // نقاط التحميل
+            // ظ†ظ‚ط§ط· ط§ظ„طھط­ظ…ظٹظ„
             _LoadingDots(),
           ],
         ),
@@ -141,7 +141,7 @@ class _AzkarLoadingWidgetState extends State<AzkarLoadingWidget>
   }
 }
 
-// نقاط التحميل المتحركة
+// ظ†ظ‚ط§ط· ط§ظ„طھط­ظ…ظٹظ„ ط§ظ„ظ…طھط­ط±ظƒط©
 class _LoadingDots extends StatefulWidget {
   @override
   State<_LoadingDots> createState() => _LoadingDotsState();

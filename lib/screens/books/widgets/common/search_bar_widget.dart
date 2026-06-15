@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../theme/books_theme.dart';
 import '../../animations/books_animations.dart';
 
-/// ═══════════════════════════════════════════════════════════════════════════
-/// شريط البحث المتحرك
-/// ═══════════════════════════════════════════════════════════════════════════
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+/// ط´ط±ظٹط· ط§ظ„ط¨ط­ط« ط§ظ„ظ…طھط­ط±ظƒ
+/// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class AnimatedSearchBar extends StatefulWidget {
   final TextEditingController controller;
   final ValueChanged<String> onChanged;
@@ -17,7 +17,7 @@ class AnimatedSearchBar extends StatefulWidget {
     required this.controller,
     required this.onChanged,
     required this.isDark,
-    this.hintText = 'ابحث عن كتاب...',
+    this.hintText = 'ط§ط¨ط­ط« ط¹ظ† ظƒطھط§ط¨...',
   });
 
   @override
@@ -55,15 +55,15 @@ class _AnimatedSearchBarState extends State<AnimatedSearchBar>
       builder: (context, child) => Container(
         decoration: BoxDecoration(
           color: widget.isDark
-              ? Colors.white.withOpacity(0.05)
+              ? Colors.white.withValues(alpha: 0.05)
               : Colors.white,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: _isFocused
                 ? BooksTheme.gold
                 : (widget.isDark
-                ? Colors.white.withOpacity(0.1)
-                : BooksTheme.gold.withOpacity(0.2)),
+                ? Colors.white.withValues(alpha: 0.1)
+                : BooksTheme.gold.withValues(alpha: 0.2)),
             width: _borderAnimation.value,
           ),
           boxShadow: widget.isDark
@@ -71,8 +71,8 @@ class _AnimatedSearchBarState extends State<AnimatedSearchBar>
               : [
             BoxShadow(
               color: _isFocused
-                  ? BooksTheme.gold.withOpacity(0.1)
-                  : Colors.black.withOpacity(0.05),
+                  ? BooksTheme.gold.withValues(alpha: 0.1)
+                  : Colors.black.withValues(alpha: 0.05),
               blurRadius: _isFocused ? 15 : 10,
               offset: const Offset(0, 5),
             ),

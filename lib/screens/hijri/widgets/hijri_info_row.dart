@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hijri/hijri_calendar.dart';
 import '../../../languages/app_localizations.dart';
@@ -48,8 +48,8 @@ class HijriInfoRow extends StatelessWidget {
                   height: compact ? 32 : 38,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(colors: [
-                      theme.primaryColor.withOpacity(0.12),
-                      theme.primaryColor.withOpacity(0.04),
+                      theme.primaryColor.withValues(alpha: 0.12),
+                      theme.primaryColor.withValues(alpha: 0.04),
                     ]),
                     borderRadius: BorderRadius.circular(10),
                   ),

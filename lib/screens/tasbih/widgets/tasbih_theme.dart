@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-/// ✅ ويدجت مركزي للتحكم في ألوان وأشكال شاشة التسبيح
+/// âœ… ظˆظٹط¯ط¬طھ ظ…ط±ظƒط²ظٹ ظ„ظ„طھط­ظƒظ… ظپظٹ ط£ظ„ظˆط§ظ† ظˆط£ط´ظƒط§ظ„ ط´ط§ط´ط© ط§ظ„طھط³ط¨ظٹط­
 class TasbihTheme {
   // ==============================
-  // 🎨 الألوان
+  // ًںژ¨ ط§ظ„ط£ظ„ظˆط§ظ†
   // ==============================
   static const Color gradientTop = Color(0xFF1B5E20);
   static const Color gradientMid = Color(0xFF66BB6A);
@@ -15,21 +15,21 @@ class TasbihTheme {
   static const Color beadInactive = Color(0xFFD8D8D8);
   static const Color stringColor = Color(0xFFBDBDBD);
 
-  static Color mosqueOverlay = Colors.white.withOpacity(0.08);
-  static Color mosqueOverlay2 = Colors.white.withOpacity(0.06);
+  static Color mosqueOverlay = Colors.white.withValues(alpha: 0.08);
+  static Color mosqueOverlay2 = Colors.white.withValues(alpha: 0.06);
 
   static Color chipSelected = Colors.white;
-  static Color chipUnselected = Colors.white.withOpacity(0.18);
+  static Color chipUnselected = Colors.white.withValues(alpha: 0.18);
   static Color chipBorderSelected = Colors.white;
-  static Color chipBorderUnselected = Colors.white.withOpacity(0.25);
+  static Color chipBorderUnselected = Colors.white.withValues(alpha: 0.25);
   static Color chipTextSelected = const Color(0xFF1B5E20);
   static Color chipTextUnselected = Colors.white;
 
-  static Color totalBarBg = Colors.white.withOpacity(0.85);
-  static Color totalBarBorder = Colors.white.withOpacity(0.7);
+  static Color totalBarBg = Colors.white.withValues(alpha: 0.85);
+  static Color totalBarBorder = Colors.white.withValues(alpha: 0.7);
 
   // ==============================
-  // 📐 الأبعاد
+  // ًں“گ ط§ظ„ط£ط¨ط¹ط§ط¯
   // ==============================
   static const double cardRadius = 22.0;
   static const double chipRadius = 18.0;
@@ -46,7 +46,7 @@ class TasbihTheme {
   static const double progressBarWidth = 120.0;
 
   // ==============================
-  // 🔤 أنماط النصوص
+  // ًں”¤ ط£ظ†ظ…ط§ط· ط§ظ„ظ†طµظˆطµ
   // ==============================
   static TextStyle appBarTitle = GoogleFonts.cairo(
     fontWeight: FontWeight.w900,
@@ -60,7 +60,7 @@ class TasbihTheme {
 
   static TextStyle headerSubtitle = GoogleFonts.cairo(
     fontSize: 13,
-    color: Colors.white.withOpacity(0.85),
+    color: Colors.white.withValues(alpha: 0.85),
   );
 
   static TextStyle dhikrText = GoogleFonts.amiri(
@@ -114,7 +114,7 @@ class TasbihTheme {
   );
 
   // ==============================
-  // 🎭 التدرجات
+  // ًںژ­ ط§ظ„طھط¯ط±ط¬ط§طھ
   // ==============================
   static const LinearGradient backgroundGradient = LinearGradient(
     begin: Alignment.topCenter,
@@ -123,7 +123,7 @@ class TasbihTheme {
   );
 
   // ==============================
-  // 📦 الظلال
+  // ًں“¦ ط§ظ„ط¸ظ„ط§ظ„
   // ==============================
   static const List<BoxShadow> cardShadow = [
     BoxShadow(
@@ -134,7 +134,7 @@ class TasbihTheme {
   ];
 
   // ==============================
-  // 🎯 الديكور
+  // ًںژ¯ ط§ظ„ط¯ظٹظƒظˆط±
   // ==============================
   static BoxDecoration get cardDecoration => BoxDecoration(
     color: cardBackground,

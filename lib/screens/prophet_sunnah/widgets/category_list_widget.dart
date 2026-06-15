@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../Constants/sunnah_theme.dart';
 import '../models/sunnah_category.dart';
 import 'category_card_widget.dart';
@@ -57,12 +57,12 @@ class _EmptyWidget extends StatelessWidget {
             Icons.search_off_rounded,
             size: 72,
             color: isDark
-                ? Colors.white.withOpacity(0.15)
-                : Colors.black.withOpacity(0.15),
+                ? Colors.white.withValues(alpha: 0.15)
+                : Colors.black.withValues(alpha: 0.15),
           ),
           const SizedBox(height: 16),
           Text(
-            'لا توجد نتائج',
+            'ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬',
             style: TextStyle(
               color: SunnahTheme.textPrimary(context),
               fontSize: 18,
@@ -71,7 +71,7 @@ class _EmptyWidget extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            'جرّب البحث بكلمة مختلفة',
+            'ط¬ط±ظ‘ط¨ ط§ظ„ط¨ط­ط« ط¨ظƒظ„ظ…ط© ظ…ط®طھظ„ظپط©',
             style: TextStyle(
               color: SunnahTheme.textSecondary(context),
               fontSize: 13,

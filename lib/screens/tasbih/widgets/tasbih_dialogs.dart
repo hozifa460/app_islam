@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TasbihDialogs {
@@ -23,7 +23,7 @@ class TasbihDialogs {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                // المقبض
+                // ط§ظ„ظ…ظ‚ط¨ط¶
                 Container(
                   width: 44,
                   height: 5,
@@ -34,7 +34,7 @@ class TasbihDialogs {
                 ),
                 const SizedBox(height: 14),
                 Text(
-                  'تمت الجولة بنجاح',
+                  'طھظ…طھ ط§ظ„ط¬ظˆظ„ط© ط¨ظ†ط¬ط§ط­',
                   style: GoogleFonts.cairo(
                     fontWeight: FontWeight.w900,
                     fontSize: 18,
@@ -42,7 +42,7 @@ class TasbihDialogs {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'أكملت $target تسبيحة',
+                  'ط£ظƒظ…ظ„طھ $target طھط³ط¨ظٹط­ط©',
                   style: GoogleFonts.cairo(
                     fontSize: 15,
                     color: Colors.grey.shade700,
@@ -56,7 +56,7 @@ class TasbihDialogs {
                         style: OutlinedButton.styleFrom(
                           foregroundColor: primaryColor,
                           side: BorderSide(
-                              color: primaryColor.withOpacity(0.3)),
+                              color: primaryColor.withValues(alpha: 0.3)),
                           padding:
                           const EdgeInsets.symmetric(vertical: 12),
                         ),
@@ -64,7 +64,7 @@ class TasbihDialogs {
                           Navigator.pop(ctx);
                           onReset();
                         },
-                        child: Text('إعادة',
+                        child: Text('ط¥ط¹ط§ط¯ط©',
                             style: GoogleFonts.cairo(
                                 fontWeight: FontWeight.bold)),
                       ),
@@ -82,7 +82,7 @@ class TasbihDialogs {
                           Navigator.pop(ctx);
                           onNewRound();
                         },
-                        child: Text('جولة جديدة',
+                        child: Text('ط¬ظˆظ„ط© ط¬ط¯ظٹط¯ط©',
                             style: GoogleFonts.cairo(
                                 fontWeight: FontWeight.bold)),
                       ),

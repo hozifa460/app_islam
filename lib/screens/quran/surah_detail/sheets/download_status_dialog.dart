@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/surah_constants.dart';
 
@@ -20,13 +20,13 @@ class DownloadStatusDialog {
 
     if (isDownloading || isBackgroundPreparing) {
       badgeColor = Colors.orange;
-      title = 'جاري تنزيل صفحات القرآن...';
+      title = 'ط¬ط§ط±ظٹ طھظ†ط²ظٹظ„ طµظپط­ط§طھ ط§ظ„ظ‚ط±ط¢ظ†...';
     } else if (areAllPagesDownloaded) {
       badgeColor = Colors.green;
-      title = 'تم تحميل القرآن بالكامل';
+      title = 'طھظ… طھط­ظ…ظٹظ„ ط§ظ„ظ‚ط±ط¢ظ† ط¨ط§ظ„ظƒط§ظ…ظ„';
     } else {
       badgeColor = Colors.redAccent;
-      title = 'القرآن غير مكتمل التحميل';
+      title = 'ط§ظ„ظ‚ط±ط¢ظ† ط؛ظٹط± ظ…ظƒطھظ…ظ„ ط§ظ„طھط­ظ…ظٹظ„';
     }
 
     await showDialog(
@@ -46,7 +46,7 @@ class DownloadStatusDialog {
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: badgeColor.withOpacity(0.35),
+                      color: badgeColor.withValues(alpha: 0.35),
                       blurRadius: 6,
                       spreadRadius: 1,
                     ),
@@ -56,7 +56,7 @@ class DownloadStatusDialog {
               const SizedBox(width: 10),
               Expanded(
                 child: Text(
-                  'حالة تنزيل القرآن',
+                  'ط­ط§ظ„ط© طھظ†ط²ظٹظ„ ط§ظ„ظ‚ط±ط¢ظ†',
                   style: GoogleFonts.cairo(
                     fontWeight: FontWeight.bold,
                     fontSize: 17,
@@ -81,14 +81,14 @@ class DownloadStatusDialog {
                 width: double.infinity,
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: primary.withOpacity(0.06),
+                  color: primary.withValues(alpha: 0.06),
                   borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: primary.withOpacity(0.10)),
+                  border: Border.all(color: primary.withValues(alpha: 0.10)),
                 ),
                 child: Column(
                   children: [
                     Text(
-                      'الصفحات المحمّلة',
+                      'ط§ظ„طµظپط­ط§طھ ط§ظ„ظ…ط­ظ…ظ‘ظ„ط©',
                       style: GoogleFonts.cairo(
                         fontSize: 12,
                         color: Colors.grey.shade700,
@@ -96,7 +96,7 @@ class DownloadStatusDialog {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      '${SurahConstants.toArabicNum(downloadedPages)} / ٦٠٤',
+                      '${SurahConstants.toArabicNum(downloadedPages)} / ظ¦ظ ظ¤',
                       style: GoogleFonts.cairo(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -107,7 +107,7 @@ class DownloadStatusDialog {
                     LinearProgressIndicator(
                       value: downloadedPages / 604,
                       minHeight: 6,
-                      backgroundColor: Colors.grey.withOpacity(0.15),
+                      backgroundColor: Colors.grey.withValues(alpha: 0.15),
                       valueColor: AlwaysStoppedAnimation<Color>(primary),
                     ),
                     const SizedBox(height: 10),
@@ -115,14 +115,14 @@ class DownloadStatusDialog {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'المتبقي',
+                          'ط§ظ„ظ…طھط¨ظ‚ظٹ',
                           style: GoogleFonts.cairo(
                             fontSize: 12,
                             color: Colors.grey.shade700,
                           ),
                         ),
                         Text(
-                          '${SurahConstants.toArabicNum(remainingPages)} صفحة',
+                          '${SurahConstants.toArabicNum(remainingPages)} طµظپط­ط©',
                           style: GoogleFonts.cairo(
                             fontSize: 13,
                             fontWeight: FontWeight.bold,
@@ -139,7 +139,7 @@ class DownloadStatusDialog {
                 Text(
                   backgroundMessage.isNotEmpty
                       ? backgroundMessage
-                      : 'يتم تنزيل الصفحات الآن...',
+                      : 'ظٹطھظ… طھظ†ط²ظٹظ„ ط§ظ„طµظپط­ط§طھ ط§ظ„ط¢ظ†...',
                   style: GoogleFonts.cairo(
                     fontSize: 13,
                     color: Colors.grey.shade700,
@@ -147,7 +147,7 @@ class DownloadStatusDialog {
                 ),
               if (areAllPagesDownloaded)
                 Text(
-                  'تم تنزيل جميع صفحات القرآن ويمكنك القراءة بدون إنترنت.',
+                  'طھظ… طھظ†ط²ظٹظ„ ط¬ظ…ظٹط¹ طµظپط­ط§طھ ط§ظ„ظ‚ط±ط¢ظ† ظˆظٹظ…ظƒظ†ظƒ ط§ظ„ظ‚ط±ط§ط،ط© ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ.',
                   style: GoogleFonts.cairo(
                     fontSize: 13,
                     color: Colors.grey.shade700,
@@ -155,7 +155,7 @@ class DownloadStatusDialog {
                 ),
               if (!areAllPagesDownloaded && !isDownloading && !isBackgroundPreparing)
                 Text(
-                  'بعض الصفحات لم يتم تنزيلها بعد. يمكنك استئناف التحميل الآن.',
+                  'ط¨ط¹ط¶ ط§ظ„طµظپط­ط§طھ ظ„ظ… ظٹطھظ… طھظ†ط²ظٹظ„ظ‡ط§ ط¨ط¹ط¯. ظٹظ…ظƒظ†ظƒ ط§ط³طھط¦ظ†ط§ظپ ط§ظ„طھط­ظ…ظٹظ„ ط§ظ„ط¢ظ†.',
                   style: GoogleFonts.cairo(
                     fontSize: 13,
                     color: Colors.grey.shade700,
@@ -166,7 +166,7 @@ class DownloadStatusDialog {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(ctx),
-              child: Text('إغلاق', style: GoogleFonts.cairo()),
+              child: Text('ط¥ط؛ظ„ط§ظ‚', style: GoogleFonts.cairo()),
             ),
             if (!areAllPagesDownloaded && !isDownloading && !isBackgroundPreparing)
               ElevatedButton(
@@ -182,7 +182,7 @@ class DownloadStatusDialog {
                   onResumeDownload();
                 },
                 child: Text(
-                  'استئناف التحميل',
+                  'ط§ط³طھط¦ظ†ط§ظپ ط§ظ„طھط­ظ…ظٹظ„',
                   style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
                 ),
               ),

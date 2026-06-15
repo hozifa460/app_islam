@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../services/stats_service.dart';
@@ -18,17 +18,17 @@ class ProfileStatsRow extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 14),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: isDark ? Colors.white.withOpacity(0.04) : Colors.white,
+        color: isDark ? Colors.white.withValues(alpha: 0.04) : Colors.white,
         border: Border.all(
           color: isDark
-              ? Colors.white.withOpacity(0.06)
+              ? Colors.white.withValues(alpha: 0.06)
               : Colors.grey.shade200,
         ),
         boxShadow: [
           BoxShadow(
             color: isDark
-                ? Colors.black.withOpacity(0.15)
-                : Colors.black.withOpacity(0.04),
+                ? Colors.black.withValues(alpha: 0.15)
+                : Colors.black.withValues(alpha: 0.04),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),
@@ -37,25 +37,25 @@ class ProfileStatsRow extends StatelessWidget {
       child: IntrinsicHeight(
         child: Row(
           children: [
-            // ═══ أيام الدخول الكلية ═══
+            // â•گâ•گâ•گ ط£ظٹط§ظ… ط§ظ„ط¯ط®ظˆظ„ ط§ظ„ظƒظ„ظٹط© â•گâ•گâ•گ
             _StatItem(
               icon: Icons.calendar_today_rounded,
               color: Colors.blue,
               value: '${stats.totalDays}',
-              label: 'يوم دخلت',
+              label: 'ظٹظˆظ… ط¯ط®ظ„طھ',
               isDark: isDark,
             ),
 
             _Divider(isDark: isDark),
 
-            // ═══ السلسلة ═══
+            // â•گâ•گâ•گ ط§ظ„ط³ظ„ط³ظ„ط© â•گâ•گâ•گ
             _StatItem(
               icon: Icons.local_fire_department_rounded,
               color: stats.streak >= 3
                   ? Colors.deepOrange
                   : Colors.grey,
               value: '${stats.streak}',
-              label: 'يوم متواصل',
+              label: 'ظٹظˆظ… ظ…طھظˆط§طµظ„',
               isDark: isDark,
               badge: _streakBadge(stats.streak),
             ),
@@ -66,10 +66,10 @@ class ProfileStatsRow extends StatelessWidget {
   }
 
   String? _streakBadge(int streak) {
-    if (streak >= 30) return '🏆';
-    if (streak >= 14) return '💎';
-    if (streak >= 7) return '🔥';
-    if (streak >= 3) return '⭐';
+    if (streak >= 30) return 'ًںڈ†';
+    if (streak >= 14) return 'ًں’ژ';
+    if (streak >= 7) return 'ًں”¥';
+    if (streak >= 3) return 'â­گ';
     return null;
   }
 }
@@ -97,20 +97,20 @@ class _StatItem extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // الأيقونة
+          // ط§ظ„ط£ظٹظ‚ظˆظ†ط©
           Container(
             width: 44,
             height: 44,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: color.withOpacity(0.12),
+              color: color.withValues(alpha: 0.12),
             ),
             child: Icon(icon, color: color, size: 22),
           ),
 
           const SizedBox(height: 8),
 
-          // القيمة مع الشارة
+          // ط§ظ„ظ‚ظٹظ…ط© ظ…ط¹ ط§ظ„ط´ط§ط±ط©
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
@@ -130,13 +130,13 @@ class _StatItem extends StatelessWidget {
             ],
           ),
 
-          // التسمية
+          // ط§ظ„طھط³ظ…ظٹط©
           Text(
             label,
             style: GoogleFonts.cairo(
               fontSize: 11.5,
               color: isDark
-                  ? Colors.white.withOpacity(0.45)
+                  ? Colors.white.withValues(alpha: 0.45)
                   : Colors.grey.shade600,
               fontWeight: FontWeight.w500,
             ),
@@ -157,7 +157,7 @@ class _Divider extends StatelessWidget {
       width: 1,
       height: 60,
       color: isDark
-          ? Colors.white.withOpacity(0.06)
+          ? Colors.white.withValues(alpha: 0.06)
           : Colors.grey.shade200,
     );
   }

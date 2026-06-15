@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -212,7 +212,7 @@ class _ScholarProfileTiktokScreenState
   Widget build(BuildContext context) {
     const bgColor = Color(0xFF000000);
     const textColor = Colors.white;
-    final borderColor = Colors.white.withOpacity(0.08);
+    final borderColor = Colors.white.withValues(alpha: 0.08);
 
     return Directionality(
       textDirection: TextDirection.rtl,
@@ -228,7 +228,7 @@ class _ScholarProfileTiktokScreenState
               bottom: false,
               child: Column(
                 children: [
-                  // شريط علوي بسيط جداً مثل التطبيقات الحديثة
+                  // ط´ط±ظٹط· ط¹ظ„ظˆظٹ ط¨ط³ظٹط· ط¬ط¯ط§ظ‹ ظ…ط«ظ„ ط§ظ„طھط·ط¨ظٹظ‚ط§طھ ط§ظ„ط­ط¯ظٹط«ط©
                   Container(
                     height: 56,
                     padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -295,7 +295,7 @@ class _ScholarProfileTiktokScreenState
                             ),
                           ),
                           child: Text(
-                            'فتح في TikTok',
+                            'ظپطھط­ ظپظٹ TikTok',
                             style: GoogleFonts.cairo(
                               fontSize: 12,
                               fontWeight: FontWeight.w800,
@@ -353,7 +353,7 @@ class _ScholarProfileTiktokScreenState
                                     ),
                                     const SizedBox(height: 16),
                                     Text(
-                                      'جاري تحميل صفحة TikTok...',
+                                      'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ طµظپط­ط© TikTok...',
                                       style: GoogleFonts.cairo(
                                         color: Colors.white60,
                                         fontSize: 13,
@@ -385,7 +385,7 @@ class _ScholarProfileTiktokScreenState
           decoration: BoxDecoration(
             color: const Color(0xFF121212),
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Colors.white.withOpacity(0.06)),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.06)),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -393,11 +393,11 @@ class _ScholarProfileTiktokScreenState
               Icon(
                 Icons.wifi_off_rounded,
                 size: 56,
-                color: Colors.white.withOpacity(0.5),
+                color: Colors.white.withValues(alpha: 0.5),
               ),
               const SizedBox(height: 14),
               Text(
-                'تعذر تحميل صفحة TikTok',
+                'طھط¹ط°ط± طھط­ظ…ظٹظ„ طµظپط­ط© TikTok',
                 style: GoogleFonts.cairo(
                   fontSize: 16,
                   fontWeight: FontWeight.w800,
@@ -407,7 +407,7 @@ class _ScholarProfileTiktokScreenState
               ),
               const SizedBox(height: 8),
               Text(
-                'يمكنك إعادة المحاولة أو فتح الحساب في تطبيق TikTok.',
+                'ظٹظ…ظƒظ†ظƒ ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط© ط£ظˆ ظپطھط­ ط§ظ„ط­ط³ط§ط¨ ظپظٹ طھط·ط¨ظٹظ‚ TikTok.',
                 style: GoogleFonts.cairo(
                   fontSize: 13,
                   color: Colors.white60,
@@ -427,7 +427,7 @@ class _ScholarProfileTiktokScreenState
                         elevation: 0,
                       ),
                       child: Text(
-                        'إعادة المحاولة',
+                        'ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط©',
                         style: GoogleFonts.cairo(
                           fontWeight: FontWeight.w700,
                         ),
@@ -441,11 +441,11 @@ class _ScholarProfileTiktokScreenState
                       style: OutlinedButton.styleFrom(
                         foregroundColor: Colors.white,
                         side: BorderSide(
-                          color: Colors.white.withOpacity(0.15),
+                          color: Colors.white.withValues(alpha: 0.15),
                         ),
                       ),
                       child: Text(
-                        'فتح في TikTok',
+                        'ظپطھط­ ظپظٹ TikTok',
                         style: GoogleFonts.cairo(
                           fontWeight: FontWeight.w700,
                         ),

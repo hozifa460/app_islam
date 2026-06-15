@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hijri/hijri_calendar.dart';
@@ -69,9 +69,9 @@ class HijriCalendarCard extends StatelessWidget {
     );
   }
 
-  // ═══════════════════════════════════
-  // شريط التنقل بين الأشهر
-  // ═══════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط´ط±ظٹط· ط§ظ„طھظ†ظ‚ظ„ ط¨ظٹظ† ط§ظ„ط£ط´ظ‡ط±
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildMonthNavigator(BuildContext context,HijriCalendar hijriMonth) {
     return Container(
       padding: EdgeInsets.symmetric(
@@ -80,8 +80,8 @@ class HijriCalendarCard extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         gradient: LinearGradient(colors: [
-          theme.primaryColor.withOpacity(0.06),
-          theme.primaryColor.withOpacity(0.02),
+          theme.primaryColor.withValues(alpha: 0.06),
+          theme.primaryColor.withValues(alpha: 0.02),
         ]),
         borderRadius: BorderRadius.circular(16),
       ),
@@ -99,7 +99,7 @@ class HijriCalendarCard extends StatelessWidget {
                   fit: BoxFit.scaleDown,
                   child: Text(
                     '${HijriData.arabicMonths[displayedMonth.month - 1]}'
-                        ' ${HijriTheme.formatNum(displayedMonth.year, context)}', // 👈 استخدمنا formatNum
+                        ' ${HijriTheme.formatNum(displayedMonth.year, context)}', // ًں‘ˆ ط§ط³طھط®ط¯ظ…ظ†ط§ formatNum
                     style: GoogleFonts.cairo(
                       fontSize: compact ? 14 : 17,
                       fontWeight: FontWeight.bold,
@@ -111,7 +111,7 @@ class HijriCalendarCard extends StatelessWidget {
                 FittedBox(
                   fit: BoxFit.scaleDown,
                   child: Text(
-                    '${HijriData.hijriMonths[hijriMonth.hMonth - 1]} ${HijriTheme.formatNum(hijriMonth.hYear, context)}', // 👈 استخدمنا formatNum
+                    '${HijriData.hijriMonths[hijriMonth.hMonth - 1]} ${HijriTheme.formatNum(hijriMonth.hYear, context)}', // ًں‘ˆ ط§ط³طھط®ط¯ظ…ظ†ط§ formatNum
                     style: GoogleFonts.cairo(
                       fontSize: compact ? 10 : 12,
                       color: theme.subText,
@@ -131,13 +131,13 @@ class HijriCalendarCard extends StatelessWidget {
     );
   }
 
-  // ═══════════════════════════════════
-  // رأس أيام الأسبوع
-  // ═══════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط±ط£ط³ ط£ظٹط§ظ… ط§ظ„ط£ط³ط¨ظˆط¹
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildWeekDaysHeader() {
     return Row(
       children: HijriData.weekDays.map((d) {
-        final isFri = d == 'ج';
+        final isFri = d == 'ط¬';
         return Expanded(
           child: Center(
             child: Padding(
@@ -148,7 +148,7 @@ class HijriCalendarCard extends StatelessWidget {
                   fontWeight: FontWeight.w800,
                   color: isFri
                       ? HijriTheme.gold
-                      : theme.primaryColor.withOpacity(0.6),
+                      : theme.primaryColor.withValues(alpha: 0.6),
                   fontSize: compact ? 10 : 12,
                 ),
               ),
@@ -159,9 +159,9 @@ class HijriCalendarCard extends StatelessWidget {
     );
   }
 
-  // ═══════════════════════════════════
-  // شبكة الأيام
-  // ═══════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط´ط¨ظƒط© ط§ظ„ط£ظٹط§ظ…
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildDaysGrid() {
     return SlideTransition(
       position: slideAnimation,
@@ -196,9 +196,9 @@ class HijriCalendarCard extends StatelessWidget {
     );
   }
 
-  // ═══════════════════════════════════
-  // زر العودة لليوم
-  // ═══════════════════════════════════
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط²ط± ط§ظ„ط¹ظˆط¯ط© ظ„ظ„ظٹظˆظ…
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildGoToTodayButton(BuildContext context) {
     return GestureDetector(
       onTap: onGoToToday,
@@ -207,18 +207,18 @@ class HijriCalendarCard extends StatelessWidget {
         const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
         decoration: BoxDecoration(
           gradient: LinearGradient(colors: [
-            theme.primaryColor.withOpacity(0.1),
-            theme.primaryColor.withOpacity(0.04),
+            theme.primaryColor.withValues(alpha: 0.1),
+            theme.primaryColor.withValues(alpha: 0.04),
           ]),
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
-              color: theme.primaryColor.withOpacity(0.12)),
+              color: theme.primaryColor.withValues(alpha: 0.12)),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              context.tr.backToToday, // 👈 تمت الترجمة
+              context.tr.backToToday, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
               style: GoogleFonts.cairo(
                 color: theme.primaryColor,
                 fontSize: 12,
@@ -235,9 +235,9 @@ class HijriCalendarCard extends StatelessWidget {
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// خلية اليوم الواحد
-// ═══════════════════════════════════════════════════════════════
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+// ط®ظ„ظٹط© ط§ظ„ظٹظˆظ… ط§ظ„ظˆط§ط­ط¯
+// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 class _DayCell extends StatelessWidget {
   final DateTime day;
   final DateTime displayedMonth;
@@ -283,24 +283,24 @@ class _DayCell extends StatelessWidget {
               : null,
           color: !isSelected
               ? (isToday
-              ? HijriTheme.gold.withOpacity(0.1)
+              ? HijriTheme.gold.withValues(alpha: 0.1)
               : hasEvent
-              ? theme.primaryColor.withOpacity(0.04)
+              ? theme.primaryColor.withValues(alpha: 0.04)
               : null)
               : null,
           borderRadius: BorderRadius.circular(compact ? 10 : 12),
           border: isToday && !isSelected
               ? Border.all(
-              color: HijriTheme.gold.withOpacity(0.5),
+              color: HijriTheme.gold.withValues(alpha: 0.5),
               width: 1.5)
               : hasEvent && !isSelected
               ? Border.all(
-              color: theme.primaryColor.withOpacity(0.15))
+              color: theme.primaryColor.withValues(alpha: 0.15))
               : null,
           boxShadow: isSelected
               ? [
             BoxShadow(
-              color: theme.primaryColor.withOpacity(0.3),
+              color: theme.primaryColor.withValues(alpha: 0.3),
               blurRadius: 8,
               offset: const Offset(0, 3),
             )
@@ -310,13 +310,13 @@ class _DayCell extends StatelessWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            // رقم اليوم
+            // ط±ظ‚ظ… ط§ظ„ظٹظˆظ…
             FittedBox(
               fit: BoxFit.scaleDown,
               child: Padding(
                 padding: const EdgeInsets.all(2),
                 child: Text(
-                  HijriTheme.formatNum(day.day, context), // 👈 استخدمنا formatNum
+                  HijriTheme.formatNum(day.day, context), // ًں‘ˆ ط§ط³طھط®ط¯ظ…ظ†ط§ formatNum
                   style: GoogleFonts.cairo(
                     fontSize: compact ? 11 : 13,
                     fontWeight: isSelected || isToday
@@ -328,7 +328,7 @@ class _DayCell extends StatelessWidget {
               ),
             ),
 
-            // نقطة المناسبة
+            // ظ†ظ‚ط·ط© ط§ظ„ظ…ظ†ط§ط³ط¨ط©
             if (hasEvent)
               Positioned(
                 top: compact ? 2 : 3,
@@ -346,7 +346,7 @@ class _DayCell extends StatelessWidget {
                         (isSelected
                             ? Colors.white
                             : HijriTheme.gold)
-                            .withOpacity(0.6),
+                            .withValues(alpha: 0.6),
                       ],
                     ),
                     boxShadow: [
@@ -354,7 +354,7 @@ class _DayCell extends StatelessWidget {
                         color: (isSelected
                             ? Colors.white
                             : HijriTheme.gold)
-                            .withOpacity(0.5),
+                            .withValues(alpha: 0.5),
                         blurRadius: 3,
                       ),
                     ],
@@ -362,7 +362,7 @@ class _DayCell extends StatelessWidget {
                 ),
               ),
 
-            // نقطة اليوم الحالي
+            // ظ†ظ‚ط·ط© ط§ظ„ظٹظˆظ… ط§ظ„ط­ط§ظ„ظٹ
             if (isToday && !isSelected)
               Positioned(
                 bottom: compact ? 2 : 3,
@@ -383,7 +383,7 @@ class _DayCell extends StatelessWidget {
 
   Color _getTextColor() {
     if (isSelected) return Colors.white;
-    if (!isCurrent) return theme.subText.withOpacity(0.3);
+    if (!isCurrent) return theme.subText.withValues(alpha: 0.3);
     if (isFriday) return HijriTheme.gold;
     return theme.text;
   }
