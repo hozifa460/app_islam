@@ -35,9 +35,15 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   }
 
   Future<void> _initVideo() async {
+    final url = widget.item.videoUrl;
+    if (url == null || url.isEmpty) {
+      if (mounted) setState(() => _hasError = true);
+      return;
+    }
+
     try {
       _videoController = VideoPlayerController.networkUrl(
-        Uri.parse(widget.item.videoUrl!),
+        Uri.parse(url),
         httpHeaders: {
           'User-Agent':
           'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 Chrome/91.0.4472.120 Mobile Safari/537.36',

@@ -139,44 +139,45 @@ class VideoDownloadService extends ChangeNotifier {
       });
 
       final client = http.Client();
-      final response = await client.send(request).timeout(
-        const Duration(minutes: 30),
-      );
+      try {
+        final response = await client.send(request).timeout(
+          const Duration(minutes: 30),
+        );
 
-      if (response.statusCode != 200) {
+        if (response.statusCode != 200) {
+          throw Exception('HTTP ${response.statusCode}');
+        }
+
+        final totalBytes = response.contentLength ?? 0;
+        int receivedBytes = 0;
+
+        final sink = file.openWrite();
+
+        await for (final chunk in response.stream) {
+          if (_cancelFlags[videoId] == true) {
+            await sink.flush();
+            await sink.close();
+            if (await file.exists()) await file.delete();
+            _downloads[videoId]!.status = VideoDownloadStatus.none;
+            _downloads[videoId]!.progress = 0;
+            notifyListeners();
+            return;
+          }
+
+          receivedBytes += chunk.length;
+          sink.add(chunk);
+
+          if (totalBytes > 0) {
+            _downloads[videoId]!.progress = receivedBytes / totalBytes;
+            notifyListeners();
+          }
+        }
+
+        await sink.flush();
+        await sink.close();
+      } finally {
         client.close();
-        throw Exception('HTTP ${response.statusCode}');
       }
-
-      final totalBytes = response.contentLength ?? 0;
-      int receivedBytes = 0;
-
-      final sink = file.openWrite();
-
-      await for (final chunk in response.stream) {
-        if (_cancelFlags[videoId] == true) {
-          await sink.flush();
-          await sink.close();
-          client.close();
-          if (await file.exists()) await file.delete();
-          _downloads[videoId]!.status = VideoDownloadStatus.none;
-          _downloads[videoId]!.progress = 0;
-          notifyListeners();
-          return;
-        }
-
-        receivedBytes += chunk.length;
-        sink.add(chunk);
-
-        if (totalBytes > 0) {
-          _downloads[videoId]!.progress = receivedBytes / totalBytes;
-          notifyListeners();
-        }
-      }
-
-      await sink.flush();
-      await sink.close();
-      client.close();
 
       _downloads[videoId] = VideoDownloadInfo(
         status: VideoDownloadStatus.downloaded,
