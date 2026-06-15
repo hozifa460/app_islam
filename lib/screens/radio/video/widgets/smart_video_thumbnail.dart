@@ -15,15 +15,34 @@ class ThumbnailMemoryCache {
   factory ThumbnailMemoryCache() => _instance;
   ThumbnailMemoryCache._internal();
 
+  static const int _maxEntries = 30;
   final Map<String, Uint8List> _cache = {};
+  final List<String> _accessOrder = [];
 
-  Uint8List? get(String url) => _cache[url];
-  void set(String url, Uint8List bytes) => _cache[url] = bytes;
+  Uint8List? get(String url) {
+    if (!_cache.containsKey(url)) return null;
+    _accessOrder.remove(url);
+    _accessOrder.add(url);
+    return _cache[url];
+  }
+
+  void set(String url, Uint8List bytes) {
+    if (_cache.containsKey(url)) {
+      _accessOrder.remove(url);
+    } else if (_cache.length >= _maxEntries) {
+      final oldest = _accessOrder.removeAt(0);
+      _cache.remove(oldest);
+    }
+    _cache[url] = bytes;
+    _accessOrder.add(url);
+  }
+
   bool has(String url) => _cache.containsKey(url);
 
   // ✅ يُمسح عند الخروج من RadioScreen
   void clear() {
     _cache.clear();
+    _accessOrder.clear();
     debugPrint('🗑️ ThumbnailMemoryCache: cleared');
   }
 

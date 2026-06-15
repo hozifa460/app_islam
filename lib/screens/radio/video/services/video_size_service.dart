@@ -16,7 +16,7 @@ class VideoSizeService {
   Future<int?> getSize(String url) async {
     if (url.isEmpty) return null;
 
-    final key = url.hashCode.abs().toString();
+    final key = url;
 
     // ✅ من الكاش
     if (_cache.containsKey(key)) return _cache[key];

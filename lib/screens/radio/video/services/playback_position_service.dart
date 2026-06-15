@@ -1,5 +1,6 @@
 // lib/screens/radio/services/playback_position_service.dart
 
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PlaybackPositionService {
@@ -28,7 +29,9 @@ class PlaybackPositionService {
     try {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setInt('playpos_$id', position.inMilliseconds);
-    } catch (_) {}
+    } catch (e) {
+      debugPrint('⚠️ PlaybackPosition save: $e');
+    }
   }
 
   Duration getPosition(String key) {
@@ -57,7 +60,9 @@ class PlaybackPositionService {
         _memCache[id] = ms;
         return Duration(milliseconds: ms);
       }
-    } catch (_) {}
+    } catch (e) {
+      debugPrint('⚠️ PlaybackPosition get: $e');
+    }
 
     return Duration.zero;
   }
@@ -70,6 +75,8 @@ class PlaybackPositionService {
     try {
       final prefs = await SharedPreferences.getInstance();
       await prefs.remove('playpos_$id');
-    } catch (_) {}
+    } catch (e) {
+      debugPrint('⚠️ PlaybackPosition clear: $e');
+    }
   }
 }

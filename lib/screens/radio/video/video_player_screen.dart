@@ -204,12 +204,12 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           ),
           const SizedBox(height: 12),
           GestureDetector(
-            onTap: () {
+            onTap: () async {
               setState(() {
                 _hasError = false;
                 _initialized = false;
               });
-              _videoController?.dispose();
+              await _videoController?.dispose();
               _chewieController?.dispose();
               _videoController = null;
               _chewieController = null;

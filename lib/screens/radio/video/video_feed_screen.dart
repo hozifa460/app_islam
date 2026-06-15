@@ -31,17 +31,20 @@ class VideoFeedScreen extends StatefulWidget {
   State<VideoFeedScreen> createState() => _VideoFeedScreenState();
 }
 
-class _VideoFeedScreenState extends State<VideoFeedScreen> {
+class _VideoFeedScreenState extends State<VideoFeedScreen>
+    with WidgetsBindingObserver {
   late final PageController _pageController;
   final _cacheManager = VideoCacheManager();
   int _currentIndex = 0;
   late VideoDownloadService _videoDownloadService;
+  int _pageChangeSeq = 0;
 
   static const int _preloadRange = 1;
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
 
     // ✅ هيئه أولاً
     _videoDownloadService = context.read<VideoDownloadService>();
@@ -56,11 +59,17 @@ class _VideoFeedScreenState extends State<VideoFeedScreen> {
 
   @override
   void dispose() {
-    // ✅ أوقف كل احتمالات نفس الفيديو الحالي (شبكي + محلي)
-    _saveAndPauseControllersForItem(widget.videos[_currentIndex]);
-
+    WidgetsBinding.instance.removeObserver(this);
+    _pauseAllVideosBeforeExit();
     _pageController.dispose();
     super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.paused) {
+      _pauseAllVideosBeforeExit();
+    }
   }
 
   // ══════════════════════════════════════════════════════
@@ -231,45 +240,57 @@ class _VideoFeedScreenState extends State<VideoFeedScreen> {
   }
 
   void _onPageChanged(int index) async {
+    final seq = ++_pageChangeSeq;
     final oldItem = widget.videos[_currentIndex];
 
-    // ✅ أوقف الشبكي والمحلي معًا
-    await _saveAndPauseControllersForItem(oldItem);
+    try {
+      // ✅ أوقف الشبكي والمحلي معًا
+      await _saveAndPauseControllersForItem(oldItem);
 
-    _currentIndex = index;
+      if (seq != _pageChangeSeq || !mounted) return;
 
-    final newItem = widget.videos[index];
-    final videoUrl = newItem.videoUrl ?? '';
-    if (videoUrl.isNotEmpty) {
-      final videoId = VideoDownloadService.videoIdFromUrl(videoUrl);
-      final localPath = _videoDownloadService.getLocalPath(videoId);
+      _currentIndex = index;
 
-      final savedPos =
-          _cacheManager.getSavedPosition(localPath ?? videoUrl) ??
-              await PlaybackPositionService().getPositionAsync(localPath ?? videoUrl);
+      final newItem = widget.videos[index];
+      final videoUrl = newItem.videoUrl ?? '';
+      if (videoUrl.isNotEmpty) {
+        final videoId = VideoDownloadService.videoIdFromUrl(videoUrl);
+        final localPath = _videoDownloadService.getLocalPath(videoId);
 
-      VideoPlayerController controller;
+        final savedPos =
+            _cacheManager.getSavedPosition(localPath ?? videoUrl) ??
+                await PlaybackPositionService().getPositionAsync(localPath ?? videoUrl);
 
-      if (localPath != null && File(localPath).existsSync()) {
-        controller = await _cacheManager.ensureLocalController(
-          localPath,
-          restorePosition: savedPos,
-        );
-      } else {
-        controller = await _cacheManager.ensureController(videoUrl);
+        if (seq != _pageChangeSeq || !mounted) return;
 
-        if (savedPos != null && savedPos.inSeconds > 0) {
-          await controller.seekTo(savedPos);
+        VideoPlayerController controller;
+
+        if (localPath != null && File(localPath).existsSync()) {
+          controller = await _cacheManager.ensureLocalController(
+            localPath,
+            restorePosition: savedPos,
+          );
+        } else {
+          controller = await _cacheManager.ensureController(videoUrl);
+
+          if (savedPos != null && savedPos.inSeconds > 0) {
+            await controller.seekTo(savedPos);
+          }
         }
+
+        if (seq != _pageChangeSeq || !mounted) return;
+
+        await controller.play();
       }
 
-      await controller.play();
+      _preloadAround(index);
+      _recordWatch(index);
+
+      if (mounted) setState(() {});
+    } catch (e) {
+      debugPrint('⚠️ _onPageChanged error: $e');
+      if (mounted) setState(() {});
     }
-
-    _preloadAround(index);
-    _recordWatch(index);
-
-    if (mounted) setState(() {});
   }
 
   void _recordWatch(int index) {
@@ -287,10 +308,10 @@ class _VideoFeedScreenState extends State<VideoFeedScreen> {
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.rtl,
-      child: WillPopScope(
-        onWillPop: () async {
-          await _pauseAllVideosBeforeExit();
-          return true;
+      child: PopScope(
+        canPop: true,
+        onPopInvokedWithResult: (didPop, result) {
+          _pauseAllVideosBeforeExit();
         },
         child: Scaffold(
           backgroundColor: Colors.black,

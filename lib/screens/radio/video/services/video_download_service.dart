@@ -31,6 +31,7 @@ class VideoDownloadService extends ChangeNotifier {
 
   final Map<String, VideoDownloadInfo> _downloads = {};
   final Map<String, bool> _cancelFlags = {};
+  final Map<String, double> _lastNotifiedProgress = {};
 
   VideoDownloadInfo? getInfo(String videoId) => _downloads[videoId];
 
@@ -160,6 +161,8 @@ class VideoDownloadService extends ChangeNotifier {
             if (await file.exists()) await file.delete();
             _downloads[videoId]!.status = VideoDownloadStatus.none;
             _downloads[videoId]!.progress = 0;
+            _cancelFlags.remove(videoId);
+            _lastNotifiedProgress.remove(videoId);
             notifyListeners();
             return;
           }
@@ -168,8 +171,13 @@ class VideoDownloadService extends ChangeNotifier {
           sink.add(chunk);
 
           if (totalBytes > 0) {
-            _downloads[videoId]!.progress = receivedBytes / totalBytes;
-            notifyListeners();
+            final progress = (receivedBytes / totalBytes).clamp(0.0, 1.0);
+            final lastNotified = _lastNotifiedProgress[videoId] ?? -1.0;
+            if (progress - lastNotified >= 0.01 || progress >= 1.0) {
+              _downloads[videoId]!.progress = progress;
+              _lastNotifiedProgress[videoId] = progress;
+              notifyListeners();
+            }
           }
         }
 
@@ -195,6 +203,8 @@ class VideoDownloadService extends ChangeNotifier {
           error: e.toString(),
         );
       }
+      _cancelFlags.remove(videoId);
+      _lastNotifiedProgress.remove(videoId);
       notifyListeners();
     }
   }
@@ -210,6 +220,8 @@ class VideoDownloadService extends ChangeNotifier {
       if (await file.exists()) await file.delete();
     }
     _downloads.remove(videoId);
+    _cancelFlags.remove(videoId);
+    _lastNotifiedProgress.remove(videoId);
     await _removeDownload(videoId);
     notifyListeners();
   }

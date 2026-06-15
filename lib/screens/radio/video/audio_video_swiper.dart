@@ -83,7 +83,7 @@ class _AudioVideoSwiperState extends State<AudioVideoSwiper> {
   void _startPositionSaver() {
     _saveTimer = Timer.periodic(
       const Duration(seconds: 5),
-          (_) => _saveCurrentPosition(),
+          (_) { if (mounted) _saveCurrentPosition(); },
     );
   }
 

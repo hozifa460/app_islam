@@ -111,6 +111,9 @@ class VideoCacheManager {
       _touchUrl(url);
     } catch (e) {
       debugPrint('❌ VideoCacheManager init: $e');
+      _cache.remove(url);
+      _accessOrder.remove(url);
+      try { controller.dispose(); } catch (_) {}
     } finally {
       _initializing.remove(url);
       _initCompleters.remove(url)?.complete();
@@ -232,6 +235,7 @@ class VideoCacheManager {
     _initializing.clear();
     _initCompleters.clear();
     _accessOrder.clear();
+    _savedPositions.clear();
   }
 
   int get cachedCount => _cache.length;

@@ -166,7 +166,9 @@ class _VideoFeedTabState extends State<VideoFeedTab>
     // ✅ حمّلهم في الخلفية بدون انتظار
     final cacheManager = VideoCacheManager();
     for (final url in urls) {
-      cacheManager.ensureController(url);
+      cacheManager.ensureController(url).catchError((e) {
+        debugPrint('⚠️ Preload failed: $e');
+      });
     }
   }
 
@@ -840,6 +842,7 @@ class _VideoThumbnailState extends State<_VideoThumbnail> {
   VideoPlayerController? _thumbController;
   bool _ready = false;
   bool _loading = false;
+  bool _createdLocally = false;
 
   @override
   void initState() {
@@ -849,10 +852,7 @@ class _VideoThumbnailState extends State<_VideoThumbnail> {
 
   @override
   void dispose() {
-    // ✅ لا نعمل dispose للـ controller لأنه قد يكون من الكاش المشترك
-    // فقط نزيل الـ controller المحلي إذا أنشأناه نحن
-    if (_thumbController != null &&
-        !VideoCacheManager().isInitialized(widget.videoUrl ?? '')) {
+    if (_thumbController != null && _createdLocally) {
       _thumbController?.dispose();
     }
     super.dispose();
@@ -917,6 +917,7 @@ class _VideoThumbnailState extends State<_VideoThumbnail> {
       setState(() {
         _thumbController = controller;
         _ready = true;
+        _createdLocally = true;
       });
     } catch (_) {
       controller.dispose();
