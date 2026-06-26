@@ -20,6 +20,10 @@ class RecitationCategoriesData {
       'https://raw.githubusercontent.com/hozifa460/fatawa_database/refs/heads/main/radio_database/index.json';
   static const String _baseUrl =
       'https://raw.githubusercontent.com/hozifa460/fatawa_database/refs/heads/main/radio_database/';
+  static const String _indexUrl1 =
+      'https://raw.githubusercontent.com/hozifa460/noor-database/refs/heads/main/radio_database/index.json';
+  static const String _baseUrl1 =
+      'https://raw.githubusercontent.com/hozifa460/noor-database/refs/heads/main/radio_database/';
   static const String _gitLabIndexUrl =
       'https://gitlab.com/hazozahz-islamway/hazozahz-islamway/-/raw/main/radio_islam/index.json';
   static const String _gitLabBaseUrl =
@@ -274,6 +278,7 @@ class RecitationCategoriesData {
   static Future<void> _syncWithRemoteStreaming() async {
     final sources = [
       {'key': 'github', 'indexUrl': _indexUrl, 'baseUrl': _baseUrl},
+      {'key': 'github2', 'indexUrl': _indexUrl1, 'baseUrl': _baseUrl1},
       {
         'key': 'gitlab',
         'indexUrl': _gitLabIndexUrl,
@@ -812,6 +817,7 @@ class RecitationCategoriesData {
     var totalAdded = 0;
     final sources = [
       {'key': 'github', 'indexUrl': _indexUrl, 'baseUrl': _baseUrl},
+      {'key': 'github2', 'indexUrl': _indexUrl1, 'baseUrl': _baseUrl1},
       {'key': 'gitlab', 'indexUrl': _gitLabIndexUrl, 'baseUrl': _gitLabBaseUrl},
     ];
 

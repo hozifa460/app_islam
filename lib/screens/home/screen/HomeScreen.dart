@@ -30,6 +30,7 @@ import '../../../services/muazzin_store.dart';
 import '../../../services/native_adhan_bridge.dart';
 
 import '../../../utils/current_sunnah_card.dart';
+import '../../Azkar/azkar_detail_screen.dart';
 import '../../GreatMuslim/great_muslims_screen.dart';
 import '../../GreatMuslim/great_person_detail_screen.dart';
 import '../../prayer/adhan_player_screen.dart';
