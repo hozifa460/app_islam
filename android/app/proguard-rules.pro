@@ -6,6 +6,13 @@
 -keep class io.flutter.**  { *; }
 -keep class io.flutter.plugins.**  { *; }
 
+# This app has no deferred components. Flutter's embedding retains optional
+# legacy Play Core task references, while the modern Feature Delivery library
+# uses the newer APIs. R8 generated these exact missing-class rules.
+-dontwarn com.google.android.play.core.tasks.OnFailureListener
+-dontwarn com.google.android.play.core.tasks.OnSuccessListener
+-dontwarn com.google.android.play.core.tasks.Task
+
 # Firebase
 -keep class com.google.firebase.** { *; }
 -keep class com.google.android.gms.** { *; }

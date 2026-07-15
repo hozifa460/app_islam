@@ -1,3 +1,17 @@
+import java.util.Properties
+
+val keystoreProperties = Properties()
+val keystorePropertiesFile = rootProject.file("key.properties")
+if (keystorePropertiesFile.exists()) {
+    keystorePropertiesFile.inputStream().use(keystoreProperties::load)
+}
+
+fun signingValue(environmentName: String, propertyName: String, fallback: String = ""): String {
+    return System.getenv(environmentName)?.takeIf { it.isNotBlank() }
+        ?: keystoreProperties.getProperty(propertyName)?.takeIf { it.isNotBlank() }
+        ?: fallback
+}
+
 plugins {
     id("com.android.application")
     // START: FlutterFire Configuration
@@ -27,10 +41,10 @@ android {
 
     signingConfigs {
         create("release") {
-            keyAlias = System.getenv("KEY_ALIAS") ?: "appislam"
-            keyPassword = System.getenv("KEY_PASSWORD") ?: ""
-            storeFile = file(System.getenv("KEYSTORE_PATH") ?: "release-key.jks")
-            storePassword = System.getenv("STORE_PASSWORD") ?: ""
+            keyAlias = signingValue("KEY_ALIAS", "keyAlias", "appislam")
+            keyPassword = signingValue("KEY_PASSWORD", "keyPassword")
+            storeFile = file(signingValue("KEYSTORE_PATH", "storeFile", "release-key.jks"))
+            storePassword = signingValue("STORE_PASSWORD", "storePassword")
         }
     }
 
@@ -61,6 +75,10 @@ flutter {
 
 
 dependencies {
+    // Flutter's deferred-component hooks reference Play Feature Delivery.
+    // Use the current split library so it remains compatible with Firebase
+    // Integrity's Play Core Common dependency.
+    implementation("com.google.android.play:feature-delivery:2.1.0")
     // ✅ 2. أضف هذه المكتبة في قسم dependencies
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
 }

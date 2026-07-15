@@ -698,6 +698,13 @@ class _AppRootState extends State<_AppRoot>
 
     return Consumer<AuthService>(
       builder: (context, auth, _) {
+        // قد تستمر استعادة جلسة Firebase بعد انتهاء مهلة تهيئة التطبيق.
+        // لا نعرض شاشة تسجيل الدخول قبل أن تحسم خدمة المصادقة حالتها،
+        // وإلا ستظهر للحظة للمستخدم المسجّل ثم تختفي.
+        if (auth.status == AuthStatus.initial) {
+          return const SplashScreen(onFinish: _noop);
+        }
+
         final isLoggedIn = auth.status == AuthStatus.authenticated;
 
         final child =
@@ -744,3 +751,5 @@ class _AppRootState extends State<_AppRoot>
     );
   }
 }
+
+void _noop() {}
