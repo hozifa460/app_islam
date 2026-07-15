@@ -2,8 +2,6 @@ package com.example.appislam
 
 import android.content.Context
 import android.util.Log
-import java.text.SimpleDateFormat
-import java.util.*
 
 object NativePrayerScheduler {
 
@@ -34,13 +32,10 @@ object NativePrayerScheduler {
         }
 
         val now = System.currentTimeMillis()
-        val today = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(Date())
 
         val futureDays = schedule.filter { day ->
-            day.date >= today && (
-                    day.fajr.time > now || day.dhuhr.time > now || day.asr.time > now ||
-                            day.maghrib.time > now || day.isha.time > now
-                    )
+            day.fajr.time > now || day.dhuhr.time > now || day.asr.time > now ||
+                    day.maghrib.time > now || day.isha.time > now
         }.take(MAX_SCHEDULE_DAYS)
 
         if (futureDays.isEmpty()) {
@@ -49,13 +44,9 @@ object NativePrayerScheduler {
             return
         }
 
-        val todayIndex = schedule.indexOfFirst { it.date == today }
-        if (todayIndex != -1) {
-            val remainingDays = schedule.size - todayIndex
-            if (remainingDays <= 5) {
-                Log.w(TAG, "Only $remainingDays days left. Needs update!")
-                setNeedsUpdateFlag(context)
-            }
+        if (futureDays.size <= 5) {
+            Log.w(TAG, "Only ${futureDays.size} future days left. Needs update!")
+            setNeedsUpdateFlag(context)
         }
 
         cancelAll(context)

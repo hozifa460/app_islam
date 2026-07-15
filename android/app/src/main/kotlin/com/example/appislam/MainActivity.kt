@@ -62,6 +62,11 @@ class MainActivity : FlutterActivity() {
                         result.success(true)
                     }
 
+                    "rescheduleSavedPrayerSchedule" -> {
+                        NativePrayerScheduler.scheduleAll(this)
+                        result.success(true)
+                    }
+
                     "scheduleNativeAdhan" -> {
                         val triggerAt = (call.argument<Number>("triggerAt") ?: 0).toLong()
                         val prayerName = call.argument<String>("prayerName") ?: "الصلاة"

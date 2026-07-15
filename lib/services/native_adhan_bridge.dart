@@ -101,14 +101,17 @@ class NativeAdhanBridge {
   static Future<void> savePrayerSchedule({
     required List<Map<String, dynamic>> schedule,
   }) async {
-    await _channel.invokeMethod('savePrayerSchedule', {
-      'schedule': schedule,
-    });
+    await _channel.invokeMethod('savePrayerSchedule', {'schedule': schedule});
   }
 
   // ✅ جديد: إلغاء جميع المنبهات
   static Future<void> cancelAllAlarms() async {
     await _channel.invokeMethod('cancelAllAlarms');
+  }
+
+  /// إعادة جدولة الجدول المحفوظ فقط، دون إنشاء مسار جدولة موازٍ من الشاشة.
+  static Future<void> rescheduleSavedPrayerSchedule() async {
+    await _channel.invokeMethod('rescheduleSavedPrayerSchedule');
   }
 
   // ✅ جديد: توليد requestCode موحد بين Flutter و Kotlin

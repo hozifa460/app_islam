@@ -123,6 +123,16 @@
             android:name=".DailyRescheduleReceiver"
             android:exported="false" />
 
+        <receiver
+            android:name=".TimeChangeReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.DATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
         <!-- إعادة الجدولة بعد إعادة تشغيل الجهاز -->
         <receiver
             android:name=".BootReceiver"

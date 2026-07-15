@@ -1,30 +1,64 @@
-﻿import 'package:flutter/foundation.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:audio_session/audio_session.dart';
+import 'package:flutter/foundation.dart';
+import 'package:just_audio/just_audio.dart';
 
 class RadioService {
   static final AudioPlayer player = AudioPlayer();
-  static const String radioUrl = 'https://n06.radiojar.com/8s5u5tpdtwzuv?1710007804961=.mp3'; // ط±ط§ط¨ط· ط¨ط¯ظٹظ„ ط¥ط°ط§ ظ„ظ… ظٹط¹ظ…ظ„ ط§ظ„ط£ظˆظ„
+
+  // The previous RadioJar endpoint returns 404. This free Shoutcast stream is
+  // a Quran recitation station and does not require a paid provider or API key.
+  static const String radioUrl =
+      'https://qurango.net/radio/mahmoud_khalil_alhussary_warsh';
+  static final ValueNotifier<String?> lastError = ValueNotifier<String?>(null);
+  static final ValueNotifier<bool> isLoading = ValueNotifier<bool>(false);
+
+  static bool _initialized = false;
+  static String? _activeUrl;
 
   static Future<void> initRadio() async {
-    // ط¥ط¹ط¯ط§ط¯ ط§ظ„ط¬ظ„ط³ط© ط§ظ„طµظˆطھظٹط© ظ„ظٹط¹ظ…ظ„ ظپظٹ ط§ظ„ط®ظ„ظپظٹط©
+    if (_initialized) return;
+    _initialized = true;
     final session = await AudioSession.instance;
     await session.configure(const AudioSessionConfiguration.music());
+    player.playbackEventStream.listen(
+      (_) {},
+      onError: (Object error, StackTrace stack) {
+        isLoading.value = false;
+        lastError.value = 'تعذر تشغيل إذاعة القرآن. اضغط للمحاولة مرة أخرى.';
+        debugPrint('Radio playback error: $error');
+      },
+    );
   }
 
   static Future<void> toggleRadio() async {
-    try {
-      if (player.playing) {
-        await player.stop();
-      } else {
-        // ط¥ط°ط§ ظ„ظ… ظٹظƒظ† ط§ظ„ظ…ط´ط؛ظ„ ظ…ظ‡ظٹط£طŒ ظ‡ظٹط¦ظ‡
-        if (player.audioSource == null) {
-          await player.setUrl(radioUrl);
-        }
-        await player.play();
-      }
-    } catch (e) {
-      debugPrint("خطأ في تشغيل الراديو: $e");
+    await initRadio();
+    if (player.playing) {
+      await player.stop();
+      return;
     }
+
+    lastError.value = null;
+    isLoading.value = true;
+    try {
+      if (_activeUrl == radioUrl && player.audioSource != null) {
+        await player.play();
+        return;
+      }
+      await player.setUrl(radioUrl);
+      _activeUrl = radioUrl;
+      await player.play();
+    } catch (error) {
+      _activeUrl = null;
+      lastError.value = 'تعذر الاتصال بمصدر الإذاعة. اضغط للمحاولة مرة أخرى.';
+      debugPrint('Radio error: $error');
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  static Future<void> dispose() async {
+    await player.dispose();
+    lastError.dispose();
+    isLoading.dispose();
   }
 }

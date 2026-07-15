@@ -45,7 +45,7 @@ class PrayerCustomization {
   factory PrayerCustomization.defaults() {
     return const PrayerCustomization(
       adhanEnabled: true,
-      reminderEnabled: true,
+      reminderEnabled: false,
       reminderOffset: 10,
       reminderSound: 'hayalaaslah',
       iqamaEnabled: false,

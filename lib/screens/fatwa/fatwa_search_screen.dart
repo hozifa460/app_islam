@@ -17,12 +17,15 @@ class FatwaSearchScreen extends StatefulWidget {
 class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
   final TextEditingController _searchController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
+  final ScrollController _resultsScrollController = ScrollController();
 
   List<FatwaSearchResult> _results = [];
   bool _isLoading = false;
   bool _hasSearched = false;
-  bool _isDataLoaded = false;
+  bool _isDataLoaded = LocalSearchService.allFatawa.isNotEmpty;
   int _searchGeneration = 0;
+  int _visibleResultCount = _resultsPageSize;
+  static const int _resultsPageSize = 20;
 
   // ظپظ„ط§طھط±
   String? _selectedScholar;
@@ -60,7 +63,21 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
   void initState() {
     super.initState();
     LocalSearchService.dataRevision.addListener(_onFatwaDataChanged);
+    _resultsScrollController.addListener(_loadMoreResultsIfNeeded);
     _loadFatawa();
+  }
+
+  void _loadMoreResultsIfNeeded() {
+    if (!_resultsScrollController.hasClients ||
+        _visibleResultCount >= _results.length) {
+      return;
+    }
+    if (_resultsScrollController.position.extentAfter > 320) return;
+    setState(() {
+      final nextPage = _visibleResultCount + _resultsPageSize;
+      _visibleResultCount =
+          nextPage < _results.length ? nextPage : _results.length;
+    });
   }
 
   void _onFatwaDataChanged() {
@@ -111,14 +128,24 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
         allFatawa,
         scholarFilter: _selectedScholar,
         categoryFilter: _selectedCategory,
-        topK: 20,
+        // نحتفظ بكل النتائج الدقيقة مرتبة، وتعرض الشاشة 20 في كل دفعة.
+        topK: null,
       );
 
       if (!mounted || requestId != _searchGeneration) return;
       setState(() {
         _results = results;
+        _visibleResultCount =
+            results.length < _resultsPageSize
+                ? results.length
+                : _resultsPageSize;
         _hasSearched = true;
         _isLoading = false;
+      });
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (_resultsScrollController.hasClients) {
+          _resultsScrollController.jumpTo(0);
+        }
       });
     } catch (e) {
       debugPrint('❌ خطأ في البحث: $e');
@@ -535,8 +562,9 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
         ),
         Expanded(
           child: ListView.builder(
+            controller: _resultsScrollController,
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            itemCount: _results.length,
+            itemCount: _visibleResultCount,
             itemBuilder: (context, index) {
               return _buildFatwaCard(_results[index], index, isDark);
             },
@@ -1553,6 +1581,9 @@ class _FatwaSearchScreenState extends State<FatwaSearchScreen> {
   @override
   void dispose() {
     LocalSearchService.dataRevision.removeListener(_onFatwaDataChanged);
+    _resultsScrollController
+      ..removeListener(_loadMoreResultsIfNeeded)
+      ..dispose();
     _searchController.dispose();
     _focusNode.dispose();
     super.dispose();

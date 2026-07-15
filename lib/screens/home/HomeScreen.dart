@@ -1,4 +1,4 @@
-﻿import 'dart:async';
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -25,14 +25,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 
-import '../channels/services/channels_prefetch_service.dart';
 import '../hijri/data/hijri_data.dart';
 import '../hijri/hijri_calendar_screen.dart';
 import '../prayer/more/controllers/prayer_times_controller.dart';
+import '../prayer/core/prayer_time_core.dart';
 import '../../languages/app_localizations.dart';
-import '../prayer/more/services/adahn_audio_services.dart';
 import '../../services/great_muslims_service.dart';
-import '../prayer/more/services/muazzin_store.dart';
 import '../../services/native_adhan_bridge.dart';
 
 import '../GreatMuslim/great_muslims_screen.dart';
@@ -838,80 +836,14 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   Future<void> _schedulePrayerNotifications() async {
-    final prayerController = context.read<PrayerTimesController>();
-    final prayerTimes = prayerController.prayerTimes;
-
-    if (!mounted || _isSchedulingNotifications || prayerTimes.isEmpty) return;
-
-    final prefs = await SharedPreferences.getInstance();
-    final adhanEnabled = prefs.getBool('adhan_enabled') ?? false;
-    final reminderEnabled = prefs.getBool('reminder_enabled') ?? false;
-    final reminderOffset = prefs.getInt('reminder_offset') ?? 10;
-
+    if (!mounted || _isSchedulingNotifications) return;
     _isSchedulingNotifications = true;
-
     try {
-      final tr = context.tr;
-      final prayers = [
-        {'key': 'Fajr', 'name': tr.fajr, 'id': 100},
-        {'key': 'Dhuhr', 'name': tr.dhuhr, 'id': 101},
-        {'key': 'Asr', 'name': tr.asr, 'id': 102},
-        {'key': 'Maghrib', 'name': tr.maghrib, 'id': 103},
-        {'key': 'Isha', 'name': tr.isha, 'id': 104},
-      ];
-
-      for (final prayer in prayers) {
-        await NativeAdhanBridge.cancelAdhan(prayer['id'] as int);
-        await NativeAdhanBridge.cancelAdhan((prayer['id'] as int) + 1000);
-      }
-
-      for (final prayer in prayers) {
-        final key = prayer['key'] as String;
-        final prayerName = prayer['name'] as String;
-        final prayerId = prayer['id'] as int;
-        final timeStr = prayerTimes[key];
-
-        if (timeStr == null || timeStr.isEmpty) continue;
-
-        var scheduledTime = _parseTime(timeStr);
-        if (scheduledTime.isBefore(DateTime.now())) {
-          scheduledTime = scheduledTime.add(const Duration(days: 1));
-        }
-
-        if (adhanEnabled) {
-          final m = await MuezzinStore.getEffectiveForPrayer(key);
-          final localPath =
-              m.isBuiltIn
-                  ? null
-                  : await AdhanAudioService.instance.getLocalPath(m.id);
-          final soundName =
-              m.localSoundName.isNotEmpty ? m.localSoundName : 'makkah';
-
-          await NativeAdhanBridge.scheduleAdhan(
-            time: scheduledTime,
-            prayerName: prayerName,
-            requestCode: prayerId,
-            soundName: soundName,
-            localPath: localPath,
-          );
-        }
-
-        if (reminderEnabled && reminderOffset > 0) {
-          final reminderTime = scheduledTime.subtract(
-            Duration(minutes: reminderOffset),
-          );
-          if (reminderTime.isAfter(DateTime.now())) {
-            await NativeAdhanBridge.scheduleReminder(
-              time: reminderTime,
-              prayerName: prayerName,
-              requestCode: prayerId + 1000,
-              soundName: 'reminder_beep',
-            );
-          }
-        }
-      }
+      // الجدولة الوحيدة أصبحت NativePrayerScheduler للجدول ذي 14 يومًا.
+      // هذا يمنع تكرار أذان الصفحة الرئيسية مع أذان شاشة المواقيت.
+      await NativeAdhanBridge.rescheduleSavedPrayerSchedule();
     } catch (e) {
-      debugPrint('❌ خطأ أثناء الجدولة: $e');
+      debugPrint('❌ تعذر إعادة جدولة جدول الصلاة المحفوظ: $e');
     } finally {
       _isSchedulingNotifications = false;
     }
@@ -921,7 +853,8 @@ class _HomeScreenState extends State<HomeScreen>
     if (prayerTimes.isEmpty || !mounted) return;
 
     final tr = context.tr;
-    final now = DateTime.now();
+    final controller = context.read<PrayerTimesController>();
+    final now = PrayerClock.nowAt(controller.timeZoneId);
     DateTime? nextPrayerTime;
     String nextName = '';
 
@@ -950,7 +883,12 @@ class _HomeScreenState extends State<HomeScreen>
       nextName = tr.fajr;
       final fajrStr = prayerTimes['Fajr'];
       if (fajrStr != null) {
-        nextPrayerTime = _parseTime(fajrStr).add(const Duration(days: 1));
+        final tomorrow = DateTime(now.year, now.month, now.day + 1);
+        nextPrayerTime = PrayerClock.wallTime(
+          date: tomorrow,
+          time: controller.tomorrowPrayerTimes['Fajr'] ?? fajrStr,
+          timeZoneId: controller.timeZoneId,
+        );
       } else {
         nextPrayerTime = now.add(const Duration(hours: 1));
       }
@@ -967,16 +905,13 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   DateTime _parseTime(String timeStr) {
-    final now = DateTime.now();
+    final controller = context.read<PrayerTimesController>();
+    final now = PrayerClock.nowAt(controller.timeZoneId);
     try {
-      final cleanTime = timeStr.split(' ')[0];
-      final parts = cleanTime.split(':');
-      return DateTime(
-        now.year,
-        now.month,
-        now.day,
-        int.parse(parts[0]),
-        int.parse(parts[1]),
+      return PrayerClock.wallTime(
+        date: now,
+        time: timeStr,
+        timeZoneId: controller.timeZoneId,
       );
     } catch (_) {
       return now;
@@ -984,7 +919,9 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   Future<void> _refreshLocationAndPrayerTimes() async {
-    await context.read<PrayerTimesController>().refreshLocationAndPrayerTimes();
+    await context.read<PrayerTimesController>().refreshLocationAndPrayerTimes(
+      forceLocation: true,
+    );
     if (!mounted) return;
 
     final tr = context.tr;
@@ -1074,7 +1011,7 @@ class _HomeScreenState extends State<HomeScreen>
           context,
           MaterialPageRoute(builder: (_) => const QiblaSplashScreen()),
         );
-        if (splashResult == true) {
+        if (splashResult == true && mounted) {
           await Navigator.push(
             context,
             MaterialPageRoute(builder: (_) => const QiblaScreen()),
@@ -1200,39 +1137,46 @@ class _HomeScreenState extends State<HomeScreen>
             // ط§ظ„ظ…ط­طھظˆظ‰
             SafeArea(
               child: Selector<PrayerTimesController, _PrayerSnapshot>(
-                selector: (_, ctrl) => _PrayerSnapshot(
-                  prayerTimes: ctrl.prayerTimes,
-                  cityName: ctrl.cityName,
-                  isLoading: ctrl.isLoading,
-                ),
+                selector:
+                    (_, ctrl) => _PrayerSnapshot(
+                      prayerTimes: ctrl.prayerTimes,
+                      cityName: ctrl.cityName,
+                      isLoading: ctrl.isLoading,
+                    ),
                 builder: (context, snapshot, _) {
                   final prayerTimes = snapshot.prayerTimes;
                   final cityName =
-                  snapshot.cityName.isEmpty ? tr.locating : snapshot.cityName;
+                      snapshot.cityName.isEmpty
+                          ? tr.locating
+                          : snapshot.cityName;
                   final isPrayerLoading = snapshot.isLoading;
 
                   if (prayerTimes.isNotEmpty) {
                     _calculateNextPrayer(prayerTimes);
                   }
 
-                  final rawCards = _cardsOrderLoaded
-                      ? _cardsOrder
-                      : HomeCardsOrderService.defaultCards;
+                  final rawCards =
+                      _cardsOrderLoaded
+                          ? _cardsOrder
+                          : HomeCardsOrderService.defaultCards;
 
                   final visibleCards =
-                  rawCards.where((c) => c.isVisible).toList();
+                      rawCards.where((c) => c.isVisible).toList();
 
                   // fallback ط£ظ…ط§ظ†: ط¥ط°ط§ ط£طµط¨ط­طھ ظƒظ„ ط§ظ„ط¨ط·ط§ظ‚ط§طھ ظ…ط®ظپظٹط© ظ„ط£ظٹ ط³ط¨ط¨
-                  final orderedCards = visibleCards.isNotEmpty
-                      ? visibleCards
-                      : HomeCardsOrderService.defaultCards
-                      .map((e) => HomeCard(
-                    id: e.id,
-                    title: e.title,
-                    icon: e.icon,
-                    isVisible: true,
-                  ))
-                      .toList();
+                  final orderedCards =
+                      visibleCards.isNotEmpty
+                          ? visibleCards
+                          : HomeCardsOrderService.defaultCards
+                              .map(
+                                (e) => HomeCard(
+                                  id: e.id,
+                                  title: e.title,
+                                  icon: e.icon,
+                                  isVisible: true,
+                                ),
+                              )
+                              .toList();
 
                   return ListView(
                     key: const PageStorageKey('home-main-scroll'),
@@ -1257,23 +1201,29 @@ class _HomeScreenState extends State<HomeScreen>
                                 vertical: 0,
                               ),
                               decoration: BoxDecoration(
-                                color: elevated
-                                    ? (isDark
-                                    ? const Color(0xFF0E1714).withValues(alpha: 0.30)
-                                    : Colors.white.withValues(alpha: 0.35))
-                                    : Colors.transparent,
+                                color:
+                                    elevated
+                                        ? (isDark
+                                            ? const Color(
+                                              0xFF0E1714,
+                                            ).withValues(alpha: 0.30)
+                                            : Colors.white.withValues(
+                                              alpha: 0.35,
+                                            ))
+                                        : Colors.transparent,
                                 borderRadius: BorderRadius.circular(18),
-                                boxShadow: elevated
-                                    ? [
-                                  BoxShadow(
-                                    color: Colors.black.withValues(alpha: 
-                                      isDark ? 0.18 : 0.06,
-                                    ),
-                                    blurRadius: 10,
-                                    offset: const Offset(0, 2),
-                                  ),
-                                ]
-                                    : [],
+                                boxShadow:
+                                    elevated
+                                        ? [
+                                          BoxShadow(
+                                            color: Colors.black.withValues(
+                                              alpha: isDark ? 0.18 : 0.06,
+                                            ),
+                                            blurRadius: 10,
+                                            offset: const Offset(0, 2),
+                                          ),
+                                        ]
+                                        : [],
                               ),
                               child: Row(
                                 children: [
@@ -1281,12 +1231,17 @@ class _HomeScreenState extends State<HomeScreen>
                                     icon: Icons.menu_rounded,
                                     cardColor: cardColor,
                                     isDark: isDark,
-                                    onTap: () =>
-                                        _scaffoldKey.currentState?.openDrawer(),
+                                    onTap:
+                                        () =>
+                                            _scaffoldKey.currentState
+                                                ?.openDrawer(),
                                   ),
                                   const SizedBox(width: 8),
                                   Expanded(
-                                    child: _buildHijriDateCenter(cardColor, isDark),
+                                    child: _buildHijriDateCenter(
+                                      cardColor,
+                                      isDark,
+                                    ),
                                   ),
                                   const SizedBox(width: 8),
                                   _buildTopBarButton(
@@ -1511,17 +1466,13 @@ class _PrayerSnapshot {
   );
 }
 
-
 /// â•گâ•گ ط¨ط·ط§ظ‚ط© طھط¯ط®ظ„ ط¨ط´ظƒظ„ ظ…طھط¯ط±ط¬ â•گâ•گ
 /// â•گâ•گ ط¨ط·ط§ظ‚ط© طھطھط­ط±ظƒ ظپظ‚ط· ط¹ظ†ط¯ظ…ط§ طھط¸ظ‡ط± ط¹ظ„ظ‰ ط§ظ„ط´ط§ط´ط© â•گâ•گ
 class _StaggeredCard extends StatefulWidget {
   final int index;
   final Widget child;
 
-  const _StaggeredCard({
-    required this.index,
-    required this.child,
-  });
+  const _StaggeredCard({required this.index, required this.child});
 
   @override
   State<_StaggeredCard> createState() => _StaggeredCardState();
@@ -1542,17 +1493,12 @@ class _StaggeredCardState extends State<_StaggeredCard>
       duration: const Duration(milliseconds: 450),
     );
 
-    _fade = CurvedAnimation(
-      parent: _ctrl,
-      curve: Curves.easeOut,
-    );
+    _fade = CurvedAnimation(parent: _ctrl, curve: Curves.easeOut);
 
     _slide = Tween<Offset>(
       begin: const Offset(0, 0.08),
       end: Offset.zero,
-    ).animate(
-      CurvedAnimation(parent: _ctrl, curve: Curves.easeOutCubic),
-    );
+    ).animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeOutCubic));
 
     // ط§ظ„ط¨ط·ط§ظ‚ط§طھ ط§ظ„ط£ظˆظ„ظ‰ (0-3) طھط¨ط¯ط£ ظ…ط¨ط§ط´ط±ط© ظ„ط£ظ†ظ‡ط§ ظ…ط±ط¦ظٹط©
     if (widget.index < 4) {
@@ -1587,10 +1533,7 @@ class _StaggeredCardState extends State<_StaggeredCard>
       onVisible: _onVisible,
       child: FadeTransition(
         opacity: _fade,
-        child: SlideTransition(
-          position: _slide,
-          child: widget.child,
-        ),
+        child: SlideTransition(position: _slide, child: widget.child),
       ),
     );
   }
@@ -1601,10 +1544,7 @@ class _VisibilityTrigger extends StatefulWidget {
   final VoidCallback onVisible;
   final Widget child;
 
-  const _VisibilityTrigger({
-    required this.onVisible,
-    required this.child,
-  });
+  const _VisibilityTrigger({required this.onVisible, required this.child});
 
   @override
   State<_VisibilityTrigger> createState() => _VisibilityTriggerState();
@@ -1684,9 +1624,6 @@ class _VisibilityTriggerState extends State<_VisibilityTrigger> {
 
   @override
   Widget build(BuildContext context) {
-    return KeyedSubtree(
-      key: _key,
-      child: widget.child,
-    );
+    return KeyedSubtree(key: _key, child: widget.child);
   }
 }

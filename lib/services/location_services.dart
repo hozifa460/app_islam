@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -18,6 +17,12 @@ class LocationResult {
 }
 
 class LocationService {
+  // Refreshing the GPS fix on every rebuild is expensive and can make the
+  // prayer screen feel slow. A six-hour window still detects a trip to a new
+  // city/country during normal use while keeping the cached location instant.
+  static const _automaticRefreshWindow = Duration(hours: 6);
+  static const _locationChangeThresholdMeters = 15000.0;
+
   static Future<bool> ensurePermission() async {
     final serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) return false;
@@ -36,7 +41,9 @@ class LocationService {
     return true;
   }
 
-  static Future<Position?> getBestAvailablePosition() async {
+  static Future<Position?> getBestAvailablePosition({
+    bool preferFresh = false,
+  }) async {
     try {
       final serviceEnabled = await Geolocator.isLocationServiceEnabled();
       if (!serviceEnabled) return null;
@@ -53,14 +60,18 @@ class LocationService {
       }
 
       final lastKnown = await Geolocator.getLastKnownPosition();
-      if (lastKnown != null) return lastKnown;
+      if (!preferFresh && lastKnown != null) return lastKnown;
 
-      final current = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.low,
-        timeLimit: const Duration(seconds: 8),
-      );
-
-      return current;
+      try {
+        return await Geolocator.getCurrentPosition(
+          locationSettings: const LocationSettings(
+            accuracy: LocationAccuracy.medium,
+            timeLimit: Duration(seconds: 8),
+          ),
+        );
+      } catch (_) {
+        return lastKnown;
+      }
     } catch (_) {
       return null;
     }
@@ -68,15 +79,18 @@ class LocationService {
 
   static Future<String> getAccurateCityName(double lat, double long) async {
     try {
-      final placemarks = await placemarkFromCoordinates(lat, long)
-          .timeout(const Duration(seconds: 4));
+      final placemarks = await placemarkFromCoordinates(
+        lat,
+        long,
+      ).timeout(const Duration(seconds: 4));
 
       if (placemarks.isNotEmpty) {
         final place = placemarks.first;
 
-        final locality = place.subLocality?.trim().isNotEmpty == true
-            ? place.subLocality!
-            : (place.locality ?? '');
+        final locality =
+            place.subLocality?.trim().isNotEmpty == true
+                ? place.subLocality!
+                : (place.locality ?? '');
 
         final adminArea = place.administrativeArea ?? '';
         final country = place.country ?? 'موقعي';
@@ -124,14 +138,48 @@ class LocationService {
     await prefs.setDouble('last_lat', latitude);
     await prefs.setDouble('last_long', longitude);
     await prefs.setString('last_city', cityName);
+    await prefs.setInt(
+      'last_location_refresh_at',
+      DateTime.now().millisecondsSinceEpoch,
+    );
   }
 
-  static Future<LocationResult?> resolveBestLocation() async {
+  static Future<LocationResult?> resolveBestLocation({
+    bool forceRefresh = false,
+  }) async {
+    final prefs = await SharedPreferences.getInstance();
     final saved = await getSavedLocation();
-    if (saved != null) return saved;
+    if (!forceRefresh && saved != null) {
+      final lastRefresh = prefs.getInt('last_location_refresh_at');
+      final refreshDue =
+          lastRefresh == null ||
+          DateTime.now().millisecondsSinceEpoch - lastRefresh >=
+              _automaticRefreshWindow.inMilliseconds;
+      if (!refreshDue) {
+        // A last-known fix is fast and does not request a permission dialog.
+        // It lets us notice a trip to another city/country before the normal
+        // refresh window elapses; a fresh GPS fix is only requested when the
+        // displacement is meaningful.
+        try {
+          final lastKnown = await Geolocator.getLastKnownPosition();
+          if (lastKnown == null ||
+              Geolocator.distanceBetween(
+                    saved.latitude,
+                    saved.longitude,
+                    lastKnown.latitude,
+                    lastKnown.longitude,
+                  ) <
+                  _locationChangeThresholdMeters) {
+            return saved;
+          }
+        } catch (_) {
+          return saved;
+        }
+      }
+    }
 
-    final position = await getBestAvailablePosition();
-    if (position == null) return null;
+    final position = await getBestAvailablePosition(preferFresh: true);
+    if (position == null) return saved;
 
     final city = await getAccurateCityName(
       position.latitude,

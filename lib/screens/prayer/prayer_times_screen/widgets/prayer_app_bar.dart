@@ -75,22 +75,6 @@ class PrayerAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ),
       ],
-      leading: Container(
-        margin: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: isDark
-              ? Colors.white.withValues(alpha: 0.1)
-              : gold.withValues(alpha: 0.1),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios_new,
-            color: isDark ? Colors.white : const Color(0xFF1A1A1A),
-          ),
-          onPressed: onBack,
-        ),
-      ),
     );
   }
 }
