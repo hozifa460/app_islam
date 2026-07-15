@@ -48,7 +48,7 @@ class AdvancedIndexSheet extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      'ظپظ‡ط±ط³ ط§ظ„ظ…طµط­ظپ',
+                      'فهرس المصحف',
                       style: GoogleFonts.cairo(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -60,10 +60,10 @@ class AdvancedIndexSheet extends StatelessWidget {
                         Expanded(
                           child: SheetWidgets.buildQuickJumpCard(
                             context: context,
-                            title: 'ط¢ط®ط± ظ…ظˆط¶ط¹',
+                            title: 'آخر موضع',
                             value: savedMeta['lastPage'] != null
-                                ? 'طµظپط­ط© ${SurahConstants.toArabicNum(savedMeta['lastPage'])}'
-                                : 'ط؛ظٹط± ظ…طھظˆظپط±',
+                                ? 'صفحة ${SurahConstants.toArabicNum(savedMeta['lastPage'])}'
+                                : 'غير متوفر',
                             icon: Icons.history_rounded,
                             onTap: () {
                               Navigator.pop(context);
@@ -75,10 +75,10 @@ class AdvancedIndexSheet extends StatelessWidget {
                         Expanded(
                           child: SheetWidgets.buildQuickJumpCard(
                             context: context,
-                            title: 'ط§ظ„ط¹ظ„ط§ظ…ط©',
+                            title: 'العلامة',
                             value: savedMeta['bookmarkPage'] != null
-                                ? 'طµظپط­ط© ${SurahConstants.toArabicNum(savedMeta['bookmarkPage'])}'
-                                : 'ط؛ظٹط± ظ…طھظˆظپط±',
+                                ? 'صفحة ${SurahConstants.toArabicNum(savedMeta['bookmarkPage'])}'
+                                : 'غير متوفر',
                             icon: Icons.bookmark_rounded,
                             onTap: () {
                               Navigator.pop(context);
@@ -101,10 +101,10 @@ class AdvancedIndexSheet extends StatelessWidget {
                   fontSize: 13,
                 ),
                 tabs: const [
-                  Tab(text: 'طµظپط­ط§طھ'),
-                  Tab(text: 'ط§ظ„ط³ظˆط±'),
-                  Tab(text: 'ط§ظ„ط£ط¬ط²ط§ط،'),
-                  Tab(text: 'ط§ظ„ط£ط­ط²ط§ط¨'),
+                  Tab(text: 'صفحات'),
+                  Tab(text: 'السور'),
+                  Tab(text: 'الأجزاء'),
+                  Tab(text: 'الأحزاب'),
                 ],
               ),
               const SizedBox(height: 6),
@@ -214,7 +214,7 @@ class _SurahsTab extends StatelessWidget {
             style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
           ),
           subtitle: Text(
-            'طھط¨ط¯ط£ ظ…ظ† طµظپط­ط© ${SurahConstants.toArabicNum(page)}',
+            'تبدأ من صفحة ${SurahConstants.toArabicNum(page)}',
             style: GoogleFonts.cairo(fontSize: 12),
           ),
           trailing: Text(
@@ -254,11 +254,11 @@ class _JuzTab extends StatelessWidget {
             borderRadius: BorderRadius.circular(14),
           ),
           title: Text(
-            'ط§ظ„ط¬ط²ط، ${SurahConstants.toArabicNum(juz)}',
+            'الجزء ${SurahConstants.toArabicNum(juz)}',
             style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
           ),
           subtitle: Text(
-            'ظٹط¨ط¯ط£ ظ…ظ† طµظپط­ط© ${SurahConstants.toArabicNum(page)}',
+            'يبدأ من صفحة ${SurahConstants.toArabicNum(page)}',
             style: GoogleFonts.cairo(fontSize: 12),
           ),
           onTap: () {
@@ -295,11 +295,11 @@ class _HizbTab extends StatelessWidget {
             borderRadius: BorderRadius.circular(14),
           ),
           title: Text(
-            'ط§ظ„ط­ط²ط¨ ${SurahConstants.toArabicNum(hizb)}',
+            'الحزب ${SurahConstants.toArabicNum(hizb)}',
             style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
           ),
           subtitle: Text(
-            'ظٹط¨ط¯ط£ ظ…ظ† طµظپط­ط© ${SurahConstants.toArabicNum(page)}',
+            'يبدأ من صفحة ${SurahConstants.toArabicNum(page)}',
             style: GoogleFonts.cairo(fontSize: 12),
           ),
           onTap: () {

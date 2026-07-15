@@ -66,7 +66,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
   bool _refreshInProgress = false;
   bool _suspendProgressiveUpdates = false;
 
-  List<String> _categories = ['ط§ظ„ظƒظ„'];
+  List<String> _categories = ['الكل'];
 
   List<Widget> _cachedFeedItems = [];
   int _cachedFeedVersion = -1;
@@ -195,7 +195,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
       final List<dynamic> data = json.decode(jsonStr);
       final scholars = data.map((e) => Map<String, dynamic>.from(e)).toList();
 
-      final cats = <String>{'ط§ظ„ظƒظ„'};
+      final cats = <String>{'الكل'};
       final tiktoks = <Map<String, dynamic>>[];
 
       for (final s in scholars) {
@@ -295,7 +295,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
 
       await _fetchAllVideos(scholars);
     } catch (e) {
-      debugPrint('â‌Œ ChannelsScreen load error: $e');
+      debugPrint('❌ ChannelsScreen load error: $e');
       if (!mounted) return;
       setState(() {
         _loading = false;
@@ -508,8 +508,8 @@ class _ChannelsScreenState extends State<ChannelsScreen>
       };
 
       final terms = [
-        '', 'ظ…ط­ط§ط¶ط±ط©', 'ط¯ط±ط³', 'ط®ط·ط¨ط©', 'طھظپط³ظٹط±', 'ظپطھظˆظ‰',
-        'ط´ط±ط­', 'ظپظ‚ظ‡', 'ط­ط¯ظٹط«', 'ظ‚ط±ط¢ظ†', 'ط¯ط¹ط§ط،', 'ظ…ظˆط¹ط¸ط©',
+        '', 'محاضرة', 'درس', 'خطبة', 'تفسير', 'فتوى',
+        'شرح', 'فقه', 'حديث', 'قرآن', 'دعاء', 'موعظة',
       ];
 
       final baseIndex = _loadAttempts % terms.length;
@@ -597,7 +597,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
         maxPerChannel: 2,
       );
     } catch (e) {
-      debugPrint('â‌Œ _prefetchNextBatch error: $e');
+      debugPrint('❌ _prefetchNextBatch error: $e');
     } finally {
       _prefetchingNextBatch = false;
     }
@@ -1233,7 +1233,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
         }
       }
     } catch (e) {
-      debugPrint('â‌Œ Background fetch error: $e');
+      debugPrint('❌ Background fetch error: $e');
     }
   }
 
@@ -1401,7 +1401,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
         showingRecent: built.showingRecent,
       ));
     } catch (e) {
-      debugPrint('â‌Œ refreshFeed error: $e');
+      debugPrint('❌ refreshFeed error: $e');
     } finally {
       _refreshInProgress = false;
     }
@@ -1483,8 +1483,8 @@ class _ChannelsScreenState extends State<ChannelsScreen>
 
             try {
               final terms = [
-                '', 'ظ…ط­ط§ط¶ط±ط©', 'ط¯ط±ط³', 'طھظپط³ظٹط±', 'ظپطھظˆظ‰',
-                'ط´ط±ط­', 'ط­ط¯ظٹط«', 'ظ‚ط±ط¢ظ†', 'ظ…ظˆط¹ط¸ط©', 'ط³ظٹط±ط©',
+                '', 'محاضرة', 'درس', 'تفسير', 'فتوى',
+                'شرح', 'حديث', 'قرآن', 'موعظة', 'سيرة',
               ];
               final term = terms[(_loadAttempts * 2 + i) % terms.length];
 
@@ -1560,7 +1560,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
         showingRecent: _showingRecent,
       ));
     } catch (e) {
-      debugPrint('â‌Œ _loadMoreVideos error: $e');
+      debugPrint('❌ _loadMoreVideos error: $e');
       _loadAttempts++;
     } finally {
       if (mounted) setState(() => _loadingMore = false);
@@ -1992,7 +1992,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
     _searchQuery.isEmpty ? _buildResumeWatchingVideos() : <YoutubeVideo>[];
 
     if (videos.isEmpty && _shortsVideos.isEmpty) {
-      return _EmptyView(theme: t, w: w, title: 'ظ„ط§ طھظˆط¬ط¯ ظپظٹط¯ظٹظˆظ‡ط§طھ');
+      return _EmptyView(theme: t, w: w, title: 'لا توجد فيديوهات');
     }
 
     // âœ… ط¨ظ†ط§ط، ظ‚ط§ط¦ظ…ط© ظ…ط³ط·ط­ط© ظ…ط±ط© ظˆط§ط­ط¯ط©
@@ -2172,7 +2172,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
         .toList();
 
     if (list.isEmpty) {
-      return _EmptyView(theme: t, w: w, title: 'ظ„ط§ طھظˆط¬ط¯ ط­ط³ط§ط¨ط§طھ');
+      return _EmptyView(theme: t, w: w, title: 'لا توجد حسابات');
     }
 
     return ListView.separated(
@@ -2259,7 +2259,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
         SizedBox(height: w * 0.015),
         Expanded(
           child: list.isEmpty
-              ? _EmptyView(theme: t, w: w, title: 'ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬')
+              ? _EmptyView(theme: t, w: w, title: 'لا توجد نتائج')
               : ListView.separated(
             padding: EdgeInsets.symmetric(
               horizontal: w * 0.04,
@@ -2536,7 +2536,7 @@ class _YTVideoCard extends StatelessWidget {
     if (video.channelTitle.isNotEmpty) parts.add(video.channelTitle);
 
     if (video.viewCount != '0' && video.viewCount.isNotEmpty) {
-      parts.add('${YoutubeService.formatViews(video.viewCount)} ظ…ط´ط§ظ‡ط¯ط©');
+      parts.add('${YoutubeService.formatViews(video.viewCount)} مشاهدة');
     }
 
     final progress = VideoHistoryService.getProgress(video.id);
@@ -2707,7 +2707,7 @@ class _FeedHeader extends StatelessWidget {
                 ),
                 SizedBox(width: w * 0.02),
                 Text(
-                  'ط¬ط§ط±ظٹ طھط­ط¯ظٹط« ط§ظ„ظپظٹط¯ظٹظˆظ‡ط§طھ...',
+                  'جاري تحديث الفيديوهات...',
                   style: GoogleFonts.cairo(
                     fontSize: (w * 0.028).clamp(10.0, 11.0),
                     color: theme.captionColor,
@@ -3143,7 +3143,7 @@ class _ShortCardInfo extends StatelessWidget {
         if (hasViews) ...[
           const SizedBox(height: 3),
           Text(
-            '${YoutubeService.formatViews(video.viewCount)} ظ…ط´ط§ظ‡ط¯ط©',
+            '${YoutubeService.formatViews(video.viewCount)} مشاهدة',
             style: const TextStyle(
               fontSize: 10,
               color: Color(0xCCFFFFFF),
@@ -3201,7 +3201,7 @@ class _Header extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'ط§ظ„ظ‚ظ†ظˆط§طھ ط§ظ„ط¹ظ„ظ…ظٹط©',
+                  'القنوات العلمية',
                   style: GoogleFonts.cairo(
                     fontSize: (w * 0.05).clamp(18.0, 26.0),
                     fontWeight: FontWeight.w800,
@@ -3211,7 +3211,7 @@ class _Header extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  '$count ظ…ظ† ط§ظ„ط¹ظ„ظ…ط§ط، ظˆط§ظ„ط¯ط¹ط§ط©',
+                  '$count من العلماء والدعاة',
                   style: GoogleFonts.cairo(
                     fontSize: (w * 0.028).clamp(10.0, 13.0),
                     color: theme.subtitleColor,
@@ -3300,7 +3300,7 @@ class _SearchBar extends StatelessWidget {
                     color: theme.textColor,
                   ),
                   decoration: InputDecoration(
-                    hintText: 'ط§ط¨ط­ط« ط¹ظ† ط´ظٹط® ط£ظˆ ظپظٹط¯ظٹظˆ...',
+                    hintText: 'ابحث عن شيخ أو فيديو...',
                     hintStyle: GoogleFonts.cairo(
                       fontSize: (w * 0.033).clamp(12.0, 15.0),
                       color: theme.searchHint,
@@ -3347,9 +3347,9 @@ class _TabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tabs = [
-      (Icons.play_circle_fill_rounded, 'ظٹظˆطھظٹظˆط¨', const Color(0xFFFF0000)),
-      (Icons.music_note_rounded, 'طھظٹظƒ طھظˆظƒ', const Color(0xFFEE1D52)),
-      (Icons.people_alt_rounded, 'ط§ظ„ظ…ط´ط§ظٹط®', theme.primaryColor),
+      (Icons.play_circle_fill_rounded, 'يوتيوب', const Color(0xFFFF0000)),
+      (Icons.music_note_rounded, 'تيك توك', const Color(0xFFEE1D52)),
+      (Icons.people_alt_rounded, 'المشايخ', theme.primaryColor),
     ];
 
     return Padding(
@@ -3574,7 +3574,7 @@ class _EndOfFeed extends StatelessWidget {
           ),
           SizedBox(height: w * 0.01),
           Text(
-            'طھظ… ط¹ط±ط¶ ط¬ظ…ظٹط¹ ط§ظ„ظپظٹط¯ظٹظˆظ‡ط§طھ',
+            'تم عرض جميع الفيديوهات',
             style: GoogleFonts.cairo(
               fontSize: (w * 0.03).clamp(11.0, 13.0),
               color: theme.captionColor,
@@ -3584,7 +3584,7 @@ class _EndOfFeed extends StatelessWidget {
           TextButton(
             onPressed: onRefresh,
             child: Text(
-              'طھط­ط¯ظٹط«',
+              'تحديث',
               style: GoogleFonts.cairo(
                 color: theme.primaryColor,
                 fontWeight: FontWeight.w600,
@@ -3704,7 +3704,7 @@ class _TiktokCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(6),
                       ),
                       child: Text(
-                        '$subs ظ…طھط§ط¨ط¹',
+                        '$subs متابع',
                         style: GoogleFonts.cairo(
                           fontSize: (w * 0.024).clamp(8.0, 11.0),
                           fontWeight: FontWeight.w600,
@@ -3740,7 +3740,7 @@ class _TiktokCard extends StatelessWidget {
                     ),
                     SizedBox(width: w * 0.008),
                     Text(
-                      'ظپطھط­',
+                      'فتح',
                       style: GoogleFonts.cairo(
                         fontSize: (w * 0.026).clamp(9.0, 12.0),
                         fontWeight: FontWeight.w700,
@@ -4036,7 +4036,7 @@ class _FeedModeBanner extends StatelessWidget {
                   SizedBox(width: w * 0.015),
                   Flexible(
                     child: Text(
-                      isRecent ? 'ظپظٹط¯ظٹظˆظ‡ط§طھ ط­ط¯ظٹط«ط©' : 'ط§ظ„ط£ظƒط«ط± ظ…ط´ط§ظ‡ط¯ط©',
+                      isRecent ? 'فيديوهات حديثة' : 'الأكثر مشاهدة',
                       style: GoogleFonts.cairo(
                         fontSize: (w * 0.03).clamp(11.0, 13.0),
                         fontWeight: FontWeight.w600,
@@ -4053,7 +4053,7 @@ class _FeedModeBanner extends StatelessWidget {
           if (watchedCount > 0) ...[
             SizedBox(width: w * 0.02),
             Text(
-              'ط´ط§ظ‡ط¯طھ $watchedCount',
+              'شاهدت $watchedCount',
               style: GoogleFonts.cairo(
                 fontSize: (w * 0.028).clamp(10.0, 12.0),
                 color: theme.captionColor,
@@ -4093,7 +4093,7 @@ class _ResumeWatchingSection extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'ط£ظƒظ…ظ„ ط§ظ„ظ…ط´ط§ظ‡ط¯ط©',
+            'أكمل المشاهدة',
             style: GoogleFonts.cairo(
               fontSize: (w * 0.04).clamp(14.0, 18.0),
               fontWeight: FontWeight.w800,

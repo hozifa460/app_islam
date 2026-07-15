@@ -1,8 +1,8 @@
 // lib/screens/radio/video/video_launcher.dart
 
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../data/recitation_categories_data.dart';
+import '../youtube_video_screen.dart';
 import '../video_feed_screen.dart';
 import '../video_player_screen.dart';
 
@@ -16,17 +16,25 @@ class VideoLauncher {
     required Color primary,
   }) {
     if (item.isYouTube) {
-      _openYouTube(item.videoUrl!);
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder:
+              (_) => YoutubeVideoScreen(
+                url: item.videoUrl!,
+                title: item.title,
+                subtitle: item.subtitle,
+                primary: primary,
+              ),
+        ),
+      );
       return;
     }
 
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => VideoPlayerScreen(
-          item: item,
-          primary: primary,
-        ),
+        builder: (_) => VideoPlayerScreen(item: item, primary: primary),
       ),
     );
   }
@@ -46,39 +54,28 @@ class VideoLauncher {
 
     // ✅ YouTube يفتح خارجياً
     // ✅ Direct videos تفتح في الـ Feed
-    final directVideos = videoItems
-        .where((v) => v.isDirectVideo)
-        .toList();
+    final directVideos = videoItems.where((v) => v.isDirectVideo).toList();
 
     if (directVideos.isEmpty && videoItems.first.isYouTube) {
-      _openYouTube(videoItems.first.videoUrl!);
+      openSingle(context: context, item: videoItems.first, primary: primary);
       return;
     }
 
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => VideoFeedScreen(
-          videos: directVideos.isNotEmpty ? directVideos : videoItems,
-          initialIndex: initialIndex.clamp(
-            0,
-            (directVideos.isNotEmpty ? directVideos : videoItems).length - 1,
-          ),
-          primary: primary,
-          categoryTitle: categoryTitle,
-        ),
+        builder:
+            (_) => VideoFeedScreen(
+              videos: directVideos.isNotEmpty ? directVideos : videoItems,
+              initialIndex: initialIndex.clamp(
+                0,
+                (directVideos.isNotEmpty ? directVideos : videoItems).length -
+                    1,
+              ),
+              primary: primary,
+              categoryTitle: categoryTitle,
+            ),
       ),
     );
-  }
-
-  static Future<void> _openYouTube(String url) async {
-    try {
-      final uri = Uri.parse(url);
-      if (await canLaunchUrl(uri)) {
-        await launchUrl(uri, mode: LaunchMode.externalApplication);
-      }
-    } catch (e) {
-      debugPrint('⚠️ Failed to open YouTube: $e');
-    }
   }
 }

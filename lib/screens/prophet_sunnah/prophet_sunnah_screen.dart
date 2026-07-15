@@ -193,7 +193,7 @@ class _LoadingViewState extends State<_LoadingView>
           ),
           const SizedBox(height: 24),
           Text(
-            'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط§ظ„ط³ظ†ظ†...',
+            'جاري تحميل السنن...',
             style: TextStyle(
               color: widget.isDark ? Colors.white70 : const Color(0xFF5A5A7A),
               fontSize: 16,
@@ -224,7 +224,7 @@ class _ErrorView extends StatelessWidget {
                 size: 64, color: Colors.redAccent),
             const SizedBox(height: 16),
             Text(
-              'ط­ط¯ط« ط®ط·ط£ ظپظٹ ط§ظ„طھط­ظ…ظٹظ„',
+              'حدث خطأ في التحميل',
               style: TextStyle(
                 color: SunnahTheme.textPrimary(context),
                 fontSize: 18,
@@ -233,7 +233,7 @@ class _ErrorView extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              'طھط£ظƒط¯ ظ…ظ† ظˆط¬ظˆط¯ ظ…ظ„ظپ ط§ظ„ط¨ظٹط§ظ†ط§طھ',
+              'تأكد من وجود ملف البيانات',
               style: TextStyle(
                 color: SunnahTheme.textSecondary(context),
                 fontSize: 14,
@@ -243,7 +243,7 @@ class _ErrorView extends StatelessWidget {
             ElevatedButton.icon(
               onPressed: onRetry,
               icon: const Icon(Icons.refresh_rounded),
-              label: const Text('ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط©'),
+              label: const Text('إعادة المحاولة'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: SunnahTheme.gold,
                 foregroundColor: Colors.white,

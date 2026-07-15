@@ -36,7 +36,7 @@ class SpOnlineInfo extends StatelessWidget {
           const SizedBox(width: 10),
           Expanded(
             child: Text(
-              'طھط³طھظ…ط¹ ظ„ظ„ط³ظˆط±ط© ط¨ط¯ظˆظ† طھط­ظ…ظٹظ„. ط§ط¶ط؛ط· "طھط­ظ…ظٹظ„" ظ„ظ„ط§ط³طھظ…ط§ط¹ ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ ظ„ط§ط­ظ‚ط§ظ‹.',
+              'تستمع للسورة بدون تحميل. اضغط "تحميل" للاستماع بدون إنترنت لاحقاً.',
               style: GoogleFonts.cairo(
                 fontSize: SpSizes.onlineInfoSize(isTablet),
                 color: SpColors.textSecondary(isDark),

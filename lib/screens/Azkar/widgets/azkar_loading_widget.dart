@@ -11,7 +11,7 @@ class AzkarLoadingWidget extends StatefulWidget {
 
   const AzkarLoadingWidget({
     super.key,
-    this.message = 'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط§ظ„ط£ط°ظƒط§ط±...',
+    this.message = 'جاري تحميل الأذكار...',
   });
 
   @override

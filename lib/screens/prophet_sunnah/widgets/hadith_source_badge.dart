@@ -13,14 +13,14 @@ class HadithSourceBadge extends StatelessWidget {
   });
 
   Color get _color {
-    if (authenticity.contains('طµط­ظٹط­')) return const Color(0xFF4CAF50);
-    if (authenticity.contains('ط­ط³ظ†')) return const Color(0xFFFF9800);
+    if (authenticity.contains('صحيح')) return const Color(0xFF4CAF50);
+    if (authenticity.contains('حسن')) return const Color(0xFFFF9800);
     return const Color(0xFF9E9E9E);
   }
 
   IconData get _icon {
-    if (authenticity.contains('طµط­ظٹط­')) return Icons.verified_rounded;
-    if (authenticity.contains('ط­ط³ظ†')) return Icons.check_circle_outline_rounded;
+    if (authenticity.contains('صحيح')) return Icons.verified_rounded;
+    if (authenticity.contains('حسن')) return Icons.check_circle_outline_rounded;
     return Icons.info_outline_rounded;
   }
 

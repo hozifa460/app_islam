@@ -468,7 +468,7 @@ class _AnimatedLiveButtonState extends State<AnimatedLiveButton>
                 ),
                 SizedBox(width: widget.w * 0.014),
                 Text(
-                  'ط¨ط« ظ…ط¨ط§ط´ط±',
+                  'بث مباشر',
                   style: GoogleFonts.cairo(
                     fontSize: widget.nameFontSize,
                     fontWeight: FontWeight.w800,

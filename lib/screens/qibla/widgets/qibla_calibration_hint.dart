@@ -23,7 +23,7 @@ class QiblaCalibrationHint extends StatelessWidget {
             const SizedBox(width: 9),
             Expanded(
               child: Text(
-                'ط¥ط°ط§ ظƒط§ظ†طھ ط§ظ„ظ†طھظٹط¬ط© ط؛ظٹط± ط¯ظ‚ظٹظ‚ط©: ط­ط±ظ‘ظƒ ظ‡ط§طھظپظƒ ط¹ظ„ظ‰ ط´ظƒظ„ âˆ‍ ط¹ط¯ط© ظ…ط±ط§طھطŒ ط«ظ… ط§ط¨طھط¹ط¯ ط¹ظ† ط§ظ„ط£ط¬ط³ط§ظ… ط§ظ„ظ…ط¹ط¯ظ†ظٹط© ظˆط§ظ„ظƒظ‡ط±ط¨ط§ط¦ظٹط©',
+                'إذا كانت النتيجة غير دقيقة: حرّك هاتفك على شكل ∞ عدة مرات، ثم ابتعد عن الأجسام المعدنية والكهربائية',
                 style: GoogleFonts.cairo(
                   fontSize: 10.5,
                   color: theme.isDark ? Colors.orange.shade200 : Colors.orange.shade800,

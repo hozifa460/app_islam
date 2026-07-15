@@ -74,7 +74,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
       return _HomeRadioState(
         hasPlayer: true,
         name: onlineSurah.currentSurahName,
-        category: '${onlineSurah.currentStation!.name} â€¢ ط£ظˆظ†ظ„ط§ظٹظ†',
+        category: '${onlineSurah.currentStation!.name} • أونلاين',
         emoji: onlineSurah.currentStation!.iconEmoji,
         imageUrl: onlineSurah.currentStation!.imageUrl,
         isPlaying: onlineSurah.isPlaying,
@@ -88,7 +88,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
         name: offline.currentSurahName.isNotEmpty
             ? offline.currentSurahName
             : offline.currentStation!.name,
-        category: '${offline.currentStation!.name} â€¢ ط£ظˆظپظ„ط§ظٹظ†',
+        category: '${offline.currentStation!.name} • أوفلاين',
         emoji: offline.currentStation!.iconEmoji,
         imageUrl: offline.currentStation!.imageUrl,
         isPlaying: offline.isPlaying,
@@ -100,7 +100,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
       hasPlayer: false,
       name: '',
       category: '',
-      emoji: 'ًں“»',
+      emoji: '📻',
       imageUrl: null,
       isPlaying: false,
       isBuffering: false,
@@ -239,7 +239,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  state.isPlaying ? 'ظٹط³طھظ…ط¹ ط§ظ„ط¢ظ†' : 'ط§ظ„ط±ط§ط¯ظٹظˆ ظˆط§ظ„طھظ„ط§ظˆط§طھ',
+                  state.isPlaying ? 'يستمع الآن' : 'الراديو والتلاوات',
                   style: GoogleFonts.cairo(
                     fontSize: 16,
                     fontWeight: FontWeight.w800,
@@ -256,7 +256,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
                       child: Text(
                         state.isPlaying
                             ? state.category
-                            : '${RadioStationsData.all.length} ظ…ط­ط·ط© â€¢ طھظ„ط§ظˆط§طھ ظˆط­ظپظ„ط§طھ',
+                            : '${RadioStationsData.all.length} محطة • تلاوات وحفلات',
                         style: GoogleFonts.cairo(
                           fontSize: 11,
                           color: state.isPlaying
@@ -371,7 +371,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
                       Flexible(
                         child: Text(
                           state.isBuffering
-                              ? 'ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„...'
+                              ? 'جاري التحميل...'
                               : state.category,
                           style: GoogleFonts.cairo(
                             fontSize: 10,
@@ -418,7 +418,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _sectionLabel('ط¢ط®ط± ظ…ط§ ط§ط³طھظ…ط¹طھ ط¥ظ„ظٹظ‡', isDark),
+          _sectionLabel('آخر ما استمعت إليه', isDark),
           ...items.map((item) => _RecentItemTile(
             item: item,
             primary: widget.primary,
@@ -443,7 +443,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _sectionLabel('ظ…ط­ط·ط§طھ ظ…ظ‚طھط±ط­ط©', isDark),
+              _sectionLabel('محطات مقترحة', isDark),
               ...stations.map((s) => _QuickStationTile(
                 station: s,
                 primary: widget.primary,
@@ -610,7 +610,7 @@ class _RecentItemTile extends StatelessWidget {
       name: item.title,
       nameEn: item.title,
       url: item.audioUrl,
-      category: item.type == 'radio' ? 'ط±ط§ط¯ظٹظˆ' : 'طھظ„ط§ظˆط§طھ',
+      category: item.type == 'radio' ? 'راديو' : 'تلاوات',
       categoryEn: 'Recitations',
       description: item.subtitle,
       descriptionEn: item.subtitle,

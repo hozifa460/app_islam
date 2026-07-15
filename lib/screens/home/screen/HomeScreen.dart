@@ -102,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen>
 
   String _currentTime = '';
   Timer? _timer;
-  String _cityName = 'ط¬ط§ط±ظٹ ط§ظ„طھط­ط¯ظٹط¯...';
+  String _cityName = 'جاري التحديد...';
 
 
   List<Map<String, dynamic>> _azkarCategories = [];
@@ -128,59 +128,59 @@ class _HomeScreenState extends State<HomeScreen>
   };
 
   final List<Map<String, dynamic>> features = const [
-    {'title': 'ط§ظ„ظ‚ط±ط¢ظ† ط§ظ„ظƒط±ظٹظ…', 'subtitle': 'ظ،ظ،ظ¤ ط³ظˆط±ط©', 'icon': Icons.menu_book_rounded, 'badge': 'ًں“–'},
-    {'title': 'ط£ظˆظ‚ط§طھ ط§ظ„طµظ„ط§ط©', 'subtitle': 'ظ…ظˆط§ظ‚ظٹطھ ط¯ظ‚ظٹظ‚ط©', 'icon': Icons.access_time_filled_rounded, 'badge': 'ًں•Œ'},
-    {'title': 'ط§ظ„ط£ط°ظƒط§ط±', 'subtitle': 'طµط¨ط§ط­ ظˆظ…ط³ط§ط،', 'icon': Icons.auto_awesome_rounded, 'badge': 'âœ¨'},
-    {'title': 'ط§ظ„طھط³ط¨ظٹط­', 'subtitle': 'ط¹ط¯ط§ط¯ ط°ظƒظٹ', 'icon': Icons.touch_app_rounded, 'badge': 'ًں“؟'},
-    {'title': 'ط§ظ„ط£ط­ط§ط¯ظٹط«', 'subtitle': 'ظ…ظƒطھط¨ط© ط§ظ„ط³ظ†ط©', 'icon': Icons.format_quote_rounded, 'badge': 'ًں“œ'},
-    {'title': 'ط­طµط§ط¯ ط§ظ„ط­ط³ظ†ط§طھ', 'subtitle': 'ط£ط¬ظˆط± ط¹ط¸ظٹظ…ط©', 'icon': Icons.emoji_events_rounded, 'badge': 'ًںڈ°'},
-    {'title': 'ط®طھظ…طھظٹ', 'subtitle': 'ظˆط±ط¯ظƒ ط§ظ„ظٹظˆظ…ظٹ', 'icon': Icons.track_changes, 'badge': 'ًںژ¯'},
-    {'title': 'ط§ظ„ط¨ط« ط§ظ„ظ…ط¨ط§ط´ط±', 'subtitle': 'ظ‚ظ†ظˆط§طھ ط§ظ„ظ…ط´ط§ظٹط®', 'icon': Icons.live_tv_rounded, 'badge': 'ًں”´'},
-    {'title': 'ط§ظ„ظ‚ط¨ظ„ط©', 'subtitle': 'ط§طھط¬ط§ظ‡ ط§ظ„ظ‚ط¨ظ„ط©', 'icon': Icons.explore_rounded, 'badge': 'ًں§­'},
-    {'title': 'ط§ظ„ط£ط¯ط¹ظٹط©', 'subtitle': 'ط£ط¯ط¹ظٹط© ظ…ط®طھط§ط±ط©', 'icon': Icons.favorite_rounded, 'badge': 'ًں¤²'},
-    {'title': 'ط§ظ„ظ…ظƒطھط¨ط©', 'subtitle': 'ظƒطھط¨ ط¥ط³ظ„ط§ظ…ظٹط©', 'icon': Icons.local_library_rounded, 'badge': 'ًں“ڑ'},
-    {'title': 'ط§ظ„ظ…ط¤ط°ظ†', 'subtitle': 'ط§ط®طھظٹط§ط± ط§ظ„طµظˆطھ', 'icon': Icons.volume_up_rounded, 'badge': 'ًںژ™ï¸ڈ'},
-    {'title': 'ط§ط³ظ…ط§ط، ط§ظ„ظ„ظ‡ ط§ظ„ط­ط³ظ†ظ‰', 'subtitle': 'ط§ط³ظ…ط§ط، ط§ظ„ط¹ط¸ظٹظ…', 'icon': Icons.volume_up_rounded, 'badge': 'ًں“œ'},
-    {'title': 'ط§ظ„ظ…ط¹ط¬ط²ط§طھ', 'subtitle': 'ظ…ط¹ط¬ط²ط§طھ ط§ظ„ظ‚ط±ط§ظ† ظˆط§ظ„ط³ظ†ط©', 'icon': Icons.volume_up_rounded, 'badge': 'ًں“œ'},
-    {'title': 'ط¹ط¸ظ…ط§ط، ط§ظ„ط¥ط³ظ„ط§ظ…', 'subtitle': 'ط´ط®طµظٹط§طھ ط®ط§ظ„ط¯ط©', 'icon': Icons.military_tech_rounded, 'badge': 'ًںڈ›ï¸ڈ'},
-    {'title': 'ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ', 'subtitle': 'طھط®طµظٹطµ ط§ظ„طھط·ط¨ظٹظ‚', 'icon': Icons.settings_rounded, 'badge': 'âڑ™ï¸ڈ'},
+    {'title': 'القرآن الكريم', 'subtitle': '١١٤ سورة', 'icon': Icons.menu_book_rounded, 'badge': '📖'},
+    {'title': 'أوقات الصلاة', 'subtitle': 'مواقيت دقيقة', 'icon': Icons.access_time_filled_rounded, 'badge': '🕌'},
+    {'title': 'الأذكار', 'subtitle': 'صباح ومساء', 'icon': Icons.auto_awesome_rounded, 'badge': '✨'},
+    {'title': 'التسبيح', 'subtitle': 'عداد ذكي', 'icon': Icons.touch_app_rounded, 'badge': '📿'},
+    {'title': 'الأحاديث', 'subtitle': 'مكتبة السنة', 'icon': Icons.format_quote_rounded, 'badge': '📜'},
+    {'title': 'حصاد الحسنات', 'subtitle': 'أجور عظيمة', 'icon': Icons.emoji_events_rounded, 'badge': '🏰'},
+    {'title': 'ختمتي', 'subtitle': 'وردك اليومي', 'icon': Icons.track_changes, 'badge': '🎯'},
+    {'title': 'البث المباشر', 'subtitle': 'قنوات المشايخ', 'icon': Icons.live_tv_rounded, 'badge': '🔴'},
+    {'title': 'القبلة', 'subtitle': 'اتجاه القبلة', 'icon': Icons.explore_rounded, 'badge': '🧭'},
+    {'title': 'الأدعية', 'subtitle': 'أدعية مختارة', 'icon': Icons.favorite_rounded, 'badge': '🤲'},
+    {'title': 'المكتبة', 'subtitle': 'كتب إسلامية', 'icon': Icons.local_library_rounded, 'badge': '📚'},
+    {'title': 'المؤذن', 'subtitle': 'اختيار الصوت', 'icon': Icons.volume_up_rounded, 'badge': '🎙️'},
+    {'title': 'اسماء الله الحسنى', 'subtitle': 'اسماء العظيم', 'icon': Icons.volume_up_rounded, 'badge': '📜'},
+    {'title': 'المعجزات', 'subtitle': 'معجزات القران والسنة', 'icon': Icons.volume_up_rounded, 'badge': '📜'},
+    {'title': 'عظماء الإسلام', 'subtitle': 'شخصيات خالدة', 'icon': Icons.military_tech_rounded, 'badge': '🏛️'},
+    {'title': 'الإعدادات', 'subtitle': 'تخصيص التطبيق', 'icon': Icons.settings_rounded, 'badge': '⚙️'},
   ];
 
   final List<Map<String, dynamic>> _prayerInfo = [
-    {'name': 'ط§ظ„ظپط¬ط±', 'key': 'Fajr', 'icon': Icons.nightlight_round},
-    {'name': 'ط§ظ„ط´ط±ظˆظ‚', 'key': 'Sunrise', 'icon': Icons.wb_sunny_outlined},
-    {'name': 'ط§ظ„ط¸ظ‡ط±', 'key': 'Dhuhr', 'icon': Icons.wb_sunny},
-    {'name': 'ط§ظ„ط¹طµط±', 'key': 'Asr', 'icon': Icons.sunny_snowing},
-    {'name': 'ط§ظ„ظ…ط؛ط±ط¨', 'key': 'Maghrib', 'icon': Icons.wb_twilight},
-    {'name': 'ط§ظ„ط¹ط´ط§ط،', 'key': 'Isha', 'icon': Icons.nights_stay},
+    {'name': 'الفجر', 'key': 'Fajr', 'icon': Icons.nightlight_round},
+    {'name': 'الشروق', 'key': 'Sunrise', 'icon': Icons.wb_sunny_outlined},
+    {'name': 'الظهر', 'key': 'Dhuhr', 'icon': Icons.wb_sunny},
+    {'name': 'العصر', 'key': 'Asr', 'icon': Icons.sunny_snowing},
+    {'name': 'المغرب', 'key': 'Maghrib', 'icon': Icons.wb_twilight},
+    {'name': 'العشاء', 'key': 'Isha', 'icon': Icons.nights_stay},
   ];
 
   final List<Map<String, String>> dailyVerses = const [
-    {'verse': 'ظˆظژظ…ظژظ† ظٹظژطھظژظ‘ظ‚ظگ ط§ظ„ظ„ظژظ‘ظ‡ظژ ظٹظژط¬ظ’ط¹ظژظ„ ظ„ظژظ‘ظ‡ظڈ ظ…ظژط®ظ’ط±ظژط¬ظ‹ط§', 'surah': 'ط§ظ„ط·ظ„ط§ظ‚ - ظ¢'},
-    {'verse': 'ظپظژط¥ظگظ†ظژظ‘ ظ…ظژط¹ظژ ط§ظ„ظ’ط¹ظڈط³ظ’ط±ظگ ظٹظڈط³ظ’ط±ظ‹ط§', 'surah': 'ط§ظ„ط´ط±ط­ - ظ¥'},
-    {'verse': 'ظ„ظژط§ ظٹظڈظƒظژظ„ظگظ‘ظپظڈ ط§ظ„ظ„ظژظ‘ظ‡ظڈ ظ†ظژظپظ’ط³ظ‹ط§ ط¥ظگظ„ظژظ‘ط§ ظˆظڈط³ظ’ط¹ظژظ‡ظژط§', 'surah': 'ط§ظ„ط¨ظ‚ط±ط© - ظ¢ظ¨ظ¦'},
-    {'verse': 'ظˆظژظ‚ظڈظ„ ط±ظژظ‘ط¨ظگظ‘ ط²ظگط¯ظ’ظ†ظگظٹ ط¹ظگظ„ظ’ظ…ظ‹ط§', 'surah': 'ط·ظ‡ - ظ،ظ،ظ¤'},
-    {'verse': 'ط£ظژظ„ظژط§ ط¨ظگط°ظگظƒظ’ط±ظگ ط§ظ„ظ„ظژظ‘ظ‡ظگ طھظژط·ظ’ظ…ظژط¦ظگظ†ظڈظ‘ ط§ظ„ظ’ظ‚ظڈظ„ظڈظˆط¨ظڈ', 'surah': 'ط§ظ„ط±ط¹ط¯ - ظ¢ظ¨'},
+    {'verse': 'وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا', 'surah': 'الطلاق - ٢'},
+    {'verse': 'فَإِنَّ مَعَ الْعُسْرِ يُسْرًا', 'surah': 'الشرح - ٥'},
+    {'verse': 'لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا', 'surah': 'البقرة - ٢٨٦'},
+    {'verse': 'وَقُل رَّبِّ زِدْنِي عِلْمًا', 'surah': 'طه - ١١٤'},
+    {'verse': 'أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ', 'surah': 'الرعد - ٢٨'},
   ];
 
   final List<Map<String, String>> dailyHadiths = const [
-    {'text': 'آ« ط¥ظگظ†ظ‘ظژظ…ظژط§ ط§ظ„ظ’ط£ظژط¹ظ’ظ…ظژط§ظ„ظڈ ط¨ظگط§ظ„ظ†ظ‘ظگظٹظ‘ظژط§طھظگ آ»', 'source': 'ط±ظˆط§ظ‡ ط§ظ„ط¨ط®ط§ط±ظٹ'},
-    {'text': 'آ« ط§ظ„ط¯ظ‘ظگظٹظ†ظڈ ط§ظ„ظ†ظ‘ظژطµظگظٹط­ظژط©ظڈ آ»', 'source': 'ط±ظˆط§ظ‡ ظ…ط³ظ„ظ…'},
-    {'text': 'آ« ط§ظ„ظ’ظƒظژظ„ظگظ…ظژط©ظڈ ط§ظ„ط·ظ‘ظژظٹظ‘ظگط¨ظژط©ظڈ طµظژط¯ظژظ‚ظژط©ظŒ آ»', 'source': 'ط±ظˆط§ظ‡ ط§ظ„ط¨ط®ط§ط±ظٹ'},
-    {'text': 'آ« طھظژط¨ظژط³ظ‘ظڈظ…ظڈظƒظژ ظپظگظٹ ظˆظژط¬ظ’ظ‡ظگ ط£ظژط®ظگظٹظƒظژ ظ„ظژظƒظژ طµظژط¯ظژظ‚ظژط©ظŒ آ»', 'source': 'ط±ظˆط§ظ‡ ط§ظ„طھط±ظ…ط°ظٹ'},
-    {'text': 'آ« ط®ظژظٹظ’ط±ظڈظƒظڈظ…ظ’ ظ…ظژظ†ظ’ طھظژط¹ظژظ„ظ‘ظژظ…ظژ ط§ظ„ظ’ظ‚ظڈط±ظ’ط¢ظ†ظژ ظˆظژط¹ظژظ„ظ‘ظژظ…ظژظ‡ظڈ آ»', 'source': 'ط±ظˆط§ظ‡ ط§ظ„ط¨ط®ط§ط±ظٹ'},
+    {'text': '« إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ »', 'source': 'رواه البخاري'},
+    {'text': '« الدِّينُ النَّصِيحَةُ »', 'source': 'رواه مسلم'},
+    {'text': '« الْكَلِمَةُ الطَّيِّبَةُ صَدَقَةٌ »', 'source': 'رواه البخاري'},
+    {'text': '« تَبَسُّمُكَ فِي وَجْهِ أَخِيكَ لَكَ صَدَقَةٌ »', 'source': 'رواه الترمذي'},
+    {'text': '« خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ »', 'source': 'رواه البخاري'},
   ];
 
   List<GreatMuslim> _greatMuslims = [];
   bool _greatMuslimsLoaded = false;
-  Map<String, String> currentVerseOfDay = {'verse': 'ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„...', 'surah': ''};
-  Map<String, String> currentHadithOfDay = {'text': 'ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„...', 'source': ''};
+  Map<String, String> currentVerseOfDay = {'verse': 'جاري التحميل...', 'surah': ''};
+  Map<String, String> currentHadithOfDay = {'text': 'جاري التحميل...', 'source': ''};
 
   Future<void> _loadGreatMuslims() async {
     try {
       GreatMuslimsService.clearCache(); // ط¥ط¹ط§ط¯ط© طھط­ظ…ظٹظ„ ظ†ط¸ظٹظپط©
       final data = await GreatMuslimsService.load();
-      debugPrint('âœ… HomeScreen: طھظ… طھط­ظ…ظٹظ„ ${data.length} ط´ط®طµظٹط©');
+      debugPrint('✅ HomeScreen: تم تحميل ${data.length} شخصية');
       if (mounted) {
         setState(() {
           _greatMuslims = data;
@@ -188,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen>
         });
       }
     } catch (e) {
-      debugPrint('â‌Œ HomeScreen ط®ط·ط£: $e');
+      debugPrint('❌ HomeScreen خطأ: $e');
     }
   }
 
@@ -429,7 +429,7 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   String _getCurrentAzkarTitle() {
-    return _isMorningAzkarTime() ? 'ط£ط°ظƒط§ط± ط§ظ„طµط¨ط§ط­' : 'ط£ط°ظƒط§ط± ط§ظ„ظ…ط³ط§ط،';
+    return _isMorningAzkarTime() ? 'أذكار الصباح' : 'أذكار المساء';
   }
 
   IconData _getCurrentAzkarIcon() {
@@ -479,11 +479,11 @@ class _HomeScreenState extends State<HomeScreen>
 
     try {
       final prayers = [
-        {'key': 'Fajr', 'name': 'ط§ظ„ظپط¬ط±', 'id': 100},
-        {'key': 'Dhuhr', 'name': 'ط§ظ„ط¸ظ‡ط±', 'id': 101},
-        {'key': 'Asr', 'name': 'ط§ظ„ط¹طµط±', 'id': 102},
-        {'key': 'Maghrib', 'name': 'ط§ظ„ظ…ط؛ط±ط¨', 'id': 103},
-        {'key': 'Isha', 'name': 'ط§ظ„ط¹ط´ط§ط،', 'id': 104},
+        {'key': 'Fajr', 'name': 'الفجر', 'id': 100},
+        {'key': 'Dhuhr', 'name': 'الظهر', 'id': 101},
+        {'key': 'Asr', 'name': 'العصر', 'id': 102},
+        {'key': 'Maghrib', 'name': 'المغرب', 'id': 103},
+        {'key': 'Isha', 'name': 'العشاء', 'id': 104},
       ];
 
       for (final prayer in prayers) {
@@ -531,7 +531,7 @@ class _HomeScreenState extends State<HomeScreen>
         }
       }
     } catch (e) {
-      debugPrint('â‌Œ ط®ط·ط£ ط£ط«ظ†ط§ط، ط§ظ„ط¬ط¯ظˆظ„ط©: $e');
+      debugPrint('❌ خطأ أثناء الجدولة: $e');
     } finally {
       _isSchedulingNotifications = false;
     }
@@ -552,7 +552,7 @@ class _HomeScreenState extends State<HomeScreen>
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'طھظ… طھط­ط¯ظٹط« ط§ظ„ظ…ظˆظ‚ط¹ ظˆط§ظ„ظ…ظˆط§ظ‚ظٹطھ',
+          'تم تحديث الموقع والمواقيت',
           style: GoogleFonts.cairo(),
         ),
         backgroundColor: Colors.green,
@@ -568,8 +568,8 @@ class _HomeScreenState extends State<HomeScreen>
       MaterialPageRoute(
         builder: (_) => AdhanPlayerScreen(
           primaryColor: _primary,
-          prayerName: payload['prayerName'] ?? payload['prayer'] ?? 'ط§ظ„طµظ„ط§ط©',
-          muezzinName: payload['muezzinName'] ?? 'ظ…ط¤ط°ظ†',
+          prayerName: payload['prayerName'] ?? payload['prayer'] ?? 'الصلاة',
+          muezzinName: payload['muezzinName'] ?? 'مؤذن',
           url: payload['muezzinUrl'] ?? '',
           localPath: (payload['localPath'] != null && payload['localPath'].toString().isNotEmpty)
               ? payload['localPath']
@@ -609,9 +609,9 @@ class _HomeScreenState extends State<HomeScreen>
             currentVerseOfDay = {
               'verse': ayah['text']
                   .toString()
-                  .replaceAll('ط¨ظگط³ظ’ظ…ظگ ظ±ظ„ظ„ظ‘ظژظ‡ظگ ظ±ظ„ط±ظ‘ظژط­ظ’ظ…ظژظ°ظ†ظگ ظ±ظ„ط±ظ‘ظژط­ظگظٹظ…ظگ', '')
+                  .replaceAll('بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ', '')
                   .trim(),
-              'surah': '${surah['name']} - ط¢ظٹط© ${ayah['numberInSurah']}',
+              'surah': '${surah['name']} - آية ${ayah['numberInSurah']}',
             };
           });
         }
@@ -627,7 +627,7 @@ class _HomeScreenState extends State<HomeScreen>
           setState(() {
             currentHadithOfDay = {
               'text': hadith['text'].toString().replaceAll(RegExp(r'<[^>]*>'), '').trim(),
-              'source': 'ط±ظ‚ظ… ط§ظ„ط­ط¯ظٹط«: ${hadith['hadithnumber']}',
+              'source': 'رقم الحديث: ${hadith['hadithnumber']}',
             };
           });
         }
@@ -638,7 +638,7 @@ class _HomeScreenState extends State<HomeScreen>
   void _updateTime() {
     final now = DateTime.now();
     final hour = now.hour > 12 ? now.hour - 12 : (now.hour == 0 ? 12 : now.hour);
-    final period = now.hour >= 12 ? 'ظ…' : 'طµ';
+    final period = now.hour >= 12 ? 'م' : 'ص';
     final newTime = '$hour:${now.minute.toString().padLeft(2, '0')} $period';
 
     if (_currentTime != newTime && mounted) {
@@ -670,7 +670,7 @@ class _HomeScreenState extends State<HomeScreen>
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('طھظ…طھ ط¥ط¹ط§ط¯ط© ط¬ط¯ظˆظ„ط© ط§ظ„ط£ط°ط§ظ† ط¨ط¹ط¯ ط¥ط¹ط§ط¯ط© طھط´ط؛ظٹظ„ ط§ظ„ظ‡ط§طھظپ', style: GoogleFonts.cairo()),
+          content: Text('تمت إعادة جدولة الأذان بعد إعادة تشغيل الهاتف', style: GoogleFonts.cairo()),
           backgroundColor: Colors.green,
         ),
       );
@@ -686,12 +686,12 @@ class _HomeScreenState extends State<HomeScreen>
 
     final prayerOrder = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
     final prayerNames = {
-      'Fajr': 'ط§ظ„ظپط¬ط±',
-      'Sunrise': 'ط§ظ„ط´ط±ظˆظ‚',
-      'Dhuhr': 'ط§ظ„ط¸ظ‡ط±',
-      'Asr': 'ط§ظ„ط¹طµط±',
-      'Maghrib': 'ط§ظ„ظ…ط؛ط±ط¨',
-      'Isha': 'ط§ظ„ط¹ط´ط§ط،',
+      'Fajr': 'الفجر',
+      'Sunrise': 'الشروق',
+      'Dhuhr': 'الظهر',
+      'Asr': 'العصر',
+      'Maghrib': 'المغرب',
+      'Isha': 'العشاء',
     };
 
     for (final key in prayerOrder) {
@@ -704,15 +704,15 @@ class _HomeScreenState extends State<HomeScreen>
     }
 
     if (nextPrayerTime == null) {
-      nextName = 'ط§ظ„ظپط¬ط±';
+      nextName = 'الفجر';
       final fajr = _parseTime(prayerTimes['Fajr']!);
       nextPrayerTime = fajr.add(const Duration(days: 1));
     }
 
     final diff = nextPrayerTime.difference(now);
     final timeLeftString = diff.inHours > 0
-        ? '${diff.inHours}ط³ ظˆ ${diff.inMinutes % 60}ط¯'
-        : '${diff.inMinutes} ط¯ظ‚ظٹظ‚ط©';
+        ? '${diff.inHours}س و ${diff.inMinutes % 60}د'
+        : '${diff.inMinutes} دقيقة';
 
     if (mounted &&
         (_nextPrayerName != nextName || _timeLeft != timeLeftString)) {
@@ -747,10 +747,10 @@ class _HomeScreenState extends State<HomeScreen>
       final parts = cleanTime.split(':');
       int hour = int.parse(parts[0]);
       int minute = int.parse(parts[1]);
-      String period = 'طµ';
+      String period = 'ص';
 
       if (hour >= 12) {
-        period = 'ظ…';
+        period = 'م';
         if (hour > 12) hour -= 12;
       }
       if (hour == 0) hour = 12;
@@ -784,7 +784,7 @@ class _HomeScreenState extends State<HomeScreen>
       await prefs.setBool('reminder_enabled', offset > 0);
       await _schedulePrayerNotifications();
     } catch (e) {
-      debugPrint('â‌Œ apply reminder offset error: $e');
+      debugPrint('❌ apply reminder offset error: $e');
     }
   }
 
@@ -1024,7 +1024,7 @@ class _HomeScreenState extends State<HomeScreen>
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'ط·ط±ظٹظ‚ ط§ظ„ط§ط³ظ„ط§ظ…',
+                  'طريق الاسلام',
                   style: GoogleFonts.amiri(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -1032,7 +1032,7 @@ class _HomeScreenState extends State<HomeScreen>
                   ),
                 ),
                 Text(
-                  'ط±ظپظٹظ‚ظƒ ط§ظ„ظٹظˆظ…ظٹ',
+                  'رفيقك اليومي',
                   style: GoogleFonts.cairo(
                       fontSize: 12, color: Colors.white70),
                 ),
@@ -1088,7 +1088,7 @@ class _HomeScreenState extends State<HomeScreen>
         height: 120,
         child: Center(
           child: Text(
-            'ظ„ط§ طھظˆط¬ط¯ ط¨ظٹط§ظ†ط§طھ',
+            'لا توجد بيانات',
             style: GoogleFonts.cairo(color: gold),
           ),
         ),
@@ -1241,7 +1241,7 @@ class _HomeScreenState extends State<HomeScreen>
                                         borderRadius: BorderRadius.circular(14),
                                       ),
                                       child: Text(
-                                        'ط¹ط¸ظٹظ… ط§ظ„ط§ط³ظ„ط§ظ…',
+                                        'عظيم الاسلام',
                                         style: GoogleFonts.cairo(
                                           color: Colors.white,
                                           fontSize: small ? 9.5 : 10.5,
@@ -1451,7 +1451,7 @@ class _HomeScreenState extends State<HomeScreen>
                   ),
                   const Spacer(),
                   Text(
-                    'ظ…ظˆط§ظ‚ظٹطھ ط§ظ„طµظ„ط§ط©',
+                    'مواقيت الصلاة',
                     style: GoogleFonts.cairo(
                       fontSize: titleFont,
                       fontWeight: FontWeight.bold,
@@ -1541,7 +1541,7 @@ class _HomeScreenState extends State<HomeScreen>
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    'ط§ظ„طµظ„ط§ط© ط§ظ„ظ‚ط§ط¯ظ…ط©',
+                                    'الصلاة القادمة',
                                     style: GoogleFonts.cairo(
                                       color: Colors.white.withValues(alpha: 0.85),
                                       fontSize: subtitleFont,
@@ -1719,7 +1719,7 @@ class _HomeScreenState extends State<HomeScreen>
                   children: [
                     _sectionHeader(
                       icon: Icons.auto_awesome,
-                      title: 'ط¢ظٹط© ط§ظ„ظٹظˆظ…',
+                      title: 'آية اليوم',
                       color: gold,
                       size: small ? 15 : 16,
                     ),
@@ -1756,7 +1756,7 @@ class _HomeScreenState extends State<HomeScreen>
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      'ط§ظ‚ط±ط£ظ‡ط§ ط¨طھط¯ط¨ط± ظˆط§ط¬ط¹ظ„ظ‡ط§ ط±ظپظٹظ‚ ظٹظˆظ…ظƒ',
+                      'اقرأها بتدبر واجعلها رفيق يومك',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.cairo(
                         fontSize: small ? 11 : 12,
@@ -1821,7 +1821,7 @@ class _HomeScreenState extends State<HomeScreen>
 
     final String previewText = currentAzkarList.isNotEmpty
         ? (currentAzkarList.first['text']?.toString() ?? '')
-        : 'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط§ظ„ط£ط°ظƒط§ط±...';
+        : 'جاري تحميل الأذكار...';
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -1878,7 +1878,7 @@ class _HomeScreenState extends State<HomeScreen>
                         );
                       },
                       child: Text(
-                        'ظ‚ط±ط§ط،ط©',
+                        'قراءة',
                         style: GoogleFonts.cairo(
                           fontWeight: FontWeight.bold,
                           fontSize: small ? 12 : 13,
@@ -1939,12 +1939,12 @@ class _HomeScreenState extends State<HomeScreen>
       bool isDark,
       ) {
     final homeItems = [
-      {'title': 'ط§ظ„ظ‚ط±ط¢ظ†', 'icon': Icons.menu_book_rounded, 'index': 0},
-      {'title': 'ط§ظ„ط­ط¯ظٹط«', 'icon': Icons.format_quote_rounded, 'index': 4},
-      {'title': 'ط§ظ„ط£ط°ظƒط§ط±', 'icon': Icons.auto_awesome_rounded, 'index': 2},
-      {'title': 'ط§ظ„ظ‚ط¨ظ„ط©', 'icon': Icons.explore_rounded, 'index': 8},
-      {'title': 'ط§ط³ظ…ط§ط، ط§ظ„ظ„ظ‡ ط§ظ„ط­ط³ظ†ظ‰', 'icon': Icons.numbers_rounded, 'index': 12},
-      {'title': 'ط§ظ„طھط³ط¨ظٹط­', 'icon': Icons.touch_app_rounded, 'index': 3},
+      {'title': 'القرآن', 'icon': Icons.menu_book_rounded, 'index': 0},
+      {'title': 'الحديث', 'icon': Icons.format_quote_rounded, 'index': 4},
+      {'title': 'الأذكار', 'icon': Icons.auto_awesome_rounded, 'index': 2},
+      {'title': 'القبلة', 'icon': Icons.explore_rounded, 'index': 8},
+      {'title': 'اسماء الله الحسنى', 'icon': Icons.numbers_rounded, 'index': 12},
+      {'title': 'التسبيح', 'icon': Icons.touch_app_rounded, 'index': 3},
     ];
 
     return LayoutBuilder(
@@ -2043,7 +2043,7 @@ class _HomeScreenState extends State<HomeScreen>
               children: [
                 _sectionHeader(
                   icon: Icons.lightbulb_outline,
-                  title: 'ط­ط¯ظٹط« ط§ظ„ظٹظˆظ…',
+                  title: 'حديث اليوم',
                   color: isDark ? Colors.white70 : primary,
                 ),
                 const SizedBox(height: 14),
@@ -2054,7 +2054,7 @@ class _HomeScreenState extends State<HomeScreen>
                     borderRadius: BorderRadius.circular(14),
                   ),
                   child: Text(
-                    'ظ‚ط§ظ„ ط±ط³ظˆظ„ ط§ظ„ظ„ظ‡ ï·؛',
+                    'قال رسول الله ﷺ',
                     style: GoogleFonts.cairo(
                       fontSize: 13,
                       color: isDark ? Colors.white70 : primary,

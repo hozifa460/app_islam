@@ -107,10 +107,10 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
 
   String _getCardinalDirection(double angle) {
     const dirs = [
-      'ط´ظ…ط§ظ„', 'ط´.ط´.ط؛', 'ط´ظ…ط§ظ„ ط؛ط±ط¨', 'ط؛.ط´.ط؛',
-      'ط؛ط±ط¨', 'ط؛.ط¬.ط؛', 'ط¬ظ†ظˆط¨ ط؛ط±ط¨', 'ط¬.ط¬.ط؛',
-      'ط¬ظ†ظˆط¨', 'ط¬.ط¬.ط´', 'ط¬ظ†ظˆط¨ ط´ط±ظ‚', 'ط´.ط¬.ط´',
-      'ط´ط±ظ‚', 'ط´.ط´.ط؛', 'ط´ظ…ط§ظ„ ط´ط±ظ‚', 'ط؛.ط´.ط؛',
+      'شمال', 'ش.ش.غ', 'شمال غرب', 'غ.ش.غ',
+      'غرب', 'غ.ج.غ', 'جنوب غرب', 'ج.ج.غ',
+      'جنوب', 'ج.ج.ش', 'جنوب شرق', 'ش.ج.ش',
+      'شرق', 'ش.ش.غ', 'شمال شرق', 'غ.ش.غ',
     ];
     return dirs[((angle + 11.25) / 22.5).floor() % 16];
   }
@@ -375,7 +375,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
               ),
             ],
           ),
-          child: const Text('ًں•‹', style: TextStyle(fontSize: 22)),
+          child: const Text('🕋', style: TextStyle(fontSize: 22)),
         ),
         Container(
           width: 2.5,
@@ -432,7 +432,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
             ),
           ),
           const Text(
-            'â†‘',
+            '↑',
             style: TextStyle(
               fontSize: 10,
               color: Colors.red,
@@ -522,10 +522,10 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('ط®ط±ظٹط·ط© ط§ظ„ظ‚ط¨ظ„ط©',
+                Text('خريطة القبلة',
                     style: theme.boldStyle(14, theme.textColor)),
                 Text(
-                  'ط§ظ„ط®ط±ظٹط·ط© ظˆط§ظ„ط¥ط¨ط±ط© طھط¯ظˆط±ط§ظ† ظ…ط¹ ط§ظ„ظ‡ط§طھظپ',
+                  'الخريطة والإبرة تدوران مع الهاتف',
                   style: theme.labelStyle(10),
                 ),
               ],
@@ -546,7 +546,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
         _buildInfoCard(
           theme: theme,
           icon: Icons.straighten_rounded,
-          label: 'ط§ظ„ظ…ط³ط§ظپط©',
+          label: 'المسافة',
           value: QiblaCalculator.formatDistance(widget.distanceToKaaba),
           color: QiblaTheme.blue,
         ),
@@ -554,7 +554,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
         _buildInfoCard(
           theme: theme,
           icon: Icons.explore_rounded,
-          label: 'ط§ظ„ط§طھط¬ط§ظ‡',
+          label: 'الاتجاه',
           value:
           '${widget.qiblaAngle.toStringAsFixed(1)}آ° ${_getCardinalDirection(widget.qiblaAngle)}',
           color: QiblaTheme.gold,
@@ -565,10 +565,10 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
           icon: widget.isFacing
               ? Icons.check_circle_rounded
               : Icons.adjust_rounded,
-          label: 'ط§ظ„ط­ط§ظ„ط©',
+          label: 'الحالة',
           value: widget.isFacing
-              ? 'ظ…ظˆط§ط¬ظ‡ âœ“'
-              : '${_qiblaDeviation.abs().toStringAsFixed(1)}آ° ط§ظ†ط­ط±ط§ظپ',
+              ? 'مواجه ✓'
+              : '${_qiblaDeviation.abs().toStringAsFixed(1)}° انحراف',
           color: widget.isFacing ? QiblaTheme.green : QiblaTheme.red,
         ),
       ],
@@ -630,7 +630,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
             child: _buildMapButton(
               theme: theme,
               icon: Icons.my_location_rounded,
-              label: 'ظ…ظˆظ‚ط¹ظٹ',
+              label: 'موقعي',
               onTap: () =>
                   _mapController.move(_userPosition, _calculateZoom()),
             ),
@@ -640,7 +640,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
             child: _buildMapButton(
               theme: theme,
               icon: Icons.zoom_out_map_rounded,
-              label: 'ط§ظ„ظ…ط³ط§ط± ط§ظ„ظƒط§ظ…ظ„',
+              label: 'المسار الكامل',
               onTap: () {
                 final midLat =
                     (widget.userLat + QiblaCalculator.kaabeLat) / 2;
@@ -655,7 +655,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
             child: _buildMapButton(
               theme: theme,
               icon: Icons.location_on_rounded,
-              label: 'ط§ظ„ظƒط¹ط¨ط©',
+              label: 'الكعبة',
               onTap: () => _mapController.move(_kaabaPosition, 14.0),
             ),
           ),
@@ -711,7 +711,7 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
         : isMed
         ? QiblaTheme.orange
         : QiblaTheme.red;
-    final label = isGood ? 'GPS ط¯ظ‚ظٹظ‚' : isMed ? 'ظ…طھظˆط³ط·' : 'ط¶ط¹ظٹظپ';
+    final label = isGood ? 'GPS دقيق' : isMed ? 'متوسط' : 'ضعيف';
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
@@ -747,10 +747,10 @@ class _QiblaMapSectionState extends State<QiblaMapSection>
       spacing: 14,
       runSpacing: 4,
       children: [
-        _legendItem(theme, 'ًں•‹', null, 'ط§ظ„ظƒط¹ط¨ط© ط§ظ„ظ…ط´ط±ظپط©'),
-        _legendItem(theme, null, Icons.circle, 'ظ…ظˆظ‚ط¹ظƒ ط§ظ„ط­ط§ظ„ظٹ',
+        _legendItem(theme, '🕋', null, 'الكعبة المشرفة'),
+        _legendItem(theme, null, Icons.circle, 'موقعك الحالي',
             color: QiblaTheme.blue),
-        _legendItem(theme, null, Icons.navigation_rounded, 'ط§طھط¬ط§ظ‡ ط§ظ„ظ‚ط¨ظ„ط©',
+        _legendItem(theme, null, Icons.navigation_rounded, 'اتجاه القبلة',
             color: QiblaTheme.gold),
       ],
     );

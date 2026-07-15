@@ -150,7 +150,7 @@ class _RecSubItemsDownloadScreenState
           const SizedBox(width: 14),
           Expanded(
             child: Text(
-              'طھط­ظ…ظٹظ„ ط§ظ„طھظ„ط§ظˆط§طھ',
+              'تحميل التلاوات',
               style: GoogleFonts.cairo(
                 fontSize: 20,
                 fontWeight: FontWeight.w800,
@@ -172,7 +172,7 @@ class _RecSubItemsDownloadScreenState
                 ),
               ),
               child: Text(
-                '${_selectedIndices.length} طھظ„ط§ظˆط©',
+                '${_selectedIndices.length} تلاوة',
                 style: GoogleFonts.cairo(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -253,7 +253,7 @@ class _RecSubItemsDownloadScreenState
                       ),
                       const SizedBox(width: 3),
                       Text(
-                        '$downloadedCount/${_subItems.length} ظ…ط­ظ…ظ„ط©',
+                        '$downloadedCount/${_subItems.length} محملة',
                         style: GoogleFonts.cairo(
                           fontSize: 11,
                           color: Colors.green,
@@ -262,7 +262,7 @@ class _RecSubItemsDownloadScreenState
                       ),
                     ] else
                       Text(
-                        '${_subItems.length} طھظ„ط§ظˆط© ظ…طھط§ط­ط©',
+                        '${_subItems.length} تلاوة متاحة',
                         style: GoogleFonts.cairo(
                           fontSize: 11,
                           color: RecColors.textSecondary(context),
@@ -284,7 +284,7 @@ class _RecSubItemsDownloadScreenState
       child: Row(
         children: [
           _quickBtn(
-            label: 'طھط­ط¯ظٹط¯ ط§ظ„ظƒظ„',
+            label: 'تحديد الكل',
             icon: Icons.select_all_rounded,
             onTap: () {
               setState(() {
@@ -299,7 +299,7 @@ class _RecSubItemsDownloadScreenState
           ),
           const SizedBox(width: 8),
           _quickBtn(
-            label: 'ط¥ظ„ط؛ط§ط، ط§ظ„ظƒظ„',
+            label: 'إلغاء الكل',
             icon: Icons.deselect_rounded,
             onTap: () => setState(() => _selectedIndices.clear()),
           ),
@@ -450,7 +450,7 @@ class _RecSubItemsDownloadScreenState
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
-                            '${sub.subtitle}${sub.durationStr.isNotEmpty ? ' â€¢ ${sub.durationStr}' : ''}',
+                            '${sub.subtitle}${sub.durationStr.isNotEmpty ? ' • ${sub.durationStr}' : ''}',
                             style: GoogleFonts.cairo(
                               fontSize: 10,
                               color: RecColors.textHint(context),
@@ -460,7 +460,7 @@ class _RecSubItemsDownloadScreenState
                       ),
                     ),
                     Text(
-                      isDownloaded ? 'âœ“' : '',
+                      isDownloaded ? '✓' : '',
                       style: GoogleFonts.cairo(
                         fontSize: 11,
                         fontWeight: FontWeight.w600,
@@ -553,8 +553,8 @@ class _RecSubItemsDownloadScreenState
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   _summaryItem(
-                    'ط³ظٹظڈط­ظ…ظژظ‘ظ„',
-                    '$actualSelected طھظ„ط§ظˆط©',
+                    'سيُحمَّل',
+                    '$actualSelected تلاوة',
                     widget.primary,
                   ),
                 ],
@@ -564,14 +564,14 @@ class _RecSubItemsDownloadScreenState
           ],
           if (anyDownloading)
             _actionBtn(
-              label: 'ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„...',
+              label: 'جاري التحميل...',
               icon: Icons.hourglass_top_rounded,
               color: Colors.orange,
               onTap: () {},
             )
           else if (actualSelected > 0)
             _actionBtn(
-              label: 'طھط­ظ…ظٹظ„ $actualSelected طھظ„ط§ظˆط©',
+              label: 'تحميل $actualSelected تلاوة',
               icon: Icons.download_rounded,
               color: widget.primary,
               onTap: _startDownload,
@@ -585,7 +585,7 @@ class _RecSubItemsDownloadScreenState
               ),
               child: Center(
                 child: Text(
-                  'ط§ط®طھط± طھظ„ط§ظˆط§طھ ظ„ظ„طھط­ظ…ظٹظ„',
+                  'اختر تلاوات للتحميل',
                   style: GoogleFonts.cairo(
                     fontSize: 14,
                     color: RecColors.textHint(context),

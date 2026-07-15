@@ -1,18 +1,8 @@
 import 'fatwa_model.dart';
 
-enum MessageType {
-  user,
-  assistant,
-  loading,
-  notFound,
-}
+enum MessageType { user, assistant, loading, notFound }
 
-enum AnswerConfidence {
-  high,
-  medium,
-  low,
-  none,
-}
+enum AnswerConfidence { high, medium, low, none }
 
 class SourceOption {
   final String sourceName;
@@ -103,15 +93,14 @@ class ChatMessage {
     );
   }
 
-  factory ChatMessage.chooseSource({
-    required List<SourceOption> sources,
-  }) {
+  factory ChatMessage.chooseSource({required List<SourceOption> sources}) {
     return ChatMessage(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       text: '',
       type: MessageType.assistant,
       timestamp: DateTime.now(),
-      introText: 'وجدت نتائج من ${sources.length} مصادر.\n'
+      introText:
+          'وجدت نتائج من ${sources.length} مصادر.\n'
           'اختر المصدر:',
       sourceOptions: sources,
     );
@@ -123,7 +112,8 @@ class ChatMessage {
       text: '',
       type: MessageType.assistant,
       timestamp: DateTime.now(),
-      introText: 'السلام عليكم ورحمة الله وبركاته 👋\n\n'
+      introText:
+          'السلام عليكم ورحمة الله وبركاته 👋\n\n'
           'أنا مساعد الفتاوى الذكي.\n'
           'أبحث لك في آلاف الفتاوى من:\n\n'
           '📚 إسلام سؤال وجواب\n'

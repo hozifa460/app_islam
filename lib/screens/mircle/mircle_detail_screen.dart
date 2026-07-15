@@ -99,41 +99,41 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
   void _shareContent() {
     final item = widget.item;
     final buffer = StringBuffer();
-    buffer.writeln('âœ¨ ${item['title']}');
+    buffer.writeln('✨ ${item['title']}');
     buffer.writeln('${item['subtitle']}');
     buffer.writeln();
-    buffer.writeln('ًں“– ${item['source']}');
-    buffer.writeln('ًں“Œ ${item['reference']}');
+    buffer.writeln('📖 ${item['source']}');
+    buffer.writeln('📌 ${item['reference']}');
     buffer.writeln();
-    buffer.writeln('ًں“‌ ${item['description']}');
+    buffer.writeln('📝 ${item['description']}');
 
     final sciExp = (item['scientificExplanation'] ?? '').toString();
     if (sciExp.isNotEmpty) {
       buffer.writeln();
-      buffer.writeln('ًں”¬ $sciExp');
+      buffer.writeln('🔬 $sciExp');
     }
 
     final scientist = (item['scientist'] ?? '').toString();
     final year = (item['discoveryYear'] ?? '').toString();
     if (scientist.isNotEmpty || year.isNotEmpty) {
       buffer.writeln();
-      if (scientist.isNotEmpty) buffer.writeln('ًں‘¤ ط§ظ„ط¹ط§ظ„ظ…: $scientist');
-      if (year.isNotEmpty) buffer.writeln('ًں“… ط³ظ†ط© ط§ظ„ط§ظƒطھط´ط§ظپ: $year');
+      if (scientist.isNotEmpty) buffer.writeln('👤 العالم: $scientist');
+      if (year.isNotEmpty) buffer.writeln('📅 سنة الاكتشاف: $year');
     }
 
     final sourcesList = item['sources'];
     if (sourcesList is List && sourcesList.isNotEmpty) {
       buffer.writeln();
-      buffer.writeln('ًں“ڑ ط§ظ„ظ…طµط§ط¯ط±:');
+      buffer.writeln('📚 المصادر:');
       for (final src in sourcesList) {
         if (src is Map) {
-          buffer.writeln('â€¢ ${src['name'] ?? ''}: ${src['url'] ?? ''}');
+          buffer.writeln('• ${src['name'] ?? ''}: ${src['url'] ?? ''}');
         }
       }
     }
 
     buffer.writeln();
-    buffer.writeln('â€” طھط·ط¨ظٹظ‚ ط§ظ„ط¥ط¹ط¬ط§ط² ط§ظ„ط¹ظ„ظ…ظٹ');
+    buffer.writeln('— تطبيق الإعجاز العلمي');
     Share.share(buffer.toString().trim());
   }
 
@@ -156,7 +156,7 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'طھظ… ط§ظ„ظ†ط³ط® ط¨ظ†ط¬ط§ط­ âœ“',
+          'تم النسخ بنجاح ✓',
           style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
         ),
         backgroundColor: MiracleTheme.neonBlue,
@@ -306,7 +306,7 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
                                     delay: 160,
                                     child: _SectionCard(
                                       icon: Icons.description_rounded,
-                                      title: 'ظˆط¬ظ‡ ط§ظ„ط¥ط¹ط¬ط§ط²',
+                                      title: 'وجه الإعجاز',
                                       content:
                                           (item['description'] ?? '')
                                               .toString(),
@@ -322,7 +322,7 @@ class _MiracleDetailScreenState extends State<MiracleDetailScreen>
                                       delay: 240,
                                       child: _SectionCard(
                                         icon: Icons.science_rounded,
-                                        title: 'ط§ظ„طھظپط³ظٹط± ط§ظ„ط¹ظ„ظ…ظٹ',
+                                        title: 'التفسير العلمي',
                                         content: sciExp,
                                         color: const Color(0xFFCE93D8),
                                         t: t,
@@ -700,7 +700,7 @@ class _DetailAppBarBackground extends StatelessWidget {
                       border: Border.all(color: accentColor.withValues(alpha: 0.35)),
                     ),
                     child: Text(
-                      isQuran ? 'ًں“– ط§ظ„ظ‚ط±ط¢ظ† ط§ظ„ظƒط±ظٹظ…' : 'âکھ ط§ظ„ط³ظ†ط© ط§ظ„ظ†ط¨ظˆظٹط©',
+                      isQuran ? '📖 القرآن الكريم' : '☪ السنة النبوية',
                       style: GoogleFonts.cairo(
                         color: accentColor,
                         fontSize: 11,
@@ -786,7 +786,7 @@ class _TagsRow extends StatelessWidget {
             border: Border.all(color: accentColor.withValues(alpha: 0.2)),
           ),
           child: Text(
-            isQuran ? 'ًں“– ط§ظ„ظ‚ط±ط¢ظ† ط§ظ„ظƒط±ظٹظ…' : 'âکھ ط§ظ„ط³ظ†ط© ط§ظ„ظ†ط¨ظˆظٹط©',
+            isQuran ? '📖 القرآن الكريم' : '☪ السنة النبوية',
             style: GoogleFonts.cairo(
               fontSize: 11,
               fontWeight: FontWeight.bold,
@@ -874,7 +874,7 @@ class _SourceCard extends StatelessWidget {
               ),
               const SizedBox(width: 10),
               Text(
-                isQuran ? 'ط§ظ„ظ†طµ ط§ظ„ظ‚ط±ط¢ظ†ظٹ' : 'ط§ظ„ط­ط¯ظٹط« ط§ظ„ظ†ط¨ظˆظٹ',
+                isQuran ? 'النص القرآني' : 'الحديث النبوي',
                 style: GoogleFonts.cairo(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
@@ -1059,7 +1059,7 @@ class _DiscoveryCard extends StatelessWidget {
               ),
               const SizedBox(width: 10),
               Text(
-                'ظ…ط¹ظ„ظˆظ…ط§طھ ط§ظ„ط§ظƒطھط´ط§ظپ',
+                'معلومات الاكتشاف',
                 style: GoogleFonts.cairo(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
@@ -1073,7 +1073,7 @@ class _DiscoveryCard extends StatelessWidget {
           if (discoveryYear.isNotEmpty)
             _InfoRow(
               icon: Icons.calendar_today_rounded,
-              label: 'ط³ظ†ط© ط§ظ„ط§ظƒطھط´ط§ظپ',
+              label: 'سنة الاكتشاف',
               value: discoveryYear,
               color: MiracleTheme.neonGold,
             ),
@@ -1084,7 +1084,7 @@ class _DiscoveryCard extends StatelessWidget {
           if (scientist.isNotEmpty)
             _InfoRow(
               icon: Icons.person_rounded,
-              label: 'ط§ظ„ط¹ط§ظ„ظ… / ط§ظ„ظ…ظƒطھط´ظپ',
+              label: 'العالم / المكتشف',
               value: scientist,
               color: MiracleTheme.neonGold,
             ),
@@ -1154,7 +1154,7 @@ class _SourcesCard extends StatelessWidget {
               const SizedBox(width: 10),
               Expanded(
                 child: Text(
-                  'ط§ظ„ظ…طµط§ط¯ط± ظˆط§ظ„ظ…ط±ط§ط¬ط¹',
+                  'المصادر والمراجع',
                   style: GoogleFonts.cairo(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
@@ -1337,7 +1337,7 @@ class _VideoCard extends StatelessWidget {
               ),
               const SizedBox(width: 10),
               Text(
-                'ظ…ط­طھظˆظ‰ ظ…ط±ط¦ظٹ ظ…ط±طھط¨ط·',
+                'محتوى مرئي مرتبط',
                 style: GoogleFonts.cairo(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
@@ -1365,7 +1365,7 @@ class _VideoCard extends StatelessWidget {
                 onPressed: () => onOpenUrl(youtubeUrl),
                 icon: const Icon(Icons.play_circle_fill_rounded, size: 20),
                 label: Text(
-                  'ظ…ط´ط§ظ‡ط¯ط© ط¹ظ„ظ‰ ظٹظˆطھظٹظˆط¨',
+                  'مشاهدة على يوتيوب',
                   style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
                 ),
               ),
@@ -1390,7 +1390,7 @@ class _VideoCard extends StatelessWidget {
                 onPressed: () => onOpenUrl(videoUrl),
                 icon: const Icon(Icons.video_library_rounded, size: 20),
                 label: Text(
-                  'ظ…ط´ط§ظ‡ط¯ط© ط§ظ„ظپظٹط¯ظٹظˆ ط§ظ„ظ…ط¨ط§ط´ط±',
+                  'مشاهدة الفيديو المباشر',
                   style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
                 ),
               ),
@@ -1464,7 +1464,7 @@ class _BottomBar extends StatelessWidget {
                       label: FittedBox(
                         fit: BoxFit.scaleDown,
                         child: Text(
-                          'ظ…ط´ط§ط±ظƒط©',
+                          'مشاركة',
                           style: GoogleFonts.cairo(
                             fontWeight: FontWeight.bold,
                             fontSize: isSmall ? 11 : 13,
@@ -1501,7 +1501,7 @@ class _BottomBar extends StatelessWidget {
                       label: FittedBox(
                         fit: BoxFit.scaleDown,
                         child: Text(
-                          'ظ†ط³ط®',
+                          'نسخ',
                           style: GoogleFonts.cairo(
                             fontWeight: FontWeight.bold,
                             fontSize: isSmall ? 11 : 13,

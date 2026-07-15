@@ -295,7 +295,7 @@ class _ScholarProfileTiktokScreenState
                             ),
                           ),
                           child: Text(
-                            'ظپطھط­ ظپظٹ TikTok',
+                            'فتح في TikTok',
                             style: GoogleFonts.cairo(
                               fontSize: 12,
                               fontWeight: FontWeight.w800,
@@ -353,7 +353,7 @@ class _ScholarProfileTiktokScreenState
                                     ),
                                     const SizedBox(height: 16),
                                     Text(
-                                      'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ طµظپط­ط© TikTok...',
+                                      'جاري تحميل صفحة TikTok...',
                                       style: GoogleFonts.cairo(
                                         color: Colors.white60,
                                         fontSize: 13,
@@ -397,7 +397,7 @@ class _ScholarProfileTiktokScreenState
               ),
               const SizedBox(height: 14),
               Text(
-                'طھط¹ط°ط± طھط­ظ…ظٹظ„ طµظپط­ط© TikTok',
+                'تعذر تحميل صفحة TikTok',
                 style: GoogleFonts.cairo(
                   fontSize: 16,
                   fontWeight: FontWeight.w800,
@@ -407,7 +407,7 @@ class _ScholarProfileTiktokScreenState
               ),
               const SizedBox(height: 8),
               Text(
-                'ظٹظ…ظƒظ†ظƒ ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط© ط£ظˆ ظپطھط­ ط§ظ„ط­ط³ط§ط¨ ظپظٹ طھط·ط¨ظٹظ‚ TikTok.',
+                'يمكنك إعادة المحاولة أو فتح الحساب في تطبيق TikTok.',
                 style: GoogleFonts.cairo(
                   fontSize: 13,
                   color: Colors.white60,
@@ -427,7 +427,7 @@ class _ScholarProfileTiktokScreenState
                         elevation: 0,
                       ),
                       child: Text(
-                        'ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط©',
+                        'إعادة المحاولة',
                         style: GoogleFonts.cairo(
                           fontWeight: FontWeight.w700,
                         ),
@@ -445,7 +445,7 @@ class _ScholarProfileTiktokScreenState
                         ),
                       ),
                       child: Text(
-                        'ظپطھط­ ظپظٹ TikTok',
+                        'فتح في TikTok',
                         style: GoogleFonts.cairo(
                           fontWeight: FontWeight.w700,
                         ),

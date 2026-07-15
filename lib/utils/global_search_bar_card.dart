@@ -11,7 +11,7 @@ class GlobalSearchBarCard extends StatelessWidget {
   const GlobalSearchBarCard({
     super.key,
     required this.primaryColor,
-    this.hintText = 'ط§ط¨ط­ط« ظپظٹ ط§ظ„ظ‚ط±ط¢ظ† ظˆط§ظ„ط³ظ†ط©...',
+    this.hintText = 'ابحث في القرآن والسنة...',
   });
 
   @override
@@ -47,7 +47,7 @@ class GlobalSearchBarCard extends StatelessWidget {
               MaterialPageRoute(
                 builder: (_) => HadithBookScreen(
                   bookId: result['bookId'] ?? 'riyad',
-                  bookTitle: result['bookName'] ?? 'ط±ظٹط§ط¶ ط§ظ„طµط§ظ„ط­ظٹظ†',
+                  bookTitle: result['bookName'] ?? 'رياض الصالحين',
                   primaryColor: primaryColor,
                 ),
               ),

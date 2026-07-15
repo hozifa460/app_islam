@@ -169,7 +169,7 @@ class _AppBarBackgroundState extends State<_AppBarBackground>
                   FittedBox(
                     fit: BoxFit.scaleDown,
                     child: const Text(
-                      'ظ…ط§ط°ط§ ظƒط§ظ† ظٹظپط¹ظ„ ï·؛',
+                      'ماذا كان يفعل ﷺ',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: SunnahTheme.gold,
@@ -193,7 +193,7 @@ class _AppBarBackgroundState extends State<_AppBarBackground>
                     child: FittedBox(
                       fit: BoxFit.scaleDown,
                       child: const Text(
-                        'ط³ظ†ظ† ظ†ط¨ظˆظٹط© ظ…ظˆط«ظ‚ط© ظ…ظ† ط§ظ„طµط­ط§ط­ ظˆط§ظ„ظ…ط³ط§ظ†ظٹط¯',
+                        'سنن نبوية موثقة من الصحاح والمسانيد',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white60,
@@ -384,7 +384,7 @@ class _SearchBarWidget extends StatelessWidget {
           fontSize: 14,
         ),
         decoration: InputDecoration(
-          hintText: 'ط§ط¨ط­ط« ط¹ظ† ط³ظ†ط© ظ†ط¨ظˆظٹط©...',
+          hintText: 'ابحث عن سنة نبوية...',
           hintStyle: TextStyle(
             color: Colors.white.withValues(alpha: 0.4),
             fontSize: 14,

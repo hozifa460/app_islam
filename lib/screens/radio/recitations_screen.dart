@@ -1,5 +1,7 @@
 // lib/screens/radio/recitations_screen.dart
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:islamic_app/screens/radio/helpers/radio_animation_manager.dart';
 import 'package:islamic_app/screens/radio/services/Radio_Intillegence.dart';
@@ -29,9 +31,9 @@ class RecitationsScreen extends StatefulWidget {
 
 class _RecitationsScreenState extends State<RecitationsScreen>
     with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
-
-  late final List<RecitationCategory> _categories;
+  List<RecitationCategory> _categories = const [];
   late final AnimationController _equalizerController;
+  StreamSubscription<List<RecitationCategory>>? _categoriesSubscription;
 
   static const double _playerSpace = 120;
   static const double _normalBottomSpace = 40;
@@ -43,13 +45,31 @@ class _RecitationsScreenState extends State<RecitationsScreen>
   void initState() {
     super.initState();
     _categories = RecitationCategoriesData.build();
+    _categoriesSubscription = RecitationCategoriesData.stream.listen((cats) {
+      if (!mounted) return;
+      setState(() => _categories = cats);
+    });
     _equalizerController = RadioAnimationManager.createEqualizer(this);
+    unawaited(_initializeRecitations());
   }
 
   @override
   void dispose() {
+    _categoriesSubscription?.cancel();
     _equalizerController.dispose();
     super.dispose();
+  }
+
+  Future<void> _initializeRecitations() async {
+    try {
+      debugPrint('🔄 RecitationsScreen: initializing remote categories');
+      await RecitationCategoriesData.initialize();
+      debugPrint(
+        '✅ RecitationsScreen: categories ready (${RecitationCategoriesData.current.length})',
+      );
+    } catch (e) {
+      debugPrint('❌ RecitationsScreen: categories initialization failed: $e');
+    }
   }
 
   @override
@@ -62,28 +82,32 @@ class _RecitationsScreenState extends State<RecitationsScreen>
 
     return Directionality(
       textDirection: TextDirection.rtl,
-      child: widget.embedded
-          ? _buildScrollContent(isTablet: isTablet, safePadding: safePadding)
-          : Scaffold(
-        backgroundColor: RadioColors.background(context),
-        body: Stack(
-          children: [
-            _buildScrollContent(
-              isTablet: isTablet,
-              safePadding: safePadding,
-            ),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: _buildBottomPlayer(
+      child:
+          widget.embedded
+              ? _buildScrollContent(
                 isTablet: isTablet,
                 safePadding: safePadding,
+              )
+              : Scaffold(
+                backgroundColor: RadioColors.background(context),
+                body: Stack(
+                  children: [
+                    _buildScrollContent(
+                      isTablet: isTablet,
+                      safePadding: safePadding,
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      child: _buildBottomPlayer(
+                        isTablet: isTablet,
+                        safePadding: safePadding,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 
@@ -101,25 +125,37 @@ class _RecitationsScreenState extends State<RecitationsScreen>
             builder: (_, hasStation, __) {
               if (!hasStation) return const SizedBox.shrink();
               return Consumer<OfflineRadioService>(
-                builder: (_, offline, __) => RepaintBoundary(
-                  child: RecMiniPlayer(
-                    offline: offline,
-                    primary: widget.primary,
-                  ),
-                ),
+                builder:
+                    (_, offline, __) => RepaintBoundary(
+                      child: RecMiniPlayer(
+                        offline: offline,
+                        primary: widget.primary,
+                      ),
+                    ),
               );
             },
           ),
         ),
 
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-                (context, index) => RecCategorySection(
-              category: _categories[index],
-              primary: widget.primary,
-              isTablet: isTablet,
+        SliverPadding(
+          padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+          sliver: SliverGrid(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) => RecCategorySection(
+                category: _categories[index],
+                primary: widget.primary,
+                isTablet: isTablet,
+              ),
+              childCount: _categories.length,
             ),
-            childCount: _categories.length,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              // بطاقتان على الهاتف حتى تبقى صورة واسم التصنيف مقروءين.
+              crossAxisCount: isTablet ? 4 : 2,
+              mainAxisSpacing: 12,
+              crossAxisSpacing: 12,
+              // ارتفاع إضافي للهاتف يمنع تكدس الصورة والعنوان والشارة.
+              childAspectRatio: isTablet ? 0.95 : 0.80,
+            ),
           ),
         ),
 
@@ -127,10 +163,11 @@ class _RecitationsScreenState extends State<RecitationsScreen>
           child: Selector<AudioCoordinator, bool>(
             selector: (_, c) => c.hasActivePlayer,
             builder: (_, hasPlayer, __) {
-              final height = widget.embedded
-                  ? _playerSpace + safePadding.bottom
-                  : (hasPlayer ? _playerSpace : _normalBottomSpace) +
-                  safePadding.bottom;
+              final height =
+                  widget.embedded
+                      ? _playerSpace + safePadding.bottom
+                      : (hasPlayer ? _playerSpace : _normalBottomSpace) +
+                          safePadding.bottom;
               return SizedBox(height: height);
             },
           ),
@@ -145,31 +182,30 @@ class _RecitationsScreenState extends State<RecitationsScreen>
   }) {
     if (widget.embedded) return const SizedBox.shrink();
 
-    return Positioned(
-      bottom: 0,
-      left: 0,
-      right: 0,
-      child: Consumer3<RadioIntillegence, OfflineRadioService, OnlineSurahService>(
-        builder: (_, online, offline, onlineSurah, __) {
-          final hasAny = online.currentStation != null ||
-              offline.currentStation != null ||
-              onlineSurah.currentStation != null;
+    return Consumer3<
+      RadioIntillegence,
+      OfflineRadioService,
+      OnlineSurahService
+    >(
+      builder: (_, online, offline, onlineSurah, __) {
+        final hasAny =
+            online.currentStation != null ||
+            offline.currentStation != null ||
+            onlineSurah.currentStation != null;
 
-          if (!hasAny) {
-            return const SizedBox.shrink();
-          }
+        if (!hasAny) {
+          return const SizedBox.shrink();
+        }
 
-          return RepaintBoundary(
-            child: ModernBottomPlayer(
-              primary: widget.primary,
-              isTablet: isTablet,
-              safePadding: safePadding,
-              equalizerController: _equalizerController,
-            ),
-          );
-        },
-      ),
+        return RepaintBoundary(
+          child: ModernBottomPlayer(
+            primary: widget.primary,
+            isTablet: isTablet,
+            safePadding: safePadding,
+            equalizerController: _equalizerController,
+          ),
+        );
+      },
     );
   }
-
 }

@@ -135,36 +135,36 @@ class SunnahTheme {
   // ًں”§ Category Icons
   // ==============================
   static const Map<String, String> categoryIcons = {
-  'fajr': 'ًںŒ™',
-  'morning_adhkar': 'ًںŒ…',
-  'duha': 'âک€ï¸ڈ',
-  'dhuhr': 'ًںŒ‍',
-  'asr': 'ًںŒ¤ï¸ڈ',
-  'evening_adhkar': 'ًںŒ†',
-  'maghrib': 'ًںŒ‡',
-  'isha': 'ًںŒƒ',
-  'witr': 'â­گ',
-  'tahajjud': 'ًںŒں',
-  'sleep': 'ًںک´',
-  'always': 'â™¾ï¸ڈ',
-  'weekly_fast': 'ًں“…',
-  'monthly_fast': 'ًںŒ•',
-  'friday': 'ًں•Œ',
-  'yearly_fast': 'ًں—“ï¸ڈ',
-  'yearly_prayer': 'ًںژٹ',
+  'fajr': '🌙',
+  'morning_adhkar': '🌅',
+  'duha': '☀️',
+  'dhuhr': '🌞',
+  'asr': '🌤️',
+  'evening_adhkar': '🌆',
+  'maghrib': '🌇',
+  'isha': '🌃',
+  'witr': '⭐',
+  'tahajjud': '🌟',
+  'sleep': '😴',
+  'always': '♾️',
+  'weekly_fast': '📅',
+  'monthly_fast': '🌕',
+  'friday': '🕌',
+  'yearly_fast': '🗓️',
+  'yearly_prayer': '🎊',
   };
 
   // ==============================
   // ًں”§ Day Names
   // ==============================
   static const Map<int, String> dayNames = {
-  1: 'ط§ظ„ط§ط«ظ†ظٹظ†',
-  2: 'ط§ظ„ط«ظ„ط§ط«ط§ط،',
-  3: 'ط§ظ„ط£ط±ط¨ط¹ط§ط،',
-  4: 'ط§ظ„ط®ظ…ظٹط³',
-  5: 'ط§ظ„ط¬ظ…ط¹ط©',
-  6: 'ط§ظ„ط³ط¨طھ',
-  7: 'ط§ظ„ط£ط­ط¯',
+  1: 'الاثنين',
+  2: 'الثلاثاء',
+  3: 'الأربعاء',
+  4: 'الخميس',
+  5: 'الجمعة',
+  6: 'السبت',
+  7: 'الأحد',
   };
 
   // ==============================

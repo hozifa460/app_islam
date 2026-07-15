@@ -197,7 +197,7 @@ class MuezzinPickerSheet extends StatelessWidget {
                       subtitle: Text(
                         isDefaultOption
                             ? context.tr.t(m.description)
-                            : '${context.tr.t(it.categoryName)} â€¢ ${context.tr.t(m.description)}',
+                            : '${context.tr.t(it.categoryName)} • ${context.tr.t(m.description)}',
                         style: GoogleFonts.cairo(color: subColor, fontSize: 12),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,

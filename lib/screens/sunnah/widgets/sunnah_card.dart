@@ -210,7 +210,7 @@ class SunnahCard extends StatelessWidget {
         buildMiniTag(sunnah.type, cardColor, size, theme),
         if (sunnah.rakaat > 0) ...[
           SizedBox(width: size.width * 0.015),
-          buildMiniTag('${sunnah.rakaat} ط±ظƒط¹ط§طھ', SunnahTheme.blue, size, theme),
+          buildMiniTag('${sunnah.rakaat} ركعات', SunnahTheme.blue, size, theme),
         ],
         const Spacer(),
         _buildCompleteBtn(cardColor),
@@ -259,7 +259,7 @@ class SunnahCard extends StatelessWidget {
             ),
             SizedBox(width: size.width * 0.015),
             Text(
-              sunnah.isCompleted ? 'ط¥ظ„ط؛ط§ط،' : 'ط£ظƒظ…ظ„',
+              sunnah.isCompleted ? 'إلغاء' : 'أكمل',
               style: TextStyle(
                 color: sunnah.isCompleted
                     ? (theme.isDark ? theme.textSecondary : Colors.black54)
@@ -277,7 +277,7 @@ class SunnahCard extends StatelessWidget {
   // âœ… Static helpers used by other widgets too
   static Widget buildImportanceBadge(
       String importance, Size size, SunnahTheme theme) {
-    final isHigh = importance == 'ظ…ط¤ظƒط¯ط©';
+    final isHigh = importance == 'مؤكدة';
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: size.width * 0.02,
@@ -297,7 +297,7 @@ class SunnahCard extends StatelessWidget {
         ],
       ),
       child: Text(
-        isHigh ? 'âک… ظ…ط¤ظƒط¯ط©' : 'â—† ظ…ط³طھط­ط¨ط©',
+        isHigh ? '★ مؤكدة' : '◆ مستحبة',
         style: TextStyle(
           color: Colors.white,
           fontSize: size.width * 0.024,

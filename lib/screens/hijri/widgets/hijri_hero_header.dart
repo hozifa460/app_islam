@@ -430,7 +430,7 @@ class HijriHeroHeader extends StatelessWidget {
           SizedBox(width: compact ? 4 : 6),
           Flexible(
             child: Text(
-              'ط§ظ„ظ‚ط§ط¯ظ…: ${nextEvent!['title']}',
+              'القادم: ${nextEvent!['title']}',
               overflow: TextOverflow.ellipsis,
               style: GoogleFonts.cairo(
                 color: Colors.white.withValues(alpha: 0.9),
@@ -450,7 +450,7 @@ class HijriHeroHeader extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Text(
-              'ط¨ط¹ط¯ ${HijriTheme.formatNum(nextEvent!['daysLeft'] , context )} ظٹظˆظ…',
+              'بعد ${HijriTheme.formatNum(nextEvent!['daysLeft'] , context )} يوم',
               style: GoogleFonts.cairo(
                 color: HijriTheme.gold,
                 fontSize: compact ? 8 : 9,

@@ -34,15 +34,15 @@ class QuranMenuSheets {
             mainAxisSize: MainAxisSize.min,
             children: [
               SheetWidgets.buildSheetHeader(
-                title: 'ط®ظٹط§ط±ط§طھ ط§ظ„ظ…طµط­ظپ',
+                title: 'خيارات المصحف',
                 subtitle: surahName,
                 primary: primary,
                 icon: Icons.menu_book_rounded,
               ),
               SheetWidgets.buildModernSheetTile(
                 icon: Icons.list_alt_rounded,
-                title: 'ظپظ‡ط±ط³ ط§ظ„ظ…طµط­ظپ',
-                subtitle: 'ط§ظ„ط³ظˆط±طŒ ط§ظ„ط£ط¬ط²ط§ط،طŒ ط§ظ„ط£ط­ط²ط§ط¨طŒ ط§ظ„طµظپط­ط§طھ',
+                title: 'فهرس المصحف',
+                subtitle: 'السور، الأجزاء، الأحزاب، الصفحات',
                 primary: primary,
                 onTap: () {
                   Navigator.pop(ctx);
@@ -51,8 +51,8 @@ class QuranMenuSheets {
               ),
               SheetWidgets.buildModernSheetTile(
                 icon: Icons.search_rounded,
-                title: 'ط§ظ„ط¨ط­ط« ظپظٹ ط§ظ„ظ‚ط±ط¢ظ†',
-                subtitle: 'ط§ط¨ط­ط« ط¹ظ† ظƒظ„ظ…ط© ط£ظˆ ط¢ظٹط©',
+                title: 'البحث في القرآن',
+                subtitle: 'ابحث عن كلمة أو آية',
                 primary: primary,
                 onTap: () {
                   Navigator.pop(ctx);
@@ -61,8 +61,8 @@ class QuranMenuSheets {
               ),
               SheetWidgets.buildModernSheetTile(
                 icon: Icons.swap_horiz_rounded,
-                title: 'ط§ظ„ط§ظ†طھظ‚ط§ظ„ ط§ظ„ط³ط±ظٹط¹',
-                subtitle: 'ط§ط°ظ‡ط¨ ظ…ط¨ط§ط´ط±ط© ط¥ظ„ظ‰ طµظپط­ط© ظ…ط¹ظٹظ†ط©',
+                title: 'الانتقال السريع',
+                subtitle: 'اذهب مباشرة إلى صفحة معينة',
                 primary: primary,
                 onTap: () {
                   Navigator.pop(ctx);
@@ -71,10 +71,10 @@ class QuranMenuSheets {
               ),
               SheetWidgets.buildModernSheetTile(
                 icon: Icons.history_rounded,
-                title: 'ط¢ط®ط± ظ…ظˆط¶ط¹',
+                title: 'آخر موضع',
                 subtitle: savedMeta['lastPage'] != null
-                    ? 'ط§ظ„طµظپط­ط© ${savedMeta['lastPage']}'
-                    : 'ظ„ط§ ظٹظˆط¬ط¯ ظ…ظˆط¶ط¹ ظ…ط­ظپظˆط¸',
+                    ? 'الصفحة ${savedMeta['lastPage']}'
+                    : 'لا يوجد موضع محفوظ',
                 primary: primary,
                 onTap: () {
                   Navigator.pop(ctx);
@@ -83,10 +83,10 @@ class QuranMenuSheets {
               ),
               SheetWidgets.buildModernSheetTile(
                 icon: Icons.bookmark_rounded,
-                title: 'ط§ظ„ط°ظ‡ط§ط¨ ط¥ظ„ظ‰ ط§ظ„ط¹ظ„ط§ظ…ط©',
+                title: 'الذهاب إلى العلامة',
                 subtitle: savedMeta['bookmarkPage'] != null
-                    ? 'ط§ظ„طµظپط­ط© ${savedMeta['bookmarkPage']}'
-                    : 'ظ„ط§ طھظˆط¬ط¯ ط¹ظ„ط§ظ…ط© ظ…ط­ظپظˆط¸ط©',
+                    ? 'الصفحة ${savedMeta['bookmarkPage']}'
+                    : 'لا توجد علامة محفوظة',
                 primary: primary,
                 onTap: () {
                   Navigator.pop(ctx);
@@ -95,7 +95,7 @@ class QuranMenuSheets {
               ),
               SheetWidgets.buildModernSheetTile(
                 icon: Icons.record_voice_over_rounded,
-                title: 'ط§ط®طھظٹط§ط± ط§ظ„ظ‚ط§ط±ط¦',
+                title: 'اختيار القارئ',
                 subtitle: selectedReciterName,
                 primary: primary,
                 onTap: () {
@@ -133,8 +133,8 @@ class QuranMenuSheets {
             mainAxisSize: MainAxisSize.min,
             children: [
               SheetWidgets.buildSheetHeader(
-                title: 'ط§ط®طھظٹط§ط± ط§ظ„ظ‚ط§ط±ط¦',
-                subtitle: 'ط§ط®طھط± ظ‚ط§ط±ط¦ ط§ظ„طھظ„ط§ظˆط©',
+                title: 'اختيار القارئ',
+                subtitle: 'اختر قارئ التلاوة',
                 primary: primary,
                 icon: Icons.record_voice_over_rounded,
               ),
@@ -142,7 +142,7 @@ class QuranMenuSheets {
                     (r) => SheetWidgets.buildModernSheetTile(
                   icon: Icons.person_rounded,
                   title: r['name']!,
-                  subtitle: selectedReciterId == r['id'] ? 'ط§ظ„ظ‚ط§ط±ط¦ ط§ظ„ط­ط§ظ„ظٹ' : null,
+                  subtitle: selectedReciterId == r['id'] ? 'القارئ الحالي' : null,
                   primary: primary,
                   trailing: selectedReciterId == r['id']
                       ? Icon(Icons.check_circle, color: primary)
@@ -191,8 +191,8 @@ class QuranMenuSheets {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SheetWidgets.buildSheetHeader(
-                    title: 'ط§ظ„ط§ظ†طھظ‚ط§ظ„ ط§ظ„ط³ط±ظٹط¹',
-                    subtitle: 'ط§ط°ظ‡ط¨ ط¥ظ„ظ‰ طµظپط­ط© ظ…ط­ط¯ط¯ط©',
+                    title: 'الانتقال السريع',
+                    subtitle: 'اذهب إلى صفحة محددة',
                     primary: primary,
                     icon: Icons.swap_horiz_rounded,
                   ),
@@ -205,7 +205,7 @@ class QuranMenuSheets {
                       fontWeight: FontWeight.bold,
                     ),
                     decoration: InputDecoration(
-                      hintText: 'ط£ط¯ط®ظ„ ط±ظ‚ظ… ط§ظ„طµظپط­ط©',
+                      hintText: 'أدخل رقم الصفحة',
                       hintStyle: GoogleFonts.cairo(),
                       filled: true,
                       fillColor: primary.withValues(alpha: 0.05),
@@ -242,7 +242,7 @@ class QuranMenuSheets {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                'ط£ط¯ط®ظ„ ط±ظ‚ظ… طµظپط­ط© طµط­ظٹط­ ظ…ظ† 1 ط¥ظ„ظ‰ 604',
+                                'أدخل رقم صفحة صحيح من 1 إلى 604',
                                 style: GoogleFonts.cairo(),
                               ),
                             ),
@@ -254,7 +254,7 @@ class QuranMenuSheets {
                         onPageSelected(page);
                       },
                       child: Text(
-                        'ط§ظ„ط§ظ†طھظ‚ط§ظ„ ط¥ظ„ظ‰ ط§ظ„طµظپط­ط©',
+                        'الانتقال إلى الصفحة',
                         style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -291,16 +291,16 @@ class QuranMenuSheets {
             mainAxisSize: MainAxisSize.min,
             children: [
               SheetWidgets.buildSheetHeader(
-                title: 'ظˆط¶ط¹ ط§ظ„ط¹ط±ط¶',
-                subtitle: 'ط§ط®طھط± ط·ط±ظٹظ‚ط© ط¹ط±ط¶ ط§ظ„ظ…طµط­ظپ',
+                title: 'وضع العرض',
+                subtitle: 'اختر طريقة عرض المصحف',
                 primary: primary,
                 icon: Icons.view_compact_rounded,
               ),
               SheetWidgets.buildViewModeTile(
                 context: context,
                 icon: Icons.image_rounded,
-                title: 'ظˆط¶ط¹ ط§ظ„طµظˆط±',
-                subtitle: 'ط¹ط±ط¶ طµظپط­ط§طھ ط§ظ„ظ…طµط­ظپ ظƒطµظˆط±',
+                title: 'وضع الصور',
+                subtitle: 'عرض صفحات المصحف كصور',
                 isSelected: currentMode == 'image',
                 onTap: () {
                   Navigator.pop(ctx);
@@ -310,8 +310,8 @@ class QuranMenuSheets {
               SheetWidgets.buildViewModeTile(
                 context: context,
                 icon: Icons.text_fields_rounded,
-                title: 'ظˆط¶ط¹ ط§ظ„ظ†طµ',
-                subtitle: 'ط¹ط±ط¶ ظ†طµظٹ ظ…ط¹ طھط¸ظ„ظٹظ„ ظˆطھط´ط؛ظٹظ„ ط¢ظٹط© ط¨ط¢ظٹط©',
+                title: 'وضع النص',
+                subtitle: 'عرض نصي مع تظليل وتشغيل آية بآية',
                 isSelected: currentMode == 'text',
                 onTap: () {
                   Navigator.pop(ctx);
@@ -321,8 +321,8 @@ class QuranMenuSheets {
               SheetWidgets.buildViewModeTile(
                 context: context,
                 icon: Icons.school_rounded,
-                title: 'ظˆط¶ط¹ ط§ظ„ط­ظپط¸',
-                subtitle: 'ط¥ط®ظپط§ط، ط§ظ„ط¢ظٹط§طھ طھط¯ط±ظٹط¬ظٹط§ظ‹ ظ„ظ„طھط³ظ…ظٹط¹ ظˆط§ظ„ط­ظپط¸',
+                title: 'وضع الحفظ',
+                subtitle: 'إخفاء الآيات تدريجياً للتسميع والحفظ',
                 isSelected: currentMode == 'memorize',
                 onTap: () {
                   Navigator.pop(ctx);

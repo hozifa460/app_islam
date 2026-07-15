@@ -381,7 +381,7 @@ class _VideoPageWidgetState extends State<VideoPageWidget> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
-                        'â†گ ط§ط³ط­ط¨ ظ„ظ„ط¹ظˆط¯ط© ظ„ظ„طµظˆطھ',
+                        '← اسحب للعودة للصوت',
                         style: GoogleFonts.cairo(
                           fontSize: 10,
                           color: Colors.white54,
@@ -521,14 +521,14 @@ class _VideoPageWidgetState extends State<VideoPageWidget> {
                 _isFullscreen
                     ? Icons.fullscreen_exit_rounded
                     : Icons.fullscreen_rounded,
-            label: _isFullscreen ? 'طھطµط؛ظٹط±' : 'طھظƒط¨ظٹط±',
+            label: _isFullscreen ? 'تصغير' : 'تكبير',
             onTap: _toggleFullscreen,
           ),
           const SizedBox(height: 14),
           _SideBtn(
             size: s,
             icon: Icons.visibility_off_rounded,
-            label: 'ط®ط§ظ„ظٹط©',
+            label: 'خالية',
             onTap: _toggleCleanMode,
           ),
           const SizedBox(height: 14),
@@ -538,7 +538,7 @@ class _VideoPageWidgetState extends State<VideoPageWidget> {
                 c.value.volume > 0
                     ? Icons.volume_up_rounded
                     : Icons.volume_off_rounded,
-            label: c.value.volume > 0 ? 'طµظˆطھ' : 'ظƒطھظ…',
+            label: c.value.volume > 0 ? 'صوت' : 'كتم',
             onTap: () {
               HapticFeedback.selectionClick();
               c.setVolume(c.value.volume > 0 ? 0 : 1);
@@ -553,7 +553,7 @@ class _VideoPageWidgetState extends State<VideoPageWidget> {
                 return _SideBtn(
                   size: s,
                   icon: Icons.download_done_rounded,
-                  label: 'ظ…ط­ظ…ظ‘ظ„',
+                  label: 'محمّل',
                   color: Colors.green,
                   onTap: _showDownloadSheet,
                 );
@@ -598,7 +598,7 @@ class _VideoPageWidgetState extends State<VideoPageWidget> {
               return _SideBtn(
                 size: s,
                 icon: Icons.download_rounded,
-                label: 'طھط­ظ…ظٹظ„',
+                label: 'تحميل',
                 onTap: _showDownloadSheet,
               );
             },
@@ -700,7 +700,7 @@ class _DownloadSheetState extends State<_DownloadSheet> {
                         ),
                         const SizedBox(width: 8),
                         Text(
-                          'ط§ظ„ط­ط¬ظ…:',
+                          'الحجم:',
                           style: GoogleFonts.cairo(
                             fontSize: 12,
                             color: Colors.white54,
@@ -719,7 +719,7 @@ class _DownloadSheetState extends State<_DownloadSheet> {
                             : Text(
                               _size != null
                                   ? VideoSizeService.formatBytes(_size)
-                                  : 'ط؛ظٹط± ظ…ط¹ط±ظˆظپ',
+                                  : 'غير معروف',
                               style: GoogleFonts.cairo(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w700,
@@ -743,7 +743,7 @@ class _DownloadSheetState extends State<_DownloadSheet> {
                   ),
                 ),
                 const SizedBox(height: 8),
-                _btn('ط¥ظ„ط؛ط§ط،', Icons.close_rounded, Colors.red, () {
+                _btn('إلغاء', Icons.close_rounded, Colors.red, () {
                   dl.cancelDownload(widget.videoId);
                   Navigator.pop(context);
                 }),
@@ -764,7 +764,7 @@ class _DownloadSheetState extends State<_DownloadSheet> {
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        'طھظ… ط§ظ„طھط­ظ…ظٹظ„ âœ“',
+                        'تم التحميل ✓',
                         style: GoogleFonts.cairo(
                           fontSize: 13,
                           fontWeight: FontWeight.w700,
@@ -775,13 +775,13 @@ class _DownloadSheetState extends State<_DownloadSheet> {
                   ),
                 ),
                 const SizedBox(height: 12),
-                _btn('ط­ط°ظپ', Icons.delete_rounded, Colors.red, () {
+                _btn('حذف', Icons.delete_rounded, Colors.red, () {
                   dl.deleteDownload(widget.videoId);
                   Navigator.pop(context);
                 }),
               ] else
                 _btn(
-                  'طھط­ظ…ظٹظ„ ط§ظ„ظپظٹط¯ظٹظˆ',
+                  'تحميل الفيديو',
                   Icons.download_rounded,
                   widget.primary,
                   () {

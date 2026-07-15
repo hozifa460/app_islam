@@ -151,22 +151,22 @@ class _HomeScreenState extends State<HomeScreen>
   String? _lastPrayerInfoLocale;
 
   static const List<Map<String, dynamic>> _featureIcons = [
-    {'icon': Icons.menu_book_rounded, 'badge': 'ًں“–'},
-    {'icon': Icons.access_time_filled_rounded, 'badge': 'ًں•Œ'},
-    {'icon': Icons.auto_awesome_rounded, 'badge': 'âœ¨'},
-    {'icon': Icons.touch_app_rounded, 'badge': 'ًں“؟'},
-    {'icon': Icons.format_quote_rounded, 'badge': 'ًں“œ'},
-    {'icon': Icons.emoji_events_rounded, 'badge': 'ًںڈ°'},
-    {'icon': Icons.track_changes, 'badge': 'ًںژ¯'},
-    {'icon': Icons.live_tv_rounded, 'badge': 'ًں”´'},
-    {'icon': Icons.explore_rounded, 'badge': 'ًں§­'},
-    {'icon': Icons.favorite_rounded, 'badge': 'ًں¤²'},
-    {'icon': Icons.local_library_rounded, 'badge': 'ًں“ڑ'},
-    {'icon': Icons.volume_up_rounded, 'badge': 'ًںژ™ï¸ڈ'},
-    {'icon': Icons.volume_up_rounded, 'badge': 'ًں“œ'},
-    {'icon': Icons.volume_up_rounded, 'badge': 'ًں“œ'},
-    {'icon': Icons.military_tech_rounded, 'badge': 'ًںڈ›ï¸ڈ'},
-    {'icon': Icons.settings_rounded, 'badge': 'âڑ™ï¸ڈ'},
+    {'icon': Icons.menu_book_rounded, 'badge': '📖'},
+    {'icon': Icons.access_time_filled_rounded, 'badge': '🕌'},
+    {'icon': Icons.auto_awesome_rounded, 'badge': '✨'},
+    {'icon': Icons.touch_app_rounded, 'badge': '📿'},
+    {'icon': Icons.format_quote_rounded, 'badge': '📜'},
+    {'icon': Icons.emoji_events_rounded, 'badge': '🏰'},
+    {'icon': Icons.track_changes, 'badge': '🎯'},
+    {'icon': Icons.live_tv_rounded, 'badge': '🔴'},
+    {'icon': Icons.explore_rounded, 'badge': '🧭'},
+    {'icon': Icons.favorite_rounded, 'badge': '🤲'},
+    {'icon': Icons.local_library_rounded, 'badge': '📚'},
+    {'icon': Icons.volume_up_rounded, 'badge': '🎙️'},
+    {'icon': Icons.volume_up_rounded, 'badge': '📜'},
+    {'icon': Icons.volume_up_rounded, 'badge': '📜'},
+    {'icon': Icons.military_tech_rounded, 'badge': '🏛️'},
+    {'icon': Icons.settings_rounded, 'badge': '⚙️'},
   ];
 
   final List<Map<String, dynamic>> _prayerInfo = [
@@ -180,35 +180,35 @@ class _HomeScreenState extends State<HomeScreen>
 
   final List<Map<String, String>> dailyVerses = const [
     {
-      'verse': 'ظˆظژظ…ظژظ† ظٹظژطھظژظ‘ظ‚ظگ ط§ظ„ظ„ظژظ‘ظ‡ظژ ظٹظژط¬ظ’ط¹ظژظ„ ظ„ظژظ‘ظ‡ظڈ ظ…ظژط®ظ’ط±ظژط¬ظ‹ط§',
-      'surah': 'ط§ظ„ط·ظ„ط§ظ‚ - ظ¢',
+      'verse': 'وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا',
+      'surah': 'الطلاق - ٢',
     },
-    {'verse': 'ظپظژط¥ظگظ†ظژظ‘ ظ…ظژط¹ظژ ط§ظ„ظ’ط¹ظڈط³ظ’ط±ظگ ظٹظڈط³ظ’ط±ظ‹ط§', 'surah': 'ط§ظ„ط´ط±ط­ - ظ¥'},
+    {'verse': 'فَإِنَّ مَعَ الْعُسْرِ يُسْرًا', 'surah': 'الشرح - ٥'},
     {
-      'verse': 'ظ„ظژط§ ظٹظڈظƒظژظ„ظگظ‘ظپظڈ ط§ظ„ظ„ظژظ‘ظ‡ظڈ ظ†ظژظپظ’ط³ظ‹ط§ ط¥ظگظ„ظژظ‘ط§ ظˆظڈط³ظ’ط¹ظژظ‡ظژط§',
-      'surah': 'ط§ظ„ط¨ظ‚ط±ط© - ظ¢ظ¨ظ¦',
+      'verse': 'لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا',
+      'surah': 'البقرة - ٢٨٦',
     },
-    {'verse': 'ظˆظژظ‚ظڈظ„ ط±ظژظ‘ط¨ظگظ‘ ط²ظگط¯ظ’ظ†ظگظٹ ط¹ظگظ„ظ’ظ…ظ‹ط§', 'surah': 'ط·ظ‡ - ظ،ظ،ظ¤'},
+    {'verse': 'وَقُل رَّبِّ زِدْنِي عِلْمًا', 'surah': 'طه - ١١٤'},
     {
-      'verse': 'ط£ظژظ„ظژط§ ط¨ظگط°ظگظƒظ’ط±ظگ ط§ظ„ظ„ظژظ‘ظ‡ظگ طھظژط·ظ’ظ…ظژط¦ظگظ†ظڈظ‘ ط§ظ„ظ’ظ‚ظڈظ„ظڈظˆط¨ظڈ',
-      'surah': 'ط§ظ„ط±ط¹ط¯ - ظ¢ظ¨',
+      'verse': 'أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ',
+      'surah': 'الرعد - ٢٨',
     },
   ];
 
   final List<Map<String, String>> dailyHadiths = const [
     {
-      'text': 'آ« ط¥ظگظ†ظژظ‘ظ…ظژط§ ط§ظ„ظ’ط£ظژط¹ظ’ظ…ظژط§ظ„ظڈ ط¨ظگط§ظ„ظ†ظگظ‘ظٹظژظ‘ط§طھظگ آ»',
-      'source': 'ط±ظˆط§ظ‡ ط§ظ„ط¨ط®ط§ط±ظٹ',
+      'text': '« إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ »',
+      'source': 'رواه البخاري',
     },
-    {'text': 'آ« ط§ظ„ط¯ظگظ‘ظٹظ†ظڈ ط§ظ„ظ†ظژظ‘طµظگظٹط­ظژط©ظڈ آ»', 'source': 'ط±ظˆط§ظ‡ ظ…ط³ظ„ظ…'},
-    {'text': 'آ« ط§ظ„ظ’ظƒظژظ„ظگظ…ظژط©ظڈ ط§ظ„ط·ظژظ‘ظٹظگظ‘ط¨ظژط©ظڈ طµظژط¯ظژظ‚ظژط©ظŒ آ»', 'source': 'ط±ظˆط§ظ‡ ط§ظ„ط¨ط®ط§ط±ظٹ'},
+    {'text': '« الدِّينُ النَّصِيحَةُ »', 'source': 'رواه مسلم'},
+    {'text': '« الْكَلِمَةُ الطَّيِّبَةُ صَدَقَةٌ »', 'source': 'رواه البخاري'},
     {
-      'text': 'آ« طھظژط¨ظژط³ظڈظ‘ظ…ظڈظƒظژ ظپظگظٹ ظˆظژط¬ظ’ظ‡ظگ ط£ظژط®ظگظٹظƒظژ ظ„ظژظƒظژ طµظژط¯ظژظ‚ظژط©ظŒ آ»',
-      'source': 'ط±ظˆط§ظ‡ ط§ظ„طھط±ظ…ط°ظٹ',
+      'text': '« تَبَسُّمُكَ فِي وَجْهِ أَخِيكَ لَكَ صَدَقَةٌ »',
+      'source': 'رواه الترمذي',
     },
     {
-      'text': 'آ« ط®ظژظٹظ’ط±ظڈظƒظڈظ…ظ’ ظ…ظژظ†ظ’ طھظژط¹ظژظ„ظژظ‘ظ…ظژ ط§ظ„ظ’ظ‚ظڈط±ظ’ط¢ظ†ظژ ظˆظژط¹ظژظ„ظژظ‘ظ…ظژظ‡ظڈ آ»',
-      'source': 'ط±ظˆط§ظ‡ ط§ظ„ط¨ط®ط§ط±ظٹ',
+      'text': '« خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ »',
+      'source': 'رواه البخاري',
     },
   ];
 
@@ -455,7 +455,7 @@ class _HomeScreenState extends State<HomeScreen>
       await HijriData.loadData(langCode);
       if (mounted) setState(() => _hijriDataLoaded = true);
     } catch (e) {
-      debugPrint('ط®ط·ط£ طھط­ظ…ظٹظ„ ط§ظ„ظ‡ط¬ط±ظٹ: $e');
+      debugPrint('خطأ تحميل الهجري: $e');
       if (mounted) setState(() => _hijriDataLoaded = true);
     }
   }
@@ -481,7 +481,7 @@ class _HomeScreenState extends State<HomeScreen>
         });
       }
     } catch (e) {
-      debugPrint('â‌Œ ط®ط·ط£ طھط­ظ…ظٹظ„ ظ…ط¹ط¬ط²ط© ط§ظ„ظٹظˆظ…: $e');
+      debugPrint('❌ خطأ تحميل معجزة اليوم: $e');
     }
   }
 
@@ -511,7 +511,7 @@ class _HomeScreenState extends State<HomeScreen>
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            'طھظ… ط­ظپط¸ طھط±طھظٹط¨ ط§ظ„ط¨ط·ط§ظ‚ط§طھ âœ“',
+            'تم حفظ ترتيب البطاقات ✓',
             style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
           ),
           backgroundColor: _primary,
@@ -725,7 +725,7 @@ class _HomeScreenState extends State<HomeScreen>
         });
       }
     } catch (e) {
-      debugPrint('â‌Œ HomeScreen ط®ط·ط£: $e');
+      debugPrint('❌ HomeScreen خطأ: $e');
     }
   }
 
@@ -771,9 +771,9 @@ class _HomeScreenState extends State<HomeScreen>
               'verse':
                   ayah['text']
                       .toString()
-                      .replaceAll('ط¨ظگط³ظ’ظ…ظگ ظ±ظ„ظ„ظژظ‘ظ‡ظگ ظ±ظ„ط±ظژظ‘ط­ظ’ظ…ظژظ°ظ†ظگ ظ±ظ„ط±ظژظ‘ط­ظگظٹظ…ظگ', '')
+                      .replaceAll('بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ', '')
                       .trim(),
-              'surah': '${surah['name']} - ط¢ظٹط© ${ayah['numberInSurah']}',
+              'surah': '${surah['name']} - آية ${ayah['numberInSurah']}',
             };
           });
         }
@@ -793,7 +793,7 @@ class _HomeScreenState extends State<HomeScreen>
                       .toString()
                       .replaceAll(RegExp(r'<[^>]*>'), '')
                       .trim(),
-              'source': 'ط±ظ‚ظ… ط§ظ„ط­ط¯ظٹط«: ${hadith['hadithnumber']}',
+              'source': 'رقم الحديث: ${hadith['hadithnumber']}',
             };
           });
         }
@@ -805,7 +805,7 @@ class _HomeScreenState extends State<HomeScreen>
     final now = DateTime.now();
     final hour =
         now.hour > 12 ? now.hour - 12 : (now.hour == 0 ? 12 : now.hour);
-    final period = now.hour >= 12 ? 'ظ…' : 'طµ';
+    final period = now.hour >= 12 ? 'م' : 'ص';
     _currentTime = '$hour:${now.minute.toString().padLeft(2, '0')} $period';
   }
 
@@ -911,7 +911,7 @@ class _HomeScreenState extends State<HomeScreen>
         }
       }
     } catch (e) {
-      debugPrint('â‌Œ ط®ط·ط£ ط£ط«ظ†ط§ط، ط§ظ„ط¬ط¯ظˆظ„ط©: $e');
+      debugPrint('❌ خطأ أثناء الجدولة: $e');
     } finally {
       _isSchedulingNotifications = false;
     }
@@ -1020,7 +1020,7 @@ class _HomeScreenState extends State<HomeScreen>
       await prefs.setBool('reminder_enabled', offset > 0);
       await _schedulePrayerNotifications();
     } catch (e) {
-      debugPrint('â‌Œ apply reminder offset error: $e');
+      debugPrint('❌ apply reminder offset error: $e');
     }
   }
 
@@ -1140,7 +1140,7 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   Map<String, dynamic>? _getCurrentAzkarCategoryFromJson() {
-    final targetTitle = _isMorningAzkarTime() ? 'ط£ط°ظƒط§ط± ط§ظ„طµط¨ط§ط­' : 'ط£ط°ظƒط§ط± ط§ظ„ظ…ط³ط§ط،';
+    final targetTitle = _isMorningAzkarTime() ? 'أذكار الصباح' : 'أذكار المساء';
     try {
       return _azkarCategories.firstWhere((c) => c['title'] == targetTitle);
     } catch (_) {
@@ -1345,18 +1345,18 @@ class _HomeScreenState extends State<HomeScreen>
       monthName = HijriData.hijriMonths[hijri.hMonth - 1];
     } else {
       const fallbackMonths = [
-        'ظ…ط­ط±ظ…',
-        'طµظپط±',
-        'ط±ط¨ظٹط¹ ط§ظ„ط£ظˆظ„',
-        'ط±ط¨ظٹط¹ ط§ظ„ط¢ط®ط±',
-        'ط¬ظ…ط§ط¯ظ‰ ط§ظ„ط£ظˆظ„ظ‰',
-        'ط¬ظ…ط§ط¯ظ‰ ط§ظ„ط¢ط®ط±ط©',
-        'ط±ط¬ط¨',
-        'ط´ط¹ط¨ط§ظ†',
-        'ط±ظ…ط¶ط§ظ†',
-        'ط´ظˆط§ظ„',
-        'ط°ظˆ ط§ظ„ظ‚ط¹ط¯ط©',
-        'ط°ظˆ ط§ظ„ط­ط¬ط©',
+        'محرم',
+        'صفر',
+        'ربيع الأول',
+        'ربيع الآخر',
+        'جمادى الأولى',
+        'جمادى الآخرة',
+        'رجب',
+        'شعبان',
+        'رمضان',
+        'شوال',
+        'ذو القعدة',
+        'ذو الحجة',
       ];
       monthName = fallbackMonths[hijri.hMonth - 1];
     }
@@ -1431,7 +1431,7 @@ class _HomeScreenState extends State<HomeScreen>
               const SizedBox(height: 1),
               Flexible(
                 child: Text(
-                  'âœ¨ ${todayEvent['title'] ?? ''}',
+                  '✨ ${todayEvent['title'] ?? ''}',
                   style: GoogleFonts.cairo(
                     fontSize: 9,
                     fontWeight: FontWeight.w600,

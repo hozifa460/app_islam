@@ -39,7 +39,7 @@ class _SurahListScreenState extends State<SurahListScreen> {
   }
 
   String _toArabicNumber(int number) {
-    const arabicNumbers = ['ظ ', 'ظ،', 'ظ¢', 'ظ£', 'ظ¤', 'ظ¥', 'ظ¦', 'ظ§', 'ظ¨', 'ظ©'];
+    const arabicNumbers = ['٠', 'ظ،', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
     return number.toString().split('').map((digit) {
       return arabicNumbers[int.parse(digit)];
     }).join();
@@ -55,7 +55,7 @@ class _SurahListScreenState extends State<SurahListScreen> {
           backgroundColor: const Color(0xFF8B4513),
           foregroundColor: Colors.white,
           title: Text(
-            'ط§ظ„ظ‚ط±ط¢ظ† ط§ظ„ظƒط±ظٹظ…',
+            'القرآن الكريم',
             style: GoogleFonts.amiri(
               fontSize: 24,
               fontWeight: FontWeight.bold,
@@ -142,7 +142,7 @@ class _SurahListScreenState extends State<SurahListScreen> {
         subtitle: Padding(
           padding: const EdgeInsets.only(top: 4),
           child: Text(
-            '${surah['revelationType'] == 'Meccan' ? 'ظ…ظƒظٹط©' : 'ظ…ط¯ظ†ظٹط©'} â€¢ ${_toArabicNumber(surah['numberOfAyahs'])} ط¢ظٹط©',
+            '${surah['revelationType'] == 'Meccan' ? 'مكية' : 'مدنية'} • ${_toArabicNumber(surah['numberOfAyahs'])} آية',
             style: GoogleFonts.cairo(
               fontSize: 12,
               color: Colors.grey[600],

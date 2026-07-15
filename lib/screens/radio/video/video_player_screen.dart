@@ -77,7 +77,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
       setState(() => _initialized = true);
     } catch (e) {
-      debugPrint('â‌Œ Video error: $e');
+      debugPrint('❌ Video error: $e');
       if (mounted) setState(() => _hasError = true);
     }
   }
@@ -183,7 +183,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           CircularProgressIndicator(color: widget.primary),
           const SizedBox(height: 16),
           Text(
-            'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط§ظ„ظپظٹط¯ظٹظˆ...',
+            'جاري تحميل الفيديو...',
             style: GoogleFonts.cairo(color: Colors.white70, fontSize: 14),
           ),
         ],
@@ -199,7 +199,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           const Icon(Icons.error_outline, color: Colors.red, size: 48),
           const SizedBox(height: 12),
           Text(
-            'ظپط´ظ„ طھط­ظ…ظٹظ„ ط§ظ„ظپظٹط¯ظٹظˆ',
+            'فشل تحميل الفيديو',
             style: GoogleFonts.cairo(color: Colors.white70, fontSize: 16),
           ),
           const SizedBox(height: 12),
@@ -225,7 +225,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Text(
-                'ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط©',
+                'إعادة المحاولة',
                 style: GoogleFonts.cairo(
                   color: Colors.white,
                   fontWeight: FontWeight.w700,

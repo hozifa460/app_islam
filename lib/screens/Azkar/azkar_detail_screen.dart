@@ -180,7 +180,7 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
               if ((zekr['source'] ?? '').toString().isNotEmpty)
                 AzkarInfoBox(
                   icon: Icons.menu_book_rounded,
-                  text: 'ط§ظ„ظ…طµط¯ط±: ${zekr['source']}',
+                  text: 'المصدر: ${zekr['source']}',
                   color: AzkarTheme.gold,
                   isDark: isDark,
                   fontSize: infoFontSize,

@@ -63,7 +63,7 @@ class InheritanceHeaderWidget extends StatelessWidget {
                       border: Border.all(color: gold.withValues(alpha: 0.3)),
                     ),
                     child: Text(
-                      'ï·½',
+                      '﷽',
                       style: TextStyle(
                         fontSize: isSmallScreen ? 14 : 18,
                         color: gold,

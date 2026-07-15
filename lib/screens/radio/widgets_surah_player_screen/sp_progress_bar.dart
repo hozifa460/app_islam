@@ -106,7 +106,7 @@ class SpProgressBar extends StatelessWidget {
         ),
         const SizedBox(width: 3),
         Text(
-          'ظ…ط¨ط§ط´ط±',
+          'مباشر',
           style: GoogleFonts.cairo(
             fontSize: 10,
             color: Colors.blue.withValues(alpha: 0.5),

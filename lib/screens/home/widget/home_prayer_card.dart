@@ -137,7 +137,7 @@ class _HomePrayerCardState extends State<HomePrayerCard>
       final p = t24.split(' ')[0].split(':');
       int h = int.parse(p[0]);
       final m = int.parse(p[1]);
-      final period = h >= 12 ? 'ظ…' : 'طµ';
+      final period = h >= 12 ? 'م' : 'ص';
       if (h > 12) h -= 12;
       if (h == 0) h = 12;
       return '${h.toString().padLeft(2, '0')}:'

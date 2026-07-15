@@ -169,7 +169,7 @@ class QiblaPhoneIndicator extends StatelessWidget {
               ),
               const SizedBox(width: 4),
               Text(
-                isFacing ? 'ط§ظ„ظ‚ط¨ظ„ط© âœ“' : 'ظ…ظˆظ‚ط¹ظƒ',
+                isFacing ? 'القبلة ✓' : 'موقعك',
                 style: GoogleFonts.cairo(
                   fontSize: 10,
                   fontWeight: FontWeight.w700,
@@ -233,7 +233,7 @@ class QiblaRotationHint extends StatelessWidget {
           ),
           const SizedBox(width: 5),
           Text(
-            goLeft ? 'ط¯ظˆظ‘ط± ظ„ظ„ظٹط³ط§ط±' : 'ط¯ظˆظ‘ط± ظ„ظ„ظٹظ…ظٹظ†',
+            goLeft ? 'دوّر لليسار' : 'دوّر لليمين',
             style: GoogleFonts.cairo(
               fontSize: 11,
               fontWeight: FontWeight.w700,

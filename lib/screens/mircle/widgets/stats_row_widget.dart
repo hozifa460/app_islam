@@ -28,7 +28,7 @@ class StatsRowWidget extends StatelessWidget {
           Expanded(
             child: _StatCard(
               icon:     Icons.menu_book_rounded,
-              label:    'ط§ظ„ظ‚ط±ط¢ظ†',
+              label:    'القرآن',
               sublabel: 'Quran',
               count:    quranCount,
               color:    const Color(0xFF4FC3F7),
@@ -39,7 +39,7 @@ class StatsRowWidget extends StatelessWidget {
           Expanded(
             child: _StatCard(
               icon:     Icons.auto_awesome_rounded,
-              label:    'ط§ظ„ط³ظ†ط©',
+              label:    'السنة',
               sublabel: 'Sunnah',
               count:    sunnahCount,
               color:    MiracleTheme.neonGold,
@@ -52,7 +52,7 @@ class StatsRowWidget extends StatelessWidget {
               onTap: onFavoriteToggle,
               child: _StatCard(
                 icon:        Icons.favorite_rounded,
-                label:       'ط§ظ„ظ…ظپط¶ظ„ط©',
+                label:       'المفضلة',
                 sublabel:    'Favorites',
                 count:       favCount,
                 color:       MiracleTheme.neonRed,
@@ -65,7 +65,7 @@ class StatsRowWidget extends StatelessWidget {
           Expanded(
             child: _StatCard(
               icon:     Icons.library_books_rounded,
-              label:    'ط§ظ„ط¥ط¬ظ…ط§ظ„ظٹ',
+              label:    'الإجمالي',
               sublabel: 'Total',
               count:    totalCount,
               color:    MiracleTheme.neonGreen,

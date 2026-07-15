@@ -26,7 +26,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
   List<Map<String, dynamic>> _hadithResults = [];
 
   bool _isInitializing = true;
-  String _statusMessage = 'ط¬ط§ط±ظٹ طھط­ط¶ظٹط± ط§ظ„ظ…ظƒطھط¨ط© ط§ظ„ط´ط§ظ…ظ„ط©...';
+  String _statusMessage = 'جاري تحضير المكتبة الشاملة...';
 
   @override
   void initState() {
@@ -38,10 +38,10 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
   String _normalize(String text) {
     return text
         .replaceAll(RegExp(r'[\u064B-\u065F\u0610-\u061A\u06D6-\u06DC\u06DF-\u06E8\u06EA-\u06ED]'), '')
-        .replaceAll(RegExp(r'[ط£ط¥ط¢ط§ظ±ظ°]'), 'ط§')
-        .replaceAll(RegExp(r'[ظٹظ‰ط¦]'), 'ظٹ')
-        .replaceAll(RegExp(r'[ط©ظ‡]'), 'ظ‡')
-        .replaceAll('ط¤', 'ظˆ')
+        .replaceAll(RegExp(r'[أإآاٱٰ]'), 'ا')
+        .replaceAll(RegExp(r'[يىئ]'), 'ي')
+        .replaceAll(RegExp(r'[ةه]'), 'ظ‡')
+        .replaceAll('ؤ', 'ظˆ')
         .toLowerCase()
         .trim();
   }
@@ -63,7 +63,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
             tempQuran.add({
               'type': 'quran',
               'text': ayah['text'],
-              'surahName': surah['name'].toString().replaceAll('ط³ظˆط±ط© ', ''),
+              'surahName': surah['name'].toString().replaceAll('سورة ', ''),
               'surahNumber': surah['number'],
               'numberInSurah': ayah['numberInSurah'],
               'number': ayah['number'], // ط§ظ„ط±ظ‚ظ… ط§ظ„ط¹ط§ظ„ظ…ظٹ
@@ -89,7 +89,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
             'type': 'hadith',
             'text': h['text'] ?? '',
             'number': h['hadithnumber'],
-            'book': 'ط±ظٹط§ط¶ ط§ظ„طµط§ظ„ط­ظٹظ†',
+            'book': 'رياض الصالحين',
             'grade': (h['grades'] as List?)?.isNotEmpty == true ? h['grades'][0]['grade'] : '',
           });
         }
@@ -99,7 +99,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
     if (mounted) {
       setState(() {
         _isInitializing = false;
-        _statusMessage = 'ط¬ط§ظ‡ط² ظ„ظ„ط¨ط­ط« ظپظٹ ط§ظ„ظ‚ط±ط¢ظ† ظˆط§ظ„ط³ظ†ط©';
+        _statusMessage = 'جاهز للبحث في القرآن والسنة';
       });
     }
   }
@@ -138,7 +138,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
       child: Scaffold(
         backgroundColor: Colors.grey.shade50,
         appBar: AppBar(
-          title: Text('ط§ظ„ط¨ط­ط« ط§ظ„ط´ط§ظ…ظ„', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
+          title: Text('البحث الشامل', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
           backgroundColor: widget.primaryColor,
           foregroundColor: Colors.white,
           elevation: 0,
@@ -162,7 +162,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
                 style: const TextStyle(color: Colors.white),
                 cursorColor: Colors.white,
                 decoration: InputDecoration(
-                  hintText: _isInitializing ? 'ط¬ط§ط±ظٹ ط§ظ„طھط­ط¶ظٹط±...' : 'ط§ط¨ط­ط« ط¹ظ† ط¢ظٹط© ط£ظˆ ط­ط¯ظٹط«...',
+                  hintText: _isInitializing ? 'جاري التحضير...' : 'ابحث عن آية أو حديث...',
                   hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.7)),
                   prefixIcon: _isInitializing
                       ? Padding(padding: const EdgeInsets.all(12), child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2))
@@ -194,7 +194,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
                   children: [
                     Icon(Icons.search_off, size: 80, color: Colors.grey.shade300),
                     const SizedBox(height: 10),
-                    Text('ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬', style: GoogleFonts.cairo(color: Colors.grey)),
+                    Text('لا توجد نتائج', style: GoogleFonts.cairo(color: Colors.grey)),
                   ],
                 ),
               )
@@ -205,7 +205,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
                   if (_quranResults.isNotEmpty) ...[
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: Text('ًں“– ط§ظ„ظ‚ط±ط¢ظ† ط§ظ„ظƒط±ظٹظ… (${_quranResults.length})', style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 16, color: widget.primaryColor)),
+                      child: Text('📖 القرآن الكريم (${_quranResults.length})', style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 16, color: widget.primaryColor)),
                     ),
                     ..._quranResults.map((q) => _buildQuranCard(q)).toList(),
                   ],
@@ -214,7 +214,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
                   if (_hadithResults.isNotEmpty) ...[
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
-                      child: Text('ًں“ڑ ط§ظ„ط£ط­ط§ط¯ظٹط« (${_hadithResults.length})', style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.brown)),
+                      child: Text('📚 الأحاديث (${_hadithResults.length})', style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.brown)),
                     ),
                     ..._hadithResults.map((h) => _buildHadithCard(h)).toList(),
                   ],
@@ -254,7 +254,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '${quran['text']} ï´؟${quran['numberInSurah']}ï´¾',
+                '${quran['text']} ﴿${quran['numberInSurah']}﴾',
                 style: GoogleFonts.amiri(fontSize: 20, height: 1.8),
                 textAlign: TextAlign.justify,
               ),
@@ -264,10 +264,10 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                     decoration: BoxDecoration(color: widget.primaryColor.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(8)),
-                    child: Text('ط³ظˆط±ط© ${quran['surahName']}', style: GoogleFonts.cairo(fontSize: 11, fontWeight: FontWeight.bold, color: widget.primaryColor)),
+                    child: Text('سورة ${quran['surahName']}', style: GoogleFonts.cairo(fontSize: 11, fontWeight: FontWeight.bold, color: widget.primaryColor)),
                   ),
                   const Spacer(),
-                  Text('طµظپط­ط©: ${quran['page']}', style: GoogleFonts.cairo(fontSize: 11, color: Colors.grey)),
+                  Text('صفحة: ${quran['page']}', style: GoogleFonts.cairo(fontSize: 11, color: Colors.grey)),
                   const SizedBox(width: 8),
                   Icon(Icons.arrow_back_ios_new, size: 12, color: widget.primaryColor),
                 ],
@@ -301,11 +301,11 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   decoration: BoxDecoration(color: Colors.brown.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(8)),
-                  child: Text('ًں“ڑ ${hadith['book']}', style: GoogleFonts.cairo(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.brown)),
+                  child: Text('📚 ${hadith['book']}', style: GoogleFonts.cairo(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.brown)),
                 ),
                 const Spacer(),
                 if (hadith['grade'].toString().isNotEmpty)
-                  Text('ط§ظ„ط¯ط±ط¬ط©: ${hadith['grade']}', style: GoogleFonts.cairo(fontSize: 11, color: Colors.green)),
+                  Text('الدرجة: ${hadith['grade']}', style: GoogleFonts.cairo(fontSize: 11, color: Colors.green)),
               ],
             ),
           ],
@@ -316,10 +316,10 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
 
   // ط¨ظٹط§ظ†ط§طھ ط§ظ„ط£ط±ط¨ط¹ظٹظ† ط§ظ„ظ†ظˆظˆظٹط© (ط£ظˆظپظ„ط§ظٹظ†)
   final List<Map<String, dynamic>> _localFortyNawawi = [
-    {'type': 'hadith', 'number': 1, 'book': 'ط§ظ„ط£ط±ط¨ط¹ظˆظ† ط§ظ„ظ†ظˆظˆظٹط©', 'text': 'ط¥ظ†ظ…ط§ ط§ظ„ط£ط¹ظ…ط§ظ„ ط¨ط§ظ„ظ†ظٹط§طھطŒ ظˆط¥ظ†ظ…ط§ ظ„ظƒظ„ ط§ظ…ط±ط¦ ظ…ط§ ظ†ظˆظ‰...'},
-    {'type': 'hadith', 'number': 2, 'book': 'ط§ظ„ط£ط±ط¨ط¹ظˆظ† ط§ظ„ظ†ظˆظˆظٹط©', 'text': 'ط¨ظٹظ†ظ…ط§ ظ†ط­ظ† ط¬ظ„ظˆط³ ط¹ظ†ط¯ ط±ط³ظˆظ„ ط§ظ„ظ„ظ‡ طµظ„ظ‰ ط§ظ„ظ„ظ‡ ط¹ظ„ظٹظ‡ ظˆط³ظ„ظ… ط°ط§طھ ظٹظˆظ…طŒ ط¥ط° ط·ظ„ط¹ ط¹ظ„ظٹظ†ط§ ط±ط¬ظ„ ط´ط¯ظٹط¯ ط¨ظٹط§ط¶ ط§ظ„ط«ظٹط§ط¨...'},
-    {'type': 'hadith', 'number': 3, 'book': 'ط§ظ„ط£ط±ط¨ط¹ظˆظ† ط§ظ„ظ†ظˆظˆظٹط©', 'text': 'ط¨ظ†ظٹ ط§ظ„ط¥ط³ظ„ط§ظ… ط¹ظ„ظ‰ ط®ظ…ط³: ط´ظ‡ط§ط¯ط© ط£ظ† ظ„ط§ ط¥ظ„ظ‡ ط¥ظ„ط§ ط§ظ„ظ„ظ‡...'},
-    {'type': 'hadith', 'number': 7, 'book': 'ط§ظ„ط£ط±ط¨ط¹ظˆظ† ط§ظ„ظ†ظˆظˆظٹط©', 'text': 'ط§ظ„ط¯ظٹظ† ط§ظ„ظ†طµظٹط­ط©. ظ‚ظ„ظ†ط§: ظ„ظ…ظ†طں ظ‚ط§ظ„: ظ„ظ„ظ‡طŒ ظˆظ„ظƒطھط§ط¨ظ‡طŒ ظˆظ„ط±ط³ظˆظ„ظ‡...'},
-    {'type': 'hadith', 'number': 16, 'book': 'ط§ظ„ط£ط±ط¨ط¹ظˆظ† ط§ظ„ظ†ظˆظˆظٹط©', 'text': 'ط¹ظ† ط£ط¨ظٹ ظ‡ط±ظٹط±ط© ط±ط¶ظٹ ط§ظ„ظ„ظ‡ ط¹ظ†ظ‡طŒ ط£ظ† ط±ط¬ظ„ط§ ظ‚ط§ظ„ ظ„ظ„ظ†ط¨ظٹ طµظ„ظ‰ ط§ظ„ظ„ظ‡ ط¹ظ„ظٹظ‡ ظˆط³ظ„ظ…: ط£ظˆطµظ†ظٹطŒ ظ‚ط§ظ„: ظ„ط§ طھط؛ط¶ط¨. ظپط±ط¯ط¯ ظ…ط±ط§ط±ط§طŒ ظ‚ط§ظ„: ظ„ط§ طھط؛ط¶ط¨.'},
+    {'type': 'hadith', 'number': 1, 'book': 'الأربعون النووية', 'text': 'إنما الأعمال بالنيات، وإنما لكل امرئ ما نوى...'},
+    {'type': 'hadith', 'number': 2, 'book': 'الأربعون النووية', 'text': 'بينما نحن جلوس عند رسول الله صلى الله عليه وسلم ذات يوم، إذ طلع علينا رجل شديد بياض الثياب...'},
+    {'type': 'hadith', 'number': 3, 'book': 'الأربعون النووية', 'text': 'بني الإسلام على خمس: شهادة أن لا إله إلا الله...'},
+    {'type': 'hadith', 'number': 7, 'book': 'الأربعون النووية', 'text': 'الدين النصيحة. قلنا: لمن؟ قال: لله، ولكتابه، ولرسوله...'},
+    {'type': 'hadith', 'number': 16, 'book': 'الأربعون النووية', 'text': 'عن أبي هريرة رضي الله عنه، أن رجلا قال للنبي صلى الله عليه وسلم: أوصني، قال: لا تغضب. فردد مرارا، قال: لا تغضب.'},
   ];
 }

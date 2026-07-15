@@ -5,17 +5,16 @@ import '../models/fatwa_model.dart';
 import 'fatwa_search_service.dart';
 
 class AdvancedSearchService {
-
   // ══════════════════════════════════════
   // البحث الرئيسي المحسّن
   // ══════════════════════════════════════
   static Future<List<FatwaSearchResult>> search(
-      String query,
-      List<Fatwa> fatawa, {
-        String? scholarFilter,
-        String? categoryFilter,
-        int topK = 20,
-      }) async {
+    String query,
+    List<Fatwa> fatawa, {
+    String? scholarFilter,
+    String? categoryFilter,
+    int topK = 20,
+  }) async {
     if (query.trim().isEmpty) return [];
 
     final normalizedQuery = _normalize(query);
@@ -24,7 +23,8 @@ class AdvancedSearchService {
 
     List<FatwaSearchResult> results = [];
 
-    for (var fatwa in fatawa) {
+    for (var i = 0; i < fatawa.length; i++) {
+      final fatwa = fatawa[i];
       if (scholarFilter != null && fatwa.scholar != scholarFilter) continue;
       if (categoryFilter != null && fatwa.category != categoryFilter) continue;
 
@@ -35,11 +35,18 @@ class AdvancedSearchService {
       );
 
       if (score > 0.1) {
-        results.add(FatwaSearchResult(
-          fatwa: fatwa,
-          relevanceScore: score,
-          matchedParts: _findMatchedParts(normalizedQuery, fatwa),
-        ));
+        results.add(
+          FatwaSearchResult(
+            fatwa: fatwa,
+            relevanceScore: score,
+            matchedParts: _findMatchedParts(normalizedQuery, fatwa),
+          ),
+        );
+      }
+
+      // إتاحة فرصة لإطار Flutter لرسم مؤشر التحميل أثناء فحص قاعدة كبيرة.
+      if (i % 250 == 0) {
+        await Future<void>.delayed(Duration.zero);
       }
     }
 
@@ -54,14 +61,15 @@ class AdvancedSearchService {
 
     // ✅ فلتر إضافي: يجب أن تحتوي الفتوى على كلمة واحدة على الأقل من السؤال
     if (queryTokens.isNotEmpty) {
-      results = results.where((r) {
-        final fatwaText = _normalize(
-            '${r.fatwa.question} ${r.fatwa.answer}'
-        );
-        return queryTokens.any((token) =>
-        token.length > 2 && fatwaText.contains(token)
-        );
-      }).toList();
+      results =
+          results.where((r) {
+            final fatwaText = _normalize(
+              '${r.fatwa.question} ${r.fatwa.answer}',
+            );
+            return queryTokens.any(
+              (token) => token.length > 2 && fatwaText.contains(token),
+            );
+          }).toList();
     }
 
     return results.take(topK).toList();
@@ -79,16 +87,14 @@ class AdvancedSearchService {
 
     final normQuestion = _normalize(fatwa.question);
     final normAnswer = _normalize(fatwa.answer);
-    final normKeywords = fatwa.keywords
-        .map((k) => _normalize(k))
-        .join(' ');
+    final normKeywords = fatwa.keywords.map((k) => _normalize(k)).join(' ');
 
     // ═══ 1. تطابق عبارة كاملة ═══
     if (normQuestion.contains(query)) score += 15.0;
     if (normAnswer.contains(query)) score += 8.0;
 
     // داخل دالة _calculateScore
-// زد وزن الكلمات النادرة وقلل وزن الكلمات الشائعة
+    // زد وزن الكلمات النادرة وقلل وزن الكلمات الشائعة
 
     for (var token in tokens) {
       // إذا كانت الكلمة (حكم، صلاة، ما، هل) أعطها وزن 1 فقط
@@ -132,16 +138,14 @@ class AdvancedSearchService {
     }
 
     // ═══ 4. BM25 مبسط (مكافأة للنصوص القصيرة) ═══
-    final lengthPenalty = min(
-      1.0,
-      100.0 / max(fatwa.question.length, 10),
-    );
+    final lengthPenalty = min(1.0, 100.0 / max(fatwa.question.length, 10));
     score *= (1 + lengthPenalty * 0.3);
 
     // ═══ 5. مكافأة اكتمال الاستعلام ═══
-    final coveredTokens = tokens
-        .where((t) => normQuestion.contains(t) || normAnswer.contains(t))
-        .length;
+    final coveredTokens =
+        tokens
+            .where((t) => normQuestion.contains(t) || normAnswer.contains(t))
+            .length;
     if (tokens.isNotEmpty) {
       final coverage = coveredTokens / tokens.length;
       score *= (0.5 + coverage * 0.5);
@@ -202,8 +206,7 @@ class AdvancedSearchService {
     for (var token in tokens) {
       final normalized = _normalize(token);
       for (var entry in synonymMap.entries) {
-        if (normalized.contains(entry.key) ||
-            entry.key.contains(normalized)) {
+        if (normalized.contains(entry.key) || entry.key.contains(normalized)) {
           expanded.addAll(entry.value);
         }
         for (var syn in entry.value) {
@@ -242,10 +245,27 @@ class AdvancedSearchService {
 
     // إزالة اللواحق
     final suffixes = [
-      'ون', 'ين', 'ات', 'ان', 'تان', 'تين',
-      'ها', 'هم', 'هن', 'كم', 'كن', 'نا',
-      'ية', 'وا', 'تم', 'ته', 'تها',
-      'ني', 'ك', 'ه', 'ي',
+      'ون',
+      'ين',
+      'ات',
+      'ان',
+      'تان',
+      'تين',
+      'ها',
+      'هم',
+      'هن',
+      'كم',
+      'كن',
+      'نا',
+      'ية',
+      'وا',
+      'تم',
+      'ته',
+      'تها',
+      'ني',
+      'ك',
+      'ه',
+      'ي',
     ];
     for (var suffix in suffixes) {
       if (word.endsWith(suffix) && word.length > suffix.length + 2) {
@@ -262,10 +282,12 @@ class AdvancedSearchService {
   static List<String> _findMatchedParts(String query, Fatwa fatwa) {
     final matched = <String>[];
     final tokens = _tokenize(query);
+    final question = _normalize(fatwa.question);
+    final answer = _normalize(fatwa.answer);
 
     for (var token in tokens) {
-      if (fatwa.question.contains(token)) matched.add(token);
-      if (fatwa.answer.contains(token) && !matched.contains(token)) {
+      if (question.contains(token)) matched.add(token);
+      if (answer.contains(token) && !matched.contains(token)) {
         matched.add(token);
       }
     }
@@ -278,10 +300,20 @@ class AdvancedSearchService {
   // ══════════════════════════════════════
   static String _normalize(String text) {
     return text
-        .replaceAll('أ', 'ا').replaceAll('إ', 'ا').replaceAll('آ', 'ا')
-        .replaceAll('ة', 'ه').replaceAll('ى', 'ي').replaceAll('ئ', 'ي')
+        .toLowerCase()
+        .replaceAll('أ', 'ا')
+        .replaceAll('إ', 'ا')
+        .replaceAll('آ', 'ا')
+        .replaceAll('ٱ', 'ا')
+        .replaceAll('ة', 'ه')
+        .replaceAll('ى', 'ي')
+        .replaceAll('ئ', 'ي')
         .replaceAll('ؤ', 'و')
-        .replaceAll(RegExp(r'[ًٌٍَُِّْٰ]'), '')
+        .replaceAll(RegExp(r'[ًٌٍَُِّْـٰ]'), '')
+        .replaceAll(
+          RegExp(r'[^\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF0-9\s]'),
+          ' ',
+        )
         .replaceAll(RegExp(r'\s+'), ' ')
         .trim();
   }
@@ -291,10 +323,38 @@ class AdvancedSearchService {
   // ══════════════════════════════════════
   static List<String> _tokenize(String text) {
     const stopWords = {
-      'في', 'من', 'الى', 'على', 'عن', 'مع', 'هل', 'ما', 'هو',
-      'هي', 'ان', 'أن', 'كان', 'لا', 'لم', 'قد', 'و', 'او',
-      'ثم', 'هذا', 'هذه', 'ذلك', 'التي', 'الذي', 'ومن', 'وفي',
-      'الله', 'رسول', 'النبي', 'صلى', 'عليه', 'وسلم',
+      'في',
+      'من',
+      'الى',
+      'على',
+      'عن',
+      'مع',
+      'هل',
+      'ما',
+      'هو',
+      'هي',
+      'ان',
+      'أن',
+      'كان',
+      'لا',
+      'لم',
+      'قد',
+      'و',
+      'او',
+      'ثم',
+      'هذا',
+      'هذه',
+      'ذلك',
+      'التي',
+      'الذي',
+      'ومن',
+      'وفي',
+      'الله',
+      'رسول',
+      'النبي',
+      'صلى',
+      'عليه',
+      'وسلم',
     };
 
     return text

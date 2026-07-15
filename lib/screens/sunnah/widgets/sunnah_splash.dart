@@ -67,7 +67,7 @@ class SunnahSplash extends StatelessWidget {
                           ],
                         ),
                         child: Center(
-                          child: Text('ًں•Œ',
+                          child: Text('🕌',
                               style: TextStyle(fontSize: size.width * 0.12)),
                         ),
                       ),
@@ -83,7 +83,7 @@ class SunnahSplash extends StatelessWidget {
                       ],
                     ).createShader(b),
                     child: Text(
-                      'ظ…طھطھط¨ط¹ ط§ظ„ط³ظ†ظ† ط§ظ„ظ†ط¨ظˆظٹط©',
+                      'متتبع السنن النبوية',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: size.width * 0.06,
@@ -94,7 +94,7 @@ class SunnahSplash extends StatelessWidget {
                   ),
                   SizedBox(height: size.height * 0.01),
                   Text(
-                    'ط§ط­ط±طµ ط¹ظ„ظ‰ ط³ظ†ظ†ظ‡ ï·؛',
+                    'احرص على سننه ﷺ',
                     style: TextStyle(
                       color: theme.textSecondary,
                       fontSize: size.width * 0.038,

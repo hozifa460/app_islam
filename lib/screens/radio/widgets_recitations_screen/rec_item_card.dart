@@ -43,7 +43,7 @@ class RecItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenH = MediaQuery.of(context).size.height;
     final imgH = RecSizes.imageHeight(screenH);
-    final cardW = imgH * (14 / 9);
+    final cardW = RecSizes.cardWidth(imgH);
 
     return Consumer<ItemDownloadService>(
       builder: (_, itemDownloadService, __) {
@@ -58,7 +58,7 @@ class RecItemCard extends StatelessWidget {
           onTap: () => _handleTap(context, itemDownloadService),
           child: Container(
             width: cardW,
-            margin: const EdgeInsets.only(left: 12),
+            margin: const EdgeInsets.only(left: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -71,7 +71,7 @@ class RecItemCard extends StatelessWidget {
                   isDownloading,
                   progress,
                 ),
-                const SizedBox(height: 7),
+                const SizedBox(height: 5),
                 _buildTextContent(context, cardW, isDownloaded, isDownloading),
               ],
             ),
@@ -131,7 +131,7 @@ class RecItemCard extends StatelessWidget {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'ط§ظ„ط±ط§ط¨ط· ط؛ظٹط± ظ…طھط§ط­ ط­ط§ظ„ظٹط§ظ‹',
+          'الرابط غير متاح حالياً',
           style: GoogleFonts.cairo(),
           textDirection: TextDirection.rtl,
         ),
@@ -152,7 +152,7 @@ class RecItemCard extends StatelessWidget {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              'ط§ظ„ظ…ظ„ظپ ط؛ظٹط± ظ…ظˆط¬ظˆط¯طŒ ط£ط¹ط¯ طھط­ظ…ظٹظ„ظ‡',
+              'الملف غير موجود، أعد تحميله',
               style: GoogleFonts.cairo(),
               textDirection: TextDirection.rtl,
             ),
@@ -172,9 +172,9 @@ class RecItemCard extends StatelessWidget {
         name: item.title,
         nameEn: item.title,
         url: localPath,
-        category: 'طھظ„ط§ظˆط§طھ',
+        category: 'تلاوات',
         categoryEn: 'Recitations',
-        description: '${item.subtitle} â€¢ ط£ظˆظپظ„ط§ظٹظ†',
+        description: '${item.subtitle} • أوفلاين',
         descriptionEn: item.subtitle,
         iconEmoji: item.emoji,
         imageUrl: item.imageUrl,
@@ -197,12 +197,12 @@ class RecItemCard extends StatelessWidget {
         );
       }
     } catch (e) {
-      debugPrint('â‌Œ ط®ط·ط£ طھط´ط؛ظٹظ„ ظ…ط­ظ„ظٹ ظ…ظ† RecItemCard: $e');
+      debugPrint('❌ خطأ تشغيل محلي من RecItemCard: $e');
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              'ظپط´ظ„ طھط´ط؛ظٹظ„ ط§ظ„ظ…ظ„ظپ',
+              'فشل تشغيل الملف',
               style: GoogleFonts.cairo(),
               textDirection: TextDirection.rtl,
             ),
@@ -222,7 +222,7 @@ class RecItemCard extends StatelessWidget {
       name: item.title,
       nameEn: item.title,
       url: item.audioUrl!,
-      category: 'طھظ„ط§ظˆط§طھ',
+      category: 'تلاوات',
       categoryEn: 'Recitations',
       description: item.subtitle,
       descriptionEn: item.subtitle,
@@ -278,7 +278,7 @@ class RecItemCard extends StatelessWidget {
           child: ClipRRect(
             borderRadius: RecShapes.radiusCardBottom,
             child: Container(
-              height: 50,
+              height: 42,
               decoration: BoxDecoration(gradient: RecColors.darkOverlay()),
             ),
           ),
@@ -307,7 +307,7 @@ class RecItemCard extends StatelessWidget {
                   (_isStation || isDownloaded || _hasAudio)
                       ? Colors.white
                       : RecColors.white(0.3),
-              size: 17,
+              size: 15,
             ),
           ),
         ),
@@ -337,7 +337,7 @@ class RecItemCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Text(
-                'ط£ظˆظپظ„ط§ظٹظ†',
+                'أوفلاين',
                 style: GoogleFonts.cairo(
                   fontSize: 9,
                   fontWeight: FontWeight.w700,
@@ -414,8 +414,8 @@ class RecItemCard extends StatelessWidget {
         service.downloadItem(item);
       },
       child: Container(
-        width: 28,
-        height: 28,
+          width: 26,
+          height: 26,
         decoration: BoxDecoration(
           color: RecColors.black(0.45),
           shape: BoxShape.circle,
@@ -440,7 +440,7 @@ class RecItemCard extends StatelessWidget {
                   isDownloaded
                       ? Icons.download_done_rounded
                       : Icons.download_rounded,
-                  size: 14,
+                  size: 13,
                   color: isDownloaded ? Colors.green : primary,
                 ),
       ),
@@ -477,9 +477,9 @@ class RecItemCard extends StatelessWidget {
           const SizedBox(height: 3),
           Text(
             isDownloading
-                ? 'ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„...'
+                ? 'جاري التحميل...'
                 : isDownloaded
-                ? 'ظ…ط­ظ…ظ‘ظ„ ط¹ظ„ظ‰ ط§ظ„ط¬ظ‡ط§ط²'
+                ? 'محمّل على الجهاز'
                 : item.subtitle,
             style: GoogleFonts.cairo(
               fontSize: (cardW * 0.075).clamp(8.0, 11.0),

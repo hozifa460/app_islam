@@ -135,7 +135,7 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'طھط®طµظٹطµ ط§ظ„ظ„ظˆظ†',
+                                'تخصيص اللون',
                                 style: GoogleFonts.cairo(
                                   color:      Colors.white,
                                   fontSize:   17,
@@ -222,7 +222,7 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
                                   color: previewColor.withValues(alpha: 0.3)),
                             ),
                             child: Text(
-                              'ظ…ط­ط¯ط¯ âœ“',
+                              'محدد ✓',
                               style: GoogleFonts.cairo(
                                 color:      previewColor,
                                 fontSize:   11,
@@ -294,7 +294,7 @@ class _ColorPickerSheetState extends State<ColorPickerSheet> {
                         ),
                         onPressed: () => Navigator.pop(context),
                         child: Text(
-                          'طھط·ط¨ظٹظ‚ ط§ظ„ظ„ظˆظ†',
+                          'تطبيق اللون',
                           style: GoogleFonts.cairo(
                             fontSize:   15,
                             fontWeight: FontWeight.bold,
@@ -524,7 +524,7 @@ class _BrightnessSlider extends StatelessWidget {
                   color: previewColor, size: 18),
               const SizedBox(width: 8),
               Text(
-                'ط¯ط±ط¬ط© ط§ظ„ظ„ظˆظ†',
+                'درجة اللون',
                 style: GoogleFonts.cairo(
                   color:      Colors.white,
                   fontSize:   13,
@@ -603,21 +603,21 @@ class _BrightnessSlider extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'ط¯ط§ظƒظ†',
+                'داكن',
                 style: GoogleFonts.cairo(
                   color:    darkColor,
                   fontSize: 10,
                 ),
               ),
               Text(
-                'ط£طµظ„ظٹ',
+                'أصلي',
                 style: GoogleFonts.cairo(
                   color:    Colors.white54,
                   fontSize: 10,
                 ),
               ),
               Text(
-                'ظپط§طھط­',
+                'فاتح',
                 style: GoogleFonts.cairo(
                   color:    lightColor,
                   fontSize: 10,
@@ -631,11 +631,11 @@ class _BrightnessSlider extends StatelessWidget {
   }
 
   String _getBrightnessLabel(double val) {
-    if (val < 0.2)       return 'ط¯ط§ظƒظ† ط¬ط¯ط§ظ‹';
-    if (val < 0.4)       return 'ط¯ط§ظƒظ†';
-    if (val < 0.6)       return 'ط£طµظ„ظٹ';
-    if (val < 0.8)       return 'ظپط§طھط­';
-    return 'ظپط§طھط­ ط¬ط¯ط§ظ‹';
+    if (val < 0.2)       return 'داكن جداً';
+    if (val < 0.4)       return 'داكن';
+    if (val < 0.6)       return 'أصلي';
+    if (val < 0.8)       return 'فاتح';
+    return 'فاتح جداً';
   }
 }
 
@@ -670,7 +670,7 @@ class _PreviewStrip extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'ظ…ط¹ط§ظٹظ†ط© ظ…ط¨ط§ط´ط±ط©',
+            'معاينة مباشرة',
             style: GoogleFonts.cairo(
               color:      Colors.white60,
               fontSize:   11,
@@ -693,7 +693,7 @@ class _PreviewStrip extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      'ط®ظ„ظپظٹط©',
+                      'خلفية',
                       style: GoogleFonts.cairo(
                         color:    Colors.white54,
                         fontSize: 10,
@@ -715,7 +715,7 @@ class _PreviewStrip extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      'ط¨ط·ط§ظ‚ط©',
+                      'بطاقة',
                       style: GoogleFonts.cairo(
                         color:      previewColor,
                         fontSize:   10,
@@ -748,7 +748,7 @@ class _PreviewStrip extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      'ط±ط¦ظٹط³ظٹ',
+                      'رئيسي',
                       style: GoogleFonts.cairo(
                         color:      Colors.white,
                         fontSize:   10,

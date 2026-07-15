@@ -144,7 +144,7 @@ class _ShortsPlayerScreenState extends State<ShortsPlayerScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'طھظ… ظ†ط³ط® ط§ظ„ط±ط§ط¨ط·',
+          'تم نسخ الرابط',
           style: GoogleFonts.cairo(),
         ),
         behavior: SnackBarBehavior.floating,
@@ -182,7 +182,7 @@ class _ShortsPlayerScreenState extends State<ShortsPlayerScreen> {
                   Row(
                     children: [
                       Text(
-                        'ط§ظ„طھط¹ظ„ظٹظ‚ط§طھ',
+                        'التعليقات',
                         style: GoogleFonts.cairo(
                           color: Colors.white,
                           fontWeight: FontWeight.w800,
@@ -205,7 +205,7 @@ class _ShortsPlayerScreenState extends State<ShortsPlayerScreen> {
                   Expanded(
                     child: Center(
                       child: Text(
-                        'ط¹ط±ط¶ ط§ظ„طھط¹ظ„ظٹظ‚ط§طھ ط§ظ„ظƒط§ظ…ظ„ط© ظٹظ…ظƒظ† ط±ط¨ط·ظ‡ ظ„ط§ط­ظ‚ط§ظ‹\nط­ط§ظ„ظٹط§ظ‹ ظ‡ط°ظ‡ ظ†ط§ظپط°ط© ط¬ط§ظ‡ط²ط© ظ„ظ„ظˆط§ط¬ظ‡ط©',
+                        'عرض التعليقات الكاملة يمكن ربطه لاحقاً\nحالياً هذه نافذة جاهزة للواجهة',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.cairo(
                           color: Colors.white70,
@@ -242,7 +242,7 @@ class _ShortsPlayerScreenState extends State<ShortsPlayerScreen> {
                 ListTile(
                   leading: const Icon(Icons.copy_rounded, color: Colors.white),
                   title: Text(
-                    'ظ†ط³ط® ط§ظ„ط±ط§ط¨ط·',
+                    'نسخ الرابط',
                     style: GoogleFonts.cairo(color: Colors.white),
                   ),
                   onTap: () async {
@@ -253,7 +253,7 @@ class _ShortsPlayerScreenState extends State<ShortsPlayerScreen> {
                 ListTile(
                   leading: const Icon(Icons.open_in_new_rounded, color: Colors.white),
                   title: Text(
-                    'ظپطھط­ ظپظٹ ظٹظˆطھظٹظˆط¨',
+                    'فتح في يوتيوب',
                     style: GoogleFonts.cairo(color: Colors.white),
                   ),
                   onTap: () async {
@@ -264,7 +264,7 @@ class _ShortsPlayerScreenState extends State<ShortsPlayerScreen> {
                 ListTile(
                   leading: const Icon(Icons.person_rounded, color: Colors.white),
                   title: Text(
-                    'ظپطھط­ ط§ظ„ظ‚ظ†ط§ط©',
+                    'فتح القناة',
                     style: GoogleFonts.cairo(color: Colors.white),
                   ),
                   onTap: () async {
@@ -704,7 +704,7 @@ class _ShortPage extends StatelessWidget {
                   const SizedBox(height: 18),
                   _sideAction(
                     icon: Icons.share_rounded,
-                    label: 'ظ…ط´ط§ط±ظƒط©',
+                    label: 'مشاركة',
                     onTap: onShare,
                   ),
                   const SizedBox(height: 18),
@@ -787,7 +787,7 @@ class _ShortPage extends StatelessWidget {
                             ],
                           ),
                           child: Text(
-                            'ط§ط´طھط±ط§ظƒ',
+                            'اشتراك',
                             style: GoogleFonts.cairo(
                               color: Colors.black,
                               fontWeight: FontWeight.w800,
@@ -816,7 +816,7 @@ class _ShortPage extends StatelessWidget {
                       if (video.viewCount.isNotEmpty && video.viewCount != '0')
                         Flexible(
                           child: Text(
-                            '${YoutubeService.formatViews(video.viewCount)} ظ…ط´ط§ظ‡ط¯ط©',
+                            '${YoutubeService.formatViews(video.viewCount)} مشاهدة',
                             style: GoogleFonts.cairo(
                               color: Colors.white70,
                               fontSize: 12,
@@ -848,8 +848,8 @@ class _ShortPage extends StatelessWidget {
                         Flexible(
                           child: Text(
                             video.channelTitle.isNotEmpty
-                                ? '${video.channelTitle} â€¢ ط§ظ„طµظˆطھ ط§ظ„ط£طµظ„ظٹ'
-                                : 'ط§ظ„طµظˆطھ ط§ظ„ط£طµظ„ظٹ',
+                                ? '${video.channelTitle} • الصوت الأصلي'
+                                : 'الصوت الأصلي',
                             style: GoogleFonts.cairo(
                               color: Colors.white,
                               fontSize: 11,

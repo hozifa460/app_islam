@@ -63,7 +63,7 @@ class GuestLockScreen extends StatelessWidget {
                     colors: [_goldD, _gold, _goldD],
                   ).createShader(b),
                   child: Text(
-                    'ط§ظ„ظ…ظ„ظپ ط§ظ„ط´ط®طµظٹ',
+                    'الملف الشخصي',
                     style: GoogleFonts.cairo(
                       fontSize: 28,
                       fontWeight: FontWeight.w800,
@@ -75,7 +75,7 @@ class GuestLockScreen extends StatelessWidget {
                 const SizedBox(height: 14),
 
                 Text(
-                  'ط³ط¬ظ‘ظ„ ط¯ط®ظˆظ„ظƒ ظ„طھطھظ…ظƒظ† ظ…ظ† ط§ظ„ظˆطµظˆظ„ ط¥ظ„ظ‰ ظ…ظ„ظپظƒ\nط§ظ„ط´ط®طµظٹ ظˆط­ظپط¸ طھظ‚ط¯ظ…ظƒ',
+                  'سجّل دخولك لتتمكن من الوصول إلى ملفك\nالشخصي وحفظ تقدمك',
                   style: GoogleFonts.cairo(
                     fontSize: 15,
                     color: isDark
@@ -124,7 +124,7 @@ class GuestLockScreen extends StatelessWidget {
                         const Icon(Icons.login_rounded, size: 22),
                         const SizedBox(width: 10),
                         Text(
-                          'طھط³ط¬ظٹظ„ ط§ظ„ط¯ط®ظˆظ„',
+                          'تسجيل الدخول',
                           style: GoogleFonts.cairo(
                             fontSize: 17,
                             fontWeight: FontWeight.w700,
@@ -140,7 +140,7 @@ class GuestLockScreen extends StatelessWidget {
                 TextButton(
                   onPressed: () => Navigator.pop(context),
                   child: Text(
-                    'ط§ظ„ط¹ظˆط¯ط©',
+                    'العودة',
                     style: GoogleFonts.cairo(
                       fontSize: 14,
                       color: isDark
@@ -154,7 +154,7 @@ class GuestLockScreen extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 Text(
-                  'ï´؟ ظˆظژطھظژط¹ظژط§ظˆظژظ†ظڈظˆط§ ط¹ظژظ„ظژظ‰ ط§ظ„ظ’ط¨ظگط±ظگظ‘ ظˆظژط§ظ„طھظژظ‘ظ‚ظ’ظˆظژظ‰ ï´¾',
+                  '﴿ وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَى ﴾',
                   style: GoogleFonts.amiri(
                     fontSize: 14,
                     color: _gold.withValues(alpha: 0.5),
@@ -172,10 +172,10 @@ class GuestLockScreen extends StatelessWidget {
 
   List<Widget> _features(bool isDark) {
     final list = [
-      (Icons.cloud_sync_rounded, 'ظ…ط²ط§ظ…ظ†ط© ط§ظ„طھظ‚ط¯ظ… ط¹ط¨ط± ط§ظ„ط£ط¬ظ‡ط²ط©', Colors.blue),
-      (Icons.restore_rounded, 'ط§ط³طھط¹ط§ط¯ط© ط§ظ„ط¨ظٹط§ظ†ط§طھ ط¨ط¹ط¯ ط§ظ„ط­ط°ظپ', Colors.green),
-      (Icons.star_rounded, 'طھطھط¨ط¹ ط¥ظ†ط¬ط§ط²ط§طھظƒ ط§ظ„ظٹظˆظ…ظٹط©', _gold),
-      (Icons.shield_rounded, 'ط­ظ…ط§ظٹط© ط¨ظٹط§ظ†ط§طھظƒ ظˆط®طµظˆطµظٹطھظƒ', Colors.purple),
+      (Icons.cloud_sync_rounded, 'مزامنة التقدم عبر الأجهزة', Colors.blue),
+      (Icons.restore_rounded, 'استعادة البيانات بعد الحذف', Colors.green),
+      (Icons.star_rounded, 'تتبع إنجازاتك اليومية', _gold),
+      (Icons.shield_rounded, 'حماية بياناتك وخصوصيتك', Colors.purple),
     ];
 
     return list

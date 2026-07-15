@@ -46,20 +46,20 @@ class SunnahEmptyState extends StatelessWidget {
                   ),
                 ),
                 child: Center(
-                  child: Text('ًںŒ™',
+                  child: Text('🌙',
                       style: TextStyle(fontSize: size.width * 0.14)),
                 ),
               ),
             ),
             SizedBox(height: size.height * 0.03),
-            Text('ظ„ط§ طھظˆط¬ط¯ ط³ظ†ظ† ظ„ظ‡ط°ط§ ط§ظ„ظˆظ‚طھ',
+            Text('لا توجد سنن لهذا الوقت',
                 style: TextStyle(
                   color: theme.textPrimary,
                   fontSize: size.width * 0.048,
                   fontWeight: FontWeight.bold,
                 )),
             SizedBox(height: size.height * 0.01),
-            Text('طھظپط¶ظ„ ط¨ظ…ط´ط§ظ‡ط¯ط© ط¬ظ…ظٹط¹ ط§ظ„ط³ظ†ظ†\nظ…ظ† ط§ظ„طھط¨ظˆظٹط¨ ط§ظ„ط«ط§ظ†ظٹ',
+            Text('تفضل بمشاهدة جميع السنن\nمن التبويب الثاني',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: theme.textSecondary,
@@ -88,9 +88,9 @@ class SunnahEmptyState extends StatelessWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text('ًں“‹', style: TextStyle(fontSize: 16)),
+                    const Text('📋', style: TextStyle(fontSize: 16)),
                     SizedBox(width: size.width * 0.02),
-                    Text('ط¬ظ…ظٹط¹ ط§ظ„ط³ظ†ظ†',
+                    Text('جميع السنن',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: size.width * 0.038,

@@ -65,7 +65,7 @@ class _PrayerGuideScreenState extends State<PrayerGuideScreen> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          'ط¯ظ„ظٹظ„ ط§ظ„طµظ„ط§ط©',
+          'دليل الصلاة',
           style: GoogleFonts.cairo(
             fontWeight: FontWeight.bold,
             fontSize: 24,
@@ -120,7 +120,7 @@ class _PrayerGuideScreenState extends State<PrayerGuideScreen> {
                   style: GoogleFonts.cairo(color: Colors.white),
                   decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'ط§ط¨ط­ط« ظپظٹ ط§ظ„ط¯ظ„ظٹظ„...',
+                    hintText: 'ابحث في الدليل...',
                     hintStyle: GoogleFonts.cairo(color: Colors.white.withValues(alpha: 0.4)),
                     icon: Icon(Icons.search, color: _gold),
                   ),
@@ -154,7 +154,7 @@ class _PrayerGuideScreenState extends State<PrayerGuideScreen> {
           Icon(Icons.wifi_off, size: 70, color: Colors.white.withValues(alpha: 0.3)),
           const SizedBox(height: 16),
           Text(
-            'ظ„ط§ ظٹظ…ظƒظ† طھط­ظ…ظٹظ„ ط§ظ„ظ…ط­طھظˆظ‰',
+            'لا يمكن تحميل المحتوى',
             style: GoogleFonts.cairo(
               fontSize: 18,
               color: Colors.white.withValues(alpha: 0.7),
@@ -162,7 +162,7 @@ class _PrayerGuideScreenState extends State<PrayerGuideScreen> {
           ),
           const SizedBox(height: 8),
           Text(
-            'طھط£ظƒط¯ ظ…ظ† ط§ظ„ط§طھطµط§ظ„ ط¨ط§ظ„ط¥ظ†طھط±ظ†طھ',
+            'تأكد من الاتصال بالإنترنت',
             style: GoogleFonts.cairo(
               fontSize: 14,
               color: Colors.white.withValues(alpha: 0.5),
@@ -177,7 +177,7 @@ class _PrayerGuideScreenState extends State<PrayerGuideScreen> {
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             ),
             onPressed: _loadSmart,
-            child: Text('ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط©', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
+            child: Text('إعادة المحاولة', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
           ),
         ],
       ),

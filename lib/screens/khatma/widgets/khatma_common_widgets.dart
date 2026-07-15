@@ -138,7 +138,7 @@ class KhatmaPageCard extends StatelessWidget {
               const SizedBox(height: 4),
               FittedBox(
                 fit: BoxFit.scaleDown,
-                child: Text('طµ ${toArabicNum(page)}',
+                child: Text('ص ${toArabicNum(page)}',
                     style: GoogleFonts.amiri(
                       fontSize: isSmall ? 18 : 22,
                       fontWeight: FontWeight.bold,

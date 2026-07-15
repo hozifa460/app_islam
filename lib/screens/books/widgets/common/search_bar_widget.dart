@@ -17,7 +17,7 @@ class AnimatedSearchBar extends StatefulWidget {
     required this.controller,
     required this.onChanged,
     required this.isDark,
-    this.hintText = 'ط§ط¨ط­ط« ط¹ظ† ظƒطھط§ط¨...',
+    this.hintText = 'ابحث عن كتاب...',
   });
 
   @override

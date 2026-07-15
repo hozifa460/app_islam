@@ -1,16 +1,11 @@
-﻿// widgets/voice_search_button.dart
+// widgets/voice_search_button.dart
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
-
 import '../services/voice_search_service.dart';
 
 class VoiceSearchButton extends StatefulWidget {
   final Function(String text) onVoiceResult;
 
-  const VoiceSearchButton({
-    Key? key,
-    required this.onVoiceResult,
-  }) : super(key: key);
+  const VoiceSearchButton({super.key, required this.onVoiceResult});
 
   @override
   State<VoiceSearchButton> createState() => _VoiceSearchButtonState();
@@ -40,6 +35,7 @@ class _VoiceSearchButtonState extends State<VoiceSearchButton>
   Future<void> _toggleListening() async {
     if (_isListening) {
       await VoiceSearchService.stopListening();
+      if (!mounted) return;
       setState(() => _isListening = false);
       _animController.stop();
       _animController.reset();
@@ -51,6 +47,7 @@ class _VoiceSearchButtonState extends State<VoiceSearchButton>
 
     await VoiceSearchService.startListening(
       onResult: (text) {
+        if (!mounted) return;
         widget.onVoiceResult(text);
         setState(() => _isListening = false);
         _animController.stop();
@@ -58,17 +55,19 @@ class _VoiceSearchButtonState extends State<VoiceSearchButton>
       },
       onListeningStart: () {},
       onListeningStop: () {
+        if (!mounted) return;
         setState(() => _isListening = false);
         _animController.stop();
         _animController.reset();
       },
       onError: (error) {
+        if (!mounted) return;
         setState(() => _isListening = false);
         _animController.stop();
         _animController.reset();
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('ط®ط·ط£: $error')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('خطأ: $error')));
       },
     );
   }
@@ -86,19 +85,18 @@ class _VoiceSearchButtonState extends State<VoiceSearchButton>
               width: 44,
               height: 44,
               decoration: BoxDecoration(
-                color: _isListening
-                    ? Colors.red
-                    : const Color(0xFF2E7D32),
+                color: _isListening ? Colors.red : const Color(0xFF2E7D32),
                 shape: BoxShape.circle,
-                boxShadow: _isListening
-                    ? [
-                  BoxShadow(
-                    color: Colors.red.withValues(alpha: 0.4),
-                    blurRadius: 12,
-                    spreadRadius: 4,
-                  ),
-                ]
-                    : [],
+                boxShadow:
+                    _isListening
+                        ? [
+                          BoxShadow(
+                            color: Colors.red.withValues(alpha: 0.4),
+                            blurRadius: 12,
+                            spreadRadius: 4,
+                          ),
+                        ]
+                        : [],
               ),
               child: Icon(
                 _isListening ? Icons.stop : Icons.mic,
@@ -114,6 +112,9 @@ class _VoiceSearchButtonState extends State<VoiceSearchButton>
 
   @override
   void dispose() {
+    if (VoiceSearchService.isListening) {
+      VoiceSearchService.stopListening();
+    }
     _animController.dispose();
     super.dispose();
   }

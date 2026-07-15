@@ -363,7 +363,7 @@ class _TagsRow extends StatelessWidget {
         if (srcCount > 0)
           _SmallTag(
             icon:  Icons.link_rounded,
-            text:  '$srcCount ظ…طµط¯ط±',
+            text:  '$srcCount مصدر',
             color: MiracleTheme.neonBlue,
             t:     t,
           ),
@@ -394,7 +394,7 @@ class _TagsRow extends StatelessWidget {
           icon:   isQuran
               ? Icons.menu_book_rounded
               : Icons.auto_awesome_rounded,
-          text:   isQuran ? 'ظ‚ط±ط¢ظ†' : 'ط³ظ†ط©',
+          text:   isQuran ? 'قرآن' : 'سنة',
           color:  accentColor,
           t:      t,
           filled: true,

@@ -51,7 +51,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
 
   bool _previewEnabled = true;
 
-  String _selectionReason = 'ط§ظ‚طھط±ط§ط­ ظ„ظƒ';
+  String _selectionReason = 'اقتراح لك';
   String? _thumbnailLocalPath;
 
   @override
@@ -164,7 +164,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
           _loading = false;
           _hasError = false;
           _offlineThumbnailOnly = true;
-          _selectionReason = 'ظ…ظ† ط¢ط®ط± ظ…ط¹ط§ظٹظ†ط© ظ…ط­ظپظˆط¸ط©';
+          _selectionReason = 'من آخر معاينة محفوظة';
         });
       } else {
         setState(() {
@@ -206,7 +206,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
       if (fallback != null) {
         setState(() {
           _selectedVideo = fallback;
-          _selectionReason = 'ظ…ظ† ط¢ط®ط± ظ…ط¹ط§ظٹظ†ط© ظ…ط­ظپظˆط¸ط©';
+          _selectionReason = 'من آخر معاينة محفوظة';
           _loading = false;
           _hasError = false;
           _offlineThumbnailOnly = true;
@@ -233,7 +233,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
       if (fallback != null) {
         setState(() {
           _selectedVideo = fallback;
-          _selectionReason = 'ظ…ظ† ط¢ط®ط± ظ…ط¹ط§ظٹظ†ط© ظ…ط­ظپظˆط¸ط©';
+          _selectionReason = 'من آخر معاينة محفوظة';
           _loading = false;
           _hasError = false;
           _offlineThumbnailOnly = true;
@@ -459,12 +459,12 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
 
     final days = DateTime.now().difference(video.publishedAt).inDays;
 
-    if (isWatchLater) return 'ظ…ظ† ط§ظ„ظ…ط´ط§ظ‡ط¯ط© ظ„ط§ط­ظ‚ظ‹ط§';
-    if (partial || (progress > 0 && progress < 0.9)) return 'ط£ظƒظ…ظ„ ط§ظ„ظ…ط´ط§ظ‡ط¯ط©';
-    if (isFavorite) return 'ظ…ظ† ط§ظ„ظ…ظپط¶ظ„ط©';
-    if (!shown && days <= 7) return 'ظپظٹط¯ظٹظˆ ط¬ط¯ظٹط¯ ظ„ظƒ';
-    if (!shown) return 'ط§ظ‚طھط±ط§ط­ ط¬ط¯ظٹط¯ ظ„ظƒ';
-    return 'ط§ظ‚طھط±ط§ط­ ظ„ظƒ';
+    if (isWatchLater) return 'من المشاهدة لاحقًا';
+    if (partial || (progress > 0 && progress < 0.9)) return 'أكمل المشاهدة';
+    if (isFavorite) return 'من المفضلة';
+    if (!shown && days <= 7) return 'فيديو جديد لك';
+    if (!shown) return 'اقتراح جديد لك';
+    return 'اقتراح لك';
   }
 
   void _openFullVideo() {
@@ -475,7 +475,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            'ظ„ط§ ظٹظˆط¬ط¯ ط§طھطµط§ظ„ ط¨ط§ظ„ط¥ظ†طھط±ظ†طھطŒ ظ‡ط°ظ‡ ظ…ط¹ط§ظٹظ†ط© ظ…ط­ظپظˆط¸ط© ظپظ‚ط·',
+            'لا يوجد اتصال بالإنترنت، هذه معاينة محفوظة فقط',
             style: GoogleFonts.cairo(),
           ),
           behavior: SnackBarBehavior.floating,
@@ -536,7 +536,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
                         ),
                         const SizedBox(width: 10),
                         Text(
-                          'ط¥ط¹ط¯ط§ط¯ط§طھ ط§ظ„ظ…ط¹ط§ظٹظ†ط©',
+                          'إعدادات المعاينة',
                           style: GoogleFonts.cairo(
                             fontSize: 16,
                             fontWeight: FontWeight.w800,
@@ -552,7 +552,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
                         setModalState(() => enabled = v);
                       },
                       title: Text(
-                        'ط¥ط¸ظ‡ط§ط± ط¨ط·ط§ظ‚ط© ط§ظ„ظ…ط¹ط§ظٹظ†ط©',
+                        'إظهار بطاقة المعاينة',
                         style:
                         GoogleFonts.cairo(fontWeight: FontWeight.w600),
                       ),
@@ -584,7 +584,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
                           ),
                         ),
                         child: Text(
-                          'طھط·ط¨ظٹظ‚ ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ',
+                          'تطبيق الإعدادات',
                           style: GoogleFonts.cairo(
                             fontWeight: FontWeight.w800,
                           ),
@@ -701,7 +701,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
           ),
           const SizedBox(width: 7),
           Text(
-            'ط§ظ‚طھط±ط§ط­ ط°ظƒظٹ',
+            'اقتراح ذكي',
             style: GoogleFonts.cairo(
               fontSize: 12,
               fontWeight: FontWeight.w800,
@@ -720,7 +720,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
                 borderRadius: BorderRadius.circular(6),
               ),
               child: Text(
-                'ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ',
+                'بدون إنترنت',
                 style: GoogleFonts.cairo(
                   fontSize: 9,
                   color: subColor,
@@ -776,16 +776,16 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
     final days =
         DateTime.now().difference(video.publishedAt).inDays;
     final timeAgo = days == 0
-        ? 'ط§ظ„ظٹظˆظ…'
+        ? 'اليوم'
         : days == 1
-        ? 'ط£ظ…ط³'
+        ? 'أمس'
         : days < 7
-        ? 'ظ…ظ†ط° $days ط£ظٹط§ظ…'
+        ? 'منذ $days أيام'
         : days < 30
-        ? 'ظ…ظ†ط° ${(days / 7).floor()} ط£ط³ط§ط¨ظٹط¹'
+        ? 'منذ ${(days / 7).floor()} أسابيع'
         : days < 365
-        ? 'ظ…ظ†ط° ${(days / 30).floor()} ط£ط´ظ‡ط±'
-        : 'ظ…ظ†ط° ${(days / 365).floor()} ط³ظ†ظˆط§طھ';
+        ? 'منذ ${(days / 30).floor()} أشهر'
+        : 'منذ ${(days / 365).floor()} سنوات';
 
     return Container(
       decoration: BoxDecoration(
@@ -882,8 +882,8 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
                       ),
                       child: Text(
                         _offlineThumbnailOnly
-                            ? 'ظ…ط­ظپظˆط¸'
-                            : 'ط§ظ‚طھط±ط§ط­ ط°ظƒظٹ',
+                            ? 'محفوظ'
+                            : 'اقتراح ذكي',
                         style: GoogleFonts.cairo(
                           color: Colors.white,
                           fontSize: 9.5,
@@ -930,7 +930,7 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text(
-                        _offlineThumbnailOnly ? 'ظ…ط­ظپظˆط¸' : 'â–¶ ط´ط§ظ‡ط¯',
+                        _offlineThumbnailOnly ? 'محفوظ' : '▶ شاهد',
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 9.5,
@@ -1012,9 +1012,9 @@ class _HomeChannelsPreviewCardState extends State<HomeChannelsPreviewCard>
                             [
                               video.channelTitle,
                               if (viewsStr.isNotEmpty)
-                                '$viewsStr ظ…ط´ط§ظ‡ط¯ط©',
+                                '$viewsStr مشاهدة',
                               timeAgo,
-                            ].join(' â€¢ '),
+                            ].join(' • '),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: GoogleFonts.cairo(
@@ -1204,7 +1204,7 @@ class _HomePreviewErrorCard extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'طھط¹ط°ط± طھط­ظ…ظٹظ„ ط§ظ„ظ…ط¹ط§ظٹظ†ط©',
+                  'تعذر تحميل المعاينة',
                   style: GoogleFonts.cairo(
                     fontSize: 13,
                     fontWeight: FontWeight.w700,
@@ -1212,7 +1212,7 @@ class _HomePreviewErrorCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'ظٹظ…ظƒظ†ظƒ ط§ظ„ظ…ط­ط§ظˆظ„ط© ظ…ط±ط© ط£ط®ط±ظ‰',
+                  'يمكنك المحاولة مرة أخرى',
                   style: GoogleFonts.cairo(
                     fontSize: 11,
                     color: subColor,
@@ -1224,7 +1224,7 @@ class _HomePreviewErrorCard extends StatelessWidget {
           TextButton(
             onPressed: onRetry,
             child: Text(
-              'ط¥ط¹ط§ط¯ط©',
+              'إعادة',
               style: GoogleFonts.cairo(fontWeight: FontWeight.w800),
             ),
           ),

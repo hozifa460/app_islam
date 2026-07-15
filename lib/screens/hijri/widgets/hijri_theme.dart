@@ -109,8 +109,8 @@ class HijriTheme {
     if (context.tr.locale.languageCode != 'ar') return n.toString();
 
     const nums = {
-      '0': 'ظ ', '1': 'ظ،', '2': 'ظ¢', '3': 'ظ£', '4': 'ظ¤',
-      '5': 'ظ¥', '6': 'ظ¦', '7': 'ظ§', '8': 'ظ¨', '9': 'ظ©'
+      '0': '٠', '1': 'ظ،', '2': '٢', '3': '٣', '4': '٤',
+      '5': '٥', '6': '٦', '7': '٧', '8': '٨', '9': '٩'
     };
     return n.toString().split('').map((e) => nums[e] ?? e).join();
   }

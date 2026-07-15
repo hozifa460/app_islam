@@ -11,34 +11,34 @@ class LanguageButton extends StatelessWidget {
   static const _gold = Color(0xFFD4AF37);
 
   static const Map<String, String> _flags = {
-    'ar': 'ًں‡¸ًں‡¦',
-    'en': 'ًں‡؛ًں‡¸',
-    'fr': 'ًں‡«ًں‡·',
-    'de': 'ًں‡©ًں‡ھ',
-    'es': 'ًں‡ھًں‡¸',
-    'it': 'ًں‡®ًں‡¹',
-    'pt': 'ًں‡§ًں‡·',
-    'nl': 'ًں‡³ًں‡±',
-    'ru': 'ًں‡·ًں‡؛',
-    'tr': 'ًں‡¹ًں‡·',
-    'ur': 'ًں‡µًں‡°',
-    'id': 'ًں‡®ًں‡©',
-    'ms': 'ًں‡²ًں‡¾',
-    'hi': 'ًں‡®ًں‡³',
-    'ja': 'ًں‡¯ًں‡µ',
-    'zh': 'ًں‡¨ًں‡³',
-    'uz': 'ًں‡؛ًں‡؟',
-    'sw': 'ًں‡¹ًں‡؟',
-    'ha': 'ًں‡³ًں‡¬',
-    'am': 'ًں‡ھًں‡¹',
-    'so': 'ًں‡¸ًں‡´',
+    'ar': '🇸🇦',
+    'en': '🇺🇸',
+    'fr': '🇫🇷',
+    'de': '🇩🇪',
+    'es': '🇪🇸',
+    'it': '🇮🇹',
+    'pt': '🇧🇷',
+    'nl': '🇳🇱',
+    'ru': '🇷🇺',
+    'tr': '🇹🇷',
+    'ur': '🇵🇰',
+    'id': '🇮🇩',
+    'ms': '🇲🇾',
+    'hi': '🇮🇳',
+    'ja': '🇯🇵',
+    'zh': '🇨🇳',
+    'uz': '🇺🇿',
+    'sw': '🇹🇿',
+    'ha': '🇳🇬',
+    'am': '🇪🇹',
+    'so': '🇸🇴',
   };
 
   @override
   Widget build(BuildContext context) {
     final localeProvider = context.watch<LocaleProvider>();
     final currentCode = localeProvider.locale.languageCode;
-    final flag = _flags[currentCode] ?? 'ًںŒگ';
+    final flag = _flags[currentCode] ?? '🌐';
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Material(

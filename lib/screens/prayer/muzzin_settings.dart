@@ -35,7 +35,7 @@ class MuezzinSettingsScreen extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          'ط§ط®طھظٹط§ط± ط§ظ„ظ…ط¤ط°ظ†',
+          'اختيار المؤذن',
           style: GoogleFonts.cairo(
             fontWeight: FontWeight.bold,
             fontSize: 24,
@@ -72,7 +72,7 @@ class MuezzinSettingsScreen extends StatelessWidget {
                   children: [
                     const SizedBox(height: 20),
                     Text(
-                      'ط§ط®طھط± ط§ظ„ظ‚ط³ظ…',
+                      'اختر القسم',
                       style: GoogleFonts.cairo(color: subTextColor, fontSize: 16),
                     ),
                     const SizedBox(height: 30),
@@ -187,7 +187,7 @@ class MuezzinSettingsScreen extends StatelessWidget {
                                               ),
                                             ),
                                             child: Text(
-                                              'ظ…ط´ط§ظٹط®',
+                                              'مشايخ',
                                               style: GoogleFonts.cairo(
                                                 color: _gold,
                                                 fontSize: 12,

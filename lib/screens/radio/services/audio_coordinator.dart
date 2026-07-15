@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 import '../data/quran_data.dart';
 import '../models/player_snapshot.dart';
 import '../models/radio_station.dart';
-import '../widgets_recitations_screen/models/playlist_model.dart';
 import '../widgets_recitations_screen/services/playlist_service.dart';
 import 'Radio_Intillegence.dart';
 import 'listening_history_service.dart';
@@ -24,17 +23,7 @@ class AudioCoordinator extends ChangeNotifier {
     _onlineSurah.addListener(_onServiceChanged);
   }
 
-  // ✅ Throttle لتقليل عدد الإشعارات
-  DateTime _lastNotify = DateTime.now();
-  bool _notifyScheduled = false;
-
   void _onServiceChanged() {
-    debugPrint('🔔 _onServiceChanged: _activePlayer=$_activePlayer');
-    debugPrint('   online.current=${_onlineRadio.currentStation?.name}');
-    debugPrint('   offline.current=${_offlineRadio.currentStation?.name}');
-    debugPrint('   onlineSurah.current=${_onlineSurah.currentStation?.name}');
-    debugPrint('   hasActivePlayer=$hasActivePlayer');
-
     notifyListeners();
   }
 
@@ -44,6 +33,9 @@ class AudioCoordinator extends ChangeNotifier {
 
   ActivePlayer _activePlayer = ActivePlayer.none;
   bool _isSwitching = false;
+  bool _usesPlaylist = false;
+  Timer? _sleepTimer;
+  DateTime? _sleepEndsAt;
 
   ActivePlayer get activePlayer => _activePlayer;
   RadioIntillegence get onlineRadio => _onlineRadio;
@@ -74,6 +66,9 @@ class AudioCoordinator extends ChangeNotifier {
           isBuffering: _onlineRadio.isBuffering,
           isOnline: true,
           sourceKey: 'online',
+          error: _onlineRadio.error,
+          canGoNext: _usesPlaylist || _onlineRadio.currentStation != null,
+          canGoPrevious: _usesPlaylist || _onlineRadio.currentStation != null,
         );
 
       case ActivePlayer.offlineRadio:
@@ -92,6 +87,8 @@ class AudioCoordinator extends ChangeNotifier {
           isBuffering: false,
           isOnline: false,
           sourceKey: 'offline',
+          canGoNext: _offlineRadio.totalSurahs > 1,
+          canGoPrevious: _offlineRadio.totalSurahs > 1,
         );
 
       case ActivePlayer.onlineSurah:
@@ -108,6 +105,9 @@ class AudioCoordinator extends ChangeNotifier {
           isBuffering: _onlineSurah.isBuffering,
           isOnline: true,
           sourceKey: 'onlineSurah',
+          error: _onlineSurah.error,
+          canGoNext: false,
+          canGoPrevious: false,
         );
 
       case ActivePlayer.none:
@@ -125,6 +125,19 @@ class AudioCoordinator extends ChangeNotifier {
   String get currentEmoji => snapshot.emoji;
   bool get isCurrentlyPlaying => snapshot.isPlaying;
   bool get isCurrentlyBuffering => snapshot.isBuffering;
+  DateTime? get sleepEndsAt => _sleepEndsAt;
+  Duration get position => switch (_activePlayer) {
+    ActivePlayer.online => _onlineRadio.position,
+    ActivePlayer.offlineRadio => _offlineRadio.position,
+    ActivePlayer.onlineSurah => _onlineSurah.position,
+    ActivePlayer.none => Duration.zero,
+  };
+  Duration get duration => switch (_activePlayer) {
+    ActivePlayer.online => _onlineRadio.duration,
+    ActivePlayer.offlineRadio => _offlineRadio.duration,
+    ActivePlayer.onlineSurah => _onlineSurah.duration,
+    ActivePlayer.none => Duration.zero,
+  };
 
   Future<void> _runSwitch(
       Future<void> Function(int requestId) action,
@@ -153,6 +166,7 @@ class AudioCoordinator extends ChangeNotifier {
   // ══ تشغيل راديو أونلاين ══
   Future<void> playOnlineRadio(dynamic station) {
     return _runSwitch((requestId) async {
+      _usesPlaylist = false;
       if (!_isLatest(requestId)) return;
 
       // ✅ أوقف المشغلات الأخرى فقط (ليس online)
@@ -178,6 +192,7 @@ class AudioCoordinator extends ChangeNotifier {
 // ══ تشغيل راديو أوفلاين ══
   Future<void> playOfflineRadio(dynamic station) {
     return _runSwitch((requestId) async {
+      _usesPlaylist = false;
       if (!_isLatest(requestId)) return;
 
       await Future.wait([
@@ -206,6 +221,7 @@ class AudioCoordinator extends ChangeNotifier {
     bool playAllFromHere = false,
   }) {
     return _runSwitch((requestId) async {
+      _usesPlaylist = false;
       if (!_isLatest(requestId)) return;
 
       await Future.wait([
@@ -237,6 +253,7 @@ class AudioCoordinator extends ChangeNotifier {
     required int surahNumber,
   }) {
     return _runSwitch((requestId) async {
+      _usesPlaylist = false;
       if (!_isLatest(requestId)) return;
 
       await Future.wait([
@@ -269,6 +286,7 @@ class AudioCoordinator extends ChangeNotifier {
     String? localPath,
   }) {
     return _runSwitch((requestId) async {
+      _usesPlaylist = false;
       if (!_isLatest(requestId)) return;
 
       final surah = QuranData.surahByNumber(surahNumber);
@@ -320,6 +338,7 @@ class AudioCoordinator extends ChangeNotifier {
 // ══ تشغيل عنصر من القائمة ══
   Future<void> playPlaylistItem(dynamic item,) {
     return _runSwitch((requestId) async {
+      _usesPlaylist = true;
       if (!_isLatest(requestId)) return;
 
       await Future.wait([
@@ -365,6 +384,7 @@ class AudioCoordinator extends ChangeNotifier {
     required dynamic station,
   }) {
     return _runSwitch((requestId) async {
+      _usesPlaylist = false;
       if (!_isLatest(requestId)) return;
 
       await Future.wait([
@@ -400,6 +420,7 @@ class AudioCoordinator extends ChangeNotifier {
     } catch (_) {}
 
     _activePlayer = ActivePlayer.none;
+    _usesPlaylist = false;
     _isSwitching = false;
     notifyListeners();
   }
@@ -435,6 +456,10 @@ class AudioCoordinator extends ChangeNotifier {
 
   // ══ التالي ══
   Future<void> playNext() async {
+    if (_usesPlaylist) {
+      await playNextInPlaylist();
+      return;
+    }
     switch (_activePlayer) {
       case ActivePlayer.online:
         await _onlineRadio.playNext();
@@ -453,6 +478,10 @@ class AudioCoordinator extends ChangeNotifier {
 
   // ══ السابق ══
   Future<void> playPrevious() async {
+    if (_usesPlaylist) {
+      await playPreviousInPlaylist();
+      return;
+    }
     switch (_activePlayer) {
       case ActivePlayer.online:
         await _onlineRadio.playPrevious();
@@ -485,6 +514,72 @@ class AudioCoordinator extends ChangeNotifier {
     if (prevItem != null) {
       await playPlaylistItem(prevItem);
     }
+  }
+
+  Future<void> seek(Duration value) async {
+    switch (_activePlayer) {
+      case ActivePlayer.online:
+        await _onlineRadio.player.seek(value);
+        break;
+      case ActivePlayer.offlineRadio:
+        await _offlineRadio.seek(value);
+        break;
+      case ActivePlayer.onlineSurah:
+        await _onlineSurah.seek(value);
+        break;
+      case ActivePlayer.none:
+        break;
+    }
+  }
+
+  Future<void> retryCurrent() async {
+    switch (_activePlayer) {
+      case ActivePlayer.online:
+        await _onlineRadio.resume();
+        break;
+      case ActivePlayer.offlineRadio:
+        await _offlineRadio.resume();
+        break;
+      case ActivePlayer.onlineSurah:
+        final station = _onlineSurah.currentStation;
+        final surahNumber = _onlineSurah.currentSurahNumber;
+        if (station != null && surahNumber > 0) {
+          await _onlineSurah.playSurahOnline(
+            station: station,
+            surahNumber: surahNumber,
+          );
+        }
+        break;
+      case ActivePlayer.none:
+        break;
+    }
+  }
+
+  Future<void> setSpeed(double speed) async {
+    switch (_activePlayer) {
+      case ActivePlayer.online:
+        await _onlineRadio.player.setSpeed(speed);
+        break;
+      case ActivePlayer.offlineRadio:
+        await _offlineRadio.player.setSpeed(speed);
+        break;
+      case ActivePlayer.onlineSurah:
+        await _onlineSurah.setSpeed(speed);
+        break;
+      case ActivePlayer.none:
+        break;
+    }
+  }
+
+  void setSleepTimer(Duration? duration) {
+    _sleepTimer?.cancel();
+    _sleepTimer = null;
+    _sleepEndsAt = null;
+    if (duration != null) {
+      _sleepEndsAt = DateTime.now().add(duration);
+      _sleepTimer = Timer(duration, stopAll);
+    }
+    notifyListeners();
   }
 
   void _saveToHistory(dynamic station, String type) {

@@ -83,9 +83,9 @@ class _PasswordStrengthBarState extends State<PasswordStrengthBar> {
   }
 
   String _label(double s) {
-    if (s < 0.3) return 'ط¶ط¹ظٹظپط©';
-    if (s < 0.6) return 'ظ…طھظˆط³ط·ط©';
-    if (s < 0.85) return 'ط¬ظٹط¯ط©';
-    return 'ظ‚ظˆظٹط© ًں’ھ';
+    if (s < 0.3) return 'ضعيفة';
+    if (s < 0.6) return 'متوسطة';
+    if (s < 0.85) return 'جيدة';
+    return 'قوية 💪';
   }
 }

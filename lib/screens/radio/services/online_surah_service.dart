@@ -13,6 +13,7 @@ class OnlineSurahService extends ChangeNotifier {
   OnlineSurahService._internal();
 
   AudioPlayer? _player;
+  bool _initialized = false;
   bool _isDisposed = false;
 
   IslamicRadioStation? _currentStation;
@@ -49,6 +50,8 @@ class OnlineSurahService extends ChangeNotifier {
 
   // ══ تهيئة المشغل ══
   Future<void> init() async {
+    if (_initialized) return;
+    _initialized = true;
     await _initPlayer();
   }
 
@@ -74,15 +77,15 @@ class OnlineSurahService extends ChangeNotifier {
       _safeNotify();
     });
 
-    DateTime _lastPosNotify = DateTime.now();
+    DateTime lastPosNotify = DateTime.now();
 
     _player!.positionStream.listen((pos) {
       if (_isDisposed) return;
       _position = pos;
 
       final now = DateTime.now();
-      if (now.difference(_lastPosNotify).inMilliseconds >= 500) {
-        _lastPosNotify = now;
+      if (now.difference(lastPosNotify).inMilliseconds >= 500) {
+        lastPosNotify = now;
         _safeNotify();
       }
     });
@@ -270,6 +273,12 @@ class OnlineSurahService extends ChangeNotifier {
   Future<void> seek(Duration position) async {
     try {
       await _player?.seek(position);
+    } catch (_) {}
+  }
+
+  Future<void> setSpeed(double speed) async {
+    try {
+      await _player?.setSpeed(speed);
     } catch (_) {}
   }
 

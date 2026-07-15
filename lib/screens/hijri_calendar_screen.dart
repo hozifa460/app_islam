@@ -29,51 +29,51 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen>
 
   int _factOffset = 0;
 
-  static const List<String> _weekDays = ['ظ†', 'ط«', 'ط±', 'ط®', 'ط¬', 'ط³', 'ط­'];
+  static const List<String> _weekDays = ['ن', 'ث', 'ر', 'خ', 'ج', 'س', 'ح'];
 
   static const List<String> _arabicMonths = [
-    'ظٹظ†ط§ظٹط±', 'ظپط¨ط±ط§ظٹط±', 'ظ…ط§ط±ط³', 'ط£ط¨ط±ظٹظ„', 'ظ…ط§ظٹظˆ', 'ظٹظˆظ†ظٹظˆ',
-    'ظٹظˆظ„ظٹظˆ', 'ط£ط؛ط³ط·ط³', 'ط³ط¨طھظ…ط¨ط±', 'ط£ظƒطھظˆط¨ط±', 'ظ†ظˆظپظ…ط¨ط±', 'ط¯ظٹط³ظ…ط¨ط±',
+    'يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو',
+    'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر',
   ];
 
   static const List<String> _hijriMonths = [
-    'ظ…ط­ط±ظ…', 'طµظپط±', 'ط±ط¨ظٹط¹ ط§ظ„ط£ظˆظ„', 'ط±ط¨ظٹط¹ ط§ظ„ط¢ط®ط±',
-    'ط¬ظ…ط§ط¯ظ‰ ط§ظ„ط£ظˆظ„ظ‰', 'ط¬ظ…ط§ط¯ظ‰ ط§ظ„ط¢ط®ط±ط©', 'ط±ط¬ط¨', 'ط´ط¹ط¨ط§ظ†',
-    'ط±ظ…ط¶ط§ظ†', 'ط´ظˆط§ظ„', 'ط°ظˆ ط§ظ„ظ‚ط¹ط¯ط©', 'ط°ظˆ ط§ظ„ط­ط¬ط©',
+    'محرم', 'صفر', 'ربيع الأول', 'ربيع الآخر',
+    'جمادى الأولى', 'جمادى الآخرة', 'رجب', 'شعبان',
+    'رمضان', 'شوال', 'ذو القعدة', 'ذو الحجة',
   ];
 
   static const List<String> _islamicFacts = [
-    'ط§ظ„طھظ‚ظˆظٹظ… ط§ظ„ظ‡ط¬ط±ظٹ ظٹط¨ط¯ط£ ظ…ظ† ظ‡ط¬ط±ط© ط§ظ„ظ†ط¨ظٹ ï·؛ ظ…ظ† ظ…ظƒط© ط¥ظ„ظ‰ ط§ظ„ظ…ط¯ظٹظ†ط©.',
-    'ط´ظ‡ط± ط±ظ…ط¶ط§ظ† ظ‡ظˆ ط§ظ„ط´ظ‡ط± ط§ظ„طھط§ط³ط¹ ظپظٹ ط§ظ„طھظ‚ظˆظٹظ… ط§ظ„ظ‡ط¬ط±ظٹ.',
-    'ط§ظ„ط£ط´ظ‡ط± ط§ظ„ط­ط±ظ… ظ‡ظٹ: ط°ظˆ ط§ظ„ظ‚ط¹ط¯ط©طŒ ط°ظˆ ط§ظ„ط­ط¬ط©طŒ ظ…ط­ط±ظ…طŒ ط±ط¬ط¨.',
-    'ظ„ظٹظ„ط© ط§ظ„ظ‚ط¯ط± ط®ظٹط± ظ…ظ† ط£ظ„ظپ ط´ظ‡ط±طŒ ظˆطھظ„طھظ…ط³ ظپظٹ ط§ظ„ط¹ط´ط± ط§ظ„ط£ظˆط§ط®ط± ظ…ظ† ط±ظ…ط¶ط§ظ†.',
-    'ظٹظˆظ… ط§ظ„ط¬ظ…ط¹ط© ظ‡ظˆ ط®ظٹط± ط£ظٹط§ظ… ط§ظ„ط£ط³ط¨ظˆط¹ ط¹ظ†ط¯ ط§ظ„ظ…ط³ظ„ظ…ظٹظ†.',
-    'طµظٹط§ظ… ظٹظˆظ… ط¹ط±ظپط© ظٹظƒظپظ‘ط± ط³ظ†طھظٹظ† ط¨ط¥ط°ظ† ط§ظ„ظ„ظ‡ ظ„ط؛ظٹط± ط§ظ„ط­ط§ط¬.',
-    'ظٹظˆظ… ط¹ط§ط´ظˆط±ط§ط، ظ…ظ† ط§ظ„ط£ظٹط§ظ… ط§ظ„ظ…ط¨ط§ط±ظƒط© ظˆظٹط³طھط­ط¨ طµظٹط§ظ…ظ‡.',
-    'ط§ظ„ط²ظƒط§ط© ظˆط§ظ„طµظٹط§ظ… ظˆط§ظ„ط­ط¬ طھط±طھط¨ط· ظپظٹ ط£ط­ظƒط§ظ…ظ‡ط§ ط¨ط§ظ„طھظ‚ظˆظٹظ… ط§ظ„ظ‡ط¬ط±ظٹ.',
-    'ط±ط¤ظٹط© ط§ظ„ظ‡ظ„ط§ظ„ ظ…ظ† ط§ظ„ط³ظ†ظ† ط§ظ„ظ…ط±طھط¨ط·ط© ط¨ط¨ط¯ط§ظٹط© ط§ظ„ط´ظ‡ظˆط± ط§ظ„ظ‡ط¬ط±ظٹط©.',
-    'ط§ظ„ط£ط¹ظٹط§ط¯ ط§ظ„ط¥ط³ظ„ط§ظ…ظٹط© طھظڈط­ط¯ط¯ ظˆظپظ‚ ط§ظ„طھظ‚ظˆظٹظ… ط§ظ„ظ‡ط¬ط±ظٹ ظˆظ„ظٹط³ ط§ظ„ظ…ظٹظ„ط§ط¯ظٹ.',
+    'التقويم الهجري يبدأ من هجرة النبي ﷺ من مكة إلى المدينة.',
+    'شهر رمضان هو الشهر التاسع في التقويم الهجري.',
+    'الأشهر الحرم هي: ذو القعدة، ذو الحجة، محرم، رجب.',
+    'ليلة القدر خير من ألف شهر، وتلتمس في العشر الأواخر من رمضان.',
+    'يوم الجمعة هو خير أيام الأسبوع عند المسلمين.',
+    'صيام يوم عرفة يكفّر سنتين بإذن الله لغير الحاج.',
+    'يوم عاشوراء من الأيام المباركة ويستحب صيامه.',
+    'الزكاة والصيام والحج ترتبط في أحكامها بالتقويم الهجري.',
+    'رؤية الهلال من السنن المرتبطة ببداية الشهور الهجرية.',
+    'الأعياد الإسلامية تُحدد وفق التقويم الهجري وليس الميلادي.',
   ];
 
   static const Map<String, Map<String, String>> _hijriEvents = {
-    '1-10': {'title': 'ظٹظˆظ… ط¹ط§ط´ظˆط±ط§ط،', 'desc': 'ظ…ظ† ط§ظ„ط£ظٹط§ظ… ط§ظ„ظ…ط³طھط­ط¨ طµظٹط§ظ…ظ‡ط§طŒ ظˆظ„ظ‡ ظپط¶ظ„ ط¹ط¸ظٹظ….'},
-    '3-12': {'title': 'ط§ظ„ظ…ظˆظ„ط¯ ط§ظ„ظ†ط¨ظˆظٹ', 'desc': 'ط°ظƒط±ظ‰ ظ…ظˆظ„ط¯ ط§ظ„ظ†ط¨ظٹ ï·؛ ظˆظپظ‚ ط¨ط¹ط¶ ط§ظ„طھظˆط§ط±ظٹط® ط§ظ„ظ…ط´ظ‡ظˆط±ط©.'},
-    '7-27': {'title': 'ط§ظ„ط¥ط³ط±ط§ط، ظˆط§ظ„ظ…ط¹ط±ط§ط¬', 'desc': 'ظ„ظٹظ„ط© ظ…ط¨ط§ط±ظƒط© ط§ط±طھط¨ط·طھ ط¨ط§ظ„ط¥ط³ط±ط§ط، ظˆط§ظ„ظ…ط¹ط±ط§ط¬.'},
-    '8-15': {'title': 'ظ„ظٹظ„ط© ط§ظ„ظ†طµظپ ظ…ظ† ط´ط¹ط¨ط§ظ†', 'desc': 'ظ„ظٹظ„ط© ظ…ط¨ط§ط±ظƒط© ظٹط¹طھظ†ظٹ ط¨ظ‡ط§ ظƒط«ظٹط± ظ…ظ† ط§ظ„ظ…ط³ظ„ظ…ظٹظ†.'},
-    '9-1': {'title': 'ط¨ط¯ط§ظٹط© ط±ظ…ط¶ط§ظ†', 'desc': 'ط¨ط¯ط§ظٹط© ط´ظ‡ط± ط±ظ…ط¶ط§ظ† ط§ظ„ظ…ط¨ط§ط±ظƒ.'},
-    '9-27': {'title': 'ظ„ظٹظ„ط© ط§ظ„ظ‚ط¯ط± (ظ…ط±ط¬ط­ط©)', 'desc': 'ظ…ظ† ط£ط¹ط¸ظ… ظ„ظٹط§ظ„ظٹ ط§ظ„ط¹ط§ظ…طŒ ظˆطھظڈط·ظ„ط¨ ظپظٹ ط§ظ„ط¹ط´ط± ط§ظ„ط£ظˆط§ط®ط±.'},
-    '10-1': {'title': 'ط¹ظٹط¯ ط§ظ„ظپط·ط±', 'desc': 'ظٹظˆظ… ظپط±ط­ ظ„ظ„ظ…ط³ظ„ظ…ظٹظ† ط¨ط¹ط¯ طھظ…ط§ظ… طµظٹط§ظ… ط±ظ…ط¶ط§ظ†.'},
-    '12-9': {'title': 'ظٹظˆظ… ط¹ط±ظپط©', 'desc': 'ظ…ظ† ط£ظپط¶ظ„ ط£ظٹط§ظ… ط§ظ„ط³ظ†ط©طŒ ظˆظٹط³طھط­ط¨ طµظٹط§ظ…ظ‡ ظ„ط؛ظٹط± ط§ظ„ط­ط§ط¬.'},
-    '12-10': {'title': 'ط¹ظٹط¯ ط§ظ„ط£ط¶ط­ظ‰', 'desc': 'ظٹظˆظ… ط§ظ„ظ†ط­ط± ظˆط£ط­ط¯ ط£ط¹ط¸ظ… ط£ظٹط§ظ… ط§ظ„ظ…ط³ظ„ظ…ظٹظ†.'},
+    '1-10': {'title': 'يوم عاشوراء', 'desc': 'من الأيام المستحب صيامها، وله فضل عظيم.'},
+    '3-12': {'title': 'المولد النبوي', 'desc': 'ذكرى مولد النبي ﷺ وفق بعض التواريخ المشهورة.'},
+    '7-27': {'title': 'الإسراء والمعراج', 'desc': 'ليلة مباركة ارتبطت بالإسراء والمعراج.'},
+    '8-15': {'title': 'ليلة النصف من شعبان', 'desc': 'ليلة مباركة يعتني بها كثير من المسلمين.'},
+    '9-1': {'title': 'بداية رمضان', 'desc': 'بداية شهر رمضان المبارك.'},
+    '9-27': {'title': 'ليلة القدر (مرجحة)', 'desc': 'من أعظم ليالي العام، وتُطلب في العشر الأواخر.'},
+    '10-1': {'title': 'عيد الفطر', 'desc': 'يوم فرح للمسلمين بعد تمام صيام رمضان.'},
+    '12-9': {'title': 'يوم عرفة', 'desc': 'من أفضل أيام السنة، ويستحب صيامه لغير الحاج.'},
+    '12-10': {'title': 'عيد الأضحى', 'desc': 'يوم النحر وأحد أعظم أيام المسلمين.'},
   };
 
   static const Map<String, Map<String, String>> _hijriNotes = {
-    '1-10': {'title': 'ظ…ط¹ظ„ظˆظ…ط© ط´ط±ط¹ظٹط©', 'desc': 'ظٹط³طھط­ط¨ طµظٹط§ظ… ظٹظˆظ… ط¹ط§ط´ظˆط±ط§ط،طŒ ظˆظٹظڈط³ظ† ط£ظ† ظٹظڈط¶ظ… ط¥ظ„ظٹظ‡ ظٹظˆظ… ظ‚ط¨ظ„ظ‡ ط£ظˆ ط¨ط¹ط¯ظ‡.'},
-    '9-1': {'title': 'ظ…ط¹ظ„ظˆظ…ط© ط´ط±ط¹ظٹط©', 'desc': 'ط±ظ…ط¶ط§ظ† ط´ظ‡ط± ط§ظ„طµظٹط§ظ… ظˆط§ظ„ظ‚ظٹط§ظ… ظˆطھظ„ط§ظˆط© ط§ظ„ظ‚ط±ط¢ظ†.'},
-    '9-27': {'title': 'ظ…ط¹ظ„ظˆظ…ط© ط´ط±ط¹ظٹط©', 'desc': 'ظ„ظٹظ„ط© ط§ظ„ظ‚ط¯ط± طھظڈظ„طھظ…ط³ ظپظٹ ط§ظ„ط¹ط´ط± ط§ظ„ط£ظˆط§ط®ط±طŒ ظˆظ‡ظٹ ط®ظٹط± ظ…ظ† ط£ظ„ظپ ط´ظ‡ط±.'},
-    '10-1': {'title': 'ظ…ط¹ظ„ظˆظ…ط© ط´ط±ط¹ظٹط©', 'desc': 'ظٹظˆظ… ط§ظ„ط¹ظٹط¯ ظٹظˆظ… ظپط±ط­ ظˆط´ظƒط±طŒ ظˆظٹظڈط³ظ† ظپظٹظ‡ ط¥ط¸ظ‡ط§ط± ط§ظ„ط³ط±ظˆط±.'},
-    '12-9': {'title': 'ظ…ط¹ظ„ظˆظ…ط© ط´ط±ط¹ظٹط©', 'desc': 'طµظٹط§ظ… ظٹظˆظ… ط¹ط±ظپط© ظ„ط؛ظٹط± ط§ظ„ط­ط§ط¬ ظٹظƒظپظ‘ط± ط³ظ†طھظٹظ†.'},
-    '12-10': {'title': 'ظ…ط¹ظ„ظˆظ…ط© ط´ط±ط¹ظٹط©', 'desc': 'ط¹ظٹط¯ ط§ظ„ط£ط¶ط­ظ‰ ظ…ظ† ط£ط¹ط¸ظ… ط§ظ„ط£ظٹط§ظ…طŒ ظˆطھظڈط´ط±ط¹ ظپظٹظ‡ ط§ظ„ط£ط¶ط­ظٹط©.'},
+    '1-10': {'title': 'معلومة شرعية', 'desc': 'يستحب صيام يوم عاشوراء، ويُسن أن يُضم إليه يوم قبله أو بعده.'},
+    '9-1': {'title': 'معلومة شرعية', 'desc': 'رمضان شهر الصيام والقيام وتلاوة القرآن.'},
+    '9-27': {'title': 'معلومة شرعية', 'desc': 'ليلة القدر تُلتمس في العشر الأواخر، وهي خير من ألف شهر.'},
+    '10-1': {'title': 'معلومة شرعية', 'desc': 'يوم العيد يوم فرح وشكر، ويُسن فيه إظهار السرور.'},
+    '12-9': {'title': 'معلومة شرعية', 'desc': 'صيام يوم عرفة لغير الحاج يكفّر سنتين.'},
+    '12-10': {'title': 'معلومة شرعية', 'desc': 'عيد الأضحى من أعظم الأيام، وتُشرع فيه الأضحية.'},
   };
 
   // ط§ظ„ط­طµظˆظ„ ط¹ظ„ظ‰ ط£ظ‚ط±ط¨ ظ…ظ†ط§ط³ط¨ط© ظ‚ط§ط¯ظ…ط©
@@ -82,15 +82,15 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen>
 
     // ظ‚ط§ط¦ظ…ط© ط§ظ„ظ…ظ†ط§ط³ط¨ط§طھ ظ…ط±طھط¨ط©
     final events = [
-      {'month': 1, 'day': 10, 'title': 'ظٹظˆظ… ط¹ط§ط´ظˆط±ط§ط،'},
-      {'month': 3, 'day': 12, 'title': 'ط§ظ„ظ…ظˆظ„ط¯ ط§ظ„ظ†ط¨ظˆظٹ'},
-      {'month': 7, 'day': 27, 'title': 'ط§ظ„ط¥ط³ط±ط§ط، ظˆط§ظ„ظ…ط¹ط±ط§ط¬'},
-      {'month': 8, 'day': 15, 'title': 'ظ„ظٹظ„ط© ط§ظ„ظ†طµظپ ظ…ظ† ط´ط¹ط¨ط§ظ†'},
-      {'month': 9, 'day': 1, 'title': 'ط¨ط¯ط§ظٹط© ط±ظ…ط¶ط§ظ†'},
-      {'month': 9, 'day': 27, 'title': 'ظ„ظٹظ„ط© ط§ظ„ظ‚ط¯ط±'},
-      {'month': 10, 'day': 1, 'title': 'ط¹ظٹط¯ ط§ظ„ظپط·ط±'},
-      {'month': 12, 'day': 9, 'title': 'ظٹظˆظ… ط¹ط±ظپط©'},
-      {'month': 12, 'day': 10, 'title': 'ط¹ظٹط¯ ط§ظ„ط£ط¶ط­ظ‰'},
+      {'month': 1, 'day': 10, 'title': 'يوم عاشوراء'},
+      {'month': 3, 'day': 12, 'title': 'المولد النبوي'},
+      {'month': 7, 'day': 27, 'title': 'الإسراء والمعراج'},
+      {'month': 8, 'day': 15, 'title': 'ليلة النصف من شعبان'},
+      {'month': 9, 'day': 1, 'title': 'بداية رمضان'},
+      {'month': 9, 'day': 27, 'title': 'ليلة القدر'},
+      {'month': 10, 'day': 1, 'title': 'عيد الفطر'},
+      {'month': 12, 'day': 9, 'title': 'يوم عرفة'},
+      {'month': 12, 'day': 10, 'title': 'عيد الأضحى'},
     ];
 
     int minDays = 366;
@@ -186,12 +186,12 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen>
   // Helper Functions
   // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   String _toArabicNum(int n) {
-    const nums = {'0': 'ظ ', '1': 'ظ،', '2': 'ظ¢', '3': 'ظ£', '4': 'ظ¤', '5': 'ظ¥', '6': 'ظ¦', '7': 'ظ§', '8': 'ظ¨', '9': 'ظ©'};
+    const nums = {'0': '٠', '1': 'ظ،', '2': '٢', '3': '٣', '4': '٤', '5': '٥', '6': '٦', '7': '٧', '8': '٨', '9': '٩'};
     return n.toString().split('').map((e) => nums[e] ?? e).join();
   }
 
   String _getWeekday(DateTime date) {
-    const days = ['ط§ظ„ط§ط«ظ†ظٹظ†', 'ط§ظ„ط«ظ„ط§ط«ط§ط،', 'ط§ظ„ط£ط±ط¨ط¹ط§ط،', 'ط§ظ„ط®ظ…ظٹط³', 'ط§ظ„ط¬ظ…ط¹ط©', 'ط§ظ„ط³ط¨طھ', 'ط§ظ„ط£ط­ط¯'];
+    const days = ['الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت', 'الأحد'];
     return days[(date.weekday - 1) % 7];
   }
 
@@ -233,10 +233,10 @@ class _HijriCalendarScreenState extends State<HijriCalendarScreen>
   }
 
   Future<void> _shareEvent(Map<String, String> e, HijriCalendar h) async {
-    await Share.share('${e['title']}\n\n${e['desc']}\n\nط§ظ„طھط§ط±ظٹط®: ${_toArabicNum(h.hDay)} ${_hijriMonths[h.hMonth - 1]} ${_toArabicNum(h.hYear)}');
+    await Share.share('${e['title']}\n\n${e['desc']}\n\nالتاريخ: ${_toArabicNum(h.hDay)} ${_hijriMonths[h.hMonth - 1]} ${_toArabicNum(h.hYear)}');
   }
 
-  Future<void> _shareFact(String f) async => await Share.share('ظ‡ظ„ طھط¹ظ„ظ…طں\n\n$f');
+  Future<void> _shareFact(String f) async => await Share.share('هل تعلم؟\n\n$f');
 
   // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   // BUILD
@@ -654,7 +654,7 @@ class _EnhancedHeroHeader extends StatelessWidget {
                           SizedBox(width: compact ? 4 : 6),
                           Flexible(
                             child: Text(
-                              'ط§ظ„ظ‚ط§ط¯ظ…: ${nextEvent!['title']}',
+                              'القادم: ${nextEvent!['title']}',
                               overflow: TextOverflow.ellipsis,
                               style: GoogleFonts.cairo(
                                 color: Colors.white.withValues(alpha: 0.9),
@@ -674,7 +674,7 @@ class _EnhancedHeroHeader extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Text(
-                              'ط¨ط¹ط¯ ${toArabicNum(nextEvent!['daysLeft'])} ظٹظˆظ…',
+                              'بعد ${toArabicNum(nextEvent!['daysLeft'])} يوم',
                               style: GoogleFonts.cairo(
                                 color: gold,
                                 fontSize: compact ? 8 : 9,
@@ -1277,9 +1277,9 @@ class _InfoRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = [
-      {'title': 'ط§ظ„ظٹظˆظ…', 'value': toArabicNum(hijri.hDay), 'icon': Icons.today_rounded},
-      {'title': 'ط§ظ„ط´ظ‡ط±', 'value': hijriMonths[hijri.hMonth - 1], 'icon': Icons.calendar_month_rounded},
-      {'title': 'ط§ظ„ط³ظ†ط©', 'value': toArabicNum(hijri.hYear), 'icon': Icons.date_range_rounded},
+      {'title': 'اليوم', 'value': toArabicNum(hijri.hDay), 'icon': Icons.today_rounded},
+      {'title': 'الشهر', 'value': hijriMonths[hijri.hMonth - 1], 'icon': Icons.calendar_month_rounded},
+      {'title': 'السنة', 'value': toArabicNum(hijri.hYear), 'icon': Icons.date_range_rounded},
     ];
 
     return Row(
@@ -1364,7 +1364,7 @@ class _EventCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  _Badge(text: 'ظ…ظ†ط§ط³ط¨ط© ط§ظ„ظٹظˆظ…', color: gold),
+                  _Badge(text: 'مناسبة اليوم', color: gold),
                   const SizedBox(height: 6),
                   Row(
                     mainAxisSize: MainAxisSize.min,
@@ -1469,7 +1469,7 @@ class _FactCard extends StatelessWidget {
               const SizedBox(width: 8),
               _IconBtn(icon: Icons.refresh_rounded, color: gold, onTap: onRefresh),
               const Spacer(),
-              Text('ظ‡ظ„ طھط¹ظ„ظ…طں', style: GoogleFonts.cairo(fontSize: compact ? 13 : 15, fontWeight: FontWeight.bold, color: gold)),
+              Text('هل تعلم؟', style: GoogleFonts.cairo(fontSize: compact ? 13 : 15, fontWeight: FontWeight.bold, color: gold)),
               const SizedBox(width: 8),
               Container(
                 width: compact ? 36 : 42,
@@ -1586,7 +1586,7 @@ class _CalendarCard extends StatelessWidget {
           SizedBox(height: compact ? 12 : 16),
           Row(
             children: weekDays.map((d) {
-              final isFri = d == 'ط¬';
+              final isFri = d == 'ج';
               return Expanded(
                 child: Center(
                   child: Padding(
@@ -1686,7 +1686,7 @@ class _CalendarCard extends StatelessWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text('ط§ظ„ط¹ظˆط¯ط© ظ„ظ„ظٹظˆظ…', style: GoogleFonts.cairo(color: primaryColor, fontSize: 12, fontWeight: FontWeight.bold)),
+                    Text('العودة لليوم', style: GoogleFonts.cairo(color: primaryColor, fontSize: 12, fontWeight: FontWeight.bold)),
                     const SizedBox(width: 6),
                     Icon(Icons.today_rounded, color: primaryColor, size: 16),
                   ],

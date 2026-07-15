@@ -129,7 +129,7 @@ class ReaderBottomBarWidget extends StatelessWidget {
                           icon: isAyahPlaying
                               ? Icons.pause_rounded
                               : Icons.play_arrow_rounded,
-                          label: isAyahPlaying ? 'ظˆظ‚ظپ' : 'ط´ط؛ظ‘ظ„',
+                          label: isAyahPlaying ? 'وقف' : 'شغّل',
                           isSmall: isSmall,
                           highlighted: isAyahPlaying,
                           onTap: onPlayPauseTap,
@@ -137,7 +137,7 @@ class ReaderBottomBarWidget extends StatelessWidget {
                         SizedBox(width: isSmall ? 2 : 3),
                         _buildPill(
                           icon: isTextHidden ? Icons.visibility : Icons.visibility_off,
-                          label: isTextHidden ? 'ط£ط¸ظ‡ط±' : 'ط£ط®ظپظگ',
+                          label: isTextHidden ? 'أظهر' : 'أخفِ',
                           isSmall: isSmall,
                           onTap: onHideToggleTap,
                         ),
@@ -210,11 +210,11 @@ class ReaderBottomBarWidget extends StatelessWidget {
   String _getViewModeLabel() {
     switch (viewMode) {
       case 'text':
-        return 'ظ†طµ';
+        return 'نص';
       case 'memorize':
-        return 'ط­ظپط¸';
+        return 'حفظ';
       default:
-        return 'طµظˆط±';
+        return 'صور';
     }
   }
 
@@ -253,12 +253,12 @@ class ReaderBottomBarWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'ط¥ط®ظپط§ط،:',
+            'إخفاء:',
             style: GoogleFonts.cairo(fontSize: 11, fontWeight: FontWeight.bold),
           ),
           const SizedBox(width: 4),
           ...List.generate(4, (i) {
-            final labels = ['ظ ', 'ظ،', 'ظ¢', 'ظ£'];
+            final labels = ['٠', 'ظ،', '٢', '٣'];
             return Padding(
               padding: const EdgeInsets.only(left: 3),
               child: GestureDetector(
@@ -333,7 +333,7 @@ class ReaderBottomBarWidget extends StatelessWidget {
             ),
           const SizedBox(width: 8),
           Text(
-            isProcessing ? 'ط¬ط§ط±ظٹ ط§ظ„طھط­ظ„ظٹظ„...' : 'ط¬ط§ط±ظٹ ط§ظ„طھط³ط¬ظٹظ„...',
+            isProcessing ? 'جاري التحليل...' : 'جاري التسجيل...',
             style: GoogleFonts.cairo(
               fontSize: 11,
               fontWeight: FontWeight.bold,

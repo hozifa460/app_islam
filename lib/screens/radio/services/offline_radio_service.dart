@@ -7,7 +7,6 @@ import 'package:just_audio/just_audio.dart';
 import '../models/radio_station.dart';
 import '../models/surah_model.dart';
 import '../data/quran_data.dart';
-import 'audio_coordinator.dart';
 import 'radio_download_service.dart';
 
 enum OfflinePlayMode { radio, single }
@@ -19,6 +18,7 @@ class OfflineRadioService extends ChangeNotifier {
   OfflineRadioService._internal();
 
   final AudioPlayer _player = AudioPlayer();
+  bool _initialized = false;
   final RadioDownloadService _downloadService = RadioDownloadService();
 
   IslamicRadioStation? _currentStation;
@@ -68,20 +68,22 @@ class OfflineRadioService extends ChangeNotifier {
 
   // ══ تهيئة ══
   Future<void> init() async {
+    if (_initialized) return;
+    _initialized = true;
     _player.playerStateStream.listen((state) {
       _isPlaying = state.playing;
       notifyListeners();
     });
 
-    DateTime _lastPositionNotify = DateTime.now();
+    DateTime lastPositionNotify = DateTime.now();
 
     _player.positionStream.listen((pos) {
       _position = pos;
 
       // ✅ أبلغ المستمعين كل 500 مللي ثانية فقط
       final now = DateTime.now();
-      if (now.difference(_lastPositionNotify).inMilliseconds >= 500) {
-        _lastPositionNotify = now;
+      if (now.difference(lastPositionNotify).inMilliseconds >= 500) {
+        lastPositionNotify = now;
         notifyListeners();
       }
     });

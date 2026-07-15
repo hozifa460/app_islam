@@ -333,7 +333,7 @@ class KhatmaDashboardView extends StatelessWidget {
                             fit: BoxFit.scaleDown,
                             alignment: AlignmentDirectional.centerStart,
                             child: Text(
-                              '$dailyPages ${tr.t('pageWord')} â€¢ â‰ˆ ${getEstimatedMinutes()} ${tr.t('minuteWord')}',
+                              '$dailyPages ${tr.t('pageWord')} • ≈ ${getEstimatedMinutes()} ${tr.t('minuteWord')}',
                               style: GoogleFonts.cairo(
                                   fontSize: isSmall ? 10 : 12,
                                   color: Colors.grey),
@@ -522,7 +522,7 @@ class KhatmaDashboardView extends StatelessWidget {
           KhatmaStatRow(
             icon: Icons.auto_stories,
             label: tr.t('khatmaCurrentPage'),
-            value: '${toArabicNum(currentPage)} / ظ¦ظ ظ¤',
+            value: '${toArabicNum(currentPage)} / ٦٠٤',
             isDark: isDark,
             primaryColor: primaryColor,
           ),

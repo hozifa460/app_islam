@@ -39,7 +39,7 @@ class _LoginFormState extends State<LoginForm> {
           _ErrorMsg(error: _error),
           AuthTextField(
             controller: _email,
-            label: 'ط§ظ„ط¨ط±ظٹط¯ ط§ظ„ط¥ظ„ظƒطھط±ظˆظ†ظٹ',
+            label: 'البريد الإلكتروني',
             hint: 'example@email.com',
             prefixIcon: Icons.email_outlined,
             keyboardType: TextInputType.emailAddress,
@@ -48,8 +48,8 @@ class _LoginFormState extends State<LoginForm> {
           const SizedBox(height: 16),
           AuthTextField(
             controller: _pass,
-            label: 'ظƒظ„ظ…ط© ط§ظ„ظ…ط±ظˆط±',
-            hint: 'ط£ط¯ط®ظ„ ظƒظ„ظ…ط© ط§ظ„ظ…ط±ظˆط±',
+            label: 'كلمة المرور',
+            hint: 'أدخل كلمة المرور',
             prefixIcon: Icons.lock_outline_rounded,
             isPassword: true,
             textInputAction: TextInputAction.done,
@@ -67,7 +67,7 @@ class _LoginFormState extends State<LoginForm> {
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               ),
               child: Text(
-                'ظ†ط³ظٹطھ ظƒظ„ظ…ط© ط§ظ„ظ…ط±ظˆط±طں',
+                'نسيت كلمة المرور؟',
                 style: GoogleFonts.cairo(
                   fontSize: 13,
                   color: _gold.withValues(alpha: 0.85),
@@ -78,7 +78,7 @@ class _LoginFormState extends State<LoginForm> {
           ),
           const SizedBox(height: 24),
           AuthButton(
-            text: 'طھط³ط¬ظٹظ„ ط§ظ„ط¯ط®ظˆظ„',
+            text: 'تسجيل الدخول',
             isLoading: auth.isLoading,
             onPressed: _submit,
           ),
@@ -88,15 +88,15 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   String? _vEmail(String? v) {
-    if (v == null || v.trim().isEmpty) return 'ط§ظ„ط¨ط±ظٹط¯ ظ…ط·ظ„ظˆط¨';
+    if (v == null || v.trim().isEmpty) return 'البريد مطلوب';
     if (!RegExp(r'^[\w\-.]+@([\w\-]+\.)+[\w\-]{2,4}$')
-        .hasMatch(v.trim())) return 'ط¨ط±ظٹط¯ ط؛ظٹط± طµط­ظٹط­';
+        .hasMatch(v.trim())) return 'بريد غير صحيح';
     return null;
   }
 
   String? _vPass(String? v) {
-    if (v == null || v.isEmpty) return 'ظƒظ„ظ…ط© ط§ظ„ظ…ط±ظˆط± ظ…ط·ظ„ظˆط¨ط©';
-    if (v.length < 6) return '6 ط£ط­ط±ظپ ط¹ظ„ظ‰ ط§ظ„ط£ظ‚ظ„';
+    if (v == null || v.isEmpty) return 'كلمة المرور مطلوبة';
+    if (v.length < 6) return '6 أحرف على الأقل';
     return null;
   }
 
@@ -121,7 +121,7 @@ class _LoginFormState extends State<LoginForm> {
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20)),
         title: Text(
-          'ط¥ط¹ط§ط¯ط© طھط¹ظٹظٹظ† ظƒظ„ظ…ط© ط§ظ„ظ…ط±ظˆط±',
+          'إعادة تعيين كلمة المرور',
           style:
           GoogleFonts.cairo(fontWeight: FontWeight.w700),
           textAlign: TextAlign.center,
@@ -130,7 +130,7 @@ class _LoginFormState extends State<LoginForm> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'ط£ط¯ط®ظ„ ط¨ط±ظٹط¯ظƒ ط§ظ„ط¥ظ„ظƒطھط±ظˆظ†ظٹ ظˆط³ظ†ط±ط³ظ„ ظ„ظƒ ط±ط§ط¨ط· ط¥ط¹ط§ط¯ط© ط§ظ„طھط¹ظٹظٹظ†',
+              'أدخل بريدك الإلكتروني وسنرسل لك رابط إعادة التعيين',
               style: GoogleFonts.cairo(fontSize: 14, height: 1.6),
               textAlign: TextAlign.center,
             ),
@@ -155,7 +155,7 @@ class _LoginFormState extends State<LoginForm> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text('ط¥ظ„ط؛ط§ط،',
+            child: Text('إلغاء',
                 style: GoogleFonts.cairo(color: Colors.grey)),
           ),
           TextButton(
@@ -170,8 +170,8 @@ class _LoginFormState extends State<LoginForm> {
                   SnackBar(
                     content: Text(
                       r.success
-                          ? 'âœ“ طھظ… ط¥ط±ط³ط§ظ„ ط±ط§ط¨ط· ط¥ط¹ط§ط¯ط© ط§ظ„طھط¹ظٹظٹظ†'
-                          : r.error ?? 'ط®ط·ط£',
+                          ? '✓ تم إرسال رابط إعادة التعيين'
+                          : r.error ?? 'خطأ',
                       style: GoogleFonts.cairo(),
                     ),
                     backgroundColor: r.success
@@ -185,7 +185,7 @@ class _LoginFormState extends State<LoginForm> {
               }
             },
             child: Text(
-              'ط¥ط±ط³ط§ظ„',
+              'إرسال',
               style: GoogleFonts.cairo(
                   color: _gold, fontWeight: FontWeight.w700),
             ),

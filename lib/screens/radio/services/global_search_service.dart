@@ -386,8 +386,8 @@ class GlobalSearchService {
       ) {
     for (final cat in categories) {
       // بحث في عنوان القسم
-      if (cat.title.toLowerCase().contains(q) ||
-          cat.description.toLowerCase().contains(q)) {
+      if (_containsNormalized(cat.title, q) ||
+          _containsNormalized(cat.description, q)) {
         results.add(SearchResult(
           type: SearchResultType.category,
           title: cat.title,
@@ -399,8 +399,8 @@ class GlobalSearchService {
 
       // بحث في عناصر القسم
       for (final item in cat.items) {
-        if (item.title.toLowerCase().contains(q) ||
-            item.subtitle.toLowerCase().contains(q)) {
+        if (_containsNormalized(item.title, q) ||
+            _containsNormalized(item.subtitle, q)) {
           results.add(SearchResult(
             type: item.hasSubItems
                 ? SearchResultType.subSection
@@ -417,8 +417,8 @@ class GlobalSearchService {
 
         // بحث في العناصر الفرعية
         for (final sub in item.allSubItems) {
-          if (sub.title.toLowerCase().contains(q) ||
-              sub.subtitle.toLowerCase().contains(q)) {
+          if (_containsNormalized(sub.title, q) ||
+              _containsNormalized(sub.subtitle, q)) {
             results.add(SearchResult(
               type: SearchResultType.subItem,
               title: sub.title,

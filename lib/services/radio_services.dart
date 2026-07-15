@@ -24,7 +24,7 @@ class RadioService {
         await player.play();
       }
     } catch (e) {
-      debugPrint("ط®ط·ط£ ظپظٹ طھط´ط؛ظٹظ„ ط§ظ„ط±ط§ط¯ظٹظˆ: $e");
+      debugPrint("خطأ في تشغيل الراديو: $e");
     }
   }
 }

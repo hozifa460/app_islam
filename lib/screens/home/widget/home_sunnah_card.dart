@@ -88,14 +88,14 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
 
   String get _emoji {
     final h = DateTime.now().hour;
-    if (h >= 3 && h < 6) return 'ًںŒ™';
-    if (h >= 6 && h < 9) return 'ًںŒ…';
-    if (h >= 9 && h < 12) return 'âک€ï¸ڈ';
-    if (h >= 12 && h < 15) return 'ًںŒ‍';
-    if (h >= 15 && h < 17) return 'ًںŒ¤ï¸ڈ';
-    if (h >= 17 && h < 19) return 'ًںŒ†';
-    if (h >= 19 && h < 21) return 'ًںŒ‡';
-    return 'ًںŒƒ';
+    if (h >= 3 && h < 6) return '🌙';
+    if (h >= 6 && h < 9) return '🌅';
+    if (h >= 9 && h < 12) return '☀️';
+    if (h >= 12 && h < 15) return '🌞';
+    if (h >= 15 && h < 17) return '🌤️';
+    if (h >= 17 && h < 19) return '🌆';
+    if (h >= 19 && h < 21) return '🌇';
+    return '🌃';
   }
 
   @override
@@ -392,7 +392,7 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
             curve: Curves.elasticOut,
             builder: (_, v, __) => Transform.scale(
               scale: v,
-              child: const Text('âœ…', style: TextStyle(fontSize: 18)),
+              child: const Text('✅', style: TextStyle(fontSize: 18)),
             ),
           )
               : Column(
@@ -535,7 +535,7 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
 
   Widget _importanceBadge(String imp) {
     final tr = context.tr;
-    final high = imp == 'âک… ${tr.confirmed}';
+    final high = imp == '★ ${tr.confirmed}';
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
       decoration: BoxDecoration(
@@ -547,7 +547,7 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
         ),
       ),
       child: Text(
-        high ? 'âک… ${tr.confirmed}' : tr.recommended,
+        high ? '★ ${tr.confirmed}' : tr.recommended,
         style: GoogleFonts.cairo(
           fontSize: 7.5,
           fontWeight: FontWeight.bold,
@@ -627,7 +627,7 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text('ًںŒ™', style: TextStyle(fontSize: 22)),
+          const Text('🌙', style: TextStyle(fontSize: 22)),
           const SizedBox(width: 10),
           Expanded(
             child: Column(
@@ -688,8 +688,8 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
               children: [
                 Text(
                   allDone
-                      ? 'ًں“‹ ${tr.viewAllSunnah}'
-                      : 'ًں“‹ ${tr.viewDetailsAndMore}',
+                      ? '📋 ${tr.viewAllSunnah}'
+                      : '📋 ${tr.viewDetailsAndMore}',
                   style: GoogleFonts.cairo(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
@@ -720,10 +720,10 @@ class _HomeSunnahCardState extends State<HomeSunnahCard>
   // â•گâ•گ FIX #9: ط¥ط²ط§ظ„ط© _shimmerText â€” ط§ط³طھط¨ط¯ط§ظ„ ط¨ظ†طµ ط¹ط§ط¯ظٹ ظ…ط¹ ظ„ظˆظ† ط°ظ‡ط¨ظٹ â•گâ•گ
   String _motive(double p, int r) {
     final tr = context.tr;
-    if (r == 1) return 'âڑ، ${tr.motiveOneSunnah}';
-    if (p > .7) return 'ًں”¥ ${tr.motiveAlmostDone}';
-    if (p > .4) return 'ًں’ھ ${tr.motiveKeepGoing}';
-    if (p > 0) return 'ًںŒ± ${tr.motiveGoodStart}';
-    return 'âœ¨ ${tr.motiveStartNow}';
+    if (r == 1) return '⚡ ${tr.motiveOneSunnah}';
+    if (p > .7) return '🔥 ${tr.motiveAlmostDone}';
+    if (p > .4) return '💪 ${tr.motiveKeepGoing}';
+    if (p > 0) return '🌱 ${tr.motiveGoodStart}';
+    return '✨ ${tr.motiveStartNow}';
   }
 }

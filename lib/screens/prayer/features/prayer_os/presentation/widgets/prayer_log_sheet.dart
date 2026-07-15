@@ -163,7 +163,7 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
         Icon(Icons.mosque, color: widget.primaryColor, size: 40),
         const SizedBox(height: 12),
         Text(
-          'طھط³ط¬ظٹظ„ طµظ„ط§ط© ${widget.prayerName}',
+          'تسجيل صلاة ${widget.prayerName}',
           style: GoogleFonts.cairo(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -193,7 +193,7 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
       child: Column(
         children: [
           Text(
-            'â‌‌ ${quote.text} â‌‍',
+            '❝ ${quote.text} ❞',
             textAlign: TextAlign.center,
             style: GoogleFonts.amiri(
               fontSize: 14,
@@ -220,7 +220,7 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'ظ…طھظ‰ طµظ„ظٹطھطں',
+          'متى صليت؟',
           style: GoogleFonts.cairo(
             fontSize: 14,
             fontWeight: FontWeight.bold,
@@ -249,7 +249,7 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'ط£ظٹظ† طµظ„ظٹطھطں',
+          'أين صليت؟',
           style: GoogleFonts.cairo(
             fontSize: 14,
             fontWeight: FontWeight.bold,
@@ -284,7 +284,7 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'ظƒظٹظپ ظƒط§ظ†طھ طµظ„ط§طھظƒطں',
+          'كيف كانت صلاتك؟',
           style: GoogleFonts.cairo(
             fontSize: 14,
             fontWeight: FontWeight.bold,
@@ -317,7 +317,7 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
   Widget _buildAdvancedSection(Color textColor, Color subColor) {
     return ExpansionTile(
       title: Text(
-        'طھظپط§طµظٹظ„ ط¥ط¶ط§ظپظٹط©',
+        'تفاصيل إضافية',
         style: GoogleFonts.cairo(
           fontWeight: FontWeight.bold,
           color: textColor,
@@ -325,32 +325,32 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
       ),
       children: [
         _ToggleOption(
-          title: 'طµظ„ظٹطھ ط§ظ„ط³ظ†ط© ط§ظ„ظ‚ط¨ظ„ظٹط©',
+          title: 'صليت السنة القبلية',
           value: _prayedSunnahBefore,
           onChanged: (v) => setState(() => _prayedSunnahBefore = v),
           color: Colors.purple,
         ),
         _ToggleOption(
-          title: 'طµظ„ظٹطھ ط§ظ„ط³ظ†ط© ط§ظ„ط¨ط¹ط¯ظٹط©',
+          title: 'صليت السنة البعدية',
           value: _prayedSunnahAfter,
           onChanged: (v) => setState(() => _prayedSunnahAfter = v),
           color: Colors.purple,
         ),
         _ToggleOption(
-          title: 'ظ‚ظ„طھ ط£ط°ظƒط§ط± ظ…ط§ ط¨ط¹ط¯ ط§ظ„طµظ„ط§ط©',
+          title: 'قلت أذكار ما بعد الصلاة',
           value: _saidAdhkar,
           onChanged: (v) => setState(() => _saidAdhkar = v),
           color: Colors.teal,
         ),
         if (_location != PrayerLocation.mosque)
           _ToggleOption(
-            title: 'طµظ„ظٹطھ ط¬ظ…ط§ط¹ط©',
+            title: 'صليت جماعة',
             value: _prayedWithJamaa,
             onChanged: (v) => setState(() => _prayedWithJamaa = v),
             color: Colors.blue,
           ),
         _ToggleOption(
-          title: 'ط´ط¹ط±طھ ط¨ط§ظ„ط®ط´ظˆط¹',
+          title: 'شعرت بالخشوع',
           value: _feltKhushu,
           onChanged: (v) => setState(() => _feltKhushu = v),
           color: Colors.red,
@@ -387,7 +387,7 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
                   Icon(Icons.auto_awesome, color: _gold),
                   const SizedBox(width: 8),
                   Text(
-                    'ظ†ظ‚ط§ط· ط§ظ„ظ†ظˆط± ط§ظ„ظ…طھظˆظ‚ط¹ط©',
+                    'نقاط النور المتوقعة',
                     style: GoogleFonts.cairo(
                       color: textColor,
                       fontWeight: FontWeight.w600,
@@ -416,7 +416,7 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Text(
-                    noor > 300 ? 'ًںŒں طµظ„ط§ط© ظ…ط«ط§ظ„ظٹط©!' : 'âœ¨ ط£ط¬ط± ظ…ط¶ط§ط¹ظپ!',
+                    noor > 300 ? '🌟 صلاة مثالية!' : '✨ أجر مضاعف!',
                     style: GoogleFonts.cairo(
                       color: Colors.green,
                       fontWeight: FontWeight.bold,
@@ -472,7 +472,7 @@ class _PrayerLogSheetState extends State<PrayerLogSheet> {
             const Icon(Icons.check_circle, size: 22),
             const SizedBox(width: 10),
             Text(
-              'طھط³ط¬ظٹظ„ ط§ظ„طµظ„ط§ط©',
+              'تسجيل الصلاة',
               style: GoogleFonts.cairo(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,

@@ -89,16 +89,16 @@ class SunnahService {
   // â”€â”€â”€ طھط³ظ…ظٹط© ط§ظ„ظپطھط±ط© â”€â”€â”€
   String getPeriodLabel(String period) {
     const labels = {
-      'fajr': 'ظˆظ‚طھ ط§ظ„ظپط¬ط±',
-      'morning_adhkar': 'ط£ط°ظƒط§ط± ط§ظ„طµط¨ط§ط­',
-      'duha': 'ظˆظ‚طھ ط§ظ„ط¶ط­ظ‰',
-      'dhuhr': 'ظˆظ‚طھ ط§ظ„ط¸ظ‡ط±',
-      'asr': 'ظˆظ‚طھ ط§ظ„ط¹طµط±',
-      'evening_adhkar': 'ط£ط°ظƒط§ط± ط§ظ„ظ…ط³ط§ط،',
-      'maghrib': 'ظˆظ‚طھ ط§ظ„ظ…ط؛ط±ط¨',
-      'isha': 'ظˆظ‚طھ ط§ظ„ط¹ط´ط§ط،',
-      'witr': 'ظˆظ‚طھ ط§ظ„ظˆطھط±',
-      'tahajjud': 'ظˆظ‚طھ ط§ظ„طھظ‡ط¬ط¯',
+      'fajr': 'وقت الفجر',
+      'morning_adhkar': 'أذكار الصباح',
+      'duha': 'وقت الضحى',
+      'dhuhr': 'وقت الظهر',
+      'asr': 'وقت العصر',
+      'evening_adhkar': 'أذكار المساء',
+      'maghrib': 'وقت المغرب',
+      'isha': 'وقت العشاء',
+      'witr': 'وقت الوتر',
+      'tahajjud': 'وقت التهجد',
     };
     return labels[period] ?? period;
   }
@@ -168,23 +168,23 @@ class SunnahService {
 
   String getCategoryLabel(String category) {
     const labels = {
-      'fajr': 'ط³ظ†ظ† ط§ظ„ظپط¬ط±',
-      'morning_adhkar': 'ط£ط°ظƒط§ط± ط§ظ„طµط¨ط§ط­',
-      'duha': 'طµظ„ط§ط© ط§ظ„ط¶ط­ظ‰',
-      'dhuhr': 'ط³ظ†ظ† ط§ظ„ط¸ظ‡ط±',
-      'asr': 'ط³ظ†ظ† ط§ظ„ط¹طµط±',
-      'evening_adhkar': 'ط£ط°ظƒط§ط± ط§ظ„ظ…ط³ط§ط،',
-      'maghrib': 'ط³ظ†ظ† ط§ظ„ظ…ط؛ط±ط¨',
-      'isha': 'ط³ظ†ظ† ط§ظ„ط¹ط´ط§ط،',
-      'witr': 'طµظ„ط§ط© ط§ظ„ظˆطھط±',
-      'tahajjud': 'ظ‚ظٹط§ظ… ط§ظ„ظ„ظٹظ„',
-      'sleep': 'ط³ظ†ظ† ط§ظ„ظ†ظˆظ…',
-      'always': 'ط³ظ†ظ† ط¯ط§ط¦ظ…ط©',
-      'weekly_fast': 'طµظٹط§ظ… ط£ط³ط¨ظˆط¹ظٹ',
-      'monthly_fast': 'طµظٹط§ظ… ط´ظ‡ط±ظٹ',
-      'friday': 'ط³ظ†ظ† ط§ظ„ط¬ظ…ط¹ط©',
-      'yearly_fast': 'طµظٹط§ظ… ط³ظ†ظˆظٹ',
-      'yearly_prayer': 'طµظ„ظˆط§طھ ط³ظ†ظˆظٹط©',
+      'fajr': 'سنن الفجر',
+      'morning_adhkar': 'أذكار الصباح',
+      'duha': 'صلاة الضحى',
+      'dhuhr': 'سنن الظهر',
+      'asr': 'سنن العصر',
+      'evening_adhkar': 'أذكار المساء',
+      'maghrib': 'سنن المغرب',
+      'isha': 'سنن العشاء',
+      'witr': 'صلاة الوتر',
+      'tahajjud': 'قيام الليل',
+      'sleep': 'سنن النوم',
+      'always': 'سنن دائمة',
+      'weekly_fast': 'صيام أسبوعي',
+      'monthly_fast': 'صيام شهري',
+      'friday': 'سنن الجمعة',
+      'yearly_fast': 'صيام سنوي',
+      'yearly_prayer': 'صلوات سنوية',
     };
     return labels[category] ?? category;
   }

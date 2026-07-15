@@ -352,7 +352,7 @@ class _InlineLoaderState extends State<_InlineLoader>
               ),
               const SizedBox(width: 12),
               Text(
-                'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط§ظ„طµظپط­ط§طھ',
+                'جاري تحميل الصفحات',
                 style: GoogleFonts.cairo(
                   color: Colors.white,
                   fontSize: 12,
@@ -411,7 +411,7 @@ class _ErrorView extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             Text(
-              'طھط¹ط°ط± طھط­ظ…ظٹظ„ ط§ظ„ظƒطھط§ط¨',
+              'تعذر تحميل الكتاب',
               style: GoogleFonts.cairo(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -420,7 +420,7 @@ class _ErrorView extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              'طھط£ظƒط¯ ظ…ظ† ط§طھطµط§ظ„ظƒ ط¨ط§ظ„ط¥ظ†طھط±ظ†طھ\nط£ظˆ ط­ظ…ظ‘ظ„ ط§ظ„ظƒطھط§ط¨ ظ„ظ„ظ‚ط±ط§ط،ط© ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ',
+              'تأكد من اتصالك بالإنترنت\nأو حمّل الكتاب للقراءة بدون إنترنت',
               textAlign: TextAlign.center,
               style: GoogleFonts.cairo(
                 fontSize: 13,
@@ -452,7 +452,7 @@ class _ErrorView extends StatelessWidget {
                         color: Colors.white, size: 20),
                     const SizedBox(width: 10),
                     Text(
-                      'ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط©',
+                      'إعادة المحاولة',
                       style: GoogleFonts.cairo(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,

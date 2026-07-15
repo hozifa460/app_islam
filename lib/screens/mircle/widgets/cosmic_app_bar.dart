@@ -131,7 +131,7 @@ class _AppBarTitle extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          'ط§ظ„ط¥ط¹ط¬ط§ط² ط§ظ„ط¹ظ„ظ…ظٹ',
+          'الإعجاز العلمي',
           style: GoogleFonts.cairo(
             color:      Colors.white,
             fontWeight: FontWeight.bold,

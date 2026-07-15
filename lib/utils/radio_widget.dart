@@ -35,14 +35,14 @@ class RadioMiniPlayer extends StatelessWidget {
                 ? const Icon(Icons.stop_circle, color: Colors.red, size: 32)
                 : Icon(Icons.play_circle_fill, color: gold, size: 32),
             title: Text(
-              'ط¥ط°ط§ط¹ط© ط§ظ„ظ‚ط±ط¢ظ† ط§ظ„ظƒط±ظٹظ…',
+              'إذاعة القرآن الكريم',
               style: GoogleFonts.cairo(
                 color: textColor, // ظ†طµ ط¯ظٹظ†ط§ظ…ظٹظƒظٹ
                 fontWeight: FontWeight.bold,
               ),
             ),
             subtitle: Text(
-              isPlaying ? 'ط¬ط§ط±ظٹ ط§ظ„ط¨ط« ط§ظ„ظ…ط¨ط§ط´ط±...' : 'ط§ط¶ط؛ط· ظ„ظ„ط§ط³طھظ…ط§ط¹',
+              isPlaying ? 'جاري البث المباشر...' : 'اضغط للاستماع',
               style: GoogleFonts.cairo(
                 color: subTextColor, // ظ†طµ ط«ط§ظ†ظˆظٹ ط¯ظٹظ†ط§ظ…ظٹظƒظٹ
                 fontSize: 12,

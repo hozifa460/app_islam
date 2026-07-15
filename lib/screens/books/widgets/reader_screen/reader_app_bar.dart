@@ -81,7 +81,7 @@ class ReaderAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             child: isOnline
                 ? Text(
-              'ظ‚ط±ط§ط،ط© ط£ظˆظ†ظ„ط§ظٹظ† ًںŒگ',
+              'قراءة أونلاين 🌐',
               key: const ValueKey('online'),
               style: GoogleFonts.cairo(
                 color: Colors.white.withValues(alpha: 0.82),

@@ -101,24 +101,24 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
 
   // â”€â”€ ط«ظˆط§ط¨طھ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   static const Map<String, String> _catIcons = {
-    'fajr': 'ًںŒ™',       'morning_adhkar': 'ًںŒ…', 'duha': 'âک€ï¸ڈ',
-    'dhuhr': 'ًںŒ‍',      'asr': 'ًںŒ¤ï¸ڈ',            'evening_adhkar': 'ًںŒ†',
-    'maghrib': 'ًںŒ‡',    'isha': 'ًںŒƒ',            'witr': 'â­گ',
-    'tahajjud': 'ًںŒں',   'sleep': 'ًںک´',           'always': 'â™¾ï¸ڈ',
-    'weekly_fast': 'ًں“…','monthly_fast': 'ًںŒ•',    'friday': 'ًں•Œ',
-    'yearly_fast': 'ًں—“ï¸ڈ','yearly_prayer': 'ًںژٹ',
+    'fajr': '🌙',       'morning_adhkar': '🌅', 'duha': '☀️',
+    'dhuhr': '🌞',      'asr': '🌤️',            'evening_adhkar': '🌆',
+    'maghrib': '🌇',    'isha': '🌃',            'witr': '⭐',
+    'tahajjud': '🌟',   'sleep': '😴',           'always': '♾️',
+    'weekly_fast': '📅','monthly_fast': '🌕',    'friday': '🕌',
+    'yearly_fast': '🗓️','yearly_prayer': '🎊',
   };
 
   static const Map<String, String> _catLabels = {
-    'fajr': 'ط§ظ„ظپط¬ط±',             'morning_adhkar': 'ط£ط°ظƒط§ط± ط§ظ„طµط¨ط§ط­',
-    'duha': 'ط§ظ„ط¶ط­ظ‰',             'dhuhr': 'ط§ظ„ط¸ظ‡ط±',
-    'asr': 'ط§ظ„ط¹طµط±',              'evening_adhkar': 'ط£ط°ظƒط§ط± ط§ظ„ظ…ط³ط§ط،',
-    'maghrib': 'ط§ظ„ظ…ط؛ط±ط¨',         'isha': 'ط§ظ„ط¹ط´ط§ط،',
-    'witr': 'ط§ظ„ظˆطھط±',             'tahajjud': 'ظ‚ظٹط§ظ… ط§ظ„ظ„ظٹظ„',
-    'sleep': 'ط§ظ„ظ†ظˆظ…',            'always': 'ط¯ط§ط¦ظ…ط©',
-    'weekly_fast': 'ط£ط³ط¨ظˆط¹ظٹط©',    'monthly_fast': 'ط´ظ‡ط±ظٹط©',
-    'friday': 'ط§ظ„ط¬ظ…ط¹ط©',          'yearly_fast': 'ط³ظ†ظˆظٹط©',
-    'yearly_prayer': 'ط³ظ†ظˆظٹط©',
+    'fajr': 'الفجر',             'morning_adhkar': 'أذكار الصباح',
+    'duha': 'الضحى',             'dhuhr': 'الظهر',
+    'asr': 'العصر',              'evening_adhkar': 'أذكار المساء',
+    'maghrib': 'المغرب',         'isha': 'العشاء',
+    'witr': 'الوتر',             'tahajjud': 'قيام الليل',
+    'sleep': 'النوم',            'always': 'دائمة',
+    'weekly_fast': 'أسبوعية',    'monthly_fast': 'شهرية',
+    'friday': 'الجمعة',          'yearly_fast': 'سنوية',
+    'yearly_prayer': 'سنوية',
   };
 
   @override
@@ -203,8 +203,8 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
     if (current.isNotEmpty) {
       groups.add(_SunnahGroup(
         groupKey: 'current',
-        title: 'ط³ظ†ظ† ${_getPeriodLabel(now)}',
-        subtitle: 'ظˆظ‚طھظƒ ط§ظ„ط¢ظ†',
+        title: 'سنن ${_getPeriodLabel(now)}',
+        subtitle: 'وقتك الآن',
         emoji: _getPeriodEmoji(now),
         color: widget.deepGreen,
         items: current,
@@ -216,9 +216,9 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
     if (always.isNotEmpty) {
       groups.add(_SunnahGroup(
         groupKey: 'always',
-        title: 'ط§ظ„ط³ظ†ظ† ط§ظ„ط¯ط§ط¦ظ…ط©',
-        subtitle: 'ظپظٹ ظƒظ„ ظˆظ‚طھ',
-        emoji: 'â™¾ï¸ڈ',
+        title: 'السنن الدائمة',
+        subtitle: 'في كل وقت',
+        emoji: '♾️',
         color: const Color(0xFF0277BD),
         items: always,
       ));
@@ -230,9 +230,9 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
       if (friday.isNotEmpty) {
         groups.add(_SunnahGroup(
           groupKey: 'friday',
-          title: 'ط³ظ†ظ† ط§ظ„ط¬ظ…ط¹ط©',
-          subtitle: 'ظٹظˆظ… ط§ظ„ط¬ظ…ط¹ط© ط§ظ„ظ…ط¨ط§ط±ظƒ',
-          emoji: 'ًں•Œ',
+          title: 'سنن الجمعة',
+          subtitle: 'يوم الجمعة المبارك',
+          emoji: '🕌',
           color: const Color(0xFF2E7D32),
           items: friday,
         ));
@@ -243,12 +243,12 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
     if (now.weekday == DateTime.monday || now.weekday == DateTime.thursday) {
       final weeklyFast = all.where((s) => s.timeCategory == 'weekly_fast').toList();
       if (weeklyFast.isNotEmpty) {
-        final dayName = now.weekday == DateTime.monday ? 'ط§ظ„ط§ط«ظ†ظٹظ†' : 'ط§ظ„ط®ظ…ظٹط³';
+        final dayName = now.weekday == DateTime.monday ? 'الاثنين' : 'الخميس';
         groups.add(_SunnahGroup(
           groupKey: 'weekly',
-          title: 'طµظٹط§ظ… ظٹظˆظ… $dayName',
-          subtitle: 'ط³ظ†ط© ط£ط³ط¨ظˆط¹ظٹط©',
-          emoji: 'ًں“…',
+          title: 'صيام يوم $dayName',
+          subtitle: 'سنة أسبوعية',
+          emoji: '📅',
           color: const Color(0xFF00695C),
           items: weeklyFast,
         ));
@@ -262,9 +262,9 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
       if (monthlyFast.isNotEmpty) {
         groups.add(_SunnahGroup(
           groupKey: 'monthly',
-          title: 'ط£ظٹط§ظ… ط§ظ„ط¨ظٹط¶',
-          subtitle: 'ط§ظ„ظٹظˆظ… ${_arabicDay(hDay)} ظ…ظ† ط§ظ„ط´ظ‡ط±',
-          emoji: 'ًںŒ•',
+          title: 'أيام البيض',
+          subtitle: 'اليوم ${_arabicDay(hDay)} من الشهر',
+          emoji: '🌕',
           color: const Color(0xFF004D40),
           items: monthlyFast,
         ));
@@ -275,13 +275,13 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
     if (hijri.hMonth == 1 && (hijri.hDay == 9 || hijri.hDay == 10 || hijri.hDay == 11)) {
       final ashura = all.where((s) =>
       s.timeCategory == 'yearly_fast' &&
-          s.name.contains('ط¹ط§ط´ظˆط±ط§ط،')).toList();
+          s.name.contains('عاشوراء')).toList();
       if (ashura.isNotEmpty) {
         groups.add(_SunnahGroup(
           groupKey: 'yearly_ashura',
-          title: 'طµظٹط§ظ… ط¹ط§ط´ظˆط±ط§ط،',
-          subtitle: '${hDay == 10 ? "ط§ظ„ظٹظˆظ… ط§ظ„ط¹ط§ط´ط±" : "ظ‚ط±ظٹط¨ط§ظ‹"} ظ…ظ† ظ…ط­ط±ظ…',
-          emoji: 'ًںŒ™',
+          title: 'صيام عاشوراء',
+          subtitle: '${hDay == 10 ? "اليوم العاشر" : "قريباً"} من محرم',
+          emoji: '🌙',
           color: const Color(0xFF37474F),
           items: ashura,
         ));
@@ -292,13 +292,13 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
     if (hijri.hMonth == 12 && hijri.hDay >= 1 && hijri.hDay <= 9) {
       final dhulHijja = all.where((s) =>
       s.timeCategory == 'yearly_fast' &&
-          s.name.contains('ط§ظ„ط­ط¬ط©')).toList();
+          s.name.contains('الحجة')).toList();
       if (dhulHijja.isNotEmpty) {
         groups.add(_SunnahGroup(
           groupKey: 'yearly_dhulhijja',
-          title: 'ط¹ط´ط± ط°ظٹ ط§ظ„ط­ط¬ط©',
-          subtitle: 'ط§ظ„ظٹظˆظ… $hDay ظ…ظ† ط°ظٹ ط§ظ„ط­ط¬ط©',
-          emoji: 'âœ¨',
+          title: 'عشر ذي الحجة',
+          subtitle: 'اليوم $hDay من ذي الحجة',
+          emoji: '✨',
           color: const Color(0xFF6D4C41),
           items: dhulHijja,
         ));
@@ -309,13 +309,13 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
     if (hijri.hMonth == 12 && hijri.hDay == 9) {
       final arafa = all.where((s) =>
       s.timeCategory == 'yearly_fast' &&
-          s.name.contains('ط¹ط±ظپط©')).toList();
+          s.name.contains('عرفة')).toList();
       if (arafa.isNotEmpty) {
         groups.add(_SunnahGroup(
           groupKey: 'yearly_arafa',
-          title: 'ظٹظˆظ… ط¹ط±ظپط©',
-          subtitle: 'ظ© ط°ظˆ ط§ظ„ط­ط¬ط©',
-          emoji: 'ًںڈ”ï¸ڈ',
+          title: 'يوم عرفة',
+          subtitle: '٩ ذو الحجة',
+          emoji: '🏔️',
           color: const Color(0xFF4E342E),
           items: arafa,
         ));
@@ -326,13 +326,13 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
     if (hijri.hMonth == 10 && hijri.hDay >= 2 && hijri.hDay <= 26) {
       final shawwal = all.where((s) =>
       s.timeCategory == 'yearly_fast' &&
-          s.name.contains('ط´ظˆط§ظ„')).toList();
+          s.name.contains('شوال')).toList();
       if (shawwal.isNotEmpty) {
         groups.add(_SunnahGroup(
           groupKey: 'yearly_shawwal',
-          title: 'ط³طھ ظ…ظ† ط´ظˆط§ظ„',
-          subtitle: 'ط´ظ‡ط± ط´ظˆط§ظ„ ط§ظ„ظ…ط¨ط§ط±ظƒ',
-          emoji: 'ًںŒ™',
+          title: 'ست من شوال',
+          subtitle: 'شهر شوال المبارك',
+          emoji: '🌙',
           color: const Color(0xFF5D4037),
           items: shawwal,
         ));
@@ -347,9 +347,9 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
       if (eid.isNotEmpty) {
         groups.add(_SunnahGroup(
           groupKey: 'yearly_eid',
-          title: 'ط³ظ†ظ† ط§ظ„ط¹ظٹط¯',
-          subtitle: hijri.hMonth == 10 ? 'ط¹ظٹط¯ ط§ظ„ظپط·ط±' : 'ط¹ظٹط¯ ط§ظ„ط£ط¶ط­ظ‰',
-          emoji: 'ًںژ‰',
+          title: 'سنن العيد',
+          subtitle: hijri.hMonth == 10 ? 'عيد الفطر' : 'عيد الأضحى',
+          emoji: '🎉',
           color: const Color(0xFFE65100),
           items: eid,
         ));
@@ -381,31 +381,31 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
   // â”€â”€ ط§ظ„ظˆظ‚طھ ط§ظ„ط­ط§ظ„ظٹ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   String _getPeriodLabel(DateTime now) {
     final h = now.hour;
-    if (h >= 4 && h < 6)  return 'ط§ظ„ظپط¬ط±';
-    if (h >= 6 && h < 8)  return 'ط§ظ„طµط¨ط§ط­';
-    if (h >= 8 && h < 12) return 'ط§ظ„ط¶ط­ظ‰';
-    if (h >= 12 && h < 14)return 'ط§ظ„ط¸ظ‡ط±';
-    if (h >= 14 && h < 17)return 'ط§ظ„ط¹طµط±';
-    if (h >= 17 && h < 20)return 'ط§ظ„ظ…ط؛ط±ط¨';
-    if (h >= 20 && h < 23)return 'ط§ظ„ط¹ط´ط§ط،';
-    return 'ط§ظ„ظ„ظٹظ„';
+    if (h >= 4 && h < 6)  return 'الفجر';
+    if (h >= 6 && h < 8)  return 'الصباح';
+    if (h >= 8 && h < 12) return 'الضحى';
+    if (h >= 12 && h < 14)return 'الظهر';
+    if (h >= 14 && h < 17)return 'العصر';
+    if (h >= 17 && h < 20)return 'المغرب';
+    if (h >= 20 && h < 23)return 'العشاء';
+    return 'الليل';
   }
 
   String _getPeriodEmoji(DateTime now) {
     final h = now.hour;
-    if (h >= 4 && h < 6)  return 'ًںŒ™';
-    if (h >= 6 && h < 8)  return 'ًںŒ…';
-    if (h >= 8 && h < 12) return 'âک€ï¸ڈ';
-    if (h >= 12 && h < 14)return 'ًںŒ‍';
-    if (h >= 14 && h < 17)return 'ًںŒ¤ï¸ڈ';
-    if (h >= 17 && h < 20)return 'ًںŒ‡';
-    if (h >= 20 && h < 23)return 'ًںŒƒ';
-    return 'ًںŒں';
+    if (h >= 4 && h < 6)  return '🌙';
+    if (h >= 6 && h < 8)  return '🌅';
+    if (h >= 8 && h < 12) return '☀️';
+    if (h >= 12 && h < 14)return '🌞';
+    if (h >= 14 && h < 17)return '🌤️';
+    if (h >= 17 && h < 20)return '🌇';
+    if (h >= 20 && h < 23)return '🌃';
+    return '🌟';
   }
 
   String _arabicDay(int d) {
     const map = {
-      13: 'ط§ظ„ط«ط§ظ„ط« ط¹ط´ط±', 14: 'ط§ظ„ط±ط§ط¨ط¹ ط¹ط´ط±', 15: 'ط§ظ„ط®ط§ظ…ط³ ط¹ط´ط±',
+      13: 'الثالث عشر', 14: 'الرابع عشر', 15: 'الخامس عشر',
     };
     return map[d] ?? '$d';
   }
@@ -707,19 +707,19 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
                       children: [
                         _chip(
                           item.importance,
-                          item.importance == 'ظ…ط¤ظƒط¯ط©'
+                          item.importance == 'مؤكدة'
                               ? group.color
                               : widget.gold,
                           small,
                           bold: true,
-                          icon: item.importance == 'ظ…ط¤ظƒط¯ط©'
+                          icon: item.importance == 'مؤكدة'
                               ? Icons.star_rounded
                               : Icons.star_outline_rounded,
                         ),
                         if (item.rakaat > 0) ...[
                           const SizedBox(width: 5),
                           _chip(
-                            '${item.rakaat} ط±ظƒط¹ط§طھ',
+                            '${item.rakaat} ركعات',
                             const Color(0xFF1565C0),
                             small,
                           ),
@@ -853,7 +853,7 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
             ),
           ),
           const SizedBox(width: 8),
-          Text('ًں“–', style: TextStyle(fontSize: small ? 14 : 16)),
+          Text('📖', style: TextStyle(fontSize: small ? 14 : 16)),
         ],
       ),
     );
@@ -866,7 +866,7 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
       children: [
         // ط²ط± ط¹ط±ط¶ ط§ظ„ظƒظ„
         _actionBtn(
-          label: 'ط¹ط±ط¶ ط§ظ„ظƒظ„',
+          label: 'عرض الكل',
           icon: Icons.arrow_back_ios_rounded,
           color: group.color,
           w: w,
@@ -947,7 +947,7 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           if (start > 0)
-            Text('â€¦',
+            Text('…',
                 style: TextStyle(
                     color: group.color.withValues(alpha: 0.35), fontSize: 10)),
           ...List.generate(end - start, (i) {
@@ -967,7 +967,7 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
             );
           }),
           if (end < count)
-            Text('â€¦',
+            Text('…',
                 style: TextStyle(
                     color: group.color.withValues(alpha: 0.35), fontSize: 10)),
         ],
@@ -1110,11 +1110,11 @@ class _CurrentSunnahCardState extends State<CurrentSunnahCard>
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('ًںŒ™', style: TextStyle(fontSize: 22)),
+          const Text('🌙', style: TextStyle(fontSize: 22)),
           const SizedBox(width: 10),
           Flexible(
             child: Text(
-              'ظ„ط§ طھظˆط¬ط¯ ط³ظ†ظ† ط®ط§طµط© ط¨ظ‡ط°ط§ ط§ظ„ظˆظ‚طھ',
+              'لا توجد سنن خاصة بهذا الوقت',
               maxLines: 2,
               style: GoogleFonts.cairo(
                 color: widget.isDark ? Colors.white54 : Colors.black45,

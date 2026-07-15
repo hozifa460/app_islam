@@ -104,7 +104,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          path != null ? 'طھظ… طھط­ظ…ظٹظ„ ${m.name} ط¨ظ†ط¬ط§ط­' : 'ظپط´ظ„ طھط­ظ…ظٹظ„ ${m.name}',
+          path != null ? 'تم تحميل ${m.name} بنجاح' : 'فشل تحميل ${m.name}',
           style: GoogleFonts.cairo(),
         ),
         backgroundColor: path != null ? Colors.green : Colors.red,
@@ -121,7 +121,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('طھظ… ط­ط°ظپ ${m.name} ظ…ظ† ط§ظ„ظ‡ط§طھظپ', style: GoogleFonts.cairo()),
+        content: Text('تم حذف ${m.name} من الهاتف', style: GoogleFonts.cairo()),
         backgroundColor: Colors.orange,
       ),
     );
@@ -176,7 +176,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
         });
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('طھط¹ط°ط± طھط´ط؛ظٹظ„ ط§ظ„ظ…ط¹ط§ظٹظ†ط©', style: GoogleFonts.cairo()),
+            content: Text('تعذر تشغيل المعاينة', style: GoogleFonts.cairo()),
             backgroundColor: Colors.red,
           ),
         );
@@ -198,7 +198,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'طھظ… ط§ط®طھظٹط§ط± ${m.name} ظƒظ…ط¤ط°ظ† ط§ظپطھط±ط§ط¶ظٹ ظ„ظƒظ„ ط§ظ„طµظ„ظˆط§طھ',
+          'تم اختيار ${m.name} كمؤذن افتراضي لكل الصلوات',
           style: GoogleFonts.cairo(),
         ),
         backgroundColor: _gold,
@@ -409,7 +409,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
                             ),
                           ),
                           child: Text(
-                            'ط§ط®طھظٹط§ط±',
+                            'اختيار',
                             style: GoogleFonts.cairo(
                               fontSize: 11.5,
                               fontWeight: FontWeight.bold,
@@ -532,7 +532,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
                         ),
                       ),
                       child: Text(
-                        'ط§ط®طھظٹط§ط±',
+                        'اختيار',
                         style: GoogleFonts.cairo(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
@@ -668,7 +668,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
                       ),
                     ),
                     child: Text(
-                      'ط§ط®طھظٹط§ط±',
+                      'اختيار',
                       style: GoogleFonts.cairo(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
@@ -771,7 +771,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
                       ),
                     ),
                     child: Text(
-                      'ط§ط®طھظٹط§ط±',
+                      'اختيار',
                       style: GoogleFonts.cairo(
                         fontSize: 11.5,
                         fontWeight: FontWeight.bold,
@@ -844,7 +844,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
       mainAxisSize: MainAxisSize.min,
       children: [
         IconButton(
-          tooltip: 'ظ…ط¹ط§ظٹظ†ط©',
+          tooltip: 'معاينة',
           onPressed: () => _previewMuezzin(m),
           icon: _previewLoading && _playingPreviewId == m.id
               ? SizedBox(
@@ -873,7 +873,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
               border: Border.all(color: _gold.withValues(alpha: 0.4)),
             ),
             child: Text(
-              'ط¬ط§ظ‡ط²',
+              'جاهز',
               style: GoogleFonts.cairo(
                 color: _gold,
                 fontSize: 10,
@@ -909,7 +909,7 @@ class _MuezzinListScreenState extends State<MuezzinListScreen> {
             )
           else
             IconButton(
-              tooltip: 'طھط­ظ…ظٹظ„',
+              tooltip: 'تحميل',
               onPressed: () => _downloadMuezzin(m),
               icon: Icon(Icons.download_rounded, color: textColorSub, size: 22),
             ),

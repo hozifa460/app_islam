@@ -126,11 +126,11 @@ class QiblaTheme {
   static String getDirectionLabel(double deviation) {
   final d = deviation;
   final abs = d.abs();
-  if (abs < 5) return 'âœ“  ط§ظ„ظ‚ط¨ظ„ط© ط£ظ…ط§ظ…ظƒ ظ…ط¨ط§ط´ط±ط©';
-  if (abs < 20) return d > 0 ? 'ط¯ظˆظ‘ط± ظ‚ظ„ظٹظ„ط§ظ‹ ظ„ظ„ظٹط³ط§ط±' : 'ط¯ظˆظ‘ط± ظ‚ظ„ظٹظ„ط§ظ‹ ظ„ظ„ظٹظ…ظٹظ†';
-  if (abs < 60) return d > 0 ? 'ط¯ظˆظ‘ط± ظ„ظ„ظٹط³ط§ط±' : 'ط¯ظˆظ‘ط± ظ„ظ„ظٹظ…ظٹظ†';
-  if (abs < 120) return d > 0 ? 'ط§ظ„ظ‚ط¨ظ„ط© ط¹ظ„ظ‰ ظٹط³ط§ط±ظƒ' : 'ط§ظ„ظ‚ط¨ظ„ط© ط¹ظ„ظ‰ ظٹظ…ظٹظ†ظƒ';
-  return 'ط§ظ„ظ‚ط¨ظ„ط© ط®ظ„ظپظƒطŒ ط§ط³طھط¯ط±';
+  if (abs < 5) return '✓  القبلة أمامك مباشرة';
+  if (abs < 20) return d > 0 ? 'دوّر قليلاً لليسار' : 'دوّر قليلاً لليمين';
+  if (abs < 60) return d > 0 ? 'دوّر لليسار' : 'دوّر لليمين';
+  if (abs < 120) return d > 0 ? 'القبلة على يسارك' : 'القبلة على يمينك';
+  return 'القبلة خلفك، استدر';
   }
 
   static IconData getDirectionIcon(double deviation) {
@@ -143,9 +143,9 @@ class QiblaTheme {
   }
 
   static String getAccuracyText(int accuracy) {
-  if (accuracy >= 95) return 'âœ“ ظ…ظ…طھط§ط² â€” ط£ظ†طھ طھظˆط§ط¬ظ‡ ط§ظ„ظ‚ط¨ظ„ط© ط¨ط¯ظ‚ط© ط¹ط§ظ„ظٹط©';
-  if (accuracy >= 70) return 'ظ‚ط±ظٹط¨ â€” ط§ط³طھظ…ط± ظپظٹ ط§ظ„ط¯ظˆط±ط§ظ† ظ‚ظ„ظٹظ„ط§ظ‹';
-  if (accuracy >= 40) return 'ظ…طھظˆط³ط· â€” ط¯ظˆظ‘ط± ظ†ط­ظˆ ط§ظ„ط¥ط¨ط±ط© ط§ظ„ط®ط¶ط±ط§ط،';
-  return 'ط¨ط¹ظٹط¯ â€” ط¯ظˆظ‘ط± ظ‡ط§طھظپظƒ ظ†ط­ظˆ ط§ظ„ط¥ط¨ط±ط© ط§ظ„ط®ط¶ط±ط§ط،';
+  if (accuracy >= 95) return '✓ ممتاز — أنت تواجه القبلة بدقة عالية';
+  if (accuracy >= 70) return 'قريب — استمر في الدوران قليلاً';
+  if (accuracy >= 40) return 'متوسط — دوّر نحو الإبرة الخضراء';
+  return 'بعيد — دوّر هاتفك نحو الإبرة الخضراء';
   }
 }

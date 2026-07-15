@@ -132,7 +132,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                         delegate: SliverChildListDelegate([
                           // â”€â”€ ظ‚ط³ظ… ط§ظ„ظ…ط¸ظ‡ط± â”€â”€
                           _buildSectionLabel(
-                              'ط§ظ„ظ…ط¸ظ‡ط±', Icons.palette_rounded, w, textColor),
+                              'المظهر', Icons.palette_rounded, w, textColor),
                           SizedBox(height: (w * 0.02).clamp(6.0, 12.0)),
                           _buildThemeCard(w, textColor),
 
@@ -142,7 +142,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                           //  âک… ظ‚ط³ظ… ط§ظ„ط£ظ„ظˆط§ظ† ط§ظ„ط¬ط¯ظٹط¯ âک…
                           // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
                           _buildSectionLabel(
-                              'ظ„ظˆظ† ط§ظ„طھط·ط¨ظٹظ‚', Icons.color_lens_rounded, w, textColor),
+                              'لون التطبيق', Icons.color_lens_rounded, w, textColor),
                           SizedBox(height: (w * 0.015).clamp(4.0, 8.0)),
                           _buildColorSubtitle(w, textColor),
                           SizedBox(height: (w * 0.02).clamp(6.0, 12.0)),
@@ -157,7 +157,7 @@ class _SettingsScreenState extends State<SettingsScreen>
 
                           // â”€â”€ ط§ظ„طھط·ط¨ظٹظ‚ â”€â”€
                           _buildSectionLabel(
-                              'ط§ظ„طھط·ط¨ظٹظ‚', Icons.info_outline_rounded, w, textColor),
+                              'التطبيق', Icons.info_outline_rounded, w, textColor),
                           SizedBox(height: (w * 0.02).clamp(6.0, 12.0)),
                           _buildAppInfoCard(w, textColor),
 
@@ -165,7 +165,7 @@ class _SettingsScreenState extends State<SettingsScreen>
 
                           // â”€â”€ ط§ظ„طھظˆط§طµظ„ â”€â”€
                           _buildSectionLabel(
-                              'ط§ظ„طھظˆط§طµظ„ ظˆط§ظ„ط¯ط¹ظ…', Icons.support_agent_rounded, w, textColor),
+                              'التواصل والدعم', Icons.support_agent_rounded, w, textColor),
                           SizedBox(height: (w * 0.02).clamp(6.0, 12.0)),
                           _buildContactCard(w, textColor),
 
@@ -278,7 +278,7 @@ class _SettingsScreenState extends State<SettingsScreen>
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ',
+                  'الإعدادات',
                   style: GoogleFonts.cairo(
                     fontSize: (w * 0.055).clamp(18.0, 26.0),
                     fontWeight: FontWeight.w800,
@@ -286,7 +286,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                   ),
                 ),
                 Text(
-                  'طھط®طµظٹطµ طھط¬ط±ط¨طھظƒ',
+                  'تخصيص تجربتك',
                   style: GoogleFonts.cairo(
                     fontSize: (w * 0.03).clamp(10.0, 13.0),
                     color: textColor.withValues(alpha: 0.45),
@@ -394,7 +394,7 @@ class _SettingsScreenState extends State<SettingsScreen>
     return Padding(
       padding: EdgeInsets.only(right: (w * 0.1).clamp(32.0, 46.0)),
       child: Text(
-        'ط§ط®طھط± ط§ظ„ظ„ظˆظ† ط§ظ„ط±ط¦ظٹط³ظٹ ظ„طھط®طµظٹطµ ظ…ط¸ظ‡ط± ط§ظ„طھط·ط¨ظٹظ‚ ط¨ط§ظ„ظƒط§ظ…ظ„',
+        'اختر اللون الرئيسي لتخصيص مظهر التطبيق بالكامل',
         style: GoogleFonts.cairo(
           fontSize: (w * 0.028).clamp(10.0, 12.5),
           color: textColor.withValues(alpha: 0.45),
@@ -576,7 +576,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'ط§ظ„ظ„ظˆظ† ط§ظ„ط­ط§ظ„ظٹ',
+                      'اللون الحالي',
                       style: GoogleFonts.cairo(
                         fontSize: (w * 0.03).clamp(10.0, 13.0),
                         color: Colors.white70,
@@ -622,10 +622,10 @@ class _SettingsScreenState extends State<SettingsScreen>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    _previewElement('ط§ظ„ط£ط²ط±ط§ط±', Icons.touch_app_rounded, w),
-                    _previewElement('ط§ظ„ط¨ط·ط§ظ‚ط§طھ', Icons.credit_card_rounded, w),
-                    _previewElement('ط§ظ„ط£ظٹظ‚ظˆظ†ط§طھ', Icons.star_rounded, w),
-                    _previewElement('ط§ظ„ط´ط±ظٹط·', Icons.linear_scale_rounded, w),
+                    _previewElement('الأزرار', Icons.touch_app_rounded, w),
+                    _previewElement('البطاقات', Icons.credit_card_rounded, w),
+                    _previewElement('الأيقونات', Icons.star_rounded, w),
+                    _previewElement('الشريط', Icons.linear_scale_rounded, w),
                   ],
                 ),
               ),
@@ -753,7 +753,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                   duration: const Duration(milliseconds: 300),
                   child: Text(
                     key: ValueKey(_isDark),
-                    _isDark ? 'ط§ظ„ظˆط¶ط¹ ط§ظ„ط¯ط§ظƒظ†' : 'ط§ظ„ظˆط¶ط¹ ط§ظ„ظپط§طھط­',
+                    _isDark ? 'الوضع الداكن' : 'الوضع الفاتح',
                     style: GoogleFonts.cairo(
                       fontSize: titleSize,
                       fontWeight: FontWeight.w700,
@@ -763,8 +763,8 @@ class _SettingsScreenState extends State<SettingsScreen>
                 ),
                 Text(
                   _isDark
-                      ? 'ظ…ط±ظٹط­ ظ„ظ„ط¹ظٹظˆظ† ظپظٹ ط§ظ„ط¥ط¶ط§ط،ط© ط§ظ„ظ…ظ†ط®ظپط¶ط©'
-                      : 'ظ…ظ†ط§ط³ط¨ ظ„ظ„ط¥ط¶ط§ط،ط© ط§ظ„ط¹ط§ظ„ظٹط©',
+                      ? 'مريح للعيون في الإضاءة المنخفضة'
+                      : 'مناسب للإضاءة العالية',
                   style: GoogleFonts.cairo(
                     fontSize: subSize,
                     color: textColor.withValues(alpha: 0.5),
@@ -855,7 +855,7 @@ class _SettingsScreenState extends State<SettingsScreen>
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'ظ…ط¹ط§ظٹظ†ط© ط§ظ„ظˆط¶ط¹ ط§ظ„ط­ط§ظ„ظٹ',
+            'معاينة الوضع الحالي',
             style: GoogleFonts.cairo(
               fontSize: previewSize,
               color: textColor.withValues(alpha: 0.45),
@@ -868,7 +868,7 @@ class _SettingsScreenState extends State<SettingsScreen>
               _buildThemePreviewBox(
                 isDark: true,
                 isActive: _isDark,
-                label: 'ط¯ط§ظƒظ†',
+                label: 'داكن',
                 w: w,
                 onTap: () => _toggleTheme(true),
               ),
@@ -876,7 +876,7 @@ class _SettingsScreenState extends State<SettingsScreen>
               _buildThemePreviewBox(
                 isDark: false,
                 isActive: !_isDark,
-                label: 'ظپط§طھط­',
+                label: 'فاتح',
                 w: w,
                 onTap: () => _toggleTheme(false),
               ),
@@ -1047,20 +1047,20 @@ class _SettingsScreenState extends State<SettingsScreen>
       (
       icon: Icons.mosque_rounded,
       color: _currentPrimary,
-      title: 'ط·ط±ظٹظ‚ ط§ظ„ط¥ط³ظ„ط§ظ…',
-      sub: 'ط±ظپظٹظ‚ظƒ ظپظٹ ط§ظ„ط¹ط¨ط§ط¯ط© ط§ظ„ظٹظˆظ…ظٹط©',
+      title: 'طريق الإسلام',
+      sub: 'رفيقك في العبادة اليومية',
       ),
       (
       icon: Icons.verified_rounded,
       color: const Color(0xFF2ECC71),
-      title: 'ط§ظ„ط¥طµط¯ط§ط± 1.0.0',
-      sub: 'ط¢ط®ط± طھط­ط¯ظٹط«: 2025',
+      title: 'الإصدار 1.0.0',
+      sub: 'آخر تحديث: 2025',
       ),
       (
       icon: Icons.language_rounded,
       color: const Color(0xFF3498DB),
-      title: 'ط§ظ„ظ„ط؛ط©',
-      sub: 'ط§ظ„ط¹ط±ط¨ظٹط©',
+      title: 'اللغة',
+      sub: 'العربية',
       ),
     ];
 
@@ -1100,26 +1100,26 @@ class _SettingsScreenState extends State<SettingsScreen>
       (
       icon: Icons.star_rounded,
       color: const Color(0xFFFFB800),
-      title: 'ظ‚ظٹظ‘ظ… ط§ظ„طھط·ط¨ظٹظ‚',
-      sub: 'ط³ط§ط¹ط¯ظ†ط§ ظپظٹ ط§ظ„طھط­ط³ظٹظ†',
+      title: 'قيّم التطبيق',
+      sub: 'ساعدنا في التحسين',
       onTap: () {},
       showArrow: true,
       ),
       (
       icon: Icons.share_rounded,
       color: const Color(0xFF2ECC71),
-      title: 'ط´ط§ط±ظƒ ط§ظ„طھط·ط¨ظٹظ‚',
-      sub: 'ط§ظ†ط´ط± ط§ظ„ط®ظٹط± ظ…ط¹ ط£ط­ط¨ط§ط¦ظƒ',
+      title: 'شارك التطبيق',
+      sub: 'انشر الخير مع أحبائك',
       onTap: () {
-        Share.share('ط·ط±ظٹظ‚ ط§ظ„ط¥ط³ظ„ط§ظ… - ط±ظپظٹظ‚ظƒ ظپظٹ ط§ظ„ط¹ط¨ط§ط¯ط© ط§ظ„ظٹظˆظ…ظٹط©');
+        Share.share('طريق الإسلام - رفيقك في العبادة اليومية');
       },
       showArrow: true,
       ),
       (
       icon: Icons.bug_report_rounded,
       color: const Color(0xFFE74C3C),
-      title: 'ط§ظ„ط¥ط¨ظ„ط§ط؛ ط¹ظ† ظ…ط´ظƒظ„ط©',
-      sub: 'ط³ط§ط¹ط¯ظ†ط§ ظپظٹ ط¥طµظ„ط§ط­ ط§ظ„ط£ط®ط·ط§ط،',
+      title: 'الإبلاغ عن مشكلة',
+      sub: 'ساعدنا في إصلاح الأخطاء',
       onTap: () {},
       showArrow: true,
       ),
@@ -1209,7 +1209,7 @@ class _SettingsScreenState extends State<SettingsScreen>
           ),
           SizedBox(height: (w * 0.03).clamp(10.0, 16.0)),
           Text(
-            'ط·ط±ظٹظ‚ ط§ظ„ط¥ط³ظ„ط§ظ…',
+            'طريق الإسلام',
             style: GoogleFonts.amiri(
               fontSize: (w * 0.055).clamp(18.0, 26.0),
               fontWeight: FontWeight.bold,
@@ -1218,7 +1218,7 @@ class _SettingsScreenState extends State<SettingsScreen>
           ),
           SizedBox(height: (w * 0.015).clamp(5.0, 10.0)),
           Text(
-            'ط±ظپظٹظ‚ظƒ ظپظٹ ط§ظ„ط¹ط¨ط§ط¯ط© ط§ظ„ظٹظˆظ…ظٹط©',
+            'رفيقك في العبادة اليومية',
             style: GoogleFonts.cairo(
               fontSize: subSize,
               color: textColor.withValues(alpha: 0.6),
@@ -1238,7 +1238,7 @@ class _SettingsScreenState extends State<SettingsScreen>
               border: Border.all(color: _currentPrimary.withValues(alpha: 0.2)),
             ),
             child: Text(
-              'ï´؟ ظˆظژط§ط°ظ’ظƒظڈط±ظڈظˆط§ ط§ظ„ظ„ظژظ‘ظ‡ظژ ظƒظژط«ظگظٹط±ظ‹ط§ ظ„ظژط¹ظژظ„ظژظ‘ظƒظڈظ…ظ’ طھظڈظپظ’ظ„ظگط­ظڈظˆظ†ظژ ï´¾',
+              '﴿ وَاذْكُرُوا اللَّهَ كَثِيرًا لَعَلَّكُمْ تُفْلِحُونَ ﴾',
               style: GoogleFonts.amiri(
                 fontSize: (w * 0.038).clamp(13.0, 17.0),
                 color: _currentPrimary.withValues(alpha: 0.85),
@@ -1249,7 +1249,7 @@ class _SettingsScreenState extends State<SettingsScreen>
           ),
           SizedBox(height: (w * 0.025).clamp(8.0, 14.0)),
           Text(
-            'ط¬ظ…ظٹط¹ ط§ظ„ط­ظ‚ظˆظ‚ ظ…ط­ظپظˆط¸ط© آ© 2025',
+            'جميع الحقوق محفوظة © 2025',
             style: GoogleFonts.cairo(
               fontSize: (w * 0.028).clamp(9.5, 12.0),
               color: textColor.withValues(alpha: 0.35),

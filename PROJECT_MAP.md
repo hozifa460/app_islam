@@ -1,6 +1,6 @@
 # PROJECT_MAP.md
 
-آخر تحديث: 2026-06-15 — إصلاح 6 مشاكل حرجة في مشغل يوتيوب (debug prints, busy-wait, memory leak, hashCode, crash, double history).
+آخر تحديث: 2026-06-28 — تحويل الصفحة الرئيسية للتلاوات إلى كروت كاتيغوري تفتح تفاصيل الشيخ عند الضغط.
 
 ## نظرة عامة
 تطبيق إسلامي شامل (Flutter) — Android/iOS. يتعامل مع: الفتاوى، الراديو، القنوات، المكتبة، أوقات الصلاة، والأذكار.
@@ -453,6 +453,10 @@ services/youtube_download_service.dart  # Orchestrator (SharedPrefs + dispatchin
 6. **GitLab mirror ما يتحدث تلقائياً** (CI permission issue) — التطبيق يستخدم GitHub أولاً فلا يتأثر
 
 ### تم الإصلاح مؤخراً
+- ~~**2026-06-28 — أقسام التلاوات تظهر خارج كرت الشيخ**~~ → ✅ الصفحة الرئيسية للتلاوات تعرض الآن كرتاً لكل كاتيغوري/شيخ فقط، مع الاسم والوصف وعدد العناصر، والضغط على الكرت يفتح شاشة التفاصيل نفسها التي كانت تُفتح عبر "See all". لم يتغير منطق الجلب أو التشغيل. اختبار `test/recitations_screen_test.dart` يضمن أن عناصر الشيخ لا تظهر في الخارج وأنها تظهر بعد فتح التفاصيل.
+- ~~**2026-06-27 — بطاقات المشايخ في التلاوات كبيرة جداً**~~ → ✅ تصغير أبعاد بطاقات `RecItemCard` عبر `RecSizes.imageHeight()` وإضافة `RecSizes.cardWidth()` كمصدر واحد لحساب العرض، مع تقليل مسافات البطاقة وأزرارها وزيادة عدد العناصر المعروضة في الصف من 6 إلى 8. أضيف اختبار في `test/recitations_screen_test.dart` يثبت أن أبعاد البطاقات على شاشة هاتف تبقى مضغوطة.
+- ~~**2026-06-27 — قسم التلاوات لا يعرض بيانات GitHub/GitLab**~~ → ✅ `RecitationsScreen` أصبح يبدأ `RecitationCategoriesData.initialize()` عند فتح القسم ويستمع إلى `RecitationCategoriesData.stream` بدلاً من snapshot ثابت من `build()`. بذلك تظهر بيانات الكاش/الأصول ثم GitHub/GitLab فور وصولها. بحث الراديو يقرأ `RecitationCategoriesData.current` وقت الضغط حتى لا يستخدم قائمة قديمة. أضيف اختبار `test/recitations_screen_test.dart` للتأكد أن كاتيغوري جديد قادم عبر الـ stream يظهر في الواجهة.
+- ~~**2026-06-27 — نصوص عربية تظهر كحروف مقطعة**~~ → ✅ إصلاح mojibake داخل Dart string literals فقط بدون تغيير التعليقات أو تنسيق الملفات أو منطق الراديو/التلاوات. أضيف اختبار `test/mojibake_text_test.dart` لمنع رجوع نمط `ط§ظ„...`/`â...`/`ًں...` داخل نصوص الواجهة. كما أضيف placeholder فارغ `assets/quran_pages/.gitkeep` حتى يبقى مسار `assets/quran_pages/` المعلن في `pubspec.yaml` صالحاً.
 - ~~**2026-06-12 — مسار التحميل الثابت**~~ → ✅ استبدال `/storage/emulated/0/Download/` بـ `getExternalStorageDirectory()` في `youtube_download_service.dart` و `video_download_service.dart`.
 - ~~**2026-06-12 — تسريب ذاكرة VideoFeedScreen**~~ → ✅ `dispose()` الآن يوقف ويحفظ موضع كل الفيديوهات (عبر `_pauseAllVideosBeforeExit()`) بدلاً من الفيديو الحالي فقط.
 - ~~**2026-06-12 — توحيد مشغل يوتيوب**~~ → ✅ إنشاء `lib/core/video/shared_youtube_player.dart` كمشغل يوتيوب موحد مع تحكمات كاملة (Play/Pause, Seek, Fullscreen, Settings, Progress). مشغل الراديو (`YoutubePlayerWidget`) الآن يستخدمه، مما يمنحه نفس تحكمات مشغل القنوات.

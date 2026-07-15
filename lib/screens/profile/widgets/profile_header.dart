@@ -153,7 +153,7 @@ class ProfileHeaderCard extends StatelessWidget {
                   ),
                   const SizedBox(width: 4),
                   Text(
-                    'ط¹ط¶ظˆ ظ…ظ†ط° ${_fmtDate(user.createdAt)}',
+                    'عضو منذ ${_fmtDate(user.createdAt)}',
                     style: GoogleFonts.cairo(
                       fontSize: 11.5,
                       color: _gold.withValues(alpha: 0.8),
@@ -171,9 +171,9 @@ class ProfileHeaderCard extends StatelessWidget {
 
   String _fmtDate(DateTime d) {
     const m = [
-      '', 'ظٹظ†ط§ظٹط±', 'ظپط¨ط±ط§ظٹط±', 'ظ…ط§ط±ط³', 'ط£ط¨ط±ظٹظ„', 'ظ…ط§ظٹظˆ',
-      'ظٹظˆظ†ظٹظˆ', 'ظٹظˆظ„ظٹظˆ', 'ط£ط؛ط³ط·ط³', 'ط³ط¨طھظ…ط¨ط±', 'ط£ظƒطھظˆط¨ط±',
-      'ظ†ظˆظپظ…ط¨ط±', 'ط¯ظٹط³ظ…ط¨ط±',
+      '', 'يناير', 'فبراير', 'مارس', 'أبريل', 'مايو',
+      'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر',
+      'نوفمبر', 'ديسمبر',
     ];
     return '${m[d.month]} ${d.year}';
   }

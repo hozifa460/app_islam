@@ -87,8 +87,8 @@ class QiblaGuidanceBanner extends StatelessWidget {
                     const SizedBox(height: 3),
                     Text(
                       isFacing
-                          ? 'ظٹظ…ظƒظ†ظƒ ط§ظ„ط¢ظ† ط£ط¯ط§ط، ط§ظ„طµظ„ط§ط© ظپظٹ ظ‡ط°ط§ ط§ظ„ط§طھط¬ط§ظ‡'
-                          : 'ظˆط¬ظ‘ظ‡ ظ‡ط§طھظپظƒ ط­طھظ‰ طھط´ظٹط± ط§ظ„ط¥ط¨ط±ط© ط§ظ„ط®ط¶ط±ط§ط، ظ„ظ„ط£ط¹ظ„ظ‰',
+                          ? 'يمكنك الآن أداء الصلاة في هذا الاتجاه'
+                          : 'وجّه هاتفك حتى تشير الإبرة الخضراء للأعلى',
                       style: GoogleFonts.cairo(
                         fontSize: 11,
                         color: theme.isDark

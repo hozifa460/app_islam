@@ -13,6 +13,7 @@ import 'package:islamic_app/screens/radio/widgets/modern_bottom_player.dart';
 import 'package:islamic_app/screens/radio/widgets_recitations_screen/rec_item_player_screen.dart';
 import 'package:islamic_app/screens/radio/widgets_recitations_screen/rec_sub_items_download_screen.dart';
 import 'package:islamic_app/screens/radio/widgets_recitations_screen/services/playlist_service.dart';
+import 'package:islamic_app/screens/radio/video/helpers/video_launcher.dart';
 import 'package:provider/provider.dart';
 
 import '../services/offline_radio_service.dart';
@@ -115,7 +116,7 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
         // â•گâ•گ ط§ظ„ط¹ظ†ط§طµط± ط§ظ„ظ…ظپط±ط¯ط© (subItems ط¨ط¯ظˆظ† ظ‚ط³ظ…) â•گâ•گ
         if (hasLooseItems && hasSections) ...[
           const SizedBox(height: 16),
-          _buildSectionHeader('طھظ„ط§ظˆط§طھ ط£ط®ط±ظ‰', 'ًںژµ'),
+          _buildSectionHeader('تلاوات أخرى', '🎵'),
         ],
 
         if (hasLooseItems)
@@ -372,7 +373,7 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
                           ),
                           const SizedBox(width: 8),
                           Text(
-                            'طھط­ظ…ظٹظ„ ط§ظ„طھظ„ط§ظˆط§طھ',
+                            'تحميل التلاوات',
                             style: GoogleFonts.cairo(
                               fontSize: 14,
                               fontWeight: FontWeight.w700,
@@ -412,7 +413,7 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
           color: RecColors.searchText(context),
         ),
         decoration: InputDecoration(
-          hintText: 'ط§ط¨ط­ط« ظپظٹ ط§ظ„طھظ„ط§ظˆط§طھ...',
+          hintText: 'ابحث في التلاوات...',
           hintStyle: GoogleFonts.cairo(
             color: RecColors.searchHint(context),
             fontSize: 12,
@@ -458,10 +459,10 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('ًں”چ', style: TextStyle(fontSize: 44)),
+          const Text('🔍', style: TextStyle(fontSize: 44)),
           const SizedBox(height: 12),
           Text(
-            'ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬ ظ„ظ€ "$_searchQuery"',
+            'لا توجد نتائج لـ "$_searchQuery"',
             style: GoogleFonts.cairo(
               fontSize: 14,
               fontWeight: FontWeight.w700,
@@ -518,7 +519,7 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  '${widget.parentItem.subItemsCount} طھظ„ط§ظˆط©',
+                  '${widget.parentItem.subItemsCount} تلاوة',
                   style: GoogleFonts.cairo(
                     fontSize: 11,
                     color: RecColors.textSecondary(context),
@@ -600,13 +601,13 @@ class _RecSubItemsScreenState extends State<RecSubItemsScreen>
                   children: [
                     _statBadge(
                       '${widget.parentItem.subItemsCount}',
-                      'طھظ„ط§ظˆط©',
+                      'تلاوة',
                       widget.primary,
                     ),
                     const SizedBox(width: 8),
                     _statBadge(
-                      'ًں“‚',
-                      'ظ…ط¬ظ…ظˆط¹ط©',
+                      '📂',
+                      'مجموعة',
                       RecColors.gold,
                     ),
                   ],
@@ -764,7 +765,7 @@ class _SubItemTile extends StatelessWidget {
                                   ),
                                   if (subItem.audioUrl.isNotEmpty) ...[
                                     Text(
-                                      ' â€¢ ',
+                                      ' • ',
                                       style: TextStyle(
                                         color: RecColors.textSecondary(context),
                                         fontSize: 10,
@@ -884,6 +885,15 @@ class _SubItemTile extends StatelessWidget {
       bool isDownloaded,
       String? localPath,
       ) {
+    // رابط يوتيوب هو فيديو وليس stream صوت. لا ترسله إلى just_audio.
+    if (subItem.isYouTube && subItem.hasVideo) {
+      VideoLauncher.openSingle(
+        context: context,
+        item: subItem,
+        primary: primary,
+      );
+      return;
+    }
     final downloadService = context.read<ItemDownloadService>();
 
     final playlist = context.read<PlaylistService>();

@@ -137,7 +137,7 @@ class HijriCalendarCard extends StatelessWidget {
   Widget _buildWeekDaysHeader() {
     return Row(
       children: HijriData.weekDays.map((d) {
-        final isFri = d == 'ط¬';
+        final isFri = d == 'ج';
         return Expanded(
           child: Center(
             child: Padding(

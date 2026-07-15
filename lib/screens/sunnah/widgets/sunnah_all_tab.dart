@@ -43,9 +43,9 @@ class SunnahAllTab extends StatelessWidget {
   List<SunnahModel> _applyFilter(List<SunnahModel> sunnahs) {
     switch (selectedFilterIndex) {
       case 1:
-        return sunnahs.where((s) => s.importance == 'ظ…ط¤ظƒط¯ط©').toList();
+        return sunnahs.where((s) => s.importance == 'مؤكدة').toList();
       case 2:
-        return sunnahs.where((s) => s.importance == 'ظ…ط³طھط­ط¨ط©').toList();
+        return sunnahs.where((s) => s.importance == 'مستحبة').toList();
       case 3:
         return sunnahs.where((s) => !s.isCompleted).toList();
       default:
@@ -179,7 +179,7 @@ class SunnahAllTab extends StatelessWidget {
                     colors: [SunnahTheme.emeraldLight, SunnahTheme.goldLight],
                   ).createShader(b),
                   child: Text(
-                    'ط¥ظ†ط¬ط§ط²ظƒ ط§ظ„ظٹظˆظ…',
+                    'إنجازك اليوم',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: size.width * 0.045,
@@ -189,12 +189,12 @@ class SunnahAllTab extends StatelessWidget {
                 ),
                 SizedBox(height: size.height * 0.01),
                 _buildStatRow(
-                    'âœ… ط£ظƒظ…ظ„طھ', '${service.completedToday}', SunnahTheme.emeraldLight),
+                    '✅ أكملت', '${service.completedToday}', SunnahTheme.emeraldLight),
                 SizedBox(height: size.height * 0.005),
                 _buildStatRow(
-                    'ًں“‹ ط§ظ„ظ…ط¬ظ…ظˆط¹', '${service.totalSunnahs}', SunnahTheme.blueLight),
+                    '📋 المجموع', '${service.totalSunnahs}', SunnahTheme.blueLight),
                 SizedBox(height: size.height * 0.005),
-                _buildStatRow('âڈ³ ط§ظ„ظ…طھط¨ظ‚ظٹ',
+                _buildStatRow('⏳ المتبقي',
                     '${service.totalSunnahs - service.completedToday}', SunnahTheme.goldLight),
               ],
             ),
@@ -236,8 +236,8 @@ class SunnahAllTab extends StatelessWidget {
   Widget _buildFilterChips(List<SunnahModel> allSunnahs) {
     final counts = [
       allSunnahs.length,
-      allSunnahs.where((s) => s.importance == 'ظ…ط¤ظƒط¯ط©').length,
-      allSunnahs.where((s) => s.importance == 'ظ…ط³طھط­ط¨ط©').length,
+      allSunnahs.where((s) => s.importance == 'مؤكدة').length,
+      allSunnahs.where((s) => s.importance == 'مستحبة').length,
       allSunnahs.where((s) => !s.isCompleted).length,
     ];
 
@@ -337,7 +337,7 @@ class SunnahAllTab extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Text(SunnahTheme.categoryIcons[category] ?? 'ًں“؟',
+          Text(SunnahTheme.categoryIcons[category] ?? '📿',
               style: TextStyle(fontSize: size.width * 0.048)),
           SizedBox(width: size.width * 0.025),
           Expanded(
@@ -367,7 +367,7 @@ class SunnahAllTab extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: const Text('â—ڈ ط§ظ„ط¢ظ†',
+                child: const Text('● الآن',
                     style: TextStyle(
                       color: Colors.black87,
                       fontSize: 10,

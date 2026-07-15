@@ -390,7 +390,7 @@ class _Header extends StatelessWidget {
                   Border.all(color: gold.withValues(alpha: 0.2)),
                 ),
                 child: Text(
-                  'طھط®طµظٹطµ',
+                  'تخصيص',
                   style: GoogleFonts.cairo(
                     fontSize: 11,
                     color: gold,
@@ -525,7 +525,7 @@ class _MuezzinRow extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'ط§ظ„ظ…ط¤ط°ظ† ط§ظ„ط­ط§ظ„ظٹ',
+                    'المؤذن الحالي',
                     style: GoogleFonts.cairo(
                       fontSize: 10,
                       color: subColor,
@@ -650,7 +650,7 @@ class _ToggleRow extends StatelessWidget {
                   ),
                   const SizedBox(width: 5),
                   Text(
-                    value ? 'ظ…ظپط¹ظ‘ظ„' : 'ظ…ط¹ط·ظ‘ظ„',
+                    value ? 'مفعّل' : 'معطّل',
                     style: GoogleFonts.cairo(
                       fontSize: 11,
                       color: value ? Colors.green : subColor,

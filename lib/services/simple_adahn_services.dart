@@ -23,10 +23,10 @@ class SimpleAdhanService {
       try {
         final byteData = await rootBundle.load('assets/adahn/$muezzinId.mp3');
         await localFile.writeAsBytes(byteData.buffer.asUint8List());
-        debugPrint('âœ… Loaded from assets/adahn/$muezzinId.mp3');
+        debugPrint('✅ Loaded from assets/adahn/$muezzinId.mp3');
         return localFile.path;
       } catch (e) {
-        debugPrint('â‌Œ Not found: assets/adahn/$muezzinId.mp3');
+        debugPrint('❌ Not found: assets/adahn/$muezzinId.mp3');
       }
 
       // âœ… ط§ظ„ظ…ط­ط§ظˆظ„ط© 2: ط¥ط°ط§ ظƒط§ظ† ID = 'menshawy' ظˆط§ظ„ظ…ظ„ظپ 'menshawy.mp3'
@@ -34,17 +34,17 @@ class SimpleAdhanService {
         try {
           final byteData = await rootBundle.load('assets/adahn/menshawy.mp3');
           await localFile.writeAsBytes(byteData.buffer.asUint8List());
-          debugPrint('âœ… Loaded: assets/adahn/menshawy.mp3');
+          debugPrint('✅ Loaded: assets/adahn/menshawy.mp3');
           return localFile.path;
         } catch (e) {
-          debugPrint('â‌Œ Not found: assets/adahn/menshawy.mp3');
+          debugPrint('❌ Not found: assets/adahn/menshawy.mp3');
         }
       }
 
       return null;
 
     } catch (e) {
-      debugPrint('â‌Œ Error: $e');
+      debugPrint('❌ Error: $e');
       return null;
     }
   }

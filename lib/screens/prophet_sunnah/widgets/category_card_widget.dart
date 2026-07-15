@@ -282,7 +282,7 @@ class _CardText extends StatelessWidget {
           children: [
             Flexible(
               child: Text(
-                '${category.sunnahs.length} ط³ظ†ط© ظ†ط¨ظˆظٹط© ظ…ظˆط«ظ‚ط©',
+                '${category.sunnahs.length} سنة نبوية موثقة',
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   color: isDark ? Colors.white38 : const Color(0xFF9A9AB0),

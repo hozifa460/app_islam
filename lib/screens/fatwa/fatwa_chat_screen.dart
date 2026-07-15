@@ -1,13 +1,13 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:islamic_app/screens/fatwa/services/local_search_service.dart';
 import 'package:islamic_app/screens/fatwa/services/unified_fatwa_assistant.dart';
-import 'dart:convert';
 import 'models/chat_message.dart';
 import 'models/fatwa_model.dart';
 
 class FatwaChatScreen extends StatefulWidget {
-  const FatwaChatScreen({Key? key}) : super(key: key);
+  const FatwaChatScreen({super.key});
 
   @override
   State<FatwaChatScreen> createState() => _FatwaChatScreenState();
@@ -30,11 +30,12 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
   Future<void> _loadFatawa() async {
     try {
       await LocalSearchService.loadFatawa();
+      if (!mounted) return;
       setState(() {
-        _fatawa = []; // LocalSearchService ظٹط­ظ…ظ„ ظƒظ„ ط´ظٹط، ط¯ط§ط®ظ„ظٹط§ظ‹
+        _fatawa = LocalSearchService.allFatawa;
       });
     } catch (e) {
-      debugPrint('â‌Œ طھط­ظ…ظٹظ„: $e');
+      debugPrint('❌ تحميل: $e');
     }
   }
 
@@ -50,10 +51,20 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
     _controller.clear();
     _scrollToBottom();
 
-    final answer = await UnifiedFatwaAssistant.getAnswer(
-      userQuestion: text,
-      localFatawa: _fatawa,
-    );
+    ChatMessage answer;
+    try {
+      answer = await UnifiedFatwaAssistant.getAnswer(
+        userQuestion: text,
+        localFatawa: _fatawa,
+      );
+    } catch (e) {
+      answer = ChatMessage.fromAssistantText(
+        'تعذر إكمال البحث حالياً. حاول مرة أخرى بعد قليل.',
+      );
+      debugPrint('❌ خطأ في بحث الفتوى: $e');
+    }
+
+    if (!mounted) return;
 
     setState(() {
       _messages.removeWhere((m) => m.type == MessageType.loading);
@@ -65,6 +76,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
 
   void _scrollToBottom() {
     Future.delayed(const Duration(milliseconds: 300), () {
+      if (!mounted || !_scrollController.hasClients) return;
       if (_scrollController.hasClients) {
         _scrollController.animateTo(
           _scrollController.position.maxScrollExtent,
@@ -87,7 +99,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'ظ…ط³ط§ط¹ط¯ ط§ظ„ظپطھط§ظˆظ‰',
+                'مساعد الفتاوى',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
@@ -96,7 +108,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
                 ),
               ),
               Text(
-                'ظٹط¨ط­ط« ظپظٹ ط¢ظ„ط§ظپ ط§ظ„ظپطھط§ظˆظ‰',
+                'يبحث في آلاف الفتاوى',
                 style: TextStyle(
                   color: Colors.white70,
                   fontSize: 12,
@@ -213,7 +225,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
               ),
               const SizedBox(width: 10),
               Text(
-                'ط¬ط§ط±ظٹ ط§ظ„ط¨ط­ط«...',
+                'جاري البحث...',
                 style: TextStyle(color: Colors.grey[600], fontFamily: 'Cairo'),
               ),
             ],
@@ -284,7 +296,10 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
             color: Colors.white,
             borderRadius: BorderRadius.circular(18),
             boxShadow: [
-              BoxShadow(color: Colors.grey.withValues(alpha: 0.1), blurRadius: 8),
+              BoxShadow(
+                color: Colors.grey.withValues(alpha: 0.1),
+                blurRadius: 8,
+              ),
             ],
           ),
           child: Column(
@@ -351,7 +366,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: const Text(
-                              'طھظ… ط§ظ„ظ†ط³ط®',
+                              'تم النسخ',
                               style: TextStyle(fontFamily: 'Cairo'),
                             ),
                             backgroundColor: const Color(0xFF2E7D32),
@@ -368,7 +383,9 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
                           vertical: 4,
                         ),
                         decoration: BoxDecoration(
-                          color: const Color(0xFF2E7D32).withValues(alpha: 0.08),
+                          color: const Color(
+                            0xFF2E7D32,
+                          ).withValues(alpha: 0.08),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: const Row(
@@ -380,7 +397,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
                             ),
                             SizedBox(width: 4),
                             Text(
-                              'ظ†ط³ط®',
+                              'نسخ',
                               style: TextStyle(
                                 fontSize: 11,
                                 fontFamily: 'Cairo',
@@ -397,40 +414,55 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
                       Padding(
                         padding: const EdgeInsets.only(right: 8),
                         child: InkWell(
-                          onTap: () {
-                            // ظٹظ…ظƒظ†ظƒ طھط´ط؛ظٹظ„ ط§ظ„طµظˆطھ ظ‡ظ†ط§ ظ„ط§ط­ظ‚ط§ظ‹
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'ط±ط§ط¨ط· ط§ظ„طµظˆطھ: ${msg.sourceFatwa!.audio}',
-                                  style: const TextStyle(fontFamily: 'Cairo'),
+                          onTap: () async {
+                            final uri = Uri.tryParse(msg.sourceFatwa!.audio);
+                            if (uri == null || !await canLaunchUrl(uri)) {
+                              if (!mounted) return;
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('تعذر فتح الملف الصوتي'),
                                 ),
-                                backgroundColor: const Color(0xFF1565C0),
-                                behavior: SnackBarBehavior.floating,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                              ),
+                              );
+                              return;
+                            }
+                            await launchUrl(
+                              uri,
+                              mode: LaunchMode.externalApplication,
                             );
                           },
                           child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 4,
+                            ),
                             decoration: BoxDecoration(
-                              color: const Color(0xFF1565C0).withValues(alpha: 0.08),
+                              color: const Color(
+                                0xFF1565C0,
+                              ).withValues(alpha: 0.08),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: const Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Icon(Icons.headphones, size: 14, color: Color(0xFF1565C0)),
+                                Icon(
+                                  Icons.headphones,
+                                  size: 14,
+                                  color: Color(0xFF1565C0),
+                                ),
                                 SizedBox(width: 4),
-                                Text('طµظˆطھظٹ', style: TextStyle(fontSize: 11, fontFamily: 'Cairo', color: Color(0xFF1565C0))),
+                                Text(
+                                  'صوتي',
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    fontFamily: 'Cairo',
+                                    color: Color(0xFF1565C0),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
                         ),
                       ),
-
                   ],
                 ),
               ),
@@ -443,17 +475,17 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
 
   Widget _chooseSourceBubble(ChatMessage msg) {
     final sourceColors = {
-      'ط¥ط³ظ„ط§ظ… ط³ط¤ط§ظ„ ظˆط¬ظˆط§ط¨': const Color(0xFF1565C0),
-      'ظپطھط§ظˆظ‰ ط§ط¨ظ† ط¨ط§ط²': const Color(0xFF6A1B9A),
-      'ط§ظ„ط¯ط±ط± ط§ظ„ط³ظ†ظٹط©': const Color(0xFF00695C),
-      'ط¥ط³ظ„ط§ظ… ظˆظٹط¨': const Color(0xFF2E7D32),
+      'إسلام سؤال وجواب': const Color(0xFF1565C0),
+      'فتاوى ابن باز': const Color(0xFF6A1B9A),
+      'الدرر السنية': const Color(0xFF00695C),
+      'إسلام ويب': const Color(0xFF2E7D32),
     };
 
     final sourceIcons = {
-      'ط¥ط³ظ„ط§ظ… ط³ط¤ط§ظ„ ظˆط¬ظˆط§ط¨': Icons.menu_book,
-      'ظپطھط§ظˆظ‰ ط§ط¨ظ† ط¨ط§ط²': Icons.person,
-      'ط§ظ„ط¯ط±ط± ط§ظ„ط³ظ†ظٹط©': Icons.auto_stories,
-      'ط¥ط³ظ„ط§ظ… ظˆظٹط¨': Icons.language,
+      'إسلام سؤال وجواب': Icons.menu_book,
+      'فتاوى ابن باز': Icons.person,
+      'الدرر السنية': Icons.auto_stories,
+      'إسلام ويب': Icons.language,
     };
 
     return Padding(
@@ -465,7 +497,10 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
             color: Colors.white,
             borderRadius: BorderRadius.circular(18),
             boxShadow: [
-              BoxShadow(color: Colors.grey.withValues(alpha: 0.1), blurRadius: 8),
+              BoxShadow(
+                color: Colors.grey.withValues(alpha: 0.1),
+                blurRadius: 8,
+              ),
             ],
           ),
           child: Column(
@@ -578,7 +613,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
                   Icon(Icons.info_outline, size: 16, color: Colors.grey[600]),
                   const SizedBox(width: 6),
                   Text(
-                    'ظ†طھط§ط¦ط¬ ظ…ظ† ظ…طµط§ط¯ط± ط£ط®ط±ظ‰:',
+                    'نتائج من مصادر أخرى:',
                     style: TextStyle(
                       fontSize: 12,
                       fontFamily: 'Cairo',
@@ -638,7 +673,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
                             ),
                           ),
                           const Text(
-                            'ط¹ط±ط¶',
+                            'عرض',
                             style: TextStyle(
                               fontSize: 11,
                               fontFamily: 'Cairo',
@@ -666,11 +701,21 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
     _scrollToBottom();
 
     final lastQ = _messages.lastWhere((m) => m.type == MessageType.user).text;
-    final message = await UnifiedFatwaAssistant.onSourceSelected(
-      lastQ,
-      selected,
-      all,
-    );
+    ChatMessage message;
+    try {
+      message = await UnifiedFatwaAssistant.onSourceSelected(
+        lastQ,
+        selected,
+        all,
+      );
+    } catch (e) {
+      message = ChatMessage.fromAssistantText(
+        'تعذر تحميل هذا المصدر حالياً. حاول مرة أخرى.',
+      );
+      debugPrint('❌ خطأ في اختيار مصدر الفتوى: $e');
+    }
+
+    if (!mounted) return;
 
     setState(() {
       _messages.removeWhere((m) => m.type == MessageType.loading);
@@ -707,7 +752,7 @@ class _FatwaChatScreenState extends State<FatwaChatScreen> {
                 minLines: 1,
                 style: const TextStyle(fontFamily: 'Cairo', fontSize: 15),
                 decoration: InputDecoration(
-                  hintText: 'ط§ظƒطھط¨ ط³ط¤ط§ظ„ظƒ...',
+                  hintText: 'اكتب سؤالك...',
                   hintStyle: TextStyle(
                     color: Colors.grey[400],
                     fontFamily: 'Cairo',

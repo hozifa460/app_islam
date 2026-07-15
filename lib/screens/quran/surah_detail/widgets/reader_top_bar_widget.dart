@@ -136,7 +136,7 @@ class ReaderTopBarWidget extends StatelessWidget {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          'طµظپط­ط© $currentPage | ط¬ط²ط، $juz | ط­ط²ط¨ $hizb',
+                          'صفحة $currentPage | جزء $juz | حزب $hizb',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.right,

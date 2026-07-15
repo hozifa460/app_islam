@@ -438,7 +438,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
           Expanded(
             child: _StatCard(
               icon: Icons.menu_book_rounded,
-              label: 'ط§ظ„ظ‚ط±ط¢ظ†',
+              label: 'القرآن',
               sublabel: 'Quran',
               count: _quranCount,
               color: const Color(0xFF4FC3F7),
@@ -456,7 +456,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
           Expanded(
             child: _StatCard(
               icon: Icons.auto_awesome_rounded,
-              label: 'ط§ظ„ط³ظ†ط©',
+              label: 'السنة',
               sublabel: 'Sunnah',
               count: _sunnahCount,
               color: MiracleTheme.neonGold,
@@ -474,7 +474,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
           Expanded(
             child: _StatCard(
               icon: Icons.favorite_rounded,
-              label: 'ط§ظ„ظ…ظپط¶ظ„ط©',
+              label: 'المفضلة',
               sublabel: 'Favorites',
               count: _favCount,
               color: MiracleTheme.neonRed,
@@ -487,7 +487,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
           Expanded(
             child: _StatCard(
               icon: Icons.library_books_rounded,
-              label: 'ط§ظ„ط¥ط¬ظ…ط§ظ„ظٹ',
+              label: 'الإجمالي',
               sublabel: 'Total',
               count: _categoryMiracles.length,
               color: MiracleTheme.neonGreen,
@@ -510,7 +510,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
         children: [
           Expanded(
             child: _FilterChip(
-              label: 'ط§ظ„ظƒظ„',
+              label: 'الكل',
               icon: Icons.apps_rounded,
               selected: _selectedFilter == 'all',
               color: catColor,
@@ -521,7 +521,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
           const SizedBox(width: 8),
           Expanded(
             child: _FilterChip(
-              label: 'ط§ظ„ظ‚ط±ط¢ظ†',
+              label: 'القرآن',
               icon: Icons.menu_book_rounded,
               selected: _selectedFilter == 'quran',
               color: const Color(0xFF4FC3F7),
@@ -532,7 +532,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
           const SizedBox(width: 8),
           Expanded(
             child: _FilterChip(
-              label: 'ط§ظ„ط³ظ†ط©',
+              label: 'السنة',
               icon: Icons.auto_awesome_rounded,
               selected: _selectedFilter == 'sunnah',
               color: MiracleTheme.neonGold,
@@ -570,7 +570,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
         style: GoogleFonts.cairo(color: Colors.white, fontSize: 14),
         cursorColor: MiracleTheme.neonBlue,
         decoration: InputDecoration(
-          hintText: 'ط§ط¨ط­ط« ظپظٹ ${widget.categoryName}...',
+          hintText: 'ابحث في ${widget.categoryName}...',
           hintStyle: GoogleFonts.cairo(color: Colors.white38, fontSize: 13),
           border: InputBorder.none,
           icon: Icon(
@@ -622,8 +622,8 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
           Expanded(
             child: Text(
               _showFavOnly
-                  ? 'ط§ظ„ظ…ظپط¶ظ„ط© (${_filtered.length})'
-                  : 'ط§ظ„ظ…ط¹ط¬ط²ط§طھ (${_filtered.length})',
+                  ? 'المفضلة (${_filtered.length})'
+                  : 'المعجزات (${_filtered.length})',
               style: GoogleFonts.cairo(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
@@ -663,7 +663,7 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
                     ),
                     const SizedBox(width: 4),
                     Text(
-                      'ظ…ط³ط­',
+                      'مسح',
                       style: GoogleFonts.cairo(
                         fontSize: 10,
                         color: MiracleTheme.neonRed.withValues(alpha: 0.8),
@@ -711,8 +711,8 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
             const SizedBox(height: 20),
             Text(
               _showFavOnly
-                  ? 'ظ„ط§ طھظˆط¬ط¯ ظ…ط¹ط¬ط²ط§طھ ظپظٹ ط§ظ„ظ…ظپط¶ظ„ط©'
-                  : 'ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬ ظ…ط·ط§ط¨ظ‚ط©',
+                  ? 'لا توجد معجزات في المفضلة'
+                  : 'لا توجد نتائج مطابقة',
               style: GoogleFonts.cairo(
                 color: Colors.white70,
                 fontSize: 16,
@@ -723,8 +723,8 @@ class _CategoryMiraclesScreenState extends State<CategoryMiraclesScreen>
             const SizedBox(height: 8),
             Text(
               _showFavOnly
-                  ? 'ط§ط¶ط؛ط· ط¹ظ„ظ‰ â‌¤ï¸ڈ ظ„ط¥ط¶ط§ظپط© ظ…ط¹ط¬ط²ط§طھ ط¥ظ„ظ‰ ط§ظ„ظ…ظپط¶ظ„ط©'
-                  : 'ط¬ط±ظ‘ط¨ طھط؛ظٹظٹط± ط§ظ„ط¨ط­ط« ط£ظˆ ط§ظ„ظپظ„ط§طھط±',
+                  ? 'اضغط على ❤️ لإضافة معجزات إلى المفضلة'
+                  : 'جرّب تغيير البحث أو الفلاتر',
               style: GoogleFonts.cairo(color: Colors.white38, fontSize: 13),
               textAlign: TextAlign.center,
             ),
@@ -896,7 +896,7 @@ class _AppBarBackground extends StatelessWidget {
                         ],
                       ),
                       child: Text(
-                        '$totalCount ظ…ط¹ط¬ط²ط©',
+                        '$totalCount معجزة',
                         style: GoogleFonts.cairo(
                           color: catColor,
                           fontSize: 12,

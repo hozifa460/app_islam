@@ -13,8 +13,10 @@ import 'package:islamic_app/screens/radio/surah_player_screen.dart';
 import 'package:islamic_app/screens/radio/widgets_radio_screen/theme/radio_colors.dart';
 import 'package:islamic_app/screens/radio/widgets_recitations_screen/models/downloadable_item.dart';
 import 'package:islamic_app/screens/radio/widgets_recitations_screen/rec_item_player_screen.dart';
+import 'package:islamic_app/screens/radio/widgets_recitations_screen/rec_category_detail_screen.dart';
 import 'package:islamic_app/screens/radio/widgets_recitations_screen/rec_sub_items_screen.dart';
 import 'package:islamic_app/screens/radio/widgets_recitations_screen/services/item_download_service.dart';
+import 'package:islamic_app/screens/radio/video/helpers/video_launcher.dart';
 import 'package:provider/provider.dart';
 
 import 'data/quran_data.dart';
@@ -204,7 +206,7 @@ class _RecSearchScreenState extends State<RecSearchScreen> {
           child: Row(
             children: [
               Text(
-                '${_results.length} ظ†طھظٹط¬ط©',
+                '${_results.length} نتيجة',
                 style: GoogleFonts.cairo(
                   fontSize: 12,
                   color: isDark ? Colors.white38 : Colors.black38,
@@ -213,7 +215,7 @@ class _RecSearchScreenState extends State<RecSearchScreen> {
               const Spacer(),
               if (_activeFilterKey != null && _activeFilterKey != 'all')
                 Text(
-                  'ط¨ط¹ط¯ ط§ظ„ظپظ„طھط±ط©: ${filtered.length}',
+                  'بعد الفلترة: ${filtered.length}',
                   style: GoogleFonts.cairo(
                     fontSize: 11,
                     color: widget.primary.withValues(alpha: 0.8),
@@ -242,10 +244,10 @@ class _RecSearchScreenState extends State<RecSearchScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('ًں§©', style: TextStyle(fontSize: 42)),
+          const Text('🧩', style: TextStyle(fontSize: 42)),
           const SizedBox(height: 12),
           Text(
-            'ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬ ظ„ظ‡ط°ط§ ط§ظ„ظپظ„طھط±',
+            'لا توجد نتائج لهذا الفلتر',
             style: GoogleFonts.cairo(
               fontSize: 15,
               fontWeight: FontWeight.w700,
@@ -254,7 +256,7 @@ class _RecSearchScreenState extends State<RecSearchScreen> {
           ),
           const SizedBox(height: 6),
           Text(
-            'ط¬ط±ظ‘ط¨ ط§ط®طھظٹط§ط± ظپظ„طھط± ط¢ط®ط±',
+            'جرّب اختيار فلتر آخر',
             style: GoogleFonts.cairo(
               fontSize: 12,
               color: isDark ? Colors.white38 : Colors.black38,
@@ -321,7 +323,7 @@ class _RecSearchScreenState extends State<RecSearchScreen> {
                 color: isDark ? Colors.white : Colors.black87,
               ),
               decoration: InputDecoration(
-                hintText: 'ط§ط¨ط­ط« ط¹ظ† ظ‚ط§ط±ط¦طŒ ط³ظˆط±ط©طŒ ط­ظپظ„ط©طŒ طھظ„ط§ظˆط©...',
+                hintText: 'ابحث عن قارئ، سورة، حفلة، تلاوة...',
                 hintStyle: GoogleFonts.cairo(
                   fontSize: 13,
                   color: isDark ? Colors.white38 : Colors.black38,
@@ -380,26 +382,26 @@ class _RecSearchScreenState extends State<RecSearchScreen> {
     final counts = _filterCounts;
     final parts = <String>[];
 
-    if ((counts['reciter'] ?? 0) > 0) parts.add('${counts['reciter']} ظ‚ط§ط±ط¦');
-    if ((counts['surah'] ?? 0) > 0) parts.add('${counts['surah']} ط³ظˆط±ط©');
-    if ((counts['subItem'] ?? 0) > 0) parts.add('${counts['subItem']} طھظ„ط§ظˆط©');
+    if ((counts['reciter'] ?? 0) > 0) parts.add('${counts['reciter']} قارئ');
+    if ((counts['surah'] ?? 0) > 0) parts.add('${counts['surah']} سورة');
+    if ((counts['subItem'] ?? 0) > 0) parts.add('${counts['subItem']} تلاوة');
     if ((counts['radioStation'] ?? 0) > 0) {
-      parts.add('${counts['radioStation']} ظ…ط­ط·ط©');
+      parts.add('${counts['radioStation']} محطة');
     }
 
-    return parts.join(' â€¢ ');
+    return parts.join(' • ');
   }
 
   // âœ… ط¥طµظ„ط§ط­ _buildFilterBar - ظٹظ‚ط¨ظ„ counts ط¬ط§ظ‡ط²ط©
   Widget _buildFilterBar(bool isDark, Map<String, int> filterCounts) {
     const filters = <Map<String, String>>[
-      {'label': 'ط§ظ„ظƒظ„', 'key': 'all', 'emoji': 'ًںŒگ'},
-      {'label': 'ظ‚ط±ط§ط،', 'key': 'reciter', 'emoji': 'ًں“–'},
-      {'label': 'ط³ظˆط±', 'key': 'surah', 'emoji': 'ًں“ک'},
-      {'label': 'ط£ظ‚ط³ط§ظ…', 'key': 'category', 'emoji': 'ًں“‚'},
-      {'label': 'طھظ„ط§ظˆط§طھ', 'key': 'subItem', 'emoji': 'ًںژµ'},
-      {'label': 'ظ…ط¬ظ…ظˆط¹ط§طھ', 'key': 'subSection', 'emoji': 'ًں“پ'},
-      {'label': 'ظ…ط­ط·ط§طھ', 'key': 'radioStation', 'emoji': 'ًں“»'},
+      {'label': 'الكل', 'key': 'all', 'emoji': '🌐'},
+      {'label': 'قراء', 'key': 'reciter', 'emoji': '📖'},
+      {'label': 'سور', 'key': 'surah', 'emoji': '📘'},
+      {'label': 'أقسام', 'key': 'category', 'emoji': '📂'},
+      {'label': 'تلاوات', 'key': 'subItem', 'emoji': '🎵'},
+      {'label': 'مجموعات', 'key': 'subSection', 'emoji': '📁'},
+      {'label': 'محطات', 'key': 'radioStation', 'emoji': '📻'},
     ];
 
     // âœ… ط¥طµظ„ط§ط­ ط§ظ„ط¨ظ‚: ظپظ„طھط± ط¨ظ†ط§ط،ظ‹ ط¹ظ„ظ‰ key ظˆظ„ظٹط³ type
@@ -581,7 +583,7 @@ class _RecSearchScreenState extends State<RecSearchScreen> {
               ),
               const SizedBox(width: 6),
               Text(
-                'ط¨ط­ط« ط³ط§ط¨ظ‚',
+                'بحث سابق',
                 style: GoogleFonts.cairo(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -595,7 +597,7 @@ class _RecSearchScreenState extends State<RecSearchScreen> {
                   if (mounted) setState(() {});
                 },
                 child: Text(
-                  'ظ…ط³ط­',
+                  'مسح',
                   style: GoogleFonts.cairo(
                     fontSize: 11,
                     color: Colors.red.withValues(alpha: 0.7),
@@ -631,7 +633,7 @@ class _RecSearchScreenState extends State<RecSearchScreen> {
                           size: 16, color: widget.primary),
                       const SizedBox(width: 6),
                       Text(
-                        'ظٹط³طھظ…ط¹ ط§ظ„ط¢ظ†',
+                        'يستمع الآن',
                         style: GoogleFonts.cairo(
                           fontSize: 12,
                           fontWeight: FontWeight.w700,
@@ -701,7 +703,7 @@ class _RecSearchScreenState extends State<RecSearchScreen> {
             Icon(Icons.lightbulb_outline_rounded, size: 16, color: _gold),
             const SizedBox(width: 6),
             Text(
-              'ط§ظ‚طھط±ط§ط­ط§طھ',
+              'اقتراحات',
               style: GoogleFonts.cairo(
                 fontSize: 12,
                 fontWeight: FontWeight.w700,
@@ -730,7 +732,7 @@ class _RecSearchScreenState extends State<RecSearchScreen> {
               ),
               const SizedBox(width: 6),
               Text(
-                'ط§ظ„ط£ظ‚ط³ط§ظ… ط§ظ„ظ…طھط§ط­ط©',
+                'الأقسام المتاحة',
                 style: GoogleFonts.cairo(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -768,15 +770,15 @@ class _RecSearchScreenState extends State<RecSearchScreen> {
   Widget _buildQuickStats(bool isDark) {
     return Row(
       children: [
-        _statCard('$_recitersCount', 'ظ‚ط§ط±ط¦', Icons.person_rounded,
+        _statCard('$_recitersCount', 'قارئ', Icons.person_rounded,
             Colors.purple, isDark),
         const SizedBox(width: 8),
-        _statCard('114', 'ط³ظˆط±ط©', Icons.menu_book_rounded, Colors.blue, isDark),
+        _statCard('114', 'سورة', Icons.menu_book_rounded, Colors.blue, isDark),
         const SizedBox(width: 8),
-        _statCard('${widget.categories.length}', 'ظ‚ط³ظ…', Icons.folder_rounded,
+        _statCard('${widget.categories.length}', 'قسم', Icons.folder_rounded,
             Colors.orange, isDark),
         const SizedBox(width: 8),
-        _statCard('$_stationsCount', 'ظ…ط­ط·ط©', Icons.radio_rounded, Colors.red,
+        _statCard('$_stationsCount', 'محطة', Icons.radio_rounded, Colors.red,
             isDark),
       ],
     );
@@ -994,10 +996,10 @@ class _RecSearchScreenState extends State<RecSearchScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('ًں”چ', style: TextStyle(fontSize: 48)),
+          const Text('🔍', style: TextStyle(fontSize: 48)),
           const SizedBox(height: 14),
           Text(
-            'ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬ ظ„ظ€ "${_controller.text}"',
+            'لا توجد نتائج لـ "${_controller.text}"',
             style: GoogleFonts.cairo(
               fontSize: 15,
               fontWeight: FontWeight.w700,
@@ -1006,7 +1008,7 @@ class _RecSearchScreenState extends State<RecSearchScreen> {
           ),
           const SizedBox(height: 6),
           Text(
-            'ط¬ط±ظ‘ط¨ ط§ظ„ط¨ط­ط« ط¨ظƒظ„ظ…ط© ظ…ط®طھظ„ظپط©',
+            'جرّب البحث بكلمة مختلفة',
             style: GoogleFonts.cairo(
               fontSize: 12,
               color: isDark ? Colors.white38 : Colors.black38,
@@ -1040,6 +1042,17 @@ class _RecSearchScreenState extends State<RecSearchScreen> {
         break;
 
       case SearchResultType.category:
+        if (result.category != null) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => RecCategoryDetailScreen(
+                category: result.category!,
+                primary: widget.primary,
+              ),
+            ),
+          );
+        }
         break;
 
       case SearchResultType.subSection:
@@ -1059,6 +1072,14 @@ class _RecSearchScreenState extends State<RecSearchScreen> {
 
       case SearchResultType.subItem:
         if (result.subItem != null && result.parentItem != null) {
+          if (result.subItem!.isYouTube && result.subItem!.hasVideo) {
+            VideoLauncher.openSingle(
+              context: context,
+              item: result.subItem!,
+              primary: widget.primary,
+            );
+            break;
+          }
           final coordinator = context.read<AudioCoordinator>();
           final station = IslamicRadioStation(
             id: result.subItem!.audioUrl.hashCode.abs(),
@@ -1326,7 +1347,7 @@ class _DownloadedItemsSection extends StatelessWidget {
             ItemDownloadService.itemIdFromRecitationItem(tempItem);
             if (service.isDownloaded(itemId)) {
               items.add({
-                'title': 'ط³ظˆط±ط© ${surah.name}',
+                'title': 'سورة ${surah.name}',
                 'subtitle': station.name,
                 'emoji': station.iconEmoji,
               });
@@ -1354,7 +1375,7 @@ class _DownloadedItemsSection extends StatelessWidget {
                 ),
                 const SizedBox(width: 6),
                 Text(
-                  'ظ…ط­ظ…ظ„ط© ط¹ظ„ظ‰ ط¬ظ‡ط§ط²ظƒ (${downloadedItems.length})',
+                  'محملة على جهازك (${downloadedItems.length})',
                   style: GoogleFonts.cairo(
                     fontSize: 12,
                     fontWeight: FontWeight.w700,
@@ -1466,7 +1487,7 @@ class _CategoryTile extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '${cat.items.length} ط¹ظ†طµط± â€¢ ${cat.description}',
+                    '${cat.items.length} عنصر • ${cat.description}',
                     style: GoogleFonts.cairo(
                       fontSize: 10,
                       color: isDark ? Colors.white38 : Colors.black38,
@@ -1541,8 +1562,8 @@ class _ResultOptionsSheet extends StatelessWidget {
           const SizedBox(height: 16),
           _OptionTileWidget(
             icon: Icons.open_in_new_rounded,
-            label: 'ظپطھط­',
-            subtitle: 'ط§ظ„ط§ظ†طھظ‚ط§ظ„ ط¥ظ„ظ‰ ${result.typeLabel}',
+            label: 'فتح',
+            subtitle: 'الانتقال إلى ${result.typeLabel}',
             color: primary,
             isDark: isDark,
             onTap: onOpen,
@@ -1550,7 +1571,7 @@ class _ResultOptionsSheet extends StatelessWidget {
           const SizedBox(height: 8),
           _OptionTileWidget(
             icon: Icons.copy_rounded,
-            label: 'ظ†ط³ط® ط§ظ„ط§ط³ظ…',
+            label: 'نسخ الاسم',
             subtitle: result.title,
             color: Colors.blue,
             isDark: isDark,
@@ -1560,7 +1581,7 @@ class _ResultOptionsSheet extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(
-                    'طھظ… ظ†ط³ط® "${result.title}"',
+                    'تم نسخ "${result.title}"',
                     style: GoogleFonts.cairo(),
                     textDirection: TextDirection.rtl,
                   ),
@@ -1631,7 +1652,7 @@ class _ReciterPickerSheet extends StatelessWidget {
           ),
           const SizedBox(height: 6),
           Text(
-            'ط§ط®طھط± ط§ظ„ظ‚ط§ط±ط¦',
+            'اختر القارئ',
             style: GoogleFonts.cairo(
               fontSize: 13,
               fontWeight: FontWeight.w700,
@@ -1791,7 +1812,7 @@ class _PlayOptionsSheet extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'ط¨طµظˆطھ ${reciter.name}',
+                      'بصوت ${reciter.name}',
                       style: GoogleFonts.cairo(
                         fontSize: 12,
                         color: primary,
@@ -1807,8 +1828,8 @@ class _PlayOptionsSheet extends StatelessWidget {
 
           _OptionTileWidget(
             icon: Icons.play_circle_rounded,
-            label: 'ط§ط³طھظ…ط§ط¹ ظ…ط¨ط§ط´ط±',
-            subtitle: 'ظٹط­طھط§ط¬ ط§طھطµط§ظ„ ط¨ط§ظ„ط¥ظ†طھط±ظ†طھ',
+            label: 'استماع مباشر',
+            subtitle: 'يحتاج اتصال بالإنترنت',
             color: primary,
             isDark: isDark,
             onTap: onPlayOnline,
@@ -1817,8 +1838,8 @@ class _PlayOptionsSheet extends StatelessWidget {
 
           _OptionTileWidget(
             icon: Icons.library_music_rounded,
-            label: 'ظپطھط­ طµظپط­ط© ${reciter.name}',
-            subtitle: 'ط¹ط±ط¶ ظƒظ„ ط§ظ„ط³ظˆط±',
+            label: 'فتح صفحة ${reciter.name}',
+            subtitle: 'عرض كل السور',
             color: Colors.teal,
             isDark: isDark,
             onTap: onOpenReciter,
@@ -1901,8 +1922,8 @@ class _DownloadSection extends StatelessWidget {
 
         return _OptionTileWidget(
           icon: Icons.download_rounded,
-          label: 'طھط­ظ…ظٹظ„ ط§ظ„ط³ظˆط±ط©',
-          subtitle: 'ظ„ظ„ط§ط³طھظ…ط§ط¹ ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ',
+          label: 'تحميل السورة',
+          subtitle: 'للاستماع بدون إنترنت',
           color: Colors.green,
           isDark: isDark,
           onTap: () {
@@ -1952,7 +1973,7 @@ class _DownloadedState extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'طھظ… ط§ظ„طھط­ظ…ظٹظ„ âœ“',
+                  'تم التحميل ✓',
                   style: GoogleFonts.cairo(
                     fontSize: 14,
                     fontWeight: FontWeight.w700,
@@ -1960,7 +1981,7 @@ class _DownloadedState extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'ط§ظ„ط³ظˆط±ط© ظ…ط­ظپظˆط¸ط© ط¹ظ„ظ‰ ط¬ظ‡ط§ط²ظƒ',
+                  'السورة محفوظة على جهازك',
                   style: GoogleFonts.cairo(
                     fontSize: 10,
                     color: Colors.green.withValues(alpha: 0.7),
@@ -1978,7 +1999,7 @@ class _DownloadedState extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Text(
-                'ط­ط°ظپ',
+                'حذف',
                 style: GoogleFonts.cairo(
                   fontSize: 10,
                   color: Colors.red,
@@ -2032,7 +2053,7 @@ class _DownloadingState extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„...',
+                      'جاري التحميل...',
                       style: GoogleFonts.cairo(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
@@ -2040,7 +2061,7 @@ class _DownloadingState extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'ط³ظˆط±ط© $surahName ط¨طµظˆطھ $reciterName',
+                      'سورة $surahName بصوت $reciterName',
                       style: GoogleFonts.cairo(
                         fontSize: 10,
                         color: Colors.orange.withValues(alpha: 0.7),

@@ -29,8 +29,8 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
   int streak = 0;
   int today = 0;
   double noor = 0;
-  String rankEmoji = "ًںŒ±";
-  String rankName = "ط§ظ„ط¨ط§ط­ط«";
+  String rankEmoji = "🌱";
+  String rankName = "الباحث";
 
   late AnimationController _heroController;
   late Animation<double> _heroScale;
@@ -115,8 +115,8 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
                 children: [
                   _actionRow(
                     icon: Icons.route,
-                    title: "ط±ط­ظ„طھظƒ",
-                    subtitle: "ط§ظ„ظٹظˆظ… 7 ظ…ظ† 30",
+                    title: "رحلتك",
+                    subtitle: "اليوم 7 من 30",
                     onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -127,8 +127,8 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
                   const Divider(height: 1),
                   _actionRow(
                     icon: Icons.group,
-                    title: "ط±ظپظٹظ‚ ط§ظ„طµظ„ط§ط©",
-                    subtitle: "ط£ط­ظ…ط¯ ظٹظ†طھط¸ط±ظƒ",
+                    title: "رفيق الصلاة",
+                    subtitle: "أحمد ينتظرك",
                     onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -139,8 +139,8 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
                   const Divider(height: 1),
                   _actionRow(
                     icon: Icons.leaderboard,
-                    title: "ط§ظ„طھط±طھظٹط¨",
-                    subtitle: "ط£ظ†طھ #12",
+                    title: "الترتيب",
+                    subtitle: "أنت #12",
                     onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -155,7 +155,7 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
             const SizedBox(height: 24),
 
             /// ًں—؛ HEATMAP
-            _sectionHeader("ظ†ط´ط§ط·ظƒ ط§ظ„ط£ط®ظٹط±", Icons.grid_view, textColor),
+            _sectionHeader("نشاطك الأخير", Icons.grid_view, textColor),
             const SizedBox(height: 12),
             const PrayerHeatmap(),
 
@@ -166,7 +166,7 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
               child: ListTile(
                 leading: const Icon(Icons.psychology, color: Colors.blue),
                 title: Text("AI Coach", style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
-                subtitle: Text("ط§ط³طھط¹ط¯ ظ„ظ†طµظٹط­ط© ط°ظƒظٹط©", style: GoogleFonts.cairo(fontSize: 12)),
+                subtitle: Text("استعد لنصيحة ذكية", style: GoogleFonts.cairo(fontSize: 12)),
                 trailing: const Icon(Icons.arrow_forward_ios, size: 16),
                 onTap: () => Navigator.push(
                   context,
@@ -180,7 +180,7 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
             const SizedBox(height: 24),
 
             /// ًں“ٹ STATS
-            _sectionHeader("ط¥ط­طµط§ط¦ظٹط§طھظƒ", Icons.analytics, textColor),
+            _sectionHeader("إحصائياتك", Icons.analytics, textColor),
             const SizedBox(height: 12),
             _statsGrid(cardBg, textColor),
 
@@ -224,7 +224,7 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  "ًں”¥ $streak ظٹظˆظ… ظ…طھظˆط§طµظ„",
+                  "🔥 $streak يوم متواصل",
                   style: GoogleFonts.cairo(
                     fontSize: 16,
                     color: Colors.white70,
@@ -274,7 +274,7 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
       child: Column(
         children: [
           Text(
-            "طھظ‚ط¯ظ… ط§ظ„ظٹظˆظ…",
+            "تقدم اليوم",
             style: GoogleFonts.cairo(
               fontSize: 16,
               fontWeight: FontWeight.bold,
@@ -323,9 +323,9 @@ class _PrayerOSScreenState extends State<PrayerOSScreen>
       mainAxisSpacing: 12,
       crossAxisSpacing: 12,
       children: [
-        _statCard("âœ¨", noor.toInt().toString(), "ظ†ظˆط±", cardBg, textColor),
-        _statCard("ًں•Œ", "12", "ظ…ط³ط¬ط¯", cardBg, textColor),
-        _statCard("âœ…", "5", "ط£ظٹط§ظ… ظƒط§ظ…ظ„ط©", cardBg, textColor),
+        _statCard("✨", noor.toInt().toString(), "نور", cardBg, textColor),
+        _statCard("🕌", "12", "مسجد", cardBg, textColor),
+        _statCard("✅", "5", "أيام كاملة", cardBg, textColor),
       ],
     );
   }

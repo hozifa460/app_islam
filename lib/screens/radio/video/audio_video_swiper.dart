@@ -206,7 +206,7 @@ class _AudioVideoSwiperState extends State<AudioVideoSwiper> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _TabBtn(
-                label: 'ًںژµ طµظˆطھ',
+                label: '🎵 صوت',
                 isActive: _currentPage == 0,
                 primary: widget.primary,
                 isDark: isDark,
@@ -216,7 +216,7 @@ class _AudioVideoSwiperState extends State<AudioVideoSwiper> {
               ),
               const SizedBox(width: 8),
               _TabBtn(
-                label: _videoLoading ? 'ًںژ¬ طھط­ط¶ظٹط±...' : 'ًںژ¬ ظپظٹط¯ظٹظˆ',
+                label: _videoLoading ? '🎬 تحضير...' : '🎬 فيديو',
                 isActive: _currentPage == 1,
                 primary: widget.primary,
                 isDark: isDark,
@@ -257,7 +257,7 @@ class _AudioVideoSwiperState extends State<AudioVideoSwiper> {
             children: [
               const Icon(Icons.error_outline, color: Colors.red, size: 40),
               const SizedBox(height: 8),
-              Text('ظپط´ظ„ طھط­ظ…ظٹظ„ ط§ظ„ظپظٹط¯ظٹظˆ',
+              Text('فشل تحميل الفيديو',
                   style: GoogleFonts.cairo(color: Colors.white54)),
               const SizedBox(height: 12),
               GestureDetector(
@@ -272,7 +272,7 @@ class _AudioVideoSwiperState extends State<AudioVideoSwiper> {
                     color: widget.primary,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Text('ط¥ط¹ط§ط¯ط©',
+                  child: Text('إعادة',
                       style: GoogleFonts.cairo(
                           color: Colors.white,
                           fontWeight: FontWeight.w700)),
@@ -289,7 +289,7 @@ class _AudioVideoSwiperState extends State<AudioVideoSwiper> {
       return Container(
         color: Colors.black,
         child: Center(
-          child: Text('ظ„ط§ ظٹظˆط¬ط¯ ظپظٹط¯ظٹظˆ',
+          child: Text('لا يوجد فيديو',
               style: GoogleFonts.cairo(color: Colors.white54)),
         ),
       );

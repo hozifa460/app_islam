@@ -1,32 +1,40 @@
-﻿// screens/fatwa_detail_screen.dart
-import 'package:flutter/cupertino.dart';
+// screens/fatwa_detail_screen.dart
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'models/fatwa_model.dart';
 
 class FatwaDetailScreen extends StatelessWidget {
   final Fatwa fatwa;
 
-  const FatwaDetailScreen({Key? key, required this.fatwa}) : super(key: key);
+  const FatwaDetailScreen({super.key, required this.fatwa});
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final cardColor = isDark ? const Color(0xFF1C2520) : Colors.white;
+    final textColor = isDark ? Colors.white : Colors.black87;
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        backgroundColor: const Color(0xFFF5F5F5),
+        backgroundColor:
+            isDark ? const Color(0xFF0E1714) : const Color(0xFFF5F5F5),
         appBar: AppBar(
-          title: const Text('طھظپط§طµظٹظ„ ط§ظ„ظپطھظˆظ‰',
-              style: TextStyle(fontFamily: 'Cairo')),
+          title: const Text(
+            'تفاصيل الفتوى',
+            style: TextStyle(fontFamily: 'Cairo'),
+          ),
           backgroundColor: const Color(0xFF1B5E20),
           actions: [
             IconButton(
               icon: const Icon(Icons.share),
-              onPressed: () => _shareFatwa(),
+              onPressed: () => _shareFatwa(context),
             ),
             IconButton(
               icon: const Icon(Icons.bookmark_border),
-              onPressed: () => _saveFatwa(),
+              onPressed: () => _saveFatwa(context),
             ),
           ],
         ),
@@ -42,7 +50,8 @@ class FatwaDetailScreen extends StatelessWidget {
                   color: const Color(0xFF2E7D32).withValues(alpha: 0.05),
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
-                      color: const Color(0xFF2E7D32).withValues(alpha: 0.2)),
+                    color: const Color(0xFF2E7D32).withValues(alpha: 0.2),
+                  ),
                 ),
                 child: Row(
                   children: [
@@ -61,7 +70,7 @@ class FatwaDetailScreen extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: cardColor,
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
@@ -77,13 +86,15 @@ class FatwaDetailScreen extends StatelessWidget {
                       children: [
                         Container(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 6),
+                            horizontal: 12,
+                            vertical: 6,
+                          ),
                           decoration: BoxDecoration(
                             color: const Color(0xFF2E7D32),
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: const Text(
-                            'ط§ظ„ط³ط¤ط§ظ„',
+                            'السؤال',
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -113,7 +124,7 @@ class FatwaDetailScreen extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: cardColor,
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
@@ -129,13 +140,15 @@ class FatwaDetailScreen extends StatelessWidget {
                       children: [
                         Container(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 6),
+                            horizontal: 12,
+                            vertical: 6,
+                          ),
                           decoration: BoxDecoration(
                             color: Colors.orange,
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: const Text(
-                            'ط§ظ„ط¬ظˆط§ط¨',
+                            'الجواب',
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -150,7 +163,7 @@ class FatwaDetailScreen extends StatelessWidget {
                       fatwa.answer,
                       style: TextStyle(
                         fontSize: 16,
-                        color: Colors.grey[800],
+                        color: textColor,
                         fontFamily: 'Cairo',
                         height: 2.0,
                       ),
@@ -166,10 +179,12 @@ class FatwaDetailScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ElevatedButton.icon(
-                      onPressed: () => _copyFatwa(),
+                      onPressed: () => _copyFatwa(context),
                       icon: const Icon(Icons.copy),
-                      label: const Text('ظ†ط³ط®',
-                          style: TextStyle(fontFamily: 'Cairo')),
+                      label: const Text(
+                        'نسخ',
+                        style: TextStyle(fontFamily: 'Cairo'),
+                      ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF2E7D32),
                         padding: const EdgeInsets.symmetric(vertical: 12),
@@ -182,10 +197,12 @@ class FatwaDetailScreen extends StatelessWidget {
                   const SizedBox(width: 12),
                   Expanded(
                     child: OutlinedButton.icon(
-                      onPressed: () => _shareFatwa(),
+                      onPressed: () => _shareFatwa(context),
                       icon: const Icon(Icons.share),
-                      label: const Text('ظ…ط´ط§ط±ظƒط©',
-                          style: TextStyle(fontFamily: 'Cairo')),
+                      label: const Text(
+                        'مشاركة',
+                        style: TextStyle(fontFamily: 'Cairo'),
+                      ),
                       style: OutlinedButton.styleFrom(
                         foregroundColor: const Color(0xFF2E7D32),
                         padding: const EdgeInsets.symmetric(vertical: 12),
@@ -214,10 +231,7 @@ class FatwaDetailScreen extends StatelessWidget {
           Flexible(
             child: Text(
               text,
-              style: const TextStyle(
-                fontSize: 12,
-                fontFamily: 'Cairo',
-              ),
+              style: const TextStyle(fontSize: 12, fontFamily: 'Cairo'),
               overflow: TextOverflow.ellipsis,
             ),
           ),
@@ -226,7 +240,33 @@ class FatwaDetailScreen extends StatelessWidget {
     );
   }
 
-  void _shareFatwa() {}
-  void _saveFatwa() {}
-  void _copyFatwa() {}
+  String get _fatwaText =>
+      '${fatwa.question}\n\n${fatwa.answer}\n\nالمصدر: ${fatwa.scholar} - ${fatwa.book}';
+
+  Future<void> _shareFatwa(BuildContext context) async {
+    await Share.share(_fatwaText);
+  }
+
+  Future<void> _saveFatwa(BuildContext context) async {
+    final prefs = await SharedPreferences.getInstance();
+    final saved = prefs.getStringList('saved_fatwa_ids') ?? <String>[];
+    if (!saved.contains(fatwa.id)) saved.add(fatwa.id);
+    await prefs.setStringList('saved_fatwa_ids', saved);
+    if (!context.mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('تم حفظ الفتوى', style: TextStyle(fontFamily: 'Cairo')),
+      ),
+    );
+  }
+
+  Future<void> _copyFatwa(BuildContext context) async {
+    await Clipboard.setData(ClipboardData(text: _fatwaText));
+    if (!context.mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('تم نسخ الفتوى', style: TextStyle(fontFamily: 'Cairo')),
+      ),
+    );
+  }
 }

@@ -75,7 +75,7 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
 
       widget.onImageChanged?.call(picked.path);
     } catch (e) {
-      debugPrint('â‌Œ ط®ط·ط£: $e');
+      debugPrint('❌ خطأ: $e');
     }
   }
 
@@ -123,7 +123,7 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
             ),
             const SizedBox(height: 18),
             Text(
-              'طھط؛ظٹظٹط± ط§ظ„طµظˆط±ط© ط§ظ„ط´ط®طµظٹط©',
+              'تغيير الصورة الشخصية',
               style: GoogleFonts.cairo(
                 fontSize: 17,
                 fontWeight: FontWeight.w700,
@@ -135,7 +135,7 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
               children: [
                 _SheetBtn(
                   icon: Icons.camera_alt_rounded,
-                  label: 'ط§ظ„ظƒط§ظ…ظٹط±ط§',
+                  label: 'الكاميرا',
                   color: _gold,
                   isDark: isDark,
                   onTap: () {
@@ -146,7 +146,7 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
                 const SizedBox(width: 12),
                 _SheetBtn(
                   icon: Icons.photo_library_rounded,
-                  label: 'ط§ظ„ظ…ط¹ط±ط¶',
+                  label: 'المعرض',
                   color: Colors.blue,
                   isDark: isDark,
                   onTap: () {
@@ -158,7 +158,7 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
                   const SizedBox(width: 12),
                   _SheetBtn(
                     icon: Icons.delete_outline_rounded,
-                    label: 'ط¥ط²ط§ظ„ط©',
+                    label: 'إزالة',
                     color: Colors.red,
                     isDark: isDark,
                     onTap: () {
@@ -310,7 +310,7 @@ class ProfileAvatarWidgetState extends State<ProfileAvatarWidget>
             ),
             const SizedBox(height: 4),
             Text(
-              'ط¬ط§ط±ظٹ ط§ظ„ط­ظپط¸',
+              'جاري الحفظ',
               style: GoogleFonts.cairo(
                 fontSize: s * 0.1,
                 color: _gold,

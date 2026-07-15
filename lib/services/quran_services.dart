@@ -79,7 +79,7 @@ class QuranService {
             }).toList(),
           });
         } else {
-          throw Exception('ظپط´ظ„ طھط­ظ…ظٹظ„ ط³ظˆط±ط© $i');
+          throw Exception('فشل تحميل سورة $i');
         }
 
         await Future.delayed(const Duration(milliseconds: 50));
@@ -97,7 +97,7 @@ class QuranService {
       _cachedData = quranData;
       return quranData;
     } catch (e) {
-      debugPrint('ط®ط·ط£ ظپظٹ طھط­ظ…ظٹظ„ ط§ظ„ظ‚ط±ط¢ظ†: $e');
+      debugPrint('خطأ في تحميل القرآن: $e');
       return null;
     }
   }

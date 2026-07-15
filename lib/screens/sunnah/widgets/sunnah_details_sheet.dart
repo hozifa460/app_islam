@@ -62,8 +62,8 @@ class SunnahDetailsSheet {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         _buildDetailCard(
-                          icon: 'ًں“‌',
-                          title: 'ط§ظ„ظˆطµظپ',
+                          icon: '📝',
+                          title: 'الوصف',
                           content: sunnah.description,
                           color: cardColor,
                           size: size,
@@ -71,8 +71,8 @@ class SunnahDetailsSheet {
                         ),
                         SizedBox(height: size.height * 0.014),
                         _buildDetailCard(
-                          icon: 'ًں“–',
-                          title: 'ط§ظ„ط¯ظ„ظٹظ„ ظ…ظ† ط§ظ„ط³ظ†ط©',
+                          icon: '📖',
+                          title: 'الدليل من السنة',
                           content: sunnah.hadith,
                           color: SunnahTheme.gold,
                           size: size,
@@ -84,8 +84,8 @@ class SunnahDetailsSheet {
                             Expanded(
                               child: _buildInfoTile(
                                 service.getCategoryLabel(sunnah.timeCategory),
-                                'ظˆظ‚طھ ط§ظ„ط³ظ†ط©',
-                                'ًں•گ',
+                                'وقت السنة',
+                                '🕐',
                                 cardColor,
                                 size,
                                 theme,
@@ -95,9 +95,9 @@ class SunnahDetailsSheet {
                             Expanded(
                               child: _buildInfoTile(
                                 sunnah.importance,
-                                'ط§ظ„ط£ظ‡ظ…ظٹط©',
-                                sunnah.importance == 'ظ…ط¤ظƒط¯ط©' ? 'â­گ' : 'ًں’«',
-                                sunnah.importance == 'ظ…ط¤ظƒط¯ط©'
+                                'الأهمية',
+                                sunnah.importance == 'مؤكدة' ? '⭐' : '💫',
+                                sunnah.importance == 'مؤكدة'
                                     ? SunnahTheme.gold
                                     : SunnahTheme.blue,
                                 size,
@@ -113,7 +113,7 @@ class SunnahDetailsSheet {
                         Center(
                           child: TextButton(
                             onPressed: () => Navigator.pop(context),
-                            child: Text('ط¥ط؛ظ„ط§ظ‚',
+                            child: Text('إغلاق',
                                 style: TextStyle(
                                   color: theme.textSecondary,
                                   fontSize: size.width * 0.035,
@@ -191,7 +191,7 @@ class SunnahDetailsSheet {
               SunnahCard.buildImportanceBadge(sunnah.importance, size, theme),
               if (sunnah.rakaat > 0)
                 SunnahCard.buildMiniTag(
-                    '${sunnah.rakaat} ط±ظƒط¹ط§طھ', SunnahTheme.blue, size, theme),
+                    '${sunnah.rakaat} ركعات', SunnahTheme.blue, size, theme),
             ],
           ),
         ],
@@ -315,7 +315,7 @@ class SunnahDetailsSheet {
               ),
               SizedBox(width: size.width * 0.025),
               Text(
-                sunnah.isCompleted ? 'ط¥ظ„ط؛ط§ط، ط§ظ„ط¥ظƒظ…ط§ظ„' : 'âœ¨ ط¹ظ„ظ‘ظ… ظƒظ…ظƒطھظ…ظ„',
+                sunnah.isCompleted ? 'إلغاء الإكمال' : '✨ علّم كمكتمل',
                 style: TextStyle(
                   color: sunnah.isCompleted
                       ? (theme.isDark ? theme.textSecondary : Colors.black54)

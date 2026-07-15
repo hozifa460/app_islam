@@ -273,7 +273,7 @@ class LockButtonWidget extends StatelessWidget {
             ),
             const SizedBox(height: 3),
             Text(
-              isLocked ? 'ظ…ظ‚ظپظ„' : 'Lock',
+              isLocked ? 'مقفل' : 'Lock',
               style: GoogleFonts.cairo(
                 fontSize: 9,
                 color: isLocked ? BooksTheme.gold : Colors.grey.shade800,

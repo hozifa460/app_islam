@@ -145,7 +145,7 @@ class HomeDrawer extends StatelessWidget {
 
           // ط§ظ„ط§ط³ظ…
           Text(
-            'ط·ط±ظٹظ‚ ط§ظ„ط¥ط³ظ„ط§ظ…',
+            'طريق الإسلام',
             style: GoogleFonts.amiri(
               fontSize: 22,
               fontWeight: FontWeight.bold,
@@ -166,7 +166,7 @@ class HomeDrawer extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
             ),
             child: Text(
-              'ط±ظپظٹظ‚ظƒ ط§ظ„ط¥ط³ظ„ط§ظ…ظٹ ط§ظ„ظٹظˆظ…ظٹ âœ¨',
+              'رفيقك الإسلامي اليومي ✨',
               style: GoogleFonts.cairo(
                 fontSize: 11,
                 color: Colors.white.withValues(alpha: 0.85),
@@ -302,7 +302,7 @@ class HomeDrawer extends StatelessWidget {
               ),
               const SizedBox(width: 6),
               Text(
-                'ط¨ط³ظ… ط§ظ„ظ„ظ‡ ط§ظ„ط±ط­ظ…ظ† ط§ظ„ط±ط­ظٹظ…',
+                'بسم الله الرحمن الرحيم',
                 style: GoogleFonts.amiri(
                   fontSize: 12,
                   color: _textSecondary,

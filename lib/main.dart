@@ -155,13 +155,13 @@ Future<AppStartupData> _initializeApp() async {
     debugPrint('⚠️ Auth error: $e');
   }
 
-  final statsService          = StatsService(authService);
-  final profileImageProvider  = ProfileImageProvider(authService);
+  final statsService = StatsService(authService);
+  final profileImageProvider = ProfileImageProvider(authService);
 
   unawaited(
     _runDeferredStartupTasks(
-      authService:          authService,
-      statsService:         statsService,
+      authService: authService,
+      statsService: statsService,
       profileImageProvider: profileImageProvider,
     ),
   );
@@ -169,16 +169,16 @@ Future<AppStartupData> _initializeApp() async {
   debugPrint('✅ Essential app initialization completed');
 
   return AppStartupData(
-    authService:          authService,
-    statsService:         statsService,
+    authService: authService,
+    statsService: statsService,
     profileImageProvider: profileImageProvider,
-    localeProvider:       localeProvider,
+    localeProvider: localeProvider,
   );
 }
 
 Future<void> _runDeferredStartupTasks({
-  required AuthService          authService,
-  required StatsService         statsService,
+  required AuthService authService,
+  required StatsService statsService,
   required ProfileImageProvider profileImageProvider,
 }) async {
   debugPrint('🟡 Deferred startup tasks started');
@@ -276,12 +276,12 @@ class _AppBootstrapState extends State<AppBootstrap> {
 
   late final Future<AppStartupData> _startupFuture;
   AppStartupData? _startupData;
-  Object?         _startupError;
-  bool            _splashFinished = false;
+  Object? _startupError;
+  bool _splashFinished = false;
 
-  bool _isDarkMode        = true;
-  int  _selectedColorIndex = 0;
-  bool _prefsLoaded       = false;
+  bool _isDarkMode = true;
+  int _selectedColorIndex = 0;
+  bool _prefsLoaded = false;
 
   static const List<Color> appColors = [
     Color(0xFF123C33),
@@ -306,27 +306,29 @@ class _AppBootstrapState extends State<AppBootstrap> {
     _startupFuture = _initializeApp();
     _startupFuture
         .then((value) {
-      if (!mounted) return;
-      setState(() => _startupData = value);
-      _setupNotificationListener();
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        _preloadImages();
-        _preloadRadioImages();
-      });
-    })
+          if (!mounted) return;
+          setState(() => _startupData = value);
+          _setupNotificationListener();
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            _preloadImages();
+            _preloadRadioImages();
+          });
+        })
         .catchError((error) {
-      if (!mounted) return;
-      setState(() => _startupError = error);
-    });
+          if (!mounted) return;
+          setState(() => _startupError = error);
+        });
   }
 
   Future<void> _loadPrefs() async {
     final prefs = await SharedPreferences.getInstance();
     if (!mounted) return;
     setState(() {
-      _isDarkMode          = prefs.getBool('isDarkMode') ?? true;
-      _selectedColorIndex  = (prefs.getInt('colorIndex') ?? 0)
-          .clamp(0, appColors.length - 1);
+      _isDarkMode = prefs.getBool('isDarkMode') ?? true;
+      _selectedColorIndex = (prefs.getInt('colorIndex') ?? 0).clamp(
+        0,
+        appColors.length - 1,
+      );
       _prefsLoaded = true;
     });
   }
@@ -387,9 +389,7 @@ class _AppBootstrapState extends State<AppBootstrap> {
 
       debugPrint('📥 Preloading ${imageUrls.length} images...');
 
-      unawaited(
-        ImageCacheService().preloadImages(imageUrls.toList()),
-      );
+      unawaited(ImageCacheService().preloadImages(imageUrls.toList()));
     } catch (e) {
       debugPrint('⚠️ Image preload error: $e');
     }
@@ -402,16 +402,18 @@ class _AppBootstrapState extends State<AppBootstrap> {
       if (payload['type'] == 'adhan') {
         navigatorKey.currentState?.push(
           MaterialPageRoute(
-            builder: (_) => AdhanPlayerScreen(
-              primaryColor: appColors[_selectedColorIndex],
-              prayerName:   payload['prayerName'] ?? payload['prayer'] ?? 'الصلاة',
-              muezzinName:  payload['muezzinName'] ?? 'مؤذن',
-              url:          payload['muezzinUrl'] ?? '',
-              localPath:
-              (payload['localPath']?.toString().isNotEmpty ?? false)
-                  ? payload['localPath']
-                  : null,
-            ),
+            builder:
+                (_) => AdhanPlayerScreen(
+                  primaryColor: appColors[_selectedColorIndex],
+                  prayerName:
+                      payload['prayerName'] ?? payload['prayer'] ?? 'الصلاة',
+                  muezzinName: payload['muezzinName'] ?? 'مؤذن',
+                  url: payload['muezzinUrl'] ?? '',
+                  localPath:
+                      (payload['localPath']?.toString().isNotEmpty ?? false)
+                          ? payload['localPath']
+                          : null,
+                ),
           ),
         );
       }
@@ -425,15 +427,15 @@ class _AppBootstrapState extends State<AppBootstrap> {
 
   @override
   Widget build(BuildContext context) {
-    const bgDark  = Color(0xFF0A0E17);
+    const bgDark = Color(0xFF0A0E17);
     const bgLight = Color(0xFFF0F4FF);
 
     return MaterialApp(
-      navigatorKey:            navigatorKey,
-      title:                   'طريق الإسلام',
+      navigatorKey: navigatorKey,
+      title: 'طريق الإسلام',
       debugShowCheckedModeBanner: false,
       locale: _startupData?.localeProvider.locale ?? const Locale('ar'),
-      supportedLocales:        AppLocalizations.supportedLocales,
+      supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -443,16 +445,16 @@ class _AppBootstrapState extends State<AppBootstrap> {
       themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor:  appColors[_selectedColorIndex],
+          seedColor: appColors[_selectedColorIndex],
           brightness: Brightness.light,
         ),
         scaffoldBackgroundColor: bgLight,
-        textTheme:   GoogleFonts.cairoTextTheme(),
+        textTheme: GoogleFonts.cairoTextTheme(),
         useMaterial3: true,
       ),
       darkTheme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor:  appColors[_selectedColorIndex],
+          seedColor: appColors[_selectedColorIndex],
           brightness: Brightness.dark,
         ),
         scaffoldBackgroundColor: bgDark,
@@ -471,7 +473,6 @@ class _AppBootstrapState extends State<AppBootstrap> {
         if (_startupData != null) {
           wrappedChild = MultiProvider(
             providers: [
-
               ChangeNotifierProvider<MiracleColorProvider>(
                 create: (_) => MiracleColorProvider(),
               ),
@@ -479,23 +480,16 @@ class _AppBootstrapState extends State<AppBootstrap> {
               ChangeNotifierProvider(
                 create: (_) => PrayerTimesController()..initialize(),
               ),
-              ChangeNotifierProvider(
-                create: (_) => PrayerJourneyController(),
-              ),
-              ChangeNotifierProvider(
-                create: (_) => OfflineRadioService()..init(),
-              ),
-              ChangeNotifierProvider(
-                create: (_) => RadioIntillegence()..init(),
-              ),
-              ChangeNotifierProvider(
-                create: (_) => AudioCoordinator(),
-              ),
+              ChangeNotifierProvider(create: (_) => PrayerJourneyController()),
+              ChangeNotifierProvider(create: (_) => AudioCoordinator()),
               ChangeNotifierProxyProvider<AudioCoordinator, RadioIntillegence>(
                 create: (_) => AudioCoordinator().onlineRadio..init(),
                 update: (_, coordinator, __) => coordinator.onlineRadio,
               ),
-              ChangeNotifierProxyProvider<AudioCoordinator, OfflineRadioService>(
+              ChangeNotifierProxyProvider<
+                AudioCoordinator,
+                OfflineRadioService
+              >(
                 create: (_) => AudioCoordinator().offlineRadio..init(),
                 update: (_, coordinator, __) => coordinator.offlineRadio,
               ),
@@ -509,23 +503,19 @@ class _AppBootstrapState extends State<AppBootstrap> {
               ChangeNotifierProvider(
                 create: (_) => ItemDownloadService()..init(),
               ),
-              ChangeNotifierProvider(
-                create: (_) => PlaylistService(),
-              ),
+              ChangeNotifierProvider(create: (_) => PlaylistService()),
               ChangeNotifierProvider(
                 create: (_) => ListeningHistoryService()..init(),
               ),
               ChangeNotifierProvider(
                 create: (_) => VideoDownloadService()..init(),
               ),
+              ChangeNotifierProvider.value(value: _startupData!.authService),
+              ChangeNotifierProvider.value(value: _startupData!.statsService),
               ChangeNotifierProvider.value(
-                  value: _startupData!.authService),
-              ChangeNotifierProvider.value(
-                  value: _startupData!.statsService),
-              ChangeNotifierProvider.value(
-                  value: _startupData!.profileImageProvider),
-              ChangeNotifierProvider.value(
-                  value: _startupData!.localeProvider),
+                value: _startupData!.profileImageProvider,
+              ),
+              ChangeNotifierProvider.value(value: _startupData!.localeProvider),
             ],
             child: wrappedChild,
           );
@@ -543,9 +533,8 @@ class _AppBootstrapState extends State<AppBootstrap> {
   Widget _buildHome() {
     if (_startupError != null) {
       return Scaffold(
-        backgroundColor: _isDarkMode
-            ? const Color(0xFF0A0E17)
-            : const Color(0xFFF0F4FF),
+        backgroundColor:
+            _isDarkMode ? const Color(0xFF0A0E17) : const Color(0xFFF0F4FF),
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(24),
@@ -566,13 +555,13 @@ class _AppBootstrapState extends State<AppBootstrap> {
     }
 
     return _AppRoot(
-      splashDone:      true,
-      isDark:          _isDarkMode,
-      onFinish:        _onSplashFinish,
-      colorIndex:      _selectedColorIndex,
-      onThemeChanged:  _changeTheme,
-      onColorChanged:  _changeColor,
-      appColors:       appColors,
+      splashDone: true,
+      isDark: _isDarkMode,
+      onFinish: _onSplashFinish,
+      colorIndex: _selectedColorIndex,
+      onThemeChanged: _changeTheme,
+      onColorChanged: _changeColor,
+      appColors: appColors,
     );
   }
 }
@@ -581,13 +570,13 @@ class _AppBootstrapState extends State<AppBootstrap> {
 //  _AppRoot - بدون أي تعديل
 // ══════════════════════════════════════════════
 class _AppRoot extends StatefulWidget {
-  final bool             splashDone;
-  final bool             isDark;
-  final VoidCallback     onFinish;
-  final int              colorIndex;
+  final bool splashDone;
+  final bool isDark;
+  final VoidCallback onFinish;
+  final int colorIndex;
   final void Function(bool) onThemeChanged;
-  final void Function(int)  onColorChanged;
-  final List<Color>      appColors;
+  final void Function(int) onColorChanged;
+  final List<Color> appColors;
 
   const _AppRoot({
     required this.splashDone,
@@ -606,10 +595,10 @@ class _AppRoot extends StatefulWidget {
 class _AppRootState extends State<_AppRoot>
     with SingleTickerProviderStateMixin {
   late AnimationController _ctrl;
-  late Animation<double>   _splashFade;
-  late Animation<double>   _homeFade;
+  late Animation<double> _splashFade;
+  late Animation<double> _homeFade;
 
-  bool _homeReady  = false;
+  bool _homeReady = false;
   bool _splashGone = false;
 
   @override
@@ -617,17 +606,19 @@ class _AppRootState extends State<_AppRoot>
     super.initState();
 
     _ctrl = AnimationController(
-      vsync:    this,
+      vsync: this,
       duration: const Duration(milliseconds: 420),
     );
 
-    _splashFade = Tween<double>(begin: 1.0, end: 0.0).animate(
-      CurvedAnimation(parent: _ctrl, curve: Curves.easeIn),
-    );
+    _splashFade = Tween<double>(
+      begin: 1.0,
+      end: 0.0,
+    ).animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeIn));
 
-    _homeFade = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _ctrl, curve: Curves.easeOut),
-    );
+    _homeFade = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeOut));
 
     _ctrl.addStatusListener((status) {
       if (status == AnimationStatus.completed && mounted) {
@@ -636,7 +627,7 @@ class _AppRootState extends State<_AppRoot>
     });
 
     if (widget.splashDone) {
-      _homeReady  = true;
+      _homeReady = true;
       _splashGone = true;
       _ctrl.value = 1.0;
     }
@@ -666,9 +657,7 @@ class _AppRootState extends State<_AppRoot>
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
-      color: widget.isDark
-          ? const Color(0xFF0A0E17)
-          : const Color(0xFFF0F4FF),
+      color: widget.isDark ? const Color(0xFF0A0E17) : const Color(0xFFF0F4FF),
       child: Stack(
         fit: StackFit.expand,
         children: [
@@ -676,10 +665,11 @@ class _AppRootState extends State<_AppRoot>
             if (!_splashGone)
               AnimatedBuilder(
                 animation: _homeFade,
-                builder: (_, child) => Opacity(
-                  opacity: _homeFade.value.clamp(0.0, 1.0),
-                  child:   child,
-                ),
+                builder:
+                    (_, child) => Opacity(
+                      opacity: _homeFade.value.clamp(0.0, 1.0),
+                      child: child,
+                    ),
                 child: _buildHome(),
               )
             else
@@ -688,12 +678,13 @@ class _AppRootState extends State<_AppRoot>
           if (!_splashGone)
             AnimatedBuilder(
               animation: _splashFade,
-              builder: (_, child) => Opacity(
-                opacity: _splashFade.value.clamp(0.0, 1.0),
-                child:   child,
-              ),
+              builder:
+                  (_, child) => Opacity(
+                    opacity: _splashFade.value.clamp(0.0, 1.0),
+                    child: child,
+                  ),
               child: SplashScreen(
-                key:      const ValueKey('splash'),
+                key: const ValueKey('splash'),
                 onFinish: widget.onFinish,
               ),
             ),
@@ -709,40 +700,43 @@ class _AppRootState extends State<_AppRoot>
       builder: (context, auth, _) {
         final isLoggedIn = auth.status == AuthStatus.authenticated;
 
-        final child = !isLoggedIn
-            ? const AuthScreen(key: ValueKey('auth'))
-            : MainShellScreen(
-          key:                const ValueKey('home'),
-          onThemeChanged:     widget.onThemeChanged,
-          onColorChanged:     widget.onColorChanged,
-          isDarkMode:         widget.isDark,
-          selectedColorIndex: widget.colorIndex,
-          appColors:          widget.appColors,
-          colorNames: [
-            tr.t('colorIslamicGreen'),
-            tr.t('colorEmeraldGreen'),
-            tr.t('colorSkyBlue'),
-            tr.t('colorPurple'),
-            tr.t('colorDarkPink'),
-            tr.t('colorTeal'),
-            tr.t('colorOrange'),
-            tr.t('colorIndigo'),
-            tr.t('colorBrown'),
-            tr.t('colorCharcoal'),
-            tr.t('colorRed'),
-            tr.t('colorSeaGreen'),
-          ],
-        );
+        final child =
+            !isLoggedIn
+                ? const AuthScreen(key: ValueKey('auth'))
+                : MainShellScreen(
+                  key: const ValueKey('home'),
+                  onThemeChanged: widget.onThemeChanged,
+                  onColorChanged: widget.onColorChanged,
+                  isDarkMode: widget.isDark,
+                  selectedColorIndex: widget.colorIndex,
+                  appColors: widget.appColors,
+                  colorNames: [
+                    tr.t('colorIslamicGreen'),
+                    tr.t('colorEmeraldGreen'),
+                    tr.t('colorSkyBlue'),
+                    tr.t('colorPurple'),
+                    tr.t('colorDarkPink'),
+                    tr.t('colorTeal'),
+                    tr.t('colorOrange'),
+                    tr.t('colorIndigo'),
+                    tr.t('colorBrown'),
+                    tr.t('colorCharcoal'),
+                    tr.t('colorRed'),
+                    tr.t('colorSeaGreen'),
+                  ],
+                );
 
         return AnimatedSwitcher(
           duration: const Duration(milliseconds: 500),
-          transitionBuilder: (child, animation) =>
-              FadeTransition(opacity: animation, child: child),
+          transitionBuilder:
+              (child, animation) =>
+                  FadeTransition(opacity: animation, child: child),
           child: ColoredBox(
             key: ValueKey(isLoggedIn ? 'home' : 'auth'),
-            color: widget.isDark
-                ? const Color(0xFF0A0E17)
-                : const Color(0xFFF0F4FF),
+            color:
+                widget.isDark
+                    ? const Color(0xFF0A0E17)
+                    : const Color(0xFFF0F4FF),
             child: child,
           ),
         );

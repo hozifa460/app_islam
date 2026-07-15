@@ -1,4 +1,3 @@
-
 import '../models/chat_message.dart';
 import '../models/fatwa_model.dart';
 import 'local_search_service.dart';
@@ -14,16 +13,22 @@ class UnifiedFatwaAssistant {
       );
     }
 
-    return await LocalSearchService.search(userQuestion);
+    final currentFatawa = LocalSearchService.allFatawa;
+    return await LocalSearchService.search(
+      userQuestion,
+      fatawa: currentFatawa.isNotEmpty ? currentFatawa : localFatawa,
+    );
   }
 
   static Future<ChatMessage> onSourceSelected(
-      String question,
-      SourceOption selected,
-      List<SourceOption> allOptions,
-      ) async {
+    String question,
+    SourceOption selected,
+    List<SourceOption> allOptions,
+  ) async {
     return await LocalSearchService.onSourceSelected(
-      question, selected, allOptions,
+      question,
+      selected,
+      allOptions,
     );
   }
 }

@@ -40,11 +40,11 @@ class QiblaAppBar extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('ط§طھط¬ط§ظ‡ ط§ظ„ظ‚ط¨ظ„ط©', style: theme.titleStyle),
+                Text('اتجاه القبلة', style: theme.titleStyle),
                 if (qiblaAngle != null)
                   Text(
-                    'ط§ظ„ظ‚ط¨ظ„ط©: ${qiblaAngle!.toStringAsFixed(1)}آ° '
-                        '| ظ‡ط§طھظپظƒ: ${compassHeading.toStringAsFixed(1)}آ°',
+                    'القبلة: ${qiblaAngle!.toStringAsFixed(1)}آ° '
+                        '| هاتفك: ${compassHeading.toStringAsFixed(1)}آ°',
                     style: theme.subtitleStyle,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,

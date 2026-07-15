@@ -134,7 +134,7 @@ class _OTPScreenState extends State<OTPScreen>
 
                         // â•گâ•گâ•گ ط¹ظ†ظˆط§ظ† â•گâ•گâ•گ
                         Text(
-                          'طھط£ظƒظٹط¯ ط§ظ„ط¨ط±ظٹط¯ ط§ظ„ط¥ظ„ظƒطھط±ظˆظ†ظٹ',
+                          'تأكيد البريد الإلكتروني',
                           style: GoogleFonts.cairo(
                             fontSize: 24,
                             fontWeight: FontWeight.w700,
@@ -145,7 +145,7 @@ class _OTPScreenState extends State<OTPScreen>
                         const SizedBox(height: 12),
 
                         Text(
-                          'ط£ط¯ط®ظ„ ط§ظ„ط±ظ…ط² ط§ظ„ظ…ظƒظˆظ† ظ…ظ† 6 ط£ط±ظ‚ط§ظ… ط§ظ„ظ…ظڈط±ط³ظ„ ط¥ظ„ظ‰',
+                          'أدخل الرمز المكون من 6 أرقام المُرسل إلى',
                           style: GoogleFonts.cairo(
                             fontSize: 14,
                             color: isDark
@@ -262,7 +262,7 @@ class _OTPScreenState extends State<OTPScreen>
                                     size: 22),
                                 const SizedBox(width: 10),
                                 Text(
-                                  'طھط£ظƒظٹط¯ ظˆط¥ظ†ط´ط§ط، ط§ظ„ط­ط³ط§ط¨',
+                                  'تأكيد وإنشاء الحساب',
                                   style: GoogleFonts.cairo(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w700,
@@ -280,8 +280,8 @@ class _OTPScreenState extends State<OTPScreen>
                           onPressed: _cooldown <= 0 ? _resend : null,
                           child: Text(
                             _cooldown <= 0
-                                ? 'ط¥ط¹ط§ط¯ط© ط¥ط±ط³ط§ظ„ ط§ظ„ط±ظ…ط²'
-                                : 'ط¥ط¹ط§ط¯ط© ط§ظ„ط¥ط±ط³ط§ظ„ ط¨ط¹ط¯ $_cooldown ط«ط§ظ†ظٹط©',
+                                ? 'إعادة إرسال الرمز'
+                                : 'إعادة الإرسال بعد $_cooldown ثانية',
                             style: GoogleFonts.cairo(
                               fontSize: 14,
                               color: _cooldown <= 0
@@ -308,7 +308,7 @@ class _OTPScreenState extends State<OTPScreen>
                                 : Colors.grey.shade500,
                           ),
                           label: Text(
-                            'ط§ظ„ط¹ظˆط¯ط© ظ„طھط³ط¬ظٹظ„ ط§ظ„ط¯ط®ظˆظ„',
+                            'العودة لتسجيل الدخول',
                             style: GoogleFonts.cairo(
                               fontSize: 13,
                               color: isDark
@@ -321,7 +321,7 @@ class _OTPScreenState extends State<OTPScreen>
                         const SizedBox(height: 40),
 
                         Text(
-                          'ï´؟ ط±ظژط¨ظگظ‘ ط§ط´ظ’ط±ظژط­ظ’ ظ„ظگظٹ طµظژط¯ظ’ط±ظگظٹ ظˆظژظٹظژط³ظگظ‘ط±ظ’ ظ„ظگظٹ ط£ظژظ…ظ’ط±ظگظٹ ï´¾',
+                          '﴿ رَبِّ اشْرَحْ لِي صَدْرِي وَيَسِّرْ لِي أَمْرِي ﴾',
                           style: GoogleFonts.amiri(
                             fontSize: 16,
                             color: _gold.withValues(alpha: isDark ? 0.5 : 0.6),
@@ -453,7 +453,7 @@ class _OTPScreenState extends State<OTPScreen>
   Future<void> _verify() async {
     final code = _otpCode;
     if (code.length != _otpLength) {
-      setState(() => _error = 'ط£ط¯ط®ظ„ ط§ظ„ط±ظ…ط² ظƒط§ظ…ظ„ط§ظ‹');
+      setState(() => _error = 'أدخل الرمز كاملاً');
       return;
     }
 
@@ -476,8 +476,8 @@ class _OTPScreenState extends State<OTPScreen>
         SnackBar(
           content: Text(
             success
-                ? 'âœ… طھظ… ط¥ط±ط³ط§ظ„ ط±ظ…ط² ط¬ط¯ظٹط¯'
-                : 'â‌Œ ظپط´ظ„ ط§ظ„ط¥ط±ط³ط§ظ„',
+                ? '✅ تم إرسال رمز جديد'
+                : '❌ فشل الإرسال',
             style: GoogleFonts.cairo(),
           ),
           backgroundColor:

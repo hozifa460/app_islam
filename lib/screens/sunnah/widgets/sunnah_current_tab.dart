@@ -135,7 +135,7 @@ class SunnahCurrentTab extends StatelessWidget {
                   ],
                 ),
                 child: const Center(
-                  child: Text('âڈ°', style: TextStyle(fontSize: 22)),
+                  child: Text('⏰', style: TextStyle(fontSize: 22)),
                 ),
               ),
             ),
@@ -155,8 +155,8 @@ class SunnahCurrentTab extends StatelessWidget {
                   const SizedBox(height: 3),
                   Text(
                     remaining > 0
-                        ? 'طھط¨ظ‚ظ‰ ظ„ظƒ $remaining ط³ظ†ط© ظ„ظ… طھظƒطھظ…ظ„ ط¨ط¹ط¯'
-                        : 'âœ¨ ظ…ظ…طھط§ط²! ط£طھظ…ظ…طھ ط¬ظ…ظٹط¹ ط³ظ†ظ† ظ‡ط°ط§ ط§ظ„ظˆظ‚طھ',
+                        ? 'تبقى لك $remaining سنة لم تكتمل بعد'
+                        : '✨ ممتاز! أتممت جميع سنن هذا الوقت',
                     style: TextStyle(
                       color: theme.textSecondary,
                       fontSize: size.width * 0.03,
@@ -175,7 +175,7 @@ class SunnahCurrentTab extends StatelessWidget {
                 gradient: SunnahTheme.emeraldGradient,
               ),
               child: Text(
-                '${sunnahs.length} ط³ظ†ط©',
+                '${sunnahs.length} سنة',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: size.width * 0.03,

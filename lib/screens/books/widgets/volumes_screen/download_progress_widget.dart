@@ -117,7 +117,7 @@ class _ProgressHeader extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             decoration: BooksTheme.getBadgeDecoration(BooksTheme.gold),
             child: Text(
-              '$downloadedCount / $totalCount ظ…ط­ظ…ظ‘ظ„',
+              '$downloadedCount / $totalCount محمّل',
               style: GoogleFonts.cairo(
                 color: BooksTheme.gold,
                 fontSize: 11.5,
@@ -215,7 +215,7 @@ class _AnimatedActionButtonState extends State<_AnimatedActionButton>
               ),
               const SizedBox(width: 6),
               Text(
-                widget.isDownloading ? 'ط¥ظٹظ‚ط§ظپ' : 'طھط­ظ…ظٹظ„ ط§ظ„ظƒظ„',
+                widget.isDownloading ? 'إيقاف' : 'تحميل الكل',
                 style: GoogleFonts.cairo(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -279,7 +279,7 @@ class _OverallProgress extends StatelessWidget {
             ),
             const Spacer(),
             Text(
-              '$downloadedCount ظ…ظ† $totalCount ظ…ط¬ظ„ط¯',
+              '$downloadedCount من $totalCount مجلد',
               style: GoogleFonts.cairo(
                 fontSize: 11.5,
                 color: BooksTheme.getSubTextColor(isDark),
@@ -313,7 +313,7 @@ class _CurrentFileProgress extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Text(
-          'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„: $title',
+          'جاري تحميل: $title',
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: GoogleFonts.cairo(
@@ -381,7 +381,7 @@ class _StoppedMessage extends StatelessWidget {
             const SizedBox(width: 6),
             Expanded(
               child: Text(
-                'طھظ… ط¥ظٹظ‚ط§ظپ ط§ظ„طھط­ظ…ظٹظ„ ط³ط§ط¨ظ‚ظ‹ط§طŒ ظˆظٹظ…ظƒظ†ظƒ ط§ط³طھظƒظ…ط§ظ„ظ‡ ط¨ط§ظ„ط¶ط؛ط· ط¹ظ„ظ‰ طھط­ظ…ظٹظ„ ط§ظ„ظƒظ„',
+                'تم إيقاف التحميل سابقًا، ويمكنك استكماله بالضغط على تحميل الكل',
                 style: GoogleFonts.cairo(
                   fontSize: 11,
                   color: Colors.orange,

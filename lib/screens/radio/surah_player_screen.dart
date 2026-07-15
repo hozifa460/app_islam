@@ -173,7 +173,7 @@ class _SurahPlayerScreenState extends State<SurahPlayerScreen>
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط³ظˆط±ط© ${_surah.name}... âœ“',
+          'جاري تحميل سورة ${_surah.name}... ✓',
           style: GoogleFonts.cairo(),
           textDirection: TextDirection.rtl,
         ),
@@ -670,7 +670,7 @@ class _DownloadInviteCard extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'ط­ظ…ظ‘ظ„ ط³ظˆط±ط© $surahName ظ„ظ„ط§ط³طھظ…ط§ط¹ ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ',
+                  'حمّل سورة $surahName للاستماع بدون إنترنت',
                   style: GoogleFonts.cairo(
                     fontSize: 11,
                     fontWeight: FontWeight.w700,
@@ -678,7 +678,7 @@ class _DownloadInviteCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'ط³طھظڈط­ظپط¸ ظپظٹ: طھظ„ط§ظˆط§طھ/$stationName/',
+                  'ستُحفظ في: تلاوات/$stationName/',
                   style: GoogleFonts.cairo(
                     fontSize: 9,
                     color: Colors.blue.withValues(alpha: 0.6),
@@ -706,7 +706,7 @@ class _DownloadInviteCard extends StatelessWidget {
                       size: 14, color: Colors.blue),
                   const SizedBox(width: 4),
                   Text(
-                    'طھط­ظ…ظٹظ„',
+                    'تحميل',
                     style: GoogleFonts.cairo(
                       fontSize: 11,
                       fontWeight: FontWeight.w700,
@@ -756,7 +756,7 @@ class _DownloadProgressCard extends StatelessWidget {
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط³ظˆط±ط© $surahName...',
+                  'جاري تحميل سورة $surahName...',
                   style: GoogleFonts.cairo(
                     fontSize: 11,
                     fontWeight: FontWeight.w700,
@@ -842,7 +842,7 @@ class _SavePathCard extends StatelessWidget {
                   color: Colors.green, size: 14),
               const SizedBox(width: 6),
               Text(
-                'ظ…ط­ظپظˆط¸ ظپظٹ ط§ظ„ط¬ظ‡ط§ط²',
+                'محفوظ في الجهاز',
                 style: GoogleFonts.cairo(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -895,7 +895,7 @@ class _SavePathCard extends StatelessWidget {
                           color: Colors.red, size: 12),
                       const SizedBox(width: 3),
                       Text(
-                        'ط­ط°ظپ',
+                        'حذف',
                         style: GoogleFonts.cairo(
                           fontSize: 10,
                           color: Colors.red,
@@ -923,7 +923,7 @@ class _SavePathCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20)),
         title: Text(
-          'ط­ط°ظپ ط§ظ„طھط­ظ…ظٹظ„',
+          'حذف التحميل',
           style: GoogleFonts.cairo(
             fontWeight: FontWeight.w800,
             color: isDark ? Colors.white : Colors.black87,
@@ -931,7 +931,7 @@ class _SavePathCard extends StatelessWidget {
           textDirection: TextDirection.rtl,
         ),
         content: Text(
-          'ظ‡ظ„ طھط±ظٹط¯ ط­ط°ظپ ط³ظˆط±ط© $surahName ظ…ظ† ط§ظ„ط¬ظ‡ط§ط²طں',
+          'هل تريد حذف سورة $surahName من الجهاز؟',
           style: GoogleFonts.cairo(
             color: isDark ? Colors.white60 : Colors.black54,
           ),
@@ -940,7 +940,7 @@ class _SavePathCard extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('ط¥ظ„ط؛ط§ط،',
+            child: Text('إلغاء',
                 style: GoogleFonts.cairo(color: Colors.grey)),
           ),
           ElevatedButton(
@@ -954,7 +954,7 @@ class _SavePathCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12)),
             ),
             child: Text(
-              'ط­ط°ظپ',
+              'حذف',
               style: GoogleFonts.cairo(
                 color: Colors.white,
                 fontWeight: FontWeight.w700,

@@ -444,7 +444,7 @@ class _ScholarProfileYoutubeScreenState
       _saveToMemoryCache();
       Future.microtask(() => _scheduleCurrentChannelSync(includeArchive: true));
     } catch (e) {
-      debugPrint('â‌Œ _loadData error: $e');
+      debugPrint('❌ _loadData error: $e');
       if (mounted) setState(() => _loadingVideos = false);
     }
   }
@@ -460,7 +460,7 @@ class _ScholarProfileYoutubeScreenState
         });
       }
     } catch (e) {
-      debugPrint('â‌Œ _loadChannelInfo error: $e');
+      debugPrint('❌ _loadChannelInfo error: $e');
     }
   }
 
@@ -519,7 +519,7 @@ class _ScholarProfileYoutubeScreenState
 
       _saveToMemoryCache();
     } catch (e) {
-      debugPrint('â‌Œ _syncLatestOnly error: $e');
+      debugPrint('❌ _syncLatestOnly error: $e');
     }
   }
 
@@ -586,7 +586,7 @@ class _ScholarProfileYoutubeScreenState
 
       _saveToMemoryCache();
     } catch (e) {
-      debugPrint('â‌Œ _loadShortsOnly error: $e');
+      debugPrint('❌ _loadShortsOnly error: $e');
     }
 
     if (mounted) setState(() => _loadingShorts = false);
@@ -618,8 +618,8 @@ class _ScholarProfileYoutubeScreenState
         if (!existingIds.contains(v.id) &&
             (v.type == VideoType.live ||
                 lower.contains('live') ||
-                lower.contains('ظ…ط¨ط§ط´ط±') ||
-                lower.contains('ط¨ط«'))) {
+                lower.contains('مباشر') ||
+                lower.contains('بث'))) {
           newLive.add(v);
           existingIds.add(v.id);
         }
@@ -644,8 +644,8 @@ class _ScholarProfileYoutubeScreenState
             if (!existingIds.contains(v.id) &&
                 (v.type == VideoType.live ||
                     lower.contains('live') ||
-                    lower.contains('ظ…ط¨ط§ط´ط±') ||
-                    lower.contains('ط¨ط«'))) {
+                    lower.contains('مباشر') ||
+                    lower.contains('بث'))) {
               newLive.add(v);
               existingIds.add(v.id);
             }
@@ -673,7 +673,7 @@ class _ScholarProfileYoutubeScreenState
 
       _saveToMemoryCache();
     } catch (e) {
-      debugPrint('â‌Œ _loadLiveOnly error: $e');
+      debugPrint('❌ _loadLiveOnly error: $e');
     }
 
     if (mounted) setState(() => _loadingLive = false);
@@ -760,31 +760,31 @@ class _ScholarProfileYoutubeScreenState
 
       final terms = [
         '',
-        'ظ…ط­ط§ط¶ط±ط©',
-        'ط¯ط±ط³',
-        'ط®ط·ط¨ط©',
-        'طھظپط³ظٹط±',
-        'ظپطھظˆظ‰',
-        'ط´ط±ط­',
-        'ظپظ‚ظ‡',
-        'ط­ط¯ظٹط«',
-        'ظ‚ط±ط¢ظ†',
-        'ط¯ط¹ط§ط،',
-        'ط°ظƒط±',
-        'طµظ„ط§ط©',
-        'طµظٹط§ظ…',
-        'ط²ظƒط§ط©',
-        'طھظˆط¨ط©',
-        'ط³ظٹط±ط©',
-        'ط£ط®ظ„ط§ظ‚',
-        'ط±ظ‚ط§ط¦ظ‚',
-        'ط¹ظ‚ظٹط¯ط©',
-        'ط³ظ†ظ†',
-        'طھظˆط­ظٹط¯',
-        'ط¥ظٹظ…ط§ظ†',
-        'ظ‚ط±ط§ط،ط©',
-        'ظ…ط¬ظ„ط³',
-        'ظ…ظˆط¹ط¸ط©',
+        'محاضرة',
+        'درس',
+        'خطبة',
+        'تفسير',
+        'فتوى',
+        'شرح',
+        'فقه',
+        'حديث',
+        'قرآن',
+        'دعاء',
+        'ذكر',
+        'صلاة',
+        'صيام',
+        'زكاة',
+        'توبة',
+        'سيرة',
+        'أخلاق',
+        'رقائق',
+        'عقيدة',
+        'سنن',
+        'توحيد',
+        'إيمان',
+        'قراءة',
+        'مجلس',
+        'موعظة',
       ];
 
       final term = terms[_loadMoreRound % terms.length];
@@ -807,7 +807,7 @@ class _ScholarProfileYoutubeScreenState
           }
         }
       } catch (e) {
-        debugPrint('âڑ ï¸ڈ searchInChannelByUrl error: $e');
+        debugPrint('⚠️ searchInChannelByUrl error: $e');
       }
 
       if (_loadMoreRound % 3 == 0) {
@@ -825,7 +825,7 @@ class _ScholarProfileYoutubeScreenState
             }
           }
         } catch (e) {
-          debugPrint('âڑ ï¸ڈ getAllChannelVideos error: $e');
+          debugPrint('⚠️ getAllChannelVideos error: $e');
         }
       }
 
@@ -844,7 +844,7 @@ class _ScholarProfileYoutubeScreenState
             }
           }
         } catch (e) {
-          debugPrint('âڑ ï¸ڈ getChannelLatestBatch error: $e');
+          debugPrint('⚠️ getChannelLatestBatch error: $e');
         }
       }
 
@@ -885,7 +885,7 @@ class _ScholarProfileYoutubeScreenState
 
       _saveToMemoryCache();
     } catch (e) {
-      debugPrint('â‌Œ _loadMore error: $e');
+      debugPrint('❌ _loadMore error: $e');
     }
 
     if (mounted) setState(() => _loadingMore = false);
@@ -1156,7 +1156,7 @@ class _ScholarProfileYoutubeScreenState
                           (_) => [
                             const PopupMenuItem(
                               value: 'full_refresh',
-                              child: Text('طھط­ط¯ظٹط« ظƒط§ظ…ظ„'),
+                              child: Text('تحديث كامل'),
                             ),
                           ],
                     ),
@@ -1185,11 +1185,11 @@ class _ScholarProfileYoutubeScreenState
                       ),
                       tabAlignment: TabAlignment.start,
                       tabs: [
-                        const Tab(text: 'ط§ظ„ط±ط¦ظٹط³ظٹط©'),
-                        Tab(text: 'ط§ظ„ظپظٹط¯ظٹظˆظ‡ط§طھ (${_regularVideos.length})'),
+                        const Tab(text: 'الرئيسية'),
+                        Tab(text: 'الفيديوهات (${_regularVideos.length})'),
                         Tab(text: 'Shorts (${_shortsVideos.length})'),
-                        Tab(text: 'ط¨ط« ظ…ط¨ط§ط´ط± (${_liveVideos.length})'),
-                        const Tab(text: 'ط­ظˆظ„'),
+                        Tab(text: 'بث مباشر (${_liveVideos.length})'),
+                        const Tab(text: 'حول'),
                       ],
                     ),
                     theme.cardBg,
@@ -1334,21 +1334,21 @@ class _ScholarProfileYoutubeScreenState
                   runSpacing: w * 0.005,
                   children: [
                     Text(
-                      '${YoutubeService.formatCount(_channelInfo!.subscriberCount)} ظ…ط´طھط±ظƒ',
+                      '${YoutubeService.formatCount(_channelInfo!.subscriberCount)} مشترك',
                       style: GoogleFonts.cairo(
                         fontSize: (w * 0.026).clamp(9.0, 13.0),
                         color: theme.captionColor,
                       ),
                     ),
                     Text(
-                      'â€¢',
+                      '•',
                       style: GoogleFonts.cairo(
                         color: theme.captionColor,
                         fontSize: (w * 0.026).clamp(9.0, 13.0),
                       ),
                     ),
                     Text(
-                      '${_allVideos.length} ظپظٹط¯ظٹظˆ',
+                      '${_allVideos.length} فيديو',
                       style: GoogleFonts.cairo(
                         fontSize: (w * 0.026).clamp(9.0, 13.0),
                         color: theme.captionColor,
@@ -1395,7 +1395,7 @@ class _ScholarProfileYoutubeScreenState
                           ),
                           SizedBox(width: (w * 0.012).clamp(4.0, 8.0)),
                           Text(
-                            'ط§ط´طھط±ط§ظƒ',
+                            'اشتراك',
                             style: GoogleFonts.cairo(
                               fontSize: (w * 0.03).clamp(11.0, 15.0),
                               fontWeight: FontWeight.w700,
@@ -1464,7 +1464,7 @@ class _ScholarProfileYoutubeScreenState
           SizedBox(height: w * 0.04),
         ],
         if (_regularVideos.isNotEmpty) ...[
-          _buildSectionHeader('ط¢ط®ط± ظپظٹط¯ظٹظˆ', theme, w),
+          _buildSectionHeader('آخر فيديو', theme, w),
           SizedBox(height: w * 0.02),
           RepaintBoundary(
             child: _YoutubeVideoCardLarge(
@@ -1500,7 +1500,7 @@ class _ScholarProfileYoutubeScreenState
           SizedBox(height: w * 0.05),
         ],
         if (_regularVideos.length > 1) ...[
-          _buildSectionHeader('ظپظٹط¯ظٹظˆظ‡ط§طھ ط´ط§ط¦ط¹ط©', theme, w),
+          _buildSectionHeader('فيديوهات شائعة', theme, w),
           SizedBox(height: w * 0.02),
           ...(_regularVideos
               .skip(1)
@@ -1530,7 +1530,7 @@ class _ScholarProfileYoutubeScreenState
     double w,
   ) {
     if (videos.isEmpty) {
-      return _buildEmptyState('ظ„ط§ طھظˆط¬ط¯ ظپظٹط¯ظٹظˆظ‡ط§طھ', theme, w);
+      return _buildEmptyState('لا توجد فيديوهات', theme, w);
     }
 
     return ListView.separated(
@@ -1576,7 +1576,7 @@ class _ScholarProfileYoutubeScreenState
     if (!_shortsLoadedOnce && shorts.isEmpty) {
       return _buildLazyHint(
         title: 'Shorts',
-        subtitle: 'ط³ظٹطھظ… طھط­ظ…ظٹظ„ ط§ظ„ظپظٹط¯ظٹظˆظ‡ط§طھ ط§ظ„ظ‚طµظٹط±ط© ط¹ظ†ط¯ ظپطھط­ ظ‡ط°ط§ ط§ظ„طھط¨ظˆظٹط¨',
+        subtitle: 'سيتم تحميل الفيديوهات القصيرة عند فتح هذا التبويب',
         icon: Icons.play_circle_fill_rounded,
         theme: theme,
         w: w,
@@ -1584,7 +1584,7 @@ class _ScholarProfileYoutubeScreenState
     }
 
     if (shorts.isEmpty) {
-      return _buildEmptyState('ظ„ط§ طھظˆط¬ط¯ Shorts', theme, w);
+      return _buildEmptyState('لا توجد Shorts', theme, w);
     }
 
     return GridView.builder(
@@ -1633,8 +1633,8 @@ class _ScholarProfileYoutubeScreenState
 
     if (!_liveLoadedOnce && liveVideos.isEmpty) {
       return _buildLazyHint(
-        title: 'ط§ظ„ط¨ط« ط§ظ„ظ…ط¨ط§ط´ط±',
-        subtitle: 'ط³ظٹطھظ… طھط­ظ…ظٹظ„ ط§ظ„ط¨ط«ظˆط« ط¹ظ†ط¯ ظپطھط­ ظ‡ط°ط§ ط§ظ„طھط¨ظˆظٹط¨',
+        title: 'البث المباشر',
+        subtitle: 'سيتم تحميل البثوث عند فتح هذا التبويب',
         icon: Icons.wifi_tethering_rounded,
         theme: theme,
         w: w,
@@ -1642,7 +1642,7 @@ class _ScholarProfileYoutubeScreenState
     }
 
     if (liveVideos.isEmpty) {
-      return _buildEmptyState('ظ„ط§ طھظˆط¬ط¯ ط¨ط«ظˆط« ظ…ط¨ط§ط´ط±ط©', theme, w);
+      return _buildEmptyState('لا توجد بثوث مباشرة', theme, w);
     }
 
     return ListView.separated(
@@ -1695,7 +1695,7 @@ class _ScholarProfileYoutubeScreenState
           SizedBox(height: w * 0.04),
         ],
         if (_channelInfo != null && _channelInfo!.description.isNotEmpty) ...[
-          _buildSectionHeader('ط§ظ„ظˆطµظپ', theme, w),
+          _buildSectionHeader('الوصف', theme, w),
           SizedBox(height: w * 0.02),
           Container(
             padding: EdgeInsets.all(w * 0.04),
@@ -1715,22 +1715,22 @@ class _ScholarProfileYoutubeScreenState
           ),
           SizedBox(height: w * 0.04),
         ],
-        _buildSectionHeader('ط§ظ„طھظپط§طµظٹظ„', theme, w),
+        _buildSectionHeader('التفاصيل', theme, w),
         SizedBox(height: w * 0.02),
-        if (title.isNotEmpty) _buildInfoRow('ط§ظ„ظ„ظ‚ط¨', title, theme, w),
-        if (category.isNotEmpty) _buildInfoRow('ط§ظ„طھطµظ†ظٹظپ', category, theme, w),
+        if (title.isNotEmpty) _buildInfoRow('اللقب', title, theme, w),
+        if (category.isNotEmpty) _buildInfoRow('التصنيف', category, theme, w),
         if (country.isNotEmpty)
-          _buildInfoRow('ط§ظ„ط¨ظ„ط¯', '$flag $country', theme, w),
+          _buildInfoRow('البلد', '$flag $country', theme, w),
         if (_channelInfo != null) ...[
           _buildInfoRow(
-            'ط§ظ„ظ…ط´طھط±ظƒظٹظ†',
+            'المشتركين',
             YoutubeService.formatCount(_channelInfo!.subscriberCount),
             theme,
             w,
           ),
-          _buildInfoRow('ط¹ط¯ط¯ ط§ظ„ظپظٹط¯ظٹظˆظ‡ط§طھ', _channelInfo!.videoCount, theme, w),
+          _buildInfoRow('عدد الفيديوهات', _channelInfo!.videoCount, theme, w),
         ],
-        _buildInfoRow('ط¥ط¬ظ…ط§ظ„ظٹ ط§ظ„ظ…ط­ظ…ظ‘ظ„', '${_allVideos.length}', theme, w),
+        _buildInfoRow('إجمالي المحمّل', '${_allVideos.length}', theme, w),
         SizedBox(height: w * 0.08),
       ],
     );
@@ -1785,7 +1785,7 @@ class _ScholarProfileYoutubeScreenState
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    'طھط§ط¨ط¹ظ†ط§ ط¹ظ„ظ‰ TikTok',
+                    'تابعنا على TikTok',
                     style: GoogleFonts.cairo(
                       fontSize: (w * 0.035).clamp(13.0, 17.0),
                       fontWeight: FontWeight.w700,
@@ -1796,7 +1796,7 @@ class _ScholarProfileYoutubeScreenState
                   ),
                   if (subs.isNotEmpty)
                     Text(
-                      '$subs ظ…طھط§ط¨ط¹',
+                      '$subs متابع',
                       style: GoogleFonts.cairo(
                         fontSize: (w * 0.026).clamp(9.0, 13.0),
                         color: Colors.white60,
@@ -1968,7 +1968,7 @@ class _ScholarProfileYoutubeScreenState
           CircularProgressIndicator(color: theme.primaryColor),
           SizedBox(height: w * 0.03),
           Text(
-            'ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„...',
+            'جاري التحميل...',
             style: GoogleFonts.cairo(
               fontSize: (w * 0.035).clamp(12.0, 15.0),
               color: theme.subtitleColor,
@@ -2125,7 +2125,7 @@ class _YoutubeVideoCardLarge extends StatelessWidget {
             children: [
               if (video.viewCount != '0')
                 Text(
-                  '${YoutubeService.formatViews(video.viewCount)} ظ…ط´ط§ظ‡ط¯ط©',
+                  '${YoutubeService.formatViews(video.viewCount)} مشاهدة',
                   style: GoogleFonts.cairo(
                     fontSize: (w * 0.028).clamp(10.0, 13.0),
                     color: theme.subtitleColor,
@@ -2133,7 +2133,7 @@ class _YoutubeVideoCardLarge extends StatelessWidget {
                 ),
               if (video.viewCount != '0')
                 Text(
-                  'â€¢',
+                  '•',
                   style: GoogleFonts.cairo(
                     color: theme.subtitleColor,
                     fontSize: (w * 0.028).clamp(10.0, 13.0),
@@ -2233,7 +2233,7 @@ class _YoutubeVideoCardSmall extends StatelessWidget {
                             SizedBox(width: (w * 0.008).clamp(2.0, 5.0)),
                             Flexible(
                               child: Text(
-                                'ط¨ط« ظ…ط¨ط§ط´ط±',
+                                'بث مباشر',
                                 style: GoogleFonts.cairo(
                                   fontSize: (w * 0.02).clamp(7.0, 10.0),
                                   color: Colors.white,
@@ -2316,7 +2316,7 @@ class _YoutubeVideoCardSmall extends StatelessWidget {
                 SizedBox(height: w * 0.01),
                 if (video.viewCount != '0')
                   Text(
-                    '${YoutubeService.formatViews(video.viewCount)} ظ…ط´ط§ظ‡ط¯ط©',
+                    '${YoutubeService.formatViews(video.viewCount)} مشاهدة',
                     style: GoogleFonts.cairo(
                       fontSize: (w * 0.025).clamp(9.0, 12.0),
                       color: theme.subtitleColor,
@@ -2575,7 +2575,7 @@ class _BottomLoadMoreSection extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: w * 0.05),
         child: Center(
           child: Text(
-            'طھظ… ط¹ط±ط¶ ط¬ظ…ظٹط¹ ط§ظ„ظپظٹط¯ظٹظˆظ‡ط§طھ',
+            'تم عرض جميع الفيديوهات',
             style: GoogleFonts.cairo(
               fontSize: (w * 0.03).clamp(10.0, 13.0),
               color: theme.subtitleColor,
@@ -2604,7 +2604,7 @@ class _BottomLoadMoreSection extends StatelessWidget {
             ),
           ),
           child: Text(
-            'طھط­ظ…ظٹظ„ ط§ظ„ظ…ط²ظٹط¯',
+            'تحميل المزيد',
             style: GoogleFonts.cairo(
               fontSize: (w * 0.032).clamp(11.0, 14.0),
               fontWeight: FontWeight.w700,

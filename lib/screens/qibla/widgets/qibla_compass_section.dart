@@ -54,7 +54,7 @@ class QiblaCompassSection extends StatelessWidget {
                   color: theme.isDark ? Colors.white54 : Colors.black45),
               const SizedBox(width: 6),
               Text(
-                'ط£ظ…ط³ظƒ ط§ظ„ظ‡ط§طھظپ ط£ظپظ‚ظٹط§ظ‹ ظˆط¯ظˆظ‘ط± ط­طھظ‰ طھط´ظٹط± ط§ظ„ط¥ط¨ط±ط© â–² ظ„ظ„ط£ط¹ظ„ظ‰',
+                'أمسك الهاتف أفقياً ودوّر حتى تشير الإبرة ▲ للأعلى',
                 style: GoogleFonts.cairo(
                   fontSize: 11,
                   color: theme.isDark ? Colors.white60 : Colors.black54,
@@ -156,9 +156,9 @@ class QiblaCompassSection extends StatelessWidget {
           child: Text(
             key: ValueKey(isFacing),
             isFacing
-                ? 'ًں•‹  ط£ظ†طھ طھظˆط§ط¬ظ‡ ط§ظ„ظƒط¹ط¨ط© ط§ظ„ظ…ط´ط±ظپط©'
-                : 'ط§ظ†ط­ط±ط§ظپ: ${deviation.abs().toStringAsFixed(1)}آ°'
-                ' ${deviation > 0 ? "ظٹط³ط§ط±ط§ظ‹" : "ظٹظ…ظٹظ†ط§ظ‹"}',
+                ? '🕋  أنت تواجه الكعبة المشرفة'
+                : 'انحراف: ${deviation.abs().toStringAsFixed(1)}آ°'
+                ' ${deviation > 0 ? "يساراً" : "يميناً"}',
             style: GoogleFonts.cairo(
               fontSize: 13,
               fontWeight: FontWeight.w700,

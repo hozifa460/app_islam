@@ -211,11 +211,11 @@ class _QiblaScreenState extends State<QiblaScreen>
   String get _directionLabel {
     final d   = _deviation;
     final abs = d.abs();
-    if (abs < 5)   return 'âœ“  ط§ظ„ظ‚ط¨ظ„ط© ط£ظ…ط§ظ…ظƒ ظ…ط¨ط§ط´ط±ط©';
-    if (abs < 20)  return d > 0 ? 'ط¯ظˆظ‘ط± ظ‚ظ„ظٹظ„ط§ظ‹ ظ„ظ„ظٹط³ط§ط±'   : 'ط¯ظˆظ‘ط± ظ‚ظ„ظٹظ„ط§ظ‹ ظ„ظ„ظٹظ…ظٹظ†';
-    if (abs < 60)  return d > 0 ? 'ط¯ظˆظ‘ط± ظ„ظ„ظٹط³ط§ط±'           : 'ط¯ظˆظ‘ط± ظ„ظ„ظٹظ…ظٹظ†';
-    if (abs < 120) return d > 0 ? 'ط§ظ„ظ‚ط¨ظ„ط© ط¹ظ„ظ‰ ظٹط³ط§ط±ظƒ'      : 'ط§ظ„ظ‚ط¨ظ„ط© ط¹ظ„ظ‰ ظٹظ…ظٹظ†ظƒ';
-    return 'ط§ظ„ظ‚ط¨ظ„ط© ط®ظ„ظپظƒطŒ ط§ط³طھط¯ط±';
+    if (abs < 5)   return '✓  القبلة أمامك مباشرة';
+    if (abs < 20)  return d > 0 ? 'دوّر قليلاً لليسار'   : 'دوّر قليلاً لليمين';
+    if (abs < 60)  return d > 0 ? 'دوّر لليسار'           : 'دوّر لليمين';
+    if (abs < 120) return d > 0 ? 'القبلة على يسارك'      : 'القبلة على يمينك';
+    return 'القبلة خلفك، استدر';
   }
 
   IconData get _directionIcon {
@@ -348,7 +348,7 @@ class _QiblaScreenState extends State<QiblaScreen>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'ط§طھط¬ط§ظ‡ ط§ظ„ظ‚ط¨ظ„ط©',
+                  'اتجاه القبلة',
                   style: GoogleFonts.cairo(
                     fontSize: 20,
                     fontWeight: FontWeight.w800,
@@ -357,8 +357,8 @@ class _QiblaScreenState extends State<QiblaScreen>
                 ),
                 if (_userLat != null)
                   Text(
-                    'ط§ظ„ظ‚ط¨ظ„ط©: ${_qiblaAngle.toStringAsFixed(1)}آ° '
-                        '| ظ‡ط§طھظپظƒ: ${_compassHeading.toStringAsFixed(1)}آ°',
+                    'القبلة: ${_qiblaAngle.toStringAsFixed(1)}آ° '
+                        '| هاتفك: ${_compassHeading.toStringAsFixed(1)}آ°',
                     style: GoogleFonts.cairo(
                       fontSize: 10,
                       color: textColor.withValues(alpha: 0.45),
@@ -454,8 +454,8 @@ class _QiblaScreenState extends State<QiblaScreen>
                     const SizedBox(height: 3),
                     Text(
                       isFacing
-                          ? 'ظٹظ…ظƒظ†ظƒ ط§ظ„ط¢ظ† ط£ط¯ط§ط، ط§ظ„طµظ„ط§ط© ظپظٹ ظ‡ط°ط§ ط§ظ„ط§طھط¬ط§ظ‡'
-                          : 'ظˆط¬ظ‘ظ‡ ظ‡ط§طھظپظƒ ط­طھظ‰ طھط´ظٹط± ط§ظ„ط¥ط¨ط±ط© ط§ظ„ط®ط¶ط±ط§ط، ظ„ظ„ط£ط¹ظ„ظ‰',
+                          ? 'يمكنك الآن أداء الصلاة في هذا الاتجاه'
+                          : 'وجّه هاتفك حتى تشير الإبرة الخضراء للأعلى',
                       style: GoogleFonts.cairo(
                         fontSize: 11,
                         color: isDark
@@ -508,7 +508,7 @@ class _QiblaScreenState extends State<QiblaScreen>
                   color: isDark ? Colors.white54 : Colors.black45),
               const SizedBox(width: 6),
               Text(
-                'ط£ظ…ط³ظƒ ط§ظ„ظ‡ط§طھظپ ط£ظپظ‚ظٹط§ظ‹ ظˆط¯ظˆظ‘ط± ط­طھظ‰ طھط´ظٹط± ط§ظ„ط¥ط¨ط±ط© â–² ظ„ظ„ط£ط¹ظ„ظ‰',
+                'أمسك الهاتف أفقياً ودوّر حتى تشير الإبرة ▲ للأعلى',
                 style: GoogleFonts.cairo(
                   fontSize: 11,
                   color:
@@ -618,9 +618,9 @@ class _QiblaScreenState extends State<QiblaScreen>
           child: Text(
             key: ValueKey(isFacing),
             isFacing
-                ? 'ًں•‹  ط£ظ†طھ طھظˆط§ط¬ظ‡ ط§ظ„ظƒط¹ط¨ط© ط§ظ„ظ…ط´ط±ظپط©'
-                : 'ط§ظ†ط­ط±ط§ظپ: ${_deviation.abs().toStringAsFixed(1)}آ°'
-                ' ${_deviation > 0 ? "ظٹط³ط§ط±ط§ظ‹" : "ظٹظ…ظٹظ†ط§ظ‹"}',
+                ? '🕋  أنت تواجه الكعبة المشرفة'
+                : 'انحراف: ${_deviation.abs().toStringAsFixed(1)}آ°'
+                ' ${_deviation > 0 ? "يساراً" : "يميناً"}',
             style: GoogleFonts.cairo(
               fontSize: 13,
               fontWeight: FontWeight.w700,
@@ -771,7 +771,7 @@ class _QiblaScreenState extends State<QiblaScreen>
               ),
               const SizedBox(width: 4),
               Text(
-                isFacing ? 'ط§ظ„ظ‚ط¨ظ„ط© âœ“' : 'ظ…ظˆظ‚ط¹ظƒ',
+                isFacing ? 'القبلة ✓' : 'موقعك',
                 style: GoogleFonts.cairo(
                   fontSize: 10,
                   fontWeight: FontWeight.w700,
@@ -824,7 +824,7 @@ class _QiblaScreenState extends State<QiblaScreen>
           ),
           const SizedBox(width: 5),
           Text(
-            goLeft ? 'ط¯ظˆظ‘ط± ظ„ظ„ظٹط³ط§ط±' : 'ط¯ظˆظ‘ط± ظ„ظ„ظٹظ…ظٹظ†',
+            goLeft ? 'دوّر لليسار' : 'دوّر لليمين',
             style: GoogleFonts.cairo(
               fontSize: 11,
               fontWeight: FontWeight.w700,
@@ -883,7 +883,7 @@ class _QiblaScreenState extends State<QiblaScreen>
                       color: guidance, size: 15),
                   const SizedBox(width: 6),
                   Text(
-                    'ط¯ظ‚ط© ط§ظ„ط§طھط¬ط§ظ‡',
+                    'دقة الاتجاه',
                     style: GoogleFonts.cairo(
                       fontSize: 12.5,
                       fontWeight: FontWeight.w700,
@@ -917,12 +917,12 @@ class _QiblaScreenState extends State<QiblaScreen>
             const SizedBox(height: 6),
             Text(
               accuracy >= 95
-                  ? 'âœ“ ظ…ظ…طھط§ط² â€” ط£ظ†طھ طھظˆط§ط¬ظ‡ ط§ظ„ظ‚ط¨ظ„ط© ط¨ط¯ظ‚ط© ط¹ط§ظ„ظٹط©'
+                  ? '✓ ممتاز — أنت تواجه القبلة بدقة عالية'
                   : accuracy >= 70
-                  ? 'ظ‚ط±ظٹط¨ â€” ط§ط³طھظ…ط± ظپظٹ ط§ظ„ط¯ظˆط±ط§ظ† ظ‚ظ„ظٹظ„ط§ظ‹'
+                  ? 'قريب — استمر في الدوران قليلاً'
                   : accuracy >= 40
-                  ? 'ظ…طھظˆط³ط· â€” ط¯ظˆظ‘ط± ظ†ط­ظˆ ط§ظ„ط¥ط¨ط±ط© ط§ظ„ط®ط¶ط±ط§ط،'
-                  : 'ط¨ط¹ظٹط¯ â€” ط¯ظˆظ‘ط± ظ‡ط§طھظپظƒ ظ†ط­ظˆ ط§ظ„ط¥ط¨ط±ط© ط§ظ„ط®ط¶ط±ط§ط،',
+                  ? 'متوسط — دوّر نحو الإبرة الخضراء'
+                  : 'بعيد — دوّر هاتفك نحو الإبرة الخضراء',
               style: GoogleFonts.cairo(
                 fontSize: 10.5,
                 color: textColor.withValues(alpha: 0.52),
@@ -941,19 +941,19 @@ class _QiblaScreenState extends State<QiblaScreen>
     isDark ? Colors.white : const Color(0xFF1A1A2E);
     final cards = [
       (
-      label: 'ط§ظ„ظ‚ط¨ظ„ط©\nظ…ظ† ط§ظ„ط´ظ…ط§ظ„',
+      label: 'القبلة\nمن الشمال',
       value: '${_qiblaAngle.toStringAsFixed(1)}آ°',
       icon: Icons.explore_rounded,
       color: _gold,
       ),
       (
-      label: 'ط§طھط¬ط§ظ‡\nظ‡ط§طھظپظƒ',
+      label: 'اتجاه\nهاتفك',
       value: '${_compassHeading.toStringAsFixed(1)}آ°',
       icon: Icons.screen_rotation_rounded,
       color: const Color(0xFF3498DB),
       ),
       (
-      label: 'ط§ظ„ط§ظ†ط­ط±ط§ظپ\nط¹ظ† ط§ظ„ظ‚ط¨ظ„ط©',
+      label: 'الانحراف\nعن القبلة',
       value: '${_deviation.abs().toStringAsFixed(1)}آ°',
       icon: Icons.swap_horiz_rounded,
       color: _guidanceColor,
@@ -1037,22 +1037,22 @@ class _QiblaScreenState extends State<QiblaScreen>
       (
       icon: Icons.phone_android_rounded,
       color: const Color(0xFF3498DB),
-      title: 'ط£ظ…ط³ظƒ ط§ظ„ظ‡ط§طھظپ ط£ظپظ‚ظٹط§ظ‹',
-      desc: 'ط¶ط¹ ط§ظ„ظ‡ط§طھظپ ظ…ظˆط§ط²ظٹط§ظ‹ ظ„ظ„ط£ط±ط¶ ظ„ظ„ط­طµظˆظ„ ط¹ظ„ظ‰ ط£ظپط¶ظ„ ط¯ظ‚ط©',
+      title: 'أمسك الهاتف أفقياً',
+      desc: 'ضع الهاتف موازياً للأرض للحصول على أفضل دقة',
       ),
       (
       icon: Icons.rotate_right_rounded,
       color: _gold,
-      title: 'ط¯ظˆظ‘ط± ط¬ط³ظ…ظƒ ط¨ط¨ط·ط،',
+      title: 'دوّر جسمك ببطء',
       desc:
-      'ط§ط³طھط¯ط± ط¨ط¨ط·ط، ط­طھظ‰ طھط´ظٹط± ط§ظ„ط¥ط¨ط±ط© ط§ظ„ط®ط¶ط±ط§ط، â–² ظ„ظ„ط£ط¹ظ„ظ‰',
+      'استدر ببطء حتى تشير الإبرة الخضراء ▲ للأعلى',
       ),
       (
       icon: Icons.check_circle_rounded,
       color: _green,
-      title: 'ط§ظ„ط¯ظ‚ط© 95%+ = ط§ظ„ظ‚ط¨ظ„ط©',
+      title: 'الدقة 95%+ = القبلة',
       desc:
-      'ط³طھط´ط¹ط± ط¨ط§ظ‡طھط²ط§ط² ط§ظ„ظ‡ط§طھظپ ط¹ظ†ط¯ ظ…ظˆط§ط¬ظ‡ط© ط§ظ„ظ‚ط¨ظ„ط© ط¨ط¯ظ‚ط©',
+      'ستشعر باهتزاز الهاتف عند مواجهة القبلة بدقة',
       ),
     ];
 
@@ -1079,7 +1079,7 @@ class _QiblaScreenState extends State<QiblaScreen>
                   color: _gold, size: 17),
               const SizedBox(width: 7),
               Text(
-                'ظƒظٹظپ طھط³طھط®ط¯ظ… ط§ظ„ط¨ظˆطµظ„ط©طں',
+                'كيف تستخدم البوصلة؟',
                 style: GoogleFonts.cairo(
                   fontSize: 13.5,
                   fontWeight: FontWeight.w800,
@@ -1171,8 +1171,8 @@ class _QiblaScreenState extends State<QiblaScreen>
             const SizedBox(width: 9),
             Expanded(
               child: Text(
-                'ط¥ط°ط§ ظƒط§ظ†طھ ط§ظ„ظ†طھظٹط¬ط© ط؛ظٹط± ط¯ظ‚ظٹظ‚ط©: ط­ط±ظ‘ظƒ ظ‡ط§طھظپظƒ ط¹ظ„ظ‰ ط´ظƒظ„ âˆ‍ '
-                    'ط¹ط¯ط© ظ…ط±ط§طھطŒ ط«ظ… ط§ط¨طھط¹ط¯ ط¹ظ† ط§ظ„ط£ط¬ط³ط§ظ… ط§ظ„ظ…ط¹ط¯ظ†ظٹط© ظˆط§ظ„ظƒظ‡ط±ط¨ط§ط¦ظٹط©',
+                'إذا كانت النتيجة غير دقيقة: حرّك هاتفك على شكل ∞ '
+                    'عدة مرات، ثم ابتعد عن الأجسام المعدنية والكهربائية',
                 style: GoogleFonts.cairo(
                   fontSize: 10.5,
                   color: isDark
@@ -1197,7 +1197,7 @@ class _QiblaScreenState extends State<QiblaScreen>
           CircularProgressIndicator(color: _gold, strokeWidth: 3),
           const SizedBox(height: 16),
           Text(
-            'ط¬ط§ط±ظچ طھط­ط¯ظٹط¯ ظ…ظˆظ‚ط¹ظƒ...',
+            'جارٍ تحديد موقعك...',
             style: GoogleFonts.cairo(
               color: isDark ? Colors.white60 : Colors.black54,
               fontSize: 14,
@@ -1231,7 +1231,7 @@ class _QiblaScreenState extends State<QiblaScreen>
             ),
             const SizedBox(height: 18),
             Text(
-              'ط§ظ„ظ…ظˆظ‚ط¹ ظ…ط·ظ„ظˆط¨',
+              'الموقع مطلوب',
               style: GoogleFonts.cairo(
                 fontSize: 20,
                 fontWeight: FontWeight.w800,
@@ -1240,7 +1240,7 @@ class _QiblaScreenState extends State<QiblaScreen>
             ),
             const SizedBox(height: 8),
             Text(
-              'ظٹظڈط±ط¬ظ‰ طھظپط¹ظٹظ„ ط®ط¯ظ…ط© ط§ظ„ظ…ظˆظ‚ط¹ ظ„طھط­ط¯ظٹط¯ ط§طھط¬ط§ظ‡ ط§ظ„ظ‚ط¨ظ„ط© ط¨ط¯ظ‚ط©',
+              'يُرجى تفعيل خدمة الموقع لتحديد اتجاه القبلة بدقة',
               style: GoogleFonts.cairo(
                 fontSize: 13.5,
                 color: textColor.withValues(alpha: 0.58),
@@ -1262,7 +1262,7 @@ class _QiblaScreenState extends State<QiblaScreen>
               onPressed: _checkPermissionsAndStart,
               icon: const Icon(Icons.location_on_rounded, size: 17),
               label: Text(
-                'ط§ظ„ط³ظ…ط§ط­ ط¨ط§ظ„ظ…ظˆظ‚ط¹',
+                'السماح بالموقع',
                 style: GoogleFonts.cairo(
                   fontWeight: FontWeight.w700,
                   fontSize: 14,

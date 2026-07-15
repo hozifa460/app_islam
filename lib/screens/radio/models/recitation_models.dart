@@ -54,7 +54,7 @@ class RecitationCategory {
     'emoji': emoji,
     'description': description,
     'gradientColors': gradientColors
-        .map((c) => '#${c.value.toRadixString(16).substring(2).toUpperCase()}')
+        .map((c) => '#${c.toARGB32().toRadixString(16).substring(2).toUpperCase()}')
         .toList(),
     'imageUrl': imageUrl,
     'items': items.map((item) => item.toJson()).toList(),
@@ -184,17 +184,18 @@ class RecitationItem {
   factory RecitationItem.fromJson(Map<String, dynamic> json) {
     final rawSubItems = json['subItems'] as List?;
     final rawSubSections = json['subSections'] as List?;
+    final videoUrl = _strOrNull(json['videoUrl']);
 
     return RecitationItem(
       title: _str(json['title']),
       subtitle: _str(json['subtitle']),
       emoji: _str(json['emoji']),
-      imageUrl: _strOrNull(json['imageUrl']),
+      imageUrl: _strOrNull(json['imageUrl']) ?? youtubeThumbnailUrl(videoUrl),
       imageAsset: _strOrNull(json['imageAsset']),
       station: null, // JSON لا يحمل station — يُضاف برمجيًا إذا لزم
       audioUrl: _strOrNull(json['audioUrl']),
       playlistUrl: _strOrNull(json['playlistUrl']),
-      videoUrl: _strOrNull(json['videoUrl']),
+      videoUrl: videoUrl,
       videoSource: _parseVideoSource(json['videoSource']),
       mediaType: _parseMediaType(json['mediaType']),
       subItems: rawSubItems == null || rawSubItems.isEmpty
@@ -286,19 +287,20 @@ class RecitationSubItem {
   }
 
   factory RecitationSubItem.fromJson(Map<String, dynamic> json) {
+    final videoUrl = _strOrNull(json['videoUrl']);
     return RecitationSubItem(
       title: _str(json['title']),
       subtitle: _str(json['subtitle']),
       emoji: _str(json['emoji']),
       audioUrl: _str(json['audioUrl']),
-      imageUrl: _strOrNull(json['imageUrl']),
+      imageUrl: _strOrNull(json['imageUrl']) ?? youtubeThumbnailUrl(videoUrl),
       durationSeconds: json['durationSeconds'] == null
           ? null
           : (json['durationSeconds'] is int
           ? json['durationSeconds']
           : int.tryParse(json['durationSeconds'].toString())),
       isLive: json['isLive'] == true,
-      videoUrl: _strOrNull(json['videoUrl']),
+      videoUrl: videoUrl,
       videoSource: _parseVideoSource(json['videoSource']),
       mediaType: _parseMediaType(json['mediaType']),
     );
@@ -409,4 +411,34 @@ MediaType _parseMediaType(dynamic value) {
     default:
       return MediaType.audio;
   }
+}
+
+/// يولد رابط الصورة الرسمية من يوتيوب عند غيابها من JSON.
+/// لا يغيّر الصور المكتوبة في البيانات؛ يستخدم فقط كبديل موثوق لفيديوهات يوتيوب.
+String? youtubeThumbnailUrl(String? url) {
+  if (url == null || url.trim().isEmpty ||
+      detectVideoSource(url) != VideoSource.youtube) {
+    return null;
+  }
+
+  final uri = Uri.tryParse(url);
+  String? id;
+  if (uri != null) {
+    if (uri.host.contains('youtu.be')) {
+      id = uri.pathSegments.isNotEmpty ? uri.pathSegments.first : null;
+    } else {
+      id = uri.queryParameters['v'];
+      if ((id == null || id.isEmpty) && uri.pathSegments.length >= 2) {
+        final first = uri.pathSegments.first;
+        if (first == 'shorts' || first == 'embed' || first == 'live') {
+          id = uri.pathSegments[1];
+        }
+      }
+    }
+  }
+
+  if (id == null || !RegExp(r'^[A-Za-z0-9_-]{11}$').hasMatch(id)) {
+    return null;
+  }
+  return 'https://i.ytimg.com/vi/$id/hqdefault.jpg';
 }

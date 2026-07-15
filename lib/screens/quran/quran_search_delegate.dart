@@ -19,16 +19,16 @@ class QuranSearch extends SearchDelegate<Map<String, dynamic>?> {
   }
 
   @override
-  String get searchFieldLabel => 'ط§ط¨ط­ط« ط¹ظ† ط¢ظٹط© ط£ظˆ ظƒظ„ظ…ط©...';
+  String get searchFieldLabel => 'ابحث عن آية أو كلمة...';
 
   // ط¯ط§ظ„ط© ط°ظƒظٹط© ظ„ط¥ط²ط§ظ„ط© ط§ظ„طھط´ظƒظٹظ„ ظˆظƒظ„ ط§ظ„ط±ظ…ظˆط² ظ„ظ„ط¨ط­ط« ط§ظ„ط³ظ„ط³
   String _normalize(String text) {
     return text
         .replaceAll(RegExp(r'[\u064B-\u065F\u0610-\u061A\u06D6-\u06DC\u06DF-\u06E8\u06EA-\u06ED]'), '')
-        .replaceAll(RegExp(r'[ط£ط¥ط¢ط§ظ±ظ°]'), 'ط§')
-        .replaceAll(RegExp(r'[ظٹظ‰ط¦]'), 'ظٹ')
-        .replaceAll(RegExp(r'[ط©ظ‡]'), 'ظ‡')
-        .replaceAll('ط¤', 'ظˆ')
+        .replaceAll(RegExp(r'[أإآاٱٰ]'), 'ا')
+        .replaceAll(RegExp(r'[يىئ]'), 'ي')
+        .replaceAll(RegExp(r'[ةه]'), 'ظ‡')
+        .replaceAll('ؤ', 'ظˆ')
         .trim();
   }
 
@@ -110,7 +110,7 @@ class QuranSearch extends SearchDelegate<Map<String, dynamic>?> {
 
   Widget _buildBody() {
     if (_isError) {
-      return Center(child: Text('ط­ط¯ط« ط®ط·ط£ ظپظٹ طھط­ظ…ظٹظ„ ط¨ظٹط§ظ†ط§طھ ط§ظ„ظ…طµط­ظپ', style: GoogleFonts.cairo()));
+      return Center(child: Text('حدث خطأ في تحميل بيانات المصحف', style: GoogleFonts.cairo()));
     }
 
     if (query.trim().isEmpty) {
@@ -120,7 +120,7 @@ class QuranSearch extends SearchDelegate<Map<String, dynamic>?> {
           children: [
             Icon(Icons.search, size: 80, color: Colors.grey.shade300),
             const SizedBox(height: 10),
-            Text('ط§ظƒطھط¨ ط£ظٹ ظƒظ„ظ…ط© ظ„ظ„ط¨ط­ط« ظپظٹ ط§ظ„ظ…طµط­ظپ', style: GoogleFonts.cairo(color: Colors.grey)),
+            Text('اكتب أي كلمة للبحث في المصحف', style: GoogleFonts.cairo(color: Colors.grey)),
           ],
         ),
       );
@@ -133,7 +133,7 @@ class QuranSearch extends SearchDelegate<Map<String, dynamic>?> {
           children: [
             CircularProgressIndicator(color: primaryColor),
             const SizedBox(height: 10),
-            Text('ط¬ط§ط±ظٹ طھط¬ظ‡ظٹط² ط§ظ„ظ…طµط­ظپ ظ„ظ„ط¨ط­ط«...', style: GoogleFonts.cairo(color: Colors.grey)),
+            Text('جاري تجهيز المصحف للبحث...', style: GoogleFonts.cairo(color: Colors.grey)),
           ],
         ),
       );
@@ -162,7 +162,7 @@ class QuranSearch extends SearchDelegate<Map<String, dynamic>?> {
 
     if (results.isEmpty) {
       return Center(
-        child: Text('ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬ ظ…ط·ط§ط¨ظ‚ط©', style: GoogleFonts.cairo(color: Colors.grey)),
+        child: Text('لا توجد نتائج مطابقة', style: GoogleFonts.cairo(color: Colors.grey)),
       );
     }
 
@@ -196,7 +196,7 @@ class QuranSearch extends SearchDelegate<Map<String, dynamic>?> {
                     ),
                     const SizedBox(width: 8),
                     Text(
-                      'ط§ظ„ط¢ظٹط©: ${res['numberInSurah']} | طµظپط­ط©: ${res['page']}',
+                      'الآية: ${res['numberInSurah']} | صفحة: ${res['page']}',
                       style: GoogleFonts.cairo(fontSize: 12, color: Colors.grey),
                     ),
                   ],

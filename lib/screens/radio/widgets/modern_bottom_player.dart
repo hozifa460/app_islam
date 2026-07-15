@@ -1,34 +1,21 @@
-﻿// lib/screens/radio/widgets/modern_bottom_player.dart
-
 import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:islamic_app/screens/radio/services/Radio_Intillegence.dart';
-import 'package:islamic_app/screens/radio/services/offline_radio_service.dart';
-import 'package:islamic_app/screens/radio/services/online_surah_service.dart';
+import 'package:islamic_app/screens/radio/services/audio_coordinator.dart';
+import 'package:islamic_app/screens/radio/models/player_snapshot.dart';
+import 'package:islamic_app/screens/radio/widgets_recitations_screen/services/playlist_service.dart';
+import 'package:islamic_app/screens/radio/widgets_radio_screen/player_image_widget.dart';
 import 'package:islamic_app/screens/radio/widgets_radio_screen/theme/radio_colors.dart';
 import 'package:islamic_app/screens/radio/widgets_radio_screen/theme/radio_shapes.dart';
 import 'package:provider/provider.dart';
 
-import '../widgets_radio_screen/player_control_button.dart';
-import '../widgets_radio_screen/player_image_widget.dart';
-
-enum _BottomPlayerSource {
-  online,
-  onlineSurah,
-  offline,
-}
-
+/// مشغل موحد: لا يقرأ حالة أي خدمة مباشرة، بل يعتمد فقط على المنسق.
 class ModernBottomPlayer extends StatelessWidget {
   final Color primary;
   final bool isTablet;
   final EdgeInsets safePadding;
   final AnimationController equalizerController;
-
-  // âœ… ط£ط¨ظ‚ظٹظ†ط§ظ‡ط§ ط§ط®طھظٹط§ط±ظٹط© ظ„ظ„طھظˆط§ظپظ‚ ظ…ط¹ ط§ظ„ط§ط³طھط¯ط¹ط§ط،ط§طھ ط§ظ„ظ‚ط¯ظٹظ…ط©
-  final RadioIntillegence? onlineService;
-  final OfflineRadioService? offlineService;
-  final OnlineSurahService? onlineSurahService;
 
   const ModernBottomPlayer({
     super.key,
@@ -36,161 +23,138 @@ class ModernBottomPlayer extends StatelessWidget {
     required this.isTablet,
     required this.safePadding,
     required this.equalizerController,
-    this.onlineService,
-    this.offlineService,
-    this.onlineSurahService,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Selector3<RadioIntillegence, OfflineRadioService, OnlineSurahService,
-        _BottomPlayerState?>(
-      selector: (_, online, offline, onlineSurah) {
-        // âœ… ط§ظ„ط£ظˆظ„ظˆظٹط©: online radio ط«ظ… online surah ط«ظ… offline
-        if (online.currentStation != null) {
-          return _BottomPlayerState(
-            source: _BottomPlayerSource.online,
-            name: online.currentStation!.name,
-            emoji: online.currentStation!.iconEmoji,
-            subtitle: online.currentStation!.category,
-            imageUrl: online.currentStation!.imageUrl,
-            imageAsset: online.currentStation!.imageAsset,
-            isPlaying: online.isPlaying,
-            isBuffering: online.isBuffering,
-            isOnline: true,
-          );
-        }
-
-        if (onlineSurah.currentStation != null) {
-          return _BottomPlayerState(
-            source: _BottomPlayerSource.onlineSurah,
-            name: onlineSurah.currentSurahName,
-            emoji: onlineSurah.currentStation?.iconEmoji ?? 'ًںژµ',
-            subtitle: onlineSurah.currentStation?.name ?? '',
-            imageUrl: onlineSurah.currentStation?.imageUrl,
-            imageAsset: onlineSurah.currentStation?.imageAsset,
-            isPlaying: onlineSurah.isPlaying,
-            isBuffering: onlineSurah.isBuffering,
-            isOnline: true,
-          );
-        }
-
-        if (offline.currentStation != null) {
-          return _BottomPlayerState(
-            source: _BottomPlayerSource.offline,
-            name: offline.currentSurahName.isNotEmpty
-                ? offline.currentSurahName
-                : offline.currentStation?.name ?? '',
-            emoji: offline.currentStation?.iconEmoji ?? 'ًںژµ',
-            subtitle: offline.currentStation?.name ?? '',
-            imageUrl: offline.currentStation?.imageUrl,
-            imageAsset: offline.currentStation?.imageAsset,
-            isPlaying: offline.isPlaying,
-            isBuffering: false,
-            isOnline: false,
-          );
-        }
-
-        return null;
-      },
+    return Selector<AudioCoordinator, _PlayerViewState>(
+      selector: (_, coordinator) => _PlayerViewState(
+        snapshot: coordinator.snapshot,
+        position: coordinator.position,
+        duration: coordinator.duration,
+      ),
       builder: (_, state, __) {
-        if (state == null) return const SizedBox.shrink();
+        final snapshot = state.snapshot;
+        if (!snapshot.hasActivePlayer) return const SizedBox.shrink();
 
-        final imgSize = RadioSizes.playerImageSize(isTablet);
-        final playBtnSize = RadioSizes.mainPlayButtonSize(isTablet);
-        final ctrlBtnSize = RadioSizes.controlButtonSize(isTablet);
-
-        final onPlayPause = _resolvePlayPause(context, state.source);
-        final onNext = _resolveNext(context, state.source);
-        final onPrevious = _resolvePrevious(context, state.source);
+        final coordinator = context.read<AudioCoordinator>();
+        final imageSize = RadioSizes.playerImageSize(isTablet);
+        final controlSize = RadioSizes.controlButtonSize(isTablet);
+        final playSize = RadioSizes.mainPlayButtonSize(isTablet);
 
         return RepaintBoundary(
           child: Container(
-            padding: EdgeInsets.fromLTRB(16, 12, 16, 12 + safePadding.bottom),
+            padding: EdgeInsets.fromLTRB(16, 10, 16, 10 + safePadding.bottom),
             decoration: RadioShapes.bottomPlayerDecoration(context),
-            child: Row(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                // â•گâ•گ طµظˆط±ط© ط§ظ„ظ…ط´ط؛ظ„ â•گâ•گ
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: SizedBox(
-                    width: imgSize,
-                    height: imgSize,
-                    child: PlayerImageWidget(
-                      imageUrl: state.imageUrl,
-                      imageAsset: state.imageAsset,
-                      emoji: state.emoji,
-                      primary: primary,
-                      isPlaying: state.isPlaying,
-                      equalizerController: equalizerController,
-                    ),
-                  ),
-                ),
-
-                const SizedBox(width: 12),
-
-                // â•گâ•گ ط§ظ„ظ…ط¹ظ„ظˆظ…ط§طھ â•گâ•گ
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      _LiveIndicator(
-                        controller: equalizerController,
-                        isOnline: state.isOnline,
-                      ),
-                      const SizedBox(height: 2),
-                      Text(
-                        state.name,
-                        style: GoogleFonts.cairo(
-                          fontSize: RadioSizes.playerNameSize(isTablet),
-                          fontWeight: FontWeight.w700,
-                          color: RadioColors.playerText(context),
-                          height: 1.2,
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      Text(
-                        state.subtitle,
-                        style: GoogleFonts.cairo(
-                          fontSize: 10,
-                          color: RadioColors.playerSubText(context),
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(width: 10),
-
-                // â•گâ•گ ط§ظ„ط£ط²ط±ط§ط± â•گâ•گ
                 Row(
-                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    PlayerControlButton(
-                      icon: Icons.skip_previous_rounded,
-                      size: ctrlBtnSize,
-                      onTap: onPrevious,
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: SizedBox(
+                        width: imageSize,
+                        height: imageSize,
+                        child: PlayerImageWidget(
+                          imageUrl: snapshot.imageUrl,
+                          imageAsset: snapshot.imageAsset,
+                          emoji: snapshot.emoji,
+                          primary: primary,
+                          isPlaying: snapshot.isPlaying,
+                          equalizerController: equalizerController,
+                        ),
+                      ),
                     ),
-                    const SizedBox(width: 6),
-                    _MainPlayButton(
-                      isPlaying: state.isPlaying,
-                      isBuffering: state.isBuffering,
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          _LiveIndicator(
+                            controller: equalizerController,
+                            isOnline: snapshot.isOnline,
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            snapshot.name,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.cairo(
+                              fontSize: RadioSizes.playerNameSize(isTablet),
+                              fontWeight: FontWeight.w700,
+                              color: RadioColors.playerText(context),
+                            ),
+                          ),
+                          Text(
+                            snapshot.error ?? snapshot.subtitle,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.cairo(
+                              fontSize: 10,
+                              color: snapshot.error == null
+                                  ? RadioColors.playerSubText(context)
+                                  : Colors.red.shade300,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    if (snapshot.canGoPrevious)
+                      _ControlButton(
+                        icon: Icons.skip_previous_rounded,
+                        size: controlSize,
+                        onTap: coordinator.playPrevious,
+                      ),
+                    _PlayButton(
+                      isPlaying: snapshot.isPlaying,
+                      isBuffering: snapshot.isBuffering,
                       primary: primary,
-                      size: playBtnSize,
-                      onTap: state.isBuffering ? null : onPlayPause,
+                      size: playSize,
+                      onTap: snapshot.isBuffering
+                          ? null
+                          : (snapshot.error == null
+                              ? coordinator.togglePlayPause
+                              : coordinator.retryCurrent),
                     ),
-                    const SizedBox(width: 6),
-                    PlayerControlButton(
-                      icon: Icons.skip_next_rounded,
-                      size: ctrlBtnSize,
-                      onTap: onNext,
+                    if (snapshot.canGoNext)
+                      _ControlButton(
+                        icon: Icons.skip_next_rounded,
+                        size: controlSize,
+                        onTap: coordinator.playNext,
+                      ),
+                    IconButton(
+                      tooltip: 'يعمل الآن',
+                      onPressed: () => _showNowPlaying(context),
+                      icon: const Icon(Icons.open_in_full_rounded),
+                    ),
+                    IconButton(
+                      tooltip: 'أدوات المشغل',
+                      onPressed: () => _showTools(context, coordinator),
+                      icon: const Icon(Icons.more_vert_rounded),
                     ),
                   ],
                 ),
+                if (state.duration.inMilliseconds > 0) ...[
+                  const SizedBox(height: 8),
+                  _SeekBar(
+                    position: state.position,
+                    duration: state.duration,
+                    primary: primary,
+                    onSeek: coordinator.seek,
+                  ),
+                ],
+                if (snapshot.error != null)
+                  Align(
+                    alignment: AlignmentDirectional.centerStart,
+                    child: TextButton.icon(
+                      onPressed: coordinator.retryCurrent,
+                      icon: const Icon(Icons.refresh_rounded, size: 16),
+                      label: const Text('إعادة المحاولة'),
+                    ),
+                  ),
               ],
             ),
           ),
@@ -199,144 +163,198 @@ class ModernBottomPlayer extends StatelessWidget {
     );
   }
 
-  VoidCallback _resolvePlayPause(
-      BuildContext context,
-      _BottomPlayerSource source,
-      ) {
-    switch (source) {
-      case _BottomPlayerSource.online:
-        return context.read<RadioIntillegence>().togglePlayPause;
-      case _BottomPlayerSource.onlineSurah:
-        return context.read<OnlineSurahService>().togglePlayPause;
-      case _BottomPlayerSource.offline:
-        return context.read<OfflineRadioService>().togglePlayPause;
-    }
-  }
-
-  VoidCallback _resolveNext(
-      BuildContext context,
-      _BottomPlayerSource source,
-      ) {
-    switch (source) {
-      case _BottomPlayerSource.online:
-        return context.read<RadioIntillegence>().playNext;
-      case _BottomPlayerSource.onlineSurah:
-        return context.read<OnlineSurahService>().playNext;
-      case _BottomPlayerSource.offline:
-        return context.read<OfflineRadioService>().playNext;
-    }
-  }
-
-  VoidCallback _resolvePrevious(
-      BuildContext context,
-      _BottomPlayerSource source,
-      ) {
-    switch (source) {
-      case _BottomPlayerSource.online:
-        return context.read<RadioIntillegence>().playPrevious;
-      case _BottomPlayerSource.onlineSurah:
-        return context.read<OnlineSurahService>().playPrevious;
-      case _BottomPlayerSource.offline:
-        return context.read<OfflineRadioService>().playPrevious;
-    }
-  }
-}
-
-class _BottomPlayerState {
-  final _BottomPlayerSource source;
-  final String name;
-  final String emoji;
-  final String subtitle;
-  final String? imageUrl;
-  final String? imageAsset;
-  final bool isPlaying;
-  final bool isBuffering;
-  final bool isOnline;
-
-  const _BottomPlayerState({
-    required this.source,
-    required this.name,
-    required this.emoji,
-    required this.subtitle,
-    required this.imageUrl,
-    required this.imageAsset,
-    required this.isPlaying,
-    required this.isBuffering,
-    required this.isOnline,
-  });
-
-  @override
-  bool operator ==(Object other) {
-    return other is _BottomPlayerState &&
-        other.source == source &&
-        other.name == name &&
-        other.emoji == emoji &&
-        other.subtitle == subtitle &&
-        other.imageUrl == imageUrl &&
-        other.imageAsset == imageAsset &&
-        other.isPlaying == isPlaying &&
-        other.isBuffering == isBuffering &&
-        other.isOnline == isOnline;
-  }
-
-  @override
-  int get hashCode => Object.hash(
-    source,
-    name,
-    emoji,
-    subtitle,
-    imageUrl,
-    imageAsset,
-    isPlaying,
-    isBuffering,
-    isOnline,
-  );
-}
-
-/// â•گâ•گ ظ…ط¤ط´ط± ط§ظ„ط¨ط« ط§ظ„ظ…ط¨ط§ط´ط± â•گâ•گ
-class _LiveIndicator extends StatelessWidget {
-  final AnimationController controller;
-  final bool isOnline;
-
-  const _LiveIndicator({
-    required this.controller,
-    required this.isOnline,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: controller,
-      builder: (_, __) {
-        final op = isOnline
-            ? 0.5 + 0.5 * sin(controller.value * 2 * pi)
-            : 1.0;
-
-        final liveColor = isOnline ? RadioColors.gold : Colors.green;
-
-        return Text(
-          isOnline ? 'â—ڈ LIVE' : 'â—‰ ط£ظˆظپظ„ط§ظٹظ†',
-          style: GoogleFonts.poppins(
-            fontSize: 9,
-            fontWeight: FontWeight.w800,
-            color: liveColor.withValues(alpha: op),
-            letterSpacing: 0.5,
+  void _showTools(BuildContext context, AudioCoordinator coordinator) {
+    final playlist = context.read<PlaylistService>();
+    showModalBottomSheet(
+      context: context,
+      showDragHandle: true,
+      builder: (sheetContext) => SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              Text('أدوات المشغل', style: Theme.of(context).textTheme.titleLarge),
+              const SizedBox(height: 12),
+              const Text('سرعة التشغيل'),
+              Wrap(
+                spacing: 8,
+                children: [0.75, 1.0, 1.25, 1.5, 2.0]
+                    .map((speed) => ChoiceChip(
+                          label: Text('${speed}x'),
+                          selected: speed == 1.0,
+                          onSelected: (_) => coordinator.setSpeed(speed),
+                        ))
+                    .toList(),
+              ),
+              const SizedBox(height: 14),
+              const Text('مؤقت النوم'),
+              Wrap(
+                spacing: 8,
+                children: [15, 30, 45, 60]
+                    .map((minutes) => ActionChip(
+                          label: Text('$minutes دقيقة'),
+                          onPressed: () {
+                            coordinator.setSleepTimer(Duration(minutes: minutes));
+                            Navigator.pop(sheetContext);
+                          },
+                        ))
+                    .toList()
+                  ..add(ActionChip(
+                    label: const Text('إلغاء المؤقت'),
+                    onPressed: () {
+                      coordinator.setSleepTimer(null);
+                      Navigator.pop(sheetContext);
+                    },
+                  )),
+              ),
+              if (playlist.hasPlaylist) ...[
+                const SizedBox(height: 14),
+                Text('قائمة التشغيل: ${playlist.playlistName}'),
+                ...playlist.playlist.asMap().entries.map(
+                  (entry) => ListTile(
+                    dense: true,
+                    selected: entry.key == playlist.currentIndex,
+                    leading: Text('${entry.key + 1}'),
+                    title: Text(entry.value.title, maxLines: 1, overflow: TextOverflow.ellipsis),
+                    subtitle: Text(entry.value.subtitle, maxLines: 1, overflow: TextOverflow.ellipsis),
+                    onTap: () async {
+                      final item = playlist.playAt(entry.key);
+                      if (item != null) await coordinator.playPlaylistItem(item);
+                      if (sheetContext.mounted) Navigator.pop(sheetContext);
+                    },
+                  ),
+                ),
+              ],
+            ],
           ),
-        );
-      },
+        ),
+      ),
+    );
+  }
+
+  void _showNowPlaying(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      showDragHandle: true,
+      builder: (_) => FractionallySizedBox(
+        heightFactor: .88,
+        child: Consumer<AudioCoordinator>(
+          builder: (context, coordinator, __) {
+            final snapshot = coordinator.snapshot;
+            return Padding(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(26),
+                    child: SizedBox(
+                      width: 230,
+                      height: 230,
+                      child: PlayerImageWidget(
+                        imageUrl: snapshot.imageUrl,
+                        imageAsset: snapshot.imageAsset,
+                        emoji: snapshot.emoji,
+                        primary: primary,
+                        isPlaying: snapshot.isPlaying,
+                        equalizerController: equalizerController,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  Text(snapshot.name,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.cairo(fontSize: 20, fontWeight: FontWeight.w800)),
+                  Text(snapshot.error ?? snapshot.subtitle,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.cairo(color: snapshot.error == null ? null : Colors.red)),
+                  const SizedBox(height: 16),
+                  if (coordinator.duration.inMilliseconds > 0)
+                    _SeekBar(
+                      position: coordinator.position,
+                      duration: coordinator.duration,
+                      primary: primary,
+                      onSeek: coordinator.seek,
+                    ),
+                  const Spacer(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if (snapshot.canGoPrevious)
+                        _ControlButton(icon: Icons.skip_previous_rounded, size: 42, onTap: coordinator.playPrevious),
+                      _PlayButton(
+                        isPlaying: snapshot.isPlaying,
+                        isBuffering: snapshot.isBuffering,
+                        primary: primary,
+                        size: 62,
+                        onTap: snapshot.error == null ? coordinator.togglePlayPause : coordinator.retryCurrent,
+                      ),
+                      if (snapshot.canGoNext)
+                        _ControlButton(icon: Icons.skip_next_rounded, size: 42, onTap: coordinator.playNext),
+                    ],
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
+      ),
     );
   }
 }
 
-/// â•گâ•گ ط²ط± ط§ظ„طھط´ط؛ظٹظ„ ط§ظ„ط±ط¦ظٹط³ظٹ â•گâ•گ
-class _MainPlayButton extends StatelessWidget {
+class _PlayerViewState {
+  final PlayerSnapshot snapshot;
+  final Duration position;
+  final Duration duration;
+
+  const _PlayerViewState({
+    required this.snapshot,
+    required this.position,
+    required this.duration,
+  });
+
+  @override
+  bool operator ==(Object other) =>
+      other is _PlayerViewState &&
+      other.snapshot == snapshot &&
+      other.position == position &&
+      other.duration == duration;
+
+  @override
+  int get hashCode => Object.hash(snapshot, position, duration);
+}
+
+class _ControlButton extends StatelessWidget {
+  final IconData icon;
+  final double size;
+  final VoidCallback onTap;
+
+  const _ControlButton({
+    required this.icon,
+    required this.size,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) => IconButton(
+        onPressed: onTap,
+        icon: Icon(icon),
+        iconSize: size * .8,
+        color: RadioColors.playerText(context),
+        splashRadius: size * .6,
+      );
+}
+
+class _PlayButton extends StatelessWidget {
   final bool isPlaying;
   final bool isBuffering;
   final Color primary;
   final double size;
   final VoidCallback? onTap;
 
-  const _MainPlayButton({
+  const _PlayButton({
     required this.isPlaying,
     required this.isBuffering,
     required this.primary,
@@ -345,29 +363,82 @@ class _MainPlayButton extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: size,
-        height: size,
-        decoration: RadioShapes.mainPlayButtonDecoration(primary),
-        child: isBuffering
-            ? Padding(
-          padding: EdgeInsets.all(size * 0.26),
-          child: const CircularProgressIndicator(
-            strokeWidth: 2,
-            color: Colors.white,
-          ),
-        )
-            : Icon(
-          isPlaying
-              ? Icons.pause_rounded
-              : Icons.play_arrow_rounded,
-          color: Colors.white,
-          size: size * 0.5,
+  Widget build(BuildContext context) => IconButton(
+        onPressed: onTap,
+        icon: isBuffering
+            ? SizedBox(
+                width: size * .45,
+                height: size * .45,
+                child: const CircularProgressIndicator(strokeWidth: 2),
+              )
+            : Icon(isPlaying ? Icons.pause_rounded : Icons.play_arrow_rounded),
+        color: Colors.white,
+        iconSize: size * .6,
+        splashRadius: size * .6,
+        style: IconButton.styleFrom(
+          backgroundColor: primary,
+          minimumSize: Size.square(size),
         ),
-      ),
+      );
+}
+
+class _SeekBar extends StatelessWidget {
+  final Duration position;
+  final Duration duration;
+  final Color primary;
+  final ValueChanged<Duration> onSeek;
+
+  const _SeekBar({
+    required this.position,
+    required this.duration,
+    required this.primary,
+    required this.onSeek,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final max = duration.inMilliseconds.toDouble();
+    final value = position.inMilliseconds.clamp(0, duration.inMilliseconds).toDouble();
+    return Row(
+      children: [
+        Text(_format(position), style: const TextStyle(fontSize: 9)),
+        Expanded(
+          child: Slider(
+            value: value,
+            min: 0,
+            max: max,
+            activeColor: primary,
+            onChanged: (value) => onSeek(Duration(milliseconds: value.round())),
+          ),
+        ),
+        Text(_format(duration), style: const TextStyle(fontSize: 9)),
+      ],
     );
   }
+
+  String _format(Duration value) =>
+      '${value.inMinutes.remainder(60).toString().padLeft(2, '0')}:${value.inSeconds.remainder(60).toString().padLeft(2, '0')}';
+}
+
+class _LiveIndicator extends StatelessWidget {
+  final AnimationController controller;
+  final bool isOnline;
+
+  const _LiveIndicator({required this.controller, required this.isOnline});
+
+  @override
+  Widget build(BuildContext context) => AnimatedBuilder(
+        animation: controller,
+        builder: (_, __) {
+          final opacity = isOnline ? .5 + .5 * sin(controller.value * 2 * pi) : 1.0;
+          return Text(
+            isOnline ? '● LIVE' : '◉ أوفلاين',
+            style: GoogleFonts.poppins(
+              fontSize: 9,
+              fontWeight: FontWeight.w800,
+              color: (isOnline ? RadioColors.gold : Colors.green).withValues(alpha: opacity),
+            ),
+          );
+        },
+      );
 }

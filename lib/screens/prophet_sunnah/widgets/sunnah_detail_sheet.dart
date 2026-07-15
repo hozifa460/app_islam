@@ -189,7 +189,7 @@ class _SheetHeader extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'ط³ظ†ط©',
+                  'سنة',
                   style: TextStyle(
                     color: color.withValues(alpha: 0.7),
                     fontSize: 10,
@@ -218,7 +218,7 @@ class _SheetHeader extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'ط§ط¶ط؛ط· ط¹ظ„ظ‰ ط§ظ„ط³ظ†ط© ظ„ط¹ط±ط¶ ط§ظ„طھظپط§طµظٹظ„',
+                  'اضغط على السنة لعرض التفاصيل',
                   textAlign: TextAlign.right,
                   style: TextStyle(
                     color: isDark ? Colors.white38 : const Color(0xFF9A9AB0),

@@ -84,7 +84,7 @@ class DuaCountBox extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
       ),
       child: Text(
-        '$count ط¯ط¹ط§ط،',
+        '$count دعاء',
         style: GoogleFonts.cairo(
           fontSize: 11,
           color: color,
@@ -414,7 +414,7 @@ class DuaActionButtons extends StatelessWidget {
       children: [
         Expanded(
           child: DuaActionButton(
-            label: 'ظ†ط³ط®',
+            label: 'نسخ',
             icon: Icons.copy_rounded,
             color: color,
             onPressed: onCopy,
@@ -423,7 +423,7 @@ class DuaActionButtons extends StatelessWidget {
         const SizedBox(width: 8),
         Expanded(
           child: DuaActionButton(
-            label: 'ظ…ط´ط§ط±ظƒط©',
+            label: 'مشاركة',
             icon: Icons.share_rounded,
             color: color,
             onPressed: onShare,

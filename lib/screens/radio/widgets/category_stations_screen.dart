@@ -43,13 +43,13 @@ class _CategoryStationsScreenState extends State<CategoryStationsScreen>
   static const Color _gold = Color(0xFFC8A44D);
 
   static const Map<String, List<Color>> _catColors = {
-    'ط§ظ„ظ‚ط±ط¢ظ† ط§ظ„ظƒط±ظٹظ…': [Color(0xFF2D1B69), Color(0xFF7C3AED)],
-    'ط§ظ„ط­ط±ظ…ظٹظ† ط§ظ„ط´ط±ظٹظپظٹظ†': [Color(0xFF1A3A2A), Color(0xFF16A34A)],
-    'ط¥ط°ط§ط¹ط§طھ ط±ط³ظ…ظٹط©': [Color(0xFF1E3A5F), Color(0xFF2563EB)],
-    'طھظپط³ظٹط± ظˆط¹ظ„ظˆظ…': [Color(0xFF3B1F00), Color(0xFFC2700C)],
-    'ط±ظ‚ظٹط© ظˆط£ط¯ط¹ظٹط©': [Color(0xFF2D1A3A), Color(0xFF9333EA)],
-    'طھظ„ط§ظˆط§طھ ط®ط§ط´ط¹ط©': [Color(0xFF1A1A2E), Color(0xFF6366F1)],
-    'طھط±ط¬ظ…ط§طھ ط§ظ„ظ‚ط±ط¢ظ†': [Color(0xFF064E3B), Color(0xFF059669)],
+    'القرآن الكريم': [Color(0xFF2D1B69), Color(0xFF7C3AED)],
+    'الحرمين الشريفين': [Color(0xFF1A3A2A), Color(0xFF16A34A)],
+    'إذاعات رسمية': [Color(0xFF1E3A5F), Color(0xFF2563EB)],
+    'تفسير وعلوم': [Color(0xFF3B1F00), Color(0xFFC2700C)],
+    'رقية وأدعية': [Color(0xFF2D1A3A), Color(0xFF9333EA)],
+    'تلاوات خاشعة': [Color(0xFF1A1A2E), Color(0xFF6366F1)],
+    'ترجمات القرآن': [Color(0xFF064E3B), Color(0xFF059669)],
   };
 
   @override
@@ -242,7 +242,7 @@ class _CategoryStationsScreenState extends State<CategoryStationsScreen>
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  '${widget.stations.length} ظ…ط­ط·ط©',
+                  '${widget.stations.length} محطة',
                   style: GoogleFonts.cairo(
                     fontSize: 11,
                     color: Colors.white.withValues(alpha: 0.5),
@@ -306,7 +306,7 @@ class _CategoryStationsScreenState extends State<CategoryStationsScreen>
             color: Colors.white,
           ),
           decoration: InputDecoration(
-            hintText: 'ط§ط¨ط­ط«...',
+            hintText: 'ابحث...',
             hintStyle: GoogleFonts.cairo(
               color: Colors.white38,
               fontSize: 12,
@@ -329,10 +329,10 @@ class _CategoryStationsScreenState extends State<CategoryStationsScreen>
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('ًں”چ', style: TextStyle(fontSize: 44)),
+          const Text('🔍', style: TextStyle(fontSize: 44)),
           const SizedBox(height: 12),
           Text(
-            'ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬',
+            'لا توجد نتائج',
             style: GoogleFonts.cairo(
               fontSize: 16,
               fontWeight: FontWeight.w700,

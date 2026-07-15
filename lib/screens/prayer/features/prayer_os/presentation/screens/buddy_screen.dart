@@ -11,7 +11,7 @@ class BuddyScreen extends StatefulWidget {
 }
 
 class _BuddyScreenState extends State<BuddyScreen> {
-  String buddyName = "ط£ط­ظ…ط¯";
+  String buddyName = "أحمد";
   int buddyStreak = 12;
   int buddyToday = 3;
 
@@ -25,7 +25,7 @@ class _BuddyScreenState extends State<BuddyScreen> {
     return Scaffold(
       backgroundColor: bgColor,
       appBar: AppBar(
-        title: const Text("ط±ظپظٹظ‚ ط§ظ„طµظ„ط§ط©"),
+        title: const Text("رفيق الصلاة"),
         backgroundColor: widget.primary,
       ),
       body: Padding(
@@ -33,7 +33,7 @@ class _BuddyScreenState extends State<BuddyScreen> {
         child: Column(
           children: [
             Text(
-              "ًں‘¥ ط±ظپظٹظ‚ظƒ: $buddyName",
+              "👥 رفيقك: $buddyName",
               style: GoogleFonts.cairo(
                   fontSize: 18, fontWeight: FontWeight.bold),
             ),
@@ -47,13 +47,13 @@ class _BuddyScreenState extends State<BuddyScreen> {
               ),
               child: Column(
                 children: [
-                  Text("ًں”¥ $buddyStreak ظٹظˆظ… ظ…طھظˆط§طµظ„"),
+                  Text("🔥 $buddyStreak يوم متواصل"),
                   const SizedBox(height: 8),
                   LinearProgressIndicator(
                     value: buddyToday / 5,
                   ),
                   const SizedBox(height: 8),
-                  Text("$buddyToday / 5 طµظ„ظˆط§طھ ط§ظ„ظٹظˆظ…"),
+                  Text("$buddyToday / 5 صلوات اليوم"),
                 ],
               ),
             ),
@@ -62,7 +62,7 @@ class _BuddyScreenState extends State<BuddyScreen> {
 
             ElevatedButton(
               onPressed: () {},
-              child: const Text("ط°ظƒظ‘ط± ط±ظپظٹظ‚ظƒ ط¨ط§ظ„طµظ„ط§ط©"),
+              child: const Text("ذكّر رفيقك بالصلاة"),
             )
           ],
         ),

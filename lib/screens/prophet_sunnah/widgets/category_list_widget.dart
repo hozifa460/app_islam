@@ -62,7 +62,7 @@ class _EmptyWidget extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            'ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬',
+            'لا توجد نتائج',
             style: TextStyle(
               color: SunnahTheme.textPrimary(context),
               fontSize: 18,
@@ -71,7 +71,7 @@ class _EmptyWidget extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            'ط¬ط±ظ‘ط¨ ط§ظ„ط¨ط­ط« ط¨ظƒظ„ظ…ط© ظ…ط®طھظ„ظپط©',
+            'جرّب البحث بكلمة مختلفة',
             style: TextStyle(
               color: SunnahTheme.textSecondary(context),
               fontSize: 13,

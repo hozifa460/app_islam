@@ -42,7 +42,7 @@ class ProfileStatsRow extends StatelessWidget {
               icon: Icons.calendar_today_rounded,
               color: Colors.blue,
               value: '${stats.totalDays}',
-              label: 'ظٹظˆظ… ط¯ط®ظ„طھ',
+              label: 'يوم دخلت',
               isDark: isDark,
             ),
 
@@ -55,7 +55,7 @@ class ProfileStatsRow extends StatelessWidget {
                   ? Colors.deepOrange
                   : Colors.grey,
               value: '${stats.streak}',
-              label: 'ظٹظˆظ… ظ…طھظˆط§طµظ„',
+              label: 'يوم متواصل',
               isDark: isDark,
               badge: _streakBadge(stats.streak),
             ),
@@ -66,10 +66,10 @@ class ProfileStatsRow extends StatelessWidget {
   }
 
   String? _streakBadge(int streak) {
-    if (streak >= 30) return 'ًںڈ†';
-    if (streak >= 14) return 'ًں’ژ';
-    if (streak >= 7) return 'ًں”¥';
-    if (streak >= 3) return 'â­گ';
+    if (streak >= 30) return '🏆';
+    if (streak >= 14) return '💎';
+    if (streak >= 7) return '🔥';
+    if (streak >= 3) return '⭐';
     return null;
   }
 }

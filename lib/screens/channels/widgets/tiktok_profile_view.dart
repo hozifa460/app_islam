@@ -76,7 +76,7 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
               ),
               SizedBox(height: w * 0.04),
               Text(
-                'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ TikTok...',
+                'جاري تحميل TikTok...',
                 style: GoogleFonts.cairo(
                   fontSize: (w * 0.035).clamp(13.0, 16.0),
                   color: Colors.white70,
@@ -99,7 +99,7 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
                   size: 60, color: Colors.white38),
               SizedBox(height: w * 0.03),
               Text(
-                'طھط¹ط°ط± طھط­ظ…ظٹظ„ ط§ظ„ط¨ظٹط§ظ†ط§طھ',
+                'تعذر تحميل البيانات',
                 style: GoogleFonts.cairo(
                   fontSize: (w * 0.038).clamp(14.0, 17.0),
                   color: Colors.white70,
@@ -114,7 +114,7 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFEE1D52),
                 ),
-                child: Text('ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط©',
+                child: Text('إعادة المحاولة',
                     style: GoogleFonts.cairo(fontWeight: FontWeight.w700)),
               ),
             ],
@@ -164,11 +164,11 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
                 tabs: [
                   Tab(
                     icon: Icon(Icons.grid_on_rounded, size: 20),
-                    text: 'ط§ظ„ظپظٹط¯ظٹظˆظ‡ط§طھ',
+                    text: 'الفيديوهات',
                   ),
                   Tab(
                     icon: Icon(Icons.favorite_border_rounded, size: 20),
-                    text: 'ط§ظ„ظ…ظپط¶ظ„ط©',
+                    text: 'المفضلة',
                   ),
                 ],
               ),
@@ -281,11 +281,11 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _statItem('ظ…طھط§ط¨ظگط¹', p.following, w),
+              _statItem('متابِع', p.following, w),
               _divider(w),
-              _statItem('ظ…طھط§ط¨ظگط¹ظˆظ†', p.followers, w),
+              _statItem('متابِعون', p.followers, w),
               _divider(w),
-              _statItem('ط¥ط¹ط¬ط§ط¨', p.likes, w),
+              _statItem('إعجاب', p.likes, w),
             ],
           ),
 
@@ -332,7 +332,7 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
                       Icon(Icons.person_add_rounded, size: 18),
                       SizedBox(width: w * 0.015),
                       Text(
-                        'ظ…طھط§ط¨ط¹ط©',
+                        'متابعة',
                         style: GoogleFonts.cairo(
                           fontSize: (w * 0.035).clamp(13.0, 16.0),
                           fontWeight: FontWeight.w800,
@@ -432,7 +432,7 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
             Icon(Icons.video_library_outlined,
                 size: 60, color: Colors.white24),
             SizedBox(height: w * 0.03),
-            Text('ظ„ط§ طھظˆط¬ط¯ ظپظٹط¯ظٹظˆظ‡ط§طھ',
+            Text('لا توجد فيديوهات',
                 style: GoogleFonts.cairo(
                   fontSize: (w * 0.035).clamp(13.0, 16.0),
                   color: Colors.white38,
@@ -467,7 +467,7 @@ class _TikTokProfileViewState extends State<TikTokProfileView>
         children: [
           Icon(Icons.lock_outline_rounded, size: 60, color: Colors.white24),
           SizedBox(height: w * 0.03),
-          Text('ط§ظ„ظ…ظپط¶ظ„ط© ط®ط§طµط©',
+          Text('المفضلة خاصة',
               style: GoogleFonts.cairo(
                 fontSize: (w * 0.035).clamp(13.0, 16.0),
                 color: Colors.white38,

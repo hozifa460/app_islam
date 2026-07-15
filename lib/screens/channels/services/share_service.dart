@@ -12,14 +12,14 @@ class ShareService {
   /// ظ…ط´ط§ط±ظƒط© ظپظٹط¯ظٹظˆ
   static Future<void> shareVideo(YoutubeVideo video, {BuildContext? context}) async {
     final text = '''
-ًںژ¬ ${video.title}
+🎬 ${video.title}
 
-ًں“؛ ${video.channelTitle}
-ًں‘پï¸ڈ ${YoutubeService.formatViews(video.viewCount)} ظ…ط´ط§ظ‡ط¯ط©
+📺 ${video.channelTitle}
+👁️ ${YoutubeService.formatViews(video.viewCount)} مشاهدة
 
-ًں”— ${video.url}
+🔗 ${video.url}
 
-â€” طھظ… ط§ظ„ظ…ط´ط§ط±ظƒط© ظ…ظ† طھط·ط¨ظٹظ‚ ط§ظ„ظ‚ظ†ظˆط§طھ ط§ظ„ط¹ظ„ظ…ظٹط©
+— تم المشاركة من تطبيق القنوات العلمية
 ''';
 
     await Share.share(
@@ -35,11 +35,11 @@ class ShareService {
     final title = channel['title'] ?? '';
 
     final text = '''
-ًں“؛ $name
-${title.isNotEmpty ? 'ًں“‌ $title\n' : ''}
-ًں”— $url
+📺 $name
+${title.isNotEmpty ? '📝 $title\n' : ''}
+🔗 $url
 
-â€” طھظ… ط§ظ„ظ…ط´ط§ط±ظƒط© ظ…ظ† طھط·ط¨ظٹظ‚ ط§ظ„ظ‚ظ†ظˆط§طھ ط§ظ„ط¹ظ„ظ…ظٹط©
+— تم المشاركة من تطبيق القنوات العلمية
 ''';
 
     await Share.share(
@@ -59,7 +59,7 @@ ${title.isNotEmpty ? 'ًں“‌ $title\n' : ''}
             children: [
               const Icon(Icons.check_circle_rounded, color: Colors.white, size: 20),
               const SizedBox(width: 12),
-              const Text('طھظ… ظ†ط³ط® ط§ظ„ط±ط§ط¨ط·'),
+              const Text('تم نسخ الرابط'),
             ],
           ),
           backgroundColor: const Color(0xFF10B981),
@@ -169,7 +169,7 @@ class _ShareOptionsSheet extends StatelessWidget {
                   const SizedBox(width: 12),
                   Expanded(
                     child: Text(
-                      'ظ…ط´ط§ط±ظƒط© ط§ظ„ظپظٹط¯ظٹظˆ',
+                      'مشاركة الفيديو',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w700,
@@ -191,7 +191,7 @@ class _ShareOptionsSheet extends StatelessWidget {
                 children: [
                   _ShareButton(
                     icon: Icons.copy_rounded,
-                    label: 'ظ†ط³ط®',
+                    label: 'نسخ',
                     color: const Color(0xFF64748B),
                     onTap: () {
                       Navigator.pop(context);
@@ -200,7 +200,7 @@ class _ShareOptionsSheet extends StatelessWidget {
                   ),
                   _ShareButton(
                     icon: Icons.message_rounded,
-                    label: 'ظˆط§طھط³ط§ط¨',
+                    label: 'واتساب',
                     color: const Color(0xFF25D366),
                     onTap: () {
                       Navigator.pop(context);
@@ -211,7 +211,7 @@ class _ShareOptionsSheet extends StatelessWidget {
                   ),
                   _ShareButton(
                     icon: Icons.send_rounded,
-                    label: 'طھظ„ظٹط¬ط±ط§ظ…',
+                    label: 'تليجرام',
                     color: const Color(0xFF0088CC),
                     onTap: () {
                       Navigator.pop(context);
@@ -222,7 +222,7 @@ class _ShareOptionsSheet extends StatelessWidget {
                   ),
                   _ShareButton(
                     icon: Icons.tag_rounded,
-                    label: 'طھظˆظٹطھط±',
+                    label: 'تويتر',
                     color: const Color(0xFF1DA1F2),
                     onTap: () {
                       Navigator.pop(context);
@@ -249,7 +249,7 @@ class _ShareOptionsSheet extends StatelessWidget {
                     ShareService.shareVideo(video, context: context);
                   },
                   icon: const Icon(Icons.share_rounded, size: 20),
-                  label: const Text('ط§ظ„ظ…ط²ظٹط¯ ظ…ظ† ط§ظ„ط®ظٹط§ط±ط§طھ'),
+                  label: const Text('المزيد من الخيارات'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF0D9488),
                     foregroundColor: Colors.white,

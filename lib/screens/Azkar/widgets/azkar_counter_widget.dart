@@ -68,7 +68,7 @@ class AzkarCounterWidget extends StatelessWidget {
               ),
               SizedBox(width: size * 0.15),
               Text(
-                'طھظ…',
+                'تم',
                 style: GoogleFonts.cairo(
                   color: AzkarTheme.success,
                   fontWeight: FontWeight.w800,

@@ -1,4 +1,4 @@
-﻿// lib/screens/radio/video/widgets/smart_video_thumbnail.dart
+// lib/screens/radio/video/widgets/smart_video_thumbnail.dart
 
 import 'dart:io';
 import 'dart:typed_data';
@@ -43,7 +43,7 @@ class ThumbnailMemoryCache {
   void clear() {
     _cache.clear();
     _accessOrder.clear();
-    debugPrint('ًں—‘ï¸ڈ ThumbnailMemoryCache: cleared');
+    debugPrint('🗑️ ThumbnailMemoryCache: cleared');
   }
 
   int get count => _cache.length;
@@ -75,6 +75,7 @@ class SmartVideoThumbnail extends StatefulWidget {
 
 class _SmartVideoThumbnailState extends State<SmartVideoThumbnail> {
   Uint8List? _thumbBytes;
+  String? _youtubeThumbUrl;
   bool _generating = false;
 
   String get _cacheKey => widget.videoUrl ?? '';
@@ -91,25 +92,35 @@ class _SmartVideoThumbnailState extends State<SmartVideoThumbnail> {
     if (oldWidget.imageUrl != widget.imageUrl ||
         oldWidget.videoUrl != widget.videoUrl) {
       _thumbBytes = null;
+      _youtubeThumbUrl = null;
       _resolve();
     }
   }
 
   void _resolve() {
-    // âœ… imageUrl ظٹط¯ظˆظٹ ظ„ظ‡ ط§ظ„ط£ظˆظ„ظˆظٹط©
+    // ✅ imageUrl يدوي له الأولوية
     if (widget.imageUrl != null && widget.imageUrl!.isNotEmpty) return;
 
     final url = widget.videoUrl;
     if (url == null || url.isEmpty) return;
 
-    // âœ… ظ…ظ† ط§ظ„ظƒط§ط´ ظپظٹ ط§ظ„ط°ط§ظƒط±ط© - ظپظˆط±ظٹ
+    // ✅ استخراج صورة يوتيوب مباشرة إن وجد
+    final ytId = _getYoutubeId(url);
+    if (ytId != null) {
+      setState(() {
+        _youtubeThumbUrl = 'https://img.youtube.com/vi/$ytId/hqdefault.jpg';
+      });
+      return;
+    }
+
+    // ✅ من الكاش في الذاكرة - فوري
     final cached = ThumbnailMemoryCache().get(url);
     if (cached != null) {
       _thumbBytes = cached;
       return;
     }
 
-    // âœ… ظˆظ„ظ‘ط¯ ظپظٹ ط§ظ„ط®ظ„ظپظٹط©
+    // ✅ ولِّد في الخلفية
     _generate(url);
   }
 
@@ -118,7 +129,7 @@ class _SmartVideoThumbnailState extends State<SmartVideoThumbnail> {
     _generating = true;
 
     try {
-      // âœ… 1. ط­ط§ظˆظ„ ظ…ظ† ط§ظ„ظ…ظ„ظپ ط§ظ„ظ…ط­ظ„ظٹ ط£ظˆظ„ط§ظ‹ (ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ)
+      // ✅ 1. حاول من الملف المحلي أولاً (بدون إنترنت)
       final localPath = _getLocalPath(videoUrl);
       final source = localPath ?? videoUrl;
 
@@ -131,7 +142,7 @@ class _SmartVideoThumbnailState extends State<SmartVideoThumbnail> {
       );
 
       if (bytes != null && bytes.isNotEmpty) {
-        // âœ… ط§ط­ظپط¸ ظپظٹ ط§ظ„ظƒط§ط´
+        // ✅ احفظ في الكاش
         ThumbnailMemoryCache().set(videoUrl, bytes);
 
         if (mounted) {
@@ -154,12 +165,29 @@ class _SmartVideoThumbnailState extends State<SmartVideoThumbnail> {
     return null;
   }
 
+  String? _getYoutubeId(String url) {
+    final regExp = RegExp(
+      r'^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*',
+      caseSensitive: false,
+    );
+    final match = regExp.firstMatch(url);
+    if (match != null && match.groupCount >= 2) {
+      final id = match.group(2);
+      if (id != null && id.length == 11) return id;
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
-    // âœ… 1. imageUrl ظٹط¯ظˆظٹ
-    if (widget.imageUrl != null && widget.imageUrl!.isNotEmpty) {
+    // ✅ 1. imageUrl يدوي أو يوتيوب
+    final displayUrl = (widget.imageUrl != null && widget.imageUrl!.isNotEmpty)
+        ? widget.imageUrl
+        : _youtubeThumbUrl;
+
+    if (displayUrl != null && displayUrl.isNotEmpty) {
       return RadioImageWidget(
-        imageUrl: widget.imageUrl,
+        imageUrl: displayUrl,
         emoji: widget.emoji,
         primary: widget.primary,
         size: widget.size,
@@ -168,7 +196,7 @@ class _SmartVideoThumbnailState extends State<SmartVideoThumbnail> {
       );
     }
 
-    // âœ… 2. طµظˆط±ط© ظ…طµط؛ط±ط© ظ…ظˆظ„ط¯ط©
+    // ✅ 2. صورة مصغرة مولدة
     if (_thumbBytes != null) {
       return ClipRRect(
         borderRadius: widget.borderRadius,

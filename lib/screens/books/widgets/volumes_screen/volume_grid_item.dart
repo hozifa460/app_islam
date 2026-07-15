@@ -54,7 +54,7 @@ class VolumeGridItem extends StatelessWidget {
                 const SizedBox(height: 10),
                 // ط§ظ„ط¹ظ†ظˆط§ظ†
                 _VolumeTitle(
-                  title: volume['title'] ?? 'ظ…ط¬ظ„ط¯',
+                  title: volume['title'] ?? 'مجلد',
                   isSmall: isSmall,
                   isDark: isDark,
                 ),
@@ -287,7 +287,7 @@ class _VolumeStatus extends StatelessWidget {
         ),
       ),
       child: Text(
-        isDownloaded ? 'ط¬ط§ظ‡ط² ظ„ظ„ظ‚ط±ط§ط،ط©' : 'ط§ط¶ط؛ط· ظ„ظپطھط­ ط§ظ„ظ…ط¬ظ„ط¯',
+        isDownloaded ? 'جاهز للقراءة' : 'اضغط لفتح المجلد',
         key: ValueKey(isDownloaded),
         textAlign: TextAlign.center,
         maxLines: 1,

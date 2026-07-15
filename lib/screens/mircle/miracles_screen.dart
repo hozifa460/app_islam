@@ -543,7 +543,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'ط§ظ„ط¥ط¹ط¬ط§ط² ط§ظ„ط¹ظ„ظ…ظٹ',
+              'الإعجاز العلمي',
               style: GoogleFonts.cairo(
                 color:      Colors.white,
                 fontWeight: FontWeight.bold,
@@ -657,7 +657,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
                     ),
                     const SizedBox(height: 18),
                     Text(
-                      'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط§ظ„ظ…ط¹ط¬ط²ط§طھ...',
+                      'جاري تحميل المعجزات...',
                       style: GoogleFonts.cairo(
                         color:      Colors.white70,
                         fontSize:   15,
@@ -708,7 +708,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
         style:       GoogleFonts.cairo(color: Colors.white, fontSize: 14),
         cursorColor: t.neonBlue,
         decoration: InputDecoration(
-          hintText:  'ط§ط¨ط­ط« ظپظٹ ط§ظ„ظ…ط¹ط¬ط²ط§طھ...',
+          hintText:  'ابحث في المعجزات...',
           hintStyle: GoogleFonts.cairo(
             color: Colors.white38, fontSize: 13,
           ),
@@ -763,8 +763,8 @@ class _MiraclesScreenState extends State<MiraclesScreen>
           Expanded(
             child: Text(
               _showFavoritesOnly
-                  ? 'ط§ظ„ظ…ظپط¶ظ„ط© (${_filteredMiracles.length})'
-                  : 'ط§ظ„ظ†طھط§ط¦ط¬ (${_filteredMiracles.length})',
+                  ? 'المفضلة (${_filteredMiracles.length})'
+                  : 'النتائج (${_filteredMiracles.length})',
               style: GoogleFonts.cairo(
                 fontSize:   14,
                 fontWeight: FontWeight.bold,
@@ -802,7 +802,7 @@ class _MiraclesScreenState extends State<MiraclesScreen>
                     ),
                     const SizedBox(width: 4),
                     Text(
-                      'ظ…ط³ط­',
+                      'مسح',
                       style: GoogleFonts.cairo(
                         fontSize:   10,
                         color: MiracleThemeColors.neonRed.withValues(alpha: 0.8),
@@ -847,8 +847,8 @@ class _MiraclesScreenState extends State<MiraclesScreen>
             const SizedBox(height: 18),
             Text(
               _showFavoritesOnly
-                  ? 'ظ„ط§ طھظˆط¬ط¯ ظ…ط¹ط¬ط²ط§طھ ظپظٹ ط§ظ„ظ…ظپط¶ظ„ط©'
-                  : 'ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬ ظ…ط·ط§ط¨ظ‚ط©',
+                  ? 'لا توجد معجزات في المفضلة'
+                  : 'لا توجد نتائج مطابقة',
               style: GoogleFonts.cairo(
                 color:      Colors.white60,
                 fontSize:   16,
@@ -859,8 +859,8 @@ class _MiraclesScreenState extends State<MiraclesScreen>
             const SizedBox(height: 8),
             Text(
               _showFavoritesOnly
-                  ? 'ط§ط¶ط؛ط· ط¹ظ„ظ‰ â‌¤ï¸ڈ ظ„ط¥ط¶ط§ظپط© ظ…ط¹ط¬ط²ط§طھ'
-                  : 'ط¬ط±ظ‘ط¨ طھط؛ظٹظٹط± ط§ظ„ط¨ط­ط« ط£ظˆ ط§ظ„ظپظ„ط§طھط±',
+                  ? 'اضغط على ❤️ لإضافة معجزات'
+                  : 'جرّب تغيير البحث أو الفلاتر',
               style: GoogleFonts.cairo(
                 color:    Colors.white30,
                 fontSize: 13,

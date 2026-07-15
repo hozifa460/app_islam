@@ -172,7 +172,7 @@ class AzkarCategoryCard extends StatelessWidget {
           ),
           const SizedBox(width: 4),
           Text(
-            '${azkarList.length} ط°ظƒط±',
+            '${azkarList.length} ذكر',
             style: GoogleFonts.cairo(
               fontSize: sizes.subFontSize,
               color: accent,

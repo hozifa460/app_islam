@@ -29,7 +29,7 @@ class BookReaderScreen extends StatefulWidget {
 class _BookReaderScreenState extends State<BookReaderScreen> {
   String? localPdfPath;
   bool _isLoading = true;
-  String _statusMessage = 'ط¬ط§ط±ظٹ طھط­ط¶ظٹط± ط§ظ„ظƒطھط§ط¨...';
+  String _statusMessage = 'جاري تحضير الكتاب...';
   bool _hasError = false;
 
   PDFViewController? _pdfViewController;
@@ -89,7 +89,7 @@ class _BookReaderScreenState extends State<BookReaderScreen> {
       }
 
       // 3. ط¥ط°ط§ ظ„ظ… ظٹط¬ط¯ظ‡ ط£ط¨ط¯ط§ظ‹طŒ ظٹظ‚ظˆظ… ط¨طھط­ظ…ظٹظ„ظ‡ ظƒظ€ (ظƒط§ط´ ط£ظˆظ†ظ„ط§ظٹظ†)
-      if (mounted) setState(() => _statusMessage = 'ط¬ط§ط±ظٹ ط¬ظ„ط¨ ط§ظ„ظƒطھط§ط¨ ظ„ط£ظˆظ„ ظ…ط±ط©...\n(ط³ظٹظپطھط­ ظپظˆط±ط§ظ‹ ظپظٹ ط§ظ„ظ…ط±ط§طھ ط§ظ„ظ‚ط§ط¯ظ…ط©)');
+      if (mounted) setState(() => _statusMessage = 'جاري جلب الكتاب لأول مرة...\n(سيفتح فوراً في المرات القادمة)');
 
       final response = await http.get(Uri.parse(widget.pdfUrl)).timeout(const Duration(minutes: 5));
       if (response.statusCode == 200) {
@@ -101,14 +101,14 @@ class _BookReaderScreenState extends State<BookReaderScreen> {
           });
         }
       } else {
-        throw Exception('ظپط´ظ„ ط§ظ„طھط­ظ…ظٹظ„');
+        throw Exception('فشل التحميل');
       }
     } catch (e) {
       if (mounted) {
         setState(() {
           _isLoading = false;
           _hasError = true;
-          _statusMessage = 'ط¹ط°ط±ط§ظ‹طŒ طھط¹ط°ط± طھط­ظ…ظٹظ„ ظ…ظ„ظپ ط§ظ„ظƒطھط§ط¨.\nطھط£ظƒط¯ ظ…ظ† ط§ظ„ط±ط§ط¨ط· ط£ظˆ ط§طھطµط§ظ„ ط§ظ„ط¥ظ†طھط±ظ†طھ.';
+          _statusMessage = 'عذراً، تعذر تحميل ملف الكتاب.\nتأكد من الرابط أو اتصال الإنترنت.';
         });
       }
     }
@@ -136,10 +136,10 @@ class _BookReaderScreenState extends State<BookReaderScreen> {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                const Text('ظپظ‡ط±ط³ ط§ظ„ظƒطھط§ط¨', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                const Text('فهرس الكتاب', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 const Divider(),
                 Expanded(
-                  child: Center(child: Text('ظ‡ط°ظ‡ ط§ظ„ظ…ظٹط²ط© طھط¹ظ…ظ„ ظ…ط¹ ط§ظ„ظƒطھط¨ ط§ظ„ظ†طµظٹط© ظپظ‚ط·', style: TextStyle(color: Colors.grey.shade600))),
+                  child: Center(child: Text('هذه الميزة تعمل مع الكتب النصية فقط', style: TextStyle(color: Colors.grey.shade600))),
                 ),
               ],
             ),
@@ -241,7 +241,7 @@ class _BookReaderScreenState extends State<BookReaderScreen> {
           actions: [
             IconButton(
               icon: const Icon(Icons.workspace_premium, color: Colors.white, size: 20),
-              onPressed: () => _showSnackBar('طھظ…طھ ط§ظ„ط¥ط¶ط§ظپط© ظ„ظ„ظ…ظپط¶ظ„ط©'),
+              onPressed: () => _showSnackBar('تمت الإضافة للمفضلة'),
             ),
             IconButton(
               icon: Icon(
@@ -252,13 +252,13 @@ class _BookReaderScreenState extends State<BookReaderScreen> {
               onPressed: () {
                 setState(() => _isTtsPlaying = !_isTtsPlaying);
                 _showSnackBar(_isTtsPlaying
-                    ? 'ط¨ط¯ط£طھ ط§ظ„ظ‚ط±ط§ط،ط© ط§ظ„طµظˆطھظٹط©...'
-                    : 'طھظ… ط¥ظٹظ‚ط§ظپ ط§ظ„ظ‚ط±ط§ط،ط© ط§ظ„طµظˆطھظٹط©');
+                    ? 'بدأت القراءة الصوتية...'
+                    : 'تم إيقاف القراءة الصوتية');
               },
             ),
             IconButton(
               icon: const Icon(Icons.search, color: Colors.white, size: 20),
-              onPressed: () => _showSnackBar('ط¬ط§ط±ظٹ ظپطھط­ ط§ظ„ط¨ط­ط«...'),
+              onPressed: () => _showSnackBar('جاري فتح البحث...'),
             ),
             IconButton(
               icon: const Icon(Icons.format_list_bulleted, color: Colors.white, size: 20),
@@ -318,7 +318,7 @@ class _BookReaderScreenState extends State<BookReaderScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: Row(
                     children: [
-                      const Text('ط¥ط¹ط¯ط§ط¯ط§طھ ط§ظ„ظ‚ط±ط§ط،ط©', style: TextStyle(fontWeight: FontWeight.bold)),
+                      const Text('إعدادات القراءة', style: TextStyle(fontWeight: FontWeight.bold)),
                       const Spacer(),
                       IconButton(icon: const Icon(Icons.keyboard_arrow_up, color: Colors.grey), onPressed: () => setState(() => _showSettingsBar = false)),
                     ],
@@ -333,7 +333,7 @@ class _BookReaderScreenState extends State<BookReaderScreen> {
                 child: GestureDetector(
                   onTap: () {
                     setState(() => _isLocked = !_isLocked);
-                    _showSnackBar(_isLocked ? 'طھظ… ظ‚ظپظ„ ط§ظ„ط´ط§ط´ط© ظ„ظ…ظ†ط¹ ط§ظ„طھظ…ط±ظٹط±' : 'طھظ… ط¥ظ„ط؛ط§ط، ط§ظ„ظ‚ظپظ„');
+                    _showSnackBar(_isLocked ? 'تم قفل الشاشة لمنع التمرير' : 'تم إلغاء القفل');
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
@@ -402,7 +402,7 @@ class _BookReaderScreenState extends State<BookReaderScreen> {
                       icon: const Icon(Icons.restart_alt, color: Colors.white, size: 20),
                       onPressed: () {
                         _pdfViewController?.setPage(0);
-                        _showSnackBar('ط§ظ„ط¹ظˆط¯ط© ظ„ط¨ط¯ط§ظٹط© ط§ظ„ظƒطھط§ط¨');
+                        _showSnackBar('العودة لبداية الكتاب');
                       },
                     ),
                     Expanded(
@@ -420,7 +420,7 @@ class _BookReaderScreenState extends State<BookReaderScreen> {
                     ),
                     IconButton(
                       icon: const Icon(Icons.push_pin, color: Colors.white, size: 20),
-                      onPressed: () => _showSnackBar('طھظ… ط­ظپط¸ ط§ظ„ط¹ظ„ط§ظ…ط© ط§ظ„ظ…ط±ط¬ط¹ظٹط©'),
+                      onPressed: () => _showSnackBar('تم حفظ العلامة المرجعية'),
                     ),
                   ],
                 ),

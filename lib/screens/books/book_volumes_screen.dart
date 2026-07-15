@@ -55,7 +55,7 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
   }
 
   void _stopDownloadAll() {
-    debugPrint('â›” Stop download requested');
+    debugPrint('⛔ Stop download requested');
     _downloadClient?.close();
     setState(() {
       _cancelDownloadAll = true;
@@ -107,8 +107,8 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
           SnackBar(
             content: Text(
               _cancelDownloadAll
-                  ? 'طھظ… ط¥ظٹظ‚ط§ظپ ط§ظ„طھط­ظ…ظٹظ„طŒ ظˆظٹظ…ظƒظ†ظƒ ط§ط³طھظƒظ…ط§ظ„ظ‡ ظ„ط§ط­ظ‚ظ‹ط§'
-                  : 'طھظ… طھط­ظ…ظٹظ„/ظپط­طµ ط¬ظ…ظٹط¹ ط§ظ„ظ…ط¬ظ„ط¯ط§طھ ط¨ظ†ط¬ط§ط­',
+                  ? 'تم إيقاف التحميل، ويمكنك استكماله لاحقًا'
+                  : 'تم تحميل/فحص جميع المجلدات بنجاح',
               style: GoogleFonts.cairo(),
             ),
             backgroundColor: _cancelDownloadAll ? Colors.orange : Colors.green,
@@ -120,7 +120,7 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('ط­ط¯ط« ط®ط·ط£ ط£ط«ظ†ط§ط، طھط­ظ…ظٹظ„ ط§ظ„ظ…ط¬ظ„ط¯ط§طھ',
+            content: Text('حدث خطأ أثناء تحميل المجلدات',
                 style: GoogleFonts.cairo()),
             backgroundColor: Colors.red,
           ),
@@ -157,7 +157,7 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
     try {
       if (mounted) {
         setState(() {
-          _currentDownloadingTitle = volume['title']?.toString() ?? 'ظ…ط¬ظ„ط¯';
+          _currentDownloadingTitle = volume['title']?.toString() ?? 'مجلد';
           _currentFileProgress = 0.0;
         });
       }
@@ -170,7 +170,7 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
           .timeout(const Duration(seconds: 30));
 
       if (response.statusCode != 200) {
-        throw Exception('ظپط´ظ„ طھط­ظ…ظٹظ„ ط§ظ„ظ…ظ„ظپ');
+        throw Exception('فشل تحميل الملف');
       }
 
       final totalBytes = response.contentLength ?? 0;
@@ -182,7 +182,7 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
         if (_cancelDownloadAll) {
           await sink.close();
           if (await file.exists()) await file.delete();
-          debugPrint('â›” Download canceled ط£ط«ظ†ط§ط، طھط­ظ…ظٹظ„ $id');
+          debugPrint('⛔ Download canceled أثناء تحميل $id');
           return;
         }
 
@@ -203,9 +203,9 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
         setState(() => _currentFileProgress = 1.0);
       }
 
-      debugPrint('âœ… Finished downloading $id');
+      debugPrint('✅ Finished downloading $id');
     } catch (e) {
-      debugPrint('â‌Œ Download single volume error for $id: $e');
+      debugPrint('❌ Download single volume error for $id: $e');
       if (await file.exists()) await file.delete();
     } finally {
       _downloadClient?.close();
@@ -278,7 +278,7 @@ class _BookVolumesScreenState extends State<BookVolumesScreen> {
         backgroundColor: bgColor,
         appBar: AnimatedGradientHeader(
           title: widget.title,
-          subtitle: 'ط§ط®طھط± ط§ظ„ظ…ط¬ظ„ط¯ ط§ظ„ط°ظٹ ظٹظ†ط§ط³ط¨ظƒ ظ„ظ„ظ‚ط±ط§ط،ط©',
+          subtitle: 'اختر المجلد الذي يناسبك للقراءة',
           primaryColor: widget.primaryColor,
           icon: Icons.library_books_rounded,
           onBack: () => Navigator.pop(context),
@@ -450,7 +450,7 @@ class _InfoHeaderState extends State<_InfoHeader>
                   const SizedBox(width: 12),
                   Expanded(
                     child: Text(
-                      'ط§ظ„ظ…ط¬ظ„ط¯ط§طھ ط§ظ„ظ…طھط§ط­ط©',
+                      'المجلدات المتاحة',
                       style: GoogleFonts.cairo(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -462,7 +462,7 @@ class _InfoHeaderState extends State<_InfoHeader>
               ),
               const SizedBox(height: 6),
               Text(
-                'ط§ط®طھط± ط§ظ„ظ…ط¬ظ„ط¯ ط§ظ„ط°ظٹ طھط±ظٹط¯ ظ‚ط±ط§ط،طھظ‡ ط£ظˆ طھط­ظ…ظٹظ„ظ‡',
+                'اختر المجلد الذي تريد قراءته أو تحميله',
                 style: GoogleFonts.cairo(
                   fontSize: 12,
                   color: widget.subTextColor,

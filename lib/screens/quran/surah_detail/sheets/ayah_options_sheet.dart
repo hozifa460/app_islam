@@ -38,7 +38,7 @@ class AyahOptionsSheet {
             mainAxisSize: MainAxisSize.min,
             children: [
               SheetWidgets.buildSheetHeader(
-                title: '$surahName - ط¢ظٹط© ${SurahConstants.toArabicNum(ayahNumber)}',
+                title: '$surahName - آية ${SurahConstants.toArabicNum(ayahNumber)}',
                 primary: primary,
                 icon: Icons.format_quote_rounded,
               ),
@@ -68,7 +68,7 @@ class AyahOptionsSheet {
                 children: [
                   SheetWidgets.buildAyahOptionBtn(
                     icon: Icons.play_circle_filled,
-                    label: 'طھط´ط؛ظٹظ„',
+                    label: 'تشغيل',
                     color: primary,
                     onTap: () {
                       Navigator.pop(ctx);
@@ -77,7 +77,7 @@ class AyahOptionsSheet {
                   ),
                   SheetWidgets.buildAyahOptionBtn(
                     icon: Icons.repeat,
-                    label: 'طھظƒط±ط§ط± أ—3',
+                    label: 'تكرار ×3',
                     color: Colors.teal,
                     onTap: () {
                       Navigator.pop(ctx);
@@ -86,7 +86,7 @@ class AyahOptionsSheet {
                   ),
                   SheetWidgets.buildAyahOptionBtn(
                     icon: Icons.mic,
-                    label: 'طھط³ظ…ظٹط¹',
+                    label: 'تسميع',
                     color: Colors.green,
                     onTap: () {
                       Navigator.pop(ctx);
@@ -95,21 +95,21 @@ class AyahOptionsSheet {
                   ),
                   SheetWidgets.buildAyahOptionBtn(
                     icon: Icons.copy,
-                    label: 'ظ†ط³ط®',
+                    label: 'نسخ',
                     color: Colors.blue,
                     onTap: () {
                       Navigator.pop(ctx);
                       Clipboard.setData(ClipboardData(text: text));
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text('طھظ… ط§ظ„ظ†ط³ط®', style: GoogleFonts.cairo()),
+                          content: Text('تم النسخ', style: GoogleFonts.cairo()),
                         ),
                       );
                     },
                   ),
                   SheetWidgets.buildAyahOptionBtn(
                     icon: Icons.bookmark_add,
-                    label: 'ط¹ظ„ط§ظ…ط©',
+                    label: 'علامة',
                     color: Colors.amber.shade700,
                     onTap: () {
                       Navigator.pop(ctx);
@@ -118,7 +118,7 @@ class AyahOptionsSheet {
                   ),
                   SheetWidgets.buildAyahOptionBtn(
                     icon: Icons.share,
-                    label: 'ظ…ط´ط§ط±ظƒط©',
+                    label: 'مشاركة',
                     color: Colors.purple,
                     onTap: () => Navigator.pop(ctx),
                   ),

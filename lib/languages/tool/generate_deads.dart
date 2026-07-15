@@ -29,15 +29,15 @@ void main() async {
   final baseFile = File('assets/deeds/deeds_ar.json');
 
   if (!baseFile.existsSync()) {
-    print('â‌Œ ظ…ظ„ظپ ar.json ط؛ظٹط± ظ…ظˆط¬ظˆط¯');
+    print('❌ ملف ar.json غير موجود');
     return;
   }
 
   final Map<String, dynamic> baseContent =
   jsonDecode(baseFile.readAsStringSync());
 
-  print('ًں“‹ ط¹ط¯ط¯ ط§ظ„ظ…ظپط§طھظٹط­ ظپظٹ ar.json: ${baseContent.length}');
-  print('â”€' * 50);
+  print('📋 عدد المفاتيح في ar.json: ${baseContent.length}');
+  print('─' * 50);
 
   for (final lang in languages) {
     final file = File('assets/deeds/deeds_$lang.json');
@@ -46,7 +46,7 @@ void main() async {
       // â•گâ•گâ•گ ط¥ظ†ط´ط§ط، ظ…ظ„ظپ ط¬ط¯ظٹط¯ â•گâ•گâ•گ
       final newContent = _generateJsonWithComments(baseContent, lang, {});
       file.writeAsStringSync(newContent);
-      print('âœ… طھظ… ط¥ظ†ط´ط§ط، $lang.json');
+      print('✅ تم إنشاء $lang.json');
     } else {
       // â•گâ•گâ•گ طھط­ط¯ظٹط« ظ…ظ„ظپ ظ…ظˆط¬ظˆط¯ â•گâ•گâ•گ
       final Map<String, dynamic> existing =
@@ -76,20 +76,20 @@ void main() async {
       final newContent = _generateJsonWithComments(baseContent, lang, existing);
       file.writeAsStringSync(newContent);
 
-      String status = (added > 0 || removed > 0) ? 'âڑ،' : 'ًں”„';
-      print('$status $lang.json â†’ '
-          'âœ… ظ…ط­ظپظˆط¸: $kept | '
-          'â‍• ط¬ط¯ظٹط¯: $added | '
-          'ًں—‘ï¸ڈ ظ…ط­ط°ظˆظپ: $removed');
+      String status = (added > 0 || removed > 0) ? '⚡' : '🔄';
+      print('$status $lang.json → '
+          '✅ محفوظ: $kept | '
+          '➕ جديد: $added | '
+          '🗑️ محذوف: $removed');
     }
   }
 
-  print('â”€' * 50);
-  print('ًںژ‰ ط§ظ†طھظ‡ظ‰ طھط­ط¯ظٹط« ط¬ظ…ظٹط¹ ط§ظ„ظ…ظ„ظپط§طھ!');
+  print('─' * 50);
+  print('🎉 انتهى تحديث جميع الملفات!');
   print('');
-  print('ًں’، ط§ظ„ظ…ظپط§طھظٹط­ ط§ظ„ط¬ط¯ظٹط¯ط© طھط¨ط¯ط£ ط¨ظ€ [lang] ظ„ظ„طھظ…ظٹظٹط²');
-  print('ًں“‌ ط§ظ„طھط¹ظ„ظٹظ‚ط§طھ طھط¨ط¯ط£ ط¨ظ€ _comment_');
-  print('ًں“¦ ط§ظ„ط£ظ‚ط³ط§ظ… طھط¨ط¯ط£ ط¨ظ€ __SECTION__');
+  print('💡 المفاتيح الجديدة تبدأ بـ [lang] للتمييز');
+  print('📝 التعليقات تبدأ بـ _comment_');
+  print('📦 الأقسام تبدأ بـ __SECTION__');
 }
 
 /// طھظˆظ„ظٹط¯ JSON ظ…ط¹ ط§ظ„طھط¹ظ„ظٹظ‚ط§طھ ظˆط§ظ„ظپظˆط§طµظ„

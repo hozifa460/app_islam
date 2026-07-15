@@ -77,7 +77,7 @@ class RecitationResultWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    isCorrect ? 'ط£ط­ط³ظ†طھ! âœ¨' : 'ط­ط§ظˆظ„ ظ…ط±ط© ط£ط®ط±ظ‰',
+                    isCorrect ? 'أحسنت! ✨' : 'حاول مرة أخرى',
                     style: GoogleFonts.cairo(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -85,7 +85,7 @@ class RecitationResultWidget extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'ط§ظ„ط¯ظ‚ط©: $percentage%',
+                    'الدقة: $percentage%',
                     style: GoogleFonts.cairo(
                       fontSize: 14,
                       color: Colors.grey,
@@ -126,7 +126,7 @@ class RecitationResultWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'ظƒظ„ظ…ط§طھ طھط­طھط§ط¬ ظ…ط±ط§ط¬ط¹ط©:',
+                    'كلمات تحتاج مراجعة:',
                     style: GoogleFonts.cairo(
                       fontSize: 12,
                       color: Colors.red.shade400,
@@ -182,7 +182,7 @@ class RecitationResultWidget extends StatelessWidget {
                     onPressed: onRetry,
                     icon: Icon(Icons.replay, color: primaryColor),
                     label: Text(
-                      'ط¥ط¹ط§ط¯ط©',
+                      'إعادة',
                       style: GoogleFonts.cairo(
                         fontWeight: FontWeight.bold,
                         color: primaryColor,
@@ -206,7 +206,7 @@ class RecitationResultWidget extends StatelessWidget {
                     onPressed: onNext,
                     icon: const Icon(Icons.arrow_forward),
                     label: Text(
-                      'ط§ظ„طھط§ظ„ظٹ',
+                      'التالي',
                       style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
                     ),
                   ),

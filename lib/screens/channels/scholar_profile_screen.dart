@@ -62,7 +62,7 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
             maxResults: 150, // ط²ظٹط§ط¯ط© ط§ظ„ط­ط¯
           );
 
-          debugPrint('ًں“¥ Loaded ${vids.length} videos for ${widget.scholar['name']}');
+          debugPrint('📥 Loaded ${vids.length} videos for ${widget.scholar['name']}');
 
           // ط¬ظ„ط¨ ظ…ط¹ظ„ظˆظ…ط§طھ ط§ظ„ظ‚ظ†ط§ط©
           final channelUrl = pm['url']?.toString() ?? '';
@@ -86,7 +86,7 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
           }
           break;
         } catch (e) {
-          debugPrint('â‌Œ Load error: $e');
+          debugPrint('❌ Load error: $e');
         }
       }
     }
@@ -129,15 +129,15 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
               _videos.addAll(uniqueVids);
               _currentPage++;
             });
-            debugPrint('â‍• Added ${uniqueVids.length} more videos');
+            debugPrint('➕ Added ${uniqueVids.length} more videos');
           } else {
-            debugPrint('âڑ ï¸ڈ No new videos found');
+            debugPrint('⚠️ No new videos found');
           }
           break;
         }
       }
     } catch (e) {
-      debugPrint('â‌Œ Load more error: $e');
+      debugPrint('❌ Load more error: $e');
     }
 
     if (mounted) {
@@ -184,20 +184,20 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
     final diff = DateTime.now().difference(dt);
     if (diff.inDays > 365) {
       final y = diff.inDays ~/ 365;
-      return 'ظ…ظ†ط° $y ${y == 1 ? 'ط³ظ†ط©' : 'ط³ظ†ظˆط§طھ'}';
+      return 'منذ $y ${y == 1 ? 'سنة' : 'سنوات'}';
     }
     if (diff.inDays > 30) {
       final m = diff.inDays ~/ 30;
-      return 'ظ…ظ†ط° $m ${m == 1 ? 'ط´ظ‡ط±' : 'ط£ط´ظ‡ط±'}';
+      return 'منذ $m ${m == 1 ? 'شهر' : 'أشهر'}';
     }
     if (diff.inDays > 7) {
       final w = diff.inDays ~/ 7;
-      return 'ظ…ظ†ط° $w ${w == 1 ? 'ط£ط³ط¨ظˆط¹' : 'ط£ط³ط§ط¨ظٹط¹'}';
+      return 'منذ $w ${w == 1 ? 'أسبوع' : 'أسابيع'}';
     }
-    if (diff.inDays > 0) return 'ظ…ظ†ط° ${diff.inDays} ${diff.inDays == 1 ? 'ظٹظˆظ…' : 'ط£ظٹط§ظ…'}';
-    if (diff.inHours > 0) return 'ظ…ظ†ط° ${diff.inHours} ${diff.inHours == 1 ? 'ط³ط§ط¹ط©' : 'ط³ط§ط¹ط§طھ'}';
-    if (diff.inMinutes > 0) return 'ظ…ظ†ط° ${diff.inMinutes} ط¯ظ‚ظٹظ‚ط©';
-    return 'ط§ظ„ط¢ظ†';
+    if (diff.inDays > 0) return 'منذ ${diff.inDays} ${diff.inDays == 1 ? 'يوم' : 'أيام'}';
+    if (diff.inHours > 0) return 'منذ ${diff.inHours} ${diff.inHours == 1 ? 'ساعة' : 'ساعات'}';
+    if (diff.inMinutes > 0) return 'منذ ${diff.inMinutes} دقيقة';
+    return 'الآن';
   }
 
   @override
@@ -383,20 +383,20 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
                                     _statBox(
                                       YoutubeService.formatCount(
                                           _channelInfo!.subscriberCount),
-                                      'ظ…ط´طھط±ظƒ',
+                                      'مشترك',
                                       w,
                                     ),
                                     SizedBox(width: w * 0.04),
                                     _statBox(
                                       YoutubeService.formatCount(
                                           _channelInfo!.videoCount),
-                                      'ظپظٹط¯ظٹظˆ',
+                                      'فيديو',
                                       w,
                                     ),
                                     SizedBox(width: w * 0.04),
                                     _statBox(
                                       '${_videos.length}',
-                                      'ظ…ط­ظ…ظ‘ظ„',
+                                      'محمّل',
                                       w,
                                     ),
                                   ],
@@ -431,8 +431,8 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
                         fontWeight: FontWeight.w500,
                       ),
                       tabs: const [
-                        Tab(text: 'ط§ظ„ظپظٹط¯ظٹظˆظ‡ط§طھ'),
-                        Tab(text: 'ط§ظ„ظ…ظ†طµط§طھ'),
+                        Tab(text: 'الفيديوهات'),
+                        Tab(text: 'المنصات'),
                       ],
                     ),
                     theme.cardBg,
@@ -472,7 +472,7 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
             CircularProgressIndicator(color: theme.primaryColor),
             SizedBox(height: w * 0.03),
             Text(
-              'ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„...',
+              'جاري التحميل...',
               style: GoogleFonts.cairo(
                 fontSize: (w * 0.035).clamp(12.0, 15.0),
                 color: theme.subtitleColor,
@@ -493,7 +493,7 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
                 color: theme.captionColor.withValues(alpha: 0.3)),
             SizedBox(height: w * 0.03),
             Text(
-              'ظ„ط§ طھظˆط¬ط¯ ظپظٹط¯ظٹظˆظ‡ط§طھ',
+              'لا توجد فيديوهات',
               style: GoogleFonts.cairo(
                 fontSize: (w * 0.04).clamp(14.0, 18.0),
                 fontWeight: FontWeight.w700,
@@ -556,7 +556,7 @@ class _ScholarProfileScreenState extends State<ScholarProfileScreen>
     if (platforms.isEmpty) {
       return Center(
         child: Text(
-          'ظ„ط§ طھظˆط¬ط¯ ظ…ظ†طµط§طھ',
+          'لا توجد منصات',
           style: GoogleFonts.cairo(
             fontSize: (w * 0.035).clamp(12.0, 15.0),
             color: theme.subtitleColor,
@@ -678,10 +678,10 @@ class _VideoItemCard extends StatelessWidget {
 
   String _timeAgo(DateTime dt) {
     final diff = DateTime.now().difference(dt);
-    if (diff.inDays > 30) return 'ظ…ظ†ط° ${diff.inDays ~/ 30} ط´ظ‡ط±';
-    if (diff.inDays > 0) return 'ظ…ظ†ط° ${diff.inDays} ظٹظˆظ…';
-    if (diff.inHours > 0) return 'ظ…ظ†ط° ${diff.inHours} ط³ط§ط¹ط©';
-    return 'ط§ظ„ط¢ظ†';
+    if (diff.inDays > 30) return 'منذ ${diff.inDays ~/ 30} شهر';
+    if (diff.inDays > 0) return 'منذ ${diff.inDays} يوم';
+    if (diff.inHours > 0) return 'منذ ${diff.inHours} ساعة';
+    return 'الآن';
   }
 
   @override
@@ -912,7 +912,7 @@ class _PlatformCard extends StatelessWidget {
                     if (subs.isNotEmpty) ...[
                       SizedBox(height: w * 0.005),
                       Text(
-                        '$subs ظ…طھط§ط¨ط¹',
+                        '$subs متابع',
                         style: GoogleFonts.cairo(
                           fontSize: (w * 0.028).clamp(10.0, 13.0),
                           color: theme.subtitleColor,

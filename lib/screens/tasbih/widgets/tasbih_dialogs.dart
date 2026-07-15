@@ -34,7 +34,7 @@ class TasbihDialogs {
                 ),
                 const SizedBox(height: 14),
                 Text(
-                  'طھظ…طھ ط§ظ„ط¬ظˆظ„ط© ط¨ظ†ط¬ط§ط­',
+                  'تمت الجولة بنجاح',
                   style: GoogleFonts.cairo(
                     fontWeight: FontWeight.w900,
                     fontSize: 18,
@@ -42,7 +42,7 @@ class TasbihDialogs {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'ط£ظƒظ…ظ„طھ $target طھط³ط¨ظٹط­ط©',
+                  'أكملت $target تسبيحة',
                   style: GoogleFonts.cairo(
                     fontSize: 15,
                     color: Colors.grey.shade700,
@@ -64,7 +64,7 @@ class TasbihDialogs {
                           Navigator.pop(ctx);
                           onReset();
                         },
-                        child: Text('ط¥ط¹ط§ط¯ط©',
+                        child: Text('إعادة',
                             style: GoogleFonts.cairo(
                                 fontWeight: FontWeight.bold)),
                       ),
@@ -82,7 +82,7 @@ class TasbihDialogs {
                           Navigator.pop(ctx);
                           onNewRound();
                         },
-                        child: Text('ط¬ظˆظ„ط© ط¬ط¯ظٹط¯ط©',
+                        child: Text('جولة جديدة',
                             style: GoogleFonts.cairo(
                                 fontWeight: FontWeight.bold)),
                       ),

@@ -167,11 +167,11 @@ class BooksTheme {
   static String downloadStatusLabel(String status) {
     switch (status) {
       case 'full':
-        return 'ظ…ط­ظ…ظ‘ظ„ ط¨ط§ظ„ظƒط§ظ…ظ„';
+        return 'محمّل بالكامل';
       case 'partial':
-        return 'ظ…ط­ظ…ظ‘ظ„ ط¬ط²ط¦ظٹظ‹ط§';
+        return 'محمّل جزئيًا';
       default:
-        return 'ط؛ظٹط± ظ…ط­ظ…ظ‘ظ„';
+        return 'غير محمّل';
     }
   }
 

@@ -25,37 +25,37 @@ class _TasbihScreenState extends State<TasbihScreen>
 
   final List<Map<String, dynamic>> tasbihList = [
     {
-      'text': 'ط³ظڈط¨ظ’ط­ظژط§ظ†ظژ ط§ظ„ظ„ظژظ‘ظ‡ظگ',
+      'text': 'سُبْحَانَ اللَّهِ',
       'target': 33,
       'translation': 'Glory be to Allah',
       'transliteration': 'Subhan Allah',
     },
     {
-      'text': 'ط§ظ„ظ’ط­ظژظ…ظ’ط¯ظڈ ظ„ظگظ„ظژظ‘ظ‡ظگ',
+      'text': 'الْحَمْدُ لِلَّهِ',
       'target': 33,
       'translation': 'All praise is for Allah',
       'transliteration': 'Alhamdu lillah',
     },
     {
-      'text': 'ط§ظ„ظ„ظژظ‘ظ‡ظڈ ط£ظژظƒظ’ط¨ظژط±ظڈ',
+      'text': 'اللَّهُ أَكْبَرُ',
       'target': 34,
       'translation': 'Allah is the Greatest',
       'transliteration': 'Allahu Akbar',
     },
     {
-      'text': 'ظ„ظژط§ ط¥ظگظ„ظژظ‡ظژ ط¥ظگظ„ظژظ‘ط§ ط§ظ„ظ„ظژظ‘ظ‡ظڈ',
+      'text': 'لَا إِلَهَ إِلَّا اللَّهُ',
       'target': 100,
       'translation': 'There is no deity but Allah',
       'transliteration': 'La ilaha illa Allah',
     },
     {
-      'text': 'ط£ظژط³ظ’طھظژط؛ظ’ظپظگط±ظڈ ط§ظ„ظ„ظژظ‘ظ‡ظژ',
+      'text': 'أَسْتَغْفِرُ اللَّهَ',
       'target': 100,
-      'translation': 'I seek Allahâ€™s forgiveness',
+      'translation': 'I seek Allah’s forgiveness',
       'transliteration': 'Astaghfirullah',
     },
     {
-      'text': 'ط³ظڈط¨ظ’ط­ظژط§ظ†ظژ ط§ظ„ظ„ظژظ‘ظ‡ظگ ظˆظژط¨ظگط­ظژظ…ظ’ط¯ظگظ‡ظگ',
+      'text': 'سُبْحَانَ اللَّهِ وَبِحَمْدِهِ',
       'target': 100,
       'translation': 'Glory be to Allah and praise is His',
       'transliteration': 'Subhan Allah wa bihamdih',
@@ -178,7 +178,7 @@ class _TasbihScreenState extends State<TasbihScreen>
                 ),
                 const SizedBox(height: 14),
                 Text(
-                  'طھظ…طھ ط§ظ„ط¬ظˆظ„ط© ط¨ظ†ط¬ط§ط­',
+                  'تمت الجولة بنجاح',
                   style: GoogleFonts.cairo(
                     fontWeight: FontWeight.w900,
                     fontSize: 18,
@@ -186,7 +186,7 @@ class _TasbihScreenState extends State<TasbihScreen>
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'ط£ظƒظ…ظ„طھ $target طھط³ط¨ظٹط­ط©',
+                  'أكملت $target تسبيحة',
                   style: GoogleFonts.cairo(fontSize: 15, color: Colors.grey.shade700),
                 ),
                 const SizedBox(height: 18),
@@ -207,7 +207,7 @@ class _TasbihScreenState extends State<TasbihScreen>
                           });
                           _saveState();
                         },
-                        child: Text('ط¥ط¹ط§ط¯ط©', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
+                        child: Text('إعادة', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
                       ),
                     ),
                     const SizedBox(width: 10),
@@ -226,7 +226,7 @@ class _TasbihScreenState extends State<TasbihScreen>
                           });
                           _saveState();
                         },
-                        child: Text('ط¬ظˆظ„ط© ط¬ط¯ظٹط¯ط©', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
+                        child: Text('جولة جديدة', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
                       ),
                     ),
                   ],
@@ -253,13 +253,13 @@ class _TasbihScreenState extends State<TasbihScreen>
       child: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          title: Text('ط§ظ„طھط³ط¨ظٹط­', style: GoogleFonts.cairo(fontWeight: FontWeight.w900)),
+          title: Text('التسبيح', style: GoogleFonts.cairo(fontWeight: FontWeight.w900)),
           backgroundColor: Colors.transparent,
           elevation: 0,
           foregroundColor: Colors.white,
           actions: [
             IconButton(
-              tooltip: 'ط¥ط¹ط§ط¯ط© ط¶ط¨ط·',
+              tooltip: 'إعادة ضبط',
               icon: const Icon(Icons.refresh),
               onPressed: _resetCurrent,
             ),
@@ -488,7 +488,7 @@ class _TasbihScreenState extends State<TasbihScreen>
                                           ),
                                           const SizedBox(height: 8),
                                           Text(
-                                            'ط§ط¶ط؛ط· ظ„ظ„طھط³ط¨ظٹط­',
+                                            'اضغط للتسبيح',
                                             style: GoogleFonts.cairo(
                                               fontSize: 13,
                                               color: Colors.grey.shade700,
@@ -518,7 +518,7 @@ class _TasbihScreenState extends State<TasbihScreen>
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('ط§ظ„ط¥ط¬ظ…ط§ظ„ظٹ', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
+                                Text('الإجمالي', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
                                 Text(
                                   '$totalCount',
                                   style: GoogleFonts.cairo(

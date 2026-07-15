@@ -65,7 +65,7 @@ class MushafPageWidget extends StatelessWidget {
                 color: bgColor,
                 alignment: Alignment.center,
                 child: Text(
-                  'طھط¹ط°ط± طھط­ظ…ظٹظ„ ط§ظ„طµظپط­ط© ${SurahConstants.toArabicNum(page)}',
+                  'تعذر تحميل الصفحة ${SurahConstants.toArabicNum(page)}',
                   style: GoogleFonts.cairo(
                     color: primary,
                     fontSize: 22,
@@ -115,7 +115,7 @@ class MushafPageWidget extends StatelessWidget {
                                 ),
                                 const Spacer(),
                                 Text(
-                                  'ط¬ط²ط، ${SurahConstants.toArabicNum(juz)}',
+                                  'جزء ${SurahConstants.toArabicNum(juz)}',
                                   style: GoogleFonts.cairo(
                                     fontSize: 17.5,
                                     fontWeight: FontWeight.w600,
@@ -126,7 +126,7 @@ class MushafPageWidget extends StatelessWidget {
                                 _buildHizbProgressCircle(),
                                 const SizedBox(width: 8),
                                 Text(
-                                  'ط­ط²ط¨ ${SurahConstants.toArabicNum(hizb)}',
+                                  'حزب ${SurahConstants.toArabicNum(hizb)}',
                                   style: GoogleFonts.cairo(
                                     fontSize: 17.5,
                                     fontWeight: FontWeight.w600,

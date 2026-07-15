@@ -523,7 +523,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             const SizedBox(height: 16),
             Text(
-              'ï´؟ ظˆظژط§ط°ظ’ظƒظڈط±ظڈظˆط§ ط§ظ„ظ„ظژظ‘ظ‡ظژ ظƒظژط«ظگظٹط±ظ‹ط§ ï´¾',
+              '﴿ وَاذْكُرُوا اللَّهَ كَثِيرًا ﴾',
               style: GoogleFonts.amiri(
                 fontSize: 15,
                 color: _gold.withValues(alpha: 0.7),

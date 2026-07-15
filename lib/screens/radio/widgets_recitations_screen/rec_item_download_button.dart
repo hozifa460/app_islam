@@ -125,7 +125,7 @@ class RecItemDownloadButton extends StatelessWidget {
                 ),
                 const SizedBox(width: 3),
                 Text(
-                  'ظ…ط­ظ…ظ‘ظ„',
+                  'محمّل',
                   style: GoogleFonts.cairo(
                     fontSize: 10,
                     fontWeight: FontWeight.w700,
@@ -152,7 +152,7 @@ class RecItemDownloadButton extends StatelessWidget {
               const Icon(Icons.refresh_rounded, size: 12, color: Colors.red),
               const SizedBox(width: 3),
               Text(
-                'ط¥ط¹ط§ط¯ط©',
+                'إعادة',
                 style: GoogleFonts.cairo(
                   fontSize: 10,
                   fontWeight: FontWeight.w700,
@@ -197,7 +197,7 @@ class RecItemDownloadButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
         title: Text(
-          'طھط­ظ…ظٹظ„ ظ„ظ„ط§ط³طھظ…ط§ط¹ ط£ظˆظپظ„ط§ظٹظ†',
+          'تحميل للاستماع أوفلاين',
           style: GoogleFonts.cairo(
             fontWeight: FontWeight.w800,
             color: RecColors.textPrimary(context),
@@ -220,9 +220,9 @@ class RecItemDownloadButton extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              'â€¢ ط³ظٹطھظ… طھط­ظ…ظٹظ„ ط§ظ„ظ…ظ„ظپ ط§ظ„طµظˆطھظٹ\n'
-                  'â€¢ ظٹظ…ظƒظ†ظƒ ط§ظ„ط§ط³طھظ…ط§ط¹ ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ\n'
-                  'â€¢ ظٹظ…ظƒظ† ط­ط°ظپظ‡ ظ„ط§ط­ظ‚ط§ظ‹',
+              '• سيتم تحميل الملف الصوتي\n'
+                  '• يمكنك الاستماع بدون إنترنت\n'
+                  '• يمكن حذفه لاحقاً',
               style: GoogleFonts.cairo(
                 fontSize: 12,
                 color: RecColors.textSecondary(context),
@@ -236,7 +236,7 @@ class RecItemDownloadButton extends StatelessWidget {
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(
-              'ط¥ظ„ط؛ط§ط،',
+              'إلغاء',
               style: GoogleFonts.cairo(color: Colors.grey),
             ),
           ),
@@ -252,7 +252,7 @@ class RecItemDownloadButton extends StatelessWidget {
               ),
             ),
             child: Text(
-              'طھط­ظ…ظٹظ„',
+              'تحميل',
               style: GoogleFonts.cairo(
                 color: Colors.white,
                 fontWeight: FontWeight.w700,
@@ -302,7 +302,7 @@ class RecItemDownloadButton extends StatelessWidget {
             FutureBuilder<String>(
               future: service.getFileSize(itemId),
               builder: (_, snap) => Text(
-                'ط§ظ„ط­ط¬ظ…: ${snap.data ?? '...'}',
+                'الحجم: ${snap.data ?? '...'}',
                 style: GoogleFonts.cairo(
                   fontSize: 12,
                   color: RecColors.textSecondary(context),
@@ -335,7 +335,7 @@ class RecItemDownloadButton extends StatelessWidget {
                     ),
                     const SizedBox(width: 8),
                     Text(
-                      'ط­ط°ظپ ط§ظ„طھط­ظ…ظٹظ„',
+                      'حذف التحميل',
                       style: GoogleFonts.cairo(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
@@ -410,7 +410,7 @@ class _DownloadWithSizeState extends State<_DownloadWithSize> {
             Text(
               _size != null
                   ? VideoSizeService.formatBytes(_size)
-                  : 'طھط­ظ…ظٹظ„',
+                  : 'تحميل',
               style: GoogleFonts.cairo(
                 fontSize: 10,
                 fontWeight: FontWeight.w700,

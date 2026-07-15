@@ -254,12 +254,12 @@ class _QiblaScreenState extends State<QiblaScreen>
 
     _updateDisplayHeading();
 
-    debugPrint('ًں“چ ${pos.latitude.toStringAsFixed(5)}, '
+    debugPrint('📍 ${pos.latitude.toStringAsFixed(5)}, '
         '${pos.longitude.toStringAsFixed(5)} '
-        '| ًں•‹ Qibla: ${qibla.toStringAsFixed(1)}آ° '
-        '| ًں§² Dec: ${_declination.toStringAsFixed(1)}آ° '
-        '| ًں“، GPS-H: ${pos.heading.toStringAsFixed(1)}آ° '
-        '| ًںڑ¶ ${speed.toStringAsFixed(1)}m/s');
+        '| 🕋 Qibla: ${qibla.toStringAsFixed(1)}آ° '
+        '| 🧲 Dec: ${_declination.toStringAsFixed(1)}آ° '
+        '| 📡 GPS-H: ${pos.heading.toStringAsFixed(1)}آ° '
+        '| 🚶 ${speed.toStringAsFixed(1)}m/s');
   }
 
   // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
@@ -689,7 +689,7 @@ class _QiblaScreenState extends State<QiblaScreen>
                 size: 48,
                 color: theme.isDark ? Colors.white38 : Colors.black26),
             const SizedBox(height: 12),
-            Text('ط¬ط§ط±ظچ طھط­ط¯ظٹط¯ ظ…ظˆظ‚ط¹ظƒ...', style: theme.labelStyle(15)),
+            Text('جارٍ تحديد موقعك...', style: theme.labelStyle(15)),
           ],
         ),
       );
@@ -728,8 +728,8 @@ class _QiblaScreenState extends State<QiblaScreen>
     final color = isGps ? Colors.blue.shade400 : QiblaTheme.green;
     final icon  = isGps ? Icons.gps_fixed_rounded : Icons.explore_rounded;
     final label = isGps
-        ? 'GPS آ· ${_currentSpeed.toStringAsFixed(1)} ظ…/ط« آ· ط¯ظ‚ظٹظ‚ ظ،ظ ظ ظھ'
-        : 'ط¨ظˆطµظ„ط© آ· ط§ظ†ط­ط±ط§ظپ ${_declination.toStringAsFixed(1)}آ° ظ…ط¹ظˆط¶';
+        ? 'GPS آ· ${_currentSpeed.toStringAsFixed(1)} م/ث · دقيق ١٠٠٪'
+        : 'بوصلة · انحراف ${_declination.toStringAsFixed(1)}° معوض';
 
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 8, 16, 0),
@@ -757,7 +757,7 @@ class _QiblaScreenState extends State<QiblaScreen>
               borderRadius: BorderRadius.circular(6),
             ),
             child: Text(
-              'آ±${_locationAccuracyMeters.toStringAsFixed(0)}ظ… GPS',
+              'آ±${_locationAccuracyMeters.toStringAsFixed(0)}م GPS',
               style: theme.labelStyle(10).copyWith(color: color),
             ),
           ),
@@ -782,7 +782,7 @@ class _QiblaScreenState extends State<QiblaScreen>
           const SizedBox(width: 8),
           Expanded(
             child: Text(
-              'ط­ط±ظ‘ظƒ ط§ظ„ظ‡ط§طھظپ ط¹ظ„ظ‰ ط´ظƒظ„ ط±ظ‚ظ… 8 ظ„ظ…ط¹ط§ظٹط±ط© ط§ظ„ط¨ظˆطµظ„ط©',
+              'حرّك الهاتف على شكل رقم 8 لمعايرة البوصلة',
               style: theme.labelStyle(12)
                   .copyWith(color: Colors.orange.shade700),
             ),
@@ -835,7 +835,7 @@ class _QiblaScreenState extends State<QiblaScreen>
                 children: [
                   Icon(Icons.explore_rounded, size: 16),
                   SizedBox(width: 6),
-                  Text('ط§ظ„ط¨ظˆطµظ„ط©'),
+                  Text('البوصلة'),
                 ],
               ),
             ),
@@ -846,7 +846,7 @@ class _QiblaScreenState extends State<QiblaScreen>
                 children: [
                   Icon(Icons.map_rounded, size: 16),
                   SizedBox(width: 6),
-                  Text('ط§ظ„ط®ط±ظٹط·ط©'),
+                  Text('الخريطة'),
                 ],
               ),
             ),
@@ -862,9 +862,9 @@ class _QiblaScreenState extends State<QiblaScreen>
         theme: theme,
         icon: Icons.location_off_rounded,
         iconColor: Colors.orange,
-        title: 'ط®ط¯ظ…ط© ط§ظ„ظ…ظˆظ‚ط¹ ظ…ط¹ط·ظ„ط©',
-        subtitle: 'ظٹط±ط¬ظ‰ طھظپط¹ظٹظ„ GPS',
-        buttonText: 'ظپطھط­ ط¥ط¹ط¯ط§ط¯ط§طھ ط§ظ„ظ…ظˆظ‚ط¹',
+        title: 'خدمة الموقع معطلة',
+        subtitle: 'يرجى تفعيل GPS',
+        buttonText: 'فتح إعدادات الموقع',
         onButton: QiblaLocationService.openLocationSettings,
         onRetry: _checkPermissionsAndStart,
       );
@@ -874,9 +874,9 @@ class _QiblaScreenState extends State<QiblaScreen>
         theme: theme,
         icon: Icons.lock_rounded,
         iconColor: Colors.red,
-        title: 'ط§ظ„ط¥ط°ظ† ظ…ط±ظپظˆط¶',
-        subtitle: 'ظٹط±ط¬ظ‰ طھظپط¹ظٹظ„ ط¥ط°ظ† ط§ظ„ظ…ظˆظ‚ط¹ ظ…ظ† ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ',
-        buttonText: 'ظپطھط­ ط¥ط¹ط¯ط§ط¯ط§طھ ط§ظ„طھط·ط¨ظٹظ‚',
+        title: 'الإذن مرفوض',
+        subtitle: 'يرجى تفعيل إذن الموقع من الإعدادات',
+        buttonText: 'فتح إعدادات التطبيق',
         onButton: QiblaLocationService.openAppSettings,
         onRetry: _checkPermissionsAndStart,
       );
@@ -944,7 +944,7 @@ class _QiblaScreenState extends State<QiblaScreen>
               child: OutlinedButton.icon(
                 onPressed: onRetry,
                 icon: const Icon(Icons.refresh_rounded, size: 20),
-                label: Text('ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط©',
+                label: Text('إعادة المحاولة',
                     style: theme.boldStyle(15, theme.textColor)),
                 style: OutlinedButton.styleFrom(
                   foregroundColor: theme.textColor,

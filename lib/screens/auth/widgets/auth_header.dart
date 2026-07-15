@@ -61,7 +61,7 @@ class AuthHeader extends StatelessWidget {
             colors: [_goldD, _gold, _goldL, _gold, _goldD],
           ).createShader(b),
           child: Text(
-            'ط·ط±ظٹظ‚ ط§ظ„ط¥ط³ظ„ط§ظ…',
+            'طريق الإسلام',
             style: GoogleFonts.amiri(
               fontSize: 36,
               fontWeight: FontWeight.bold,
@@ -84,7 +84,7 @@ class AuthHeader extends StatelessWidget {
             ),
           ),
           child: Text(
-            isLogin ? 'ظ…ط±ط­ط¨ط§ظ‹ ط¨ط¹ظˆط¯طھظƒ ًں‘‹' : 'ط£ظ‡ظ„ط§ظ‹ ظˆط³ظ‡ظ„ط§ظ‹ ط¨ظƒ âœ¨',
+            isLogin ? 'مرحباً بعودتك 👋' : 'أهلاً وسهلاً بك ✨',
             key: ValueKey(isLogin),
             style: GoogleFonts.cairo(
               fontSize: 16,

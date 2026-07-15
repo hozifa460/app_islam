@@ -109,7 +109,7 @@ class SunnahHeader extends StatelessWidget {
                     colors: [Colors.white, Color(0xFFD1FAE5)],
                   ).createShader(b),
                   child: Text(
-                    'ظ…طھطھط¨ط¹ ط§ظ„ط³ظ†ظ† ط§ظ„ظ†ط¨ظˆظٹط©',
+                    'متتبع السنن النبوية',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: size.width * 0.055,
@@ -121,7 +121,7 @@ class SunnahHeader extends StatelessWidget {
               ),
               SizedBox(height: isSmall ? 2 : 4),
               Text(
-                'ط§ط­ط±طµ ط¹ظ„ظ‰ ط³ظ†ط© ظ†ط¨ظٹظƒ ï·؛',
+                'احرص على سنة نبيك ﷺ',
                 style: TextStyle(
                   color: Colors.white.withValues(alpha: 0.65),
                   fontSize: size.width * 0.032,
@@ -257,24 +257,24 @@ class SunnahHeader extends StatelessWidget {
       children: [
         _buildStatCard(
           value: '$completed/$total',
-          label: 'ط³ظ†ط© ط§ظ„ظˆظ‚طھ',
-          emoji: 'âڈ°',
+          label: 'سنة الوقت',
+          emoji: '⏰',
           color: SunnahTheme.emerald,
           isSmall: isSmall,
         ),
         SizedBox(width: size.width * 0.025),
         _buildStatCard(
           value: '$globalCompleted/$globalTotal',
-          label: 'ط¥ط¬ظ…ط§ظ„ظٹ ط§ظ„ظٹظˆظ…',
-          emoji: 'ًں“؟',
+          label: 'إجمالي اليوم',
+          emoji: '📿',
           color: SunnahTheme.goldLight,
           isSmall: isSmall,
         ),
         SizedBox(width: size.width * 0.025),
         _buildStatCard(
           value: '${globalTotal - globalCompleted}',
-          label: 'ظ…طھط¨ظ‚ظٹ',
-          emoji: 'ًںژ¯',
+          label: 'متبقي',
+          emoji: '🎯',
           color: SunnahTheme.blueLight,
           isSmall: isSmall,
         ),
@@ -340,7 +340,7 @@ class SunnahHeader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'طھظ‚ط¯ظ… ط§ظ„ظˆظ‚طھ ط§ظ„ط­ط§ظ„ظٹ',
+              'تقدم الوقت الحالي',
               style: TextStyle(
                 color: Colors.white.withValues(alpha: 0.7),
                 fontSize: size.width * 0.03,
@@ -406,14 +406,14 @@ class SunnahHeader extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('ًںژ‰', style: TextStyle(fontSize: 13)),
+              const Text('🎉', style: TextStyle(fontSize: 13)),
               const SizedBox(width: 6),
               ShaderMask(
                 shaderCallback: (b) => const LinearGradient(
                   colors: [SunnahTheme.goldLight, SunnahTheme.gold],
                 ).createShader(b),
                 child: const Text(
-                  'ط£ط­ط³ظ†طھ! ط£طھظ…ظ…طھ ط³ظ†ظ† ظ‡ط°ط§ ط§ظ„ظˆظ‚طھ',
+                  'أحسنت! أتممت سنن هذا الوقت',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 12,

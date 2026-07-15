@@ -242,15 +242,21 @@ class _RadioScreenState extends State<RadioScreen>
 
   Widget _buildSearchBar() {
     return GestureDetector(
-      onTap: () => Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (_) => RecSearchScreen(
-            primary: _primary,
-            categories: _categories,
+      onTap: () {
+        // اقرأ القائمة الحية عند الضغط، لا snapshot شاشة الراديو القديم.
+        final categories = RecitationCategoriesData.current.isNotEmpty
+            ? RecitationCategoriesData.current
+            : _categories;
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => RecSearchScreen(
+              primary: _primary,
+              categories: categories,
+            ),
           ),
-        ),
-      ),
+        );
+      },
       child: Container(
         margin: const EdgeInsets.fromLTRB(16, 8, 16, 4),
         height: 44,
@@ -271,7 +277,7 @@ class _RadioScreenState extends State<RadioScreen>
             ),
             const SizedBox(width: 8),
             Text(
-              'ط§ط¨ط­ط« ط¹ظ† ظ‚ط§ط±ط¦طŒ ط³ظˆط±ط©طŒ ط­ظپظ„ط©...',
+              'ابحث عن قارئ، سورة، حفلة...',
               style: GoogleFonts.cairo(
                 fontSize: 12,
                 color: RadioColors.searchHint(context),

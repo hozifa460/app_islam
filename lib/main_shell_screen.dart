@@ -137,7 +137,7 @@ class _MainShellScreenState extends State<MainShellScreen> {
         } catch (_) {}
       }
     } catch (e) {
-      debugPrint('â‌Œ _precacheChannelsFeedImages error: $e');
+      debugPrint('❌ _precacheChannelsFeedImages error: $e');
     }
   }
 
@@ -204,7 +204,7 @@ class _MainShellScreenState extends State<MainShellScreen> {
         // â•گâ•گâ•گ ط²ط± ط§ظ„ط¨ط­ط« ظپظٹ ط§ظ„ظپطھط§ظˆظ‰ â•گâ•گâ•گ
         _FatwaFABButton(
           icon: Icons.search_rounded,
-          tooltip: 'ط§ظ„ط¨ط­ط« ظپظٹ ط§ظ„ظپطھط§ظˆظ‰',
+          tooltip: 'البحث في الفتاوى',
           color: const Color(0xFF2E7D32),
           isDark: isDark,
           onTap: () => _openScreen(context, const FatwaSearchScreen()),
@@ -215,7 +215,7 @@ class _MainShellScreenState extends State<MainShellScreen> {
         // â•گâ•گâ•گ ط²ط± ط§ظ„ظ…ط³ط§ط¹ط¯ ط§ظ„ط°ظƒظٹ â•گâ•گâ•گ
         _FatwaFABButton(
           icon: Icons.auto_awesome_rounded,
-          tooltip: 'ظ…ط³ط§ط¹ط¯ ط§ظ„ظپطھط§ظˆظ‰',
+          tooltip: 'مساعد الفتاوى',
           color: const Color(0xFF1565C0),
           isDark: isDark,
           onTap: () => _openScreen(context, const FatwaChatScreen()),

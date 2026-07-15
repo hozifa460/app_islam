@@ -287,7 +287,7 @@ class MuseumAppBarBackground extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  "ظ…طھط­ظپ ط¹ط¸ظ…ط§ط، ط§ظ„ط¥ط³ظ„ط§ظ…",
+                  "متحف عظماء الإسلام",
                   textAlign: TextAlign.right,
                   style: GoogleFonts.amiri(
                     fontSize: 30,
@@ -297,7 +297,7 @@ class MuseumAppBarBackground extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  "ط±ط­ظ„ط© ط¹ط¨ط± ط£ط¹ط¸ظ… ط§ظ„ط´ط®طµظٹط§طھ ظپظٹ طھط§ط±ظٹط® ط§ظ„ط­ط¶ط§ط±ط© ط§ظ„ط¥ط³ظ„ط§ظ…ظٹط©",
+                  "رحلة عبر أعظم الشخصيات في تاريخ الحضارة الإسلامية",
                   textAlign: TextAlign.right,
                   style: GoogleFonts.cairo(
                     fontSize: 13,
@@ -364,7 +364,7 @@ class MuslimSearchBar extends StatelessWidget {
             color: isDark ? Colors.white : Colors.black87,
           ),
           decoration: InputDecoration(
-            hintText: 'ط§ط¨ط­ط« ط¹ظ† ط´ط®طµظٹط©...',
+            hintText: 'ابحث عن شخصية...',
             hintStyle: GoogleFonts.cairo(
               color: isDark ? Colors.white38 : Colors.black38,
               fontSize: 14,
@@ -509,7 +509,7 @@ class PersonsCountHeader extends StatelessWidget {
           AnimatedSwitcher(
             duration: const Duration(milliseconds: 400),
             child: Text(
-              "$count ط´ط®طµظٹط©",
+              "$count شخصية",
               key: ValueKey(count),
               style: GoogleFonts.cairo(
                 fontWeight: FontWeight.bold,
@@ -518,7 +518,7 @@ class PersonsCountHeader extends StatelessWidget {
             ),
           ),
           Text(
-            "ط§ظ„ط´ط®طµظٹط§طھ",
+            "الشخصيات",
             style: GoogleFonts.cairo(
               fontSize: 14,
               color: isDark ? Colors.white60 : Colors.black54,
@@ -570,7 +570,7 @@ class EmptyStateWidget extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           Text(
-            isFiltered ? 'ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬' : 'طھط¹ط°ظ‘ط± طھط­ظ…ظٹظ„ ط§ظ„ط¨ظٹط§ظ†ط§طھ',
+            isFiltered ? 'لا توجد نتائج' : 'تعذّر تحميل البيانات',
             style: GoogleFonts.cairo(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -580,8 +580,8 @@ class EmptyStateWidget extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             isFiltered
-                ? 'ط¬ط±ط¨ ط§ظ„ط¨ط­ط« ط¨ط§ط³ظ… ط¢ط®ط± ط£ظˆ طھط؛ظٹظٹط± ط§ظ„ظپط¦ط©'
-                : 'طھط£ظƒط¯ ظ…ظ† ظˆط¬ظˆط¯ ظ…ظ„ظپ ط§ظ„ط¨ظٹط§ظ†ط§طھ',
+                ? 'جرب البحث باسم آخر أو تغيير الفئة'
+                : 'تأكد من وجود ملف البيانات',
             style: GoogleFonts.cairo(
               fontSize: 13,
               color: isDark ? Colors.white38 : Colors.black38,
@@ -605,7 +605,7 @@ class EmptyStateWidget extends StatelessWidget {
               ),
               icon: const Icon(Icons.refresh_rounded, size: 20),
               label: Text(
-                'ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط©',
+                'إعادة المحاولة',
                 style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
               ),
             ),
@@ -725,7 +725,7 @@ class FeaturedPersonCard extends StatelessWidget {
                               color: Colors.white, size: 14),
                           const SizedBox(width: 4),
                           Text(
-                            'ط´ط®طµظٹط© ظ…ظ…ظٹط²ط©',
+                            'شخصية مميزة',
                             style: GoogleFonts.cairo(
                               color: Colors.white,
                               fontSize: 11,
@@ -1262,7 +1262,7 @@ class ParchmentBioCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      'ط³ظٹط±طھظ‡ ط§ظ„ط¹ط·ط±ط©',
+                      'سيرته العطرة',
                       style: GoogleFonts.amiri(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -1425,7 +1425,7 @@ class AchievementsSectionHeader extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Text(
-            'ط¥ظ†ط¬ط§ط²ط§طھظ‡ ط§ظ„ط®ط§ظ„ط¯ط©',
+            'إنجازاته الخالدة',
             style: GoogleFonts.amiri(
               fontSize: 22,
               fontWeight: FontWeight.bold,
@@ -1548,7 +1548,7 @@ class EngravedQuoteCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  'ظ…ظ† ط­ظƒظ…ظ‡ ظˆظ…ظˆط§ط¹ط¸ظ‡',
+                  'من حكمه ومواعظه',
                   style: GoogleFonts.cairo(
                     fontSize: 14,
                     color: GreatMuslimsColors.gold,
@@ -1559,7 +1559,7 @@ class EngravedQuoteCard extends StatelessWidget {
                 const OrnamentalDivider(),
                 const SizedBox(height: 24),
                 Text(
-                  'â‌‌ ${person.quote} â‌‍',
+                  '❝ ${person.quote} ❞',
                   textAlign: TextAlign.center,
                   textDirection: TextDirection.rtl,
                   style: GoogleFonts.amiri(
@@ -1755,7 +1755,7 @@ class BlurredBottomBar extends StatelessWidget {
                   ),
                   icon: const Icon(Icons.share_rounded, size: 20),
                   label: Text(
-                    'ظ…ط´ط§ط±ظƒط© ط§ظ„ط³ظٹط±ط©',
+                    'مشاركة السيرة',
                     style:
                     GoogleFonts.cairo(fontWeight: FontWeight.bold),
                   ),

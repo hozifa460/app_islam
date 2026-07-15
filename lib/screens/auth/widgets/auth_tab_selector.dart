@@ -34,13 +34,13 @@ class AuthTabSelector extends StatelessWidget {
       child: Row(
         children: [
           _Tab(
-            text: 'طھط³ط¬ظٹظ„ ط§ظ„ط¯ط®ظˆظ„',
+            text: 'تسجيل الدخول',
             active: isLogin,
             isDark: isDark,
             onTap: () => onChanged(true),
           ),
           _Tab(
-            text: 'ط¥ظ†ط´ط§ط، ط­ط³ط§ط¨',
+            text: 'إنشاء حساب',
             active: !isLogin,
             isDark: isDark,
             onTap: () => onChanged(false),

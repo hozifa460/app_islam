@@ -59,49 +59,49 @@ class HasanatStatsSection extends StatelessWidget {
       {
         'title': context.tr.statPalmTrees, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
         'count': palmTrees,
-        'icon': 'ًںŒ´',
+        'icon': '🌴',
         'color': Colors.green
       },
       {
         'title': context.tr.statPalaces, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
         'count': palaces,
-        'icon': 'ًںڈ°',
+        'icon': '🏰',
         'color': gold
       },
       {
         'title': context.tr.statTreasures, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
         'count': jewels,
-        'icon': 'ًں’ژ',
+        'icon': '💎',
         'color': Colors.blue
       },
       {
         'title': context.tr.statLights, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
         'count': lights,
-        'icon': 'âœ¨',
+        'icon': '✨',
         'color': Colors.orange
       },
       {
         'title': context.tr.statDoors, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
         'count': doors,
-        'icon': 'ًںڑھ',
+        'icon': '🚪',
         'color': Colors.brown
       },
       {
         'title': context.tr.statShields, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
         'count': shields,
-        'icon': 'ًں›،ï¸ڈ',
+        'icon': '🛡️',
         'color': Colors.teal
       },
       {
         'title': context.tr.statScales, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
         'count': scales,
-        'icon': 'âڑ–ï¸ڈ',
+        'icon': '⚖️',
         'color': Colors.purple
       },
       {
         'title': context.tr.statHasanat, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط©
         'count': hasanat,
-        'icon': 'ًں“؟',
+        'icon': '📿',
         'color': Colors.cyan
       },
     ];

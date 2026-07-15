@@ -61,7 +61,7 @@ class RecentListeningWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: const Center(
-                      child: Text('ًں•گ', style: TextStyle(fontSize: 18)),
+                      child: Text('🕐', style: TextStyle(fontSize: 18)),
                     ),
                   ),
                   const SizedBox(width: 10),
@@ -71,7 +71,7 @@ class RecentListeningWidget extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          'ط¢ط®ط± ظ…ط§ ط§ط³طھظ…ط¹طھ ط¥ظ„ظٹظ‡',
+                          'آخر ما استمعت إليه',
                           style: GoogleFonts.cairo(
                             fontSize: isTablet ? 16 : 14,
                             fontWeight: FontWeight.w800,
@@ -79,7 +79,7 @@ class RecentListeningWidget extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '${items.length} ط¹ظ†طµط±',
+                          '${items.length} عنصر',
                           style: GoogleFonts.cairo(
                             fontSize: isTablet ? 11 : 10,
                             color: isDark
@@ -108,7 +108,7 @@ class RecentListeningWidget extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                        'ظ…ط³ط­',
+                        'مسح',
                         style: GoogleFonts.cairo(
                           fontSize: 10,
                           fontWeight: FontWeight.w600,
@@ -310,7 +310,7 @@ class RecentListeningWidget extends StatelessWidget {
       name: item.title,
       nameEn: item.title,
       url: item.audioUrl,
-      category: item.type == 'radio' ? 'ط±ط§ط¯ظٹظˆ' : 'طھظ„ط§ظˆط§طھ',
+      category: item.type == 'radio' ? 'راديو' : 'تلاوات',
       categoryEn: 'Recitations',
       description: item.subtitle,
       descriptionEn: item.subtitle,
@@ -400,7 +400,7 @@ class RecentListeningWidget extends StatelessWidget {
                     Icon(Icons.play_arrow_rounded, color: primary, size: 20),
                     const SizedBox(width: 8),
                     Text(
-                      'طھط´ط؛ظٹظ„',
+                      'تشغيل',
                       style: GoogleFonts.cairo(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
@@ -431,7 +431,7 @@ class RecentListeningWidget extends StatelessWidget {
                     const Icon(Icons.delete_rounded, color: Colors.red, size: 20),
                     const SizedBox(width: 8),
                     Text(
-                      'ط­ط°ظپ ظ…ظ† ط§ظ„ط³ط¬ظ„',
+                      'حذف من السجل',
                       style: GoogleFonts.cairo(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
@@ -463,7 +463,7 @@ class RecentListeningWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
         title: Text(
-          'ظ…ط³ط­ ط³ط¬ظ„ ط§ظ„ط§ط³طھظ…ط§ط¹',
+          'مسح سجل الاستماع',
           style: GoogleFonts.cairo(
             fontWeight: FontWeight.w800,
             color: isDark ? Colors.white : Colors.black87,
@@ -471,7 +471,7 @@ class RecentListeningWidget extends StatelessWidget {
           textDirection: TextDirection.rtl,
         ),
         content: Text(
-          'ظ‡ظ„ طھط±ظٹط¯ ظ…ط³ط­ ظƒظ„ ط³ط¬ظ„ ط§ظ„ط§ط³طھظ…ط§ط¹طں',
+          'هل تريد مسح كل سجل الاستماع؟',
           style: GoogleFonts.cairo(
             color: isDark ? Colors.white60 : Colors.black54,
           ),
@@ -481,7 +481,7 @@ class RecentListeningWidget extends StatelessWidget {
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(
-              'ط¥ظ„ط؛ط§ط،',
+              'إلغاء',
               style: GoogleFonts.cairo(color: Colors.grey),
             ),
           ),
@@ -497,7 +497,7 @@ class RecentListeningWidget extends StatelessWidget {
               ),
             ),
             child: Text(
-              'ظ…ط³ط­',
+              'مسح',
               style: GoogleFonts.cairo(
                 color: Colors.white,
                 fontWeight: FontWeight.w700,

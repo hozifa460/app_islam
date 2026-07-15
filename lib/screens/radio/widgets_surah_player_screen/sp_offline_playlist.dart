@@ -68,7 +68,7 @@ class SpOfflinePlaylist extends StatelessWidget {
       child: Row(
         children: [
           Text(
-            'ط§ظ„ط³ظˆط± ط§ظ„ظ…ط­ظ…ظ„ط©',
+            'السور المحملة',
             style: GoogleFonts.cairo(
               fontSize: SpSizes.playlistTitleSize(isTablet),
               fontWeight: FontWeight.w700,
@@ -77,7 +77,7 @@ class SpOfflinePlaylist extends StatelessWidget {
           ),
           const Spacer(),
           Text(
-            '$count ط³ظˆط±ط©',
+            '$count سورة',
             style: GoogleFonts.cairo(
               fontSize: SpSizes.playlistCountSize(isTablet),
               color: primary.withValues(alpha: 0.7),

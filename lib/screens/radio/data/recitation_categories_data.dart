@@ -31,7 +31,7 @@ class RecitationCategoriesData {
   static const String _localJsonFolder = 'assets/json/recitations/';
   static const String _cacheDir = 'recitations_cache';
 
-  static const int _maxCategories = 30;
+  static const int _maxCategories = 500;
 
   // ✅ القائمة الحية - تُحدَّث واحدة واحدة
   static final List<RecitationCategory> _liveList = [];
@@ -46,14 +46,41 @@ class RecitationCategoriesData {
 
   // ✅ Stream يُرسل كل كاتيغوري فور تحميلها
   static final StreamController<List<RecitationCategory>> _streamController =
-  StreamController<List<RecitationCategory>>.broadcast();
+      StreamController<List<RecitationCategory>>.broadcast();
 
   static Stream<List<RecitationCategory>> get stream =>
       _streamController.stream;
 
   // ✅ القائمة الحالية دائماً
-  static List<RecitationCategory> get current =>
-      List.unmodifiable(_liveList);
+  static List<RecitationCategory> get current => List.unmodifiable(_liveList);
+
+  @visibleForTesting
+  static void resetForTesting({
+    List<RecitationCategory> categories = const [],
+    bool initialized = true,
+  }) {
+    _liveList
+      ..clear()
+      ..addAll(categories);
+    _initialized = initialized;
+    _initializing = false;
+    _initCompleter = null;
+    _lastRemoteSync = null;
+    _lastYouTubeSync = null;
+    if (!_streamController.isClosed) {
+      _streamController.add(List.unmodifiable(_liveList));
+    }
+  }
+
+  @visibleForTesting
+  static void emitForTesting(List<RecitationCategory> categories) {
+    _liveList
+      ..clear()
+      ..addAll(categories);
+    if (!_streamController.isClosed) {
+      _streamController.add(List.unmodifiable(_liveList));
+    }
+  }
 
   // ══════════════════════════════════════════════════════
   // البناء الأولي (فوري - من الكاش)
@@ -66,7 +93,7 @@ class RecitationCategoriesData {
   }
 
   // ══════════════════════════════════════════════════════
-  // ✅ التهيئة التدريجية - تُضيف كاتيغوري واحدة واحدة
+  // التهيئة التدريجية
   // ══════════════════════════════════════════════════════
   static Future<void> initialize({bool refreshRemote = false}) async {
     if (_initialized && !refreshRemote) return;
@@ -77,22 +104,30 @@ class RecitationCategoriesData {
     _initializing = true;
     _initCompleter = Completer<void>();
 
-    // ✅ أضف القراء فوراً
     _addCategory(_buildRecitersCategory());
 
     try {
-      // ✅ 1) جرب الكاش أولاً (تدريجي)
       await _loadCachedCategoriesStreaming();
-
-      // ✅ 2) fallback للـ assets (تدريجي)
       await _loadLocalAssetsStreaming();
-
-      // ✅ 2b) استعادة كاش يوتيوب (يتجاوز بيانات assets القديمة)
       await _loadCachedYouTubeCategories();
 
-      // ✅ 3) المزامنة مع الإنترنت (GitHub + GitLab) — دائماً
+      _initialized = true;
+      _runBackgroundSync(refreshRemote);
+    } finally {
+      _initializing = false;
+      if (!_initCompleter!.isCompleted) _initCompleter!.complete();
+    }
+    debugPrint('Total (Local): ${_liveList.length} categories');
+  }
+
+  // ══════════════════════════════════════════════════════
+  // المزامنة في الخلفية
+  // ══════════════════════════════════════════════════════
+  static Future<void> _runBackgroundSync(bool refreshRemote) async {
+    try {
       final now = DateTime.now();
-      final shouldSync = refreshRemote ||
+      final shouldSync =
+          refreshRemote ||
           _lastRemoteSync == null ||
           now.difference(_lastRemoteSync!) > _remoteCooldown;
       if (shouldSync) {
@@ -100,21 +135,17 @@ class RecitationCategoriesData {
         await _syncWithRemoteStreaming();
       }
 
-      // ✅ 4) YouTube videos (GitHub → GitLab) — يومياً
-      final shouldSyncYouTube = refreshRemote ||
+      final shouldSyncYouTube =
+          refreshRemote ||
           _lastYouTubeSync == null ||
           now.difference(_lastYouTubeSync!) > _youTubeCooldown;
       if (shouldSyncYouTube) {
         _lastYouTubeSync = now;
         await _fetchYouTubeChannels();
       }
-
-      _initialized = true;
-    } finally {
-      _initializing = false;
-      if (!_initCompleter!.isCompleted) _initCompleter!.complete();
+    } catch (e) {
+      debugPrint('Background sync error: $e');
     }
-    debugPrint('✅ Total: ${_liveList.length} categories');
   }
 
   // ══ إضافة كاتيغوري وإشعار المستمعين فوراً ══
@@ -165,11 +196,12 @@ class RecitationCategoriesData {
       if (!await dir.exists()) return false;
 
       final entities = await dir.list().toList();
-      final files = entities
-          .whereType<File>()
-          .where((f) => f.path.endsWith('.json'))
-          .toList()
-        ..sort((a, b) => a.path.compareTo(b.path));
+      final files =
+          entities
+              .whereType<File>()
+              .where((f) => f.path.endsWith('.json'))
+              .toList()
+            ..sort((a, b) => a.path.compareTo(b.path));
 
       if (files.isEmpty) return false;
 
@@ -231,28 +263,23 @@ class RecitationCategoriesData {
     // ✅ الطريقة الأولى: AssetManifest
     try {
       final manifest = await AssetManifest.loadFromAssetBundle(rootBundle);
-      files = manifest
-          .listAssets()
-          .where(
-            (p) => p.startsWith(_localJsonFolder) && p.endsWith('.json'),
-      )
-          .toList()
-        ..sort();
+      files =
+          manifest
+              .listAssets()
+              .where(
+                (p) => p.startsWith(_localJsonFolder) && p.endsWith('.json'),
+              )
+              .toList()
+            ..sort();
     } catch (e) {
       debugPrint('⚠️ AssetManifest failed: $e');
     }
 
-    // ✅ الطريقة الثانية: قائمة يدوية كـ fallback
+    // لا نطلب ملفات غير مضمنة في التطبيق: قد يزيل إصدار ما بيانات
+    // التلاوات المحلية، بينما يبقى الكاش والمصدر البعيد هما المصدرين السليمين.
     if (files.isEmpty) {
-      files = [
-        'assets/json/recitations/1_menshawy.json',
-        'assets/json/recitations/2_abd_el_baset.json',
-        'assets/json/recitations/3_majd_channel.json',
-        'assets/json/recitations/4_social_videos.json',
-        'assets/json/recitations/5_alshaarawy.json',
-        'assets/json/recitations/6_abo_ishak_alhowini.json',
-        'assets/json/recitations/zein_khair_allah.json',
-      ];
+      debugPrint('ℹ️ No bundled recitation JSON assets found.');
+      return;
     }
 
     for (final path in files) {
@@ -279,11 +306,7 @@ class RecitationCategoriesData {
     final sources = [
       {'key': 'github', 'indexUrl': _indexUrl, 'baseUrl': _baseUrl},
       {'key': 'github2', 'indexUrl': _indexUrl1, 'baseUrl': _baseUrl1},
-      {
-        'key': 'gitlab',
-        'indexUrl': _gitLabIndexUrl,
-        'baseUrl': _gitLabBaseUrl,
-      },
+      {'key': 'gitlab', 'indexUrl': _gitLabIndexUrl, 'baseUrl': _gitLabBaseUrl},
     ];
 
     final currentFiles = <String>[];
@@ -296,17 +319,15 @@ class RecitationCategoriesData {
       try {
         final indexResponse = await http
             .get(
-          // ✅ cache-busting: timestamp يضمن URL فريد في كل طلب
-          Uri.parse('$indexUrl?t=${DateTime.now().millisecondsSinceEpoch}'),
-          headers: {
-            'Accept': 'application/json',
-            'Cache-Control': 'no-cache, no-store, must-revalidate',
-            'Pragma': 'no-cache',
-          },
-        )
-            .timeout(
-          Duration(seconds: sourceKey == 'gitlab' ? 20 : 10),
-        );
+              // ✅ cache-busting: timestamp يضمن URL فريد في كل طلب
+              Uri.parse('$indexUrl?t=${DateTime.now().millisecondsSinceEpoch}'),
+              headers: {
+                'Accept': 'application/json',
+                'Cache-Control': 'no-cache, no-store, must-revalidate',
+                'Pragma': 'no-cache',
+              },
+            )
+            .timeout(Duration(seconds: sourceKey == 'gitlab' ? 20 : 10));
 
         if (indexResponse.statusCode != 200) continue;
 
@@ -338,24 +359,19 @@ class RecitationCategoriesData {
           }
 
           final url = '$baseUrl$fileName';
-          final safeName =
-              '${sourceKey}_${fileName.replaceAll('/', '_')}';
+          final safeName = '${sourceKey}_${fileName.replaceAll('/', '_')}';
           currentFiles.add(safeName);
 
           try {
             final response = await http
                 .get(
-              Uri.parse(url),
-              headers: {
-                'Accept': 'application/json',
-                'Cache-Control': 'no-cache, no-store',
-              },
-            )
-                .timeout(
-              Duration(
-                seconds: sourceKey == 'gitlab' ? 40 : 15,
-              ),
-            );
+                  Uri.parse(url),
+                  headers: {
+                    'Accept': 'application/json',
+                    'Cache-Control': 'no-cache, no-store',
+                  },
+                )
+                .timeout(Duration(seconds: sourceKey == 'gitlab' ? 40 : 15));
 
             if (response.statusCode == 200) {
               try {
@@ -404,9 +420,7 @@ class RecitationCategoriesData {
         for (final item in decoded) {
           if (item is Map) {
             cats.add(
-              RecitationCategory.fromJson(
-                Map<String, dynamic>.from(item),
-              ),
+              RecitationCategory.fromJson(Map<String, dynamic>.from(item)),
             );
           }
         }
@@ -454,8 +468,8 @@ class RecitationCategoriesData {
   }
 
   static Future<List<RecitationCategory>?> _loadSingleCacheFile(
-      String name,
-      ) async {
+    String name,
+  ) async {
     try {
       final dir = await _getCacheDir();
       final file = File('${dir.path}/$name');
@@ -476,9 +490,7 @@ class RecitationCategoriesData {
     } catch (_) {}
   }
 
-  static Future<void> _cleanupRemovedFiles(
-      List<dynamic> currentFiles,
-      ) async {
+  static Future<void> _cleanupRemovedFiles(List<dynamic> currentFiles) async {
     try {
       final dir = await _getCacheDir();
       if (!await dir.exists()) return;
@@ -500,34 +512,33 @@ class RecitationCategoriesData {
   // ══════════════════════════════════════════════════════
   static RecitationCategory _buildRecitersCategory() {
     final reciters =
-    RadioStationsData.all.where((s) => s.supportsDownload).toList();
+        RadioStationsData.all.where((s) => s.supportsDownload).toList();
     return RecitationCategory(
       id: 'reciters',
       title: 'القراء',
       emoji: '📖',
       description: 'استمع وحمّل تلاوات كبار القراء',
       gradientColors: const [Color(0xFF2D1B69), Color(0xFF7C3AED)],
-      items: reciters
-          .map(
-            (s) => RecitationItem(
-          title: s.name,
-          subtitle: s.description,
-          emoji: s.iconEmoji,
-          imageUrl: s.imageUrl,
-          imageAsset: s.imageAsset,
-          station: s,
-        ),
-      )
-          .toList(),
+      items:
+          reciters
+              .map(
+                (s) => RecitationItem(
+                  title: s.name,
+                  subtitle: s.description,
+                  emoji: s.iconEmoji,
+                  imageUrl: s.imageUrl,
+                  imageAsset: s.imageAsset,
+                  station: s,
+                ),
+              )
+              .toList(),
     );
   }
 
   // ✅ أضف هذه الدالة في RecitationCategoriesData
-// للتحديث بدون إعادة بناء كل شيء
+  // للتحديث بدون إعادة بناء كل شيء
 
-  static Future<void> addOrUpdateCategory(
-      RecitationCategory newCat,
-      ) async {
+  static Future<void> addOrUpdateCategory(RecitationCategory newCat) async {
     final idx = _liveList.indexWhere((c) => c.id == newCat.id);
     if (idx >= 0) {
       // ✅ تحديث الموجود
@@ -611,34 +622,40 @@ class RecitationCategoriesData {
 
     final groups = <RecitationItem>[];
     if (liveItems.isNotEmpty) {
-      groups.add(RecitationItem(
-        title: 'بثوث مباشرة — $channelName',
-        subtitle: 'يوتيوب',
-        emoji: '🔴',
-        imageUrl: '',
-        audioUrl: '',
-        subItems: liveItems,
-      ));
+      groups.add(
+        RecitationItem(
+          title: 'بثوث مباشرة — $channelName',
+          subtitle: 'يوتيوب',
+          emoji: '🔴',
+          imageUrl: '',
+          audioUrl: '',
+          subItems: liveItems,
+        ),
+      );
     }
     if (videoItems.isNotEmpty) {
-      groups.add(RecitationItem(
-        title: 'فيديوهات $channelName',
-        subtitle: 'يوتيوب',
-        emoji: '🎙️',
-        imageUrl: '',
-        audioUrl: '',
-        subItems: videoItems,
-      ));
+      groups.add(
+        RecitationItem(
+          title: 'فيديوهات $channelName',
+          subtitle: 'يوتيوب',
+          emoji: '🎙️',
+          imageUrl: '',
+          audioUrl: '',
+          subItems: videoItems,
+        ),
+      );
     }
     if (shortsItems.isNotEmpty) {
-      groups.add(RecitationItem(
-        title: 'شورتس — $channelName',
-        subtitle: 'يوتيوب',
-        emoji: '📱',
-        imageUrl: '',
-        audioUrl: '',
-        subItems: shortsItems,
-      ));
+      groups.add(
+        RecitationItem(
+          title: 'شورتس — $channelName',
+          subtitle: 'يوتيوب',
+          emoji: '📱',
+          imageUrl: '',
+          audioUrl: '',
+          subItems: shortsItems,
+        ),
+      );
     }
     return groups;
   }
@@ -700,17 +717,17 @@ class RecitationCategoriesData {
       title: item.title,
       isLive: null,
       liveStatus: null,
-      duration: item.durationSeconds != null
-          ? Duration(seconds: item.durationSeconds!)
-          : null,
+      duration:
+          item.durationSeconds != null
+              ? Duration(seconds: item.durationSeconds!)
+              : null,
     );
   }
 
   /// يحدد إذا كان العنوان يشير لـ Shorts
   static bool _isShorts(String title) {
     final lower = title.toLowerCase();
-    return RegExp(r'(?:^|#|-\s*)shorts?\b|#short|شورتس|شورت')
-        .hasMatch(lower);
+    return RegExp(r'(?:^|#|-\s*)shorts?\b|#short|شورتس|شورت').hasMatch(lower);
   }
 
   /// يحدد إذا كان العنوان يشير لـ Live (مع احترام النفي مثل "not live")
@@ -723,14 +740,14 @@ class RecitationCategoriesData {
       return false;
     }
     return RegExp(
-            r'\b(live|streaming|live\s*now|live\s*stream|on\s*air|stream)\b'
-            r'|(?<!\p{L})بث(?!\p{L})'
-            r'|ال\s*بث'
-            r'|لايف'
-            r'|مباشر'
-            r'|على\s*الهواء',
-            unicode: true)
-        .hasMatch(lower);
+      r'\b(live|streaming|live\s*now|live\s*stream|on\s*air|stream)\b'
+      r'|(?<!\p{L})بث(?!\p{L})'
+      r'|ال\s*بث'
+      r'|لايف'
+      r'|مباشر'
+      r'|على\s*الهواء',
+      unicode: true,
+    ).hasMatch(lower);
   }
 
   static String _stripXmlEntities(String s) {
@@ -755,14 +772,16 @@ class RecitationCategoriesData {
     required List<RecitationSubItem> oldSubItems,
     required List<RecitationSubItem> newSubItems,
   }) {
-    final oldIds = oldSubItems
-        .map((s) => _videoIdFromUrl(s.audioUrl))
-        .where((id) => id.isNotEmpty)
-        .toList();
-    final newIds = newSubItems
-        .map((s) => _videoIdFromUrl(s.audioUrl))
-        .where((id) => id.isNotEmpty)
-        .toList();
+    final oldIds =
+        oldSubItems
+            .map((s) => _videoIdFromUrl(s.audioUrl))
+            .where((id) => id.isNotEmpty)
+            .toList();
+    final newIds =
+        newSubItems
+            .map((s) => _videoIdFromUrl(s.audioUrl))
+            .where((id) => id.isNotEmpty)
+            .toList();
     final mergedIds = mergeYouTubeItems(
       oldVideoIds: oldIds,
       newVideoIds: newIds,
@@ -771,15 +790,19 @@ class RecitationCategoriesData {
     final result = <RecitationSubItem>[];
     for (final id in mergedIds) {
       if (newIdsSet.contains(id)) {
-        result.add(newSubItems.firstWhere(
-          (s) => _videoIdFromUrl(s.audioUrl) == id,
-          orElse: () => newSubItems.first,
-        ));
+        result.add(
+          newSubItems.firstWhere(
+            (s) => _videoIdFromUrl(s.audioUrl) == id,
+            orElse: () => newSubItems.first,
+          ),
+        );
       } else {
-        result.add(oldSubItems.firstWhere(
-          (s) => _videoIdFromUrl(s.audioUrl) == id,
-          orElse: () => oldSubItems.first,
-        ));
+        result.add(
+          oldSubItems.firstWhere(
+            (s) => _videoIdFromUrl(s.audioUrl) == id,
+            orElse: () => oldSubItems.first,
+          ),
+        );
       }
     }
     return result;
@@ -789,8 +812,7 @@ class RecitationCategoriesData {
   static List<RecitationSubItem> mergeGroupSubItemsForTest({
     required List<RecitationSubItem> oldSubItems,
     required List<RecitationSubItem> newSubItems,
-  }) =>
-      _mergeGroupSubItems(oldSubItems: oldSubItems, newSubItems: newSubItems);
+  }) => _mergeGroupSubItems(oldSubItems: oldSubItems, newSubItems: newSubItems);
 
   /// يدمج IDs فيديوهات جديدة (من RSS) مع القديمة (من الكاش):
   /// - الـ IDs الجديدة أولاً (بالترتيب اللي جاءت به من RSS = الأحدث أولاً)
@@ -834,18 +856,21 @@ class RecitationCategoriesData {
       // ✅ 3 ملفات لكل قناة YouTube (جميعها نفس الـ categoryId)
       // .live.json / .videos.json / .shorts.json
       // + .youtube.json (القديم — فترة انتقالية)
-      final youtubeFiles = files
-          .where(
-            (f) =>
-                f.endsWith('.youtube.json') ||
-                f.endsWith('.live.json') ||
-                f.endsWith('.videos.json') ||
-                f.endsWith('.shorts.json'),
-          )
-          .toList();
+      final youtubeFiles =
+          files
+              .where(
+                (f) =>
+                    f.endsWith('.youtube.json') ||
+                    f.endsWith('.live.json') ||
+                    f.endsWith('.videos.json') ||
+                    f.endsWith('.shorts.json'),
+              )
+              .toList();
       if (youtubeFiles.isEmpty) continue;
 
-      debugPrint('🎥 [$sourceKey] ${youtubeFiles.length} YouTube file(s) in index');
+      debugPrint(
+        '🎥 [$sourceKey] ${youtubeFiles.length} YouTube file(s) in index',
+      );
 
       // 2) لكل ملف YouTube، حمّله وادمج
       for (final file in youtubeFiles) {
@@ -867,12 +892,10 @@ class RecitationCategoriesData {
           await _cacheYouTubeCategory(youTubeCat.id);
         } else {
           final existing = _liveList[idx];
-          final nonYouTubeItems = existing.items
-              .where((i) => !_isYouTubeGroupItem(i))
-              .toList();
-          final existingYouTubeGroups = existing.items
-              .where((i) => _isYouTubeGroupItem(i))
-              .toList();
+          final nonYouTubeItems =
+              existing.items.where((i) => !_isYouTubeGroupItem(i)).toList();
+          final existingYouTubeGroups =
+              existing.items.where((i) => _isYouTubeGroupItem(i)).toList();
 
           final mergedGroups = <RecitationItem>[];
           for (final newGroup in youTubeCat.items) {
@@ -881,27 +904,35 @@ class RecitationCategoriesData {
               orElse: () => newGroup,
             );
             final mergedSubs = _mergeGroupSubItems(
-              oldSubItems: (oldGroup.emoji == newGroup.emoji)
-                  ? (oldGroup.subItems ?? const [])
-                  : const [],
+              oldSubItems:
+                  (oldGroup.emoji == newGroup.emoji)
+                      ? (oldGroup.subItems ?? const [])
+                      : const [],
               newSubItems: newGroup.subItems ?? const [],
             );
-            mergedGroups.add(RecitationItem(
-              title: newGroup.title,
-              subtitle: newGroup.subtitle,
-              emoji: newGroup.emoji,
-              imageUrl: newGroup.imageUrl,
-              audioUrl: newGroup.audioUrl,
-              subItems: mergedSubs,
-            ));
+            mergedGroups.add(
+              RecitationItem(
+                title: newGroup.title,
+                subtitle: newGroup.subtitle,
+                emoji: newGroup.emoji,
+                imageUrl: newGroup.imageUrl,
+                audioUrl: newGroup.audioUrl,
+                subItems: mergedSubs,
+              ),
+            );
           }
           // احتفظ بمجموعات يوتيوب القديمة التي ليس لها نظير في الجديد
           for (final oldGroup in existingYouTubeGroups) {
-            final hasMatch = youTubeCat.items.any((g) => g.emoji == oldGroup.emoji);
+            final hasMatch = youTubeCat.items.any(
+              (g) => g.emoji == oldGroup.emoji,
+            );
             if (!hasMatch) mergedGroups.add(oldGroup);
           }
 
-          final combined = <RecitationItem>[...mergedGroups, ...nonYouTubeItems];
+          final combined = <RecitationItem>[
+            ...mergedGroups,
+            ...nonYouTubeItems,
+          ];
           _liveList[idx] = RecitationCategory(
             id: existing.id,
             title: existing.title,
@@ -918,7 +949,9 @@ class RecitationCategoriesData {
         if (!_streamController.isClosed) {
           _streamController.add(List.unmodifiable(_liveList));
         }
-        debugPrint('🎥 [$sourceKey] ${youTubeCat.id} (+${youTubeCat.items.length} group) ← $file');
+        debugPrint(
+          '🎥 [$sourceKey] ${youTubeCat.id} (+${youTubeCat.items.length} group) ← $file',
+        );
       }
     }
     return totalAdded > 0;
@@ -942,13 +975,13 @@ class RecitationCategoriesData {
         final sep = url.contains('?') ? '&' : '?';
         final response = await http
             .get(
-          Uri.parse('$url${sep}t=$cb'),
-          headers: {
-            'Accept': 'application/json',
-            'Cache-Control': 'no-cache, no-store, must-revalidate',
-            'Pragma': 'no-cache',
-          },
-        )
+              Uri.parse('$url${sep}t=$cb'),
+              headers: {
+                'Accept': 'application/json',
+                'Cache-Control': 'no-cache, no-store, must-revalidate',
+                'Pragma': 'no-cache',
+              },
+            )
             .timeout(const Duration(seconds: 15));
         if (response.statusCode != 200) continue;
         final decoded = jsonDecode(response.body);
@@ -981,9 +1014,10 @@ class RecitationCategoriesData {
     var totalAdded = 0;
 
     // 1) اقرأ manifest (قائمة القنوات)
-    final manifest = await _fetchJsonFromSources(
-      [_youTubeManifestUrl, _gitLabYouTubeManifestUrl],
-    );
+    final manifest = await _fetchJsonFromSources([
+      _youTubeManifestUrl,
+      _gitLabYouTubeManifestUrl,
+    ]);
     if (manifest == null) {
       debugPrint('❌ YouTube live: manifest not found');
       return false;
@@ -1017,16 +1051,18 @@ class RecitationCategoriesData {
         final cb = DateTime.now().millisecondsSinceEpoch;
         final response = await http
             .get(
-          Uri.parse('$rssUrl&t=$cb'),
-          headers: const {
-            'Accept': 'application/atom+xml, application/xml, text/xml',
-            'Cache-Control': 'no-cache, no-store, must-revalidate',
-            'Pragma': 'no-cache',
-          },
-        )
+              Uri.parse('$rssUrl&t=$cb'),
+              headers: const {
+                'Accept': 'application/atom+xml, application/xml, text/xml',
+                'Cache-Control': 'no-cache, no-store, must-revalidate',
+                'Pragma': 'no-cache',
+              },
+            )
             .timeout(const Duration(seconds: 15));
         if (response.statusCode != 200) {
-          debugPrint('❌ $categoryId: RSS fetch failed (${response.statusCode})');
+          debugPrint(
+            '❌ $categoryId: RSS fetch failed (${response.statusCode})',
+          );
           continue;
         }
 
@@ -1057,9 +1093,8 @@ class RecitationCategoriesData {
           await _cacheYouTubeCategory(categoryId);
         } else {
           final existing = _liveList[idx];
-          final nonYouTubeItems = existing.items
-              .where((i) => !_isYouTubeGroupItem(i))
-              .toList();
+          final nonYouTubeItems =
+              existing.items.where((i) => !_isYouTubeGroupItem(i)).toList();
 
           final mergedGroups = <RecitationItem>[];
           for (final newGroup in items) {
@@ -1068,22 +1103,28 @@ class RecitationCategoriesData {
               orElse: () => newGroup, // fallback إذا ما في old
             );
             final mergedSubs = _mergeGroupSubItems(
-              oldSubItems: (oldGroup.emoji == newGroup.emoji)
-                  ? (oldGroup.subItems ?? const [])
-                  : const [],
+              oldSubItems:
+                  (oldGroup.emoji == newGroup.emoji)
+                      ? (oldGroup.subItems ?? const [])
+                      : const [],
               newSubItems: newGroup.subItems ?? const [],
             );
-            mergedGroups.add(RecitationItem(
-              title: newGroup.title,
-              subtitle: newGroup.subtitle,
-              emoji: newGroup.emoji,
-              imageUrl: newGroup.imageUrl,
-              audioUrl: newGroup.audioUrl,
-              subItems: mergedSubs,
-            ));
+            mergedGroups.add(
+              RecitationItem(
+                title: newGroup.title,
+                subtitle: newGroup.subtitle,
+                emoji: newGroup.emoji,
+                imageUrl: newGroup.imageUrl,
+                audioUrl: newGroup.audioUrl,
+                subItems: mergedSubs,
+              ),
+            );
           }
 
-          final combined = <RecitationItem>[...mergedGroups, ...nonYouTubeItems];
+          final combined = <RecitationItem>[
+            ...mergedGroups,
+            ...nonYouTubeItems,
+          ];
           _liveList[idx] = RecitationCategory(
             id: existing.id,
             title: existing.title,
@@ -1099,11 +1140,16 @@ class RecitationCategoriesData {
           _streamController.add(List.unmodifiable(_liveList));
         }
         final newSubCount = items.fold<int>(
-            0, (acc, g) => acc + (g.subItems?.length ?? 0));
-        final totalSubCount = idx >= 0
-            ? _liveList[idx].items.fold<int>(
-                0, (acc, g) => acc + (g.subItems?.length ?? 0))
-            : newSubCount;
+          0,
+          (acc, g) => acc + (g.subItems?.length ?? 0),
+        );
+        final totalSubCount =
+            idx >= 0
+                ? _liveList[idx].items.fold<int>(
+                  0,
+                  (acc, g) => acc + (g.subItems?.length ?? 0),
+                )
+                : newSubCount;
         totalAdded += newSubCount;
         debugPrint(
           '🎥 $categoryId: +$newSubCount new, total now $totalSubCount across ${items.length} group(s)',
@@ -1114,7 +1160,9 @@ class RecitationCategoriesData {
     }
 
     if (totalAdded > 0) {
-      debugPrint('✅ YouTube live: $totalAdded videos added across ${channels.length} channel(s)');
+      debugPrint(
+        '✅ YouTube live: $totalAdded videos added across ${channels.length} channel(s)',
+      );
     }
     return totalAdded > 0;
   }
@@ -1124,7 +1172,10 @@ class RecitationCategoriesData {
     _lastYouTubeSync = null;
     final ok = await _refreshLiveYouTube();
     debugPrint(
-        ok ? '✅ YouTube force refresh done' : '❌ YouTube force refresh failed (no items)');
+      ok
+          ? '✅ YouTube force refresh done'
+          : '❌ YouTube force refresh failed (no items)',
+    );
     return ok;
   }
 }

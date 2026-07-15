@@ -22,19 +22,19 @@ class QiblaInfoCards extends StatelessWidget {
   Widget build(BuildContext context) {
     final cards = [
       (
-      label: 'ط§ظ„ظ‚ط¨ظ„ط©\nظ…ظ† ط§ظ„ط´ظ…ط§ظ„',
+      label: 'القبلة\nمن الشمال',
       value: '${qiblaAngle.toStringAsFixed(1)}آ°',
       icon: Icons.explore_rounded,
       color: QiblaTheme.gold,
       ),
       (
-      label: 'ط§طھط¬ط§ظ‡\nظ‡ط§طھظپظƒ',
+      label: 'اتجاه\nهاتفك',
       value: '${compassHeading.toStringAsFixed(1)}آ°',
       icon: Icons.screen_rotation_rounded,
       color: QiblaTheme.blue,
       ),
       (
-      label: 'ط§ظ„ط§ظ†ط­ط±ط§ظپ\nط¹ظ† ط§ظ„ظ‚ط¨ظ„ط©',
+      label: 'الانحراف\nعن القبلة',
       value: '${deviation.abs().toStringAsFixed(1)}آ°',
       icon: Icons.swap_horiz_rounded,
       color: guidance,

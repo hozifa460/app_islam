@@ -29,7 +29,7 @@ class FeaturedMiracleCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SectionTitle(
-            title:       'ظ…ط¹ط¬ط²ط© ظ…ظ…ظٹط²ط©',
+            title:       'معجزة مميزة',
             subtitle:    'Featured Miracle',
             accentColor: MiracleTheme.neonGold,
             t:           t,
@@ -163,7 +163,7 @@ class FeaturedMiracleCard extends StatelessWidget {
                                             ),
                                           ),
                                           child: Text(
-                                            'â­گ ظ…ط¹ط¬ط²ط© ظ…ظ…ظٹط²ط©',
+                                            '⭐ معجزة مميزة',
                                             style: GoogleFonts.cairo(
                                               color: MiracleTheme.neonGold,
                                               fontSize: 10,

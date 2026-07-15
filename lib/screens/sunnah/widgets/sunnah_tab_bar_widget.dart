@@ -62,11 +62,11 @@ class SunnahTabBarWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text('âڈ°', style: TextStyle(fontSize: 14)),
+                const Text('⏰', style: TextStyle(fontSize: 14)),
                 const SizedBox(width: 5),
                 const Flexible(
                   child:
-                  Text('ط³ظ†ظ† ط§ظ„ط¢ظ†', overflow: TextOverflow.ellipsis),
+                  Text('سنن الآن', overflow: TextOverflow.ellipsis),
                 ),
                 const SizedBox(width: 4),
                 _buildTabBadge(
@@ -81,10 +81,10 @@ class SunnahTabBarWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text('ًں“‹', style: TextStyle(fontSize: 14)),
+                const Text('📋', style: TextStyle(fontSize: 14)),
                 const SizedBox(width: 5),
                 const Flexible(
-                  child: Text('ط¬ظ…ظٹط¹ ط§ظ„ط³ظ†ظ†',
+                  child: Text('جميع السنن',
                       overflow: TextOverflow.ellipsis),
                 ),
                 const SizedBox(width: 4),

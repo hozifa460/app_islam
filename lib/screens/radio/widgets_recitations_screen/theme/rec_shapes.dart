@@ -155,7 +155,9 @@ class RecSizes {
   RecSizes._();
 
   static double imageHeight(double screenH) =>
-      (screenH * 0.22).clamp(90.0, 300.0);
+      (screenH * 0.145).clamp(82.0, 155.0);
+
+  static double cardWidth(double imageHeight) => imageHeight * (6 / 5);
 
   static double detailImageHeight(double screenH) =>
       (screenH * 0.27).clamp(90.0, 300.0);
@@ -163,7 +165,7 @@ class RecSizes {
   static const double miniPlayerIconSize = 38.0;
   static const double miniPlayerPlayBtnSize = 34.0;
   static const double categoryIconSize = 36.0;
-  static const double cardPlayBtnSize = 32.0;
+  static const double cardPlayBtnSize = 28.0;
   static const double backBtnSize = 40.0;
   static const double reciterArrowSize = 32.0;
 

@@ -64,12 +64,12 @@ class _QiblaSplashScreenState extends State<QiblaSplashScreen>
   }
 
   Future<void> _startLoadingProcess() async {
-    if (mounted) setState(() => _statusText = 'ط¬ط§ط±ظچ ط§ظ„طھط­ظ‚ظ‚ ظ…ظ† ط§ظ„ط£ط°ظˆظ†ط§طھ...');
+    if (mounted) setState(() => _statusText = 'جارٍ التحقق من الأذونات...');
     await Future.delayed(const Duration(milliseconds: 1800));
 
     var status = await QiblaLocationService.checkStatus();
     if (status == QiblaLocationStatus.permissionDenied && mounted) {
-      setState(() => _statusText = 'ظٹط±ط¬ظ‰ ظ…ظ†ط­ ط¥ط°ظ† ط§ظ„ظ…ظˆظ‚ط¹...');
+      setState(() => _statusText = 'يرجى منح إذن الموقع...');
       status = await QiblaLocationService.requestPermission();
     }
 
@@ -78,7 +78,7 @@ class _QiblaSplashScreenState extends State<QiblaSplashScreen>
       return;
     }
 
-    if (mounted) setState(() => _statusText = 'ط¬ط§ط±ظچ طھط­ط¯ظٹط¯ ظ…ظˆظ‚ط¹ظƒ ط¨ط¯ظ‚ط©...');
+    if (mounted) setState(() => _statusText = 'جارٍ تحديد موقعك بدقة...');
     await Future.delayed(const Duration(milliseconds: 800));
 
     final position = await QiblaLocationService.getAccuratePosition();
@@ -106,19 +106,19 @@ class _QiblaSplashScreenState extends State<QiblaSplashScreen>
     String message;
     switch (status) {
       case QiblaLocationStatus.serviceDisabled:
-        message = 'ظٹط±ط¬ظ‰ طھظپط¹ظٹظ„ ط®ط¯ظ…ط© ط§ظ„ظ…ظˆظ‚ط¹ (GPS) ظˆط§ظ„ظ…ط­ط§ظˆظ„ط© ظ…ط±ط© ط£ط®ط±ظ‰.';
+        message = 'يرجى تفعيل خدمة الموقع (GPS) والمحاولة مرة أخرى.';
         break;
       case QiblaLocationStatus.permissionDeniedForever:
-        message = 'طھظ… ط±ظپط¶ ط§ظ„ط¥ط°ظ† ظ†ظ‡ط§ط¦ظٹط§ظ‹. ظٹط±ط¬ظ‰ طھظپط¹ظٹظ„ظ‡ ظ…ظ† ط¥ط¹ط¯ط§ط¯ط§طھ ط§ظ„طھط·ط¨ظٹظ‚.';
+        message = 'تم رفض الإذن نهائياً. يرجى تفعيله من إعدادات التطبيق.';
         break;
       default:
-        message = 'ظ„ظ… ظٹطھظ… ظ…ظ†ط­ ط¥ط°ظ† ط§ظ„ظ…ظˆظ‚ط¹. ظ„ط§ ظٹظ…ظƒظ† طھط­ط¯ظٹط¯ ط§ظ„ظ‚ط¨ظ„ط©.';
+        message = 'لم يتم منح إذن الموقع. لا يمكن تحديد القبلة.';
     }
     _showErrorAndExit(message);
   }
 
   void _handleLocationError() {
-    _showErrorAndExit('ظ„ظ… ظ†طھظ…ظƒظ† ظ…ظ† طھط­ط¯ظٹط¯ ظ…ظˆظ‚ط¹ظƒ. ظٹط±ط¬ظ‰ ط§ظ„ظ…ط­ط§ظˆظ„ط© ظ…ط±ط© ط£ط®ط±ظ‰.');
+    _showErrorAndExit('لم نتمكن من تحديد موقعك. يرجى المحاولة مرة أخرى.');
   }
 
   void _showErrorAndExit(String message) {

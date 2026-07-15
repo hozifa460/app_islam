@@ -32,7 +32,7 @@ class FilterSectionWidget extends StatelessWidget {
             children: [
               Expanded(
                 child: _FilterChip(
-                  label:    'ط§ظ„ظƒظ„',
+                  label:    'الكل',
                   icon:     Icons.apps_rounded,
                   selected: selectedFilter == 'all',
                   color:    MiracleTheme.neonBlue,
@@ -43,7 +43,7 @@ class FilterSectionWidget extends StatelessWidget {
               const SizedBox(width: 8),
               Expanded(
                 child: _FilterChip(
-                  label:    'ط§ظ„ظ‚ط±ط¢ظ†',
+                  label:    'القرآن',
                   icon:     Icons.menu_book_rounded,
                   selected: selectedFilter == 'quran',
                   color:    const Color(0xFF4FC3F7),
@@ -54,7 +54,7 @@ class FilterSectionWidget extends StatelessWidget {
               const SizedBox(width: 8),
               Expanded(
                 child: _FilterChip(
-                  label:    'ط§ظ„ط³ظ†ط©',
+                  label:    'السنة',
                   icon:     Icons.auto_awesome_rounded,
                   selected: selectedFilter == 'sunnah',
                   color:    MiracleTheme.neonGold,
@@ -77,7 +77,7 @@ class FilterSectionWidget extends StatelessWidget {
             itemBuilder: (context, index) {
               if (index == 0) {
                 return _CategoryPill(
-                  label:    'ط§ظ„ظƒظ„',
+                  label:    'الكل',
                   selected: selectedCategory == 'all',
                   color:    MiracleTheme.neonBlue,
                   t:        t,

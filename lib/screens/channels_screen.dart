@@ -21,7 +21,7 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
   bool _loading          = true;
 
   List<Map<String, dynamic>> _scholars   = [];
-  List<String>               _categories = ['ط§ظ„ظƒظ„'];
+  List<String>               _categories = ['الكل'];
 
   @override
   void initState() {
@@ -37,7 +37,7 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
       final scholars =
       data.map((e) => Map<String, dynamic>.from(e)).toList();
 
-      final cats = <String>{'ط§ظ„ظƒظ„'};
+      final cats = <String>{'الكل'};
       for (final s in scholars) {
         cats.add(s['category'] as String);
       }
@@ -82,7 +82,7 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
     } catch (_) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('ظ„ط§ ظٹظ…ظƒظ† ظپطھط­ ط§ظ„ط±ط§ط¨ط·',
+          content: Text('لا يمكن فتح الرابط',
               style: GoogleFonts.cairo()),
           backgroundColor: Colors.red,
         ));
@@ -149,7 +149,7 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
         children: [
           CircularProgressIndicator(color: _gold, strokeWidth: 3),
           const SizedBox(height: 14),
-          Text('ط¬ط§ط±ظچ طھط­ظ…ظٹظ„ ط§ظ„ط¨ظٹط§ظ†ط§طھ...',
+          Text('جارٍ تحميل البيانات...',
               style: GoogleFonts.cairo(
                 color: isDark ? Colors.white60 : Colors.black54,
                 fontSize: 13,
@@ -199,7 +199,7 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'ظ‚ظ†ظˆط§طھ ط§ظ„ط¹ظ„ظ…ط§ط، ظˆط§ظ„ط¯ط¹ط§ط©',
+                  'قنوات العلماء والدعاة',
                   style: GoogleFonts.cairo(
                     fontSize: (w * 0.048).clamp(15.0, 22.0),
                     fontWeight: FontWeight.w800,
@@ -209,7 +209,7 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  '${_scholars.length} ط´ظٹط® ظˆط¹ط§ظ„ظ…',
+                  '${_scholars.length} شيخ وعالم',
                   style: GoogleFonts.cairo(
                     fontSize: (w * 0.028).clamp(10.0, 13.0),
                     color: textColor.withValues(alpha: 0.48),
@@ -299,7 +299,7 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
     if (list.isEmpty) {
       return Center(
         child: Text(
-          'ظ„ط§ ظٹظˆط¬ط¯ ط¹ظ„ظ…ط§ط، ظپظٹ ظ‡ط°ط§ ط§ظ„طھطµظ†ظٹظپ',
+          'لا يوجد علماء في هذا التصنيف',
           style: GoogleFonts.cairo(
               color: textColor.withValues(alpha: 0.5),
               fontSize: (w * 0.035).clamp(12.0, 16.0)),
@@ -702,7 +702,7 @@ class _ScholarCard extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'ط§ظ„ظ…ظ†طµط§طھ ط§ظ„ظ…طھط§ط­ط©:',
+            'المنصات المتاحة:',
             style: GoogleFonts.cairo(
               fontSize: labelFontSize,
               color: textColor.withValues(alpha: 0.42),
@@ -936,7 +936,7 @@ class _PlatformItem extends StatelessWidget {
                       size: (w * 0.02).clamp(6.0, 9.0)),
                   SizedBox(width: w * 0.014),
                   Text(
-                    'ط¨ط« ظ…ط¨ط§ط´ط±',
+                    'بث مباشر',
                     style: GoogleFonts.cairo(
                       fontSize: nameFontSize,
                       fontWeight: FontWeight.w700,

@@ -12,14 +12,14 @@ class HadithScreen extends StatelessWidget {
   final Color _bgDark = const Color(0xFF0A0E17);
 
   final List<Map<String, dynamic>> hadithBooks = const [
-    {'title': 'طµط­ظٹط­ ط§ظ„ط¨ط®ط§ط±ظٹ', 'author': 'ط§ظ„ط¥ظ…ط§ظ… ط§ظ„ط¨ط®ط§ط±ظٹ', 'id': 'bukhari', 'color': Color(0xFF1B5E20), 'icon': Icons.auto_stories_rounded, 'hadithCount': '7563'},
-    {'title': 'طµط­ظٹط­ ظ…ط³ظ„ظ…', 'author': 'ط§ظ„ط¥ظ…ط§ظ… ظ…ط³ظ„ظ…', 'id': 'muslim', 'color': Color(0xFF0D47A1), 'icon': Icons.menu_book_rounded, 'hadithCount': '5362'},
-    {'title': 'ط³ظ†ظ† ط§ظ„طھط±ظ…ط°ظٹ', 'author': 'ط§ظ„ط¥ظ…ط§ظ… ط§ظ„طھط±ظ…ط°ظٹ', 'id': 'tirmidhi', 'color': Color(0xFFBF360C), 'icon': Icons.book_rounded, 'hadithCount': '3956'},
-    {'title': 'ط³ظ†ظ† ط§ظ„ظ†ط³ط§ط¦ظٹ', 'author': 'ط§ظ„ط¥ظ…ط§ظ… ط§ظ„ظ†ط³ط§ط¦ظٹ', 'id': 'nasai', 'color': Color(0xFF4A148C), 'icon': Icons.chrome_reader_mode_rounded, 'hadithCount': '5774'},
-    {'title': 'ط³ظ†ظ† ط£ط¨ظٹ ط¯ط§ظˆط¯', 'author': 'ط§ظ„ط¥ظ…ط§ظ… ط£ط¨ظˆ ط¯ط§ظˆط¯', 'id': 'abudawud', 'color': Color(0xFF006064), 'icon': Icons.library_books_rounded, 'hadithCount': '5274'},
-    {'title': 'ط³ظ†ظ† ط§ط¨ظ† ظ…ط§ط¬ظ‡', 'author': 'ط§ظ„ط¥ظ…ط§ظ… ط§ط¨ظ† ظ…ط§ط¬ظ‡', 'id': 'ibnmajah', 'color': Color(0xFF880E4F), 'icon': Icons.import_contacts_rounded, 'hadithCount': '4341'},
-    {'title': 'ط±ظٹط§ط¶ ط§ظ„طµط§ظ„ط­ظٹظ†', 'author': 'ط§ظ„ط¥ظ…ط§ظ… ط§ظ„ظ†ظˆظˆظٹ', 'id': 'riyad', 'color': Color(0xFF2E7D32), 'icon': Icons.local_library_rounded, 'hadithCount': '1896'},
-    {'title': 'ط§ظ„ط£ط±ط¨ط¹ظˆظ† ط§ظ„ظ†ظˆظˆظٹط©', 'author': 'ط§ظ„ط¥ظ…ط§ظ… ط§ظ„ظ†ظˆظˆظٹ', 'id': 'nawawi40', 'color': Color(0xFFF57F17), 'icon': Icons.bookmark_rounded, 'hadithCount': '42'},
+    {'title': 'صحيح البخاري', 'author': 'الإمام البخاري', 'id': 'bukhari', 'color': Color(0xFF1B5E20), 'icon': Icons.auto_stories_rounded, 'hadithCount': '7563'},
+    {'title': 'صحيح مسلم', 'author': 'الإمام مسلم', 'id': 'muslim', 'color': Color(0xFF0D47A1), 'icon': Icons.menu_book_rounded, 'hadithCount': '5362'},
+    {'title': 'سنن الترمذي', 'author': 'الإمام الترمذي', 'id': 'tirmidhi', 'color': Color(0xFFBF360C), 'icon': Icons.book_rounded, 'hadithCount': '3956'},
+    {'title': 'سنن النسائي', 'author': 'الإمام النسائي', 'id': 'nasai', 'color': Color(0xFF4A148C), 'icon': Icons.chrome_reader_mode_rounded, 'hadithCount': '5774'},
+    {'title': 'سنن أبي داود', 'author': 'الإمام أبو داود', 'id': 'abudawud', 'color': Color(0xFF006064), 'icon': Icons.library_books_rounded, 'hadithCount': '5274'},
+    {'title': 'سنن ابن ماجه', 'author': 'الإمام ابن ماجه', 'id': 'ibnmajah', 'color': Color(0xFF880E4F), 'icon': Icons.import_contacts_rounded, 'hadithCount': '4341'},
+    {'title': 'رياض الصالحين', 'author': 'الإمام النووي', 'id': 'riyad', 'color': Color(0xFF2E7D32), 'icon': Icons.local_library_rounded, 'hadithCount': '1896'},
+    {'title': 'الأربعون النووية', 'author': 'الإمام النووي', 'id': 'nawawi40', 'color': Color(0xFFF57F17), 'icon': Icons.bookmark_rounded, 'hadithCount': '42'},
   ];
 
   @override
@@ -129,7 +129,7 @@ class HadithScreen extends StatelessWidget {
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 24),
                                   child: Text(
-                                    'ظƒطھط¨ ط§ظ„ط­ط¯ظٹط« ط§ظ„ط´ط±ظٹظپ',
+                                    'كتب الحديث الشريف',
                                     style: GoogleFonts.amiriQuran(
                                       fontSize: titleSize,
                                       color: Colors.white,
@@ -151,7 +151,7 @@ class HadithScreen extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                   child: Text(
-                                    'ط£ظ…ظ‡ط§طھ ط§ظ„ظƒطھط¨ ط§ظ„ط³طھط© ظˆط؛ظٹط±ظ‡ط§',
+                                    'أمهات الكتب الستة وغيرها',
                                     style: GoogleFonts.cairo(
                                       fontSize: subSize,
                                       color: _gold.withValues(alpha: 0.9),
@@ -209,19 +209,19 @@ class HadithScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      _buildStatItem('${hadithBooks.length}', 'ظƒطھط§ط¨', Icons.menu_book_rounded, isDark, textColorMain, textColorSub),
+                      _buildStatItem('${hadithBooks.length}', 'كتاب', Icons.menu_book_rounded, isDark, textColorMain, textColorSub),
                       Container(
                         width: 1,
                         height: 30,
                         color: isDark ? Colors.white.withValues(alpha: 0.1) : Colors.grey.withValues(alpha: 0.2),
                       ),
-                      _buildStatItem('34,208', 'ط­ط¯ظٹط«', Icons.format_quote_rounded, isDark, textColorMain, textColorSub),
+                      _buildStatItem('34,208', 'حديث', Icons.format_quote_rounded, isDark, textColorMain, textColorSub),
                       Container(
                         width: 1,
                         height: 30,
                         color: isDark ? Colors.white.withValues(alpha: 0.1) : Colors.grey.withValues(alpha: 0.2),
                       ),
-                      _buildStatItem('8', 'ظ…ط¤ظ„ظپ', Icons.person_rounded, isDark, textColorMain, textColorSub),
+                      _buildStatItem('8', 'مؤلف', Icons.person_rounded, isDark, textColorMain, textColorSub),
                     ],
                   ),
                 ),
@@ -566,7 +566,7 @@ class _HadithBookCardState extends State<_HadithBookCard> with SingleTickerProvi
                                   ),
                                   const SizedBox(width: 4),
                                   Text(
-                                    'طھطµظپظ‘ط­',
+                                    'تصفّح',
                                     style: GoogleFonts.cairo(
                                       fontSize: badgeSize,
                                       color: widget.isDark ? widget.gold : bookColor,

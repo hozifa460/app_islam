@@ -255,17 +255,17 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
     await prefs.setInt('prayer_${key}_iqama_delay', config.iqamaDelay);
     await prefs.setString('prayer_${key}_iqama_sound', config.iqamaSound);
     _prayerCustomizations[key] = config;
-    debugPrint('âœ… Quick save: $key');
+    debugPrint('✅ Quick save: $key');
   }
 
   void _scheduleInBackground() {
     Future(() async {
-      debugPrint('ًں”„ Background scheduling started...');
+      debugPrint('🔄 Background scheduling started...');
       final prefs = await SharedPreferences.getInstance();
       try {
         for (final key in const ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha']) {
           if (!mounted) {
-            debugPrint('âڑ ï¸ڈ Widget disposed, stopping background scheduling');
+            debugPrint('⚠️ Widget disposed, stopping background scheduling');
             return;
           }
           final config = _customizationFor(key);
@@ -289,14 +289,14 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
           await NativeAdhanBridge.savePrayerSchedule(schedule: schedule);
           await prefs.setBool('full_schedule_saved', true);
           await prefs.remove('prayer_schedule_needs_update');
-          debugPrint('âœ… Full ${schedule.length}-day schedule saved!');
+          debugPrint('✅ Full ${schedule.length}-day schedule saved!');
         } else {
           await prefs.setBool('full_schedule_saved', false);
-          debugPrint('âڑ ï¸ڈ Schedule calculation failed, will retry later');
+          debugPrint('⚠️ Schedule calculation failed, will retry later');
         }
       } catch (e) {
         await prefs.setBool('full_schedule_saved', false);
-        debugPrint('â‌Œ Background scheduling error: $e');
+        debugPrint('❌ Background scheduling error: $e');
       }
     });
   }
@@ -623,11 +623,11 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
     final fullScheduleSaved = prefs.getBool('full_schedule_saved') ?? false;
     final needsUpdate = prefs.getBool('prayer_schedule_needs_update') ?? false;
     if (!fullScheduleSaved || needsUpdate) {
-      debugPrint('ًں“Œ Schedule incomplete, completing now...');
+      debugPrint('📌 Schedule incomplete, completing now...');
       await _scheduleTodayImmediately();
       _scheduleInBackground();
     } else {
-      debugPrint('âœ… Full schedule already saved');
+      debugPrint('✅ Full schedule already saved');
     }
   }
 
@@ -635,7 +635,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
     final prefs = await SharedPreferences.getInstance();
     final needsUpdate = prefs.getBool('prayer_schedule_needs_update') ?? false;
     if (needsUpdate && _adhanEnabled) {
-      debugPrint('âڑ ï¸ڈ Schedule needs update, recalculating...');
+      debugPrint('⚠️ Schedule needs update, recalculating...');
       await Future.delayed(const Duration(seconds: 2));
       await _scheduleAllAdhans();
       await prefs.remove('prayer_schedule_needs_update');
@@ -687,18 +687,18 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
       if (m.isBuiltIn) continue;
       final local = await AdhanAudioService.instance.getLocalPath(m.id);
       if (local == null || local.isEmpty) {
-        debugPrint('â¬‡ï¸ڈ Downloading muezzin: ${m.name}...');
+        debugPrint('⬇️ Downloading muezzin: ${m.name}...');
         try {
           final downloaded =
           await AdhanAudioService.instance.downloadAndSave(m.id, m.url);
           if (downloaded != null && downloaded.isNotEmpty) {
-            debugPrint('âœ… Downloaded: ${m.name}');
+            debugPrint('✅ Downloaded: ${m.name}');
           } else {
-            debugPrint('â‌Œ Failed to download: ${m.name}, will use fallback');
+            debugPrint('❌ Failed to download: ${m.name}, will use fallback');
             allReady = false;
           }
         } catch (e) {
-          debugPrint('â‌Œ Download error for ${m.name}: $e');
+          debugPrint('❌ Download error for ${m.name}: $e');
           allReady = false;
         }
       }
@@ -757,7 +757,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
         prefs.getString('prayer_${key}_iqama_sound') ?? 'iqama1',
       );
       debugPrint(
-          'ًں“Œ Loaded $key: adhan=${_prayerCustomizations[key]!.adhanEnabled}');
+          '📌 Loaded $key: adhan=${_prayerCustomizations[key]!.adhanEnabled}');
     }
     _autoReminderEnabled = prefs.getBool('auto_reminder_enabled') ?? false;
     _autoIqamaEnabled = prefs.getBool('auto_iqama_enabled') ?? false;
@@ -885,7 +885,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
       }
     }
     _prayerCustomizations[key] = config;
-    debugPrint('âœ… Saved customization for $key: $config');
+    debugPrint('✅ Saved customization for $key: $config');
   }
 
   void _buildPrayerRows() {
@@ -1262,7 +1262,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                               Icon(Icons.mosque_rounded, color: _gold, size: 14),
                                               const SizedBox(width: 6),
                                               Text(
-                                                'ط§ظ„ط¬ط²ظٹط±ط© ط§ظ„ط¹ط±ط¨ظٹط© ظˆط§ظ„ط®ظ„ظٹط¬',
+                                                'الجزيرة العربية والخليج',
                                                 style: GoogleFonts.cairo(
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.bold,
@@ -1277,7 +1277,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         value: 'umm_al_qura',
                                         child: Padding(
                                           padding: const EdgeInsets.only(right: 16),
-                                          child: Text('ط£ظ… ط§ظ„ظ‚ط±ظ‰ - ط§ظ„ط³ط¹ظˆط¯ظٹط© ظˆط§ظ„ظٹظ…ظ†',
+                                          child: Text('أم القرى - السعودية واليمن',
                                               style: GoogleFonts.cairo(fontSize: 13)),
                                         ),
                                       ),
@@ -1285,7 +1285,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         value: 'dubai',
                                         child: Padding(
                                           padding: const EdgeInsets.only(right: 16),
-                                          child: Text('ظ‡ظٹط¦ط© ط§ظ„ط´ط¤ظˆظ† ط§ظ„ط¥ط³ظ„ط§ظ…ظٹط© - ط§ظ„ط¥ظ…ط§ط±ط§طھ',
+                                          child: Text('هيئة الشؤون الإسلامية - الإمارات',
                                               style: GoogleFonts.cairo(fontSize: 13)),
                                         ),
                                       ),
@@ -1293,7 +1293,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         value: 'kuwait',
                                         child: Padding(
                                           padding: const EdgeInsets.only(right: 16),
-                                          child: Text('ظˆط²ط§ط±ط© ط§ظ„ط£ظˆظ‚ط§ظپ - ط§ظ„ظƒظˆظٹطھ',
+                                          child: Text('وزارة الأوقاف - الكويت',
                                               style: GoogleFonts.cairo(fontSize: 13)),
                                         ),
                                       ),
@@ -1301,7 +1301,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         value: 'qatar',
                                         child: Padding(
                                           padding: const EdgeInsets.only(right: 16),
-                                          child: Text('ظ‚ط·ط±',
+                                          child: Text('قطر',
                                               style: GoogleFonts.cairo(fontSize: 13)),
                                         ),
                                       ),
@@ -1309,7 +1309,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         value: 'gulf',
                                         child: Padding(
                                           padding: const EdgeInsets.only(right: 16),
-                                          child: Text('ظ…ظ†ط·ظ‚ط© ط§ظ„ط®ظ„ظٹط¬ - ط¹ظڈظ…ط§ظ† ظˆط§ظ„ط¨ط­ط±ظٹظ†',
+                                          child: Text('منطقة الخليج - عُمان والبحرين',
                                               style: GoogleFonts.cairo(fontSize: 13)),
                                         ),
                                       ),
@@ -1332,7 +1332,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                               Icon(Icons.wb_sunny_rounded, color: _gold, size: 14),
                                               const SizedBox(width: 6),
                                               Text(
-                                                'ط´ظ…ط§ظ„ ط£ظپط±ظٹظ‚ظٹط§',
+                                                'شمال أفريقيا',
                                                 style: GoogleFonts.cairo(
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.bold,
@@ -1347,7 +1347,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         value: 'egyptian',
                                         child: Padding(
                                           padding: const EdgeInsets.only(right: 16),
-                                          child: Text('ط§ظ„ظ‡ظٹط¦ط© ط§ظ„ظ…طµط±ظٹط© - ظ…طµط± ظˆط§ظ„ط³ظˆط¯ط§ظ† ظˆظ„ظٹط¨ظٹط§',
+                                          child: Text('الهيئة المصرية - مصر والسودان وليبيا',
                                               style: GoogleFonts.cairo(fontSize: 13)),
                                         ),
                                       ),
@@ -1355,7 +1355,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         value: 'morocco',
                                         child: Padding(
                                           padding: const EdgeInsets.only(right: 16),
-                                          child: Text('ظˆط²ط§ط±ط© ط§ظ„ط£ظˆظ‚ط§ظپ - ط§ظ„ظ…ط؛ط±ط¨',
+                                          child: Text('وزارة الأوقاف - المغرب',
                                               style: GoogleFonts.cairo(fontSize: 13)),
                                         ),
                                       ),
@@ -1363,7 +1363,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         value: 'algeria',
                                         child: Padding(
                                           padding: const EdgeInsets.only(right: 16),
-                                          child: Text('ظˆط²ط§ط±ط© ط§ظ„ط´ط¤ظˆظ† ط§ظ„ط¯ظٹظ†ظٹط© - ط§ظ„ط¬ط²ط§ط¦ط±',
+                                          child: Text('وزارة الشؤون الدينية - الجزائر',
                                               style: GoogleFonts.cairo(fontSize: 13)),
                                         ),
                                       ),
@@ -1371,7 +1371,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         value: 'tunisia',
                                         child: Padding(
                                           padding: const EdgeInsets.only(right: 16),
-                                          child: Text('ظˆط²ط§ط±ط© ط§ظ„ط´ط¤ظˆظ† ط§ظ„ط¯ظٹظ†ظٹط© - طھظˆظ†ط³',
+                                          child: Text('وزارة الشؤون الدينية - تونس',
                                               style: GoogleFonts.cairo(fontSize: 13)),
                                         ),
                                       ),
@@ -1394,7 +1394,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                               Icon(Icons.star_rounded, color: _gold, size: 14),
                                               const SizedBox(width: 6),
                                               Text(
-                                                'ط§ظ„ظ…ط´ط±ظ‚ ط§ظ„ط¹ط±ط¨ظٹ',
+                                                'المشرق العربي',
                                                 style: GoogleFonts.cairo(
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.bold,
@@ -1409,7 +1409,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         value: 'jordan',
                                         child: Padding(
                                           padding: const EdgeInsets.only(right: 16),
-                                          child: Text('ظˆط²ط§ط±ط© ط§ظ„ط£ظˆظ‚ط§ظپ - ط§ظ„ط£ط±ط¯ظ† ظˆظپظ„ط³ط·ظٹظ†',
+                                          child: Text('وزارة الأوقاف - الأردن وفلسطين',
                                               style: GoogleFonts.cairo(fontSize: 13)),
                                         ),
                                       ),
@@ -1417,7 +1417,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         value: 'mwl',
                                         child: Padding(
                                           padding: const EdgeInsets.only(right: 16),
-                                          child: Text('ط±ط§ط¨ط·ط© ط§ظ„ط¹ط§ظ„ظ… ط§ظ„ط¥ط³ظ„ط§ظ…ظٹ - ط³ظˆط±ظٹط§ ظˆظ„ط¨ظ†ط§ظ† ظˆط§ظ„ط¹ط±ط§ظ‚',
+                                          child: Text('رابطة العالم الإسلامي - سوريا ولبنان والعراق',
                                               style: GoogleFonts.cairo(fontSize: 13)),
                                         ),
                                       ),
@@ -1440,7 +1440,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                               Icon(Icons.location_on_rounded, color: _gold, size: 14),
                                               const SizedBox(width: 6),
                                               Text(
-                                                'طھط±ظƒظٹط§ ظˆط¥ظٹط±ط§ظ†',
+                                                'تركيا وإيران',
                                                 style: GoogleFonts.cairo(
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.bold,
@@ -1455,7 +1455,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         value: 'turkey',
                                         child: Padding(
                                           padding: const EdgeInsets.only(right: 16),
-                                          child: Text('ط§ظ„ط¯ظٹط§ظ†ط© ط§ظ„طھط±ظƒظٹط© - Diyanet',
+                                          child: Text('الديانة التركية - Diyanet',
                                               style: GoogleFonts.cairo(fontSize: 13)),
                                         ),
                                       ),
@@ -1463,7 +1463,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         value: 'tehran',
                                         child: Padding(
                                           padding: const EdgeInsets.only(right: 16),
-                                          child: Text('ظ…ط¹ظ‡ط¯ ط§ظ„ط¬ظٹظˆظپظٹط²ظٹط§ط، - ط·ظ‡ط±ط§ظ†',
+                                          child: Text('معهد الجيوفيزياء - طهران',
                                               style: GoogleFonts.cairo(fontSize: 13)),
                                         ),
                                       ),
@@ -1486,7 +1486,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                               Icon(Icons.public_rounded, color: _gold, size: 14),
                                               const SizedBox(width: 6),
                                               Text(
-                                                'ط¬ظ†ظˆط¨ ط¢ط³ظٹط§',
+                                                'جنوب آسيا',
                                                 style: GoogleFonts.cairo(
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.bold,
@@ -1501,7 +1501,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         value: 'karachi',
                                         child: Padding(
                                           padding: const EdgeInsets.only(right: 16),
-                                          child: Text('ط¬ط§ظ…ط¹ط© ظƒط±ط§طھط´ظٹ - ط¨ط§ظƒط³طھط§ظ† ظˆط§ظ„ظ‡ظ†ط¯ ظˆط£ظپط؛ط§ظ†ط³طھط§ظ†',
+                                          child: Text('جامعة كراتشي - باكستان والهند وأفغانستان',
                                               style: GoogleFonts.cairo(fontSize: 13)),
                                         ),
                                       ),
@@ -1524,7 +1524,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                               Icon(Icons.travel_explore_rounded, color: _gold, size: 14),
                                               const SizedBox(width: 6),
                                               Text(
-                                                'ط¬ظ†ظˆط¨ ط´ط±ظ‚ ط¢ط³ظٹط§',
+                                                'جنوب شرق آسيا',
                                                 style: GoogleFonts.cairo(
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.bold,
@@ -1539,7 +1539,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         value: 'jakim',
                                         child: Padding(
                                           padding: const EdgeInsets.only(right: 16),
-                                          child: Text('JAKIM - ظ…ط§ظ„ظٹط²ظٹط§',
+                                          child: Text('JAKIM - ماليزيا',
                                               style: GoogleFonts.cairo(fontSize: 13)),
                                         ),
                                       ),
@@ -1547,7 +1547,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         value: 'kemenag',
                                         child: Padding(
                                           padding: const EdgeInsets.only(right: 16),
-                                          child: Text('ظˆط²ط§ط±ط© ط§ظ„ط´ط¤ظˆظ† ط§ظ„ط¯ظٹظ†ظٹط© - ط¥ظ†ط¯ظˆظ†ظٹط³ظٹط§',
+                                          child: Text('وزارة الشؤون الدينية - إندونيسيا',
                                               style: GoogleFonts.cairo(fontSize: 13)),
                                         ),
                                       ),
@@ -1555,7 +1555,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         value: 'singapore',
                                         child: Padding(
                                           padding: const EdgeInsets.only(right: 16),
-                                          child: Text('MUIS - ط³ظ†ط؛ط§ظپظˆط±ط© ظˆط¨ط±ظˆظ†ط§ظٹ',
+                                          child: Text('MUIS - سنغافورة وبروناي',
                                               style: GoogleFonts.cairo(fontSize: 13)),
                                         ),
                                       ),
@@ -1578,7 +1578,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                               Icon(Icons.euro_rounded, color: _gold, size: 14),
                                               const SizedBox(width: 6),
                                               Text(
-                                                'ط£ظˆط±ظˆط¨ط§',
+                                                'أوروبا',
                                                 style: GoogleFonts.cairo(
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.bold,
@@ -1593,7 +1593,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         value: 'france',
                                         child: Padding(
                                           padding: const EdgeInsets.only(right: 16),
-                                          child: Text('ط§ظ„ط§طھط­ط§ط¯ ط§ظ„ط¥ط³ظ„ط§ظ…ظٹ ط§ظ„ظپط±ظ†ط³ظٹ - ظپط±ظ†ط³ط§',
+                                          child: Text('الاتحاد الإسلامي الفرنسي - فرنسا',
                                               style: GoogleFonts.cairo(fontSize: 13)),
                                         ),
                                       ),
@@ -1601,7 +1601,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         value: 'portugal',
                                         child: Padding(
                                           padding: const EdgeInsets.only(right: 16),
-                                          child: Text('ط§ظ„ظ…ط¬طھظ…ط¹ ط§ظ„ط¥ط³ظ„ط§ظ…ظٹ - ط§ظ„ط¨ط±طھط؛ط§ظ„',
+                                          child: Text('المجتمع الإسلامي - البرتغال',
                                               style: GoogleFonts.cairo(fontSize: 13)),
                                         ),
                                       ),
@@ -1609,7 +1609,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         value: 'russia',
                                         child: Padding(
                                           padding: const EdgeInsets.only(right: 16),
-                                          child: Text('ط§ظ„ط¥ط¯ط§ط±ط© ط§ظ„ط¯ظٹظ†ظٹط© - ط±ظˆط³ظٹط§ ظˆط´ط±ظ‚ ط£ظˆط±ظˆط¨ط§',
+                                          child: Text('الإدارة الدينية - روسيا وشرق أوروبا',
                                               style: GoogleFonts.cairo(fontSize: 13)),
                                         ),
                                       ),
@@ -1632,7 +1632,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                               Icon(Icons.language_rounded, color: _gold, size: 14),
                                               const SizedBox(width: 6),
                                               Text(
-                                                'ط£ظ…ط±ظٹظƒط§ ظˆط£ظˆظ‚ظٹط§ظ†ظˆط³ظٹط§',
+                                                'أمريكا وأوقيانوسيا',
                                                 style: GoogleFonts.cairo(
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.bold,
@@ -1647,7 +1647,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         value: 'isna',
                                         child: Padding(
                                           padding: const EdgeInsets.only(right: 16),
-                                          child: Text('ISNA - ط£ظ…ط±ظٹظƒط§ ط§ظ„ط´ظ…ط§ظ„ظٹط© ظˆظƒظ†ط¯ط§',
+                                          child: Text('ISNA - أمريكا الشمالية وكندا',
                                               style: GoogleFonts.cairo(fontSize: 13)),
                                         ),
                                       ),
@@ -1670,7 +1670,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                               Icon(Icons.hub_rounded, color: _gold, size: 14),
                                               const SizedBox(width: 6),
                                               Text(
-                                                'ط¹ط§ظ„ظ…ظٹ',
+                                                'عالمي',
                                                 style: GoogleFonts.cairo(
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.bold,
@@ -1685,7 +1685,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                         value: 'moonsighting',
                                         child: Padding(
                                           padding: const EdgeInsets.only(right: 16),
-                                          child: Text('ظ„ط¬ظ†ط© ط±ط¤ظٹط© ط§ظ„ظ‡ظ„ط§ظ„ - ط¯ظ‚ط© ط¹ط§ظ„ظٹط©',
+                                          child: Text('لجنة رؤية الهلال - دقة عالية',
                                               style: GoogleFonts.cairo(fontSize: 13)),
                                         ),
                                       ),
@@ -1957,7 +1957,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
         ),
         // âœ… ط§ظ„ط¹ظ†ظˆط§ظ†
         title: Text(
-          'ط§ظ„ظ…ط¤ط°ظ† ط؛ظٹط± ظ…ط­ظ…ظ‘ظ„',
+          'المؤذن غير محمّل',
           textAlign: TextAlign.center,
           style: GoogleFonts.cairo(
             fontWeight: FontWeight.bold,
@@ -2004,7 +2004,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
 
             // ط§ظ„ط±ط³ط§ظ„ط©
             Text(
-              'ظٹط¬ط¨ طھط­ظ…ظٹظ„ ظ‡ط°ط§ ط§ظ„ظ…ط¤ط°ظ† ط£ظˆظ„ط§ظ‹ ظ…ظ† ط´ط§ط´ط© ط¥ط¹ط¯ط§ط¯ط§طھ ط§ظ„ط£ط°ط§ظ† ظ‚ط¨ظ„ ط£ظ† طھطھظ…ظƒظ† ظ…ظ† طھط®طµظٹطµظ‡ ظ„طµظ„ط§ط© ظ…ط¹ظٹظ†ط©.',
+              'يجب تحميل هذا المؤذن أولاً من شاشة إعدادات الأذان قبل أن تتمكن من تخصيصه لصلاة معينة.',
               textAlign: TextAlign.center,
               style: GoogleFonts.cairo(
                 fontSize: 13,
@@ -2033,28 +2033,28 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                 children: [
                   _buildStep(
                     '1',
-                    'ط§ط°ظ‡ط¨ ط¥ظ„ظ‰ ط¥ط¹ط¯ط§ط¯ط§طھ ط§ظ„ط£ط°ط§ظ†',
+                    'اذهب إلى إعدادات الأذان',
                     Icons.settings_rounded,
                     isDark,
                   ),
                   const SizedBox(height: 8),
                   _buildStep(
                     '2',
-                    'ط§ط®طھط± ط§ظ„ظپط¦ط© ط«ظ… ط§ظ„ظ…ط¤ط°ظ†',
+                    'اختر الفئة ثم المؤذن',
                     Icons.category_rounded,
                     isDark,
                   ),
                   const SizedBox(height: 8),
                   _buildStep(
                     '3',
-                    'ط§ط¶ط؛ط· ط²ط± ط§ظ„طھط­ظ…ظٹظ„',
+                    'اضغط زر التحميل',
                     Icons.download_rounded,
                     isDark,
                   ),
                   const SizedBox(height: 8),
                   _buildStep(
                     '4',
-                    'ط§ط±ط¬ط¹ ظˆط®طµظ‘طµظ‡ ظ„ظ„طµظ„ط§ط©',
+                    'ارجع وخصّصه للصلاة',
                     Icons.check_circle_rounded,
                     isDark,
                   ),
@@ -2070,7 +2070,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
           TextButton(
             onPressed: () => Navigator.pop(ctx),
             child: Text(
-              'ط¥ظ„ط؛ط§ط،',
+              'إلغاء',
               style: GoogleFonts.cairo(
                 color: isDark ? Colors.white54 : Colors.black45,
                 fontWeight: FontWeight.bold,
@@ -2095,7 +2095,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
             ),
             icon: const Icon(Icons.settings_rounded, size: 18),
             label: Text(
-              'ط¥ط¹ط¯ط§ط¯ط§طھ ط§ظ„ط£ط°ط§ظ†',
+              'إعدادات الأذان',
               style: GoogleFonts.cairo(
                 fontWeight: FontWeight.bold,
                 fontSize: 13,
@@ -2279,7 +2279,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
   }
 
   Future<void> _scheduleTodayImmediately() async {
-    debugPrint('âڑ، Scheduling TODAY immediately...');
+    debugPrint('⚡ Scheduling TODAY immediately...');
     final now = DateTime.now();
     const int todayDayIndex = 0;
     for (final row in _rows) {
@@ -2289,7 +2289,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
       final prayerIndex = NativeAdhanBridge.prayerIndices[row.key] ?? 0;
       final prayerTime = row.dateTime;
       if (now.isAfter(prayerTime)) {
-        debugPrint('âڈ­ï¸ڈ Skipping ${row.name} - passed');
+        debugPrint('⏭️ Skipping ${row.name} - passed');
         continue;
       }
       final m = _effectiveForKey(row.key);
@@ -2304,7 +2304,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
           todayDayIndex, prayerIndex, 1);
       final iqamaCode = NativeAdhanBridge.generateRequestCode(
           todayDayIndex, prayerIndex, 2);
-      debugPrint('ًں“¢ Adhan: ${row.name} at $prayerTime (code=$adhanCode)');
+      debugPrint('📢 Adhan: ${row.name} at $prayerTime (code=$adhanCode)');
       await NativeAdhanBridge.scheduleAdhan(
         time: prayerTime,
         prayerName: row.name,
@@ -2319,7 +2319,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
           final reminderLocalPath = await _getReminderLocalPath(
               row.key, config.reminderSound);
           debugPrint(
-              'ًں”” Reminder: ${row.name} at $reminderTime (code=$reminderCode)');
+              '🔔 Reminder: ${row.name} at $reminderTime (code=$reminderCode)');
           await NativeAdhanBridge.scheduleReminder(
             time: reminderTime,
             prayerName: row.name,
@@ -2336,7 +2336,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
           final iqamaLocalPath =
           await _getIqamaLocalPath(row.key, config.iqamaSound);
           debugPrint(
-              'ًں•Œ Iqama: ${row.name} at $iqamaTime (code=$iqamaCode)');
+              '🕌 Iqama: ${row.name} at $iqamaTime (code=$iqamaCode)');
           await NativeAdhanBridge.scheduleIqama(
             time: iqamaTime,
             prayerName: row.name,
@@ -2347,7 +2347,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
         }
       }
     }
-    debugPrint('âœ… Today scheduled!');
+    debugPrint('✅ Today scheduled!');
   }
 
   void _showSuccessMessage() {
@@ -2376,7 +2376,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
   Future<void> _scheduleAllAdhans() async {
     final schedule = await _calculateNext14DaysWithCustomization();
     if (schedule.isEmpty) {
-      debugPrint('â‌Œ Failed to calculate schedule');
+      debugPrint('❌ Failed to calculate schedule');
       return;
     }
     await NativeAdhanBridge.savePrayerSchedule(schedule: schedule);
@@ -2389,7 +2389,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
     final lat = prefs.getDouble('last_lat');
     final long = prefs.getDouble('last_long');
     if (lat == null || long == null) {
-      debugPrint('â‌Œ No location available');
+      debugPrint('❌ No location available');
       return [];
     }
     int methodId = 4;
@@ -2462,14 +2462,14 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
           }
         }
       } catch (e) {
-        debugPrint('â‌Œ Error fetching month ${targetDate.month}: $e');
+        debugPrint('❌ Error fetching month ${targetDate.month}: $e');
       }
       if (schedule.length >= maxDays) break;
     }
     schedule.sort(
             (a, b) => (a['date'] as String).compareTo(b['date'] as String));
     final trimmed = schedule.take(maxDays).toList();
-    debugPrint('ًں“… Calculated ${trimmed.length} days');
+    debugPrint('📅 Calculated ${trimmed.length} days');
     return trimmed;
   }
 
@@ -2514,7 +2514,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
     if (row.noAdhan == true) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('ط§ظ„ط´ط±ظˆظ‚ ظ„ظٹط³ ظ„ظ‡ ط£ط°ط§ظ†', style: GoogleFonts.cairo()),
+          content: Text('الشروق ليس له أذان', style: GoogleFonts.cairo()),
           backgroundColor: Colors.orange,
         ),
       );

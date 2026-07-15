@@ -36,7 +36,7 @@ class SunnahStatsBar extends StatelessWidget {
             Expanded(
               child: _StatItem(
                 value: '$totalSunnahs',
-                label: 'ط³ظ†ط© ظ†ط¨ظˆظٹط©',
+                label: 'سنة نبوية',
                 icon: Icons.format_list_bulleted_rounded,
                 isDark: isDark,
               ),
@@ -49,7 +49,7 @@ class SunnahStatsBar extends StatelessWidget {
             Expanded(
               child: _StatItem(
                 value: '$totalCategories',
-                label: 'ظپط¦ط©',
+                label: 'فئة',
                 icon: Icons.category_rounded,
                 isDark: isDark,
               ),
@@ -62,7 +62,7 @@ class SunnahStatsBar extends StatelessWidget {
             Expanded(
               child: _StatItem(
                 value: '100%',
-                label: 'ظ…ظˆط«ظ‚ط©',
+                label: 'موثقة',
                 icon: Icons.verified_rounded,
                 isDark: isDark,
               ),

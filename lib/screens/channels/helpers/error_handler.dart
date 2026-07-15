@@ -30,7 +30,7 @@ class ErrorHandler {
     }
 
     if (kDebugMode) {
-      debugPrint('â‌Œ [${error.type.name}] ${error.message}');
+      debugPrint('❌ [${error.type.name}] ${error.message}');
       if (error.stackTrace != null) {
         debugPrint('Stack: ${error.stackTrace}');
       }
@@ -46,28 +46,28 @@ class ErrorHandler {
     if (exception is SocketException) {
       error = AppError(
         type: ErrorType.network,
-        message: 'ظ„ط§ ظٹظˆط¬ط¯ ط§طھطµط§ظ„ ط¨ط§ظ„ط¥ظ†طھط±ظ†طھ',
+        message: 'لا يوجد اتصال بالإنترنت',
         originalError: exception,
         stackTrace: stackTrace,
       );
     } else if (exception is TimeoutException) {
       error = AppError(
         type: ErrorType.timeout,
-        message: 'ط§ظ†طھظ‡طھ ظ…ظ‡ظ„ط© ط§ظ„ط§طھطµط§ظ„',
+        message: 'انتهت مهلة الاتصال',
         originalError: exception,
         stackTrace: stackTrace,
       );
     } else if (exception is FormatException) {
       error = AppError(
         type: ErrorType.parsing,
-        message: 'ط®ط·ط£ ظپظٹ طھظ†ط³ظٹظ‚ ط§ظ„ط¨ظٹط§ظ†ط§طھ',
+        message: 'خطأ في تنسيق البيانات',
         originalError: exception,
         stackTrace: stackTrace,
       );
     } else if (exception is HttpException) {
       error = AppError(
         type: ErrorType.server,
-        message: 'ط®ط·ط£ ظ…ظ† ط§ظ„ط®ط§ط¯ظ…',
+        message: 'خطأ من الخادم',
         originalError: exception,
         stackTrace: stackTrace,
       );
@@ -104,10 +104,10 @@ class ErrorHandler {
         final error = handleException(e, stack);
 
         if (attempts <= retries && _shouldRetry(error.type)) {
-          debugPrint('âڑ ï¸ڈ Retry $attempts/$retries for $operationName');
+          debugPrint('⚠️ Retry $attempts/$retries for $operationName');
           await Future.delayed(retryDelay * attempts);
         } else {
-          debugPrint('â‌Œ $operationName failed after $attempts attempts');
+          debugPrint('❌ $operationName failed after $attempts attempts');
           return fallback;
         }
       }
@@ -135,10 +135,10 @@ class ErrorHandler {
         final error = handleException(e, stack);
 
         if (attempts <= retries && _shouldRetry(error.type)) {
-          debugPrint('âڑ ï¸ڈ Retry $attempts/$retries for $operationName');
+          debugPrint('⚠️ Retry $attempts/$retries for $operationName');
           await Future.delayed(retryDelay * attempts);
         } else {
-          debugPrint('â‌Œ $operationName failed after $attempts attempts');
+          debugPrint('❌ $operationName failed after $attempts attempts');
           return fallback;
         }
       }
@@ -179,7 +179,7 @@ class ErrorHandler {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         duration: const Duration(seconds: 4),
         action: SnackBarAction(
-          label: 'ط­ط³ظ†ط§ظ‹',
+          label: 'حسناً',
           textColor: Colors.white,
           onPressed: () {},
         ),
@@ -244,7 +244,7 @@ class ErrorHandler {
                 onRetry();
               },
               child: Text(
-                'ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط©',
+                'إعادة المحاولة',
                 style: GoogleFonts.cairo(
                   color: const Color(0xFF0D9488),
                   fontWeight: FontWeight.w700,
@@ -254,7 +254,7 @@ class ErrorHandler {
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(
-              'ط¥ط؛ظ„ط§ظ‚',
+              'إغلاق',
               style: GoogleFonts.cairo(
                 color: isDark ? Colors.white60 : Colors.black45,
               ),
@@ -286,19 +286,19 @@ class AppError {
   String get userFriendlyMessage {
     switch (type) {
       case ErrorType.network:
-        return 'طھط­ظ‚ظ‚ ظ…ظ† ط§طھطµط§ظ„ظƒ ط¨ط§ظ„ط¥ظ†طھط±ظ†طھ ظˆط­ط§ظˆظ„ ظ…ط±ط© ط£ط®ط±ظ‰';
+        return 'تحقق من اتصالك بالإنترنت وحاول مرة أخرى';
       case ErrorType.timeout:
-        return 'ط§ط³طھط؛ط±ظ‚ ط§ظ„ط§طھطµط§ظ„ ظˆظ‚طھط§ظ‹ ط·ظˆظٹظ„ط§ظ‹طŒ ط­ط§ظˆظ„ ظ…ط±ط© ط£ط®ط±ظ‰';
+        return 'استغرق الاتصال وقتاً طويلاً، حاول مرة أخرى';
       case ErrorType.server:
-        return 'ط­ط¯ط« ط®ط·ط£ ظپظٹ ط§ظ„ط®ط§ط¯ظ…طŒ ط­ط§ظˆظ„ ظ„ط§ط­ظ‚ط§ظ‹';
+        return 'حدث خطأ في الخادم، حاول لاحقاً';
       case ErrorType.parsing:
-        return 'ط­ط¯ط« ط®ط·ط£ ظپظٹ ظ…ط¹ط§ظ„ط¬ط© ط§ظ„ط¨ظٹط§ظ†ط§طھ';
+        return 'حدث خطأ في معالجة البيانات';
       case ErrorType.notFound:
-        return 'ظ„ظ… ظٹطھظ… ط§ظ„ط¹ط«ظˆط± ط¹ظ„ظ‰ ط§ظ„ظ…ط­طھظˆظ‰ ط§ظ„ظ…ط·ظ„ظˆط¨';
+        return 'لم يتم العثور على المحتوى المطلوب';
       case ErrorType.rateLimit:
-        return 'طھظ… طھط¬ط§ظˆط² ط§ظ„ط­ط¯ ط§ظ„ظ…ط³ظ…ظˆط­طŒ ط­ط§ظˆظ„ ظ„ط§ط­ظ‚ط§ظ‹';
+        return 'تم تجاوز الحد المسموح، حاول لاحقاً';
       default:
-        return 'ط­ط¯ط« ط®ط·ط£ ط؛ظٹط± ظ…طھظˆظ‚ط¹';
+        return 'حدث خطأ غير متوقع';
     }
   }
 }

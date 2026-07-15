@@ -31,13 +31,13 @@ class ConnectivityService extends ChangeNotifier {
       case ConnectivityResult.wifi:
         return 'WiFi';
       case ConnectivityResult.mobile:
-        return 'ط¨ظٹط§ظ†ط§طھ ط§ظ„ظ‡ط§طھظپ';
+        return 'بيانات الهاتف';
       case ConnectivityResult.ethernet:
         return 'Ethernet';
       case ConnectivityResult.vpn:
         return 'VPN';
       default:
-        return 'ط؛ظٹط± ظ…طھطµظ„';
+        return 'غير متصل';
     }
   }
 
@@ -50,7 +50,7 @@ class ConnectivityService extends ChangeNotifier {
   }
 
   void _onConnectivityChanged(ConnectivityResult result) {
-    debugPrint('ًں“، Connectivity changed: $result');
+    debugPrint('📡 Connectivity changed: $result');
     _connectionType = result;
 
     if (result == ConnectivityResult.none) {
@@ -77,7 +77,7 @@ class ConnectivityService extends ChangeNotifier {
         await _verifyConnection();
       }
     } catch (e) {
-      debugPrint('â‌Œ Connectivity check error: $e');
+      debugPrint('❌ Connectivity check error: $e');
       _isConnected = false;
     }
 
@@ -133,7 +133,7 @@ class ConnectivityService extends ChangeNotifier {
             const SizedBox(width: 12),
             Expanded(
               child: Text(
-                'ظ„ط§ ظٹظˆط¬ط¯ ط§طھطµط§ظ„ ط¨ط§ظ„ط¥ظ†طھط±ظ†طھ',
+                'لا يوجد اتصال بالإنترنت',
                 style: GoogleFonts.cairo(fontWeight: FontWeight.w500),
               ),
             ),
@@ -144,7 +144,7 @@ class ConnectivityService extends ChangeNotifier {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         duration: const Duration(seconds: 3),
         action: SnackBarAction(
-          label: 'ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط©',
+          label: 'إعادة المحاولة',
           textColor: Colors.white,
           onPressed: () => checkConnectivity(),
         ),
@@ -195,7 +195,7 @@ class ConnectivityBanner extends StatelessWidget {
                     ),
                     const SizedBox(width: 8),
                     Text(
-                      'ظ„ط§ ظٹظˆط¬ط¯ ط§طھطµط§ظ„ ط¨ط§ظ„ط¥ظ†طھط±ظ†طھ',
+                      'لا يوجد اتصال بالإنترنت',
                       style: GoogleFonts.cairo(
                         color: Colors.white,
                         fontSize: 13,
@@ -281,7 +281,7 @@ class NoConnectionScreen extends StatelessWidget {
 
               // ط§ظ„ط¹ظ†ظˆط§ظ†
               Text(
-                'ظ„ط§ ظٹظˆط¬ط¯ ط§طھطµط§ظ„',
+                'لا يوجد اتصال',
                 style: GoogleFonts.cairo(
                   fontSize: (w * 0.055).clamp(20.0, 28.0),
                   fontWeight: FontWeight.w800,
@@ -293,7 +293,7 @@ class NoConnectionScreen extends StatelessWidget {
 
               // ط§ظ„ظˆطµظپ
               Text(
-                'طھط­ظ‚ظ‚ ظ…ظ† ط§طھطµط§ظ„ظƒ ط¨ط§ظ„ط¥ظ†طھط±ظ†طھ ظˆط­ط§ظˆظ„ ظ…ط±ط© ط£ط®ط±ظ‰',
+                'تحقق من اتصالك بالإنترنت وحاول مرة أخرى',
                 style: GoogleFonts.cairo(
                   fontSize: (w * 0.035).clamp(13.0, 16.0),
                   color: isDark ? Colors.white60 : Colors.black54,
@@ -345,7 +345,7 @@ class NoConnectionScreen extends StatelessWidget {
                         const Icon(Icons.refresh_rounded, size: 20),
                         const SizedBox(width: 8),
                         Text(
-                          'ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط©',
+                          'إعادة المحاولة',
                           style: GoogleFonts.cairo(
                             fontSize: 15,
                             fontWeight: FontWeight.w700,

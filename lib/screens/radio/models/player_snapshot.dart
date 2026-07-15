@@ -11,6 +11,9 @@ class PlayerSnapshot {
   final bool isBuffering;
   final bool isOnline;
   final String sourceKey;
+  final String? error;
+  final bool canGoNext;
+  final bool canGoPrevious;
 
   const PlayerSnapshot({
     required this.hasActivePlayer,
@@ -23,6 +26,9 @@ class PlayerSnapshot {
     required this.isBuffering,
     required this.isOnline,
     required this.sourceKey,
+    this.error,
+    this.canGoNext = false,
+    this.canGoPrevious = false,
   });
 
   static const empty = PlayerSnapshot(
@@ -36,6 +42,7 @@ class PlayerSnapshot {
     isBuffering: false,
     isOnline: false,
     sourceKey: 'none',
+    error: null,
   );
 
   @override
@@ -50,7 +57,10 @@ class PlayerSnapshot {
         other.isPlaying == isPlaying &&
         other.isBuffering == isBuffering &&
         other.isOnline == isOnline &&
-        other.sourceKey == sourceKey;
+        other.sourceKey == sourceKey &&
+        other.error == error &&
+        other.canGoNext == canGoNext &&
+        other.canGoPrevious == canGoPrevious;
   }
 
   @override
@@ -65,5 +75,8 @@ class PlayerSnapshot {
     isBuffering,
     isOnline,
     sourceKey,
+    error,
+    canGoNext,
+    canGoPrevious,
   );
 }

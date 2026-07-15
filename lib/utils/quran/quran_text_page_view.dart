@@ -54,7 +54,7 @@ class QuranTextPage extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               Text(
-                'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط§ظ„ظ†طµ...',
+                'جاري تحميل النص...',
                 style: GoogleFonts.cairo(color: Colors.grey, fontSize: 14),
               ),
             ],
@@ -162,7 +162,7 @@ class _NormalView extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 8),
                 child: FittedBox(
                   child: Text(
-                    'ط¨ظگط³ظ’ظ…ظگ ظ±ظ„ظ„ظژظ‘ظ‡ظگ ظ±ظ„ط±ظژظ‘ط­ظ’ظ…ظژظ°ظ†ظگ ظ±ظ„ط±ظژظ‘ط­ظگظٹظ…ظگ',
+                    'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ',
                     style: GoogleFonts.amiri(
                       fontSize: fontSize * 0.75,
                       color: isDark ? Colors.white54 : Colors.black38,
@@ -250,7 +250,7 @@ class _NormalView extends StatelessWidget {
       child: FittedBox(
         fit: BoxFit.scaleDown,
         child: Text(
-          'ط³ظˆط±ط© $name',
+          'سورة $name',
           style: GoogleFonts.amiri(
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -264,15 +264,15 @@ class _NormalView extends StatelessWidget {
   String _hide(String text, int level) {
     final w = text.split(' ');
     switch (level) {
-      case 1: return w.asMap().entries.map((e) => e.key % 3 == 1 ? 'â—ڈâ—ڈ' : e.value).join(' ');
-      case 2: return w.asMap().entries.map((e) => e.key.isEven ? 'â—ڈâ—ڈ' : e.value).join(' ');
-      case 3: return w.map((_) => 'â—ڈâ—ڈ').join(' ');
+      case 1: return w.asMap().entries.map((e) => e.key % 3 == 1 ? '●●' : e.value).join(' ');
+      case 2: return w.asMap().entries.map((e) => e.key.isEven ? '●●' : e.value).join(' ');
+      case 3: return w.map((_) => '●●').join(' ');
       default: return text;
     }
   }
 
   String _ar(int n) {
-    const d = {'0':'ظ ','1':'ظ،','2':'ظ¢','3':'ظ£','4':'ظ¤','5':'ظ¥','6':'ظ¦','7':'ظ§','8':'ظ¨','9':'ظ©'};
+    const d = {'0':'٠','1':'ظ،','2':'٢','3':'٣','4':'٤','5':'٥','6':'٦','7':'٧','8':'٨','9':'٩'};
     String s = n.toString();
     d.forEach((k, v) => s = s.replaceAll(k, v));
     return s;
@@ -346,7 +346,7 @@ class _RecitationView extends StatelessWidget {
               const SizedBox(width: 8),
               Flexible(
                 child: Text(
-                  'ط§ظ‚ط±ط£ ط¨طµظˆطھظƒ ظˆط³طھط¸ظ‡ط± ط§ظ„ظƒظ„ظ…ط§طھ طھظ„ظ‚ط§ط¦ظٹط§ظ‹',
+                  'اقرأ بصوتك وستظهر الكلمات تلقائياً',
                   style: GoogleFonts.cairo(
                     color: Colors.green.shade700,
                     fontWeight: FontWeight.bold,
@@ -375,7 +375,7 @@ class _RecitationView extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               Text(
-                '${_ar(revealedWordCount)} / ${_ar(allWords.length)} ظƒظ„ظ…ط©',
+                '${_ar(revealedWordCount)} / ${_ar(allWords.length)} كلمة',
                 style: GoogleFonts.cairo(
                   fontSize: 10,
                   color: Colors.grey,
@@ -452,7 +452,7 @@ class _RecitationView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Text(
-                    revealed ? word.text : 'â—ڈâ—ڈ',
+                    revealed ? word.text : '●●',
                     style: GoogleFonts.amiri(
                       fontSize: fontSize * 0.9,
                       height: 1.7,
@@ -483,7 +483,7 @@ class _RecitationView extends StatelessWidget {
   }
 
   String _ar(int n) {
-    const d = {'0':'ظ ','1':'ظ،','2':'ظ¢','3':'ظ£','4':'ظ¤','5':'ظ¥','6':'ظ¦','7':'ظ§','8':'ظ¨','9':'ظ©'};
+    const d = {'0':'٠','1':'ظ،','2':'٢','3':'٣','4':'٤','5':'٥','6':'٦','7':'٧','8':'٨','9':'٩'};
     String s = n.toString();
     d.forEach((k, v) => s = s.replaceAll(k, v));
     return s;

@@ -114,7 +114,7 @@ class SalawatSliverHeader extends StatelessWidget {
                         children: [
                           // Ornamental top
                           Text(
-                            'ï·½',
+                            '﷽',
                             style: TextStyle(
                               fontSize: subtitleFontSize + 6,
                               color: theme.accentGold.withValues(alpha: 0.7),
@@ -163,7 +163,7 @@ class SalawatSliverHeader extends StatelessWidget {
                                   ),
                                   child: Center(
                                     child: Text(
-                                      'ï·؛',
+                                      'ﷺ',
                                       style: TextStyle(
                                         fontSize: calligraphyFontSize,
                                         color: Colors.white,

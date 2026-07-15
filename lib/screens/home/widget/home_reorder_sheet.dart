@@ -94,7 +94,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'ط¥ط¹ط§ط¯ط© ط§ظ„طھط±طھظٹط¨ ط§ظ„ط§ظپطھط±ط§ط¶ظٹ',
+                  'إعادة الترتيب الافتراضي',
                   style: GoogleFonts.cairo(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
@@ -104,14 +104,14 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
             ],
           ),
           content: Text(
-            'ط³ظٹطھظ… ط¥ط¹ط§ط¯ط© طھط±طھظٹط¨ ط§ظ„ط¨ط·ط§ظ‚ط§طھ ظˆط¥ط¸ظ‡ط§ط±ظ‡ط§ ط¬ظ…ظٹط¹ط§ظ‹ ظƒظ…ط§ ظƒط§ظ†طھ.\nظ‡ظ„ طھط±ظٹط¯ ط§ظ„ظ…طھط§ط¨ط¹ط©طں',
+            'سيتم إعادة ترتيب البطاقات وإظهارها جميعاً كما كانت.\nهل تريد المتابعة؟',
             style: GoogleFonts.cairo(fontSize: 13.5, height: 1.6),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(ctx, false),
               child: Text(
-                'ط¥ظ„ط؛ط§ط،',
+                'إلغاء',
                 style: GoogleFonts.cairo(
                   color: widget.isDark ? Colors.white60 : Colors.black54,
                   fontWeight: FontWeight.bold,
@@ -129,7 +129,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
               ),
               onPressed: () => Navigator.pop(ctx, true),
               child: Text(
-                'ط¥ط¹ط§ط¯ط© طھط¹ظٹظٹظ†',
+                'إعادة تعيين',
                 style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
               ),
             ),
@@ -212,7 +212,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'طھط±طھظٹط¨ ط§ظ„ط¨ط·ط§ظ‚ط§طھ',
+                          'ترتيب البطاقات',
                           style: GoogleFonts.cairo(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -220,7 +220,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                           ),
                         ),
                         Text(
-                          '$visibleCount ظ…ظ† ${_cards.length} ط¨ط·ط§ظ‚ط© ط¸ط§ظ‡ط±ط©',
+                          '$visibleCount من ${_cards.length} بطاقة ظاهرة',
                           style: GoogleFonts.cairo(
                             fontSize: 12,
                             color: subTextColor,
@@ -231,7 +231,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                   ),
                   IconButton(
                     onPressed: _resetToDefault,
-                    tooltip: 'ط¥ط¹ط§ط¯ط© ط§ظ„طھط±طھظٹط¨ ط§ظ„ط§ظپطھط±ط§ط¶ظٹ',
+                    tooltip: 'إعادة الترتيب الافتراضي',
                     icon: Icon(
                       Icons.restore_rounded,
                       color: subTextColor,
@@ -266,7 +266,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                   const SizedBox(width: 10),
                   Expanded(
                     child: Text(
-                      'ط§ط³ط­ط¨ ط§ظ„ط¨ط·ط§ظ‚ط© ظ„طھط؛ظٹظٹط± طھط±طھظٹط¨ظ‡ط§طŒ ط£ظˆ ط§ط¶ط؛ط· ط¹ظ„ظ‰ ط§ظ„ط¹ظٹظ† ظ„ط¥ط®ظپط§ط¦ظ‡ط§',
+                      'اسحب البطاقة لتغيير ترتيبها، أو اضغط على العين لإخفائها',
                       style: GoogleFonts.cairo(
                         fontSize: 11.5,
                         color: widget.primary.withValues(alpha: 0.8),
@@ -356,7 +356,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                         ),
                       ),
                       subtitle: Text(
-                        isVisible ? 'ط¸ط§ظ‡ط±ط©' : 'ظ…ط®ظپظٹط©',
+                        isVisible ? 'ظاهرة' : 'مخفية',
                         style: GoogleFonts.cairo(
                           fontSize: 11,
                           color: isVisible
@@ -451,7 +451,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                           onPressed: _hasChanges ? _saveAndClose : null,
                           icon: const Icon(Icons.check_rounded, size: 20),
                           label: Text(
-                            'ط­ظپط¸ ط§ظ„طھط؛ظٹظٹط±ط§طھ',
+                            'حفظ التغييرات',
                             style: GoogleFonts.cairo(
                               fontWeight: FontWeight.bold,
                               fontSize: 14,
@@ -475,7 +475,7 @@ class _HomeReorderSheetState extends State<HomeReorderSheet> {
                         ),
                         onPressed: () => Navigator.pop(context),
                         child: Text(
-                          'ط¥ظ„ط؛ط§ط،',
+                          'إلغاء',
                           style: GoogleFonts.cairo(
                             fontWeight: FontWeight.bold,
                             fontSize: 14,

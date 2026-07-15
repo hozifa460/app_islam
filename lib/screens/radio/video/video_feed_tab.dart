@@ -91,7 +91,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
           if (sub.hasVideo) {
             videoItems.add(_VideoEntry(
               title: sub.title,
-              subtitle: '${item.title} â€¢ ${sub.subtitle}',
+              subtitle: '${item.title} • ${sub.subtitle}',
               emoji: sub.emoji,
               imageUrl: sub.imageUrl ?? item.imageUrl,
               videoUrl: sub.videoUrl!,
@@ -167,7 +167,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
     final cacheManager = VideoCacheManager();
     for (final url in urls) {
       cacheManager.ensureController(url).catchError((e) {
-        debugPrint('âڑ ï¸ڈ Preload failed: $e');
+        debugPrint('⚠️ Preload failed: $e');
       });
     }
   }
@@ -210,7 +210,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
               child: GestureDetector(
                 onTap: () {
                   HapticFeedback.lightImpact();
-                  _openFeed(_forYouVideos, 'ظ…ظ‚طھط±ط­ط© ظ„ظƒ');
+                  _openFeed(_forYouVideos, 'مقترحة لك');
                 },
                 child: Container(
                   width: double.infinity,
@@ -241,7 +241,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        'ط´ط§ظ‡ط¯ ط§ظ„ظƒظ„ (${_forYouVideos.length})',
+                        'شاهد الكل (${_forYouVideos.length})',
                         style: GoogleFonts.cairo(
                           fontSize: 14,
                           fontWeight: FontWeight.w800,
@@ -289,7 +289,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Center(
-                  child: Text('âœ¨', style: TextStyle(fontSize: 18)),
+                  child: Text('✨', style: TextStyle(fontSize: 18)),
                 ),
               ),
               const SizedBox(width: 10),
@@ -298,7 +298,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'ظ…ظ‚طھط±ط­ط© ظ„ظƒ',
+                      'مقترحة لك',
                       style: GoogleFonts.cairo(
                         fontSize: 14,
                         fontWeight: FontWeight.w800,
@@ -306,7 +306,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
                       ),
                     ),
                     Text(
-                      'ط¨ظ†ط§ط،ظ‹ ط¹ظ„ظ‰ ط§ظ‡طھظ…ط§ظ…ط§طھظƒ',
+                      'بناءً على اهتماماتك',
                       style: GoogleFonts.cairo(
                         fontSize: 10,
                         color: isDark ? Colors.white38 : Colors.black38,
@@ -350,7 +350,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
               isDark: isDark,
               allVideos: _forYouVideos,
               indexInList: i,
-              sectionTitle: 'ظ…ظ‚طھط±ط­ط© ظ„ظƒ',
+              sectionTitle: 'مقترحة لك',
             ),
           ),
         ),
@@ -402,7 +402,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
                       ),
                     ),
                     Text(
-                      '${section.videos.length} ظ…ظ‚ط·ط¹ ظ…ط±ط¦ظٹ',
+                      '${section.videos.length} مقطع مرئي',
                       style: GoogleFonts.cairo(
                         fontSize: 10,
                         color: isDark ? Colors.white38 : Colors.black38,
@@ -442,7 +442,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
                         ),
                         const SizedBox(width: 4),
                         Text(
-                          'ط´ط§ظ‡ط¯ ط§ظ„ظƒظ„',
+                          'شاهد الكل',
                           style: GoogleFonts.cairo(
                             fontSize: 10,
                             fontWeight: FontWeight.w700,
@@ -506,10 +506,10 @@ class _VideoFeedTabState extends State<VideoFeedTab>
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('ًںژ¬', style: TextStyle(fontSize: 48)),
+          const Text('🎬', style: TextStyle(fontSize: 48)),
           const SizedBox(height: 14),
           Text(
-            'ظ„ط§ طھظˆط¬ط¯ ظ…ظ‚ط§ط·ط¹ ظ…ط±ط¦ظٹط© ط­ط§ظ„ظٹط§ظ‹',
+            'لا توجد مقاطع مرئية حالياً',
             style: GoogleFonts.cairo(
               fontSize: 16,
               fontWeight: FontWeight.w700,
@@ -518,7 +518,7 @@ class _VideoFeedTabState extends State<VideoFeedTab>
           ),
           const SizedBox(height: 6),
           Text(
-            'ط³ظٹطھظ… ط¥ط¶ط§ظپط© طھظ„ط§ظˆط§طھ ظ…ط±ط¦ظٹط© ظ‚ط±ظٹط¨ط§ظ‹',
+            'سيتم إضافة تلاوات مرئية قريباً',
             style: GoogleFonts.cairo(
               fontSize: 12,
               color: isDark ? Colors.white38 : Colors.black38,
@@ -704,7 +704,7 @@ class _VideoCard extends StatelessWidget {
                           ),
                           const SizedBox(width: 3),
                           Text(
-                            subItem.isYouTube ? 'YouTube' : 'ظ…ط±ط¦ظٹ',
+                            subItem.isYouTube ? 'YouTube' : 'مرئي',
                             style: const TextStyle(
                               fontSize: 8,
                               fontWeight: FontWeight.w700,
@@ -744,7 +744,7 @@ class _VideoCard extends StatelessWidget {
                               ),
                               SizedBox(width: 2),
                               Text(
-                                'ظ…ط­ظ…ظ‘ظ„',
+                                'محمّل',
                                 style: TextStyle(
                                   fontSize: 7,
                                   fontWeight: FontWeight.w700,

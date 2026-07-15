@@ -37,7 +37,7 @@ class QiblaAccuracyBar extends StatelessWidget {
                 Row(children: [
                   Icon(Icons.gps_fixed_rounded, color: guidance, size: 15),
                   const SizedBox(width: 6),
-                  Text('ط¯ظ‚ط© ط§ظ„ط§طھط¬ط§ظ‡',
+                  Text('دقة الاتجاه',
                       style: GoogleFonts.cairo(
                         fontSize: 12.5,
                         fontWeight: FontWeight.w700,

@@ -1,10 +1,8 @@
-
 import '../models/chat_message.dart';
 import '../models/fatwa_model.dart';
 import 'advanced_search_service.dart';
 
 class FatwaAssistantService {
-
   static Future<ChatMessage> getAnswer({
     required String userQuestion,
     required List<Fatwa> fatawa,
@@ -20,7 +18,7 @@ class FatwaAssistantService {
     if (results.isEmpty) {
       return ChatMessage.fromAssistantText(
         'لم أجد فتوى في المصادر المتاحة تجيب على سؤالك.\n'
-            'أنصحك بسؤال أهل العلم مباشرة.',
+        'أنصحك بسؤال أهل العلم مباشرة.',
       );
     }
 
@@ -36,15 +34,13 @@ class FatwaAssistantService {
     if (score < 8.0) {
       return ChatMessage.fromAssistantText(
         'لم أجد فتوى صريحة مطابقة لسؤالك في المصادر المتاحة.\n'
-            'أنصحك بسؤال أهل العلم مباشرة.',
+        'أنصحك بسؤال أهل العلم مباشرة.',
       );
     }
 
     // الشرط 2: يجب أن تحتوي الفتوى على كلمات مهمة من السؤال
     final importantWords = _getImportantWords(cleanQuestion);
-    final fatwaText = _normalize(
-        '${fatwa.question} ${fatwa.answer}'
-    );
+    final fatwaText = _normalize('${fatwa.question} ${fatwa.answer}');
 
     int matchedCount = 0;
     for (var word in importantWords) {
@@ -59,7 +55,7 @@ class FatwaAssistantService {
       if (matchRatio < 0.4) {
         return ChatMessage.fromAssistantText(
           'لم أجد فتوى مطابقة لسؤالك في المصادر الحالية.\n'
-              'أنصحك بسؤال أهل العلم مباشرة.',
+          'أنصحك بسؤال أهل العلم مباشرة.',
         );
       }
     }
@@ -68,19 +64,20 @@ class FatwaAssistantService {
     if (!_isActuallyRelevant(cleanQuestion, fatwa)) {
       return ChatMessage.fromAssistantText(
         'وجدت بعض النتائج لكنها لا تتعلق بسؤالك بشكل مباشر.\n'
-            'أنصحك بسؤال أهل العلم مباشرة.',
+        'أنصحك بسؤال أهل العلم مباشرة.',
       );
     }
 
     // ═══════════════════════════════════════
     // الفتوى مطابقة فعلاً، نعرضها
     // ═══════════════════════════════════════
-    final confidence = _getConfidence(score, matchedCount, importantWords.length);
-
-    final introText = _buildIntroText(
-      fatwa: fatwa,
-      confidence: confidence,
+    final confidence = _getConfidence(
+      score,
+      matchedCount,
+      importantWords.length,
     );
+
+    final introText = _buildIntroText(fatwa: fatwa, confidence: confidence);
 
     return ChatMessage.fromAssistantWithSource(
       introText: introText,
@@ -124,15 +121,63 @@ class FatwaAssistantService {
   static List<String> _getImportantWords(String question) {
     // كلمات عامة جداً موجودة في كل الفتاوى
     const generalWords = {
-      'هل', 'ما', 'من', 'في', 'على', 'عن', 'الى', 'مع',
-      'يجوز', 'حكم', 'يمكن', 'كيف', 'متى', 'لماذا', 'هو',
-      'هي', 'ان', 'كان', 'لا', 'لم', 'قد', 'او', 'ثم',
-      'هذا', 'هذه', 'ذلك', 'التي', 'الذي', 'بين',
-      'الله', 'رسول', 'النبي', 'صلى', 'عليه', 'وسلم',
-      'شيخ', 'فضيلة', 'سؤال', 'جواب', 'الاسلام',
-      'عمل', 'قال', 'يقول', 'كل', 'بعض', 'اي',
-      'وما', 'ومن', 'وهل', 'فما', 'فهل',
-      'شخص', 'انسان', 'رجل', 'امراة', 'ناس', 'احد',
+      'هل',
+      'ما',
+      'من',
+      'في',
+      'على',
+      'عن',
+      'الى',
+      'مع',
+      'يجوز',
+      'حكم',
+      'يمكن',
+      'كيف',
+      'متى',
+      'لماذا',
+      'هو',
+      'هي',
+      'ان',
+      'كان',
+      'لا',
+      'لم',
+      'قد',
+      'او',
+      'ثم',
+      'هذا',
+      'هذه',
+      'ذلك',
+      'التي',
+      'الذي',
+      'بين',
+      'الله',
+      'رسول',
+      'النبي',
+      'صلى',
+      'عليه',
+      'وسلم',
+      'شيخ',
+      'فضيلة',
+      'سؤال',
+      'جواب',
+      'الاسلام',
+      'عمل',
+      'قال',
+      'يقول',
+      'كل',
+      'بعض',
+      'اي',
+      'وما',
+      'ومن',
+      'وهل',
+      'فما',
+      'فهل',
+      'شخص',
+      'انسان',
+      'رجل',
+      'امراة',
+      'ناس',
+      'احد',
     };
 
     final normalized = _normalize(question);
@@ -188,10 +233,10 @@ class FatwaAssistantService {
   // تحديد الثقة بناءً على التطابق الفعلي
   // ═══════════════════════════════════════
   static AnswerConfidence _getConfidence(
-      double score,
-      int matchedWords,
-      int totalImportantWords,
-      ) {
+    double score,
+    int matchedWords,
+    int totalImportantWords,
+  ) {
     if (totalImportantWords == 0) return AnswerConfidence.low;
 
     double matchRatio = matchedWords / totalImportantWords;

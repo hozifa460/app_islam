@@ -20,19 +20,19 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
 
   // ًںڈ† ظ†ط¸ط§ظ… ط§ظ„ظ…ط³طھظˆظٹط§طھ
   final List<Map<String, dynamic>> _ranks = [
-    {'title': 'ظ…ط¨طھط¯ط¦', 'minXP': 0, 'color': Colors.blueGrey},
-    {'title': 'ظ…ظ„طھط²ظ…', 'minXP': 100, 'color': Colors.blue},
-    {'title': 'ظ…طھط¯ظٹظ†', 'minXP': 300, 'color': Colors.purple},
-    {'title': 'ط¹ط¨ط¯ ط§ظ„ظ„ظ‡', 'minXP': 600, 'color': Colors.amber.shade700},
+    {'title': 'مبتدئ', 'minXP': 0, 'color': Colors.blueGrey},
+    {'title': 'ملتزم', 'minXP': 100, 'color': Colors.blue},
+    {'title': 'متدين', 'minXP': 300, 'color': Colors.purple},
+    {'title': 'عبد الله', 'minXP': 600, 'color': Colors.amber.shade700},
   ];
 
   // ًں“‌ ط§ظ„طھط­ط¯ظٹط§طھ ط§ظ„ظٹظˆظ…ظٹط© ط§ظ„ظ…طھط§ط­ط©
   final List<Map<String, dynamic>> _todayTasks = [
-    {'title': 'طµظ„ط§ط© ط§ظ„ظپط¬ط± ظپظٹ ظˆظ‚طھظ‡ط§', 'xp': 20, 'icon': Icons.wb_twilight},
-    {'title': 'ظ‚ط±ط§ط،ط© ظˆط±ط¯ ط§ظ„ظ‚ط±ط¢ظ† (طµظپط­طھظٹظ†)', 'xp': 15, 'icon': Icons.menu_book},
-    {'title': 'ط£ط°ظƒط§ط± ط§ظ„طµط¨ط§ط­ ظˆط§ظ„ظ…ط³ط§ط،', 'xp': 15, 'icon': Icons.auto_awesome},
-    {'title': 'طµظ„ط§ط© ط§ظ„ط¶ط­ظ‰', 'xp': 10, 'icon': Icons.wb_sunny},
-    {'title': 'ط±ظƒط¹طھظٹ ظ‚ظٹط§ظ… ط§ظ„ظ„ظٹظ„ (ط§ظ„ظˆطھط±)', 'xp': 25, 'icon': Icons.nights_stay},
+    {'title': 'صلاة الفجر في وقتها', 'xp': 20, 'icon': Icons.wb_twilight},
+    {'title': 'قراءة ورد القرآن (صفحتين)', 'xp': 15, 'icon': Icons.menu_book},
+    {'title': 'أذكار الصباح والمساء', 'xp': 15, 'icon': Icons.auto_awesome},
+    {'title': 'صلاة الضحى', 'xp': 10, 'icon': Icons.wb_sunny},
+    {'title': 'ركعتي قيام الليل (الوتر)', 'xp': 25, 'icon': Icons.nights_stay},
   ];
 
   @override
@@ -144,10 +144,10 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
         context: context,
         builder: (ctx) => AlertDialog(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          title: const Text('ًںژ‰ طھط±ظ‚ظٹط© ظ…ط¨ط§ط±ظƒط©!'),
-          content: Text('ظ…ط§ ط´ط§ط، ط§ظ„ظ„ظ‡! ظ„ظ‚ط¯ ط§ط±طھظ‚ظٹطھ ط¥ظ„ظ‰ ظ…ظ‚ط§ظ… "${next['title']}". ط§ط³طھظ…ط± ظپظٹ ط§ظ„ط·ط§ط¹ط§طھ.', style: GoogleFonts.cairo()),
+          title: const Text('🎉 ترقية مباركة!'),
+          content: Text('ما شاء الله! لقد ارتقيت إلى مقام "${next['title']}". استمر في الطاعات.', style: GoogleFonts.cairo()),
           actions: [
-            ElevatedButton(onPressed: () => Navigator.pop(ctx), style: ElevatedButton.styleFrom(backgroundColor: widget.primaryColor), child: const Text('ظ…طھط§ط¨ط¹ط©'))
+            ElevatedButton(onPressed: () => Navigator.pop(ctx), style: ElevatedButton.styleFrom(backgroundColor: widget.primaryColor), child: const Text('متابعة'))
           ],
         ),
       );
@@ -165,7 +165,7 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
       child: Scaffold(
         backgroundColor: Colors.grey.shade50,
         appBar: AppBar(
-          title: Text('طھط­ط¯ظٹط§طھ ط§ظ„ظٹظˆظ…', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
+          title: Text('تحديات اليوم', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
           backgroundColor: rankColor,
           foregroundColor: Colors.white,
           elevation: 0,
@@ -189,7 +189,7 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
                   children: [
                     const Icon(Icons.workspace_premium_rounded, size: 60, color: Colors.amberAccent),
                     const SizedBox(height: 10),
-                    Text('ط§ظ„ظ…ظ‚ط§ظ… ط§ظ„ط­ط§ظ„ظٹ', style: GoogleFonts.cairo(color: Colors.white70, fontSize: 14)),
+                    Text('المقام الحالي', style: GoogleFonts.cairo(color: Colors.white70, fontSize: 14)),
                     Text(currentRank['title'], style: GoogleFonts.amiri(color: Colors.white, fontSize: 36, fontWeight: FontWeight.bold)),
 
                     const SizedBox(height: 20),
@@ -203,8 +203,8 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text('$_totalXP ظ†ظ‚ط§ط·', style: GoogleFonts.cairo(color: Colors.white, fontWeight: FontWeight.bold)),
-                                  Text(nextRank != null ? '${nextRank['minXP']} ظ„ظ„ظ…ظ‚ط§ظ… ط§ظ„ظ‚ط§ط¯ظ…' : 'ط£ط¹ظ„ظ‰ ظ…ظ‚ط§ظ…', style: GoogleFonts.cairo(color: Colors.white70, fontSize: 12)),
+                                  Text('$_totalXP نقاط', style: GoogleFonts.cairo(color: Colors.white, fontWeight: FontWeight.bold)),
+                                  Text(nextRank != null ? '${nextRank['minXP']} للمقام القادم' : 'أعلى مقام', style: GoogleFonts.cairo(color: Colors.white70, fontSize: 12)),
                                 ],
                               ),
                               const SizedBox(height: 8),
@@ -234,7 +234,7 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
                   children: [
                     Container(width: 4, height: 20, decoration: BoxDecoration(color: widget.primaryColor, borderRadius: BorderRadius.circular(2))),
                     const SizedBox(width: 10),
-                    Text('ط§ظ„ظ…ظ‡ط§ظ… ط§ظ„ظٹظˆظ…ظٹط©', style: GoogleFonts.cairo(fontSize: 20, fontWeight: FontWeight.bold)),
+                    Text('المهام اليومية', style: GoogleFonts.cairo(fontSize: 20, fontWeight: FontWeight.bold)),
                   ],
                 ),
               ),
@@ -276,7 +276,7 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
                               decoration: isDone ? TextDecoration.lineThrough : null,
                             )
                         ),
-                        subtitle: Text('+${task['xp']} ظ†ظ‚ط·ط©', style: GoogleFonts.cairo(color: Colors.amber.shade700, fontWeight: FontWeight.bold, fontSize: 12)),
+                        subtitle: Text('+${task['xp']} نقطة', style: GoogleFonts.cairo(color: Colors.amber.shade700, fontWeight: FontWeight.bold, fontSize: 12)),
                         trailing: isDone
                             ? const Icon(Icons.check_circle, color: Colors.green, size: 30)
                             : OutlinedButton(
@@ -285,7 +285,7 @@ class _DailyChallengesScreenState extends State<DailyChallengesScreen> with Sing
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                           ),
                           onPressed: () => _toggleTask(index),
-                          child: Text('ط¥ظ†ط¬ط§ط²', style: GoogleFonts.cairo(color: widget.primaryColor, fontWeight: FontWeight.bold)),
+                          child: Text('إنجاز', style: GoogleFonts.cairo(color: widget.primaryColor, fontWeight: FontWeight.bold)),
                         ),
                       ),
                     );

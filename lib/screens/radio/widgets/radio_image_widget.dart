@@ -30,9 +30,21 @@ class RadioImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CachedImageWidget(
       imageUrl: imageUrl,
-      fit: BoxFit.cover,
-      width: size,
-      height: size,
+      imageAsset: imageAsset,
+      fit: fit,
+      placeholder: _fallback(),
+      errorWidget: _fallback(),
+    );
+  }
+
+  Widget _fallback() {
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: primary.withValues(alpha: isActive ? 0.48 : 0.30),
+      ),
+      child: Center(
+        child: Text(emoji, style: TextStyle(fontSize: size * 0.48)),
+      ),
     );
   }
 }

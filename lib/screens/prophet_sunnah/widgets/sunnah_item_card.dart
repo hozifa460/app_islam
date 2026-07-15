@@ -325,7 +325,7 @@ class _HadithBox extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'ط§ظ„ط­ط¯ظٹط« ط§ظ„ط´ط±ظٹظپ',
+                'الحديث الشريف',
                 style: TextStyle(
                   color: isDark ? Colors.white38 : const Color(0xFF9A9AB0),
                   fontSize: 10,
@@ -375,7 +375,7 @@ class _NarratorRow extends StatelessWidget {
         ),
         const SizedBox(width: 6),
         Text(
-          'ط±ظˆط§ظ‡:',
+          'رواه:',
           style: TextStyle(
             color: isDark ? Colors.white38 : const Color(0xFF9A9AB0),
             fontSize: 12,
@@ -400,8 +400,8 @@ class _CardFooter extends StatelessWidget {
   void _copy(BuildContext context) {
     final text = '${item.title}\n\n'
         '"${item.hadith}"\n\n'
-        'ط±ظˆط§ظ‡: ${item.narrator}\n'
-        'ط§ظ„ظ…طµط¯ط±: ${item.source} | ط±ظ‚ظ…: ${item.hadithNumber}';
+        'رواه: ${item.narrator}\n'
+        'المصدر: ${item.source} | رقم: ${item.hadithNumber}';
     Clipboard.setData(ClipboardData(text: text));
     HapticFeedback.mediumImpact();
     ScaffoldMessenger.of(context).showSnackBar(
@@ -409,7 +409,7 @@ class _CardFooter extends StatelessWidget {
         content: const Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Text('طھظ… ظ†ط³ط® ط§ظ„ط­ط¯ظٹط« âœ“',
+            Text('تم نسخ الحديث ✓',
                 style: TextStyle(color: Colors.white, fontSize: 14)),
           ],
         ),
@@ -442,7 +442,7 @@ class _CardFooter extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('ظ†ط³ط®',
+                Text('نسخ',
                     style: TextStyle(color: color, fontSize: 12)),
                 const SizedBox(width: 5),
                 Icon(Icons.copy_rounded, color: color, size: 13),

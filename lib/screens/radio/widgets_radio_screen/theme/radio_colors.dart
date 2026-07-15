@@ -152,13 +152,13 @@ class RadioColors {
   // â•گâ•گ ط£ظ„ظˆط§ظ† ط§ظ„طھطµظ†ظٹظپط§طھ (ط«ط§ط¨طھط©) â•گâ•گ
 
   static const Map<String, List<Color>> categoryColors = {
-    'ط§ظ„ظ‚ط±ط¢ظ† ط§ظ„ظƒط±ظٹظ…': [Color(0xFF2D1B69), Color(0xFF7C3AED)],
-    'ط§ظ„ط­ط±ظ…ظٹظ† ط§ظ„ط´ط±ظٹظپظٹظ†': [Color(0xFF1A3A2A), Color(0xFF16A34A)],
-    'ط¥ط°ط§ط¹ط§طھ ط±ط³ظ…ظٹط©': [Color(0xFF1E3A5F), Color(0xFF2563EB)],
-    'طھظپط³ظٹط± ظˆط¹ظ„ظˆظ…': [Color(0xFF3B1F00), Color(0xFFC2700C)],
-    'ط±ظ‚ظٹط© ظˆط£ط¯ط¹ظٹط©': [Color(0xFF2D1A3A), Color(0xFF9333EA)],
-    'طھظ„ط§ظˆط§طھ ط®ط§ط´ط¹ط©': [Color(0xFF1A1A2E), Color(0xFF6366F1)],
-    'طھط±ط¬ظ…ط§طھ ط§ظ„ظ‚ط±ط¢ظ†': [Color(0xFF064E3B), Color(0xFF059669)],
+    'القرآن الكريم': [Color(0xFF2D1B69), Color(0xFF7C3AED)],
+    'الحرمين الشريفين': [Color(0xFF1A3A2A), Color(0xFF16A34A)],
+    'إذاعات رسمية': [Color(0xFF1E3A5F), Color(0xFF2563EB)],
+    'تفسير وعلوم': [Color(0xFF3B1F00), Color(0xFFC2700C)],
+    'رقية وأدعية': [Color(0xFF2D1A3A), Color(0xFF9333EA)],
+    'تلاوات خاشعة': [Color(0xFF1A1A2E), Color(0xFF6366F1)],
+    'ترجمات القرآن': [Color(0xFF064E3B), Color(0xFF059669)],
   };
 
   static const List<Color> defaultCategoryColors = [
@@ -167,20 +167,20 @@ class RadioColors {
   ];
 
   static const Map<String, String> categoryIcons = {
-    'ط§ظ„ظ‚ط±ط¢ظ† ط§ظ„ظƒط±ظٹظ…': 'ًں“–',
-    'ط§ظ„ط­ط±ظ…ظٹظ† ط§ظ„ط´ط±ظٹظپظٹظ†': 'ًں•‹',
-    'ط¥ط°ط§ط¹ط§طھ ط±ط³ظ…ظٹط©': 'ًں“،',
-    'طھظپط³ظٹط± ظˆط¹ظ„ظˆظ…': 'ًں“ڑ',
-    'ط±ظ‚ظٹط© ظˆط£ط¯ط¹ظٹط©': 'ًں¤²',
-    'طھظ„ط§ظˆط§طھ ط®ط§ط´ط¹ط©': 'ًں’§',
-    'طھط±ط¬ظ…ط§طھ ط§ظ„ظ‚ط±ط¢ظ†': 'ًںŒچ',
+    'القرآن الكريم': '📖',
+    'الحرمين الشريفين': '🕋',
+    'إذاعات رسمية': '📡',
+    'تفسير وعلوم': '📚',
+    'رقية وأدعية': '🤲',
+    'تلاوات خاشعة': '💧',
+    'ترجمات القرآن': '🌍',
   };
 
   static List<Color> getColorsForCategory(String category) =>
       categoryColors[category] ?? defaultCategoryColors;
 
   static String getIconForCategory(String category) =>
-      categoryIcons[category] ?? 'ًںژµ';
+      categoryIcons[category] ?? '🎵';
 
   // â•گâ•گ ط£ظ„ظˆط§ظ† ظ…ط³ط§ط¹ط¯ط© ط«ط§ط¨طھط© â•گâ•گ
 

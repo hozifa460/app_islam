@@ -295,13 +295,13 @@ class _VideoFullscreenPlayerScreenState
                           ),
                           leading: const Icon(Icons.closed_caption_rounded),
                           title: Text(
-                            'ط§ظ„طھط±ط¬ظ…ط©',
+                            'الترجمة',
                             style: GoogleFonts.cairo(
                               fontWeight: FontWeight.w700,
                             ),
                           ),
                           subtitle: Text(
-                            _captionsEnabled ? 'ظ…ظپط¹ظ„ط©' : 'ظ…طھظˆظ‚ظپط©',
+                            _captionsEnabled ? 'مفعلة' : 'متوقفة',
                             style: GoogleFonts.cairo(),
                           ),
                         ),
@@ -321,7 +321,7 @@ class _VideoFullscreenPlayerScreenState
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  'طھظ… ط­ظپط¸ ط¥ط¹ط¯ط§ط¯ ط§ظ„طھط±ط¬ظ…ط©طŒ ظˆط³ظٹظڈط·ط¨ظ‚ ط¹ظ†ط¯ طھط´ط؛ظٹظ„ ط§ظ„ظپظٹط¯ظٹظˆ ط§ظ„ظ‚ط§ط¯ظ… ط£ظˆ ط¹ظ†ط¯ ط¥ط¹ط§ط¯ط© ظپطھط­ ط§ظ„ظپظٹط¯ظٹظˆ',
+                                  'تم حفظ إعداد الترجمة، وسيُطبق عند تشغيل الفيديو القادم أو عند إعادة فتح الفيديو',
                                   style: GoogleFonts.cairo(),
                                 ),
                                 behavior: SnackBarBehavior.floating,
@@ -337,20 +337,20 @@ class _VideoFullscreenPlayerScreenState
                           ),
                           leading: const Icon(Icons.high_quality_rounded),
                           title: Text(
-                            'ط§ظ„ط¬ظˆط¯ط©',
+                            'الجودة',
                             style: GoogleFonts.cairo(
                               fontWeight: FontWeight.w700,
                             ),
                           ),
                           subtitle: Text(
                             _selectedQuality == 'auto'
-                                ? 'طھظ„ظ‚ط§ط¦ظٹ'
+                                ? 'تلقائي'
                                 : _selectedQuality,
                             style: GoogleFonts.cairo(),
                           ),
                         ),
                         ...[
-                          ('auto', 'طھظ„ظ‚ط§ط¦ظٹ'),
+                          ('auto', 'تلقائي'),
                           ('1080p', '1080p'),
                           ('720p', '720p'),
                           ('480p', '480p'),
@@ -381,7 +381,7 @@ class _VideoFullscreenPlayerScreenState
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
-                                    'طھظ… ط­ظپط¸ ط§ظ„ط¬ظˆط¯ط© ط§ظ„ظ…ظپط¶ظ„ط©طŒ ظˆط³طھظڈط³طھط®ط¯ظ… ظ…ط¹ ط§ظ„ظپظٹط¯ظٹظˆ ط§ظ„طھط§ظ„ظٹ ط£ظˆ ط¹ظ†ط¯ ط¥ط¹ط§ط¯ط© ظپطھط­ ط§ظ„ظپظٹط¯ظٹظˆ',
+                                    'تم حفظ الجودة المفضلة، وستُستخدم مع الفيديو التالي أو عند إعادة فتح الفيديو',
                                     style: GoogleFonts.cairo(),
                                   ),
                                   behavior: SnackBarBehavior.floating,
@@ -437,8 +437,8 @@ class _VideoFullscreenPlayerScreenState
                               : Icons.favorite_border_rounded,
                       title:
                           _isFavorite
-                              ? 'ط¥ط²ط§ظ„ط© ظ…ظ† ط§ظ„ظ…ظپط¶ظ„ط©'
-                              : 'ط¥ط¶ط§ظپط© ط¥ظ„ظ‰ ط§ظ„ظ…ظپط¶ظ„ط©',
+                              ? 'إزالة من المفضلة'
+                              : 'إضافة إلى المفضلة',
                       onTap: () async {
                         Navigator.pop(context);
                         await _toggleFavorite();
@@ -451,8 +451,8 @@ class _VideoFullscreenPlayerScreenState
                               : Icons.watch_later_outlined,
                       title:
                           _isInWatchLater
-                              ? 'ط¥ط²ط§ظ„ط© ظ…ظ† ط§ظ„ظ…ط´ط§ظ‡ط¯ط© ظ„ط§ط­ظ‚ظ‹ط§'
-                              : 'ط¥ط¶ط§ظپط© ط¥ظ„ظ‰ ط§ظ„ظ…ط´ط§ظ‡ط¯ط© ظ„ط§ط­ظ‚ظ‹ط§',
+                              ? 'إزالة من المشاهدة لاحقًا'
+                              : 'إضافة إلى المشاهدة لاحقًا',
                       onTap: () async {
                         Navigator.pop(context);
                         await _toggleWatchLater();
@@ -460,7 +460,7 @@ class _VideoFullscreenPlayerScreenState
                     ),
                     _sheetTile(
                       icon: Icons.share_rounded,
-                      title: 'ظ…ط´ط§ط±ظƒط©',
+                      title: 'مشاركة',
                       onTap: () async {
                         Navigator.pop(context);
                         await _shareCurrentVideo();
@@ -468,7 +468,7 @@ class _VideoFullscreenPlayerScreenState
                     ),
                     _sheetTile(
                       icon: Icons.link_rounded,
-                      title: 'ظ†ط³ط® ط§ظ„ط±ط§ط¨ط·',
+                      title: 'نسخ الرابط',
                       onTap: () async {
                         Navigator.pop(context);
                         await _copyCurrentVideoLink();
@@ -476,7 +476,7 @@ class _VideoFullscreenPlayerScreenState
                     ),
                     _sheetTile(
                       icon: Icons.open_in_new_rounded,
-                      title: 'ظپطھط­ ظپظٹ ظٹظˆطھظٹظˆط¨',
+                      title: 'فتح في يوتيوب',
                       onTap: () async {
                         Navigator.pop(context);
                         await _openUrl(_videoUrl);
@@ -750,7 +750,7 @@ class _VideoFullscreenPlayerScreenState
                                     const SizedBox(width: 8),
                                     Flexible(
                                       child: Text(
-                                        '$_seekSeconds ط«ظˆط§ظ†',
+                                        '$_seekSeconds ثوان',
                                         style: GoogleFonts.cairo(
                                           color: Colors.white,
                                           fontSize: 13,

@@ -490,7 +490,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'ظٹط³طھظ…ط¹ ط§ظ„ط¢ظ†',
+                'يستمع الآن',
                 style: GoogleFonts.cairo(
                   fontSize: 11,
                   color: RecColors.textSecondary(context),
@@ -542,7 +542,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
             ),
             const SizedBox(width: 6),
             Text(
-              'ظٹط¹ظ…ظ„ ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ',
+              'يعمل بدون إنترنت',
               style: GoogleFonts.cairo(
                 fontSize: 11,
                 fontWeight: FontWeight.w700,
@@ -580,7 +580,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
               ),
               const SizedBox(width: 6),
               Text(
-                'ظٹط¹ظ…ظ„ ط¹ط¨ط± ط§ظ„ط¥ظ†طھط±ظ†طھ',
+                'يعمل عبر الإنترنت',
                 style: GoogleFonts.cairo(
                   fontSize: 11,
                   fontWeight: FontWeight.w700,
@@ -882,7 +882,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
         borderRadius: BorderRadius.circular(8),
       ),
       child: Text(
-        '$percent% ظ…ظƒطھظ…ظ„',
+        '$percent% مكتمل',
         style: GoogleFonts.cairo(
           fontSize: 10,
           fontWeight: FontWeight.w600,
@@ -987,7 +987,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
           ),
           const SizedBox(width: 4),
           Text(
-            'ظ…طھط¨ظ‚ظٹ ${_formatDuration(remaining)}',
+            'متبقي ${_formatDuration(remaining)}',
             style: GoogleFonts.cairo(
               fontSize: 10,
               color: RecColors.textHint(context),
@@ -1030,7 +1030,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
               ),
               const SizedBox(width: 8),
               Text(
-                'ط¨ط« ظ…ط¨ط§ط´ط±',
+                'بث مباشر',
                 style: GoogleFonts.cairo(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -1239,7 +1239,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
           // ط±ط§ط¯ظٹظˆ
           _toolBtn(
             icon: Icons.radio_rounded,
-            label: playlist.isRadioMode ? 'ط±ط§ط¯ظٹظˆ âœ“' : 'ط±ط§ط¯ظٹظˆ',
+            label: playlist.isRadioMode ? 'راديو ✓' : 'راديو',
             isActive: playlist.isRadioMode,
             onTap: () => _openRadioModeSelector(),
           ),
@@ -1250,7 +1250,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
           if (playlist.hasPlaylist && playlist.totalItems > 1)
             _toolBtn(
               icon: Icons.queue_music_rounded,
-              label: 'ط§ظ„ظ‚ط§ط¦ظ…ط© (${playlist.totalItems})',
+              label: 'القائمة (${playlist.totalItems})',
               isActive: false,
               onTap: () => _openFullPlaylist(),
             ),
@@ -1274,7 +1274,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
             icon: _autoPlay
                 ? Icons.playlist_play_rounded
                 : Icons.playlist_remove_rounded,
-            label: _autoPlay ? 'طھط§ظ„ظٹ طھظ„ظ‚ط§ط¦ظٹ âœ“' : 'طھط§ظ„ظٹ طھظ„ظ‚ط§ط¦ظٹ',
+            label: _autoPlay ? 'تالي تلقائي ✓' : 'تالي تلقائي',
             isActive: _autoPlay,
             onTap: () {
               setState(() => _autoPlay = !_autoPlay);
@@ -1282,8 +1282,8 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                 SnackBar(
                   content: Text(
                     _autoPlay
-                        ? 'ط§ظ„طھط´ط؛ظٹظ„ ط§ظ„طھظ„ظ‚ط§ط¦ظٹ: ظ…ظپط¹ظ‘ظ„ â–¶'
-                        : 'ط§ظ„طھط´ط؛ظٹظ„ ط§ظ„طھظ„ظ‚ط§ط¦ظٹ: ظ…طھظˆظ‚ظپ â– ',
+                        ? 'التشغيل التلقائي: مفعّل ▶'
+                        : 'التشغيل التلقائي: متوقف ■',
                     style: GoogleFonts.cairo(),
                     textDirection: TextDirection.rtl,
                   ),
@@ -1303,7 +1303,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
           // ط§ظ„ظ…ط¤ظ‚طھ
           _toolBtn(
             icon: Icons.timer_rounded,
-            label: _sleepTimer != null ? _getSleepTimerLabel() : 'ظ…ط¤ظ‚طھ',
+            label: _sleepTimer != null ? _getSleepTimerLabel() : 'مؤقت',
             isActive: _sleepTimer != null,
             onTap: () => _openSleepTimer(),
           ),
@@ -1314,7 +1314,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
           if (!_isLive)
             _toolBtn(
               icon: Icons.replay_rounded,
-              label: 'ظ…ظ† ط§ظ„ط¨ط¯ط§ظٹط©',
+              label: 'من البداية',
               isActive: false,
               onTap: () {
                 _activePlayer?.seek(Duration.zero);
@@ -1328,7 +1328,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
           if (!_isLive)
             _toolBtn(
               icon: Icons.forward_30_rounded,
-              label: '+30 ط«',
+              label: '+30 ث',
               isActive: false,
               onTap: () {
                 final newPos = _positionNotifier.value + const Duration(seconds: 30);
@@ -1343,7 +1343,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
           // ظ…ط´ط§ط±ظƒط©
           _toolBtn(
             icon: Icons.share_rounded,
-            label: 'ظ…ط´ط§ط±ظƒط©',
+            label: 'مشاركة',
             isActive: false,
             onTap: () => _shareCurrentTrack(),
           ),
@@ -1365,8 +1365,8 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
         SnackBar(
           content: Text(
             offlineOnly
-                ? 'ظ„ط§ طھظˆط¬ط¯ ظ…ظ„ظپط§طھ ظ…ط­ظ…ظ‘ظ„ط© ظ„طھط´ط؛ظٹظ„ظ‡ط§ ظƒط±ط§ط¯ظٹظˆ'
-                : 'ظ„ط§ طھظˆط¬ط¯ ط¹ظ†ط§طµط± ظ…طھط§ط­ط©',
+                ? 'لا توجد ملفات محمّلة لتشغيلها كراديو'
+                : 'لا توجد عناصر متاحة',
             style: GoogleFonts.cairo(),
             textDirection: TextDirection.rtl,
           ),
@@ -1411,7 +1411,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                   const SizedBox(height: 16),
 
                   Text(
-                    'ط§ط®طھظٹط§ط± طھظ„ط§ظˆط§طھ ظˆط¶ط¹ ط§ظ„ط±ط§ط¯ظٹظˆ',
+                    'اختيار تلاوات وضع الراديو',
                     style: GoogleFonts.cairo(
                       fontSize: 16,
                       fontWeight: FontWeight.w800,
@@ -1421,8 +1421,8 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                   const SizedBox(height: 6),
                   Text(
                     offlineOnly
-                        ? 'ظٹطھظ… ط¹ط±ط¶ ط§ظ„طھظ„ط§ظˆط§طھ ط§ظ„ظ…ط­ظ…ظ‘ظ„ط© ظپظ‚ط·'
-                        : 'ظٹطھظ… ط¹ط±ط¶ ظƒظ„ ط§ظ„طھظ„ط§ظˆط§طھ ط§ظ„ظ…طھط§ط­ط©',
+                        ? 'يتم عرض التلاوات المحمّلة فقط'
+                        : 'يتم عرض كل التلاوات المتاحة',
                     style: GoogleFonts.cairo(
                       fontSize: 11,
                       color: RecColors.textSecondary(context),
@@ -1450,7 +1450,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                               ),
                             ),
                             child: Text(
-                              'طھط­ط¯ظٹط¯ ط§ظ„ظƒظ„',
+                              'تحديد الكل',
                               style: GoogleFonts.cairo(
                                 fontSize: 11,
                                 fontWeight: FontWeight.w700,
@@ -1479,7 +1479,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                               ),
                             ),
                             child: Text(
-                              'ط¥ظ„ط؛ط§ط، ط§ظ„ظƒظ„',
+                              'إلغاء الكل',
                               style: GoogleFonts.cairo(
                                 fontSize: 11,
                                 fontWeight: FontWeight.w700,
@@ -1637,7 +1637,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(
-                            'طھظ… طھظپط¹ظٹظ„ ظˆط¶ط¹ ط§ظ„ط±ط§ط¯ظٹظˆ (${selectedList.length} طھظ„ط§ظˆط©) ًں”„',
+                            'تم تفعيل وضع الراديو (${selectedList.length} تلاوة) 🔄',
                             style: GoogleFonts.cairo(),
                             textDirection: TextDirection.rtl,
                           ),
@@ -1679,8 +1679,8 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                           const SizedBox(width: 8),
                           Text(
                             selected.isNotEmpty
-                                ? 'طھط´ط؛ظٹظ„ ${selected.length} ظƒط±ط§ط¯ظٹظˆ'
-                                : 'ط§ط®طھط± طھظ„ط§ظˆط§طھ ط£ظˆظ„ط§ظ‹',
+                                ? 'تشغيل ${selected.length} كراديو'
+                                : 'اختر تلاوات أولاً',
                             style: GoogleFonts.cairo(
                               fontSize: 14,
                               fontWeight: FontWeight.w800,
@@ -1704,7 +1704,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
-                              'طھظ… ط¥ظٹظ‚ط§ظپ ظˆط¶ط¹ ط§ظ„ط±ط§ط¯ظٹظˆ',
+                              'تم إيقاف وضع الراديو',
                               style: GoogleFonts.cairo(),
                               textDirection: TextDirection.rtl,
                             ),
@@ -1725,7 +1725,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                           ),
                         ),
                         child: Text(
-                          'ط¥ظٹظ‚ط§ظپ ظˆط¶ط¹ ط§ظ„ط±ط§ط¯ظٹظˆ',
+                          'إيقاف وضع الراديو',
                           style: GoogleFonts.cairo(
                             fontSize: 13,
                             fontWeight: FontWeight.w700,
@@ -1839,7 +1839,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
               GestureDetector(
                 onTap: () => _openFullPlaylist(),
                 child: Text(
-                  'ط¹ط±ط¶ ط§ظ„ظƒظ„',
+                  'عرض الكل',
                   style: GoogleFonts.cairo(
                     fontSize: 10,
                     fontWeight: FontWeight.w600,
@@ -1963,7 +1963,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
               children: [
                 Expanded(
                   child: Text(
-                    '${playlist.playlistName} â€¢ ${playlist.totalItems} طھظ„ط§ظˆط©',
+                    '${playlist.playlistName} • ${playlist.totalItems} تلاوة',
                     style: GoogleFonts.cairo(
                       fontSize: 15,
                       fontWeight: FontWeight.w800,
@@ -1984,7 +1984,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
-                      'ًں”„ ط±ط§ط¯ظٹظˆ',
+                      '🔄 راديو',
                       style: GoogleFonts.cairo(
                         fontSize: 10,
                         color: widget.primary,
@@ -2108,7 +2108,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
   static const List<double> _speeds = [0.5, 0.75, 1.0, 1.25, 1.5, 2.0];
 
   String _getSpeedLabel() {
-    if (_currentSpeed == 1.0) return 'ط³ط±ط¹ط©';
+    if (_currentSpeed == 1.0) return 'سرعة';
     return '${_currentSpeed}x';
   }
 
@@ -2135,7 +2135,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
             ),
             const SizedBox(height: 16),
             Text(
-              'ط³ط±ط¹ط© ط§ظ„طھط´ط؛ظٹظ„',
+              'سرعة التشغيل',
               style: GoogleFonts.cairo(
                 fontSize: 16,
                 fontWeight: FontWeight.w800,
@@ -2196,10 +2196,10 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
   // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
 
   String _getSleepTimerLabel() {
-    if (_sleepTimer == null) return 'ظ…ط¤ظ‚طھ';
+    if (_sleepTimer == null) return 'مؤقت';
     final remaining = _sleepTimer!.difference(DateTime.now());
-    if (remaining.isNegative) return 'ظ…ط¤ظ‚طھ';
-    return '${remaining.inMinutes} ط¯';
+    if (remaining.isNegative) return 'مؤقت';
+    return '${remaining.inMinutes} د';
   }
 
   void _openSleepTimer() {
@@ -2227,7 +2227,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
             ),
             const SizedBox(height: 16),
             Text(
-              'ظ…ط¤ظ‚طھ ط§ظ„ط¥ظٹظ‚ط§ظپ ط§ظ„طھظ„ظ‚ط§ط¦ظٹ',
+              'مؤقت الإيقاف التلقائي',
               style: GoogleFonts.cairo(
                 fontSize: 16,
                 fontWeight: FontWeight.w800,
@@ -2236,7 +2236,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
             ),
             const SizedBox(height: 6),
             Text(
-              'ط³ظٹطھظˆظ‚ظپ ط§ظ„طھط´ط؛ظٹظ„ طھظ„ظ‚ط§ط¦ظٹط§ظ‹ ط¨ط¹ط¯ ط§ظ„ظ…ط¯ط© ط§ظ„ظ…ط­ط¯ط¯ط©',
+              'سيتوقف التشغيل تلقائياً بعد المدة المحددة',
               style: GoogleFonts.cairo(
                 fontSize: 11,
                 color: RecColors.textSecondary(context),
@@ -2264,7 +2264,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                       ),
                     ),
                     child: Text(
-                      '$min ط¯',
+                      '$min د',
                       style: GoogleFonts.cairo(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
@@ -2285,7 +2285,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(
-                        'طھظ… ط¥ظ„ط؛ط§ط، ط§ظ„ظ…ط¤ظ‚طھ',
+                        'تم إلغاء المؤقت',
                         style: GoogleFonts.cairo(),
                         textDirection: TextDirection.rtl,
                       ),
@@ -2305,7 +2305,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                     ),
                   ),
                   child: Text(
-                    'ط¥ظ„ط؛ط§ط، ط§ظ„ظ…ط¤ظ‚طھ ط§ظ„ط­ط§ظ„ظٹ',
+                    'إلغاء المؤقت الحالي',
                     style: GoogleFonts.cairo(
                       fontSize: 13,
                       fontWeight: FontWeight.w700,
@@ -2341,7 +2341,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            'طھظ… ط¥ظٹظ‚ط§ظپ ط§ظ„طھط´ط؛ظٹظ„ طھظ„ظ‚ط§ط¦ظٹط§ظ‹ âڈ°',
+            'تم إيقاف التشغيل تلقائياً ⏰',
             style: GoogleFonts.cairo(),
             textDirection: TextDirection.rtl,
           ),
@@ -2357,7 +2357,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'ط³ظٹطھظˆظ‚ظپ ط§ظ„طھط´ط؛ظٹظ„ ط¨ط¹ط¯ $minutes ط¯ظ‚ظٹظ‚ط© âڈ°',
+          'سيتوقف التشغيل بعد $minutes دقيقة ⏰',
           style: GoogleFonts.cairo(),
           textDirection: TextDirection.rtl,
         ),
@@ -2403,7 +2403,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
             ),
             const SizedBox(height: 16),
             Text(
-              'ظ…ط´ط§ط±ظƒط©',
+              'مشاركة',
               style: GoogleFonts.cairo(
                 fontSize: 16,
                 fontWeight: FontWeight.w800,
@@ -2425,7 +2425,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'ًںژ§ ط£ط³طھظ…ط¹ ط§ظ„ط¢ظ† ط¥ظ„ظ‰:',
+                    '🎧 أستمع الآن إلى:',
                     style: GoogleFonts.cairo(
                       fontSize: 12,
                       color: RecColors.textSecondary(context),
@@ -2457,7 +2457,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
-                      'طھظ… ظ†ط³ط® ط§ظ„ظ…ط¹ظ„ظˆظ…ط§طھ',
+                      'تم نسخ المعلومات',
                       style: GoogleFonts.cairo(),
                       textDirection: TextDirection.rtl,
                     ),
@@ -2488,7 +2488,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                     ),
                     const SizedBox(width: 8),
                     Text(
-                      'ظ†ط³ط® ط§ظ„ظ…ط¹ظ„ظˆظ…ط§طھ',
+                      'نسخ المعلومات',
                       style: GoogleFonts.cairo(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
@@ -2573,7 +2573,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
               ),
               const SizedBox(width: 6),
               Text(
-                'ظ…ط­ظپظˆط¸ ظپظٹ ط§ظ„ط¬ظ‡ط§ط²',
+                'محفوظ في الجهاز',
                 style: GoogleFonts.cairo(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -2630,7 +2630,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
                       ),
                       const SizedBox(width: 3),
                       Text(
-                        'ط­ط°ظپ',
+                        'حذف',
                         style: GoogleFonts.cairo(
                           fontSize: 10,
                           color: Colors.red,
@@ -2665,7 +2665,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
           borderRadius: BorderRadius.circular(20),
         ),
         title: Text(
-          'ط­ط°ظپ ط§ظ„طھط­ظ…ظٹظ„',
+          'حذف التحميل',
           style: GoogleFonts.cairo(
             fontWeight: FontWeight.w800,
             color: RecColors.textPrimary(context),
@@ -2673,7 +2673,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
           textDirection: TextDirection.rtl,
         ),
         content: Text(
-          'ظ‡ظ„ طھط±ظٹط¯ ط­ط°ظپ "${widget.item.title}" ظ…ظ† ط§ظ„ط¬ظ‡ط§ط²طں',
+          'هل تريد حذف "${widget.item.title}" من الجهاز؟',
           style: GoogleFonts.cairo(color: RecColors.textSecondary(context)),
           textDirection: TextDirection.rtl,
         ),
@@ -2681,7 +2681,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(
-              'ط¥ظ„ط؛ط§ط،',
+              'إلغاء',
               style: GoogleFonts.cairo(color: Colors.grey),
             ),
           ),
@@ -2697,7 +2697,7 @@ class _RecItemPlayerScreenState extends State<RecItemPlayerScreen>
               ),
             ),
             child: Text(
-              'ط­ط°ظپ',
+              'حذف',
               style: GoogleFonts.cairo(
                 color: Colors.white,
                 fontWeight: FontWeight.w700,
@@ -2855,7 +2855,7 @@ class _AudioDownloadInviteState extends State<_AudioDownloadInvite> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'ط­ظ…ظ‘ظ„ ظ„ظ„ط§ط³طھظ…ط§ط¹ ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ',
+                  'حمّل للاستماع بدون إنترنت',
                   style: GoogleFonts.cairo(
                     fontSize: 12,
                     fontWeight: FontWeight.w700,
@@ -2865,7 +2865,7 @@ class _AudioDownloadInviteState extends State<_AudioDownloadInvite> {
                 Row(
                   children: [
                     Text(
-                      'ط§ظ„ط­ط¬ظ…: ',
+                      'الحجم: ',
                       style: GoogleFonts.cairo(
                         fontSize: 10,
                         color: Colors.blue.withValues(alpha: 0.6),
@@ -2874,7 +2874,7 @@ class _AudioDownloadInviteState extends State<_AudioDownloadInvite> {
                     Text(
                       _size != null
                           ? VideoSizeService.formatBytes(_size)
-                          : 'ط¬ط§ط±ظٹ ط§ظ„طھط­ظ‚ظ‚...',
+                          : 'جاري التحقق...',
                       style: GoogleFonts.cairo(
                         fontSize: 10,
                         fontWeight: FontWeight.w600,

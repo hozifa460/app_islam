@@ -38,7 +38,7 @@ class CategoriesGrid extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SectionTitle(
-            title:       'ط§ط³طھظƒط´ظپ ط§ظ„ط£ظ‚ط³ط§ظ…',
+            title:       'استكشف الأقسام',
             subtitle:    'Categories',
             accentColor: MiracleTheme.neonBlue,
             t:           t,

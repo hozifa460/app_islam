@@ -80,7 +80,7 @@ class _HeaderBackground extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 const Text(
-                  'ظ…ط§ط°ط§ ظƒط§ظ† ظٹظپط¹ظ„ ï·؛',
+                  'ماذا كان يفعل ﷺ',
                   style: TextStyle(
                     color: Color(0xFFD4AF37),
                     fontSize: 26,
@@ -93,7 +93,7 @@ class _HeaderBackground extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 40),
                   child: const Text(
-                    'ط³ظ†ظ† ظ†ط¨ظˆظٹط© ظ…ظˆط«ظ‚ط© ظ…ظ† ط§ظ„طµط­ط§ط­ ظˆط§ظ„ظ…ط³ط§ظ†ظٹط¯',
+                    'سنن نبوية موثقة من الصحاح والمسانيد',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white54,
@@ -172,7 +172,7 @@ class _SearchBar extends StatelessWidget {
         textAlign: TextAlign.right,
         style: const TextStyle(color: Colors.white),
         decoration: InputDecoration(
-          hintText: 'ط§ط¨ط­ط« ط¹ظ† ط³ظ†ط©...',
+          hintText: 'ابحث عن سنة...',
           hintStyle: const TextStyle(color: Colors.white38),
           prefixIcon: const Icon(Icons.search, color: Color(0xFFD4AF37)),
           suffixIcon: controller.text.isNotEmpty

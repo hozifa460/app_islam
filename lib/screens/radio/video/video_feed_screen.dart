@@ -288,7 +288,7 @@ class _VideoFeedScreenState extends State<VideoFeedScreen>
 
       if (mounted) setState(() {});
     } catch (e) {
-      debugPrint('âڑ ï¸ڈ _onPageChanged error: $e');
+      debugPrint('⚠️ _onPageChanged error: $e');
       if (mounted) setState(() {});
     }
   }

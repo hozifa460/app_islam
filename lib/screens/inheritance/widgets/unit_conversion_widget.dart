@@ -57,7 +57,7 @@ class UnitConversionWidget extends StatelessWidget {
           // Units definitions
           _buildUnitRow(
             context: context,
-            emoji: 'ًںŒ¾',
+            emoji: '🌾',
             title: context.tr.feddanUnit,
             definition: context.tr.feddanDef,
             color: const Color(0xFF2E7D32),
@@ -65,7 +65,7 @@ class UnitConversionWidget extends StatelessWidget {
           const SizedBox(height: 10),
           _buildUnitRow(
             context: context,
-            emoji: 'ًں“گ',
+            emoji: '📐',
             title: context.tr.qiratUnit,
             definition: context.tr.qiratDef,
             color: brownColor,
@@ -73,7 +73,7 @@ class UnitConversionWidget extends StatelessWidget {
           const SizedBox(height: 10),
           _buildUnitRow(
             context: context,
-            emoji: 'ًں“ڈ',
+            emoji: '📏',
             title: context.tr.sahmUnit,
             definition: context.tr.sahmDef,
             color: const Color(0xFFE65100),
@@ -81,7 +81,7 @@ class UnitConversionWidget extends StatelessWidget {
           const SizedBox(height: 10),
           _buildUnitRow(
             context: context,
-            emoji: 'ًں“چ',
+            emoji: '📍',
             title: context.tr.meterUnit,
             definition: context.tr.meterDef,
             color: const Color(0xFF1565C0),

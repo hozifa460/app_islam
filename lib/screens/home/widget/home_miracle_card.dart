@@ -430,7 +430,7 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
                                         ),
                                         const SizedBox(width: 3),
                                         Text(
-                                          'ظ…ط¹ط¬ط²ط© ط§ظ„ظٹظˆظ…',
+                                          'معجزة اليوم',
                                           style: GoogleFonts.cairo(
                                             fontSize:   8.5,
                                             fontWeight: FontWeight.bold,
@@ -536,7 +536,7 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
                                   if (srcCount > 0)
                                     _Tag(
                                       icon:  Icons.link_rounded,
-                                      text:  '$srcCount ظ…طµط¯ط±',
+                                      text:  '$srcCount مصدر',
                                       color: neonBlue,
                                       isDark: widget.isDark,
                                     ),
@@ -567,7 +567,7 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
                                     icon: isQuran
                                         ? Icons.menu_book_rounded
                                         : Icons.auto_awesome_rounded,
-                                    text:   isQuran ? 'ظ‚ط±ط¢ظ†' : 'ط³ظ†ط©',
+                                    text:   isQuran ? 'قرآن' : 'سنة',
                                     color:  accentColor,
                                     filled: true,
                                     isDark: widget.isDark,
@@ -594,7 +594,7 @@ class _HomeMiracleCardState extends State<HomeMiracleCard>
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Text(
-                                      'ط§ظ„ظ…ط²ظٹط¯',
+                                      'المزيد',
                                       style: GoogleFonts.cairo(
                                         fontSize:   10.5,
                                         fontWeight: FontWeight.bold,

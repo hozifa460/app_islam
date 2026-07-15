@@ -18,9 +18,9 @@ class InheritanceResultsWidget extends StatelessWidget {
 
   String _getCaseTypeName(BuildContext context, String caseType) {
     switch (caseType) {
-      case 'ط¹ظˆظ„':
+      case 'عول':
         return context.tr.awlCase;
-      case 'ط±ط¯':
+      case 'رد':
         return context.tr.raddCase;
       default:
         return context.tr.normalCase;
@@ -103,20 +103,20 @@ class InheritanceResultsWidget extends StatelessWidget {
     String caseEmoji;
 
     switch (result.caseType) {
-      case 'ط¹ظˆظ„':
+      case 'عول':
         caseColor = Colors.orange.shade700;
         caseIcon = Icons.trending_up_rounded;
-        caseEmoji = 'ًں“ˆ';
+        caseEmoji = '📈';
         break;
-      case 'ط±ط¯':
+      case 'رد':
         caseColor = Colors.blue.shade700;
         caseIcon = Icons.trending_down_rounded;
-        caseEmoji = 'ًں“‰';
+        caseEmoji = '📉';
         break;
       default:
         caseColor = primaryColor;
         caseIcon = Icons.check_circle_rounded;
-        caseEmoji = 'âœ…';
+        caseEmoji = '✅';
     }
 
     final cardColor = isDarkMode ? const Color(0xFF151B26) : Colors.white;
@@ -535,10 +535,10 @@ class InheritanceResultsWidget extends StatelessWidget {
             spacing: 8,
             runSpacing: 8,
             children: [
-              _buildLandChip('ًںŒ¾', context.tr.feddan, '${share.landShare.feddans}', const Color(0xFF2E7D32)),
-              _buildLandChip('ًں“گ', context.tr.qirat, '${share.landShare.qirats}', const Color(0xFF795548)),
-              _buildLandChip('ًں“ڈ', context.tr.sahm, '${share.landShare.sahms}', const Color(0xFFE65100)),
-              _buildLandChip('ًں“چ', 'ظ…آ²', share.landShare.totalInMeters.toStringAsFixed(1), const Color(0xFF1565C0)),
+              _buildLandChip('🌾', context.tr.feddan, '${share.landShare.feddans}', const Color(0xFF2E7D32)),
+              _buildLandChip('📐', context.tr.qirat, '${share.landShare.qirats}', const Color(0xFF795548)),
+              _buildLandChip('📏', context.tr.sahm, '${share.landShare.sahms}', const Color(0xFFE65100)),
+              _buildLandChip('📍', 'م²', share.landShare.totalInMeters.toStringAsFixed(1), const Color(0xFF1565C0)),
             ],
           ),
           if (share.count > 1) ...[
@@ -553,7 +553,7 @@ class InheritanceResultsWidget extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('ًں‘¤', style: TextStyle(fontSize: 14)),
+                  const Text('👤', style: TextStyle(fontSize: 14)),
                   const SizedBox(width: 6),
                   Text(
                     '${context.tr.sharePerPerson}: ${share.perPersonShare.formatted}',

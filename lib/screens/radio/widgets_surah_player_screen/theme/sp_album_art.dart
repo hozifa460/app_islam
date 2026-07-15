@@ -83,7 +83,7 @@ class SpAlbumArt extends StatelessWidget {
                     ),
                     const SizedBox(height: 6),
                     Text(
-                      '${surah.versesCount} ط¢ظٹط©',
+                      '${surah.versesCount} آية',
                       style: GoogleFonts.cairo(
                         fontSize: artSize * 0.055,
                         color: primary.withValues(alpha: 0.7),

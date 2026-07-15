@@ -37,7 +37,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
   bool _isLoading = true;
   bool _isDownloading = false;
   bool _hasError = false;
-  String _statusMessage = 'ط¬ط§ط±ظٹ ط§ظ„طھظ‡ظٹط¦ط©...';
+  String _statusMessage = 'جاري التهيئة...';
 
   int _currentMax = 20;
   final ItemScrollController _itemScrollController = ItemScrollController();
@@ -141,10 +141,10 @@ class _HadithBookScreenState extends State<HadithBookScreen>
     if (text.isEmpty) return "";
     return text
         .replaceAll(RegExp(r'[\u064B-\u065F\u0610-\u061A\u06D6-\u06DC\u06DF-\u06E8\u06EA-\u06ED]'), '')
-        .replaceAll(RegExp(r'[ط£ط¥ط¢ط§ظ±ظ°]'), 'ط§')
-        .replaceAll(RegExp(r'[ظٹظ‰ط¦]'), 'ظٹ')
-        .replaceAll(RegExp(r'[ط©ظ‡]'), 'ظ‡')
-        .replaceAll('ط¤', 'ظˆ')
+        .replaceAll(RegExp(r'[أإآاٱٰ]'), 'ا')
+        .replaceAll(RegExp(r'[يىئ]'), 'ي')
+        .replaceAll(RegExp(r'[ةه]'), 'ظ‡')
+        .replaceAll('ؤ', 'ظˆ')
         .replaceAll(RegExp(r'<[^>]*>'), '')
         .trim();
   }
@@ -192,14 +192,14 @@ class _HadithBookScreenState extends State<HadithBookScreen>
 
       if (await file.exists()) {
         setState(() {
-          _statusMessage = 'ط¬ط§ط±ظٹ ظپطھط­ ط§ظ„ظƒطھط§ط¨...';
+          _statusMessage = 'جاري فتح الكتاب...';
         });
         final jsonString = await file.readAsString();
         _processData(json.decode(jsonString));
       } else {
         setState(() {
           _isDownloading = true;
-          _statusMessage = 'ط¬ط§ط±ظٹ طھظ†ط²ظٹظ„ ط§ظ„ظƒطھط§ط¨ ظ„ط£ظˆظ„ ظ…ط±ط©...\nط³ظٹط¹ظ…ظ„ ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ ظ„ط§ط­ظ‚ط§ظ‹.';
+          _statusMessage = 'جاري تنزيل الكتاب لأول مرة...\nسيعمل بدون إنترنت لاحقاً.';
         });
 
         final url = Uri.parse('https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-$apiId.json');
@@ -210,7 +210,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
           await file.writeAsString(decodedBody);
           _processData(json.decode(decodedBody));
         } else {
-          throw Exception('ظپط´ظ„ ظپظٹ ط§ظ„طھط­ظ…ظٹظ„');
+          throw Exception('فشل في التحميل');
         }
       }
     } catch (e) {
@@ -219,7 +219,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
           _isLoading = false;
           _isDownloading = false;
           _hasError = true;
-          _statusMessage = 'طھط£ظƒط¯ ظ…ظ† ط§طھطµط§ظ„ظƒ ط¨ط§ظ„ط¥ظ†طھط±ظ†طھ ظپظٹ ط§ظ„ظ…ط±ط© ط§ظ„ط£ظˆظ„ظ‰';
+          _statusMessage = 'تأكد من اتصالك بالإنترنت في المرة الأولى';
         });
       }
     }
@@ -437,7 +437,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                       child: Text(
-                                        '${_allHadiths.length} ط­ط¯ظٹط«',
+                                        '${_allHadiths.length} حديث',
                                         style: GoogleFonts.cairo(
                                           fontSize: 11,
                                           color: _gold,
@@ -457,7 +457,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
                                           borderRadius: BorderRadius.circular(8),
                                         ),
                                         child: Text(
-                                          '${_displayedHadiths.length} ظ†طھظٹط¬ط©',
+                                          '${_displayedHadiths.length} نتيجة',
                                           style: GoogleFonts.cairo(
                                             fontSize: 11,
                                             color: Colors.white,
@@ -529,7 +529,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
         onChanged: _filterHadiths,
         style: GoogleFonts.cairo(color: Colors.white, fontSize: 14),
         decoration: InputDecoration(
-          hintText: 'ط§ط¨ط­ط« ط¨ط§ظ„ظƒظ„ظ…ط© ط£ظˆ ط±ظ‚ظ… ط§ظ„ط­ط¯ظٹط«...',
+          hintText: 'ابحث بالكلمة أو رقم الحديث...',
           hintStyle: GoogleFonts.cairo(color: Colors.white54, fontSize: 13),
           prefixIcon: Icon(Icons.search, color: _gold, size: 20),
           suffixIcon: _searchController.text.isNotEmpty
@@ -689,7 +689,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
             ),
             const SizedBox(height: 24),
             Text(
-              'طھط¹ط°ط± طھط­ظ…ظٹظ„ ط§ظ„ظƒطھط§ط¨',
+              'تعذر تحميل الكتاب',
               style: GoogleFonts.cairo(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -717,7 +717,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
               ),
               onPressed: _initOfflineBook,
               icon: const Icon(Icons.refresh_rounded),
-              label: Text('ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط©', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
+              label: Text('إعادة المحاولة', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
             ),
           ],
         ),
@@ -745,7 +745,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
           ),
           const SizedBox(height: 16),
           Text(
-            'ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬',
+            'لا توجد نتائج',
             style: GoogleFonts.cairo(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -754,7 +754,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
           ),
           const SizedBox(height: 8),
           Text(
-            'ط¬ط±ظ‘ط¨ ط§ظ„ط¨ط­ط« ط¨ظƒظ„ظ…ط§طھ ظ…ط®طھظ„ظپط©',
+            'جرّب البحث بكلمات مختلفة',
             style: GoogleFonts.cairo(
               fontSize: 14,
               color: isDark ? Colors.white54 : Colors.grey,
@@ -778,7 +778,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
     List grades = hadith['grades'] ?? [];
 
     String narrator = '';
-    if (body.startsWith('ط¹ظ†') || body.startsWith('ط­ط¯ط«ظ†ط§')) {
+    if (body.startsWith('عن') || body.startsWith('حدثنا')) {
       int firstComma = body.indexOf('طŒ');
       int firstColon = body.indexOf(':');
       int splitIndex = -1;
@@ -883,10 +883,10 @@ class _HadithBookScreenState extends State<HadithBookScreen>
                 _buildActionButton(
                   icon: Icons.copy_rounded,
                   onTap: () {
-                    Clipboard.setData(ClipboardData(text: '$body\n\n[${widget.bookTitle} - ط±ظ‚ظ…: $hadithNumber]'));
+                    Clipboard.setData(ClipboardData(text: '$body\n\n[${widget.bookTitle} - رقم: $hadithNumber]'));
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text('طھظ… ظ†ط³ط® ط§ظ„ط­ط¯ظٹط«', style: GoogleFonts.cairo()),
+                        content: Text('تم نسخ الحديث', style: GoogleFonts.cairo()),
                         backgroundColor: widget.primaryColor,
                         behavior: SnackBarBehavior.floating,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -899,7 +899,7 @@ class _HadithBookScreenState extends State<HadithBookScreen>
                 _buildActionButton(
                   icon: Icons.share_rounded,
                   onTap: () {
-                    Share.share('$body\n\n[${widget.bookTitle} - ط±ظ‚ظ…: $hadithNumber]');
+                    Share.share('$body\n\n[${widget.bookTitle} - رقم: $hadithNumber]');
                   },
                   isDark: isDark,
                 ),
@@ -1001,17 +1001,17 @@ class _HadithBookScreenState extends State<HadithBookScreen>
       chipBg = isDark ? const Color(0xFF0D3B2E) : Colors.green.shade50;
       chipText = isDark ? Colors.green.shade300 : Colors.green.shade700;
       gradeIcon = Icons.verified_rounded;
-      gradeText = 'طµط­ظٹط­';
+      gradeText = 'صحيح';
     } else if (gradeText.toLowerCase().contains('hasan')) {
       chipBg = isDark ? const Color(0xFF1E3A5F) : Colors.blue.shade50;
       chipText = isDark ? Colors.blue.shade300 : Colors.blue.shade700;
       gradeIcon = Icons.check_circle_rounded;
-      gradeText = 'ط­ط³ظ†';
+      gradeText = 'حسن';
     } else if (gradeText.toLowerCase().contains('daif')) {
       chipBg = isDark ? const Color(0xFF4A2C00) : Colors.orange.shade50;
       chipText = isDark ? Colors.orange.shade300 : Colors.orange.shade700;
       gradeIcon = Icons.info_rounded;
-      gradeText = 'ط¶ط¹ظٹظپ';
+      gradeText = 'ضعيف';
     } else {
       chipBg = isDark ? Colors.grey.shade800 : Colors.grey.shade100;
       chipText = isDark ? Colors.grey.shade300 : Colors.grey.shade700;

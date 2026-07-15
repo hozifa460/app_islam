@@ -1,4 +1,4 @@
-﻿import 'package:flutter/foundation.dart';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 class IslamQAResult {
@@ -49,18 +49,17 @@ class IslamQAApiService {
 
       final searchUrl = 'https://html.duckduckgo.com/html/?q=$searchQuery';
 
-      debugPrint('ًں”چ ط¬ط§ط±ظٹ ط§ظ„ط¨ط­ط« ط¹ط¨ط± DuckDuckGo: $searchUrl');
+      debugPrint('🔍 جاري البحث عبر DuckDuckGo: $searchUrl');
 
-      final response = await http.get(
-        Uri.parse(searchUrl),
-        headers: {
-          'User-Agent': 'Mozilla/5.0',
-          'Accept': 'text/html',
-        },
-      ).timeout(const Duration(seconds: 15));
+      final response = await http
+          .get(
+            Uri.parse(searchUrl),
+            headers: {'User-Agent': 'Mozilla/5.0', 'Accept': 'text/html'},
+          )
+          .timeout(const Duration(seconds: 15));
 
-      debugPrint('ًں“، Status: ${response.statusCode}');
-      debugPrint('ًں“‌ Body length: ${response.body.length}');
+      debugPrint('📡 Status: ${response.statusCode}');
+      debugPrint('📝 Body length: ${response.body.length}');
 
       if (response.statusCode != 200 || response.body.isEmpty) {
         return [];
@@ -68,17 +67,14 @@ class IslamQAApiService {
 
       final links = _extractDuckDuckGoLinks(response.body);
 
-      debugPrint('ًں“ژ طھظ… ط§ظ„ط¹ط«ظˆط± ط¹ظ„ظ‰ ${links.length} ط±ط§ط¨ط· ظپطھظˆظ‰ ظ…ظ† DuckDuckGo');
+      debugPrint('📎 تم العثور على ${links.length} رابط فتوى من DuckDuckGo');
 
       if (links.isEmpty) return [];
 
       final results = <IslamQAResult>[];
 
       for (final link in links.take(3)) {
-        final fatwa = await _fetchFullFatwa(
-          link['url']!,
-          link['title']!,
-        );
+        final fatwa = await _fetchFullFatwa(link['url']!, link['title']!);
         if (fatwa != null) {
           results.add(fatwa);
         }
@@ -86,7 +82,7 @@ class IslamQAApiService {
 
       return results;
     } catch (e) {
-      debugPrint('â‌Œ searchIslamQA error: $e');
+      debugPrint('❌ searchIslamQA error: $e');
       return [];
     }
   }
@@ -113,11 +109,8 @@ class IslamQAApiService {
           title.isNotEmpty &&
           title.length > 5) {
         if (!results.any((e) => e['url'] == decodedUrl)) {
-          results.add({
-            'url': decodedUrl,
-            'title': title,
-          });
-          debugPrint('  ًں“ژ ظˆط¬ط¯: $title');
+          results.add({'url': decodedUrl, 'title': title});
+          debugPrint('  📎 وجد: $title');
         }
       }
 
@@ -156,19 +149,18 @@ class IslamQAApiService {
   // ط¬ظ„ط¨ ط§ظ„ظپطھظˆظ‰ ظƒط§ظ…ظ„ط© ظ…ظ† طµظپط­ط© ط¥ط³ظ„ط§ظ… ط³ط¤ط§ظ„ ظˆط¬ظˆط§ط¨
   // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static Future<IslamQAResult?> _fetchFullFatwa(
-      String url,
-      String fallbackTitle,
-      ) async {
+    String url,
+    String fallbackTitle,
+  ) async {
     try {
-      debugPrint('ًں“– ط¬ط§ط±ظٹ ط¬ظ„ط¨ ط§ظ„ظپطھظˆظ‰: $url');
+      debugPrint('📖 جاري جلب الفتوى: $url');
 
-      final response = await http.get(
-        Uri.parse(url),
-        headers: {
-          'User-Agent': 'Mozilla/5.0',
-          'Accept': 'text/html',
-        },
-      ).timeout(const Duration(seconds: 15));
+      final response = await http
+          .get(
+            Uri.parse(url),
+            headers: {'User-Agent': 'Mozilla/5.0', 'Accept': 'text/html'},
+          )
+          .timeout(const Duration(seconds: 15));
 
       if (response.statusCode != 200 || response.body.isEmpty) {
         return null;
@@ -191,11 +183,11 @@ class IslamQAApiService {
         title: title,
         question: title,
         answer: answer,
-        source: 'ط¥ط³ظ„ط§ظ… ط³ط¤ط§ظ„ ظˆط¬ظˆط§ط¨',
+        source: 'إسلام سؤال وجواب',
         url: url,
       );
     } catch (e) {
-      debugPrint('â‌Œ _fetchFullFatwa error: $e');
+      debugPrint('❌ _fetchFullFatwa error: $e');
       return null;
     }
   }
@@ -212,9 +204,10 @@ class IslamQAApiService {
     for (final p in patterns) {
       final match = p.firstMatch(html);
       if (match != null) {
-        final title = _cleanHtml(match.group(1) ?? '')
-            .replaceAll(' - ط§ظ„ط¥ط³ظ„ط§ظ… ط³ط¤ط§ظ„ ظˆط¬ظˆط§ط¨', '')
-            .trim();
+        final title =
+            _cleanHtml(
+              match.group(1) ?? '',
+            ).replaceAll(' - الإسلام سؤال وجواب', '').trim();
         if (title.isNotEmpty) return title;
       }
     }
@@ -306,19 +299,18 @@ class IslamQAApiService {
 
       final searchUrl = 'https://html.duckduckgo.com/html/?q=$searchQuery';
 
-      debugPrint('ًں”چ ط¬ط§ط±ظٹ ط§ظ„ط¨ط­ط« ظپظٹ ط¥ط³ظ„ط§ظ… ظˆظٹط¨ ط¹ط¨ط± DuckDuckGo...');
-      debugPrint('ًں”— $searchUrl');
+      debugPrint('🔍 جاري البحث في إسلام ويب عبر DuckDuckGo...');
+      debugPrint('🔗 $searchUrl');
 
-      final response = await http.get(
-        Uri.parse(searchUrl),
-        headers: {
-          'User-Agent': 'Mozilla/5.0',
-          'Accept': 'text/html',
-        },
-      ).timeout(const Duration(seconds: 15));
+      final response = await http
+          .get(
+            Uri.parse(searchUrl),
+            headers: {'User-Agent': 'Mozilla/5.0', 'Accept': 'text/html'},
+          )
+          .timeout(const Duration(seconds: 15));
 
-      debugPrint('ًں“، IslamWeb Status: ${response.statusCode}');
-      debugPrint('ًں“‌ IslamWeb Body length: ${response.body.length}');
+      debugPrint('📡 IslamWeb Status: ${response.statusCode}');
+      debugPrint('📝 IslamWeb Body length: ${response.body.length}');
 
       if (response.statusCode != 200 || response.body.isEmpty) {
         return [];
@@ -330,7 +322,7 @@ class IslamQAApiService {
         pathMustContain: '/ar/fatwa/',
       );
 
-      debugPrint('ًں“ژ طھظ… ط§ظ„ط¹ط«ظˆط± ط¹ظ„ظ‰ ${links.length} ط±ط§ط¨ط· ظپطھظˆظ‰ ظ…ظ† ط¥ط³ظ„ط§ظ… ظˆظٹط¨');
+      debugPrint('📎 تم العثور على ${links.length} رابط فتوى من إسلام ويب');
 
       if (links.isEmpty) return [];
 
@@ -348,7 +340,7 @@ class IslamQAApiService {
 
       return results;
     } catch (e) {
-      debugPrint('â‌Œ searchIslamWeb error: $e');
+      debugPrint('❌ searchIslamWeb error: $e');
       return [];
     }
   }
@@ -357,10 +349,10 @@ class IslamQAApiService {
   // ط§ط³طھط®ط±ط§ط¬ ط±ظˆط§ط¨ط· DuckDuckGo ط¨ط­ط³ط¨ ط¯ظˆظ…ظٹظ† ظˆظ…ط³ط§ط± ظ…ط­ط¯ط¯
   // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static List<Map<String, String>> _extractDuckDuckGoDomainLinks(
-      String html, {
-        required String domainMustContain,
-        required String pathMustContain,
-      }) {
+    String html, {
+    required String domainMustContain,
+    required String pathMustContain,
+  }) {
     final results = <Map<String, String>>[];
 
     final pattern = RegExp(
@@ -380,11 +372,8 @@ class IslamQAApiService {
           title.isNotEmpty &&
           title.length > 5) {
         if (!results.any((e) => e['url'] == decodedUrl)) {
-          results.add({
-            'url': decodedUrl,
-            'title': title,
-          });
-          debugPrint('  ًں“ژ ظˆط¬ط¯: $title');
+          results.add({'url': decodedUrl, 'title': title});
+          debugPrint('  📎 وجد: $title');
         }
       }
 
@@ -398,19 +387,18 @@ class IslamQAApiService {
   // ط¬ظ„ط¨ ط§ظ„ظپطھظˆظ‰ ظƒط§ظ…ظ„ط© ظ…ظ† ط¥ط³ظ„ط§ظ… ظˆظٹط¨
   // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static Future<IslamQAResult?> _fetchFullIslamWebFatwa(
-      String url,
-      String fallbackTitle,
-      ) async {
+    String url,
+    String fallbackTitle,
+  ) async {
     try {
-      debugPrint('ًں“– ط¬ط§ط±ظٹ ط¬ظ„ط¨ ظپطھظˆظ‰ ط¥ط³ظ„ط§ظ… ظˆظٹط¨: $url');
+      debugPrint('📖 جاري جلب فتوى إسلام ويب: $url');
 
-      final response = await http.get(
-        Uri.parse(url),
-        headers: {
-          'User-Agent': 'Mozilla/5.0',
-          'Accept': 'text/html',
-        },
-      ).timeout(const Duration(seconds: 15));
+      final response = await http
+          .get(
+            Uri.parse(url),
+            headers: {'User-Agent': 'Mozilla/5.0', 'Accept': 'text/html'},
+          )
+          .timeout(const Duration(seconds: 15));
 
       if (response.statusCode != 200 || response.body.isEmpty) {
         return null;
@@ -432,10 +420,10 @@ class IslamQAApiService {
       }
 
       answer = _trimAtMarkers(answer, [
-        'ظ…ظˆط§ط¯ ط°ط§طھ طµظ„ط©',
-        'ط§ظ‚ط±ط£ ط£ظٹط¶ط§',
-        'ط§ظ„ظ…ط²ظٹط¯ ظ…ظ† ط§ظ„ظپطھط§ظˆظ‰',
-        'ط§ظ†ط¸ط± ط£ظٹط¶ط§',
+        'مواد ذات صلة',
+        'اقرأ أيضا',
+        'المزيد من الفتاوى',
+        'انظر أيضا',
       ]);
 
       if (answer.isEmpty || answer.length < 60) {
@@ -450,11 +438,11 @@ class IslamQAApiService {
         title: title,
         question: question,
         answer: answer,
-        source: 'ط¥ط³ظ„ط§ظ… ظˆظٹط¨',
+        source: 'إسلام ويب',
         url: url,
       );
     } catch (e) {
-      debugPrint('â‌Œ _fetchFullIslamWebFatwa error: $e');
+      debugPrint('❌ _fetchFullIslamWebFatwa error: $e');
       return null;
     }
   }
@@ -471,10 +459,11 @@ class IslamQAApiService {
     for (final p in patterns) {
       final match = p.firstMatch(html);
       if (match != null) {
-        final title = _cleanHtml(match.group(1) ?? '')
-            .replaceAll(' - ط¥ط³ظ„ط§ظ… ظˆظٹط¨ - ظ…ط±ظƒط² ط§ظ„ظپطھظˆظ‰', '')
-            .replaceAll(' - ط¥ط³ظ„ط§ظ… ظˆظٹط¨', '')
-            .trim();
+        final title =
+            _cleanHtml(match.group(1) ?? '')
+                .replaceAll(' - إسلام ويب - مركز الفتوى', '')
+                .replaceAll(' - إسلام ويب', '')
+                .trim();
         if (title.isNotEmpty) return title;
       }
     }
@@ -491,8 +480,8 @@ class IslamQAApiService {
 
     // ط¥ط³ظ„ط§ظ… ظˆظٹط¨ ط؛ط§ظ„ط¨ظ‹ط§ ظپظٹظ‡ "ط§ظ„ط³ط¤ط§ظ„" ط«ظ… "ط§ظ„ط¥ط¬ط§ط¨ظ€ظ€ط©"
     final patterns = [
-      RegExp(r'ط§ظ„ط³ط¤ط§ظ„\s*(.*?)\s*ط§ظ„ط¥ط¬ط§ط¨(?:ط©|ظ€ظ€ط©)\s*(.*)', dotAll: true),
-      RegExp(r'ط§ظ„ط³ط¤ط§ظ„\s*(.*?)\s*ط§ظ„ط§ط¬ط§ط¨ط©\s*(.*)', dotAll: true),
+      RegExp(r'السؤال\s*(.*?)\s*الإجاب(?:ة|ــة)\s*(.*)', dotAll: true),
+      RegExp(r'السؤال\s*(.*?)\s*الاجابة\s*(.*)', dotAll: true),
     ];
 
     for (final p in patterns) {
@@ -502,10 +491,7 @@ class IslamQAApiService {
         final answer = (match.group(2) ?? '').trim();
 
         if (question.length > 5 && answer.length > 30) {
-          return {
-            'question': question,
-            'answer': answer,
-          };
+          return {'question': question, 'answer': answer};
         }
       }
     }
@@ -583,20 +569,17 @@ class IslamQAApiService {
   // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static Future<List<IslamQAResult>> searchBinBaz(String query) async {
     try {
-      final searchQuery = Uri.encodeComponent(
-        'site:binbaz.org.sa $query',
-      );
+      final searchQuery = Uri.encodeComponent('site:binbaz.org.sa $query');
       final searchUrl = 'https://html.duckduckgo.com/html/?q=$searchQuery';
 
-      debugPrint('ًں”چ ط¬ط§ط±ظٹ ط§ظ„ط¨ط­ط« ظپظٹ ظ…ظˆظ‚ط¹ ط§ط¨ظ† ط¨ط§ط²...');
+      debugPrint('🔍 جاري البحث في موقع ابن باز...');
 
-      final response = await http.get(
-        Uri.parse(searchUrl),
-        headers: {
-          'User-Agent': 'Mozilla/5.0',
-          'Accept': 'text/html',
-        },
-      ).timeout(const Duration(seconds: 15));
+      final response = await http
+          .get(
+            Uri.parse(searchUrl),
+            headers: {'User-Agent': 'Mozilla/5.0', 'Accept': 'text/html'},
+          )
+          .timeout(const Duration(seconds: 15));
 
       if (response.statusCode != 200 || response.body.isEmpty) return [];
 
@@ -606,21 +589,21 @@ class IslamQAApiService {
         pathMustContain: '/',
       );
 
-      debugPrint('ًں“ژ ط§ط¨ظ† ط¨ط§ط²: ${links.length} ط±ط§ط¨ط·');
+      debugPrint('📎 ابن باز: ${links.length} رابط');
 
       final results = <IslamQAResult>[];
       for (final link in links.take(3)) {
         final fatwa = await _fetchGenericFatwa(
           link['url']!,
           link['title']!,
-          'ظ…ظˆظ‚ط¹ ط§ظ„ط´ظٹط® ط§ط¨ظ† ط¨ط§ط²',
+          'موقع الشيخ ابن باز',
         );
         if (fatwa != null) results.add(fatwa);
       }
 
       return results;
     } catch (e) {
-      debugPrint('â‌Œ searchBinBaz error: $e');
+      debugPrint('❌ searchBinBaz error: $e');
       return [];
     }
   }
@@ -630,20 +613,17 @@ class IslamQAApiService {
   // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static Future<List<IslamQAResult>> searchBinOthaimeen(String query) async {
     try {
-      final searchQuery = Uri.encodeComponent(
-        'site:binothaimeen.net $query',
-      );
+      final searchQuery = Uri.encodeComponent('site:binothaimeen.net $query');
       final searchUrl = 'https://html.duckduckgo.com/html/?q=$searchQuery';
 
-      debugPrint('ًں”چ ط¬ط§ط±ظٹ ط§ظ„ط¨ط­ط« ظپظٹ ظ…ظˆظ‚ط¹ ط§ط¨ظ† ط¹ط«ظٹظ…ظٹظ†...');
+      debugPrint('🔍 جاري البحث في موقع ابن عثيمين...');
 
-      final response = await http.get(
-        Uri.parse(searchUrl),
-        headers: {
-          'User-Agent': 'Mozilla/5.0',
-          'Accept': 'text/html',
-        },
-      ).timeout(const Duration(seconds: 15));
+      final response = await http
+          .get(
+            Uri.parse(searchUrl),
+            headers: {'User-Agent': 'Mozilla/5.0', 'Accept': 'text/html'},
+          )
+          .timeout(const Duration(seconds: 15));
 
       if (response.statusCode != 200 || response.body.isEmpty) return [];
 
@@ -653,21 +633,21 @@ class IslamQAApiService {
         pathMustContain: '/',
       );
 
-      debugPrint('ًں“ژ ط§ط¨ظ† ط¹ط«ظٹظ…ظٹظ†: ${links.length} ط±ط§ط¨ط·');
+      debugPrint('📎 ابن عثيمين: ${links.length} رابط');
 
       final results = <IslamQAResult>[];
       for (final link in links.take(3)) {
         final fatwa = await _fetchGenericFatwa(
           link['url']!,
           link['title']!,
-          'ظ…ظˆظ‚ط¹ ط§ظ„ط´ظٹط® ط§ط¨ظ† ط¹ط«ظٹظ…ظٹظ†',
+          'موقع الشيخ ابن عثيمين',
         );
         if (fatwa != null) results.add(fatwa);
       }
 
       return results;
     } catch (e) {
-      debugPrint('â‌Œ searchBinOthaimeen error: $e');
+      debugPrint('❌ searchBinOthaimeen error: $e');
       return [];
     }
   }
@@ -677,20 +657,17 @@ class IslamQAApiService {
   // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static Future<List<IslamQAResult>> searchHorasAlAqidah(String query) async {
     try {
-      final searchQuery = Uri.encodeComponent(
-        'site:al-aqidah.com $query',
-      );
+      final searchQuery = Uri.encodeComponent('site:al-aqidah.com $query');
       final searchUrl = 'https://html.duckduckgo.com/html/?q=$searchQuery';
 
-      debugPrint('ًں”چ ط¬ط§ط±ظٹ ط§ظ„ط¨ط­ط« ظپظٹ ط­ط±ط§ط³ ط§ظ„ط¹ظ‚ظٹط¯ط©...');
+      debugPrint('🔍 جاري البحث في حراس العقيدة...');
 
-      final response = await http.get(
-        Uri.parse(searchUrl),
-        headers: {
-          'User-Agent': 'Mozilla/5.0',
-          'Accept': 'text/html',
-        },
-      ).timeout(const Duration(seconds: 15));
+      final response = await http
+          .get(
+            Uri.parse(searchUrl),
+            headers: {'User-Agent': 'Mozilla/5.0', 'Accept': 'text/html'},
+          )
+          .timeout(const Duration(seconds: 15));
 
       if (response.statusCode != 200 || response.body.isEmpty) return [];
 
@@ -700,21 +677,21 @@ class IslamQAApiService {
         pathMustContain: '/',
       );
 
-      debugPrint('ًں“ژ ط­ط±ط§ط³ ط§ظ„ط¹ظ‚ظٹط¯ط©: ${links.length} ط±ط§ط¨ط·');
+      debugPrint('📎 حراس العقيدة: ${links.length} رابط');
 
       final results = <IslamQAResult>[];
       for (final link in links.take(3)) {
         final fatwa = await _fetchGenericFatwa(
           link['url']!,
           link['title']!,
-          'ط­ط±ط§ط³ ط§ظ„ط¹ظ‚ظٹط¯ط©',
+          'حراس العقيدة',
         );
         if (fatwa != null) results.add(fatwa);
       }
 
       return results;
     } catch (e) {
-      debugPrint('â‌Œ searchHorasAlAqidah error: $e');
+      debugPrint('❌ searchHorasAlAqidah error: $e');
       return [];
     }
   }
@@ -723,20 +700,19 @@ class IslamQAApiService {
   // ط¬ظ„ط¨ ظپطھظˆظ‰ ظ…ظ† ط£ظٹ ظ…ظˆظ‚ط¹ ط¹ط§ظ…
   // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static Future<IslamQAResult?> _fetchGenericFatwa(
-      String url,
-      String fallbackTitle,
-      String sourceName,
-      ) async {
+    String url,
+    String fallbackTitle,
+    String sourceName,
+  ) async {
     try {
-      debugPrint('ًں“– ط¬ط§ط±ظٹ ط¬ظ„ط¨: $url');
+      debugPrint('📖 جاري جلب: $url');
 
-      final response = await http.get(
-        Uri.parse(url),
-        headers: {
-          'User-Agent': 'Mozilla/5.0',
-          'Accept': 'text/html',
-        },
-      ).timeout(const Duration(seconds: 15));
+      final response = await http
+          .get(
+            Uri.parse(url),
+            headers: {'User-Agent': 'Mozilla/5.0', 'Accept': 'text/html'},
+          )
+          .timeout(const Duration(seconds: 15));
 
       if (response.statusCode != 200 || response.body.isEmpty) return null;
 
@@ -772,7 +748,7 @@ class IslamQAApiService {
         content = '${content.substring(0, 2500)}...';
       }
 
-      debugPrint('âœ… طھظ… ط¬ظ„ط¨: ${title.substring(0, title.length.clamp(0, 50))}');
+      debugPrint('✅ تم جلب: ${title.substring(0, title.length.clamp(0, 50))}');
 
       return IslamQAResult(
         title: title,
@@ -782,7 +758,7 @@ class IslamQAApiService {
         url: url,
       );
     } catch (e) {
-      debugPrint('â‌Œ _fetchGenericFatwa error: $e');
+      debugPrint('❌ _fetchGenericFatwa error: $e');
       return null;
     }
   }
@@ -795,29 +771,34 @@ class IslamQAApiService {
     String cleaned = html;
 
     cleaned = cleaned.replaceAll(
-      RegExp(r'<script[^>]*>.*?</script>', dotAll: true), '',
+      RegExp(r'<script[^>]*>.*?</script>', dotAll: true),
+      '',
     );
     cleaned = cleaned.replaceAll(
-      RegExp(r'<style[^>]*>.*?</style>', dotAll: true), '',
+      RegExp(r'<style[^>]*>.*?</style>', dotAll: true),
+      '',
     );
     cleaned = cleaned.replaceAll(
-      RegExp(r'<nav[^>]*>.*?</nav>', dotAll: true), '',
+      RegExp(r'<nav[^>]*>.*?</nav>', dotAll: true),
+      '',
     );
     cleaned = cleaned.replaceAll(
-      RegExp(r'<header[^>]*>.*?</header>', dotAll: true), '',
+      RegExp(r'<header[^>]*>.*?</header>', dotAll: true),
+      '',
     );
     cleaned = cleaned.replaceAll(
-      RegExp(r'<footer[^>]*>.*?</footer>', dotAll: true), '',
+      RegExp(r'<footer[^>]*>.*?</footer>', dotAll: true),
+      '',
     );
     cleaned = cleaned.replaceAll(
-      RegExp(r'<aside[^>]*>.*?</aside>', dotAll: true), '',
+      RegExp(r'<aside[^>]*>.*?</aside>', dotAll: true),
+      '',
     );
     cleaned = cleaned.replaceAll(
-      RegExp(r'<form[^>]*>.*?</form>', dotAll: true), '',
+      RegExp(r'<form[^>]*>.*?</form>', dotAll: true),
+      '',
     );
-    cleaned = cleaned.replaceAll(
-      RegExp(r'<!--.*?-->', dotAll: true), '',
-    );
+    cleaned = cleaned.replaceAll(RegExp(r'<!--.*?-->', dotAll: true), '');
 
     // ظ…ط­ط§ظˆظ„ط© 1: ط§ط³طھط®ط±ط§ط¬ ظ…ظ† article
     final articlePattern = RegExp(
@@ -832,8 +813,14 @@ class IslamQAApiService {
 
     // ظ…ط­ط§ظˆظ„ط© 2: ط§ط³طھط®ط±ط§ط¬ ظ…ظ† div.content ط£ظˆ div.entry
     final divPatterns = [
-      RegExp(r'<div[^>]*class="[^"]*(?:content|entry|fatwa|answer|post-body|article-body)[^"]*"[^>]*>(.*?)</div>\s*</div>', dotAll: true),
-      RegExp(r'<div[^>]*class="[^"]*(?:content|entry|fatwa|answer)[^"]*"[^>]*>(.*?)</div>', dotAll: true),
+      RegExp(
+        r'<div[^>]*class="[^"]*(?:content|entry|fatwa|answer|post-body|article-body)[^"]*"[^>]*>(.*?)</div>\s*</div>',
+        dotAll: true,
+      ),
+      RegExp(
+        r'<div[^>]*class="[^"]*(?:content|entry|fatwa|answer)[^"]*"[^>]*>(.*?)</div>',
+        dotAll: true,
+      ),
     ];
 
     for (final p in divPatterns) {
@@ -874,18 +861,18 @@ class IslamQAApiService {
   // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   static String _removeBoilerplate(String text, String source) {
     final unwanted = [
-      RegExp(r'ظ…ط´ط§ط±ظƒط©.*?طھظˆظٹطھط±', dotAll: true),
-      RegExp(r'ط´ط§ط±ظƒ.*?ظپظٹط³ط¨ظˆظƒ', dotAll: true),
-      RegExp(r'طھظ… ط§ظ„ظ†ط´ط±.*?\d{4}', dotAll: true),
-      RegExp(r'ط¹ط¯ط¯ ط§ظ„ط²ظٹط§ط±ط§طھ.*?\d+', dotAll: true),
-      RegExp(r'ط§ظ„طھطµظ†ظٹظپ.*?\n', dotAll: true),
-      RegExp(r'ط§ظ„ظ…طµط¯ط±.*?\n', dotAll: true),
-      RegExp(r'ظ…ظˆط§ط¯ ط°ط§طھ طµظ„ط©.*', dotAll: true),
-      RegExp(r'ط§ظ‚ط±ط£ ط£ظٹط¶ط§.*', dotAll: true),
-      RegExp(r'ط§ظ„ظ…ط²ظٹط¯ ظ…ظ† ط§ظ„ظپطھط§ظˆظ‰.*', dotAll: true),
-      RegExp(r'ط§ظ„ط±ط§ط¨ط· ط§ظ„ظ…ط®طھطµط±.*', dotAll: true),
-      RegExp(r'ط­ظ‚ظˆظ‚ ط§ظ„ظ†ط´ط±.*', dotAll: true),
-      RegExp(r'ط¬ظ…ظٹط¹ ط§ظ„ط­ظ‚ظˆظ‚.*', dotAll: true),
+      RegExp(r'مشاركة.*?تويتر', dotAll: true),
+      RegExp(r'شارك.*?فيسبوك', dotAll: true),
+      RegExp(r'تم النشر.*?\d{4}', dotAll: true),
+      RegExp(r'عدد الزيارات.*?\d+', dotAll: true),
+      RegExp(r'التصنيف.*?\n', dotAll: true),
+      RegExp(r'المصدر.*?\n', dotAll: true),
+      RegExp(r'مواد ذات صلة.*', dotAll: true),
+      RegExp(r'اقرأ أيضا.*', dotAll: true),
+      RegExp(r'المزيد من الفتاوى.*', dotAll: true),
+      RegExp(r'الرابط المختصر.*', dotAll: true),
+      RegExp(r'حقوق النشر.*', dotAll: true),
+      RegExp(r'جميع الحقوق.*', dotAll: true),
     ];
 
     String result = text;
@@ -895,5 +882,4 @@ class IslamQAApiService {
 
     return result.trim();
   }
-
 }

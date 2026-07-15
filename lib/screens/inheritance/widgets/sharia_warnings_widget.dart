@@ -65,7 +65,7 @@ class ShariaWarningsWidget extends StatelessWidget {
           ),
           _buildWarningItem(
             context: context,
-            number: 'ظ¢',
+            number: '٢',
             icon: Icons.dangerous,
             title: context.tr.warning2Title,
             content: context.tr.warning2Content,
@@ -73,7 +73,7 @@ class ShariaWarningsWidget extends StatelessWidget {
           ),
           _buildWarningItem(
             context: context,
-            number: 'ظ£',
+            number: '٣',
             icon: Icons.compare_arrows,
             title: context.tr.warning3Title,
             content: context.tr.warning3Content,
@@ -81,7 +81,7 @@ class ShariaWarningsWidget extends StatelessWidget {
           ),
           _buildWarningItem(
             context: context,
-            number: 'ظ¤',
+            number: '٤',
             icon: Icons.link_off,
             title: context.tr.warning4Title,
             content: context.tr.warning4Content,
@@ -89,7 +89,7 @@ class ShariaWarningsWidget extends StatelessWidget {
           ),
           _buildWarningItem(
             context: context,
-            number: 'ظ¥',
+            number: '٥',
             icon: Icons.pregnant_woman,
             title: context.tr.warning5Title,
             content: context.tr.warning5Content,
@@ -97,7 +97,7 @@ class ShariaWarningsWidget extends StatelessWidget {
           ),
           _buildWarningItem(
             context: context,
-            number: 'ظ¦',
+            number: '٦',
             icon: Icons.person_search,
             title: context.tr.warning6Title,
             content: context.tr.warning6Content,
@@ -105,7 +105,7 @@ class ShariaWarningsWidget extends StatelessWidget {
           ),
           _buildWarningItem(
             context: context,
-            number: 'ظ§',
+            number: '٧',
             icon: Icons.help_outline,
             title: context.tr.warning7Title,
             content: context.tr.warning7Content,
@@ -113,7 +113,7 @@ class ShariaWarningsWidget extends StatelessWidget {
           ),
           _buildWarningItem(
             context: context,
-            number: 'ظ¨',
+            number: '٨',
             icon: Icons.description,
             title: context.tr.warning8Title,
             content: context.tr.warning8Content,
@@ -121,7 +121,7 @@ class ShariaWarningsWidget extends StatelessWidget {
           ),
           _buildWarningItem(
             context: context,
-            number: 'ظ©',
+            number: '٩',
             icon: Icons.gavel,
             title: context.tr.warning9Title,
             content: context.tr.warning9Content,
@@ -129,7 +129,7 @@ class ShariaWarningsWidget extends StatelessWidget {
           ),
           _buildWarningItem(
             context: context,
-            number: 'ظ،ظ ',
+            number: '١٠',
             icon: Icons.school,
             title: context.tr.warning10Title,
             content: context.tr.warning10Content,
@@ -257,8 +257,8 @@ class ShariaWarningsWidget extends StatelessWidget {
           ),
           const SizedBox(height: 14),
           _buildBlockerRow(context, 'ظ،', context.tr.blocker1, context.tr.blocker1Desc),
-          _buildBlockerRow(context, 'ظ¢', context.tr.blocker2, context.tr.blocker2Desc),
-          _buildBlockerRow(context, 'ظ£', context.tr.blocker3, context.tr.blocker3Desc),
+          _buildBlockerRow(context, '٢', context.tr.blocker2, context.tr.blocker2Desc),
+          _buildBlockerRow(context, '٣', context.tr.blocker3, context.tr.blocker3Desc),
           const SizedBox(height: 12),
           Container(
             width: double.infinity,
@@ -373,9 +373,9 @@ class ShariaWarningsWidget extends StatelessWidget {
           ),
           const SizedBox(height: 14),
           _buildCondRow(context, 'ظ،', context.tr.condition1, context.tr.condition1Desc),
-          _buildCondRow(context, 'ظ¢', context.tr.condition2, context.tr.condition2Desc),
-          _buildCondRow(context, 'ظ£', context.tr.condition3, context.tr.condition3Desc),
-          _buildCondRow(context, 'ظ¤', context.tr.condition4, context.tr.condition4Desc),
+          _buildCondRow(context, '٢', context.tr.condition2, context.tr.condition2Desc),
+          _buildCondRow(context, '٣', context.tr.condition3, context.tr.condition3Desc),
+          _buildCondRow(context, '٤', context.tr.condition4, context.tr.condition4Desc),
           const SizedBox(height: 12),
           Container(
             width: double.infinity,

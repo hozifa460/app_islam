@@ -7,7 +7,6 @@ import 'package:just_audio/just_audio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/radio_data.dart';
 import '../models/radio_station.dart';
-import 'audio_coordinator.dart';
 
 class RadioIntillegence extends ChangeNotifier {
   static final RadioIntillegence _instance = RadioIntillegence._internal();
@@ -15,6 +14,7 @@ class RadioIntillegence extends ChangeNotifier {
   RadioIntillegence._internal();
 
   final AudioPlayer _player = AudioPlayer();
+  bool _initialized = false;
 
   IslamicRadioStation? _currentStation;
   bool _isPlaying = false;
@@ -24,6 +24,8 @@ class RadioIntillegence extends ChangeNotifier {
   List<int> _favorites = [];
   List<int> _recentlyPlayed = [];
   Duration _listenDuration = Duration.zero;
+  Duration _position = Duration.zero;
+  Duration _duration = Duration.zero;
   Timer? _listenTimer;
 
   // ══ Getters ══
@@ -35,6 +37,8 @@ class RadioIntillegence extends ChangeNotifier {
   List<int> get favorites => _favorites;
   List<int> get recentlyPlayed => _recentlyPlayed;
   Duration get listenDuration => _listenDuration;
+  Duration get position => _position;
+  Duration get duration => _duration;
   AudioPlayer get player => _player;
 
   // ══ تفويض البيانات لملف البيانات ══
@@ -53,6 +57,8 @@ class RadioIntillegence extends ChangeNotifier {
 
   // ══ تهيئة ══
   Future<void> init() async {
+    if (_initialized) return;
+    _initialized = true;
     await _loadFavorites();
     await _loadRecentlyPlayed();
 
@@ -84,6 +90,21 @@ class RadioIntillegence extends ChangeNotifier {
         notifyListeners();
       },
     );
+
+    DateTime lastPositionNotify = DateTime.now();
+    _player.positionStream.listen((position) {
+      _position = position;
+      final now = DateTime.now();
+      if (now.difference(lastPositionNotify).inMilliseconds >= 500) {
+        lastPositionNotify = now;
+        notifyListeners();
+      }
+    });
+    _player.durationStream.listen((duration) {
+      if (duration == null) return;
+      _duration = duration;
+      notifyListeners();
+    });
   }
 
   // ══ تشغيل محطة ══
@@ -132,6 +153,8 @@ class RadioIntillegence extends ChangeNotifier {
     } catch (_) {}
 
     _currentStation = null;
+    _position = Duration.zero;
+    _duration = Duration.zero;
     _isPlaying = false;
     _isLoading = false;
     _isBuffering = false;

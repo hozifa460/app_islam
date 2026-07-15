@@ -20,14 +20,14 @@ class DuaCategoryScreen extends StatelessWidget {
   });
 
   void _copyDua(BuildContext context, Dua dua) {
-    final text = '${dua.title}\n\n${dua.text}\n\nًں“– ${dua.source}'
-        '${dua.reward.isNotEmpty ? '\n\nâ­گ ${dua.reward}' : ''}';
+    final text = '${dua.title}\n\n${dua.text}\n\n📖 ${dua.source}'
+        '${dua.reward.isNotEmpty ? '\n\n⭐ ${dua.reward}' : ''}';
 
     Clipboard.setData(ClipboardData(text: text));
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('طھظ… ظ†ط³ط® ط§ظ„ط¯ط¹ط§ط،', style: GoogleFonts.cairo()),
+        content: Text('تم نسخ الدعاء', style: GoogleFonts.cairo()),
         backgroundColor: Colors.green,
         duration: const Duration(seconds: 2),
       ),
@@ -35,9 +35,9 @@ class DuaCategoryScreen extends StatelessWidget {
   }
 
   void _shareDua(Dua dua) {
-    final text = '${dua.title}\n\n${dua.text}\n\nًں“– ${dua.source}'
-        '${dua.reward.isNotEmpty ? '\n\nâ­گ ${dua.reward}' : ''}'
-        '\n\nâ€” طھط·ط¨ظٹظ‚ ط·ط±ظٹظ‚ ط§ظ„ط¥ط³ظ„ط§ظ…';
+    final text = '${dua.title}\n\n${dua.text}\n\n📖 ${dua.source}'
+        '${dua.reward.isNotEmpty ? '\n\n⭐ ${dua.reward}' : ''}'
+        '\n\n— تطبيق طريق الإسلام';
 
     Share.share(text);
   }

@@ -221,7 +221,7 @@ class _DownloadScreenState extends State<DownloadScreen>
           const SizedBox(width: 14),
           Expanded(
             child: Text(
-              'طھط­ظ…ظٹظ„ ط§ظ„طھظ„ط§ظˆط§طھ',
+              'تحميل التلاوات',
               style: GoogleFonts.cairo(
                 fontSize: 20,
                 fontWeight: FontWeight.w800,
@@ -245,7 +245,7 @@ class _DownloadScreenState extends State<DownloadScreen>
                     color: widget.primary.withValues(alpha: 0.4)),
               ),
               child: Text(
-                '${_selectedSurahs.length} ط³ظˆط±ط©',
+                '${_selectedSurahs.length} سورة',
                 style: GoogleFonts.cairo(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
@@ -292,8 +292,8 @@ class _DownloadScreenState extends State<DownloadScreen>
         unselectedLabelStyle: GoogleFonts.cairo(
             fontSize: 13, fontWeight: FontWeight.w500),
         tabs: const [
-          Tab(text: 'ًں“–  ط§ظ„ط³ظˆط±'),
-          Tab(text: 'ًں“ڑ  ط§ظ„ط£ط¬ط²ط§ط،'),
+          Tab(text: '📖  السور'),
+          Tab(text: '📚  الأجزاء'),
         ],
       ),
     );
@@ -394,7 +394,7 @@ class _StationInfoWidget extends StatelessWidget {
                         ),
                         const SizedBox(width: 3),
                         Text(
-                          '$downloadedCount ط³ظˆط±ط© ظ…ط­ظ…ظ„ط©',
+                          '$downloadedCount سورة محملة',
                           style: GoogleFonts.cairo(
                             fontSize: 11,
                             color: Colors.green,
@@ -405,7 +405,7 @@ class _StationInfoWidget extends StatelessWidget {
                     )
                         : Text(
                       key: const ValueKey('none'),
-                      'ظ„ط§ طھظˆط¬ط¯ طھط­ظ…ظٹظ„ط§طھ',
+                      'لا توجد تحميلات',
                       style: GoogleFonts.cairo(
                         fontSize: 11,
                         color: Colors.white54,
@@ -532,21 +532,21 @@ class _QuickSelectBar extends StatelessWidget {
       child: Row(
         children: [
           _QuickBtn(
-            label: 'طھط­ط¯ظٹط¯ ط§ظ„ظƒظ„',
+            label: 'تحديد الكل',
             icon: Icons.select_all_rounded,
             primary: primary,
             onTap: onSelectAll,
           ),
           const SizedBox(width: 8),
           _QuickBtn(
-            label: 'ط¥ظ„ط؛ط§ط، ط§ظ„ظƒظ„',
+            label: 'إلغاء الكل',
             icon: Icons.deselect_rounded,
             primary: primary,
             onTap: onClearAll,
           ),
           const SizedBox(width: 8),
           _QuickBtn(
-            label: 'ط¬ط²ط، ط¹ظ…ظ‘',
+            label: 'جزء عمّ',
             icon: Icons.star_rounded,
             primary: primary,
             onTap: onSelectJuz30,
@@ -671,7 +671,7 @@ class _SurahTile extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '${surah.versesCount} ط¢ظٹط© â€¢ ${surah.isMakki ? 'ظ…ظƒظٹط©' : 'ظ…ط¯ظ†ظٹط©'} â€¢ ط§ظ„ط¬ط²ط، ${surah.juzNumber}',
+                    '${surah.versesCount} آية • ${surah.isMakki ? 'مكية' : 'مدنية'} • الجزء ${surah.juzNumber}',
                     style: GoogleFonts.cairo(
                       fontSize: 10,
                       color: Colors.white38,
@@ -681,7 +681,7 @@ class _SurahTile extends StatelessWidget {
               ),
             ),
             Text(
-              isDownloaded ? 'âœ“' : surah.approximateSizeStr,
+              isDownloaded ? '✓' : surah.approximateSizeStr,
               style: GoogleFonts.cairo(
                 fontSize: 11,
                 fontWeight: FontWeight.w600,
@@ -882,7 +882,7 @@ class _JuzTile extends StatelessWidget {
                         ),
                         const SizedBox(height: 3),
                         Text(
-                          '${surahsInJuz.length} ط³ظˆط±ط©',
+                          '${surahsInJuz.length} سورة',
                           style: GoogleFonts.cairo(
                             fontSize: 11,
                             color: Colors.white54,
@@ -904,7 +904,7 @@ class _JuzTile extends StatelessWidget {
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        '$downloadedCount/${surahsInJuz.length} ظ…ط­ظ…ظ‘ظ„',
+                        '$downloadedCount/${surahsInJuz.length} محمّل',
                         style: GoogleFonts.cairo(
                           fontSize: 10,
                           color: downloadedCount > 0
@@ -1102,7 +1102,7 @@ class _DownloadButton extends StatelessWidget {
                   if (isDownloading)
                     Expanded(
                       child: _ActionButton(
-                        label: 'ط¥ظ„ط؛ط§ط، ط§ظ„طھط­ظ…ظٹظ„',
+                        label: 'إلغاء التحميل',
                         icon: Icons.close_rounded,
                         color: Colors.red,
                         onTap: () => download.cancelDownload(station.id),
@@ -1112,8 +1112,8 @@ class _DownloadButton extends StatelessWidget {
                     Expanded(
                       child: _ActionButton(
                         label: isSurahTab
-                            ? 'طھط­ظ…ظٹظ„ ${selectedSurahs.length} ط³ظˆط±ط©'
-                            : 'طھط­ظ…ظٹظ„ ${QuranData.juzByNumber(selectedJuz!).name}',
+                            ? 'تحميل ${selectedSurahs.length} سورة'
+                            : 'تحميل ${QuranData.juzByNumber(selectedJuz!).name}',
                         icon: Icons.download_rounded,
                         color: primary,
                         onTap: () =>
@@ -1131,8 +1131,8 @@ class _DownloadButton extends StatelessWidget {
                         child: Center(
                           child: Text(
                             isSurahTab
-                                ? 'ط§ط®طھط± ط³ظˆط±ط§ظ‹ ظ„ظ„طھط­ظ…ظٹظ„'
-                                : 'ط§ط®طھط± ط¬ط²ط،ط§ظ‹ ظ„ظ„طھط­ظ…ظٹظ„',
+                                ? 'اختر سوراً للتحميل'
+                                : 'اختر جزءاً للتحميل',
                             style: GoogleFonts.cairo(
                               fontSize: 14,
                               color: Colors.white38,
@@ -1237,7 +1237,7 @@ class _DownloadProgressBar extends StatelessWidget {
         ),
         const SizedBox(height: 6),
         Text(
-          'ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ $downloadedCount ظ…ظ† $totalCount ط³ظˆط±ط©',
+          'جاري تحميل $downloadedCount من $totalCount سورة',
           style: GoogleFonts.cairo(
             fontSize: 11,
             color: Colors.white54,
@@ -1289,11 +1289,11 @@ class _SelectionSummary extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            _SummaryItem('ط³ظٹظڈط­ظ…ظژظ‘ظ„', '$newSurahs ط³ظˆط±ط©', primary),
+            _SummaryItem('سيُحمَّل', '$newSurahs سورة', primary),
             if (alreadyHave > 0)
-              _SummaryItem('ظ…ظˆط¬ظˆط¯', '$alreadyHave ط³ظˆط±ط©', Colors.green),
+              _SummaryItem('موجود', '$alreadyHave سورة', Colors.green),
             _SummaryItem(
-              'ط§ظ„ط­ط¬ظ…',
+              'الحجم',
               '${totalSize.toStringAsFixed(0)} MB',
               Colors.orange,
             ),
@@ -1318,10 +1318,10 @@ class _SelectionSummary extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            _SummaryItem('ط³ظٹظڈط­ظ…ظژظ‘ظ„', '$newSurahs ط³ظˆط±ط©', primary),
-            _SummaryItem('ط§ظ„ط¬ط²ط،', '${juz.number}', primary),
+            _SummaryItem('سيُحمَّل', '$newSurahs سورة', primary),
+            _SummaryItem('الجزء', '${juz.number}', primary),
             _SummaryItem(
-              'ط§ظ„ط­ط¬ظ…',
+              'الحجم',
               '${totalSize.toStringAsFixed(0)} MB',
               Colors.orange,
             ),

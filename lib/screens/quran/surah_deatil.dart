@@ -63,12 +63,12 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
   final Map<int, String> _localPagePaths = {};
 
   String _backgroundPrepareMessage = '';
-  String _quranLoadingMessage = 'ط¬ط§ط±ظٹ ط¥ط¹ط¯ط§ط¯ ط§ظ„ظ‚ط±ط¢ظ†...';
+  String _quranLoadingMessage = 'جاري إعداد القرآن...';
   double _quranLoadingProgress = 0.0;
   late int _currentPage;
   String _spokenText = '';
   String _selectedReciter = 'ar.alafasy';
-  String _selectedReciterName = 'ظ…ط´ط§ط±ظٹ ط§ظ„ط¹ظپط§ط³ظٹ';
+  String _selectedReciterName = 'مشاري العفاسي';
 
   static const String _kLastPageKey = 'quran_last_page';
   static const String _kLastSurahKey = 'quran_last_surah_name';
@@ -82,30 +82,30 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
   }
 
   final List<Map<String, String>> _reciters = const [
-    {'id': 'ar.alafasy', 'name': 'ظ…ط´ط§ط±ظٹ ط§ظ„ط¹ظپط§ط³ظٹ'},
-    {'id': 'ar.husary', 'name': 'ظ…ط­ظ…ظˆط¯ ط®ظ„ظٹظ„ ط§ظ„ط­طµط±ظٹ'},
-    {'id': 'ar.abdulbasitmurattal', 'name': 'ط¹ط¨ط¯ط§ظ„ط¨ط§ط³ط· ط¹ط¨ط¯ط§ظ„طµظ…ط¯'},
-    {'id': 'ar.minshawi', 'name': 'ظ…ط­ظ…ط¯ طµط¯ظٹظ‚ ط§ظ„ظ…ظ†ط´ط§ظˆظٹ'},
-    {'id': 'ar.mahermuaiqly', 'name': 'ظ…ط§ظ‡ط± ط§ظ„ظ…ط¹ظٹظ‚ظ„ظٹ'},
+    {'id': 'ar.alafasy', 'name': 'مشاري العفاسي'},
+    {'id': 'ar.husary', 'name': 'محمود خليل الحصري'},
+    {'id': 'ar.abdulbasitmurattal', 'name': 'عبدالباسط عبدالصمد'},
+    {'id': 'ar.minshawi', 'name': 'محمد صديق المنشاوي'},
+    {'id': 'ar.mahermuaiqly', 'name': 'ماهر المعيقلي'},
   ];
 
   final List<String> _surahNames = const [
-    'ط§ظ„ظپط§طھط­ط©', 'ط§ظ„ط¨ظ‚ط±ط©', 'ط¢ظ„ ط¹ظ…ط±ط§ظ†', 'ط§ظ„ظ†ط³ط§ط،', 'ط§ظ„ظ…ط§ط¦ط¯ط©', 'ط§ظ„ط£ظ†ط¹ط§ظ…', 'ط§ظ„ط£ط¹ط±ط§ظپ',
-    'ط§ظ„ط£ظ†ظپط§ظ„', 'ط§ظ„طھظˆط¨ط©', 'ظٹظˆظ†ط³', 'ظ‡ظˆط¯', 'ظٹظˆط³ظپ', 'ط§ظ„ط±ط¹ط¯', 'ط¥ط¨ط±ط§ظ‡ظٹظ…', 'ط§ظ„ط­ط¬ط±',
-    'ط§ظ„ظ†ط­ظ„', 'ط§ظ„ط¥ط³ط±ط§ط،', 'ط§ظ„ظƒظ‡ظپ', 'ظ…ط±ظٹظ…', 'ط·ظ‡', 'ط§ظ„ط£ظ†ط¨ظٹط§ط،', 'ط§ظ„ط­ط¬', 'ط§ظ„ظ…ط¤ظ…ظ†ظˆظ†',
-    'ط§ظ„ظ†ظˆط±', 'ط§ظ„ظپط±ظ‚ط§ظ†', 'ط§ظ„ط´ط¹ط±ط§ط،', 'ط§ظ„ظ†ظ…ظ„', 'ط§ظ„ظ‚طµطµ', 'ط§ظ„ط¹ظ†ظƒط¨ظˆطھ', 'ط§ظ„ط±ظˆظ…',
-    'ظ„ظ‚ظ…ط§ظ†', 'ط§ظ„ط³ط¬ط¯ط©', 'ط§ظ„ط£ط­ط²ط§ط¨', 'ط³ط¨ط£', 'ظپط§ط·ط±', 'ظٹط³', 'ط§ظ„طµط§ظپط§طھ', 'طµ',
-    'ط§ظ„ط²ظ…ط±', 'ط؛ط§ظپط±', 'ظپطµظ„طھ', 'ط§ظ„ط´ظˆط±ظ‰', 'ط§ظ„ط²ط®ط±ظپ', 'ط§ظ„ط¯ط®ط§ظ†', 'ط§ظ„ط¬ط§ط«ظٹط©', 'ط§ظ„ط£ط­ظ‚ط§ظپ',
-    'ظ…ط­ظ…ط¯', 'ط§ظ„ظپطھط­', 'ط§ظ„ط­ط¬ط±ط§طھ', 'ظ‚', 'ط§ظ„ط°ط§ط±ظٹط§طھ', 'ط§ظ„ط·ظˆط±', 'ط§ظ„ظ†ط¬ظ…', 'ط§ظ„ظ‚ظ…ط±',
-    'ط§ظ„ط±ط­ظ…ظ†', 'ط§ظ„ظˆط§ظ‚ط¹ط©', 'ط§ظ„ط­ط¯ظٹط¯', 'ط§ظ„ظ…ط¬ط§ط¯ظ„ط©', 'ط§ظ„ط­ط´ط±', 'ط§ظ„ظ…ظ…طھط­ظ†ط©', 'ط§ظ„طµظپ',
-    'ط§ظ„ط¬ظ…ط¹ط©', 'ط§ظ„ظ…ظ†ط§ظپظ‚ظˆظ†', 'ط§ظ„طھط؛ط§ط¨ظ†', 'ط§ظ„ط·ظ„ط§ظ‚', 'ط§ظ„طھط­ط±ظٹظ…', 'ط§ظ„ظ…ظ„ظƒ', 'ط§ظ„ظ‚ظ„ظ…',
-    'ط§ظ„ط­ط§ظ‚ط©', 'ط§ظ„ظ…ط¹ط§ط±ط¬', 'ظ†ظˆط­', 'ط§ظ„ط¬ظ†', 'ط§ظ„ظ…ط²ظ…ظ„', 'ط§ظ„ظ…ط¯ط«ط±', 'ط§ظ„ظ‚ظٹط§ظ…ط©',
-    'ط§ظ„ط¥ظ†ط³ط§ظ†', 'ط§ظ„ظ…ط±ط³ظ„ط§طھ', 'ط§ظ„ظ†ط¨ط£', 'ط§ظ„ظ†ط§ط²ط¹ط§طھ', 'ط¹ط¨ط³', 'ط§ظ„طھظƒظˆظٹط±', 'ط§ظ„ط¥ظ†ظپط·ط§ط±',
-    'ط§ظ„ظ…ط·ظپظپظٹظ†', 'ط§ظ„ط¥ظ†ط´ظ‚ط§ظ‚', 'ط§ظ„ط¨ط±ظˆط¬', 'ط§ظ„ط·ط§ط±ظ‚', 'ط§ظ„ط£ط¹ظ„ظ‰', 'ط§ظ„ط؛ط§ط´ظٹط©', 'ط§ظ„ظپط¬ط±',
-    'ط§ظ„ط¨ظ„ط¯', 'ط§ظ„ط´ظ…ط³', 'ط§ظ„ظ„ظٹظ„', 'ط§ظ„ط¶ط­ظ‰', 'ط§ظ„ط´ط±ط­', 'ط§ظ„طھظٹظ†', 'ط§ظ„ط¹ظ„ظ‚', 'ط§ظ„ظ‚ط¯ط±',
-    'ط§ظ„ط¨ظٹظ†ط©', 'ط§ظ„ط²ظ„ط²ظ„ط©', 'ط§ظ„ط¹ط§ط¯ظٹط§طھ', 'ط§ظ„ظ‚ط§ط±ط¹ط©', 'ط§ظ„طھظƒط§ط«ط±', 'ط§ظ„ط¹طµط±', 'ط§ظ„ظ‡ظ…ط²ط©',
-    'ط§ظ„ظپظٹظ„', 'ظ‚ط±ظٹط´', 'ط§ظ„ظ…ط§ط¹ظˆظ†', 'ط§ظ„ظƒظˆط«ط±', 'ط§ظ„ظƒط§ظپط±ظˆظ†', 'ط§ظ„ظ†طµط±', 'ط§ظ„ظ…ط³ط¯',
-    'ط§ظ„ط¥ط®ظ„ط§طµ', 'ط§ظ„ظپظ„ظ‚', 'ط§ظ„ظ†ط§ط³'
+    'الفاتحة', 'البقرة', 'آل عمران', 'النساء', 'المائدة', 'الأنعام', 'الأعراف',
+    'الأنفال', 'التوبة', 'يونس', 'هود', 'يوسف', 'الرعد', 'إبراهيم', 'الحجر',
+    'النحل', 'الإسراء', 'الكهف', 'مريم', 'طه', 'الأنبياء', 'الحج', 'المؤمنون',
+    'النور', 'الفرقان', 'الشعراء', 'النمل', 'القصص', 'العنكبوت', 'الروم',
+    'لقمان', 'السجدة', 'الأحزاب', 'سبأ', 'فاطر', 'يس', 'الصافات', 'ص',
+    'الزمر', 'غافر', 'فصلت', 'الشورى', 'الزخرف', 'الدخان', 'الجاثية', 'الأحقاف',
+    'محمد', 'الفتح', 'الحجرات', 'ق', 'الذاريات', 'الطور', 'النجم', 'القمر',
+    'الرحمن', 'الواقعة', 'الحديد', 'المجادلة', 'الحشر', 'الممتحنة', 'الصف',
+    'الجمعة', 'المنافقون', 'التغابن', 'الطلاق', 'التحريم', 'الملك', 'القلم',
+    'الحاقة', 'المعارج', 'نوح', 'الجن', 'المزمل', 'المدثر', 'القيامة',
+    'الإنسان', 'المرسلات', 'النبأ', 'النازعات', 'عبس', 'التكوير', 'الإنفطار',
+    'المطففين', 'الإنشقاق', 'البروج', 'الطارق', 'الأعلى', 'الغاشية', 'الفجر',
+    'البلد', 'الشمس', 'الليل', 'الضحى', 'الشرح', 'التين', 'العلق', 'القدر',
+    'البينة', 'الزلزلة', 'العاديات', 'القارعة', 'التكاثر', 'العصر', 'الهمزة',
+    'الفيل', 'قريش', 'الماعون', 'الكوثر', 'الكافرون', 'النصر', 'المسد',
+    'الإخلاص', 'الفلق', 'الناس'
   ];
 
   final List<int> _surahStartPages = const [
@@ -214,7 +214,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
               const SizedBox(width: 10),
               Expanded(
                 child: Text(
-                  'ط­ط§ظ„ط© طھظ†ط²ظٹظ„ ط§ظ„ظ‚ط±ط¢ظ†',
+                  'حالة تنزيل القرآن',
                   style: GoogleFonts.cairo(
                     fontWeight: FontWeight.bold,
                     fontSize: 17,
@@ -249,7 +249,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                 child: Column(
                   children: [
                     Text(
-                      'ط§ظ„طµظپط­ط§طھ ط§ظ„ظ…ط­ظ…ظ‘ظ„ط©',
+                      'الصفحات المحمّلة',
                       style: GoogleFonts.cairo(
                         fontSize: 12,
                         color: Colors.grey.shade700,
@@ -257,7 +257,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      '${_toArabicNum(downloadedPages)} / ظ¦ظ ظ¤',
+                      '${_toArabicNum(downloadedPages)} / ٦٠٤',
                       style: GoogleFonts.cairo(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -278,14 +278,14 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'ط§ظ„ظ…طھط¨ظ‚ظٹ',
+                          'المتبقي',
                           style: GoogleFonts.cairo(
                             fontSize: 12,
                             color: Colors.grey.shade700,
                           ),
                         ),
                         Text(
-                          '${_toArabicNum(remainingPages)} طµظپط­ط©',
+                          '${_toArabicNum(remainingPages)} صفحة',
                           style: GoogleFonts.cairo(
                             fontSize: 13,
                             fontWeight: FontWeight.bold,
@@ -304,7 +304,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                 Text(
                   _backgroundPrepareMessage.isNotEmpty
                       ? _backgroundPrepareMessage
-                      : 'ظٹطھظ… طھظ†ط²ظٹظ„ ط§ظ„طµظپط­ط§طھ ط§ظ„ط¢ظ†...',
+                      : 'يتم تنزيل الصفحات الآن...',
                   style: GoogleFonts.cairo(
                     fontSize: 13,
                     color: Colors.grey.shade700,
@@ -313,7 +313,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
 
               if (_areAllPagesDownloaded)
                 Text(
-                  'طھظ… طھظ†ط²ظٹظ„ ط¬ظ…ظٹط¹ طµظپط­ط§طھ ط§ظ„ظ‚ط±ط¢ظ† ظˆظٹظ…ظƒظ†ظƒ ط§ظ„ظ‚ط±ط§ط،ط© ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ.',
+                  'تم تنزيل جميع صفحات القرآن ويمكنك القراءة بدون إنترنت.',
                   style: GoogleFonts.cairo(
                     fontSize: 13,
                     color: Colors.grey.shade700,
@@ -324,7 +324,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                   !_isDownloadingAllPages &&
                   !_isBackgroundPreparing)
                 Text(
-                  'ط¨ط¹ط¶ ط§ظ„طµظپط­ط§طھ ظ„ظ… ظٹطھظ… طھظ†ط²ظٹظ„ظ‡ط§ ط¨ط¹ط¯. ظٹظ…ظƒظ†ظƒ ط§ط³طھط¦ظ†ط§ظپ ط§ظ„طھط­ظ…ظٹظ„ ط§ظ„ط¢ظ†.',
+                  'بعض الصفحات لم يتم تنزيلها بعد. يمكنك استئناف التحميل الآن.',
                   style: GoogleFonts.cairo(
                     fontSize: 13,
                     color: Colors.grey.shade700,
@@ -336,7 +336,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
             TextButton(
               onPressed: () => Navigator.pop(ctx),
               child: Text(
-                'ط¥ط؛ظ„ط§ظ‚',
+                'إغلاق',
                 style: GoogleFonts.cairo(),
               ),
             ),
@@ -356,7 +356,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                   await _handleQuranDownloadStatusTap();
                 },
                 child: Text(
-                  'ط§ط³طھط¦ظ†ط§ظپ ط§ظ„طھط­ظ…ظٹظ„',
+                  'استئناف التحميل',
                   style: GoogleFonts.cairo(
                     fontWeight: FontWeight.bold,
                   ),
@@ -370,14 +370,14 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
 
   String _getQuranDownloadStatusText() {
     if (_isDownloadingAllPages || _isBackgroundPreparing) {
-      return 'ط¬ط§ط±ظٹ طھظ†ط²ظٹظ„ طµظپط­ط§طھ ط§ظ„ظ‚ط±ط¢ظ†...';
+      return 'جاري تنزيل صفحات القرآن...';
     }
 
     if (_areAllPagesDownloaded) {
-      return 'طھظ… طھط­ظ…ظٹظ„ ط§ظ„ظ‚ط±ط¢ظ† ط¨ط§ظ„ظƒط§ظ…ظ„';
+      return 'تم تحميل القرآن بالكامل';
     }
 
-    return 'ط§ظ„ظ‚ط±ط¢ظ† ط؛ظٹط± ظ…ظƒطھظ…ظ„ ط§ظ„طھط­ظ…ظٹظ„';
+    return 'القرآن غير مكتمل التحميل';
   }
 
   Future<void> _handleQuranDownloadStatusTap() async {
@@ -562,7 +562,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
       setState(() {
         _isDownloadingAllPages = true;
         _isBackgroundPreparing = true;
-        _backgroundPrepareMessage = 'ط¬ط§ط±ظٹ طھظ†ط²ظٹظ„ طµظپط­ط§طھ ط§ظ„ظ‚ط±ط¢ظ† ظپظٹ ط§ظ„ط®ظ„ظپظٹط©...';
+        _backgroundPrepareMessage = 'جاري تنزيل صفحات القرآن في الخلفية...';
       });
     }
 
@@ -576,7 +576,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
         if (mounted && page % 20 == 0) {
           setState(() {
             _backgroundPrepareMessage =
-            'ط¬ط§ط±ظٹ طھظ†ط²ظٹظ„ طµظپط­ط§طھ ط§ظ„ظ‚ط±ط¢ظ†... (${_toArabicNum(page)}/ظ¦ظ ظ¤)';
+            'جاري تنزيل صفحات القرآن... (${_toArabicNum(page)}/٦٠٤)';
           });
         }
       }
@@ -593,7 +593,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              'طھظ… طھظ†ط²ظٹظ„ طµظپط­ط§طھ ط§ظ„ظ‚ط±ط¢ظ† ط¨ط§ظ„ظƒط§ظ…ظ„ ظ„ظ„ط¹ظ…ظ„ ط¨ط¯ظˆظ† ط¥ظ†طھط±ظ†طھ',
+              'تم تنزيل صفحات القرآن بالكامل للعمل بدون إنترنت',
               style: GoogleFonts.cairo(),
             ),
             backgroundColor: Colors.green,
@@ -666,8 +666,8 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               _buildSheetHeader(
-                title: 'ط§ط®طھظٹط§ط± ط§ظ„ظ‚ط§ط±ط¦',
-                subtitle: 'ط§ط®طھط± ظ‚ط§ط±ط¦ ط§ظ„طھظ„ط§ظˆط©',
+                title: 'اختيار القارئ',
+                subtitle: 'اختر قارئ التلاوة',
                 primary: primary,
                 icon: Icons.record_voice_over_rounded,
               ),
@@ -675,7 +675,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                     (r) => _buildModernSheetTile(
                   icon: Icons.person_rounded,
                   title: r['name']!,
-                  subtitle: _selectedReciter == r['id'] ? 'ط§ظ„ظ‚ط§ط±ط¦ ط§ظ„ط­ط§ظ„ظٹ' : null,
+                  subtitle: _selectedReciter == r['id'] ? 'القارئ الحالي' : null,
                   primary: primary,
                   trailing: _selectedReciter == r['id']
                       ? Icon(Icons.check_circle, color: primary)
@@ -722,8 +722,8 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   _buildSheetHeader(
-                    title: 'ط§ظ„ط§ظ†طھظ‚ط§ظ„ ط§ظ„ط³ط±ظٹط¹',
-                    subtitle: 'ط§ط°ظ‡ط¨ ط¥ظ„ظ‰ طµظپط­ط© ظ…ط­ط¯ط¯ط©',
+                    title: 'الانتقال السريع',
+                    subtitle: 'اذهب إلى صفحة محددة',
                     primary: primary,
                     icon: Icons.swap_horiz_rounded,
                   ),
@@ -736,7 +736,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                     decoration: InputDecoration(
-                      hintText: 'ط£ط¯ط®ظ„ ط±ظ‚ظ… ط§ظ„طµظپط­ط©',
+                      hintText: 'أدخل رقم الصفحة',
                       hintStyle: GoogleFonts.cairo(),
                       filled: true,
                       fillColor: primary.withValues(alpha: 0.05),
@@ -773,7 +773,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                'ط£ط¯ط®ظ„ ط±ظ‚ظ… طµظپط­ط© طµط­ظٹط­ ظ…ظ† 1 ط¥ظ„ظ‰ 604',
+                                'أدخل رقم صفحة صحيح من 1 إلى 604',
                                 style: GoogleFonts.cairo(),
                               ),
                             ),
@@ -793,7 +793,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                         await _saveLastReadingPosition();
                       },
                       child: Text(
-                        'ط§ظ„ط§ظ†طھظ‚ط§ظ„ ط¥ظ„ظ‰ ط§ظ„طµظپط­ط©',
+                        'الانتقال إلى الصفحة',
                         style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -846,7 +846,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                     child: Column(
                       children: [
                         Text(
-                          'ظپظ‡ط±ط³ ط§ظ„ظ…طµط­ظپ',
+                          'فهرس المصحف',
                           style: GoogleFonts.cairo(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -857,10 +857,10 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                           children: [
                             Expanded(
                               child: _quickJumpCard(
-                                title: 'ط¢ط®ط± ظ…ظˆط¶ط¹',
+                                title: 'آخر موضع',
                                 value: saved['lastPage'] != null
-                                    ? 'طµظپط­ط© ${_toArabicNum(saved['lastPage'])}'
-                                    : 'ط؛ظٹط± ظ…طھظˆظپط±',
+                                    ? 'صفحة ${_toArabicNum(saved['lastPage'])}'
+                                    : 'غير متوفر',
                                 icon: Icons.history_rounded,
                                 onTap: () {
                                   Navigator.pop(ctx);
@@ -871,10 +871,10 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                             const SizedBox(width: 10),
                             Expanded(
                               child: _quickJumpCard(
-                                title: 'ط§ظ„ط¹ظ„ط§ظ…ط©',
+                                title: 'العلامة',
                                 value: saved['bookmarkPage'] != null
-                                    ? 'طµظپط­ط© ${_toArabicNum(saved['bookmarkPage'])}'
-                                    : 'ط؛ظٹط± ظ…طھظˆظپط±',
+                                    ? 'صفحة ${_toArabicNum(saved['bookmarkPage'])}'
+                                    : 'غير متوفر',
                                 icon: Icons.bookmark_rounded,
                                 onTap: () {
                                   Navigator.pop(ctx);
@@ -897,10 +897,10 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                       fontSize: 13,
                     ),
                     tabs: const [
-                      Tab(text: 'طµظپط­ط§طھ'),
-                      Tab(text: 'ط§ظ„ط³ظˆط±'),
-                      Tab(text: 'ط§ظ„ط£ط¬ط²ط§ط،'),
-                      Tab(text: 'ط§ظ„ط£ط­ط²ط§ط¨'),
+                      Tab(text: 'صفحات'),
+                      Tab(text: 'السور'),
+                      Tab(text: 'الأجزاء'),
+                      Tab(text: 'الأحزاب'),
                     ],
                   ),
                   const SizedBox(height: 6),
@@ -946,7 +946,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
       return ayahs;
     }
 
-    throw Exception('طھط¹ط°ط± طھط­ظ…ظٹظ„ ط§ظ„طµظپط­ط©');
+    throw Exception('تعذر تحميل الصفحة');
   }
 
   void _preloadNearbyPages(int page) {
@@ -992,16 +992,16 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
 
   String _toArabicNum(int n) {
     const nums = {
-      '0': 'ظ ',
+      '0': '٠',
       '1': 'ظ،',
-      '2': 'ظ¢',
-      '3': 'ظ£',
-      '4': 'ظ¤',
-      '5': 'ظ¥',
-      '6': 'ظ¦',
-      '7': 'ظ§',
-      '8': 'ظ¨',
-      '9': 'ظ©',
+      '2': '٢',
+      '3': '٣',
+      '4': '٤',
+      '5': '٥',
+      '6': '٦',
+      '7': '٧',
+      '8': '٨',
+      '9': '٩',
     };
 
     String s = n.toString();
@@ -1061,7 +1061,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'طھظ… ط­ظپط¸ ط¹ظ„ط§ظ…ط© ط¹ظ†ط¯ ط§ظ„طµظپط­ط© $_currentPage',
+          'تم حفظ علامة عند الصفحة $_currentPage',
           style: GoogleFonts.cairo(),
         ),
         backgroundColor: Colors.green,
@@ -1077,7 +1077,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('ظ„ط§ ظٹظˆط¬ط¯ ظ…ظˆط¶ط¹ ظ…ط­ظپظˆط¸ ط³ط§ط¨ظ‚ظ‹ط§', style: GoogleFonts.cairo()),
+          content: Text('لا يوجد موضع محفوظ سابقًا', style: GoogleFonts.cairo()),
         ),
       );
       return;
@@ -1101,7 +1101,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('ظ„ط§ طھظˆط¬ط¯ ط¹ظ„ط§ظ…ط© ظ…ط­ظپظˆط¸ط©', style: GoogleFonts.cairo()),
+          content: Text('لا توجد علامة محفوظة', style: GoogleFonts.cairo()),
         ),
       );
       return;
@@ -1160,7 +1160,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              'ظ„ظ… ظٹطھظ… ظ…ظ†ط­ ط¥ط°ظ† ط§ظ„ظ…ظٹظƒط±ظˆظپظˆظ†',
+              'لم يتم منح إذن الميكروفون',
               style: GoogleFonts.cairo(),
             ),
             backgroundColor: Colors.red,
@@ -1189,7 +1189,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
-                'ط®ط·ط£ ظپظٹ ط§ظ„ظ…ظٹظƒط±ظˆظپظˆظ†: ${error.errorMsg}',
+                'خطأ في الميكروفون: ${error.errorMsg}',
                 style: GoogleFonts.cairo(),
               ),
               backgroundColor: Colors.red,
@@ -1203,7 +1203,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              'ط®ط¯ظ…ط© ط§ظ„طھط¹ط±ظپ ط§ظ„طµظˆطھظٹ ط؛ظٹط± ظ…طھط§ط­ط© ط¹ظ„ظ‰ ظ‡ط°ط§ ط§ظ„ط¬ظ‡ط§ط²',
+              'خدمة التعرف الصوتي غير متاحة على هذا الجهاز',
               style: GoogleFonts.cairo(),
             ),
             backgroundColor: Colors.orange,
@@ -1236,7 +1236,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            'طھط¹ط°ط± طھط´ط؛ظٹظ„ ط§ظ„ظ…ظٹظƒط±ظˆظپظˆظ†',
+            'تعذر تشغيل الميكروفون',
             style: GoogleFonts.cairo(),
           ),
           backgroundColor: Colors.red,
@@ -1288,8 +1288,8 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                 padding: const EdgeInsets.fromLTRB(16, 14, 16, 22),
                 children: [
                   _buildSheetHeader(
-                    title: 'طھظپط³ظٹط± ط§ظ„طµظپط­ط©',
-                    subtitle: 'ط§ظ„طµظپط­ط© $_currentPage â€¢ ط§ظ„طھظپط³ظٹط± ط§ظ„ظ…ظٹط³ط±',
+                    title: 'تفسير الصفحة',
+                    subtitle: 'الصفحة $_currentPage • التفسير الميسر',
                     primary: primary,
                     icon: Icons.menu_book_rounded,
                   ),
@@ -1317,7 +1317,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('طھط¹ط°ط± طھط­ظ…ظٹظ„ طھظپط³ظٹط± ط§ظ„طµظپط­ط©', style: GoogleFonts.cairo()),
+            content: Text('تعذر تحميل تفسير الصفحة', style: GoogleFonts.cairo()),
           ),
         );
       }
@@ -1326,7 +1326,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('ط­ط¯ط« ط®ط·ط£ ط£ط«ظ†ط§ط، طھط­ظ…ظٹظ„ ط§ظ„طھظپط³ظٹط±', style: GoogleFonts.cairo()),
+          content: Text('حدث خطأ أثناء تحميل التفسير', style: GoogleFonts.cairo()),
         ),
       );
     }
@@ -1354,15 +1354,15 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               _buildSheetHeader(
-                title: 'ط®ظٹط§ط±ط§طھ ط§ظ„ظ…طµط­ظپ',
+                title: 'خيارات المصحف',
                 subtitle: widget.surahName,
                 primary: primary,
                 icon: Icons.menu_book_rounded,
               ),
               _buildModernSheetTile(
                 icon: Icons.list_alt_rounded,
-                title: 'ظپظ‡ط±ط³ ط§ظ„ظ…طµط­ظپ',
-                subtitle: 'ط§ظ„ط³ظˆط±طŒ ط§ظ„ط£ط¬ط²ط§ط،طŒ ط§ظ„ط£ط­ط²ط§ط¨طŒ ط§ظ„طµظپط­ط§طھ',
+                title: 'فهرس المصحف',
+                subtitle: 'السور، الأجزاء، الأحزاب، الصفحات',
                 primary: primary,
                 onTap: () {
                   Navigator.pop(ctx);
@@ -1371,8 +1371,8 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
               ),
               _buildModernSheetTile(
                 icon: Icons.search_rounded,
-                title: 'ط§ظ„ط¨ط­ط« ظپظٹ ط§ظ„ظ‚ط±ط¢ظ†',
-                subtitle: 'ط§ط¨ط­ط« ط¹ظ† ظƒظ„ظ…ط© ط£ظˆ ط¢ظٹط©',
+                title: 'البحث في القرآن',
+                subtitle: 'ابحث عن كلمة أو آية',
                 primary: primary,
                 onTap: () {
                   Navigator.pop(ctx);
@@ -1393,8 +1393,8 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
               ),
               _buildModernSheetTile(
                 icon: Icons.swap_horiz_rounded,
-                title: 'ط§ظ„ط§ظ†طھظ‚ط§ظ„ ط§ظ„ط³ط±ظٹط¹',
-                subtitle: 'ط§ط°ظ‡ط¨ ظ…ط¨ط§ط´ط±ط© ط¥ظ„ظ‰ طµظپط­ط© ظ…ط¹ظٹظ†ط©',
+                title: 'الانتقال السريع',
+                subtitle: 'اذهب مباشرة إلى صفحة معينة',
                 primary: primary,
                 onTap: () {
                   Navigator.pop(ctx);
@@ -1403,10 +1403,10 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
               ),
               _buildModernSheetTile(
                 icon: Icons.history_rounded,
-                title: 'ط¢ط®ط± ظ…ظˆط¶ط¹',
+                title: 'آخر موضع',
                 subtitle: saved['lastPage'] != null
-                    ? 'ط§ظ„طµظپط­ط© ${saved['lastPage']}'
-                    : 'ظ„ط§ ظٹظˆط¬ط¯ ظ…ظˆط¶ط¹ ظ…ط­ظپظˆط¸',
+                    ? 'الصفحة ${saved['lastPage']}'
+                    : 'لا يوجد موضع محفوظ',
                 primary: primary,
                 onTap: () async {
                   Navigator.pop(ctx);
@@ -1415,10 +1415,10 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
               ),
               _buildModernSheetTile(
                 icon: Icons.bookmark_rounded,
-                title: 'ط§ظ„ط°ظ‡ط§ط¨ ط¥ظ„ظ‰ ط§ظ„ط¹ظ„ط§ظ…ط©',
+                title: 'الذهاب إلى العلامة',
                 subtitle: saved['bookmarkPage'] != null
-                    ? 'ط§ظ„طµظپط­ط© ${saved['bookmarkPage']}'
-                    : 'ظ„ط§ طھظˆط¬ط¯ ط¹ظ„ط§ظ…ط© ظ…ط­ظپظˆط¸ط©',
+                    ? 'الصفحة ${saved['bookmarkPage']}'
+                    : 'لا توجد علامة محفوظة',
                 primary: primary,
                 onTap: () async {
                   Navigator.pop(ctx);
@@ -1427,7 +1427,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
               ),
               _buildModernSheetTile(
                 icon: Icons.record_voice_over_rounded,
-                title: 'ط§ط®طھظٹط§ط± ط§ظ„ظ‚ط§ط±ط¦',
+                title: 'اختيار القارئ',
                 subtitle: _selectedReciterName,
                 primary: primary,
                 onTap: () {
@@ -1482,7 +1482,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                 color: bg,
                 alignment: Alignment.center,
                 child: Text(
-                  'طھط¹ط°ط± طھط­ظ…ظٹظ„ ط§ظ„طµظپط­ط© ${_toArabicNum(page)}',
+                  'تعذر تحميل الصفحة ${_toArabicNum(page)}',
                   style: GoogleFonts.cairo(
                     color: primary,
                     fontSize: 22,
@@ -1540,7 +1540,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                                 ),
                                 const Spacer(),
                                 Text(
-                                  'ط¬ط²ط، ${_toArabicNum(juz)}',
+                                  'جزء ${_toArabicNum(juz)}',
                                   style: GoogleFonts.cairo(
                                     fontSize: 17.5,
                                     fontWeight: FontWeight.w600,
@@ -1554,7 +1554,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                                 ),
                                 const SizedBox(width: 8),
                                 Text(
-                                  'ط­ط²ط¨ ${_toArabicNum(hizb)}',
+                                  'حزب ${_toArabicNum(hizb)}',
                                   style: GoogleFonts.cairo(
                                     fontSize: 17.5,
                                     fontWeight: FontWeight.w600,
@@ -2013,7 +2013,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          'طµظپط­ط© $_currentPage | ط¬ط²ط، $juz | ط­ط²ط¨ $hizb',
+                          'صفحة $_currentPage | جزء $juz | حزب $hizb',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.right,
@@ -2103,13 +2103,13 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                   _bottomPillButton(
                     isHighlighted: true,
                     icon: Icons.error_outline_rounded,
-                    label: 'ط£ط®ط·ط§ط،',
+                    label: 'أخطاء',
                     isDark: isDark,
                     onTap: () {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(
-                            'ظ…ظٹط²ط© ط§ظ„ط£ط®ط·ط§ط،/ط§ظ„طھط³ظ…ظٹط¹ ط³طھظڈظپط¹ظ‘ظ„ ظ„ط§ط­ظ‚ظ‹ط§',
+                            'ميزة الأخطاء/التسميع ستُفعّل لاحقًا',
                             style: GoogleFonts.cairo(),
                           ),
                         ),
@@ -2119,7 +2119,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                   const SizedBox(width: 4),
                   _bottomPillButton(
                     icon: Icons.menu_book_outlined,
-                    label: 'طھظپط³ظٹط±',
+                    label: 'تفسير',
                     isDark: isDark,
                     onTap: _showPageTafsir,
                   ),
@@ -2128,7 +2128,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                     icon: _hideVerses
                         ? Icons.visibility_outlined
                         : Icons.visibility_off_outlined,
-                    label: _hideVerses ? 'ط¥ط¸ظ‡ط§ط±' : 'ط¥ط®ظپط§ط،',
+                    label: _hideVerses ? 'إظهار' : 'إخفاء',
                     isDark: isDark,
                     onTap: () {
                       setState(() {
@@ -2151,7 +2151,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
-                      'ظ…ظٹط²ط© ط§ظ„ظ…ظٹظƒط±ظˆظپظˆظ† ط³طھظڈظپط¹ظ‘ظ„ ظ„ط§ط­ظ‚ظ‹ط§',
+                      'ميزة الميكروفون ستُفعّل لاحقًا',
                       style: GoogleFonts.cairo(),
                     ),
                   ),
@@ -2340,7 +2340,7 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
             style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
           ),
           subtitle: Text(
-            'طھط¨ط¯ط£ ظ…ظ† طµظپط­ط© ${_toArabicNum(page)}',
+            'تبدأ من صفحة ${_toArabicNum(page)}',
             style: GoogleFonts.cairo(fontSize: 12),
           ),
           trailing: Text(
@@ -2372,11 +2372,11 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
             borderRadius: BorderRadius.circular(14),
           ),
           title: Text(
-            'ط§ظ„ط¬ط²ط، ${_toArabicNum(juz)}',
+            'الجزء ${_toArabicNum(juz)}',
             style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
           ),
           subtitle: Text(
-            'ظٹط¨ط¯ط£ ظ…ظ† طµظپط­ط© ${_toArabicNum(page)}',
+            'يبدأ من صفحة ${_toArabicNum(page)}',
             style: GoogleFonts.cairo(fontSize: 12),
           ),
           onTap: () {
@@ -2401,11 +2401,11 @@ class _SurahDetailScreenState extends State<SurahDetailScreen> {
             borderRadius: BorderRadius.circular(14),
           ),
           title: Text(
-            'ط§ظ„ط­ط²ط¨ ${_toArabicNum(hizb)}',
+            'الحزب ${_toArabicNum(hizb)}',
             style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
           ),
           subtitle: Text(
-            'ظٹط¨ط¯ط£ ظ…ظ† طµظپط­ط© ${_toArabicNum(page)}',
+            'يبدأ من صفحة ${_toArabicNum(page)}',
             style: GoogleFonts.cairo(fontSize: 12),
           ),
           onTap: () {
