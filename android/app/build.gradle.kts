@@ -59,8 +59,10 @@ android {
     buildTypes {
         release {
             signingConfig = signingConfigs.getByName("release")
-            isMinifyEnabled = true
-            isShrinkResources = true
+            // تعطيل التصغير مؤقتًا لتجنب خطأ تغليف classes.dex/classes2.dex
+            // مع إصدار Android Gradle Plugin الحالي أثناء إنشاء حزمة Play.
+            isMinifyEnabled = false
+            isShrinkResources = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"

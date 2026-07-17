@@ -1,138 +1,159 @@
-// lib/services/ayah_audio_service.dart
-
 import 'dart:async';
-import 'package:just_audio/just_audio.dart';
+
 import 'package:flutter/foundation.dart';
+import 'package:just_audio/just_audio.dart';
+
 import 'quran_text_service.dart';
 
 class AyahAudioService {
+  static const Map<String, int> _preferredBitrates = {
+    'ar.alafasy': 128,
+    'ar.husary': 128,
+    'ar.abdulsamad': 64,
+    'ar.mahermuaiqly': 128,
+    'ar.abdurrahmaansudais': 192,
+    'ar.saoodshuraym': 64,
+    'ar.hudhaify': 128,
+    'ar.muhammadayyoub': 128,
+    'ar.ahmedajamy': 128,
+    'ar.shaatree': 128,
+    'ar.hanirifai': 192,
+    'ar.ibrahimakhbar': 32,
+    'ar.muhammadjibreel': 128,
+    'ar.abdullahbasfar': 192,
+    'ar.husarymujawwad': 128,
+    'ar.minshawi': 128,
+    'ar.minshawimujawwad': 64,
+  };
+
   final AudioPlayer _player;
   String reciterId;
 
-  // الحالة
   int _currentSurah = 0;
   int _currentAyah = 0;
   bool _isSequencePlaying = false;
   bool _isPaused = false;
 
-  // Callbacks
-  Function(int surah, int ayah)? onAyahStarted;
-  Function()? onSequenceComplete;
-  Function(bool isPlaying)? onPlayStateChanged;
+  void Function(int surah, int ayah)? onAyahStarted;
+  VoidCallback? onSequenceComplete;
+  ValueChanged<bool>? onPlayStateChanged;
+  ValueChanged<String>? onError;
 
-  AyahAudioService({
-    required AudioPlayer player,
-    this.reciterId = 'ar.alafasy',
-  }) : _player = player;
+  AyahAudioService({required AudioPlayer player, this.reciterId = 'ar.alafasy'})
+    : _player = player;
 
   int get currentAyah => _currentAyah;
   int get currentSurah => _currentSurah;
   bool get isPlaying => _isSequencePlaying && !_isPaused;
   bool get isPaused => _isPaused;
 
-  /// ─── بناء رابط الصوت لآية ───
-  String _ayahUrl(int globalNumber) {
-    final paddedNum = globalNumber.toString().padLeft(3, '0');
-    return 'https://cdn.islamic.network/quran/audio/128/$reciterId/$paddedNum.mp3';
+  /// Each edition has an official preferred bitrate. The remaining bitrates
+  /// and regional mirror are tried automatically if that source is down.
+  List<String> _ayahUrls(int globalNumber) {
+    final preferred = _preferredBitrates[reciterId] ?? 128;
+    final bitrates = <int>{preferred, 128, 64, 192};
+    return [
+      for (final bitrate in bitrates)
+        'https://cdn.islamic.network/quran/audio/$bitrate/$reciterId/$globalNumber.mp3',
+      for (final bitrate in bitrates)
+        'https://cdn.alislam.ru/quran/audio/$bitrate/$reciterId/$globalNumber.mp3',
+    ];
   }
 
-  /// ─── تشغيل آية واحدة ───
+  Future<void> _loadAyah(int globalNumber) async {
+    Object? lastError;
+    for (final url in _ayahUrls(globalNumber)) {
+      try {
+        await _player.setUrl(url).timeout(const Duration(seconds: 18));
+        return;
+      } catch (error) {
+        lastError = error;
+        debugPrint('Ayah audio source failed: $url — $error');
+      }
+    }
+    throw StateError('All audio sources failed: $lastError');
+  }
+
   Future<void> playAyah(int surahNumber, int ayahNumber) async {
+    _currentSurah = surahNumber;
+    _currentAyah = ayahNumber;
+    final globalNumber = QuranTextService.getGlobalAyahNumber(
+      surahNumber,
+      ayahNumber,
+    );
+
     try {
-      _currentSurah = surahNumber;
-      _currentAyah = ayahNumber;
-
-      final global = QuranTextService.getGlobalAyahNumber(
-          surahNumber, ayahNumber);
-
-      await _player.setUrl(_ayahUrl(global));
+      await _loadAyah(globalNumber);
       onAyahStarted?.call(surahNumber, ayahNumber);
       onPlayStateChanged?.call(true);
       await _player.play();
-
-      // ✅ في playAyah:
-      await _player.playerStateStream
-          .firstWhere(
-            (s) => s.processingState == ProcessingState.completed,
-      )
-          .timeout(
-        const Duration(minutes: 2),
-        onTimeout: () {
-          debugPrint('⏰ timeout في playAyah');
-          return _player.playerState;
-        },
-      );
-
+      await _waitForCompletion();
       onPlayStateChanged?.call(false);
-    } catch (e) {
-      debugPrint('playAyah error: $e');
+    } catch (error) {
+      debugPrint('playAyah $globalNumber error: $error');
       onPlayStateChanged?.call(false);
+      onError?.call('تعذر تشغيل التلاوة. تحقق من اتصال الإنترنت.');
     }
   }
 
-  // ✅ المصلح في ayah_audio_service.dart:
-  Future<void> playPage({
-    required int page,
-    int startFromAyahIndex = 0,
-  }) async {
+  Future<void> playPage({required int page, int startFromAyahIndex = 0}) async {
     final ayahs = QuranTextService.getPageAyahs(page);
     if (ayahs.isEmpty) return;
 
     _isSequencePlaying = true;
     _isPaused = false;
 
-    for (int i = startFromAyahIndex; i < ayahs.length; i++) {
+    for (
+      var index = startFromAyahIndex;
+      index < ayahs.length && _isSequencePlaying;
+      index++
+    ) {
+      while (_isPaused && _isSequencePlaying) {
+        await Future<void>.delayed(const Duration(milliseconds: 100));
+      }
       if (!_isSequencePlaying) break;
 
-      while (_isPaused) {
-        await Future.delayed(const Duration(milliseconds: 100));
-        if (!_isSequencePlaying) return;
-      }
-
-      final ayah = ayahs[i];
-      final surahNum = ayah['surahNumber'] as int;
-      final ayahNum = ayah['numberInSurah'] as int;
-
-      // ✅ استخدام الدالة بدلاً من القيمة المخزنة
-      final globalNum = ayah['number'] as int? ??
-          QuranTextService.getGlobalAyahNumber(surahNum, ayahNum);
-
-      _currentSurah = surahNum;
-      _currentAyah = ayahNum;
-
-      onAyahStarted?.call(surahNum, ayahNum);
-      onPlayStateChanged?.call(true);
+      final ayah = ayahs[index];
+      final surahNumber = ayah['surahNumber'] as int;
+      final ayahNumber = ayah['numberInSurah'] as int;
+      final globalNumber =
+          ayah['number'] as int? ??
+          QuranTextService.getGlobalAyahNumber(surahNumber, ayahNumber);
+      _currentSurah = surahNumber;
+      _currentAyah = ayahNumber;
 
       try {
-        await _player.setUrl(_ayahUrl(globalNum));
+        await _loadAyah(globalNumber);
+        if (!_isSequencePlaying) break;
+        onAyahStarted?.call(surahNumber, ayahNumber);
+        onPlayStateChanged?.call(true);
         await _player.play();
-
-        // ✅ وأيضاً في playPage داخل الحلقة:
-        await _player.playerStateStream
-            .firstWhere(
-              (s) => s.processingState == ProcessingState.completed,
-        )
-            .timeout(
-          const Duration(minutes: 2),
-          onTimeout: () {
-            debugPrint('⏰ timeout في playPage');
-            return _player.playerState;
-          },
+        await _waitForCompletion();
+      } catch (error) {
+        debugPrint('playPage ayah $globalNumber error: $error');
+        onError?.call(
+          'تعذر تشغيل ${_displayReciterError()}. تم تجربة الروابط الاحتياطية.',
         );
-
-      } catch (e) {
-        debugPrint('playPage ayah $globalNum error: $e');
         break;
       }
     }
 
-
     _isSequencePlaying = false;
+    _isPaused = false;
     onPlayStateChanged?.call(false);
     onSequenceComplete?.call();
   }
 
-  /// ─── تكرار آية عدة مرات ───
+  Future<void> _waitForCompletion() async {
+    await _player.playerStateStream
+        .firstWhere(
+          (state) => state.processingState == ProcessingState.completed,
+        )
+        .timeout(const Duration(minutes: 3));
+  }
+
+  String _displayReciterError() => 'تلاوة القارئ المحدد';
+
   Future<void> repeatAyah({
     required int surahNumber,
     required int ayahNumber,
@@ -140,61 +161,26 @@ class AyahAudioService {
     Duration gap = const Duration(milliseconds: 600),
   }) async {
     _isSequencePlaying = true;
-
-    for (int i = 0; i < times; i++) {
-      if (!_isSequencePlaying) break;
+    for (var count = 0; count < times && _isSequencePlaying; count++) {
       await playAyah(surahNumber, ayahNumber);
-      if (i < times - 1) await Future.delayed(gap);
+      if (count < times - 1) await Future<void>.delayed(gap);
     }
-
     _isSequencePlaying = false;
     onPlayStateChanged?.call(false);
   }
 
-  /// ─── تشغيل مقطع (من آية إلى آية) ───
-  Future<void> playRange({
-    required int surahNumber,
-    required int fromAyah,
-    required int toAyah,
-    int repeatTimes = 1,
-  }) async {
-    _isSequencePlaying = true;
-
-    for (int rep = 0; rep < repeatTimes; rep++) {
-      if (!_isSequencePlaying) break;
-
-      for (int ayah = fromAyah; ayah <= toAyah; ayah++) {
-        if (!_isSequencePlaying) break;
-
-        while (_isPaused) {
-          await Future.delayed(const Duration(milliseconds: 100));
-          if (!_isSequencePlaying) return;
-        }
-
-        await playAyah(surahNumber, ayah);
-      }
-    }
-
-    _isSequencePlaying = false;
-    onPlayStateChanged?.call(false);
-    onSequenceComplete?.call();
-  }
-
-  /// ─── إيقاف مؤقت ───
   void pause() {
     _isPaused = true;
     _player.pause();
     onPlayStateChanged?.call(false);
   }
 
-  /// ─── استئناف ───
   void resume() {
     _isPaused = false;
     _player.play();
     onPlayStateChanged?.call(true);
   }
 
-  /// ─── إيقاف كامل ───
   void stop() {
     _isSequencePlaying = false;
     _isPaused = false;
@@ -204,7 +190,5 @@ class AyahAudioService {
     onPlayStateChanged?.call(false);
   }
 
-  void dispose() {
-    stop();
-  }
+  void dispose() => stop();
 }

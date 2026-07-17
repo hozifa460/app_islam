@@ -2636,7 +2636,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
     final gold = const Color(0xFFE6B325);
     final prayerController = context.watch<PrayerTimesController>();
     final cityName = prayerController.cityName;
-    final bgColor = isDark ? const Color(0xFF0A0E17) : const Color(0xFFF5F5F5);
+    final bgColor = isDark ? const Color(0xFF101917) : const Color(0xFFF7F0E1);
 
     if (_loading) {
       return Scaffold(
@@ -2668,90 +2668,136 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
         onMuezzinSettings: _openDefaultMuezzinSettings,
         onBack: () => Navigator.pop(context),
       ),
-      body: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.all(20),
-          children: [
-            const SizedBox(height: 20),
-
-            if (!_hasResolvedLocation)
-              Container(
-                padding: const EdgeInsets.all(14),
-                decoration: BoxDecoration(
-                  color: gold.withValues(alpha: 0.12),
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: gold.withValues(alpha: 0.35)),
-                ),
-                child: Text(
-                  'لم يتم تحديد موقع صالح بعد. فعّل إذن الموقع أو اضغط تحديث الموقع لعرض المواقيت الدقيقة.',
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.cairo(
-                    color: isDark ? Colors.white : Colors.black87,
-                    fontSize: 13,
-                  ),
+      body: Stack(
+        children: [
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 330,
+            child: Container(
+              decoration: const BoxDecoration(
+                color: Color(0xFF10233F),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(34),
+                  bottomRight: Radius.circular(34),
                 ),
               ),
-
-            if (!_hasResolvedLocation) const SizedBox(height: 16),
-
-            // â•گâ•گâ•گ ط¨ط·ط§ظ‚ط© ط§ظ„طµظ„ط§ط© ط§ظ„ظ‚ط§ط¯ظ…ط© â•گâ•گâ•گ
-            NextPrayerCard(
-              prayerName: nextRow?.name,
-              prayerTime: nextRow?.time,
-              muezzinName: nextM == null ? null : context.tr.t(nextM.name),
-              remainingTime: nextRemain,
-              isDark: isDark,
-              gold: gold,
-              onListenAdhan: _playNextAdhanPreview,
             ),
+          ),
+          SafeArea(
+            child: ListView(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 120),
+              children: [
+                const SizedBox(height: 62),
 
-            const SizedBox(height: 20),
-
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => PrayerOSScreen(primary: Color(0xFFE6B325)),
+                if (!_hasResolvedLocation)
+                  Container(
+                    padding: const EdgeInsets.all(14),
+                    decoration: BoxDecoration(
+                      color: gold.withValues(alpha: 0.12),
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(color: gold.withValues(alpha: 0.35)),
+                    ),
+                    child: Text(
+                      'لم يتم تحديد موقع صالح بعد. فعّل إذن الموقع أو اضغط تحديث الموقع لعرض المواقيت الدقيقة.',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.cairo(
+                        color: isDark ? Colors.white : Colors.black87,
+                        fontSize: 13,
+                      ),
+                    ),
                   ),
-                );
-              },
-              child: Text("Prayer OS"),
+
+                if (!_hasResolvedLocation) const SizedBox(height: 16),
+
+                // â•گâ•گâ•گ ط¨ط·ط§ظ‚ط© ط§ظ„طµظ„ط§ط© ط§ظ„ظ‚ط§ط¯ظ…ط© â•گâ•گâ•گ
+                NextPrayerCard(
+                  prayerName: nextRow?.name,
+                  prayerTime: nextRow?.time,
+                  muezzinName: nextM == null ? null : context.tr.t(nextM.name),
+                  remainingTime: nextRemain,
+                  isDark: isDark,
+                  gold: gold,
+                  onListenAdhan: _playNextAdhanPreview,
+                ),
+
+                const SizedBox(height: 18),
+
+                InkWell(
+                  borderRadius: BorderRadius.circular(12),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (_) => PrayerOSScreen(primary: Color(0xFFE6B325)),
+                      ),
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: Row(
+                      children: [
+                        const Expanded(child: Divider(thickness: 1)),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: Text(
+                            'PRAYER OS',
+                            style: GoogleFonts.cairo(
+                              color:
+                                  isDark
+                                      ? Colors.white70
+                                      : const Color(0xFF24201C),
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
+                              letterSpacing: 0.6,
+                            ),
+                          ),
+                        ),
+                        const Expanded(child: Divider(thickness: 1)),
+                      ],
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 14),
+                RadioMiniPlayer(gold: gold),
+                const SizedBox(height: 22),
+
+                // â•گâ•گâ•گ ط¹ظ†ظˆط§ظ† ط§ظ„ط¬ط¯ظˆظ„ â•گâ•گâ•گ
+                PrayerScheduleHeader(
+                  nextPrayerName: nextRow?.name,
+                  isDark: isDark,
+                  gold: gold,
+                ),
+
+                const SizedBox(height: 12),
+
+                // â•گâ•گâ•گ ظ‚ط§ط¦ظ…ط© ط§ظ„طµظ„ظˆط§طھ â•گâ•گâ•گ
+                ..._rows.map((row) {
+                  final m = _effectiveForKey(row.key);
+                  final isDefaultMuezzin = _isPrayerUsingDefaultMuezzin(
+                    row.key,
+                  );
+                  final config = _customizationFor(row.key);
+
+                  return PrayerRowCard(
+                    row: row,
+                    muezzinName: context.tr.t(m.name),
+                    isDefaultMuezzin: isDefaultMuezzin,
+                    config: config,
+                    isDark: isDark,
+                    gold: gold,
+                    onTap: () => _openCustomizeForPrayer(row),
+                  );
+                }),
+
+                const SizedBox(height: 80),
+              ],
             ),
-
-            const SizedBox(height: 20),
-            RadioMiniPlayer(gold: gold),
-            const SizedBox(height: 20),
-
-            // â•گâ•گâ•گ ط¹ظ†ظˆط§ظ† ط§ظ„ط¬ط¯ظˆظ„ â•گâ•گâ•گ
-            PrayerScheduleHeader(
-              nextPrayerName: nextRow?.name,
-              isDark: isDark,
-              gold: gold,
-            ),
-
-            const SizedBox(height: 16),
-
-            // â•گâ•گâ•گ ظ‚ط§ط¦ظ…ط© ط§ظ„طµظ„ظˆط§طھ â•گâ•گâ•گ
-            ..._rows.map((row) {
-              final m = _effectiveForKey(row.key);
-              final isDefaultMuezzin = _isPrayerUsingDefaultMuezzin(row.key);
-              final config = _customizationFor(row.key);
-
-              return PrayerRowCard(
-                row: row,
-                muezzinName: context.tr.t(m.name),
-                isDefaultMuezzin: isDefaultMuezzin,
-                config: config,
-                isDark: isDark,
-                gold: gold,
-                onTap: () => _openCustomizeForPrayer(row),
-              );
-            }),
-
-            const SizedBox(height: 80),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

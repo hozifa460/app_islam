@@ -1,5 +1,6 @@
-﻿import 'dart:async';
+import 'dart:async';
 import 'dart:io';
+import 'dart:math' as math;
 import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -282,19 +283,59 @@ class _MainShellScreenState extends State<MainShellScreen> {
   // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   Widget _buildMoreTab(BuildContext context, Color primary, bool isDark) {
     final tr = context.tr;
-    final textColor = isDark ? Colors.white : const Color(0xFF1A1A1A);
+    final textColor = isDark ? Colors.white : const Color(0xFF221B16);
 
     final items = [
-      {'title': tr.moreQuran, 'icon': Icons.menu_book_rounded, 'screen': const QuranScreen()},
-      {'title': tr.moreAzkar, 'icon': Icons.auto_awesome_rounded, 'screen': const AzkarScreen()},
-      {'title': tr.moreHasanat, 'icon': Icons.emoji_events_rounded, 'screen': const HasanatScreen()},
-      {'title': tr.moreSalawat, 'icon': Icons.access_time_filled_rounded, 'screen': SalawatReminderScreen(primaryColor: primary)},
-      {'title': tr.moreDua, 'icon': Icons.favorite_rounded, 'screen': const DuaScreen()},
-      {'title': tr.moreKhatma, 'icon': Icons.track_changes, 'screen': KhatmaScreen(primaryColor: primary)},
-      {'title': tr.moreQibla, 'icon': Icons.location_on_rounded, 'screen': const QiblaSplashScreen()},
-      {'title': tr.moreHadith, 'icon': Icons.format_quote_rounded, 'screen': HadithScreen(primaryColor: primary)},
-      {'title': tr.moreHijri, 'icon': Icons.calendar_month_rounded, 'screen': HijriCalendarScreen(primaryColor: primary)},
-      {'title': tr.moreAsmaAllah, 'icon': Icons.numbers_rounded, 'screen': AsmaAllahScreen(primaryColor: primary)},
+      {
+        'title': tr.moreQuran,
+        'icon': Icons.menu_book_rounded,
+        'screen': const QuranScreen(),
+      },
+      {
+        'title': tr.moreAzkar,
+        'icon': Icons.auto_awesome_rounded,
+        'screen': const AzkarScreen(),
+      },
+      {
+        'title': tr.moreHasanat,
+        'icon': Icons.emoji_events_rounded,
+        'screen': const HasanatScreen(),
+      },
+      {
+        'title': tr.moreSalawat,
+        'icon': Icons.access_time_filled_rounded,
+        'screen': SalawatReminderScreen(primaryColor: primary),
+      },
+      {
+        'title': tr.moreDua,
+        'icon': Icons.favorite_rounded,
+        'screen': const DuaScreen(),
+      },
+      {
+        'title': tr.moreKhatma,
+        'icon': Icons.track_changes,
+        'screen': KhatmaScreen(primaryColor: primary),
+      },
+      {
+        'title': tr.moreQibla,
+        'icon': Icons.location_on_rounded,
+        'screen': const QiblaSplashScreen(),
+      },
+      {
+        'title': tr.moreHadith,
+        'icon': Icons.format_quote_rounded,
+        'screen': HadithScreen(primaryColor: primary),
+      },
+      {
+        'title': tr.moreHijri,
+        'icon': Icons.calendar_month_rounded,
+        'screen': HijriCalendarScreen(primaryColor: primary),
+      },
+      {
+        'title': tr.moreAsmaAllah,
+        'icon': Icons.numbers_rounded,
+        'screen': AsmaAllahScreen(primaryColor: primary),
+      },
       {
         'title': tr.moreSettings,
         'icon': Icons.settings_rounded,
@@ -308,14 +349,53 @@ class _MainShellScreenState extends State<MainShellScreen> {
           primaryColor: primary,
         ),
       },
-      {'title': tr.moreBooks, 'icon': Icons.local_library_rounded, 'screen': BooksScreen(primaryColor: primary)},
-      {'title': tr.moreMiracles, 'icon': Icons.grade, 'screen': MiraclesScreen(primaryColor: primary)},
-      {'title': tr.moreProphetSunnah, 'icon': Icons.data_exploration, 'screen': ProphetSunnahScreen()},
-      {'title': tr.moreInheritance, 'icon': Icons.calculate_rounded, 'screen': InheritanceScreen(selectedColorIndex: widget.selectedColorIndex, appColors: widget.appColors, isDarkMode: widget.isDarkMode)},
-      {'title': tr.moreChannels, 'icon': Icons.live_tv, 'screen': ChannelsScreen(primaryColor: primary)},
-      {'title': tr.moreGreatMuslims, 'icon': Icons.person_4, 'screen': GreatMuslimsScreen(primaryColor: primary)},
-      {'title': tr.moreSunnahTracker, 'icon': Icons.handyman_rounded, 'screen': SunnahTrackerScreen(isDarkMode: widget.isDarkMode, onToggleTheme: () {})},
-      {'title': tr.moreradio, 'icon': Icons.radio, 'screen': RadioScreen(primaryColor: primary)},
+      {
+        'title': tr.moreBooks,
+        'icon': Icons.local_library_rounded,
+        'screen': BooksScreen(primaryColor: primary),
+      },
+      {
+        'title': tr.moreMiracles,
+        'icon': Icons.grade,
+        'screen': MiraclesScreen(primaryColor: primary),
+      },
+      {
+        'title': tr.moreProphetSunnah,
+        'icon': Icons.data_exploration,
+        'screen': ProphetSunnahScreen(),
+      },
+      {
+        'title': tr.moreInheritance,
+        'icon': Icons.calculate_rounded,
+        'screen': InheritanceScreen(
+          selectedColorIndex: widget.selectedColorIndex,
+          appColors: widget.appColors,
+          isDarkMode: widget.isDarkMode,
+        ),
+      },
+      {
+        'title': tr.moreChannels,
+        'icon': Icons.live_tv,
+        'screen': ChannelsScreen(primaryColor: primary),
+      },
+      {
+        'title': tr.moreGreatMuslims,
+        'icon': Icons.person_4,
+        'screen': GreatMuslimsScreen(primaryColor: primary),
+      },
+      {
+        'title': tr.moreSunnahTracker,
+        'icon': Icons.handyman_rounded,
+        'screen': SunnahTrackerScreen(
+          isDarkMode: widget.isDarkMode,
+          onToggleTheme: () {},
+        ),
+      },
+      {
+        'title': tr.moreradio,
+        'icon': Icons.radio,
+        'screen': RadioScreen(primaryColor: primary),
+      },
     ];
 
     return SafeArea(
@@ -323,12 +403,127 @@ class _MainShellScreenState extends State<MainShellScreen> {
         builder: (context, constraints) {
           final width = constraints.maxWidth;
           final small = width < 360;
-          final largeCircle = small ? 82.0 : 98.0;
-          final smallCircle = small ? 68.0 : 84.0;
+          const outerHorizontalPadding = 16.0;
+          const itemHorizontalPadding = 6.0;
+          final contentWidth = width - (outerHorizontalPadding * 2);
+          final maxThreeItemCircle =
+              ((contentWidth - (itemHorizontalPadding * 2 * 3)) / 3 - 10)
+                  .clamp(60.0, 92.0)
+                  .toDouble();
+          final smallCircle =
+              math.min(small ? 76.0 : 92.0, maxThreeItemCircle).toDouble();
+          final largeCircle =
+              math.min(small ? 94.0 : 112.0, contentWidth - 10).toDouble();
 
-          Widget buildCircleItem(Map<String, dynamic> item, {required double size}) {
+          Color iconColorFor(IconData icon) {
+            if (icon == Icons.menu_book_rounded) return const Color(0xFF244C3C);
+            if (icon == Icons.auto_awesome_rounded)
+              return const Color(0xFF9A7A35);
+            if (icon == Icons.emoji_events_rounded)
+              return const Color(0xFF98723C);
+            if (icon == Icons.access_time_filled_rounded)
+              return const Color(0xFF536843);
+            if (icon == Icons.favorite_rounded) return const Color(0xFFB18B70);
+            if (icon == Icons.location_on_rounded)
+              return const Color(0xFF1D6554);
+            if (icon == Icons.grade) return const Color(0xFF8B7040);
+            return isDark ? const Color(0xFFE1D4AD) : const Color(0xFF5E573D);
+          }
+
+          Widget buildSymbol(IconData icon, Color color, double size) {
+            if (icon == Icons.menu_book_rounded) {
+              return Container(
+                width: size * 0.42,
+                height: size * 0.52,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF254A39),
+                  borderRadius: BorderRadius.circular(size * 0.035),
+                  border: Border.all(color: _gold, width: 1.4),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.20),
+                      blurRadius: 4,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Icon(
+                  Icons.menu_book_rounded,
+                  color: _gold,
+                  size: size * 0.25,
+                ),
+              );
+            }
+
+            if (icon == Icons.location_on_rounded) {
+              return Stack(
+                alignment: Alignment.center,
+                children: [
+                  Icon(Icons.explore_rounded, color: _gold, size: size * 0.48),
+                  Icon(
+                    Icons.location_on_rounded,
+                    color: color,
+                    size: size * 0.27,
+                  ),
+                ],
+              );
+            }
+
+            if (icon == Icons.auto_awesome_rounded) {
+              return Stack(
+                alignment: Alignment.center,
+                children: [
+                  Icon(Icons.auto_awesome, color: color, size: size * 0.36),
+                  Positioned(
+                    top: size * 0.12,
+                    right: size * 0.13,
+                    child: Icon(
+                      Icons.star_rounded,
+                      color: _gold,
+                      size: size * 0.14,
+                    ),
+                  ),
+                  Positioned(
+                    bottom: size * 0.14,
+                    left: size * 0.14,
+                    child: Icon(
+                      Icons.star_rounded,
+                      color: _gold,
+                      size: size * 0.11,
+                    ),
+                  ),
+                ],
+              );
+            }
+
+            if (icon == Icons.grade) {
+              return Stack(
+                alignment: Alignment.center,
+                children: [
+                  Icon(Icons.star_rounded, color: _gold, size: size * 0.48),
+                  Icon(
+                    Icons.auto_awesome_rounded,
+                    color: const Color(0xFF4E6549),
+                    size: size * 0.22,
+                  ),
+                ],
+              );
+            }
+
+            return Icon(icon, color: color, size: size * 0.39);
+          }
+
+          Widget buildCircleItem(
+            Map<String, dynamic> item, {
+            required double size,
+          }) {
+            final icon = item['icon'] as IconData;
+            final iconColor = iconColorFor(icon);
             return ConstrainedBox(
-              constraints: BoxConstraints(minWidth: size + 12, maxWidth: size + 26),
+              constraints: BoxConstraints(
+                minWidth: size + 10,
+                maxWidth: size + 22,
+              ),
               child: GestureDetector(
                 onTap: () async {
                   await HapticFeedback.lightImpact();
@@ -347,8 +542,11 @@ class _MainShellScreenState extends State<MainShellScreen> {
                     context,
                     PageRouteBuilder(
                       transitionDuration: const Duration(milliseconds: 400),
-                      reverseTransitionDuration: const Duration(milliseconds: 300),
-                      pageBuilder: (_, animation, __) => item['screen'] as Widget,
+                      reverseTransitionDuration: const Duration(
+                        milliseconds: 300,
+                      ),
+                      pageBuilder:
+                          (_, animation, __) => item['screen'] as Widget,
                       transitionsBuilder: (_, animation, __, child) {
                         final curved = CurvedAnimation(
                           parent: animation,
@@ -377,13 +575,81 @@ class _MainShellScreenState extends State<MainShellScreen> {
                       height: size,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: isDark ? Colors.white.withValues(alpha: 0.04) : Colors.white,
-                        border: Border.all(color: _gold, width: 2),
-                        boxShadow: [BoxShadow(color: _primary.withValues(alpha: 0.10), blurRadius: 8, offset: const Offset(0, 3))],
+                        gradient: RadialGradient(
+                          center: const Alignment(-0.28, -0.34),
+                          radius: 0.95,
+                          colors:
+                              isDark
+                                  ? [
+                                    const Color(0xFF34413A),
+                                    const Color(0xFF17221D),
+                                  ]
+                                  : [
+                                    const Color(0xFFFFFEFA),
+                                    const Color(0xFFE9DFC9),
+                                  ],
+                        ),
+                        border: Border.all(
+                          color: _gold.withValues(alpha: isDark ? 0.75 : 0.68),
+                          width: 1.5,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(
+                              alpha: isDark ? 0.25 : 0.16,
+                            ),
+                            blurRadius: 13,
+                            offset: const Offset(0, 7),
+                          ),
+                          BoxShadow(
+                            color: Colors.white.withValues(
+                              alpha: isDark ? 0.04 : 0.82,
+                            ),
+                            blurRadius: 4,
+                            offset: const Offset(-2, -2),
+                          ),
+                        ],
                       ),
-                      child: Icon(item['icon'] as IconData, color: isDark ? Colors.white70 : _primary, size: size * 0.40),
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Positioned(
+                            top: size * 0.12,
+                            left: size * 0.18,
+                            right: size * 0.18,
+                            child: Container(
+                              height: size * 0.12,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(size),
+                                color: Colors.white.withValues(
+                                  alpha: isDark ? 0.06 : 0.55,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: size * 0.68,
+                            height: size * 0.68,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color:
+                                  isDark
+                                      ? Colors.black.withValues(alpha: 0.10)
+                                      : Colors.white.withValues(alpha: 0.24),
+                              border: Border.all(
+                                color: _gold.withValues(
+                                  alpha: isDark ? 0.18 : 0.24,
+                                ),
+                              ),
+                            ),
+                            child: Center(
+                              child: buildSymbol(icon, iconColor, size),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 9),
                     SizedBox(
                       width: size + 16,
                       child: Text(
@@ -391,7 +657,12 @@ class _MainShellScreenState extends State<MainShellScreen> {
                         textAlign: TextAlign.center,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.cairo(fontSize: small ? 10.8 : 12, fontWeight: FontWeight.bold, color: textColor, height: 1.35),
+                        style: GoogleFonts.cairo(
+                          fontSize: small ? 11.5 : 13,
+                          fontWeight: FontWeight.w800,
+                          color: textColor,
+                          height: 1.25,
+                        ),
                       ),
                     ),
                   ],
@@ -400,81 +671,165 @@ class _MainShellScreenState extends State<MainShellScreen> {
             );
           }
 
-          Widget buildRow(List<Widget> children) => Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: children.map((c) => Padding(padding: const EdgeInsets.symmetric(horizontal: 6), child: c)).toList(),
+          Widget buildRow(List<Widget> children) => Wrap(
+            alignment: WrapAlignment.center,
+            spacing: 12,
+            runSpacing: 14,
+            children: children,
           );
 
           return Stack(
             children: [
-              Positioned.fill(child: _buildMoreSoftBackground(_primary, isDark)),
+              Positioned.fill(
+                child: _buildMoreSoftBackground(_primary, isDark),
+              ),
               SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
-                padding: const EdgeInsets.fromLTRB(12, 16, 12, 120),
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 120),
                 child: Column(
                   children: [
                     // â•گâ•گâ•گ ط§ظ„ظ‡ظٹط¯ط± â•گâ•گâ•گ
-                    Row(
-                      children: [
-                        Consumer<ProfileImageProvider>(
-                          builder: (context, imgProvider, _) {
-                            final path = imgProvider.imagePath;
-                            return GestureDetector(
-                              onTap: () async {
-                                await Navigator.push(
-                                  context,
-                                  PageRouteBuilder(
-                                    pageBuilder: (_, anim, __) => ProfileScreen(isDarkMode: isDark, onThemeChanged: widget.onThemeChanged),
-                                    transitionsBuilder: (_, anim, __, child) => FadeTransition(opacity: anim, child: child),
-                                    transitionDuration: const Duration(milliseconds: 350),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      child: Row(
+                        children: [
+                          Consumer<ProfileImageProvider>(
+                            builder: (context, imgProvider, _) {
+                              final path = imgProvider.imagePath;
+                              return GestureDetector(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    PageRouteBuilder(
+                                      pageBuilder:
+                                          (_, anim, __) => ProfileScreen(
+                                            isDarkMode: isDark,
+                                            onThemeChanged:
+                                                widget.onThemeChanged,
+                                          ),
+                                      transitionsBuilder:
+                                          (_, anim, __, child) =>
+                                              FadeTransition(
+                                                opacity: anim,
+                                                child: child,
+                                              ),
+                                      transitionDuration: const Duration(
+                                        milliseconds: 350,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  width: 62,
+                                  height: 62,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      color: const Color(
+                                        0xFFC8A44D,
+                                      ).withValues(alpha: 0.76),
+                                      width: 2,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withValues(
+                                          alpha: 0.16,
+                                        ),
+                                        blurRadius: 12,
+                                        offset: const Offset(0, 5),
+                                      ),
+                                      BoxShadow(
+                                        color: const Color(
+                                          0xFFC8A44D,
+                                        ).withValues(alpha: 0.18),
+                                        blurRadius: 16,
+                                      ),
+                                    ],
                                   ),
-                                );
-                              },
-                              child: Container(
-                                width: 40,
-                                height: 40,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(color: const Color(0xFFC8A44D).withValues(alpha: 0.6), width: 2),
-                                  boxShadow: [BoxShadow(color: const Color(0xFFC8A44D).withValues(alpha: 0.2), blurRadius: 8)],
-                                ),
-                                child: ClipOval(
-                                  child: path != null && File(path).existsSync()
-                                      ? Image.file(File(path), fit: BoxFit.cover, key: ValueKey(path))
-                                      : Container(
-                                    color: isDark ? Colors.white.withValues(alpha: 0.08) : _primary.withValues(alpha: 0.08),
-                                    child: Icon(Icons.person_rounded, size: 22, color: isDark ? Colors.white70 : _primary),
+                                  child: ClipOval(
+                                    child:
+                                        path != null && File(path).existsSync()
+                                            ? Image.file(
+                                              File(path),
+                                              fit: BoxFit.cover,
+                                              key: ValueKey(path),
+                                            )
+                                            : Container(
+                                              color:
+                                                  isDark
+                                                      ? Colors.white.withValues(
+                                                        alpha: 0.08,
+                                                      )
+                                                      : _primary.withValues(
+                                                        alpha: 0.08,
+                                                      ),
+                                              child: Icon(
+                                                Icons.person_rounded,
+                                                size: 30,
+                                                color:
+                                                    isDark
+                                                        ? Colors.white70
+                                                        : _primary,
+                                              ),
+                                            ),
                                   ),
                                 ),
-                              ),
-                            );
-                          },
-                        ),
-                        const Spacer(),
-                        Text(
-                          tr.more, // â†گ ظ…طھط±ط¬ظ…
-                          style: GoogleFonts.cairo(fontSize: 22, fontWeight: FontWeight.bold, color: textColor),
-                        ),
-                      ],
+                              );
+                            },
+                          ),
+                          const Spacer(),
+                          Text(
+                            tr.more, // â†گ ظ…طھط±ط¬ظ…
+                            style: GoogleFonts.cairo(
+                              fontSize: small ? 32 : 38,
+                              fontWeight: FontWeight.w900,
+                              color: textColor,
+                              height: 1,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
+
+                    const SizedBox(height: 4),
 
                     // â•گâ•گâ•گ ط§ظ„ط´ط¨ظƒط© â•گâ•گâ•گ
                     buildRow([buildCircleItem(items[12], size: largeCircle)]),
-                    const SizedBox(height: 18),
-                    buildRow([buildCircleItem(items[0], size: smallCircle), buildCircleItem(items[1], size: smallCircle)]),
-                    const SizedBox(height: 18),
-                    buildRow([buildCircleItem(items[2], size: smallCircle), buildCircleItem(items[3], size: largeCircle), buildCircleItem(items[4], size: smallCircle)]),
-                    const SizedBox(height: 18),
-                    buildRow([buildCircleItem(items[13], size: smallCircle), buildCircleItem(items[6], size: smallCircle)]),
-                    const SizedBox(height: 18),
+                    const SizedBox(height: 15),
+                    buildRow([
+                      buildCircleItem(items[0], size: smallCircle),
+                      buildCircleItem(items[1], size: smallCircle),
+                    ]),
+                    const SizedBox(height: 15),
+                    buildRow([
+                      buildCircleItem(items[2], size: smallCircle),
+                      buildCircleItem(items[3], size: largeCircle),
+                      buildCircleItem(items[4], size: smallCircle),
+                    ]),
+                    const SizedBox(height: 15),
+                    buildRow([
+                      buildCircleItem(items[13], size: smallCircle),
+                      buildCircleItem(items[6], size: smallCircle),
+                    ]),
+                    const SizedBox(height: 15),
                     buildRow([buildCircleItem(items[14], size: largeCircle)]),
-                    const SizedBox(height: 18),
-                    buildRow([buildCircleItem(items[7], size: smallCircle), buildCircleItem(items[8], size: smallCircle)]),
-                    const SizedBox(height: 18),
-                    buildRow([buildCircleItem(items[9], size: smallCircle), buildCircleItem(items[10], size: largeCircle), buildCircleItem(items[11], size: smallCircle)]),
-                    const SizedBox(height: 18),
-                    buildRow([buildCircleItem(items[17], size: smallCircle), buildCircleItem(items[16], size: smallCircle)]),
-                    const SizedBox(height: 18),
+                    const SizedBox(height: 15),
+                    buildRow([
+                      buildCircleItem(items[7], size: smallCircle),
+                      buildCircleItem(items[8], size: smallCircle),
+                    ]),
+                    const SizedBox(height: 15),
+                    buildRow([
+                      buildCircleItem(items[9], size: smallCircle),
+                      buildCircleItem(items[10], size: largeCircle),
+                      buildCircleItem(items[11], size: smallCircle),
+                    ]),
+                    const SizedBox(height: 15),
+                    buildRow([
+                      buildCircleItem(items[17], size: smallCircle),
+                      buildCircleItem(items[16], size: smallCircle),
+                    ]),
+                    const SizedBox(height: 15),
                     buildRow([buildCircleItem(items[18], size: largeCircle)]),
                   ],
                 ),
@@ -487,29 +842,79 @@ class _MainShellScreenState extends State<MainShellScreen> {
   }
 
   Widget _buildMoreSoftBackground(Color primary, bool isDark) {
-    final patternColor = isDark ? Colors.white.withValues(alpha: 0.035) : primary.withValues(alpha: 0.045);
-    final moonColor = isDark ? Colors.white.withValues(alpha: 0.04) : _gold.withValues(alpha: 0.10);
-    final starColor = isDark ? Colors.white.withValues(alpha: 0.10) : _gold.withValues(alpha: 0.18);
-    final bgColor = isDark ? const Color(0xFF0E1714) : const Color(0xFFF7F3EA);
+    final patternColor =
+        isDark
+            ? const Color(0xFFE7D8B4).withValues(alpha: 0.07)
+            : const Color(0xFF9D8661).withValues(alpha: 0.20);
+    final moonColor =
+        isDark
+            ? Colors.white.withValues(alpha: 0.06)
+            : const Color(0xFFE5D8B7).withValues(alpha: 0.78);
+    final starColor =
+        isDark
+            ? const Color(0xFFE6D6A8).withValues(alpha: 0.20)
+            : const Color(0xFFAC936A).withValues(alpha: 0.55);
+    final bgColor = isDark ? const Color(0xFF101914) : const Color(0xFFF8F1E1);
 
     return IgnorePointer(
       child: Stack(
         children: [
-          Positioned.fill(child: CustomPaint(painter: _MorePatternPainter(patternColor))),
+          Positioned.fill(child: ColoredBox(color: bgColor)),
+          Positioned.fill(
+            child: CustomPaint(painter: _MorePatternPainter(patternColor)),
+          ),
           Positioned(
-            top: 70,
-            left: 18,
+            top: 78,
+            left: 22,
             child: SizedBox(
-              width: 80,
-              height: 80,
-              child: Stack(children: [
-                Container(width: 80, height: 80, decoration: BoxDecoration(shape: BoxShape.circle, color: moonColor)),
-                Positioned(left: 20, top: 4, child: Container(width: 64, height: 64, decoration: BoxDecoration(shape: BoxShape.circle, color: bgColor))),
-              ]),
+              width: 104,
+              height: 104,
+              child: Stack(
+                children: [
+                  Container(
+                    width: 104,
+                    height: 104,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: moonColor,
+                      boxShadow: [
+                        BoxShadow(
+                          color: _gold.withValues(alpha: isDark ? 0.04 : 0.13),
+                          blurRadius: 18,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Positioned(
+                    left: 28,
+                    top: 5,
+                    child: Container(
+                      width: 84,
+                      height: 84,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: bgColor,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-          Positioned(top: 84, left: 84, child: Icon(Icons.star_rounded, size: 10, color: starColor)),
-          Positioned(top: 108, left: 102, child: Icon(Icons.star_rounded, size: 7, color: starColor.withValues(alpha: 0.85))),
+          Positioned(
+            top: 92,
+            left: 134,
+            child: Icon(Icons.star_rounded, size: 14, color: starColor),
+          ),
+          Positioned(
+            top: 124,
+            left: 154,
+            child: Icon(
+              Icons.star_rounded,
+              size: 9,
+              color: starColor.withValues(alpha: 0.85),
+            ),
+          ),
         ],
       ),
     );
@@ -554,7 +959,10 @@ class _GlassNavBarState extends State<_GlassNavBar>
   @override
   void initState() {
     super.initState();
-    _enterCtrl = AnimationController(vsync: this, duration: const Duration(milliseconds: 800));
+    _enterCtrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    );
     Future.delayed(const Duration(milliseconds: 300), () {
       if (mounted) _enterCtrl.forward();
     });
@@ -580,12 +988,22 @@ class _GlassNavBarState extends State<_GlassNavBar>
     final radius = compact ? 24.0 : 28.0;
 
     // â•گâ•گâ•گ ط§ظ„ظ†طµظˆطµ ط§ظ„ظ…طھط±ط¬ظ…ط© â•گâ•گâ•گ
-    final tabLabels = [tr.navHome, tr.navKhatma, tr.navPrayer, tr.navLibrary, tr.navMore];
+    final tabLabels = [
+      tr.navHome,
+      tr.navKhatma,
+      tr.navPrayer,
+      tr.navLibrary,
+      tr.navMore,
+    ];
 
     return AnimatedBuilder(
       animation: _enterCtrl,
       builder: (context, child) {
-        final t = CurvedAnimation(parent: _enterCtrl, curve: Curves.easeOutCubic).value;
+        final t =
+            CurvedAnimation(
+              parent: _enterCtrl,
+              curve: Curves.easeOutCubic,
+            ).value;
         return Transform.translate(
           offset: Offset(0, barH * (1 - t)),
           child: Opacity(opacity: t.clamp(0.0, 1.0), child: child),
@@ -595,7 +1013,11 @@ class _GlassNavBarState extends State<_GlassNavBar>
         mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
-            padding: EdgeInsets.only(left: margin, right: margin, bottom: bottomPad),
+            padding: EdgeInsets.only(
+              left: margin,
+              right: margin,
+              bottom: bottomPad,
+            ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(radius),
               child: BackdropFilter(
@@ -604,14 +1026,29 @@ class _GlassNavBarState extends State<_GlassNavBar>
                   height: barH,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(radius),
-                    color: widget.isDark ? const Color(0xFF1C2520).withValues(alpha: 0.85) : Colors.white.withValues(alpha: 0.75),
-                    boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: widget.isDark ? 0.3 : 0.06), blurRadius: 20, offset: const Offset(0, 6))],
+                    color:
+                        widget.isDark
+                            ? const Color(0xFF1C2520).withValues(alpha: 0.85)
+                            : Colors.white.withValues(alpha: 0.75),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(
+                          alpha: widget.isDark ? 0.3 : 0.06,
+                        ),
+                        blurRadius: 20,
+                        offset: const Offset(0, 6),
+                      ),
+                    ],
                   ),
                   child: Row(
                     children: List.generate(_tabIcons.length, (i) {
                       return Expanded(
                         child: _GlassTab(
-                          tab: _Tab(_tabIcons[i].icon, _tabIcons[i].activeIcon, tabLabels[i]),
+                          tab: _Tab(
+                            _tabIcons[i].icon,
+                            _tabIcons[i].activeIcon,
+                            tabLabels[i],
+                          ),
                           isActive: widget.currentIndex == i,
                           isDark: widget.isDark,
                           primary: widget.primary,
@@ -672,7 +1109,10 @@ class _GlassTabState extends State<_GlassTab>
   @override
   void initState() {
     super.initState();
-    _ctrl = AnimationController(vsync: this, duration: const Duration(milliseconds: 400));
+    _ctrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 400),
+    );
 
     _iconScale = TweenSequence<double>([
       TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.85), weight: 20),
@@ -680,8 +1120,16 @@ class _GlassTabState extends State<_GlassTab>
       TweenSequenceItem(tween: Tween(begin: 1.15, end: 1.0), weight: 40),
     ]).animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeOut));
 
-    _iconLift = Tween<double>(begin: 0, end: -3).animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeOutCubic));
-    _labelOpacity = Tween<double>(begin: 0.5, end: 1.0).animate(CurvedAnimation(parent: _ctrl, curve: const Interval(0.4, 1.0, curve: Curves.easeOut)));
+    _iconLift = Tween<double>(
+      begin: 0,
+      end: -3,
+    ).animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeOutCubic));
+    _labelOpacity = Tween<double>(begin: 0.5, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _ctrl,
+        curve: const Interval(0.4, 1.0, curve: Curves.easeOut),
+      ),
+    );
 
     if (widget.isActive) _ctrl.value = 1.0;
   }
@@ -689,8 +1137,10 @@ class _GlassTabState extends State<_GlassTab>
   @override
   void didUpdateWidget(_GlassTab old) {
     super.didUpdateWidget(old);
-    if (widget.isActive && !old.isActive) _ctrl.forward(from: 0);
-    else if (!widget.isActive && old.isActive) _ctrl.reverse();
+    if (widget.isActive && !old.isActive)
+      _ctrl.forward(from: 0);
+    else if (!widget.isActive && old.isActive)
+      _ctrl.reverse();
   }
 
   @override
@@ -710,7 +1160,8 @@ class _GlassTabState extends State<_GlassTab>
     final labelSz = compact ? 9.0 : 10.0;
 
     final activeClr = primary;
-    final inactiveClr = isDark ? const Color(0xFF7A8A82) : const Color(0xFF8E9E96);
+    final inactiveClr =
+        isDark ? const Color(0xFF7A8A82) : const Color(0xFF8E9E96);
 
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
@@ -729,10 +1180,14 @@ class _GlassTabState extends State<_GlassTab>
                   child: AnimatedSwitcher(
                     duration: const Duration(milliseconds: 200),
                     switchInCurve: Curves.easeOutBack,
-                    transitionBuilder: (child, anim) => FadeTransition(
-                      opacity: anim,
-                      child: ScaleTransition(scale: Tween(begin: 0.6, end: 1.0).animate(anim), child: child),
-                    ),
+                    transitionBuilder:
+                        (child, anim) => FadeTransition(
+                          opacity: anim,
+                          child: ScaleTransition(
+                            scale: Tween(begin: 0.6, end: 1.0).animate(anim),
+                            child: child,
+                          ),
+                        ),
                     child: Icon(
                       active ? widget.tab.activeIcon : widget.tab.icon,
                       key: ValueKey('${widget.tab.label}_$active'),
@@ -750,7 +1205,12 @@ class _GlassTabState extends State<_GlassTab>
                   child: Text(
                     widget.tab.label,
                     maxLines: 1,
-                    style: GoogleFonts.cairo(fontSize: labelSz, fontWeight: active ? FontWeight.w700 : FontWeight.w500, color: active ? activeClr : inactiveClr, height: 1.0),
+                    style: GoogleFonts.cairo(
+                      fontSize: labelSz,
+                      fontWeight: active ? FontWeight.w700 : FontWeight.w500,
+                      color: active ? activeClr : inactiveClr,
+                      height: 1.0,
+                    ),
                   ),
                 ),
               ),
@@ -760,7 +1220,10 @@ class _GlassTabState extends State<_GlassTab>
                 curve: Curves.easeOutCubic,
                 width: active ? 20 : 0,
                 height: 3,
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(2), color: activeClr),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(2),
+                  color: activeClr,
+                ),
               ),
             ],
           );
@@ -819,7 +1282,10 @@ class _LazyIndexedStackState extends State<_LazyIndexedStack> {
       index: widget.index,
       children: List.generate(widget.children.length, (i) {
         if (!_built.contains(i)) {
-          return ColoredBox(color: widget.backgroundColor, child: const SizedBox.expand());
+          return ColoredBox(
+            color: widget.backgroundColor,
+            child: const SizedBox.expand(),
+          );
         }
         return widget.children[i];
       }),
@@ -834,23 +1300,37 @@ class _MorePatternPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = color
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1;
+    final paint =
+        Paint()
+          ..color = color
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 1;
 
-    const step = 80.0;
+    const step = 92.0;
     for (double x = -step; x < size.width + step; x += step) {
       for (double y = -step; y < size.height + step; y += step) {
-        final path = Path()
-          ..moveTo(x + step / 2, y)
-          ..lineTo(x + step, y + step / 4)
-          ..lineTo(x + step, y + step * 0.75)
-          ..lineTo(x + step / 2, y + step)
-          ..lineTo(x, y + step * 0.75)
-          ..lineTo(x, y + step / 4)
-          ..close();
+        final cx = x + step / 2;
+        final cy = y + step / 2;
+        final tile = RRect.fromRectAndRadius(
+          Rect.fromLTWH(x + 5, y + 5, step - 10, step - 10),
+          const Radius.circular(18),
+        );
+        canvas.drawRRect(tile, paint);
+
+        final path =
+            Path()
+              ..moveTo(cx, y + 8)
+              ..lineTo(cx + step * 0.18, cy - step * 0.18)
+              ..lineTo(x + step - 8, cy)
+              ..lineTo(cx + step * 0.18, cy + step * 0.18)
+              ..lineTo(cx, y + step - 8)
+              ..lineTo(cx - step * 0.18, cy + step * 0.18)
+              ..lineTo(x + 8, cy)
+              ..lineTo(cx - step * 0.18, cy - step * 0.18)
+              ..close();
         canvas.drawPath(path, paint);
+
+        canvas.drawCircle(Offset(cx, cy), step * 0.12, paint);
       }
     }
   }
@@ -895,9 +1375,10 @@ class _FatwaFABButtonState extends State<_FatwaFABButton>
       lowerBound: 0.0,
       upperBound: 0.1,
     );
-    _scale = Tween<double>(begin: 1.0, end: 0.9).animate(
-      CurvedAnimation(parent: _ctrl, curve: Curves.easeInOut),
-    );
+    _scale = Tween<double>(
+      begin: 1.0,
+      end: 0.9,
+    ).animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeInOut));
   }
 
   @override
@@ -919,10 +1400,9 @@ class _FatwaFABButtonState extends State<_FatwaFABButton>
         onTapCancel: () => _ctrl.reverse(),
         child: AnimatedBuilder(
           animation: _scale,
-          builder: (context, child) => Transform.scale(
-            scale: _scale.value,
-            child: child,
-          ),
+          builder:
+              (context, child) =>
+                  Transform.scale(scale: _scale.value, child: child),
           child: Container(
             width: 48,
             height: 48,
@@ -937,11 +1417,7 @@ class _FatwaFABButtonState extends State<_FatwaFABButton>
                 ),
               ],
             ),
-            child: Icon(
-              widget.icon,
-              color: Colors.white,
-              size: 22,
-            ),
+            child: Icon(widget.icon, color: Colors.white, size: 22),
           ),
         ),
       ),

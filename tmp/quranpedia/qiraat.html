@@ -1,0 +1,1637 @@
+<!doctype html>
+<html lang="ar" dir="rtl" style="direction: rtl;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <script data-navigate-once>
+        (function(){
+            function applyDark(){
+                var m = null;
+                try { m = JSON.parse(localStorage.getItem('theme_mode')); } catch(e) {}
+                var dark = m === 'dark' || (m === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                if (dark) document.documentElement.classList.add('dark');
+                else document.documentElement.classList.remove('dark');
+            }
+            applyDark();
+            document.addEventListener('livewire:navigating', applyDark);
+            document.addEventListener('livewire:navigated', applyDark);
+        })();
+    </script>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+    <link rel="preconnect" href="https://wikiquran.nyc3.digitaloceanspaces.com" crossorigin>
+    <link rel="dns-prefetch" href="//wikiquran.nyc3.digitaloceanspaces.com">
+
+    
+    <link rel="preload" href="/assets/fonts/arabic/UthmanicHafs.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="/assets/fonts/arabic/Book.woff2" as="font" type="font/woff2" crossorigin>
+
+    
+    <link rel="preload" as="style" href="https://quranpedia.net/build/assets/app-g7xlbNzu.css" /><link rel="stylesheet" href="https://quranpedia.net/build/assets/app-g7xlbNzu.css" data-navigate-track="reload" />
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Fustat:wght@400;600;700&display=swap">
+
+    
+    <link rel="stylesheet" href="/assets/fonts/ui/fonts.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/assets/fonts/ui/fonts.css"></noscript>
+
+    
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <meta name="theme-color" content="#007c89">
+    <meta name="csrf-token" content="hD4s8FgejPG3pE4AyMQ59bSbDtbmN7e2nxvQchbT">
+
+    
+    <meta name="language" content="ar">
+    <meta property="og:locale" content="ar_SA">
+
+    <title>المصحف بالقراءات العشر</title>
+<meta name="description" content="اقرأ واستمع إلى المصحف الشريف بالقراءات العشر والروايات العشرين">
+<link rel="canonical" href="https://quranpedia.net/qiraat">
+<meta name="robots" content="index, follow">
+    <meta property="og:title" content="المصحف بالقراءات العشر">
+<meta property="og:description" content="اقرأ واستمع إلى المصحف الشريف بالقراءات العشر والروايات العشرين">
+<meta property="og:site_name" content="الموسوعة القرآنية">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://quranpedia.net/qiraat">
+<meta property="og:image" content="https://quranpedia.net/assets/images/placeholders/cover-default.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@QuranpediaNet">
+<meta name="twitter:title" content="المصحف بالقراءات العشر">
+<meta name="twitter:description" content="اقرأ واستمع إلى المصحف الشريف بالقراءات العشر والروايات العشرين">
+<meta name="twitter:image" content="https://quranpedia.net/assets/images/placeholders/cover-default.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"المصحف بالقراءات العشر","description":"اقرأ واستمع إلى المصحف الشريف بالقراءات العشر والروايات العشرين","url":"https://quranpedia.net/qiraat","image":"https://quranpedia.net/assets/images/placeholders/cover-default.png","publisher":{"@type":"Organization","name":"Quranpedia","url":"https://quranpedia.net","logo":"https://quranpedia.net/assets/images/icons/logo.png"}}</script>
+
+    
+    
+    
+        <!-- Livewire Styles --><style >[wire\:loading][wire\:loading], [wire\:loading\.delay][wire\:loading\.delay], [wire\:loading\.list-item][wire\:loading\.list-item], [wire\:loading\.inline-block][wire\:loading\.inline-block], [wire\:loading\.inline][wire\:loading\.inline], [wire\:loading\.block][wire\:loading\.block], [wire\:loading\.flex][wire\:loading\.flex], [wire\:loading\.table][wire\:loading\.table], [wire\:loading\.grid][wire\:loading\.grid], [wire\:loading\.inline-flex][wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.none][wire\:loading\.delay\.none], [wire\:loading\.delay\.shortest][wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter][wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short][wire\:loading\.delay\.short], [wire\:loading\.delay\.default][wire\:loading\.delay\.default], [wire\:loading\.delay\.long][wire\:loading\.delay\.long], [wire\:loading\.delay\.longer][wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest][wire\:loading\.delay\.longest] {display: none;}[wire\:offline][wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}:root {--livewire-progress-bar-color: #2299dd;}[x-cloak] {display: none !important;}[wire\:cloak] {display: none !important;}dialog#livewire-error::backdrop {background-color: rgba(0, 0, 0, .6);}</style>
+</head>
+
+<body class="  min-h-screen flex flex-col justify-between dark:bg-gray-950 dark:text-gray-100 !justify-start">
+
+
+<!-- Nav & Hero Section -->
+    <div class="relative">
+                    
+            <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true" style="will-change: transform;">
+                
+                <div class="absolute inset-0 bg-gradient-to-b from-white via-slate-50 to-slate-100/80 dark:from-gray-950 dark:via-gray-900 dark:to-gray-900/80"></div>
+                <div class="absolute inset-0 mesh-gradient opacity-70 dark:opacity-30"></div>
+
+                
+                
+                <div class="hidden md:block absolute top-20 -right-40 w-[600px] h-[600px] aurora-orb">
+                    <div class="absolute inset-0 bg-gradient-to-br from-primary-400/30 via-teal-400/20 to-cyan-300/15 dark:from-primary-400/15 dark:via-teal-400/10 dark:to-cyan-300/5 rounded-full blur-[100px]"></div>
+                    <div class="absolute inset-10 bg-gradient-to-br from-cyan-300/15 via-primary-300/10 to-transparent dark:from-cyan-300/5 dark:via-primary-300/5 dark:to-transparent rounded-full blur-[80px] pulse-glow"></div>
+                </div>
+
+                
+                <div class="hidden md:block absolute -bottom-40 -left-40 w-[500px] h-[500px] aurora-orb-reverse">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-amber-300/25 via-orange-300/15 to-rose-200/10 dark:from-amber-300/10 dark:via-orange-300/5 dark:to-rose-200/5 rounded-full blur-[100px]"></div>
+                    <div class="absolute inset-16 bg-gradient-to-tr from-orange-200/15 via-amber-200/10 to-transparent dark:from-orange-200/5 dark:via-amber-200/5 dark:to-transparent rounded-full blur-[60px] pulse-glow" style="animation-delay: 2s;"></div>
+                </div>
+
+                
+                <div class="hidden md:block absolute top-1/3 left-1/4 w-32 h-32 float-orb">
+                    <div class="w-full h-full bg-gradient-to-br from-primary-300/15 to-cyan-300/10 dark:from-primary-300/5 dark:to-cyan-300/5 rounded-full blur-[40px]"></div>
+                </div>
+                <div class="hidden md:block absolute bottom-1/3 right-1/4 w-24 h-24 float-orb" style="animation-delay: 2s;">
+                    <div class="w-full h-full bg-gradient-to-br from-amber-300/15 to-orange-200/10 dark:from-amber-300/5 dark:to-orange-200/5 rounded-full blur-[30px]"></div>
+                </div>
+
+                
+                <div class="absolute inset-0 opacity-[0.012]" style="background-image: linear-gradient(rgba(0,124,137,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(0,124,137,0.5) 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+                
+                <div class="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-white/60 to-transparent dark:from-gray-950/60 dark:to-transparent"></div>
+            </div>
+        
+                    <nav x-data="{
+    mobileMenuOpen: false,
+    quranDropdownOpen: false,
+    encyclopediaDropdownOpen: false
+}"
+     role="navigation"
+     aria-label="القائمة الرئيسية"
+     class="w-full py-3 md:py-5 relative z-40 "
+>
+    <div class="container">
+        
+        <div class="flex items-center justify-between">
+            
+            <a href="/" wire:navigate class="flex-shrink-0 group">
+                <img src="/assets/images/branding/logo.svg"
+                     width="200" height="56"
+                     fetchpriority="high"
+                     class="h-12 lg:h-14 w-auto site-logo transition-transform duration-300 group-hover:scale-[1.02]"
+                     alt="الموسوعة القرآنية">
+            </a>
+
+            
+            <div class="hidden lg:flex items-center">
+                
+                <div class="flex items-center gap-1 bg-white dark:bg-gray-900 rounded-full px-2 py-1.5 border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-gray-900/50">
+                    
+                    <div class="relative"
+                         @mouseenter="quranDropdownOpen = true"
+                         @mouseleave="quranDropdownOpen = false">
+                        <button class="nav-link group flex items-center gap-2 px-4 py-2.5 rounded-full text-gray-700 dark:text-gray-300 font-semibold text-sm transition-all duration-300 hover:bg-white dark:hover:bg-gray-800 hover:text-primary-600 dark:hover:text-primary-400 hover:shadow-sm"
+                                :class="quranDropdownOpen ? 'bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 shadow-sm' : ''">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-primary-500">
+                                <path d="M11.25 4.533A9.707 9.707 0 006 3a9.735 9.735 0 00-3.25.555.75.75 0 00-.5.707v14.25a.75.75 0 001 .707A8.237 8.237 0 016 18.75c1.995 0 3.823.707 5.25 1.886V4.533zM12.75 20.636A8.214 8.214 0 0118 18.75c.966 0 1.89.166 2.75.47a.75.75 0 001-.708V4.262a.75.75 0 00-.5-.707A9.735 9.735 0 0018 3a9.707 9.707 0 00-5.25 1.533v16.103z"/>
+                            </svg>
+                            <span>القرآن الكريم</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                 class="w-3.5 h-3.5 text-gray-400 dark:text-gray-500 transition-transform duration-300"
+                                 :class="quranDropdownOpen ? 'rotate-180 text-primary-500 dark:text-primary-400' : ''">
+                                <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+
+                        
+                        <div x-show="quranDropdownOpen"
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 -translate-y-2"
+                             x-transition:enter-end="opacity-100 translate-y-0"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 translate-y-0"
+                             x-transition:leave-end="opacity-0 -translate-y-2"
+                             class="absolute top-full right-0 mt-2 w-72 rounded-2xl shadow-2xl dark:shadow-gray-950/50 border border-gray-200 dark:border-gray-700 z-50 !bg-white dark:!bg-gray-800"
+                             x-cloak>
+                            <div class="p-3 max-h-[400px] overflow-y-auto rounded-2xl !bg-white dark:!bg-gray-800">
+                                                                    <a href="https://quranpedia.net/mushaf/1"
+                                       wire:navigate
+                                       class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-all duration-200 group">
+                                        <span class="flex-shrink-0 w-9 h-9 rounded-lg bg-primary-50 dark:bg-primary-900/50 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/70 flex items-center justify-center transition-all duration-200">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-primary-600 dark:text-primary-400">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
+                                            </svg>
+                                        </span>
+                                        <span class="font-medium text-sm">مصحف حفص</span>
+                                    </a>
+                                                                    <a href="https://quranpedia.net/mushaf/2"
+                                       wire:navigate
+                                       class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-all duration-200 group">
+                                        <span class="flex-shrink-0 w-9 h-9 rounded-lg bg-primary-50 dark:bg-primary-900/50 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/70 flex items-center justify-center transition-all duration-200">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-primary-600 dark:text-primary-400">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
+                                            </svg>
+                                        </span>
+                                        <span class="font-medium text-sm">مصحف حفص نسخة نصية</span>
+                                    </a>
+                                                                    <a href="https://quranpedia.net/mushaf/3"
+                                       wire:navigate
+                                       class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-all duration-200 group">
+                                        <span class="flex-shrink-0 w-9 h-9 rounded-lg bg-primary-50 dark:bg-primary-900/50 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/70 flex items-center justify-center transition-all duration-200">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-primary-600 dark:text-primary-400">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
+                                            </svg>
+                                        </span>
+                                        <span class="font-medium text-sm">مصحف حفص نستعليق</span>
+                                    </a>
+                                                                    <a href="https://quranpedia.net/mushaf/4"
+                                       wire:navigate
+                                       class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-all duration-200 group">
+                                        <span class="flex-shrink-0 w-9 h-9 rounded-lg bg-primary-50 dark:bg-primary-900/50 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/70 flex items-center justify-center transition-all duration-200">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-primary-600 dark:text-primary-400">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
+                                            </svg>
+                                        </span>
+                                        <span class="font-medium text-sm">مصحف ورش</span>
+                                    </a>
+                                                                    <a href="https://quranpedia.net/mushaf/5"
+                                       wire:navigate
+                                       class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-all duration-200 group">
+                                        <span class="flex-shrink-0 w-9 h-9 rounded-lg bg-primary-50 dark:bg-primary-900/50 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/70 flex items-center justify-center transition-all duration-200">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-primary-600 dark:text-primary-400">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
+                                            </svg>
+                                        </span>
+                                        <span class="font-medium text-sm">مصحف البزي</span>
+                                    </a>
+                                                                    <a href="https://quranpedia.net/mushaf/6"
+                                       wire:navigate
+                                       class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-all duration-200 group">
+                                        <span class="flex-shrink-0 w-9 h-9 rounded-lg bg-primary-50 dark:bg-primary-900/50 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/70 flex items-center justify-center transition-all duration-200">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-primary-600 dark:text-primary-400">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
+                                            </svg>
+                                        </span>
+                                        <span class="font-medium text-sm">مصحف الدوري</span>
+                                    </a>
+                                                                    <a href="https://quranpedia.net/mushaf/7"
+                                       wire:navigate
+                                       class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-all duration-200 group">
+                                        <span class="flex-shrink-0 w-9 h-9 rounded-lg bg-primary-50 dark:bg-primary-900/50 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/70 flex items-center justify-center transition-all duration-200">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-primary-600 dark:text-primary-400">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
+                                            </svg>
+                                        </span>
+                                        <span class="font-medium text-sm">مصحف قالون</span>
+                                    </a>
+                                                                    <a href="https://quranpedia.net/mushaf/8"
+                                       wire:navigate
+                                       class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-all duration-200 group">
+                                        <span class="flex-shrink-0 w-9 h-9 rounded-lg bg-primary-50 dark:bg-primary-900/50 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/70 flex items-center justify-center transition-all duration-200">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-primary-600 dark:text-primary-400">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
+                                            </svg>
+                                        </span>
+                                        <span class="font-medium text-sm">مصحف قنبل</span>
+                                    </a>
+                                                                    <a href="https://quranpedia.net/mushaf/9"
+                                       wire:navigate
+                                       class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-all duration-200 group">
+                                        <span class="flex-shrink-0 w-9 h-9 rounded-lg bg-primary-50 dark:bg-primary-900/50 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/70 flex items-center justify-center transition-all duration-200">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-primary-600 dark:text-primary-400">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
+                                            </svg>
+                                        </span>
+                                        <span class="font-medium text-sm">مصحف شعبة</span>
+                                    </a>
+                                                                    <a href="https://quranpedia.net/mushaf/10"
+                                       wire:navigate
+                                       class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-all duration-200 group">
+                                        <span class="flex-shrink-0 w-9 h-9 rounded-lg bg-primary-50 dark:bg-primary-900/50 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/70 flex items-center justify-center transition-all duration-200">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-primary-600 dark:text-primary-400">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
+                                            </svg>
+                                        </span>
+                                        <span class="font-medium text-sm">مصحف السوسي</span>
+                                    </a>
+                                                                    <a href="https://quranpedia.net/mushaf/11"
+                                       wire:navigate
+                                       class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-all duration-200 group">
+                                        <span class="flex-shrink-0 w-9 h-9 rounded-lg bg-primary-50 dark:bg-primary-900/50 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/70 flex items-center justify-center transition-all duration-200">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-primary-600 dark:text-primary-400">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
+                                            </svg>
+                                        </span>
+                                        <span class="font-medium text-sm">مصحف التجويد الملوّن</span>
+                                    </a>
+                                                                    <a href="https://quranpedia.net/mushaf/12"
+                                       wire:navigate
+                                       class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-all duration-200 group">
+                                        <span class="flex-shrink-0 w-9 h-9 rounded-lg bg-primary-50 dark:bg-primary-900/50 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/70 flex items-center justify-center transition-all duration-200">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-primary-600 dark:text-primary-400">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
+                                            </svg>
+                                        </span>
+                                        <span class="font-medium text-sm">مصحف الأوقاف الليبية (قالون)</span>
+                                    </a>
+                                                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <a href="https://quranpedia.net/listen"
+                       class="nav-link flex items-center gap-2 px-4 py-2.5 rounded-full text-gray-700 dark:text-gray-300 font-semibold text-sm transition-all duration-300 hover:bg-white dark:hover:bg-gray-800 hover:text-primary-600 dark:hover:text-primary-400 hover:shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-orange-500">
+                            <path d="M8.25 4.5a3.75 3.75 0 117.5 0v8.25a3.75 3.75 0 11-7.5 0V4.5z"/>
+                            <path d="M6 10.5a.75.75 0 01.75.75v1.5a5.25 5.25 0 1010.5 0v-1.5a.75.75 0 011.5 0v1.5a6.751 6.751 0 01-6 6.709v2.291h3a.75.75 0 010 1.5h-7.5a.75.75 0 010-1.5h3v-2.291a6.751 6.751 0 01-6-6.709v-1.5A.75.75 0 016 10.5z"/>
+                        </svg>
+                        <span>الاستماع</span>
+                    </a>
+
+                    
+                    <div class="relative"
+                         @mouseenter="encyclopediaDropdownOpen = true"
+                         @mouseleave="encyclopediaDropdownOpen = false">
+                        <button class="nav-link group flex items-center gap-2 px-4 py-2.5 rounded-full text-gray-700 dark:text-gray-300 font-semibold text-sm transition-all duration-300 hover:bg-white dark:hover:bg-gray-800 hover:text-primary-600 dark:hover:text-primary-400 hover:shadow-sm"
+                                :class="encyclopediaDropdownOpen ? 'bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 shadow-sm' : ''">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-emerald-500">
+                                <path d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0016.5 9h-1.875a1.875 1.875 0 01-1.875-1.875V5.25A3.75 3.75 0 009 1.5H5.625z"/>
+                                <path d="M12.971 1.816A5.23 5.23 0 0114.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 013.434 1.279 9.768 9.768 0 00-6.963-6.963z"/>
+                            </svg>
+                            <span>الموسوعة</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                 class="w-3.5 h-3.5 text-gray-400 dark:text-gray-500 transition-transform duration-300"
+                                 :class="encyclopediaDropdownOpen ? 'rotate-180 text-primary-500 dark:text-primary-400' : ''">
+                                <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+
+                        
+                        <div x-show="encyclopediaDropdownOpen"
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 -translate-y-2"
+                             x-transition:enter-end="opacity-100 translate-y-0"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 translate-y-0"
+                             x-transition:leave-end="opacity-0 -translate-y-2"
+                             class="absolute top-full right-0 mt-2 w-64 rounded-2xl shadow-2xl dark:shadow-gray-950/50 border border-gray-200 dark:border-gray-700 z-50 !bg-white dark:!bg-gray-800"
+                             x-cloak>
+                            <div class="p-2 rounded-2xl !bg-white dark:!bg-gray-800">
+                                
+                                <a href="https://quranpedia.net/topics"
+                                   wire:navigate
+                                   class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/50 hover:text-emerald-700 dark:hover:text-emerald-400 transition-all duration-200 group">
+                                    <span class="flex-shrink-0 w-9 h-9 rounded-lg bg-emerald-50 dark:bg-emerald-900/50 group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/70 flex items-center justify-center transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-emerald-600 dark:text-emerald-400">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="font-medium text-sm">موضوعات القرآن الكريم</span>
+                                </a>
+
+                                
+                                <a href="https://quranpedia.net/books"
+                                   wire:navigate
+                                   class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/50 hover:text-blue-700 dark:hover:text-blue-400 transition-all duration-200 group">
+                                    <span class="flex-shrink-0 w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-900/50 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/70 flex items-center justify-center transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-blue-600">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
+                                        </svg>
+                                    </span>
+                                    <span class="font-medium text-sm">الكتب</span>
+                                </a>
+
+                                
+                                <a href="https://quranpedia.net/fatwas"
+                                   wire:navigate
+                                   class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-amber-50 dark:hover:bg-amber-900/50 hover:text-amber-700 dark:hover:text-amber-400 transition-all duration-200 group">
+                                    <span class="flex-shrink-0 w-9 h-9 rounded-lg bg-amber-50 dark:bg-amber-900/50 group-hover:bg-amber-100 dark:group-hover:bg-amber-900/70 flex items-center justify-center transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-amber-600 dark:text-amber-400">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/>
+                                        </svg>
+                                    </span>
+                                    <span class="font-medium text-sm">الفتاوى</span>
+                                </a>
+
+                                
+                                <a href="https://quranpedia.net/ayahs"
+                                   wire:navigate
+                                   class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-all duration-200 group">
+                                    <span class="flex-shrink-0 w-9 h-9 rounded-lg bg-primary-50 dark:bg-primary-900/50 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/70 flex items-center justify-center transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-primary-600 dark:text-primary-400">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="font-medium text-sm">الآيات</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="mr-3">
+                    <button x-data
+        @click="$store.theme.toggle()"
+        :title="$store.theme.mode === 'dark' ? 'الوضع الداكن' : ($store.theme.mode === 'light' ? 'الوضع الفاتح' : 'وضع النظام')"
+        class="relative w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:border-primary-300 dark:hover:border-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200 shadow-sm hover:shadow "
+        aria-label="تبديل المظهر"
+>
+    
+    <svg x-show="$store.theme.isDark" x-cloak xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+        <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/>
+    </svg>
+
+    
+    <svg x-show="!$store.theme.isDark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+        <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd"/>
+    </svg>
+
+    
+    <span x-show="$store.theme.mode === 'system'"
+          x-cloak
+          class="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-primary-500 ring-2 ring-white dark:ring-gray-800">
+    </span>
+</button>
+                </div>
+
+                
+                <a href="https://quranpedia.net/contact-us"
+                   wire:navigate
+                   class="mr-4 inline-flex items-center px-6 py-2.5 rounded-full bg-gradient-to-r from-primary-600 to-primary-500 text-white text-sm font-semibold shadow-lg shadow-primary-500/25 hover:shadow-xl hover:shadow-primary-500/30 hover:from-primary-500 hover:to-primary-400 transition-all duration-300 hover:-translate-y-0.5">
+                    اتصل بنا
+                </a>
+            </div>
+
+            
+            <button @click="mobileMenuOpen = true"
+                    type="button"
+                    class="lg:hidden relative w-11 h-11 flex items-center justify-center rounded-xl bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+                    aria-controls="mobile-menu"
+                    aria-expanded="false">
+                <span class="sr-only">فتح القائمة</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    
+    <template x-teleport="body">
+        <div x-show="mobileMenuOpen"
+             x-cloak
+             class="lg:hidden fixed inset-0 z-[70]"
+             @keydown.escape.window="mobileMenuOpen = false">
+
+            
+            <div x-show="mobileMenuOpen"
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100"
+                 x-transition:leave-end="opacity-0"
+                 @click="mobileMenuOpen = false"
+                 class="absolute inset-0 bg-gray-900/60 backdrop-blur-sm">
+            </div>
+
+            
+            <div x-show="mobileMenuOpen"
+                 x-transition:enter="transition ease-out duration-300 transform"
+                 x-transition:enter-start="translate-x-full"
+                 x-transition:enter-end="translate-x-0"
+                 x-transition:leave="transition ease-in duration-200 transform"
+                 x-transition:leave-start="translate-x-0"
+                 x-transition:leave-end="translate-x-full"
+                 class="absolute inset-y-0 right-0 w-full max-w-sm bg-white dark:bg-gray-900 shadow-2xl dark:shadow-gray-950/50 flex flex-col">
+
+                
+                <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 dark:border-gray-800">
+                    <a href="/" wire:navigate class="flex-shrink-0" @click="mobileMenuOpen = false">
+                        <img src="/assets/images/branding/logo.svg" width="143" height="40" class="h-10 w-auto site-logo" alt="الموسوعة القرآنية">
+                    </a>
+                    <button @click="mobileMenuOpen = false"
+                            class="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-50 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-700 dark:hover:text-gray-200 transition-colors">
+                        <span class="sr-only">إغلاق القائمة</span>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+
+                
+                <div class="flex-1 overflow-y-auto overscroll-contain py-4 px-4">
+                    
+                    <div x-data="{ expanded: false }" class="mb-2">
+                        <button @click="expanded = !expanded"
+                                class="w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-gray-800 dark:text-gray-200 font-semibold transition-all duration-200"
+                                :class="expanded ? 'bg-primary-50 dark:bg-primary-900/50 text-primary-700 dark:text-primary-400' : 'hover:bg-gray-50 dark:hover:bg-gray-800'">
+                            <span class="flex items-center gap-3">
+                                <span class="w-9 h-9 rounded-lg bg-gradient-to-br from-primary-100 to-primary-50 dark:from-primary-900/50 dark:to-primary-800/30 flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-primary-600 dark:text-primary-400">
+                                        <path d="M11.25 4.533A9.707 9.707 0 006 3a9.735 9.735 0 00-3.25.555.75.75 0 00-.5.707v14.25a.75.75 0 001 .707A8.237 8.237 0 016 18.75c1.995 0 3.823.707 5.25 1.886V4.533zM12.75 20.636A8.214 8.214 0 0118 18.75c.966 0 1.89.166 2.75.47a.75.75 0 001-.708V4.262a.75.75 0 00-.5-.707A9.735 9.735 0 0018 3a9.707 9.707 0 00-5.25 1.533v16.103z"/>
+                                    </svg>
+                                </span>
+                                <span>القرآن الكريم</span>
+                            </span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                 class="w-5 h-5 text-gray-400 dark:text-gray-500 transition-transform duration-200"
+                                 :class="expanded ? 'rotate-180 text-primary-500 dark:text-primary-400' : ''">
+                                <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        <div x-show="expanded"
+                             x-collapse
+                             x-cloak
+                             class="mt-1 mr-6 pr-4 border-r-2 border-primary-100 dark:border-primary-800 space-y-1">
+                                                            <a href="https://quranpedia.net/mushaf/1"
+                                   wire:navigate
+                                   @click="mobileMenuOpen = false"
+                                   class="block px-4 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-colors text-sm font-medium">
+                                    مصحف حفص
+                                </a>
+                                                            <a href="https://quranpedia.net/mushaf/2"
+                                   wire:navigate
+                                   @click="mobileMenuOpen = false"
+                                   class="block px-4 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-colors text-sm font-medium">
+                                    مصحف حفص نسخة نصية
+                                </a>
+                                                            <a href="https://quranpedia.net/mushaf/3"
+                                   wire:navigate
+                                   @click="mobileMenuOpen = false"
+                                   class="block px-4 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-colors text-sm font-medium">
+                                    مصحف حفص نستعليق
+                                </a>
+                                                            <a href="https://quranpedia.net/mushaf/4"
+                                   wire:navigate
+                                   @click="mobileMenuOpen = false"
+                                   class="block px-4 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-colors text-sm font-medium">
+                                    مصحف ورش
+                                </a>
+                                                            <a href="https://quranpedia.net/mushaf/5"
+                                   wire:navigate
+                                   @click="mobileMenuOpen = false"
+                                   class="block px-4 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-colors text-sm font-medium">
+                                    مصحف البزي
+                                </a>
+                                                            <a href="https://quranpedia.net/mushaf/6"
+                                   wire:navigate
+                                   @click="mobileMenuOpen = false"
+                                   class="block px-4 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-colors text-sm font-medium">
+                                    مصحف الدوري
+                                </a>
+                                                            <a href="https://quranpedia.net/mushaf/7"
+                                   wire:navigate
+                                   @click="mobileMenuOpen = false"
+                                   class="block px-4 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-colors text-sm font-medium">
+                                    مصحف قالون
+                                </a>
+                                                            <a href="https://quranpedia.net/mushaf/8"
+                                   wire:navigate
+                                   @click="mobileMenuOpen = false"
+                                   class="block px-4 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-colors text-sm font-medium">
+                                    مصحف قنبل
+                                </a>
+                                                            <a href="https://quranpedia.net/mushaf/9"
+                                   wire:navigate
+                                   @click="mobileMenuOpen = false"
+                                   class="block px-4 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-colors text-sm font-medium">
+                                    مصحف شعبة
+                                </a>
+                                                            <a href="https://quranpedia.net/mushaf/10"
+                                   wire:navigate
+                                   @click="mobileMenuOpen = false"
+                                   class="block px-4 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-colors text-sm font-medium">
+                                    مصحف السوسي
+                                </a>
+                                                            <a href="https://quranpedia.net/mushaf/11"
+                                   wire:navigate
+                                   @click="mobileMenuOpen = false"
+                                   class="block px-4 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-colors text-sm font-medium">
+                                    مصحف التجويد الملوّن
+                                </a>
+                                                            <a href="https://quranpedia.net/mushaf/12"
+                                   wire:navigate
+                                   @click="mobileMenuOpen = false"
+                                   class="block px-4 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-colors text-sm font-medium">
+                                    مصحف الأوقاف الليبية (قالون)
+                                </a>
+                                                    </div>
+                    </div>
+
+                    
+                    <a href="https://quranpedia.net/listen"
+                       @click="mobileMenuOpen = false"
+                       class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-gray-800 dark:text-gray-200 font-semibold hover:bg-orange-50 dark:hover:bg-orange-900/30 hover:text-orange-700 dark:hover:text-orange-400 transition-all duration-200 mb-2">
+                        <span class="w-9 h-9 rounded-lg bg-gradient-to-br from-orange-100 to-orange-50 dark:from-orange-900/50 dark:to-orange-800/30 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-orange-600">
+                                <path d="M8.25 4.5a3.75 3.75 0 117.5 0v8.25a3.75 3.75 0 11-7.5 0V4.5z"/>
+                                <path d="M6 10.5a.75.75 0 01.75.75v1.5a5.25 5.25 0 1010.5 0v-1.5a.75.75 0 011.5 0v1.5a6.751 6.751 0 01-6 6.709v2.291h3a.75.75 0 010 1.5h-7.5a.75.75 0 010-1.5h3v-2.291a6.751 6.751 0 01-6-6.709v-1.5A.75.75 0 016 10.5z"/>
+                            </svg>
+                        </span>
+                        <span>الاستماع</span>
+                    </a>
+
+                    
+                    <div x-data="{ expanded: false }" class="mb-2">
+                        <button @click="expanded = !expanded"
+                                class="w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-gray-800 dark:text-gray-200 font-semibold transition-all duration-200"
+                                :class="expanded ? 'bg-emerald-50 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400' : 'hover:bg-gray-50 dark:hover:bg-gray-800'">
+                            <span class="flex items-center gap-3">
+                                <span class="w-9 h-9 rounded-lg bg-gradient-to-br from-emerald-100 to-emerald-50 dark:from-emerald-900/50 dark:to-emerald-800/30 flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-emerald-600 dark:text-emerald-400">
+                                        <path d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0016.5 9h-1.875a1.875 1.875 0 01-1.875-1.875V5.25A3.75 3.75 0 009 1.5H5.625z"/>
+                                        <path d="M12.971 1.816A5.23 5.23 0 0114.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 013.434 1.279 9.768 9.768 0 00-6.963-6.963z"/>
+                                    </svg>
+                                </span>
+                                <span>الموسوعة القرآنية</span>
+                            </span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                 class="w-5 h-5 text-gray-400 dark:text-gray-500 transition-transform duration-200"
+                                 :class="expanded ? 'rotate-180 text-emerald-500 dark:text-emerald-400' : ''">
+                                <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        <div x-show="expanded"
+                             x-collapse
+                             x-cloak
+                             class="mt-1 mr-6 pr-4 border-r-2 border-emerald-100 dark:border-emerald-800 space-y-1">
+                            <a href="https://quranpedia.net/topics"
+                               wire:navigate
+                               @click="mobileMenuOpen = false"
+                               class="block px-4 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/50 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors text-sm font-medium">
+                                موضوعات القرآن الكريم
+                            </a>
+                            <a href="https://quranpedia.net/books"
+                               wire:navigate
+                               @click="mobileMenuOpen = false"
+                               class="block px-4 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-blue-50 dark:hover:bg-blue-900/50 hover:text-blue-700 dark:hover:text-blue-400 transition-colors text-sm font-medium">
+                                الكتب
+                            </a>
+                            <a href="https://quranpedia.net/fatwas"
+                               wire:navigate
+                               @click="mobileMenuOpen = false"
+                               class="block px-4 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-amber-50 dark:hover:bg-amber-900/50 hover:text-amber-700 dark:hover:text-amber-400 transition-colors text-sm font-medium">
+                                الفتاوى
+                            </a>
+                            <a href="https://quranpedia.net/ayahs"
+                               wire:navigate
+                               @click="mobileMenuOpen = false"
+                               class="block px-4 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-400 transition-colors text-sm font-medium">
+                                الآيات
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="flex-shrink-0 p-4 border-t border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/50">
+                    <div class="flex items-center gap-3">
+                        <button x-data
+        @click="$store.theme.toggle()"
+        :title="$store.theme.mode === 'dark' ? 'الوضع الداكن' : ($store.theme.mode === 'light' ? 'الوضع الفاتح' : 'وضع النظام')"
+        class="relative w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:border-primary-300 dark:hover:border-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200 shadow-sm hover:shadow "
+        aria-label="تبديل المظهر"
+>
+    
+    <svg x-show="$store.theme.isDark" x-cloak xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+        <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/>
+    </svg>
+
+    
+    <svg x-show="!$store.theme.isDark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+        <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd"/>
+    </svg>
+
+    
+    <span x-show="$store.theme.mode === 'system'"
+          x-cloak
+          class="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-primary-500 ring-2 ring-white dark:ring-gray-800">
+    </span>
+</button>
+                        <a href="https://quranpedia.net/contact-us"
+                           wire:navigate
+                           @click="mobileMenuOpen = false"
+                           class="flex-1 flex items-center justify-center px-6 py-3.5 rounded-xl bg-gradient-to-r from-primary-600 to-primary-500 text-white font-semibold shadow-lg shadow-primary-500/25 hover:shadow-xl transition-all duration-300">
+                            اتصل بنا
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+</nav>
+        
+        <div class="relative">
+    
+    <div class="relative container py-10 md:py-14 lg:py-16">
+        
+        
+        <div class="flex flex-col items-center gap-5 md:gap-6">
+
+            
+            
+            
+                            <h1
+                    class="text-3xl md:text-4xl lg:text-5xl font-fustat font-bold text-center tracking-tight hero-gradient-text hero-text-glow"
+                    style="line-height: 1.4 !important"
+                >
+                    المصحف بالقراءات العشر
+                </h1>
+            
+            
+                            <p class="text-lg md:text-xl font-fustat text-slate-600 dark:text-gray-400 text-center max-w-2xl leading-relaxed">
+                    عشرة قراءات وعشرون رواية
+                </p>
+            
+            
+                    </div>
+    </div>
+
+    </div>
+    </div>
+
+<main id="main-content" class=" mt-12 min-h-[50vh]" role="main">
+    <div class="container max-w-5xl">
+            <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden">
+                <div class="p-6 lg:p-8">
+                    <div wire:key="lw-1710113284-2" wire:snapshot="{&quot;data&quot;:{&quot;qiraas&quot;:[{&quot;1&quot;:[{&quot;data&quot;:[{&quot;id&quot;:1,&quot;short_name&quot;:&quot;\u0646\u0627\u0641\u0639&quot;,&quot;full_name&quot;:&quot;\u0646\u0627\u0641\u0639 \u0628\u0646 \u0639\u0628\u062f \u0627\u0644\u0631\u062d\u0645\u0646 \u0628\u0646 \u0623\u0628\u064a \u0646\u0639\u064a\u0645 \u0627\u0644\u0645\u062f\u0646\u064a&quot;,&quot;count_id&quot;:2,&quot;rawis&quot;:[[[{&quot;data&quot;:[{&quot;id&quot;:1,&quot;qiraa_id&quot;:1,&quot;rawi_name&quot;:&quot;\u0639\u064a\u0633\u0649 \u0628\u0646 \u0645\u064a\u0646\u0627 \u0628\u0646 \u0648\u0631\u062f\u0627\u0646 \u0628\u0646 \u0639\u064a\u0633\u0649 \u0627\u0644\u0632\u0631\u0642\u064a (\u0623\u0628\u0648 \u0645\u0648\u0633\u0649) \u0645\u0648\u0644\u0649 \u0628\u0646\u064a \u0632\u0647\u0631\u0629 \u0648\u0645\u0639\u0644\u0645 \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u0648\u0642\u0627\u0631\u0626 \u0627\u0644\u0645\u062f\u064a\u0646\u0629 \u0648\u0646\u062d\u0648\u064a\u0651\u0647\u0627\u060c \u0644\u0642\u0628\u0647 \u0646\u0627\u0641\u0639 (\u0642\u0627\u0644\u0648\u0646) \u0644\u062c\u0648\u062f\u0629 \u0642\u0631\u0627\u0621\u062a\u0647 \u0644\u0623\u0646 \u0645\u0639\u0646\u0627\u0647\u0627 \u0628\u0644\u063a\u0629 \u0627\u0644\u0631\u0648\u0645 (\u062c\u064a\u062f)&quot;,&quot;name&quot;:&quot;\u0642\u0627\u0644\u0648\u0646&quot;,&quot;translated_name&quot;:&quot;{\&quot;ar\&quot;:\&quot;\\u0642\\u0627\\u0644\\u0648\\u0646 \\u0639\\u0646 \\u0646\\u0627\\u0641\\u0639 \\u0645\\u0646 \\u0637\\u0631\\u064a\\u0642 \\u0623\\u0628\\u064a \\u0646\\u0634\\u064a\\u0637\&quot;,\&quot;en\&quot;:\&quot;Rewayat Qalon A&#039;n Nafi&#039; Men Tariq Abi Nasheet\&quot;,\&quot;bn\&quot;:\&quot;\\u0995\\u09cd\\u09ac\\u09be\\u09b0\\u09c0 \\u09a8\\u09be\\u09ab\\u09c7\\u2018 \\u09a5\\u09c7\\u0995\\u09c7 \\u0995\\u09cd\\u09ac\\u09be\\u09b2\\u09c2\\u09a8\\u09c7\\u09b0 \\u09ac\\u09b0\\u09cd\\u09a3\\u09a8\\u09be\&quot;,\&quot;bs\&quot;:\&quot;Rivajet Kaluna od Nafi&#039;a preko Ebu-Ne\\u0161ita\&quot;,\&quot;zh\&quot;:\&quot; \\u4f3d\\u8bba \\u4f20\\u81ea \\u7eb3\\u83f2\\u5c14\&quot;,\&quot;de\&quot;:\&quot;Rewayat Qalon A&#039;n Nafi&#039; Men Tariq Abi Nasheet\&quot;,\&quot;es\&quot;:\&quot;Rewayat Qalon A&#039;n Nafi&#039; Men Tariq Abi Nasheet\&quot;,\&quot;fa\&quot;:\&quot;\\u0631\\u0648\\u0627\\u064a\\u062a \\u0642\\u0627\\u0644\\u0648\\u0646 \\u0627\\u0632 \\u0646\\u0627\\u0641\\u0639 \\u0627\\u0632 \\u0637\\u0631\\u06cc\\u0642 \\u0627\\u0628\\u06cc \\u0646\\u0634\\u06cc\\u0637\&quot;,\&quot;fr\&quot;:\&quot;Rewayat Qalon A&#039;n Nafi&#039; Men Tariq Abi Nasheet\&quot;,\&quot;ha\&quot;:\&quot;Riwayar Kalun daga Nafi&#039;u ta Hanyar Abi Nasheet\&quot;,\&quot;id\&quot;:\&quot;Riwayat Qaaluun &#039;an Naafi&#039; dari jalan Abi Nasyith\&quot;,\&quot;ml\&quot;:\&quot;\\u0d28\\u0d3e\\u0d2b\\u0d3f\\u0d07\\u0d32\\u0d4d \\u0d28\\u0d3f\\u0d28\\u0d4d\\u0d28\\u0d4d \\u0d16\\u0d3e\\u0d32\\u0d42\\u0d28\\u0d4d \\u0d09\\u0d26\\u0d4d\\u0d27\\u0d30\\u0d3f\\u0d15\\u0d4d\\u0d15\\u0d41\\u0d28\\u0d4d\\u0d28\\u0d24\\u0d4d\&quot;,\&quot;pt\&quot;:\&quot;C\\u00e1lun, de Nafi&#039;, do m\\u00e9todo de Abu Nachit\&quot;}&quot;,&quot;qiraa_short_name&quot;:&quot;\u0646\u0627\u0641\u0639&quot;,&quot;qiraa_full_name&quot;:&quot;\u0646\u0627\u0641\u0639 \u0628\u0646 \u0639\u0628\u062f \u0627\u0644\u0631\u062d\u0645\u0646 \u0628\u0646 \u0623\u0628\u064a \u0646\u0639\u064a\u0645 \u0627\u0644\u0645\u062f\u0646\u064a&quot;,&quot;has_mushaf&quot;:true,&quot;has_recitation_by_verse&quot;:true},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}],[{&quot;data&quot;:[{&quot;id&quot;:2,&quot;qiraa_id&quot;:1,&quot;rawi_name&quot;:&quot;\u0639\u062b\u0645\u0627\u0646 \u0628\u0646 \u0633\u0639\u064a\u062f \u0628\u0646 \u0639\u0628\u062f \u0627\u0644\u0644\u0647\u060c \u0623\u0628\u0648 \u0633\u0639\u064a\u062f \u0627\u0644\u0645\u0635\u0631\u064a\u060c \u0644\u0642\u0628\u0647 \u0646\u0627\u0641\u0639 (\u0648\u0631\u0634\u0627) \u0644\u0628\u064a\u0627\u0636\u0647\u060c \u0648\u0627\u0644\u0648\u0631\u0634 \u0634\u064a\u0621 \u0623\u0628\u064a\u0636 \u064a\u0635\u0646\u0639 \u0645\u0646 \u0627\u0644\u0644\u0628\u0646\u060c \u0648\u0642\u064a\u0644 \u063a\u064a\u0631 \u0630\u0644\u0643\u060c \u0648\u063a\u0644\u0628 \u0639\u0644\u064a\u0647 \u0647\u0630\u0627 \u0627\u0644\u0644\u0642\u0628 \u062d\u062a\u0649 \u0635\u0627\u0631 \u0644\u0627 \u064a\u0639\u0631\u0641 \u0625\u0644\u0627 \u0628\u0647&quot;,&quot;name&quot;:&quot;\u0648\u0631\u0634&quot;,&quot;translated_name&quot;:&quot;{\&quot;ar\&quot;:\&quot;\\u0648\\u0631\\u0634 \\u0639\\u0646 \\u0646\\u0627\\u0641\\u0639\&quot;,\&quot;en\&quot;:\&quot;Rewayat Warsh A&#039;n Nafi&#039;\&quot;,\&quot;bn\&quot;:\&quot;\\u09a8\\u09be\\u09ab\\u09c7\\u2018 \\u09a5\\u09c7\\u0995\\u09c7 \\u0993\\u09af\\u09bc\\u09be\\u09b0\\u09b6\\u09c7\\u09b0 \\u09ac\\u09b0\\u09cd\\u09a3\\u09a8\\u09be\&quot;,\&quot;bs\&quot;:\&quot;Rivajet Ver\\u0161a od Nafi&#039;a&#039;\&quot;,\&quot;zh\&quot;:\&quot; \\u6c83\\u4e50\\u5e08 \\u4f20\\u81ea \\u7eb3\\u83f2\\u5c14\&quot;,\&quot;de\&quot;:\&quot;Rewayat Warsh A&#039;n Nafi&#039;\&quot;,\&quot;es\&quot;:\&quot;Rewayat Warsh A&#039;n Nafi&#039;\&quot;,\&quot;fa\&quot;:\&quot;\\u0631\\u0648\\u0627\\u064a\\u062a \\u0648\\u0631\\u0634 \\u0627\\u0632 \\u0646\\u0627\\u0641\\u0639\&quot;,\&quot;fr\&quot;:\&quot;Rewayat Warsh A&#039;n Nafi&#039;\&quot;,\&quot;id\&quot;:\&quot;Riwayat Warsy &#039;an Naafi&#039;\&quot;,\&quot;ml\&quot;:\&quot;\\u0d28\\u0d3e\\u0d2b\\u0d3f\\u0d07\\u0d32\\u0d4d \\u0d28\\u0d3f\\u0d28\\u0d4d\\u0d28\\u0d4d \\u0d35\\u0d30\\u0d4d\\u0d37\\u0d4d \\u0d09\\u0d26\\u0d4d\\u0d27\\u0d30\\u0d3f\\u0d15\\u0d4d\\u0d15\\u0d41\\u0d28\\u0d4d\\u0d28\\u0d24\\u0d4d\&quot;,\&quot;pt\&quot;:\&quot;Warch, de N\\u00e1fi&#039;\&quot;,\&quot;ru\&quot;:\&quot;\\u0412\\u0435\\u0440\\u0441\\u0438\\u044f: \\u0412\\u0430\\u0440\\u0448 \\u043e\\u0442 \\u041d\\u0430\\u0444\\u0438\\u044a\&quot;,\&quot;tg\&quot;:\&quot;\\u0420\\u0438\\u0432\\u043e\\u044f\\u0442\\u0438 \\u0412\\u0430\\u0440\\u0448 \\u0430\\u0437 \\u041d\\u043e\\u0444\\u0435\\u044a\&quot;,\&quot;th\&quot;:\&quot;\\u0e23\\u0e34\\u0e27\\u0e32\\u0e22\\u0e30\\u0e2e\\u0e3a \\u0e27\\u0e31\\u0e23\\u0e0a\\u0e3a  \\u0e08\\u0e32\\u0e01 \\u0e19\\u0e32\\u0e1f\\u0e34\\u0e2d\\u0e3a\&quot;,\&quot;tl\&quot;:\&quot;Rewayat Warsh A&#039;n Nafi&#039;\&quot;,\&quot;tr\&quot;:\&quot; Rewayat Warsh A&#039;n Nafi&#039;\&quot;,\&quot;ug\&quot;:\&quot;\\u06cb\\u06d5\\u0631\\u0634\\u06d5 \\u0631\\u0649\\u06cb\\u0627\\u064a\\u0649\\u062a\\u0649\&quot;,\&quot;ur\&quot;:\&quot;\\u0628\\u0631\\u0648\\u0627\\u06cc\\u062a \\u0648\\u0631\\u0634 \\u0639\\u0646 \\u0646\\u0627\\u0641\\u0639\&quot;,\&quot;ha\&quot;:\&quot;Riwayar Warshu daga Nafi&#039;u\&quot;}&quot;,&quot;qiraa_short_name&quot;:&quot;\u0646\u0627\u0641\u0639&quot;,&quot;qiraa_full_name&quot;:&quot;\u0646\u0627\u0641\u0639 \u0628\u0646 \u0639\u0628\u062f \u0627\u0644\u0631\u062d\u0645\u0646 \u0628\u0646 \u0623\u0628\u064a \u0646\u0639\u064a\u0645 \u0627\u0644\u0645\u062f\u0646\u064a&quot;,&quot;has_mushaf&quot;:true,&quot;has_recitation_by_verse&quot;:true},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}]],{&quot;class&quot;:&quot;Illuminate\\Support\\Collection&quot;,&quot;s&quot;:&quot;clctn&quot;}]},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}],&quot;2&quot;:[{&quot;data&quot;:[{&quot;id&quot;:2,&quot;short_name&quot;:&quot;\u0627\u0628\u0646 \u0643\u062b\u064a\u0631&quot;,&quot;full_name&quot;:&quot;\u0639\u0628\u062f \u0627\u0644\u0644\u0647 \u0628\u0646 \u0643\u062b\u064a\u0631 \u0627\u0644\u062f\u0627\u0631\u064a \u0627\u0644\u0645\u0643\u064a&quot;,&quot;count_id&quot;:3,&quot;rawis&quot;:[[[{&quot;data&quot;:[{&quot;id&quot;:3,&quot;qiraa_id&quot;:2,&quot;rawi_name&quot;:&quot;\u0623\u062d\u0645\u062f \u0628\u0646 \u0645\u062d\u0645\u062f \u0628\u0646 \u0639\u0628\u062f \u0627\u0644\u0644\u0647 \u0628\u0646 \u0627\u0644\u0642\u0627\u0633\u0645 \u0628\u0646 \u0646\u0627\u0641\u0639 \u0628\u0646 \u0623\u0628\u064a \u0628\u0632\u0629&quot;,&quot;name&quot;:&quot;\u0627\u0644\u0628\u0632\u064a&quot;,&quot;translated_name&quot;:null,&quot;qiraa_short_name&quot;:&quot;\u0627\u0628\u0646 \u0643\u062b\u064a\u0631&quot;,&quot;qiraa_full_name&quot;:&quot;\u0639\u0628\u062f \u0627\u0644\u0644\u0647 \u0628\u0646 \u0643\u062b\u064a\u0631 \u0627\u0644\u062f\u0627\u0631\u064a \u0627\u0644\u0645\u0643\u064a&quot;,&quot;has_mushaf&quot;:true,&quot;has_recitation_by_verse&quot;:true},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}],[{&quot;data&quot;:[{&quot;id&quot;:4,&quot;qiraa_id&quot;:2,&quot;rawi_name&quot;:&quot;\u0645\u062d\u0645\u062f \u0628\u0646 \u0639\u0628\u062f \u0627\u0644\u0631\u062d\u0645\u0646 \u0628\u0646 \u062e\u0627\u0644\u062f \u0627\u0644\u0645\u062e\u0632\u0648\u0645\u064a \u0645\u0648\u0644\u0627\u0647\u0645\u060c \u0623\u0628\u0648 \u0639\u0645\u0631 \u0627\u0644\u0645\u0643\u064a \u060c \u0634\u064a\u062e \u0627\u0644\u0642\u0631\u0627\u0621 \u0628\u0627\u0644\u062d\u062c\u0627\u0632 \u0641\u064a \u0632\u0645\u0627\u0646\u0647\u060c \u0644\u0642\u0628\u0647 (\u0642\u0646\u0628\u0644) \u0644\u0623\u0646\u0647 \u0645\u0646 \u0623\u0647\u0644 \u0628\u064a\u062a \u0628\u0645\u0643\u0629 \u064a\u0639\u0631\u0641\u0648\u0646 \u0628\u0627\u0644\u0642\u0646\u0627\u0628\u0644\u0629.&quot;,&quot;name&quot;:&quot;\u0642\u0646\u0628\u0644&quot;,&quot;translated_name&quot;:&quot;{\&quot;ar\&quot;:\&quot;\\u0627\\u0644\\u0628\\u0632\\u064a \\u0648\\u0642\\u0646\\u0628\\u0644 \\u0639\\u0646 \\u0627\\u0628\\u0646 \\u0643\\u062b\\u064a\\u0631\&quot;,\&quot;en\&quot;:\&quot;Rewayat Albizi and Qunbol A&#039;n Ibn Katheer\&quot;,\&quot;bn\&quot;:\&quot;\\u0995\\u09cd\\u09ac\\u09be\\u09b0\\u09c0 \\u0987\\u09ac\\u09a8 \\u0995\\u09be\\u09b8\\u09c0\\u09b0 \\u09a5\\u09c7\\u0995\\u09c7 \\u09ac\\u09be\\u09af\\u09cd\\u200c\\u09af\\u09c0 \\u0993 \\u0995\\u09c1\\u09a8\\u09ac\\u09c1\\u09b2 \\u098f\\u09b0 \\u09ac\\u09b0\\u09cd\\u09a3\\u09a8\\u09be\&quot;,\&quot;bs\&quot;:\&quot;Rivajet El-Kunbula I El-Bizzija od Ibn-Kesira\&quot;,\&quot;zh\&quot;:\&quot; \\u73ed\\u8d44 \\u548c \\u8d21\\u5e03\\u52d2 \\uff08\\u4e8c\\u4eba\\uff09\\u4f20\\u81ea \\u4f0a\\u672c\\u51ef\\u5e0c\\u5c14\&quot;,\&quot;de\&quot;:\&quot;Rewayat Albizi and Qunbol A&#039;n Ibn Katheer\&quot;,\&quot;es\&quot;:\&quot;Rewayat Albizi and Qunbol A&#039;n Ibn Katheer\&quot;,\&quot;fa\&quot;:\&quot;\\u0631\\u0648\\u0627\\u064a\\u062a \\u0628\\u0632\\u0649 \\u0648 \\u0642\\u0646\\u0628\\u0644 \\u0627\\u0632 \\u0627\\u0628\\u0646 \\u0643\\u062b\\u064a\\u0631\&quot;,\&quot;fr\&quot;:\&quot;Rewayat Albizi and Qunbol A&#039;n Ibn Katheer\&quot;,\&quot;ha\&quot;:\&quot;Riwayar Bazzi da Kunbul daga Ibn Kathir\&quot;,\&quot;id\&quot;:\&quot;Riwayat Al bizziy dan Qunbul &#039;an Ibn Katsir\&quot;,\&quot;ml\&quot;:\&quot;\\u0d07\\u0d2c\\u0d4d\\u0d28\\u0d41 \\u0d15\\u0d38\\u0d40\\u0d31\\u0d3f\\u0d32\\u0d4d \\u0d28\\u0d3f\\u0d28\\u0d4d\\u0d28\\u0d41\\u0d02 \\u0d16\\u0d7b\\u0d2c\\u0d3f\\u0d32\\u0d41\\u0d02 \\u0d2c\\u0d38\\u0d4d\\u0d38\\u0d3f\\u0d2f\\u0d41\\u0d02 \\u0d09\\u0d26\\u0d4d\\u0d27\\u0d30\\u0d3f\\u0d15\\u0d4d\\u0d15\\u0d41\\u0d28\\u0d4d\\u0d28\\u0d24\\u0d4d\&quot;,\&quot;pt\&quot;:\&quot;Al Barri e Cunbul de Ibn Kacir\&quot;}&quot;,&quot;qiraa_short_name&quot;:&quot;\u0627\u0628\u0646 \u0643\u062b\u064a\u0631&quot;,&quot;qiraa_full_name&quot;:&quot;\u0639\u0628\u062f \u0627\u0644\u0644\u0647 \u0628\u0646 \u0643\u062b\u064a\u0631 \u0627\u0644\u062f\u0627\u0631\u064a \u0627\u0644\u0645\u0643\u064a&quot;,&quot;has_mushaf&quot;:true,&quot;has_recitation_by_verse&quot;:true},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}]],{&quot;class&quot;:&quot;Illuminate\\Support\\Collection&quot;,&quot;s&quot;:&quot;clctn&quot;}]},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}],&quot;3&quot;:[{&quot;data&quot;:[{&quot;id&quot;:3,&quot;short_name&quot;:&quot;\u0623\u0628\u0648 \u0639\u0645\u0631\u0648&quot;,&quot;full_name&quot;:&quot;\u0623\u0628\u0648 \u0639\u0645\u0631\u0648 \u0628\u0646 \u0627\u0644\u0639\u0644\u0627\u0621 \u0627\u0644\u0628\u0635\u0631\u064a&quot;,&quot;count_id&quot;:4,&quot;rawis&quot;:[[[{&quot;data&quot;:[{&quot;id&quot;:5,&quot;qiraa_id&quot;:3,&quot;rawi_name&quot;:&quot;\u062d\u0641\u0635 \u0628\u0646 \u0639\u0645\u0631 \u0628\u0646 \u0639\u0628\u062f \u0627\u0644\u0639\u0632\u064a\u0632\u060c \u0623\u0628\u0648 \u0639\u0645\u0631 \u0627\u0644\u062f\u0648\u0631\u064a \u0627\u0644\u0646\u062d\u0648\u064a\u060c \u0648\u0627\u0644\u062f\u0648\u0631\u064a \u0646\u0633\u0628\u0629 \u0625\u0644\u0649 \u0627\u0644\u062f\u0648\u0631\u060c \u0645\u0648\u0636\u0639 \u0628\u0628\u063a\u062f\u0627\u062f.&quot;,&quot;name&quot;:&quot;\u0627\u0644\u062f\u0648\u0631\u064a&quot;,&quot;translated_name&quot;:&quot;{\&quot;ar\&quot;:\&quot;\\u0627\\u0644\\u062f\\u0648\\u0631\\u064a \\u0639\\u0646 \\u0627\\u0644\\u0643\\u0633\\u0627\\u0626\\u064a\&quot;,\&quot;en\&quot;:\&quot;Rewayat AlDorai A&#039;n Al-Kisa&#039;ai\&quot;,\&quot;bn\&quot;:\&quot;\\u0995\\u09be\\u09b8\\u09be\\u09df\\u09c0 \\u09a5\\u09c7\\u0995\\u09c7 \\u09a6\\u09c2\\u09b0\\u09c0 \\u098f\\u09b0 \\u09ac\\u09b0\\u09cd\\u09a3\\u09a8\\u09be\&quot;,\&quot;bs\&quot;:\&quot;Rivajet Ed-Durija od El-Kesaija\&quot;,\&quot;zh\&quot;:\&quot; \\u5b89\\u90fd\\u91cc \\u4f20\\u81ea \\u51ef\\u8428\\u4eea \\u7684\\u8bfb\\u6cd5 \&quot;,\&quot;de\&quot;:\&quot;Rewayat AlDorai A&#039;n Al-Kisa&#039;ai\&quot;,\&quot;es\&quot;:\&quot;Rewayat AlDorai A&#039;n Al-Kisa&#039;ai\&quot;,\&quot;fa\&quot;:\&quot;\\u0631\\u0648\\u0627\\u06cc\\u062a \\u062f\\u0648\\u0631\\u06cc \\u0627\\u0632 \\u06a9\\u0633\\u0627\\u0626\\u06cc\&quot;,\&quot;fr\&quot;:\&quot;Rewayat AlDorai A&#039;n Al-Kisa&#039;ai\&quot;,\&quot;ha\&quot;:\&quot;Riwayar Duri daga Kisa&#039;i\&quot;,\&quot;id\&quot;:\&quot;Riwayat Ad Duuriy &#039;an Al Kisaaiy\&quot;,\&quot;ml\&quot;:\&quot;\\u0d15\\u0d38\\u0d3e\\u0d07\\u0d2f\\u0d3f\\u0d32\\u0d4d \\u0d28\\u0d3f\\u0d28\\u0d4d\\u0d28\\u0d4d \\u0d26\\u0d4c\\u0d30\\u0d3f\\u0d2f\\u0d41\\u0d1f\\u0d46 \\u0d28\\u0d3f\\u0d35\\u0d47\\u0d26\\u0d28\\u0d02\&quot;,\&quot;pt\&quot;:\&quot;Ad-Daurim de Kass\\u00e1&#039;i\&quot;}&quot;,&quot;qiraa_short_name&quot;:&quot;\u0623\u0628\u0648 \u0639\u0645\u0631\u0648&quot;,&quot;qiraa_full_name&quot;:&quot;\u0623\u0628\u0648 \u0639\u0645\u0631\u0648 \u0628\u0646 \u0627\u0644\u0639\u0644\u0627\u0621 \u0627\u0644\u0628\u0635\u0631\u064a&quot;,&quot;has_mushaf&quot;:true,&quot;has_recitation_by_verse&quot;:true},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}],[{&quot;data&quot;:[{&quot;id&quot;:6,&quot;qiraa_id&quot;:3,&quot;rawi_name&quot;:&quot;\u0639\u0646 \u064a\u062d\u064a\u0649 \u0628\u0646 \u0627\u0644\u0645\u0628\u0627\u0631\u0643 \u0627\u0644\u064a\u0632\u064a\u062f\u064a \u0639\u0646 \u0623\u0628\u064a \u0639\u0645\u0631\u0648 \u0627\u0644\u0628\u0635\u0631\u064a&quot;,&quot;name&quot;:&quot;\u0627\u0644\u0633\u0648\u0633\u064a&quot;,&quot;translated_name&quot;:&quot;{\&quot;ar\&quot;:\&quot;\\u0627\\u0644\\u0633\\u0648\\u0633\\u064a \\u0639\\u0646 \\u0623\\u0628\\u064a \\u0639\\u0645\\u0631\\u0648\&quot;,\&quot;en\&quot;:\&quot;Rewayat Assosi A&#039;n Abi Amr\&quot;,\&quot;bn\&quot;:\&quot;\\u0986\\u09ac\\u09c1 \\u0986\\u09ae\\u09b0 \\u09a5\\u09c7\\u0995\\u09c7 \\u09b8\\u09c2\\u09b8\\u09c0 \\u098f\\u09b0 \\u09ac\\u09b0\\u09cd\\u09a3\\u09a8\\u09be\&quot;,\&quot;bs\&quot;:\&quot;Rivajet Es-Susija od Ebi-Amra\&quot;,\&quot;zh\&quot;:\&quot; \\u82cf\\u65af \\u4f20\\u81ea \\u827e\\u6bd4\\u963f\\u7a46\\u5c14 \\u7684\\u8bfb\\u6cd5\&quot;,\&quot;de\&quot;:\&quot;Rewayat Assosi A&#039;n Abi Amr\&quot;,\&quot;es\&quot;:\&quot;Rewayat Assosi A&#039;n Abi Amr\&quot;,\&quot;fa\&quot;:\&quot;\\u0631\\u0648\\u0627\\u06cc\\u062a \\u0627\\u0644\\u0633\\u0648\\u0633\\u06cc \\u0627\\u0632 \\u0627\\u0628\\u06cc \\u0639\\u0645\\u0631 \&quot;,\&quot;fr\&quot;:\&quot;Rewayat Assosi A&#039;n Abi Amr\&quot;,\&quot;ha\&quot;:\&quot;Riwayar Susi daga Nafi&#039;u Abi A&#039;mr\&quot;,\&quot;id\&quot;:\&quot;Riwayat As susiy &#039;an Abi &#039;Amr\&quot;,\&quot;ml\&quot;:\&quot;\\u0d05\\u0d2c\\u0d41 \\u0d09\\u0d2e\\u0d31\\u0d3f\\u0d32\\u0d4d \\u0d28\\u0d3f\\u0d28\\u0d4d\\u0d28\\u0d41\\u0d33\\u0d4d\\u0d33 \\u0d38\\u0d42\\u0d38\\u0d3f\\u0d2f\\u0d41\\u0d1f\\u0d46 \\u0d28\\u0d3f\\u0d35\\u0d47\\u0d26\\u0d28\\u0d02\&quot;,\&quot;pt\&quot;:\&quot;As- Sussi, de Abu \\u00c1mru\&quot;}&quot;,&quot;qiraa_short_name&quot;:&quot;\u0623\u0628\u0648 \u0639\u0645\u0631\u0648&quot;,&quot;qiraa_full_name&quot;:&quot;\u0623\u0628\u0648 \u0639\u0645\u0631\u0648 \u0628\u0646 \u0627\u0644\u0639\u0644\u0627\u0621 \u0627\u0644\u0628\u0635\u0631\u064a&quot;,&quot;has_mushaf&quot;:true,&quot;has_recitation_by_verse&quot;:true},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}]],{&quot;class&quot;:&quot;Illuminate\\Support\\Collection&quot;,&quot;s&quot;:&quot;clctn&quot;}]},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}],&quot;4&quot;:[{&quot;data&quot;:[{&quot;id&quot;:4,&quot;short_name&quot;:&quot;\u0627\u0628\u0646 \u0639\u0627\u0645\u0631&quot;,&quot;full_name&quot;:&quot;\u0639\u0628\u062f \u0627\u0644\u0644\u0647 \u0628\u0646 \u0639\u0627\u0645\u0631 \u0627\u0644\u064a\u062d\u0635\u0628\u064a \u0627\u0644\u0634\u0627\u0645\u064a&quot;,&quot;count_id&quot;:5,&quot;rawis&quot;:[[[{&quot;data&quot;:[{&quot;id&quot;:7,&quot;qiraa_id&quot;:4,&quot;rawi_name&quot;:&quot;\u0628\u0646 \u0639\u0645\u0627\u0631 \u0628\u0646 \u0646\u0635\u064a\u0631 \u0628\u0646 \u0645\u064a\u0633\u0631\u0629\u060c \u0623\u0628\u0648 \u0627\u0644\u0648\u0644\u064a\u062f \u0627\u0644\u0633\u0644\u0645\u064a\u060c \u0627\u0644\u062f\u0645\u0634\u0642\u064a&quot;,&quot;name&quot;:&quot;\u0647\u0634\u0627\u0645&quot;,&quot;translated_name&quot;:null,&quot;qiraa_short_name&quot;:&quot;\u0627\u0628\u0646 \u0639\u0627\u0645\u0631&quot;,&quot;qiraa_full_name&quot;:&quot;\u0639\u0628\u062f \u0627\u0644\u0644\u0647 \u0628\u0646 \u0639\u0627\u0645\u0631 \u0627\u0644\u064a\u062d\u0635\u0628\u064a \u0627\u0644\u0634\u0627\u0645\u064a&quot;,&quot;has_mushaf&quot;:false,&quot;has_recitation_by_verse&quot;:true},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}],[{&quot;data&quot;:[{&quot;id&quot;:8,&quot;qiraa_id&quot;:4,&quot;rawi_name&quot;:&quot;\u0639\u0628\u062f \u0627\u0644\u0644\u0647 \u0628\u0646 \u0623\u062d\u0645\u062f \u0628\u0646 \u0628\u0634\u0631 \u0628\u0646 \u0630\u0643\u0648\u0627\u0646\u060c \u0623\u0628\u0648 \u0639\u0645\u0631\u0648 \u0627\u0644\u0642\u0631\u0634\u064a \u0627\u0644\u0641\u0627\u0647\u0631\u064a \u0627\u0644\u062f\u0645\u0634\u0642\u064a&quot;,&quot;name&quot;:&quot;\u0627\u0628\u0646 \u0630\u0643\u0648\u0627\u0646&quot;,&quot;translated_name&quot;:&quot;{\&quot;ar\&quot;:\&quot;\\u0627\\u0628\\u0646 \\u0630\\u0643\\u0648\\u0627\\u0646 \\u0639\\u0646 \\u0627\\u0628\\u0646 \\u0639\\u0627\\u0645\\u0631\&quot;,\&quot;en\&quot;:\&quot;Ibn Thakwan A&#039;n Ibn Amer\&quot;,\&quot;bn\&quot;:\&quot;\\u0987\\u09ac\\u09a8 \\u2018\\u0986\\u09ae\\u09c7\\u09b0 \\u09a5\\u09c7\\u0995\\u09c7 \\u0987\\u09ac\\u09a8 \\u09af\\u09be\\u0995\\u0993\\u09df\\u09be\\u09a8\&quot;,\&quot;bs\&quot;:\&quot;Rivajet Ibn-Zekvan od Ibn-Amira\&quot;,\&quot;zh\&quot;:\&quot; \\u4f0a\\u672c\\u5bb0\\u514b\\u5b9b \\u4f20\\u81ea \\u4f0a\\u672c\\u963f\\u7c73\\u5c14 \&quot;,\&quot;de\&quot;:\&quot;Ibn Thakwan A&#039;n Ibn Amer\&quot;,\&quot;es\&quot;:\&quot;Ibn Thakwan A&#039;n Ibn Amer\&quot;,\&quot;fa\&quot;:\&quot;\\u0631\\u0648\\u0627\\u06cc\\u062a \\u0630\\u06a9\\u0648\\u0627\\u0646 \\u0627\\u0632 \\u0627\\u0628\\u0646 \\u0639\\u0627\\u0645\\u0631\&quot;,\&quot;fr\&quot;:\&quot;Ibn Thakwan A&#039;n Ibn Amer\&quot;,\&quot;ha\&quot;:\&quot;Riwayar Ibn Zakwan daga Abu Amr\&quot;,\&quot;id\&quot;:\&quot;Riwayat Ibn Dzakwan ibn &#039;aamir\&quot;,\&quot;ml\&quot;:\&quot;\\u0d07\\u0d2c\\u0d4d\\u0d28\\u0d41 \\u0d06\\u0d2e\\u0d3f\\u0d31\\u0d3f\\u0d32\\u0d4d \\u0d28\\u0d3f\\u0d28\\u0d4d\\u0d28\\u0d4d \\u0d26\\u0d15\\u0d4d\\u0d35\\u0d3e\\u0d28\\u0d3f\\u0d28\\u0d4d\\u0d31\\u0d46 \\u0d28\\u0d3f\\u0d35\\u0d47\\u0d26\\u0d28\\u0d02\&quot;,\&quot;pt\&quot;:\&quot;Ibn Zakwqn de Ibn Amer\&quot;}&quot;,&quot;qiraa_short_name&quot;:&quot;\u0627\u0628\u0646 \u0639\u0627\u0645\u0631&quot;,&quot;qiraa_full_name&quot;:&quot;\u0639\u0628\u062f \u0627\u0644\u0644\u0647 \u0628\u0646 \u0639\u0627\u0645\u0631 \u0627\u0644\u064a\u062d\u0635\u0628\u064a \u0627\u0644\u0634\u0627\u0645\u064a&quot;,&quot;has_mushaf&quot;:false,&quot;has_recitation_by_verse&quot;:true},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}]],{&quot;class&quot;:&quot;Illuminate\\Support\\Collection&quot;,&quot;s&quot;:&quot;clctn&quot;}]},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}],&quot;5&quot;:[{&quot;data&quot;:[{&quot;id&quot;:5,&quot;short_name&quot;:&quot;\u0639\u0627\u0635\u0645&quot;,&quot;full_name&quot;:&quot;\u0639\u0627\u0635\u0645 \u0628\u0646 \u0623\u0628\u064a \u0627\u0644\u0646\u064e\u0651\u062c\u0648\u062f \u0627\u0644\u0623\u0633\u062f\u064a \u0627\u0644\u0643\u0648\u0641\u064a&quot;,&quot;count_id&quot;:6,&quot;rawis&quot;:[[[{&quot;data&quot;:[{&quot;id&quot;:9,&quot;qiraa_id&quot;:5,&quot;rawi_name&quot;:&quot;\u0623\u0628\u0648 \u0628\u0643\u0631 \u0628\u0646 \u0639\u064a\u0627\u0634 \u0628\u0646 \u0633\u0627\u0644\u0645 \u0627\u0644\u0643\u0648\u0641\u064a \u0627\u0644\u0623\u0633\u062f\u064a \u0627\u0644\u062d\u0646\u0651\u0627\u0637&quot;,&quot;name&quot;:&quot;\u0634\u0639\u0628\u0629&quot;,&quot;translated_name&quot;:&quot;{\&quot;ar\&quot;:\&quot;\\u0634\\u0639\\u0628\\u0629  \\u0639\\u0646 \\u0639\\u0627\\u0635\\u0645\&quot;,\&quot;en\&quot;:\&quot;Sho&#039;bah A&#039;n Asim\&quot;,\&quot;bn\&quot;:\&quot;\\u2018\\u0986\\u09b8\\u09c7\\u09ae \\u09a5\\u09c7\\u0995\\u09c7 \\u09b6\\u09c1\\u2018\\u09ac\\u09be \\u098f\\u09b0 \\u09ac\\u09b0\\u09cd\\u09a3\\u09a8\\u09be\&quot;,\&quot;bs\&quot;:\&quot;Rivajet \\u0160u&#039;be od Asima\&quot;,\&quot;zh\&quot;:\&quot; \\u8212\\u5c14\\u67cf \\u4f20\\u81ea \\u963f\\u968f\\u7a46 \\u7684\\u8bfb\\u6cd5 \&quot;,\&quot;de\&quot;:\&quot;Sho&#039;bah A&#039;n Asim\&quot;,\&quot;es\&quot;:\&quot;Sho&#039;bah A&#039;n Asim\&quot;,\&quot;fa\&quot;:\&quot;\\u0631\\u0648\\u0627\\u06cc\\u062a \\u0634\\u0639\\u0628\\u0647 \\u0627\\u0632 \\u0639\\u0627\\u0635\\u0645\&quot;,\&quot;fr\&quot;:\&quot;Sho&#039;bah A&#039;n Asim\&quot;,\&quot;ha\&quot;:\&quot;Riwayar Shu&#039;aba daga Asim\&quot;,\&quot;id\&quot;:\&quot;Riwayat Syu&#039;bah &#039;an &#039;Ashim\&quot;,\&quot;ml\&quot;:\&quot;\\u0d06\\u0d38\\u0d3f\\u0d2e\\u0d3f\\u0d32\\u0d4d \\u0d28\\u0d3f\\u0d28\\u0d4d\\u0d28\\u0d4d \\u0d37\\u0d41\\u0d05\\u0d4d\\u0d2c\\u0d2f\\u0d41\\u0d1f\\u0d46 \\u0d28\\u0d3f\\u0d35\\u0d47\\u0d26\\u0d28\\u0d02\&quot;,\&quot;pt\&quot;:\&quot;Chu&#039;ba, de \\u00c1ssim\&quot;}&quot;,&quot;qiraa_short_name&quot;:&quot;\u0639\u0627\u0635\u0645&quot;,&quot;qiraa_full_name&quot;:&quot;\u0639\u0627\u0635\u0645 \u0628\u0646 \u0623\u0628\u064a \u0627\u0644\u0646\u064e\u0651\u062c\u0648\u062f \u0627\u0644\u0623\u0633\u062f\u064a \u0627\u0644\u0643\u0648\u0641\u064a&quot;,&quot;has_mushaf&quot;:true,&quot;has_recitation_by_verse&quot;:true},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}],[{&quot;data&quot;:[{&quot;id&quot;:10,&quot;qiraa_id&quot;:5,&quot;rawi_name&quot;:&quot;\u0628\u0646 \u0633\u0644\u064a\u0645\u0627\u0646 \u0628\u0646 \u0627\u0644\u0645\u063a\u064a\u0631\u0629\u060c \u0623\u0628\u0648 \u0639\u0645\u0631 \u0627\u0644\u0623\u0633\u062f\u064a \u0627\u0644\u0643\u0648\u0641\u064a \u0627\u0644\u063a\u0627\u0636\u0631\u064a \u0627\u0644\u0628\u0632\u0627\u0632&quot;,&quot;name&quot;:&quot;\u062d\u0641\u0635&quot;,&quot;translated_name&quot;:&quot;{\&quot;ar\&quot;:\&quot;\\u062d\\u0641\\u0635 \\u0639\\u0646 \\u0639\\u0627\\u0635\\u0645\&quot;,\&quot;en\&quot;:\&quot;Rewayat Hafs A&#039;n Assem\&quot;,\&quot;bn\&quot;:\&quot;\\u0995\\u09cd\\u09ac\\u09be\\u09b0\\u09c0 \\u09a8\\u09be\\u09ab\\u09c7\\u2018 \\u09a5\\u09c7\\u0995\\u09c7 \\u0993\\u09df\\u09be\\u09b0\\u09b6\\u09c7\\u09b0 \\u09ac\\u09b0\\u09cd\\u09a3\\u09a8\\u09be\&quot;,\&quot;bs\&quot;:\&quot;Rivajet Hafsa od Asima\&quot;,\&quot;zh\&quot;:\&quot; \\u54c8\\u590d\\u82cf \\u4f20\\u81ea \\u963f\\u5c81\\u76ee \\u7684\\u8bfb\\u6cd5\&quot;,\&quot;de\&quot;:\&quot;Rewayat Hafs A&#039;n Assem\&quot;,\&quot;es\&quot;:\&quot; Rewayat Hafs A&#039;n Assem\&quot;,\&quot;fa\&quot;:\&quot;\\u0631\\u0648\\u0627\\u06cc\\u062a \\u062d\\u0641\\u0635 \\u0627\\u0632 \\u0639\\u0627\\u0635\\u0645\&quot;,\&quot;fr\&quot;:\&quot;Rewayat Hafs A&#039;n Assem\&quot;,\&quot;id\&quot;:\&quot;Riwayat Hafs &#039;an Ashim\&quot;,\&quot;ml\&quot;:\&quot;\\u0d06\\u0d38\\u0d3f\\u0d02\\u0d2e\\u0d3f\\u0d32\\u0d4d\\u0d28\\u0d3f\\u0d28\\u0d4d\\u0d28\\u0d4d \\u0d39\\u0d2b\\u0d4d\\u0d38\\u0d4d \\u0d30\\u0d3f\\u0d35\\u0d3e\\u0d2f\\u0d24\\u0d4d\\u0d24\\u0d4d \\u0d1a\\u0d46\\u0d2f\\u0d4d\\u0d24\\u0d24\\u0d4d\&quot;,\&quot;pt\&quot;:\&quot;Hafs, de \\u00c1ssim\&quot;,\&quot;ru\&quot;:\&quot;\\u0412\\u0435\\u0440\\u0441\\u0438\\u044f: \\u0425\\u0430\\u0444\\u0441 \\u043e\\u0442 \\u0410\\u0441\\u044b\\u043c\\u0430\&quot;,\&quot;tg\&quot;:\&quot;\\u0420\\u0438\\u0432\\u043e\\u044f\\u0442\\u0438 \\u04b2\\u0430\\u0444\\u0441 \\u0430\\u0437 \\u041e\\u0441\\u0438\\u043c\&quot;,\&quot;th\&quot;:\&quot;\\u0e23\\u0e34\\u0e27\\u0e32\\u0e22\\u0e30\\u0e2e\\u0e3a\\u0e2b\\u0e31\\u0e1f\\u0e28\\u0e3a \\u0e08\\u0e32\\u0e01 \\u0e2d\\u0e32\\u0e28\\u0e34\\u0e21\&quot;,\&quot;tl\&quot;:\&quot;Rewayat Hafs A&#039;n Assem\&quot;,\&quot;tr\&quot;:\&quot; Rewayat Hafs A&#039;n Assem\&quot;,\&quot;ug\&quot;:\&quot;\\u06be\\u06d5\\u0641\\u0633\\u0649 \\u0631\\u0649\\u06cb\\u0627\\u064a\\u0649\\u062a\\u0649\&quot;,\&quot;ur\&quot;:\&quot;\\u0628\\u0631\\u0648\\u0627\\u06cc\\u062a \\u062d\\u0641\\u0635 \\u0639\\u0646 \\u0639\\u0627\\u0635\\u0645\&quot;,\&quot;ha\&quot;:\&quot;Riwayar Hafsu daga  Asim\&quot;}&quot;,&quot;qiraa_short_name&quot;:&quot;\u0639\u0627\u0635\u0645&quot;,&quot;qiraa_full_name&quot;:&quot;\u0639\u0627\u0635\u0645 \u0628\u0646 \u0623\u0628\u064a \u0627\u0644\u0646\u064e\u0651\u062c\u0648\u062f \u0627\u0644\u0623\u0633\u062f\u064a \u0627\u0644\u0643\u0648\u0641\u064a&quot;,&quot;has_mushaf&quot;:true,&quot;has_recitation_by_verse&quot;:true},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}]],{&quot;class&quot;:&quot;Illuminate\\Support\\Collection&quot;,&quot;s&quot;:&quot;clctn&quot;}]},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}],&quot;6&quot;:[{&quot;data&quot;:[{&quot;id&quot;:6,&quot;short_name&quot;:&quot;\u062d\u0645\u0632\u0629&quot;,&quot;full_name&quot;:&quot;\u062d\u0645\u0632\u0629 \u0628\u0646 \u062d\u0628\u064a\u0628 \u0627\u0644\u0632\u064a\u0627\u062a \u0627\u0644\u0643\u0648\u0641\u064a&quot;,&quot;count_id&quot;:6,&quot;rawis&quot;:[[[{&quot;data&quot;:[{&quot;id&quot;:11,&quot;qiraa_id&quot;:6,&quot;rawi_name&quot;:&quot;\u062e\u0644\u0641 \u0628\u0646 \u0647\u0634\u0627\u0645: \u0628\u0646 \u062b\u0639\u0644\u0628 \u0627\u0644\u0628\u0632\u0627\u0631\u060c \u0623\u0628\u0648 \u0645\u062d\u0645\u062f \u0627\u0644\u0623\u0633\u062f\u064a \u0627\u0644\u0628\u063a\u062f\u0627\u062f\u064a&quot;,&quot;name&quot;:&quot;\u062e\u0644\u0641&quot;,&quot;translated_name&quot;:&quot;{\&quot;ar\&quot;:\&quot;\\u062e\\u0644\\u0641 \\u0639\\u0646 \\u062d\\u0645\\u0632\\u0629\&quot;,\&quot;en\&quot;:\&quot;Rewayat Khalaf A&#039;n Hamzah\&quot;,\&quot;bn\&quot;:\&quot;\\u09b9\\u09be\\u09ae\\u09af\\u09be \\u09a5\\u09c7\\u0995\\u09c7 \\u0996\\u09be\\u09b2\\u09be\\u09ab \\u098f\\u09b0 \\u09ac\\u09b0\\u09cd\\u09a3\\u09a8\\u09be\&quot;,\&quot;bs\&quot;:\&quot;Rivajet Halefa od Hamze\&quot;,\&quot;zh\&quot;:\&quot; \\u6d77\\u4e50\\u798f \\u4f20\\u81ea \\u54c8\\u59c6\\u5bb0 \\u7684\\u8bfb\\u6cd5 \&quot;,\&quot;de\&quot;:\&quot;Rewayat Khalaf A&#039;n Hamzah\&quot;,\&quot;es\&quot;:\&quot;Rewayat Khalaf A&#039;n Hamzah\&quot;,\&quot;fa\&quot;:\&quot;\\u0631\\u0648\\u0627\\u06cc\\u062a \\u062e\\u0644\\u0641 \\u0627\\u0632 \\u062d\\u0645\\u0632\\u0647\&quot;,\&quot;fr\&quot;:\&quot;Rewayat Khalaf A&#039;n Hamzah\&quot;,\&quot;ha\&quot;:\&quot;Riwayar Khalaf daga Hamza\&quot;,\&quot;id\&quot;:\&quot;Riwayat Khalaf &#039;an Hamzah\&quot;,\&quot;ml\&quot;:\&quot;\\u0d39\\u0d02\\u0d38\\u0d2f\\u0d3f\\u0d32\\u0d4d \\u0d28\\u0d3f\\u0d28\\u0d4d\\u0d28\\u0d41\\u0d33\\u0d4d\\u0d33 \\u0d16\\u0d32\\u0d2b\\u0d3f\\u0d28\\u0d4d\\u0d31\\u0d46 \\u0d28\\u0d3f\\u0d35\\u0d47\\u0d26\\u0d28\\u0d02\&quot;,\&quot;pt\&quot;:\&quot;Khalf, de Hmza\&quot;}&quot;,&quot;qiraa_short_name&quot;:&quot;\u062d\u0645\u0632\u0629&quot;,&quot;qiraa_full_name&quot;:&quot;\u062d\u0645\u0632\u0629 \u0628\u0646 \u062d\u0628\u064a\u0628 \u0627\u0644\u0632\u064a\u0627\u062a \u0627\u0644\u0643\u0648\u0641\u064a&quot;,&quot;has_mushaf&quot;:false,&quot;has_recitation_by_verse&quot;:true},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}],[{&quot;data&quot;:[{&quot;id&quot;:12,&quot;qiraa_id&quot;:6,&quot;rawi_name&quot;:&quot;\u062e\u0644\u0627\u062f \u0628\u0646 \u062e\u0627\u0644\u062f: \u0623\u0628\u0648 \u0639\u064a\u0633\u0649 \u0627\u0644\u0634\u064a\u0628\u0627\u0646\u064a \u0645\u0648\u0644\u0627\u0647\u0645\u060c \u0627\u0644\u0635\u064a\u0631\u0641\u064a \u0627\u0644\u0643\u0648\u0641\u064a&quot;,&quot;name&quot;:&quot;\u062e\u0644\u0627\u062f&quot;,&quot;translated_name&quot;:null,&quot;qiraa_short_name&quot;:&quot;\u062d\u0645\u0632\u0629&quot;,&quot;qiraa_full_name&quot;:&quot;\u062d\u0645\u0632\u0629 \u0628\u0646 \u062d\u0628\u064a\u0628 \u0627\u0644\u0632\u064a\u0627\u062a \u0627\u0644\u0643\u0648\u0641\u064a&quot;,&quot;has_mushaf&quot;:false,&quot;has_recitation_by_verse&quot;:true},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}]],{&quot;class&quot;:&quot;Illuminate\\Support\\Collection&quot;,&quot;s&quot;:&quot;clctn&quot;}]},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}],&quot;7&quot;:[{&quot;data&quot;:[{&quot;id&quot;:7,&quot;short_name&quot;:&quot;\u0627\u0644\u0643\u0633\u0627\u0626\u064a&quot;,&quot;full_name&quot;:&quot;\u0623\u0628\u0648 \u0627\u0644\u062d\u0633\u0646 \u0639\u0644\u064a \u0628\u0646 \u062d\u0645\u0632\u0629 \u0627\u0644\u0643\u0633\u0627\u0626\u064a \u0627\u0644\u0646\u062d\u0648\u064a \u0627\u0644\u0643\u0648\u0641\u064a&quot;,&quot;count_id&quot;:6,&quot;rawis&quot;:[[[{&quot;data&quot;:[{&quot;id&quot;:13,&quot;qiraa_id&quot;:7,&quot;rawi_name&quot;:&quot;\u0623\u0628\u0648 \u0627\u0644\u062d\u0627\u0631\u062b \u0627\u0644\u0644\u064a\u062b: \u0628\u0646 \u062e\u0627\u0644\u062f \u0627\u0644\u0628\u063a\u062f\u0627\u062f\u064a\u060c \u062b\u0642\u0629 \u0645\u0639\u0631\u0648\u0641 \u062d\u0627\u0630\u0642 \u0636\u0627\u0628\u0637&quot;,&quot;name&quot;:&quot;\u0623\u0628\u0648 \u0627\u0644\u062d\u0627\u0631\u062b&quot;,&quot;translated_name&quot;:null,&quot;qiraa_short_name&quot;:&quot;\u0627\u0644\u0643\u0633\u0627\u0626\u064a&quot;,&quot;qiraa_full_name&quot;:&quot;\u0623\u0628\u0648 \u0627\u0644\u062d\u0633\u0646 \u0639\u0644\u064a \u0628\u0646 \u062d\u0645\u0632\u0629 \u0627\u0644\u0643\u0633\u0627\u0626\u064a \u0627\u0644\u0646\u062d\u0648\u064a \u0627\u0644\u0643\u0648\u0641\u064a&quot;,&quot;has_mushaf&quot;:false,&quot;has_recitation_by_verse&quot;:true},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}],[{&quot;data&quot;:[{&quot;id&quot;:14,&quot;qiraa_id&quot;:7,&quot;rawi_name&quot;:&quot;\u062d\u0641\u0635 \u0628\u0646 \u0639\u0645\u0631 \u0627\u0644\u062f\u0648\u0631\u064a: \u0648\u0647\u0648 \u0627\u0644\u0631\u0627\u0648\u064a \u0639\u0646 \u0623\u0628\u064a \u0639\u0645\u0631\u0648 \u0627\u0644\u0628\u0635\u0631\u064a&quot;,&quot;name&quot;:&quot;\u0627\u0644\u062f\u0648\u0631\u064a&quot;,&quot;translated_name&quot;:&quot;{\&quot;ar\&quot;:\&quot;\\u0627\\u0644\\u062f\\u0648\\u0631\\u064a \\u0639\\u0646 \\u0623\\u0628\\u064a \\u0639\\u0645\\u0631\\u0648\&quot;,\&quot;en\&quot;:\&quot;Rewayat Aldori A&#039;n Abi Amr\&quot;,\&quot;bn\&quot;:\&quot;\\u0986\\u09ac\\u09c2 \\u0986\\u09ae\\u09b0 \\u09a5\\u09c7\\u0995\\u09c7 \\u09a6\\u09c2\\u09b0\\u09c0 \\u098f\\u09b0 \\u09ac\\u09b0\\u09cd\\u09a3\\u09a8\\u09be\&quot;,\&quot;bs\&quot;:\&quot;Rivajet Ed-Duri od Ebi-Amra\&quot;,\&quot;zh\&quot;:\&quot; \\u5b89\\u90fd\\u91cc \\u4f20\\u81ea \\u827e\\u6bd4-\\u963f\\u7a46\\u52d2 \\u7684\\u8bfb\\u6cd5 \&quot;,\&quot;de\&quot;:\&quot;Rewayat Aldori A&#039;n Abi Amr\&quot;,\&quot;es\&quot;:\&quot;Rewayat Aldori A&#039;n Abi Amr\&quot;,\&quot;fa\&quot;:\&quot;\\u0631\\u0648\\u0627\\u06cc\\u062a \\u062f\\u0648\\u0631\\u06cc \\u0627\\u0632 \\u0627\\u0628\\u06cc \\u0639\\u0645\\u0631\\u0648\&quot;,\&quot;fr\&quot;:\&quot;Rewayat Aldori A&#039;n Abi Amr\&quot;,\&quot;ha\&quot;:\&quot;Riwayar Duri daga Abu Amr\&quot;,\&quot;id\&quot;:\&quot;Riwayat Ad Duuriy &#039;an Ibn &#039;Amr\&quot;,\&quot;ml\&quot;:\&quot;\\u0d05\\u0d2c\\u0d42 \\u0d05\\u0d02\\u0d31\\u0d3f\\u0d32\\u0d4d \\u0d28\\u0d3f\\u0d28\\u0d4d\\u0d28\\u0d4d \\u0d26\\u0d4c\\u0d30\\u0d3f\\u0d2f\\u0d41\\u0d1f\\u0d46 \\u0d28\\u0d3f\\u0d35\\u0d47\\u0d26\\u0d28\\u0d02\&quot;,\&quot;pt\&quot;:\&quot;Ad-Daurim de Abu Amru\&quot;}&quot;,&quot;qiraa_short_name&quot;:&quot;\u0627\u0644\u0643\u0633\u0627\u0626\u064a&quot;,&quot;qiraa_full_name&quot;:&quot;\u0623\u0628\u0648 \u0627\u0644\u062d\u0633\u0646 \u0639\u0644\u064a \u0628\u0646 \u062d\u0645\u0632\u0629 \u0627\u0644\u0643\u0633\u0627\u0626\u064a \u0627\u0644\u0646\u062d\u0648\u064a \u0627\u0644\u0643\u0648\u0641\u064a&quot;,&quot;has_mushaf&quot;:false,&quot;has_recitation_by_verse&quot;:true},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}]],{&quot;class&quot;:&quot;Illuminate\\Support\\Collection&quot;,&quot;s&quot;:&quot;clctn&quot;}]},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}],&quot;8&quot;:[{&quot;data&quot;:[{&quot;id&quot;:8,&quot;short_name&quot;:&quot;\u0623\u0628\u0648 \u062c\u0639\u0641\u0631&quot;,&quot;full_name&quot;:&quot;\u0623\u0628\u0648 \u062c\u0639\u0641\u0631 \u064a\u0632\u064a\u062f \u0628\u0646 \u0627\u0644\u0642\u0639\u0642\u0627\u0639 \u0627\u0644\u0645\u062f\u0646\u064a&quot;,&quot;count_id&quot;:1,&quot;rawis&quot;:[[[{&quot;data&quot;:[{&quot;id&quot;:15,&quot;qiraa_id&quot;:8,&quot;rawi_name&quot;:&quot;\u0639\u064a\u0633\u0649 \u0628\u0646 \u0648\u0631\u062f\u0627\u0646 \u0627\u0644\u0645\u062f\u0646\u064a\u060c \u0623\u0628\u0648 \u0627\u0644\u062d\u0627\u0631\u062b \u0627\u0644\u062d\u0630\u0627\u0621&quot;,&quot;name&quot;:&quot;\u0627\u0628\u0646 \u0648\u0631\u062f\u0627\u0646&quot;,&quot;translated_name&quot;:null,&quot;qiraa_short_name&quot;:&quot;\u0623\u0628\u0648 \u062c\u0639\u0641\u0631&quot;,&quot;qiraa_full_name&quot;:&quot;\u0623\u0628\u0648 \u062c\u0639\u0641\u0631 \u064a\u0632\u064a\u062f \u0628\u0646 \u0627\u0644\u0642\u0639\u0642\u0627\u0639 \u0627\u0644\u0645\u062f\u0646\u064a&quot;,&quot;has_mushaf&quot;:false,&quot;has_recitation_by_verse&quot;:true},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}],[{&quot;data&quot;:[{&quot;id&quot;:16,&quot;qiraa_id&quot;:8,&quot;rawi_name&quot;:&quot;\u0633\u0644\u064a\u0645\u0627\u0646 \u0628\u0646 \u0645\u0633\u0644\u0645 \u0628\u0646 \u062c\u0645\u0651\u0627\u0632\u060c \u0623\u0628\u0648 \u0627\u0644\u0631\u0628\u064a\u0639 \u0627\u0644\u0632\u0647\u0631\u064a\u060c \u0645\u0648\u0644\u0627\u0647\u0645 \u0627\u0644\u0645\u062f\u0646\u064a&quot;,&quot;name&quot;:&quot;\u0627\u0628\u0646 \u062c\u0645\u0651\u0627\u0632&quot;,&quot;translated_name&quot;:null,&quot;qiraa_short_name&quot;:&quot;\u0623\u0628\u0648 \u062c\u0639\u0641\u0631&quot;,&quot;qiraa_full_name&quot;:&quot;\u0623\u0628\u0648 \u062c\u0639\u0641\u0631 \u064a\u0632\u064a\u062f \u0628\u0646 \u0627\u0644\u0642\u0639\u0642\u0627\u0639 \u0627\u0644\u0645\u062f\u0646\u064a&quot;,&quot;has_mushaf&quot;:false,&quot;has_recitation_by_verse&quot;:true},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}]],{&quot;class&quot;:&quot;Illuminate\\Support\\Collection&quot;,&quot;s&quot;:&quot;clctn&quot;}]},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}],&quot;9&quot;:[{&quot;data&quot;:[{&quot;id&quot;:9,&quot;short_name&quot;:&quot;\u064a\u0639\u0642\u0648\u0628&quot;,&quot;full_name&quot;:&quot;\u064a\u0639\u0642\u0648\u0628 \u0628\u0646 \u0625\u0633\u062d\u0627\u0642 \u0627\u0644\u062d\u0636\u0631\u0645\u064a \u0627\u0644\u0628\u0635\u0631\u064a&quot;,&quot;count_id&quot;:4,&quot;rawis&quot;:[[[{&quot;data&quot;:[{&quot;id&quot;:17,&quot;qiraa_id&quot;:9,&quot;rawi_name&quot;:&quot; \u0645\u062d\u0645\u062f \u0628\u0646 \u0627\u0644\u0645\u062a\u0648\u0643\u0644 \u0627\u0644\u0644\u0624\u0644\u0624\u064a\u060c \u0623\u0628\u0648 \u0639\u0628\u062f \u0627\u0644\u0644\u0647 \u0627\u0644\u0628\u0635\u0631\u064a\u060c \u0627\u0644\u0645\u0639\u0631\u0648\u0641 \u0628\u0631\u0648\u064a\u0633&quot;,&quot;name&quot;:&quot;\u0631\u0648\u064a\u0633&quot;,&quot;translated_name&quot;:null,&quot;qiraa_short_name&quot;:&quot;\u064a\u0639\u0642\u0648\u0628&quot;,&quot;qiraa_full_name&quot;:&quot;\u064a\u0639\u0642\u0648\u0628 \u0628\u0646 \u0625\u0633\u062d\u0627\u0642 \u0627\u0644\u062d\u0636\u0631\u0645\u064a \u0627\u0644\u0628\u0635\u0631\u064a&quot;,&quot;has_mushaf&quot;:false,&quot;has_recitation_by_verse&quot;:true},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}],[{&quot;data&quot;:[{&quot;id&quot;:18,&quot;qiraa_id&quot;:9,&quot;rawi_name&quot;:&quot;\u0631\u0648\u062d \u0628\u0646 \u0639\u0628\u062f \u0627\u0644\u0645\u0624\u0645\u0646: \u0623\u0628\u0648 \u0627\u0644\u062d\u0633\u0646 \u0627\u0644\u0647\u0630\u0644\u064a\u060c \u0645\u0648\u0644\u0627\u0647\u0645\u060c \u0627\u0644\u0628\u0635\u0631\u064a \u0627\u0644\u0646\u062d\u0648\u064a&quot;,&quot;name&quot;:&quot;\u0631\u0648\u062d&quot;,&quot;translated_name&quot;:&quot;{\&quot;ar\&quot;:\&quot;\\u0642\\u0631\\u0627\\u0621\\u0629 \\u064a\\u0639\\u0642\\u0648\\u0628 \\u0627\\u0644\\u062d\\u0636\\u0631\\u0645\\u064a \\u0628\\u0631\\u0648\\u0627\\u064a\\u062a\\u064a \\u0631\\u0648\\u064a\\u0633 \\u0648\\u0631\\u0648\\u062d\&quot;,\&quot;en\&quot;:\&quot;Rewayat Rowis and Rawh A&#039;n Yakoob Al Hadrami \&quot;,\&quot;bn\&quot;:\&quot;\\u09b0\\u09c1\\u09df\\u09be\\u0987\\u09b8 \\u0993 \\u09b0\\u09be\\u0993\\u09b9 \\u098f\\u09b0 \\u09ac\\u09b0\\u09cd\\u09a3\\u09a8\\u09be \\u0985\\u09a8\\u09c1\\u09af\\u09be\\u09df\\u09c0 \\u0987\\u09df\\u09be\\u0995\\u09c2\\u09ac \\u0986\\u09b2-\\u09b9\\u09be\\u09a6\\u09cd\\u09ac\\u09b0\\u09be\\u09ae\\u09c0\\u09b0 \\u0995\\u09cd\\u09ac\\u09c7\\u09b0\\u09be\\u0986\\u09a4\&quot;,\&quot;bs\&quot;:\&quot;Rivajet Ruvejsa I Ruha od Ja&#039;kuba el-Hadremija\&quot;,\&quot;zh\&quot;:\&quot; \\u4e9a\\u53e4\\u535a\\u54c8\\u8fbe\\u62c9\\u7c73 \\u4f20\\u81ea \\u9c81\\u5916\\u4e1d \\u548c \\u9c81\\u8d6b \\u7684\\u8bfb\\u6cd5\&quot;,\&quot;de\&quot;:\&quot;Rewayat Rowis and Rawh A&#039;n Yakoob Al Hadrami \&quot;,\&quot;es\&quot;:\&quot;Rewayat Rowis and Rawh A&#039;n Yakoob Al Hadrami \&quot;,\&quot;fa\&quot;:\&quot;\\u0631\\u0648\\u0627\\u06cc\\u062a \\u0631\\u0648\\u06cc\\u0633 \\u0648 \\u0631\\u0648\\u062d \\u0627\\u0632 \\u06cc\\u0639\\u0642\\u0648\\u0628 \\u062d\\u0636\\u0631\\u0645\\u06cc\&quot;,\&quot;fr\&quot;:\&quot;Rewayat Rowis and Rawh A&#039;n Yakoob Al Hadrami \&quot;,\&quot;ha\&quot;:\&quot;Tilawar Ya&#039;akub Al&#039;hadhrami da Riwayoyin Ruwais da Rauh\&quot;,\&quot;id\&quot;:\&quot;Qiraaah Ya&#039;qub Al Hadhramiy melalui riwayat Ruwais dan Rauh\&quot;,\&quot;ml\&quot;:\&quot;\\u0d31\\u0d41\\u0d35\\u0d48\\u0d38\\u0d4d \\u0d35\\u0d31\\u0d42\\u0d39\\u0d4d \\u0d0e\\u0d28\\u0d4d\\u0d28\\u0d3f\\u0d35\\u0d30\\u0d3f\\u0d32\\u0d4d \\u0d28\\u0d3f\\u0d28\\u0d4d\\u0d28\\u0d41\\u0d26\\u0d4d\\u0d27\\u0d30\\u0d3f\\u0d15\\u0d4d\\u0d15\\u0d41\\u0d28\\u0d4d\\u0d28 \\u0d2f\\u0d39\\u0d16\\u0d42\\u0d2c\\u0d4d \\u0d39\\u0d33\\u0d4d\\u0d31\\u0d2e\\u0d3f\\u0d2f\\u0d41\\u0d1f\\u0d46 \\u0d16\\u0d41\\u0d30\\u0d4d\\u0d06\\u0d28\\u0d4d \\u0d2a\\u0d3e\\u0d30\\u0d3e\\u0d2f\\u0d23\\u0d02\&quot;,\&quot;pt\&quot;:\&quot;Recita\\u00e7\\u00e3o de Ya&#039;coub Al Hadhrami Bruwati Ruwais wa Rouh\&quot;}&quot;,&quot;qiraa_short_name&quot;:&quot;\u064a\u0639\u0642\u0648\u0628&quot;,&quot;qiraa_full_name&quot;:&quot;\u064a\u0639\u0642\u0648\u0628 \u0628\u0646 \u0625\u0633\u062d\u0627\u0642 \u0627\u0644\u062d\u0636\u0631\u0645\u064a \u0627\u0644\u0628\u0635\u0631\u064a&quot;,&quot;has_mushaf&quot;:false,&quot;has_recitation_by_verse&quot;:true},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}]],{&quot;class&quot;:&quot;Illuminate\\Support\\Collection&quot;,&quot;s&quot;:&quot;clctn&quot;}]},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}],&quot;10&quot;:[{&quot;data&quot;:[{&quot;id&quot;:10,&quot;short_name&quot;:&quot;\u062e\u0644\u0641&quot;,&quot;full_name&quot;:&quot;\u062e\u0644\u0641 \u0628\u0646 \u0647\u0634\u0627\u0645&quot;,&quot;count_id&quot;:6,&quot;rawis&quot;:[[[{&quot;data&quot;:[{&quot;id&quot;:19,&quot;qiraa_id&quot;:10,&quot;rawi_name&quot;:&quot;\u0625\u0633\u062d\u0627\u0642 \u0628\u0646 \u0625\u0628\u0631\u0627\u0647\u064a\u0645: \u0628\u0646 \u0639\u062b\u0645\u0627\u0646 \u0628\u0646 \u0639\u0628\u062f \u0627\u0644\u0644\u0647\u060c \u0623\u0628\u0648 \u064a\u0639\u0642\u0648\u0628 \u0627\u0644\u0645\u0631\u0648\u0632\u064a \u062b\u0645 \u0627\u0644\u0628\u063a\u062f\u0627\u062f\u064a&quot;,&quot;name&quot;:&quot;\u0625\u0633\u062d\u0627\u0642&quot;,&quot;translated_name&quot;:null,&quot;qiraa_short_name&quot;:&quot;\u062e\u0644\u0641&quot;,&quot;qiraa_full_name&quot;:&quot;\u062e\u0644\u0641 \u0628\u0646 \u0647\u0634\u0627\u0645&quot;,&quot;has_mushaf&quot;:false,&quot;has_recitation_by_verse&quot;:true},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}],[{&quot;data&quot;:[{&quot;id&quot;:20,&quot;qiraa_id&quot;:10,&quot;rawi_name&quot;:&quot;\u0625\u062f\u0631\u064a\u0633 \u0628\u0646 \u0639\u0628\u062f \u0627\u0644\u0643\u0631\u064a\u0645 \u0627\u0644\u062d\u062f\u0627\u062f: \u0623\u0628\u0648 \u0627\u0644\u062d\u0633\u0646 \u0627\u0644\u0628\u063a\u062f\u0627\u062f\u064a.&quot;,&quot;name&quot;:&quot;\u0625\u062f\u0631\u064a\u0633&quot;,&quot;translated_name&quot;:null,&quot;qiraa_short_name&quot;:&quot;\u062e\u0644\u0641&quot;,&quot;qiraa_full_name&quot;:&quot;\u062e\u0644\u0641 \u0628\u0646 \u0647\u0634\u0627\u0645&quot;,&quot;has_mushaf&quot;:false,&quot;has_recitation_by_verse&quot;:true},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}]],{&quot;class&quot;:&quot;Illuminate\\Support\\Collection&quot;,&quot;s&quot;:&quot;clctn&quot;}]},{&quot;s&quot;:&quot;arr&quot;}],&quot;routeKeyName&quot;:&quot;id&quot;},{&quot;class&quot;:&quot;App\\Support\\CachedEntity&quot;,&quot;s&quot;:&quot;wrbl&quot;}]},{&quot;class&quot;:&quot;Illuminate\\Support\\Collection&quot;,&quot;s&quot;:&quot;clctn&quot;}],&quot;mushafIdsByRawi&quot;:[{&quot;1&quot;:7,&quot;2&quot;:4,&quot;3&quot;:5,&quot;4&quot;:8,&quot;5&quot;:6,&quot;6&quot;:10,&quot;9&quot;:9,&quot;10&quot;:1},{&quot;s&quot;:&quot;arr&quot;}],&quot;rawisWithReciters&quot;:[[10,1,2,14,6,11,5,4,8,9,18,16,7,3],{&quot;s&quot;:&quot;arr&quot;}]},&quot;memo&quot;:{&quot;id&quot;:&quot;Mxo8w9Iu0dNILf7Etxdc&quot;,&quot;name&quot;:&quot;quran.qiraat.family-tree&quot;,&quot;path&quot;:&quot;qiraat&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;release&quot;:&quot;a-a-a&quot;,&quot;children&quot;:[],&quot;scripts&quot;:[],&quot;assets&quot;:[],&quot;errors&quot;:[],&quot;locale&quot;:&quot;ar&quot;,&quot;islands&quot;:[]},&quot;checksum&quot;:&quot;77d7894ab377f32a0c62ddb1913edf322c1c6ec9c41a8686577973a067f3824a&quot;}" wire:effects="[]" wire:id="Mxo8w9Iu0dNILf7Etxdc" wire:name="quran.qiraat.family-tree" class="space-y-8">
+    
+    <div class="relative max-w-3xl mx-auto px-2">
+        <div class="absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-primary-200 to-transparent"></div>
+        <p class="pt-6 pb-2 text-center text-gray-600 dark:text-gray-400 text-sm md:text-[15px] leading-[2] md:leading-[2.2]">
+            القِراءاتُ العَشْرُ هي الأوجُهُ المتواتِرةُ في تلاوةِ القرآنِ الكريم، يرويها عشَرةٌ من أئمَّةِ القِراءة بأسانيدِهم المتَّصلةِ إلى النَّبيِّ صلَّى اللهُ عليه وسلَّم، ولكلِّ قارئٍ راويانِ اثنان، فيكونُ مجموعُ الرُّواة عشرين راويًا. وهذه القِراءاتُ جميعُها قرآنٌ مُنزَّلٌ يصحُّ التعبُّدُ والصلاةُ به.
+        </p>
+        <div class="absolute inset-x-12 bottom-0 h-px bg-gradient-to-r from-transparent via-primary-200 to-transparent"></div>
+    </div>
+
+    
+    <div class="flex justify-center">
+        <div class="relative px-8 py-3.5 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white rounded-2xl shadow-xl shadow-primary-900/20">
+            <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10"></div>
+            <div class="relative text-center">
+                <p class="text-base md:text-lg font-bold font-fustat">القراءات العشر</p>
+                <p class="text-[11px] text-primary-200 mt-0.5">عشرة قراءات وعشرون رواية</p>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="flex justify-center -mt-4 -mb-4">
+        <div class="flex flex-col items-center">
+            <div class="w-px h-6 bg-gradient-to-b from-primary-300 to-primary-100"></div>
+            <div class="w-1.5 h-1.5 rounded-full bg-primary-200"></div>
+        </div>
+    </div>
+
+    
+    <div class="flex justify-center gap-5">
+        <div class="flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-primary-500 ring-2 ring-primary-100"></span>
+            <span class="text-[11px] text-gray-400">مصحف مكتوب + تسجيل صوتي</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-400 ring-2 ring-amber-100"></span>
+            <span class="text-[11px] text-gray-400">تسجيل صوتي</span>
+        </div>
+    </div>
+
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-4">
+        <!--[if BLOCK]><![endif]-->            <div class="group rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-900 hover:border-primary-200 dark:hover:border-primary-700/80 hover:shadow-lg hover:shadow-primary-50/50 transition-all duration-300">
+                
+                <div class="px-4 py-3 bg-gradient-to-l from-primary-50/60 to-transparent dark:from-primary-900/25 dark:to-transparent border-b border-gray-100 dark:border-gray-800">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-600 to-primary-700 text-white flex items-center justify-center text-xs font-bold shadow-sm flex-shrink-0">
+                            1
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-bold text-[15px] text-gray-900 dark:text-gray-100 font-fustat">نافع</h3>
+                            <p class="text-[11px] text-gray-400 truncate">نافع بن عبد الرحمن بن أبي نعيم المدني</p>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="p-3 grid grid-cols-2 gap-2.5">
+                    <!--[if BLOCK]><![endif]-->                                                <div class="p-3 rounded-lg border transition-colors
+                            bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/80 hover:border-primary-200 dark:hover:border-primary-700">
+
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 rounded-full flex-shrink-0
+                                    bg-primary-500 ring-1 ring-primary-200">
+                                </span>
+                                <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">قالون</span>
+                            </div>
+
+                            
+                            <div class="space-y-1.5">
+                                <!--[if BLOCK]><![endif]-->                                    <a href="https://quranpedia.net/surah/7/1"
+                                       wire:navigate
+                                       class="flex items-center justify-center gap-1.5 py-1.5 bg-primary-600 text-white text-[10px] md:text-[11px] font-medium rounded-md hover:bg-primary-700 transition-colors shadow-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
+                                            <path d="M8.75 13.354A6.04 6.04 0 0 1 12 12.5c.556 0 1.091.077 1.6.22a.75.75 0 0 0 .9-.722V3.498a.75.75 0 0 0-.546-.721A7.03 7.03 0 0 0 12 2.5a6.97 6.97 0 0 0-3.25.787v10.067ZM7.25 3.287A6.97 6.97 0 0 0 4 2.5c-.672 0-1.327.094-1.95.277A.75.75 0 0 0 1.5 3.498v8.554a.75.75 0 0 0 .9.722A6.04 6.04 0 0 1 4 12.5c1.18 0 2.272.338 3.25.854V3.287Z" />
+                                        </svg>
+                                        اقرأ المصحف
+                                    </a>
+                                <!--[if ENDBLOCK]><![endif]-->                                <!--[if BLOCK]><![endif]-->                                    <a href="https://quranpedia.net/reciters?rawi=1"
+                                       wire:navigate
+                                       class="flex items-center justify-center gap-1.5 py-1.5 border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/30 text-amber-700 text-[10px] md:text-[11px] font-medium rounded-md hover:bg-amber-100 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
+                                            <path d="M3.75 2a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75A.75.75 0 0 1 3.75 2Zm8.5 0a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75a.75.75 0 0 1 .75-.75ZM6 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6A.75.75 0 0 1 6 5.25ZM8.75 4a.75.75 0 0 0-1.5 0v8a.75.75 0 0 0 1.5 0V4ZM10 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Z" />
+                                        </svg>
+                                        استمع
+                                    </a>
+                                <!--[if ENDBLOCK]><![endif]-->                            </div>
+                        </div>
+                                                                    <div class="p-3 rounded-lg border transition-colors
+                            bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/80 hover:border-primary-200 dark:hover:border-primary-700">
+
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 rounded-full flex-shrink-0
+                                    bg-primary-500 ring-1 ring-primary-200">
+                                </span>
+                                <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">ورش</span>
+                            </div>
+
+                            
+                            <div class="space-y-1.5">
+                                <!--[if BLOCK]><![endif]-->                                    <a href="https://quranpedia.net/surah/4/1"
+                                       wire:navigate
+                                       class="flex items-center justify-center gap-1.5 py-1.5 bg-primary-600 text-white text-[10px] md:text-[11px] font-medium rounded-md hover:bg-primary-700 transition-colors shadow-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
+                                            <path d="M8.75 13.354A6.04 6.04 0 0 1 12 12.5c.556 0 1.091.077 1.6.22a.75.75 0 0 0 .9-.722V3.498a.75.75 0 0 0-.546-.721A7.03 7.03 0 0 0 12 2.5a6.97 6.97 0 0 0-3.25.787v10.067ZM7.25 3.287A6.97 6.97 0 0 0 4 2.5c-.672 0-1.327.094-1.95.277A.75.75 0 0 0 1.5 3.498v8.554a.75.75 0 0 0 .9.722A6.04 6.04 0 0 1 4 12.5c1.18 0 2.272.338 3.25.854V3.287Z" />
+                                        </svg>
+                                        اقرأ المصحف
+                                    </a>
+                                <!--[if ENDBLOCK]><![endif]-->                                <!--[if BLOCK]><![endif]-->                                    <a href="https://quranpedia.net/reciters?rawi=2"
+                                       wire:navigate
+                                       class="flex items-center justify-center gap-1.5 py-1.5 border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/30 text-amber-700 text-[10px] md:text-[11px] font-medium rounded-md hover:bg-amber-100 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
+                                            <path d="M3.75 2a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75A.75.75 0 0 1 3.75 2Zm8.5 0a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75a.75.75 0 0 1 .75-.75ZM6 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6A.75.75 0 0 1 6 5.25ZM8.75 4a.75.75 0 0 0-1.5 0v8a.75.75 0 0 0 1.5 0V4ZM10 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Z" />
+                                        </svg>
+                                        استمع
+                                    </a>
+                                <!--[if ENDBLOCK]><![endif]-->                            </div>
+                        </div>
+                    <!--[if ENDBLOCK]><![endif]-->                </div>
+            </div>
+                    <div class="group rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-900 hover:border-primary-200 dark:hover:border-primary-700/80 hover:shadow-lg hover:shadow-primary-50/50 transition-all duration-300">
+                
+                <div class="px-4 py-3 bg-gradient-to-l from-primary-50/60 to-transparent dark:from-primary-900/25 dark:to-transparent border-b border-gray-100 dark:border-gray-800">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-600 to-primary-700 text-white flex items-center justify-center text-xs font-bold shadow-sm flex-shrink-0">
+                            2
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-bold text-[15px] text-gray-900 dark:text-gray-100 font-fustat">ابن كثير</h3>
+                            <p class="text-[11px] text-gray-400 truncate">عبد الله بن كثير الداري المكي</p>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="p-3 grid grid-cols-2 gap-2.5">
+                    <!--[if BLOCK]><![endif]-->                                                <div class="p-3 rounded-lg border transition-colors
+                            bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/80 hover:border-primary-200 dark:hover:border-primary-700">
+
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 rounded-full flex-shrink-0
+                                    bg-primary-500 ring-1 ring-primary-200">
+                                </span>
+                                <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">البزي</span>
+                            </div>
+
+                            
+                            <div class="space-y-1.5">
+                                <!--[if BLOCK]><![endif]-->                                    <a href="https://quranpedia.net/surah/5/1"
+                                       wire:navigate
+                                       class="flex items-center justify-center gap-1.5 py-1.5 bg-primary-600 text-white text-[10px] md:text-[11px] font-medium rounded-md hover:bg-primary-700 transition-colors shadow-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
+                                            <path d="M8.75 13.354A6.04 6.04 0 0 1 12 12.5c.556 0 1.091.077 1.6.22a.75.75 0 0 0 .9-.722V3.498a.75.75 0 0 0-.546-.721A7.03 7.03 0 0 0 12 2.5a6.97 6.97 0 0 0-3.25.787v10.067ZM7.25 3.287A6.97 6.97 0 0 0 4 2.5c-.672 0-1.327.094-1.95.277A.75.75 0 0 0 1.5 3.498v8.554a.75.75 0 0 0 .9.722A6.04 6.04 0 0 1 4 12.5c1.18 0 2.272.338 3.25.854V3.287Z" />
+                                        </svg>
+                                        اقرأ المصحف
+                                    </a>
+                                <!--[if ENDBLOCK]><![endif]-->                                <!--[if BLOCK]><![endif]-->                                    <a href="https://quranpedia.net/reciters?rawi=3"
+                                       wire:navigate
+                                       class="flex items-center justify-center gap-1.5 py-1.5 border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/30 text-amber-700 text-[10px] md:text-[11px] font-medium rounded-md hover:bg-amber-100 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
+                                            <path d="M3.75 2a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75A.75.75 0 0 1 3.75 2Zm8.5 0a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75a.75.75 0 0 1 .75-.75ZM6 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6A.75.75 0 0 1 6 5.25ZM8.75 4a.75.75 0 0 0-1.5 0v8a.75.75 0 0 0 1.5 0V4ZM10 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Z" />
+                                        </svg>
+                                        استمع
+                                    </a>
+                                <!--[if ENDBLOCK]><![endif]-->                            </div>
+                        </div>
+                                                                    <div class="p-3 rounded-lg border transition-colors
+                            bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/80 hover:border-primary-200 dark:hover:border-primary-700">
+
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 rounded-full flex-shrink-0
+                                    bg-primary-500 ring-1 ring-primary-200">
+                                </span>
+                                <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">قنبل</span>
+                            </div>
+
+                            
+                            <div class="space-y-1.5">
+                                <!--[if BLOCK]><![endif]-->                                    <a href="https://quranpedia.net/surah/8/1"
+                                       wire:navigate
+                                       class="flex items-center justify-center gap-1.5 py-1.5 bg-primary-600 text-white text-[10px] md:text-[11px] font-medium rounded-md hover:bg-primary-700 transition-colors shadow-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
+                                            <path d="M8.75 13.354A6.04 6.04 0 0 1 12 12.5c.556 0 1.091.077 1.6.22a.75.75 0 0 0 .9-.722V3.498a.75.75 0 0 0-.546-.721A7.03 7.03 0 0 0 12 2.5a6.97 6.97 0 0 0-3.25.787v10.067ZM7.25 3.287A6.97 6.97 0 0 0 4 2.5c-.672 0-1.327.094-1.95.277A.75.75 0 0 0 1.5 3.498v8.554a.75.75 0 0 0 .9.722A6.04 6.04 0 0 1 4 12.5c1.18 0 2.272.338 3.25.854V3.287Z" />
+                                        </svg>
+                                        اقرأ المصحف
+                                    </a>
+                                <!--[if ENDBLOCK]><![endif]-->                                <!--[if BLOCK]><![endif]-->                                    <a href="https://quranpedia.net/reciters?rawi=4"
+                                       wire:navigate
+                                       class="flex items-center justify-center gap-1.5 py-1.5 border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/30 text-amber-700 text-[10px] md:text-[11px] font-medium rounded-md hover:bg-amber-100 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
+                                            <path d="M3.75 2a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75A.75.75 0 0 1 3.75 2Zm8.5 0a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75a.75.75 0 0 1 .75-.75ZM6 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6A.75.75 0 0 1 6 5.25ZM8.75 4a.75.75 0 0 0-1.5 0v8a.75.75 0 0 0 1.5 0V4ZM10 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Z" />
+                                        </svg>
+                                        استمع
+                                    </a>
+                                <!--[if ENDBLOCK]><![endif]-->                            </div>
+                        </div>
+                    <!--[if ENDBLOCK]><![endif]-->                </div>
+            </div>
+                    <div class="group rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-900 hover:border-primary-200 dark:hover:border-primary-700/80 hover:shadow-lg hover:shadow-primary-50/50 transition-all duration-300">
+                
+                <div class="px-4 py-3 bg-gradient-to-l from-primary-50/60 to-transparent dark:from-primary-900/25 dark:to-transparent border-b border-gray-100 dark:border-gray-800">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-600 to-primary-700 text-white flex items-center justify-center text-xs font-bold shadow-sm flex-shrink-0">
+                            3
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-bold text-[15px] text-gray-900 dark:text-gray-100 font-fustat">أبو عمرو</h3>
+                            <p class="text-[11px] text-gray-400 truncate">أبو عمرو بن العلاء البصري</p>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="p-3 grid grid-cols-2 gap-2.5">
+                    <!--[if BLOCK]><![endif]-->                                                <div class="p-3 rounded-lg border transition-colors
+                            bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/80 hover:border-primary-200 dark:hover:border-primary-700">
+
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 rounded-full flex-shrink-0
+                                    bg-primary-500 ring-1 ring-primary-200">
+                                </span>
+                                <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">الدوري</span>
+                            </div>
+
+                            
+                            <div class="space-y-1.5">
+                                <!--[if BLOCK]><![endif]-->                                    <a href="https://quranpedia.net/surah/6/1"
+                                       wire:navigate
+                                       class="flex items-center justify-center gap-1.5 py-1.5 bg-primary-600 text-white text-[10px] md:text-[11px] font-medium rounded-md hover:bg-primary-700 transition-colors shadow-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
+                                            <path d="M8.75 13.354A6.04 6.04 0 0 1 12 12.5c.556 0 1.091.077 1.6.22a.75.75 0 0 0 .9-.722V3.498a.75.75 0 0 0-.546-.721A7.03 7.03 0 0 0 12 2.5a6.97 6.97 0 0 0-3.25.787v10.067ZM7.25 3.287A6.97 6.97 0 0 0 4 2.5c-.672 0-1.327.094-1.95.277A.75.75 0 0 0 1.5 3.498v8.554a.75.75 0 0 0 .9.722A6.04 6.04 0 0 1 4 12.5c1.18 0 2.272.338 3.25.854V3.287Z" />
+                                        </svg>
+                                        اقرأ المصحف
+                                    </a>
+                                <!--[if ENDBLOCK]><![endif]-->                                <!--[if BLOCK]><![endif]-->                                    <a href="https://quranpedia.net/reciters?rawi=5"
+                                       wire:navigate
+                                       class="flex items-center justify-center gap-1.5 py-1.5 border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/30 text-amber-700 text-[10px] md:text-[11px] font-medium rounded-md hover:bg-amber-100 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
+                                            <path d="M3.75 2a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75A.75.75 0 0 1 3.75 2Zm8.5 0a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75a.75.75 0 0 1 .75-.75ZM6 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6A.75.75 0 0 1 6 5.25ZM8.75 4a.75.75 0 0 0-1.5 0v8a.75.75 0 0 0 1.5 0V4ZM10 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Z" />
+                                        </svg>
+                                        استمع
+                                    </a>
+                                <!--[if ENDBLOCK]><![endif]-->                            </div>
+                        </div>
+                                                                    <div class="p-3 rounded-lg border transition-colors
+                            bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/80 hover:border-primary-200 dark:hover:border-primary-700">
+
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 rounded-full flex-shrink-0
+                                    bg-primary-500 ring-1 ring-primary-200">
+                                </span>
+                                <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">السوسي</span>
+                            </div>
+
+                            
+                            <div class="space-y-1.5">
+                                <!--[if BLOCK]><![endif]-->                                    <a href="https://quranpedia.net/surah/10/1"
+                                       wire:navigate
+                                       class="flex items-center justify-center gap-1.5 py-1.5 bg-primary-600 text-white text-[10px] md:text-[11px] font-medium rounded-md hover:bg-primary-700 transition-colors shadow-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
+                                            <path d="M8.75 13.354A6.04 6.04 0 0 1 12 12.5c.556 0 1.091.077 1.6.22a.75.75 0 0 0 .9-.722V3.498a.75.75 0 0 0-.546-.721A7.03 7.03 0 0 0 12 2.5a6.97 6.97 0 0 0-3.25.787v10.067ZM7.25 3.287A6.97 6.97 0 0 0 4 2.5c-.672 0-1.327.094-1.95.277A.75.75 0 0 0 1.5 3.498v8.554a.75.75 0 0 0 .9.722A6.04 6.04 0 0 1 4 12.5c1.18 0 2.272.338 3.25.854V3.287Z" />
+                                        </svg>
+                                        اقرأ المصحف
+                                    </a>
+                                <!--[if ENDBLOCK]><![endif]-->                                <!--[if BLOCK]><![endif]-->                                    <a href="https://quranpedia.net/reciters?rawi=6"
+                                       wire:navigate
+                                       class="flex items-center justify-center gap-1.5 py-1.5 border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/30 text-amber-700 text-[10px] md:text-[11px] font-medium rounded-md hover:bg-amber-100 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
+                                            <path d="M3.75 2a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75A.75.75 0 0 1 3.75 2Zm8.5 0a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75a.75.75 0 0 1 .75-.75ZM6 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6A.75.75 0 0 1 6 5.25ZM8.75 4a.75.75 0 0 0-1.5 0v8a.75.75 0 0 0 1.5 0V4ZM10 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Z" />
+                                        </svg>
+                                        استمع
+                                    </a>
+                                <!--[if ENDBLOCK]><![endif]-->                            </div>
+                        </div>
+                    <!--[if ENDBLOCK]><![endif]-->                </div>
+            </div>
+                    <div class="group rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-900 hover:border-primary-200 dark:hover:border-primary-700/80 hover:shadow-lg hover:shadow-primary-50/50 transition-all duration-300">
+                
+                <div class="px-4 py-3 bg-gradient-to-l from-primary-50/60 to-transparent dark:from-primary-900/25 dark:to-transparent border-b border-gray-100 dark:border-gray-800">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-600 to-primary-700 text-white flex items-center justify-center text-xs font-bold shadow-sm flex-shrink-0">
+                            4
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-bold text-[15px] text-gray-900 dark:text-gray-100 font-fustat">ابن عامر</h3>
+                            <p class="text-[11px] text-gray-400 truncate">عبد الله بن عامر اليحصبي الشامي</p>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="p-3 grid grid-cols-2 gap-2.5">
+                    <!--[if BLOCK]><![endif]-->                                                <div class="p-3 rounded-lg border transition-colors
+                            bg-gray-50 dark:bg-gray-800/80 border-gray-100 hover:border-gray-200 dark:border-gray-700">
+
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 rounded-full flex-shrink-0
+                                    bg-amber-400 ring-1 ring-amber-200">
+                                </span>
+                                <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">هشام</span>
+                            </div>
+
+                            
+                            <div class="space-y-1.5">
+                                <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->                                <!--[if BLOCK]><![endif]-->                                    <a href="https://quranpedia.net/reciters?rawi=7"
+                                       wire:navigate
+                                       class="flex items-center justify-center gap-1.5 py-1.5 border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/30 text-amber-700 text-[10px] md:text-[11px] font-medium rounded-md hover:bg-amber-100 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
+                                            <path d="M3.75 2a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75A.75.75 0 0 1 3.75 2Zm8.5 0a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75a.75.75 0 0 1 .75-.75ZM6 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6A.75.75 0 0 1 6 5.25ZM8.75 4a.75.75 0 0 0-1.5 0v8a.75.75 0 0 0 1.5 0V4ZM10 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Z" />
+                                        </svg>
+                                        استمع
+                                    </a>
+                                <!--[if ENDBLOCK]><![endif]-->                            </div>
+                        </div>
+                                                                    <div class="p-3 rounded-lg border transition-colors
+                            bg-gray-50 dark:bg-gray-800/80 border-gray-100 hover:border-gray-200 dark:border-gray-700">
+
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 rounded-full flex-shrink-0
+                                    bg-amber-400 ring-1 ring-amber-200">
+                                </span>
+                                <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">ابن ذكوان</span>
+                            </div>
+
+                            
+                            <div class="space-y-1.5">
+                                <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->                                <!--[if BLOCK]><![endif]-->                                    <a href="https://quranpedia.net/reciters?rawi=8"
+                                       wire:navigate
+                                       class="flex items-center justify-center gap-1.5 py-1.5 border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/30 text-amber-700 text-[10px] md:text-[11px] font-medium rounded-md hover:bg-amber-100 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
+                                            <path d="M3.75 2a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75A.75.75 0 0 1 3.75 2Zm8.5 0a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75a.75.75 0 0 1 .75-.75ZM6 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6A.75.75 0 0 1 6 5.25ZM8.75 4a.75.75 0 0 0-1.5 0v8a.75.75 0 0 0 1.5 0V4ZM10 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Z" />
+                                        </svg>
+                                        استمع
+                                    </a>
+                                <!--[if ENDBLOCK]><![endif]-->                            </div>
+                        </div>
+                    <!--[if ENDBLOCK]><![endif]-->                </div>
+            </div>
+                    <div class="group rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-900 hover:border-primary-200 dark:hover:border-primary-700/80 hover:shadow-lg hover:shadow-primary-50/50 transition-all duration-300">
+                
+                <div class="px-4 py-3 bg-gradient-to-l from-primary-50/60 to-transparent dark:from-primary-900/25 dark:to-transparent border-b border-gray-100 dark:border-gray-800">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-600 to-primary-700 text-white flex items-center justify-center text-xs font-bold shadow-sm flex-shrink-0">
+                            5
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-bold text-[15px] text-gray-900 dark:text-gray-100 font-fustat">عاصم</h3>
+                            <p class="text-[11px] text-gray-400 truncate">عاصم بن أبي النَّجود الأسدي الكوفي</p>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="p-3 grid grid-cols-2 gap-2.5">
+                    <!--[if BLOCK]><![endif]-->                                                <div class="p-3 rounded-lg border transition-colors
+                            bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/80 hover:border-primary-200 dark:hover:border-primary-700">
+
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 rounded-full flex-shrink-0
+                                    bg-primary-500 ring-1 ring-primary-200">
+                                </span>
+                                <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">شعبة</span>
+                            </div>
+
+                            
+                            <div class="space-y-1.5">
+                                <!--[if BLOCK]><![endif]-->                                    <a href="https://quranpedia.net/surah/9/1"
+                                       wire:navigate
+                                       class="flex items-center justify-center gap-1.5 py-1.5 bg-primary-600 text-white text-[10px] md:text-[11px] font-medium rounded-md hover:bg-primary-700 transition-colors shadow-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
+                                            <path d="M8.75 13.354A6.04 6.04 0 0 1 12 12.5c.556 0 1.091.077 1.6.22a.75.75 0 0 0 .9-.722V3.498a.75.75 0 0 0-.546-.721A7.03 7.03 0 0 0 12 2.5a6.97 6.97 0 0 0-3.25.787v10.067ZM7.25 3.287A6.97 6.97 0 0 0 4 2.5c-.672 0-1.327.094-1.95.277A.75.75 0 0 0 1.5 3.498v8.554a.75.75 0 0 0 .9.722A6.04 6.04 0 0 1 4 12.5c1.18 0 2.272.338 3.25.854V3.287Z" />
+                                        </svg>
+                                        اقرأ المصحف
+                                    </a>
+                                <!--[if ENDBLOCK]><![endif]-->                                <!--[if BLOCK]><![endif]-->                                    <a href="https://quranpedia.net/reciters?rawi=9"
+                                       wire:navigate
+                                       class="flex items-center justify-center gap-1.5 py-1.5 border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/30 text-amber-700 text-[10px] md:text-[11px] font-medium rounded-md hover:bg-amber-100 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
+                                            <path d="M3.75 2a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75A.75.75 0 0 1 3.75 2Zm8.5 0a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75a.75.75 0 0 1 .75-.75ZM6 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6A.75.75 0 0 1 6 5.25ZM8.75 4a.75.75 0 0 0-1.5 0v8a.75.75 0 0 0 1.5 0V4ZM10 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Z" />
+                                        </svg>
+                                        استمع
+                                    </a>
+                                <!--[if ENDBLOCK]><![endif]-->                            </div>
+                        </div>
+                                                                    <div class="p-3 rounded-lg border transition-colors
+                            bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/80 hover:border-primary-200 dark:hover:border-primary-700">
+
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 rounded-full flex-shrink-0
+                                    bg-primary-500 ring-1 ring-primary-200">
+                                </span>
+                                <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">حفص</span>
+                            </div>
+
+                            
+                            <div class="space-y-1.5">
+                                <!--[if BLOCK]><![endif]-->                                    <a href="https://quranpedia.net/surah/1/1"
+                                       wire:navigate
+                                       class="flex items-center justify-center gap-1.5 py-1.5 bg-primary-600 text-white text-[10px] md:text-[11px] font-medium rounded-md hover:bg-primary-700 transition-colors shadow-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
+                                            <path d="M8.75 13.354A6.04 6.04 0 0 1 12 12.5c.556 0 1.091.077 1.6.22a.75.75 0 0 0 .9-.722V3.498a.75.75 0 0 0-.546-.721A7.03 7.03 0 0 0 12 2.5a6.97 6.97 0 0 0-3.25.787v10.067ZM7.25 3.287A6.97 6.97 0 0 0 4 2.5c-.672 0-1.327.094-1.95.277A.75.75 0 0 0 1.5 3.498v8.554a.75.75 0 0 0 .9.722A6.04 6.04 0 0 1 4 12.5c1.18 0 2.272.338 3.25.854V3.287Z" />
+                                        </svg>
+                                        اقرأ المصحف
+                                    </a>
+                                <!--[if ENDBLOCK]><![endif]-->                                <!--[if BLOCK]><![endif]-->                                    <a href="https://quranpedia.net/reciters?rawi=10"
+                                       wire:navigate
+                                       class="flex items-center justify-center gap-1.5 py-1.5 border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/30 text-amber-700 text-[10px] md:text-[11px] font-medium rounded-md hover:bg-amber-100 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
+                                            <path d="M3.75 2a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75A.75.75 0 0 1 3.75 2Zm8.5 0a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75a.75.75 0 0 1 .75-.75ZM6 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6A.75.75 0 0 1 6 5.25ZM8.75 4a.75.75 0 0 0-1.5 0v8a.75.75 0 0 0 1.5 0V4ZM10 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Z" />
+                                        </svg>
+                                        استمع
+                                    </a>
+                                <!--[if ENDBLOCK]><![endif]-->                            </div>
+                        </div>
+                    <!--[if ENDBLOCK]><![endif]-->                </div>
+            </div>
+                    <div class="group rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-900 hover:border-primary-200 dark:hover:border-primary-700/80 hover:shadow-lg hover:shadow-primary-50/50 transition-all duration-300">
+                
+                <div class="px-4 py-3 bg-gradient-to-l from-primary-50/60 to-transparent dark:from-primary-900/25 dark:to-transparent border-b border-gray-100 dark:border-gray-800">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-600 to-primary-700 text-white flex items-center justify-center text-xs font-bold shadow-sm flex-shrink-0">
+                            6
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-bold text-[15px] text-gray-900 dark:text-gray-100 font-fustat">حمزة</h3>
+                            <p class="text-[11px] text-gray-400 truncate">حمزة بن حبيب الزيات الكوفي</p>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="p-3 grid grid-cols-2 gap-2.5">
+                    <!--[if BLOCK]><![endif]-->                                                <div class="p-3 rounded-lg border transition-colors
+                            bg-gray-50 dark:bg-gray-800/80 border-gray-100 hover:border-gray-200 dark:border-gray-700">
+
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 rounded-full flex-shrink-0
+                                    bg-amber-400 ring-1 ring-amber-200">
+                                </span>
+                                <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">خلف</span>
+                            </div>
+
+                            
+                            <div class="space-y-1.5">
+                                <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->                                <!--[if BLOCK]><![endif]-->                                    <a href="https://quranpedia.net/reciters?rawi=11"
+                                       wire:navigate
+                                       class="flex items-center justify-center gap-1.5 py-1.5 border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/30 text-amber-700 text-[10px] md:text-[11px] font-medium rounded-md hover:bg-amber-100 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
+                                            <path d="M3.75 2a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75A.75.75 0 0 1 3.75 2Zm8.5 0a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75a.75.75 0 0 1 .75-.75ZM6 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6A.75.75 0 0 1 6 5.25ZM8.75 4a.75.75 0 0 0-1.5 0v8a.75.75 0 0 0 1.5 0V4ZM10 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Z" />
+                                        </svg>
+                                        استمع
+                                    </a>
+                                <!--[if ENDBLOCK]><![endif]-->                            </div>
+                        </div>
+                                                                    <div class="p-3 rounded-lg border transition-colors
+                            bg-gray-50 dark:bg-gray-800/80 border-gray-100 hover:border-gray-200 dark:border-gray-700">
+
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 rounded-full flex-shrink-0
+                                    bg-amber-400 ring-1 ring-amber-200">
+                                </span>
+                                <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">خلاد</span>
+                            </div>
+
+                            
+                            <div class="space-y-1.5">
+                                <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->                                <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->                            </div>
+                        </div>
+                    <!--[if ENDBLOCK]><![endif]-->                </div>
+            </div>
+                    <div class="group rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-900 hover:border-primary-200 dark:hover:border-primary-700/80 hover:shadow-lg hover:shadow-primary-50/50 transition-all duration-300">
+                
+                <div class="px-4 py-3 bg-gradient-to-l from-primary-50/60 to-transparent dark:from-primary-900/25 dark:to-transparent border-b border-gray-100 dark:border-gray-800">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-600 to-primary-700 text-white flex items-center justify-center text-xs font-bold shadow-sm flex-shrink-0">
+                            7
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-bold text-[15px] text-gray-900 dark:text-gray-100 font-fustat">الكسائي</h3>
+                            <p class="text-[11px] text-gray-400 truncate">أبو الحسن علي بن حمزة الكسائي النحوي الكوفي</p>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="p-3 grid grid-cols-2 gap-2.5">
+                    <!--[if BLOCK]><![endif]-->                                                <div class="p-3 rounded-lg border transition-colors
+                            bg-gray-50 dark:bg-gray-800/80 border-gray-100 hover:border-gray-200 dark:border-gray-700">
+
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 rounded-full flex-shrink-0
+                                    bg-amber-400 ring-1 ring-amber-200">
+                                </span>
+                                <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">أبو الحارث</span>
+                            </div>
+
+                            
+                            <div class="space-y-1.5">
+                                <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->                                <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->                            </div>
+                        </div>
+                                                                    <div class="p-3 rounded-lg border transition-colors
+                            bg-gray-50 dark:bg-gray-800/80 border-gray-100 hover:border-gray-200 dark:border-gray-700">
+
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 rounded-full flex-shrink-0
+                                    bg-amber-400 ring-1 ring-amber-200">
+                                </span>
+                                <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">الدوري</span>
+                            </div>
+
+                            
+                            <div class="space-y-1.5">
+                                <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->                                <!--[if BLOCK]><![endif]-->                                    <a href="https://quranpedia.net/reciters?rawi=14"
+                                       wire:navigate
+                                       class="flex items-center justify-center gap-1.5 py-1.5 border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/30 text-amber-700 text-[10px] md:text-[11px] font-medium rounded-md hover:bg-amber-100 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
+                                            <path d="M3.75 2a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75A.75.75 0 0 1 3.75 2Zm8.5 0a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75a.75.75 0 0 1 .75-.75ZM6 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6A.75.75 0 0 1 6 5.25ZM8.75 4a.75.75 0 0 0-1.5 0v8a.75.75 0 0 0 1.5 0V4ZM10 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Z" />
+                                        </svg>
+                                        استمع
+                                    </a>
+                                <!--[if ENDBLOCK]><![endif]-->                            </div>
+                        </div>
+                    <!--[if ENDBLOCK]><![endif]-->                </div>
+            </div>
+                    <div class="group rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-900 hover:border-primary-200 dark:hover:border-primary-700/80 hover:shadow-lg hover:shadow-primary-50/50 transition-all duration-300">
+                
+                <div class="px-4 py-3 bg-gradient-to-l from-primary-50/60 to-transparent dark:from-primary-900/25 dark:to-transparent border-b border-gray-100 dark:border-gray-800">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-600 to-primary-700 text-white flex items-center justify-center text-xs font-bold shadow-sm flex-shrink-0">
+                            8
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-bold text-[15px] text-gray-900 dark:text-gray-100 font-fustat">أبو جعفر</h3>
+                            <p class="text-[11px] text-gray-400 truncate">أبو جعفر يزيد بن القعقاع المدني</p>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="p-3 grid grid-cols-2 gap-2.5">
+                    <!--[if BLOCK]><![endif]-->                                                <div class="p-3 rounded-lg border transition-colors
+                            bg-gray-50 dark:bg-gray-800/80 border-gray-100 hover:border-gray-200 dark:border-gray-700">
+
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 rounded-full flex-shrink-0
+                                    bg-amber-400 ring-1 ring-amber-200">
+                                </span>
+                                <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">ابن وردان</span>
+                            </div>
+
+                            
+                            <div class="space-y-1.5">
+                                <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->                                <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->                            </div>
+                        </div>
+                                                                    <div class="p-3 rounded-lg border transition-colors
+                            bg-gray-50 dark:bg-gray-800/80 border-gray-100 hover:border-gray-200 dark:border-gray-700">
+
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 rounded-full flex-shrink-0
+                                    bg-amber-400 ring-1 ring-amber-200">
+                                </span>
+                                <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">ابن جمّاز</span>
+                            </div>
+
+                            
+                            <div class="space-y-1.5">
+                                <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->                                <!--[if BLOCK]><![endif]-->                                    <a href="https://quranpedia.net/reciters?rawi=16"
+                                       wire:navigate
+                                       class="flex items-center justify-center gap-1.5 py-1.5 border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/30 text-amber-700 text-[10px] md:text-[11px] font-medium rounded-md hover:bg-amber-100 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
+                                            <path d="M3.75 2a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75A.75.75 0 0 1 3.75 2Zm8.5 0a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75a.75.75 0 0 1 .75-.75ZM6 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6A.75.75 0 0 1 6 5.25ZM8.75 4a.75.75 0 0 0-1.5 0v8a.75.75 0 0 0 1.5 0V4ZM10 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Z" />
+                                        </svg>
+                                        استمع
+                                    </a>
+                                <!--[if ENDBLOCK]><![endif]-->                            </div>
+                        </div>
+                    <!--[if ENDBLOCK]><![endif]-->                </div>
+            </div>
+                    <div class="group rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-900 hover:border-primary-200 dark:hover:border-primary-700/80 hover:shadow-lg hover:shadow-primary-50/50 transition-all duration-300">
+                
+                <div class="px-4 py-3 bg-gradient-to-l from-primary-50/60 to-transparent dark:from-primary-900/25 dark:to-transparent border-b border-gray-100 dark:border-gray-800">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-600 to-primary-700 text-white flex items-center justify-center text-xs font-bold shadow-sm flex-shrink-0">
+                            9
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-bold text-[15px] text-gray-900 dark:text-gray-100 font-fustat">يعقوب</h3>
+                            <p class="text-[11px] text-gray-400 truncate">يعقوب بن إسحاق الحضرمي البصري</p>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="p-3 grid grid-cols-2 gap-2.5">
+                    <!--[if BLOCK]><![endif]-->                                                <div class="p-3 rounded-lg border transition-colors
+                            bg-gray-50 dark:bg-gray-800/80 border-gray-100 hover:border-gray-200 dark:border-gray-700">
+
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 rounded-full flex-shrink-0
+                                    bg-amber-400 ring-1 ring-amber-200">
+                                </span>
+                                <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">رويس</span>
+                            </div>
+
+                            
+                            <div class="space-y-1.5">
+                                <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->                                <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->                            </div>
+                        </div>
+                                                                    <div class="p-3 rounded-lg border transition-colors
+                            bg-gray-50 dark:bg-gray-800/80 border-gray-100 hover:border-gray-200 dark:border-gray-700">
+
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 rounded-full flex-shrink-0
+                                    bg-amber-400 ring-1 ring-amber-200">
+                                </span>
+                                <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">روح</span>
+                            </div>
+
+                            
+                            <div class="space-y-1.5">
+                                <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->                                <!--[if BLOCK]><![endif]-->                                    <a href="https://quranpedia.net/reciters?rawi=18"
+                                       wire:navigate
+                                       class="flex items-center justify-center gap-1.5 py-1.5 border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/30 text-amber-700 text-[10px] md:text-[11px] font-medium rounded-md hover:bg-amber-100 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
+                                            <path d="M3.75 2a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75A.75.75 0 0 1 3.75 2Zm8.5 0a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-1.5 0V2.75a.75.75 0 0 1 .75-.75ZM6 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6A.75.75 0 0 1 6 5.25ZM8.75 4a.75.75 0 0 0-1.5 0v8a.75.75 0 0 0 1.5 0V4ZM10 5.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Z" />
+                                        </svg>
+                                        استمع
+                                    </a>
+                                <!--[if ENDBLOCK]><![endif]-->                            </div>
+                        </div>
+                    <!--[if ENDBLOCK]><![endif]-->                </div>
+            </div>
+                    <div class="group rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-900 hover:border-primary-200 dark:hover:border-primary-700/80 hover:shadow-lg hover:shadow-primary-50/50 transition-all duration-300">
+                
+                <div class="px-4 py-3 bg-gradient-to-l from-primary-50/60 to-transparent dark:from-primary-900/25 dark:to-transparent border-b border-gray-100 dark:border-gray-800">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-600 to-primary-700 text-white flex items-center justify-center text-xs font-bold shadow-sm flex-shrink-0">
+                            10
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-bold text-[15px] text-gray-900 dark:text-gray-100 font-fustat">خلف</h3>
+                            <p class="text-[11px] text-gray-400 truncate">خلف بن هشام</p>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="p-3 grid grid-cols-2 gap-2.5">
+                    <!--[if BLOCK]><![endif]-->                                                <div class="p-3 rounded-lg border transition-colors
+                            bg-gray-50 dark:bg-gray-800/80 border-gray-100 hover:border-gray-200 dark:border-gray-700">
+
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 rounded-full flex-shrink-0
+                                    bg-amber-400 ring-1 ring-amber-200">
+                                </span>
+                                <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">إسحاق</span>
+                            </div>
+
+                            
+                            <div class="space-y-1.5">
+                                <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->                                <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->                            </div>
+                        </div>
+                                                                    <div class="p-3 rounded-lg border transition-colors
+                            bg-gray-50 dark:bg-gray-800/80 border-gray-100 hover:border-gray-200 dark:border-gray-700">
+
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 rounded-full flex-shrink-0
+                                    bg-amber-400 ring-1 ring-amber-200">
+                                </span>
+                                <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">إدريس</span>
+                            </div>
+
+                            
+                            <div class="space-y-1.5">
+                                <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->                                <!--[if BLOCK]><![endif]--><!--[if ENDBLOCK]><![endif]-->                            </div>
+                        </div>
+                    <!--[if ENDBLOCK]><![endif]-->                </div>
+            </div>
+        <!--[if ENDBLOCK]><![endif]-->    </div>
+</div>
+                </div>
+            </div>
+        </div>
+</main>
+
+    <footer role="contentinfo" class="relative mt-16">
+    
+    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary-300 dark:via-primary-700 to-transparent"></div>
+
+    <div class="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4 py-12 lg:py-16">
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-16">
+
+                
+                <div class="md:col-span-5 lg:col-span-6">
+                    <a href="/" wire:navigate class="inline-block group">
+                        <img src="/assets/images/branding/logo.svg"
+                             width="288" height="80"
+                             class="w-64 lg:w-72 h-auto site-logo transition-transform duration-300 group-hover:scale-[1.02]"
+                             alt="الموسوعة القرآنية">
+                    </a>
+
+                    <p class="mt-6 text-gray-600 dark:text-gray-400 leading-relaxed max-w-md">
+                        موسوعة إلكترونية شاملة في خدمة القرآن الكريم — رَسمُه، تجويدُه، تِلاواتُه، تفسيرُه، ترجماتُه،
+                        علومُه، قِراءاتُه، موضوعاتُه، وتدبُّراتُه.
+                    </p>
+
+                    
+                    <div class="flex items-center gap-3 mt-8">
+                        <a class="group w-11 h-11 flex items-center justify-center rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:border-primary-300 dark:hover:border-primary-700 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200 shadow-sm hover:shadow"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           href="https://web.facebook.com/Quranpedia.net"
+                           aria-label="Facebook"
+                        >
+                            <img src="https://quranpedia.net/assets/images/icons/social/facebook-icon.svg" alt="" class="w-5 h-5 opacity-70 group-hover:opacity-100 transition-opacity icon-invertible">
+                        </a>
+
+                        <a class="group w-11 h-11 flex items-center justify-center rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:border-primary-300 dark:hover:border-primary-700 hover:bg-primary-50 dark:hover:bg-primary-900/50 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200 shadow-sm hover:shadow"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           href="https://twitter.com/QuranpediaNet"
+                           aria-label="X (Twitter)"
+                        >
+                            <img src="https://quranpedia.net/assets/images/icons/social/x-icon.svg" alt="" class="w-5 h-5 opacity-70 group-hover:opacity-100 transition-opacity icon-invertible">
+                        </a>
+                    </div>
+                </div>
+
+                
+                <div class="md:col-span-3 lg:col-span-3">
+                    <h3 class="text-sm font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider mb-5">
+                        روابط سريعة
+                    </h3>
+                    <nav class="flex flex-row flex-wrap gap-x-6 gap-y-3 md:flex-col md:gap-3">
+                        <a href="/" wire:navigate class="group text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                            <span>الرئيسية</span>
+                        </a>
+                        <a href="https://quranpedia.net/mushafs" wire:navigate class="group text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                            <span>القرآن الكريم</span>
+                        </a>
+                        <a href="https://quranpedia.net/qiraat" wire:navigate class="group text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                            <span>المصحف بالقراءات العشر</span>
+                        </a>
+                        <a href="https://quranpedia.net/books" wire:navigate class="group text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                            <span>المكتبة</span>
+                        </a>
+                        <a href="https://pdf.quran.ws" target="_blank" class="group text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                            <span class="poppins">القرآن pdf</span>
+                        </a>
+                        <a href="https://fonts.quran.ws/ar/" target="_blank" class="group text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                            <span>خطوط القرآن الكريم</span>
+                        </a>
+                    </nav>
+                </div>
+
+                
+                <div class="md:col-span-4 lg:col-span-3">
+                    <h3 class="text-sm font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider mb-5">
+                        المزيد
+                    </h3>
+                    <nav class="flex flex-row flex-wrap gap-x-6 gap-y-3 md:flex-col md:gap-3">
+                        <a href="https://quranpedia.net/about" wire:navigate class="group text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                            <span>عن الموقع</span>
+                        </a>
+                        <a href="https://quranpedia.net/topics" wire:navigate class="group text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                            <span>الموضوعات القرآنية</span>
+                        </a>
+                        <a href="https://quranpedia.net/categories" wire:navigate class="group text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                            <span>شجرة المحتوى</span>
+                        </a>
+                        <a href="https://quranpedia.net/contact-us" wire:navigate class="group text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                            <span>اتصل بنا</span>
+                        </a>
+                        <a href="https://api.quranpedia.net" target="_blank" rel="noopener noreferrer" class="group text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                            <span class="poppins">API</span>
+                        </a>
+                        <a href="https://github.com/quranpedia/" target="_blank" rel="noopener noreferrer" class="group text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                            <span class="poppins">Open Source</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            
+            <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+                <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                        الموسوعة القرآنية
+                        <span class="poppins mx-1">Quranpedia.net</span>
+                        <span class="mx-1">—</span>
+                        <span class="poppins">&copy; 2026</span>
+                    </p>
+
+                    <p class="text-xs text-gray-400 dark:text-gray-500">
+                        الاستفادةُ من الموسوعةِ حقٌّ لكلِّ مسلم
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <div x-data='{showBtn : false}' x-init="window.addEventListener('scroll', () => showBtn = window.scrollY > 250, { passive: true })">
+    <button @click="window.scrollTo({ top: 0, behavior: 'smooth' })" x-show="showBtn" x-transition
+        class="fixed left-5 bottom-5 w-10 h-10 lg:left-10 lg:bottom-10 lg:w-12 lg:h-12 bg-primary-500 dark:bg-primary-600 flex justify-center items-center rounded-full animate__animated animate__fadeIn shadow-lg dark:shadow-gray-950/50">
+        <svg xmlns="http://www.w3.org/2000/svg" class="text-white w-4 h-4 lg:w-6 lg:h-6" fill="none" viewBox="0 0 24 24"
+            stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
+        </svg>
+    </button>
+</div>
+
+
+<script  data-navigate-once="true">window.livewireScriptConfig = {"csrf":"hD4s8FgejPG3pE4AyMQ59bSbDtbmN7e2nxvQchbT","uri":"https:\/\/quranpedia.net\/livewire-acfc3692\/update","moduleUrl":"https:\/\/quranpedia.net\/livewire-acfc3692","progressBar":"","nonce":""};</script>
+<link rel="preload" as="style" href="https://quranpedia.net/build/assets/app-bJMk0hP-.css" /><link rel="modulepreload" as="script" href="https://quranpedia.net/build/assets/app-Bx9oeees.js" /><link rel="modulepreload" as="script" href="https://quranpedia.net/build/assets/vendor-utils-BZMuOT6K.js" /><link rel="modulepreload" as="script" href="https://quranpedia.net/build/assets/vendor-audio-k45rs5Wd.js" /><link rel="modulepreload" as="script" href="https://quranpedia.net/build/assets/vendor-ui-C73zYX8Z.js" /><link rel="stylesheet" href="https://quranpedia.net/build/assets/app-bJMk0hP-.css" data-navigate-track="reload" /><script type="module" src="https://quranpedia.net/build/assets/app-Bx9oeees.js" data-navigate-track="reload"></script>
+<script>
+    
+    document.addEventListener('livewire:init', () => {
+        Livewire.interceptRequest(({ onError }) => {
+            onError(({ response, preventDefault }) => {
+                if (response.status === 419) {
+                    preventDefault();
+                    const key = 'csrf_reload_ts';
+                    const last = sessionStorage.getItem(key);
+                    const now = Date.now();
+                    if (!last || (now - parseInt(last)) > 30000) {
+                        sessionStorage.setItem(key, now);
+                        window.location.reload();
+                    }
+                }
+            });
+        });
+    });
+
+    
+    var _ric = window.requestIdleCallback || function(cb) { setTimeout(cb, 200); };
+    _ric(function() {
+        
+        fetch('/csrf-token', { credentials: 'same-origin' })
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .then(function (data) {
+                if (!data || !data.token) return;
+                var t = data.token;
+                if (window.livewireScriptConfig) window.livewireScriptConfig.csrf = t;
+                var meta = document.querySelector('meta[name="csrf-token"]');
+                if (meta) meta.setAttribute('content', t);
+                document.querySelectorAll('input[name="_token"]').forEach(function (el) { el.value = t; });
+            })
+            .catch(function () {});
+
+        
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').catch(function() {});
+        }
+    });
+</script>
+
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    var _ric2 = window.requestIdleCallback || function(cb) { setTimeout(cb, 300); };
+    _ric2(function() {
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-T5L2JE7LHB';
+        s.async = true;
+        document.head.appendChild(s);
+        gtag('js', new Date());
+        gtag('config', 'G-T5L2JE7LHB');
+    });
+</script>
+
+    <script data-navigate-once>
+        document.addEventListener('DOMContentLoaded', function () {
+            window.dispatchEvent(new CustomEvent('hide-page-loader'));
+        });
+        document.addEventListener('livewire:navigated', function () {
+            window.dispatchEvent(new CustomEvent('hide-page-loader'));
+        });
+    </script>
+
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"c30d1af3c9284427b7955e2fc91cc2d2","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>

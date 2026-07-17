@@ -1,7 +1,5 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:path/path.dart';
-
 import '../../../../languages/app_localizations.dart';
 import 'prayer_models.dart';
 import 'prayer_badges.dart';
@@ -37,11 +35,17 @@ class PrayerRowCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final textColor = isDark ? Colors.white : const Color(0xFF1A1A1A);
     final subTextColor = isDark ? Colors.white70 : Colors.black54;
-    final listCardGradient = isDark
-        ? [Colors.white.withValues(alpha: 0.05), Colors.white.withValues(alpha: 0.02)]
-        : [Colors.white, Colors.white];
+    final listCardGradient =
+        isDark
+            ? [
+              Colors.white.withValues(alpha: 0.05),
+              Colors.white.withValues(alpha: 0.02),
+            ]
+            : [const Color(0xFFFFFDF8), const Color(0xFFF8F1E4)];
     final listCardBorder =
-    isDark ? Colors.white.withValues(alpha: 0.1) : gold.withValues(alpha: 0.2);
+        isDark
+            ? Colors.white.withValues(alpha: 0.1)
+            : gold.withValues(alpha: 0.2);
 
     final isCurrent = row.isCurrent;
     final isNext = row.isNext;
@@ -50,45 +54,55 @@ class PrayerRowCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.only(bottom: 12),
-        padding: const EdgeInsets.all(16),
+        margin: const EdgeInsets.only(bottom: 10),
+        padding: const EdgeInsets.all(17),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: isCurrent
-                ? [gold.withValues(alpha: 0.15), gold.withValues(alpha: 0.05)]
-                : isNext
-                ? [gold.withValues(alpha: 0.10), gold.withValues(alpha: 0.03)]
-                : listCardGradient,
+            colors:
+                isCurrent
+                    ? [
+                      gold.withValues(alpha: 0.15),
+                      gold.withValues(alpha: 0.05),
+                    ]
+                    : isNext
+                    ? [
+                      gold.withValues(alpha: 0.10),
+                      gold.withValues(alpha: 0.03),
+                    ]
+                    : listCardGradient,
           ),
           color: _getPrayerCardAccentColor(),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(22),
           border: Border.all(
-            color: isCurrent
-                ? gold.withValues(alpha: 0.9)
-                : !isDefaultMuezzin
-                ? gold.withValues(alpha: 0.45)
-                : isNext
-                ? gold.withValues(alpha: 0.55)
-                : listCardBorder,
+            color:
+                isCurrent
+                    ? gold.withValues(alpha: 0.9)
+                    : !isDefaultMuezzin
+                    ? gold.withValues(alpha: 0.45)
+                    : isNext
+                    ? gold.withValues(alpha: 0.55)
+                    : listCardBorder,
             width: isCurrent ? 2.0 : (!isDefaultMuezzin ? 1.4 : 1.0),
           ),
-          boxShadow: isNext
-              ? [
-            BoxShadow(
-              color: gold.withValues(alpha: 0.25),
-              blurRadius: 16,
-              offset: const Offset(0, 8),
-            ),
-          ]
-              : [
-            BoxShadow(
-              color: isDark
-                  ? Colors.black.withValues(alpha: 0.2)
-                  : Colors.grey.withValues(alpha: 0.05),
-              blurRadius: 5,
-              offset: const Offset(0, 2),
-            ),
-          ],
+          boxShadow:
+              isNext
+                  ? [
+                    BoxShadow(
+                      color: gold.withValues(alpha: 0.25),
+                      blurRadius: 16,
+                      offset: const Offset(0, 8),
+                    ),
+                  ]
+                  : [
+                    BoxShadow(
+                      color:
+                          isDark
+                              ? Colors.black.withValues(alpha: 0.2)
+                              : const Color(0xFF806638).withValues(alpha: 0.08),
+                      blurRadius: 9,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,16 +114,27 @@ class PrayerRowCard extends StatelessWidget {
                 const SizedBox(width: 12),
                 Expanded(
                   child: _buildNameColumn(
-                    isPast, isCurrent, isNext, textColor, subTextColor,context,
+                    isPast,
+                    isCurrent,
+                    isNext,
+                    textColor,
+                    subTextColor,
+                    context,
                   ),
                 ),
                 const SizedBox(width: 8),
-                _buildTimeColumn(isPast, isCurrent, isNext, textColor, subTextColor,context,
+                _buildTimeColumn(
+                  isPast,
+                  isCurrent,
+                  isNext,
+                  textColor,
+                  subTextColor,
+                  context,
                 ),
               ],
             ),
             const SizedBox(height: 12),
-            _buildCustomizeRow(context,isDark, subTextColor),
+            _buildCustomizeRow(context, isDark, subTextColor),
             if (row.noAdhan != true) ...[
               const SizedBox(height: 10),
               _buildStatusBadges(context),
@@ -120,27 +145,35 @@ class PrayerRowCard extends StatelessWidget {
     );
   }
 
-  Widget _buildIcon(bool isPast, bool isCurrent, bool isNext, Color subTextColor) {
+  Widget _buildIcon(
+    bool isPast,
+    bool isCurrent,
+    bool isNext,
+    Color subTextColor,
+  ) {
     return Container(
-      width: 50,
-      height: 50,
+      width: 54,
+      height: 54,
       decoration: BoxDecoration(
-        color: isPast
-            ? Colors.grey.withValues(alpha: 0.2)
-            : gold.withValues(alpha: isCurrent || isNext ? 0.25 : 0.10),
-        borderRadius: BorderRadius.circular(15),
-        border: (isCurrent || isNext)
-            ? Border.all(color: gold.withValues(alpha: 0.8), width: 1.5)
-            : null,
+        color:
+            isPast
+                ? Colors.grey.withValues(alpha: 0.2)
+                : gold.withValues(alpha: isCurrent || isNext ? 0.25 : 0.10),
+        borderRadius: BorderRadius.circular(17),
+        border:
+            (isCurrent || isNext)
+                ? Border.all(color: gold.withValues(alpha: 0.8), width: 1.5)
+                : null,
       ),
       child: Stack(
         alignment: Alignment.center,
         children: [
           Icon(
             row.icon,
-            color: isPast
-                ? Colors.grey
-                : (isCurrent || isNext ? gold : subTextColor),
+            color:
+                isPast
+                    ? Colors.grey
+                    : (isCurrent || isNext ? gold : subTextColor),
             size: 24,
           ),
           if (isNext)
@@ -169,11 +202,13 @@ class PrayerRowCard extends StatelessWidget {
   }
 
   Widget _buildNameColumn(
-      bool isPast, bool isCurrent, bool isNext,
-      Color textColor,
-      Color subTextColor,
-      BuildContext context
-      ) {
+    bool isPast,
+    bool isCurrent,
+    bool isNext,
+    Color textColor,
+    Color subTextColor,
+    BuildContext context,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -191,7 +226,11 @@ class PrayerRowCard extends StatelessWidget {
               ),
             ),
             if (isCurrent)
-              PrayerBadge(text: context.tr.prayerNow, bg: gold, fg: Colors.black),
+              PrayerBadge(
+                text: context.tr.prayerNow,
+                bg: gold,
+                fg: Colors.black,
+              ),
             if (isNext && !isCurrent)
               PrayerBadge(
                 text: context.tr.prayerNext,
@@ -203,12 +242,15 @@ class PrayerRowCard extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         Text(
-          row.noAdhan == true ? context.tr.thisPrayerHasNoAdhan : context.tr.tapToCustomizePrayer,
+          row.noAdhan == true
+              ? context.tr.thisPrayerHasNoAdhan
+              : context.tr.tapToCustomizePrayer,
           style: GoogleFonts.cairo(
             fontSize: 11.5,
-            color: row.noAdhan == true
-                ? Colors.orange
-                : subTextColor.withValues(alpha: 0.75),
+            color:
+                row.noAdhan == true
+                    ? Colors.orange
+                    : subTextColor.withValues(alpha: 0.75),
           ),
         ),
       ],
@@ -216,13 +258,13 @@ class PrayerRowCard extends StatelessWidget {
   }
 
   Widget _buildTimeColumn(
-      bool isPast,
-      bool isCurrent,
-      bool isNext,
-      Color textColor,
-      Color subTextColor,
-      BuildContext context
-      ) {
+    bool isPast,
+    bool isCurrent,
+    bool isNext,
+    Color textColor,
+    Color subTextColor,
+    BuildContext context,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
@@ -232,9 +274,10 @@ class PrayerRowCard extends StatelessWidget {
             row.time,
             style: GoogleFonts.cairo(
               fontSize: 18,
-              color: isPast
-                  ? subTextColor.withValues(alpha: 0.4)
-                  : (isCurrent || isNext ? gold : textColor),
+              color:
+                  isPast
+                      ? subTextColor.withValues(alpha: 0.4)
+                      : (isCurrent || isNext ? gold : textColor),
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -251,19 +294,25 @@ class PrayerRowCard extends StatelessWidget {
     );
   }
 
-  Widget _buildCustomizeRow(BuildContext context,bool isDark, Color subTextColor) {
+  Widget _buildCustomizeRow(
+    BuildContext context,
+    bool isDark,
+    Color subTextColor,
+  ) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
-        color: isDark
-            ? Colors.white.withValues(alpha: 0.05)
-            : Colors.black.withValues(alpha: 0.03),
-        borderRadius: BorderRadius.circular(12),
+        color:
+            isDark
+                ? Colors.white.withValues(alpha: 0.05)
+                : const Color(0xFF806638).withValues(alpha: 0.06),
+        borderRadius: BorderRadius.circular(14),
         border: Border.all(
-          color: isDark
-              ? Colors.white.withValues(alpha: 0.06)
-              : Colors.black.withValues(alpha: 0.05),
+          color:
+              isDark
+                  ? Colors.white.withValues(alpha: 0.06)
+                  : gold.withValues(alpha: 0.14),
         ),
       ),
       child: Row(
@@ -282,9 +331,10 @@ class PrayerRowCard extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: GoogleFonts.cairo(
                 fontSize: 13,
-                color: row.noAdhan == true
-                    ? subTextColor.withValues(alpha: 0.6)
-                    : gold.withValues(alpha: 0.95),
+                color:
+                    row.noAdhan == true
+                        ? subTextColor.withValues(alpha: 0.6)
+                        : gold.withValues(alpha: 0.95),
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -322,16 +372,18 @@ class PrayerRowCard extends StatelessWidget {
           active: config.adhanEnabled,
         ),
         StatusMiniBadge(
-          label: config.reminderEnabled ?
-          context.tr.reminderWithMins(config.reminderOffset) :
-          context.tr.reminderLabel,
+          label:
+              config.reminderEnabled
+                  ? context.tr.reminderWithMins(config.reminderOffset)
+                  : context.tr.reminderLabel,
           color: config.reminderEnabled ? Colors.blue : Colors.grey,
           active: config.reminderEnabled,
         ),
         StatusMiniBadge(
-          label: config.iqamaEnabled ?
-          context.tr.iqamaWithMins(config.iqamaDelay) :
-          context.tr.iqamaLabel,
+          label:
+              config.iqamaEnabled
+                  ? context.tr.iqamaWithMins(config.iqamaDelay)
+                  : context.tr.iqamaLabel,
           color: config.iqamaEnabled ? Colors.purple : Colors.grey,
           active: config.iqamaEnabled,
         ),

@@ -1,4 +1,4 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../languages/app_localizations.dart';
@@ -25,25 +25,34 @@ class NextPrayerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textColor = isDark ? Colors.white : const Color(0xFF1A1A1A);
-    final subTextColor = isDark ? Colors.white70 : Colors.black54;
-    final cardColor = isDark ? const Color(0xFF151B26) : Colors.white;
+    final textColor = isDark ? Colors.white : const Color(0xFF1C1915);
+    final subTextColor = isDark ? Colors.white70 : const Color(0xFF514A40);
+    final cardColor =
+        isDark ? const Color(0xFF182235) : const Color(0xFFFFFBF2);
+    final buttonColor =
+        isDark ? const Color(0xFF31394A) : const Color(0xFFE4D8C0);
 
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.fromLTRB(22, 22, 22, 18),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [gold.withValues(alpha: 0.2), gold.withValues(alpha: 0.05)],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors:
+              isDark
+                  ? [const Color(0xFF1A263A), const Color(0xFF121B2A)]
+                  : [const Color(0xFFFFFCF5), const Color(0xFFF9F0DF)],
         ),
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: gold.withValues(alpha: 0.3)),
+        borderRadius: BorderRadius.circular(27),
+        border: Border.all(color: gold.withValues(alpha: 0.72), width: 2),
         boxShadow: [
           BoxShadow(
-            color: isDark
-                ? Colors.black.withValues(alpha: 0.3)
-                : Colors.grey.withValues(alpha: 0.1),
-            blurRadius: 20,
-            offset: const Offset(0, 10),
+            color:
+                isDark
+                    ? Colors.black.withValues(alpha: 0.3)
+                    : const Color(0xFF7D6540).withValues(alpha: 0.24),
+            blurRadius: 22,
+            offset: const Offset(0, 12),
           ),
         ],
       ),
@@ -57,19 +66,21 @@ class NextPrayerCard extends StatelessWidget {
                   children: [
                     Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 6,
+                        horizontal: 14,
+                        vertical: 5,
                       ),
                       decoration: BoxDecoration(
-                        color: gold.withValues(alpha: 0.2),
+                        color:
+                            isDark
+                                ? Colors.white.withValues(alpha: 0.1)
+                                : const Color(0xFFE9E0D0),
                         borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: gold.withValues(alpha: 0.4)),
                       ),
                       child: Text(
                         context.tr.theNextPrayerCardTitle,
                         style: GoogleFonts.cairo(
                           color: textColor,
-                          fontSize: 13,
+                          fontSize: 14,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -78,87 +89,133 @@ class NextPrayerCard extends StatelessWidget {
                     Text(
                       prayerName ?? '--',
                       style: GoogleFonts.amiri(
-                        fontSize: 36,
+                        fontSize: 42,
                         color: textColor,
                         fontWeight: FontWeight.bold,
-                        height: 1,
+                        height: 1.1,
                       ),
                     ),
-                    const SizedBox(height: 4),
+                    const SizedBox(height: 1),
                     Text(
                       prayerTime ?? '--:--',
                       style: GoogleFonts.cairo(
-                        fontSize: 18,
-                        color: subTextColor,
+                        fontSize: 22,
+                        fontWeight: FontWeight.w600,
+                        color: textColor,
                       ),
                     ),
-                    const SizedBox(height: 6),
                     if (muezzinName != null)
-                      Text
-                        (context.tr.muezzinLabel(muezzinName!),
-                        style: GoogleFonts.cairo(
-                          fontSize: 13,
-                          color: gold.withValues(alpha: 0.9),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            CircleAvatar(
+                              radius: 18,
+                              backgroundColor: gold.withValues(alpha: 0.24),
+                              child: Icon(
+                                Icons.person_rounded,
+                                size: 21,
+                                color: isDark ? gold : const Color(0xFF56452F),
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: Text(
+                                context.tr.muezzinLabel(muezzinName!),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: GoogleFonts.cairo(
+                                  fontSize: 13,
+                                  color: subTextColor,
+                                  fontWeight: FontWeight.w600,
+                                  height: 1.35,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                   ],
                 ),
               ),
+              const SizedBox(width: 14),
               Container(
-                width: 85,
-                height: 85,
+                width: 102,
+                height: 102,
+                padding: const EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  border: Border.all(color: gold, width: 3),
-                  color: cardColor,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      remainingTime,
-                      style: GoogleFonts.cairo(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: textColor,
-                      ),
-                    ),
-                    Text(
-                      context.tr.remainingLabel,
-                      style: GoogleFonts.cairo(
-                        fontSize: 10,
-                        color: gold,
-                      ),
+                  gradient: LinearGradient(
+                    colors: [gold, const Color(0xFF6F5224)],
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: gold.withValues(alpha: 0.35),
+                      blurRadius: 15,
+                      spreadRadius: 2,
                     ),
                   ],
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: cardColor,
+                    border: Border.all(
+                      color: isDark ? Colors.white12 : Colors.white,
+                      width: 2,
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        remainingTime,
+                        style: GoogleFonts.cairo(
+                          fontSize: 21,
+                          fontWeight: FontWeight.bold,
+                          color: textColor,
+                        ),
+                      ),
+                      Text(
+                        context.tr.remainingLabel,
+                        style: GoogleFonts.cairo(
+                          fontSize: 11,
+                          color: isDark ? gold : const Color(0xFF80683B),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              Expanded(
-                child: ElevatedButton.icon(
-                  onPressed: onListenAdhan,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: gold.withValues(alpha: 0.2),
-                    foregroundColor: gold,
-                    elevation: 0,
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      side: BorderSide(color: gold.withValues(alpha: 0.3)),
-                    ),
-                  ),
-                  icon: const Icon(Icons.play_arrow),
-                  label: Text(
-                    context.tr.listenToAdhan,
-                    style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
+          const SizedBox(height: 20),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton.icon(
+              onPressed: onListenAdhan,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: buttonColor,
+                foregroundColor: textColor,
+                elevation: 0,
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  side: BorderSide(
+                    color: const Color(0xFF9C8661).withValues(alpha: 0.65),
                   ),
                 ),
               ),
-            ],
+              icon: const Icon(Icons.play_arrow_rounded, size: 27),
+              label: Text(
+                context.tr.listenToAdhan,
+                style: GoogleFonts.cairo(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ),
         ],
       ),

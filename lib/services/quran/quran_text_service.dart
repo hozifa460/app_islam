@@ -30,14 +30,15 @@ class QuranTextService {
     try {
       final prefs = await SharedPreferences.getInstance();
       if (prefs.getBool(_kReadyKey) == true) {
-        return await _loadFromLocal();
+        if (await _loadFromLocal()) return true;
+        await _invalidateLocalCache(prefs);
       }
 
       onProgress?.call(0.05, 'جاري تحميل نص القرآن...');
 
-      final response = await http.get(
-        Uri.parse('https://api.alquran.cloud/v1/quran/quran-uthmani'),
-      ).timeout(const Duration(seconds: 90));
+      final response = await http
+          .get(Uri.parse('https://api.alquran.cloud/v1/quran/quran-uthmani'))
+          .timeout(const Duration(seconds: 90));
 
       if (response.statusCode != 200) return false;
 
@@ -55,14 +56,19 @@ class QuranTextService {
           'name': s['name'],
           'englishName': s['englishName'],
           'revelationType': s['revelationType'],
-          'ayahs': (s['ayahs'] as List).map((a) => {
-            'number': a['number'],
-            'numberInSurah': a['numberInSurah'],
-            'text': a['text'],
-            'page': a['page'],
-            'juz': a['juz'],
-            'hizbQuarter': a['hizbQuarter'],
-          }).toList(),
+          'ayahs':
+              (s['ayahs'] as List)
+                  .map(
+                    (a) => {
+                      'number': a['number'],
+                      'numberInSurah': a['numberInSurah'],
+                      'text': a['text'],
+                      'page': a['page'],
+                      'juz': a['juz'],
+                      'hizbQuarter': a['hizbQuarter'],
+                    },
+                  )
+                  .toList(),
         });
 
         if (i % 10 == 0) {
@@ -75,12 +81,15 @@ class QuranTextService {
       final jsonStr = json.encode(allSurahs);
       await file.writeAsString(jsonStr, flush: true);
 
-      await prefs.setBool(_kReadyKey, true);
-
       // ✅ حذف البيانات القديمة من SharedPreferences إن وجدت
       await prefs.remove('quran_full_text_v2');
 
       _processIntoCache(allSurahs);
+      if (!_hasCompleteQuran) {
+        await _invalidateLocalCache(prefs);
+        return false;
+      }
+      await prefs.setBool(_kReadyKey, true);
       onProgress?.call(1.0, 'تم!');
 
       return true;
@@ -115,7 +124,7 @@ class QuranTextService {
       _processIntoCache(
         surahs.map((s) => Map<String, dynamic>.from(s)).toList(),
       );
-      return true;
+      return _hasCompleteQuran;
     } catch (e) {
       debugPrint('Load from local error: $e');
       return false;
@@ -128,9 +137,30 @@ class QuranTextService {
 
     final prefs = await SharedPreferences.getInstance();
     if (prefs.getBool(_kReadyKey) == true) {
-      return await _loadFromLocal();
+      if (await _loadFromLocal()) return true;
+      await _invalidateLocalCache(prefs);
     }
     return false;
+  }
+
+  static bool get _hasCompleteQuran {
+    if (!_isLoaded || _surahCache.length != 114) return false;
+    if ((_surahCache[1]?.length ?? 0) != 7) return false;
+    if ((_pageCache[1]?.length ?? 0) != 7) return false;
+    final ayahCount = _surahCache.values.fold<int>(
+      0,
+      (total, ayahs) => total + ayahs.length,
+    );
+    return ayahCount == 6236;
+  }
+
+  static Future<void> _invalidateLocalCache(SharedPreferences prefs) async {
+    _isLoaded = false;
+    _pageCache.clear();
+    _surahCache.clear();
+    await prefs.remove(_kReadyKey);
+    final file = await _getLocalFile();
+    if (await file.exists()) await file.delete();
   }
 
   /// ─── معالجة البيانات ───
@@ -140,11 +170,15 @@ class QuranTextService {
 
     for (final surah in surahs) {
       final surahNum = surah['number'] as int;
-      final ayahs = (surah['ayahs'] as List)
-          .map((a) => Map<String, dynamic>.from(a)
-        ..['surahNumber'] = surahNum
-        ..['surahName'] = surah['name'])
-          .toList();
+      final ayahs =
+          (surah['ayahs'] as List)
+              .map(
+                (a) =>
+                    Map<String, dynamic>.from(a)
+                      ..['surahNumber'] = surahNum
+                      ..['surahName'] = surah['name'],
+              )
+              .toList();
 
       _surahCache[surahNum] = ayahs;
 
@@ -208,12 +242,120 @@ class QuranTextService {
 
   static int getGlobalAyahNumber(int surahNumber, int ayahInSurah) {
     const counts = [
-      7,286,200,176,120,165,206,75,129,109,123,111,43,52,99,128,
-      111,110,98,135,112,78,118,64,77,227,93,88,69,60,34,30,73,
-      54,45,83,182,88,75,85,54,53,89,59,37,35,38,29,18,45,60,49,
-      62,55,78,96,29,22,24,13,14,11,11,18,12,12,30,52,52,44,28,
-      28,20,56,40,31,50,40,46,42,29,19,36,25,22,17,19,26,30,20,
-      15,21,11,8,8,19,5,8,8,11,11,8,3,9,5,4,7,3,6,3,5,4,5,6,
+      7,
+      286,
+      200,
+      176,
+      120,
+      165,
+      206,
+      75,
+      129,
+      109,
+      123,
+      111,
+      43,
+      52,
+      99,
+      128,
+      111,
+      110,
+      98,
+      135,
+      112,
+      78,
+      118,
+      64,
+      77,
+      227,
+      93,
+      88,
+      69,
+      60,
+      34,
+      30,
+      73,
+      54,
+      45,
+      83,
+      182,
+      88,
+      75,
+      85,
+      54,
+      53,
+      89,
+      59,
+      37,
+      35,
+      38,
+      29,
+      18,
+      45,
+      60,
+      49,
+      62,
+      55,
+      78,
+      96,
+      29,
+      22,
+      24,
+      13,
+      14,
+      11,
+      11,
+      18,
+      12,
+      12,
+      30,
+      52,
+      52,
+      44,
+      28,
+      28,
+      20,
+      56,
+      40,
+      31,
+      50,
+      40,
+      46,
+      42,
+      29,
+      19,
+      36,
+      25,
+      22,
+      17,
+      19,
+      26,
+      30,
+      20,
+      15,
+      21,
+      11,
+      8,
+      8,
+      19,
+      5,
+      8,
+      8,
+      11,
+      11,
+      8,
+      3,
+      9,
+      5,
+      4,
+      7,
+      3,
+      6,
+      3,
+      5,
+      4,
+      5,
+      6,
     ];
     int total = 0;
     for (int i = 0; i < surahNumber - 1; i++) {

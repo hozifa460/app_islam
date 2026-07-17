@@ -849,6 +849,45 @@ class _HomeScreenState extends State<HomeScreen>
     }
   }
 
+  String _getMosqueBgImage(Map<String, String> prayerTimes) {
+    if (prayerTimes.isEmpty) {
+      final h = DateTime.now().hour;
+      if (h >= 4 && h < 7) return 'assets/images/mosque_fajr.jpg';
+      if (h >= 7 && h < 12) return 'assets/images/mosque_day.jpg';
+      if (h >= 12 && h < 15) return 'assets/images/mosque_noon.jpg';
+      if (h >= 15 && h < 17) return 'assets/images/mosque_asr.jpg';
+      if (h >= 17 && h < 20) return 'assets/images/mosque_dusk.jpg';
+      return 'assets/images/mosque_night.jpg';
+    }
+
+    final now = DateTime.now();
+    final fajr = _parseTime(prayerTimes['Fajr'] ?? '');
+    final sunrise = _parseTime(prayerTimes['Sunrise'] ?? '');
+    final dhuhr = _parseTime(prayerTimes['Dhuhr'] ?? '');
+    final asr = _parseTime(prayerTimes['Asr'] ?? '');
+    final maghrib = _parseTime(prayerTimes['Maghrib'] ?? '');
+    final isha = _parseTime(prayerTimes['Isha'] ?? '');
+
+    String period;
+    if (now.isBefore(fajr)) {
+      period = 'night';
+    } else if (now.isBefore(sunrise)) {
+      period = 'fajr';
+    } else if (now.isBefore(dhuhr)) {
+      period = 'day';
+    } else if (now.isBefore(asr)) {
+      period = 'noon';
+    } else if (now.isBefore(maghrib)) {
+      period = 'asr';
+    } else if (now.isBefore(isha)) {
+      period = 'dusk';
+    } else {
+      period = 'night';
+    }
+
+    return 'assets/images/mosque_$period.jpg';
+  }
+
   void _calculateNextPrayer(Map<String, String> prayerTimes) {
     if (prayerTimes.isEmpty || !mounted) return;
 
@@ -1178,6 +1217,15 @@ class _HomeScreenState extends State<HomeScreen>
                               )
                               .toList();
 
+                  final remainingCards =
+                      orderedCards
+                          .where(
+                            (card) =>
+                                card.id != 'header_slider' &&
+                                card.id != 'prayer',
+                          )
+                          .toList();
+
                   return ListView(
                     key: const PageStorageKey('home-main-scroll'),
                     controller: _homeScrollController,
@@ -1185,102 +1233,222 @@ class _HomeScreenState extends State<HomeScreen>
                     physics: const BouncingScrollPhysics(
                       parent: AlwaysScrollableScrollPhysics(),
                     ),
-                    padding: const EdgeInsets.fromLTRB(16, 8, 16, 120),
+                    padding: const EdgeInsets.only(bottom: 120),
                     children: [
-                      // ط§ظ„ط´ط±ظٹط· ط§ظ„ط¹ظ„ظˆظٹ
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 14),
-                        child: ValueListenableBuilder<double>(
-                          valueListenable: _scrollOffsetNotifier,
-                          builder: (_, offset, __) {
-                            final elevated = offset > 6;
-                            return AnimatedContainer(
-                              duration: const Duration(milliseconds: 180),
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 0,
-                                vertical: 0,
-                              ),
-                              decoration: BoxDecoration(
-                                color:
-                                    elevated
-                                        ? (isDark
-                                            ? const Color(
-                                              0xFF0E1714,
-                                            ).withValues(alpha: 0.30)
-                                            : Colors.white.withValues(
-                                              alpha: 0.35,
-                                            ))
-                                        : Colors.transparent,
-                                borderRadius: BorderRadius.circular(18),
-                                boxShadow:
-                                    elevated
-                                        ? [
-                                          BoxShadow(
-                                            color: Colors.black.withValues(
-                                              alpha: isDark ? 0.18 : 0.06,
-                                            ),
-                                            blurRadius: 10,
-                                            offset: const Offset(0, 2),
-                                          ),
-                                        ]
-                                        : [],
-                              ),
-                              child: Row(
-                                children: [
-                                  _buildTopBarButton(
-                                    icon: Icons.menu_rounded,
-                                    cardColor: cardColor,
-                                    isDark: isDark,
-                                    onTap:
-                                        () =>
-                                            _scaffoldKey.currentState
-                                                ?.openDrawer(),
-                                  ),
-                                  const SizedBox(width: 8),
-                                  Expanded(
-                                    child: _buildHijriDateCenter(
-                                      cardColor,
-                                      isDark,
-                                    ),
-                                  ),
-                                  const SizedBox(width: 8),
-                                  _buildTopBarButton(
-                                    icon: Icons.dashboard_customize_rounded,
-                                    cardColor: cardColor,
-                                    isDark: isDark,
-                                    onTap: _openReorderSheet,
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
+                      // Unified Top Section (TopBar + Header Slider + Prayer Times)
+                      ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(32),
+                          bottomRight: Radius.circular(32),
                         ),
-                      ),
-
-                      // ط§ظ„ط¨ط·ط§ظ‚ط§طھ
-                      ...orderedCards.asMap().entries.map((entry) {
-                        final index = entry.key;
-                        final card = entry.value;
-
-                        return _StaggeredCard(
-                          index: index,
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              bottom: index < orderedCards.length - 1 ? 14 : 0,
-                            ),
-                            child: _buildCardById(
-                              card.id,
-                              cardColor,
-                              isDark,
-                              features,
-                              prayerInfoTranslated,
-                              prayerTimes,
-                              cityName,
-                              isPrayerLoading,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF0A2B42),
+                            image: DecorationImage(
+                              image: AssetImage(_getMosqueBgImage(prayerTimes)),
+                              fit: BoxFit.cover,
+                              alignment: Alignment.bottomCenter,
                             ),
                           ),
-                        );
-                      }),
+                          child: Stack(
+                            children: [
+                              Positioned.fill(
+                                child: IgnorePointer(
+                                  child: DecoratedBox(
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                        stops: const [0, 0.28, 0.58, 1],
+                                        colors: [
+                                          const Color(
+                                            0xFF082940,
+                                          ).withValues(alpha: 0.98),
+                                          const Color(
+                                            0xFF0A314B,
+                                          ).withValues(alpha: 0.82),
+                                          const Color(
+                                            0xFF0A314B,
+                                          ).withValues(alpha: 0.10),
+                                          Colors.black.withValues(alpha: 0.26),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Column(
+                                children: [
+                                  // ط§ظ„ط´ط±ظٹط· ط§ظ„ط¹ظ„ظˆظٹ
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      bottom: 14,
+                                      top: 8,
+                                    ),
+                                    child: ValueListenableBuilder<double>(
+                                      valueListenable: _scrollOffsetNotifier,
+                                      builder: (_, offset, __) {
+                                        final elevated = offset > 6;
+                                        return AnimatedContainer(
+                                          duration: const Duration(
+                                            milliseconds: 180,
+                                          ),
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 16,
+                                            vertical: 0,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color:
+                                                elevated
+                                                    ? (isDark
+                                                        ? const Color(
+                                                          0xFF0E1714,
+                                                        ).withValues(
+                                                          alpha: 0.30,
+                                                        )
+                                                        : Colors.white
+                                                            .withValues(
+                                                              alpha: 0.35,
+                                                            ))
+                                                    : Colors.transparent,
+                                            borderRadius: BorderRadius.circular(
+                                              18,
+                                            ),
+                                            boxShadow:
+                                                elevated
+                                                    ? [
+                                                      BoxShadow(
+                                                        color: Colors.black
+                                                            .withValues(
+                                                              alpha:
+                                                                  isDark
+                                                                      ? 0.18
+                                                                      : 0.06,
+                                                            ),
+                                                        blurRadius: 10,
+                                                        offset: const Offset(
+                                                          0,
+                                                          2,
+                                                        ),
+                                                      ),
+                                                    ]
+                                                    : [],
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              _buildTopBarButton(
+                                                icon: Icons.menu_rounded,
+                                                cardColor: cardColor,
+                                                isDark: isDark,
+                                                onTap:
+                                                    () =>
+                                                        _scaffoldKey
+                                                            .currentState
+                                                            ?.openDrawer(),
+                                              ),
+                                              const SizedBox(width: 8),
+                                              Expanded(
+                                                child: _buildHijriDateCenter(
+                                                  cardColor,
+                                                  isDark,
+                                                ),
+                                              ),
+                                              const SizedBox(width: 8),
+                                              _buildTopBarButton(
+                                                icon:
+                                                    Icons
+                                                        .dashboard_customize_rounded,
+                                                cardColor: cardColor,
+                                                isDark: isDark,
+                                                onTap: _openReorderSheet,
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ),
+
+                                  // Header Slider (if visible)
+                                  if (orderedCards.any(
+                                    (c) => c.id == 'header_slider',
+                                  ))
+                                    Padding(
+                                      padding: EdgeInsets.zero,
+                                      child: _buildCardById(
+                                        'header_slider',
+                                        cardColor,
+                                        isDark,
+                                        features,
+                                        prayerInfoTranslated,
+                                        prayerTimes,
+                                        cityName,
+                                        isPrayerLoading,
+                                      ),
+                                    ),
+
+                                  // Prayer Card (if visible)
+                                  if (orderedCards.any((c) => c.id == 'prayer'))
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                        4,
+                                        0,
+                                        4,
+                                        0,
+                                      ),
+                                      child: _buildCardById(
+                                        'prayer',
+                                        cardColor,
+                                        isDark,
+                                        features,
+                                        prayerInfoTranslated,
+                                        prayerTimes,
+                                        cityName,
+                                        isPrayerLoading,
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      // The first card stays in the user's chosen order, but
+                      // rises into the lower edge of the prayer scene.
+                      if (remainingCards.isNotEmpty)
+                        Transform.translate(
+                          offset: const Offset(0, -34),
+                          child: Column(
+                            children:
+                                remainingCards.asMap().entries.map((entry) {
+                                  final index = entry.key;
+                                  final card = entry.value;
+                                  final isLast =
+                                      index == remainingCards.length - 1;
+
+                                  return _StaggeredCard(
+                                    index: index + 2,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                        left: 16,
+                                        right: 16,
+                                        bottom: isLast ? 0 : 14,
+                                      ),
+                                      child: _buildCardById(
+                                        card.id,
+                                        cardColor,
+                                        isDark,
+                                        features,
+                                        prayerInfoTranslated,
+                                        prayerTimes,
+                                        cityName,
+                                        isPrayerLoading,
+                                      ),
+                                    ),
+                                  );
+                                }).toList(),
+                          ),
+                        ),
                     ],
                   );
                 },
@@ -1341,10 +1509,10 @@ class _HomeScreenState extends State<HomeScreen>
       },
       child: Container(
         constraints: const BoxConstraints(maxHeight: 52),
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
         decoration: BoxDecoration(
-          color: cardColor.withValues(alpha: 0.92),
-          borderRadius: BorderRadius.circular(16),
+          color: cardColor.withValues(alpha: isDark ? 0.90 : 0.94),
+          borderRadius: BorderRadius.circular(18),
           border: Border.all(color: borderColor, width: borderWidth),
           boxShadow: [
             BoxShadow(
@@ -1362,8 +1530,8 @@ class _HomeScreenState extends State<HomeScreen>
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.brightness_3_rounded, size: 11, color: _gold),
-                const SizedBox(width: 4),
+                Icon(Icons.calendar_today_rounded, size: 13, color: _gold),
+                const SizedBox(width: 5),
                 Flexible(
                   child: Text(
                     dateText,
@@ -1378,8 +1546,8 @@ class _HomeScreenState extends State<HomeScreen>
                     textAlign: TextAlign.center,
                   ),
                 ),
-                const SizedBox(width: 4),
-                Icon(Icons.brightness_3_rounded, size: 11, color: _gold),
+                const SizedBox(width: 5),
+                Icon(Icons.calendar_today_rounded, size: 13, color: _gold),
               ],
             ),
             if (todayEvent != null) ...[
@@ -1414,11 +1582,14 @@ class _HomeScreenState extends State<HomeScreen>
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 42,
-        height: 42,
+        width: 44,
+        height: 44,
         decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: cardColor.withValues(alpha: 0.9),
+          color: cardColor.withValues(alpha: isDark ? 0.90 : 0.94),
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(
+            color: _gold.withValues(alpha: isDark ? 0.20 : 0.14),
+          ),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.06),

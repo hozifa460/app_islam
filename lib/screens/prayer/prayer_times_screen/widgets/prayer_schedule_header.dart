@@ -1,4 +1,4 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../languages/app_localizations.dart';
@@ -22,18 +22,18 @@ class PrayerScheduleHeader extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: 4,
-          height: 24,
+          width: 5,
+          height: 34,
           decoration: BoxDecoration(
             color: gold,
             borderRadius: BorderRadius.circular(4),
           ),
         ),
-        const SizedBox(width: 12),
+        const SizedBox(width: 10),
         Text(
           context.tr.prayerScheduleTable,
           style: GoogleFonts.cairo(
-            fontSize: 20,
+            fontSize: 25,
             fontWeight: FontWeight.bold,
             color: textColor,
           ),
@@ -41,20 +41,20 @@ class PrayerScheduleHeader extends StatelessWidget {
         const Spacer(),
         if (nextPrayerName != null)
           Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 12,
-              vertical: 6,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
             decoration: BoxDecoration(
-              color: gold.withValues(alpha: 0.15),
+              color:
+                  isDark
+                      ? gold.withValues(alpha: 0.15)
+                      : const Color(0xFFE8DECB),
               borderRadius: BorderRadius.circular(20),
               border: Border.all(color: gold.withValues(alpha: 0.35)),
             ),
             child: Text(
               context.tr.upNextPrayer(nextPrayerName!),
               style: GoogleFonts.cairo(
-                color: gold,
-                fontSize: 12,
+                color: isDark ? gold : const Color(0xFF59482F),
+                fontSize: 13,
                 fontWeight: FontWeight.bold,
               ),
             ),

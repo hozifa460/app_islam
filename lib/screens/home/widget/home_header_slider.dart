@@ -1,4 +1,6 @@
-﻿import 'package:flutter/material.dart';
+import 'dart:ui';
+
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../languages/app_localizations.dart';
 import '../../../services/great_muslims_service.dart';
@@ -29,11 +31,13 @@ class HomeHeaderSlider extends StatelessWidget {
   Widget build(BuildContext context) {
     final tr = context.tr;
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final subtitleColor =
+        isDark ? const Color(0xFFD8E1DD) : const Color(0xFF23323B);
 
     if (!isLoaded) {
       return HomeCardSkeleton(
         isDark: isDark,
-        height: 205,
+        height: 200,
         borderRadius: BorderRadius.circular(24),
       );
     }
@@ -47,243 +51,355 @@ class HomeHeaderSlider extends StatelessWidget {
       );
     }
 
-    return LayoutBuilder(builder: (context, constraints) {
-      final width = constraints.maxWidth;
-      final small = width < 360;
-      final sliderHeight = small ? 180.0 : 205.0;
-      final titleSize = small ? 18.0 : 22.0;
-      final roleSize = small ? 10.5 : 12.0;
-      final descSize = small ? 10.0 : 11.5;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final width = constraints.maxWidth;
+        final small = width < 360;
+        final sliderHeight = small ? 194.0 : 214.0;
+        final titleSize = small ? 21.0 : 25.0;
+        final roleSize = small ? 11.0 : 13.0;
+        final descSize = small ? 10.0 : 11.5;
 
-      return Column(
-        children: [
-          SizedBox(
-            height: sliderHeight,
-            child: PageView.builder(
-              controller: pageController,
-              itemCount: greatMuslims.length,
-              onPageChanged: onPageChanged,
-              itemBuilder: (context, index) {
-                final person = greatMuslims[index];
-                final heroTag = 'great_person_${person.id}';
-                final isActive = index == currentIndex;
+        return Column(
+          children: [
+            SizedBox(
+              height: sliderHeight,
+              child: PageView.builder(
+                controller: pageController,
+                itemCount: greatMuslims.length,
+                onPageChanged: onPageChanged,
+                itemBuilder: (context, index) {
+                  final person = greatMuslims[index];
+                  final heroTag = 'great_person_${person.id}';
+                  final isActive = index == currentIndex;
 
-                return AnimatedScale(
-                  scale: isActive ? 1.0 : 0.96,
+                  return AnimatedScale(
+                    scale: isActive ? 1.0 : 0.96,
+                    duration: const Duration(milliseconds: 250),
+                    curve: Curves.easeOut,
+                    child: GestureDetector(
+                      onTap:
+                          () => Navigator.push(
+                            context,
+                            PageRouteBuilder(
+                              transitionDuration: const Duration(
+                                milliseconds: 650,
+                              ),
+                              reverseTransitionDuration: const Duration(
+                                milliseconds: 420,
+                              ),
+                              opaque: false,
+                              pageBuilder:
+                                  (_, __, ___) => GreatPersonDetailScreen(
+                                    person: person,
+                                    allPersons: greatMuslims,
+                                    primaryColor: primary,
+                                    heroTag: heroTag,
+                                  ),
+                              transitionsBuilder: (_, animation, __, child) {
+                                final curved = CurvedAnimation(
+                                  parent: animation,
+                                  curve: Curves.easeOutCubic,
+                                  reverseCurve: Curves.easeInCubic,
+                                );
+                                return FadeTransition(
+                                  opacity: curved,
+                                  child: SlideTransition(
+                                    position: Tween<Offset>(
+                                      begin: const Offset(0, 0.03),
+                                      end: Offset.zero,
+                                    ).animate(curved),
+                                    child: ScaleTransition(
+                                      scale: Tween<double>(
+                                        begin: 0.985,
+                                        end: 1.0,
+                                      ).animate(curved),
+                                      child: child,
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                      child: _PersonCard(
+                        person: person,
+                        heroTag: heroTag,
+                        isActive: isActive,
+                        isDark: isDark,
+                        subtitleColor: subtitleColor,
+                        gold: gold,
+                        primary: primary,
+                        titleSize: titleSize,
+                        roleSize: roleSize,
+                        descSize: descSize,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+
+            const SizedBox(height: 8),
+
+            // Indicators
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(greatMuslims.length, (index) {
+                final active = index == currentIndex;
+                return AnimatedContainer(
                   duration: const Duration(milliseconds: 250),
-                  curve: Curves.easeOut,
-                  child: GestureDetector(
-                    onTap: () => Navigator.push(
-                      context,
-                      PageRouteBuilder(
-                        transitionDuration:
-                        const Duration(milliseconds: 650),
-                        reverseTransitionDuration:
-                        const Duration(milliseconds: 420),
-                        opaque: false,
-                        pageBuilder: (_, __, ___) =>
-                            GreatPersonDetailScreen(
-                              person: person,
-                              allPersons: greatMuslims,
-                              primaryColor: primary,
-                              heroTag: heroTag,
-                            ),
-                        transitionsBuilder:
-                            (_, animation, __, child) {
-                          final curved = CurvedAnimation(
-                            parent: animation,
-                            curve: Curves.easeOutCubic,
-                            reverseCurve: Curves.easeInCubic,
-                          );
-                          return FadeTransition(
-                            opacity: curved,
-                            child: SlideTransition(
-                              position: Tween<Offset>(
-                                begin: const Offset(0, 0.03),
-                                end: Offset.zero,
-                              ).animate(curved),
-                              child: ScaleTransition(
-                                scale: Tween<double>(
-                                    begin: 0.985, end: 1.0)
-                                    .animate(curved),
-                                child: child,
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                    child: Hero(
-                      tag: heroTag,
-                      child: Material(
-                        color: Colors.transparent,
-                        child: Container(
-                          margin: EdgeInsets.only(
-                            top: 8,
-                            right: 8,
-                            left: index == greatMuslims.length - 1
-                                ? 0
-                                : 4,
-                            bottom: 4,
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(24),
-                            boxShadow: [
-                              BoxShadow(
-                                color: primary.withValues(alpha: 
-                                    isActive ? 0.18 : 0.08),
-                                blurRadius: isActive ? 16 : 10,
-                                offset: const Offset(0, 8),
-                              ),
-                            ],
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(24),
-                            child: Stack(
-                              fit: StackFit.expand,
-                              children: [
-                                // â•گâ•گ Parallax Effect â•گâ•گ
-                                _ParallaxImage(
-                                  pageController: pageController,
-                                  index: index,
-                                  imagePath: person.image,
-                                ),
-
-                                // Gradient overlay
-                                Container(
-                                  decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                      colors: [
-                                        Colors.black.withValues(alpha: 0.08),
-                                        Colors.black.withValues(alpha: 0.18),
-                                        Colors.black.withValues(alpha: 0.78),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-
-                                // Badge
-                                Positioned(
-                                  top: 12,
-                                  right: 12,
-                                  child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 10, vertical: 5),
-                                    decoration: BoxDecoration(
-                                      color: gold.withValues(alpha: 0.18),
-                                      borderRadius:
-                                      BorderRadius.circular(14),
-                                    ),
-                                    child: Text(
-                                      tr.greatOfIslam,
-                                      style: GoogleFonts.cairo(
-                                        color: Colors.white,
-                                        fontSize: small ? 9.5 : 10.5,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-
-                                // ظ…ط¹ظ„ظˆظ…ط§طھ ط§ظ„ط´ط®طµ
-                                Positioned(
-                                  left: 14,
-                                  right: 14,
-                                  bottom: 14,
-                                  child: Container(
-                                    padding: const EdgeInsets.all(12),
-                                    decoration: BoxDecoration(
-                                      color:
-                                      Colors.black.withValues(alpha: 0.24),
-                                      borderRadius:
-                                      BorderRadius.circular(18),
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.end,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Text(
-                                          person.name,
-                                          textAlign: TextAlign.right,
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: GoogleFonts.cairo(
-                                            color: Colors.white,
-                                            fontSize: titleSize,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        const SizedBox(height: 4),
-                                        Text(
-                                          person.title,
-                                          textAlign: TextAlign.right,
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: GoogleFonts.cairo(
-                                            color:
-                                            const Color(0xFFF4E7B2),
-                                            fontSize: roleSize,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                        const SizedBox(height: 6),
-                                        Text(
-                                          person.desc,
-                                          textAlign: TextAlign.right,
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: GoogleFonts.cairo(
-                                            color: Colors.white
-                                                .withValues(alpha: 0.92),
-                                            fontSize: descSize,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                  margin: const EdgeInsets.symmetric(horizontal: 4),
+                  width: active ? 18 : 8,
+                  height: 8,
+                  decoration: BoxDecoration(
+                    color:
+                        active ? primary : Colors.white.withValues(alpha: 0.55),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 );
-              },
+              }),
             ),
-          ),
-
-          const SizedBox(height: 8),
-
-          // Indicators
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(greatMuslims.length, (index) {
-              final active = index == currentIndex;
-              return AnimatedContainer(
-                duration: const Duration(milliseconds: 250),
-                margin: const EdgeInsets.symmetric(horizontal: 4),
-                width: active ? 18 : 8,
-                height: 8,
-                decoration: BoxDecoration(
-                  color: active ? gold : gold.withValues(alpha: 0.28),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              );
-            }),
-          ),
-        ],
-      );
-    });
+          ],
+        );
+      },
+    );
   }
 }
 
-/// â•گâ•گ Parallax Image Widget â•گâ•گ
+/// Single person card — white card with medallion on top, portrait on right (RTL) + text on left
+class _PersonCard extends StatelessWidget {
+  final GreatMuslim person;
+  final String heroTag;
+  final bool isActive;
+  final bool isDark;
+  final Color subtitleColor;
+  final Color gold;
+  final Color primary;
+  final double titleSize;
+  final double roleSize;
+  final double descSize;
+
+  const _PersonCard({
+    required this.person,
+    required this.heroTag,
+    required this.isActive,
+    required this.isDark,
+    required this.subtitleColor,
+    required this.gold,
+    required this.primary,
+    required this.titleSize,
+    required this.roleSize,
+    required this.descSize,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Hero(
+      tag: heroTag,
+      child: Material(
+        color: Colors.transparent,
+        child: Container(
+          margin: const EdgeInsets.only(top: 20, bottom: 4),
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              // ── Card body ──
+              ClipRRect(
+                borderRadius: BorderRadius.circular(24),
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 13, sigmaY: 13),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors:
+                            isDark
+                                ? [
+                                  const Color(
+                                    0xFF183B45,
+                                  ).withValues(alpha: 0.72),
+                                  const Color(
+                                    0xFF0B1E29,
+                                  ).withValues(alpha: 0.56),
+                                ]
+                                : [
+                                  Colors.white.withValues(alpha: 0.48),
+                                  const Color(
+                                    0xFFDCE9E4,
+                                  ).withValues(alpha: 0.34),
+                                ],
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color:
+                              isActive
+                                  ? Colors.black.withValues(alpha: 0.24)
+                                  : Colors.black.withValues(alpha: 0.10),
+                          blurRadius: isActive ? 18 : 12,
+                          offset: const Offset(0, 6),
+                        ),
+                      ],
+                      border: Border.all(
+                        color: Colors.white.withValues(
+                          alpha: isDark ? 0.22 : 0.50,
+                        ),
+                        width: 1.1,
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(14, 36, 14, 14),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          _buildPortrait(),
+                          const SizedBox(width: 14),
+                          Expanded(child: _buildTextBlock()),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              // ── Medallion badge at top-center ──
+              Positioned(
+                top: -20,
+                left: 0,
+                right: 0,
+                child: Center(child: _buildMedallion()),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMedallion() {
+    return Container(
+      width: 60,
+      height: 60,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: RadialGradient(
+          colors: [gold.withValues(alpha: 0.95), gold.withValues(alpha: 0.65)],
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: gold.withValues(alpha: 0.45),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
+          ),
+        ],
+        border: Border.all(color: Colors.white, width: 3),
+      ),
+      child: ClipOval(
+        child: Image.asset(
+          'assets/icon/icon.png',
+          fit: BoxFit.cover,
+          errorBuilder:
+              (_, __, ___) =>
+                  Icon(Icons.star_rounded, color: Colors.white, size: 28),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPortrait() {
+    return Container(
+      width: 110,
+      height: 120,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(18),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.15),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+        border: Border.all(color: gold.withValues(alpha: 0.35), width: 2),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: Image.asset(
+          person.image,
+          fit: BoxFit.cover,
+          width: 110,
+          height: 120,
+          errorBuilder:
+              (_, __, ___) => Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [primary.withValues(alpha: 0.7), primary],
+                  ),
+                ),
+                child: Icon(
+                  Icons.person_rounded,
+                  color: Colors.white54,
+                  size: 40,
+                ),
+              ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTextBlock() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        // Name — large, bold
+        Text(
+          person.name,
+          textAlign: TextAlign.right,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: GoogleFonts.cairo(
+            color: gold,
+            fontSize: titleSize,
+            fontWeight: FontWeight.w800,
+            height: 1.15,
+          ),
+        ),
+        const SizedBox(height: 4),
+        // Role/title
+        Text(
+          person.title,
+          textAlign: TextAlign.right,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: GoogleFonts.cairo(
+            color: isDark ? Colors.white : primary,
+            fontSize: roleSize,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        const SizedBox(height: 6),
+        // Description
+        Text(
+          person.desc,
+          textAlign: TextAlign.right,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+          style: GoogleFonts.cairo(
+            color: subtitleColor,
+            fontSize: descSize,
+            fontWeight: FontWeight.w500,
+            height: 1.4,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// Parallax image widget (kept for backward compat but unused in new design)
 class _ParallaxImage extends StatefulWidget {
   final PageController pageController;
   final int index;
@@ -318,7 +434,6 @@ class _ParallaxImageState extends State<_ParallaxImage> {
     if (!widget.pageController.hasClients) return;
     final page = widget.pageController.page ?? 0;
     final diff = (page - widget.index);
-    // â•گâ•گ طھط­ط±ظٹظƒ ط§ظ„طµظˆط±ط© ط¨ط´ظƒظ„ ط¹ظƒط³ظٹ ط®ظپظٹظپ â•گâ•گ
     final newOffset = diff * 30;
     if ((newOffset - _offset).abs() > 0.5) {
       setState(() => _offset = newOffset);
@@ -335,15 +450,16 @@ class _ParallaxImageState extends State<_ParallaxImage> {
           fit: BoxFit.cover,
           width: double.infinity,
           height: double.infinity,
-          errorBuilder: (_, __, ___) => Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [Color(0xFF123C33), Color(0xFF1D5B4F)],
+          errorBuilder:
+              (_, __, ___) => Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Color(0xFF123C33), Color(0xFF1D5B4F)],
+                  ),
+                ),
               ),
-            ),
-          ),
         ),
       ),
     );

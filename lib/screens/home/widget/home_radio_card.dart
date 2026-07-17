@@ -1,4 +1,4 @@
-﻿import 'dart:math';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -54,10 +54,10 @@ class _HomeRadioCardState extends State<HomeRadioCard>
 
   // â•گâ•گ ط¯ظ…ط¬ ط§ظ„ظ€ 3 Selectors ظپظٹ Selector ظˆط§ط­ط¯ â•گâ•گ
   _HomeRadioState _buildState(
-      RadioIntillegence online,
-      OfflineRadioService offline,
-      OnlineSurahService onlineSurah,
-      ) {
+    RadioIntillegence online,
+    OfflineRadioService offline,
+    OnlineSurahService onlineSurah,
+  ) {
     if (online.currentStation != null) {
       return _HomeRadioState(
         hasPlayer: true,
@@ -85,9 +85,10 @@ class _HomeRadioCardState extends State<HomeRadioCard>
     if (offline.currentStation != null) {
       return _HomeRadioState(
         hasPlayer: true,
-        name: offline.currentSurahName.isNotEmpty
-            ? offline.currentSurahName
-            : offline.currentStation!.name,
+        name:
+            offline.currentSurahName.isNotEmpty
+                ? offline.currentSurahName
+                : offline.currentStation!.name,
         category: '${offline.currentStation!.name} • أوفلاين',
         emoji: offline.currentStation!.iconEmoji,
         imageUrl: offline.currentStation!.imageUrl,
@@ -123,53 +124,51 @@ class _HomeRadioCardState extends State<HomeRadioCard>
         );
       },
       // â•گâ•گ Selector3 ظˆط§ط­ط¯ ط¨ط¯ظ„ 3 ظ…طھط¯ط§ط®ظ„ط© â•گâ•گ
-      child: Selector3<RadioIntillegence, OfflineRadioService,
-          OnlineSurahService, _HomeRadioState>(
-        selector: (_, online, offline, onlineSurah) =>
-            _buildState(online, offline, onlineSurah),
+      child: Selector3<
+        RadioIntillegence,
+        OfflineRadioService,
+        OnlineSurahService,
+        _HomeRadioState
+      >(
+        selector:
+            (_, online, offline, onlineSurah) =>
+                _buildState(online, offline, onlineSurah),
         builder: (_, state, __) {
           // â•گâ•گ ط£ظ„ظˆط§ظ† ظ…ط­ط³ظˆط¨ط© ظ…ط±ط© ظˆط§ط­ط¯ط© â•گâ•گ
-          final borderColor = state.isPlaying
-              ? widget.primary.withValues(alpha: 0.32)
-              : isDark
-              ? Colors.white.withValues(alpha: 0.06)
-              : Colors.black.withValues(alpha: 0.06);
+          final borderColor =
+              state.isPlaying
+                  ? widget.primary.withValues(alpha: 0.32)
+                  : isDark
+                  ? Colors.white.withValues(alpha: 0.06)
+                  : Colors.black.withValues(alpha: 0.06);
 
-          final shadowColor = state.isPlaying
-              ? widget.primary.withValues(alpha: isDark ? 0.16 : 0.10)
-              : Colors.black.withValues(alpha: isDark ? 0.15 : 0.04);
+          final shadowColor =
+              state.isPlaying
+                  ? widget.primary.withValues(alpha: isDark ? 0.16 : 0.10)
+                  : Colors.black.withValues(alpha: isDark ? 0.15 : 0.04);
 
           return AnimatedContainer(
             duration: const Duration(milliseconds: 300),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(24),
+              borderRadius: BorderRadius.circular(30),
               gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: state.isPlaying
-                    ? [
-                  widget.primary.withValues(alpha: isDark ? 0.18 : 0.12),
-                  widget.gold.withValues(alpha: isDark ? 0.10 : 0.06),
-                  widget.primary.withValues(alpha: isDark ? 0.08 : 0.04),
-                ]
-                    : [
-                  isDark
-                      ? const Color(0xFF111827)
-                      : Colors.white,
-                  isDark
-                      ? const Color(0xFF111827).withValues(alpha: 0.96)
-                      : Colors.white.withValues(alpha: 0.98),
-                ],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors:
+                    isDark
+                        ? const [Color(0xFF17221F), Color(0xFF101916)]
+                        : const [Color(0xFFFFFCF5), Color(0xFFF5F0E4)],
               ),
               border: Border.all(
-                color: borderColor,
-                width: state.isPlaying ? 1.3 : 0.6,
+                color:
+                    isDark ? borderColor : widget.gold.withValues(alpha: 0.34),
+                width: state.isPlaying ? 1.4 : 0.9,
               ),
               boxShadow: [
                 BoxShadow(
-                  color: shadowColor,
-                  blurRadius: state.isPlaying ? 18 : 8,
-                  offset: const Offset(0, 4),
+                  color: shadowColor.withValues(alpha: isDark ? 0.9 : 0.65),
+                  blurRadius: state.isPlaying ? 22 : 16,
+                  offset: const Offset(0, 8),
                 ),
               ],
             ),
@@ -177,11 +176,13 @@ class _HomeRadioCardState extends State<HomeRadioCard>
               mainAxisSize: MainAxisSize.min,
               children: [
                 _buildHeader(isDark, state),
-                if (state.hasPlayer && state.isPlaying)
+                _buildSearchRow(isDark),
+                if (state.hasPlayer)
                   _buildNowPlaying(isDark, state)
                 else
-                  _buildQuickStations(isDark),
-                const SizedBox(height: 6),
+                  const SizedBox(height: 2),
+                _buildQuickStations(isDark),
+                const SizedBox(height: 12),
               ],
             ),
           );
@@ -192,99 +193,123 @@ class _HomeRadioCardState extends State<HomeRadioCard>
 
   Widget _buildHeader(bool isDark, _HomeRadioState state) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 14, 16, 4),
+      padding: const EdgeInsets.fromLTRB(18, 18, 18, 4),
       child: Row(
+        textDirection: TextDirection.ltr,
         children: [
+          Container(
+            width: 42,
+            height: 42,
+            decoration: BoxDecoration(
+              color:
+                  isDark
+                      ? Colors.white.withValues(alpha: 0.09)
+                      : const Color(0xFFE9ECE7),
+              shape: BoxShape.circle,
+              border: Border.all(color: widget.gold.withValues(alpha: 0.22)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: isDark ? 0.22 : 0.06),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: Icon(
+              Icons.chevron_left_rounded,
+              color: isDark ? Colors.white : const Color(0xFF18362F),
+              size: 27,
+            ),
+          ),
+          const Spacer(),
+          Expanded(
+            flex: 5,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  'الراديو والتلاوات',
+                  textAlign: TextAlign.right,
+                  style: GoogleFonts.cairo(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w900,
+                    height: 1.18,
+                    color: isDark ? Colors.white : const Color(0xFF151B21),
+                  ),
+                ),
+                Text(
+                  '${RadioStationsData.all.length} محطة - تلاوات وحفلات',
+                  textAlign: TextAlign.right,
+                  style: GoogleFonts.cairo(
+                    fontSize: 11,
+                    color: isDark ? Colors.white60 : const Color(0xFF54544F),
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSearchRow(bool isDark) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(18, 10, 18, 4),
+      child: Row(
+        textDirection: TextDirection.ltr,
+        children: [
+          Expanded(
+            child: Container(
+              height: 44,
+              padding: const EdgeInsets.symmetric(horizontal: 14),
+              decoration: BoxDecoration(
+                color:
+                    isDark
+                        ? Colors.white.withValues(alpha: 0.07)
+                        : const Color(0xFFE9ECE7),
+                borderRadius: BorderRadius.circular(22),
+              ),
+              child: Row(
+                textDirection: TextDirection.ltr,
+                children: [
+                  Icon(
+                    Icons.search_rounded,
+                    size: 23,
+                    color: isDark ? Colors.white70 : const Color(0xFF173D35),
+                  ),
+                  const SizedBox(width: 9),
+                  Expanded(
+                    child: Text(
+                      'البحث',
+                      textAlign: TextAlign.right,
+                      style: GoogleFonts.cairo(
+                        fontSize: 13,
+                        color: isDark ? Colors.white54 : Colors.black38,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(width: 10),
           Container(
             width: 44,
             height: 44,
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [widget.primary, widget.gold],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-              borderRadius: BorderRadius.circular(14),
-              boxShadow: [
-                BoxShadow(
-                  color: widget.primary.withValues(alpha: 0.25),
-                  blurRadius: 8,
-                  offset: const Offset(0, 3),
-                ),
-              ],
-            ),
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                const Icon(Icons.radio_rounded, color: Colors.white, size: 22),
-                if (state.isPlaying)
-                  RepaintBoundary(
-                    child: AnimatedBuilder(
-                      animation: _animController,
-                      builder: (_, __) => CustomPaint(
-                        size: const Size(44, 44),
-                        painter: _WavePainter(
-                          progress: _animController.value,
-                          color: Colors.white.withValues(alpha: 0.25),
-                        ),
-                      ),
-                    ),
-                  ),
-              ],
-            ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  state.isPlaying ? 'يستمع الآن' : 'الراديو والتلاوات',
-                  style: GoogleFonts.cairo(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w800,
-                    color: isDark ? Colors.white : const Color(0xFF1A1A2E),
-                  ),
-                ),
-                Row(
-                  children: [
-                    if (state.isPlaying) ...[
-                      _LiveDot(controller: _animController),
-                      const SizedBox(width: 6),
-                    ],
-                    Flexible(
-                      child: Text(
-                        state.isPlaying
-                            ? state.category
-                            : '${RadioStationsData.all.length} محطة • تلاوات وحفلات',
-                        style: GoogleFonts.cairo(
-                          fontSize: 11,
-                          color: state.isPlaying
-                              ? widget.primary
-                              : isDark
-                              ? Colors.white54
-                              : Colors.black45,
-                          fontWeight: state.isPlaying
-                              ? FontWeight.w600
-                              : FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: widget.primary.withValues(alpha: isDark ? 0.12 : 0.08),
-              borderRadius: BorderRadius.circular(12),
+              color:
+                  isDark
+                      ? Colors.white.withValues(alpha: 0.09)
+                      : const Color(0xFFE9ECE7),
+              shape: BoxShape.circle,
             ),
             child: Icon(
-              Icons.arrow_forward_ios_rounded,
-              size: 14,
-              color: widget.primary,
+              Icons.tune_rounded,
+              color: isDark ? Colors.white70 : const Color(0xFF173D35),
+              size: 21,
             ),
           ),
         ],
@@ -294,36 +319,49 @@ class _HomeRadioCardState extends State<HomeRadioCard>
 
   Widget _buildNowPlaying(bool isDark, _HomeRadioState state) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
+      padding: const EdgeInsets.fromLTRB(18, 10, 18, 4),
       child: Container(
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.all(11),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              widget.primary.withValues(alpha: isDark ? 0.10 : 0.06),
-              widget.gold.withValues(alpha: isDark ? 0.05 : 0.03),
+              widget.gold.withValues(alpha: isDark ? 0.13 : 0.12),
+              isDark
+                  ? Colors.white.withValues(alpha: 0.05)
+                  : const Color(0xFFFFFDF7),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(18),
           border: Border.all(
-            color: widget.primary.withValues(alpha: isDark ? 0.14 : 0.10),
+            color: widget.gold.withValues(alpha: isDark ? 0.34 : 0.52),
+            width: 1.1,
           ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: isDark ? 0.18 : 0.07),
+              blurRadius: 12,
+              offset: const Offset(0, 5),
+            ),
+          ],
         ),
         child: Row(
+          // Portrait on the right and the full existing player controls on
+          // the left, matching the reference without removing any action.
+          textDirection: TextDirection.rtl,
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: SizedBox(
-                width: 48,
-                height: 48,
+                width: 52,
+                height: 52,
                 child: CachedImageWidget(
                   imageUrl: state.imageUrl,
                   borderRadius: BorderRadius.circular(12),
                   errorWidget: Container(
-                    width: 48,
-                    height: 48,
+                    width: 52,
+                    height: 52,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
@@ -334,20 +372,23 @@ class _HomeRadioCardState extends State<HomeRadioCard>
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Center(
-                      child: Text(state.emoji,
-                          style: const TextStyle(fontSize: 24)),
+                      child: Text(
+                        state.emoji,
+                        style: const TextStyle(fontSize: 24),
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-            const SizedBox(width: 12),
+            const SizedBox(width: 11),
             Expanded(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
                     state.name,
+                    textAlign: TextAlign.right,
                     style: GoogleFonts.cairo(
                       fontSize: 13,
                       fontWeight: FontWeight.w700,
@@ -358,6 +399,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
                   ),
                   const SizedBox(height: 2),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       if (!state.isBuffering) ...[
                         RepaintBoundary(
@@ -379,6 +421,7 @@ class _HomeRadioCardState extends State<HomeRadioCard>
                           ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.right,
                         ),
                       ),
                     ],
@@ -411,20 +454,28 @@ class _HomeRadioCardState extends State<HomeRadioCard>
     );
   }
 
-  Widget _buildRecentSection(
-      bool isDark, List<ListeningHistoryItem> items) {
+  Widget _buildRecentSection(bool isDark, List<ListeningHistoryItem> items) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
+      padding: const EdgeInsets.fromLTRB(18, 12, 18, 2),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          _sectionLabel('آخر ما استمعت إليه', isDark),
-          ...items.map((item) => _RecentItemTile(
-            item: item,
-            primary: widget.primary,
-            gold: widget.gold,
-            isDark: isDark,
-          )),
+          _sectionLabel('استمعت مؤخرًا', isDark),
+          Row(
+            children: [
+              for (var i = 0; i < items.length; i++) ...[
+                Expanded(
+                  child: _RecentItemTile(
+                    item: items[i],
+                    primary: widget.primary,
+                    gold: widget.gold,
+                    isDark: isDark,
+                  ),
+                ),
+                if (i != items.length - 1) const SizedBox(width: 7),
+              ],
+            ],
+          ),
         ],
       ),
     );
@@ -434,21 +485,31 @@ class _HomeRadioCardState extends State<HomeRadioCard>
   Widget _buildSuggestedSection(bool isDark) {
     return Consumer<RadioIntillegence>(
       builder: (_, radio, __) {
-        final stations = radio.recentStations.isNotEmpty
-            ? radio.recentStations.take(3).toList()
-            : RadioStationsData.all.take(3).toList();
+        final stations =
+            radio.recentStations.isNotEmpty
+                ? radio.recentStations.take(3).toList()
+                : RadioStationsData.all.take(3).toList();
 
         return Padding(
-          padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
+          padding: const EdgeInsets.fromLTRB(18, 12, 18, 2),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               _sectionLabel('محطات مقترحة', isDark),
-              ...stations.map((s) => _QuickStationTile(
-                station: s,
-                primary: widget.primary,
-                isDark: isDark,
-              )),
+              Row(
+                children: [
+                  for (var i = 0; i < stations.length; i++) ...[
+                    Expanded(
+                      child: _QuickStationTile(
+                        station: stations[i],
+                        primary: widget.primary,
+                        isDark: isDark,
+                      ),
+                    ),
+                    if (i != stations.length - 1) const SizedBox(width: 7),
+                  ],
+                ],
+              ),
             ],
           ),
         );
@@ -461,10 +522,11 @@ class _HomeRadioCardState extends State<HomeRadioCard>
       padding: const EdgeInsets.only(bottom: 6),
       child: Text(
         text,
+        textAlign: TextAlign.right,
         style: GoogleFonts.cairo(
-          fontSize: 10,
-          fontWeight: FontWeight.w600,
-          color: isDark ? Colors.white38 : Colors.black38,
+          fontSize: 14,
+          fontWeight: FontWeight.w800,
+          color: isDark ? Colors.white70 : const Color(0xFF24282D),
         ),
       ),
     );
@@ -494,94 +556,78 @@ class _RecentItemTile extends StatelessWidget {
         _playItem(context);
       },
       child: Container(
-        margin: const EdgeInsets.only(bottom: 6),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
+        height: 76,
+        padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 8),
         decoration: BoxDecoration(
-          color: isDark
-              ? Colors.white.withValues(alpha: 0.04)
-              : Colors.black.withValues(alpha: 0.02),
-          borderRadius: BorderRadius.circular(14),
+          color:
+              isDark
+                  ? Colors.white.withValues(alpha: 0.04)
+                  : const Color(0xFFFFFDF8),
+          borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: isDark
-                ? Colors.white.withValues(alpha: 0.06)
-                : Colors.black.withValues(alpha: 0.04),
+            color:
+                isDark
+                    ? Colors.white.withValues(alpha: 0.06)
+                    : gold.withValues(alpha: 0.28),
           ),
         ),
         child: Row(
+          textDirection: TextDirection.ltr,
           children: [
+            Container(
+              width: 25,
+              height: 25,
+              decoration: BoxDecoration(
+                color: primary.withValues(alpha: isDark ? 0.16 : 0.10),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(Icons.play_arrow_rounded, size: 15, color: primary),
+            ),
+            const SizedBox(width: 4),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    item.title,
+                    textAlign: TextAlign.right,
+                    style: GoogleFonts.cairo(
+                      fontSize: 9.5,
+                      fontWeight: FontWeight.w700,
+                      color: isDark ? Colors.white : const Color(0xFF1A1A2E),
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Text(
+                    item.timeAgo,
+                    textAlign: TextAlign.right,
+                    style: GoogleFonts.cairo(
+                      fontSize: 7.5,
+                      color: isDark ? Colors.white38 : Colors.black38,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 4),
             ClipRRect(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(9),
               child: SizedBox(
-                width: 36,
-                height: 36,
+                width: 31,
+                height: 31,
                 child: RadioImageWidget(
                   imageUrl: item.imageUrl,
                   imageAsset: item.imageAsset,
                   emoji: item.emoji,
                   primary: primary,
-                  size: 36,
-                  borderRadius: BorderRadius.circular(10),
+                  size: 31,
+                  borderRadius: BorderRadius.circular(9),
                 ),
               ),
-            ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    item.title,
-                    style: GoogleFonts.cairo(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                      color: isDark ? Colors.white : const Color(0xFF1A1A2E),
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 4, vertical: 1),
-                        decoration: BoxDecoration(
-                          color: _typeColor.withValues(alpha: 0.12),
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: Text(
-                          item.typeLabel,
-                          style: GoogleFonts.cairo(
-                            fontSize: 7,
-                            fontWeight: FontWeight.w700,
-                            color: _typeColor,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 4),
-                      Flexible(
-                        child: Text(
-                          item.timeAgo,
-                          style: GoogleFonts.cairo(
-                            fontSize: 9,
-                            color: isDark ? Colors.white38 : Colors.black38,
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              width: 30,
-              height: 30,
-              decoration: BoxDecoration(
-                color: primary.withValues(alpha: isDark ? 0.12 : 0.08),
-                shape: BoxShape.circle,
-              ),
-              child: Icon(Icons.play_arrow_rounded, size: 16, color: primary),
             ),
           ],
         ),
@@ -591,11 +637,16 @@ class _RecentItemTile extends StatelessWidget {
 
   Color get _typeColor {
     switch (item.type) {
-      case 'radio':      return Colors.red;
-      case 'surah':      return Colors.blue;
-      case 'recitation': return Colors.purple;
-      case 'local':      return Colors.green;
-      default:           return Colors.orange;
+      case 'radio':
+        return Colors.red;
+      case 'surah':
+        return Colors.blue;
+      case 'recitation':
+        return Colors.purple;
+      case 'local':
+        return Colors.green;
+      default:
+        return Colors.orange;
     }
   }
 
@@ -626,7 +677,9 @@ class _RecentItemTile extends StatelessWidget {
       case 'surah':
         if (item.surahNumber != null) {
           coordinator.playOnlineSurah(
-              station: station, surahNumber: item.surahNumber!);
+            station: station,
+            surahNumber: item.surahNumber!,
+          );
         } else {
           coordinator.playOnlineRadio(station);
         }
@@ -659,32 +712,75 @@ class _QuickStationTile extends StatelessWidget {
         context.read<AudioCoordinator>().playOnlineRadio(station);
       },
       child: Container(
-        margin: const EdgeInsets.only(bottom: 6),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
+        height: 76,
+        padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 8),
         decoration: BoxDecoration(
-          color: isDark
-              ? Colors.white.withValues(alpha: 0.04)
-              : Colors.black.withValues(alpha: 0.02),
-          borderRadius: BorderRadius.circular(14),
+          color:
+              isDark
+                  ? Colors.white.withValues(alpha: 0.04)
+                  : const Color(0xFFFFFDF8),
+          borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: isDark
-                ? Colors.white.withValues(alpha: 0.06)
-                : Colors.black.withValues(alpha: 0.04),
+            color:
+                isDark
+                    ? Colors.white.withValues(alpha: 0.06)
+                    : primary.withValues(alpha: 0.12),
           ),
         ),
         child: Row(
+          textDirection: TextDirection.ltr,
           children: [
+            Container(
+              width: 25,
+              height: 25,
+              decoration: BoxDecoration(
+                color: primary.withValues(alpha: isDark ? 0.16 : 0.10),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(Icons.play_arrow_rounded, size: 15, color: primary),
+            ),
+            const SizedBox(width: 4),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    station.name,
+                    textAlign: TextAlign.right,
+                    style: GoogleFonts.cairo(
+                      fontSize: 9.5,
+                      fontWeight: FontWeight.w700,
+                      color: isDark ? Colors.white : const Color(0xFF1A1A2E),
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Text(
+                    station.category,
+                    textAlign: TextAlign.right,
+                    style: GoogleFonts.cairo(
+                      fontSize: 7.5,
+                      color: isDark ? Colors.white38 : Colors.black38,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 4),
             ClipRRect(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(9),
               child: SizedBox(
-                width: 36,
-                height: 36,
+                width: 31,
+                height: 31,
                 child: CachedImageWidget(
                   imageUrl: station.imageUrl,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(9),
                   errorWidget: Container(
-                    width: 36,
-                    height: 36,
+                    width: 31,
+                    height: 31,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
@@ -692,49 +788,17 @@ class _QuickStationTile extends StatelessWidget {
                           primary.withValues(alpha: 0.05),
                         ],
                       ),
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(9),
                     ),
                     child: Center(
-                      child: Text(station.iconEmoji,
-                          style: const TextStyle(fontSize: 18)),
+                      child: Text(
+                        station.iconEmoji,
+                        style: const TextStyle(fontSize: 15),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    station.name,
-                    style: GoogleFonts.cairo(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                      color: isDark ? Colors.white : const Color(0xFF1A1A2E),
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Text(
-                    station.category,
-                    style: GoogleFonts.cairo(
-                      fontSize: 9,
-                      color: isDark ? Colors.white38 : Colors.black38,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              width: 30,
-              height: 30,
-              decoration: BoxDecoration(
-                color: primary.withValues(alpha: isDark ? 0.12 : 0.08),
-                shape: BoxShape.circle,
-              ),
-              child: Icon(Icons.play_arrow_rounded, size: 16, color: primary),
             ),
           ],
         ),
@@ -787,23 +851,26 @@ class _PlayerControls extends StatelessWidget {
                 ),
               ],
             ),
-            child: state.isBuffering
-                ? const Padding(
-              padding: EdgeInsets.all(10),
-              child: CircularProgressIndicator(
-                  strokeWidth: 2, color: Colors.white),
-            )
-                : AnimatedSwitcher(
-              duration: const Duration(milliseconds: 200),
-              child: Icon(
-                state.isPlaying
-                    ? Icons.pause_rounded
-                    : Icons.play_arrow_rounded,
-                key: ValueKey(state.isPlaying),
-                color: Colors.white,
-                size: 22,
-              ),
-            ),
+            child:
+                state.isBuffering
+                    ? const Padding(
+                      padding: EdgeInsets.all(10),
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: Colors.white,
+                      ),
+                    )
+                    : AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 200),
+                      child: Icon(
+                        state.isPlaying
+                            ? Icons.pause_rounded
+                            : Icons.play_arrow_rounded,
+                        key: ValueKey(state.isPlaying),
+                        color: Colors.white,
+                        size: 22,
+                      ),
+                    ),
           ),
         ),
         const SizedBox(width: 6),
@@ -866,23 +933,24 @@ class _MiniEqualizer extends StatelessWidget {
     return RepaintBoundary(
       child: AnimatedBuilder(
         animation: controller,
-        builder: (_, __) => Row(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: List.generate(3, (i) {
-            final phase = controller.value * 2 * pi + i * 0.9;
-            final h = 4.0 + 8.0 * ((sin(phase) + 1) / 2);
-            return Container(
-              width: 2,
-              height: h,
-              margin: const EdgeInsets.symmetric(horizontal: 0.5),
-              decoration: BoxDecoration(
-                color: color.withValues(alpha: 0.6),
-                borderRadius: BorderRadius.circular(1),
-              ),
-            );
-          }),
-        ),
+        builder:
+            (_, __) => Row(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: List.generate(3, (i) {
+                final phase = controller.value * 2 * pi + i * 0.9;
+                final h = 4.0 + 8.0 * ((sin(phase) + 1) / 2);
+                return Container(
+                  width: 2,
+                  height: h,
+                  margin: const EdgeInsets.symmetric(horizontal: 0.5),
+                  decoration: BoxDecoration(
+                    color: color.withValues(alpha: 0.6),
+                    borderRadius: BorderRadius.circular(1),
+                  ),
+                );
+              }),
+            ),
       ),
     );
   }
@@ -897,8 +965,7 @@ class _LiveDot extends StatelessWidget {
     return AnimatedBuilder(
       animation: controller,
       builder: (_, __) {
-        final opacity =
-            0.4 + 0.6 * ((sin(controller.value * 2 * pi) + 1) / 2);
+        final opacity = 0.4 + 0.6 * ((sin(controller.value * 2 * pi) + 1) / 2);
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
           decoration: BoxDecoration(
@@ -952,9 +1019,10 @@ class _WavePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final center = Offset(size.width / 2, size.height / 2);
-    final paint = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.2;
+    final paint =
+        Paint()
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 1.2;
     for (int i = 0; i < 3; i++) {
       final p = (progress + i * 0.33) % 1.0;
       final radius = 12.0 + p * 10.0;
@@ -994,14 +1062,20 @@ class _HomeRadioState {
   @override
   bool operator ==(Object other) =>
       other is _HomeRadioState &&
-          other.hasPlayer == hasPlayer &&
-          other.name == name &&
-          other.category == category &&
-          other.isPlaying == isPlaying &&
-          other.isBuffering == isBuffering &&
-          other.sourceType == sourceType;
+      other.hasPlayer == hasPlayer &&
+      other.name == name &&
+      other.category == category &&
+      other.isPlaying == isPlaying &&
+      other.isBuffering == isBuffering &&
+      other.sourceType == sourceType;
 
   @override
   int get hashCode => Object.hash(
-      hasPlayer, name, category, isPlaying, isBuffering, sourceType);
+    hasPlayer,
+    name,
+    category,
+    isPlaying,
+    isBuffering,
+    sourceType,
+  );
 }

@@ -16,12 +16,9 @@ class RadioMiniPlayer extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     // âœ… ط£ظ„ظˆط§ظ† ط¯ظٹظ†ط§ظ…ظٹظƒظٹط©
-    final bgColor =
-        isDark
-            ? Colors.white.withValues(alpha: 0.05)
-            : Colors.black.withValues(alpha: 0.05);
-    final textColor = isDark ? Colors.white : const Color(0xFF1A1A1A);
-    final subTextColor = isDark ? Colors.white70 : Colors.black54;
+    final bgColor = isDark ? const Color(0xFF1C293A) : const Color(0xFFE9DEC9);
+    final textColor = isDark ? Colors.white : const Color(0xFF211C16);
+    final subTextColor = isDark ? Colors.white70 : const Color(0xFF534A3D);
     final borderColor = gold.withValues(
       alpha: isDark ? 0.3 : 0.6,
     ); // ط­ط¯ظˆط¯ ط£ظˆط¶ط­ ظپظٹ ط§ظ„ظˆط¶ط¹ ط§ظ„ظپط§طھط­
@@ -37,31 +34,65 @@ class RadioMiniPlayer extends StatelessWidget {
               builder: (context, snapshot) {
                 final isPlaying = snapshot.data ?? false;
                 return Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
                   decoration: BoxDecoration(
-                    color: bgColor,
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: borderColor),
+                    gradient: LinearGradient(
+                      colors:
+                          isDark
+                              ? [const Color(0xFF26354A), bgColor]
+                              : [const Color(0xFFF5EDDD), bgColor],
+                    ),
+                    borderRadius: BorderRadius.circular(19),
+                    border: Border.all(color: borderColor, width: 1.2),
+                    boxShadow: [
+                      BoxShadow(
+                        color:
+                            isDark
+                                ? Colors.black.withValues(alpha: 0.18)
+                                : const Color(
+                                  0xFF7D6540,
+                                ).withValues(alpha: 0.15),
+                        blurRadius: 13,
+                        offset: const Offset(0, 7),
+                      ),
+                    ],
                   ),
                   child: ListTile(
-                    leading:
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                    leading: Container(
+                      width: 48,
+                      height: 48,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color:
+                            isPlaying
+                                ? Colors.red.shade700
+                                : const Color(0xFF806638),
+                        boxShadow: [
+                          BoxShadow(
+                            color: gold.withValues(alpha: 0.2),
+                            blurRadius: 8,
+                          ),
+                        ],
+                      ),
+                      child: Icon(
                         isPlaying
-                            ? const Icon(
-                              Icons.stop_circle,
-                              color: Colors.red,
-                              size: 32,
-                            )
-                            : Icon(
-                              Icons.play_circle_fill,
-                              color: gold,
-                              size: 32,
-                            ),
+                            ? Icons.stop_rounded
+                            : Icons.play_arrow_rounded,
+                        color: Colors.white,
+                        size: 29,
+                      ),
+                    ),
                     title: Text(
                       context
                           .tr
                           .quranRadioTitle, // ًں‘ˆ طھظ…طھ ط§ظ„طھط±ط¬ظ…ط© ظ‡ظ†ط§
                       style: GoogleFonts.cairo(
-                        color: textColor, // ظ†طµ ط¯ظٹظ†ط§ظ…ظٹظƒظٹ
+                        color: textColor,
+                        fontSize: 19,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -75,8 +106,8 @@ class RadioMiniPlayer extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.cairo(
-                        color: subTextColor, // ظ†طµ ط«ط§ظ†ظˆظٹ ط¯ظٹظ†ط§ظ…ظٹظƒظٹ
-                        fontSize: 12,
+                        color: subTextColor,
+                        fontSize: 13,
                       ),
                     ),
                     trailing:

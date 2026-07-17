@@ -70,12 +70,15 @@ class _HomePrayerCardState extends State<HomePrayerCard>
       CurvedAnimation(parent: _breatheController, curve: Curves.easeInOut),
     );
     final rng = Random(42);
-    _stars = List.generate(20, (i) => _StarData(
-      x: rng.nextDouble(),
-      y: rng.nextDouble() * 0.5,
-      size: 0.5 + rng.nextDouble() * 1.6,
-      phase: rng.nextDouble() * 2 * pi,
-    ));
+    _stars = List.generate(
+      20,
+      (i) => _StarData(
+        x: rng.nextDouble(),
+        y: rng.nextDouble() * 0.5,
+        size: 0.5 + rng.nextDouble() * 1.6,
+        phase: rng.nextDouble() * 2 * pi,
+      ),
+    );
   }
 
   @override
@@ -99,16 +102,19 @@ class _HomePrayerCardState extends State<HomePrayerCard>
         final t = _parseTime(widget.prayerTimes[keys[i]] ?? '');
         if (t.isAfter(now)) {
           next = t;
-          prev = i > 0
-              ? _parseTime(widget.prayerTimes[keys[i - 1]] ?? '')
-              : _parseTime(widget.prayerTimes['Isha'] ?? '')
-              .subtract(const Duration(days: 1));
+          prev =
+              i > 0
+                  ? _parseTime(widget.prayerTimes[keys[i - 1]] ?? '')
+                  : _parseTime(
+                    widget.prayerTimes['Isha'] ?? '',
+                  ).subtract(const Duration(days: 1));
           break;
         }
       }
       if (next == null) {
-        next = _parseTime(widget.prayerTimes['Fajr'] ?? '')
-            .add(const Duration(days: 1));
+        next = _parseTime(
+          widget.prayerTimes['Fajr'] ?? '',
+        ).add(const Duration(days: 1));
         prev = _parseTime(widget.prayerTimes['Isha'] ?? '');
       }
       if (prev != null) {
@@ -124,8 +130,13 @@ class _HomePrayerCardState extends State<HomePrayerCard>
     final now = DateTime.now();
     try {
       final p = t.split(' ')[0].split(':');
-      return DateTime(now.year, now.month, now.day,
-          int.parse(p[0]), int.parse(p[1]));
+      return DateTime(
+        now.year,
+        now.month,
+        now.day,
+        int.parse(p[0]),
+        int.parse(p[1]),
+      );
     } catch (_) {
       return now;
     }
@@ -167,10 +178,7 @@ class _HomePrayerCardState extends State<HomePrayerCard>
         break;
       }
     }
-    return (
-    name: name,
-    time: _formatAMPM(widget.prayerTimes[nextKey] ?? '')
-    );
+    return (name: name, time: _formatAMPM(widget.prayerTimes[nextKey] ?? ''));
   }
 
   IconData _timeIcon() {
@@ -182,14 +190,15 @@ class _HomePrayerCardState extends State<HomePrayerCard>
     if (h >= 17 && h < 20) return Icons.wb_twilight_rounded;
     return Icons.nights_stay_rounded;
   }
-// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
-// طھط­ط¯ظٹط¯ ط§ظ„ظپطھط±ط© ط§ظ„ط­ط§ظ„ظٹط© ط¨ظ†ط§ط،ظ‹ ط¹ظ„ظ‰ ظ…ظˆط§ظ‚ظٹطھ ط§ظ„طµظ„ط§ط©
-// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // طھط­ط¯ظٹط¯ ط§ظ„ظپطھط±ط© ط§ظ„ط­ط§ظ„ظٹط© ط¨ظ†ط§ط،ظ‹ ط¹ظ„ظ‰ ظ…ظˆط§ظ‚ظٹطھ ط§ظ„طµظ„ط§ط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   String _getCurrentPeriod() {
     if (widget.prayerTimes.isEmpty) {
       // fallback ظ„ظ„ظˆظ‚طھ ط§ظ„ط¹ط§ظ… ط¥ط°ط§ ظ„ظ… طھظڈط­ظ…ظ„ ط§ظ„ظ…ظˆط§ظ‚ظٹطھ ط¨ط¹ط¯
       final h = DateTime.now().hour;
-      if (h >= 4 && h < 7)  return 'fajr';
+      if (h >= 4 && h < 7) return 'fajr';
       if (h >= 7 && h < 12) return 'day';
       if (h >= 12 && h < 15) return 'noon';
       if (h >= 15 && h < 17) return 'asr';
@@ -199,12 +208,12 @@ class _HomePrayerCardState extends State<HomePrayerCard>
 
     final now = DateTime.now();
 
-    final fajr    = _parseTime(widget.prayerTimes['Fajr']    ?? '');
+    final fajr = _parseTime(widget.prayerTimes['Fajr'] ?? '');
     final sunrise = _parseTime(widget.prayerTimes['Sunrise'] ?? '');
-    final dhuhr   = _parseTime(widget.prayerTimes['Dhuhr']   ?? '');
-    final asr     = _parseTime(widget.prayerTimes['Asr']     ?? '');
+    final dhuhr = _parseTime(widget.prayerTimes['Dhuhr'] ?? '');
+    final asr = _parseTime(widget.prayerTimes['Asr'] ?? '');
     final maghrib = _parseTime(widget.prayerTimes['Maghrib'] ?? '');
-    final isha    = _parseTime(widget.prayerTimes['Isha']    ?? '');
+    final isha = _parseTime(widget.prayerTimes['Isha'] ?? '');
 
     // ظ‚ط¨ظ„ ط§ظ„ظپط¬ط± = ظ„ظٹظ„
     if (now.isBefore(fajr)) return 'night';
@@ -215,9 +224,7 @@ class _HomePrayerCardState extends State<HomePrayerCard>
     // ط´ط±ظˆظ‚ â†’ ط¸ظ‡ط± (ظ†طµظپ ط§ظ„ظ…ط³ط§ظپط© ط¨ظٹظ† ط§ظ„ط´ط±ظˆظ‚ ظˆط§ظ„ط¸ظ‡ط± = ط¶ط­ظ‰)
     if (now.isAfter(sunrise) && now.isBefore(dhuhr)) {
       final midMorning = sunrise.add(
-        Duration(
-          minutes: dhuhr.difference(sunrise).inMinutes ~/ 2,
-        ),
+        Duration(minutes: dhuhr.difference(sunrise).inMinutes ~/ 2),
       );
       return now.isBefore(midMorning) ? 'day' : 'noon_before';
     }
@@ -229,9 +236,7 @@ class _HomePrayerCardState extends State<HomePrayerCard>
     if (now.isAfter(asr) && now.isBefore(maghrib)) {
       // ظ†طµظپ ط§ظ„ظ…ط³ط§ظپط© ط¨ظٹظ† ط§ظ„ط¹طµط± ظˆط§ظ„ظ…ط؛ط±ط¨ = ظ„ط­ط¸ط© ظ‚ط±ظٹط¨ط© ظ…ظ† ط§ظ„ط؛ط±ظˆط¨
       final midEvening = asr.add(
-        Duration(
-          minutes: maghrib.difference(asr).inMinutes ~/ 2,
-        ),
+        Duration(minutes: maghrib.difference(asr).inMinutes ~/ 2),
       );
       return now.isBefore(midEvening) ? 'asr' : 'dusk_before';
     }
@@ -243,9 +248,9 @@ class _HomePrayerCardState extends State<HomePrayerCard>
     return 'night';
   }
 
-// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
-// طµظˆط±ط© ط§ظ„ط®ظ„ظپظٹط© ط­ط³ط¨ ظ…ظˆط§ظ‚ظٹطھ ط§ظ„طµظ„ط§ط© ط§ظ„ظپط¹ظ„ظٹط©
-// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // طµظˆط±ط© ط§ظ„ط®ظ„ظپظٹط© ط­ط³ط¨ ظ…ظˆط§ظ‚ظٹطھ ط§ظ„طµظ„ط§ط© ط§ظ„ظپط¹ظ„ظٹط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   String _bgImage() {
     final period = _getCurrentPeriod();
     switch (period) {
@@ -267,9 +272,9 @@ class _HomePrayerCardState extends State<HomePrayerCard>
     }
   }
 
-// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
-// ط§ظ„ظ€ overlay ط­ط³ط¨ ظ…ظˆط§ظ‚ظٹطھ ط§ظ„طµظ„ط§ط© ط§ظ„ظپط¹ظ„ظٹط©
-// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ظ€ overlay ط­ط³ط¨ ظ…ظˆط§ظ‚ظٹطھ ط§ظ„طµظ„ط§ط© ط§ظ„ظپط¹ظ„ظٹط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   List<Color> _overlayColors() {
     final period = _getCurrentPeriod();
 
@@ -362,13 +367,14 @@ class _HomePrayerCardState extends State<HomePrayerCard>
     }
   }
 
-// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
-// ط§ظ„ظ†ط¬ظˆظ… طھط¸ظ‡ط± ط­ط³ط¨ ظ…ظˆط§ظ‚ظٹطھ ط§ظ„طµظ„ط§ط© ط§ظ„ظپط¹ظ„ظٹط©
-// â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ط§ظ„ظ†ط¬ظˆظ… طھط¸ظ‡ط± ط­ط³ط¨ ظ…ظˆط§ظ‚ظٹطھ ط§ظ„طµظ„ط§ط© ط§ظ„ظپط¹ظ„ظٹط©
+  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
   bool _showStars() {
     final period = _getCurrentPeriod();
     return period == 'night' || period == 'fajr';
   }
+
   Color _accentColor() {
     final h = DateTime.now().hour;
     if (!widget.isDark) {
@@ -428,9 +434,10 @@ class _HomePrayerCardState extends State<HomePrayerCard>
               borderRadius: BorderRadius.circular(24),
               boxShadow: [
                 BoxShadow(
-                  color: widget.isDark
-                      ? Colors.black.withValues(alpha: 0.50)
-                      : widget.primary.withValues(alpha: 0.18),
+                  color:
+                      widget.isDark
+                          ? Colors.black.withValues(alpha: 0.50)
+                          : widget.primary.withValues(alpha: 0.18),
                   blurRadius: widget.isDark ? 20 : 14,
                   offset: const Offset(0, 6),
                 ),
@@ -460,237 +467,262 @@ class _HomePrayerCardState extends State<HomePrayerCard>
     );
   }
 
-  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
   // ط®ظ„ظپظٹط© + overlay
-  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
 
   Widget _buildBackground() {
-    return Positioned.fill(
-      child: Image.asset(
-        _bgImage(),
-        fit: BoxFit.cover,
-        alignment: Alignment.bottomCenter,
-        errorBuilder: (_, __, ___) {
-          final fallbackColors = widget.isDark
-              ? [const Color(0xFF080C14), const Color(0xFF1B2838)]
-              : [widget.primary.withValues(alpha: 0.8), widget.primary];
-          return DecoratedBox(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: fallbackColors,
-              ),
-            ),
-          );
-        },
-      ),
-    );
+    return const SizedBox.shrink();
   }
 
-  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
-  // ط§ظ„ظ…ط­طھظˆظ‰ â€” ظ…ط³ط§ظپط§طھ ظ…ظڈظ‚ظ„ظ‘طµط©
-  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+  // المحتوى – التصميم الجديد
+  // ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
 
   Widget _buildContent(
-      AppLocalizations tr,
-      Color accent,
-      double progress,
-      ({String name, String time}) after,
-      ) {
+    AppLocalizations tr,
+    Color accent,
+    double progress,
+    ({String name, String time}) after,
+  ) {
+    // Get current time string from prayer times or fallback
+    final now = DateTime.now();
+    final h = now.hour;
+    final m = now.minute;
+    final period = h >= 12 ? 'م' : 'ص';
+    final displayH = h > 12 ? h - 12 : (h == 0 ? 12 : h);
+    final currentTimeStr =
+        '${displayH.toString().padLeft(2, '0')}:${m.toString().padLeft(2, '0')} $period';
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // ط§ظ„ظ…ظˆظ‚ط¹ + ط£ظٹظ‚ظˆظ†ط©
+          // ── TOP: City pill on the right ──
           _buildTopRow(accent),
-          const SizedBox(height: 10),
-
-          // ط§ط³ظ… ط§ظ„طµظ„ط§ط© + ط§ظ„ط¹ط¯ط§ط¯
-          _buildMainSection(tr, accent),
-          const SizedBox(height: 10),
-
-          // ط´ط±ظٹط· ط§ظ„طھظ‚ط¯ظ…
-          _buildProgressBar(progress, accent),
           const SizedBox(height: 8),
 
-          // ط§ظ„طµظ„ط§ط© ط§ظ„طھط§ظ„ظٹط©
-          if (after.name.isNotEmpty) ...[
-            _buildAfterNext(tr, accent, after),
-            const SizedBox(height: 8),
-          ],
+          // ── CENTER: Large circular timer badge on the right ──
+          _buildMainSection(tr, accent),
+          const SizedBox(height: 8),
 
-          // طµظپ ظˆط§ط­ط¯ ظ„ط£ظˆظ‚ط§طھ ط§ظ„طµظ„ظˆط§طھ ط¨ط¯ظ„ طµظپظٹظ†
+          // ── BOTTOM LEFT: Current time pill ──
+          _buildCurrentTimePill(accent, currentTimeStr),
+          const SizedBox(height: 10),
+
+          // ── BOTTOM: Prayer times row ──
           _buildPrayerRow6(accent),
+          // Leave a protected part of the mosque background below the prayer
+          // cells. The next home card overlaps this space, never the times.
+          const SizedBox(height: 42),
         ],
       ),
     );
   }
 
-  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
-  // ط§ظ„ظ…ظˆظ‚ط¹ + ط£ظٹظ‚ظˆظ†ط© â€” ط£طµط؛ط±
-  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+  // City pill – RIGHT aligned with golden pin
+  // ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
 
   Widget _buildTopRow(Color accent) {
-    return Row(
-      children: [
-        Expanded(
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 5,
-                ),
-                decoration: BoxDecoration(
-                  color: widget.isDark
-                      ? Colors.white.withValues(alpha: 0.08)
+    return Align(
+      alignment: AlignmentDirectional.centerStart,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            decoration: BoxDecoration(
+              color:
+                  widget.isDark
+                      ? Colors.white.withValues(alpha: 0.10)
                       : Colors.white.withValues(alpha: 0.25),
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(
-                    color: widget.isDark
-                        ? Colors.white.withValues(alpha: 0.12)
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(
+                color:
+                    widget.isDark
+                        ? Colors.white.withValues(alpha: 0.15)
                         : Colors.white.withValues(alpha: 0.40),
-                    width: 0.8,
-                  ),
+                width: 0.8,
+              ),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.location_on_rounded,
+                  color: const Color(0xFFD4A843),
+                  size: 14,
                 ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.location_on_rounded,
-                        color: accent, size: 13),
-                    const SizedBox(width: 4),
-                    Expanded(
-                      child: Text(
-                        widget.cityName,
-                        style: GoogleFonts.cairo(
-                          color: Colors.white.withValues(alpha: 0.95),
-                          fontSize: 11,
-                          fontWeight: FontWeight.w600,
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                const SizedBox(width: 5),
+                ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 140),
+                  child: Text(
+                    widget.cityName,
+                    style: GoogleFonts.cairo(
+                      color: Colors.white.withValues(alpha: 0.95),
+                      fontSize: 11.5,
+                      fontWeight: FontWeight.w600,
                     ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(width: 8),
-        Container(
-          padding: const EdgeInsets.all(6),
-          decoration: BoxDecoration(
-            color: widget.isDark
-                ? Colors.white.withValues(alpha: 0.08)
-                : Colors.white.withValues(alpha: 0.20),
-            shape: BoxShape.circle,
-            border: Border.all(
-              color: accent.withValues(alpha: 0.35),
-              width: 0.8,
-            ),
-          ),
-          child: Icon(_timeIcon(), color: accent, size: 14),
-        ),
-      ],
-    );
-  }
-
-  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
-  // ط§ظ„طµظ„ط§ط© ط§ظ„طھط§ظ„ظٹط© + ط§ظ„ط¹ط¯ط§ط¯ â€” ظپظٹ طµظپ ظˆط§ط­ط¯ ظ…ظڈط¯ظ…ط¬
-  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
-
-  Widget _buildMainSection(AppLocalizations tr, Color accent) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        // ط§ط³ظ… ط§ظ„طµظ„ط§ط©
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                tr.nextPrayerLabel,
-                style: GoogleFonts.cairo(
-                  color: Colors.white.withValues(alpha: 0.65),
-                  fontSize: 11,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              FittedBox(
-                fit: BoxFit.scaleDown,
-                alignment: AlignmentDirectional.centerStart,
-                child: Text(
-                  widget.nextPrayerName.isEmpty
-                      ? '...'
-                      : widget.nextPrayerName,
-                  style: GoogleFonts.amiri(
-                    color: Colors.white,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    height: 1.15,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(width: 8),
-
-        // ط¹ط¯ط§ط¯ ظ…ظڈط¯ظ…ط¬ ط£طµط؛ط±
-        _buildTimerBadge(accent),
-      ],
-    );
-  }
-
-  Widget _buildTimerBadge(Color accent) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(14),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-          decoration: BoxDecoration(
-            color: widget.isDark
-                ? accent.withValues(alpha: 0.12)
-                : Colors.white.withValues(alpha: 0.25),
-            borderRadius: BorderRadius.circular(14),
-            border: Border.all(
-              color: widget.isDark
-                  ? accent.withValues(alpha: 0.28)
-                  : Colors.white.withValues(alpha: 0.45),
-              width: 0.8,
+              ],
             ),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(Icons.timer_outlined, color: accent, size: 13),
-              const SizedBox(width: 5),
-              Text(
-                widget.timeLeft.isEmpty ? '--:--' : widget.timeLeft,
-                style: GoogleFonts.cairo(
-                  color: Colors.white,
-                  fontSize: 13,
-                  fontWeight: FontWeight.w800,
-                ),
-              ),
-            ],
           ),
         ),
       ),
     );
   }
 
-  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
-  // ط´ط±ظٹط· ط§ظ„طھظ‚ط¯ظ… â€” ط£ظ†ط­ظپ
-  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+  // Large circular badge on the RIGHT – prayer name + countdown
+  // ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  Widget _buildMainSection(AppLocalizations tr, Color accent) {
+    return Align(
+      alignment: AlignmentDirectional.centerStart,
+      child: _buildTimerBadge(accent),
+    );
+  }
+
+  Widget _buildTimerBadge(Color accent) {
+    return Container(
+      width: 118,
+      height: 20,
+      padding: const EdgeInsets.all(6),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: SweepGradient(
+          colors: [widget.primary, widget.primary, accent, widget.primary],
+          stops: const [0, 0.68, 0.82, 1],
+        ),
+        boxShadow: [
+          BoxShadow(
+            color:
+                widget.isDark
+                    ? Colors.black.withValues(alpha: 0.40)
+                    : Colors.black.withValues(alpha: 0.10),
+            blurRadius: 16,
+            spreadRadius: 1,
+            offset: const Offset(0, 4),
+          ),
+          BoxShadow(
+            color:
+                widget.isDark
+                    ? accent.withValues(alpha: 0.08)
+                    : accent.withValues(alpha: 0.12),
+            blurRadius: 24,
+            spreadRadius: -2,
+          ),
+        ],
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color:
+              widget.isDark
+                  ? const Color(0xFF132A36).withValues(alpha: 0.92)
+                  : const Color(0xFFFFFCF4).withValues(alpha: 0.96),
+          border: Border.all(
+            color: Colors.white.withValues(alpha: widget.isDark ? 0.28 : 0.92),
+            width: 2,
+          ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                widget.nextPrayerName.isEmpty ? '...' : widget.nextPrayerName,
+                style: GoogleFonts.amiri(
+                  color: widget.isDark ? Colors.white : const Color(0xFF142534),
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  height: 1.2,
+                ),
+              ),
+            ),
+            const SizedBox(height: 4),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  widget.timeLeft.isEmpty ? '--:--' : widget.timeLeft,
+                  style: GoogleFonts.cairo(
+                    color:
+                        widget.isDark
+                            ? Colors.white.withValues(alpha: 0.78)
+                            : const Color(0xFF3F4750),
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+  // Current time pill – bottom left
+  // ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  Widget _buildCurrentTimePill(Color accent, String currentTime) {
+    return Align(
+      alignment: AlignmentDirectional.centerEnd,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            decoration: BoxDecoration(
+              color:
+                  widget.isDark
+                      ? Colors.white.withValues(alpha: 0.10)
+                      : Colors.white.withValues(alpha: 0.25),
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(
+                color:
+                    widget.isDark
+                        ? Colors.white.withValues(alpha: 0.15)
+                        : Colors.white.withValues(alpha: 0.40),
+                width: 0.8,
+              ),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.access_time_rounded, color: accent, size: 13),
+                const SizedBox(width: 5),
+                Text(
+                  currentTime,
+                  style: GoogleFonts.cairo(
+                    color: Colors.white.withValues(alpha: 0.90),
+                    fontSize: 11,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  // ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+  // شريط التقدم – preserved but not called
+  // ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
 
   Widget _buildProgressBar(double progress, Color accent) {
     return TweenAnimationBuilder<double>(
@@ -698,94 +730,95 @@ class _HomePrayerCardState extends State<HomePrayerCard>
       duration: const Duration(milliseconds: 1100),
       curve: Curves.easeOutCubic,
       builder: (_, val, __) {
-        return LayoutBuilder(builder: (_, bc) {
-          final totalW = bc.maxWidth.isFinite ? bc.maxWidth : 200.0;
-          final fillW = (totalW * val).clamp(0.0, totalW);
-          const barH = 4.0;
-          const dotSize = 8.0;
+        return LayoutBuilder(
+          builder: (_, bc) {
+            final totalW = bc.maxWidth.isFinite ? bc.maxWidth : 200.0;
+            final fillW = (totalW * val).clamp(0.0, totalW);
+            const barH = 4.0;
+            const dotSize = 8.0;
 
-          return SizedBox(
-            width: totalW,
-            height: dotSize + 2,
-            child: Stack(
-              alignment: Alignment.centerLeft,
-              children: [
-                // track
-                Positioned(
-                  left: 0,
-                  right: 0,
-                  top: (dotSize + 2 - barH) / 2,
-                  child: Container(
-                    height: barH,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white.withValues(alpha: 0.15),
-                    ),
-                  ),
-                ),
-                // fill
-                if (fillW > 0)
+            return SizedBox(
+              width: totalW,
+              height: dotSize + 2,
+              child: Stack(
+                alignment: Alignment.centerLeft,
+                children: [
+                  // track
                   Positioned(
                     left: 0,
+                    right: 0,
                     top: (dotSize + 2 - barH) / 2,
                     child: Container(
-                      width: fillW,
                       height: barH,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.white.withValues(alpha: 0.60),
-                            Colors.white,
+                        color: Colors.white.withValues(alpha: 0.15),
+                      ),
+                    ),
+                  ),
+                  // fill
+                  if (fillW > 0)
+                    Positioned(
+                      left: 0,
+                      top: (dotSize + 2 - barH) / 2,
+                      child: Container(
+                        width: fillW,
+                        height: barH,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          gradient: LinearGradient(
+                            colors: [
+                              Colors.white.withValues(alpha: 0.60),
+                              Colors.white,
+                            ],
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.white.withValues(alpha: 0.20),
+                              blurRadius: 4,
+                            ),
                           ],
                         ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.white.withValues(alpha: 0.20),
-                            blurRadius: 4,
-                          ),
-                        ],
                       ),
                     ),
-                  ),
-                // ظ†ظ‚ط·ط©
-                if (val > 0.03)
-                  Positioned(
-                    left: (fillW - dotSize / 2)
-                        .clamp(0.0, totalW - dotSize),
-                    child: Container(
-                      width: dotSize,
-                      height: dotSize,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: accent.withValues(alpha: 0.35),
-                            blurRadius: 6,
-                            spreadRadius: 0.5,
-                          ),
-                        ],
+                  // ظ†ظ‚ط·ط©
+                  if (val > 0.03)
+                    Positioned(
+                      left: (fillW - dotSize / 2).clamp(0.0, totalW - dotSize),
+                      child: Container(
+                        width: dotSize,
+                        height: dotSize,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: accent.withValues(alpha: 0.35),
+                              blurRadius: 6,
+                              spreadRadius: 0.5,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-              ],
-            ),
-          );
-        });
+                ],
+              ),
+            );
+          },
+        );
       },
     );
   }
 
-  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
-  // ط§ظ„طµظ„ط§ط© ط§ظ„طھط§ظ„ظٹط© â€” ط£طµط؛ط±
-  // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
+  // ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+  // الصلاة التالية – preserved but not called
+  // ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
 
   Widget _buildAfterNext(
-      AppLocalizations tr,
-      Color accent,
-      ({String name, String time}) after,
-      ) {
+    AppLocalizations tr,
+    Color accent,
+    ({String name, String time}) after,
+  ) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(12),
       child: BackdropFilter(
@@ -793,14 +826,16 @@ class _HomePrayerCardState extends State<HomePrayerCard>
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
           decoration: BoxDecoration(
-            color: widget.isDark
-                ? Colors.white.withValues(alpha: 0.06)
-                : Colors.white.withValues(alpha: 0.20),
+            color:
+                widget.isDark
+                    ? Colors.white.withValues(alpha: 0.06)
+                    : Colors.white.withValues(alpha: 0.20),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: widget.isDark
-                  ? Colors.white.withValues(alpha: 0.08)
-                  : Colors.white.withValues(alpha: 0.30),
+              color:
+                  widget.isDark
+                      ? Colors.white.withValues(alpha: 0.08)
+                      : Colors.white.withValues(alpha: 0.30),
               width: 0.8,
             ),
           ),
@@ -826,10 +861,7 @@ class _HomePrayerCardState extends State<HomePrayerCard>
               ),
               const SizedBox(width: 5),
               Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 8,
-                  vertical: 3,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                 decoration: BoxDecoration(
                   color: accent.withValues(alpha: 0.22),
                   borderRadius: BorderRadius.circular(8),
@@ -860,26 +892,26 @@ class _HomePrayerCardState extends State<HomePrayerCard>
 
   Widget _buildPrayerRow6(Color accent) {
     return Row(
-      children: widget.prayerInfo.asMap().entries.map((e) {
-        final i = e.key;
-        final p = e.value;
-        final isNext =
-        widget.nextPrayerName.contains(p['name'] as String);
-        final time =
-        _formatAMPM(widget.prayerTimes[p['key']] ?? '--:--');
+      textDirection: TextDirection.ltr,
+      children:
+          widget.prayerInfo.asMap().entries.map((e) {
+            final i = e.key;
+            final p = e.value;
+            final isNext = widget.nextPrayerName.contains(p['name'] as String);
+            final time = _formatAMPM(widget.prayerTimes[p['key']] ?? '--:--');
 
-        return Expanded(
-          child: Padding(
-            padding: EdgeInsets.only(left: i > 0 ? 4 : 0),
-            child: _buildPrayerCell(
-              p: p,
-              time: time,
-              isNext: isNext,
-              accent: accent,
-            ),
-          ),
-        );
-      }).toList(),
+            return Expanded(
+              child: Padding(
+                padding: EdgeInsets.only(left: i > 0 ? 4 : 0),
+                child: _buildPrayerCell(
+                  p: p,
+                  time: time,
+                  isNext: isNext,
+                  accent: accent,
+                ),
+              ),
+            );
+          }).toList(),
     );
   }
 
@@ -889,47 +921,79 @@ class _HomePrayerCardState extends State<HomePrayerCard>
     required bool isNext,
     required Color accent,
   }) {
+    final creamBg =
+        isNext
+            ? (widget.isDark
+                ? accent.withValues(alpha: 0.18)
+                : const Color(0xFFF5E6C8).withValues(alpha: 0.85))
+            : (widget.isDark
+                ? Colors.white.withValues(alpha: 0.07)
+                : const Color(0xFFFAF0DC).withValues(alpha: 0.60));
+
+    final borderColor =
+        isNext
+            ? (widget.isDark
+                ? accent.withValues(alpha: 0.40)
+                : const Color(0xFFD4A843).withValues(alpha: 0.50))
+            : (widget.isDark
+                ? Colors.white.withValues(alpha: 0.08)
+                : const Color(0xFFE8D5B0).withValues(alpha: 0.50));
+
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
-      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 2),
+      padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 2),
       decoration: BoxDecoration(
-        color: isNext
-            ? accent.withValues(alpha: widget.isDark ? 0.16 : 0.20)
-            : Colors.white.withValues(alpha: widget.isDark ? 0.05 : 0.12),
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(
-          color: isNext
-              ? accent.withValues(alpha: widget.isDark ? 0.35 : 0.40)
-              : Colors.white.withValues(alpha: widget.isDark ? 0.06 : 0.20),
-          width: isNext ? 1 : 0.6,
-        ),
+        color: creamBg,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: borderColor, width: isNext ? 1.2 : 0.7),
+        boxShadow:
+            isNext
+                ? [
+                  BoxShadow(
+                    color: accent.withValues(alpha: 0.15),
+                    blurRadius: 8,
+                    spreadRadius: -1,
+                  ),
+                ]
+                : null,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          // Icon
           Icon(
             p['icon'] as IconData,
-            size: 13,
-            color: isNext
-                ? accent
-                : Colors.white.withValues(alpha: 0.55),
+            size: 14,
+            color:
+                isNext
+                    ? (widget.isDark ? accent : const Color(0xFFD4A843))
+                    : (widget.isDark
+                        ? Colors.white.withValues(alpha: 0.55)
+                        : const Color(0xFF9A7A31)),
           ),
-          const SizedBox(height: 2),
+          const SizedBox(height: 3),
+          // Prayer name
           FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
               p['name'] as String,
               style: GoogleFonts.cairo(
-                fontSize: 8.5,
+                fontSize: 9,
                 fontWeight: FontWeight.w700,
-                color: isNext
-                    ? Colors.white
-                    : Colors.white.withValues(alpha: 0.65),
+                color:
+                    isNext
+                        ? (widget.isDark
+                            ? Colors.white
+                            : const Color(0xFF182631))
+                        : (widget.isDark
+                            ? Colors.white.withValues(alpha: 0.70)
+                            : const Color(0xFF25303A)),
               ),
               maxLines: 1,
             ),
           ),
-          const SizedBox(height: 1),
+          const SizedBox(height: 2),
+          // Time
           FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
@@ -937,9 +1001,12 @@ class _HomePrayerCardState extends State<HomePrayerCard>
               style: GoogleFonts.cairo(
                 fontSize: 8,
                 fontWeight: FontWeight.w600,
-                color: isNext
-                    ? accent
-                    : Colors.white.withValues(alpha: 0.50),
+                color:
+                    isNext
+                        ? (widget.isDark ? accent : const Color(0xFF6E5723))
+                        : (widget.isDark
+                            ? Colors.white.withValues(alpha: 0.50)
+                            : const Color(0xFF4F555A)),
               ),
               maxLines: 1,
             ),
@@ -960,8 +1027,6 @@ class _HomePrayerCardState extends State<HomePrayerCard>
       borderRadius: BorderRadius.circular(24),
     );
   }
-
-
 }
 
 // â•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گâ•گ
@@ -986,15 +1051,13 @@ class _StarsPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     for (final s in stars) {
-      final o = (0.2 + 0.8 * sin(s.phase + twinkle * pi * 2))
-          .clamp(0.05, 1.0);
+      final o = (0.2 + 0.8 * sin(s.phase + twinkle * pi * 2)).clamp(0.05, 1.0);
       canvas.drawCircle(
         Offset(s.x * size.width, s.y * size.height),
         s.size,
         Paint()
           ..color = Colors.white.withValues(alpha: o)
-          ..maskFilter =
-          MaskFilter.blur(BlurStyle.normal, s.size * 0.5),
+          ..maskFilter = MaskFilter.blur(BlurStyle.normal, s.size * 0.5),
       );
     }
   }
